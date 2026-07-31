@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Analysis — Neuronix Learning Admin</title>
+<meta name="robots" content="noindex, nofollow" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+:root{
+  --bg:#0B1018; --bg-soft:#111928; --surface:#161F31; --surface-2:#1C2740;
+  --line:rgba(241,238,230,0.09); --line-strong:rgba(241,238,230,0.16);
+  --gold:#F4B740; --gold-soft:rgba(244,183,64,0.14);
+  --cyan:#5FD4D6; --cyan-soft:rgba(95,212,214,0.12);
+  --green:#6FD18C; --green-soft:rgba(111,209,140,0.14);
+  --red:#F47171; --red-soft:rgba(244,113,113,0.12);
+  --purple:#A78BFA; --purple-soft:rgba(167,139,250,0.14);
+  --text:#F3F1EA; --text-dim:#C2CCDC; --muted:#7C8CA6;
+  --font-display:'Space Grotesk',sans-serif;
+  --font-body:'IBM Plex Sans',sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --sidebar-w:260px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text-dim);font-family:var(--font-body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;display:flex;min-height:100vh;}
+a{color:inherit;text-decoration:none;}
+svg{display:block;}
+.icon{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+button{font-family:inherit;cursor:pointer;}
+/* Sidebar */
+.sidebar{width:var(--sidebar-w);flex-shrink:0;background:var(--bg-soft);border-right:1px solid var(--line);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:50;transition:transform .25s;}
+.sidebar-brand{display:flex;align-items:center;gap:.65rem;padding:1.5rem 1.4rem;border-bottom:1px solid var(--line);}
+.sidebar-brand .icon{width:26px;height:26px;color:var(--gold);}
+.sidebar-brand-text{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--text);}
+.sidebar-brand-text .sub{color:var(--muted);font-weight:500;}
+.sidebar-tag{margin:1.1rem 1.4rem 0;display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-mono);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:var(--gold-soft);padding:.3rem .65rem;border-radius:999px;width:fit-content;}
+.sidebar-nav{flex:1;overflow-y:auto;padding:1.25rem .9rem;display:flex;flex-direction:column;gap:.25rem;}
+.sidebar-link{display:flex;align-items:center;gap:.85rem;padding:.7rem .9rem;border-radius:10px;color:var(--text-dim);font-size:.9rem;font-weight:500;transition:background .15s,color .15s;}
+.sidebar-link .icon{color:var(--muted);transition:color .15s;}
+.sidebar-link:hover{background:var(--surface);color:var(--text);}
+.sidebar-link:hover .icon{color:var(--cyan);}
+.sidebar-link.active{background:var(--gold-soft);color:var(--gold);}
+.sidebar-link.active .icon{color:var(--gold);}
+.sidebar-foot{padding:1.1rem;border-top:1px solid var(--line);}
+.sidebar-exit{display:flex;align-items:center;gap:.7rem;padding:.7rem .9rem;border-radius:10px;color:var(--muted);font-size:.85rem;width:100%;background:none;border:none;cursor:pointer;transition:background .15s,color .15s;}
+.sidebar-exit:hover{background:var(--red-soft);color:var(--red);}
+.sidebar-toggle{display:none;position:fixed;top:1rem;left:1rem;z-index:60;width:42px;height:42px;background:var(--surface);border:1px solid var(--line-strong);border-radius:10px;align-items:center;justify-content:center;color:var(--text);}
+@media(max-width:980px){.sidebar{transform:translateX(-100%);}.sidebar.open{transform:translateX(0);}.sidebar-toggle{display:flex;}.main{margin-left:0!important;}}
+/* Main */
+.main{margin-left:var(--sidebar-w);flex:1;min-width:0;}
+.topbar{position:sticky;top:0;z-index:40;background:rgba(11,16,24,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;gap:1rem;}
+.topbar-title{font-family:var(--font-display);font-weight:600;font-size:1.15rem;color:var(--text);}
+.topbar-title .eyebrow{display:block;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem;font-weight:400;}
+.admin-chip{display:flex;align-items:center;gap:.6rem;background:var(--surface);border:1px solid var(--line-strong);border-radius:999px;padding:.45rem .9rem .45rem .5rem;font-size:.82rem;color:var(--text-dim);}
+.avatar{width:26px;height:26px;border-radius:50%;background:var(--gold-soft);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:600;font-size:.75rem;}
+.content{padding:2rem;}
+@media(max-width:640px){.content{padding:1.5rem 1.25rem;}.topbar{padding:1rem 1.25rem 1rem 4.25rem;}}
+/* Tab nav */
+.tab-nav{display:flex;gap:.35rem;border-bottom:1px solid var(--line);margin-bottom:2rem;overflow-x:auto;}
+.tab-btn{display:flex;align-items:center;gap:.5rem;padding:.75rem 1.25rem;font-family:var(--font-display);font-weight:600;font-size:.88rem;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:color .15s,border-color .15s;margin-bottom:-1px;}
+.tab-btn .icon{width:16px;height:16px;}
+.tab-btn:hover{color:var(--text);}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+.tab-pane{display:none;}
+.tab-pane.active{display:block;}
+/* Stat grid */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.1rem;margin-bottom:2rem;}
+.stat-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.5rem;}
+.stat-card .icon-wrap{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:.9rem;}
+.stat-card .num{font-family:var(--font-display);font-weight:700;font-size:1.9rem;color:var(--text);letter-spacing:-0.01em;}
+.stat-card .label{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;}
+.stat-card .delta{font-family:var(--font-mono);font-size:.75rem;margin-top:.4rem;}
+.delta.up{color:var(--green);}
+.delta.neutral{color:var(--muted);}
+/* Chart panels */
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem;}
+@media(max-width:900px){.chart-grid{grid-template-columns:1fr;}}
+.chart-panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem;}
+.chart-panel.full{grid-column:1/-1;}
+.chart-panel h3{font-family:var(--font-display);font-weight:600;font-size:1rem;color:var(--text);margin-bottom:.25rem;}
+.chart-panel .sub{font-size:.8rem;color:var(--muted);margin-bottom:1.25rem;}
+canvas{width:100%!important;display:block;}
+.chart-wrap{position:relative;width:100%;}
+.chart-wrap.h220{height:220px;}
+.chart-wrap.h240{height:240px;}
+.chart-wrap.h160{height:160px;}
+/* Donut chart */
+.donut-wrap{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+.donut-canvas{flex-shrink:0;}
+.donut-legend{display:flex;flex-direction:column;gap:.65rem;}
+.legend-row{display:flex;align-items:center;gap:.65rem;font-size:.85rem;}
+.legend-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
+.legend-label{color:var(--text-dim);}
+.legend-val{margin-left:auto;font-family:var(--font-mono);color:var(--text);font-weight:600;}
+/* Table */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:1.5rem;}
+.panel-head{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;border-bottom:1px solid var(--line);}
+.panel-head h2{font-family:var(--font-display);font-weight:600;font-size:1rem;color:var(--text);}
+.panel-head .sub{font-size:.8rem;color:var(--muted);margin-top:.2rem;}
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;min-width:400px;}
+thead th{text-align:left;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:0 1.5rem .9rem;border-bottom:1px solid var(--line);}
+tbody td{padding:.9rem 1.5rem;border-bottom:1px solid var(--line);font-size:.87rem;color:var(--text-dim);}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover{background:var(--surface-2);}
+.cell-name{color:var(--text);font-weight:500;}
+.cell-mono{font-family:var(--font-mono);font-size:.8rem;color:var(--muted);}
+.status-pill{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-mono);font-size:.7rem;padding:.28rem .65rem;border-radius:999px;}
+.status-pill.active{color:var(--green);background:var(--green-soft);}
+.status-pill.pending{color:var(--gold);background:var(--gold-soft);}
+/* Streak bar */
+.streak-bar-wrap{display:flex;align-items:center;gap:.75rem;}
+.streak-bar{flex:1;height:6px;background:var(--bg-soft);border-radius:999px;overflow:hidden;}
+.streak-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--cyan));border-radius:999px;}
+.streak-num{font-family:var(--font-mono);font-size:.78rem;color:var(--gold);white-space:nowrap;}
+/* Period selector */
+.period-btns{display:flex;gap:.3rem;}
+.period-btn{font-family:var(--font-mono);font-size:.72rem;padding:.3rem .7rem;border-radius:7px;border:1px solid var(--line-strong);background:none;color:var(--muted);transition:all .15s;}
+.period-btn.active{background:var(--gold-soft);color:var(--gold);border-color:rgba(244,183,64,.3);}
+/* Loading */
+.loading{text-align:center;padding:3rem;color:var(--muted);font-family:var(--font-mono);font-size:.85rem;}
+
+</style>
+</head>
+<body>
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-logo" viewBox="0 0 100 60" fill="none"><path d="M2 21h44l16 18h36v-7H65.5L49.5 14H2z" fill="currentColor"/><path d="M68 39h16l16-18H84z" fill="currentColor"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.8"/><path d="M16 14.2c2.3.5 4 2.3 4 5.8"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5l9 4.5 9-4.5"/></symbol>
+  <symbol id="i-ribbon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.2 12.5L6 21l6-3 6 3-2.2-8.5"/></symbol>
+  <symbol id="i-credit-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><line x1="2.5" y1="10" x2="21.5" y2="10"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/></symbol>
+  <symbol id="i-bar-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="4" height="18" rx="1"/><rect x="10" y="8" width="4" height="13" rx="1"/><rect x="17" y="5" width="4" height="16" rx="1"/></symbol>
+  <symbol id="i-trending" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1 4 5 5 5 9a5 5 0 0 1-10 0c0-1 .5-2 1-2.5C8 10 9 11 9 12c0-3 2-4 3-10z"/></symbol>
+  <symbol id="i-pie" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 15A9 9 0 1 1 9 2.8"/><path d="M21 12A9 9 0 0 0 12 3v9z"/></symbol>
+</svg>
+
+<button class="sidebar-toggle" id="sidebarToggle"><svg class="icon"><use href="#i-menu"/></svg></button>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <svg class="icon"><use href="#i-logo"/></svg>
+    <span class="sidebar-brand-text">Neuronix <span class="sub">Learning</span></span>
+  </div>
+  <span class="sidebar-tag"><svg class="icon" style="width:12px;height:12px;"><use href="#i-shield"/></svg> Admin Panel</span>
+  <nav class="sidebar-nav">
+    <a href="admin-dashboard.html" class="sidebar-link"><svg class="icon"><use href="#i-grid"/></svg> Dashboard</a>
+    <a href="admin-students.html" class="sidebar-link"><svg class="icon"><use href="#i-users"/></svg> Students</a>
+    <a href="admin-curriculum.html" class="sidebar-link"><svg class="icon"><use href="#i-layers"/></svg> Curriculum</a>
+    <a href="admin-certificates.html" class="sidebar-link"><svg class="icon"><use href="#i-ribbon"/></svg> Certificates</a>
+    <a href="admin-payments.html" class="sidebar-link"><svg class="icon"><use href="#i-credit-card"/></svg> Payments</a>
+    <a href="admin-analysis.html" class="sidebar-link active"><svg class="icon"><use href="#i-bar-chart"/></svg> Analysis</a>
+  </nav>
+  <div class="sidebar-foot">
+    <a href="../index.html" class="sidebar-link" style="margin-bottom:.4rem;"><svg class="icon"><use href="#i-globe"/></svg> View Public Site</a>
+    <button class="sidebar-exit" id="adminLogout"><svg class="icon"><use href="#i-logout"/></svg> Log Out</button>
+  </div>
+</aside>
+
+<div class="main">
+  <header class="topbar">
+    <div class="topbar-title">
+      <span class="eyebrow">Admin</span>
+      Analysis
+    </div>
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <div class="admin-chip"><span class="avatar">A</span><span>Admin</span></div>
+    </div>
+  </header>
+
+  <div class="content">
+    <!-- Tab Nav -->
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="overview"><svg class="icon"><use href="#i-bar-chart"/></svg> Overview</button>
+      <button class="tab-btn" data-tab="growth"><svg class="icon"><use href="#i-trending"/></svg> Growth</button>
+      <button class="tab-btn" data-tab="engagement"><svg class="icon"><use href="#i-flame"/></svg> Engagement</button>
+      <button class="tab-btn" data-tab="revenue"><svg class="icon"><use href="#i-credit-card"/></svg> Revenue</button>
+    </div>
+
+    <!-- ═══ OVERVIEW ═══ -->
+    <div class="tab-pane active" id="tab-overview">
+      <div class="stat-grid" id="overviewStats">
+        <div class="loading">Loading…</div>
+      </div>
+      <div class="chart-grid">
+        <div class="chart-panel">
+          <h3>Registrations vs Enrollments</h3>
+          <div class="sub">Last 12 months</div>
+          <div class="chart-wrap h220"><canvas id="chartRegEnroll"></canvas></div>
+        </div>
+        <div class="chart-panel">
+          <h3>Payment Breakdown</h3>
+          <div class="sub">All time by status</div>
+          <div class="donut-wrap">
+            <canvas id="chartDonut" width="160" height="160" class="donut-canvas"></canvas>
+            <div class="donut-legend" id="donutLegend"></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head">
+          <div><h2>Recent Registrations</h2><div class="sub">Last 10 students who joined</div></div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Name</th><th>Email</th><th>Joined</th><th>Enrolled</th></tr></thead>
+            <tbody id="recentStudentsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ GROWTH ═══ -->
+    <div class="tab-pane" id="tab-growth">
+      <div class="chart-panel full" style="margin-bottom:1.5rem;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem;">
+          <div><h3>Daily Registrations</h3><div class="sub">New students per day — last 30 days</div></div>
+        </div>
+        <div class="chart-wrap h240"><canvas id="chartDailyRegs"></canvas></div>
+      </div>
+      <div class="chart-panel full">
+        <h3>Monthly Growth</h3>
+        <div class="sub">Registrations and enrollments per month — last 12 months</div>
+        <div class="chart-wrap h240"><canvas id="chartMonthlyGrowth"></canvas></div>
+      </div>
+    </div>
+
+    <!-- ═══ ENGAGEMENT ═══ -->
+    <div class="tab-pane" id="tab-engagement">
+      <div class="stat-grid" id="engagementStats">
+        <div class="loading">Loading…</div>
+      </div>
+      <div class="panel">
+        <div class="panel-head">
+          <div><h2>Top Students by Streak</h2><div class="sub">Ranked by best streak ever achieved</div></div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Student</th><th>Email</th><th>Current Streak</th><th>Best Streak</th></tr></thead>
+            <tbody id="topStreaksBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ REVENUE ═══ -->
+    <div class="tab-pane" id="tab-revenue">
+      <div class="stat-grid" id="revenueStats">
+        <div class="loading">Loading…</div>
+      </div>
+      <div class="chart-panel full">
+        <h3>Monthly Revenue</h3>
+        <div class="sub">Total revenue collected per month — last 12 months</div>
+        <div class="chart-wrap h240"><canvas id="chartRevenue"></canvas></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/api.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script>
+  requireAdmin();
+
+  document.getElementById('sidebarToggle').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('open'));
+  document.getElementById('adminLogout').addEventListener('click', () => {
+    localStorage.removeItem('pnl_token');
+    sessionStorage.removeItem('pnl_admin_session');
+    window.location.href = 'admin-login.html';
+  });
+
+  // Tab switching
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Chart defaults
+  Chart.defaults.color = '#7C8CA6';
+  Chart.defaults.borderColor = 'rgba(241,238,230,0.09)';
+  Chart.defaults.font.family = 'IBM Plex Sans';
+
+  function fmtINR(n) { return '\u20b9' + Number(n).toLocaleString('en-IN'); }
+  function fmtDate(d) {
+    if (!d) return '—';
+    return new Date(d).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+  }
+
+  // Reusable line chart
+  function lineChart(id, labels, datasets) {
+    const ctx = document.getElementById(id);
+    if (!ctx) return;
+    return new Chart(ctx, {
+      type: 'line',
+      data: { labels, datasets: datasets.map(d => ({
+        label: d.label, data: d.data,
+        borderColor: d.color, backgroundColor: d.bg || 'transparent',
+        borderWidth: 2, pointRadius: 3, pointHoverRadius: 5,
+        tension: 0.4, fill: !!d.bg,
+      }))},
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { position: 'top', labels: { boxWidth: 12, padding: 16 } }, tooltip: { mode: 'index', intersect: false } },
+        scales: {
+          x: { grid: { display: false }, ticks: { maxRotation: 45 } },
+          y: { grid: { color: 'rgba(241,238,230,0.07)' }, beginAtZero: true, ticks: { precision: 0 } },
+        },
+      },
+    });
+  }
+
+  function barChart(id, labels, datasets) {
+    const ctx = document.getElementById(id);
+    if (!ctx) return;
+    return new Chart(ctx, {
+      type: 'bar',
+      data: { labels, datasets: datasets.map(d => ({
+        label: d.label, data: d.data,
+        backgroundColor: d.color, borderRadius: 5, borderSkipped: false,
+      }))},
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { position: 'top', labels: { boxWidth: 12, padding: 16 } }, tooltip: { mode: 'index', intersect: false } },
+        scales: {
+          x: { grid: { display: false }, ticks: { maxRotation: 45 } },
+          y: { grid: { color: 'rgba(241,238,230,0.07)' }, beginAtZero: true, ticks: { precision: 0 } },
+        },
+      },
+    });
+  }
+
+  function statCards(containerId, cards) {
+    const wrap = document.getElementById(containerId);
+    wrap.innerHTML = cards.map(c => `
+      <div class="stat-card">
+        <div class="icon-wrap" style="background:${c.iconBg};">
+          <svg class="icon" style="color:${c.iconColor};"><use href="#${c.icon}"/></svg>
+        </div>
+        <div class="num">${c.num}</div>
+        <div class="label">${c.label}</div>
+        ${c.delta ? '<div class="delta ' + c.deltaClass + '">' + c.delta + '</div>' : ''}
+      </div>`).join('');
+  }
+
+  // ── Load and render all data ──────────────────────────────────────
+  (async function loadAnalytics() {
+    let stats, analytics;
+    try {
+      [stats, analytics] = await Promise.all([
+        api.get('/api/admin/stats'),
+        api.get('/api/admin/analytics'),
+      ]);
+      stats = stats.stats;
+      analytics = analytics.analytics;
+    } catch (err) {
+      document.querySelector('.content').innerHTML = '<div class="loading" style="color:var(--red);">Failed to load analytics: ' + err.message + '</div>';
+      return;
+    }
+
+    // ── OVERVIEW STATS ──
+    statCards('overviewStats', [
+      { icon:'i-users',   iconBg:'var(--cyan-soft)',   iconColor:'var(--cyan)',   num: stats.totalStudents,   label:'Total Students', delta: stats.enrollmentRate + '% enrollment rate', deltaClass:'up' },
+      { icon:'i-ribbon',  iconBg:'var(--green-soft)',  iconColor:'var(--green)',  num: stats.enrolledStudents, label:'Enrolled Students' },
+      { icon:'i-credit-card', iconBg:'var(--gold-soft)', iconColor:'var(--gold)', num: fmtINR(stats.totalRevenue), label:'Total Revenue' },
+      { icon:'i-pie',     iconBg:'var(--purple-soft)', iconColor:'var(--purple)', num: stats.totalPayments,   label:'Successful Payments' },
+    ]);
+
+    // ── REG vs ENROLL chart ──
+    barChart('chartRegEnroll', analytics.monthly.labels, [
+      { label:'Registrations', data: analytics.monthly.registrations, color:'rgba(95,212,214,0.7)' },
+      { label:'Enrollments',   data: analytics.monthly.enrollments,   color:'rgba(111,209,140,0.7)' },
+    ]);
+
+    // ── Donut chart ──
+    const doughnutColors = ['#6FD18C','#F4B740','#F47171'];
+    const dData = analytics.paymentBreakdown;
+    const dVals = [dData.paid, dData.pending, dData.failed];
+    const dLabels = ['Paid','Pending','Failed'];
+    new Chart(document.getElementById('chartDonut'), {
+      type: 'doughnut',
+      data: { labels: dLabels, datasets: [{ data: dVals, backgroundColor: doughnutColors, borderWidth: 0, hoverOffset: 6 }] },
+      options: { responsive: false, plugins: { legend: { display: false } }, cutout: '70%' },
+    });
+    document.getElementById('donutLegend').innerHTML = dLabels.map((l,i) =>
+      `<div class="legend-row"><div class="legend-dot" style="background:${doughnutColors[i]};"></div><span class="legend-label">${l}</span><span class="legend-val">${dVals[i]}</span></div>`
+    ).join('');
+
+    // ── Recent students table ──
+    document.getElementById('recentStudentsBody').innerHTML = analytics.recentStudents.map(s => `
+      <tr>
+        <td class="cell-name">${s.name || '—'}</td>
+        <td class="cell-mono">${s.email}</td>
+        <td class="cell-mono">${fmtDate(s.createdAt)}</td>
+        <td>${s.enrolled ? '<span class="status-pill active"><span class="dot" style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block;"></span> Enrolled</span>' : '<span style="color:var(--muted);">—</span>'}</td>
+      </tr>`).join('') || '<tr><td colspan="4" style="text-align:center;padding:2rem;color:var(--muted);">No students yet.</td></tr>';
+
+    // ── GROWTH CHARTS ──
+    barChart('chartDailyRegs', analytics.daily.labels, [
+      { label:'Registrations', data: analytics.daily.registrations, color:'rgba(95,212,214,0.65)' },
+    ]);
+    lineChart('chartMonthlyGrowth', analytics.monthly.labels, [
+      { label:'Registrations', data: analytics.monthly.registrations, color:'#5FD4D6', bg:'rgba(95,212,214,0.08)' },
+      { label:'Enrollments',   data: analytics.monthly.enrollments,   color:'#6FD18C', bg:'rgba(111,209,140,0.08)' },
+    ]);
+
+    // ── ENGAGEMENT ──
+    const activeSessions = stats.activeSessionCount || 0;
+    const totalStreak = analytics.topStreaks.reduce((s,t) => s + (t.bestStreak||0), 0);
+    statCards('engagementStats', [
+      { icon:'i-users',  iconBg:'var(--cyan-soft)',  iconColor:'var(--cyan)',  num: activeSessions, label:'Currently Logged In', delta: 'Active sessions right now', deltaClass:'up' },
+      { icon:'i-flame',  iconBg:'var(--gold-soft)',  iconColor:'var(--gold)',  num: analytics.topStreaks[0]?.bestStreak || 0, label:'Highest Streak (days)' },
+      { icon:'i-flame',  iconBg:'var(--purple-soft)', iconColor:'var(--purple)', num: analytics.topStreaks.filter(s => s.currentStreak > 0).length, label:'Students On Streak' },
+      { icon:'i-layers', iconBg:'var(--green-soft)', iconColor:'var(--green)', num: stats.lessons, label:'Published Lessons' },
+    ]);
+
+    // Top streaks table
+    const maxStreak = analytics.topStreaks[0]?.bestStreak || 1;
+    document.getElementById('topStreaksBody').innerHTML = analytics.topStreaks.length
+      ? analytics.topStreaks.map((s, i) => `
+        <tr>
+          <td class="cell-name">${['🥇','🥈','🥉','4️⃣','5️⃣'][i] || (i+1)+''} ${s.name || '—'}</td>
+          <td class="cell-mono">${s.email}</td>
+          <td>
+            <div class="streak-bar-wrap">
+              <div class="streak-bar"><div class="streak-fill" style="width:${Math.round((s.currentStreak||0)/maxStreak*100)}%;"></div></div>
+              <span class="streak-num">${s.currentStreak||0} days</span>
+            </div>
+          </td>
+          <td><span class="streak-num">${s.bestStreak||0} days</span></td>
+        </tr>`).join('')
+      : '<tr><td colspan="4" style="text-align:center;padding:2rem;color:var(--muted);">No streak data yet. Students need to log in daily.</td></tr>';
+
+    // ── REVENUE ──
+    const totalRevenue = stats.totalRevenue || 0;
+    const avgRevenue = stats.totalPayments > 0 ? Math.round(totalRevenue / stats.totalPayments) : 0;
+    statCards('revenueStats', [
+      { icon:'i-credit-card', iconBg:'var(--gold-soft)',   iconColor:'var(--gold)',   num: fmtINR(totalRevenue),       label:'Total Revenue' },
+      { icon:'i-ribbon',      iconBg:'var(--green-soft)',  iconColor:'var(--green)',  num: stats.totalPayments,         label:'Paid Enrollments' },
+      { icon:'i-trending',    iconBg:'var(--cyan-soft)',   iconColor:'var(--cyan)',   num: fmtINR(avgRevenue),          label:'Avg Revenue / Student' },
+      { icon:'i-pie',         iconBg:'var(--purple-soft)', iconColor:'var(--purple)', num: stats.enrollmentRate + '%',  label:'Enrollment Rate' },
+    ]);
+
+    lineChart('chartRevenue', analytics.monthly.labels, [
+      { label:'Revenue (₹)', data: analytics.monthly.revenue, color:'#F4B740', bg:'rgba(244,183,64,0.1)' },
+    ]);
+  })();
+</script>
+
+</body>
+</html>

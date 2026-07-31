@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Login — Neuronix Learning</title>
+<meta name="description" content="Administrator sign-in for the Neuronix Learning control panel." />
+<meta name="robots" content="noindex, nofollow" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --bg:        #0B1018;
+  --bg-soft:   #111928;
+  --surface:   #161F31;
+  --line:      rgba(241,238,230,0.10);
+  --line-strong: rgba(241,238,230,0.18);
+  --gold:      #F4B740;
+  --gold-soft: rgba(244,183,64,0.14);
+  --cyan:      #5FD4D6;
+  --cyan-soft: rgba(95,212,214,0.12);
+  --red:       #F47171;
+  --red-soft:  rgba(244,113,113,0.12);
+  --text:      #F3F1EA;
+  --text-dim:  #C2CCDC;
+  --muted:     #7C8CA6;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'IBM Plex Sans', sans-serif;
+  --font-mono:    'IBM Plex Mono', monospace;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{
+  background:var(--bg); color:var(--text-dim); font-family:var(--font-body);
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  padding:1.5rem; position:relative; overflow:hidden;
+}
+body::before{
+  content:''; position:fixed; inset:0;
+  background-image:
+    linear-gradient(to right, rgba(241,238,230,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(241,238,230,0.03) 1px, transparent 1px);
+  background-size:40px 40px; pointer-events:none;
+}
+body::after{
+  content:''; position:fixed; top:-200px; right:-160px; width:480px; height:480px;
+  background:radial-gradient(circle, var(--gold-soft) 0%, transparent 70%); pointer-events:none;
+}
+.icon{ width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+a{ color:inherit; text-decoration:none; }
+:focus-visible{ outline:2px solid var(--cyan); outline-offset:3px; border-radius:4px; }
+
+.login-card{
+  position:relative; z-index:1; width:100%; max-width:560px;
+  background:var(--surface); border:1px solid var(--line-strong); border-radius:22px;
+  padding:3.5rem 3.25rem;
+}
+.brand{ display:flex; align-items:center; gap:.75rem; margin-bottom:2.5rem; }
+.brand .icon{ width:34px; height:34px; color:var(--gold); }
+.brand-text{ font-family:var(--font-display); font-weight:700; font-size:1.2rem; color:var(--text); }
+.brand-text .sub{ color:var(--muted); font-weight:500; }
+
+.badge-row{ display:flex; align-items:center; gap:.55rem; margin-bottom:1.25rem; }
+.badge-row .tag{
+  font-family:var(--font-mono); font-size:.68rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--gold); background:var(--gold-soft); padding:.35rem .75rem; border-radius:999px;
+}
+
+h1{ font-family:var(--font-display); font-weight:600; font-size:1.9rem; color:var(--text); margin-bottom:.6rem; }
+.sub-text{ color:var(--muted); font-size:.98rem; margin-bottom:2.25rem; line-height:1.6; }
+
+.form-group{ display:flex; flex-direction:column; gap:.55rem; margin-bottom:1.25rem; }
+.form-group label{ font-family:var(--font-mono); font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); }
+.input-wrap{ position:relative; }
+.input-wrap .lead-icon{ position:absolute; left:.9rem; top:50%; transform:translateY(-50%); width:18px; height:18px; color:var(--muted); }
+.input-wrap input{
+  width:100%; background:var(--bg-soft); border:1px solid var(--line-strong); border-radius:10px;
+  padding:1rem 1rem 1rem 2.75rem; color:var(--text); font-family:var(--font-body); font-size:1rem;
+}
+.input-wrap input:focus{ outline:none; border-color:var(--cyan); }
+.input-wrap .toggle-eye{
+  position:absolute; right:.7rem; top:50%; transform:translateY(-50%); width:30px; height:30px;
+  display:flex; align-items:center; justify-content:center; color:var(--muted); background:none; border:none; cursor:pointer;
+}
+.input-wrap .toggle-eye:hover{ color:var(--text); }
+.input-wrap .toggle-eye .icon{ width:17px; height:17px; }
+
+.error-msg{
+  display:none; align-items:center; gap:.6rem; background:var(--red-soft); color:var(--red);
+  border-radius:10px; padding:.85rem 1rem; font-size:.85rem; margin-bottom:1.25rem;
+}
+.error-msg.show{ display:flex; }
+.error-msg .icon{ width:17px; height:17px; flex-shrink:0; }
+
+.btn{
+  width:100%; display:flex; align-items:center; justify-content:center; gap:.55rem;
+  font-family:var(--font-display); font-weight:600; font-size:1rem;
+  padding:1rem 1.5rem; border-radius:10px; border:1px solid var(--gold);
+  background:var(--gold); color:#16233A; cursor:pointer; transition:background .2s, color .2s;
+}
+.btn:hover{ background:transparent; color:var(--gold); }
+
+.btn-home{
+  display:flex; align-items:center; justify-content:center; gap:.5rem;
+  width:100%; padding:.75rem 1.5rem; margin-top:.65rem;
+  border-radius:10px; border:1px solid var(--line-strong);
+  background:transparent; color:var(--muted);
+  font-family:var(--font-display); font-weight:500; font-size:.88rem;
+  text-decoration:none; cursor:pointer; transition:border-color .2s, color .2s;
+}
+.btn-home:hover{ border-color:var(--muted); color:var(--text); }
+
+.demo-note{
+  margin-top:1.75rem; padding:1rem 1.1rem; background:var(--bg-soft); border:1px dashed var(--line-strong);
+  border-radius:10px; font-family:var(--font-mono); font-size:.78rem; color:var(--muted); line-height:1.7;
+}
+.demo-note strong{ color:var(--cyan); }
+
+.back-link{
+  display:inline-flex; align-items:center; gap:.5rem; margin-top:1.75rem;
+  font-size:.85rem; color:var(--muted); transition:color .15s;
+}
+.back-link:hover{ color:var(--text); }
+.back-link .icon{ width:16px; height:16px; }
+</style>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-logo" viewBox="0 0 100 60" fill="none"><path d="M2 21h44l16 18h36v-7H65.5L49.5 14H2z" fill="currentColor"/><path d="M68 39h16l16-18H84z" fill="currentColor"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/><path d="M8.5 12l2.3 2.3L15.5 9"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/>
+  </symbol>
+  <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="8" cy="15" r="4"/><path d="M11 12l9-9"/><path d="M16 7l3 3"/><path d="M13 10l2.5 2.5"/>
+  </symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>
+  </symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 3l18 18"/><path d="M10.6 5.7A10.6 10.6 0 0 1 12 5.5c6.5 0 10 6.5 10 6.5a13.6 13.6 0 0 1-2.8 3.4M6.6 6.6C4 8.3 2 12 2 12s3.5 6.5 10 6.5c1.4 0 2.6-.2 3.7-.6"/><path d="M9.5 9.8a3 3 0 0 0 4.2 4.2"/>
+  </symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 9v4"/><circle cx="12" cy="16.2" r="0.4" fill="currentColor" stroke="none"/>
+    <path d="M10.5 3.5L2.7 18a1.5 1.5 0 0 0 1.3 2.2h16a1.5 1.5 0 0 0 1.3-2.2L13.5 3.5a1.7 1.7 0 0 0-3 0z"/>
+  </symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="19" y1="12" x2="4" y2="12"/><path d="M10 6l-6 6 6 6"/>
+  </symbol>
+</svg>
+
+<div class="login-card">
+  <div class="brand">
+    <svg class="icon"><use href="#i-logo"/></svg>
+    <span class="brand-text">Neuronix <span class="sub">Learning</span></span>
+  </div>
+
+  <div class="badge-row">
+    <span class="tag"><svg class="icon" style="width:13px;height:13px;display:inline;vertical-align:-2px;"><use href="#i-shield"/></svg> Admin Access</span>
+  </div>
+
+  <h1>Control Panel Sign-In</h1>
+  <p class="sub-text">Restricted to Neuronix Learning administrators. Student and instructor accounts should use the regular login page.</p>
+
+  <div class="error-msg" id="errorMsg">
+    <svg class="icon"><use href="#i-alert"/></svg>
+    <span>Incorrect email or password. Please try again.</span>
+  </div>
+
+  <form id="adminLoginForm" novalidate>
+    <div class="form-group">
+      <label for="admin-email">Admin Email</label>
+      <div class="input-wrap">
+        <svg class="icon lead-icon"><use href="#i-mail"/></svg>
+        <input type="email" id="admin-email" placeholder="admin@neuronixlearning.com" required />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="admin-password">Password</label>
+      <div class="input-wrap">
+        <svg class="icon lead-icon"><use href="#i-key"/></svg>
+        <input type="password" id="admin-password" placeholder="Enter admin password" required />
+        <button type="button" class="toggle-eye" id="toggleEye" aria-label="Show password"><svg class="icon"><use href="#i-eye"/></svg></button>
+      </div>
+    </div>
+    <button type="submit" class="btn"><svg class="icon"><use href="#i-shield"/></svg> Sign In to Control Panel</button>
+    <a href="../index.html" class="btn-home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1rem;height:1rem;flex-shrink:0;"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>
+      Go to Home Page
+    </a>
+  </form>
+
+  <a href="../index.html" class="back-link"><svg class="icon"><use href="#i-arrow-left"/></svg> Back to Neuronix Learning</a>
+</div>
+
+<script src="/js/api.js"></script>
+<script>
+  const form = document.getElementById('adminLoginForm');
+  const errorMsg = document.getElementById('errorMsg');
+  const toggleEye = document.getElementById('toggleEye');
+  const pwInput = document.getElementById('admin-password');
+
+  toggleEye.addEventListener('click', () => {
+    const isPw = pwInput.type === 'password';
+    pwInput.type = isPw ? 'text' : 'password';
+    toggleEye.innerHTML = '<svg class="icon"><use href="#' + (isPw ? 'i-eye-off' : 'i-eye') + '"/></svg>';
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorMsg.classList.remove('show');
+    const email = document.getElementById('admin-email').value.trim().toLowerCase();
+    const password = pwInput.value;
+    const btn = form.querySelector('button[type=submit]');
+    if (btn) { btn.disabled = true; }
+
+    try {
+      const data = await api.post('/api/auth/login', { email, password });
+      if (data.role !== 'admin') throw new Error('Not an admin account.');
+      setToken(data.token);
+      sessionStorage.setItem('pnl_admin_session', 'true');
+      window.location.href = 'admin-dashboard.html';
+    } catch (err) {
+      const span = errorMsg.querySelector('span');
+      if (span) span.textContent = err.message || 'Incorrect email or password. Please try again.';
+      errorMsg.classList.add('show');
+      if (btn) btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,422 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson Preview — Linear Algebra Intuition</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Kannada:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0F1B2D;font-family:'IBM Plex Sans',sans-serif;font-size:14px;line-height:1.6;color:#F3F1EA;padding:28px 24px 36px;}
+:root{--bg:#0F1B2D;--s:#1a2d47;--s2:#1e3452;--line:rgba(241,238,230,0.10);--gold:#F4B740;--cyan:#5FD4D6;--muted:#8AA0BD;--text:#F3F1EA;--dim:#C8D3E3;--mono:'IBM Plex Mono',monospace;--disp:'Space Grotesk',sans-serif;}
+
+.card{background:var(--s);border:1px solid var(--line);border-radius:20px;padding:28px;}
+.mtag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(108,92,231,.2);color:#c4baf8;padding:4px 12px;border-radius:20px;margin-bottom:12px;}
+.ltitle{font-family:var(--disp);font-size:24px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px;color:#ffffff;}
+.lsub{color:var(--muted);font-size:14px;line-height:1.6;}
+.div{border:none;border-top:1px solid var(--line);margin:20px 0;}
+.sl{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.sl::after{content:'';flex:1;height:1px;background:var(--line);}
+h2.lh{font-family:var(--disp);font-size:17px;font-weight:600;color:var(--text);margin-bottom:8px;}
+p.lp{color:var(--muted);font-size:13.5px;line-height:1.65;margin-bottom:12px;}
+.prob{border-left:3px solid var(--cyan);padding:14px 18px;background:rgba(95,212,214,.07);border-radius:0 10px 10px 0;}
+.prob p{color:var(--dim);font-size:13.5px;line-height:1.75;}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+.pill{font-size:12px;font-weight:500;padding:3px 11px;border-radius:20px;background:rgba(95,212,214,.1);color:var(--cyan);border:1px solid rgba(95,212,214,.25);}
+.svc{background:rgba(10,18,32,.5);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px;overflow:hidden;}
+.svc svg{width:100%;display:block;}
+.ig{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
+.ic{padding:12px 14px;border-radius:10px;font-size:12.5px;}
+.ic .il{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin-bottom:4px;}
+.ic .ib{line-height:1.5;color:var(--dim);}
+.ic-v{background:rgba(108,92,231,.15);}.ic-v .il{color:#c4baf8;}
+.ic-c{background:rgba(95,212,214,.1);}.ic-c .il{color:var(--cyan);}
+.ic-g{background:rgba(244,183,64,.1);}.ic-g .il{color:var(--gold);}
+.stp{background:var(--s2);border:1px solid var(--line);border-radius:14px;padding:18px;}
+.dnav{display:flex;align-items:center;gap:6px;margin-bottom:12px;}
+.dd{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;border:none;transition:background .2s;}
+.dd.on{background:var(--cyan);}
+.sct{font-size:11px;color:var(--muted);margin-left:6px;font-family:var(--mono);}
+.sh{font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;font-family:var(--disp);}
+.sp{font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:12px;}
+.sv{background:rgba(10,18,32,.4);border-radius:8px;padding:12px;margin-bottom:12px;}
+.sv svg{width:100%;display:block;}
+.sbs{display:flex;gap:8px;}
+.sbn{font-size:12px;padding:5px 16px;border-radius:8px;border:1px solid rgba(95,212,214,.35);background:rgba(95,212,214,.08);cursor:pointer;color:var(--cyan);font-family:var(--mono);transition:background .15s;}
+.sbn:hover{background:rgba(95,212,214,.18);}
+.mts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
+.mc{background:rgba(10,18,32,.4);border:1px solid var(--line);border-radius:10px;padding:12px 14px;}
+.mcl{font-size:11px;color:var(--muted);margin-bottom:4px;font-family:var(--mono);}
+.mcv{font-size:22px;font-weight:700;font-family:var(--mono);color:var(--cyan);}
+.mcs{font-size:11px;color:var(--muted);margin-top:3px;}
+.edr{background:#080f1c;border-radius:12px;overflow:hidden;margin-bottom:8px;}
+.eh{display:flex;align-items:center;justify-content:space-between;padding:9px 16px;background:#0d1828;border-bottom:1px solid rgba(255,255,255,.06);}
+.edots{display:flex;gap:5px;}
+.edot{width:10px;height:10px;border-radius:50%;}
+.er{background:#ff5f57;}.ey{background:#ffbd2e;}.eg{background:#28ca42;}
+.efn{font-size:12px;color:rgba(255,255,255,.35);font-family:var(--mono);}
+.cpb{font-size:12px;color:var(--gold);background:rgba(244,183,64,.1);border:1px solid rgba(244,183,64,.3);border-radius:6px;padding:4px 12px;cursor:pointer;font-family:var(--mono);font-weight:600;}
+.cpb.ok{color:#28ca42;border-color:#28ca42;}
+pre.code{padding:16px 20px;font-family:var(--mono);font-size:12.5px;line-height:1.75;overflow-x:auto;color:#d4d0c8;white-space:pre;margin:0;}
+.kw{color:#c792ea;}.fn{color:#82aaff;}.st{color:#c3e88d;}.nm{color:#f78c6c;}
+.out{background:var(--s2);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:14px;}
+.oh{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;border-bottom:1px solid var(--line);font-size:11px;color:var(--muted);font-family:var(--mono);}
+.ob{padding:12px 16px;font-family:var(--mono);font-size:12.5px;line-height:1.9;}
+.ol{display:flex;gap:10px;}
+.ok{color:var(--muted);min-width:200px;}
+.ov{color:var(--cyan);font-weight:600;}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
+.mcard{background:var(--s2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color .15s;}
+.mcard:hover{border-color:rgba(255,255,255,.25);}
+.mcard.act{border-color:var(--cyan);background:rgba(95,212,214,.08);}
+.mname{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--text);margin-bottom:4px;}
+.mdesc{font-size:12px;color:var(--muted);}
+.mcard.act .mname{color:var(--cyan);}
+.ins{background:rgba(95,212,214,.06);border:1px solid rgba(95,212,214,.2);border-radius:10px;padding:12px 16px;margin-bottom:0;font-size:12.5px;color:var(--dim);display:flex;gap:10px;}
+.ai-ex{background:rgba(10,18,32,.4);border:1px solid var(--line);border-radius:14px;padding:18px;}
+.ai-ex-head{margin-bottom:16px;}
+.ai-ex-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(244,183,64,.15);color:var(--gold);padding:3px 10px;border-radius:20px;margin-bottom:6px;}
+.ai-ex-sub{display:block;font-size:13px;color:var(--muted);}
+.ai-steps{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;}
+.ai-step{display:flex;gap:14px;align-items:flex-start;}
+.ai-step-num{width:28px;height:28px;border-radius:50%;background:rgba(95,212,214,.15);border:1px solid rgba(95,212,214,.35);color:var(--cyan);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--mono);}
+.ai-step-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px;}
+.ai-step-desc{font-size:12.5px;color:var(--muted);line-height:1.6;}
+.ai-code{font-family:var(--mono);font-size:12px;color:var(--cyan);background:rgba(95,212,214,.1);padding:1px 6px;border-radius:4px;}
+.ai-scores{display:flex;flex-direction:column;gap:6px;}
+.ai-score-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 14px;border-radius:8px;font-size:12.5px;}
+.ai-score-row.hi{background:rgba(95,212,214,.08);border:1px solid rgba(95,212,214,.25);}
+.ai-score-row.lo{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);}
+.ai-score-label{color:var(--dim);flex:1;}
+.ai-score-row.lo .ai-score-label{color:var(--muted);}
+.ai-score-val{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--cyan);flex-shrink:0;}
+.ai-score-row.lo .ai-score-val{color:var(--muted);font-weight:400;}
+.ai-score-title{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.ai-score-info{display:flex;flex-direction:column;gap:2px;flex:1;}
+.ai-score-meta{font-size:11px;color:var(--muted);font-family:var(--mono);}
+.ai-score-row.hi .ai-score-label{color:var(--dim);}
+.ai-footnote{margin-top:12px;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;line-height:1.6;}
+.lp-lang-bar{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
+.lp-lang-tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.ntb-lang{display:flex;align-items:center;gap:4px;background:var(--s);border-radius:999px;padding:4px;}
+.ntb-btn{border:none;background:transparent;cursor:pointer;font-family:var(--disp);font-weight:600;font-size:13px;color:var(--muted);padding:6px 15px;border-radius:999px;transition:all .15s;white-space:nowrap;}
+.ntb-btn.ntb-kn{font-family:'Noto Sans Kannada',sans-serif;}
+.ntb-btn.active{background:var(--cyan);color:#0F1B2D;}
+.ntb-btn.ntb-kn.active{background:var(--gold);color:#0F1B2D;}
+.kn-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:60px 24px;text-align:center;}
+.kn-placeholder-icon{font-size:40px;}
+.kn-placeholder-title{font-family:var(--disp);font-size:18px;font-weight:600;color:var(--text);}
+.kn-placeholder-sub{font-size:13.5px;color:var(--muted);line-height:1.6;max-width:380px;}
+.kn-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(244,183,64,.1);border:1px solid rgba(244,183,64,.25);color:var(--gold);font-size:12px;font-weight:600;padding:5px 14px;border-radius:999px;margin-top:4px;}
+.cta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;background:rgba(95,212,214,.06);border:1px solid rgba(95,212,214,.2);border-radius:12px;padding:14px 18px;margin-top:20px;}
+.ctat{color:var(--dim);font-size:13.5px;}
+.ctab{background:var(--gold);color:#0F1B2D;font-weight:700;font-size:13px;padding:8px 20px;border-radius:999px;text-decoration:none;font-family:var(--disp);white-space:nowrap;}
+@media(max-width:600px){.ig,.mts{grid-template-columns:1fr 1fr;}.mg{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="lp-lang-bar">
+  <div class="ntb-lang" role="group" aria-label="Content language">
+    <button class="ntb-btn active" id="lpEn">English</button>
+    <button class="ntb-btn ntb-kn" id="lpKn">ಕನ್ನಡ</button>
+  </div>
+  <span class="lp-lang-tag">Toggle to preview the lesson in Kannada</span>
+</div>
+
+<div class="card" id="lpCard">
+
+  <div class="mtag">Module 14 — Maths Foundations</div>
+  <div class="ltitle">Linear algebra intuition</div>
+  <p class="lsub">See what vectors, matrices, and dot products actually mean — geometrically and in code.</p>
+
+  <div class="div"></div>
+  <div class="sl">the problem</div>
+  <div class="prob"><p>Open any ML paper. Within the first page you'll see vectors, matrices, dot products, and transformations. Without linear algebra intuition, these are just symbols. With it, you can see what a neural network is actually doing — moving points around in space. You don't need to be a mathematician. You need to see what these operations mean geometrically, then code them yourself.</p></div>
+
+  <div class="div"></div>
+  <div class="sl">concept 1 — vectors are points and directions</div>
+  <h2 class="lh">A vector is coordinates in space</h2>
+  <p class="lp">A vector is just a list of numbers — but those numbers mean something. They're coordinates. In AI, vectors represent everything:</p>
+  <div class="pills">
+    <span class="pill">word → 768 numbers</span>
+    <span class="pill">image → millions of pixels</span>
+    <span class="pill">user → preference scores</span>
+  </div>
+  <div class="svc">
+    <svg viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ax" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#8AA0BD" stroke-width="1.5" stroke-linecap="round"/></marker>
+        <marker id="vx" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#5FD4D6" stroke-width="1.5" stroke-linecap="round"/></marker>
+      </defs>
+      <line x1="60" y1="170" x2="300" y2="170" stroke="#8AA0BD" stroke-width="1" marker-end="url(#ax)"/>
+      <line x1="80" y1="190" x2="80" y2="20" stroke="#8AA0BD" stroke-width="1" marker-end="url(#ax)"/>
+      <line x1="80" y1="80" x2="230" y2="80" stroke="rgba(95,212,214,0.3)" stroke-width="1" stroke-dasharray="5 4"/>
+      <line x1="230" y1="80" x2="230" y2="170" stroke="rgba(95,212,214,0.3)" stroke-width="1" stroke-dasharray="5 4"/>
+      <line x1="80" y1="170" x2="228" y2="82" stroke="#5FD4D6" stroke-width="2.5" marker-end="url(#vx)"/>
+      <circle cx="80" cy="170" r="4" fill="#5FD4D6"/>
+      <circle cx="230" cy="80" r="6" fill="#5FD4D6"/>
+      <text x="304" y="174" font-family="IBM Plex Sans,sans-serif" font-size="12" fill="#8AA0BD">x</text>
+      <text x="67" y="16" font-family="IBM Plex Sans,sans-serif" font-size="12" fill="#8AA0BD">y</text>
+      <text x="64" y="84" font-family="IBM Plex Sans,sans-serif" font-size="11" fill="#8AA0BD">2</text>
+      <text x="225" y="185" font-family="IBM Plex Sans,sans-serif" font-size="11" fill="#8AA0BD">3</text>
+      <text x="66" y="164" font-family="IBM Plex Sans,sans-serif" font-size="11" fill="#8AA0BD">(0,0)</text>
+      <text x="238" y="74" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#5FD4D6">(3, 2)</text>
+      <text x="130" y="118" font-family="IBM Plex Mono,monospace" font-size="12" fill="#5FD4D6" transform="rotate(-32 130 118)">v = [3, 2]</text>
+      <text x="340" y="55" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#F3F1EA">Magnitude</text>
+      <text x="340" y="75" font-family="IBM Plex Mono,monospace" font-size="12" fill="#8AA0BD">= √(3² + 2²)</text>
+      <text x="340" y="95" font-family="IBM Plex Mono,monospace" font-size="12" fill="#8AA0BD">= √13 ≈ 3.61</text>
+      <text x="340" y="125" font-family="IBM Plex Sans,sans-serif" font-size="12" fill="#8AA0BD">points up and right</text>
+      <text x="340" y="143" font-family="IBM Plex Sans,sans-serif" font-size="12" fill="#8AA0BD">from origin (0, 0)</text>
+    </svg>
+  </div>
+
+  <div class="div"></div>
+  <div class="sl">concept 2 — matrices are transformations</div>
+  <h2 class="lh">A matrix moves points in space</h2>
+  <p class="lp">A matrix transforms one vector into another. It can rotate, scale, stretch, or project. In AI, matrices <em>are</em> the model.</p>
+  <div class="svc">
+    <svg viewBox="0 0 680 185" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="mx" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#5FD4D6" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
+      <rect x="20" y="25" width="155" height="135" rx="10" fill="rgba(108,92,231,.15)" stroke="rgba(108,92,231,.4)" stroke-width="1"/>
+      <text x="97" y="50" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="11" font-weight="600" fill="#c4baf8" letter-spacing=".06em">BEFORE</text>
+      <circle cx="70" cy="100" r="7" fill="#6C5CE7"/><circle cx="140" cy="130" r="7" fill="#c4baf8"/>
+      <text x="58" y="92" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#c4baf8">A</text>
+      <text x="148" y="125" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#c4baf8">B</text>
+      <rect x="263" y="62" width="155" height="62" rx="10" fill="rgba(95,212,214,.1)" stroke="rgba(95,212,214,.3)" stroke-width="1"/>
+      <text x="340" y="88" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="17" font-weight="600" fill="#5FD4D6">M</text>
+      <text x="340" y="110" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="11" fill="#8AA0BD">transformation matrix</text>
+      <line x1="175" y1="95" x2="261" y2="92" stroke="#5FD4D6" stroke-width="1.5" marker-end="url(#mx)"/>
+      <line x1="418" y1="92" x2="504" y2="95" stroke="#5FD4D6" stroke-width="1.5" marker-end="url(#mx)"/>
+      <rect x="505" y="25" width="155" height="135" rx="10" fill="rgba(95,212,214,.08)" stroke="rgba(95,212,214,.3)" stroke-width="1"/>
+      <text x="582" y="50" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="11" font-weight="600" fill="#5FD4D6" letter-spacing=".06em">AFTER</text>
+      <circle cx="540" cy="75" r="7" fill="#5FD4D6"/><circle cx="625" cy="135" r="7" fill="#8AA0BD"/>
+      <text x="528" y="68" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#5FD4D6">A'</text>
+      <text x="630" y="132" font-family="IBM Plex Sans,sans-serif" font-size="13" font-weight="600" fill="#8AA0BD">B'</text>
+      <line x1="70" y1="100" x2="540" y2="75" stroke="#5FD4D6" stroke-width="0.5" stroke-dasharray="4 3" opacity="0.25"/>
+      <line x1="140" y1="130" x2="625" y2="135" stroke="#c4baf8" stroke-width="0.5" stroke-dasharray="4 3" opacity="0.25"/>
+    </svg>
+  </div>
+  <div class="ig">
+    <div class="ic ic-v"><div class="il">Neural net weights</div><div class="ib">Matrices that transform input into output at each layer</div></div>
+    <div class="ic ic-c"><div class="il">Attention scores</div><div class="ib">Matrices that decide what parts of the input to focus on</div></div>
+    <div class="ic ic-g"><div class="il">Embeddings</div><div class="ib">Matrices that map words and tokens into vector space</div></div>
+  </div>
+
+  <div class="div"></div>
+  <div class="sl">concept 3 — dot product measures similarity</div>
+  <h2 class="lh">The dot product is how similarity is computed</h2>
+  <p class="lp">The dot product of two vectors tells you how similar they are — and it powers search, RAG, and recommendations.</p>
+  <div class="stp">
+    <div class="dnav">
+      <button class="dd on" onclick="gS(0)"></button>
+      <button class="dd" onclick="gS(1)"></button>
+      <button class="dd" onclick="gS(2)"></button>
+      <span class="sct" id="sctr">1 / 3</span>
+    </div>
+    <div class="sh" id="sh"></div>
+    <div class="sp" id="sp2"></div>
+    <div class="sv"><svg id="ssvg" viewBox="0 0 640 90"></svg></div>
+    <div class="sbs">
+      <button class="sbn" onclick="gS(Math.max(0,cur-1))">← prev</button>
+      <button class="sbn" onclick="gS(Math.min(2,cur+1))">next →</button>
+    </div>
+  </div>
+
+  <div class="div"></div>
+  <div class="sl">the code</div>
+  <div class="mts">
+    <div class="mc"><div class="mcl">a = [1, 2, 3]</div><div class="mcv">3.7417</div><div class="mcs">magnitude |a|</div></div>
+    <div class="mc"><div class="mcl">a · b</div><div class="mcv">32</div><div class="mcs">dot product</div></div>
+    <div class="mc"><div class="mcl">cosine similarity</div><div class="mcv">0.9746</div><div class="mcs">nearly identical direction</div></div>
+  </div>
+  <div class="edr">
+    <div class="eh">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="edots"><span class="edot er"></span><span class="edot ey"></span><span class="edot eg"></span></div>
+        <span class="efn">vector.py</span>
+      </div>
+      <button class="cpb" id="cpb" onclick="doCopy(this)">Copy</button>
+    </div>
+    <pre class="code"><span class="kw">class</span> <span class="fn">Vector</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="kw">self</span>, components):
+        <span class="kw">self</span>.components = <span class="fn">list</span>(components)
+        <span class="kw">self</span>.dim = <span class="fn">len</span>(<span class="kw">self</span>.components)
+
+    <span class="kw">def</span> <span class="fn">__add__</span>(<span class="kw">self</span>, other):
+        <span class="kw">return</span> <span class="fn">Vector</span>([a + b <span class="kw">for</span> a, b <span class="kw">in</span> <span class="fn">zip</span>(<span class="kw">self</span>.components, other.components)])
+
+    <span class="kw">def</span> <span class="fn">__sub__</span>(<span class="kw">self</span>, other):
+        <span class="kw">return</span> <span class="fn">Vector</span>([a - b <span class="kw">for</span> a, b <span class="kw">in</span> <span class="fn">zip</span>(<span class="kw">self</span>.components, other.components)])
+
+    <span class="kw">def</span> <span class="fn">dot</span>(<span class="kw">self</span>, other):
+        <span class="kw">return</span> <span class="fn">sum</span>(a * b <span class="kw">for</span> a, b <span class="kw">in</span> <span class="fn">zip</span>(<span class="kw">self</span>.components, other.components))
+
+    <span class="kw">def</span> <span class="fn">magnitude</span>(<span class="kw">self</span>):
+        <span class="kw">return</span> <span class="fn">sum</span>(x**<span class="nm">2</span> <span class="kw">for</span> x <span class="kw">in</span> <span class="kw">self</span>.components) ** <span class="nm">0.5</span>
+
+    <span class="kw">def</span> <span class="fn">normalize</span>(<span class="kw">self</span>):
+        mag = <span class="kw">self</span>.<span class="fn">magnitude</span>()
+        <span class="kw">return</span> <span class="fn">Vector</span>([x / mag <span class="kw">for</span> x <span class="kw">in</span> <span class="kw">self</span>.components])
+
+    <span class="kw">def</span> <span class="fn">cosine_similarity</span>(<span class="kw">self</span>, other):
+        <span class="kw">return</span> <span class="kw">self</span>.<span class="fn">dot</span>(other) / (<span class="kw">self</span>.<span class="fn">magnitude</span>() * other.<span class="fn">magnitude</span>())
+
+    <span class="kw">def</span> <span class="fn">__repr__</span>(<span class="kw">self</span>):
+        <span class="kw">return</span> <span class="st">f"Vector({self.components})"</span>
+
+
+a = <span class="fn">Vector</span>([<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>])
+b = <span class="fn">Vector</span>([<span class="nm">4</span>, <span class="nm">5</span>, <span class="nm">6</span>])
+<span class="fn">print</span>(<span class="st">f"a + b = {a + b}"</span>)
+<span class="fn">print</span>(<span class="st">f"a · b = {a.dot(b)}"</span>)
+<span class="fn">print</span>(<span class="st">f"|a|  = {a.magnitude():.4f}"</span>)
+<span class="fn">print</span>(<span class="st">f"cosine similarity = {a.cosine_similarity(b):.4f}"</span>)</pre>
+  </div>
+  <div class="out">
+    <div class="oh"><span>output</span></div>
+    <div class="ob" id="obody">
+      <div class="ol"><span class="ok">a + b =</span><span class="ov">Vector([5, 7, 9])</span></div>
+      <div class="ol"><span class="ok">a · b =</span><span class="ov">32</span></div>
+      <div class="ol"><span class="ok">|a|  =</span><span class="ov">3.7417</span></div>
+      <div class="ol"><span class="ok">cosine similarity =</span><span class="ov">0.9746</span></div>
+    </div>
+  </div>
+
+  <div class="sl">method reference</div>
+  <div class="mg">
+    <div class="mcard act" onclick="pM(this,'dot')"><div class="mname">.dot(other)</div><div class="mdesc" id="md0">Σ aᵢ×bᵢ — measures alignment. High = similar direction.</div></div>
+    <div class="mcard" onclick="pM(this,'mag')"><div class="mname">.magnitude()</div><div class="mdesc" id="md1">√Σ xᵢ² — the length of the vector in space.</div></div>
+    <div class="mcard" onclick="pM(this,'norm')"><div class="mname">.normalize()</div><div class="mdesc" id="md2">Divide by magnitude. Result has length = 1.</div></div>
+    <div class="mcard" onclick="pM(this,'cos')"><div class="mname">.cosine_similarity()</div><div class="mdesc" id="md3">dot/(|a|×|b|). Range −1 to 1. Powers search and RAG.</div></div>
+  </div>
+  <div class="ins">
+    <span style="font-size:16px;flex-shrink:0;">💡</span>
+    <span id="ins">a · b = 32. Both vectors point in the same direction — large positive dot product. In a search engine, this means the query and document are highly relevant to each other.</span>
+  </div>
+
+  <div class="div"></div>
+  <div class="sl">in practice — how AI uses this</div>
+  <div class="ai-ex">
+    <div class="ai-ex-head">
+      <span class="ai-ex-tag">Real world: Spotify "Recommended Songs"</span>
+      <span class="ai-ex-sub">Every song, user, and playlist is a vector. Dot product finds what you'll love next.</span>
+    </div>
+    <div class="ai-steps">
+      <div class="ai-step">
+        <div class="ai-step-num">1</div>
+        <div class="ai-step-body">
+          <div class="ai-step-title">Your taste → a vector</div>
+          <div class="ai-step-desc">Based on your listening history, Spotify encodes your taste as a high-dimensional vector. Lots of indie rock, late-night jazz, and fast BPM → specific coordinates in music space.</div>
+        </div>
+      </div>
+      <div class="ai-step">
+        <div class="ai-step-num">2</div>
+        <div class="ai-step-body">
+          <div class="ai-step-title">Every song is also a vector</div>
+          <div class="ai-step-desc">Each of Spotify's 100M+ tracks is embedded into the same space using audio features, lyrics, and listening patterns. Similar songs cluster nearby.</div>
+        </div>
+      </div>
+      <div class="ai-step">
+        <div class="ai-step-num">3</div>
+        <div class="ai-step-body">
+          <div class="ai-step-title">Dot product finds your next song</div>
+          <div class="ai-step-desc">Spotify computes the dot product (cosine similarity) between your taste vector and every song vector. The top matches become your "Discover Weekly" — computed fresh every Monday.</div>
+        </div>
+      </div>
+    </div>
+    <div class="ai-score-title">Cosine similarity: your taste vs candidate songs</div>
+    <div class="ai-scores">
+      <div class="ai-score-row hi">
+        <div class="ai-score-info"><span class="ai-score-label">Sufjan Stevens — "Death With Dignity"</span><span class="ai-score-meta">indie dream-pop · 68 BPM · night drive</span></div>
+        <span class="ai-score-val">0.97 ✓</span>
+      </div>
+      <div class="ai-score-row hi">
+        <div class="ai-score-info"><span class="ai-score-label">Bon Iver — "Holocene"</span><span class="ai-score-meta">folk indie · 92 BPM · emotional</span></div>
+        <span class="ai-score-val">0.91 ✓</span>
+      </div>
+      <div class="ai-score-row lo">
+        <div class="ai-score-info"><span class="ai-score-label">Travis Scott — "SICKO MODE"</span><span class="ai-score-meta">hip-hop · 155 BPM · high energy</span></div>
+        <span class="ai-score-val">0.11</span>
+      </div>
+      <div class="ai-score-row lo">
+        <div class="ai-score-info"><span class="ai-score-label">Skrillex — "Bangarang"</span><span class="ai-score-meta">EDM · 110 BPM · aggressive</span></div>
+        <span class="ai-score-val">0.04</span>
+      </div>
+    </div>
+    <div class="ai-footnote">The same math powers Netflix recommendations, Google search, ChatGPT's RAG memory, and Amazon "customers also bought."</div>
+  </div>
+
+  <div class="cta">
+    <span class="ctat">Unlock all 421 modules with full interactive lessons</span>
+    <a href="pricing.html" class="ctab">Enroll Now →</a>
+  </div>
+
+</div>
+<script>
+// ── Language toggle ──────────────────────────────────────────────
+const knCardHTML = "\n<div class=\"mtag\">Module 14 — Maths Foundations</div>\n<div class=\"ltitle\">ಲೀನಿಯರ್ ಆಲ್ಜೀಬ್ರಾ ಇಂಟ್ಯೂಷನ್</div>\n<p class=\"lsub kn\">ಲೀನಿಯರ್ ಆಲ್ಜೀಬ್ರಾ ಇಂಟ್ಯೂಷನ್ — vectors, matrices ಮತ್ತು dot product ಅರ್ಥ ಮಾಡಿಕೊಳ್ಳೋಣ.</p>\n<div class=\"div\"></div>\n<div class=\"sl kn\">ಸಮಸ್ಯೆ ಏನು?</div>\n<div class=\"prob\"><p class=\"kn\">ಯಾವುದೇ ML paper ತೆರೆದರೆ ಮೊದಲ ಪುಟದಲ್ಲೇ vector, matrix, dot product ಮತ್ತು transformations ಕಾಣಿಸುತ್ತವೆ. ಇವುಗಳ ಅರ್ಥ ತಿಳಿಯದಿದ್ದರೆ ಕೇವಲ ಚಿಹ್ನೆಗಳಂತೆ ಕಾಣಿಸುತ್ತವೆ. ತಿಳಿದರೆ — neural network ಏನು ಮಾಡುತ್ತಿದೆ ಎಂದು ಸ್ಪಷ್ಟವಾಗಿ ಕಾಣಿಸುತ್ತದೆ. ಗಣಿತಜ್ಞನಾಗಬೇಕಿಲ್ಲ — geometrically ಅರ್ಥ ಮಾಡಿಕೊಂಡು code ಬರೆದರೆ ಸಾಕು.</p></div>\n<div class=\"div\"></div>\n<div class=\"sl kn\">ಪರಿಕಲ್ಪನೆ 1 — Vector ಎಂದರೆ ಪಾಯಿಂಟ್ ಮತ್ತು ದಿಕ್ಕು</div>\n<h2 class=\"lh kn\">Vector ಎಂದರೆ ಆಕಾಶದಲ್ಲಿ coordinates</h2>\n<p class=\"lp kn\">Vector ಎಂದರೆ ಸಂಖ್ಯೆಗಳ ಪಟ್ಟಿ — ಆ ಸಂಖ್ಯೆಗಳು ಆಕಾಶದಲ್ಲಿ coordinates. AI ನಲ್ಲಿ vector ಎಲ್ಲವನ್ನೂ ಪ್ರತಿನಿಧಿಸುತ್ತದೆ:</p>\n<div class=\"pills\">\n  <span class=\"pill kn\">ಪದ (word) → 768 numbers</span>\n  <span class=\"pill kn\">ಚಿತ್ರ (image) → ಲಕ್ಷಾಂತರ pixel values</span>\n  <span class=\"pill kn\">ಬಳಕೆದಾರ → preference scores</span>\n</div>\n<div class=\"svc\">\n  <svg viewBox=\"0 0 680 210\" xmlns=\"http://www.w3.org/2000/svg\">\n    <defs>\n      <marker id=\"kax\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto\"><path d=\"M2 1L8 5L2 9\" fill=\"none\" stroke=\"#8AA0BD\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></marker>\n      <marker id=\"kvx\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto\"><path d=\"M2 1L8 5L2 9\" fill=\"none\" stroke=\"#5FD4D6\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></marker>\n    </defs>\n    <line x1=\"60\" y1=\"170\" x2=\"300\" y2=\"170\" stroke=\"#8AA0BD\" stroke-width=\"1\" marker-end=\"url(#kax)\"/>\n    <line x1=\"80\" y1=\"190\" x2=\"80\" y2=\"20\" stroke=\"#8AA0BD\" stroke-width=\"1\" marker-end=\"url(#kax)\"/>\n    <line x1=\"80\" y1=\"80\" x2=\"230\" y2=\"80\" stroke=\"rgba(95,212,214,0.3)\" stroke-width=\"1\" stroke-dasharray=\"5 4\"/>\n    <line x1=\"230\" y1=\"80\" x2=\"230\" y2=\"170\" stroke=\"rgba(95,212,214,0.3)\" stroke-width=\"1\" stroke-dasharray=\"5 4\"/>\n    <line x1=\"80\" y1=\"170\" x2=\"228\" y2=\"82\" stroke=\"#5FD4D6\" stroke-width=\"2.5\" marker-end=\"url(#kvx)\"/>\n    <circle cx=\"80\" cy=\"170\" r=\"4\" fill=\"#5FD4D6\"/><circle cx=\"230\" cy=\"80\" r=\"6\" fill=\"#5FD4D6\"/>\n    <text x=\"304\" y=\"174\" font-family=\"IBM Plex Sans,sans-serif\" font-size=\"12\" fill=\"#8AA0BD\">x</text>\n    <text x=\"67\" y=\"16\" font-family=\"IBM Plex Sans,sans-serif\" font-size=\"12\" fill=\"#8AA0BD\">y</text>\n    <text x=\"64\" y=\"84\" font-family=\"IBM Plex Sans,sans-serif\" font-size=\"11\" fill=\"#8AA0BD\">2</text>\n    <text x=\"225\" y=\"185\" font-family=\"IBM Plex Sans,sans-serif\" font-size=\"11\" fill=\"#8AA0BD\">3</text>\n    <text x=\"66\" y=\"164\" font-family=\"IBM Plex Sans,sans-serif\" font-size=\"11\" fill=\"#8AA0BD\">(0,0)</text>\n    <text x=\"238\" y=\"74\" font-family=\"IBM Plex Sans,sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"#5FD4D6\">(3, 2)</text>\n    <text x=\"130\" y=\"118\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\" fill=\"#5FD4D6\" transform=\"rotate(-32 130 118)\">v = [3, 2]</text>\n    <text x=\"340\" y=\"48\" font-family=\"IBM Plex Sans,sans-serif\" font-size=\"13\" font-weight=\"600\" fill=\"#F3F1EA\">Magnitude (ಉದ್ದ)</text>\n    <text x=\"340\" y=\"68\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\" fill=\"#8AA0BD\">= √(3² + 2²) = √13 ≈ 3.61</text>\n    <text x=\"340\" y=\"95\" font-family=\"IBM Plex Sans,sans-serif\" font-size=\"12\" fill=\"#8AA0BD\">Origin (0,0) ದಿಂದ (3,2) ವರೆಗಿನ</text>\n    <text x=\"340\" y=\"113\" font-family=\"IBM Plex Sans,sans-serif\" font-size=\"12\" fill=\"#8AA0BD\">ನೇರ ದೂರ</text>\n    <text x=\"340\" y=\"137\" font-family=\"IBM Plex Sans,sans-serif\" font-size=\"12\" fill=\"#8AA0BD\">ಮೇಲೆ ಮತ್ತು ಬಲಕ್ಕೆ ತೋರಿಸುತ್ತದೆ</text>\n  </svg>\n</div>\n<div class=\"div\"></div>\n<div class=\"sl kn\">ಪರಿಕಲ್ಪನೆ 2 — Matrix ಎಂದರೆ Transformation</div>\n<h2 class=\"lh kn\">Matrix ಆಕಾಶದಲ್ಲಿ points ಅನ್ನು ಚಲಿಸುತ್ತದೆ</h2>\n<p class=\"lp kn\">Matrix ಒಂದು vector ಅನ್ನು ಮತ್ತೊಂದಕ್ಕೆ ಬದಲಾಯಿಸುತ್ತದೆ — ತಿರುಗಿಸಬಹುದು, ಹಿಗ್ಗಿಸಬಹುದು. AI ನಲ್ಲಿ matrices ಗಳೇ model.</p>\n<div class=\"svc\">\n  <svg viewBox=\"0 0 680 185\" xmlns=\"http://www.w3.org/2000/svg\">\n    <defs><marker id=\"kmx\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto\"><path d=\"M2 1L8 5L2 9\" fill=\"none\" stroke=\"#5FD4D6\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></marker></defs>\n    <rect x=\"20\" y=\"25\" width=\"155\" height=\"135\" rx=\"10\" fill=\"rgba(108,92,231,.15)\" stroke=\"rgba(108,92,231,.4)\" stroke-width=\"1\"/>\n    <text x=\"97\" y=\"50\" text-anchor=\"middle\" font-family=\"IBM Plex Sans,sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#c4baf8\" letter-spacing=\".06em\">BEFORE</text>\n    <circle cx=\"70\" cy=\"100\" r=\"7\" fill=\"#6C5CE7\"/><circle cx=\"140\" cy=\"130\" r=\"7\" fill=\"#c4baf8\"/>\n    <text x=\"58\" y=\"92\" font-family=\"IBM Plex Sans\" font-size=\"13\" font-weight=\"600\" fill=\"#c4baf8\">A</text>\n    <text x=\"148\" y=\"125\" font-family=\"IBM Plex Sans\" font-size=\"13\" font-weight=\"600\" fill=\"#c4baf8\">B</text>\n    <rect x=\"263\" y=\"62\" width=\"155\" height=\"62\" rx=\"10\" fill=\"rgba(95,212,214,.1)\" stroke=\"rgba(95,212,214,.3)\" stroke-width=\"1\"/>\n    <text x=\"340\" y=\"88\" text-anchor=\"middle\" font-family=\"IBM Plex Mono,monospace\" font-size=\"17\" font-weight=\"600\" fill=\"#5FD4D6\">M</text>\n    <text x=\"340\" y=\"110\" text-anchor=\"middle\" font-family=\"IBM Plex Sans,sans-serif\" font-size=\"11\" fill=\"#8AA0BD\">Transformation matrix</text>\n    <line x1=\"175\" y1=\"95\" x2=\"261\" y2=\"92\" stroke=\"#5FD4D6\" stroke-width=\"1.5\" marker-end=\"url(#kmx)\"/>\n    <line x1=\"418\" y1=\"92\" x2=\"504\" y2=\"95\" stroke=\"#5FD4D6\" stroke-width=\"1.5\" marker-end=\"url(#kmx)\"/>\n    <rect x=\"505\" y=\"25\" width=\"155\" height=\"135\" rx=\"10\" fill=\"rgba(95,212,214,.08)\" stroke=\"rgba(95,212,214,.3)\" stroke-width=\"1\"/>\n    <text x=\"582\" y=\"50\" text-anchor=\"middle\" font-family=\"IBM Plex Sans,sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#5FD4D6\" letter-spacing=\".06em\">AFTER</text>\n    <circle cx=\"540\" cy=\"75\" r=\"7\" fill=\"#5FD4D6\"/><circle cx=\"625\" cy=\"135\" r=\"7\" fill=\"#8AA0BD\"/>\n    <text x=\"528\" y=\"68\" font-family=\"IBM Plex Sans\" font-size=\"13\" font-weight=\"600\" fill=\"#5FD4D6\">A'</text>\n    <text x=\"630\" y=\"132\" font-family=\"IBM Plex Sans\" font-size=\"13\" font-weight=\"600\" fill=\"#8AA0BD\">B'</text>\n    <line x1=\"70\" y1=\"100\" x2=\"540\" y2=\"75\" stroke=\"#5FD4D6\" stroke-width=\"0.5\" stroke-dasharray=\"4 3\" opacity=\"0.25\"/>\n    <line x1=\"140\" y1=\"130\" x2=\"625\" y2=\"135\" stroke=\"#c4baf8\" stroke-width=\"0.5\" stroke-dasharray=\"4 3\" opacity=\"0.25\"/>\n  </svg>\n</div>\n<div class=\"ig\">\n  <div class=\"ic ic-v\"><div class=\"il\">Neural network weights</div><div class=\"ib kn\">Input ಅನ್ನು output ಆಗಿ ಬದಲಾಯಿಸುವ matrices</div></div>\n  <div class=\"ic ic-c\"><div class=\"il\">Attention scores</div><div class=\"ib kn\">ಯಾವ ಭಾಗ ಮುಖ್ಯ ಎಂದು ನಿರ್ಧರಿಸುವ matrices</div></div>\n  <div class=\"ic ic-g\"><div class=\"il\">Embeddings</div><div class=\"ib kn\">ಪದಗಳನ್ನು vectors ಗೆ ಮ್ಯಾಪ್ ಮಾಡುವ matrices</div></div>\n</div>\n<div class=\"div\"></div>\n<div class=\"sl kn\">ಪರಿಕಲ್ಪನೆ 3 — Dot Product ಹೋಲಿಕೆ ಅಳೆಯುತ್ತದೆ</div>\n<h2 class=\"lh kn\">Similarity ಹೇಗೆ ಲೆಕ್ಕ ಹಾಕುತ್ತಾರೆ</h2>\n<p class=\"lp kn\">ಎರಡು vectors ನ dot product ಅವು ಎಷ್ಟು ಹೋಲುತ್ತವೆ ಎಂದು ತಿಳಿಸುತ್ತದೆ — search engine, RAG, recommendation system ಎಲ್ಲವೂ ಇದನ್ನೇ ಬಳಸುತ್ತವೆ.</p>\n<div class=\"stp\">\n  <div class=\"dnav\">\n    <button class=\"dd on\" onclick=\"kgS(0)\"></button>\n    <button class=\"dd\" onclick=\"kgS(1)\"></button>\n    <button class=\"dd\" onclick=\"kgS(2)\"></button>\n    <span class=\"sct\" id=\"ksctr\">1 / 3</span>\n  </div>\n  <div class=\"sh kn\" id=\"ksh\"></div>\n  <div class=\"sp kn\" id=\"ksp\"></div>\n  <div class=\"sv\"><svg id=\"kssv\" viewBox=\"0 0 640 90\"></svg></div>\n  <div class=\"sbs\">\n    <button class=\"sbn kn\" onclick=\"kgS(Math.max(0,kcur-1))\">← ಹಿಂದೆ</button>\n    <button class=\"sbn kn\" onclick=\"kgS(Math.min(2,kcur+1))\">ಮುಂದೆ →</button>\n  </div>\n</div>\n<div class=\"div\"></div>\n<div class=\"sl kn\">Code</div>\n<div class=\"mts\">\n  <div class=\"mc\"><div class=\"mcl\">a = [1, 2, 3]</div><div class=\"mcv\">3.7417</div><div class=\"mcs kn\">Magnitude |a|</div></div>\n  <div class=\"mc\"><div class=\"mcl\">a · b (dot product)</div><div class=\"mcv\">32</div><div class=\"mcs kn\">ಹೋಲಿಕೆಯ ಅಳತೆ</div></div>\n  <div class=\"mc\"><div class=\"mcl\">Cosine similarity</div><div class=\"mcv\">0.9746</div><div class=\"mcs kn\">ಬಹುತೇಕ ಒಂದೇ ದಿಕ್ಕು</div></div>\n</div>\n<div class=\"edr\">\n  <div class=\"eh\">\n    <div style=\"display:flex;align-items:center;gap:8px\"><div class=\"edots\"><span class=\"edot er\"></span><span class=\"edot ey\"></span><span class=\"edot eg\"></span></div><span class=\"efn\">vector.py</span></div>\n    <button class=\"cpb\" onclick=\"doCopy(this)\">Copy</button>\n  </div>\n  <pre class=\"code\"><span class=\"kw\">class</span> <span class=\"fn\">Vector</span>:\n    <span class=\"kw\">def</span> <span class=\"fn\">__init__</span>(<span class=\"kw\">self</span>, components):\n        <span class=\"kw\">self</span>.components = <span class=\"fn\">list</span>(components)\n        <span class=\"kw\">self</span>.dim = <span class=\"fn\">len</span>(<span class=\"kw\">self</span>.components)\n\n    <span class=\"kw\">def</span> <span class=\"fn\">dot</span>(<span class=\"kw\">self</span>, other):\n        <span class=\"kw\">return</span> <span class=\"fn\">sum</span>(a * b <span class=\"kw\">for</span> a, b <span class=\"kw\">in</span> <span class=\"fn\">zip</span>(<span class=\"kw\">self</span>.components, other.components))\n\n    <span class=\"kw\">def</span> <span class=\"fn\">magnitude</span>(<span class=\"kw\">self</span>):\n        <span class=\"kw\">return</span> <span class=\"fn\">sum</span>(x**<span class=\"nm\">2</span> <span class=\"kw\">for</span> x <span class=\"kw\">in</span> <span class=\"kw\">self</span>.components) ** <span class=\"nm\">0.5</span>\n\n    <span class=\"kw\">def</span> <span class=\"fn\">normalize</span>(<span class=\"kw\">self</span>):\n        mag = <span class=\"kw\">self</span>.<span class=\"fn\">magnitude</span>()\n        <span class=\"kw\">return</span> <span class=\"fn\">Vector</span>([x / mag <span class=\"kw\">for</span> x <span class=\"kw\">in</span> <span class=\"kw\">self</span>.components])\n\n    <span class=\"kw\">def</span> <span class=\"fn\">cosine_similarity</span>(<span class=\"kw\">self</span>, other):\n        <span class=\"kw\">return</span> <span class=\"kw\">self</span>.<span class=\"fn\">dot</span>(other) / (<span class=\"kw\">self</span>.<span class=\"fn\">magnitude</span>() * other.<span class=\"fn\">magnitude</span>())\n\na = <span class=\"fn\">Vector</span>([<span class=\"nm\">1</span>, <span class=\"nm\">2</span>, <span class=\"nm\">3</span>])\nb = <span class=\"fn\">Vector</span>([<span class=\"nm\">4</span>, <span class=\"nm\">5</span>, <span class=\"nm\">6</span>])\n<span class=\"fn\">print</span>(<span class=\"st\">f\"a · b = {a.dot(b)}\"</span>)\n<span class=\"fn\">print</span>(<span class=\"st\">f\"|a|  = {a.magnitude():.4f}\"</span>)\n<span class=\"fn\">print</span>(<span class=\"st\">f\"cosine similarity = {a.cosine_similarity(b):.4f}\"</span>)</pre>\n</div>\n<div class=\"out\">\n  <div class=\"oh\"><span>Output</span></div>\n  <div class=\"ob\">\n    <div class=\"ol\"><span class=\"ok\">a · b =</span><span class=\"ov\">32</span></div>\n    <div class=\"ol\"><span class=\"ok\">|a|  =</span><span class=\"ov\">3.7417</span></div>\n    <div class=\"ol\"><span class=\"ok\">cosine similarity =</span><span class=\"ov\">0.9746</span></div>\n  </div>\n</div>\n<div class=\"sl kn\">Method Reference</div>\n<div class=\"mg\">\n  <div class=\"mcard act\" onclick=\"kpM(this,'dot')\"><div class=\"mname\">.dot(other)</div><div class=\"mdesc kn\">Σ aᵢ×bᵢ — ಹೋಲಿಕೆ ಅಳೆಯುತ್ತದೆ. ಹೆಚ್ಚಿದ್ದಷ್ಟೂ ಹೋಲಿಕೆ ಜಾಸ್ತಿ.</div></div>\n  <div class=\"mcard\" onclick=\"kpM(this,'mag')\"><div class=\"mname\">.magnitude()</div><div class=\"mdesc kn\">√Σ xᵢ² — Vector ನ ಉದ್ದ (space ನಲ್ಲಿ).</div></div>\n  <div class=\"mcard\" onclick=\"kpM(this,'norm')\"><div class=\"mname\">.normalize()</div><div class=\"mdesc kn\">Magnitude ನಿಂದ ಭಾಗಿಸಿ — ಉದ್ದ 1 ಆಗುತ್ತದೆ.</div></div>\n  <div class=\"mcard\" onclick=\"kpM(this,'cos')\"><div class=\"mname\">.cosine_similarity()</div><div class=\"mdesc kn\">dot/(|a|×|b|). −1 ರಿಂದ 1. Search ಮತ್ತು RAG ನಲ್ಲಿ ಬಳಕೆ.</div></div>\n</div>\n<div class=\"ins\">\n  <span style=\"font-size:16px;flex-shrink:0;\">💡</span>\n  <span id=\"kins\" class=\"kn\">a · b = 32. ಎರಡೂ vectors ಒಂದೇ ದಿಕ್ಕಿನಲ್ಲಿ — ದೊಡ್ಡ positive dot product. Search engine ನಲ್ಲಿ ಇದರ ಅರ್ಥ: ಈ document ನಿಮ್ಮ query ಗೆ ಅತ್ಯಂತ ಸಂಬಂಧಿತ.</span>\n</div>\n<div class=\"div\"></div>\n<div class=\"sl kn\">Example — Spotify ಹೇಗೆ ಹಾಡು ಶಿಫಾರಸು ಮಾಡುತ್ತದೆ</div>\n<div class=\"ai-ex\">\n  <div class=\"ai-ex-head\">\n    <span class=\"ai-ex-tag\">Real world: Spotify \"Discover Weekly\"</span>\n    <span class=\"ai-ex-sub kn\">ಪ್ರತಿ ಹಾಡು, ಪ್ರತಿ ಬಳಕೆದಾರ — ಎಲ್ಲವೂ vectors. Dot product ನಿಮಗೆ ಇಷ್ಟವಾಗಬಹುದಾದ ಹಾಡು ಹುಡುಕುತ್ತದೆ.</span>\n  </div>\n  <div class=\"ai-steps\">\n    <div class=\"ai-step\"><div class=\"ai-step-num\">1</div><div class=\"ai-step-body\"><div class=\"ai-step-title kn\">ನಿಮ್ಮ ಅಭಿರುಚಿ → ಒಂದು vector</div><div class=\"ai-step-desc kn\">ನೀವು ಕೇಳಿದ ಹಾಡುಗಳ ಆಧಾರದ ಮೇಲೆ Spotify ನಿಮ್ಮ ಅಭಿರುಚಿಯನ್ನು ಒಂದು high-dimensional vector ಆಗಿ encode ಮಾಡುತ್ತದೆ — music space ನಲ್ಲಿ ನಿರ್ದಿಷ್ಟ coordinates.</div></div></div>\n    <div class=\"ai-step\"><div class=\"ai-step-num\">2</div><div class=\"ai-step-body\"><div class=\"ai-step-title kn\">ಪ್ರತಿ ಹಾಡೂ ಒಂದು vector</div><div class=\"ai-step-desc kn\">Spotify ನ 10 ಕೋಟಿ+ ಹಾಡುಗಳನ್ನು ಅದೇ space ನಲ್ಲಿ embed ಮಾಡಲಾಗಿದೆ. ಹೋಲುವ ಹಾಡುಗಳ vectors ಹತ್ತಿರ ಇರುತ್ತವೆ.</div></div></div>\n    <div class=\"ai-step\"><div class=\"ai-step-num\">3</div><div class=\"ai-step-body\"><div class=\"ai-step-title kn\">Dot product ಮುಂದಿನ ಹಾಡು ಹುಡುಕುತ್ತದೆ</div><div class=\"ai-step-desc kn\">ನಿಮ್ಮ taste vector ಮತ್ತು ಪ್ರತಿ ಹಾಡಿನ vector ನಡುವೆ cosine similarity ಲೆಕ್ಕ ಹಾಕಲಾಗುತ್ತದೆ. ಹೆಚ್ಚು score ಬಂದ ಹಾಡುಗಳು \"Discover Weekly\" ಆಗುತ್ತವೆ.</div></div></div>\n  </div>\n  <div class=\"ai-score-title kn\">Cosine similarity — ನಿಮ್ಮ taste vs ಹಾಡುಗಳ score</div>\n  <div class=\"ai-scores\">\n    <div class=\"ai-score-row hi\"><div class=\"ai-score-info\"><span class=\"ai-score-label\">Sufjan Stevens — \"Death With Dignity\"</span><span class=\"ai-score-meta kn\">Indie folk · 76 BPM · atmospheric</span></div><span class=\"ai-score-val\">0.97 ✓</span></div>\n    <div class=\"ai-score-row hi\"><div class=\"ai-score-info\"><span class=\"ai-score-label\">Bon Iver — \"Holocene\"</span><span class=\"ai-score-meta kn\">Folk indie · 92 BPM · ಭಾವನಾತ್ಮಕ</span></div><span class=\"ai-score-val\">0.91 ✓</span></div>\n    <div class=\"ai-score-row lo\"><div class=\"ai-score-info\"><span class=\"ai-score-label\">Travis Scott — \"SICKO MODE\"</span><span class=\"ai-score-meta kn\">Hip-hop · 155 BPM · High energy</span></div><span class=\"ai-score-val\">0.11</span></div>\n    <div class=\"ai-score-row lo\"><div class=\"ai-score-info\"><span class=\"ai-score-label\">Skrillex — \"Bangarang\"</span><span class=\"ai-score-meta kn\">EDM · 110 BPM · Aggressive</span></div><span class=\"ai-score-val\">0.04</span></div>\n  </div>\n  <div class=\"ai-footnote kn\">ಇದೇ math ಈ ಎಲ್ಲ systems ಅನ್ನು ನಿರ್ವಹಿಸುತ್ತದೆ: Netflix · Google Search · ChatGPT RAG · Amazon \"customers also bought\"</div>\n</div>\n<div class=\"cta\">\n  <span class=\"ctat kn\">421 ಮಾಡ್ಯೂಲ್‌ಗಳನ್ನು ಇಂಟರ್ಆಕ್ಟಿವ್ ಲೆಸನ್‌ಗಳೊಂದಿಗೆ ಅನ್‌ಲಾಕ್ ಮಾಡಿ</span>\n  <a href=\"pricing.html\" class=\"ctab kn\">ಈಗ ಎನ್ರೋಲ್ ಮಾಡಿ →</a>\n</div>";
+
+const lpCard = document.getElementById('lpCard');
+const lpCardHTML = lpCard.innerHTML;  // save original English content
+
+document.getElementById('lpEn').addEventListener('click', function() {
+  document.getElementById('lpEn').classList.add('active');
+  document.getElementById('lpKn').classList.remove('active');
+  lpCard.innerHTML = lpCardHTML;
+  gS(0); // re-init stepper
+});
+
+document.getElementById('lpKn').addEventListener('click', function() {
+  document.getElementById('lpKn').classList.add('active');
+  document.getElementById('lpEn').classList.remove('active');
+  lpCard.innerHTML = knCardHTML;
+  kgS(0);
+});
+
+const RAW=`class Vector:\n    def __init__(self, components):\n        self.components = list(components)\n        self.dim = len(self.components)\n    def __add__(self, other):\n        return Vector([a + b for a, b in zip(self.components, other.components)])\n    def __sub__(self, other):\n        return Vector([a - b for a, b in zip(self.components, other.components)])\n    def dot(self, other):\n        return sum(a * b for a, b in zip(self.components, other.components))\n    def magnitude(self):\n        return sum(x**2 for x in self.components) ** 0.5\n    def normalize(self):\n        mag = self.magnitude()\n        return Vector([x / mag for x in self.components])\n    def cosine_similarity(self, other):\n        return self.dot(other) / (self.magnitude() * other.magnitude())\n    def __repr__(self):\n        return f"Vector({self.components})"\na = Vector([1, 2, 3])\nb = Vector([4, 5, 6])\nprint(f"a + b = {a + b}")\nprint(f"a · b = {a.dot(b)}")\nprint(f"|a|  = {a.magnitude():.4f}")\nprint(f"cosine similarity = {a.cosine_similarity(b):.4f}")`;
+
+function doCopy(btn){const b=btn||document.getElementById('cpb');navigator.clipboard.writeText(RAW).then(()=>{if(b){b.textContent='Copied!';b.classList.add('ok');setTimeout(()=>{b.textContent='Copy';b.classList.remove('ok');},2000);}}).catch(()=>{const ta=document.createElement('textarea');ta.value=RAW;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);if(b){b.textContent='Copied!';b.classList.add('ok');setTimeout(()=>{b.textContent='Copy';b.classList.remove('ok');},2000);}});}
+
+
+const insights={dot:'a · b = 32. Both vectors point in the same direction — large positive dot product. In a search engine, this means the query and document are highly relevant to each other.',mag:'|a| = 3.74. The straight-line distance from the origin to point (1,2,3). In ML, magnitude represents the intensity of a representation.',norm:'.normalize() scales every component by 1/|a|, giving length exactly 1. This isolates direction — essential before cosine similarity.',cos:'Cosine similarity = 0.97. Result near 1 = same direction, 0 = perpendicular, -1 = opposite. This is how RAG, semantic search, and recommendations work.'};
+
+function pM(el,k){document.querySelectorAll('.mcard').forEach(c=>c.classList.remove('act'));el.classList.add('act');document.getElementById('ins').textContent=insights[k];}
+
+const stepH=['Formula: a · b = Σ aᵢ × bᵢ','Direction: same, perpendicular, or opposite','Real use: search, RAG, recommendations'];
+const stepP=['Multiply each pair of components and sum them up. For [1,2,3] · [4,5,6]: (1×4) + (2×5) + (3×6) = 4 + 10 + 18 = 32.','The sign of the dot product tells you the angle between vectors — their similarity.','Find vectors with high dot products — that\'s literally how semantic search and RAG retrieve relevant content.'];
+const stepSVGs=[`<rect x="10" y="22" width="72" height="36" rx="6" fill="rgba(108,92,231,.2)" stroke="rgba(108,92,231,.4)" stroke-width="1"/><text x="46" y="44" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="12" fill="#c4baf8">[1,2,3]</text><rect x="92" y="22" width="72" height="36" rx="6" fill="rgba(95,212,214,.1)" stroke="rgba(95,212,214,.3)" stroke-width="1"/><text x="128" y="44" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="12" fill="#5FD4D6">[4,5,6]</text><text x="172" y="44" font-family="IBM Plex Sans,sans-serif" font-size="14" fill="#8AA0BD">→</text><rect x="185" y="22" width="220" height="36" rx="6" fill="rgba(244,183,64,.1)" stroke="rgba(244,183,64,.3)" stroke-width="1"/><text x="295" y="44" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="12" fill="#F4B740">(1×4)+(2×5)+(3×6) = 32</text>`,`<defs><marker id="da" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#5FD4D6" stroke-width="1.5"/></marker><marker id="db" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#8AA0BD" stroke-width="1.5"/></marker><marker id="dc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#F4B740" stroke-width="1.5"/></marker></defs><line x1="55" y1="55" x2="120" y2="22" stroke="#5FD4D6" stroke-width="2" marker-end="url(#da)"/><line x1="55" y1="55" x2="128" y2="32" stroke="#5FD4D6" stroke-width="2" marker-end="url(#da)"/><text x="135" y="22" font-family="IBM Plex Sans,sans-serif" font-size="11" fill="#5FD4D6">a · b &gt; 0 — similar</text><line x1="248" y1="55" x2="312" y2="22" stroke="#8AA0BD" stroke-width="2" marker-end="url(#db)"/><line x1="248" y1="55" x2="280" y2="82" stroke="#8AA0BD" stroke-width="2" marker-end="url(#db)"/><text x="318" y="22" font-family="IBM Plex Sans,sans-serif" font-size="11" fill="#8AA0BD">a · b = 0 — unrelated</text><line x1="440" y1="55" x2="504" y2="22" stroke="#F4B740" stroke-width="2" marker-end="url(#dc)"/><line x1="440" y1="55" x2="376" y2="84" stroke="#F4B740" stroke-width="2" marker-end="url(#dc)"/><text x="508" y="22" font-family="IBM Plex Sans,sans-serif" font-size="11" fill="#F4B740">a · b &lt; 0 — opposite</text>`,`<rect x="10" y="18" width="95" height="36" rx="6" fill="rgba(108,92,231,.2)" stroke="rgba(108,92,231,.4)" stroke-width="1"/><text x="57" y="40" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="12" fill="#c4baf8">query vector</text><rect x="125" y="5" width="120" height="36" rx="6" fill="rgba(95,212,214,.15)" stroke="rgba(95,212,214,.4)" stroke-width="1.5"/><text x="185" y="27" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#5FD4D6">doc A · q = 0.97</text><rect x="125" y="50" width="120" height="36" rx="6" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1"/><text x="185" y="72" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#8AA0BD">doc B · q = 0.12</text><rect x="125" y="95" width="120" height="36" rx="6" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1"/><text x="185" y="117" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#8AA0BD">doc C · q = 0.34</text><rect x="260" y="5" width="95" height="36" rx="6" fill="rgba(95,212,214,.15)" stroke="rgba(95,212,214,.5)" stroke-width="1.5"/><text x="307" y="21" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="11" font-weight="600" fill="#5FD4D6">top result</text><text x="307" y="36" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="10" fill="#8AA0BD">doc A returned</text>`];
+
+let cur=0;
+function gS(n){cur=n;document.getElementById('sh').textContent=stepH[n];document.getElementById('sp2').textContent=stepP[n];document.getElementById('ssvg').innerHTML=stepSVGs[n];document.getElementById('sctr').textContent=(n+1)+' / 3';document.querySelectorAll('.dd').forEach((d,i)=>d.classList.toggle('on',i===n));}
+gS(0);
+
+// ── Kannada stepper ──────────────────────────────────────────────
+const kStepH = ['Formula: a · b = Σ aᵢ × bᵢ', 'ದಿಕ್ಕು: ಒಂದೇ, ಲಂಬ ಅಥವಾ ವಿರುದ್ಧ', 'ನಿಜ ಬಳಕೆ: Search, RAG, Recommendations'];
+const kStepP = ['[1,2,3] · [4,5,6] ಲೆಕ್ಕ: (1×4) + (2×5) + (3×6) = 4 + 10 + 18 = 32. ಪ್ರತಿ ಜೋಡಿ ಗುಣಿಸಿ ಒಟ್ಟುಗೂಡಿಸಿ.', 'Dot product ನ ಚಿಹ್ನೆ vectors ನ ನಡುವಿನ ಕೋನ ಮತ್ತು ಹೋಲಿಕೆಯನ್ನು ತಿಳಿಸುತ್ತದೆ.', 'ಹೆಚ್ಚು dot product ಇರುವ vectors ಹುಡುಕಿ — ಇದೇ semantic search ಮತ್ತು RAG ಕೆಲಸ ಮಾಡುವ ವಿಧಾನ.'];
+const kStepSVGs = ["<rect x=\"10\" y=\"22\" width=\"72\" height=\"36\" rx=\"6\" fill=\"rgba(108,92,231,.2)\" stroke=\"rgba(108,92,231,.4)\" stroke-width=\"1\"/><text x=\"46\" y=\"44\" text-anchor=\"middle\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\" fill=\"#c4baf8\">[1,2,3]</text><rect x=\"92\" y=\"22\" width=\"72\" height=\"36\" rx=\"6\" fill=\"rgba(95,212,214,.1)\" stroke=\"rgba(95,212,214,.3)\" stroke-width=\"1\"/><text x=\"128\" y=\"44\" text-anchor=\"middle\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\" fill=\"#5FD4D6\">[4,5,6]</text><text x=\"172\" y=\"44\" font-size=\"14\" fill=\"#8AA0BD\">→</text><rect x=\"185\" y=\"22\" width=\"220\" height=\"36\" rx=\"6\" fill=\"rgba(244,183,64,.1)\" stroke=\"rgba(244,183,64,.3)\" stroke-width=\"1\"/><text x=\"295\" y=\"44\" text-anchor=\"middle\" font-family=\"IBM Plex Mono,monospace\" font-size=\"12\" fill=\"#F4B740\">(1×4)+(2×5)+(3×6) = 32</text>", "<defs><marker id=\"kda\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"5\" markerHeight=\"5\" orient=\"auto\"><path d=\"M2 1L8 5L2 9\" fill=\"none\" stroke=\"#5FD4D6\" stroke-width=\"1.5\"/></marker><marker id=\"kdb\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"5\" markerHeight=\"5\" orient=\"auto\"><path d=\"M2 1L8 5L2 9\" fill=\"none\" stroke=\"#8AA0BD\" stroke-width=\"1.5\"/></marker><marker id=\"kdc\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"5\" markerHeight=\"5\" orient=\"auto\"><path d=\"M2 1L8 5L2 9\" fill=\"none\" stroke=\"#F4B740\" stroke-width=\"1.5\"/></marker></defs><line x1=\"55\" y1=\"55\" x2=\"120\" y2=\"22\" stroke=\"#5FD4D6\" stroke-width=\"2\" marker-end=\"url(#kda)\"/><line x1=\"55\" y1=\"55\" x2=\"128\" y2=\"32\" stroke=\"#5FD4D6\" stroke-width=\"2\" marker-end=\"url(#kda)\"/><text x=\"135\" y=\"22\" font-family=\"IBM Plex Sans,sans-serif\" font-size=\"11\" fill=\"#5FD4D6\">a · b &gt; 0 — ಹೋಲಿಕೆ ಇದೆ</text><line x1=\"248\" y1=\"55\" x2=\"312\" y2=\"22\" stroke=\"#8AA0BD\" stroke-width=\"2\" marker-end=\"url(#kdb)\"/><line x1=\"248\" y1=\"55\" x2=\"280\" y2=\"82\" stroke=\"#8AA0BD\" stroke-width=\"2\" marker-end=\"url(#kdb)\"/><text x=\"318\" y=\"22\" font-family=\"IBM Plex Sans,sans-serif\" font-size=\"11\" fill=\"#8AA0BD\">a · b = 0 — ಸಂಬಂಧವಿಲ್ಲ</text><line x1=\"440\" y1=\"55\" x2=\"504\" y2=\"22\" stroke=\"#F4B740\" stroke-width=\"2\" marker-end=\"url(#kdc)\"/><line x1=\"440\" y1=\"55\" x2=\"376\" y2=\"84\" stroke=\"#F4B740\" stroke-width=\"2\" marker-end=\"url(#kdc)\"/><text x=\"508\" y=\"22\" font-family=\"IBM Plex Sans,sans-serif\" font-size=\"11\" fill=\"#F4B740\">a · b &lt; 0 — ವಿರುದ್ಧ ದಿಕ್ಕು</text>", "<rect x=\"10\" y=\"18\" width=\"95\" height=\"36\" rx=\"6\" fill=\"rgba(108,92,231,.2)\" stroke=\"rgba(108,92,231,.4)\" stroke-width=\"1\"/><text x=\"57\" y=\"40\" text-anchor=\"middle\" font-size=\"12\" fill=\"#c4baf8\">query vector</text><rect x=\"125\" y=\"5\" width=\"130\" height=\"36\" rx=\"6\" fill=\"rgba(95,212,214,.15)\" stroke=\"rgba(95,212,214,.4)\" stroke-width=\"1.5\"/><text x=\"190\" y=\"27\" text-anchor=\"middle\" font-family=\"IBM Plex Mono,monospace\" font-size=\"11\" fill=\"#5FD4D6\">doc A · q = 0.97 ✓</text><rect x=\"125\" y=\"50\" width=\"130\" height=\"36\" rx=\"6\" fill=\"rgba(255,255,255,.04)\" stroke=\"rgba(255,255,255,.08)\" stroke-width=\"1\"/><text x=\"190\" y=\"72\" text-anchor=\"middle\" font-family=\"IBM Plex Mono,monospace\" font-size=\"11\" fill=\"#8AA0BD\">doc B · q = 0.12</text>"];
+let kcur = 0;
+function kgS(n) {
+  kcur = n;
+  const sh = document.getElementById('ksh');
+  const sp = document.getElementById('ksp');
+  const sv = document.getElementById('kssv');
+  const sc = document.getElementById('ksctr');
+  if (sh) sh.textContent = kStepH[n];
+  if (sp) sp.textContent = kStepP[n];
+  if (sv) sv.innerHTML = kStepSVGs[n];
+  if (sc) sc.textContent = (n+1) + ' / 3';
+  document.querySelectorAll('#kssv').forEach(()=>{});
+  const dots = document.querySelectorAll('.stp .dd');
+  dots.forEach((d,i) => d.classList.toggle('on', i===n));
+}
+const kInsights = {dot:'a · b = 32. ಎರಡೂ vectors ಒಂದೇ ದಿಕ್ಕಿನಲ್ಲಿ — ದೊಡ್ಡ positive dot product.', mag:'|a| = 3.74. Origin ದಿಂದ (1,2,3) ಪಾಯಿಂಟ್‌ಗೆ ನೇರ ದೂರ.', norm:'.normalize() ಉದ್ದ ಸರಿಯಾಗಿ 1 ಆಗಿಸುತ್ತದೆ — ದಿಕ್ಕನ್ನು ಪ್ರತ್ಯೇಕಿಸುತ್ತದೆ.', cos:'Cosine similarity = 0.97 — ಒಂದೇ ದಿಕ್ಕು. RAG ಮತ್ತು search ಕೆಲಸ ಮಾಡುವ ವಿಧಾನ.'};
+function kpM(el, k) {
+  document.querySelectorAll('.mcard').forEach(c => c.classList.remove('act'));
+  el.classList.add('act');
+  const ins = document.getElementById('kins');
+  if (ins) ins.textContent = kInsights[k];
+}
+
+</script>
+</body>
+</html>

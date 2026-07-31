@@ -1,0 +1,530 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Certificate — Neuronix Learning</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Dancing+Script:wght@600;700&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#070E1A;font-family:'IBM Plex Sans',sans-serif;padding:40px 24px;min-height:100vh;}
+.page{max-width:820px;margin:0 auto;}
+.top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:#8AA0BD;font-size:13px;text-decoration:none;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;}
+.back-link:hover{color:#5FD4D6;}
+.top-actions{display:flex;gap:10px;}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:13px;padding:8px 18px;border-radius:8px;cursor:pointer;border:none;text-decoration:none;transition:opacity .15s;}
+.btn-primary{background:#F4B740;color:#0B1018;}
+.btn-outline{background:transparent;color:#C8D3E3;border:1px solid rgba(241,238,230,0.18);}
+.btn:hover{opacity:.85;}
+.error-state,.loading-state{text-align:center;padding:80px 24px;color:#8AA0BD;font-family:'IBM Plex Mono',monospace;font-size:13px;}
+.error-state .code{font-size:32px;color:#4A5A6F;margin-bottom:12px;}
+
+/* Pending / no cert state */
+.pending-state{text-align:center;padding:40px 24px;max-width:560px;margin:0 auto;}
+.pending-icon{margin-bottom:20px;}
+.pending-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;color:#F3F1EA;margin-bottom:10px;}
+.pending-sub{font-size:14px;color:#8AA0BD;line-height:1.65;margin-bottom:28px;}
+.prog-bar-wrap{background:rgba(95,212,214,0.06);border:1px solid rgba(95,212,214,0.15);border-radius:12px;padding:16px 20px;margin-bottom:24px;text-align:left;}
+.prog-bar-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.prog-label{font-size:12px;color:#8AA0BD;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;}
+.prog-pct{font-size:14px;font-weight:600;color:#5FD4D6;font-family:'IBM Plex Mono',monospace;}
+.prog-track{height:6px;background:rgba(255,255,255,0.07);border-radius:999px;overflow:hidden;margin-bottom:8px;}
+.prog-fill{height:100%;background:linear-gradient(90deg,#5FD4D6,#F4B740);border-radius:999px;transition:width .4s;}
+.prog-count{font-size:12px;color:#4A5A6F;font-family:'IBM Plex Mono',monospace;}
+.pending-certs{display:flex;flex-direction:column;gap:10px;margin-bottom:8px;}
+.pend-cert{display:flex;align-items:center;gap:14px;background:var(--surf,#1a2d47);border:1px solid rgba(241,238,230,0.1);border-radius:12px;padding:14px 18px;text-align:left;}
+.pend-cert.py{border-color:rgba(244,183,64,0.2);}
+.pend-cert.ai{border-color:rgba(95,212,214,0.2);}
+.pend-cert-icon{font-size:24px;flex-shrink:0;}
+.pend-cert-body{flex:1;}
+.pend-cert-name{font-size:14px;font-weight:600;color:#C8D3E3;margin-bottom:3px;}
+.pend-cert-req{font-size:12px;color:#8AA0BD;font-family:'IBM Plex Mono',monospace;}
+.pend-cert-lock{color:#4A5A6F;flex-shrink:0;}
+.verify-bar{background:rgba(95,212,214,0.07);border:1px solid rgba(95,212,214,0.2);border-radius:10px;padding:12px 18px;margin-bottom:24px;display:flex;align-items:center;gap:10px;font-size:13px;color:#5FD4D6;}
+.verify-bar svg{flex-shrink:0;}
+.revoked-bar{background:rgba(255,80,80,0.07);border:1px solid rgba(255,80,80,0.2);border-radius:10px;padding:12px 18px;margin-bottom:24px;display:flex;align-items:center;gap:10px;font-size:13px;color:#ff6b6b;}
+/* ── Classic Certificate ── */
+.cert-classic{background:#fdfbf4;border:10px solid #c9a84c;position:relative;padding:40px 52px 36px;box-shadow:inset 0 0 0 2px rgba(201,168,76,0.35),0 12px 48px rgba(0,0,0,0.18);}
+.cert-inner-border{position:absolute;inset:7px;border:1px solid rgba(201,168,76,0.5);pointer-events:none;z-index:0;}
+.cert-divider{height:32px;}
+@media print{
+  @page{size:A4 landscape;margin:4mm;}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+  body{background:#fff!important;padding:0!important;margin:0!important;}
+  .top-bar,.verify-bar,.revoked-bar{display:none!important;}
+  .page{max-width:100%!important;padding:0!important;}
+  .cert-classic{zoom:.72;box-shadow:none!important;border-color:#c9a84c!important;page-break-inside:avoid!important;break-inside:avoid!important;width:100%!important;}
+  .cert-divider{height:0!important;page-break-after:always!important;break-after:page!important;}
+}
+.cert-wm{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;user-select:none;opacity:.045;}
+.cert-corn{position:absolute;width:96px;height:96px;}
+.cert-corn.tl{top:0;left:0;}
+.cert-corn.tr{top:0;right:0;transform:scaleX(-1);}
+.cert-corn.bl{bottom:0;left:0;transform:scaleY(-1);}
+.cert-corn.br{bottom:0;right:0;transform:scale(-1,-1);}
+/* Head */
+.cert-cl-head{text-align:center;position:relative;z-index:1;margin-bottom:4px;}
+.cert-cl-title{font-family:'Dancing Script',cursive;font-size:clamp(46px,7vw,68px);line-height:1.05;color:#8B0000;margin-bottom:6px;}
+.cert-cl-ribbon-wrap{display:flex;align-items:center;justify-content:center;margin-bottom:2px;}
+.cert-cl-ribbon{background:#1a1a1a;color:#fff;padding:6px 36px;display:inline-block;position:relative;min-width:220px;}
+.cert-cl-ribbon::before,.cert-cl-ribbon::after{content:'';position:absolute;top:0;height:100%;width:14px;background:#1a1a1a;}
+.cert-cl-ribbon::before{left:-10px;clip-path:polygon(100% 0,100% 100%,0 50%);}
+.cert-cl-ribbon::after{right:-10px;clip-path:polygon(0 0,0 100%,100% 50%);}
+.cert-cl-ribbon-bot{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;}
+/* Presented line */
+.cert-cl-presented{font-family:'Cinzel',serif;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#6B0000;text-align:center;margin:20px 0 10px;line-height:1.7;}
+/* Name */
+.cert-cl-name-wrap{text-align:center;margin-bottom:16px;}
+.cert-cl-name{font-family:'Dancing Script',cursive;font-size:58px;color:#111;line-height:1.1;display:block;}
+.cert-cl-name-underline{width:65%;height:1px;background:linear-gradient(90deg,transparent,#555,transparent);margin:4px auto 0;}
+/* Course name */
+.cert-cl-course{font-family:'Cinzel',serif;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1a1a1a;text-align:center;margin-bottom:10px;}
+/* Description */
+.cert-cl-desc{font-family:'EB Garamond',Georgia,serif;font-style:italic;font-size:14.5px;color:#2a2a2a;text-align:center;max-width:600px;margin:0 auto 16px;line-height:1.8;}
+/* Pills */
+.cert-cl-pills{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:14px;}
+.cert-cl-pill{font-size:8.5px;font-family:'Cinzel',serif;color:#2d1800;background:rgba(180,120,0,0.14);border:1px solid #8B6300;border-radius:2px;padding:3px 9px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;}
+/* Meta */
+.cert-cl-meta{text-align:center;font-family:'Cinzel',serif;font-size:10px;color:#444;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;}
+.cert-cl-meta span{margin:0 6px;}
+/* Footer */
+.cert-cl-footer{display:flex;align-items:flex-end;justify-content:space-between;padding-top:14px;border-top:2px solid rgba(180,130,0,0.55);position:relative;z-index:1;}
+.cert-cl-sig{min-width:140px;}
+.cert-cl-sig-line{width:130px;border-top:1px solid #555;margin-bottom:5px;}
+.cert-cl-sig-name{font-family:'Cinzel',serif;font-size:12px;color:#1a1a1a;font-weight:600;}
+.cert-cl-sig-role{font-size:11px;color:#444;font-family:Georgia,serif;font-style:italic;}
+.cert-cl-seals{display:flex;gap:10px;align-items:flex-end;}
+/* ID */
+.cert-cl-id{font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:#555;letter-spacing:.1em;text-align:center;margin-top:10px;position:relative;z-index:1;}
+/* Share / verify URL box */
+.cert-share-box{background:rgba(244,183,64,0.06);border:1px solid rgba(244,183,64,0.18);border-radius:12px;padding:14px 18px;margin-top:18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.cert-share-label{font-size:11px;color:#8AA0BD;font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;flex-shrink:0;white-space:nowrap;}
+.cert-share-url{flex:1;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#F4B740;background:rgba(244,183,64,0.06);border:1px solid rgba(244,183,64,0.15);border-radius:6px;padding:7px 10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;cursor:text;user-select:all;}
+.cert-share-copy{font-family:'IBM Plex Sans',sans-serif;font-size:12px;font-weight:600;background:#F4B740;color:#0B1018;border:none;border-radius:6px;padding:7px 16px;cursor:pointer;flex-shrink:0;transition:opacity .15s;}
+.cert-share-copy:hover{opacity:.85;}
+@media print{.cert-share-box{display:none!important;}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top-bar">
+    <a href="dashboard.html" class="back-link">← Dashboard</a>
+    <div class="top-actions">
+      <button class="btn btn-outline" onclick="window.print()">🖨 Print</button>
+      <button class="btn btn-outline" id="downloadBtn" onclick="downloadCert()">⬇ Download PDF</button>
+      <button class="btn btn-primary" onclick="copyLink()">🔗 Copy Link</button>
+    </div>
+  </div>
+  <div id="certContainer"><div class="loading-state">Loading certificate…</div></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="/js/api.js"></script>
+<script>
+const PYTHON_PHASES = ['Phase 1: Python Fundamentals','Phase 2: Intermediate Python','Phase 3: Advanced Python'];
+const AI_PHASES = ['Maths Foundations','ML Fundamentals','Deep Learning Core','Computer Vision','NLP Foundations to Advanced','Speech & Audio','Transformers Advanced','Generative AI','Reinforcement Learning','LLM from Scratch','LLM Engineering','Multimodal AI','Tools & Protocols','Agent Engineering','Autonomous Systems','Multiagent & Swarms','Infrastructure & Production','Ethics, Safety & Alignment'];
+
+function fmtDate(d){ return new Date(d).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}); }
+
+function gearSeal(icon, label, ac) {
+  const pts = Array.from({length:24}, (_,i) => {
+    const a = (i*15 - 90) * Math.PI / 180;
+    const r = i%2===0 ? 43 : 36;
+    return `${44+r*Math.cos(a)},${44+r*Math.sin(a)}`;
+  }).join(' ');
+  return `<svg width="92" height="100" viewBox="0 0 92 100" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="${pts}" fill="${ac}" opacity=".28"/>
+    <circle cx="44" cy="44" r="33" fill="#fdfaf0" stroke="${ac}" stroke-width="2.8"/>
+    <circle cx="44" cy="44" r="27" fill="none" stroke="${ac}" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="44" cy="44" r="21" fill="none" stroke="${ac}" stroke-width=".5"/>
+    <text x="44" y="50" text-anchor="middle" dominant-baseline="middle" font-size="26">${icon}</text>
+    <rect x="4" y="82" width="80" height="16" rx="3" fill="${ac}"/>
+    <text x="44" y="93" text-anchor="middle" dominant-baseline="middle" font-family="Cinzel,serif" font-size="7.5" fill="white" letter-spacing="2">${label}</text>
+  </svg>`;
+}
+
+function wreathSeal(year, ac) {
+  const leaves = Array.from({length:16}, (_,i) => {
+    const a = (i*22.5 - 90) * Math.PI / 180;
+    const r = 38;
+    const cx = 44 + r*Math.cos(a), cy = 44 + r*Math.sin(a);
+    return `<ellipse cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" rx="3.5" ry="6.5" fill="${ac}" opacity=".6" transform="rotate(${i*22.5} ${cx.toFixed(1)} ${cy.toFixed(1)})"/>`;
+  }).join('');
+  const dots = Array.from({length:16}, (_,i) => {
+    const a = (i*22.5 - 90) * Math.PI / 180;
+    const r = 38;
+    return `<circle cx="${(44+r*Math.cos(a)).toFixed(1)}" cy="${(44+r*Math.sin(a)).toFixed(1)}" r="1.4" fill="${ac}"/>`;
+  }).join('');
+  return `<svg width="92" height="100" viewBox="0 0 92 100" xmlns="http://www.w3.org/2000/svg">
+    ${leaves}${dots}
+    <circle cx="44" cy="44" r="28" fill="#fdfaf0" stroke="${ac}" stroke-width="2.8"/>
+    <circle cx="44" cy="44" r="22" fill="none" stroke="${ac}" stroke-width=".8"/>
+    <text x="44" y="39" text-anchor="middle" dominant-baseline="middle" font-family="Cinzel,serif" font-size="16" fill="${ac}" font-weight="600">NXL</text>
+    <line x1="28" y1="48" x2="60" y2="48" stroke="${ac}" stroke-width=".8"/>
+    <text x="44" y="57" text-anchor="middle" dominant-baseline="middle" font-family="Cinzel,serif" font-size="10" fill="#222">${year}</text>
+    <rect x="4" y="82" width="80" height="16" rx="3" fill="${ac}"/>
+    <text x="44" y="93" text-anchor="middle" dominant-baseline="middle" font-family="Cinzel,serif" font-size="7.5" fill="white" letter-spacing="2">NEURONIX</text>
+  </svg>`;
+}
+
+function classicCornerSVG() {
+  const c = '#c9a84c';
+  return `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="28" y1="5" x2="96" y2="5" stroke="${c}" stroke-width="1.8"/>
+    <line x1="5" y1="28" x2="5" y2="96" stroke="${c}" stroke-width="1.8"/>
+    <line x1="20" y1="11" x2="96" y2="11" stroke="${c}" stroke-width=".6"/>
+    <line x1="11" y1="20" x2="11" y2="96" stroke="${c}" stroke-width=".6"/>
+    <circle cx="20" cy="20" r="13" stroke="${c}" stroke-width="1.3" fill="none"/>
+    <circle cx="20" cy="20" r="8.5" stroke="${c}" stroke-width=".7" fill="none"/>
+    <circle cx="20" cy="20" r="3" fill="${c}"/>
+    <ellipse cx="20" cy="8" rx="2.8" ry="4.8" fill="${c}" opacity=".85"/>
+    <ellipse cx="32" cy="20" rx="4.8" ry="2.8" fill="${c}" opacity=".85"/>
+    <ellipse cx="20" cy="32" rx="2.8" ry="4.8" fill="${c}" opacity=".85"/>
+    <ellipse cx="8" cy="20" rx="4.8" ry="2.8" fill="${c}" opacity=".85"/>
+    <ellipse cx="28.5" cy="11.5" rx="2" ry="3.8" fill="${c}" opacity=".5" transform="rotate(-45 28.5 11.5)"/>
+    <ellipse cx="28.5" cy="28.5" rx="2" ry="3.8" fill="${c}" opacity=".5" transform="rotate(45 28.5 28.5)"/>
+    <ellipse cx="11.5" cy="28.5" rx="2" ry="3.8" fill="${c}" opacity=".5" transform="rotate(-45 11.5 28.5)"/>
+    <ellipse cx="11.5" cy="11.5" rx="2" ry="3.8" fill="${c}" opacity=".5" transform="rotate(45 11.5 11.5)"/>
+  </svg>`;
+}
+
+function watermarkSVG() {
+  const rings = [210,170,130,90,50].map(r=>`<circle cx="300" cy="300" r="${r}" stroke="#444" stroke-width="0.4" fill="none"/>`).join('');
+  const spokes = Array.from({length:16},(_,i)=>`<line x1="300" y1="88" x2="300" y2="512" stroke="#444" stroke-width="0.3" transform="rotate(${i*22.5} 300 300)"/>`).join('');
+  return `<svg class="cert-wm" width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">${rings}${spokes}<circle cx="300" cy="300" r="22" stroke="#444" stroke-width="1" fill="none"/><circle cx="300" cy="300" r="8" fill="#444" opacity=".4"/></svg>`;
+}
+
+function renderCert(cert) {
+  const isPy = cert.type === 'python';
+  const acColor  = isPy ? '#c9a84c' : '#3aacae';
+  const phases   = isPy ? PYTHON_PHASES : AI_PHASES;
+  const pills    = phases.map(p => `<span class="cert-cl-pill">${p}</span>`).join('');
+  const program  = isPy ? '3 Phases · 14 Modules' : '18 Phases · 421 Modules';
+  const level    = isPy ? 'Beginner → Advanced' : 'Full Program';
+  const certType = isPy ? 'Certificate of Completion' : 'Professional Certification';
+  const courseName = isPy ? 'Python for AI Engineering' : 'Certified AI Engineer';
+  const subText  = isPy
+    ? 'For successful mastery of Python programming as the foundation for artificial intelligence and machine learning development — covering core syntax through advanced Python patterns used in production AI systems.'
+    : 'For comprehensive mastery of artificial intelligence engineering — from mathematical foundations and classical machine learning through production-ready LLM systems, autonomous agents, and ethical AI deployment.';
+  const sealIcon = isPy ? '🐍' : '🤖';
+  const sealLabel = isPy ? 'VERIFIED' : 'CERTIFIED';
+  const corner = classicCornerSVG();
+
+  const statusBar = cert.status === 'revoked'
+    ? `<div class="revoked-bar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> This certificate has been revoked.</div>`
+    : `<div class="verify-bar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg> Verified certificate · Issued by Neuronix Learning · ID: ${cert.certId}</div>`;
+
+  document.title = `${cert.studentName} — ${courseName} — Neuronix`;
+
+  return `${statusBar}
+  <div class="cert-classic">
+    <div class="cert-inner-border"></div>
+    ${watermarkSVG()}
+    <div class="cert-corn tl">${corner}</div>
+    <div class="cert-corn tr">${corner}</div>
+    <div class="cert-corn bl">${corner}</div>
+    <div class="cert-corn br">${corner}</div>
+
+    <div class="cert-cl-head">
+      <div class="cert-cl-title">Certificate of Achievement</div>
+      <div class="cert-cl-ribbon-wrap">
+        <div class="cert-cl-ribbon">
+          <div class="cert-cl-ribbon-bot">Neuronix Learning</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-cl-presented">
+      This certificate is proudly presented for honorable achievement to
+    </div>
+
+    <div class="cert-cl-name-wrap">
+      <span class="cert-cl-name">${cert.studentName || '—'}</span>
+      <div class="cert-cl-name-underline"></div>
+    </div>
+
+    <div class="cert-cl-course">${courseName}</div>
+    <div class="cert-cl-desc">${subText}</div>
+
+    <div class="cert-cl-pills">${pills}</div>
+    <div class="cert-cl-meta">
+      <span>${program}</span><span>·</span><span>${level}</span>
+    </div>
+
+    <div class="cert-cl-footer">
+      <div class="cert-cl-sig">
+        <div class="cert-cl-sig-line"></div>
+        <div class="cert-cl-sig-name">${fmtDate(cert.completedAt || cert.issuedAt)}</div>
+        <div class="cert-cl-sig-role">Date of Completion</div>
+      </div>
+      <div class="cert-cl-seals">
+        ${gearSeal(sealIcon, sealLabel, acColor)}
+        ${wreathSeal(new Date(cert.issuedAt).getFullYear(), acColor)}
+      </div>
+      <div class="cert-cl-sig" style="text-align:right;">
+        <div class="cert-cl-sig-line" style="margin-left:auto;"></div>
+        <div class="cert-cl-sig-name">Neuronix Learning</div>
+        <div class="cert-cl-sig-role">Chief Instructor</div>
+      </div>
+    </div>
+
+    <div class="cert-cl-id">${cert.certId}</div>
+  </div>
+  <div class="cert-share-box">
+    <span class="cert-share-label">🔗 Verification URL</span>
+    <span class="cert-share-url">${location.origin}/pages/certificate.html?id=${cert.certId}</span>
+    <button class="cert-share-copy" onclick="copyVerifyLink('${cert.certId}', this)">Copy Link</button>
+  </div>`;
+}
+
+async function loadCert() {
+  const certId = new URLSearchParams(location.search).get('id');
+  const container = document.getElementById('certContainer');
+
+  // ── Public verify mode: ?id=NXL-xxx ──────────────────────────────
+  if (certId) {
+    try {
+      const res = await api.get('/api/certificates/verify/' + certId);
+      const cert = res.certificate || res;
+      container.innerHTML = renderCert(cert);
+    } catch (e) {
+      container.innerHTML = `<div class="error-state"><div class="code">404</div>Certificate not found or invalid ID.</div>`;
+    }
+    return;
+  }
+
+  // ── Student dashboard mode: no ?id — load their own certs ────────
+  container.innerHTML = '<div class="loading-state">Loading your certificates…</div>';
+  try {
+    const res = await api.get('/api/certificates/mine');
+    const certs = res.certificates || [];
+
+    if (certs.length) {
+      // Show all their certificates
+      container.innerHTML = certs.map(c => renderCert(c)).join('<div class="cert-divider"></div>');
+      return;
+    }
+
+    // No certificates yet — fetch progress to show how far they are
+    let progressHtml = '';
+    try {
+      const prog = await api.get('/api/progress');
+      const completed = (prog.completedLessons || []).length;
+      const total = prog.totalLessons || 0;
+      const pct = total ? Math.round((completed / total) * 100) : 0;
+      progressHtml = `
+        <div class="prog-bar-wrap">
+          <div class="prog-bar-row">
+            <span class="prog-label">Overall progress</span>
+            <span class="prog-pct">${pct}%</span>
+          </div>
+          <div class="prog-track"><div class="prog-fill" style="width:${pct}%"></div></div>
+          <div class="prog-count">${completed} of ${total} lessons completed</div>
+        </div>`;
+    } catch(e) {}
+
+    container.innerHTML = `
+      <div class="pending-state">
+        <div class="pending-icon">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(244,183,64,0.5)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+          </svg>
+        </div>
+        <h2 class="pending-title">Your certificate is waiting</h2>
+        <p class="pending-sub">Complete all lessons to earn your certificate. You'll automatically receive it the moment you finish.</p>
+        ${progressHtml}
+        <div class="pending-certs">
+          <div class="pend-cert py">
+            <div class="pend-cert-icon">🐍</div>
+            <div class="pend-cert-body">
+              <div class="pend-cert-name">Python for AI Engineering</div>
+              <div class="pend-cert-req">Complete Phases 1 – 3</div>
+            </div>
+            <div class="pend-cert-lock">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+          </div>
+          <div class="pend-cert ai">
+            <div class="pend-cert-icon">🤖</div>
+            <div class="pend-cert-body">
+              <div class="pend-cert-name">Certified AI Engineer</div>
+              <div class="pend-cert-req">Complete all 21 Phases</div>
+            </div>
+            <div class="pend-cert-lock">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:1.5rem;" onclick="goResume()">Continue Learning →</button>
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(241,238,230,0.08);">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#4A5A6F;margin-bottom:.75rem;">Testing</div>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;">
+            <button class="btn btn-outline" onclick="issueTestCert('python')" style="font-size:12px;padding:6px 14px;">Issue Test Python Cert</button>
+            <button class="btn btn-outline" onclick="issueTestCert('ai-engineer')" style="font-size:12px;padding:6px 14px;">Issue Test AI Cert</button>
+          </div>
+          <div id="testCertMsg" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5FD4D6;margin-top:.6rem;min-height:1.2em;text-align:center;"></div>
+        </div>
+      </div>`;
+  } catch(e) {
+    // Not logged in or API error — show generic message
+    container.innerHTML = `
+      <div class="pending-state">
+        <div class="pending-icon">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(244,183,64,0.5)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+          </svg>
+        </div>
+        <h2 class="pending-title">Complete the course to earn your certificate</h2>
+        <p class="pending-sub">Finish all lessons across the program. Your certificate will be issued automatically once you complete the required phases.</p>
+        <div class="pending-certs">
+          <div class="pend-cert py">
+            <div class="pend-cert-icon">🐍</div>
+            <div class="pend-cert-body">
+              <div class="pend-cert-name">Python for AI Engineering</div>
+              <div class="pend-cert-req">Complete Phases 1 – 3</div>
+            </div>
+            <div class="pend-cert-lock">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+          </div>
+          <div class="pend-cert ai">
+            <div class="pend-cert-icon">🤖</div>
+            <div class="pend-cert-body">
+              <div class="pend-cert-name">Certified AI Engineer</div>
+              <div class="pend-cert-req">Complete all 21 Phases</div>
+            </div>
+            <div class="pend-cert-lock">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:1.5rem;" onclick="goResume()">Continue Learning →</button>
+      </div>`;
+  }
+}
+
+async function downloadCert() {
+  const certEls = document.querySelectorAll('.cert-classic');
+  if (!certEls.length) { alert('No certificate to download.'); return; }
+
+  const btn = document.getElementById('downloadBtn');
+  const orig = btn.textContent;
+  btn.disabled = true;
+
+  try {
+    await document.fonts.ready;
+    const MM = 0.264583;
+    const { jsPDF } = window.jspdf;
+    let pdf = null;
+
+    for (let i = 0; i < certEls.length; i++) {
+      btn.textContent = certEls.length > 1 ? `Generating ${i+1}/${certEls.length}…` : 'Generating…';
+
+      const canvas = await html2canvas(certEls[i], {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#fdfbf4',
+        logging: false,
+        imageTimeout: 0,
+        onclone: function(clonedDoc, clonedEl) {
+          // Work inside html2canvas's own clone — original DOM is never modified
+          // 1. Remove watermark completely
+          clonedDoc.querySelectorAll('.cert-wm').forEach(w => w.remove());
+          // 2. Force cream background and remove inset shadow that html2canvas misrenders
+          clonedDoc.querySelectorAll('.cert-classic').forEach(c => {
+            c.style.backgroundColor = '#fdfbf4';
+            c.style.boxShadow = 'none';
+          });
+          // 3. Remove the inner border div (it's decorative; avoid any fill bleed)
+          clonedDoc.querySelectorAll('.cert-inner-border').forEach(b => b.remove());
+        },
+      });
+
+      const imgW = (canvas.width / 2) * MM;
+      const imgH = (canvas.height / 2) * MM;
+      if (!pdf) {
+        pdf = new jsPDF({ orientation: imgW > imgH ? 'landscape' : 'portrait', unit: 'mm', format: [imgW, imgH] });
+      } else {
+        pdf.addPage([imgW, imgH]);
+      }
+      pdf.addImage(canvas.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, imgW, imgH);
+    }
+
+    const name = ((document.querySelector('.cert-cl-name') || {}).textContent || 'Certificate').trim().replace(/\s+/g, '-');
+    pdf.save(`Neuronix-Certificate-${name}.pdf`);
+  } catch(e) {
+    console.error('Download error:', e);
+    window.print();
+  } finally {
+    btn.textContent = orig;
+    btn.disabled = false;
+  }
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(location.href).then(() => {
+    const btn = document.querySelector('.btn-primary');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = '🔗 Copy Link', 2000);
+  });
+}
+
+function copyVerifyLink(certId, btn) {
+  const url = location.origin + '/pages/certificate.html?id=' + certId;
+  navigator.clipboard.writeText(url).then(() => {
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = 'Copy Link', 2000);
+  });
+}
+
+loadCert();
+</script>
+<script src="/js/api.js"></script>
+<script>
+async function issueTestCert(type) {
+  const msg = document.getElementById('testCertMsg');
+  if (msg) msg.textContent = 'Issuing…';
+  try {
+    const res = await api.post('/api/certificates/issue-test', { type });
+    if (res.certificate) {
+      if (msg) msg.textContent = 'Issued: ' + res.certificate.certId + ' — reloading…';
+      setTimeout(() => location.reload(), 1000);
+    }
+  } catch(e) {
+    if (msg) msg.textContent = 'Error: ' + (e.message || 'failed');
+  }
+}
+
+async function goResume(){
+  try{
+    const [me, cur] = await Promise.all([
+      api.get('/api/auth/me'),
+      api.get('/api/curriculum/full')
+    ]);
+    const completed = new Set((me.student.completedLessons||[]).map(String));
+    const phases = cur.curriculum || [];
+    let nextLesson = null;
+    outer: for(const ph of phases){
+      const all=[...(ph.modules||[]).flatMap(m=>m.lessons||[]),...(ph.lessons||[])];
+      for(const l of all){
+        const lid=String(l._id||l.id||'');
+        if(lid && !completed.has(lid)){nextLesson=l;break outer;}
+      }
+    }
+    if(nextLesson){
+      const lid=String(nextLesson._id||nextLesson.id||'');
+      try{sessionStorage.setItem('pnl_open_lesson',lid);}catch(e){}
+      window.location.href='lesson.html?id='+lid;
+    } else {
+      window.location.href='dashboard.html';
+    }
+  }catch(e){
+    window.location.href='dashboard.html';
+  }
+}
+</script>
+</body>
+</html>

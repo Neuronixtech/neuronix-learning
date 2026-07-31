@@ -1,0 +1,8 @@
+node_modules/
+.env
+*.log
+.DS_Store
+pneuronics-backend/mlruns
+pneuronics-backend/dump-out.json
+pneuronics-backend/test_model.onnx.data
+.claude/

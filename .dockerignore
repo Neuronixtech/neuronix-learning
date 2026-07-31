@@ -1,0 +1,8 @@
+**/node_modules
+**/.env
+**/.git
+**/*.log
+pneuronics-backend/mlruns
+pneuronics-backend/test_model.onnx.data
+pneuronics-backend/dump-out.json
+.claude

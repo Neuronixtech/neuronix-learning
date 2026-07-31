@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Lesson Builder — Neuronix Admin</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Kannada:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0B1018;--bg-soft:#111928;--surface:#161F31;--surface-2:#1C2740;
+  --line:rgba(241,238,230,0.09);--line-strong:rgba(241,238,230,0.16);
+  --gold:#F4B740;--cyan:#5FD4D6;--violet:#6C5CE7;
+  --text:#F3F1EA;--dim:#C2CCDC;--muted:#7C8CA6;
+  --mono:'IBM Plex Mono',monospace;--disp:'Space Grotesk',sans-serif;--body:'IBM Plex Sans',sans-serif;--kn:'Noto Sans Kannada',sans-serif;
+}
+body{background:var(--bg);color:var(--dim);font-family:var(--body);font-size:14px;line-height:1.6;height:100vh;display:flex;flex-direction:column;overflow:hidden;}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.5rem;background:var(--bg-soft);border-bottom:1px solid var(--line);flex-shrink:0;gap:1rem;}
+.tb-left{display:flex;align-items:center;gap:1rem;}
+.tb-logo{display:flex;align-items:center;gap:.55rem;}
+.tb-logo svg{width:22px;height:22px;color:var(--gold);}
+.tb-logo-text{font-family:var(--disp);font-weight:700;font-size:.9rem;color:var(--text);}
+.tb-title{font-family:var(--disp);font-weight:600;font-size:.95rem;color:var(--text);padding-left:1rem;border-left:1px solid var(--line);}
+.tb-right{display:flex;align-items:center;gap:.7rem;}
+.btn{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--disp);font-weight:600;font-size:.82rem;padding:.5rem 1.05rem;border-radius:8px;cursor:pointer;border:none;transition:all .15s;text-decoration:none;}
+.btn-primary{background:var(--gold);color:#0B1018;}.btn-primary:hover{opacity:.88;}
+.btn-outline{background:transparent;color:var(--dim);border:1px solid var(--line-strong);}.btn-outline:hover{background:var(--surface);color:var(--text);}
+.btn-danger{background:transparent;color:#ff6b6b;border:1px solid rgba(255,107,107,.4);}.btn-danger:hover{background:rgba(255,107,107,.14);border-color:#ff6b6b;}
+.lang-toggle{display:flex;gap:2px;background:var(--bg);border-radius:8px;padding:3px;}
+.lt-btn{font-size:.8rem;font-weight:600;font-family:var(--disp);color:var(--muted);background:transparent;border:none;border-radius:6px;padding:.35rem .8rem;cursor:pointer;transition:all .15s;}
+.lt-btn.kn{font-family:var(--kn);}
+.lt-btn.active{background:var(--cyan);color:#0B1018;}
+.lt-btn.kn.active{background:var(--gold);color:#0B1018;}
+.workspace{flex:1;display:grid;grid-template-columns:240px 1fr 420px;overflow:hidden;}
+@media(max-width:1300px){.workspace{grid-template-columns:210px 1fr 360px;}}
+.palette{background:var(--bg-soft);border-right:1px solid var(--line);overflow-y:auto;padding:1rem;}
+.palette-title{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem;}
+.palette-hint{font-size:.72rem;color:var(--muted);margin-bottom:1rem;line-height:1.5;}
+.block-card{display:flex;align-items:center;gap:.6rem;background:var(--surface);border:1px solid var(--line-strong);border-radius:10px;padding:.7rem .85rem;margin-bottom:.5rem;cursor:grab;transition:all .15s;user-select:none;}
+.block-card:hover{border-color:var(--cyan);background:var(--surface-2);transform:translateX(2px);}
+.block-card:active{cursor:grabbing;}
+.block-card.dragging{opacity:.4;}
+.bc-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;}
+.bc-body{flex:1;min-width:0;}
+.bc-name{font-size:.82rem;font-weight:600;color:var(--text);}
+.bc-desc{font-size:.68rem;color:var(--muted);line-height:1.3;}
+.canvas{overflow-y:auto;padding:1.5rem;background:var(--bg);}
+.canvas-inner{max-width:680px;margin:0 auto;}
+.meta-card{background:var(--surface);border:1px solid var(--line-strong);border-radius:14px;padding:1.1rem;margin-bottom:1.25rem;}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+.fg{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.7rem;}
+.fg:last-child{margin-bottom:0;}
+.fg label{font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+.fg-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;}
+.link-mini{background:rgba(95,212,214,.1);border:1px solid rgba(95,212,214,.28);color:var(--cyan);font-size:.66rem;font-weight:600;letter-spacing:.04em;padding:.2rem .55rem;border-radius:6px;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:.25rem;text-transform:none;}
+.link-mini:hover{background:rgba(95,212,214,.2);border-color:var(--cyan);}
+.fi,.fs,.ft{background:var(--bg-soft);border:1px solid var(--line-strong);border-radius:8px;padding:.55rem .8rem;color:var(--text);font-size:.86rem;font-family:var(--body);width:100%;transition:border-color .15s;}
+.fi:focus,.fs:focus,.ft:focus{outline:none;border-color:var(--cyan);}
+.ft{resize:vertical;min-height:70px;line-height:1.6;}
+.ft.kn,.fi.kn{font-family:var(--kn);}
+.ft.code{font-family:var(--mono);font-size:.8rem;min-height:160px;background:#080f1c;color:#d4d0c8;}
+.dropzone{min-height:120px;border:2px dashed var(--line-strong);border-radius:14px;padding:1rem;transition:all .15s;}
+.dropzone.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--muted);min-height:200px;}
+.dropzone.dragover{border-color:var(--cyan);background:rgba(95,212,214,.04);}
+.dz-icon{font-size:32px;margin-bottom:.5rem;opacity:.5;}
+.dz-text{font-size:.85rem;}
+.dz-sub{font-size:.72rem;margin-top:.25rem;}
+.lblock{background:var(--surface);border:1px solid var(--line-strong);border-radius:12px;margin-bottom:.85rem;overflow:hidden;transition:border-top .1s,border-bottom .1s;}
+.lblock.dragging{opacity:.4;}
+.lblock.drop-before{border-top:3px solid var(--cyan);}
+.lblock.drop-after{border-bottom:3px solid var(--cyan);}
+.lblock-head{display:flex;align-items:center;gap:.6rem;padding:.6rem .85rem;background:var(--bg-soft);border-bottom:1px solid var(--line);cursor:grab;}
+.lblock-head:active{cursor:grabbing;}
+.lblock-icon{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.lblock-name{font-family:var(--disp);font-weight:600;font-size:.82rem;color:var(--text);flex:1;}
+.lblock-actions{display:flex;gap:.3rem;}
+.lblock-btn{width:26px;height:26px;border-radius:6px;border:none;background:transparent;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;font-size:11px;}
+.lblock-btn:hover{background:var(--surface-2);color:var(--text);}
+.lblock-btn.del:hover{background:rgba(255,80,80,.15);color:#ff6b6b;}
+.lblock-body{padding:.9rem;display:flex;flex-direction:column;gap:.6rem;}
+.drag-handle{color:var(--muted);cursor:grab;font-size:14px;}
+.mini-label{font-size:.68rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+.preview{background:var(--bg-soft);border-left:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden;}
+.preview-head{display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;border-bottom:1px solid var(--line);flex-shrink:0;}
+.preview-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.preview-frame{flex:1;border:none;width:100%;background:#0F1B2D;}
+.ic-prob{background:rgba(95,212,214,.15);color:var(--cyan);}
+.ic-math{background:rgba(95,212,214,.12);color:var(--cyan);}
+.ic-concept{background:rgba(108,92,231,.18);color:#c4baf8;}
+.ic-code{background:rgba(244,183,64,.15);color:var(--gold);}
+.ic-output{background:rgba(40,202,66,.13);color:#28ca42;}
+.ic-method{background:rgba(108,92,231,.15);color:#c4baf8;}
+.ic-example{background:rgba(244,183,64,.13);color:var(--gold);}
+.ic-artifact{background:rgba(108,92,231,.2);color:#c4baf8;}
+.ic-links{background:rgba(95,212,214,.14);color:var(--cyan);}
+.ic-heading{background:rgba(241,238,230,.1);color:var(--text);}
+.ic-table{background:rgba(95,212,214,.14);color:var(--cyan);}
+.ic-quiz{background:rgba(255,107,107,.13);color:#ff6b6b;}
+.ic-text{background:rgba(111,209,140,.13);color:#6fd18c;}
+.ic-diagram{background:rgba(52,211,153,.15);color:#34d399;}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="tb-left">
+    <div class="tb-logo">
+      <svg viewBox="0 0 100 60" fill="none"><path d="M2 21h44l16 18h36v-7H65.5L49.5 14H2z" fill="currentColor"/><path d="M68 39h16l16-18H84z" fill="currentColor"/></svg>
+      <span class="tb-logo-text">Neuronix</span>
+    </div>
+    <span class="tb-title" id="lessonTitleBar">Lesson Builder</span>
+  </div>
+  <div class="tb-right">
+    <div class="lang-toggle">
+      <button class="lt-btn active" id="ltEn" onclick="setLang('en')">EN</button>
+      <button class="lt-btn kn" id="ltKn" onclick="setLang('kn')">ಕನ್ನಡ</button>
+    </div>
+    <a href="admin-curriculum.html" class="btn btn-outline">← Back</a>
+    <button class="btn btn-danger" id="deleteLessonBtn" onclick="deleteLesson()" style="display:none;">🗑 Delete</button>
+    <button class="btn btn-outline" onclick="saveLesson('draft')">Save Draft</button>
+    <button class="btn btn-primary" onclick="saveLesson('published')">Publish</button>
+  </div>
+</header>
+<div class="workspace">
+  <aside class="palette">
+    <div class="palette-title">Content Blocks</div>
+    <div class="palette-hint">Drag a block onto the canvas, or click to add it to the end.</div>
+    <div id="blockPalette"></div>
+  </aside>
+  <main class="canvas">
+    <div class="canvas-inner">
+      <div class="meta-card">
+        <div class="fg">
+          <label id="titleLabel">Lesson Title (EN) *</label>
+          <input type="text" id="lessonTitle" class="fi" placeholder="e.g. Linear Algebra Intuition" oninput="syncTitle()">
+        </div>
+        <div class="fg">
+          <label id="subtitleLabel">Subtitle (EN)</label>
+          <input type="text" id="lessonSubtitle" class="fi" placeholder="One-line summary of the lesson">
+        </div>
+        <div class="meta-grid">
+          <div class="fg"><label>Phase</label><select id="metaPhase" class="fs" onchange="loadModules()"><option value="">— Phase —</option></select></div>
+          <div class="fg"><label>Module</label><select id="metaModule" class="fs"><option value="">— Module —</option></select></div>
+        </div>
+        <div class="meta-grid">
+          <div class="fg"><label>Difficulty</label><select id="metaDifficulty" class="fs"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></div>
+          <div class="fg"><label>Duration (mins)</label><input type="number" id="metaDuration" class="fi" placeholder="25" min="1" oninput="renderPreview()"></div>
+        </div>
+      </div>
+      <div class="dropzone empty" id="dropzone">
+        <div class="dz-icon">📚</div>
+        <div class="dz-text">Drop content blocks here</div>
+        <div class="dz-sub">or click a block on the left to add it</div>
+      </div>
+    </div>
+  </main>
+  <aside class="preview">
+    <div class="preview-head">
+      <span class="preview-label">Live Preview</span>
+      <div class="lang-toggle">
+        <button class="lt-btn active" id="pvEn" onclick="setPreviewLang('en')">EN</button>
+        <button class="lt-btn kn" id="pvKn" onclick="setPreviewLang('kn')">ಕನ್ನಡ</button>
+      </div>
+    </div>
+    <iframe class="preview-frame" id="previewFrame"></iframe>
+  </aside>
+</div>
+<script src="/js/api.js"></script>
+<script>
+let lang='en', previewLang='en', blocks=[], blockCounter=0;
+let blocksEn=[], blocksKn=[], lessonRaw=null;
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+// Escape, then turn [label](url) and bare URLs into links. Newlines kept via CSS pre-wrap.
+function rich(s){
+  let h=esc(s);
+  h=h.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noopener" class="lnk">$1</a>');
+  h=h.replace(/(^|[^"'>=])(https?:\/\/[^\s<]+)/g,'$1<a href="$2" target="_blank" rel="noopener" class="lnk">$2</a>');
+  return h;
+}
+function lk(id,key){return `<button type="button" class="link-mini" onclick="insertLink('${id}','${key}')" title="Insert a link">\u{1F517} Link</button>`;}
+function insertLink(id,key){
+  const ta=document.getElementById('ta-'+id+'-'+key);if(!ta)return;
+  const url=prompt('Link URL (https://\u2026):','https://');if(!url)return;
+  const sel=ta.value.substring(ta.selectionStart,ta.selectionEnd)||'link text';
+  const md='['+sel+']('+url+')';
+  ta.value=ta.value.substring(0,ta.selectionStart)+md+ta.value.substring(ta.selectionEnd);
+  setData(id,key,ta.value);ta.focus();
+}
+
+// Python syntax highlighter — produces the same colored spans as the home page
+function highlightPython(code){
+  const KEYWORDS=['def','class','return','import','from','for','while','if','elif','else','in','not','and','or','is','None','True','False','lambda','with','as','try','except','finally','raise','yield','assert','break','continue','pass','global','nonlocal','del','async','await'];
+  const BUILTINS=['print','len','range','sum','zip','enumerate','list','dict','set','tuple','int','float','str','bool','abs','min','max','sorted','map','filter','open','super','isinstance','type','self'];
+  // tokenize line by line, protect strings & comments first
+  const lines=esc(code).split('\n');
+  return lines.map(line=>{
+    // comment
+    const cmIdx=findComment(line);
+    let codePart=line, comment='';
+    if(cmIdx>-1){ codePart=line.slice(0,cmIdx); comment='<span class="cm">'+line.slice(cmIdx)+'</span>'; }
+    // strings (single/double, including f-strings)
+    const parts=[]; let i=0;
+    const strRe=/(f?&quot;[^&]*?&quot;|f?&#039;[^&]*?&#039;|f?"[^"]*?"|f?'[^']*?')/g;
+    // simpler: split on quote spans
+    codePart=codePart.replace(/(f?(?:&quot;|&#039;|"|').*?(?:&quot;|&#039;|"|'))/g, m=>`\x00STR\x00${m}\x00/STR\x00`);
+    // numbers
+    codePart=codePart.replace(/\b(\d+\.?\d*)\b/g,'\x00NUM\x00$1\x00/NUM\x00');
+    // keywords & builtins (only outside protected zones)
+    codePart=codePart.split(/(\x00STR\x00.*?\x00\/STR\x00)/).map(seg=>{
+      if(seg.startsWith('\x00STR\x00'))return seg;
+      // keyword
+      KEYWORDS.forEach(kw=>{ seg=seg.replace(new RegExp('\\b'+kw+'\\b','g'),`\x00KW\x00${kw}\x00/KW\x00`); });
+      // builtin/function names
+      BUILTINS.forEach(fn=>{ seg=seg.replace(new RegExp('\\b'+fn+'\\b','g'),`\x00FN\x00${fn}\x00/FN\x00`); });
+      // function calls: word followed by (
+      seg=seg.replace(/\b([a-zA-Z_]\w*)(\s*\()/g,(m,name,paren)=>{
+        if(name.includes('\x00'))return m;
+        return `\x00FN\x00${name}\x00/FN\x00${paren}`;
+      });
+      return seg;
+    }).join('');
+    // convert markers to spans
+    codePart=codePart
+      .replace(/\x00KW\x00/g,'<span class="kw">').replace(/\x00\/KW\x00/g,'</span>')
+      .replace(/\x00FN\x00/g,'<span class="fn">').replace(/\x00\/FN\x00/g,'</span>')
+      .replace(/\x00NUM\x00/g,'<span class="nm">').replace(/\x00\/NUM\x00/g,'</span>')
+      .replace(/\x00STR\x00/g,'<span class="st">').replace(/\x00\/STR\x00/g,'</span>');
+    return codePart+comment;
+  }).join('\n');
+}
+function findComment(line){
+  // find # not inside a string
+  let inS=false, q='';
+  for(let i=0;i<line.length;i++){
+    const ch=line[i];
+    if(inS){ if(ch===q)inS=false; continue; }
+    if(ch==='"'||ch==="'"){ inS=true; q=ch; continue; }
+    if(ch==='#')return i;
+  }
+  return -1;
+}
+const BLOCK_TYPES={
+  problem:{name:'Problem',icon:'📌',cls:'ic-prob',desc:'Why this matters'},
+  math:{name:'Math Derivation',icon:'📐',cls:'ic-math',desc:'Formula + explanation'},
+  concept:{name:'Concept',icon:'💡',cls:'ic-concept',desc:'Heading + body + pills'},
+  code:{name:'Code Block',icon:'💻',cls:'ic-code',desc:'Filename + code'},
+  output:{name:'Expected Output',icon:'✅',cls:'ic-output',desc:'What the code prints'},
+  method:{name:'Method Reference',icon:'📑',cls:'ic-method',desc:'API method cards'},
+  example:{name:'Real-World Example',icon:'🌍',cls:'ic-example',desc:'Applied use case'},
+  artifact:{name:'Reusable Artifact',icon:'🎁',cls:'ic-artifact',desc:'Prompt / skill / agent'},
+  links:{name:'Links',icon:'🔗',cls:'ic-links',desc:'Heading + useful links'},
+  heading:{name:'Heading',icon:'🔤',cls:'ic-heading',desc:'Section heading / divider'},
+  table:{name:'Table',icon:'📊',cls:'ic-table',desc:'Structured data table'},
+  quiz:{name:'Quiz',icon:'❓',cls:'ic-quiz',desc:'Multiple-choice questions'},
+  text:{name:'Text Block',icon:'📝',cls:'ic-text',desc:'Heading + description'},
+  diagram:{name:'Diagram',icon:'🖼️',cls:'ic-diagram',desc:'Inline SVG diagram'},
+};
+function renderPalette(){
+  const pal=document.getElementById('blockPalette');pal.innerHTML='';
+  Object.entries(BLOCK_TYPES).forEach(([type,def])=>{
+    const card=document.createElement('div');card.className='block-card';card.draggable=true;card.dataset.type=type;
+    card.innerHTML=`<div class="bc-icon ${def.cls}">${def.icon}</div><div class="bc-body"><div class="bc-name">${def.name}</div><div class="bc-desc">${def.desc}</div></div>`;
+    card.addEventListener('click',()=>addBlock(type));
+    card.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/block-type',type);card.classList.add('dragging');});
+    card.addEventListener('dragend',()=>card.classList.remove('dragging'));
+    pal.appendChild(card);
+  });
+}
+function addBlock(type,atIndex){
+  blockCounter++;const block={id:'b'+blockCounter,type,data:{}};
+  if(atIndex!=null)blocks.splice(atIndex,0,block);else blocks.push(block);
+  renderBlocks();renderPreview();backupDraft();
+}
+function removeBlock(id){blocks=blocks.filter(b=>b.id!==id);renderBlocks();renderPreview();backupDraft();}
+function moveBlock(id,dir){
+  const i=blocks.findIndex(b=>b.id===id);if(i<0)return;const j=i+dir;if(j<0||j>=blocks.length)return;
+  [blocks[i],blocks[j]]=[blocks[j],blocks[i]];renderBlocks();renderPreview();backupDraft();
+}
+let dragTarget=null;
+function clearDropIndicators(){document.querySelectorAll('.lblock').forEach(b=>b.classList.remove('drop-before','drop-after'));}
+function renderBlocks(){
+  const dz=document.getElementById('dropzone');
+  if(!blocks.length){dz.className='dropzone empty';dz.innerHTML=`<div class="dz-icon">📚</div><div class="dz-text">Drop content blocks here</div><div class="dz-sub">or click a block on the left to add it</div>`;return;}
+  dz.className='dropzone';dz.innerHTML='';
+  blocks.forEach(block=>{
+    const def=BLOCK_TYPES[block.type]||{cls:'widget',icon:'⚙',name:block.type};const el=document.createElement('div');el.className='lblock';el.dataset.id=block.id;
+    el.innerHTML=`<div class="lblock-head" draggable="true"><span class="drag-handle">⠿</span><div class="lblock-icon ${def.cls}">${def.icon}</div><span class="lblock-name">${def.name}</span><div class="lblock-actions"><button class="lblock-btn" onclick="moveBlock('${block.id}',-1)" title="Up">▲</button><button class="lblock-btn" onclick="moveBlock('${block.id}',1)" title="Down">▼</button><button class="lblock-btn del" onclick="removeBlock('${block.id}')" title="Remove">✕</button></div></div><div class="lblock-body">${blockFields(block)}</div>`;
+    const head=el.querySelector('.lblock-head');
+    head.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/reorder-id',block.id);el.classList.add('dragging');});
+    head.addEventListener('dragend',()=>{el.classList.remove('dragging');clearDropIndicators();dragTarget=null;});
+    el.addEventListener('dragover',e=>{
+      e.preventDefault();e.stopPropagation();
+      dz.classList.remove('dragover');
+      clearDropIndicators();
+      const rect=el.getBoundingClientRect();
+      const pos=e.clientY<rect.top+rect.height/2?'before':'after';
+      el.classList.add('drop-'+pos);
+      dragTarget={id:block.id,pos};
+    });
+    el.addEventListener('dragleave',e=>{if(!el.contains(e.relatedTarget)){el.classList.remove('drop-before','drop-after');}});
+    dz.appendChild(el);
+  });
+}
+function blockFields(block){
+  const d=block.data,id=block.id;
+  const knCls=lang==='kn'?' kn':'';const suffix=lang==='kn'?'Kn':'En';
+  const v=(k)=>esc(d[k+suffix]||'');const label=lang==='kn'?'(ಕನ್ನಡ)':'(EN)';
+  switch(block.type){
+    case 'problem':return `<div class="fg"><div class="fg-row"><label>Problem Statement ${label}</label>${lk(id,'problem'+suffix)}</div><textarea class="ft${knCls}" id="ta-${id}-problem${suffix}" oninput="setData('${id}','problem${suffix}',this.value)" placeholder="What problem does this solve?">${v('problem')}</textarea></div>`;
+    case 'math':return `<div class="fg"><label>Formula</label><textarea class="ft code" oninput="setData('${id}','formula',this.value)" placeholder="dot(a,b) = Σ aᵢ × bᵢ">${esc(d.formula||'')}</textarea></div><div class="fg"><label>Explanation ${label}</label><textarea class="ft${knCls}" oninput="setData('${id}','desc${suffix}',this.value)" placeholder="What it means in words">${v('desc')}</textarea></div>`;
+    case 'concept':return `<div class="fg"><label>Heading ${label}</label><input class="fi${knCls}" oninput="setData('${id}','heading${suffix}',this.value)" placeholder="A vector is coordinates in space" value="${v('heading')}"></div><div class="fg"><div class="fg-row"><label>Body ${label}</label>${lk(id,'body'+suffix)}</div><textarea class="ft${knCls}" id="ta-${id}-body${suffix}" oninput="setData('${id}','body${suffix}',this.value)" placeholder="Explain the concept…">${v('body')}</textarea></div><div class="fg"><label>Pills ${label} (comma-separated)</label><input class="fi${knCls}" oninput="setData('${id}','pills${suffix}',this.value)" placeholder="word → 768 numbers, image → pixels" value="${v('pills')}"></div>`;
+    case 'code':return `<div class="fg"><label>Heading ${label}</label><input class="fi${knCls}" oninput="setData('${id}','heading${suffix}',this.value)" placeholder="e.g. Adding two numbers" value="${v('heading')}"></div><div class="fg"><div class="fg-row"><label>Description ${label}</label>${lk(id,'desc'+suffix)}</div><textarea class="ft${knCls}" id="ta-${id}-desc${suffix}" oninput="setData('${id}','desc${suffix}',this.value)" placeholder="Short description of what this code does…">${v('desc')}</textarea></div><div class="fg"><label>Filename</label><input class="fi" oninput="setData('${id}','filename',this.value)" placeholder="vectors.py" value="${esc(d.filename||'')}"></div><div class="fg"><label>Code</label><textarea class="ft code" oninput="setData('${id}','code',this.value)" placeholder="# your code here">${esc(d.code||'')}</textarea></div><div class="fg"><label>Metric Cards (label|value|sublabel, comma-separated)</label><input class="fi" oninput="setData('${id}','metrics',this.value)" placeholder="a·b|32|dot product" value="${esc(d.metrics||'')}"></div>`;
+    case 'output':return `<div class="fg"><label>Expected Output</label><textarea class="ft code" oninput="setData('${id}','output',this.value)" placeholder="dot = 32&#10;|a| = 3.7417">${esc(d.output||'')}</textarea></div>`;
+    case 'method':return `<div class="fg"><label>Methods (name :: description, one per line) ${label}</label><textarea class="ft${knCls}" oninput="setData('${id}','methods${suffix}',this.value)" placeholder=".dot(other) :: measures alignment">${v('methods')}</textarea></div><div class="fg"><label>💡 Insight ${label}</label><textarea class="ft${knCls}" oninput="setData('${id}','insight${suffix}',this.value)" placeholder="Key takeaway">${v('insight')}</textarea></div>`;
+    case 'example':return `<div class="fg"><label>Tag (optional)</label><input class="fi" oninput="setData('${id}','tag',this.value)" placeholder="Real world: Spotify" value="${esc(d.tag||'')}"></div><div class="fg"><div class="fg-row"><label>Text ${label}</label>${lk(id,'text'+suffix)}</div><textarea class="ft${knCls}" id="ta-${id}-text${suffix}" oninput="setData('${id}','text${suffix}',this.value)" placeholder="Describe the real-world example… (Tip: press Enter for new lines, they are preserved)">${v('text')}</textarea></div><div class="fg"><label>Table (optional) — header row first, cells separated by | one row per line</label><textarea class="ft" oninput="setData('${id}','table',this.value)" placeholder="Song | Genre | Score&#10;Bon Iver — Holocene | Folk | 0.91&#10;Skrillex — Bangarang | EDM | 0.04">${esc(d.table||'')}</textarea></div>`;
+    case 'artifact':return `<div class="fg"><label>Type</label><select class="fs" onchange="setData('${id}','artType',this.value)">${['prompt','skill','agent','mcp','code'].map(t=>`<option value="${t}" ${d.artType===t?'selected':''}>${t}</option>`).join('')}</select></div><div class="fg"><label>Title ${label}</label><input class="fi${knCls}" oninput="setData('${id}','title${suffix}',this.value)" placeholder="Vector class you can reuse" value="${v('title')}"></div><div class="fg"><label>Content</label><textarea class="ft code" oninput="setData('${id}','content',this.value)" placeholder="Paste the artifact content">${esc(d.content||'')}</textarea></div>`;
+    case 'links':return `<div class="fg"><label>Heading ${label}</label><input class="fi${knCls}" oninput="setData('${id}','heading${suffix}',this.value)" placeholder="e.g. Further reading" value="${v('heading')}"></div><div class="fg"><label>Links — one per line as <b>label | https://url</b></label><textarea class="ft" id="ta-${id}-links" oninput="setData('${id}','links',this.value)" placeholder="Python docs | https://docs.python.org&#10;NumPy guide | https://numpy.org/doc">${esc(d.links||'')}</textarea></div>`;
+    case 'heading':return `
+      <div class="fg"><label>Level</label>
+        <select class="fs" onchange="setData('${id}','level',this.value)">
+          ${['H1','H2','H3'].map(h=>`<option value="${h}" ${(d.level||'H2')===h?'selected':''}>${h}</option>`).join('')}
+        </select>
+      </div>
+      <div class="fg"><label>Heading Text (EN) *</label>
+        <input class="fi" oninput="setData('${id}','textEn',this.value)" placeholder="e.g. What is a Vector?" value="${v('text')}">
+      </div>
+      <div class="fg"><label>Heading Text (ಕನ್ನಡ)</label>
+        <input class="fi kn" oninput="setData('${id}','textKn',this.value)" placeholder="ಕನ್ನಡ ತಲೆಬರಹ…" value="${esc(d.textKn||'')}">
+      </div>`;
+    case 'table':return `
+      <div class="fg">
+        <label>Caption ${label} <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+        <input class="fi${knCls}" oninput="setData('${id}','caption${suffix}',this.value)" placeholder="e.g. Common Python Data Types" value="${v('caption')}">
+      </div>
+      <div class="fg">
+        <label>Table Data — header row first, columns separated by <b>|</b>, one row per line</label>
+        <textarea class="ft code" id="ta-${id}-rows" oninput="setData('${id}','rows',this.value)" rows="7"
+          placeholder="Name | Type | Example\nint | Integer | 42\nstr | String | 'hello'\nlist | List | [1,2,3]"
+        >${esc(d.rows||'')}</textarea>
+      </div>`;
+    case 'quiz':return quizFields(block);
+    case 'text':return `<div class="fg"><label>Heading ${label}</label><input class="fi${knCls}" oninput="setData('${id}','heading${suffix}',this.value)" onchange="setData('${id}','heading${suffix}',this.value)" placeholder="Section heading (optional)" value="${v('heading')}"></div><div class="fg"><div class="fg-row"><label>Description ${label}</label>${lk(id,'desc'+suffix)}</div><textarea class="ft${knCls}" id="ta-${id}-desc${suffix}" oninput="setData('${id}','desc${suffix}',this.value)" onchange="setData('${id}','desc${suffix}',this.value)" placeholder="Write a description or explanation…">${v('desc')}</textarea></div>`;
+    case 'diagram':return `
+      <div class="fg"><label>Title ${label} <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+        <input class="fi${knCls}" oninput="setData('${id}','title${suffix}',this.value)" placeholder="e.g. Stack Frame Layout" value="${v('title')}">
+      </div>
+      <div class="fg"><label>SVG Code <span style="font-weight:400;color:var(--muted)">— paste raw &lt;svg&gt;…&lt;/svg&gt;</span></label>
+        <textarea class="ft code" style="min-height:200px;font-size:.74rem;" oninput="setData('${id}','svgCode',this.value)" placeholder='&lt;svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg"&gt;\n  &lt;!-- your diagram here --&gt;\n&lt;/svg&gt;'>${esc(d.svgCode||'')}</textarea>
+      </div>
+      <div class="fg"><label>Caption ${label} <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+        <input class="fi${knCls}" oninput="setData('${id}','caption${suffix}',this.value)" placeholder="Figure 1: How memory is organised" value="${v('caption')}">
+      </div>`;
+    case 'widget':return `<div class="fg"><p style="font-size:12px;color:var(--muted);padding:6px 0;">⚙ Interactive widget — <code style="font-size:11px;">${esc(d.widgetId||block.type)}</code> — rendered in the student view only.</p></div>`;
+    default:return '';
+  }
+}
+function quizFields(block){
+  const d=block.data;if(!d.questions)d.questions=[{q:'',opts:['','','',''],qKn:'',optsKn:['','','',''],correct:0}];
+  const knMode=lang==='kn';
+  const qKey=knMode?'qKn':'q',optsKey=knMode?'optsKn':'opts';
+  const qLabel=knMode?'Question text (ಕನ್ನಡ)':'Question text';
+  let html='';
+  d.questions.forEach((q,qi)=>{
+    if(!q.optsKn)q.optsKn=['','','',''];
+    const opts=knMode?q.optsKn:q.opts;
+    html+=`<div style="background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:.7rem;margin-bottom:.5rem;"><div style="display:flex;justify-content:space-between;margin-bottom:.5rem;"><span class="mini-label">Question ${qi+1}</span><button class="lblock-btn del" style="width:22px;height:22px;" onclick="removeQuizQ('${block.id}',${qi})">✕</button></div><input class="fi${knMode?' kn':''}" style="margin-bottom:.4rem;" placeholder="${qLabel}" value="${esc(q[qKey]||'')}" oninput="setQuizQ('${block.id}',${qi},'${qKey}',this.value)">${q.opts.map((_,oi)=>`<div style="display:flex;align-items:center;gap:.4rem;margin-bottom:.3rem;"><input type="radio" name="correct-${block.id}-${qi}" ${q.correct===oi?'checked':''} onchange="setQuizQ('${block.id}',${qi},'correct',${oi})" style="accent-color:var(--cyan);"><input class="fi${knMode?' kn':''}" style="flex:1;" placeholder="Option ${String.fromCharCode(65+oi)}${knMode?' (ಕನ್ನಡ)':''}" value="${esc(opts[oi]||'')}" oninput="setQuizOpt('${block.id}',${qi},${oi},this.value)"></div>`).join('')}</div>`;
+  });
+  html+=`<button class="btn btn-outline" style="font-size:.76rem;padding:.35rem .8rem;margin-top:.3rem;" onclick="addQuizQ('${block.id}')">+ Add Question</button>`;
+  return `<div id="quiz-panel-${block.id}">${html}</div>`;
+}
+function refreshQuizPanel(id){
+  const b=blocks.find(x=>x.id===id);if(!b)return;
+  const panel=document.getElementById('quiz-panel-'+id);
+  if(panel){panel.outerHTML=quizFields(b);}else{renderBlocks();}
+  renderPreview();backupDraft();
+}
+function setData(id,key,value){const b=blocks.find(x=>x.id===id);if(b){b.data[key]=value;renderPreview();backupDraft();}}
+function setQuizQ(id,qi,key,value){const b=blocks.find(x=>x.id===id);if(b){b.data.questions[qi][key]=value;renderPreview();}}
+function setQuizOpt(id,qi,oi,value){const b=blocks.find(x=>x.id===id);if(b){const q=b.data.questions[qi];const knMode=lang==='kn';if(knMode){if(!q.optsKn)q.optsKn=['','','',''];q.optsKn[oi]=value;}else{q.opts[oi]=value;}renderPreview();}}
+function addQuizQ(id){const b=blocks.find(x=>x.id===id);if(b){b.data.questions.push({q:'',opts:['','','',''],qKn:'',optsKn:['','','',''],correct:0});refreshQuizPanel(id);}}
+function removeQuizQ(id,qi){const b=blocks.find(x=>x.id===id);if(b&&b.data.questions.length>1){b.data.questions.splice(qi,1);refreshQuizPanel(id);}}
+const dz=document.getElementById('dropzone');
+dz.addEventListener('dragover',e=>{e.preventDefault();if(!dragTarget)dz.classList.add('dragover');});
+dz.addEventListener('dragleave',e=>{if(!dz.contains(e.relatedTarget)){dz.classList.remove('dragover');clearDropIndicators();dragTarget=null;}});
+dz.addEventListener('drop',e=>{
+  e.preventDefault();dz.classList.remove('dragover');clearDropIndicators();
+  const newType=e.dataTransfer.getData('text/block-type');
+  const reorderId=e.dataTransfer.getData('text/reorder-id');
+  if(newType){
+    if(dragTarget){
+      const toIdx=blocks.findIndex(b=>b.id===dragTarget.id);
+      addBlock(newType,dragTarget.pos==='before'?toIdx:toIdx+1);
+    } else {addBlock(newType);}
+  } else if(reorderId){
+    const fromIdx=blocks.findIndex(b=>b.id===reorderId);
+    if(fromIdx<0){dragTarget=null;return;}
+    if(dragTarget&&dragTarget.id!==reorderId){
+      const[b]=blocks.splice(fromIdx,1);
+      let toIdx=blocks.findIndex(b2=>b2.id===dragTarget.id);
+      if(dragTarget.pos==='after')toIdx+=1;
+      blocks.splice(toIdx,0,b);
+    } else if(!dragTarget){
+      const[b]=blocks.splice(fromIdx,1);blocks.push(b);
+    }
+    renderBlocks();renderPreview();backupDraft();
+  }
+  dragTarget=null;
+});
+function setLang(l){
+  // Persist current edits back to the right cache before switching
+  if(lang==='kn') blocksKn=blocks.slice(); else blocksEn=blocks.slice();
+
+  lang=l;
+  document.getElementById('ltEn').classList.toggle('active',l==='en');
+  document.getElementById('ltKn').classList.toggle('active',l==='kn');
+  document.getElementById('titleLabel').textContent=l==='kn'?'Lesson Title (ಕನ್ನಡ) *':'Lesson Title (EN) *';
+  document.getElementById('subtitleLabel').textContent=l==='kn'?'Subtitle (ಕನ್ನಡ)':'Subtitle (EN)';
+  const ti=document.getElementById('lessonTitle'),su=document.getElementById('lessonSubtitle');
+  ti.classList.toggle('kn',l==='kn');su.classList.toggle('kn',l==='kn');
+  ti.value=l==='kn'?(lessonData.titleKn||''):(lessonData.titleEn||'');
+  su.value=l==='kn'?(lessonData.subtitleKn||''):(lessonData.subtitleEn||'');
+
+  // Swap to the matching block set
+  const targetBlocks = l==='kn' ? blocksKn : blocksEn;
+  if(targetBlocks.length){
+    blocks=targetBlocks.slice();
+    blockCounter=blocks.reduce((m,b)=>{const n=parseInt((b.id||'b0').replace(/\D/g,''))||0;return n>m?n:m;},0);
+  }
+  renderBlocks();
+}
+function setPreviewLang(l){previewLang=l;document.getElementById('pvEn').classList.toggle('active',l==='en');document.getElementById('pvKn').classList.toggle('active',l==='kn');renderPreview();}
+const lessonData={titleEn:'',titleKn:'',subtitleEn:'',subtitleKn:''};
+function syncTitle(){
+  const val=document.getElementById('lessonTitle').value;
+  if(lang==='kn')lessonData.titleKn=val;else lessonData.titleEn=val;
+  document.getElementById('lessonTitleBar').textContent=lessonData.titleEn||lessonData.titleKn||'Lesson Builder';
+  renderPreview();
+}
+document.getElementById('lessonSubtitle').addEventListener('input',e=>{if(lang==='kn')lessonData.subtitleKn=e.target.value;else lessonData.subtitleEn=e.target.value;renderPreview();});
+let phasesCache=[];
+async function loadPhases(){
+  try{
+    const res=await api.get('/api/curriculum/full');
+    phasesCache=(res&&res.curriculum)?res.curriculum:[];
+    const sel=document.getElementById('metaPhase');
+    phasesCache.forEach(ph=>{const o=document.createElement('option');o.value=ph._id||ph.name;o.textContent=ph.name;o.dataset.modules=JSON.stringify(ph.modules||[]);sel.appendChild(o);});
+  }catch(e){}
+}
+function loadModules(){
+  const sel=document.getElementById('metaPhase');const opt=sel.options[sel.selectedIndex];const ms=document.getElementById('metaModule');
+  ms.innerHTML='<option value="">— Module —</option>';
+  if(!opt||!opt.dataset.modules)return;
+  try{JSON.parse(opt.dataset.modules).forEach(m=>{const o=document.createElement('option');o.value=m._id||m.name;o.textContent=m.name;ms.appendChild(o);});}catch(e){}
+}
+function renderPreview(){
+  try{
+  const kn=previewLang==='kn';
+  const pick=(en,knVal)=>kn?(knVal||en||''):(en||'');
+  const title=pick(lessonData.titleEn,lessonData.titleKn)||'Lesson Title';
+  const subtitle=pick(lessonData.subtitleEn,lessonData.subtitleKn);
+  let body='';
+  let _prevType=null;
+  for(let bi=0;bi<blocks.length;bi++){
+    const block=blocks[bi];
+    const d=block.data;
+    const _ct=t=>t==='heading'||t==='concept'||t==='text'||t==='code'||t==='table';
+    const grouped=_prevType===block.type||(_ct(_prevType)&&_ct(block.type));
+    const head=(label)=>grouped?'':`<div class="div"></div><div class="sl${kn?' kn':''}">${label}</div>`;
+    switch(block.type){
+      case 'problem':{const t=pick(d.problemEn,d.problemKn);if(t)body+=`${head('the problem')}<div class="prob"><p${kn?' class="kn"':''}>${rich(t)}</p></div>`;break;}
+      case 'math':{if(d.formula)body+=`${head('the math')}<div class="math-block"><div class="math-formula">${esc(d.formula)}</div>${(pick(d.descEn,d.descKn))?`<div class="math-desc${kn?' kn':''}">${esc(pick(d.descEn,d.descKn))}</div>`:''}</div>`;break;}
+      case 'concept':{const h=pick(d.headingEn,d.headingKn),b=pick(d.bodyEn,d.bodyKn);const pills=(pick(d.pillsEn,d.pillsKn)||'').split(',').map(s=>s.trim()).filter(Boolean);if(h||b){const afterHeading=_prevType==='heading';const inGroup=grouped&&!afterHeading;if(!afterHeading){body+=head('concept');}if(inGroup)body+=`<div class="group-item">`;body+=`<h2 class="lh${kn?' kn':''}">${esc(h)}</h2><p class="lp${kn?' kn':''}">${rich(b)}</p>${pills.length?`<div class="pills">${pills.map(p=>`<span class="pill${kn?' kn':''}">${esc(p)}</span>`).join('')}</div>`:''}`;if(inGroup)body+=`</div>`;}break;}
+      case 'code':{if(d.code){const metrics=(d.metrics||'').split(',').map(s=>{const p=s.trim().split('|');return{l:p[0]||'',v:p[1]||'',s:p[2]||''};}).filter(m=>m.l);const ch=pick(d.headingEn,d.headingKn);const cd=pick(d.descEn,d.descKn);const nb=blocks[bi+1];const hasOut=nb&&nb.type==='output'&&nb.data&&nb.data.output;body+=head('the code');if(grouped)body+=`<div class="group-item">`;if(ch)body+=`<h2 class="lh${kn?' kn':''}">${esc(ch)}</h2>`;if(cd)body+=`<p class="lp code-desc${kn?' kn':''}">${rich(cd)}</p>`;if(metrics.length)body+=`<div class="mts">${metrics.map(m=>`<div class="mc"><div class="mcl">${esc(m.l)}</div><div class="mcv">${esc(m.v)}</div><div class="mcs">${esc(m.s)}</div></div>`).join('')}</div>`;body+=`<div class="edr${hasOut?' has-out':''}"><div class="eh"><div style="display:flex;gap:8px;align-items:center"><div class="edots"><span class="edot er"></span><span class="edot ey"></span><span class="edot eg"></span></div><span class="efn">${esc(d.filename||'code.py')}</span></div><button class="ecopy" onclick="(function(b){var c=b.closest('.edr').querySelector('pre.code');navigator.clipboard.writeText(c.innerText).then(function(){b.textContent='Copied!';setTimeout(function(){b.innerHTML='&#128203; Copy';},1500);});})(this)">&#128203; Copy</button></div><pre class="code">${highlightPython(d.code)}</pre></div>`;if(hasOut){const od=nb.data.output;body+=`<div class="out attached"><div class="oh">output</div><div class="ob">${od.split('\n').map(l=>{const i=l.indexOf('=');if(i>-1)return`<div class="ol"><span class="ok">${esc(l.slice(0,i+1))}</span><span class="ov">${esc(l.slice(i+1).trim())}</span></div>`;return`<div class="ol"><span class="ov">${esc(l)}</span></div>`;}).join('')}</div></div>`;bi++;}if(grouped)body+=`</div>`;}break;}
+      case 'output':{if(d.output)body+=`<div class="out"><div class="oh">output</div><div class="ob">${d.output.split('\n').map(l=>{const i=l.indexOf('=');if(i>-1)return`<div class="ol"><span class="ok">${esc(l.slice(0,i+1))}</span><span class="ov">${esc(l.slice(i+1).trim())}</span></div>`;return`<div class="ol"><span class="ov">${esc(l)}</span></div>`;}).join('')}</div></div>`;break;}
+      case 'method':{const methods=(pick(d.methodsEn,d.methodsKn)||'').split('\n').map(l=>{const p=l.split('::');return{n:(p[0]||'').trim(),d:(p[1]||'').trim()};}).filter(m=>m.n);const insight=pick(d.insightEn,d.insightKn);if(methods.length)body+=`${head('method reference')}<div class="mg">${methods.map(m=>`<div class="mcard"><div class="mname">${esc(m.n)}</div><div class="mdesc${kn?' kn':''}">${esc(m.d)}</div></div>`).join('')}</div>`;if(insight)body+=`<div class="ins"><span style="font-size:15px;">💡</span><span class="${kn?'kn':''}">${esc(insight)}</span></div>`;break;}
+      case 'example':{const txt=pick(d.textEn,d.textKn);const rows=(d.table||'').split('\n').map(l=>l.split('|').map(c=>c.trim())).filter(r=>r.some(c=>c));if(d.tag||txt||rows.length){body+=`${grouped?'':'<div class="div"></div>'}<div class="ai-ex">`;if(d.tag)body+=`<span class="ai-ex-tag">${esc(d.tag)}</span>`;if(txt)body+=`<p class="ai-ex-text${kn?' kn':''}">${rich(txt)}</p>`;if(rows.length){body+=`<table class="ai-table"><thead><tr>${rows[0].map(c=>`<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${rows.slice(1).map(r=>`<tr>${r.map(c=>`<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;}body+=`</div>`;}break;}
+      case 'artifact':{const t=pick(d.titleEn,d.titleKn);if(d.content)body+=`${head('take this with you')}<div class="artifact-block"><div class="artifact-head"><div><span class="artifact-badge">${esc(d.artType||'artifact')}</span>${t?`<div style="font-size:13px;font-weight:600;color:var(--text);margin-top:3px;">${esc(t)}</div>`:''}</div></div><div class="artifact-body"><pre class="artifact-content">${esc(d.content)}</pre></div></div>`;break;}
+      case 'links':{const h=pick(d.headingEn,d.headingKn);const items=(d.links||'').split('\n').map(l=>{const i=l.indexOf('|');if(i<0){const u=l.trim();return u?{label:u,url:u}:null;}return{label:l.slice(0,i).trim(),url:l.slice(i+1).trim()};}).filter(x=>x&&x.url);if(h||items.length){body+=head('links');if(h)body+=`<h2 class="lh${kn?' kn':''}">${esc(h)}</h2>`;if(items.length)body+=`<div class="link-list">${items.map(it=>`<a class="link-card" href="${esc(it.url)}" target="_blank" rel="noopener"><span class="link-ic">\u{1F517}</span><span class="link-label">${esc(it.label)}</span><span class="link-arrow">\u2197</span></a>`).join('')}</div>`;}break;}
+      case 'heading':{const t=pick(d.textEn,d.textKn);if(t){const lvl=(d.level||'H2').toLowerCase();const sz=lvl==='h1'?'18px':lvl==='h3'?'13px':'15.5px';const wt=lvl==='h1'?'700':'600';const afterContent=_prevType&&_ct(_prevType)&&_prevType!=='heading';const beforeMargin=afterContent?'6px':'18px';if(_prevType&&!_ct(_prevType))body+=`<div class="div"></div>`;body+=`<${lvl} style="font-family:var(--disp);font-size:${sz};font-weight:${wt};color:var(--text);margin:${beforeMargin} 0 6px;letter-spacing:-.01em;" class="${kn?'kn':''}">${esc(t)}</${lvl}>`;}break;}
+      case 'table':{const caption=pick(d.captionEn,d.captionKn);const raw=(d.rows||'').trim();if(raw){const rows=raw.split('\n').map(r=>r.split('|').map(x=>x.trim()));const [head,...body2]=rows;body+=`${grouped?'':'<div class="div"></div>'}`;if(caption)body+=`<p class="lp" style="font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">${esc(caption)}</p>`;body+=`<div class="tbl-wrap"><table class="ai-table"><thead><tr>${head.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${body2.map(r=>`<tr>${head.map((_,i)=>`<td>${esc(r[i]||'')}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;}break;}
+      case 'quiz':{const qs=(d.questions||[]).filter(q=>q.q);if(qs.length){body+=head('quiz');qs.forEach((q,qi)=>{const qText=pick(q.q,q.qKn);const optsArr=(kn&&Array.isArray(q.optsKn)&&q.optsKn.length)?q.optsKn:q.opts;body+=`<div class="quiz-q"><div class="quiz-qtext">${qi+1}. ${esc(qText)}</div>${optsArr.filter(o=>o).map((o,oi)=>`<div class="quiz-opt ${q.correct===oi?'correct':''}">${String.fromCharCode(65+oi)}. ${esc(o)}${q.correct===oi?' ✓':''}</div>`).join('')}</div>`;});}break;}
+      case 'text':{
+        const th=pick(d.headingEn,d.headingKn),tb=pick(d.descEn,d.descKn);
+        body+=head('text');
+        body+=grouped?`<div class="group-item">`:`<div class="txt-block">`;
+        if(th)body+=`<h2 class="lh${kn?' kn':''}" style="margin-bottom:6px;">${esc(th)}</h2>`;
+        if(tb)body+=`<p class="lp${kn?' kn':''}">${rich(tb)}</p>`;
+        if(!th&&!tb)body+=`<p class="lp" style="opacity:.35;font-style:italic;">Heading and description…</p>`;
+        body+=`</div>`;
+        break;}
+      case 'diagram':{
+        const svg=d.svgCode||d.svg||'';
+        const dt=pick(d.titleEn||d.headingEn,d.titleKn||d.headingKn);const dc=pick(d.captionEn,d.captionKn);
+        if(svg){
+          body+=`<div class="div"></div><div class="diag-wrap">`;
+          if(dt)body+=`<div class="diag-title${kn?' kn':''}">${esc(dt)}</div>`;
+          body+=`<div class="diag-svg">${svg}</div>`;
+          if(dc)body+=`<div class="diag-cap${kn?' kn':''}">${esc(dc)}</div>`;
+          body+=`</div>`;
+        }
+        break;}
+      case 'widget':{const wh=pick(d.headingEn,d.headingKn);body+=`<div class="div"></div><div style="background:rgba(108,92,231,.08);border:1px dashed rgba(108,92,231,.35);border-radius:8px;padding:12px 14px;margin-bottom:10px;">${wh?`<div style="font-size:12px;font-weight:600;color:#c4baf8;margin-bottom:4px;">${esc(wh)}</div>`:''}
+<div style="font-size:11.5px;color:rgba(196,186,248,.6);">⚙ Interactive Widget: <code style="font-size:11px;">${esc(d.widgetId||'widget')}</code> — rendered in student view</div></div>`;break;}
+
+    }
+    _prevType=block.type;
+  }
+  const frame=document.getElementById('previewFrame');
+  let _savedScroll=0;
+  try{_savedScroll=frame.contentWindow.scrollY||0;}catch(e){}
+  frame.onload=function(){try{frame.contentWindow.scrollTo(0,_savedScroll);}catch(e){}};
+  frame.srcdoc=`<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Kannada:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}body{background:#0F1B2D;font-family:'IBM Plex Sans',sans-serif;font-size:14px;color:#F3F1EA;padding:18px;}
+:root{--cyan:#5FD4D6;--gold:#F4B740;--muted:#8AA0BD;--text:#F3F1EA;--dim:#C8D3E3;--line:rgba(241,238,230,.1);--mono:'IBM Plex Mono',monospace;--disp:'Space Grotesk',sans-serif;--kn:'Noto Sans Kannada',sans-serif;}
+.card{background:#1a2d47;border:1px solid var(--line);border-radius:16px;padding:20px;}
+.mtag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(108,92,231,.2);color:#c4baf8;padding:3px 10px;border-radius:20px;margin-bottom:10px;}
+.ltitle{font-family:var(--disp);font-size:20px;font-weight:700;color:#fff;margin-bottom:5px;}.lsub{color:var(--muted);font-size:13px;margin-bottom:4px;}
+.div{border-top:1px solid var(--line);margin:16px 0;}
+.sl{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:8px;}.sl::after{content:'';flex:1;height:1px;background:var(--line);}
+h2.lh{font-family:var(--disp);font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px;}
+.concept-item,.group-item{margin-top:0;padding-top:0;border-top:none;}p.lp{color:var(--muted);font-size:12.5px;margin-bottom:10px;white-space:pre-wrap;}
+.prob{border-left:3px solid var(--cyan);padding:11px 15px;background:rgba(95,212,214,.07);border-radius:0 8px 8px 0;margin-bottom:10px;}.prob p{color:var(--dim);font-size:12.5px;line-height:1.7;}
+.pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;}.pill{font-size:11px;padding:2px 9px;border-radius:20px;background:rgba(95,212,214,.1);color:var(--cyan);border:1px solid rgba(95,212,214,.25);}
+.math-block{background:rgba(10,18,32,.5);border:1px solid rgba(95,212,214,.2);border-radius:9px;padding:12px 15px;margin-bottom:12px;}.math-formula{font-family:var(--mono);font-size:12px;color:var(--cyan);white-space:pre-wrap;line-height:1.8;}.math-desc{font-size:12px;color:var(--muted);margin-top:7px;white-space:pre-wrap;}
+.mts{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:11px;}.mc{background:rgba(10,18,32,.4);border:1px solid var(--line);border-radius:8px;padding:9px 11px;}.mcl{font-size:10px;color:var(--muted);font-family:var(--mono);}.mcv{font-size:18px;font-weight:700;font-family:var(--mono);color:var(--cyan);}.mcs{font-size:10px;color:var(--muted);}
+.edr{background:#080f1c;border-radius:10px;overflow:hidden;margin-bottom:8px;}.edr.has-out{border-bottom-left-radius:0;border-bottom-right-radius:0;margin-bottom:0;}.eh{display:flex;justify-content:space-between;align-items:center;padding:7px 13px;background:#0d1828;border-bottom:1px solid rgba(255,255,255,.06);}.edots{display:flex;gap:4px;}.edot{width:9px;height:9px;border-radius:50%;}.er{background:#ff5f57;}.ey{background:#ffbd2e;}.eg{background:#28ca42;}.efn{font-size:11px;color:rgba(255,255,255,.35);font-family:var(--mono);}
+pre.code{padding:13px 16px;font-family:var(--mono);font-size:11.5px;line-height:1.7;overflow-x:auto;color:#d4d0c8;white-space:pre;}
+.kw{color:#c792ea;}.fn{color:#82aaff;}.st{color:#c3e88d;}.nm{color:#f78c6c;}.cm{color:#5a6e8c;font-style:italic;}
+.out{background:#1e3452;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:12px;}.out.attached{border-top-left-radius:0;border-top-right-radius:0;border-top:none;margin-top:0;}.oh{padding:6px 13px;border-bottom:1px solid var(--line);font-size:10px;color:var(--muted);font-family:var(--mono);}.ob{padding:10px 13px;font-family:var(--mono);font-size:11.5px;line-height:1.8;}.ol{display:flex;gap:8px;}.ok{color:var(--muted);min-width:140px;}.ov{color:var(--cyan);font-weight:600;}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;}.mcard{background:#1e3452;border:1px solid var(--line);border-radius:8px;padding:9px 11px;}.mname{font-family:var(--mono);font-size:11.5px;color:var(--text);}.mdesc{font-size:11px;color:var(--muted);}
+.ins{background:rgba(95,212,214,.06);border:1px solid rgba(95,212,214,.2);border-radius:8px;padding:9px 13px;margin-bottom:12px;font-size:12px;color:var(--dim);display:flex;gap:8px;}
+.ai-ex{background:rgba(10,18,32,.4);border:1px solid var(--line);border-radius:10px;padding:13px;}.ai-ex-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(244,183,64,.15);color:var(--gold);padding:3px 9px;border-radius:20px;margin-bottom:8px;}
+.ai-ex-text{font-size:12.5px;color:var(--dim);line-height:1.7;margin-bottom:10px;white-space:pre-wrap;}
+.code-desc{white-space:pre-wrap;}
+.prob p{white-space:pre-wrap;}
+.lnk{color:var(--cyan);text-decoration:underline;text-underline-offset:2px;}
+.lnk:hover{color:var(--gold);}
+.tbl-wrap{overflow-x:auto;margin-bottom:12px;border-radius:8px;border:1px solid var(--line);}
+.ai-table{width:100%;border-collapse:collapse;font-size:12px;}
+.ai-table th{background:rgba(95,212,214,.1);color:var(--cyan);font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;text-align:left;border-bottom:1px solid var(--line);}
+.ai-table td{padding:7px 10px;color:var(--dim);border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top;}
+.ai-table tr:last-child td{border-bottom:none;}
+.ai-table tr:hover td{background:rgba(255,255,255,.025);}
+.link-list{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+.link-card{display:flex;align-items:center;gap:9px;padding:9px 12px;background:rgba(95,212,214,.06);border:1px solid rgba(95,212,214,.2);border-radius:9px;text-decoration:none;transition:all .15s;}
+.link-card:hover{background:rgba(95,212,214,.12);border-color:rgba(95,212,214,.45);}
+.link-ic{font-size:13px;flex-shrink:0;}
+.link-label{flex:1;font-size:12.5px;color:var(--cyan);font-weight:500;}
+.link-arrow{font-size:13px;color:var(--muted);}
+.ecopy{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);font-family:var(--mono);font-size:10px;padding:3px 9px;border-radius:6px;cursor:pointer;transition:all .15s;}
+.ecopy:hover{background:rgba(95,212,214,.15);color:var(--cyan);border-color:rgba(95,212,214,.3);}
+.ai-table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px;}
+.ai-table th{text-align:left;padding:7px 10px;background:rgba(95,212,214,.08);color:var(--cyan);font-weight:600;border-bottom:1px solid rgba(95,212,214,.2);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;}
+.ai-table td{padding:7px 10px;color:var(--dim);border-bottom:1px solid var(--line);}
+.ai-table tr:last-child td{border-bottom:none;}
+.ai-steps{display:flex;flex-direction:column;gap:9px;margin-bottom:11px;}.ai-step{display:flex;gap:11px;}.ai-step-num{width:22px;height:22px;border-radius:50%;background:rgba(95,212,214,.15);border:1px solid rgba(95,212,214,.35);color:var(--cyan);font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--mono);}.ai-step-title{font-size:12px;font-weight:600;color:var(--text);}.ai-step-desc{font-size:11.5px;color:var(--muted);}
+.ai-scores{display:flex;flex-direction:column;gap:5px;}.ai-score-row{display:flex;justify-content:space-between;padding:6px 11px;border-radius:7px;font-size:11.5px;}.ai-score-row.hi{background:rgba(95,212,214,.08);border:1px solid rgba(95,212,214,.25);}.ai-score-row.lo{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);}.ai-score-label{color:var(--dim);}.ai-score-row.lo .ai-score-label{color:var(--muted);}.ai-score-val{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--cyan);}.ai-score-row.lo .ai-score-val{color:var(--muted);font-weight:400;}
+.ai-footnote{margin-top:9px;font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:7px;}
+.artifact-block{background:rgba(10,18,32,.4);border:1px solid rgba(108,92,231,.3);border-radius:10px;overflow:hidden;margin-bottom:12px;}.artifact-head{padding:9px 14px;background:rgba(108,92,231,.1);border-bottom:1px solid rgba(108,92,231,.2);}.artifact-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(108,92,231,.2);color:#c4baf8;padding:3px 9px;border-radius:20px;}.artifact-body{padding:12px 14px;}.artifact-content{font-family:var(--mono);font-size:11.5px;color:#d4d0c8;white-space:pre-wrap;}
+.quiz-q{background:rgba(10,18,32,.4);border:1px solid var(--line);border-radius:9px;padding:12px 14px;margin-bottom:8px;}.quiz-qtext{font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:8px;}.quiz-opt{font-size:12px;color:var(--muted);padding:5px 10px;border-radius:6px;background:rgba(255,255,255,.03);margin-bottom:4px;}.quiz-opt.correct{background:rgba(95,212,214,.1);color:var(--cyan);border:1px solid rgba(95,212,214,.25);}
+.txt-block{border-left:3px solid var(--gold);padding:10px 14px;background:rgba(244,183,64,.06);border-radius:0 8px 8px 0;margin-bottom:10px;}
+.diag-wrap{background:rgba(10,18,32,.5);border:1px solid rgba(52,211,153,.2);border-radius:10px;padding:14px 14px 10px;margin-bottom:12px;overflow-x:auto;}
+.diag-title{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#34d399;margin-bottom:10px;}
+.diag-svg{display:block;width:100%;}.diag-svg svg{width:100%;display:block;overflow:visible;}
+.diag-cap{font-size:11px;color:var(--muted);margin-top:8px;font-style:italic;}
+.kn{font-family:var(--kn);}.empty-preview{text-align:center;color:var(--muted);padding:50px 20px;font-size:13px;}
+</style></head><body><div class="card">${title||subtitle||body?`<div class="mtag">Lesson Preview</div><div class="ltitle${kn?' kn':''}">${esc(title)}</div>${subtitle?`<p class="lsub${kn?' kn':''}">${esc(subtitle)}</p>`:''}${body}`:`<div class="empty-preview">Add blocks to see your lesson preview</div>`}</div></body></html>`;
+  }catch(err){console.error('[renderPreview error]',err);}
+}
+// ── Local draft backup (survives even if the server round-trip fails) ──
+function currentLessonId(){return new URLSearchParams(location.search).get('id')||'new';}
+function lsKey(id){return 'pnl_draft_'+(id||currentLessonId());}
+function backupDraft(){
+  try{
+    const snap={lessonData,blocks,ts:Date.now()};
+    localStorage.setItem(lsKey(),JSON.stringify(snap));
+  }catch(e){/* storage full or unavailable */}
+}
+function readBackup(id){
+  try{const raw=localStorage.getItem(lsKey(id));return raw?JSON.parse(raw):null;}catch(e){return null;}
+}
+function clearBackup(id){try{localStorage.removeItem(lsKey(id));}catch(e){}}
+function applySnapshot(snap){
+  if(snap.lessonData)Object.assign(lessonData,snap.lessonData);
+  if(Array.isArray(snap.blocks)){blocks=snap.blocks;blockCounter=blocks.reduce((m,b)=>{const n=b.id&&parseInt(b.id.replace('b',''));return n>m?n:m;},0)||blocks.length;}
+  document.getElementById('lessonTitle').value=lessonData.titleEn||'';
+  document.getElementById('lessonSubtitle').value=lessonData.subtitleEn||'';
+  document.getElementById('lessonTitleBar').textContent=lessonData.titleEn||'Lesson Builder';
+  renderBlocks();renderPreview();
+}
+// Auto-backup every 15s as a safety net.
+setInterval(backupDraft,15000);
+
+function buildPayload(status){
+  // Sync current edits into the right cache first
+  if(lang==='kn') blocksKn=blocks.slice(); else blocksEn=blocks.slice();
+  const enBuilder = blocksEn.length ? JSON.stringify({lessonData,blocks:blocksEn}) : (lessonRaw&&lessonRaw.builderEn)||'';
+  const knBuilder = blocksKn.length ? JSON.stringify({blocks:blocksKn}) : (lessonRaw&&lessonRaw.builderKn)||'';
+  return{title:lessonData.titleEn,titleKn:lessonData.titleKn,desc:lessonData.subtitleEn,phaseId:document.getElementById('metaPhase').value||undefined,moduleId:document.getElementById('metaModule').value||undefined,difficulty:document.getElementById('metaDifficulty').value,duration:parseInt(document.getElementById('metaDuration').value)||0,status,builderEn:enBuilder,builderKn:knBuilder};
+}
+function adminTokenPresent(){try{return !!localStorage.getItem('pnl_token');}catch(e){return false;}}
+function apiBaseLabel(){try{return (typeof API_BASE!=='undefined'&&API_BASE)?API_BASE:'the API URL';}catch(e){return 'the API URL';}}
+
+async function saveLesson(status){
+  if(!lessonData.titleEn&&!lessonData.titleKn){alert('Please enter a lesson title.');return;}
+  backupDraft(); // never lose work, no matter what happens next
+  if(status==='published'&&!document.getElementById('metaPhase').value){alert('Please choose a Phase before publishing.');return;}
+
+  // 1) Must be signed in as admin — writes require a valid admin token.
+  if(!adminTokenPresent()){
+    if(confirm('You are not signed in as an admin, so the server will reject the save.\n\nOpen the admin login now? Your draft is saved in this browser and will be restored when you return.')){
+      window.location.href='admin-login.html';
+    }
+    return;
+  }
+
+  let lessonId=new URLSearchParams(location.search).get('id');
+  const payload=buildPayload(status);
+
+  // 2) Send the create/update request, with precise error messages.
+  let res;
+  try{
+    res = lessonId ? await api.put('/api/curriculum/lessons/'+lessonId,payload)
+                   : await api.post('/api/curriculum/lessons',payload);
+  }catch(e){
+    const msg=String((e&&e.message)||'');
+    if(/token|admin access|401|403/i.test(msg)){
+      if(confirm('Your admin session has expired, so the server rejected the save.\n\nLog in again now? Your draft is safe in this browser.')){window.location.href='admin-login.html';}
+      return;
+    }
+    if(/reach the server|failed to fetch|networkerror|load failed/i.test(msg)){
+      alert('Could not reach the backend at '+apiBaseLabel()+'.\n\nMake sure the backend server is running (npm run dev / node server.js), then try again. Your draft is saved in this browser.');
+      return;
+    }
+    alert('Save failed: '+msg+'\n\nYour draft is saved in this browser and will be restored.');
+    return;
+  }
+
+  // 3) Capture the new id so further saves update (not duplicate) this lesson.
+  const savedItem=res&&(res.item||res.lesson);
+  const newId=savedItem&&(savedItem._id||savedItem.id);
+  if(!lessonId&&newId){
+    lessonId=newId;
+    try{sessionStorage.setItem('pnl_open_lesson',String(newId));}catch(e){}
+    const u=new URL(location.href);u.searchParams.set('id',newId);history.replaceState(null,'',u);
+    const delBtn=document.getElementById('deleteLessonBtn');if(delBtn)delBtn.style.display='inline-flex';
+    try{const snap=localStorage.getItem('pnl_draft_new');if(snap){localStorage.setItem('pnl_draft_'+newId,snap);localStorage.removeItem('pnl_draft_new');}}catch(e){}
+  }
+
+  // 4) Save any quiz blocks (non-critical — never blocks the draft).
+  try{
+    for(const qb of blocks.filter(b=>b.type==='quiz')){
+      const questions=(qb.data.questions||[]).filter(q=>q.q).map(q=>({question:q.q,options:q.opts,correct:q.correct}));
+      if(questions.length){await api.post('/api/curriculum/quizzes',{title:(lessonData.titleEn||'Lesson')+' Quiz',questions,status,phaseId:document.getElementById('metaPhase').value||undefined,moduleId:document.getElementById('metaModule').value||undefined,...(lessonId&&{lessonId})});}
+    }
+  }catch(e){/* quiz save failure does not affect the lesson draft */}
+
+  // 5) VERIFY: read the lesson back and confirm the builder content actually persisted.
+  let verifiedBlocks=null;
+  try{
+    const check=await api.get('/api/curriculum/lessons/'+lessonId);
+    const cl=check.lesson||check;
+    const raw=cl.builderEn||cl.contentEn||'';
+    if(raw){try{const p=JSON.parse(raw);if(p&&Array.isArray(p.blocks))verifiedBlocks=p.blocks.length;}catch(e){}}
+  }catch(e){/* verification GET failed; fall through to the warning */}
+
+  if(verifiedBlocks!=null){
+    // Confirmed stored on the server — the local backup is no longer needed.
+    clearBackup(lessonId);clearBackup('new');
+    if(status==='published'){alert('Lesson published \u2713');window.location.href='admin-curriculum.html';}
+    else{alert('Draft saved \u2713  ('+verifiedBlocks+' block'+(verifiedBlocks===1?'':'s')+' stored on the server)');}
+  }else{
+    alert('The save request succeeded, but reading the lesson back showed NO stored builder content.\n\nThis means your backend is running an OLD models/Curriculum.js. Replace it with the updated file (it adds the builderEn field) and RESTART the backend, then save again.\n\nYour work is safe in this browser and will be restored automatically.');
+  }
+}
+async function deleteLesson(){
+  const lessonId=new URLSearchParams(location.search).get('id');
+  if(!lessonId){alert('This lesson has not been saved yet, so there is nothing to delete.');return;}
+  const name=lessonData.titleEn||lessonData.titleKn||'this lesson';
+  if(!confirm('Delete \u201C'+name+'\u201D? This permanently removes the lesson and cannot be undone.'))return;
+  try{
+    await api.delete('/api/curriculum/lessons/'+lessonId);
+    alert('Lesson deleted.');
+    window.location.href='admin-curriculum.html';
+  }catch(e){alert('Could not delete: '+e.message);}
+}
+async function loadLesson(id){
+  try{
+    const res=await api.get('/api/curriculum/lessons/'+id);const l=res.lesson||res;
+    const delBtn=document.getElementById('deleteLessonBtn');if(delBtn)delBtn.style.display='inline-flex';
+    lessonData.titleEn=l.title||'';lessonData.titleKn=l.titleKn||'';lessonData.subtitleEn=l.desc||'';
+    document.getElementById('lessonTitle').value=lessonData.titleEn;
+    document.getElementById('lessonSubtitle').value=lessonData.subtitleEn;
+    document.getElementById('lessonTitleBar').textContent=lessonData.titleEn||'Lesson Builder';
+    document.getElementById('metaDifficulty').value=l.difficulty||'beginner';
+    document.getElementById('metaDuration').value=l.duration||'';
+    // ── Figure out what to load into the builder ──
+    let loadedBlocks=null, loadedMeta=null;
+    const isJson=s=>typeof s==='string'&&(s.trim().startsWith('{')||s.trim().startsWith('['));
+    // 1) Prefer the dedicated builder field; fall back to contentEn IF it holds builder JSON.
+    for(const raw of [l.builderEn, l.contentEn]){
+      if(isJson(raw)){
+        try{const parsed=JSON.parse(raw);
+          if(parsed&&Array.isArray(parsed.blocks)&&parsed.blocks.length){loadedBlocks=parsed.blocks;loadedMeta=parsed.lessonData||null;break;}
+          else if(Array.isArray(parsed)&&parsed.length){loadedBlocks=parsed;loadedMeta=null;break;}
+        }catch(e){/* not builder json, keep looking */}
+      }
+    }
+    // 2) No builder blocks, but the lesson has plain text/markdown (Quick Add or seeded)?
+    //    Wrap it in a Concept block so the content is visible & editable instead of a blank canvas.
+    if(!loadedBlocks){
+      const enText=(l.contentEn&&!isJson(l.contentEn))?l.contentEn:(l.content&&!isJson(l.content)?l.content:'');
+      const knText=(l.contentKn&&!isJson(l.contentKn))?l.contentKn:'';
+      if(enText||knText){
+        loadedBlocks=[{id:'b1',type:'concept',data:{headingEn:l.title||'',headingKn:l.titleKn||'',bodyEn:enText,bodyKn:knText}}];
+      }
+    }
+    let serverHadBlocks=false;
+    if(loadedBlocks&&loadedBlocks.length){
+      // Assign ids to any blocks that are missing them (created by backend scripts)
+      let _maxN=0;
+      blocks=loadedBlocks.map(b=>{
+        if(b.id){const n=parseInt((b.id).replace(/\D/g,''))||0;if(n>_maxN)_maxN=n;return b;}
+        _maxN++;return{...b,id:'b'+_maxN};
+      });
+      blockCounter=_maxN;serverHadBlocks=true;
+    }
+    // Cache the raw lesson and both block sets for lang-switching
+    lessonRaw=l;
+    blocksEn=blocks.slice();
+    blocksKn=[];
+    if(l.builderKn){try{const kp=JSON.parse(l.builderKn);
+      let kpArr=null;
+      if(kp&&Array.isArray(kp.blocks)&&kp.blocks.length)kpArr=kp.blocks;
+      else if(Array.isArray(kp)&&kp.length)kpArr=kp;
+      if(kpArr){let _ki=0;blocksKn=kpArr.map(b=>b.id?b:{...b,id:'bk'+(++_ki)});}
+    }catch(e){}}
+    if(loadedMeta){Object.assign(lessonData,loadedMeta);document.getElementById('lessonTitle').value=lessonData.titleEn||'';document.getElementById('lessonSubtitle').value=lessonData.subtitleEn||'';}
+    console.log('[loadLesson] id=',id,'title=',l.title,'builderEn?',!!l.builderEn,'loadedBlocks=',loadedBlocks?loadedBlocks.length:0);
+    // 3) Still nothing on the server — offer to restore an unsaved local backup.
+    if(!serverHadBlocks){
+      const backup=readBackup(id);
+      if(backup&&Array.isArray(backup.blocks)&&backup.blocks.length){
+        if(confirm('This lesson has no saved content on the server, but an unsaved draft was found in this browser ('+backup.blocks.length+' block(s)). Restore it?')){
+          applySnapshot(backup);
+          renderBlocks();renderPreview();
+          return;
+        }
+      }
+      // Tell the user plainly which lesson opened and that it has no blocks,
+      // so an accidentally-opened empty lesson is never mistaken for lost work.
+      alert('Opened \u201C'+(l.title||'this lesson')+'\u201D, but it has no saved content blocks yet.\n\nIf you expected blocks here, you may have opened a different lesson from the list. Lessons you saved with the Rich Editor will reopen with their blocks.');
+    }
+    renderBlocks();renderPreview();
+  }catch(e){
+    console.warn('loadLesson failed:',e&&e.message);
+    alert('Could not load this lesson: '+((e&&e.message)||'unknown error')+'\n\nMake sure the backend is running and you are logged in as admin.');
+  }
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  renderPalette();renderBlocks();renderPreview();loadPhases();
+  // The id may be in the query string, OR (on clean-URL hosts that drop the query)
+  // in sessionStorage, set by the lessons list before navigating here.
+  let lessonId=new URLSearchParams(location.search).get('id');
+  if(!lessonId){try{lessonId=sessionStorage.getItem('pnl_open_lesson')||'';}catch(e){}}
+  if(lessonId){
+    try{sessionStorage.setItem('pnl_open_lesson',String(lessonId));}catch(e){} // keep for refresh
+    loadLesson(lessonId);
+  }else{
+    try{sessionStorage.removeItem('pnl_open_lesson');}catch(e){} // brand-new lesson
+    const backup=readBackup('new');if(backup&&Array.isArray(backup.blocks)&&backup.blocks.length){if(confirm('An unsaved draft was found in this browser ('+backup.blocks.length+' block(s)). Continue editing it?')){applySnapshot(backup);}else{clearBackup('new');}}
+  }
+});
+</script>
+</body>
+</html>

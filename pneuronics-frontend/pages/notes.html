@@ -1,0 +1,479 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My Notes — Neuronix Learning</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+:root{
+  --bg:#0F1B2D; --bg-soft:#142337; --surface:#1C3050; --surface-2:#21385C;
+  --line:rgba(241,238,230,0.10); --line-strong:rgba(241,238,230,0.18);
+  --gold:#F4B740; --gold-soft:rgba(244,183,64,0.14);
+  --cyan:#5FD4D6; --cyan-soft:rgba(95,212,214,0.12);
+  --green:#6FD18C; --green-soft:rgba(111,209,140,0.14);
+  --red:#F47171; --red-soft:rgba(244,113,113,0.12);
+  --text:#F3F1EA; --text-dim:#C8D3E3; --muted:#8AA0BD;
+  --font-display:'Space Grotesk',sans-serif;
+  --font-body:'IBM Plex Sans',sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --sidebar-w:270px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text-dim);font-family:var(--font-body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;display:flex;min-height:100vh;}
+a{color:inherit;text-decoration:none;}
+svg{display:block;}
+.icon{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+button{font-family:inherit;cursor:pointer;}
+
+/* Sidebar — same as dashboard */
+.sidebar{width:var(--sidebar-w);flex-shrink:0;background:var(--bg-soft);border-right:1px solid var(--line);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:50;transition:transform .25s;}
+.sidebar-brand{display:flex;align-items:center;gap:.7rem;padding:1.5rem;border-bottom:1px solid var(--line);}
+.brand-mark{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,var(--gold),#e0a020);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.brand-mark .icon{width:24px;height:24px;color:#16233A;}
+.brand-text{font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--text);line-height:1.2;}
+.brand-text span{display:block;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-top:.15rem;}
+.sidebar-nav{flex:1;overflow-y:auto;padding:1.25rem .85rem;}
+.nav-section{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:.5rem .9rem;margin-top:.75rem;}
+.nav-section:first-child{margin-top:0;}
+.nav-link{display:flex;align-items:center;gap:.85rem;padding:.7rem .9rem;border-radius:10px;color:var(--text-dim);font-size:.92rem;font-weight:500;transition:background .15s,color .15s;}
+.nav-link .icon{color:var(--muted);transition:color .15s;width:19px;height:19px;}
+.nav-link:hover{background:var(--surface);color:var(--text);}
+.nav-link:hover .icon{color:var(--cyan);}
+.nav-link.active{background:var(--gold-soft);color:var(--gold);}
+.nav-link.active .icon{color:var(--gold);}
+.nav-soon{margin-left:auto;font-family:var(--font-mono);font-size:.58rem;color:var(--muted);border:1px solid var(--line-strong);padding:.15rem .45rem;border-radius:999px;}
+.sidebar-foot{border-top:1px solid var(--line);padding:1rem;}
+.profile{display:flex;align-items:center;gap:.75rem;padding:.6rem;}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--cyan-soft);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:600;font-size:.95rem;flex-shrink:0;}
+.profile-name{color:var(--text);font-weight:600;font-size:.9rem;}
+.profile-sub{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);}
+.logout-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;margin-top:.6rem;padding:.6rem;border-radius:9px;background:none;border:1px solid var(--line-strong);color:var(--muted);font-size:.82rem;transition:color .15s,border-color .15s;}
+.logout-btn:hover{color:var(--red);border-color:var(--red);}
+.sidebar-toggle{display:none;position:fixed;top:1rem;left:1rem;z-index:60;width:42px;height:42px;background:var(--surface);border:1px solid var(--line-strong);border-radius:10px;align-items:center;justify-content:center;color:var(--text);}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:45;opacity:0;visibility:hidden;transition:opacity .25s;}
+.scrim.show{opacity:1;visibility:visible;}
+@media(max-width:980px){.sidebar{transform:translateX(-100%);}.sidebar.open{transform:translateX(0);}.scrim.show{display:block;}.sidebar-toggle{display:flex;}.main{margin-left:0!important;}}
+
+/* Main layout */
+.main{margin-left:var(--sidebar-w);flex:1;min-width:0;display:flex;flex-direction:column;}
+.topbar{position:sticky;top:0;z-index:40;background:rgba(15,27,45,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;gap:1rem;}
+.topbar-title{font-family:var(--font-display);font-weight:600;font-size:1.2rem;color:var(--text);}
+@media(max-width:640px){.topbar{padding:1rem 1.25rem 1rem 4.25rem;}}
+
+/* Notes layout */
+.notes-layout{display:flex;flex:1;min-height:0;}
+.notes-sidebar{width:300px;flex-shrink:0;border-right:1px solid var(--line);display:flex;flex-direction:column;height:calc(100vh - 65px);position:sticky;top:65px;overflow:hidden;}
+.notes-sidebar-head{padding:1rem;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:.65rem;}
+.search-wrap{display:flex;align-items:center;gap:.5rem;background:var(--bg-soft);border:1px solid var(--line-strong);border-radius:9px;padding:.55rem .8rem;}
+.search-wrap .icon{width:15px;height:15px;color:var(--muted);flex-shrink:0;}
+.search-wrap input{background:none;border:none;color:var(--text);font-size:.87rem;font-family:var(--font-body);width:100%;outline:none;}
+.search-wrap input::placeholder{color:var(--muted);}
+.filter-row{display:flex;gap:.4rem;}
+.filter-chip{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;padding:.3rem .65rem;border-radius:999px;border:1px solid var(--line-strong);background:none;color:var(--muted);transition:all .15s;}
+.filter-chip.active{background:var(--gold-soft);color:var(--gold);border-color:rgba(244,183,64,.3);}
+.notes-list{flex:1;overflow-y:auto;padding:.5rem;}
+.note-item{padding:.85rem 1rem;border-radius:10px;cursor:pointer;transition:background .15s;border:1px solid transparent;margin-bottom:.3rem;}
+.note-item:hover{background:var(--surface);}
+.note-item.active{background:var(--surface);border-color:var(--line-strong);}
+.note-item-title{font-weight:600;font-size:.9rem;color:var(--text);display:flex;align-items:center;gap:.4rem;margin-bottom:.25rem;}
+.note-item-title .pin-icon{width:13px;height:13px;color:var(--gold);}
+.note-item-preview{font-size:.8rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.note-item-meta{display:flex;align-items:center;gap:.5rem;margin-top:.4rem;}
+.note-tag{font-family:var(--font-mono);font-size:.65rem;padding:.15rem .45rem;border-radius:5px;background:var(--cyan-soft);color:var(--cyan);}
+.note-date{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);}
+.notes-empty{text-align:center;padding:2.5rem 1rem;color:var(--muted);}
+.notes-empty h3{font-family:var(--font-display);color:var(--text);font-size:.95rem;margin-bottom:.4rem;}
+.notes-empty p{font-size:.82rem;}
+
+/* Note editor */
+.note-editor{flex:1;display:flex;flex-direction:column;padding:2rem;min-width:0;}
+.editor-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:1rem;color:var(--muted);}
+.editor-empty .icon{width:48px;height:48px;color:var(--line-strong);}
+.editor-empty p{font-size:.9rem;}
+.editor-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.25rem;flex-wrap:wrap;}
+.editor-actions{display:flex;gap:.5rem;}
+.title-input{width:100%;background:none;border:none;border-bottom:1px solid var(--line-strong);color:var(--text);font-family:var(--font-display);font-size:1.6rem;font-weight:600;padding:.4rem 0 .75rem;outline:none;margin-bottom:1rem;transition:border-color .2s;}
+.title-input::placeholder{color:var(--muted);}
+.title-input:focus{border-bottom-color:var(--cyan);}
+.meta-row{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;flex-wrap:wrap;}
+.meta-input{background:var(--bg-soft);border:1px solid var(--line-strong);border-radius:8px;padding:.45rem .75rem;color:var(--text);font-size:.82rem;font-family:var(--font-body);outline:none;}
+.meta-input:focus{border-color:var(--cyan);}
+.content-textarea{flex:1;width:100%;background:none;border:none;color:var(--text-dim);font-family:var(--font-body);font-size:.97rem;line-height:1.75;resize:none;outline:none;min-height:300px;}
+.content-textarea::placeholder{color:var(--muted);}
+.save-status{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);}
+.save-status.saving{color:var(--cyan);}
+.save-status.saved{color:var(--green);}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-display);font-weight:600;font-size:.85rem;padding:.6rem 1.1rem;border-radius:9px;border:1px solid var(--line-strong);background:var(--bg-soft);color:var(--text-dim);transition:all .2s;white-space:nowrap;}
+.btn:hover{border-color:var(--cyan);color:var(--cyan);}
+.btn-primary{background:var(--gold);color:#16233A;border-color:var(--gold);}
+.btn-primary:hover{background:transparent;color:var(--gold);}
+.btn-icon{width:34px;height:34px;padding:0;display:inline-flex;align-items:center;justify-content:center;}
+.btn-icon .icon{width:16px;height:16px;}
+.btn-icon.active{color:var(--gold);border-color:rgba(244,183,64,.4);}
+.btn-icon.danger:hover{border-color:var(--red);color:var(--red);}
+.btn .icon{width:15px;height:15px;}
+
+/* Toast */
+.toast{position:fixed;bottom:1.5rem;right:1.5rem;z-index:300;background:var(--surface);border:1px solid var(--line-strong);border-radius:12px;padding:.9rem 1.2rem;display:flex;align-items:center;gap:.7rem;font-size:.84rem;color:var(--text);transform:translateY(20px);opacity:0;visibility:hidden;transition:all .25s;}
+.toast.show{transform:translateY(0);opacity:1;visibility:visible;}
+</style>
+</head>
+<body>
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-logo" viewBox="0 0 100 60" fill="none"><path d="M2 21h44l16 18h36v-7H65.5L49.5 14H2z" fill="currentColor"/><path d="M68 39h16l16-18H84z" fill="currentColor"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/><path d="M9 19h6a3 3 0 0 0 3-3V8M6 16V8a3 3 0 0 1 3-3h6"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 4 20 12 6 20 6 4"/></symbol>
+  <symbol id="i-notes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-ribbon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.2 12.5L6 21l6-3 6 3-2.2-8.5"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M6 4h12v5a6 6 0 0 1-12 0z"/><path d="M9 19h6M12 15v4"/></symbol>
+  <symbol id="i-book-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4h7a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2.5 2.5 0 0 1 2.5-2.5H22z"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><line x1="2.5" y1="10" x2="21.5" y2="10"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-2.81 1.17V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 7 19.4l-.06-.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15H4.5a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 6 9.4l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 11 6.6V4.5a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 2.81 1.17l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 11h.1a2 2 0 0 1 0 4z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h4l-3.5 5 1.5 7-5-3-5 3 1.5-7L5 9h4z"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M9 7V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V7"/><path d="M6 7l1 13a1.5 1.5 0 0 0 1.5 1.4h7A1.5 1.5 0 0 0 17 20l1-13"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></symbol>
+</svg>
+
+<button class="sidebar-toggle" id="sidebarToggle"><svg class="icon"><use href="#i-menu"/></svg></button>
+<div class="scrim" id="scrim"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="brand-mark"><svg class="icon"><use href="#i-logo"/></svg></div>
+    <div class="brand-text">Neuronix<span>AI Engineering</span></div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section">Learn</div>
+    <a href="dashboard.html" class="nav-link"><svg class="icon"><use href="#i-grid"/></svg> Dashboard</a>
+    <a href="curriculum.html" class="nav-link"><svg class="icon"><use href="#i-route"/></svg> Curriculum</a>
+    <a href="curriculum.html" class="nav-link"><svg class="icon"><use href="#i-play"/></svg> Continue Learning</a>
+    <div class="nav-section">Tools</div>
+    <a href="notes.html" class="nav-link active"><svg class="icon"><use href="#i-notes"/></svg> My Notes</a>
+    <a href="#" class="nav-link" data-soon><svg class="icon"><use href="#i-bookmark"/></svg> Bookmarks <span class="nav-soon">Soon</span></a>
+    <a href="#" class="nav-link" data-soon><svg class="icon"><use href="#i-trophy"/></svg> Achievements <span class="nav-soon">Soon</span></a>
+    <a href="certificate.html" class="nav-link"><svg class="icon"><use href="#i-ribbon"/></svg> Certificate</a>
+    <a href="#" class="nav-link" data-soon><svg class="icon"><use href="#i-book-open"/></svg> Glossary <span class="nav-soon">Soon</span></a>
+    <div class="nav-section">Account</div>
+    <a href="pricing.html" class="nav-link"><svg class="icon"><use href="#i-card"/></svg> Subscription</a>
+    <a href="#" class="nav-link" data-soon><svg class="icon"><use href="#i-settings"/></svg> Settings <span class="nav-soon">Soon</span></a>
+    <a href="../index.html" class="nav-link"><svg class="icon"><use href="#i-globe"/></svg> Public Site</a>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="profile">
+      <div class="avatar" id="profileAvatar">··</div>
+      <div>
+        <div class="profile-name" id="profileName">Loading…</div>
+        <div class="profile-sub" id="profileSub">—</div>
+      </div>
+    </div>
+    <button class="logout-btn" id="logoutBtn"><svg class="icon" style="width:16px;height:16px;"><use href="#i-logout"/></svg> Log out</button>
+  </div>
+</aside>
+
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-title">My Notes</div>
+    <button class="btn btn-primary" id="newNoteBtn"><svg class="icon"><use href="#i-plus"/></svg> New note</button>
+  </div>
+
+  <div class="notes-layout">
+    <!-- Notes list sidebar -->
+    <div class="notes-sidebar">
+      <div class="notes-sidebar-head">
+        <div class="search-wrap">
+          <svg class="icon"><use href="#i-search"/></svg>
+          <input type="text" id="noteSearch" placeholder="Search notes…" />
+        </div>
+        <div class="filter-row">
+          <button class="filter-chip active" data-filter="all">All</button>
+          <button class="filter-chip" data-filter="pinned">Pinned</button>
+        </div>
+      </div>
+      <div class="notes-list" id="notesList">
+        <div class="notes-empty"><h3>Loading…</h3></div>
+      </div>
+    </div>
+
+    <!-- Note editor -->
+    <div class="note-editor" id="noteEditor">
+      <div class="editor-empty" id="editorEmpty">
+        <svg class="icon"><use href="#i-notes"/></svg>
+        <p>Select a note to edit, or create a new one.</p>
+        <button class="btn btn-primary" id="newNoteBtn2"><svg class="icon"><use href="#i-plus"/></svg> New note</button>
+      </div>
+
+      <div id="editorContent" style="display:none;display:flex;flex-direction:column;flex:1;">
+        <div class="editor-head">
+          <span class="save-status" id="saveStatus">—</span>
+          <div class="editor-actions">
+            <button class="btn btn-icon" id="pinBtn" title="Pin note"><svg class="icon"><use href="#i-pin"/></svg></button>
+            <button class="btn btn-icon danger" id="deleteBtn" title="Delete note"><svg class="icon"><use href="#i-trash"/></svg></button>
+          </div>
+        </div>
+        <input type="text" class="title-input" id="noteTitle" placeholder="Note title…" />
+        <div class="meta-row">
+          <input type="text" class="meta-input" id="noteTag" placeholder="Tag (e.g. Phase 1, ML, Review)" style="flex:1;" />
+          <span class="save-status" style="font-size:.7rem;"></span>
+        </div>
+        <textarea class="content-textarea" id="noteContent" placeholder="Start writing your notes here…"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><svg class="icon" style="width:16px;height:16px;color:var(--green);stroke-width:2;"><use href="#i-check"/></svg><span id="toastMsg"></span></div>
+
+<script src="/js/api.js"></script>
+<script>
+  // Guard
+  const session = getSession();
+  if (!session || !getToken()) window.location.href = 'login.html';
+
+  // Sidebar
+  const sidebar = document.getElementById('sidebar');
+  const scrim   = document.getElementById('scrim');
+  document.getElementById('sidebarToggle').addEventListener('click', () => { sidebar.classList.add('open'); scrim.classList.add('show'); });
+  scrim.addEventListener('click', () => { sidebar.classList.remove('open'); scrim.classList.remove('show'); });
+  document.querySelectorAll('[data-soon]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); alert('Coming soon!'); }));
+  document.getElementById('logoutBtn').addEventListener('click', () => { if (confirm('Log out?')) studentLogout(); });
+
+  // Profile
+  function initials(n) { const p = (n||'').trim().split(/\s+/); return ((p[0]?.[0]||'')+(p[1]?.[0]||'')).toUpperCase()||'?'; }
+  (async function loadProfile() {
+    try {
+      const d = await api.get('/api/auth/me');
+      document.getElementById('profileAvatar').textContent = initials(d.student.name);
+      document.getElementById('profileName').textContent = d.student.name || 'Student';
+      document.getElementById('profileSub').textContent = d.student.enrolled ? 'Enrolled' : 'Not enrolled';
+    } catch(e) {}
+  })();
+
+  // Toast
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window._tt);
+    window._tt = setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  // ── State ─────────────────────────────────────────────────────────
+  let allNotes = [];
+  let activeNoteId = null;
+  let saveTimer = null;
+  let currentFilter = 'all';
+  let currentSearch = '';
+
+  // ── Load all notes ────────────────────────────────────────────────
+  async function loadNotes() {
+    try {
+      const data = await api.get('/api/notes');
+      allNotes = data.notes || [];
+      renderList();
+    } catch (err) {
+      document.getElementById('notesList').innerHTML =
+        '<div class="notes-empty"><h3>Error</h3><p>' + err.message + '</p></div>';
+    }
+  }
+
+  // ── Render list ───────────────────────────────────────────────────
+  function renderList() {
+    const list = document.getElementById('notesList');
+    let filtered = allNotes.filter(n => {
+      if (currentFilter === 'pinned' && !n.pinned) return false;
+      if (currentSearch) {
+        const q = currentSearch.toLowerCase();
+        return (n.title||'').toLowerCase().includes(q) || (n.content||'').toLowerCase().includes(q) || (n.tag||'').toLowerCase().includes(q);
+      }
+      return true;
+    });
+    if (!filtered.length) {
+      list.innerHTML = '<div class="notes-empty"><h3>No notes yet</h3><p>' +
+        (currentSearch ? 'No results for "'+currentSearch+'"' : 'Click "New note" to get started.') + '</p></div>';
+      return;
+    }
+    list.innerHTML = filtered.map(n => `
+      <div class="note-item ${n._id === activeNoteId ? 'active' : ''}" data-id="${n._id}">
+        <div class="note-item-title">
+          ${n.pinned ? '<svg class="icon pin-icon" style="width:13px;height:13px;color:var(--gold);"><use href="#i-pin"/></svg>' : ''}
+          ${esc(n.title || 'Untitled note')}
+        </div>
+        <div class="note-item-preview">${esc((n.content || '').slice(0,80))}</div>
+        <div class="note-item-meta">
+          ${n.tag ? '<span class="note-tag">' + esc(n.tag) + '</span>' : ''}
+          <span class="note-date">${fmtDate(n.updatedAt)}</span>
+        </div>
+      </div>`).join('');
+    list.querySelectorAll('.note-item').forEach(el => {
+      el.addEventListener('click', () => openNote(el.dataset.id));
+    });
+  }
+
+  function esc(s) { const d = document.createElement('div'); d.textContent = s||''; return d.innerHTML; }
+  function fmtDate(d) {
+    if (!d) return '';
+    const dt = new Date(d), now = new Date();
+    if (dt.toDateString() === now.toDateString()) return 'Today ' + dt.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+    const y = dt.toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+    return y;
+  }
+
+  // ── Open a note ───────────────────────────────────────────────────
+  function openNote(id) {
+    const note = allNotes.find(n => n._id === id);
+    if (!note) return;
+    activeNoteId = id;
+    document.getElementById('editorEmpty').style.display = 'none';
+    document.getElementById('editorContent').style.display = 'flex';
+    document.getElementById('noteTitle').value   = note.title   || '';
+    document.getElementById('noteContent').value = note.content || '';
+    document.getElementById('noteTag').value     = note.tag     || '';
+    const pinBtn = document.getElementById('pinBtn');
+    pinBtn.classList.toggle('active', !!note.pinned);
+    pinBtn.title = note.pinned ? 'Unpin note' : 'Pin note';
+    setStatus('');
+    renderList();
+  }
+
+  // ── New note ──────────────────────────────────────────────────────
+  function createNote() {
+    // Open a blank editor immediately — don't hit the API yet.
+    // The note is created in the DB only when the student types something (first auto-save).
+    activeNoteId = null;
+    document.getElementById('editorEmpty').style.display = 'none';
+    document.getElementById('editorContent').style.display = 'flex';
+    document.getElementById('noteTitle').value   = '';
+    document.getElementById('noteContent').value = '';
+    document.getElementById('noteTag').value     = '';
+    document.getElementById('pinBtn').classList.remove('active');
+    document.getElementById('pinBtn').title = 'Pin note';
+    setStatus('New note — start typing to save');
+    renderList();
+    document.getElementById('noteTitle').focus();
+  }
+  document.getElementById('newNoteBtn').addEventListener('click', createNote);
+  document.getElementById('newNoteBtn2').addEventListener('click', createNote);
+
+  // ── Auto-save ─────────────────────────────────────────────────────
+  function setStatus(msg, cls) {
+    const el = document.getElementById('saveStatus');
+    el.textContent = msg;
+    el.className = 'save-status' + (cls ? ' ' + cls : '');
+  }
+  function scheduleSave() {
+    setStatus('Saving…', 'saving');
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveActiveNote, 900);
+  }
+  async function saveActiveNote() {
+    const title   = document.getElementById('noteTitle').value.trim();
+    const content = document.getElementById('noteContent').value;
+    const tag     = document.getElementById('noteTag').value.trim();
+    const body    = { title: title || 'Untitled note', content, tag };
+
+    try {
+      if (!activeNoteId) {
+        // First save — create the note in DB
+        if (!title && !content) { setStatus(''); return; } // nothing to save yet
+        const data = await api.post('/api/notes', body);
+        activeNoteId = data.note._id;
+        allNotes.unshift(data.note);
+      } else {
+        const data = await api.put('/api/notes/' + activeNoteId, body);
+        const idx = allNotes.findIndex(n => n._id === activeNoteId);
+        if (idx > -1) allNotes[idx] = data.note;
+      }
+      setStatus('Saved', 'saved');
+      setTimeout(() => setStatus(''), 2000);
+      renderList();
+    } catch (err) {
+      setStatus('Save failed', '');
+    }
+  }
+  document.getElementById('noteTitle').addEventListener('input', scheduleSave);
+  document.getElementById('noteContent').addEventListener('input', scheduleSave);
+  document.getElementById('noteTag').addEventListener('input', scheduleSave);
+
+  // ── Pin ───────────────────────────────────────────────────────────
+  document.getElementById('pinBtn').addEventListener('click', async () => {
+    if (!activeNoteId) { showToast('Save the note first.'); return; }
+    try {
+      const data = await api.put('/api/notes/' + activeNoteId + '/pin', {});
+      const note = allNotes.find(n => n._id === activeNoteId);
+      if (note) note.pinned = data.pinned;
+      const pinBtn = document.getElementById('pinBtn');
+      pinBtn.classList.toggle('active', data.pinned);
+      pinBtn.title = data.pinned ? 'Unpin note' : 'Pin note';
+      renderList();
+      showToast(data.pinned ? 'Note pinned.' : 'Note unpinned.');
+    } catch (err) { showToast(err.message); }
+  });
+
+  // ── Delete ────────────────────────────────────────────────────────
+  document.getElementById('deleteBtn').addEventListener('click', async () => {
+    if (!activeNoteId) { createNote(); return; } // "discard" the unsaved draft
+    if (!confirm('Delete this note? This cannot be undone.')) return;
+    try {
+      await api.delete('/api/notes/' + activeNoteId);
+      allNotes = allNotes.filter(n => n._id !== activeNoteId);
+      activeNoteId = null;
+      document.getElementById('editorEmpty').style.display = 'flex';
+      document.getElementById('editorContent').style.display = 'none';
+      renderList();
+      showToast('Note deleted.');
+    } catch (err) { showToast(err.message); }
+  });
+
+  // ── Search & filter ───────────────────────────────────────────────
+  document.getElementById('noteSearch').addEventListener('input', e => {
+    currentSearch = e.target.value;
+    renderList();
+  });
+  document.querySelectorAll('.filter-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      renderList();
+    });
+  });
+
+  // ── Pin route uses PUT with /pin suffix — override api helper ─────
+  // The backend uses PATCH, let's override just for pin
+  api.put = async (path, body) => {
+    if (path.endsWith('/pin')) {
+      const res = await fetch(API_BASE + path.replace('/pin','') + '/pin', {
+        method: 'PATCH',
+        headers: { 'Content-Type':'application/json', 'Authorization':'Bearer '+getToken() },
+        body: JSON.stringify(body),
+      });
+      const d = await res.json();
+      if (!res.ok) throw new Error(d.error || 'Request failed.');
+      return d;
+    }
+    // default PUT
+    const res = await fetch(API_BASE + path, {
+      method: 'PUT',
+      headers: { 'Content-Type':'application/json', 'Authorization':'Bearer '+getToken() },
+      body: JSON.stringify(body),
+    });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Request failed.');
+    return d;
+  };
+
+  // ── Init ──────────────────────────────────────────────────────────
+  loadNotes();
+</script>
+</body>
+</html>
