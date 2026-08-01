@@ -41,6 +41,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
 .nl .icon{color:var(--muted);transition:color .15s;width:18px;height:18px;}
 .nl:hover{background:var(--surface);color:var(--text);}
 .nl:hover .icon{color:var(--cyan);}
+.nl-enroll{background:var(--gold);color:#16233A;font-weight:600;}
+.nl-enroll .icon{color:#16233A;}
+.nl-enroll:hover{background:var(--gold);color:#16233A;opacity:.9;}
+.nl-enroll:hover .icon{color:#16233A;}
 .nl.active{background:var(--gold-soft);color:var(--gold);}
 .nl.active .icon{color:var(--gold);}
 .nb{margin-left:auto;font-family:var(--font-mono);font-size:.6rem;background:var(--cyan-soft);color:var(--cyan);padding:.18rem .45rem;border-radius:999px;}
@@ -267,6 +271,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
     <div class="sb-text">Neuronix<span>Student Panel</span></div>
   </div>
   <nav class="sb-nav">
+    <a href="pricing.html" class="nl nl-enroll" id="enrollNavLink" style="display:none;"><svg class="icon"><use href="#i-play"/></svg> Enroll Now</a>
     <div class="sb-sec">Learn</div>
     <button class="nl active" data-tab="dashboard"><svg class="icon"><use href="#i-grid"/></svg> Dashboard</button>
     <button class="nl" data-tab="curriculum"><svg class="icon"><use href="#i-route"/></svg> Curriculum <span class="nb" id="lessonCountBadge">—</span></button>
@@ -547,6 +552,7 @@ var _student={}, _curriculum=[], _completedSet=new Set(), _nextLesson=null;
   }
   document.getElementById('profileSub').textContent=enrolled?daysLeft+' days left':'Not enrolled';
   document.getElementById('statDays').textContent=enrolled?daysLeft:'\u2014';
+  document.getElementById('enrollNavLink').style.display=enrolled?'none':'flex';
 
   _completedSet=new Set((_student.completedLessons||[]).map(String));
 
