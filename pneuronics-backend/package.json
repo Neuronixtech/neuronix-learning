@@ -1,7 +1,7 @@
 {
   "name": "neuronix-learning-backend",
   "version": "1.0.0",
-  "description": "Production backend for Neuronix Learning — Auth, OTP (MSG91), Payments (Razorpay), Curriculum CRUD",
+  "description": "Production backend for Neuronix Learning — Auth, OTP (Resend), Payments (Razorpay), Curriculum CRUD",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,7 +9,6 @@
     "seed": "node seed.js"
   },
   "dependencies": {
-    "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",

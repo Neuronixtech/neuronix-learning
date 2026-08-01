@@ -1,6 +1,6 @@
 # Neuronix Learning — Backend
 
-Production backend for the Neuronix Learning platform. Handles authentication, OTP-based password reset (MSG91), payments (Razorpay), and curriculum management.
+Production backend for the Neuronix Learning platform. Handles authentication, OTP-based password reset (via email, using Resend), payments (Razorpay), and curriculum management.
 
 ## Tech Stack
 
@@ -9,7 +9,7 @@ Production backend for the Neuronix Learning platform. Handles authentication, O
 - **JWT** — authentication tokens
 - **bcryptjs** — password hashing
 - **Razorpay** — payment processing
-- **MSG91** — SMS OTP delivery
+- **Resend** — transactional email (contact form + OTP password reset)
 
 ---
 
@@ -29,7 +29,7 @@ npm install
 ```bash
 cp .env.example .env
 ```
-Then fill in all values in `.env` (MongoDB URI, JWT secret, MSG91 keys, Razorpay keys).
+Then fill in all values in `.env` (MongoDB URI, JWT secret, Resend API key, Razorpay keys).
 
 Generate a JWT secret:
 ```bash

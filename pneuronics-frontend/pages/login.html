@@ -787,16 +787,16 @@ img,svg{ display:block; max-width:100%; }
       <!-- Forgot Password Panel -->
       <div class="auth-panel" id="panelForgot">
 
-        <!-- Step 1: Enter phone -->
+        <!-- Step 1: Enter email -->
         <div id="fpStep1">
           <h2>Reset Password</h2>
-          <p class="sub">Enter your registered phone number and we'll send you an OTP.</p>
-          <form id="fpPhoneForm" novalidate>
+          <p class="sub">Enter your registered email address and we'll send you an OTP.</p>
+          <form id="fpEmailForm" novalidate>
             <div class="form-group full">
-              <label for="fp-phone">Registered Phone Number</label>
+              <label for="fp-email">Registered Email Address</label>
               <div class="input-icon-wrap">
-                <svg class="icon lead-icon"><use href="#i-phone"/></svg>
-                <input type="tel" id="fp-phone" placeholder="+91 00000 00000" required />
+                <svg class="icon lead-icon"><use href="#i-mail"/></svg>
+                <input type="email" id="fp-email" placeholder="you@example.com" required />
               </div>
             </div>
             <button type="submit" id="fpSendOtpBtn" class="btn btn-primary"><svg class="icon"><use href="#i-arrow"/></svg> Send OTP</button>
@@ -807,7 +807,7 @@ img,svg{ display:block; max-width:100%; }
         <!-- Step 2: Enter OTP -->
         <div id="fpStep2" style="display:none;">
           <h2>Enter OTP</h2>
-          <p class="sub" id="fpOtpNote">A 6-digit OTP has been sent to your number.</p>
+          <p class="sub" id="fpOtpNote">A 6-digit OTP has been sent to your email.</p>
           <form id="fpOtpForm" novalidate>
             <div class="form-group full">
               <label for="fp-otp">6-Digit OTP</label>
@@ -933,7 +933,7 @@ img,svg{ display:block; max-width:100%; }
     document.getElementById('fpStep1').style.display = '';
     document.getElementById('fpStep2').style.display = 'none';
     document.getElementById('fpStep3').style.display = 'none';
-    document.getElementById('fp-phone').value = '';
+    document.getElementById('fp-email').value = '';
     document.getElementById('fp-otp').value = '';
   }
 
@@ -950,7 +950,7 @@ img,svg{ display:block; max-width:100%; }
   });
 
   // ── Forgot Password Flow (backend-connected via shared api helper) ──
-  let _fpPhone = '';
+  let _fpEmail = '';
 
   function fpError(formId, msg) {
     const form = document.getElementById(formId);
@@ -975,22 +975,22 @@ img,svg{ display:block; max-width:100%; }
   }
 
   // Step 1 — send OTP to registered phone (backend verifies the number exists)
-  document.getElementById('fpPhoneForm').addEventListener('submit', async (e) => {
+  document.getElementById('fpEmailForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    fpClearError('fpPhoneForm');
-    const phone = document.getElementById('fp-phone').value.trim();
-    if (!phone) { fpError('fpPhoneForm', 'Please enter your phone number.'); return; }
+    fpClearError('fpEmailForm');
+    const email = document.getElementById('fp-email').value.trim();
+    if (!email) { fpError('fpEmailForm', 'Please enter your email address.'); return; }
 
-    _fpPhone = phone;
+    _fpEmail = email;
     fpSetLoading('fpSendOtpBtn', true, 'Send OTP');
     try {
-      await api.post('/api/otp/send', { phone });
-      document.getElementById('fpOtpNote').textContent = 'A 6-digit OTP was sent to ' + phone + '. Valid for 10 minutes.';
+      await api.post('/api/otp/send', { email });
+      document.getElementById('fpOtpNote').textContent = 'A 6-digit OTP was sent to ' + email + '. Valid for 10 minutes.';
       document.getElementById('fpStep1').style.display = 'none';
       document.getElementById('fpStep2').style.display = '';
       document.getElementById('fp-otp').focus();
     } catch (err) {
-      fpError('fpPhoneForm', err.message || 'Could not send OTP. Please try again.');
+      fpError('fpEmailForm', err.message || 'Could not send OTP. Please try again.');
     } finally {
       fpSetLoading('fpSendOtpBtn', false, 'Send OTP');
     }
@@ -999,11 +999,11 @@ img,svg{ display:block; max-width:100%; }
   // Resend OTP
   document.getElementById('resendOtp').addEventListener('click', async (e) => {
     e.preventDefault();
-    if (!_fpPhone) { showForgot(); return; }
+    if (!_fpEmail) { showForgot(); return; }
     const link = e.target;
     link.textContent = 'Sending\u2026';
     try {
-      await api.post('/api/otp/send', { phone: _fpPhone });
+      await api.post('/api/otp/send', { email: _fpEmail });
       link.textContent = 'OTP Resent \u2713';
       setTimeout(() => link.textContent = 'Resend OTP', 3000);
     } catch (err) {
@@ -1021,7 +1021,7 @@ img,svg{ display:block; max-width:100%; }
 
     fpSetLoading('fpVerifyOtpBtn', true, 'Verify OTP');
     try {
-      await api.post('/api/otp/verify', { phone: _fpPhone, otp });
+      await api.post('/api/otp/verify', { email: _fpEmail, otp });
       document.getElementById('fpStep2').style.display = 'none';
       document.getElementById('fpStep3').style.display = '';
       document.getElementById('fp-newpass').focus();
@@ -1043,8 +1043,8 @@ img,svg{ display:block; max-width:100%; }
 
     fpSetLoading('fpUpdatePassBtn', true, 'Update Password');
     try {
-      await api.post('/api/otp/reset-password', { phone: _fpPhone, newPassword: newPass });
-      _fpPhone = '';
+      await api.post('/api/otp/reset-password', { email: _fpEmail, newPassword: newPass });
+      _fpEmail = '';
       document.getElementById('fpStep3').innerHTML = `
         <div style="text-align:center;padding:1rem 0;">
           <svg style="width:48px;height:48px;color:var(--green);margin:0 auto 1rem;display:block;" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9"/></svg>

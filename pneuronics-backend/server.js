@@ -1,6 +1,6 @@
 /**
  * Neuronix Learning — Production Backend
- * Express + MongoDB + JWT + Razorpay + MSG91
+ * Express + MongoDB + JWT + Razorpay + Resend
  */
 
 require('dotenv').config();
