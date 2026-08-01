@@ -1186,12 +1186,16 @@ img,svg{ display:block; max-width:100%; }
 
     // ── Validate phone number ──────────────────────────────────────
     // Strip spaces, dashes, parentheses and a leading + for checking
-    const phoneDigits = body.phone.replace(/[\s\-()]/g, '').replace(/^\+/, '');
-    // Accept 10 digits (local) or up to 15 with country code (E.164)
-    if (!/^\d{10,15}$/.test(phoneDigits)) {
-      showFieldError('rg-phone', 'Please enter a valid phone number (10–15 digits).');
+    let phoneDigits = body.phone.replace(/[\s\-()]/g, '').replace(/^\+/, '');
+    // Strip a leading India country code (91) if present, leaving the 10-digit local number
+    if (phoneDigits.length === 12 && phoneDigits.startsWith('91')) {
+      phoneDigits = phoneDigits.slice(2);
+    }
+    if (!/^\d{10}$/.test(phoneDigits)) {
+      showFieldError('rg-phone', 'Please enter a valid 10-digit phone number.');
       return;
     }
+    body.phone = phoneDigits;
 
     // ── Validate date of birth — minimum 12 years old ──────────────
     if (!body.dob) {
