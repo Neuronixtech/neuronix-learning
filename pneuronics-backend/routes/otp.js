@@ -35,7 +35,7 @@ router.post('/send', async (req, res) => {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const { error } = await resend.emails.send({
-      from: 'Neuronix Learning <onboarding@resend.dev>',
+      from: 'Neuronix Learning <noreply@neuronixtech.cloud>',
       to: cleaned,
       subject: 'Your Neuronix Learning password reset OTP',
       html: `

@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const { error } = await resend.emails.send({
-      from: 'Neuronix Contact Form <onboarding@resend.dev>',
+      from: 'Neuronix Contact Form <noreply@neuronixtech.cloud>',
       to:   process.env.CONTACT_EMAIL,
       reply_to: `"${name}" <${email}>`,
       subject: `New message from ${name} — Neuronix Learning`,
