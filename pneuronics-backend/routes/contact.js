@@ -1,6 +1,6 @@
 const express    = require('express');
 const router     = express.Router();
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 
 // ── POST /api/contact ─────────────────────────────────────────────
 router.post('/', async (req, res) => {
@@ -10,19 +10,17 @@ router.post('/', async (req, res) => {
     return res.status(400).json({ error: 'Name, email and message are required.' });
   }
 
-  try {
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.CONTACT_EMAIL,       // neuronixtechnologies@gmail.com
-        pass: process.env.CONTACT_EMAIL_PASS,  // Gmail App Password
-      },
-    });
+  if (!process.env.RESEND_API_KEY) {
+    console.error('Contact email error: RESEND_API_KEY is not set.');
+    return res.status(500).json({ error: 'Failed to send message. Please try WhatsApp or email us directly.' });
+  }
 
-    await transporter.sendMail({
-      from: `"Neuronix Contact Form" <${process.env.CONTACT_EMAIL}>`,
+  try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const { error } = await resend.emails.send({
+      from: 'Neuronix Contact Form <onboarding@resend.dev>',
       to:   process.env.CONTACT_EMAIL,
-      replyTo: `"${name}" <${email}>`,
+      reply_to: `"${name}" <${email}>`,
       subject: `New message from ${name} — Neuronix Learning`,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#0F1B2D;color:#F3F1EA;border-radius:12px;overflow:hidden;">
@@ -45,6 +43,11 @@ router.post('/', async (req, res) => {
         </div>`,
       text: `New contact message\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone || '—'}\n\nMessage:\n${message}`,
     });
+
+    if (error) {
+      console.error('Contact email error:', error.message || error);
+      return res.status(500).json({ error: 'Failed to send message. Please try WhatsApp or email us directly.' });
+    }
 
     res.json({ success: true, message: 'Message sent successfully.' });
   } catch (err) {
