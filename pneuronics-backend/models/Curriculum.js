@@ -9,6 +9,7 @@ const phaseSchema = new mongoose.Schema({
   order:  { type: Number, default: 0 },
   status: { type: String, enum: ['draft', 'published'], default: 'draft' },
 }, { timestamps: true });
+phaseSchema.index({ status: 1, order: 1 });
 
 // ── Module ─────────────────────────────────────────────
 const moduleSchema = new mongoose.Schema({
@@ -19,6 +20,8 @@ const moduleSchema = new mongoose.Schema({
   order:   { type: Number, default: 0 },
   status:  { type: String, enum: ['draft', 'published'], default: 'draft' },
 }, { timestamps: true });
+moduleSchema.index({ phaseId: 1, order: 1 });
+moduleSchema.index({ status: 1 });
 
 // ── Lesson ─────────────────────────────────────────────
 const lessonSchema = new mongoose.Schema({
@@ -44,6 +47,9 @@ const lessonSchema = new mongoose.Schema({
   order:    { type: Number, default: 0 },
   status:   { type: String, enum: ['draft', 'published'], default: 'draft' },
 }, { timestamps: true });
+lessonSchema.index({ moduleId: 1, order: 1 });
+lessonSchema.index({ phaseId: 1 });
+lessonSchema.index({ status: 1 });
 
 // ── Quiz ───────────────────────────────────────────────
 const questionSchema = new mongoose.Schema({

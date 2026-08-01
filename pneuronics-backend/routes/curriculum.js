@@ -17,15 +17,24 @@ router.get('/lessons/:id', async (req, res) => {
   }
 });
 
-function crud(model, name) {
+function crud(model, name, opts = {}) {
   // GET all (public — but only published unless ?all=true with admin)
+  // excludeWhenPublic: field names stripped from the response when the caller
+  // is not passing ?all=true (i.e. the public/unauthenticated list view, which
+  // never needs heavy fields like full lesson body content).
+  const { excludeWhenPublic } = opts;
   router.get(`/${name}`, async (req, res) => {
     try {
-      const filter = req.query.all === 'true' ? {} : { status: 'published' };
+      const isAdminView = req.query.all === 'true';
+      const filter = isAdminView ? {} : { status: 'published' };
       if (req.query.lessonId)  filter.lessonId  = req.query.lessonId;
       if (req.query.phaseId)   filter.phaseId   = req.query.phaseId;
       if (req.query.moduleId)  filter.moduleId  = req.query.moduleId;
-      const items = await model.find(filter).sort({ order: 1, createdAt: 1 });
+      let query = model.find(filter).sort({ order: 1, createdAt: 1 });
+      if (excludeWhenPublic && !isAdminView) {
+        query = query.select(excludeWhenPublic.map(f => `-${f}`).join(' '));
+      }
+      const items = await query;
       res.set('Cache-Control', 'no-store');
       res.json({ success: true, [name]: items });
     } catch (err) {
@@ -67,7 +76,10 @@ function crud(model, name) {
 
 crud(Phase,        'phases');
 crud(Module,       'modules');
-crud(Lesson,       'lessons');
+// Public lesson-list callers (curriculum tree, lesson prev/next nav) only ever
+// use metadata — never the full lesson body — so strip the heavy fields unless
+// an admin explicitly asks for everything via ?all=true.
+crud(Lesson,       'lessons', { excludeWhenPublic: ['contentEn', 'contentKn', 'content', 'builderEn', 'builderKn'] });
 crud(Quiz,         'quizzes');
 crud(Practice,     'practices');
 crud(GlossaryTerm, 'glossary');
@@ -81,7 +93,13 @@ router.get('/full', async (req, res) => {
 
     const phases  = await Phase.find(filter).sort({ order: 1 });
     const modules = await Module.find(filter).sort({ order: 1 });
-    const lessons = await Lesson.find(filter).sort({ order: 1, createdAt: 1 });
+    // The curriculum tree view only ever renders lesson metadata (title, order,
+    // duration, etc.) — never the full body/builder JSON, which can be large
+    // (embedded SVGs across many blocks). Excluding it here is what actually
+    // fixes the slow curriculum-page load.
+    const lessons = await Lesson.find(filter)
+      .select('-contentEn -contentKn -content -builderEn -builderKn')
+      .sort({ order: 1, createdAt: 1 });
 
     const nested = phases.map(phase => {
       const phaseId = String(phase._id);
