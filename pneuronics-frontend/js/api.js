@@ -38,8 +38,12 @@ async function apiFetch(path, options = {}) {
   try { data = await res.json(); } catch { /* no body */ }
 
   if (!res.ok) {
-    // 401 or SESSION_INVALID → token expired or used on another device → send to login
-    if (res.status === 401 || data.code === 'SESSION_INVALID') {
+    // 401 or SESSION_INVALID → token expired or used on another device → send to login.
+    // Excludes the login endpoint itself: a 401 there means "wrong credentials," not
+    // "your existing session became invalid" -- it must throw so the login form can
+    // show the error, not silently redirect back to the same page.
+    const isLoginAttempt = path === '/api/auth/login';
+    if (!isLoginAttempt && (res.status === 401 || data.code === 'SESSION_INVALID')) {
       clearToken();
       localStorage.removeItem('pnl_student_session');
       if (sessionStorage.getItem('pnl_admin_session') !== 'true') {
