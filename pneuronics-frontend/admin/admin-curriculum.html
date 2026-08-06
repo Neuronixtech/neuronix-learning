@@ -1106,17 +1106,9 @@ function renderLessons() {
       tbody.appendChild(gtr);
     }
     // How many Rich-Editor blocks does this lesson actually have stored?
-    let blockCount = 0;
-    for (const raw of [l.builderEn, l.contentEn]) {
-      if (typeof raw === 'string') {
-        const _t = raw.trim();
-        if (_t.startsWith('{')) {
-          try { const p = JSON.parse(_t); if (p && Array.isArray(p.blocks)) { blockCount = p.blocks.length; break; } } catch(e) {}
-        } else if (_t.startsWith('[')) {
-          try { const p = JSON.parse(_t); if (Array.isArray(p) && p.length) { blockCount = p.length; break; } } catch(e) {}
-        }
-      }
-    }
+    // (computed server-side now — the list endpoint no longer ships the full
+    // builderEn/builderKn content, just this count, to keep the table fast)
+    const blockCount = l.blockCount || 0;
     const richBadge = blockCount > 0
       ? `<span style="display:inline-block;margin-left:.5rem;font-family:var(--font-mono);font-size:.6rem;font-weight:700;letter-spacing:.05em;color:var(--gold);background:rgba(244,183,64,.12);border:1px solid rgba(244,183,64,.3);border-radius:20px;padding:1px 7px;vertical-align:middle;">\u2726 RICH \u00B7 ${blockCount}</span>`
       : '';

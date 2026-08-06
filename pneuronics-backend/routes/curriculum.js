@@ -44,9 +44,15 @@ function crud(model, name, opts = {}) {
   // excludeWhenPublic: field names stripped from the response when the caller
   // is not passing ?all=true (i.e. the public/unauthenticated list view, which
   // never needs heavy fields like full lesson body content).
+  // postProcess: optional (item, isAdminView) => plainObject hook run over
+  // every fetched item before it's sent — used to derive lightweight summary
+  // fields (like a block count) and then drop the heavy source field from the
+  // response, so list views stay fast even when a single record's content is
+  // large. Runs for both public and admin callers; when set, it takes over
+  // field-trimming entirely (excludeWhenPublic is ignored for this route).
   // invalidatesFull: whether writes to this model should also bust the
   // combined /full cache (only Phase/Module/Lesson feed that route).
-  const { excludeWhenPublic, invalidatesFull } = opts;
+  const { excludeWhenPublic, postProcess, invalidatesFull } = opts;
   router.get(`/${name}`, async (req, res) => {
     try {
       const isAdminView = req.query.all === 'true';
@@ -63,10 +69,11 @@ function crud(model, name, opts = {}) {
       if (req.query.phaseId)   filter.phaseId   = req.query.phaseId;
       if (req.query.moduleId)  filter.moduleId  = req.query.moduleId;
       let query = model.find(filter).sort({ order: 1, createdAt: 1 });
-      if (excludeWhenPublic && !isAdminView) {
+      if (excludeWhenPublic && !isAdminView && !postProcess) {
         query = query.select(excludeWhenPublic.map(f => `-${f}`).join(' '));
       }
-      const items = await query;
+      let items = await query;
+      if (postProcess) items = items.map(item => postProcess(item, isAdminView));
       const payload = { success: true, [name]: items };
       if (isAdminView) {
         res.set('Cache-Control', 'no-store');
@@ -122,10 +129,36 @@ function crud(model, name, opts = {}) {
 
 crud(Phase,        'phases',   { invalidatesFull: true });
 crud(Module,       'modules',  { invalidatesFull: true });
-// Public lesson-list callers (curriculum tree, lesson prev/next nav) only ever
-// use metadata — never the full lesson body — so strip the heavy fields unless
-// an admin explicitly asks for everything via ?all=true.
-crud(Lesson,       'lessons', { excludeWhenPublic: ['contentEn', 'contentKn', 'content', 'builderEn', 'builderKn'], invalidatesFull: true });
+
+// No lesson *list* view (public or admin) renders full block content — the
+// Rich Editor always loads a single lesson by ID (GET /lessons/:id) instead.
+// The admin "All Lessons" table only needs a block *count* (for its RICH
+// badge), so compute that server-side and drop the heavy source fields
+// (builderEn/builderKn/content) from every list response. contentEn/contentKn
+// (the smaller legacy fields) stay in for admins, since the admin
+// dual-editor's lesson dropdown reads them straight from this list.
+function countBlocks(raw) {
+  if (typeof raw !== 'string') return 0;
+  const t = raw.trim();
+  try {
+    if (t.startsWith('{')) { const p = JSON.parse(t); return (p && Array.isArray(p.blocks)) ? p.blocks.length : 0; }
+    if (t.startsWith('[')) { const p = JSON.parse(t); return Array.isArray(p) ? p.length : 0; }
+  } catch (e) { /* malformed content — treat as zero blocks */ }
+  return 0;
+}
+function summarizeLesson(item, isAdminView) {
+  const obj = item.toObject();
+  obj.blockCount = countBlocks(obj.builderEn) || countBlocks(obj.contentEn);
+  delete obj.builderEn;
+  delete obj.builderKn;
+  delete obj.content;
+  if (!isAdminView) {
+    delete obj.contentEn;
+    delete obj.contentKn;
+  }
+  return obj;
+}
+crud(Lesson,       'lessons', { postProcess: summarizeLesson, invalidatesFull: true });
 crud(Quiz,         'quizzes');
 crud(Practice,     'practices');
 crud(GlossaryTerm, 'glossary');
