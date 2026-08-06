@@ -99,6 +99,8 @@ button{font-family:inherit;}
 
 /* Table */
 .table-wrap{overflow-x:auto;}
+.lessons-table-scroll{overflow-y:auto;overflow-x:auto;max-height:70vh;}
+.lessons-table-scroll thead th{position:sticky;top:0;background:var(--surface);z-index:1;}
 table{width:100%;border-collapse:collapse;min-width:500px;}
 thead th{text-align:left;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:0 1.5rem .9rem;border-bottom:1px solid var(--line);white-space:nowrap;}
 tbody td{padding:1rem 1.5rem;border-bottom:1px solid var(--line);font-size:.88rem;color:var(--text-dim);white-space:nowrap;}
@@ -370,7 +372,7 @@ tbody tr:hover{background:var(--surface-2);}
           </div>
         </div>
         <div class="panel-body" style="padding:0;">
-          <div class="table-wrap">
+          <div class="table-wrap lessons-table-scroll">
             <table>
               <thead><tr><th>#</th><th>Lesson Title</th><th>Module</th><th>Phase</th><th>Duration</th><th>Status</th><th>Actions</th></tr></thead>
               <tbody id="lessonTableBody"></tbody>
