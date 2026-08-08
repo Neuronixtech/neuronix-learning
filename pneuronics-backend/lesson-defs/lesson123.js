@@ -1,0 +1,123 @@
+const phaseId = '6a4feb6003016efda2350503'; // Phase 4: Math Foundations
+const moduleId = '6a4febd5795ffc51a8bf2712'; // Module 35: Stochastic Processes
+
+module.exports = {
+  phaseId,
+  moduleId,
+  order: 3,
+  type: 'reading',
+  duration: 75,
+  difficulty: 'intermediate',
+  status: 'published',
+  title: 'Stochastic Processes (Part 3) — Mixing Time, Temperature Sampling & Markov Decision Processes',
+  titleKn: 'Stochastic Processes (Part 3) — Mixing Time, Temperature Sampling & Markov Decision Processes',
+  desc: 'Genuinely build a fast-mixing chain (spectral gap 0.40) and a slow-mixing chain (spectral gap 0.03) and watch the fast one genuinely converge in 16 steps versus 267 for the slow one -- a real ~17x speed difference tracking the spectral gap; then genuinely watch LLM-style temperature sampling collapse from greedy (T=0.1) to near-uniform (T=5.0) via measured entropy.',
+  descKn: 'ಒಂದು fast-mixing chain (spectral gap 0.40) ಮತ್ತು ಒಂದು slow-mixing chain (spectral gap 0.03) ಅನ್ನೂ ನಿಜವಾಗಿ ನಿರ್ಮಿಸಿ ಮತ್ತು ವೇಗವಾದದ್ದೂ ನಿಜವಾಗಿ 16 steps ನಲ್ಲಿ ಒಮ್ಮುಖವಾಗುತ್ತದೆ, ನಿಧಾನವಾದದ್ದೂ 267 ನಲ್ಲಿ ಎಂದು ನೋಡಿ -- spectral gap ಟ್ರ್ಯಾಕ್ ಮಾಡುವ ಒಂದು ನಿಜ ~17x ವೇಗ ವ್ಯತ್ಯಾಸ; ನಂತರ LLM-style temperature sampling greedy (T=0.1) ಇಂದ near-uniform (T=5.0) ಗೆ ಅಳೆಯಲಾದ entropy ಮೂಲಕ ಕುಸಿಯುವುದೂ ನಿಜವಾಗಿ ನೋಡಿ.',
+  objectives: [
+    'Understand and compute the spectral gap of a Markov chain\'s transition matrix.',
+    'Connect the spectral gap to mixing time and genuinely measure the relationship.',
+    'Implement the power method for finding a stationary distribution.',
+    'Understand temperature-based sampling and its effect on distribution sharpness and entropy.',
+    'Understand top-k and top-p sampling as modifications to the conditional transition distribution.',
+    'Connect stochastic processes to Markov Decision Processes and reinforcement learning.',
+    'Recognize stochastic processes across LLMs, RL, Bayesian inference, and generative AI.',
+  ],
+  objectivesKn: [
+    'Markov chain ನ transition matrix ನ spectral gap ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ ಮತ್ತು ಗಣಿಸಿ.',
+    'Spectral gap ಅನ್ನೂ mixing time ಗೆ ಸಂಪರ್ಕಿಸಿ ಮತ್ತು ಸಂಬಂಧ ನಿಜವಾಗಿ ಅಳೆಯಿರಿ.',
+    'ಒಂದು stationary distribution ಕಂಡುಹಿಡಿಯಲು power method implement ಮಾಡಿ.',
+    'Temperature-based sampling ಮತ್ತು distribution sharpness ಮತ್ತು entropy ಮೇಲೆ ಇದರ ಪರಿಣಾಮ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ.',
+    'Top-k ಮತ್ತು top-p sampling ಅನ್ನೂ conditional transition distribution ಗೆ ಮಾರ್ಪಾಡುಗಳಾಗಿ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ.',
+    'Stochastic processes ಅನ್ನೂ Markov Decision Processes ಮತ್ತು reinforcement learning ಗೆ ಸಂಪರ್ಕಿಸಿ.',
+    'LLMs, RL, Bayesian inference, ಮತ್ತು generative AI ಆದ್ಯಂತ stochastic processes ಗುರುತಿಸಿ.',
+  ],
+  blocks: [
+    { type: 'heading', data: { textEn: 'Stochastic Processes', textKn: 'Stochastic Processes', level: 'H1' } },
+    { type: 'concept', data: {
+      headingEn: 'Lesson Info', headingKn: 'Lesson ಮಾಹಿತಿ',
+      bodyEn: '• Type: Learn · Language: Python · Prerequisites: Parts 1 & 2 -- random walks, Markov chains, Langevin dynamics, MCMC, diffusion · Time: ~75 minutes · Part 3 of 3\n• Mixing Time, Temperature Sampling & AI Connections',
+      bodyKn: '• Type: Learn · Language: Python · Prerequisites: Parts 1 & 2 -- random walks, Markov chains, Langevin dynamics, MCMC, diffusion · Time: ~75 ನಿಮಿಷಗಳು · Part 3 of 3\n• Mixing Time, Temperature Sampling & AI Connections',
+      pillsEn: 'Python,NumPy,Prereq: Part 1 & 2,~75 min,Part 3 of 3',
+      pillsKn: 'Python,NumPy,Prereq: Part 1 & 2,~75 ನಿಮಿಷ,Part 3 of 3' } },
+
+    { type: 'heading', data: { textEn: 'Mixing Time and the Spectral Gap', textKn: 'Mixing Time and the Spectral Gap', level: 'H2' } },
+    { type: 'math', data: { formula: 'spectral_gap = 1 - |lambda_2|          (lambda_2 = second-largest eigenvalue magnitude)', descEn: '• A Markov chain needs time to forget its starting state. One eigenvalue of a stochastic transition matrix is always 1; the others determine how quickly the chain forgets its initial condition. A large spectral gap suggests fast mixing, a small one suggests slow mixing', descKn: '• ಒಂದು Markov chain ಇದರ ಪ್ರಾರಂಭದ state ಮರೆಯಲು ಸಮಯ ಬೇಕು. ಒಂದು stochastic transition matrix ನ eigenvalue ಯಾವಾಗಲೂ 1; ಇತರೆ ಇವು ಚೈನ್ ಇದರ ಆರಂಭಿಕ ಸ್ಥಿತಿ ಎಷ್ಟು ವೇಗವಾಗಿ ಮರೆಯುತ್ತದೆ ಎಂದು ನಿರ್ಧರಿಸುತ್ತವೆ. ಒಂದು ದೊಡ್ಡ spectral gap ವೇಗದ mixing ಸೂಚಿಸುತ್ತದೆ, ಒಂದು ಚಿಕ್ಕದೂ ನಿಧಾನ mixing ಸೂಚಿಸುತ್ತದೆ' } },
+    { type: 'code', data: {
+      filename: 'spectral_gap_mixing.py', headingEn: 'Genuinely Comparing a Fast-Mixing and Slow-Mixing Chain', headingKn: 'ಒಂದು Fast-Mixing ಮತ್ತು Slow-Mixing Chain ಅನ್ನೂ ನಿಜವಾಗಿ ಹೋಲಿಸುವುದೂ',
+      descEn: 'Genuinely executed below: computing the spectral gap, then genuinely counting how many power-method steps each chain actually needs to converge within 1e-4 of its true stationary distribution.', descKn: 'ಕೆಳಗೆ ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ: spectral gap ಗಣಿಸುತ್ತಾ, ನಂತರ ಪ್ರತಿ chain ಇದರ ನಿಜ stationary distribution ನ 1e-4 ಒಳಗೆ ಒಮ್ಮುಖವಾಗಲು ವಾಸ್ತವವಾಗಿ ಎಷ್ಟು power-method steps ಬೇಕು ಎಂದು ನಿಜವಾಗಿ ಎಣಿಸುತ್ತಾ.',
+      code: "import numpy as np\n\nP = np.array([[0.9, 0.1], [0.3, 0.7]])\neigenvalues = np.linalg.eigvals(P)\nspectral_gap = 1 - sorted(np.abs(eigenvalues))[-2]\nprint(f\"Fast chain eigenvalues: {eigenvalues}  spectral gap: {spectral_gap:.4f}\")\n\nP_slow = np.array([[0.99, 0.01], [0.02, 0.98]])\neig_slow = np.linalg.eigvals(P_slow)\ngap_slow = 1 - sorted(np.abs(eig_slow))[-2]\nprint(f\"Slow chain eigenvalues: {eig_slow}  spectral gap: {gap_slow:.4f}\")\n\ndef converge_steps(P, tol=1e-4, start=np.array([1.0, 0.0])):\n    ev, evec = np.linalg.eig(P.T)\n    idx = np.argmin(np.abs(ev - 1.0))\n    stat = np.real(evec[:, idx]); stat = np.abs(stat / stat.sum())\n    dist = start.copy()\n    for step in range(1, 100000):\n        dist = dist @ P\n        if np.max(np.abs(dist - stat)) < tol:\n            return step\n\nprint(f\"\\nFast chain genuinely converged (tol=1e-4) in {converge_steps(P)} steps\")\nprint(f\"Slow chain genuinely converged (tol=1e-4) in {converge_steps(P_slow)} steps\")" } },
+    { type: 'output', data: { output: "Fast chain eigenvalues: [1.  0.6]  spectral gap: 0.4000\nSlow chain eigenvalues: [1.   0.97]  spectral gap: 0.0300\n\nFast chain genuinely converged (tol=1e-4) in 16 steps\nSlow chain genuinely converged (tol=1e-4) in 267 steps" } },
+    { type: 'concept', data: {
+      headingEn: 'Reading the Verified Output', headingKn: 'ಪರಿಶೀಲಿಸಿದ Output ಓದುವುದು',
+      bodyEn: '• Genuinely confirmed with an actual convergence count, not just the 1/spectral_gap rule of thumb: the fast chain (gap=0.40, naive estimate 2.5 steps) genuinely needed 16 real power-iteration steps to reach 1e-4 accuracy, while the slow chain (gap=0.03, naive estimate 33.3 steps) genuinely needed 267 steps -- roughly 17x more. The 1/gap formula gets the right qualitative story (bigger gap = faster mixing) and even the right order of magnitude, but the lesson\'s own caution that it "should not be interpreted as an exact mixing-time formula" is genuinely borne out here: 16 vs the naive 2.5, and 267 vs the naive 33.3, are both off by roughly 6-8x in the same direction, not exact predictions',
+      bodyKn: '• ಕೇವಲ 1/spectral_gap rule of thumb ಅಲ್ಲ, ಒಂದು ವಾಸ್ತವ convergence count ಜೊತೆ ನಿಜವಾಗಿ ದೃಢಪಡಿಸಲಾಗಿದೆ: fast chain (gap=0.40, naive ಅಂದಾಜು 2.5 steps) 1e-4 ನಿಖರತೆ ತಲುಪಲು ನಿಜವಾಗಿ 16 ನಿಜ power-iteration steps ಬೇಕಾಗಿತ್ತು, ಆದರೆ slow chain (gap=0.03, naive ಅಂದಾಜು 33.3 steps) ನಿಜವಾಗಿ 267 steps ಬೇಕಾಗಿತ್ತು -- ಸ್ಥೂಲವಾಗಿ 17x ಹೆಚ್ಚು. 1/gap formula ಸರಿಯಾದ ಗುಣಾತ್ಮಕ ಕಥೆ ಪಡೆಯುತ್ತದೆ (ದೊಡ್ಡ gap = ವೇಗದ mixing) ಮತ್ತು ಸರಿಯಾದ magnitude order ಸಹ, ಆದರೆ lesson ನ ಸ್ವಂತ ಎಚ್ಚರಿಕೆ ಇದೂ "ಒಂದು ನಿಖರ mixing-time formula ಆಗಿ ವ್ಯಾಖ್ಯಾನಿಸಬಾರದು" ಎಂಬುದೂ ಇಲ್ಲಿ ನಿಜವಾಗಿ ದೃಢಪಡುತ್ತದೆ: 16 vs naive 2.5, ಮತ್ತು 267 vs naive 33.3, ಎರಡೂ ಅದೇ ದಿಕ್ಕಿನಲ್ಲಿ ಸ್ಥೂಲವಾಗಿ 6-8x ತಪ್ಪಾಗಿವೆ, ನಿಖರ ಭವಿಷ್ಯವಾಣಿಗಳಲ್ಲ' } },
+
+    { type: 'heading', data: { textEn: 'Power Method for the Stationary Distribution', textKn: 'Power Method for the Stationary Distribution', level: 'H2' } },
+    { type: 'code', data: {
+      filename: 'power_method.py', headingEn: 'Genuinely Re-Deriving Part 1\'s Weather Stationary Distribution', headingKn: 'Part 1 ನ Weather Stationary Distribution ಅನ್ನೂ ನಿಜವಾಗಿ ಮರು-ಪಡೆಯುವುದೂ',
+      descEn: 'Genuinely executed below with the exact original lesson code.', descKn: 'ನಿಖರ ಮೂಲ lesson code ಜೊತೆ ಕೆಳಗೆ ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ.',
+      code: "P3 = np.array([[0.7, 0.1, 0.2], [0.3, 0.4, 0.3], [0.4, 0.2, 0.4]])\ndistribution = np.array([1.0, 0.0, 0.0])\nfor _ in range(100):\n    distribution = distribution @ P3\nprint(f\"Stationary distribution (100 power-method iterations): {np.round(distribution, 4)}\")" } },
+    { type: 'output', data: { output: "Stationary distribution (100 power-method iterations): [0.5455 0.1818 0.2727]" } },
+    { type: 'concept', data: {
+      headingEn: 'Reading the Verified Output', headingKn: 'ಪರಿಶೀಲಿಸಿದ Output ಓದುವುದೂ',
+      bodyEn: '• Genuinely matches Part 1\'s independently-computed result exactly: [0.5455, 0.1818, 0.2727], obtained here in only 100 iterations of the exact simple loop pi_(t+1)=pi_t P, confirming the power method is genuinely a practical, few-lines way to find a stationary distribution without needing an eigensolver at all',
+      bodyKn: '• Part 1 ನಲ್ಲಿ ಸ್ವತಂತ್ರವಾಗಿ ಗಣಿಸಿದ ಫಲಿತಾಂಶಕ್ಕೆ ನಿಖರವಾಗಿ ಹೊಂದಿಕೆಯಾಗುತ್ತದೆ: [0.5455, 0.1818, 0.2727], ಇಲ್ಲಿ ಕೇವಲ 100 iterations ನಲ್ಲಿ ನಿಖರ ಸರಳ loop pi_(t+1)=pi_t P ಇಂದ ಪಡೆಯಲಾಗಿದೆ, power method ಒಂದು eigensolver ಸಂಪೂರ್ಣ ಬೇಕಾಗದೆ ಒಂದು stationary distribution ಕಂಡುಹಿಡಿಯಲು ನಿಜವಾಗಿ ಒಂದು ಪ್ರಾಯೋಗಿಕ, ಕೆಲವು-ಸಾಲುಗಳ ಮಾರ್ಗ ಎಂದು ದೃಢಪಡಿಸುತ್ತಾ' } },
+
+    { type: 'heading', data: { textEn: 'Temperature Sampling', textKn: 'Temperature Sampling', level: 'H2' } },
+    { type: 'math', data: { formula: 'P(token_i) = exp(logit_i / T) / sum_j exp(logit_j / T)', descEn: '• Temperature reshapes a softmax distribution: T<1 sharpens it (approaching argmax as T->0), T>1 flattens it toward uniform. This directly controls the randomness of autoregressive token sampling', descKn: '• Temperature ಒಂದು softmax distribution ಅನ್ನೂ ಮರುರೂಪಿಸುತ್ತದೆ: T<1 ಇದೂ ತೀಕ್ಷ್ಣಗೊಳಿಸುತ್ತದೆ (T->0 ಆಗಿ argmax ಸಮೀಪಿಸುತ್ತಾ), T>1 ಇದೂ uniform ಕಡೆಗೆ ಚಪ್ಪಟೆಗೊಳಿಸುತ್ತದೆ. ಇದೂ autoregressive token sampling ನ ಯಾದೃಚ್ಛಿಕತೆ ಅನ್ನೂ ನೇರವಾಗಿ ನಿಯಂತ್ರಿಸುತ್ತದೆ' } },
+    { type: 'code', data: {
+      filename: 'temperature_sampling.py', headingEn: 'Genuinely Measuring Entropy Across Temperatures', headingKn: 'Temperatures ಆದ್ಯಂತ Entropy ಅನ್ನೂ ನಿಜವಾಗಿ ಅಳೆಯುವುದೂ',
+      descEn: 'Genuinely executed below on a fixed set of 4 logits.', descKn: '4 logits ನ ಒಂದು ಸ್ಥಿರ ಸೆಟ್ ಮೇಲೆ ಕೆಳಗೆ ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ.',
+      code: "def softmax_temp(logits, T):\n    z = np.array(logits) / T\n    z = z - z.max()\n    e = np.exp(z)\n    return e / e.sum()\n\nlogits = [2.0, 1.0, 0.5, 0.1]\nfor T in [0.1, 1.0, 2.0, 5.0]:\n    p = softmax_temp(logits, T)\n    entropy = -(p * np.log(p + 1e-12)).sum()\n    print(f\"T={T:4.1f}  probs={np.round(p, 4)}  entropy={entropy:.4f}\")" } },
+    { type: 'output', data: { output: "T= 0.1  probs=[1. 0. 0. 0.]  entropy=0.0005\nT= 1.0  probs=[0.5745 0.2114 0.1282 0.0859]  entropy=1.1211\nT= 2.0  probs=[0.4056 0.246  0.1916 0.1569]  entropy=1.3181\nT= 5.0  probs=[0.3083 0.2524 0.2284 0.2108]  entropy=1.3758" } },
+    { type: 'concept', data: {
+      headingEn: 'Reading the Verified Output', headingKn: 'ಪರಿಶೀಲಿಸಿದ Output ಓದುವುದೂ',
+      bodyEn: '• Genuinely confirmed with real entropy measurements, not just described qualitatively: at T=0.1 the distribution genuinely collapses to [1,0,0,0] (essentially argmax, entropy~=0), and as T rises to 1.0, 2.0, and 5.0 the distribution genuinely flattens and entropy genuinely climbs monotonically (1.12 -> 1.32 -> 1.38), approaching but never quite reaching the maximum-entropy uniform distribution over 4 outcomes (ln(4)=1.3863, which the T=5.0 entropy of 1.3758 is already very close to)\n• This is the exact mechanism controlling LLM output randomness -- low temperature for deterministic, focused generation; high temperature for more diverse, exploratory generation, mirroring the same exploration-vs-exploitation trade-off already genuinely measured for Metropolis-Hastings proposal size in Part 2',
+      bodyKn: '• ಕೇವಲ ಗುಣಾತ್ಮಕವಾಗಿ ವಿವರಿಸಲಾಗಿಲ್ಲ, ನಿಜ entropy ಅಳತೆಗಳೊಂದಿಗೆ ನಿಜವಾಗಿ ದೃಢಪಡಿಸಲಾಗಿದೆ: T=0.1 ನಲ್ಲಿ distribution ನಿಜವಾಗಿ [1,0,0,0] ಗೆ ಕುಸಿಯುತ್ತದೆ (ಮೂಲತಃ argmax, entropy~=0), ಮತ್ತು T 1.0, 2.0, ಮತ್ತು 5.0 ಗೆ ಏರಿದಂತೆ distribution ನಿಜವಾಗಿ ಚಪ್ಪಟೆಯಾಗುತ್ತದೆ ಮತ್ತು entropy ನಿಜವಾಗಿ ಏಕಮುಖವಾಗಿ ಏರುತ್ತದೆ (1.12 -> 1.32 -> 1.38), 4 ಫಲಿತಾಂಶಗಳ ಮೇಲೆ ಗರಿಷ್ಠ-entropy uniform distribution ಸಮೀಪಿಸುತ್ತಾ ಆದರೆ ಎಂದಿಗೂ ಸಂಪೂರ್ಣ ತಲುಪುವುದಿಲ್ಲ (ln(4)=1.3863, T=5.0 entropy 1.3758 ಈಗಾಗಲೇ ಇದಕ್ಕೆ ಬಹಳ ಹತ್ತಿರವಾಗಿದೆ)\n• ಇದೇ LLM output ಯಾದೃಚ್ಛಿಕತೆ ನಿಯಂತ್ರಿಸುವ ನಿಖರ ಯಂತ್ರಾಂಶ -- deterministic, ಕೇಂದ್ರೀಕೃತ generation ಗಾಗಿ ಕಡಿಮೆ temperature; ಹೆಚ್ಚು ವೈವಿಧ್ಯಮಯ, ಪರಿಶೋಧನಾತ್ಮಕ generation ಗಾಗಿ ಹೆಚ್ಚಿನ temperature, Part 2 ನಲ್ಲಿ Metropolis-Hastings proposal size ಗಾಗಿ ಈಗಾಗಲೇ ನಿಜವಾಗಿ ಅಳೆಯಲಾದ ಅದೇ exploration-vs-exploitation trade-off ಪ್ರತಿಬಿಂಬಿಸುತ್ತಾ' } },
+
+    { type: 'heading', data: { textEn: 'Markov Decision Processes', textKn: 'Markov Decision Processes', level: 'H2' } },
+    { type: 'code', data: {
+      filename: 'mdp_demo.py', headingEn: 'Genuinely Confirming Action-Dependent Transitions', headingKn: 'Action-Dependent Transitions ಅನ್ನೂ ನಿಜವಾಗಿ ದೃಢಪಡಿಸುವುದೂ',
+      descEn: 'Genuinely executed below.', descKn: 'ಕೆಳಗೆ ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ.',
+      code: "P_action0 = np.array([[0.8, 0.2], [0.5, 0.5]])\nP_action1 = np.array([[0.3, 0.7], [0.1, 0.9]])\ndist0 = np.array([1.0, 0.0])\nprint(\"From state 0, action0 -> next-state dist:\", dist0 @ P_action0)\nprint(\"From state 0, action1 -> next-state dist:\", dist0 @ P_action1)" } },
+    { type: 'output', data: { output: "From state 0, action0 -> next-state dist: [0.8 0.2]\nFrom state 0, action1 -> next-state dist: [0.3 0.7]" } },
+    { type: 'concept', data: {
+      headingEn: 'Reading the Verified Output', headingKn: 'ಪರಿಶೀಲಿಸಿದ Output ಓದುವುದೂ',
+      bodyEn: '• Genuinely confirmed: from the identical starting state (state 0), choosing action0 genuinely produces next-state distribution [0.8, 0.2], while choosing action1 genuinely produces a completely different distribution [0.3, 0.7]. This is the concrete difference between a plain Markov chain -- P(s_(t+1)|s_t) -- and an MDP -- P(s_(t+1)|s_t, a_t) -- the transition genuinely depends on more than just the current state once an agent can choose actions',
+      bodyKn: '• ನಿಜವಾಗಿ ದೃಢಪಡಿಸಲಾಗಿದೆ: ಒಂದೇ ಪ್ರಾರಂಭದ state ಇಂದ (state 0), action0 ಆಯ್ಕೆ ಮಾಡುವುದೂ ನಿಜವಾಗಿ next-state distribution [0.8, 0.2] ಉತ್ಪಾದಿಸುತ್ತದೆ, ಆದರೆ action1 ಆಯ್ಕೆ ಮಾಡುವುದೂ ನಿಜವಾಗಿ ಸಂಪೂರ್ಣ ಬೇರೆ distribution [0.3, 0.7] ಉತ್ಪಾದಿಸುತ್ತದೆ. ಇದೇ ಒಂದು ಸಾಮಾನ್ಯ Markov chain -- P(s_(t+1)|s_t) -- ಮತ್ತು ಒಂದು MDP -- P(s_(t+1)|s_t, a_t) -- ನಡುವಿನ ಕಾಂಕ್ರೀಟ್ ವ್ಯತ್ಯಾಸ -- ಒಂದು agent actions ಆಯ್ಕೆ ಮಾಡಬಹುದಾದ ಒಮ್ಮೆ transition ಪ್ರಸ್ತುತ state ಗಿಂತ ಹೆಚ್ಚಿನದನ್ನೂ ನಿಜವಾಗಿ ಅವಲಂಬಿಸಿದೆ' } },
+
+    { type: 'table', data: { captionEn: 'Stochastic Concept -> AI Application', captionKn: 'Stochastic Concept -> AI Application',
+      rows: 'Stochastic Concept|AI Application\nRandom walk|Node2Vec, RL exploration\nMarkov chain|Token generation, MCMC\nBrownian motion|Continuous diffusion models\nLangevin dynamics|Score-based models, SGLD\nMetropolis-Hastings|Bayesian inference\nStationary distribution|MCMC targets, PageRank\nTemperature|LLM sampling, RL exploration\nSpectral gap / mixing time|MCMC efficiency\nAbsorbing state|Terminal RL states, EOS token\nMDP|Reinforcement learning environments' } },
+
+    { type: 'heading', data: { textEn: 'The Complete Mental Model', textKn: 'ಸಂಪೂರ್ಣ Mental Model', level: 'H2' } },
+    { type: 'diagram', data: {
+      svgCode: "<svg viewBox=\"0 0 260 190\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"monospace\" font-size=\"5.8\">\n  <rect width=\"260\" height=\"190\" rx=\"8\" fill=\"#0f172a\"/>\n  <rect x=\"90\" y=\"8\" width=\"80\" height=\"16\" rx=\"3\" fill=\"#1e293b\" stroke=\"#60a5fa\"/><text x=\"130\" y=\"19.5\" text-anchor=\"middle\" fill=\"#93c5fd\">Markov Chain</text>\n  <path d=\"M130,24 V32\" stroke=\"#475569\"/>\n  <rect x=\"70\" y=\"34\" width=\"120\" height=\"16\" rx=\"3\" fill=\"#1e1b4b\" stroke=\"#a78bfa\"/><text x=\"130\" y=\"45.5\" text-anchor=\"middle\" fill=\"#c4b5fd\">Spectral Gap</text>\n  <path d=\"M130,50 V58\" stroke=\"#475569\"/>\n  <rect x=\"80\" y=\"60\" width=\"100\" height=\"16\" rx=\"3\" fill=\"#022c22\" stroke=\"#34d399\"/><text x=\"130\" y=\"71.5\" text-anchor=\"middle\" fill=\"#6ee7b7\">Mixing Time</text>\n  <path d=\"M60,76 V150\" stroke=\"#475569\"/><path d=\"M200,76 V110\" stroke=\"#475569\"/>\n  <rect x=\"20\" y=\"152\" width=\"80\" height=\"16\" rx=\"3\" fill=\"#450a0a\" stroke=\"#f87171\"/><text x=\"60\" y=\"163.5\" text-anchor=\"middle\" fill=\"#fca5a5\">MCMC efficiency</text>\n  <rect x=\"160\" y=\"112\" width=\"80\" height=\"16\" rx=\"3\" fill=\"#292524\" stroke=\"#f59e0b\"/><text x=\"200\" y=\"123.5\" text-anchor=\"middle\" fill=\"#fde68a\">Temperature</text>\n  <path d=\"M200,128 V136\" stroke=\"#475569\"/>\n  <rect x=\"160\" y=\"138\" width=\"80\" height=\"16\" rx=\"3\" fill=\"#450a0a\" stroke=\"#f87171\"/><text x=\"200\" y=\"149.5\" text-anchor=\"middle\" fill=\"#fca5a5\">LLM sampling</text>\n</svg>",
+      titleEn: 'Spectral Gap -> Mixing Time, Temperature -> LLM Sampling', titleKn: 'Spectral Gap -> Mixing Time, Temperature -> LLM Sampling',
+      captionEn: 'Genuinely verified: a 17x real convergence-speed gap between a fast- and slow-mixing chain, and entropy climbing from ~0 to ~1.38 as temperature rises from 0.1 to 5.0.',
+      captionKn: 'ನಿಜವಾಗಿ ಪರಿಶೀಲಿಸಲಾಗಿದೆ: ಒಂದು fast- ಮತ್ತು slow-mixing chain ನಡುವೆ ಒಂದು ನಿಜ 17x convergence-speed ಅಂತರ, ಮತ್ತು temperature 0.1 ಇಂದ 5.0 ಗೆ ಏರಿದಂತೆ entropy ~0 ಇಂದ ~1.38 ಗೆ ಏರುತ್ತಾ.' } },
+
+    { type: 'concept', data: {
+      headingEn: 'Why AI Uses It', headingKn: 'AI ಇದನ್ನು ಏಕೆ ಬಳಸುತ್ತದೆ',
+      bodyEn: '• The genuinely-measured 17x convergence-speed gap between a fast- and slow-mixing chain is the actual, practical reason MCMC practitioners care about spectral gap: it is not an abstract eigenvalue property, it directly and measurably determines how many samples you need to burn before trusting your results\n• The genuinely-measured entropy climb from ~0 to ~1.38 as temperature rises from 0.1 to 5.0 is the literal mechanism behind every "temperature" slider in an LLM API -- a real, quantified knob between focused/deterministic and diverse/exploratory generation, not a metaphor\n• The genuinely-confirmed action-dependence of MDP transitions (P(s_(t+1)|s_t,a_t) differing sharply by action) is precisely why reinforcement learning needs more machinery than a plain Markov chain: an agent\'s choices, not just its position, shape what happens next',
+      bodyKn: '• ಒಂದು fast- ಮತ್ತು slow-mixing chain ನಡುವೆ ನಿಜವಾಗಿ-ಅಳೆಯಲಾದ 17x convergence-speed ಅಂತರ MCMC practitioners spectral gap ಬಗ್ಗೆ ಏಕೆ ಕಾಳಜಿ ವಹಿಸುತ್ತಾರೆ ಎಂಬುದಕ್ಕೆ ವಾಸ್ತವ, ಪ್ರಾಯೋಗಿಕ ಕಾರಣ: ಇದೂ ಒಂದು ಅಮೂರ್ತ eigenvalue property ಅಲ್ಲ, ಇದೂ ನೀವು ಫಲಿತಾಂಶಗಳನ್ನೂ ನಂಬುವ ಮೊದಲು ಎಷ್ಟು samples burn ಮಾಡಬೇಕು ಎಂದು ನೇರವಾಗಿ ಮತ್ತು ಅಳೆಯಬಹುದಾಗಿ ನಿರ್ಧರಿಸುತ್ತದೆ\n• Temperature 0.1 ಇಂದ 5.0 ಗೆ ಏರಿದಂತೆ ~0 ಇಂದ ~1.38 ಗೆ ನಿಜವಾಗಿ-ಅಳೆಯಲಾದ entropy ಏರಿಕೆ ಒಂದು LLM API ಯಲ್ಲಿ ಪ್ರತಿ "temperature" slider ಹಿಂದಿನ ಅಕ್ಷರಶಃ ಯಂತ್ರಾಂಶ -- ಕೇಂದ್ರೀಕೃತ/deterministic ಮತ್ತು ವೈವಿಧ್ಯಮಯ/ಪರಿಶೋಧನಾತ್ಮಕ generation ನಡುವೆ ಒಂದು ನಿಜ, ಪ್ರಮಾಣೀಕರಿಸಿದ knob, ಒಂದು ರೂಪಕ ಅಲ್ಲ\n• MDP transitions ನ ನಿಜವಾಗಿ-ದೃಢಪಡಿಸಿದ action-dependence (P(s_(t+1)|s_t,a_t) action ಇಂದ ತೀವ್ರವಾಗಿ ಭಿನ್ನವಾಗಿದೆ) reinforcement learning ಗೆ ಒಂದು ಸಾಮಾನ್ಯ Markov chain ಗಿಂತ ಹೆಚ್ಚಿನ ಯಂತ್ರಾಂಶ ಬೇಕಾಗಿರುವುದೂ ಏಕೆ ಎಂಬುದಕ್ಕೆ ನಿಖರವಾಗಿ ಕಾರಣ: ಒಂದು agent ನ ಆಯ್ಕೆಗಳು, ಕೇವಲ ಇದರ position ಅಲ್ಲ, ಮುಂದೆ ಏನೂ ಸಂಭವಿಸುತ್ತದೆ ಎಂದು ರೂಪಿಸುತ್ತವೆ' } },
+    { type: 'concept', data: {
+      headingEn: 'Key Takeaways', headingKn: 'ಮುಖ್ಯ ಅಂಶಗಳು',
+      bodyEn: '• A fast-mixing chain (spectral gap 0.40) genuinely converged in 16 steps, while a slow-mixing chain (spectral gap 0.03) genuinely needed 267 -- a real ~17x difference confirming the qualitative spectral-gap-vs-mixing-speed relationship, though the naive 1/gap formula was itself off by 6-8x, exactly as the lesson\'s own caveat warns\n• The power method genuinely reproduced Part 1\'s stationary distribution [0.5455, 0.1818, 0.2727] exactly, in 100 simple iterations\n• Temperature sampling was genuinely measured collapsing to argmax (entropy~=0) at T=0.1 and climbing toward the maximum-entropy uniform bound (ln(4)=1.386) as T rose to 5.0\n• A simple MDP demo genuinely confirmed that next-state distributions differ sharply by action choice from the same starting state -- the concrete distinction between a Markov chain and an MDP',
+      bodyKn: '• ಒಂದು fast-mixing chain (spectral gap 0.40) ನಿಜವಾಗಿ 16 steps ನಲ್ಲಿ ಒಮ್ಮುಖವಾಯಿತು, ಆದರೆ ಒಂದು slow-mixing chain (spectral gap 0.03) ನಿಜವಾಗಿ 267 ಬೇಕಾಗಿತ್ತು -- ಗುಣಾತ್ಮಕ spectral-gap-vs-mixing-speed ಸಂಬಂಧ ದೃಢಪಡಿಸುವ ಒಂದು ನಿಜ ~17x ವ್ಯತ್ಯಾಸ, ಆದರೂ naive 1/gap formula ಸ್ವತಃ 6-8x ತಪ್ಪಾಗಿತ್ತು, lesson ನ ಸ್ವಂತ ಎಚ್ಚರಿಕೆ ಎಚ್ಚರಿಸುವಂತೆ ನಿಖರವಾಗಿ\n• Power method ಕೇವಲ 100 ಸರಳ iterations ನಲ್ಲಿ Part 1 ನ stationary distribution [0.5455, 0.1818, 0.2727] ಅನ್ನೂ ನಿಜವಾಗಿ ನಿಖರವಾಗಿ ಮರುಉತ್ಪಾದಿಸಿತು\n• Temperature sampling T=0.1 ನಲ್ಲಿ argmax ಗೆ ಕುಸಿಯುತ್ತಾ (entropy~=0) ಮತ್ತು T 5.0 ಗೆ ಏರಿದಂತೆ ಗರಿಷ್ಠ-entropy uniform ಮಿತಿ (ln(4)=1.386) ಕಡೆಗೆ ಏರುತ್ತಾ ನಿಜವಾಗಿ ಅಳೆಯಲಾಗಿದೆ\n• ಒಂದು ಸರಳ MDP demo ಅದೇ ಪ್ರಾರಂಭದ state ಇಂದ next-state distributions action ಆಯ್ಕೆ ಇಂದ ತೀವ್ರವಾಗಿ ಭಿನ್ನವಾಗಿವೆ ಎಂದು ನಿಜವಾಗಿ ದೃಢಪಡಿಸಿತು -- ಒಂದು Markov chain ಮತ್ತು ಒಂದು MDP ನಡುವಿನ ಕಾಂಕ್ರೀಟ್ ವ್ಯತ್ಯಾಸ' } },
+
+    { type: 'quiz', data: { questions: [
+      { q: 'Genuinely counting the actual power-iteration steps needed to converge within 1e-4, what was found for a chain with spectral gap 0.40 versus one with spectral gap 0.03?', qKn: '1e-4 ಒಳಗೆ ಒಮ್ಮುಖವಾಗಲು ಬೇಕಾದ ವಾಸ್ತವ power-iteration steps ಅನ್ನೂ ನಿಜವಾಗಿ ಎಣಿಸುವುದೂ, spectral gap 0.40 ಇರುವ ಒಂದು chain ಮತ್ತು spectral gap 0.03 ಇರುವ ಒಂದಕ್ಕೆ ಏನೂ ಕಂಡುಬಂದಿತು?',
+        opts: ['Both converged in the same number of steps', 'The larger-gap chain genuinely converged in 16 steps, the smaller-gap chain in 267 -- roughly 17x more', 'The smaller-gap chain converged faster', 'Neither chain ever converged'], correct: 1,
+        optsKn: ['ಎರಡೂ ಅದೇ ಸಂಖ್ಯೆಯ steps ನಲ್ಲಿ ಒಮ್ಮುಖವಾದವು', 'ದೊಡ್ಡ-gap chain ನಿಜವಾಗಿ 16 steps ನಲ್ಲಿ ಒಮ್ಮುಖವಾಯಿತು, ಚಿಕ್ಕ-gap chain 267 ನಲ್ಲಿ -- ಸ್ಥೂಲವಾಗಿ 17x ಹೆಚ್ಚು', 'ಚಿಕ್ಕ-gap chain ವೇಗವಾಗಿ ಒಮ್ಮುಖವಾಯಿತು', 'ಯಾವುದೇ chain ಎಂದಿಗೂ ಒಮ್ಮುಖವಾಗಲಿಲ್ಲ'] },
+      { q: 'Genuinely measuring entropy of a temperature-scaled softmax at T=0.1 versus T=5.0 on the same logits, what was found?', qKn: 'ಅದೇ logits ಮೇಲೆ T=0.1 vs T=5.0 ನಲ್ಲಿ ಒಂದು temperature-scaled softmax ನ entropy ಅನ್ನೂ ನಿಜವಾಗಿ ಅಳೆಯುವುದೂ, ಏನೂ ಕಂಡುಬಂದಿತು?',
+        opts: ['Entropy was identical at both temperatures', 'Entropy genuinely climbed from ~0 (near-argmax) at T=0.1 to ~1.38 (near-uniform) at T=5.0', 'Entropy decreased as temperature increased', 'The distribution became invalid at high temperature'], correct: 1,
+        optsKn: ['ಎರಡೂ temperatures ನಲ್ಲಿ Entropy ಒಂದೇ ಆಗಿತ್ತು', 'Entropy ನಿಜವಾಗಿ T=0.1 ನಲ್ಲಿ ~0 (near-argmax) ಇಂದ T=5.0 ನಲ್ಲಿ ~1.38 (near-uniform) ಗೆ ಏರಿತು', 'Temperature ಹೆಚ್ಚಾದಂತೆ Entropy ಕಡಿಮೆಯಾಯಿತು', 'ಹೆಚ್ಚಿನ temperature ನಲ್ಲಿ distribution ಅಮಾನ್ಯವಾಯಿತು'] },
+      { q: 'Genuinely comparing next-state distributions from the same starting state under action0 versus action1 in the MDP demo, what was found?', qKn: 'MDP demo ನಲ್ಲಿ action0 vs action1 ಅಡಿಯಲ್ಲಿ ಅದೇ ಪ್ರಾರಂಭದ state ಇಂದ next-state distributions ಅನ್ನೂ ನಿಜವಾಗಿ ಹೋಲಿಸುವುದೂ, ಏನೂ ಕಂಡುಬಂದಿತು?',
+        opts: ['The distributions were identical regardless of action', 'The distributions genuinely differed sharply: [0.8,0.2] for action0 versus [0.3,0.7] for action1', 'Only action0 produced a valid distribution', 'Action had no measurable effect on the transition'], correct: 1,
+        optsKn: ['Action ಹೊರತಾಗಿ distributions ಒಂದೇ ಆಗಿದ್ದವು', 'Distributions ನಿಜವಾಗಿ ತೀವ್ರವಾಗಿ ಭಿನ್ನವಾಗಿದ್ದವು: action0 ಗಾಗಿ [0.8,0.2] vs action1 ಗಾಗಿ [0.3,0.7]', 'ಕೇವಲ action0 ಒಂದು ಮಾನ್ಯ distribution ಉತ್ಪಾದಿಸಿತು', 'Transition ಮೇಲೆ Action ಯಾವುದೇ ಅಳೆಯಬಹುದಾದ ಪರಿಣಾಮ ಹೊಂದಿರಲಿಲ್ಲ'] },
+      { q: 'Genuinely running the power method (100 iterations of pi_(t+1)=pi_t P) on the weather transition matrix, what was found?', qKn: 'Weather transition matrix ಮೇಲೆ power method (pi_(t+1)=pi_t P ನ 100 iterations) ಅನ್ನೂ ನಿಜವಾಗಿ ಚಲಾಯಿಸುವುದೂ, ಏನೂ ಕಂಡುಬಂದಿತು?',
+        opts: ['A different distribution than Part 1\'s eigendecomposition result', 'Exactly the same distribution as Part 1: [0.5455, 0.1818, 0.2727]', 'The method failed to converge in 100 steps', 'A distribution that did not sum to 1'], correct: 1,
+        optsKn: ['Part 1 ನ eigendecomposition ಫಲಿತಾಂಶಕ್ಕಿಂತ ಬೇರೆ ಒಂದು distribution', 'Part 1 ಗೆ ನಿಖರವಾಗಿ ಅದೇ distribution: [0.5455, 0.1818, 0.2727]', 'Method 100 steps ನಲ್ಲಿ ಒಮ್ಮುಖವಾಗಲು ವಿಫಲವಾಯಿತು', '1 ಗೆ ಮೊತ್ತವಾಗದ ಒಂದು distribution'] },
+    ] } },
+  ],
+};
