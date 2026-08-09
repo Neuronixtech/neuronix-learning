@@ -44,7 +44,7 @@ module.exports = {
     { type: 'heading', data: { level: 'H2', textEn: 'Equal Error Rate (EER)', textKn: 'Equal Error Rate (EER)' } },
     { type: 'code', data: {
       filename: 'eer.py',
-      headingEn: 'Original Code — The Lesson\'s EER Function', headingKn: 'Original Code — ಲೆಸನ್‌ನ EER Function',
+      headingEn: 'code for concepts — The Lesson\'s EER Function', headingKn: 'code for concepts — ಲೆಸನ್‌ನ EER Function',
       descEn: 'This is the exact scoring function under test. Its threshold sweep implicitly assumes "score >= threshold means accepted as real (bona fide)" -- a convention the lesson text never states explicitly.',
       descKn: 'ಇದೂ ಪರೀಕ್ಷೆಯಲ್ಲಿರುವ ನಿಖರ scoring function. ಇದರ threshold sweep ಸೂಚ್ಯವಾಗಿ "score >= threshold ಅಂದರೆ ನಿಜ (bona fide) ಎಂದು ಒಪ್ಪಿಕೊಳ್ಳಲಾಗಿದೆ" ಎಂದು ಊಹಿಸುತ್ತದೆ -- ಲೆಸನ್ ಪಠ್ಯ ಎಂದಿಗೂ ಸ್ಪಷ್ಟವಾಗಿ ಹೇಳದ ಒಂದು ಸಂಪ್ರದಾಯ.',
       code: "import numpy as np\n\ndef eer(bona_fide_scores, spoof_scores):\n    thresholds = np.linspace(0, 1, 1000)\n    best_gap, best_eer = 1.0, 1.0\n    for t in thresholds:\n        far = np.mean(spoof_scores >= t)   # spoof wrongly accepted\n        frr = np.mean(bona_fide_scores < t)  # bona fide wrongly rejected\n        gap = abs(far - frr)\n        if gap < best_gap:\n            best_gap = gap\n            best_eer = (far + frr) / 2\n    return best_eer" } },

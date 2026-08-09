@@ -51,7 +51,7 @@ module.exports = {
       bodyKn: '• 1,000-token sequence ಗಾಗಿ, ಒಂದು RNN ಗೆ ಸ್ಥೂಲವಾಗಿ 1,000 dependency steps ಬೇಕು: step 1, ನಂತರ step 2, ನಂತರ step 3, step 1000 ವರೆಗೆ\n• ಆಧುನಿಕ GPUs ಏಕಕಾಲದಲ್ಲಿ ಬೃಹತ್ ಸಂಖ್ಯೆಯ operations ನಿರ್ವಹಿಸಲು ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ\n• ಆದರೆ RNN dependency chain ಪ್ರತಿ ಒಂದೇ step ನಲ್ಲಿ ಪರಿಣಾಮಕಾರಿಯಾಗಿ "ಹಿಂದಿನ operation ಗಾಗಿ ಕಾಯಿರಿ" ಎಂದು ಹೇಳುತ್ತದೆ -- ಇದೂ ಬೃಹತ್ parallelism ಸುತ್ತ ನಿರ್ಮಿಸಲಾದ GPU hardware ಗೆ ಒಂದು ಭಯಾನಕ ಹೊಂದಾಣಿಕೆ' } },
 
     { type: 'code', data: {
-      filename: 'rnn_style.py', headingEn: 'Original Code — RNN Style', headingKn: 'ಮೂಲ Code — RNN Style',
+      filename: 'rnn_style.py', headingEn: 'code for concepts — RNN Style', headingKn: 'concepts ಗಾಗಿ code — RNN Style',
       descEn: 'Genuinely executed below, tracing every intermediate hidden state to make the dependency chain concrete.',
       descKn: 'ಪ್ರತಿ ಮಧ್ಯಂತರ hidden state ಅನ್ನೂ ಟ್ರೇಸ್ ಮಾಡಿ dependency chain ಅನ್ನೂ ಕಾಂಕ್ರೀಟ್ ಮಾಡಲು ಕೆಳಗೆ ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ.',
       code: "def rnn_style(xs):\n    h = 0.0\n    for x in xs:\n        h = 0.9 * h + x   # can't parallelize: h depends on previous h\n    return h\n\nxs = [1, 2, 3, 4, 5]\nh = 0.0\nfor i, x in enumerate(xs, 1):\n    h = 0.9 * h + x\n    print(f\"h{i} = {h}\")\nprint(\"rnn_style(xs) =\", rnn_style(xs))" } },

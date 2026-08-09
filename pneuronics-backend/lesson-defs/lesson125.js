@@ -40,7 +40,7 @@ module.exports = {
       bodyEn: '• The 2017 paper "Attention Is All You Need" made a radical change: remove recurrence entirely\n• Instead of token 1 -> token 2 -> token 3 -> token 4 in strict sequence, every token is allowed to interact with every other token directly\n• This direct, all-pairs interaction is what self-attention computes',
       bodyKn: '• 2017 ಪೇಪರ್ "Attention Is All You Need" ಒಂದು ಆಮೂಲಾಗ್ರ ಬದಲಾವಣೆ ಮಾಡಿತು: recurrence ಅನ್ನೂ ಸಂಪೂರ್ಣವಾಗಿ ತೆಗೆದುಹಾಕಿ\n• token 1 -> token 2 -> token 3 -> token 4 ಕಟ್ಟುನಿಟ್ಟಾದ ಅನುಕ್ರಮದ ಬದಲು, ಪ್ರತಿ token ಪ್ರತಿ ಇತರ token ಜೊತೆ ನೇರವಾಗಿ ಸಂವಹಿಸಲು ಅನುಮತಿಸಲಾಗಿದೆ\n• ಈ ನೇರ, all-pairs ಸಂವಹನ ಇದೇ self-attention ಗಣಿಸುತ್ತದೆ' } },
     { type: 'code', data: {
-      filename: 'attention_style.py', headingEn: 'Original Code — Attention Style', headingKn: 'ಮೂಲ Code — Attention Style',
+      filename: 'attention_style.py', headingEn: 'code for concepts — Attention Style', headingKn: 'concepts ಗಾಗಿ code — Attention Style',
       descEn: 'Genuinely executed below. Not a real Transformer attention implementation -- intentionally simplified to demonstrate the dependency difference.',
       descKn: 'ಕೆಳಗೆ ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ. ಒಂದು ನಿಜ Transformer attention implementation ಅಲ್ಲ -- dependency ವ್ಯತ್ಯಾಸ ಪ್ರದರ್ಶಿಸಲು ಉದ್ದೇಶಪೂರ್ವಕವಾಗಿ ಸರಳೀಕರಿಸಲಾಗಿದೆ.',
       code: "def attention_style(xs):\n    return sum(xs) / len(xs)  # every x is independent\n\nxs = [1, 2, 3, 4, 5]\nprint(\"sum(xs) =\", sum(xs))\nprint(\"len(xs) =\", len(xs))\nprint(\"attention_style(xs) =\", attention_style(xs))" } },

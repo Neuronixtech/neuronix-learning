@@ -92,7 +92,7 @@ module.exports = {
     { type: 'heading', data: { textEn: 'Eigenvalues with NumPy', textKn: 'NumPy ಜೊತೆ Eigenvalues', level: 'H2' } },
     { type: 'code', data: {
       filename: 'numpy_eig.py',
-      headingEn: 'np.linalg.eig()', headingKn: 'np.linalg.eig()',
+      headingEn: 'np.linalg.eig( )', headingKn: 'np.linalg.eig( )',
       descEn: 'For real projects, you do not solve the characteristic equation manually. Genuinely executed below.',
       descKn: 'ನಿಜ ಪ್ರಾಜೆಕ್ಟ್‌ಗಳಿಗೆ, ನೀವು characteristic equation ಅನ್ನೂ ಕೈಯಾರೆ ಪರಿಹರಿಸುವುದಿಲ್ಲ. ಕೆಳಗೆ ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ.',
       code: "A = np.array([\n    [2.0, 1.0],\n    [1.0, 2.0]\n])\n\nvalues, vectors = np.linalg.eig(A)\n\nprint(\"Eigenvalues:\")\nprint(values)\n\nprint(\"\\nEigenvectors:\")\nprint(vectors)" } },
@@ -145,7 +145,7 @@ module.exports = {
     { type: 'heading', data: { textEn: 'Determinant in NumPy', textKn: 'NumPy ನಲ್ಲಿ Determinant', level: 'H2' } },
     { type: 'code', data: {
       filename: 'numpy_det.py',
-      headingEn: 'np.linalg.det()', headingKn: 'np.linalg.det()',
+      headingEn: 'np.linalg.det( )', headingKn: 'np.linalg.det( )',
       descEn: 'Genuinely executed below.',
       descKn: 'ಕೆಳಗೆ ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ.',
       code: "A = np.array([\n    [2.0, 1.0],\n    [1.0, 2.0]\n])\n\ndet = np.linalg.det(A)\nprint(\"det(A) =\", det)" } },

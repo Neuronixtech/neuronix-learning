@@ -90,7 +90,7 @@ module.exports = {
     { type: 'heading', data: { level: 'H2', textEn: 'The Original Lesson Code — EnCodec, Genuinely Run', textKn: 'ನಿಖರ Lesson Code — EnCodec, ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ' } },
     { type: 'code', data: {
       filename: 'encodec_encode.py',
-      headingEn: 'Original Code — Encoding With EnCodec (Genuinely Run End to End)', headingKn: 'Original Code — EnCodec ಜೊತೆ Encoding (End to End ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ)',
+      headingEn: 'code for concepts — Encoding With EnCodec (Genuinely Run End to End)', headingKn: 'code for concepts — EnCodec ಜೊತೆ Encoding (End to End ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ)',
       descEn: 'The lesson\'s exact code, run with no modifications. wav is genuinely random data (as the lesson itself notes: "This is synthetic random input, not an actual speech recording"), so this verifies the pipeline\'s shapes and mechanics, not audio quality.',
       descKn: 'ಲೆಸನ್‌ನ ನಿಖರ code, ಯಾವುದೇ ಮಾರ್ಪಾಡುಗಳಿಲ್ಲದೆ ಚಲಾಯಿಸಲಾಗಿದೆ. wav ನಿಜವಾಗಿ random ಡೇಟಾ (ಲೆಸನ್ ಸ್ವತಃ ಗಮನಿಸುವಂತೆ: "ಇದೂ synthetic random input, ಒಂದು ನಿಜ ಭಾಷಣ ರೆಕಾರ್ಡಿಂಗ್ ಅಲ್ಲ"), ಆದ್ದರಿಂದ ಇದೂ pipeline ನ shapes ಮತ್ತು ಯಂತ್ರಶಾಸ್ತ್ರ ಪರಿಶೀಲಿಸುತ್ತದೆ, audio ಗುಣಮಟ್ಟ ಅಲ್ಲ.',
       code: "from encodec import EncodecModel\nimport torch\n\nmodel = EncodecModel.encodec_model_24khz()\nmodel.set_target_bandwidth(6.0)  # kbps\n\nwav = torch.randn(1, 1, 24000)\nwith torch.no_grad():\n    encoded = model.encode(wav)\ncodes, scale = encoded[0]\n# codes: (1, n_codebooks, n_frames), dtype=int64\n\nprint('codes shape:', codes.shape, 'dtype:', codes.dtype)\nprint('codes min/max:', codes.min().item(), codes.max().item())\nprint('scale:', scale)" } },

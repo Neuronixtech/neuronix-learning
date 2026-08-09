@@ -53,7 +53,7 @@ module.exports = {
       rows: 'Model|Overall|Speech|Sound|Music|Multi-audio\nGemini 2.5 Pro|~60%|73.4%|51.9%|64.9%|~22%\nGemini 2.5 Flash|~57%|73.4%|50.5%|64.9%|21.2%\nGPT-4o Audio|52.5%|--|--|--|26.5%\nQwen2.5-Omni-7B|52.2%|57.4%|47.6%|61.5%|~20%' } },
     { type: 'code', data: {
       filename: 'mmau_pro_eval.py',
-      headingEn: 'Original Code — MMAU-Pro Evaluation Loop (Presented as the Lesson Gives It)', headingKn: 'Original Code — MMAU-Pro Evaluation Loop (ಲೆಸನ್ ನೀಡುವಂತೆ ಪ್ರಸ್ತುತಪಡಿಸಲಾಗಿದೆ)',
+      headingEn: 'code for concepts — MMAU-Pro Evaluation Loop (Presented as the Lesson Gives It)', headingKn: 'code for concepts — MMAU-Pro Evaluation Loop (ಲೆಸನ್ ನೀಡುವಂತೆ ಪ್ರಸ್ತುತಪಡಿಸಲಾಗಿದೆ)',
       descEn: '`call_model()` is referenced but never defined -- it stands in for an entire audio-language model API call, the same "illustrative pipeline pseudocode" convention used throughout this course for pieces that represent a whole external system rather than a small stub-able helper.',
       descKn: '`call_model()` ಉಲ್ಲೇಖಿಸಲಾಗಿದೆ ಆದರೆ ಎಂದಿಗೂ ವ್ಯಾಖ್ಯಾನಿಸಲಾಗಿಲ್ಲ -- ಇದೂ ಒಂದು ಸಂಪೂರ್ಣ audio-language model API ಕರೆಗೆ ಬದಲಿಯಾಗಿ ನಿಲ್ಲುತ್ತದೆ, ಈ ಕೋರ್ಸ್‌ನಾದ್ಯಂತ ಒಂದು ಚಿಕ್ಕ stub-ಮಾಡಬಹುದಾದ helper ಬದಲಿಗೆ ಒಂದು ಸಂಪೂರ್ಣ ಬಾಹ್ಯ ವ್ಯವಸ್ಥೆ ಪ್ರತಿನಿಧಿಸುವ ತುಣುಕುಗಳಿಗೆ ಬಳಸಿದ ಅದೇ "ವಿವರಣಾತ್ಮಕ pipeline pseudocode" ಸಂಪ್ರದಾಯ.',
       code: "from datasets import load_dataset\n\nmmau = load_dataset(\"MMAU/MMAU-Pro\")\n\ncorrect = 0\nfor item in mmau[\"test\"]:\n    answer = call_model(item[\"audio\"], item[\"question\"], item[\"choices\"])\n    if answer == item[\"correct_choice\"]:\n        correct += 1\n\nprint(f\"Accuracy: {correct / len(mmau['test']):.3f}\")" } },

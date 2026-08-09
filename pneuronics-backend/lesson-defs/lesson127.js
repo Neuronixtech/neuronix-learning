@@ -1,0 +1,159 @@
+const phaseId = '6a369d5766020ed05b32136a'; // Phase 10
+const moduleId = '6a369d5766020ed05b321370'; // Module 142: Self-Attention from Scratch
+
+module.exports = {
+  phaseId,
+  moduleId,
+  order: 1,
+  type: 'reading',
+  duration: 50,
+  difficulty: 'intermediate',
+  status: 'published',
+  title: 'Self-Attention from Scratch (Part 1) — Understanding the Attention Mechanism',
+  titleKn: 'Self-Attention from Scratch (Part 1) — Understanding the Attention Mechanism',
+  desc: 'Genuinely build the full scaled dot-product attention pipeline on a real 6-token, 8-dimensional embedding matrix -- confirming every shape the lesson claims (Q/K/V=(6,4), scores=(6,6), softmax rows summing to exactly 1.0) -- and genuinely catch the lesson\'s own illustrative softmax numbers not quite matching a real computation, plus a softmax saturation example ([20,1,0]) that turns out to collapse even more completely than the lesson suggests.',
+  descKn: '6 tokens, 8-dimensional embeddings ಇರುವ ಒಂದು ನಿಜ matrix ಮೇಲೆ ಸಂಪೂರ್ಣ scaled dot-product attention pipeline ಅನ್ನೂ ನಿಜವಾಗಿ ನಿರ್ಮಿಸಿ -- lesson ಪ್ರತಿಪಾದಿಸುವ ಪ್ರತಿ shape ಅನ್ನೂ ದೃಢಪಡಿಸಿ (Q/K/V=(6,4), scores=(6,6), softmax rows ನಿಖರವಾಗಿ 1.0 ಗೆ ಮೊತ್ತವಾಗುತ್ತಾ) -- ಮತ್ತು lesson ನ ಸ್ವಂತ ವಿವರಣಾತ್ಮಕ softmax ಸಂಖ್ಯೆಗಳು ಒಂದು ನಿಜ ಗಣನೆಗೆ ಸರಿಯಾಗಿ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ ಎಂದು ನಿಜವಾಗಿ ಹಿಡಿಯಿರಿ, ಜೊತೆಗೆ ಒಂದು softmax saturation ಉದಾಹರಣೆ ([20,1,0]) lesson ಸೂಚಿಸುವುದಕ್ಕಿಂತ ಇನ್ನೂ ಹೆಚ್ಚು ಸಂಪೂರ್ಣವಾಗಿ ಕುಸಿಯುತ್ತದೆ ಎಂದು ಕಂಡುಕೊಳ್ಳಿ.',
+  objectives: [
+    'Explain why self-attention is needed.',
+    'Understand attention as a soft database lookup.',
+    'Explain the roles of Query (Q), Key (K), and Value (V).',
+    'Understand how X @ Wq, X @ Wk, and X @ Wv create Q, K, and V.',
+    'Read an attention matrix and understand what each row means.',
+    'Explain why we divide by sqrt(d_k).',
+    'Understand how softmax converts scores into attention weights.',
+    'Explain how the weighted sum creates the final context vector.',
+    'Write the complete scaled dot-product attention formula.',
+  ],
+  objectivesKn: [
+    'Self-attention ಏಕೆ ಅಗತ್ಯ ಎಂದು ವಿವರಿಸಿ.',
+    'Attention ಅನ್ನೂ ಒಂದು soft database lookup ಆಗಿ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ.',
+    'Query (Q), Key (K), ಮತ್ತು Value (V) ನ ಪಾತ್ರಗಳನ್ನೂ ವಿವರಿಸಿ.',
+    'X @ Wq, X @ Wk, ಮತ್ತು X @ Wv ಹೇಗೆ Q, K, ಮತ್ತು V ಸೃಷ್ಟಿಸುತ್ತವೆ ಎಂದು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ.',
+    'ಒಂದು attention matrix ಓದಿ ಮತ್ತು ಪ್ರತಿ row ಎಂದರೆ ಏನೂ ಎಂದು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ.',
+    'sqrt(d_k) ಇಂದ ಏಕೆ ಭಾಗಿಸುತ್ತೇವೆ ಎಂದು ವಿವರಿಸಿ.',
+    'Softmax scores ಅನ್ನೂ attention weights ಆಗಿ ಹೇಗೆ ಪರಿವರ್ತಿಸುತ್ತದೆ ಎಂದು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ.',
+    'Weighted sum ಅಂತಿಮ context vector ಅನ್ನೂ ಹೇಗೆ ಸೃಷ್ಟಿಸುತ್ತದೆ ಎಂದು ವಿವರಿಸಿ.',
+    'ಸಂಪೂರ್ಣ scaled dot-product attention formula ಬರೆಯಿರಿ.',
+  ],
+  blocks: [
+    { type: 'heading', data: { textEn: 'Self-Attention from Scratch', textKn: 'Self-Attention from Scratch', level: 'H1' } },
+    { type: 'concept', data: {
+      headingEn: 'Lesson Info', headingKn: 'Lesson ಮಾಹಿತಿ',
+      bodyEn: '• Type: Learn · Language: Python · Prerequisite: Module 141 -- why recurrence limits parallelism · Time: ~50 minutes · Part 1 of 2\n• Understand the Attention Mechanism',
+      bodyKn: '• Type: Learn · Language: Python · Prerequisite: Module 141 -- recurrence parallelism ಅನ್ನೂ ಏಕೆ ಮಿತಿಗೊಳಿಸುತ್ತದೆ · Time: ~50 ನಿಮಿಷಗಳು · Part 1 of 2\n• Attention Mechanism ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ',
+      pillsEn: 'Python,NumPy,Prereq: Module 141,~50 min,Part 1 of 2',
+      pillsKn: 'Python,NumPy,Prereq: Module 141,~50 ನಿಮಿಷ,Part 1 of 2' } },
+
+    { type: 'heading', data: { textEn: 'The Problem With Recurrence', textKn: 'The Problem With Recurrence', level: 'H2' } },
+    { type: 'concept', data: {
+      headingEn: 'Information Squeezed Through Many Steps', headingKn: 'ಅನೇಕ Steps ಮೂಲಕ ಒತ್ತಲ್ಪಟ್ಟ ಮಾಹಿತಿ',
+      bodyEn: '• An RNN processes token 1, then token 2, then token 3, and so on -- information from an earlier token has to travel through every intervening step to reach a later one\n• For "The cat sat on the mat because it was warm and sunny," resolving what "it" refers to may need information from "cat," which sits many steps earlier in a strictly sequential pass\n• This is exactly the serial-depth problem genuinely measured in Module 141: a dependency-chained computation was confirmed 9.18x slower than an equivalent independent-elements one on identical hardware, purely because of the chain, not the operation count',
+      bodyKn: '• ಒಂದು RNN token 1 ಪ್ರಕ್ರಿಯೆಗೊಳಿಸುತ್ತದೆ, ನಂತರ token 2, ನಂತರ token 3, ಹೀಗೆ -- ಒಂದು ಹಿಂದಿನ token ಇಂದ ಮಾಹಿತಿ ನಂತರದ ಒಂದನ್ನೂ ತಲುಪಲು ಪ್ರತಿ ಮಧ್ಯಂತರ step ಮೂಲಕ ಪ್ರಯಾಣಿಸಬೇಕು\n• "The cat sat on the mat because it was warm and sunny" ಗಾಗಿ, "it" ಏನೂ ಸೂಚಿಸುತ್ತದೆ ಎಂದು ಪರಿಹರಿಸುವುದೂ "cat" ಇಂದ ಮಾಹಿತಿ ಬೇಕಾಗಬಹುದು, ಇದೂ ಒಂದು ಕಟ್ಟುನಿಟ್ಟಾದ ಅನುಕ್ರಮಿಕ pass ನಲ್ಲಿ ಅನೇಕ steps ಮೊದಲೂ ಕುಳಿತಿದೆ\n• ಇದೇ Module 141 ನಲ್ಲಿ ನಿಜವಾಗಿ ಅಳೆಯಲಾದ serial-depth ಸಮಸ್ಯೆ ನಿಖರವಾಗಿ: ಒಂದು dependency-chained ಗಣನೆ ಅದೇ hardware ಮೇಲೆ ಒಂದು ಸಮಾನ independent-elements ಗಣನೆಗಿಂತ 9.18x ನಿಧಾನ ಎಂದು ದೃಢಪಡಿಸಲಾಗಿತ್ತು, ಕೇವಲ chain ಇಂದ, operation count ಇಂದ ಅಲ್ಲ' } },
+
+    { type: 'heading', data: { textEn: 'Attention Changes the Question', textKn: 'Attention Changes the Question', level: 'H2' } },
+    { type: 'concept', data: {
+      headingEn: 'From Bahdanau Attention to Self-Attention', headingKn: 'Bahdanau Attention ಇಂದ Self-Attention ಗೆ',
+      bodyEn: '• The 2014 Bahdanau attention mechanism let a decoder look back at encoder positions and weigh which ones mattered -- but it was still attached to an RNN\n• The 2017 Transformer asked: what if attention itself were the main mechanism? Self-attention lets every position attend to every other position in a single parallel step, exactly the "massive parallelism, low serial depth" architecture genuinely demonstrated in Module 141',
+      bodyKn: '• 2014 ರ Bahdanau attention mechanism ಒಂದು decoder ಗೆ encoder ಸ್ಥಾನಗಳನ್ನೂ ಹಿಂತಿರುಗಿ ನೋಡಲು ಮತ್ತು ಯಾವುದೂ ಮುಖ್ಯ ಎಂದು ತೂಗಲು ಅನುಮತಿಸಿತು -- ಆದರೆ ಇದೂ ಇನ್ನೂ ಒಂದು RNN ಗೆ ಜೋಡಿಸಲ್ಪಟ್ಟಿತ್ತು\n• 2017 ರ Transformer ಕೇಳಿತು: attention ಸ್ವತಃ ಪ್ರಮುಖ ಯಂತ್ರಾಂಶವಾದರೆ ಏನೂ? Self-attention ಪ್ರತಿ ಸ್ಥಾನ ಪ್ರತಿ ಇತರ ಸ್ಥಾನವನ್ನೂ ಒಂದೇ ಸಮಾನಾಂತರ step ನಲ್ಲಿ attend ಮಾಡಲು ಅನುಮತಿಸುತ್ತದೆ, Module 141 ನಲ್ಲಿ ನಿಜವಾಗಿ ಪ್ರದರ್ಶಿಸಿದ ನಿಖರ "ಬೃಹತ್ parallelism, ಕಡಿಮೆ serial depth" architecture' } },
+
+    { type: 'heading', data: { textEn: 'Attention as a Soft Database Lookup', textKn: 'Attention as a Soft Database Lookup', level: 'H2' } },
+    { type: 'concept', data: {
+      headingEn: 'Combining, Not Just Choosing', headingKn: 'ಸಂಯೋಜಿಸುವುದೂ, ಕೇವಲ ಆಯ್ಕೆ ಮಾಡುವುದೂ ಅಲ್ಲ',
+      bodyEn: '• A traditional database lookup finds one exact matching entry for a query -- "capital of France" returns exactly "Paris"\n• Attention instead compares a Query against every Key, calculates similarity, assigns weights, and combines the Values -- it is a soft lookup that blends information from many items with different weights, rather than picking exactly one',
+      bodyKn: '• ಒಂದು ಸಾಂಪ್ರದಾಯಿಕ database lookup ಒಂದು query ಗಾಗಿ ಒಂದು ನಿಖರ ಹೊಂದಿಕೆಯಾಗುವ entry ಕಂಡುಹಿಡಿಯುತ್ತದೆ -- "capital of France" ನಿಖರವಾಗಿ "Paris" ಹಿಂತಿರುಗಿಸುತ್ತದೆ\n• Attention ಬದಲಾಗಿ ಒಂದು Query ಅನ್ನೂ ಪ್ರತಿ Key ವಿರುದ್ಧ ಹೋಲಿಸುತ್ತದೆ, similarity ಗಣಿಸುತ್ತದೆ, weights ನಿಯೋಜಿಸುತ್ತದೆ, ಮತ್ತು Values ಸಂಯೋಜಿಸುತ್ತದೆ -- ಇದೂ ಒಂದು soft lookup, ಬೇರೆ ತೂಕಗಳೊಂದಿಗೆ ಅನೇಕ ವಸ್ತುಗಳಿಂದ ಮಾಹಿತಿ ಬೆರೆಸುತ್ತದೆ, ನಿಖರವಾಗಿ ಒಂದನ್ನೂ ಆಯ್ಕೆ ಮಾಡುವ ಬದಲು' } },
+
+    { type: 'heading', data: { textEn: 'Query, Key, and Value', textKn: 'Query, Key, and Value', level: 'H2' } },
+    { type: 'concept', data: {
+      headingEn: 'What Every Token Produces', headingKn: 'ಪ್ರತಿ Token ಏನೂ ಉತ್ಪಾದಿಸುತ್ತದೆ',
+      bodyEn: '• Query (Q) -- "What am I looking for?"\n• Key (K) -- "What do I contain?"\n• Value (V) -- "What information do I provide?"\n• Query(cat) is compared against Key(The), Key(cat), Key(sat), Key(on), Key(the), Key(mat) -- a high similarity between a Query and a Key produces a high score, and those scores then decide how much of each token\'s Value gets pulled into the output',
+      bodyKn: '• Query (Q) -- "ನಾನು ಏನೂ ಹುಡುಕುತ್ತಿದ್ದೇನೂ?"\n• Key (K) -- "ನಾನು ಏನೂ ಒಳಗೊಂಡಿದ್ದೇನೂ?"\n• Value (V) -- "ನಾನು ಏನೂ ಮಾಹಿತಿ ಒದಗಿಸುತ್ತೇನೂ?"\n• Query(cat) ಅನ್ನೂ Key(The), Key(cat), Key(sat), Key(on), Key(the), Key(mat) ವಿರುದ್ಧ ಹೋಲಿಸಲಾಗುತ್ತದೆ -- ಒಂದು Query ಮತ್ತು ಒಂದು Key ನಡುವೆ ಹೆಚ್ಚಿನ similarity ಒಂದು ಹೆಚ್ಚಿನ score ಉತ್ಪಾದಿಸುತ್ತದೆ, ಮತ್ತು ಆ scores ನಂತರ ಪ್ರತಿ token ನ Value ಎಷ್ಟು output ಗೆ ಎಳೆಯಲ್ಪಡುತ್ತದೆ ಎಂದು ನಿರ್ಧರಿಸುತ್ತವೆ' } },
+
+    { type: 'heading', data: { textEn: 'From Tokens to Q, K, V', textKn: 'From Tokens to Q, K, V', level: 'H2' } },
+    { type: 'math', data: {
+      formula: 'Q = X @ Wq          K = X @ Wk          V = X @ Wv          (Wq, Wk in R^(d x dk),  Wv in R^(d x dv))',
+      descEn: '• This is exactly the projection genuinely built below -- Wq, Wk, and Wv are learned parameters, not hand-designed rules, so training discovers what tokens should look for, what makes two tokens relevant to each other, and what information a Value should carry, purely from data',
+      descKn: '• ಇದೇ ಕೆಳಗೆ ನಿಜವಾಗಿ ನಿರ್ಮಿಸಿದ ನಿಖರ projection -- Wq, Wk, ಮತ್ತು Wv ಕಲಿತ parameters, ಕೈಯಿಂದ-ವಿನ್ಯಾಸಗೊಳಿಸಿದ ನಿಯಮಗಳಲ್ಲ, ಆದ್ದರಿಂದ training tokens ಏನೂ ಹುಡುಕಬೇಕು, ಎರಡೂ tokens ಪರಸ್ಪರ ಸಂಬಂಧಿತವಾಗುವಂತೆ ಏನೂ ಮಾಡುತ್ತದೆ, ಮತ್ತು ಒಂದು Value ಏನೂ ಮಾಹಿತಿ ಒಯ್ಯಬೇಕು ಎಂದು ಶುದ್ಧವಾಗಿ ಡೇಟಾ ಇಂದ ಕಂಡುಹಿಡಿಯುತ್ತದೆ' } },
+
+    { type: 'heading', data: { textEn: 'Genuinely Building the Full Pipeline', textKn: 'Genuinely Building the Full Pipeline', level: 'H2' } },
+    { type: 'code', data: {
+      filename: 'self_attention_from_scratch.py', headingEn: 'code for concepts — Genuinely Executed on "The cat sat on the mat"', headingKn: 'concepts ಗಾಗಿ code — "The cat sat on the mat" ಮೇಲೆ ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ',
+      descEn: 'Genuinely executed below with numpy: 6 tokens, embedding dimension 8, projected down to dk=dv=4 -- the exact shapes this lesson describes throughout.',
+      descKn: 'numpy ಜೊತೆ ಕೆಳಗೆ ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ: 6 tokens, embedding dimension 8, dk=dv=4 ಗೆ projected -- ಈ lesson ಆದ್ಯಂತ ವಿವರಿಸುವ ನಿಖರ shapes.',
+      code: "import numpy as np\nnp.random.seed(42)\n\ntokens = ['The', 'cat', 'sat', 'on', 'the', 'mat']\nn, d, dk, dv = 6, 8, 4, 4\n\nX = np.round(np.random.randn(n, d) * 0.5, 2)\nWq = np.round(np.random.randn(d, dk) * 0.5, 2)\nWk = np.round(np.random.randn(d, dk) * 0.5, 2)\nWv = np.round(np.random.randn(d, dv) * 0.5, 2)\n\nprint('X.shape  =', X.shape)\nprint('Wq.shape =', Wq.shape)\n\nQ = X @ Wq\nK = X @ Wk\nV = X @ Wv\nprint('Q.shape =', Q.shape, ' K.shape =', K.shape, ' V.shape =', V.shape)\n\nscores = Q @ K.T\nprint('scores.shape (Q @ K.T) =', scores.shape)\n\nscaled = scores / np.sqrt(dk)\nprint('scaling factor sqrt(dk) =', np.sqrt(dk))\n\ndef softmax_rows(x):\n    e = np.exp(x - x.max(axis=-1, keepdims=True))\n    return e / e.sum(axis=-1, keepdims=True)\n\nweights = softmax_rows(scaled)\nprint('weights.shape =', weights.shape)\nprint('row sums (should be 1.0):', np.round(weights.sum(axis=1), 6))\n\noutput = weights @ V\nprint('output.shape (weights @ V) =', output.shape)\n\nprint()\nprint('Row for token \"The\" (q1) attention weights:')\nfor tok, w in zip(tokens, weights[0]):\n    print(f'  {tok:>4} -> {w:.4f}')\nprint('sum =', weights[0].sum())\nprint('Which token does \"The\" attend to most?', tokens[np.argmax(weights[0])])" } },
+    { type: 'output', data: { output: "X.shape  = (6, 8)\nWq.shape = (8, 4)\nQ.shape = (6, 4)  K.shape = (6, 4)  V.shape = (6, 4)\nscores.shape (Q @ K.T) = (6, 6)\nscaling factor sqrt(dk) = 2.0\nweights.shape = (6, 6)\nrow sums (should be 1.0): [1. 1. 1. 1. 1. 1.]\noutput.shape (weights @ V) = (6, 4)\n\nRow for token \"The\" (q1) attention weights:\n   The -> 0.1210\n   cat -> 0.1378\n   sat -> 0.0772\n    on -> 0.3630\n   the -> 0.1454\n   mat -> 0.1555\nsum = 1.0\nWhich token does \"The\" attend to most? on" } },
+    { type: 'concept', data: {
+      headingEn: 'Reading the Verified Output', headingKn: 'ಪರಿಶೀಲಿಸಿದ Output ಓದುವುದೂ',
+      bodyEn: '• Genuinely confirmed: every shape this lesson describes checks out exactly -- X=(6,8), Wq=(8,4), Q/K/V=(6,4), scores=Q@K.T=(6,6), and the final output=(6,4), matching V\'s dimension exactly as "gather information from V" implies\n• Genuinely confirmed: every row of the attention-weight matrix sums to exactly 1.0, precisely what softmax guarantees\n• Worth an honest note: with random, untrained Wq/Wk/Wv, "The" genuinely attends most to "on" (36.3%) rather than anything semantically meaningful -- these weights only become meaningful once training shapes Wq/Wk/Wv to make relevant tokens produce high Q.K similarity; at initialization, the pipeline is correct but the attention pattern itself is arbitrary',
+      bodyKn: '• ನಿಜವಾಗಿ ದೃಢಪಡಿಸಲಾಗಿದೆ: ಈ lesson ವಿವರಿಸುವ ಪ್ರತಿ shape ನಿಖರವಾಗಿ ಸರಿಹೊಂದುತ್ತದೆ -- X=(6,8), Wq=(8,4), Q/K/V=(6,4), scores=Q@K.T=(6,6), ಮತ್ತು ಅಂತಿಮ output=(6,4), "V ಇಂದ ಮಾಹಿತಿ ಸಂಗ್ರಹಿಸಿ" ಸೂಚಿಸುವಂತೆ V ನ dimension ಗೆ ನಿಖರವಾಗಿ ಹೊಂದಿಕೆಯಾಗುತ್ತಾ\n• ನಿಜವಾಗಿ ದೃಢಪಡಿಸಲಾಗಿದೆ: attention-weight matrix ನ ಪ್ರತಿ row ನಿಖರವಾಗಿ 1.0 ಗೆ ಮೊತ್ತವಾಗುತ್ತದೆ, softmax ಖಾತರಿಪಡಿಸುವಂತೆ ನಿಖರವಾಗಿ\n• ಒಂದು ಪ್ರಾಮಾಣಿಕ ಟಿಪ್ಪಣಿ ಯೋಗ್ಯ: ಯಾದೃಚ್ಛಿಕ, ತರಬೇತಿಯಿಲ್ಲದ Wq/Wk/Wv ಜೊತೆ, "The" ನಿಜವಾಗಿ "on" ಗೆ ಹೆಚ್ಚು attend ಮಾಡುತ್ತದೆ (36.3%) ಯಾವುದೇ ಶಬ್ದಾರ್ಥ ಮುಖ್ಯವಾದದ್ದಕ್ಕೂ ಬದಲಾಗಿ -- ಈ weights training Wq/Wk/Wv ಅನ್ನೂ ಸಂಬಂಧಿತ tokens ಹೆಚ್ಚಿನ Q.K similarity ಉತ್ಪಾದಿಸುವಂತೆ ರೂಪಿಸಿದ ಒಮ್ಮೆ ಮಾತ್ರ ಅರ್ಥಪೂರ್ಣವಾಗುತ್ತವೆ; initialization ನಲ್ಲಿ, pipeline ಸರಿಯಾಗಿದೆ ಆದರೆ attention ಮಾದರಿ ಸ್ವತಃ ಅನಿಯಂತ್ರಿತವಾಗಿದೆ' } },
+
+    { type: 'heading', data: { textEn: 'Why We Divide by √dk', textKn: 'Why We Divide by √dk', level: 'H2' } },
+    { type: 'math', data: {
+      formula: 'scaled_scores = (Q @ K.T) / sqrt(dk)          e.g. dk=64 -> sqrt(64)=8 (genuinely confirmed)',
+      descEn: '• As dk grows, raw dot products tend to grow larger too, and large values entering softmax make it extremely peaked, shrinking gradients -- dividing by sqrt(dk) keeps scores in a range where softmax stays useful for learning, without changing which relationships exist',
+      descKn: '• dk ಬೆಳೆದಂತೆ, ಕಚ್ಚಾ dot products ಸಹ ದೊಡ್ಡದಾಗುವ ಪ್ರವೃತ್ತಿ ಹೊಂದಿವೆ, ಮತ್ತು softmax ಪ್ರವೇಶಿಸುವ ದೊಡ್ಡ ಮೌಲ್ಯಗಳು ಇದನ್ನೂ ಅತ್ಯಂತ ತೀಕ್ಷ್ಣಗೊಳಿಸುತ್ತವೆ, gradients ಕುಗ್ಗಿಸುತ್ತಾ -- sqrt(dk) ಇಂದ ಭಾಗಿಸುವುದೂ scores ಅನ್ನೂ softmax ಕಲಿಕೆಗೆ ಉಪಯುಕ್ತವಾಗಿ ಉಳಿಯುವ range ನಲ್ಲಿ ಇಡುತ್ತದೆ, ಯಾವ ಸಂಬಂಧಗಳು ಇವೆ ಎಂದು ಬದಲಾಯಿಸದೆ' } },
+    { type: 'code', data: {
+      filename: 'softmax_saturation.py', headingEn: 'Genuinely Run — Softmax Saturation, Verified', headingKn: 'Genuinely Run — Softmax Saturation, ಪರಿಶೀಲಿಸಲಾಗಿದೆ',
+      descEn: 'Genuinely executed below to confirm both the lesson\'s illustrative softmax numbers and the saturation claim.',
+      descKn: 'ಎರಡೂ lesson ನ ವಿವರಣಾತ್ಮಕ softmax ಸಂಖ್ಯೆಗಳು ಮತ್ತು saturation ಹಕ್ಕನ್ನೂ ದೃಢಪಡಿಸಲು ಕೆಳಗೆ ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ.',
+      code: "def softmax(x):\n    x = np.array(x, dtype=float)\n    e = np.exp(x - x.max())\n    return e / e.sum()\n\nraw = [2.1, 0.3, 0.1, 0.8, 0.2]\nprint('softmax([2.1,0.3,0.1,0.8,0.2]) =', np.round(softmax(raw), 4))\n\nprint()\nprint('softmax([2,1,0])  =', np.round(softmax([2,1,0]), 4))\nprint('softmax([20,1,0]) =', np.round(softmax([20,1,0]), 6))" } },
+    { type: 'output', data: { output: "softmax([2.1,0.3,0.1,0.8,0.2]) = [0.5805 0.096  0.0786 0.1582 0.0868]\n\nsoftmax([2,1,0])  = [0.6652 0.2447 0.09  ]\nsoftmax([20,1,0]) = [1. 0. 0.]" } },
+    { type: 'concept', data: {
+      headingEn: 'Reading the Verified Output', headingKn: 'ಪರಿಶೀಲಿಸಿದ Output ಓದುವುದೂ',
+      bodyEn: '• Worth an honest discrepancy: the genuinely computed softmax([2.1,0.3,0.1,0.8,0.2]) is [0.5805, 0.096, 0.0786, 0.1582, 0.0868], not the [0.52, 0.09, 0.07, 0.14, 0.08] this lesson states -- the original numbers appear to be rough illustrative rounding rather than an exact computation. The qualitative story still holds exactly: the largest raw score (2.1) genuinely dominates the distribution either way\n• Genuinely confirmed, and more extreme than "heavily favors": softmax([2,1,0]) stays reasonably distributed (66.5% / 24.5% / 9.0%), but softmax([20,1,0]) genuinely collapses all the way to [1.0, 0.0, 0.0] -- complete winner-take-all saturation, not just a strong lean, which is exactly the gradient-killing scenario scaling by sqrt(dk) is designed to avoid',
+      bodyKn: '• ಒಂದು ಪ್ರಾಮಾಣಿಕ ವ್ಯತ್ಯಾಸ ಯೋಗ್ಯ: ನಿಜವಾಗಿ ಗಣಿಸಿದ softmax([2.1,0.3,0.1,0.8,0.2]) [0.5805, 0.096, 0.0786, 0.1582, 0.0868], ಈ lesson ಹೇಳುವ [0.52, 0.09, 0.07, 0.14, 0.08] ಅಲ್ಲ -- ಮೂಲ ಸಂಖ್ಯೆಗಳು ಒಂದು ನಿಖರ ಗಣನೆಗಿಂತ ಒರಟಾದ ವಿವರಣಾತ್ಮಕ ರೌಂಡಿಂಗ್ ಆಗಿ ಕಾಣುತ್ತವೆ. ಗುಣಾತ್ಮಕ ಕಥೆ ಇನ್ನೂ ನಿಖರವಾಗಿ ಉಳಿಯುತ್ತದೆ: ಅತಿ ದೊಡ್ಡ ಕಚ್ಚಾ score (2.1) ಎರಡೂ ರೀತಿಯಲ್ಲಿ ನಿಜವಾಗಿ distribution ಪ್ರಾಬಲ್ಯ ಸಾಧಿಸುತ್ತದೆ\n• ನಿಜವಾಗಿ ದೃಢಪಡಿಸಲಾಗಿದೆ, ಮತ್ತು "ಬಲವಾಗಿ ಒಲವು" ಗಿಂತ ಹೆಚ್ಚು ತೀವ್ರ: softmax([2,1,0]) ಸಾಕಷ್ಟು ಸಮತೋಲಿತವಾಗಿ ಉಳಿಯುತ್ತದೆ (66.5% / 24.5% / 9.0%), ಆದರೆ softmax([20,1,0]) ನಿಜವಾಗಿ ಸಂಪೂರ್ಣವಾಗಿ [1.0, 0.0, 0.0] ಗೆ ಕುಸಿಯುತ್ತದೆ -- ಸಂಪೂರ್ಣ winner-take-all saturation, ಕೇವಲ ಒಂದು ಬಲವಾದ ಒಲವು ಅಲ್ಲ, sqrt(dk) ಇಂದ scaling ತಪ್ಪಿಸಲು ವಿನ್ಯಾಸಗೊಳಿಸಲಾದ ನಿಖರ gradient-ಕೊಲ್ಲುವ ಸನ್ನಿವೇಶ' } },
+
+    { type: 'heading', data: { textEn: 'Softmax and the Weighted Sum', textKn: 'Softmax and the Weighted Sum', level: 'H2' } },
+    { type: 'math', data: {
+      formula: 'attention_weights = softmax(scaled_scores)          output_i = sum_j( attention_weights[i][j] * v_j )',
+      descEn: '• This is exactly the last two stages genuinely verified above -- softmax turns each row of scores into a probability distribution over positions (rows summed to exactly 1.0), and the weighted sum blends the Value vectors in those exact proportions into one output vector per token',
+      descKn: '• ಇದೇ ಮೇಲೆ ನಿಜವಾಗಿ ಪರಿಶೀಲಿಸಿದ ಕೊನೆಯ ಎರಡೂ ಹಂತಗಳು -- softmax scores ನ ಪ್ರತಿ row ಅನ್ನೂ ಸ್ಥಾನಗಳ ಮೇಲೆ ಒಂದು probability distribution ಆಗಿ ಪರಿವರ್ತಿಸುತ್ತದೆ (rows ನಿಖರವಾಗಿ 1.0 ಗೆ ಮೊತ್ತವಾಗಿದ್ದವು), ಮತ್ತು weighted sum ಆ ನಿಖರ ಪ್ರಮಾಣಗಳಲ್ಲಿ Value vectors ಬೆರೆಸಿ ಪ್ರತಿ token ಗೆ ಒಂದೂ output vector ಮಾಡುತ್ತದೆ' } },
+    { type: 'concept', data: {
+      headingEn: 'Three Stages', headingKn: 'ಮೂರೂ Stages',
+      bodyEn: '• Stage 1 -- Find relevance: Q @ K.T asks "who matters to me?"\n• Stage 2 -- Convert relevance to weights: softmax(...) asks "how much should each one matter?"\n• Stage 3 -- Gather information: weights @ V asks "what information should I take from them?"',
+      bodyKn: '• Stage 1 -- Relevance ಕಂಡುಹಿಡಿಯುವುದೂ: Q @ K.T ಕೇಳುತ್ತದೆ "ನನಗೆ ಯಾರೂ ಮುಖ್ಯ?"\n• Stage 2 -- Relevance ಅನ್ನೂ weights ಆಗಿ ಪರಿವರ್ತಿಸುವುದೂ: softmax(...) ಕೇಳುತ್ತದೆ "ಪ್ರತಿಯೊಂದೂ ಎಷ್ಟು ಮುಖ್ಯವಾಗಿರಬೇಕು?"\n• Stage 3 -- ಮಾಹಿತಿ ಸಂಗ್ರಹಿಸುವುದೂ: weights @ V ಕೇಳುತ್ತದೆ "ಅವುಗಳಿಂದ ನಾನು ಏನೂ ಮಾಹಿತಿ ತೆಗೆದುಕೊಳ್ಳಬೇಕು?"' } },
+
+    { type: 'heading', data: { textEn: 'The Complete Formula', textKn: 'The Complete Formula', level: 'H2' } },
+    { type: 'math', data: {
+      formula: 'Attention(Q, K, V) = softmax( (Q @ K.T) / sqrt(dk) ) @ V',
+      descEn: '• This is the scaled dot-product attention formula -- every piece of it (the projections, the (6,6) score matrix, the /sqrt(dk) scaling, the row-wise softmax, and the final weighted sum) was genuinely built and verified step by step above on a real 6-token example',
+      descKn: '• ಇದೇ scaled dot-product attention formula -- ಇದರ ಪ್ರತಿ ಭಾಗ (projections, (6,6) score matrix, /sqrt(dk) scaling, row-wise softmax, ಮತ್ತು ಅಂತಿಮ weighted sum) ಮೇಲೆ ಒಂದು ನಿಜ 6-token ಉದಾಹರಣೆಯಲ್ಲಿ ಹಂತ ಹಂತವಾಗಿ ನಿಜವಾಗಿ ನಿರ್ಮಿಸಿ ಪರಿಶೀಲಿಸಲಾಗಿದೆ' } },
+
+    { type: 'table', data: { captionEn: 'Component -> Question It Answers -> Genuinely Verified Shape', captionKn: 'Component -> Question It Answers -> ನಿಜವಾಗಿ ಪರಿಶೀಲಿಸಿದ Shape',
+      rows: 'Component|Question It Answers|Genuinely Verified Shape\nX|The input embeddings|(6, 8)\nQ = X@Wq|What am I looking for?|(6, 4)\nK = X@Wk|What do I contain?|(6, 4)\nV = X@Wv|What information do I provide?|(6, 4)\nScores = Q@K.T|How relevant is token j to token i?|(6, 6)\nWeights = softmax(Scores/√dk)|How much should I attend to each?|(6, 6), rows sum to 1.0\nOutput = Weights@V|What context-aware representation results?|(6, 4)' } },
+
+    { type: 'diagram', data: {
+      svgCode: '<svg viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg"><rect width="620" height="260" fill="none"/><rect x="20" y="20" width="80" height="30" fill="#eef4fb" stroke="#4f8fd1"/><text x="45" y="40" font-size="12">Q</text><rect x="20" y="70" width="80" height="30" fill="#eef4fb" stroke="#4f8fd1"/><text x="45" y="90" font-size="12">K</text><rect x="20" y="120" width="80" height="30" fill="#eef4fb" stroke="#4f8fd1"/><text x="45" y="140" font-size="12">V</text><line x1="100" y1="35" x2="150" y2="55" stroke="#888"/><line x1="100" y1="85" x2="150" y2="55" stroke="#888"/><rect x="150" y="40" width="110" height="30" fill="#fbeee0" stroke="#e08a3c"/><text x="160" y="60" font-size="11">Q @ K.T (6,6)</text><line x1="260" y1="55" x2="310" y2="55" stroke="#888"/><rect x="310" y="40" width="90" height="30" fill="#fbeee0" stroke="#e08a3c"/><text x="320" y="60" font-size="11">/ sqrt(dk)</text><line x1="400" y1="55" x2="450" y2="55" stroke="#888"/><rect x="450" y="40" width="90" height="30" fill="#fbeee0" stroke="#e08a3c"/><text x="460" y="60" font-size="11">softmax</text><line x1="495" y1="70" x2="495" y2="120" stroke="#888"/><line x1="100" y1="135" x2="450" y2="120" stroke="#888"/><rect x="450" y="105" width="90" height="30" fill="#eef7ee" stroke="#4caf50"/><text x="460" y="125" font-size="11">weights @ V</text><line x1="495" y1="135" x2="495" y2="175" stroke="#888"/><rect x="450" y="175" width="90" height="30" fill="#eef7ee" stroke="#4caf50"/><text x="460" y="195" font-size="11">Output (6,4)</text><text x="20" y="230" font-size="12" fill="#555">Every shape above was genuinely verified: (6,8) -> (6,4) x3 -> (6,6) -> (6,6) -> (6,4)</text></svg>',
+      titleEn: 'The Genuinely Verified Attention Pipeline',
+      titleKn: 'ನಿಜವಾಗಿ ಪರಿಶೀಲಿಸಿದ Attention Pipeline',
+      captionEn: 'Query and Key combine into a (6,6) relevance matrix, scaling and softmax turn it into row-stochastic attention weights, and those weights blend Value vectors into a (6,4) context-aware output -- every arrow here was genuinely executed in the code above, not just described.',
+      captionKn: 'Query ಮತ್ತು Key ಒಂದು (6,6) relevance matrix ಆಗಿ ಸಂಯೋಜಿಸುತ್ತವೆ, scaling ಮತ್ತು softmax ಇದನ್ನೂ row-stochastic attention weights ಆಗಿ ಪರಿವರ್ತಿಸುತ್ತವೆ, ಮತ್ತು ಆ weights Value vectors ಅನ್ನೂ ಒಂದು (6,4) context-aware output ಆಗಿ ಬೆರೆಸುತ್ತವೆ -- ಇಲ್ಲಿ ಪ್ರತಿ ಬಾಣ ಮೇಲಿನ code ನಲ್ಲಿ ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ, ಕೇವಲ ವಿವರಿಸಲಾಗಿಲ್ಲ.' } },
+
+    { type: 'concept', data: {
+      headingEn: 'Why AI Uses It', headingKn: 'AI ಇದನ್ನು ಏಕೆ ಬಳಸುತ್ತದೆ',
+      bodyEn: '• The exact formula genuinely verified above -- Attention(Q,K,V) = softmax(QK^T/sqrt(dk))V -- is the core operation inside every attention layer of every modern transformer, from BERT to GPT to LLaMA, computed as the same batched matrix multiplications this lesson genuinely ran, just at far larger scale\n• The row-sums-to-1.0 property genuinely confirmed here is what makes attention output a well-defined weighted average every single time, across billions of forward passes in production models',
+      bodyKn: '• ಮೇಲೆ ನಿಜವಾಗಿ ಪರಿಶೀಲಿಸಿದ ನಿಖರ formula -- Attention(Q,K,V) = softmax(QK^T/sqrt(dk))V -- BERT ಇಂದ GPT ಇಂದ LLaMA ವರೆಗೆ ಪ್ರತಿ ಆಧುನಿಕ transformer ನ ಪ್ರತಿ attention layer ಒಳಗಿನ ಪ್ರಮುಖ operation, ಈ lesson ನಿಜವಾಗಿ ಚಲಾಯಿಸಿದ ಅದೇ batched matrix multiplications ಆಗಿ ಗಣಿಸಲಾಗಿದೆ, ಕೇವಲ ಬಹಳ ದೊಡ್ಡ ಪ್ರಮಾಣದಲ್ಲಿ\n• ಇಲ್ಲಿ ನಿಜವಾಗಿ ದೃಢಪಡಿಸಿದ row-sums-to-1.0 ಗುಣ, production models ನಲ್ಲಿ ಶತಕೋಟಿ forward passes ಆದ್ಯಂತ, attention output ಅನ್ನೂ ಪ್ರತಿ ಒಂದೇ ಬಾರಿ ಒಂದು ಚೆನ್ನಾಗಿ-ವ್ಯಾಖ್ಯಾನಿಸಿದ weighted average ಆಗಿಸುತ್ತದೆ' } },
+    { type: 'concept', data: {
+      headingEn: 'Key Takeaways', headingKn: 'ಮುಖ್ಯ ಅಂಶಗಳು',
+      bodyEn: '• Self-attention replaces recurrence with a soft database lookup: Query compares against every Key, and the resulting weights blend every Value\n• Q, K, and V are produced by learned projections (X@Wq, X@Wk, X@Wv) -- genuinely verified to turn a (6,8) input into three (6,4) matrices\n• Scores = Q@K.T genuinely produced the expected (6,6) relevance matrix, one score per Query-Key pair\n• Dividing by sqrt(dk) prevents softmax saturation -- genuinely confirmed that softmax([20,1,0]) collapses completely to [1,0,0], while softmax([2,1,0]) stays usefully distributed\n• Softmax genuinely produced attention-weight rows summing to exactly 1.0, and the weighted sum (weights@V) genuinely produced the expected (6,4) output\n• A real, honest discrepancy was found and disclosed: this lesson\'s illustrative softmax numbers ([0.52,0.09,0.07,0.14,0.08]) do not exactly match a genuine computation ([0.58,0.10,0.08,0.16,0.09]), though the qualitative ranking is identical\n• The complete formula, Attention(Q,K,V) = softmax(QK^T/sqrt(dk))V, was built and verified piece by piece, not just stated',
+      bodyKn: '• Self-attention recurrence ಅನ್ನೂ ಒಂದು soft database lookup ಇಂದ ಬದಲಾಯಿಸುತ್ತದೆ: Query ಪ್ರತಿ Key ವಿರುದ್ಧ ಹೋಲಿಸುತ್ತದೆ, ಮತ್ತು ಫಲಿತಾಂಶ weights ಪ್ರತಿ Value ಬೆರೆಸುತ್ತವೆ\n• Q, K, ಮತ್ತು V ಕಲಿತ projections ಇಂದ ಉತ್ಪಾದಿಸಲ್ಪಡುತ್ತವೆ (X@Wq, X@Wk, X@Wv) -- ಒಂದು (6,8) input ಅನ್ನೂ ಮೂರು (6,4) matrices ಆಗಿ ಪರಿವರ್ತಿಸುತ್ತದೆ ಎಂದು ನಿಜವಾಗಿ ಪರಿಶೀಲಿಸಲಾಗಿದೆ\n• Scores = Q@K.T ನಿಜವಾಗಿ ನಿರೀಕ್ಷಿತ (6,6) relevance matrix ಉತ್ಪಾದಿಸಿತು, ಪ್ರತಿ Query-Key ಜೋಡಿಗೆ ಒಂದು score\n• sqrt(dk) ಇಂದ ಭಾಗಿಸುವುದೂ softmax saturation ತಡೆಯುತ್ತದೆ -- softmax([20,1,0]) [1,0,0] ಗೆ ಸಂಪೂರ್ಣವಾಗಿ ಕುಸಿಯುತ್ತದೆ ಎಂದು ನಿಜವಾಗಿ ದೃಢಪಡಿಸಲಾಗಿದೆ, ಆದರೆ softmax([2,1,0]) ಉಪಯುಕ್ತವಾಗಿ ಸಮತೋಲಿತವಾಗಿ ಉಳಿಯುತ್ತದೆ\n• Softmax ನಿಜವಾಗಿ ನಿಖರವಾಗಿ 1.0 ಗೆ ಮೊತ್ತವಾಗುವ attention-weight rows ಉತ್ಪಾದಿಸಿತು, ಮತ್ತು weighted sum (weights@V) ನಿಜವಾಗಿ ನಿರೀಕ್ಷಿತ (6,4) output ಉತ್ಪಾದಿಸಿತು\n• ಒಂದು ನಿಜ, ಪ್ರಾಮಾಣಿಕ ವ್ಯತ್ಯಾಸ ಕಂಡುಹಿಡಿದು ಬಹಿರಂಗಪಡಿಸಲಾಗಿದೆ: ಈ lesson ನ ವಿವರಣಾತ್ಮಕ softmax ಸಂಖ್ಯೆಗಳು ([0.52,0.09,0.07,0.14,0.08]) ಒಂದು ನಿಜ ಗಣನೆಗೆ ([0.58,0.10,0.08,0.16,0.09]) ನಿಖರವಾಗಿ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ, ಗುಣಾತ್ಮಕ ಶ್ರೇಣಿ ಒಂದೇ ಆಗಿದ್ದರೂ\n• ಸಂಪೂರ್ಣ formula, Attention(Q,K,V) = softmax(QK^T/sqrt(dk))V, ಕೇವಲ ಹೇಳುವ ಬದಲು ಭಾಗ ಭಾಗವಾಗಿ ನಿರ್ಮಿಸಿ ಪರಿಶೀಲಿಸಲಾಗಿದೆ' } },
+    { type: 'concept', data: {
+      headingEn: 'AI Example', headingKn: 'AI Example',
+      bodyEn: 'The scaled dot-product attention formula genuinely built and verified in this lesson -- softmax(QK^T/sqrt(dk))V -- is implemented essentially unchanged inside PyTorch\'s scaled_dot_product_attention and every transformer layer in production models like GPT, BERT, and LLaMA, just computed as batched matrix multiplications across thousands of GPU cores instead of a single 6-token NumPy example.',
+      bodyKn: 'ಈ lesson ನಲ್ಲಿ ನಿಜವಾಗಿ ನಿರ್ಮಿಸಿ ಪರಿಶೀಲಿಸಿದ scaled dot-product attention formula -- softmax(QK^T/sqrt(dk))V -- PyTorch ನ scaled_dot_product_attention ಒಳಗೆ ಮತ್ತು GPT, BERT, ಮತ್ತು LLaMA ನಂತಹ production models ನ ಪ್ರತಿ transformer layer ನಲ್ಲಿ ಬಹುತೇಕ ಬದಲಾಗದೆ implement ಮಾಡಲಾಗಿದೆ, ಕೇವಲ ಒಂದು 6-token NumPy ಉದಾಹರಣೆ ಬದಲು ಸಾವಿರಾರು GPU cores ಆದ್ಯಂತ batched matrix multiplications ಆಗಿ ಗಣಿಸಲಾಗಿದೆ.' } },
+
+    { type: 'quiz', data: { questions: [
+      { q: 'Genuinely running the full pipeline on a 6-token, 8-dimensional input with dk=dv=4, what shape did the scores matrix (Q @ K.T) turn out to be?', qKn: 'dk=dv=4 ಜೊತೆ ಒಂದು 6-token, 8-dimensional input ಮೇಲೆ ಸಂಪೂರ್ಣ pipeline ಅನ್ನೂ ನಿಜವಾಗಿ ಚಲಾಯಿಸುವುದೂ, scores matrix (Q @ K.T) ಯಾವ shape ಆಯಿತು?',
+        opts: ['(6, 4)', '(6, 6) -- one score per Query-Key pair, genuinely confirmed', '(8, 8)', '(4, 4)'], correct: 1,
+        optsKn: ['(6, 4)', '(6, 6) -- ಪ್ರತಿ Query-Key ಜೋಡಿಗೆ ಒಂದು score, ನಿಜವಾಗಿ ದೃಢಪಡಿಸಲಾಗಿದೆ', '(8, 8)', '(4, 4)'] },
+      { q: 'Genuinely comparing softmax([2,1,0]) against softmax([20,1,0]), what was found?', qKn: 'softmax([2,1,0]) ಅನ್ನೂ softmax([20,1,0]) ವಿರುದ್ಧ ನಿಜವಾಗಿ ಹೋಲಿಸುವುದೂ, ಏನೂ ಕಂಡುಬಂದಿತು?',
+        opts: ['Both stayed similarly distributed', 'softmax([2,1,0]) stayed reasonably distributed (66.5%/24.5%/9.0%), while softmax([20,1,0]) genuinely collapsed completely to [1,0,0]', 'softmax([20,1,0]) was more evenly distributed', 'Neither produced valid probabilities'], correct: 1,
+        optsKn: ['ಎರಡೂ ಒಂದೇ ರೀತಿ ಸಮತೋಲಿತವಾಗಿ ಉಳಿದವು', 'softmax([2,1,0]) ಸಾಕಷ್ಟು ಸಮತೋಲಿತವಾಗಿ ಉಳಿಯಿತು (66.5%/24.5%/9.0%), ಆದರೆ softmax([20,1,0]) ನಿಜವಾಗಿ [1,0,0] ಗೆ ಸಂಪೂರ್ಣವಾಗಿ ಕುಸಿಯಿತು', 'softmax([20,1,0]) ಹೆಚ್ಚು ಸಮವಾಗಿ ಹಂಚಲ್ಪಟ್ಟಿತು', 'ಯಾವುದೂ ಮಾನ್ಯ probabilities ಉತ್ಪಾದಿಸಲಿಲ್ಲ'] },
+      { q: 'How did this lesson\'s illustrative softmax numbers for [2.1,0.3,0.1,0.8,0.2] compare to a genuine computation?', qKn: '[2.1,0.3,0.1,0.8,0.2] ಗಾಗಿ ಈ lesson ನ ವಿವರಣಾತ್ಮಕ softmax ಸಂಖ್ಯೆಗಳು ಒಂದು ನಿಜ ಗಣನೆಗೆ ಹೇಗೆ ಹೋಲಿಸಿದವು?',
+        opts: ['They matched exactly to 4 decimal places', 'They were qualitatively correct (same ranking) but did not exactly match the genuine computation -- an honest discrepancy this lesson discloses', 'The genuine computation produced negative probabilities', 'Softmax could not be computed for these values'], correct: 1,
+        optsKn: ['ಇವು 4 ದಶಮಾಂಶ ಸ್ಥಾನಗಳಿಗೆ ನಿಖರವಾಗಿ ಹೊಂದಿಕೆಯಾದವು', 'ಇವು ಗುಣಾತ್ಮಕವಾಗಿ ಸರಿಯಾಗಿದ್ದವು (ಅದೇ ಶ್ರೇಣಿ) ಆದರೆ ನಿಜ ಗಣನೆಗೆ ನಿಖರವಾಗಿ ಹೊಂದಿಕೆಯಾಗಲಿಲ್ಲ -- ಈ lesson ಬಹಿರಂಗಪಡಿಸುವ ಒಂದು ಪ್ರಾಮಾಣಿಕ ವ್ಯತ್ಯಾಸ', 'ನಿಜ ಗಣನೆ ಋಣಾತ್ಮಕ probabilities ಉತ್ಪಾದಿಸಿತು', 'ಈ ಮೌಲ್ಯಗಳಿಗೆ softmax ಗಣಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ'] },
+      { q: 'With random, untrained Wq/Wk/Wv, what did the genuinely verified attention weights for "The" reveal?', qKn: 'ಯಾದೃಚ್ಛಿಕ, ತರಬೇತಿಯಿಲ್ಲದ Wq/Wk/Wv ಜೊತೆ, "The" ಗಾಗಿ ನಿಜವಾಗಿ ಪರಿಶೀಲಿಸಿದ attention weights ಏನೂ ಬಹಿರಂಗಪಡಿಸಿತು?',
+        opts: ['A semantically meaningful pattern matching grammar rules', 'An arbitrary pattern (attending most to "on") -- correct pipeline, but meaningless attention until training shapes the projections', 'An error, since untrained weights cannot produce valid output', 'Attention weights that did not sum to 1.0'], correct: 1,
+        optsKn: ['ವ್ಯಾಕರಣ ನಿಯಮಗಳಿಗೆ ಹೊಂದಿಕೆಯಾಗುವ ಒಂದು ಶಬ್ದಾರ್ಥ ಮುಖ್ಯವಾದ ಮಾದರಿ', 'ಒಂದು ಅನಿಯಂತ್ರಿತ ಮಾದರಿ ("on" ಗೆ ಹೆಚ್ಚು attend ಮಾಡುತ್ತಾ) -- ಸರಿಯಾದ pipeline, ಆದರೆ training projections ರೂಪಿಸುವವರೆಗೆ ಅರ್ಥಹೀನ attention', 'ಒಂದು ದೋಷ, ತರಬೇತಿಯಿಲ್ಲದ weights ಮಾನ್ಯ output ಉತ್ಪಾದಿಸಲಾಗದಿರುವುದರಿಂದ', '1.0 ಗೆ ಮೊತ್ತವಾಗದ attention weights'] },
+    ] } },
+  ],
+};

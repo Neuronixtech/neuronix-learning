@@ -78,7 +78,7 @@ module.exports = {
     { type: 'heading', data: { level: 'H2', textEn: 'The Original Lesson Code — MusicGen', textKn: 'ನಿಖರ Lesson Code — MusicGen' } },
     { type: 'code', data: {
       filename: 'musicgen_basic.py',
-      headingEn: 'Original Code — Text-to-Music With MusicGen (Genuinely Attempted, Install Fails)', headingKn: 'Original Code — MusicGen ಜೊತೆ Text-to-Music (ನಿಜವಾಗಿ ಪ್ರಯತ್ನಿಸಲಾಗಿದೆ, Install ವಿಫಲಗೊಳ್ಳುತ್ತದೆ)',
+      headingEn: 'code for concepts — Text-to-Music With MusicGen (Genuinely Attempted, Install Fails)', headingKn: 'code for concepts — MusicGen ಜೊತೆ Text-to-Music (ನಿಜವಾಗಿ ಪ್ರಯತ್ನಿಸಲಾಗಿದೆ, Install ವಿಫಲಗೊಳ್ಳುತ್ತದೆ)',
       descEn: 'This is the standard audiocraft API for MusicGen, presented exactly as the reference library documents it. `pip install audiocraft` was genuinely attempted in this environment before writing this lesson.',
       descKn: 'ಇದೂ MusicGen ಗಾಗಿ ಪ್ರಮಾಣಿತ audiocraft API, reference library ಇದನ್ನೂ ದಾಖಲಿಸುವಂತೆ ನಿಖರವಾಗಿ ಪ್ರಸ್ತುತಪಡಿಸಲಾಗಿದೆ. ಈ lesson ಬರೆಯುವ ಮೊದಲು ಈ environment ನಲ್ಲಿ `pip install audiocraft` ಅನ್ನೂ ನಿಜವಾಗಿ ಪ್ರಯತ್ನಿಸಲಾಗಿದೆ.',
       code: "from audiocraft.models import MusicGen\nfrom audiocraft.data.audio import audio_write\n\nmodel = MusicGen.get_pretrained('facebook/musicgen-small')\nmodel.set_generation_params(duration=8)\n\nwav = model.generate([\n    \"upbeat acoustic guitar folk song with light percussion\",\n])\n\nfor idx, one_wav in enumerate(wav):\n    audio_write(f'output_{idx}', one_wav.cpu(), model.sample_rate, strategy=\"loudness\")" } },

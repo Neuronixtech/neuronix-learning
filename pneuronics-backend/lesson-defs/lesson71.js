@@ -47,7 +47,7 @@ module.exports = {
 
     { type: 'code', data: {
       filename: 'moshi_websocket_client.py',
-      headingEn: 'Original Code — Illustrative WebSocket Client', headingKn: 'Original Code — ವಿವರಣಾತ್ಮಕ WebSocket Client',
+      headingEn: 'code for concepts — Illustrative WebSocket Client', headingKn: 'code for concepts — ವಿವರಣಾತ್ಮಕ WebSocket Client',
       descEn: 'The lesson presents a client sketch using `moshi.client_utils`. That module and its `connect()`/`stream_audio()` interface are illustrative of how a real client would talk to a Moshi/Hibiki WebSocket server -- consistent with this course\'s established convention for pipeline-glue code -- not a runnable dependency, and it was not executed for that reason.',
       descKn: 'ಲೆಸನ್ `moshi.client_utils` ಬಳಸಿ ಒಂದು client sketch ಪ್ರಸ್ತುತಪಡಿಸುತ್ತದೆ. ಆ module ಮತ್ತು ಇದರ `connect()`/`stream_audio()` interface ಒಂದು ನಿಜ client ಒಂದು Moshi/Hibiki WebSocket server ಜೊತೆ ಹೇಗೆ ಮಾತನಾಡುತ್ತದೆ ಎಂಬುದರ ವಿವರಣಾತ್ಮಕ -- pipeline-glue code ಗಾಗಿ ಈ ಕೋರ್ಸ್‌ನ ಸ್ಥಾಪಿತ ಸಂಪ್ರದಾಯಕ್ಕೆ ಸ್ಥಿರವಾಗಿ -- ಒಂದು ಚಲಾಯಿಸಬಹುದಾದ dependency ಅಲ್ಲ, ಮತ್ತು ಆ ಕಾರಣಕ್ಕಾಗಿ ಇದನ್ನೂ ಚಲಾಯಿಸಲಾಗಿಲ್ಲ.',
       code: "import asyncio\nfrom moshi.client_utils import connect, stream_audio\n\nasync def talk_to_moshi(mic_stream):\n    ws = await connect(\"ws://localhost:8998\")\n    async for user_chunk in mic_stream:\n        await ws.send_audio(user_chunk)\n        model_chunk = await ws.recv_audio()\n        yield model_chunk  # play immediately -- full duplex, no waiting for a full turn" } },

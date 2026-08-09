@@ -40,7 +40,7 @@ module.exports = {
     { type: 'heading', data: { level: 'H2', textEn: 'Decode and Measure — Genuinely Verified', textKn: 'Decode ಮತ್ತು ಅಳೆಯುವುದೂ — ನಿಜವಾಗಿ ಪರಿಶೀಲಿಸಲಾಗಿದೆ' } },
     { type: 'code', data: {
       filename: 'encodec_decode_mse.py',
-      headingEn: 'Original Code — Decode + MSE (Genuinely Run)', headingKn: 'Original Code — Decode + MSE (ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ)',
+      headingEn: 'code for concepts — Decode + MSE (Genuinely Run)', headingKn: 'code for concepts — Decode + MSE (ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ)',
       descEn: 'The lesson\'s exact code, continuing directly from Part 1\'s genuine session: the same random-noise wav, encoded then decoded, with real MSE computed and compared against trivial baselines to interpret what the number actually means.',
       descKn: 'ಲೆಸನ್‌ನ ನಿಖರ code, Part 1 ರ ನಿಜ session ಇಂದ ನೇರವಾಗಿ ಮುಂದುವರಿಯುತ್ತಾ: ಅದೇ random-noise wav, encode ಮಾಡಿ ನಂತರ decode ಮಾಡಲಾಗಿದೆ, ನಿಜ MSE ಗಣಿಸಲಾಗಿದೆ ಮತ್ತು ಸಂಖ್ಯೆ ವಾಸ್ತವವಾಗಿ ಏನನ್ನೂ ಅರ್ಥೈಸುತ್ತದೆ ಎಂದು ವ್ಯಾಖ್ಯಾನಿಸಲು ಸಾಮಾನ್ಯ baselines ಗಳ ವಿರುದ್ಧ ಹೋಲಿಸಲಾಗಿದೆ.',
       code: "with torch.no_grad():\n    wav_recon = model.decode([(codes, scale)])\n\nimport torch.nn.functional as F\n\nmse = F.mse_loss(wav_recon[:, :, :wav.shape[-1]], wav).item()\nprint('wav shape:', wav.shape, 'wav_recon shape:', wav_recon.shape)\nprint('MSE:', mse)\n\n# genuinely compare against trivial baselines to interpret the number\nmse_zero = F.mse_loss(torch.zeros_like(wav), wav).item()\nmse_mean = F.mse_loss(torch.full_like(wav, wav.mean()), wav).item()\nprint('MSE vs all-zero baseline:', mse_zero)\nprint('MSE vs mean baseline:', mse_mean)\nprint('input variance (reference):', wav.var().item())" } },

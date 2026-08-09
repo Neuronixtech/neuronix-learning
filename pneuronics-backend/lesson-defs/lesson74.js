@@ -40,7 +40,7 @@ module.exports = {
     { type: 'heading', data: { level: 'H2', textEn: 'WER and CER — Measuring ASR Accuracy', textKn: 'WER ಮತ್ತು CER — ASR Accuracy ಅಳೆಯುವುದೂ' } },
     { type: 'code', data: {
       filename: 'jiwer_attempt1.py',
-      headingEn: 'Original Code — As Presented, Genuinely Run First', headingKn: 'Original Code — ಪ್ರಸ್ತುತಪಡಿಸಿದಂತೆ, ಮೊದಲು ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ',
+      headingEn: 'code for concepts — As Presented, Genuinely Run First', headingKn: 'code for concepts — ಪ್ರಸ್ತುತಪಡಿಸಿದಂತೆ, ಮೊದಲು ನಿಜವಾಗಿ ಚಲಾಯಿಸಲಾಗಿದೆ',
       descEn: 'This is the exact call this lesson set out to verify, matching the API shape used by many older jiwer tutorials.',
       descKn: 'ಇದೂ ಈ lesson ಪರಿಶೀಲಿಸಲು ಹೊರಟ ನಿಖರ ಕರೆ, ಅನೇಕ ಹಳೆಯ jiwer tutorials ಬಳಸುವ API ಆಕಾರಕ್ಕೆ ಹೊಂದಿಕೆಯಾಗುತ್ತಾ.',
       code: "import jiwer\n\ntransform = jiwer.Compose([\n    jiwer.ToLowerCase(),\n    jiwer.RemovePunctuation(),\n    jiwer.Strip(),\n])\n\nerror = jiwer.wer(\n    truth=\"the quick brown fox jumps over the lazy dog\",\n    hypothesis=\"the quick brown fox jumped over a lazy dog\",\n    truth_transform=transform,\n    hypothesis_transform=transform,\n)\nprint('WER:', error)" } },

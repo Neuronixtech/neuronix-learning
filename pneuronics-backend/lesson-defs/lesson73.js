@@ -64,7 +64,7 @@ module.exports = {
     { type: 'heading', data: { level: 'H2', textEn: 'A Production Anti-Spoofing Pipeline', textKn: 'ಒಂದು Production Anti-Spoofing Pipeline' } },
     { type: 'code', data: {
       filename: 'safe_tts.py',
-      headingEn: 'Original Code — Presented As-Is (Illustrative Pipeline Pseudocode)', headingKn: 'Original Code — ಇರುವಂತೆ ಪ್ರಸ್ತುತಪಡಿಸಲಾಗಿದೆ (ವಿವರಣಾತ್ಮಕ Pipeline Pseudocode)',
+      headingEn: 'code for concepts — Presented As-Is (Illustrative Pipeline Pseudocode)', headingKn: 'code for concepts — ಇರುವಂತೆ ಪ್ರಸ್ತುತಪಡಿಸಲಾಗಿದೆ (ವಿವರಣಾತ್ಮಕ Pipeline Pseudocode)',
       descEn: '`tts_model`, `watermarker`, and `provenance_signer` are referenced but not defined -- this stands in for an entire production stack (a TTS engine, a watermark embedder like AudioSeal, and a C2PA signing service), matching the pipeline-glue convention used throughout this course for architecture-level code.',
       descKn: '`tts_model`, `watermarker`, ಮತ್ತು `provenance_signer` ಉಲ್ಲೇಖಿಸಲಾಗಿದೆ ಆದರೆ ವ್ಯಾಖ್ಯಾನಿಸಲಾಗಿಲ್ಲ -- ಇದೂ ಒಂದು ಸಂಪೂರ್ಣ production stack (ಒಂದು TTS engine, AudioSeal ನಂತಹ ಒಂದು watermark embedder, ಮತ್ತು ಒಂದು C2PA signing service) ಗೆ ಬದಲಿಯಾಗಿ ನಿಲ್ಲುತ್ತದೆ, architecture-level code ಗಾಗಿ ಈ ಕೋರ್ಸ್‌ನಾದ್ಯಂತ ಬಳಸಿದ pipeline-glue ಸಂಪ್ರದಾಯಕ್ಕೆ ಹೊಂದಿಕೆಯಾಗುತ್ತಾ.',
       code: "def safe_tts(text, speaker_id):\n    audio = tts_model.synthesize(text, speaker_id)\n    watermarked = watermarker.embed(audio, payload=speaker_id)\n    signed = provenance_signer.attach_c2pa(watermarked, creator=\"tts-service-v3\")\n    return signed" } },
