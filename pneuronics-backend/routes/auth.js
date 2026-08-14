@@ -3,7 +3,7 @@ const bcrypt  = require('bcryptjs');
 const crypto  = require('crypto');
 const router  = express.Router();
 const Student = require('../models/Student');
-const { signToken, SESSION_TIMEOUT_MS } = require('../middleware/auth');
+const { signToken } = require('../middleware/auth');
 
 // Admin credentials (from env)
 const ADMIN_EMAIL    = process.env.ADMIN_EMAIL    || 'admin@neuronixlearning.com';
@@ -64,18 +64,13 @@ router.post('/login', async (req, res) => {
     if (!match) return res.status(401).json({ error: 'No account matches that email and password.' });
 
     // ── Single-session enforcement ──────────────────────────────────
-    // If a session is already active and was used recently, block this login.
-    const now = Date.now();
-    const lastActive = student.sessionLastActive ? new Date(student.sessionLastActive).getTime() : 0;
-    const sessionStillActive = student.activeSessionId && (now - lastActive) < SESSION_TIMEOUT_MS;
-
-    if (sessionStillActive) {
-      return res.status(409).json({
-        error: 'This account is already logged in on another device. Please log out there first, or try again after a period of inactivity.',
-        code: 'ALREADY_LOGGED_IN',
-      });
-    }
-
+    // A correct password already proves account ownership, so a new login
+    // always reclaims the session rather than blocking on a timer: the old
+    // session's token stops matching activeSessionId (see authStudent) and
+    // is rejected on its next request. This avoids locking a legitimate
+    // user out of their own account after routine navigation (e.g. closing
+    // a tab or pressing back without hitting "Log out") left the previous
+    // session marked active.
     // Start a fresh session
     const sessionId = crypto.randomUUID();
     student.activeSessionId = sessionId;

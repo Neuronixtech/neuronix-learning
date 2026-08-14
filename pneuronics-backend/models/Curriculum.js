@@ -50,6 +50,11 @@ const lessonSchema = new mongoose.Schema({
 lessonSchema.index({ moduleId: 1, order: 1 });
 lessonSchema.index({ phaseId: 1 });
 lessonSchema.index({ status: 1 });
+// Matches the public lesson-list query's filter+sort exactly (status:'published',
+// sort by order/createdAt) so Mongo can satisfy it via the index instead of an
+// in-memory sort -- without this, sorting full lesson documents (builderEn/builderKn
+// can be large) blows MongoDB's 32MB in-memory sort limit as the course grows.
+lessonSchema.index({ status: 1, order: 1, createdAt: 1 });
 
 // ── Quiz ───────────────────────────────────────────────
 const questionSchema = new mongoose.Schema({

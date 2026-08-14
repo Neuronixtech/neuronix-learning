@@ -47,7 +47,7 @@ async function apiFetch(path, options = {}) {
       clearToken();
       localStorage.removeItem('pnl_student_session');
       if (sessionStorage.getItem('pnl_admin_session') !== 'true') {
-        window.location.href = '/login.html?reason=session';
+        window.location.href = '/pages/login.html?reason=session';
         return; // stop — redirect is in progress
       }
     }
@@ -68,7 +68,7 @@ const api = {
 // Call at the top of every admin page.
 function requireStudent() {
   if (!getToken()) {
-    window.location.href = '/login.html';
+    window.location.href = '/pages/login.html';
   }
 }
 
@@ -79,7 +79,7 @@ function requireAdmin() {
 }
 
 // ── Logout ────────────────────────────────────────────────────────
-async function logout(redirect = 'admin-login.html') {
+async function logout(redirect = '/admin/admin-login.html') {
   // Tell the backend to free the session (so the account can log in again)
   try {
     if (getToken()) {
@@ -172,7 +172,7 @@ function langField(obj, base) {
       sessionStorage.removeItem('pnl_admin_session');
     } catch (e) { /* ignore */ }
     // Students go home; admins go to the admin login.
-    window.location.href = isAdmin() ? 'admin/admin-login.html' : 'index.html';
+    window.location.href = isAdmin() ? '/admin/admin-login.html' : '/index.html';
   }
 
   function checkIdle() {

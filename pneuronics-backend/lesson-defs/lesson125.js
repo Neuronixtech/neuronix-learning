@@ -106,6 +106,14 @@ module.exports = {
       headingEn: 'AI Example', headingKn: 'AI Example',
       bodyEn: 'PyTorch\'s scaled_dot_product_attention and Hugging Face Transformers both implement exactly the formula genuinely verified above -- softmax(QK^T/sqrt(d_k))V -- as the core operation inside every attention layer of production models like BERT, GPT, and LLaMA, computing it as batched matrix multiplications across thousands of GPU cores rather than as a token-by-token loop.',
       bodyKn: 'PyTorch ನ scaled_dot_product_attention ಮತ್ತು Hugging Face Transformers ಎರಡೂ ಮೇಲೆ ನಿಜವಾಗಿ ಪರಿಶೀಲಿಸಿದ formula ಅನ್ನೂ ನಿಖರವಾಗಿ implement ಮಾಡುತ್ತವೆ -- softmax(QK^T/sqrt(d_k))V -- BERT, GPT, ಮತ್ತು LLaMA ನಂತಹ production models ನ ಪ್ರತಿ attention layer ಒಳಗಿನ ಪ್ರಮುಖ operation ಆಗಿ, ಇದನ್ನೂ ಒಂದು token-by-token loop ಆಗಿ ಅಲ್ಲ ಬದಲಿಗೆ ಸಾವಿರಾರು GPU cores ಆದ್ಯಂತ batched matrix multiplications ಆಗಿ ಗಣಿಸುತ್ತಾ.' } },
+    { type: 'concept', data: {
+      headingEn: 'Why AI Uses This', headingKn: 'AI ಇದನ್ನೂ ಏಕೆ ಬಳಸುತ್ತದೆ',
+      bodyEn: '• Parallel attention across all positions is not merely faster than the RNN\'s sequential chain -- it fundamentally changes what hardware the workload is a good match for, letting the same computation exploit GPUs\' thousands of cores instead of leaving nearly all of them idle waiting on a dependency chain\n• This parallelism is also what makes training on massive datasets economically feasible: a model that must process a trillion tokens sequentially, one dependency step at a time, would take orders of magnitude longer to train than the same computation spread across parallel hardware',
+      bodyKn: '• ಎಲ್ಲಾ positions ಆದ್ಯಂತ parallel attention RNN ನ sequential chain ಗಿಂತ ಕೇವಲ ವೇಗವಾಗಿಲ್ಲ -- ಇದೂ workload ಗೆ ಯಾವ hardware ಒಂದೂ ಒಳ್ಳೆಯ ಹೊಂದಾಣಿಕೆ ಎಂಬುದನ್ನೂ ಮೂಲಭೂತವಾಗಿ ಬದಲಾಯಿಸುತ್ತದೆ, ಅದೇ ಗಣನೆ GPUs ನ ಸಾವಿರಾರು cores ಬಳಸಿಕೊಳ್ಳಲು ಬಿಡುತ್ತಾ, ಬಹುತೇಕ ಎಲ್ಲಾ ಒಂದೂ dependency chain ಗಾಗಿ ಕಾಯುತ್ತಾ ಖಾಲಿ ಬಿಡುವ ಬದಲು\n• ಈ parallelism ಬೃಹತ್ datasets ಮೇಲೆ training ಅನ್ನೂ ಆರ್ಥಿಕವಾಗಿ ಕಾರ್ಯಸಾಧ್ಯಗೊಳಿಸುತ್ತದೆ: ಒಂದೂ trillion tokens ಅನ್ನೂ ಅನುಕ್ರಮಿಕವಾಗಿ, ಒಂದೂ ಬಾರಿಗೆ ಒಂದೂ dependency step, ಪ್ರಕ್ರಿಯೆಗೊಳಿಸಬೇಕಾದ ಒಂದೂ model ಅದೇ ಗಣನೆ parallel hardware ಆದ್ಯಂತ ಹರಡಿದ್ದಕ್ಕಿಂತ ಪ್ರಮಾಣದ ಕ್ರಮಗಳಷ್ಟು ಹೆಚ್ಚು ಸಮಯ ತೆಗೆದುಕೊಳ್ಳುತ್ತದೆ' } },
+    { type: 'concept', data: {
+      headingEn: 'Real-World Example', headingKn: 'Real-World Example',
+      bodyEn: 'A large language model training run processing a 2048-token batch computes attention for every position in that batch simultaneously across thousands of GPU cores, rather than looping through 2048 sequential dependency steps the way an RNN would. This parallel structure genuinely verified in this lesson is precisely why training runs that would take years with an RNN-style sequential dependency chain complete in weeks with a Transformer on the same hardware.',
+      bodyKn: 'ಒಂದೂ ದೊಡ್ಡ language model training run ಒಂದೂ 2048-token batch ಪ್ರಕ್ರಿಯೆಗೊಳಿಸುತ್ತಾ ಆ batch ನಲ್ಲಿ ಪ್ರತಿ position ಗೆ ಸಾವಿರಾರು GPU cores ಆದ್ಯಂತ ಏಕಕಾಲದಲ್ಲಿ attention ಗಣಿಸುತ್ತದೆ, ಒಂದೂ RNN ಮಾಡುವ ರೀತಿ 2048 ಅನುಕ್ರಮಿಕ dependency steps ಮೂಲಕ loop ಮಾಡುವ ಬದಲು. ಈ lesson ನಲ್ಲಿ ನಿಜವಾಗಿ ಪರಿಶೀಲಿಸಿದ ಈ parallel ರಚನೆ ನಿಖರವಾಗಿ ಏಕೆ ಒಂದೂ RNN-ಶೈಲಿಯ sequential dependency chain ಜೊತೆ ವರ್ಷಗಳನ್ನೂ ತೆಗೆದುಕೊಳ್ಳುತ್ತಿದ್ದ training runs ಅದೇ hardware ಮೇಲೆ ಒಂದೂ Transformer ಜೊತೆ ವಾರಗಳಲ್ಲಿ ಪೂರ್ಣಗೊಳ್ಳುತ್ತವೆ.' } },
 
     { type: 'quiz', data: { questions: [
       { q: 'Genuinely running a from-scratch numpy self-attention over 4 tokens, what did the row sums of the attention-weight matrix confirm?', qKn: '4 tokens ಮೇಲೆ ಒಂದು from-scratch numpy self-attention ಅನ್ನೂ ನಿಜವಾಗಿ ಚಲಾಯಿಸುವುದೂ, attention-weight matrix ನ row sums ಏನೂ ದೃಢಪಡಿಸಿತು?',
@@ -117,6 +125,12 @@ module.exports = {
       { q: 'Genuinely evaluating attention_style([1,2,3,4,5]), what result was confirmed?', qKn: 'attention_style([1,2,3,4,5]) ಅನ್ನೂ ನಿಜವಾಗಿ ಮೌಲ್ಯಮಾಪನ ಮಾಡುವುದೂ, ಯಾವ ಫಲಿತಾಂಶ ದೃಢಪಡಿಸಲಾಗಿತ್ತು?',
         opts: ['13.1441, matching rnn_style', '3.0, computed as sum(xs)/len(xs) with no loop-carried dependency', '15.0, the raw sum', 'An error, since the function is undefined for lists'], correct: 1,
         optsKn: ['13.1441, rnn_style ಗೆ ಹೊಂದಿಕೆಯಾಗುತ್ತದೆ', '3.0, sum(xs)/len(xs) ಆಗಿ ಯಾವುದೇ loop-carried dependency ಇಲ್ಲದೆ ಗಣಿಸಲಾಗಿದೆ', '15.0, ಕಚ್ಚಾ sum', 'ಒಂದು ದೋಷ, function lists ಗಾಗಿ ವ್ಯಾಖ್ಯಾನಿಸಲಾಗಿಲ್ಲದ ಕಾರಣ'] },
+      { q: 'According to this lesson, what serial depth does a fully parallel, independent operation genuinely have, compared to a naive sequential loop\'s O(N)?', qKn: 'ಈ lesson ಪ್ರಕಾರ, ಒಂದು ಸಂಪೂರ್ಣ ಸಮಾನಾಂತರ, ಸ್ವತಂತ್ರ operation ಒಂದು naive sequential loop ನ O(N) ಗೆ ಹೋಲಿಸಿದಾಗ ನಿಜವಾಗಿ ಯಾವ serial depth ಹೊಂದಿದೆ?',
+        opts: ['O(N), the same as a sequential loop', 'O(1)', 'O(N^2)', 'O(N!)'], correct: 1,
+        optsKn: ['O(N), ಒಂದು sequential loop ಗೆ ಅದೇ', 'O(1)', 'O(N^2)', 'O(N!)'] },
+      { q: 'What genuinely reported training time does this lesson cite for the original 2017 Transformer\'s base model?', qKn: 'ಮೂಲ 2017 Transformer ನ base model ಗಾಗಿ ಈ lesson ಯಾವ ನಿಜವಾಗಿ ವರದಿಯಾದ training time ಉಲ್ಲೇಖಿಸುತ್ತದೆ?',
+        opts: ['12 hours on 8 P100 GPUs', 'One week on a single CPU', '30 days on 8 P100 GPUs', 'It was never trained, only simulated'], correct: 0,
+        optsKn: ['8 P100 GPUs ಮೇಲೆ 12 ಗಂಟೆಗಳು', 'ಒಂದೇ CPU ಮೇಲೆ ಒಂದು ವಾರ', '8 P100 GPUs ಮೇಲೆ 30 ದಿನಗಳು', 'ಇದೂ ಎಂದಿಗೂ train ಮಾಡಲಿಲ್ಲ, ಕೇವಲ simulate ಮಾಡಲಾಗಿತ್ತು'] },
     ] } },
   ],
 };

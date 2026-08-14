@@ -1091,6 +1091,18 @@ h3.bl-heading{font-size:1rem;color:var(--text-dim);}
   });
 
   // ── Build ordered lesson sequence and wire Prev/Next buttons ───────
+  // Retries once after a short pause — covers transient "Failed to fetch"
+  // blips (e.g. a cold-starting server dropping the first connection) so a
+  // single flaky request doesn't take down the whole nav bar.
+  async function apiGetWithRetry(path, delayMs = 700) {
+    try {
+      return await api.get(path);
+    } catch (err) {
+      await new Promise(r => setTimeout(r, delayMs));
+      return api.get(path);
+    }
+  }
+
   async function setupLessonNav() {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
@@ -1098,9 +1110,9 @@ h3.bl-heading{font-size:1rem;color:var(--text-dim);}
       // Pull the published curriculum pieces and order them:
       // phases (by order) -> modules (by order) -> lessons (by order).
       const [pRes, mRes, lRes] = await Promise.all([
-        api.get('/api/curriculum/phases'),
-        api.get('/api/curriculum/modules'),
-        api.get('/api/curriculum/lessons'),
+        apiGetWithRetry('/api/curriculum/phases'),
+        apiGetWithRetry('/api/curriculum/modules'),
+        apiGetWithRetry('/api/curriculum/lessons'),
       ]);
       const phases  = (pRes.phases  || []).slice().sort((a,b)=>(a.order||0)-(b.order||0));
       const modules = (mRes.modules || []).slice().sort((a,b)=>(a.order||0)-(b.order||0));
