@@ -55,6 +55,11 @@ lessonSchema.index({ status: 1 });
 // in-memory sort -- without this, sorting full lesson documents (builderEn/builderKn
 // can be large) blows MongoDB's 32MB in-memory sort limit as the course grows.
 lessonSchema.index({ status: 1, order: 1, createdAt: 1 });
+// Matches the admin lesson-list query's sort (?all=true -> no status filter,
+// sort by order/createdAt) -- without this, that unfiltered query falls back
+// to the same in-memory sort and hits the same 32MB limit once the course is
+// large enough, even though the filtered public route above is covered.
+lessonSchema.index({ order: 1, createdAt: 1 });
 
 // ── Quiz ───────────────────────────────────────────────
 const questionSchema = new mongoose.Schema({

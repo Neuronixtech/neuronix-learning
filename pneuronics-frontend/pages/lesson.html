@@ -1176,8 +1176,17 @@ h3.bl-heading{font-size:1rem;color:var(--text-dim);}
       lesson = lessonData.lesson;
       const student = meData.student;
 
-      // ── Enrollment gate ──
-      if (!student.enrolled) {
+      // Try to get phase name (also needed to check the free-preview gate below)
+      if (lesson.phaseId) {
+        try {
+          const phases = await api.get('/api/curriculum/phases');
+          const phase = (phases.phases || []).find(p => p._id === lesson.phaseId || p.id === lesson.phaseId);
+          if (phase) currentPhase = phase;
+        } catch { /* ignore */ }
+      }
+
+      // ── Enrollment gate (free-preview phases stay open to everyone) ──
+      if (!student.enrolled && !isFreePreviewPhase(currentPhase && currentPhase.order)) {
         window.location.href = 'enroll-required.html';
         return;
       }
@@ -1186,15 +1195,7 @@ h3.bl-heading{font-size:1rem;color:var(--text-dim);}
       document.title = titleOf(lesson) + ' — Neuronix Learning';
       document.getElementById('bcTitle').textContent = titleOf(lesson);
       updateNoteLabel(titleOf(lesson));
-
-      // Try to get phase name
-      if (lesson.phaseId) {
-        try {
-          const phases = await api.get('/api/curriculum/phases');
-          const phase = (phases.phases || []).find(p => p._id === lesson.phaseId || p.id === lesson.phaseId);
-          if (phase) { currentPhase = phase; document.getElementById('bcPhase').textContent = nameOf(phase); }
-        } catch { /* ignore */ }
-      }
+      if (currentPhase) document.getElementById('bcPhase').textContent = nameOf(currentPhase);
 
       // ── Tags ──
       const tagRow = document.getElementById('tagRow');

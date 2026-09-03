@@ -10,6 +10,15 @@
 // ─────────────────────────────────────────────────────────────────
 const API_BASE = '';
 
+// ── Free-preview phases ─────────────────────────────────────────────
+// These phases (by their `order` field, i.e. "Phase N") are accessible to
+// every visitor regardless of enrollment — a free preview slice of the
+// curriculum. Every other phase stays gated behind enrollment as before.
+const FREE_PREVIEW_PHASE_ORDERS = [1, 2, 4, 5];
+function isFreePreviewPhase(phaseOrder) {
+  return FREE_PREVIEW_PHASE_ORDERS.includes(Number(phaseOrder));
+}
+
 // ── Token helpers ─────────────────────────────────────────────────
 function getToken()  { return localStorage.getItem('pnl_token'); }
 function setToken(t) { localStorage.setItem('pnl_token', t); localStorage.setItem('pnl_last_activity', String(Date.now())); }

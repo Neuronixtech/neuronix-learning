@@ -714,12 +714,12 @@ function showRoadmapDetail(phaseIdx){
     html+='<div class="rm-detail-mod">'+
       '<div class="rm-detail-mod-label'+(isKn?' kn':'')+'">'+esc(mName)+'</div>'+
       '<ul class="lesson-list">';
-    ml.forEach(function(l){html+=lessonRowHtml(l,isKn);});
+    ml.forEach(function(l){html+=lessonRowHtml(l,isKn,ph.order);});
     html+='</ul></div>';
   });
   if((ph.lessons||[]).length){
     html+='<div class="rm-detail-mod"><div class="rm-detail-mod-label">General Lessons</div><ul class="lesson-list">';
-    ph.lessons.forEach(function(l){html+=lessonRowHtml(l,isKn);});
+    ph.lessons.forEach(function(l){html+=lessonRowHtml(l,isKn,ph.order);});
     html+='</ul></div>';
   }
   // Prev / Next navigation
@@ -743,11 +743,11 @@ function showRoadmapDetail(phaseIdx){
   html+='</div></div>';
   document.getElementById('roadmapTrack').innerHTML=html;
 }
-function lessonRowHtml(l,isKn){
+function lessonRowHtml(l,isKn,phaseOrder){
   var lid=String(l._id||l.id||'');
   var done=_completedSet.has(lid);
   var title=isKn?(l.titleKn||l.title||'Untitled'):(l.title||l.titleKn||'Untitled');
-  if(!_student.enrolled){
+  if(!_student.enrolled&&!isFreePreviewPhase(phaseOrder)){
     return '<li><div class="lesson-row" style="cursor:default;opacity:.55;">'+
       '<svg class="icon lock-icon" style="width:15px;height:15px"><use href="#i-lock"/></svg>'+
       '<span class="lesson-title-text'+(isKn?' kn':'')+'">'+esc(title)+'</span>'+
