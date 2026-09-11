@@ -627,6 +627,9 @@ h3.bl-heading{font-size:1rem;color:var(--text-dim);}
 
     // Render content
     if (lesson) renderContent();
+
+    // Re-render practice tab in the new language if it was already loaded
+    if (practiceLoaded) renderPracticeList();
   }
 
   // ── Reading progress ──────────────────────────────────────────────
@@ -1707,6 +1710,7 @@ function brUpdate(id) {
 function brInitAll(){document.querySelectorAll('[data-br-id]').forEach(function(el){brUpdate(el.getAttribute('data-br-id'));});}
 // ── Practice Tab ─────────────────────────────────────────────────
 let practiceLoaded = false;
+let practiceList = null;
 function switchContentTab(tab) {
   document.getElementById('tabLesson').classList.toggle('active', tab === 'lesson');
   document.getElementById('tabPractice').classList.toggle('active', tab === 'practice');
@@ -1738,26 +1742,32 @@ async function loadPractice() {
       const r2 = await api.get('/api/curriculum/practices?phaseId=' + phaseId + '&lessonId=' + (lesson._id || ''));
       list = r2.practices || [];
     }
-    const kn = (typeof currentLang !== 'undefined' && currentLang === 'kn');
-    if (!list.length) {
-      body.innerHTML = '<div class="practice-empty">No practice problems for this lesson yet.</div>';
-    } else {
-      body.innerHTML = '<div class="practice-list">' + list.map(p => {
-        const title = (kn && p.titleKn) ? p.titleKn : p.title;
-        const problem = (kn && p.problemKn) ? p.problemKn : p.problem;
-        return `<div class="practice-card">
-          <div class="practice-card-head">
-            <span class="practice-badge ${p.difficulty||'beginner'}">${p.difficulty||'beginner'}</span>
-            <h3>${title}</h3>
-          </div>
-          <div class="practice-problem">${problem}</div>
-        </div>`;
-      }).join('') + '</div>';
-    }
+    practiceList = list;
+    renderPracticeList();
     practiceLoaded = true;
   } catch(e) {
     body.innerHTML = '<div class="practice-empty">Could not load practice problems.</div>';
   }
+}
+function renderPracticeList() {
+  const body = document.getElementById('practiceBody');
+  if (!body || !practiceList) return;
+  const kn = (typeof currentLang !== 'undefined' && currentLang === 'kn');
+  if (!practiceList.length) {
+    body.innerHTML = '<div class="practice-empty">No practice problems for this lesson yet.</div>';
+    return;
+  }
+  body.innerHTML = '<div class="practice-list">' + practiceList.map(p => {
+    const title = (kn && p.titleKn) ? p.titleKn : p.title;
+    const problem = (kn && p.problemKn) ? p.problemKn : p.problem;
+    return `<div class="practice-card">
+      <div class="practice-card-head">
+        <span class="practice-badge ${p.difficulty||'beginner'}">${p.difficulty||'beginner'}</span>
+        <h3>${title}</h3>
+      </div>
+      <div class="practice-problem">${problem}</div>
+    </div>`;
+  }).join('') + '</div>';
 }
 </script>
 </div><!-- /lesson-pane -->
