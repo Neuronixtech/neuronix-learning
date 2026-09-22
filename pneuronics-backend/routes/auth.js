@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt  = require('bcryptjs');
+const bcrypt  = require('bcrypt');
 const crypto  = require('crypto');
 const router  = express.Router();
 const Student = require('../models/Student');
