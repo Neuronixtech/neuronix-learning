@@ -379,6 +379,7 @@ select.filter-select{
         <h1>Students</h1>
         <p>View and manage every registered learner and their enrollment status.</p>
       </div>
+      <button class="btn" id="exportStudents"><svg class="icon"><use href="#i-download"/></svg> Export Excel</button>
       <button class="btn btn-primary" id="openAddStudent"><svg class="icon"><use href="#i-plus"/></svg> Add Student</button>
     </div>
 
@@ -460,6 +461,7 @@ select.filter-select{
   <span id="toastMsg">Action completed.</span>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="/js/api.js"></script>
 <script>
   // ---- Session guard: redirect to admin login if not authenticated ----
@@ -641,6 +643,28 @@ select.filter-select{
       studentsBody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:2.5rem;color:var(--red);">' + err.message + '</td></tr>';
     }
   })();
+
+  document.getElementById('exportStudents').addEventListener('click', () => {
+    if (typeof XLSX === 'undefined') { showToast('Excel library failed to load. Check your connection.'); return; }
+    if (!allStudents.length) { showToast('No students to export.'); return; }
+    const rows = allStudents.map((s, i) => ({
+      '#': i + 1,
+      'Name': s.name || '',
+      'Email': s.email || '',
+      'Phone': s.phone || '',
+      'DOB': s.dob || '',
+      'Enrolled': s.enrolled ? 'Yes' : 'No',
+      'Enrolled On': s.enrolledAt ? new Date(s.enrolledAt).toLocaleDateString('en-IN') : '',
+      'Lessons Completed': (s.completedLessons || []).length,
+      'Registered On': s.createdAt ? new Date(s.createdAt).toLocaleDateString('en-IN') : ''
+    }));
+    const ws = XLSX.utils.json_to_sheet(rows);
+    ws['!cols'] = [{wch:5},{wch:24},{wch:30},{wch:14},{wch:12},{wch:10},{wch:14},{wch:18},{wch:14}];
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Students');
+    XLSX.writeFile(wb, 'neuronix-students-' + new Date().toISOString().slice(0, 10) + '.xlsx');
+    showToast('Exported ' + rows.length + ' students.');
+  });
 
   // Add Student modal (kept for manual entry; posts to register endpoint)
   const addModal = document.getElementById('addStudentModal');
