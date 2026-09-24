@@ -254,3 +254,122 @@ html[data-theme="light"] .bl-diagram-svg svg [stroke="#ef4444" i]{ stroke:#DC262
 html[data-theme="light"] .bl-diagram-svg svg [stroke="#3b82f6" i]{ stroke:#2563EB; }
 html[data-theme="light"] .bl-diagram-svg svg [stroke="#0a1628" i]{ stroke:#CBD5E1; }
 html[data-theme="light"] .bl-diagram-svg svg [stroke="#1e2530" i]{ stroke:#CBD5E1; }
+
+/* Diagram SVGs (round 2): remaining navy canvases, dark tints and light text colours */
+html[data-theme="light"] .bl-diagram-svg svg [fill="#0f1b2d" i]{ fill:#F8FAFC; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#1a2a40" i]{ fill:#E9EFF7; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#312e81" i]{ fill:#E0E7FF; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#0d1117" i]{ fill:#F8FAFC; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#1a1a2e" i]{ fill:#EEF0FA; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#1e1e2e" i]{ fill:#EEF0FA; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#243050" i]{ fill:#E2E8F5; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#1a2540" i]{ fill:#E5EAF5; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#422006" i]{ fill:#FEF3C7; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#1a2e1a" i]{ fill:#E3F4E3; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#1a3a28" i]{ fill:#DCFCE7; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#3a2a10" i]{ fill:#FEF3C7; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#3b1f2b" i]{ fill:#FCE7F3; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#2d1a3a" i]{ fill:#F3E8FF; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#14532d" i]{ fill:#DCFCE7; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#0b3b2e" i]{ fill:#DCFCE7; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#312e1e" i]{ fill:#FEF3C7; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#052e16" i]{ fill:#DCFCE7; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#064e3b" i]{ fill:#D1FAE5; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#065f46" i]{ fill:#D1FAE5; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#78350f" i]{ fill:#FEF3C7; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#0c4a6e" i]{ fill:#E0F2FE; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#4a044e" i]{ fill:#FAE8FF; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#1e3050" i]{ fill:#E2E8F5; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#7f1d1d" i]{ fill:#FEE2E2; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#166534" i]{ fill:#DCFCE7; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#333" i]{ fill:#E2E8F0; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#555" i]{ fill:#CBD5E1; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#444" i]{ fill:#CBD5E1; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#2a3a50" i]{ fill:#E2E8F0; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#fff" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#fff" i]{ fill:#1E293B; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="white" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="white" i]{ fill:#1E293B; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#ffffff" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#ffffff" i]{ fill:#1E293B; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#f3f1ea" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#f3f1ea" i]{ fill:#1E293B; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#c8d3e3" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#c8d3e3" i]{ fill:#33465F; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#e0e0e0" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#e0e0e0" i]{ fill:#334155; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#f1f5f9" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#f1f5f9" i]{ fill:#1E293B; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#f8fafc" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#f8fafc" i]{ fill:#1E293B; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#eef4fb" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#eef4fb" i]{ fill:#1E293B; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#eef7ee" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#eef7ee" i]{ fill:#1E293B; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#fbeee0" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#fbeee0" i]{ fill:#1E293B; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#dbeafe" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#dbeafe" i]{ fill:#1E40AF; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#bfdbfe" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#bfdbfe" i]{ fill:#1E40AF; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#bae6fd" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#bae6fd" i]{ fill:#075985; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#a5f3fc" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#a5f3fc" i]{ fill:#0E7490; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#c4baf8" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#c4baf8" i]{ fill:#5B21B6; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#d8b4fe" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#d8b4fe" i]{ fill:#7E22CE; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#d1fae5" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#d1fae5" i]{ fill:#065F46; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#86efac" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#86efac" i]{ fill:#15803D; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#fdba74" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#fdba74" i]{ fill:#C2410C; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#fde047" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#fde047" i]{ fill:#A16207; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#7dd3fc" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#7dd3fc" i]{ fill:#0369A1; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#c084fc" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#c084fc" i]{ fill:#9333EA; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#f0abfc" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#f0abfc" i]{ fill:#A21CAF; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#facc15" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#facc15" i]{ fill:#A16207; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#fdcb6e" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#fdcb6e" i]{ fill:#A16207; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#38bdf8" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#38bdf8" i]{ fill:#0284C7; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#22d3ee" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#22d3ee" i]{ fill:#0E7490; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#22c55e" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#22c55e" i]{ fill:#16A34A; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#00b894" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#00b894" i]{ fill:#047857; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#fd79a8" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#fd79a8" i]{ fill:#BE185D; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#4a90d9" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#4a90d9" i]{ fill:#1D4ED8; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#4f8fd1" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#4f8fd1" i]{ fill:#1D4ED8; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#6c5ce7" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#6c5ce7" i]{ fill:#5B21B6; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#e08a3c" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#e08a3c" i]{ fill:#C2410C; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#888" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#888" i]{ fill:#64748B; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#666" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#666" i]{ fill:#64748B; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#999" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#999" i]{ fill:#64748B; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#556677" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#556677" i]{ fill:#475569; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#4a5e7a" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#4a5e7a" i]{ fill:#475569; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#cbd5e1" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#cbd5e1" i]{ fill:#334155; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#a855f7" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#a855f7" i]{ fill:#7E22CE; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#8b5cf6" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#8b5cf6" i]{ fill:#6D28D9; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#1d4ed8" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#1d4ed8" i]{ fill:#1D4ED8; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#b45309" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#b45309" i]{ fill:#B45309; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#059669" i], html[data-theme="light"] .bl-diagram-svg svg tspan[fill="#059669" i]{ fill:#059669; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#fff" i]{ stroke:#94A3B8; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="white" i]{ stroke:#94A3B8; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#2a3a5a" i]{ stroke:#CBD5E1; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#334455" i]{ stroke:#CBD5E1; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#445566" i]{ stroke:#CBD5E1; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#2a3040" i]{ stroke:#CBD5E1; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#1e2e40" i]{ stroke:#CBD5E1; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#4a5e7a" i]{ stroke:#94A3B8; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#666" i]{ stroke:#94A3B8; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#888" i]{ stroke:#94A3B8; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#444" i]{ stroke:#94A3B8; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#e2e8f0" i]{ stroke:#475569; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#0f172a" i]{ stroke:#CBD5E1; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#a855f7" i]{ stroke:#7C3AED; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#c084fc" i]{ stroke:#9333EA; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#6c5ce7" i]{ stroke:#5B21B6; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#00b894" i]{ stroke:#047857; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#fd79a8" i]{ stroke:#BE185D; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#38bdf8" i]{ stroke:#0284C7; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#22d3ee" i]{ stroke:#0E7490; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#22c55e" i]{ stroke:#16A34A; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#4caf50" i]{ stroke:#16A34A; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#4a90d9" i]{ stroke:#1D4ED8; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#4f8fd1" i]{ stroke:#1D4ED8; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#e08a3c" i]{ stroke:#C2410C; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#fdcb6e" i]{ stroke:#A16207; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#facc15" i]{ stroke:#A16207; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#e879f9" i]{ stroke:#A21CAF; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#fde68a" i]{ stroke:#B45309; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#93c5fd" i]{ stroke:#1D4ED8; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#c4b5fd" i]{ stroke:#6D28D9; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#fca5a5" i]{ stroke:#B91C1C; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#1d4ed8" i]{ stroke:#1D4ED8; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#292524" i]{ stroke:#CBD5E1; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke^="rgba(255,255,255" i]{ stroke:rgba(100,116,139,.35); }
+html[data-theme="light"] .bl-diagram-svg svg [fill^="rgba(255,255,255" i]{ fill:rgba(100,116,139,.08); }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#1d4ed8" i]{ fill:#DBEAFE; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#334155" i]{ fill:#E2E8F0; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#444444" i],
+html[data-theme="light"] .bl-diagram-svg svg [fill="#333333" i]{ fill:#E2E8F0; }
+html[data-theme="light"] .bl-diagram-svg svg text[fill="#334155" i]{ fill:#334155; }
