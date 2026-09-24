@@ -134,7 +134,7 @@ html[data-theme="light"] .bl-code .fn{ color:#6F42C1; }
 html[data-theme="light"] .bl-code .nm{ color:#005CC5; }
 html[data-theme="light"] .bl-code .st{ color:#032F62; }
 html[data-theme="light"] .bl-code .cm{ color:#6A737D; font-style:italic; }
-html[data-theme="light"] .bl-output{ background:#0F2A5C; border-color:#1E3E86; color:#CFE6FF; }
+html[data-theme="light"] .bl-output{ background:#F6F8FA; border:1px solid #E2E8F0; border-top:1px solid #E2E8F0; }
 html[data-theme="light"] .bl-inline-code{ background:rgba(124,58,237,.10); color:#5B21B6; }
 
 /* Translucent-white tints only work on dark; use indigo tints on light */
@@ -161,7 +161,7 @@ html[data-theme="light"] .bottom-nav{ background:rgba(255,255,255,.92); border-t
 html[data-theme="light"] .bottom-nav a,
 html[data-theme="light"] .bottom-nav button:not(.complete-btn){ color:var(--text-dim); }
 html[data-theme="light"] .bl-h{ color:#E2470B; }
-html[data-theme="light"] .bl-output, html[data-theme="light"] .bl-output *{ color:#CFE6FF; }
+html[data-theme="light"] .bl-output, html[data-theme="light"] .bl-output *{ color:#1E40AF; font-weight:500; }
 
 /* Interactive lesson pages (lesson-preview / lessons-preview-5) use their own variable names */
 html[data-theme="light"]{ --s:#FFFFFF; --s2:#F1ECFF; --dim:#3D3670; }
