@@ -373,3 +373,8 @@ html[data-theme="light"] .bl-diagram-svg svg [fill="#334155" i]{ fill:#E2E8F0; }
 html[data-theme="light"] .bl-diagram-svg svg [fill="#444444" i],
 html[data-theme="light"] .bl-diagram-svg svg [fill="#333333" i]{ fill:#E2E8F0; }
 html[data-theme="light"] .bl-diagram-svg svg text[fill="#334155" i]{ fill:#334155; }
+
+/* "Completed" state must look identical in light and dark: keep the original mint-green pill with dark text */
+html[data-theme="light"] .complete-btn.done,
+html[data-theme="light"] .complete-btn.done:hover{ background:#6FD18C; color:#0F1B2D; box-shadow:none; }
+html[data-theme="light"] .complete-btn.done .icon{ color:#0F1B2D; }
