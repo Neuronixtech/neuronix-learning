@@ -70,10 +70,10 @@ html[data-theme="light"] input,
 html[data-theme="light"] select,
 html[data-theme="light"] textarea{ color-scheme:light; }
 
-/* Code blocks intentionally stay dark in both themes */
+/* Code blocks use a light syntax theme in light mode */
 html[data-theme="light"] pre,
 html[data-theme="light"] .code-block,
-html[data-theme="light"] .bl-code{ color-scheme:dark; }
+html[data-theme="light"] .bl-code{ color-scheme:light; }
 
 /* Toggle button */
 #nxThemeToggle{
@@ -122,14 +122,19 @@ html[data-theme="light"] .sidebar,
 html[data-theme="light"] .nav,
 html[data-theme="light"] .topbar{ backdrop-filter:blur(14px); }
 
-/* Lesson page (light): code blocks become solid deep indigo instead of translucent grey */
-html[data-theme="light"] .bl-code-wrap{ border:1px solid #2E2A6B; background:#1E1B4B; box-shadow:0 10px 26px -14px rgba(40,24,110,.55); }
-html[data-theme="light"] .bl-code-bar{ background:#2A2670; }
-html[data-theme="light"] .bl-code{ background:#1E1B4B; color:#EDEBFF; }
-html[data-theme="light"] .bl-fname{ color:#B9B3F5; }
-html[data-theme="light"] .bl-copy{ background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.2); color:#DAD6FF; }
-html[data-theme="light"] .bl-copy:hover{ background:rgba(255,255,255,.2); color:#fff; }
-html[data-theme="light"] .bl-output{ background:rgba(15,169,104,.10); border-color:rgba(15,169,104,.35); color:#0B5B3A; }
+/* Lesson page (light): GitHub Light style code blocks -- pale surface, subtle border, readable syntax colours */
+html[data-theme="light"] .bl-code-wrap{ border:1px solid #E2E8F0; background:#F6F8FA; box-shadow:0 1px 2px rgba(15,23,42,.05); }
+html[data-theme="light"] .bl-code-bar{ background:#EEF2F7; border-bottom:1px solid #E2E8F0; }
+html[data-theme="light"] .bl-code{ background:#F6F8FA; color:#24292E; line-height:1.7; }
+html[data-theme="light"] .bl-fname{ color:#6A737D; }
+html[data-theme="light"] .bl-copy{ background:#FFFFFF; border-color:#D0D7DE; color:#57606A; }
+html[data-theme="light"] .bl-copy:hover{ background:#EAEEF2; color:#24292E; }
+html[data-theme="light"] .bl-code .kw{ color:#D73A49; }
+html[data-theme="light"] .bl-code .fn{ color:#6F42C1; }
+html[data-theme="light"] .bl-code .nm{ color:#005CC5; }
+html[data-theme="light"] .bl-code .st{ color:#032F62; }
+html[data-theme="light"] .bl-code .cm{ color:#6A737D; font-style:italic; }
+html[data-theme="light"] .bl-output{ background:#0F2A5C; border-color:#1E3E86; color:#CFE6FF; }
 html[data-theme="light"] .bl-inline-code{ background:rgba(124,58,237,.10); color:#5B21B6; }
 
 /* Translucent-white tints only work on dark; use indigo tints on light */
@@ -156,7 +161,7 @@ html[data-theme="light"] .bottom-nav{ background:rgba(255,255,255,.92); border-t
 html[data-theme="light"] .bottom-nav a,
 html[data-theme="light"] .bottom-nav button:not(.complete-btn){ color:var(--text-dim); }
 html[data-theme="light"] .bl-h{ color:#E2470B; }
-html[data-theme="light"] .bl-output, html[data-theme="light"] .bl-output *{ color:#0B5B3A; }
+html[data-theme="light"] .bl-output, html[data-theme="light"] .bl-output *{ color:#CFE6FF; }
 
 /* Interactive lesson pages (lesson-preview / lessons-preview-5) use their own variable names */
 html[data-theme="light"]{ --s:#FFFFFF; --s2:#F1ECFF; --dim:#3D3670; }
@@ -172,16 +177,24 @@ html[data-theme="light"] .prob{ background:rgba(37,99,235,.07); }
 html[data-theme="light"] .svc,
 html[data-theme="light"] .sv,
 html[data-theme="light"] .mc,
-html[data-theme="light"] .ai-ex,
-html[data-theme="light"] .edr{
+html[data-theme="light"] .ai-ex{
   background:#1E1B4B; border-color:#2E2A6B;
   --text:#F3F1EA; --dim:#D6DEF0; --muted:#A9B4D6; --line:rgba(241,238,230,.14);
   --cyan:#5FD4D6; --gold:#F4B740; --s:#26216B; --s2:#2E2A7A;
 }
-html[data-theme="light"] .eh{ background:#2A2670; }
 
 /* Diagram blocks: drop the grey wrapper on light; the SVG keeps its own dark card */
 html[data-theme="light"] .bl-diagram{ background:transparent; border:none; border-top:none; padding:.5rem 0 .25rem; }
 html[data-theme="light"] .bl-diagram-title{ color:#0F8F63; }
 html[data-theme="light"] .bl-diagram-title::before{ background:#0F8F63; }
 html[data-theme="light"] .bl-diagram-caption{ color:var(--muted); }
+
+/* Preview pages: same GitHub Light code panel */
+html[data-theme="light"] .edr{ background:#F6F8FA; border:1px solid #E2E8F0; }
+html[data-theme="light"] .eh{ background:#EEF2F7; border-bottom:1px solid #E2E8F0; }
+html[data-theme="light"] .efn{ color:#6A737D; }
+html[data-theme="light"] pre.code{ color:#24292E; line-height:1.7; }
+html[data-theme="light"] pre.code .kw{ color:#D73A49; }
+html[data-theme="light"] pre.code .fn{ color:#6F42C1; }
+html[data-theme="light"] pre.code .nm{ color:#005CC5; }
+html[data-theme="light"] pre.code .st{ color:#032F62; }

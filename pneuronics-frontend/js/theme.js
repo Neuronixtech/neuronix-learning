@@ -19,6 +19,13 @@
 
   var HOSTS = ['.nav-right', '.topbar-right', '.dash-right', '.ntb-right', '.sb-foot'];
 
+  var repaint = null;
+
+  // Same-origin pages (including embedded iframes) follow theme changes made in any other tab/frame.
+  window.addEventListener('storage', function (e) {
+    if (e.key === KEY) { apply(e.newValue === 'light' ? 'light' : 'dark'); if (repaint) repaint(); }
+  });
+
   function makeButton() {
     var btn = document.createElement('button');
     btn.id = 'nxThemeToggle';
@@ -36,6 +43,7 @@
       paint();
     });
     paint();
+    repaint = paint;
     return btn;
   }
 
@@ -48,6 +56,7 @@
   }
 
   function mount() {
+    if (window.self !== window.top) return; // embedded previews follow the parent page; no toggle of their own
     if (document.getElementById('nxThemeToggle')) return;
     var btn = makeButton();
 
