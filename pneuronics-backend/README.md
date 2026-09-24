@@ -132,3 +132,21 @@ In your frontend HTML files, update the API base URL:
 - `admin-curriculum.html` → point CRUD calls to `/api/curriculum/*`
 
 See `FRONTEND_INTEGRATION.md` for the exact changes.
+
+## WhatsApp messages
+
+After a student registers, a welcome message is sent through the WhatsApp Business Cloud API. It runs in the
+background: if WhatsApp is not configured or the send fails, registration is not affected (the error is logged).
+
+Add these to `.env` (leave them out to keep WhatsApp switched off):
+
+| Variable | Meaning |
+|---|---|
+| `WHATSAPP_TOKEN` | Permanent access token from Meta (System User) |
+| `WHATSAPP_PHONE_NUMBER_ID` | Phone number ID of the sending number (not the phone number itself) |
+| `WHATSAPP_MODE` | `template` (default, works for any recipient) or `text` (only within 24h of the user messaging you; handy for testing) |
+| `WHATSAPP_WELCOME_TEMPLATE` | Approved template name, default `neuronix_welcome` |
+| `SITE_URL` | Link used in the message, default the live site |
+
+The wording lives in `config/whatsappMessages.js`. In `template` mode the same text must exist as an approved
+template in Meta Business Manager, with `{{1}}` = the student's name.

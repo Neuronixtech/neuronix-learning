@@ -4,6 +4,7 @@ const crypto  = require('crypto');
 const router  = express.Router();
 const Student = require('../models/Student');
 const { signToken } = require('../middleware/auth');
+const whatsapp = require('../services/whatsapp');
 
 // Admin credentials (from env)
 const ADMIN_EMAIL    = process.env.ADMIN_EMAIL    || 'admin@neuronixlearning.com';
@@ -29,6 +30,8 @@ router.post('/register', async (req, res) => {
       name, email: email.toLowerCase(), phone, dob, password: hashed,
       activeSessionId: sessionId, sessionLastActive: new Date(),
     });
+
+    whatsapp.sendMessage('welcome', student);
 
     const token = signToken({ id: student._id, email: student.email, role: 'student', sid: sessionId });
     res.status(201).json({
