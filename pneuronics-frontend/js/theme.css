@@ -157,3 +157,25 @@ html[data-theme="light"] .bottom-nav a,
 html[data-theme="light"] .bottom-nav button:not(.complete-btn){ color:var(--text-dim); }
 html[data-theme="light"] .bl-h{ color:#E2470B; }
 html[data-theme="light"] .bl-output, html[data-theme="light"] .bl-output *{ color:#0B5B3A; }
+
+/* Interactive lesson pages (lesson-preview / lessons-preview-5) use their own variable names */
+html[data-theme="light"]{ --s:#FFFFFF; --s2:#F1ECFF; --dim:#3D3670; }
+html[data-theme="light"] .ltitle{ color:var(--text); }
+html[data-theme="light"] .mtag{ background:rgba(124,58,237,.12); color:#5B21B6; }
+html[data-theme="light"] .lesson-num{ background:rgba(124,58,237,.10); }
+html[data-theme="light"] .dd{ background:rgba(76,54,160,.22); }
+html[data-theme="light"] .dd.on{ background:var(--cyan); }
+html[data-theme="light"] .ic-v .il{ color:#5B21B6; }
+html[data-theme="light"] .prob{ background:rgba(37,99,235,.07); }
+
+/* Diagram / demo / editor panels are drawn for a dark canvas: keep them deep indigo with their own light tokens */
+html[data-theme="light"] .svc,
+html[data-theme="light"] .sv,
+html[data-theme="light"] .mc,
+html[data-theme="light"] .ai-ex,
+html[data-theme="light"] .edr{
+  background:#1E1B4B; border-color:#2E2A6B;
+  --text:#F3F1EA; --dim:#D6DEF0; --muted:#A9B4D6; --line:rgba(241,238,230,.14);
+  --cyan:#5FD4D6; --gold:#F4B740; --s:#26216B; --s2:#2E2A7A;
+}
+html[data-theme="light"] .eh{ background:#2A2670; }
