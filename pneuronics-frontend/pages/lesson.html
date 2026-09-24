@@ -382,6 +382,7 @@ h3.bl-heading{font-size:1rem;color:var(--gold);}
 </style>
 <link rel="stylesheet" href="/js/theme.css">
 <script src="/js/theme.js"></script>
+<script src="/js/animations.js" defer></script>
 </head>
 <body>
 
@@ -1187,6 +1188,13 @@ h3.bl-heading{font-size:1rem;color:var(--gold);}
           const phases = await api.get('/api/curriculum/phases');
           const phase = (phases.phases || []).find(p => p._id === lesson.phaseId || p.id === lesson.phaseId);
           if (phase) currentPhase = phase;
+          // In-browser Python editor only for the Python phases (not the AI phases)
+          if (currentPhase && /python/i.test(currentPhase.name || currentPhase.title || '')) {
+            const ps = document.createElement('script');
+            ps.src = '/js/pyrunner.js';
+            ps.onload = () => window.NeuronixPy && window.NeuronixPy.init();
+            document.head.appendChild(ps);
+          }
         } catch { /* ignore */ }
       }
 
