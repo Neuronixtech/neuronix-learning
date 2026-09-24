@@ -76,18 +76,18 @@ html[data-theme="light"] .code-block,
 html[data-theme="light"] .bl-code{ color-scheme:light; }
 
 /* Toggle button */
-#nxThemeToggle{
+.nx-theme-btn{
   width:38px; height:38px; border-radius:50%; flex-shrink:0;
   display:inline-flex; align-items:center; justify-content:center;
   background:var(--surface, #1C3050); color:var(--gold, #F4B740);
   border:1px solid var(--line-strong, rgba(241,238,230,.18));
   cursor:pointer; padding:0; transition:transform .15s, background .2s;
 }
-#nxThemeToggle.nx-float{ position:fixed; top:.9rem; right:.9rem; z-index:2147483000; box-shadow:0 6px 18px -6px rgba(0,0,0,.45); }
-#nxThemeToggle:hover{ transform:scale(1.07); }
-#nxThemeToggle svg{ width:19px; height:19px; display:block; }
+.nx-theme-btn.nx-float{ position:fixed; top:.9rem; right:.9rem; z-index:2147483000; box-shadow:0 6px 18px -6px rgba(0,0,0,.45); }
+.nx-theme-btn:hover{ transform:scale(1.07); }
+.nx-theme-btn svg{ width:19px; height:19px; display:block; }
 .nx-right{ display:flex; align-items:center; gap:.9rem; }
-@media print{ #nxThemeToggle{ display:none; } }
+@media print{ .nx-theme-btn{ display:none; } }
 
 /* Light mode: crisper cards so the page isn't flat */
 html[data-theme="light"] .panel,
@@ -95,7 +95,7 @@ html[data-theme="light"] .stat-card,
 html[data-theme="light"] .card,
 html[data-theme="light"] .auth-card,
 html[data-theme="light"] .continue-card{ box-shadow:0 1px 2px rgba(40,24,110,.06), 0 8px 24px -14px rgba(40,24,110,.22); }
-.sb-foot #nxThemeToggle{ margin-bottom:.6rem; }
+.sb-foot .nx-theme-btn{ margin-bottom:.6rem; }
 
 /* Vibrant gradient for primary actions in light mode */
 html[data-theme="light"] .btn-primary,

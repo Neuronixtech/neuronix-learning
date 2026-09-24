@@ -19,16 +19,18 @@
 
   var HOSTS = ['.nav-right', '.topbar-right', '.dash-right', '.ntb-right', '.sb-foot'];
 
-  var repaint = null;
+  var paints = [];
+  var mounted = false;
+  function repaintAll() { paints.forEach(function (f) { f(); }); }
 
   // Same-origin pages (including embedded iframes) follow theme changes made in any other tab/frame.
   window.addEventListener('storage', function (e) {
-    if (e.key === KEY) { apply(e.newValue === 'light' ? 'light' : 'dark'); if (repaint) repaint(); }
+    if (e.key === KEY) { apply(e.newValue === 'light' ? 'light' : 'dark'); repaintAll(); }
   });
 
   function makeButton() {
     var btn = document.createElement('button');
-    btn.id = 'nxThemeToggle';
+    btn.className = 'nx-theme-btn';
     btn.type = 'button';
     function paint() {
       var light = root.getAttribute('data-theme') === 'light';
@@ -40,10 +42,10 @@
       var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
       apply(next);
       try { localStorage.setItem(KEY, next); } catch (e) {}
-      paint();
+      repaintAll();
     });
     paint();
-    repaint = paint;
+    paints.push(paint);
     return btn;
   }
 
@@ -55,9 +57,29 @@
     return false;
   }
 
+  // Tabbed pages (student dashboard): put a toggle in every tab's header so it is always reachable.
+  function mountTabbed() {
+    var dr = document.querySelector('.dash-right');
+    if (dr) dr.insertBefore(makeButton(), dr.firstChild);
+    var heads = document.querySelectorAll('.tab-pane .panel-head');
+    for (var i = 0; i < heads.length; i++) {
+      var ph = heads[i], btn = makeButton();
+      if (ph.children.length <= 1) { ph.appendChild(btn); continue; }
+      var last = ph.lastElementChild, wrap = document.createElement('div');
+      wrap.className = 'nx-right';
+      ph.replaceChild(wrap, last);
+      wrap.appendChild(btn);
+      wrap.appendChild(last);
+    }
+  }
+
   function mount() {
     if (window.self !== window.top) return; // embedded previews follow the parent page; no toggle of their own
-    if (document.getElementById('nxThemeToggle')) return;
+    if (mounted) return;
+    mounted = true;
+
+    if (document.querySelector('.tab-pane')) { mountTabbed(); return; }
+
     var btn = makeButton();
 
     // Login-style nav: keep the existing right-hand element, put the toggle next to it.
@@ -82,7 +104,7 @@
     obs.observe(document.body, { childList: true, subtree: true });
     var timer = setTimeout(function () {
       obs.disconnect();
-      if (!btn.parentNode) { btn.className = 'nx-float'; document.body.appendChild(btn); }
+      if (!btn.parentNode) { btn.classList.add('nx-float'); document.body.appendChild(btn); }
     }, 2500);
   }
 
