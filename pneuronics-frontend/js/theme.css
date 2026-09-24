@@ -198,3 +198,59 @@ html[data-theme="light"] pre.code .kw{ color:#D73A49; }
 html[data-theme="light"] pre.code .fn{ color:#6F42C1; }
 html[data-theme="light"] pre.code .nm{ color:#005CC5; }
 html[data-theme="light"] pre.code .st{ color:#032F62; }
+
+/* Diagram SVGs are drawn on a dark canvas; remap their palette to light equivalents in light mode */
+html[data-theme="light"] .bl-diagram-svg{ background:#F8FAFC; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#0f172a" i]{ fill:#F8FAFC; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#1e293b" i]{ fill:#EEF2F7; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#022c22" i]{ fill:#DCFCE7; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#450a0a" i]{ fill:#FEE2E2; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#292524" i]{ fill:#FEF3C7; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#1e1b4b" i]{ fill:#EDE9FE; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#1e3a5f" i]{ fill:#DBEAFE; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#0a1628" i]{ fill:#F1F5F9; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#1e2530" i]{ fill:#EEF2F7; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#94a3b8" i]{ fill:#475569; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#6ee7b7" i]{ fill:#047857; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#93c5fd" i]{ fill:#1D4ED8; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#fde68a" i]{ fill:#B45309; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#fca5a5" i]{ fill:#B91C1C; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#c4b5fd" i]{ fill:#6D28D9; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#60a5fa" i]{ fill:#2563EB; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#e2e8f0" i]{ fill:#1E293B; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#34d399" i]{ fill:#059669; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#f87171" i]{ fill:#DC2626; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#f59e0b" i]{ fill:#D97706; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#a78bfa" i]{ fill:#7C3AED; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#8aa0bd" i]{ fill:#5A6E8F; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#a7f3d0" i]{ fill:#047857; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#f4b740" i]{ fill:#D97706; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#5fd4d6" i]{ fill:#0E7490; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#f47171" i]{ fill:#DC2626; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#6fd18c" i]{ fill:#059669; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#fbbf24" i]{ fill:#B45309; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#fb923c" i]{ fill:#EA580C; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#4ade80" i]{ fill:#16A34A; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#ef4444" i]{ fill:#DC2626; }
+html[data-theme="light"] .bl-diagram-svg svg [fill="#3b82f6" i]{ fill:#2563EB; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#475569" i]{ stroke:#94A3B8; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#334155" i]{ stroke:#CBD5E1; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#2a3a50" i]{ stroke:#CBD5E1; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#94a3b8" i]{ stroke:#64748B; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#8aa0bd" i]{ stroke:#5A6E8F; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#34d399" i]{ stroke:#059669; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#60a5fa" i]{ stroke:#2563EB; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#f59e0b" i]{ stroke:#D97706; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#a78bfa" i]{ stroke:#7C3AED; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#f87171" i]{ stroke:#DC2626; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#f4b740" i]{ stroke:#D97706; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#5fd4d6" i]{ stroke:#0E7490; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#f47171" i]{ stroke:#DC2626; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#6fd18c" i]{ stroke:#059669; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#fbbf24" i]{ stroke:#B45309; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#fb923c" i]{ stroke:#EA580C; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#4ade80" i]{ stroke:#16A34A; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#ef4444" i]{ stroke:#DC2626; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#3b82f6" i]{ stroke:#2563EB; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#0a1628" i]{ stroke:#CBD5E1; }
+html[data-theme="light"] .bl-diagram-svg svg [stroke="#1e2530" i]{ stroke:#CBD5E1; }
