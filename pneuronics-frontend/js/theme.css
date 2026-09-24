@@ -179,3 +179,9 @@ html[data-theme="light"] .edr{
   --cyan:#5FD4D6; --gold:#F4B740; --s:#26216B; --s2:#2E2A7A;
 }
 html[data-theme="light"] .eh{ background:#2A2670; }
+
+/* Diagram blocks: drop the grey wrapper on light; the SVG keeps its own dark card */
+html[data-theme="light"] .bl-diagram{ background:transparent; border:none; border-top:none; padding:.5rem 0 .25rem; }
+html[data-theme="light"] .bl-diagram-title{ color:#0F8F63; }
+html[data-theme="light"] .bl-diagram-title::before{ background:#0F8F63; }
+html[data-theme="light"] .bl-diagram-caption{ color:var(--muted); }
