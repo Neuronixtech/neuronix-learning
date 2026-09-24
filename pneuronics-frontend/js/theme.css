@@ -121,3 +121,39 @@ html[data-theme="light"] .nl.active{ background:linear-gradient(90deg,rgba(240,8
 html[data-theme="light"] .sidebar,
 html[data-theme="light"] .nav,
 html[data-theme="light"] .topbar{ backdrop-filter:blur(14px); }
+
+/* Lesson page (light): code blocks become solid deep indigo instead of translucent grey */
+html[data-theme="light"] .bl-code-wrap{ border:1px solid #2E2A6B; background:#1E1B4B; box-shadow:0 10px 26px -14px rgba(40,24,110,.55); }
+html[data-theme="light"] .bl-code-bar{ background:#2A2670; }
+html[data-theme="light"] .bl-code{ background:#1E1B4B; color:#EDEBFF; }
+html[data-theme="light"] .bl-fname{ color:#B9B3F5; }
+html[data-theme="light"] .bl-copy{ background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.2); color:#DAD6FF; }
+html[data-theme="light"] .bl-copy:hover{ background:rgba(255,255,255,.2); color:#fff; }
+html[data-theme="light"] .bl-output{ background:rgba(15,169,104,.10); border-color:rgba(15,169,104,.35); color:#0B5B3A; }
+html[data-theme="light"] .bl-inline-code{ background:rgba(124,58,237,.10); color:#5B21B6; }
+
+/* Translucent-white tints only work on dark; use indigo tints on light */
+html[data-theme="light"] .bl-method,
+html[data-theme="light"] .bl-quiz-opt,
+html[data-theme="light"] .ek-stat,
+html[data-theme="light"] .gd-canvas,
+html[data-theme="light"] .sv-canvas,
+html[data-theme="light"] .ek-canvas,
+html[data-theme="light"] .ai-score-row.lo{ background:rgba(124,58,237,.06); border-color:rgba(76,54,160,.16); }
+html[data-theme="light"] .bl-table tr:hover td{ background:rgba(124,58,237,.06); }
+html[data-theme="light"] .bw-sep,
+html[data-theme="light"] .gd-sep,
+html[data-theme="light"] .sv-sep,
+html[data-theme="light"] .ek-sep,
+html[data-theme="light"] .br-sep{ background:rgba(76,54,160,.16); }
+html[data-theme="light"] .bw-bar-track,
+html[data-theme="light"] .sv-pbar{ background:rgba(76,54,160,.14); }
+html[data-theme="light"] .phase-hdr:hover,
+html[data-theme="light"] .em-btn:hover{ background:rgba(124,58,237,.07); }
+
+/* Bottom lesson navigation bar */
+html[data-theme="light"] .bottom-nav{ background:rgba(255,255,255,.92); border-top:1px solid var(--line-strong); box-shadow:0 -10px 30px -18px rgba(40,24,110,.35); }
+html[data-theme="light"] .bottom-nav a,
+html[data-theme="light"] .bottom-nav button:not(.complete-btn){ color:var(--text-dim); }
+html[data-theme="light"] .bl-h{ color:#E2470B; }
+html[data-theme="light"] .bl-output, html[data-theme="light"] .bl-output *{ color:#0B5B3A; }
