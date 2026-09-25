@@ -173,21 +173,19 @@ html[data-theme="light"] .dd.on{ background:var(--cyan); }
 html[data-theme="light"] .ic-v .il{ color:#5B21B6; }
 html[data-theme="light"] .prob{ background:rgba(37,99,235,.07); }
 
-/* Diagram / demo / editor panels are drawn for a dark canvas: keep them deep indigo with their own light tokens */
+/* Interactive preview pages: diagram / demo panels are light in light mode, with the drawings re-coloured to match */
 html[data-theme="light"] .svc,
-html[data-theme="light"] .sv,
 html[data-theme="light"] .mc,
-html[data-theme="light"] .ai-ex{
-  background:#1E1B4B; border-color:#2E2A6B;
-  --text:#F3F1EA; --dim:#D6DEF0; --muted:#A9B4D6; --line:rgba(241,238,230,.14);
-  --cyan:#5FD4D6; --gold:#F4B740; --s:#26216B; --s2:#2E2A7A;
-}
-
-/* Diagram blocks: drop the grey wrapper on light; the SVG keeps its own dark card */
-html[data-theme="light"] .bl-diagram{ background:transparent; border:none; border-top:none; padding:.5rem 0 .25rem; }
-html[data-theme="light"] .bl-diagram-title{ color:#0F8F63; }
-html[data-theme="light"] .bl-diagram-title::before{ background:#0F8F63; }
-html[data-theme="light"] .bl-diagram-caption{ color:var(--muted); }
+html[data-theme="light"] .ai-ex{ background:#F8FAFC; border:1px solid #E2E8F0; }
+html[data-theme="light"] .sv{ background:#F1F5F9; }
+html[data-theme="light"] .svc svg [fill="#8aa0bd" i], html[data-theme="light"] .sv svg [fill="#8aa0bd" i]{ fill:#5A6E8F; }
+html[data-theme="light"] .svc svg [fill="#5fd4d6" i], html[data-theme="light"] .sv svg [fill="#5fd4d6" i]{ fill:#0E7490; }
+html[data-theme="light"] .svc svg [fill="#c4baf8" i], html[data-theme="light"] .sv svg [fill="#c4baf8" i]{ fill:#6D28D9; }
+html[data-theme="light"] .svc svg [fill="#f3f1ea" i], html[data-theme="light"] .sv svg [fill="#f3f1ea" i]{ fill:#1E293B; }
+html[data-theme="light"] .svc svg [fill="#6c5ce7" i], html[data-theme="light"] .sv svg [fill="#6c5ce7" i]{ fill:#5B21B6; }
+html[data-theme="light"] .svc svg [stroke="#5fd4d6" i], html[data-theme="light"] .sv svg [stroke="#5fd4d6" i]{ stroke:#0E7490; }
+html[data-theme="light"] .svc svg [stroke="#8aa0bd" i], html[data-theme="light"] .sv svg [stroke="#8aa0bd" i]{ stroke:#94A3B8; }
+html[data-theme="light"] .svc svg [stroke="#c4baf8" i], html[data-theme="light"] .sv svg [stroke="#c4baf8" i]{ stroke:#7C3AED; }
 
 /* Preview pages: same GitHub Light code panel */
 html[data-theme="light"] .edr{ background:#F6F8FA; border:1px solid #E2E8F0; }
@@ -378,3 +376,5 @@ html[data-theme="light"] .bl-diagram-svg svg text[fill="#334155" i]{ fill:#33415
 html[data-theme="light"] .complete-btn.done,
 html[data-theme="light"] .complete-btn.done:hover{ background:#6FD18C; color:#0F1B2D; box-shadow:none; }
 html[data-theme="light"] .complete-btn.done .icon{ color:#0F1B2D; }
+html[data-theme="light"] .svc svg [fill="#F4B740" i], html[data-theme="light"] .sv svg [fill="#F4B740" i]{ fill:#B45309; }
+html[data-theme="light"] .svc svg [stroke="#F4B740" i], html[data-theme="light"] .sv svg [stroke="#F4B740" i]{ stroke:#D97706; }
