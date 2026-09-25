@@ -7,14 +7,40 @@
   var STORE_KEY = 'nx-py-code';
   var DEFAULT_CODE = 'print("Hello, Neuronix!")\n';
 
+  // Python run once when the runtime starts: headless plots, and a small module the lessons import.
+  var PY_PRE = [
+    "import os",
+    "os.environ['MPLBACKEND'] = 'Agg'",
+    "import warnings; warnings.filterwarnings('ignore', message='.*non-GUI backend.*')",
+    "open('mymodule.py', 'w').write('print(\"mymodule.py was executed, __name__ =\", __name__)\\n\\ndef greet(name):\\n    return f\"Hello, {name}\"\\n')"
+  ].join('\n');
+
+  // Python run after each program: turn any open matplotlib figures into PNG images.
+  var PY_FIGS = [
+    "import sys, io, base64",
+    "_nx_imgs = []",
+    "if 'matplotlib.pyplot' in sys.modules:",
+    "    import matplotlib.pyplot as _plt",
+    "    for _n in _plt.get_fignums():",
+    "        _b = io.BytesIO()",
+    "        _plt.figure(_n).savefig(_b, format='png', dpi=100, bbox_inches='tight')",
+    "        _nx_imgs.append(base64.b64encode(_b.getvalue()).decode())",
+    "    _plt.close('all')",
+    "_nx_imgs"
+  ].join('\n');
+
   var WORKER_SRC = [
     "importScripts('" + PYODIDE_URL + "');",
-    "var py = null, stdinLines = [];",
+    "var py = null, stdinLines = [], obuf = '';",
+    "function flush() { if (obuf) { postMessage({ type: 'out', text: obuf }); obuf = ''; } }",
+    "async function figs() { try { var r = py.runPython(" + JSON.stringify(PY_FIGS) + "); var a = r.toJs(); r.destroy(); return a; } catch (e) { return []; } }",
     "async function init() {",
     "  py = await loadPyodide();",
-    "  py.setStdout({ batched: function (s) { postMessage({ type: 'out', text: s + '\\n' }); } });",
+    "  py.runPython(" + JSON.stringify(PY_PRE) + ");",
+    "  var dec = new TextDecoder();",
+    "  py.setStdout({ raw: function (b) { obuf += dec.decode(new Uint8Array([b]), { stream: true }); if (b === 10) flush(); } });",
     "  py.setStderr({ batched: function (s) { postMessage({ type: 'err', text: s + '\\n' }); } });",
-    "  py.setStdin({ stdin: function () { return stdinLines.length ? stdinLines.shift() : null; } });",
+    "  py.setStdin({ stdin: function () { flush(); if (!stdinLines.length) return null; var l = stdinLines.shift(); postMessage({ type: 'out', text: l + '\\n' }); return l; } });",
     "  postMessage({ type: 'ready' });",
     "}",
     "onmessage = async function (e) {",
@@ -22,12 +48,44 @@
     "  stdinLines = e.data.stdin || [];",
     "  var g = py.globals.get('dict')();",
     "  g.set('__name__', '__main__');",
-    "  try { await py.runPythonAsync(e.data.code, { globals: g }); postMessage({ type: 'done' }); }",
-    "  catch (err) { postMessage({ type: 'error', text: String(err && err.message || err) }); }",
-    "  finally { g.destroy(); }",
+    "  try {",
+    "    postMessage({ type: 'loading' });",
+    "    await py.loadPackagesFromImports(e.data.code);",
+    "    if (/(^|[^\\w.])(requests|urllib)/.test(e.data.code)) { try { await py.loadPackage('pyodide-http'); py.runPython('import pyodide_http; pyodide_http.patch_all()'); } catch (e2) {} }",
+    "    postMessage({ type: 'running' });",
+    "    await py.runPythonAsync(e.data.code, { globals: g });",
+    "    flush(); var imgs = await figs(); if (imgs.length) postMessage({ type: 'img', images: imgs });",
+    "    postMessage({ type: 'done' });",
+    "  } catch (err) {",
+    "    flush(); var imgs2 = await figs(); if (imgs2.length) postMessage({ type: 'img', images: imgs2 });",
+    "    postMessage({ type: 'error', text: String(err && err.message || err) });",
+    "  } finally { g.destroy(); }",
     "};",
     "init().catch(function (err) { postMessage({ type: 'fatal', text: String(err && err.message || err) }); });"
   ].join('\n');
+
+  // Sensible sample values for input() calls, in order, guessed from the code around each call.
+  function guessInputs(code) {
+    var out = [], re = /(int|float)?\s*\(?\s*input\s*\(([^)]*)\)/g, m;
+    while ((m = re.exec(code))) {
+      var wrap = m[1], hint = (m[2] || '').toLowerCase(), v;
+      if (wrap === 'int') v = /pin/.test(hint) ? '1234' : /age/.test(hint) ? '25' : /mark|score|grade|percent/.test(hint) ? '85' : '10';
+      else if (wrap === 'float') v = '5.5';
+      else v = /name/.test(hint) ? 'Alex' : /pin/.test(hint) ? '1234' : /capital/.test(hint) ? 'Delhi' : /number|num|age|value/.test(hint) ? '7' : /y\/n|yes|no\b|\(y/.test(hint) ? 'y' : 'Alex';
+      out.push(v);
+    }
+    return out;
+  }
+
+  // Friendly hint appended after a Python error.
+  function explainError(msg) {
+    if (/EOFError/.test(msg)) return 'Hint: this program calls input(). Type the values in the Input box below (one per line), then press Run again.';
+    var mm = /ModuleNotFoundError: No module named '([\w.]+)'/.exec(msg);
+    if (mm) return "Hint: '" + mm[1].split('.')[0] + "' is not available in the browser editor. Run this on your own computer after: pip install " + mm[1].split('.')[0];
+    if (/XMLHttpRequest|NetworkError|Failed to fetch|ConnectionError|CORS|requests[.]exceptions/.test(msg)) return 'Hint: the browser editor can only reach websites that allow browser access (CORS). Try https://api.github.com, or run this code on your own computer.';
+    if (/FileNotFoundError/.test(msg)) return 'Hint: the browser editor starts with no files. Create the file first, for example: open("this.txt", "w").write("hello")';
+    return '';
+  }
 
   var CSS = [
     '#pyLauncher{position:fixed;right:1.1rem;bottom:5.4rem;z-index:140;display:flex;align-items:center;gap:.5rem;padding:.6rem 1rem;border-radius:999px;border:1px solid var(--line-strong,rgba(241,238,230,.18));background:var(--surface,#1C3050);color:var(--text,#F3F1EA);font:600 .82rem var(--font-display,"Space Grotesk",sans-serif);cursor:pointer;box-shadow:0 10px 26px -12px rgba(0,0,0,.55);transition:transform .15s}',
@@ -52,6 +110,7 @@
     '.py-out{flex:1;margin:0;padding:.9rem 1rem;overflow:auto;white-space:pre-wrap;word-break:break-word;background:#0A111E;color:#CFE6FF;font:400 .82rem/1.65 var(--font-mono,"IBM Plex Mono",monospace)}',
     '.py-out .py-err{color:#FF8B8B}',
     '.py-out .py-info{color:#8AA0BD;font-style:italic}',
+    '.py-plot{display:block;max-width:100%;background:#fff;border-radius:8px;margin:.5rem 0}',
     '.bl-try{background:rgba(111,209,140,.16);border:1px solid rgba(111,209,140,.4);color:#6FD18C;font:600 .7rem var(--font-mono,"IBM Plex Mono",monospace);padding:.2rem .6rem;border-radius:5px;cursor:pointer;margin-right:.4rem}',
     '.bl-try:hover{background:rgba(111,209,140,.3)}',
     '@media (max-width:640px){#pyPanel{top:0}#pyLauncher{bottom:5rem}}',
@@ -104,10 +163,19 @@
     worker.onmessage = function (e) {
       var m = e.data;
       if (m.type === 'ready') { ready = true; setStatus('Python ready'); el.run.disabled = running; }
+      else if (m.type === 'loading') { setStatus('Loading libraries…'); }
+      else if (m.type === 'running') {
+        setStatus('Running…');
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          stopWorker('Stopped: the program ran for more than ' + (TIME_LIMIT_MS / 1000) + ' seconds (is there an infinite loop?).');
+        }, TIME_LIMIT_MS);
+      }
       else if (m.type === 'out') append(m.text);
       else if (m.type === 'err') append(m.text, 'py-err');
+      else if (m.type === 'img') { m.images.forEach(function (b64) { var im = document.createElement('img'); im.src = 'data:image/png;base64,' + b64; im.className = 'py-plot'; el.out.appendChild(im); el.out.scrollTop = el.out.scrollHeight; }); }
       else if (m.type === 'done') { finishRun(); }
-      else if (m.type === 'error') { append(cleanTraceback(m.text) + '\n', 'py-err'); finishRun(); }
+      else if (m.type === 'error') { append(cleanTraceback(m.text) + '\n', 'py-err'); var hint = explainError(m.text); if (hint) append(hint + '\n', 'py-info'); finishRun(); }
       else if (m.type === 'fatal') { setStatus('Could not load Python'); append('Python could not be loaded. Check your internet connection and try again.\n', 'py-err'); finishRun(); }
     };
     worker.onerror = function () { setStatus('Could not load Python'); finishRun(); };
@@ -130,15 +198,12 @@
     el.stop.disabled = false;
     setStatus('Running…');
     var stdin = el.stdin.value ? el.stdin.value.split('\n') : [];
-    timer = setTimeout(function () {
-      stopWorker('Stopped: the program ran for more than ' + (TIME_LIMIT_MS / 1000) + ' seconds (is there an infinite loop?).');
-    }, TIME_LIMIT_MS);
     worker.postMessage({ type: 'run', code: code, stdin: stdin });
   }
 
   function open(code) {
     ensureUI();
-    if (typeof code === 'string') { el.editor.value = code; persist(code); }
+    if (typeof code === 'string') { el.editor.value = code; persist(code); el.stdin.value = guessInputs(code).join('\n'); }
     el.panel.classList.add('open');
     if (!worker) startWorker();
     el.editor.focus();
@@ -222,5 +287,5 @@
     new MutationObserver(function () { decorate(body); }).observe(body, { childList: true, subtree: true });
   }
 
-  global.NeuronixPy = { init: init, open: open, close: close };
+  global.NeuronixPy = { init: init, open: open, close: close, _internal: { WORKER_SRC: WORKER_SRC, PY_PRE: PY_PRE, PY_FIGS: PY_FIGS, guessInputs: guessInputs, explainError: explainError } };
 })(window);
