@@ -1,0 +1,2627 @@
+[
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321637",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "TensorRT-LLM on Blackwell with FP8 and NVFP4 — What TensorRT-LLM Does",
+  "titleKn": "Blackwell ನಲ್ಲಿ TensorRT-LLM: FP8 ಮತ್ತು NVFP4 — TensorRT-LLM ಏನು ಮಾಡುತ್ತದೆ",
+  "desc": "TensorRT-LLM compiles models into optimised GPU engines with fused kernels for high-throughput NVIDIA serving.",
+  "descKn": "TensorRT-LLM ಮಾದರಿಗಳನ್ನು fused kernels ಇರುವ ಆಪ್ಟಿಮೈಸ್ ಮಾಡಿದ GPU engines ಗಳಾಗಿ compile ಮಾಡಿ ಹೆಚ್ಚಿನ throughput NVIDIA serving ನೀಡುತ್ತದೆ.",
+  "objectives": [
+   "Describe engine compilation.",
+   "State the trade-off between speed and flexibility."
+  ],
+  "objectivesKn": [
+   "engine compilation ವಿವರಿಸಿ.",
+   "ವೇಗ ಮತ್ತು ನಮ್ಯತೆ ವಿನಿಮಯ ಹೇಳಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "TensorRT-LLM on Blackwell with FP8 and NVFP4 — What TensorRT-LLM Does",
+     "textKn": "TensorRT-LLM on Blackwell with FP8 and NVFP4 — What TensorRT-LLM Does",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in TensorRT-LLM on Blackwell with FP8 and NVFP4",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Compiled Engines",
+     "headingKn": "Compile ಮಾಡಿದ Engines",
+     "bodyEn": "The model is converted into an engine tuned to a specific GPU, precision and shape range. Fused kernels and optimised attention reduce overhead.",
+     "bodyKn": "ಮಾದರಿ ನಿರ್ದಿಷ್ಟ GPU, ನಿಖರತೆ, ಆಕಾರ ವ್ಯಾಪ್ತಿಗೆ ಹೊಂದಿಸಿದ engine ಆಗಿ ಪರಿವರ್ತಿತವಾಗುತ್ತದೆ. fused kernels ಮತ್ತು ಆಪ್ಟಿಮೈಸ್ ಮಾಡಿದ attention ಹೆಚ್ಚುವರಿ ಹೊರೆ ಕಡಿಮೆ ಮಾಡುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Speed Versus Flexibility",
+     "headingKn": "ವೇಗ vs ನಮ್ಯತೆ",
+     "bodyEn": "Engines can be very fast on NVIDIA hardware but take build time and are tied to hardware and settings. Simpler runtimes are easier to change.",
+     "bodyKn": "engines NVIDIA ಹಾರ್ಡ್‌ವೇರ್‌ನಲ್ಲಿ ಬಹಳ ವೇಗ ಆದರೆ build ಸಮಯ ಬೇಕು, ಹಾರ್ಡ್‌ವೇರ್ ಮತ್ತು ಸೆಟ್ಟಿಂಗ್‌ಗೆ ಬದ್ಧ. ಸರಳ runtimes ಬದಲಿಸಲು ಸುಲಭ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Engines are tuned to GPU and precision.\n• Fast but less flexible.",
+     "bodyKn": "• engines GPU ಮತ್ತು ನಿಖರತೆಗೆ ಹೊಂದಿಸಿದ.\n• ವೇಗ ಆದರೆ ಕಡಿಮೆ ನಮ್ಯ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "An engine is tuned to:",
+       "qKn": "engine ಹೊಂದಿಸುವುದು:",
+       "opts": [
+        "Specific GPU and precision",
+        "Any device",
+        "Nothing",
+        "A browser"
+       ],
+       "optsKn": [
+        "ನಿರ್ದಿಷ್ಟ GPU ಮತ್ತು ನಿಖರತೆ",
+        "ಯಾವುದೇ ಸಾಧನ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬ್ರೌಸರ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A cost of engines:",
+       "qKn": "engines ವೆಚ್ಚ:",
+       "opts": [
+        "Build time and less flexibility",
+        "No speed",
+        "No GPUs",
+        "Nothing"
+       ],
+       "optsKn": [
+        "build ಸಮಯ ಮತ್ತು ಕಡಿಮೆ ನಮ್ಯತೆ",
+        "ವೇಗವಿಲ್ಲ",
+        "GPUs ಇಲ್ಲ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Fused kernels reduce:",
+       "qKn": "fused kernels ಕಡಿಮೆ ಮಾಡುತ್ತವೆ:",
+       "opts": [
+        "Overhead",
+        "Accuracy",
+        "Users",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹೆಚ್ಚುವರಿ ಹೊರೆ",
+        "ನಿಖರತೆ",
+        "ಬಳಕೆದಾರರು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321637",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "TensorRT-LLM on Blackwell with FP8 and NVFP4 — Low-Precision Formats: FP8 and NVFP4",
+  "titleKn": "Blackwell ನಲ್ಲಿ TensorRT-LLM: FP8 ಮತ್ತು NVFP4 — ಕಡಿಮೆ ನಿಖರತೆಯ ರೂಪಗಳು: FP8 ಮತ್ತು NVFP4",
+  "desc": "Smaller number formats cut memory and bandwidth so more work fits per GPU, at some accuracy risk.",
+  "descKn": "ಚಿಕ್ಕ ಸಂಖ್ಯಾ ರೂಪಗಳು ಮೆಮೊರಿ ಮತ್ತು bandwidth ಕಡಿಮೆ ಮಾಡಿ ಪ್ರತಿ GPU ಗೆ ಹೆಚ್ಚು ಕೆಲಸ ಹೊಂದಿಸುತ್ತವೆ, ಸ್ವಲ್ಪ ನಿಖರತೆ ಅಪಾಯದೊಂದಿಗೆ.",
+  "objectives": [
+   "Explain how fewer bits shrink weights and KV cache.",
+   "Describe scaling factors for accuracy."
+  ],
+  "objectivesKn": [
+   "ಕಡಿಮೆ bits ತೂಕ ಮತ್ತು KV cache ಹೇಗೆ ಕುಗ್ಗಿಸುತ್ತವೆ ವಿವರಿಸಿ.",
+   "ನಿಖರತೆಗೆ scaling factors ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "TensorRT-LLM on Blackwell with FP8 and NVFP4 — Low-Precision Formats: FP8 and NVFP4",
+     "textKn": "TensorRT-LLM on Blackwell with FP8 and NVFP4 — Low-Precision Formats: FP8 and NVFP4",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in TensorRT-LLM on Blackwell with FP8 and NVFP4",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Fewer Bits",
+     "headingKn": "ಕಡಿಮೆ Bits",
+     "bodyEn": "Moving from 16-bit to 8-bit or 4-bit numbers roughly halves or quarters memory for weights, letting bigger models or more requests fit and moving less data.",
+     "bodyKn": "16-ಬಿಟ್‌ನಿಂದ 8-ಬಿಟ್ ಅಥವಾ 4-ಬಿಟ್ ಸಂಖ್ಯೆಗೆ ಹೋದರೆ ತೂಕ ಮೆಮೊರಿ ಸುಮಾರು ಅರ್ಧ ಅಥವಾ ಕಾಲುಭಾಗ; ದೊಡ್ಡ ಮಾದರಿ ಅಥವಾ ಹೆಚ್ಚು ವಿನಂತಿ ಹೊಂದುತ್ತವೆ, ಕಡಿಮೆ ಡೇಟಾ ಚಲಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Scaling and Accuracy",
+     "headingKn": "Scaling ಮತ್ತು ನಿಖರತೆ",
+     "bodyEn": "Small formats use scaling factors per block of values to keep precision. Newer hardware supports them natively, but always evaluate quality on your task.",
+     "bodyKn": "ಚಿಕ್ಕ ರೂಪಗಳು ನಿಖರತೆ ಉಳಿಸಲು ಮೌಲ್ಯ ಬ್ಲಾಕ್‌ಗೆ scaling factors ಬಳಸುತ್ತವೆ. ಹೊಸ ಹಾರ್ಡ್‌ವೇರ್ ಅವನ್ನು ನೇರ ಬೆಂಬಲಿಸುತ್ತದೆ, ಆದರೆ ನಿಮ್ಮ ಕೆಲಸದಲ್ಲಿ ಗುಣಮಟ್ಟ ಯಾವಾಗಲೂ ಮೌಲ್ಯಮಾಪನ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Fewer bits cut memory and bandwidth.\n• Scaling keeps precision; evaluate quality.",
+     "bodyKn": "• ಕಡಿಮೆ bits ಮೆಮೊರಿ, bandwidth ಕಡಿಮೆ.\n• scaling ನಿಖರತೆ ಉಳಿಸುತ್ತದೆ; ಗುಣಮಟ್ಟ ಮೌಲ್ಯಮಾಪನ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "8-bit versus 16-bit weights use about:",
+       "qKn": "8-ಬಿಟ್ vs 16-ಬಿಟ್ ತೂಕ:",
+       "opts": [
+        "Half the memory",
+        "Double the memory",
+        "The same",
+        "Zero"
+       ],
+       "optsKn": [
+        "ಅರ್ಧ ಮೆಮೊರಿ",
+        "ದ್ವಿಗುಣ",
+        "ಸಮಾನ",
+        "ಸೊನ್ನೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Scaling factors help:",
+       "qKn": "scaling factors ಸಹಾಯ:",
+       "opts": [
+        "Preserve precision",
+        "Increase size",
+        "Delete data",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ನಿಖರತೆ ಉಳಿಸಲು",
+        "ಗಾತ್ರ ಹೆಚ್ಚಿಸಲು",
+        "ಡೇಟಾ ಅಳಿಸಲು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Always:",
+       "qKn": "ಯಾವಾಗಲೂ:",
+       "opts": [
+        "Evaluate quality on your task",
+        "Skip evals",
+        "Trust vendors",
+        "Guess"
+       ],
+       "optsKn": [
+        "ನಿಮ್ಮ ಕೆಲಸದಲ್ಲಿ ಗುಣಮಟ್ಟ ಮೌಲ್ಯಮಾಪನ",
+        "evals ಬಿಡಿ",
+        "ಮಾರಾಟಗಾರರನ್ನು ನಂಬಿ",
+        "ಊಹಿಸಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321637",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "TensorRT-LLM on Blackwell with FP8 and NVFP4 — Validating and Deploying",
+  "titleKn": "Blackwell ನಲ್ಲಿ TensorRT-LLM: FP8 ಮತ್ತು NVFP4 — ಮೌಲ್ಯೀಕರಣ ಮತ್ತು ನಿಯೋಜನೆ",
+  "desc": "Validate accuracy and speed on your data, and pin versions, since engines and kernels change between releases.",
+  "descKn": "ನಿಮ್ಮ ಡೇಟಾದಲ್ಲಿ ನಿಖರತೆ ಮತ್ತು ವೇಗ ಮೌಲ್ಯೀಕರಿಸಿ, ಆವೃತ್ತಿಗಳನ್ನು pin ಮಾಡಿ; engines ಮತ್ತು kernels ಬಿಡುಗಡೆಗಳ ನಡುವೆ ಬದಲಾಗುತ್ತವೆ.",
+  "objectives": [
+   "Compare quantised versus baseline outputs.",
+   "Pin library and driver versions."
+  ],
+  "objectivesKn": [
+   "ಕ್ವಾಂಟೈಸ್ ಮತ್ತು ಆಧಾರ ಔಟ್‌ಪುಟ್ ಹೋಲಿಸಿ.",
+   "ಲೈಬ್ರರಿ ಮತ್ತು ಡ್ರೈವರ್ ಆವೃತ್ತಿ pin ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "TensorRT-LLM on Blackwell with FP8 and NVFP4 — Validating and Deploying",
+     "textKn": "TensorRT-LLM on Blackwell with FP8 and NVFP4 — Validating and Deploying",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in TensorRT-LLM on Blackwell with FP8 and NVFP4",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Accuracy Checks",
+     "headingKn": "ನಿಖರತೆ ಪರಿಶೀಲನೆ",
+     "bodyEn": "Run your eval set on both the full-precision and low-precision models, and check for regressions on the cases that matter most to you.",
+     "bodyKn": "ಪೂರ್ಣ-ನಿಖರತೆ ಮತ್ತು ಕಡಿಮೆ-ನಿಖರತೆ ಮಾದರಿ ಎರಡರಲ್ಲೂ ನಿಮ್ಮ eval ಸೆಟ್ ಚಲಾಯಿಸಿ, ನಿಮಗೆ ಅತಿ ಮುಖ್ಯ ಪ್ರಕರಣಗಳಲ್ಲಿ regressions ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Pin and Roll Out Gradually",
+     "headingKn": "Pin ಮಾಡಿ ಕ್ರಮೇಣ ಜಾರಿ",
+     "bodyEn": "Pin driver, library and engine versions and roll out with a canary. A quiet kernel change can shift both speed and outputs.",
+     "bodyKn": "ಡ್ರೈವರ್, ಲೈಬ್ರರಿ, engine ಆವೃತ್ತಿ pin ಮಾಡಿ canary ಯೊಂದಿಗೆ ಜಾರಿ. ಮೌನ kernel ಬದಲಾವಣೆ ವೇಗ ಮತ್ತು ಔಟ್‌ಪುಟ್ ಎರಡನ್ನೂ ಬದಲಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Compare evals across precisions.\n• Pin versions and canary the rollout.",
+     "bodyKn": "• ನಿಖರತೆಗಳ ನಡುವೆ evals ಹೋಲಿಸಿ.\n• ಆವೃತ್ತಿ pin, canary ಜಾರಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Run evals on:",
+       "qKn": "evals ಚಲಾಯಿಸಿ:",
+       "opts": [
+        "Both precisions",
+        "Only one",
+        "Neither",
+        "Random"
+       ],
+       "optsKn": [
+        "ಎರಡೂ ನಿಖರತೆಗಳಲ್ಲಿ",
+        "ಒಂದರಲ್ಲಿ ಮಾತ್ರ",
+        "ಯಾವುದರಲ್ಲೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Pin versions because:",
+       "qKn": "ಆವೃತ್ತಿ ಏಕೆ pin?",
+       "opts": [
+        "Kernels can change speed and outputs",
+        "For fun",
+        "To slow",
+        "No reason"
+       ],
+       "optsKn": [
+        "kernels ವೇಗ ಮತ್ತು ಔಟ್‌ಪುಟ್ ಬದಲಿಸಬಹುದು",
+        "ಮೋಜು",
+        "ನಿಧಾನ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Roll out with:",
+       "qKn": "ಜಾರಿ:",
+       "opts": [
+        "A canary",
+        "Everything at once",
+        "Nothing",
+        "A guess"
+       ],
+       "optsKn": [
+        "canary ಯೊಂದಿಗೆ",
+        "ಎಲ್ಲವೂ ಒಮ್ಮೆಲೇ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಊಹೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32163a",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Inference Metrics: TTFT, TPOT, ITL, Goodput, P99 — Latency Metrics",
+  "titleKn": "Inference ಮೆಟ್ರಿಕ್ಸ್: TTFT, TPOT, ITL, Goodput, P99 — ವಿಳಂಬ ಮೆಟ್ರಿಕ್ಸ್",
+  "desc": "TTFT, TPOT and ITL describe different parts of streamed generation latency.",
+  "descKn": "TTFT, TPOT, ITL ಸ್ಟ್ರೀಮ್ ಮಾಡಿದ ರಚನೆ ವಿಳಂಬದ ಬೇರೆ ಭಾಗಗಳನ್ನು ವಿವರಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Define TTFT, TPOT and ITL.",
+   "Relate each to user experience."
+  ],
+  "objectivesKn": [
+   "TTFT, TPOT, ITL ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ಪ್ರತಿಯೊಂದನ್ನು ಬಳಕೆದಾರ ಅನುಭವಕ್ಕೆ ಸಂಬಂಧಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Inference Metrics: TTFT, TPOT, ITL, Goodput, P99 — Latency Metrics",
+     "textKn": "Inference Metrics: TTFT, TPOT, ITL, Goodput, P99 — Latency Metrics",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Inference Metrics: TTFT, TPOT, ITL, Goodput, P99",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Time to First Token",
+     "headingKn": "ಮೊದಲ Token ಸಮಯ",
+     "bodyEn": "TTFT is the wait until the first token appears. It reflects queueing and prefill and dominates how responsive a chat feels.",
+     "bodyKn": "TTFT ಮೊದಲ token ಕಾಣಿಸುವವರೆಗಿನ ಕಾಯುವಿಕೆ. ಇದು ಸರತಿ ಮತ್ತು prefill ಪ್ರತಿಬಿಂಬಿಸುತ್ತದೆ ಮತ್ತು ಚಾಟ್ ಎಷ್ಟು ಸ್ಪಂದನಶೀಲ ಎನಿಸುತ್ತದೆ ಎಂಬುದನ್ನು ನಿರ್ಧರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "TPOT and ITL",
+     "headingKn": "TPOT ಮತ್ತು ITL",
+     "bodyEn": "TPOT is the average time per output token after the first. ITL is the gap between consecutive tokens and shows stutter that an average can hide.",
+     "bodyKn": "TPOT ಮೊದಲನೆಯ ನಂತರ ಪ್ರತಿ ಔಟ್‌ಪುಟ್ token ಸರಾಸರಿ ಸಮಯ. ITL ಸತತ tokens ನಡುವಿನ ಅಂತರ; ಸರಾಸರಿ ಮರೆಮಾಡುವ ತೊದಲುವಿಕೆ ತೋರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• TTFT: wait for first token.\n• TPOT: average; ITL: token gaps.",
+     "bodyKn": "• TTFT: ಮೊದಲ token ಕಾಯುವಿಕೆ.\n• TPOT ಸರಾಸರಿ; ITL ಅಂತರ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "TTFT measures:",
+       "qKn": "TTFT ಅಳೆಯುವುದು:",
+       "opts": [
+        "Wait for the first token",
+        "Total cost",
+        "Model size",
+        "Disk speed"
+       ],
+       "optsKn": [
+        "ಮೊದಲ token ಕಾಯುವಿಕೆ",
+        "ಒಟ್ಟು ವೆಚ್ಚ",
+        "ಮಾದರಿ ಗಾತ್ರ",
+        "ಡಿಸ್ಕ್ ವೇಗ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "ITL shows:",
+       "qKn": "ITL ತೋರಿಸುವುದು:",
+       "opts": [
+        "Gaps between tokens",
+        "Prompt length",
+        "Price",
+        "Nothing"
+       ],
+       "optsKn": [
+        "tokens ನಡುವೆ ಅಂತರ",
+        "prompt ಉದ್ದ",
+        "ಬೆಲೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "TTFT includes:",
+       "qKn": "TTFT ಒಳಗೊಳ್ಳುವುದು:",
+       "opts": [
+        "Queueing and prefill",
+        "Only decode",
+        "Nothing",
+        "Only network"
+       ],
+       "optsKn": [
+        "ಸರತಿ ಮತ್ತು prefill",
+        "decode ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ನೆಟ್‌ವರ್ಕ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32163a",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Inference Metrics: TTFT, TPOT, ITL, Goodput, P99 — Throughput and Goodput",
+  "titleKn": "Inference ಮೆಟ್ರಿಕ್ಸ್: TTFT, TPOT, ITL, Goodput, P99 — Throughput ಮತ್ತು Goodput",
+  "desc": "Throughput counts tokens per second; goodput counts only work that met the latency targets.",
+  "descKn": "throughput ಪ್ರತಿ ಸೆಕೆಂಡ್ tokens ಎಣಿಸುತ್ತದೆ; goodput ವಿಳಂಬ ಗುರಿ ಪೂರೈಸಿದ ಕೆಲಸ ಮಾತ್ರ ಎಣಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Distinguish throughput from goodput.",
+   "Set service-level objectives."
+  ],
+  "objectivesKn": [
+   "throughput ಮತ್ತು goodput ಬೇರ್ಪಡಿಸಿ.",
+   "ಸೇವಾ-ಮಟ್ಟದ ಗುರಿ ನಿಗದಿ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Inference Metrics: TTFT, TPOT, ITL, Goodput, P99 — Throughput and Goodput",
+     "textKn": "Inference Metrics: TTFT, TPOT, ITL, Goodput, P99 — Throughput and Goodput",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Inference Metrics: TTFT, TPOT, ITL, Goodput, P99",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Throughput Can Mislead",
+     "headingKn": "Throughput ದಾರಿ ತಪ್ಪಿಸಬಹುದು",
+     "bodyEn": "Pushing batches larger raises tokens per second but can make each user wait longer. Raw throughput ignores whether users were satisfied.",
+     "bodyKn": "batch ದೊಡ್ಡದಾಗಿಸಿದರೆ ಪ್ರತಿ ಸೆಕೆಂಡ್ tokens ಹೆಚ್ಚು ಆದರೆ ಪ್ರತಿ ಬಳಕೆದಾರ ಹೆಚ್ಚು ಕಾಯಬಹುದು. ಕಚ್ಚಾ throughput ಬಳಕೆದಾರರು ತೃಪ್ತರಾದರೇ ಎಂದು ನಿರ್ಲಕ್ಷಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Goodput With SLOs",
+     "headingKn": "SLO ಗಳೊಂದಿಗೆ Goodput",
+     "bodyEn": "Define objectives such as TTFT under a threshold. Goodput counts only requests meeting them, aligning capacity planning with real experience.",
+     "bodyKn": "TTFT ಮಿತಿಯೊಳಗೆ ಎಂಬಂತಹ ಗುರಿ ವ್ಯಾಖ್ಯಾನಿಸಿ. goodput ಅವನ್ನು ಪೂರೈಸಿದ ವಿನಂತಿ ಮಾತ್ರ ಎಣಿಸಿ ಸಾಮರ್ಥ್ಯ ಯೋಜನೆಯನ್ನು ನಿಜ ಅನುಭವಕ್ಕೆ ಹೊಂದಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Throughput ignores user satisfaction.\n• Goodput counts only requests meeting SLOs.",
+     "bodyKn": "• throughput ತೃಪ್ತಿ ನಿರ್ಲಕ್ಷಿಸುತ್ತದೆ.\n• goodput SLO ಪೂರೈಸಿದ್ದು ಮಾತ್ರ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Goodput counts:",
+       "qKn": "goodput ಎಣಿಸುವುದು:",
+       "opts": [
+        "Work that met latency targets",
+        "All tokens",
+        "Only failed work",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ವಿಳಂಬ ಗುರಿ ಪೂರೈಸಿದ ಕೆಲಸ",
+        "ಎಲ್ಲ tokens",
+        "ವಿಫಲ ಕೆಲಸ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Very large batches can:",
+       "qKn": "ಬಹಳ ದೊಡ್ಡ batches:",
+       "opts": [
+        "Raise throughput but slow users",
+        "Speed everyone",
+        "Reduce cost always",
+        "Nothing"
+       ],
+       "optsKn": [
+        "throughput ಹೆಚ್ಚಿಸಿ ಬಳಕೆದಾರರನ್ನು ನಿಧಾನಗೊಳಿಸಬಹುದು",
+        "ಎಲ್ಲರ ವೇಗ",
+        "ಯಾವಾಗಲೂ ವೆಚ್ಚ ಕಡಿಮೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "An SLO is:",
+       "qKn": "SLO:",
+       "opts": [
+        "A service-level objective",
+        "A model",
+        "A GPU",
+        "A logo"
+       ],
+       "optsKn": [
+        "ಸೇವಾ-ಮಟ್ಟದ ಗುರಿ",
+        "ಮಾದರಿ",
+        "GPU",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32163a",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Inference Metrics: TTFT, TPOT, ITL, Goodput, P99 — Percentiles and P99",
+  "titleKn": "Inference ಮೆಟ್ರಿಕ್ಸ್: TTFT, TPOT, ITL, Goodput, P99 — Percentiles ಮತ್ತು P99",
+  "desc": "Tail latency such as P99 shows what your unluckiest users experience, which averages hide.",
+  "descKn": "P99 ನಂತಹ tail ವಿಳಂಬ ನಿಮ್ಮ ಅತಿ ದುರದೃಷ್ಟ ಬಳಕೆದಾರರ ಅನುಭವ ತೋರಿಸುತ್ತದೆ; ಸರಾಸರಿ ಮರೆಮಾಡುತ್ತದೆ.",
+  "objectives": [
+   "Explain percentiles.",
+   "Measure with realistic load and prompt distributions."
+  ],
+  "objectivesKn": [
+   "percentiles ವಿವರಿಸಿ.",
+   "ನೈಜ ಹೊರೆ ಮತ್ತು prompt ವಿತರಣೆಯೊಂದಿಗೆ ಅಳೆಯಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Inference Metrics: TTFT, TPOT, ITL, Goodput, P99 — Percentiles and P99",
+     "textKn": "Inference Metrics: TTFT, TPOT, ITL, Goodput, P99 — Percentiles and P99",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Inference Metrics: TTFT, TPOT, ITL, Goodput, P99",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why Tails Matter",
+     "headingKn": "Tails ಏಕೆ ಮುಖ್ಯ",
+     "bodyEn": "P99 means 99 percent of requests are faster than this value. One in a hundred users can wait far longer than the average suggests, and agents chain many calls.",
+     "bodyKn": "P99 ಎಂದರೆ 99 ಶೇಕಡ ವಿನಂತಿಗಳು ಈ ಮೌಲ್ಯಕ್ಕಿಂತ ವೇಗ. ನೂರರಲ್ಲಿ ಒಬ್ಬ ಬಳಕೆದಾರ ಸರಾಸರಿ ಸೂಚಿಸುವುದಕ್ಕಿಂತ ಬಹಳ ಹೆಚ್ಚು ಕಾಯಬಹುದು; agents ಅನೇಕ ಕರೆ ಸರಪಳಿ ಮಾಡುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Measure Realistically",
+     "headingKn": "ನೈಜವಾಗಿ ಅಳೆಯಿರಿ",
+     "bodyEn": "Test with real prompt and output length mixes and realistic arrival patterns. Uniform synthetic tests hide the tail behaviour that appears under bursts.",
+     "bodyKn": "ನಿಜ prompt ಮತ್ತು ಔಟ್‌ಪುಟ್ ಉದ್ದ ಮಿಶ್ರಣ ಮತ್ತು ನೈಜ ಆಗಮನ ಮಾದರಿಯೊಂದಿಗೆ ಪರೀಕ್ಷಿಸಿ. ಏಕರೂಪ ಕೃತಕ ಪರೀಕ್ಷೆ ಏರಿಕೆಯಲ್ಲಿ ಕಾಣುವ tail ವರ್ತನೆ ಮರೆಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• P99 shows the unlucky tail.\n• Test with realistic mixes and bursts.",
+     "bodyKn": "• P99 ದುರದೃಷ್ಟ tail ತೋರಿಸುತ್ತದೆ.\n• ನೈಜ ಮಿಶ್ರಣ ಮತ್ತು ಏರಿಕೆಯಲ್ಲಿ ಪರೀಕ್ಷೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "P99 means:",
+       "qKn": "P99 ಎಂದರೆ:",
+       "opts": [
+        "99% of requests are faster",
+        "Only 99 requests",
+        "Average latency",
+        "Maximum latency"
+       ],
+       "optsKn": [
+        "99% ವಿನಂತಿ ವೇಗ",
+        "ಕೇವಲ 99 ವಿನಂತಿ",
+        "ಸರಾಸರಿ ವಿಳಂಬ",
+        "ಗರಿಷ್ಠ ವಿಳಂಬ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Averages:",
+       "qKn": "ಸರಾಸರಿ:",
+       "opts": [
+        "Can hide tail latency",
+        "Show the tail",
+        "Are perfect",
+        "Are illegal"
+       ],
+       "optsKn": [
+        "tail ವಿಳಂಬ ಮರೆಮಾಡಬಹುದು",
+        "tail ತೋರಿಸುತ್ತವೆ",
+        "ಪರಿಪೂರ್ಣ",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Test with:",
+       "qKn": "ಪರೀಕ್ಷೆ:",
+       "opts": [
+        "Realistic prompt mixes",
+        "One fixed prompt",
+        "Nothing",
+        "Empty prompts"
+       ],
+       "optsKn": [
+        "ನೈಜ prompt ಮಿಶ್ರಣ",
+        "ಒಂದು ನಿಗದಿತ prompt",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಖಾಲಿ prompts"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32163d",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Production Quantization: AWQ, GPTQ, GGUF, FP8, NVFP4 — Why Quantize",
+  "titleKn": "ಉತ್ಪಾದನಾ Quantization: AWQ, GPTQ, GGUF, FP8, NVFP4 — Quantize ಏಕೆ",
+  "desc": "Quantization stores weights in fewer bits to reduce memory and often speed up inference.",
+  "descKn": "quantization ತೂಕವನ್ನು ಕಡಿಮೆ bits ನಲ್ಲಿ ಸಂಗ್ರಹಿಸಿ ಮೆಮೊರಿ ಕಡಿಮೆ ಮಾಡಿ ಆಗಾಗ inference ವೇಗಗೊಳಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Explain memory and bandwidth savings.",
+   "Identify accuracy trade-offs."
+  ],
+  "objectivesKn": [
+   "ಮೆಮೊರಿ ಮತ್ತು bandwidth ಉಳಿತಾಯ ವಿವರಿಸಿ.",
+   "ನಿಖರತೆ ವಿನಿಮಯ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Production Quantization: AWQ, GPTQ, GGUF, FP8, NVFP4 — Why Quantize",
+     "textKn": "Production Quantization: AWQ, GPTQ, GGUF, FP8, NVFP4 — Why Quantize",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Production Quantization: AWQ, GPTQ, GGUF, FP8, NVFP4",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Memory and Bandwidth",
+     "headingKn": "ಮೆಮೊರಿ ಮತ್ತು Bandwidth",
+     "bodyEn": "LLM decoding is limited by how fast weights can be read from memory. Smaller weights mean less data to move and room for larger batches.",
+     "bodyKn": "LLM decode ತೂಕ ಮೆಮೊರಿಯಿಂದ ಎಷ್ಟು ವೇಗ ಓದಬಹುದು ಎಂಬುದರಿಂದ ಮಿತಿ. ಚಿಕ್ಕ ತೂಕ ಎಂದರೆ ಕಡಿಮೆ ಡೇಟಾ ಚಲನೆ ಮತ್ತು ದೊಡ್ಡ batches ಗೆ ಸ್ಥಳ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Accuracy Cost",
+     "headingKn": "ನಿಖರತೆ ವೆಚ್ಚ",
+     "bodyEn": "Rounding weights loses information. Good methods keep the loss small, but some tasks such as long reasoning or code are more sensitive than others.",
+     "bodyKn": "ತೂಕ ದುಂಡಾಗಿಸುವುದು ಮಾಹಿತಿ ಕಳೆಯುತ್ತದೆ. ಉತ್ತಮ ವಿಧಾನ ನಷ್ಟ ಚಿಕ್ಕದಾಗಿಡುತ್ತದೆ, ಆದರೆ ಉದ್ದ ತರ್ಕ ಅಥವಾ ಕೋಡ್‌ನಂತಹ ಕೆಲವು ಕೆಲಸ ಹೆಚ್ಚು ಸೂಕ್ಷ್ಮ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Smaller weights mean less memory traffic.\n• Some tasks are more sensitive to rounding.",
+     "bodyKn": "• ಚಿಕ್ಕ ತೂಕ ಕಡಿಮೆ ಮೆಮೊರಿ ಸಂಚಾರ.\n• ಕೆಲವು ಕೆಲಸ ಹೆಚ್ಚು ಸೂಕ್ಷ್ಮ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Quantization stores weights in:",
+       "qKn": "quantization ತೂಕ ಸಂಗ್ರಹಿಸುವುದು:",
+       "opts": [
+        "Fewer bits",
+        "More bits",
+        "Images",
+        "Text"
+       ],
+       "optsKn": [
+        "ಕಡಿಮೆ bits",
+        "ಹೆಚ್ಚು bits",
+        "ಚಿತ್ರ",
+        "ಪಠ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Decoding speed is limited by:",
+       "qKn": "decode ವೇಗ ಮಿತಿ:",
+       "opts": [
+        "Memory bandwidth",
+        "Screen size",
+        "Fonts",
+        "Colour"
+       ],
+       "optsKn": [
+        "ಮೆಮೊರಿ bandwidth",
+        "ಪರದೆ ಗಾತ್ರ",
+        "ಫಾಂಟ್",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A cost:",
+       "qKn": "ವೆಚ್ಚ:",
+       "opts": [
+        "Possible accuracy loss",
+        "None ever",
+        "More memory",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸಂಭಾವ್ಯ ನಿಖರತೆ ನಷ್ಟ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಹೆಚ್ಚು ಮೆಮೊರಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32163d",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Production Quantization: AWQ, GPTQ, GGUF, FP8, NVFP4 — Method Families",
+  "titleKn": "ಉತ್ಪಾದನಾ Quantization: AWQ, GPTQ, GGUF, FP8, NVFP4 — ವಿಧಾನ ಕುಟುಂಬಗಳು",
+  "desc": "GPTQ and AWQ compress weights after training; GGUF is a file format for local runtimes; FP8 and NVFP4 are hardware-native formats.",
+  "descKn": "GPTQ ಮತ್ತು AWQ ತರಬೇತಿ ನಂತರ ತೂಕ ಸಂಕುಚಿತಗೊಳಿಸುತ್ತವೆ; GGUF ಸ್ಥಳೀಯ runtimes ಗೆ ಫೈಲ್ ರೂಪ; FP8 ಮತ್ತು NVFP4 ಹಾರ್ಡ್‌ವೇರ್-ಸ್ಥಳೀಯ ರೂಪಗಳು.",
+  "objectives": [
+   "Place each method by purpose.",
+   "Choose by target hardware."
+  ],
+  "objectivesKn": [
+   "ಪ್ರತಿ ವಿಧಾನವನ್ನು ಉದ್ದೇಶದಿಂದ ಗುರುತಿಸಿ.",
+   "ಗುರಿ ಹಾರ್ಡ್‌ವೇರ್ ಪ್ರಕಾರ ಆರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Production Quantization: AWQ, GPTQ, GGUF, FP8, NVFP4 — Method Families",
+     "textKn": "Production Quantization: AWQ, GPTQ, GGUF, FP8, NVFP4 — Method Families",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Production Quantization: AWQ, GPTQ, GGUF, FP8, NVFP4",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Post-Training Weight Methods",
+     "headingKn": "ತರಬೇತಿ ನಂತರದ ತೂಕ ವಿಧಾನ",
+     "bodyEn": "GPTQ uses second-order information to round weights carefully. AWQ protects the most important weights using activation statistics. Both commonly target 4-bit weights.",
+     "bodyKn": "GPTQ ತೂಕ ಎಚ್ಚರಿಕೆಯಿಂದ ದುಂಡಾಗಿಸಲು ದ್ವಿತೀಯ-ಕ್ರಮ ಮಾಹಿತಿ ಬಳಸುತ್ತದೆ. AWQ activation ಅಂಕಿಅಂಶ ಬಳಸಿ ಅತಿ ಮುಖ್ಯ ತೂಕ ರಕ್ಷಿಸುತ್ತದೆ. ಎರಡೂ ಸಾಮಾನ್ಯವಾಗಿ 4-ಬಿಟ್ ತೂಕ ಗುರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Formats and Hardware",
+     "headingKn": "ರೂಪ ಮತ್ತು ಹಾರ್ಡ್‌ವೇರ್",
+     "bodyEn": "GGUF packages quantised models for CPU and consumer GPU runtimes such as llama.cpp. FP8 and NVFP4 suit recent data-centre GPUs with native support.",
+     "bodyKn": "GGUF llama.cpp ನಂತಹ CPU ಮತ್ತು ಗ್ರಾಹಕ GPU runtimes ಗೆ quantised ಮಾದರಿ ಪ್ಯಾಕೇಜ್ ಮಾಡುತ್ತದೆ. FP8 ಮತ್ತು NVFP4 ನೇರ ಬೆಂಬಲವಿರುವ ಇತ್ತೀಚಿನ ಡೇಟಾ-ಸೆಂಟರ್ GPUs ಗೆ ಸೂಕ್ತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• GPTQ and AWQ compress weights post-training.\n• GGUF for local runtimes; FP8/NVFP4 for new GPUs.",
+     "bodyKn": "• GPTQ, AWQ ತರಬೇತಿ ನಂತರ ಸಂಕುಚನ.\n• GGUF ಸ್ಥಳೀಯ; FP8/NVFP4 ಹೊಸ GPUs."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "GGUF is mainly a:",
+       "qKn": "GGUF ಮುಖ್ಯವಾಗಿ:",
+       "opts": [
+        "File format for local runtimes",
+        "GPU",
+        "Cloud",
+        "Optimizer"
+       ],
+       "optsKn": [
+        "ಸ್ಥಳೀಯ runtimes ಗೆ ಫೈಲ್ ರೂಪ",
+        "GPU",
+        "ಕ್ಲೌಡ್",
+        "ಆಪ್ಟಿಮೈಸರ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "AWQ protects:",
+       "qKn": "AWQ ರಕ್ಷಿಸುವುದು:",
+       "opts": [
+        "Important weights",
+        "Fonts",
+        "Users",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮುಖ್ಯ ತೂಕ",
+        "ಫಾಂಟ್",
+        "ಬಳಕೆದಾರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "FP8 suits:",
+       "qKn": "FP8 ಸೂಕ್ತ:",
+       "opts": [
+        "GPUs with native support",
+        "Any old CPU",
+        "Nothing",
+        "Printers"
+       ],
+       "optsKn": [
+        "ನೇರ ಬೆಂಬಲದ GPUs",
+        "ಯಾವುದೇ ಹಳೆಯ CPU",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಪ್ರಿಂಟರ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32163d",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Production Quantization: AWQ, GPTQ, GGUF, FP8, NVFP4 — Choosing and Validating",
+  "titleKn": "ಉತ್ಪಾದನಾ Quantization: AWQ, GPTQ, GGUF, FP8, NVFP4 — ಆಯ್ಕೆ ಮತ್ತು ಮೌಲ್ಯೀಕರಣ",
+  "desc": "Pick a format for your hardware and quality bar, then validate on your own evals and traffic.",
+  "descKn": "ನಿಮ್ಮ ಹಾರ್ಡ್‌ವೇರ್ ಮತ್ತು ಗುಣಮಟ್ಟ ಮಿತಿಗೆ ರೂಪ ಆರಿಸಿ, ನಂತರ ನಿಮ್ಮದೇ evals ಮತ್ತು ಟ್ರಾಫಿಕ್‌ನಲ್ಲಿ ಮೌಲ್ಯೀಕರಿಸಿ.",
+  "objectives": [
+   "Build a decision path from hardware to format.",
+   "Validate quality and latency."
+  ],
+  "objectivesKn": [
+   "ಹಾರ್ಡ್‌ವೇರ್‌ನಿಂದ ರೂಪಕ್ಕೆ ನಿರ್ಧಾರ ಹಾದಿ ನಿರ್ಮಿಸಿ.",
+   "ಗುಣಮಟ್ಟ ಮತ್ತು ವಿಳಂಬ ಮೌಲ್ಯೀಕರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Production Quantization: AWQ, GPTQ, GGUF, FP8, NVFP4 — Choosing and Validating",
+     "textKn": "Production Quantization: AWQ, GPTQ, GGUF, FP8, NVFP4 — Choosing and Validating",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Production Quantization: AWQ, GPTQ, GGUF, FP8, NVFP4",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Decision Path",
+     "headingKn": "ನಿರ್ಧಾರ ಹಾದಿ",
+     "bodyEn": "Start from the hardware and runtime you will use, then choose the format it supports well, and the lowest precision that still passes your quality checks.",
+     "bodyKn": "ನೀವು ಬಳಸುವ ಹಾರ್ಡ್‌ವೇರ್ ಮತ್ತು runtime ನಿಂದ ಆರಂಭಿಸಿ, ಅದು ಚೆನ್ನಾಗಿ ಬೆಂಬಲಿಸುವ ರೂಪ ಮತ್ತು ನಿಮ್ಮ ಗುಣಮಟ್ಟ ಪರಿಶೀಲನೆ ದಾಟುವ ಅತಿ ಕಡಿಮೆ ನಿಖರತೆ ಆರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Validate on Your Data",
+     "headingKn": "ನಿಮ್ಮ ಡೇಟಾದಲ್ಲಿ ಮೌಲ್ಯೀಕರಿಸಿ",
+     "bodyEn": "Generic leaderboard scores may not reflect your domain. Compare outputs on your eval set and measure real latency and cost gains before switching.",
+     "bodyKn": "ಸಾಮಾನ್ಯ ಲೀಡರ್‌ಬೋರ್ಡ್ ಅಂಕ ನಿಮ್ಮ ಕ್ಷೇತ್ರ ಪ್ರತಿಬಿಂಬಿಸದಿರಬಹುದು. ಬದಲಿಸುವ ಮೊದಲು ನಿಮ್ಮ eval ಸೆಟ್‌ನಲ್ಲಿ ಔಟ್‌ಪುಟ್ ಹೋಲಿಸಿ ನಿಜ ವಿಳಂಬ ಮತ್ತು ವೆಚ್ಚ ಲಾಭ ಅಳೆಯಿರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Start from hardware and runtime.\n• Validate on your own eval set.",
+     "bodyKn": "• ಹಾರ್ಡ್‌ವೇರ್ ಮತ್ತು runtime ನಿಂದ ಆರಂಭ.\n• ನಿಮ್ಮ eval ಸೆಟ್‌ನಲ್ಲಿ ಮೌಲ್ಯೀಕರಣ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Start choosing from:",
+       "qKn": "ಆಯ್ಕೆ ಆರಂಭ:",
+       "opts": [
+        "Your hardware and runtime",
+        "A meme",
+        "A logo",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ನಿಮ್ಮ ಹಾರ್ಡ್‌ವೇರ್ ಮತ್ತು runtime",
+        "ಮೀಮ್",
+        "ಲೋಗೋ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Pick the precision that is:",
+       "qKn": "ಆರಿಸಿ:",
+       "opts": [
+        "Lowest that passes quality checks",
+        "Highest always",
+        "Random",
+        "Zero"
+       ],
+       "optsKn": [
+        "ಗುಣಮಟ್ಟ ಪರಿಶೀಲನೆ ದಾಟುವ ಅತಿ ಕಡಿಮೆ",
+        "ಯಾವಾಗಲೂ ಅತಿ ಹೆಚ್ಚು",
+        "ಯಾದೃಚ್ಛಿಕ",
+        "ಸೊನ್ನೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Leaderboards:",
+       "qKn": "ಲೀಡರ್‌ಬೋರ್ಡ್:",
+       "opts": [
+        "May not reflect your domain",
+        "Always reflect it",
+        "Are illegal",
+        "Are secret"
+       ],
+       "optsKn": [
+        "ನಿಮ್ಮ ಕ್ಷೇತ್ರ ಪ್ರತಿಬಿಂಬಿಸದಿರಬಹುದು",
+        "ಯಾವಾಗಲೂ ಪ್ರತಿಬಿಂಬಿಸುತ್ತವೆ",
+        "ಕಾನೂನುಬಾಹಿರ",
+        "ರಹಸ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321640",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Cold Start Mitigation for Serverless LLMs — Where Cold Start Time Goes",
+  "titleKn": "Serverless LLM ಗಳಿಗೆ Cold Start ನಿವಾರಣೆ — Cold Start ಸಮಯ ಎಲ್ಲಿ ಹೋಗುತ್ತದೆ",
+  "desc": "Starting a model server means provisioning a GPU, pulling images, loading weights and warming caches.",
+  "descKn": "ಮಾದರಿ ಸರ್ವರ್ ಆರಂಭಿಸುವುದೆಂದರೆ GPU ಒದಗಿಸುವುದು, images ಎಳೆಯುವುದು, ತೂಕ ಲೋಡ್ ಮಾಡುವುದು, caches ಬೆಚ್ಚಗಾಗಿಸುವುದು.",
+  "objectives": [
+   "List the phases of a cold start.",
+   "Measure each phase."
+  ],
+  "objectivesKn": [
+   "cold start ಹಂತಗಳ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಪ್ರತಿ ಹಂತ ಅಳೆಯಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Cold Start Mitigation for Serverless LLMs — Where Cold Start Time Goes",
+     "textKn": "Cold Start Mitigation for Serverless LLMs — Where Cold Start Time Goes",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Cold Start Mitigation for Serverless LLMs",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Phases",
+     "headingKn": "ಹಂತಗಳು",
+     "bodyEn": "Time is spent acquiring a GPU node, pulling a large container image, downloading and loading many gigabytes of weights, and compiling or warming kernels.",
+     "bodyKn": "GPU ನೋಡ್ ಪಡೆಯಲು, ದೊಡ್ಡ container image ಎಳೆಯಲು, ಹಲವು ಗಿಗಾಬೈಟ್ ತೂಕ ಡೌನ್‌ಲೋಡ್ ಮತ್ತು ಲೋಡ್ ಮಾಡಲು, kernels compile ಅಥವಾ ಬೆಚ್ಚಗಾಗಿಸಲು ಸಮಯ ಹೋಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Measure Before Optimising",
+     "headingKn": "ಆಪ್ಟಿಮೈಸ್ ಮೊದಲು ಅಳೆಯಿರಿ",
+     "bodyEn": "Timestamp each phase. Often weight loading dominates, but sometimes image pull or node provisioning does, and the fix differs.",
+     "bodyKn": "ಪ್ರತಿ ಹಂತಕ್ಕೆ ಸಮಯ ಗುರುತಿಸಿ. ಆಗಾಗ ತೂಕ ಲೋಡಿಂಗ್ ಪ್ರಾಬಲ್ಯ, ಕೆಲವೊಮ್ಮೆ image ಎಳೆತ ಅಥವಾ ನೋಡ್ ಒದಗಿಸುವಿಕೆ; ಪರಿಹಾರ ಭಿನ್ನ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Node, image, weights and warm-up all cost time.\n• Timestamp each phase first.",
+     "bodyKn": "• ನೋಡ್, image, ತೂಕ, warm-up ಸಮಯ.\n• ಮೊದಲು ಪ್ರತಿ ಹಂತ ಸಮಯ ಗುರುತಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A cold-start phase:",
+       "qKn": "cold-start ಹಂತ:",
+       "opts": [
+        "Loading weights",
+        "Painting",
+        "Printing",
+        "None"
+       ],
+       "optsKn": [
+        "ತೂಕ ಲೋಡಿಂಗ್",
+        "ಚಿತ್ರಕಲೆ",
+        "ಮುದ್ರಣ",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "First step of optimising:",
+       "qKn": "ಆಪ್ಟಿಮೈಸ್ ಮೊದಲ ಹಂತ:",
+       "opts": [
+        "Measure each phase",
+        "Guess",
+        "Buy GPUs",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ ಹಂತ ಅಳೆಯಿರಿ",
+        "ಊಹೆ",
+        "GPUs ಖರೀದಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Fixes differ because:",
+       "qKn": "ಪರಿಹಾರ ಭಿನ್ನ ಏಕೆ?",
+       "opts": [
+        "Different phases dominate",
+        "Rules",
+        "Fashion",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಬೇರೆ ಹಂತ ಪ್ರಾಬಲ್ಯ",
+        "ನಿಯಮ",
+        "ಫ್ಯಾಷನ್",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321640",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Cold Start Mitigation for Serverless LLMs — Techniques to Cut Cold Starts",
+  "titleKn": "Serverless LLM ಗಳಿಗೆ Cold Start ನಿವಾರಣೆ — Cold Start ಕಡಿಮೆ ಮಾಡುವ ತಂತ್ರಗಳು",
+  "desc": "Cache weights near the GPU, slim images, stream weights, snapshot state and keep warm capacity.",
+  "descKn": "ತೂಕವನ್ನು GPU ಹತ್ತಿರ ಕ್ಯಾಶ್ ಮಾಡಿ, images ತೆಳುಗೊಳಿಸಿ, ತೂಕ ಸ್ಟ್ರೀಮ್ ಮಾಡಿ, state snapshot ತೆಗೆಯಿರಿ, ಬೆಚ್ಚಗಿನ ಸಾಮರ್ಥ್ಯ ಇಡಿ.",
+  "objectives": [
+   "Use local or shared caches for weights.",
+   "Explain snapshotting and warm pools."
+  ],
+  "objectivesKn": [
+   "ತೂಕಕ್ಕೆ ಸ್ಥಳೀಯ ಅಥವಾ ಹಂಚಿದ cache ಬಳಸಿ.",
+   "snapshot ಮತ್ತು warm pools ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Cold Start Mitigation for Serverless LLMs — Techniques to Cut Cold Starts",
+     "textKn": "Cold Start Mitigation for Serverless LLMs — Techniques to Cut Cold Starts",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Cold Start Mitigation for Serverless LLMs",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Faster Loading",
+     "headingKn": "ವೇಗದ ಲೋಡಿಂಗ್",
+     "bodyEn": "Keep weights on fast local or network-attached storage, use slimmer images and stream weights into GPU memory while the server initialises.",
+     "bodyKn": "ತೂಕವನ್ನು ವೇಗದ ಸ್ಥಳೀಯ ಅಥವಾ ನೆಟ್‌ವರ್ಕ್ ಸಂಗ್ರಹದಲ್ಲಿಡಿ, ತೆಳು images ಬಳಸಿ, ಸರ್ವರ್ ಆರಂಭವಾಗುವಾಗ ತೂಕ GPU ಮೆಮೊರಿಗೆ ಸ್ಟ್ರೀಮ್ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Snapshots and Warm Pools",
+     "headingKn": "Snapshots ಮತ್ತು Warm Pools",
+     "bodyEn": "Snapshotting a loaded process lets a new replica restore quickly. Keeping a small pool of warm replicas trades some cost for near-zero waits.",
+     "bodyKn": "ಲೋಡ್ ಆದ ಪ್ರಕ್ರಿಯೆಯ snapshot ಹೊಸ ಪ್ರತಿಕೃತಿ ಬೇಗ ಮರುಸ್ಥಾಪಿಸಲು ಬಿಡುತ್ತದೆ. ಸಣ್ಣ warm ಪ್ರತಿಕೃತಿ ಪೂಲ್ ಇಟ್ಟರೆ ಸ್ವಲ್ಪ ವೆಚ್ಚಕ್ಕೆ ಬಹುತೇಕ ಶೂನ್ಯ ಕಾಯುವಿಕೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Fast storage, slim images, streamed weights.\n• Snapshots and warm pools trade cost for latency.",
+     "bodyKn": "• ವೇಗದ ಸಂಗ್ರಹ, ತೆಳು images, ಸ್ಟ್ರೀಮ್ ತೂಕ.\n• snapshots, warm pools ವೆಚ್ಚಕ್ಕೆ ವಿಳಂಬ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A warm pool:",
+       "qKn": "warm pool:",
+       "opts": [
+        "Trades cost for shorter waits",
+        "Saves all cost",
+        "Adds waits",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ವೆಚ್ಚಕ್ಕೆ ಕಡಿಮೆ ಕಾಯುವಿಕೆ",
+        "ಎಲ್ಲ ವೆಚ್ಚ ಉಳಿತಾಯ",
+        "ಕಾಯುವಿಕೆ ಹೆಚ್ಚು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Streaming weights:",
+       "qKn": "ತೂಕ ಸ್ಟ್ರೀಮಿಂಗ್:",
+       "opts": [
+        "Overlaps loading with startup",
+        "Deletes weights",
+        "Slows startup",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಲೋಡಿಂಗ್ ಅನ್ನು ಆರಂಭದೊಂದಿಗೆ ಅತಿಕ್ರಮಿಸುತ್ತದೆ",
+        "ತೂಕ ಅಳಿಸುತ್ತದೆ",
+        "ಆರಂಭ ನಿಧಾನ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Slim images:",
+       "qKn": "ತೆಳು images:",
+       "opts": [
+        "Pull faster",
+        "Pull slower",
+        "Have no code",
+        "Are illegal"
+       ],
+       "optsKn": [
+        "ವೇಗವಾಗಿ ಎಳೆಯುತ್ತವೆ",
+        "ನಿಧಾನ ಎಳೆಯುತ್ತವೆ",
+        "ಕೋಡ್ ಇಲ್ಲ",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321640",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Cold Start Mitigation for Serverless LLMs — Managing the Cost–Latency Trade-Off",
+  "titleKn": "Serverless LLM ಗಳಿಗೆ Cold Start ನಿವಾರಣೆ — ವೆಚ್ಚ–ವಿಳಂಬ ವಿನಿಮಯ ನಿರ್ವಹಣೆ",
+  "desc": "Decide how much idle capacity to pay for by comparing user impact of waits with the cost of warm replicas.",
+  "descKn": "ಕಾಯುವಿಕೆಯ ಬಳಕೆದಾರ ಪರಿಣಾಮವನ್ನು warm ಪ್ರತಿಕೃತಿ ವೆಚ್ಚಕ್ಕೆ ಹೋಲಿಸಿ ಎಷ್ಟು ನಿಷ್ಕ್ರಿಯ ಸಾಮರ್ಥ್ಯಕ್ಕೆ ಪಾವತಿಸಬೇಕು ನಿರ್ಧರಿಸಿ.",
+  "objectives": [
+   "Set minimum replicas by traffic pattern.",
+   "Show a graceful UX during starts."
+  ],
+  "objectivesKn": [
+   "ಟ್ರಾಫಿಕ್ ಮಾದರಿ ಪ್ರಕಾರ ಕನಿಷ್ಠ ಪ್ರತಿಕೃತಿ ಹೊಂದಿಸಿ.",
+   "ಆರಂಭದ ವೇಳೆ ಸುಗಮ UX ತೋರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Cold Start Mitigation for Serverless LLMs — Managing the Cost–Latency Trade-Off",
+     "textKn": "Cold Start Mitigation for Serverless LLMs — Managing the Cost–Latency Trade-Off",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Cold Start Mitigation for Serverless LLMs",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Minimum Replicas",
+     "headingKn": "ಕನಿಷ್ಠ ಪ್ರತಿಕೃತಿಗಳು",
+     "bodyEn": "Steady traffic justifies always-on capacity. Rare, spiky traffic may accept occasional cold starts if scale-to-zero saves enough money.",
+     "bodyKn": "ಸ್ಥಿರ ಟ್ರಾಫಿಕ್ ಯಾವಾಗಲೂ-ಆನ್ ಸಾಮರ್ಥ್ಯ ಸಮರ್ಥಿಸುತ್ತದೆ. ಅಪರೂಪದ, ಏರಿಳಿತದ ಟ್ರಾಫಿಕ್ scale-to-zero ಸಾಕಷ್ಟು ಹಣ ಉಳಿಸಿದರೆ ಅಪರೂಪದ cold starts ಒಪ್ಪಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Graceful Experience",
+     "headingKn": "ಸುಗಮ ಅನುಭವ",
+     "bodyEn": "When a cold start is unavoidable, show progress, queue the request or use a small always-on fallback model so the user is not left staring at nothing.",
+     "bodyKn": "cold start ಅನಿವಾರ್ಯವಾದಾಗ ಪ್ರಗತಿ ತೋರಿಸಿ, ವಿನಂತಿ ಸರತಿಯಲ್ಲಿಡಿ ಅಥವಾ ಸಣ್ಣ ಯಾವಾಗಲೂ-ಆನ್ fallback ಮಾದರಿ ಬಳಸಿ; ಬಳಕೆದಾರ ಏನೂ ಇಲ್ಲದೆ ನೋಡುತ್ತ ಕುಳಿತುಕೊಳ್ಳದಂತೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Steady traffic warrants always-on replicas.\n• Show progress or use a fallback during cold starts.",
+     "bodyKn": "• ಸ್ಥಿರ ಟ್ರಾಫಿಕ್‌ಗೆ ಯಾವಾಗಲೂ-ಆನ್.\n• cold start ವೇಳೆ ಪ್ರಗತಿ ಅಥವಾ fallback."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Steady traffic suggests:",
+       "qKn": "ಸ್ಥಿರ ಟ್ರಾಫಿಕ್ ಸೂಚಿಸುವುದು:",
+       "opts": [
+        "Always-on capacity",
+        "Scale to zero",
+        "No servers",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಯಾವಾಗಲೂ-ಆನ್ ಸಾಮರ್ಥ್ಯ",
+        "scale to zero",
+        "ಸರ್ವರ್ ಇಲ್ಲ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "During a cold start show:",
+       "qKn": "cold start ವೇಳೆ ತೋರಿಸಿ:",
+       "opts": [
+        "Progress or a fallback",
+        "Nothing",
+        "An error only",
+        "A blank screen"
+       ],
+       "optsKn": [
+        "ಪ್ರಗತಿ ಅಥವಾ fallback",
+        "ಏನೂ ಇಲ್ಲ",
+        "ದೋಷ ಮಾತ್ರ",
+        "ಖಾಲಿ ಪರದೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Scale-to-zero saves:",
+       "qKn": "scale-to-zero ಉಳಿಸುವುದು:",
+       "opts": [
+        "Idle cost",
+        "Quality",
+        "Users",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ನಿಷ್ಕ್ರಿಯ ವೆಚ್ಚ",
+        "ಗುಣಮಟ್ಟ",
+        "ಬಳಕೆದಾರರು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321643",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Multi-Region LLM Serving and KV Cache Locality — Why Serve From Multiple Regions",
+  "titleKn": "ಬಹು-ಪ್ರದೇಶ LLM Serving ಮತ್ತು KV Cache Locality — ಬಹು ಪ್ರದೇಶಗಳಿಂದ ಏಕೆ ಸೇವೆ",
+  "desc": "Multiple regions reduce network latency, improve availability and can satisfy data-residency rules.",
+  "descKn": "ಬಹು ಪ್ರದೇಶಗಳು ನೆಟ್‌ವರ್ಕ್ ವಿಳಂಬ ಕಡಿಮೆ ಮಾಡುತ್ತವೆ, ಲಭ್ಯತೆ ಸುಧಾರಿಸುತ್ತವೆ, ಡೇಟಾ-ನಿವಾಸ ನಿಯಮ ಪೂರೈಸಬಹುದು.",
+  "objectives": [
+   "List reasons for multi-region.",
+   "Identify added complexity."
+  ],
+  "objectivesKn": [
+   "ಬಹು-ಪ್ರದೇಶ ಕಾರಣಗಳ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಸೇರಿದ ಸಂಕೀರ್ಣತೆ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Multi-Region LLM Serving and KV Cache Locality — Why Serve From Multiple Regions",
+     "textKn": "Multi-Region LLM Serving and KV Cache Locality — Why Serve From Multiple Regions",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Multi-Region LLM Serving and KV Cache Locality",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Three Motivations",
+     "headingKn": "ಮೂರು ಪ್ರೇರಣೆಗಳು",
+     "bodyEn": "Serving near users cuts round-trip time. Spreading across regions survives a regional outage. Some regulations require data to stay within a geography.",
+     "bodyKn": "ಬಳಕೆದಾರರ ಹತ್ತಿರ ಸೇವೆ round-trip ಸಮಯ ಕಡಿಮೆ. ಪ್ರದೇಶಗಳಲ್ಲಿ ಹರಡಿದರೆ ಪ್ರಾದೇಶಿಕ ಸ್ಥಗಿತ ಬದುಕುತ್ತದೆ. ಕೆಲವು ನಿಯಮಗಳು ಡೇಟಾ ಭೌಗೋಳಿಕ ಪ್ರದೇಶದೊಳಗೆ ಇರಬೇಕೆಂದು ಕೇಳುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Added Complexity",
+     "headingKn": "ಹೆಚ್ಚುವರಿ ಸಂಕೀರ್ಣತೆ",
+     "bodyEn": "GPU capacity is scarce and uneven across regions, models must be deployed and updated consistently, and traffic routing becomes a design problem.",
+     "bodyKn": "GPU ಸಾಮರ್ಥ್ಯ ಕೊರತೆ ಮತ್ತು ಪ್ರದೇಶಗಳಲ್ಲಿ ಅಸಮ, ಮಾದರಿಗಳನ್ನು ಸ್ಥಿರವಾಗಿ ನಿಯೋಜಿಸಿ ನವೀಕರಿಸಬೇಕು, ಟ್ರಾಫಿಕ್ routing ವಿನ್ಯಾಸ ಸಮಸ್ಯೆ ಆಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Latency, resilience and residency drive multi-region.\n• GPU scarcity and routing add complexity.",
+     "bodyKn": "• ವಿಳಂಬ, ಸ್ಥಿತಿಸ್ಥಾಪಕತೆ, ನಿವಾಸ ಕಾರಣ.\n• GPU ಕೊರತೆ ಮತ್ತು routing ಸಂಕೀರ್ಣ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A reason for multi-region:",
+       "qKn": "ಬಹು-ಪ್ರದೇಶ ಕಾರಣ:",
+       "opts": [
+        "Surviving a regional outage",
+        "Fewer users",
+        "Smaller models",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪ್ರಾದೇಶಿಕ ಸ್ಥಗಿತ ಬದುಕುವುದು",
+        "ಕಡಿಮೆ ಬಳಕೆದಾರ",
+        "ಚಿಕ್ಕ ಮಾದರಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Data residency means:",
+       "qKn": "ಡೇಟಾ ನಿವಾಸ ಎಂದರೆ:",
+       "opts": [
+        "Data stays in a geography",
+        "Data is deleted",
+        "Data is public",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಡೇಟಾ ಭೌಗೋಳಿಕ ಪ್ರದೇಶದಲ್ಲಿ ಉಳಿಯುತ್ತದೆ",
+        "ಡೇಟಾ ಅಳಿಸಲ್ಪಡುತ್ತದೆ",
+        "ಡೇಟಾ ಸಾರ್ವಜನಿಕ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A new difficulty:",
+       "qKn": "ಹೊಸ ಕಷ್ಟ:",
+       "opts": [
+        "Uneven GPU capacity",
+        "No routing",
+        "No models",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಅಸಮ GPU ಸಾಮರ್ಥ್ಯ",
+        "routing ಇಲ್ಲ",
+        "ಮಾದರಿ ಇಲ್ಲ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321643",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Multi-Region LLM Serving and KV Cache Locality — KV Cache Locality",
+  "titleKn": "ಬಹು-ಪ್ರದೇಶ LLM Serving ಮತ್ತು KV Cache Locality — KV Cache Locality",
+  "desc": "The KV cache lives on one replica, so routing a conversation back to the same place preserves reuse and speed.",
+  "descKn": "KV cache ಒಂದು ಪ್ರತಿಕೃತಿಯಲ್ಲಿರುತ್ತದೆ; ಸಂಭಾಷಣೆಯನ್ನು ಅದೇ ಸ್ಥಳಕ್ಕೆ ಹಿಂದಿರುಗಿಸಿದರೆ ಮರುಬಳಕೆ ಮತ್ತು ವೇಗ ಉಳಿಯುತ್ತದೆ.",
+  "objectives": [
+   "Explain why sticky routing helps.",
+   "Balance stickiness with load."
+  ],
+  "objectivesKn": [
+   "sticky routing ಏಕೆ ಸಹಾಯ ವಿವರಿಸಿ.",
+   "ಸ್ಟಿಕ್ಕಿನೆಸ್ ಮತ್ತು ಹೊರೆ ಸಮತೋಲನ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Multi-Region LLM Serving and KV Cache Locality — KV Cache Locality",
+     "textKn": "Multi-Region LLM Serving and KV Cache Locality — KV Cache Locality",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Multi-Region LLM Serving and KV Cache Locality",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Sticky Routing",
+     "headingKn": "Sticky Routing",
+     "bodyEn": "A follow-up message reuses the earlier conversation as its prefix. If it lands on a different replica, that prefill work is repeated.",
+     "bodyKn": "ಮುಂದಿನ ಸಂದೇಶ ಹಿಂದಿನ ಸಂಭಾಷಣೆಯನ್ನು prefix ಆಗಿ ಮರುಬಳಸುತ್ತದೆ. ಬೇರೆ ಪ್ರತಿಕೃತಿಗೆ ಹೋದರೆ ಆ prefill ಕೆಲಸ ಪುನರಾವರ್ತನೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Balance With Load",
+     "headingKn": "ಹೊರೆಯೊಂದಿಗೆ ಸಮತೋಲನ",
+     "bodyEn": "Routing purely by cache locality can overload one replica. Combine locality with load signals and spill over when a replica is saturated.",
+     "bodyKn": "ಕೇವಲ cache locality ಪ್ರಕಾರ routing ಒಂದು ಪ್ರತಿಕೃತಿ ಮೇಲೆ ಹೆಚ್ಚು ಹೊರೆ ಹಾಕಬಹುದು. locality ಅನ್ನು ಹೊರೆ ಸಂಕೇತಗಳೊಂದಿಗೆ ಸೇರಿಸಿ, ಪ್ರತಿಕೃತಿ ತುಂಬಿದಾಗ ಹೊರಚೆಲ್ಲಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Route follow-ups to the replica holding the cache.\n• Balance locality with load.",
+     "bodyKn": "• ಮುಂದಿನ ಸಂದೇಶ cache ಇರುವ ಪ್ರತಿಕೃತಿಗೆ.\n• locality ಮತ್ತು ಹೊರೆ ಸಮತೋಲನ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why sticky routing?",
+       "qKn": "sticky routing ಏಕೆ?",
+       "opts": [
+        "Reuse cached prefix",
+        "Delete cache",
+        "Slow down",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಕ್ಯಾಶ್ prefix ಮರುಬಳಕೆ",
+        "cache ಅಳಿಸಲು",
+        "ನಿಧಾನಕ್ಕೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Pure locality routing risks:",
+       "qKn": "ಕೇವಲ locality routing ಅಪಾಯ:",
+       "opts": [
+        "Overloading one replica",
+        "Perfect balance",
+        "No cache",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಒಂದು ಪ್ರತಿಕೃತಿ ಮೇಲೆ ಹೆಚ್ಚು ಹೊರೆ",
+        "ಪರಿಪೂರ್ಣ ಸಮತೋಲನ",
+        "cache ಇಲ್ಲ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A different replica means:",
+       "qKn": "ಬೇರೆ ಪ್ರತಿಕೃತಿ ಎಂದರೆ:",
+       "opts": [
+        "Repeated prefill work",
+        "Free cache",
+        "Faster always",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪುನರಾವರ್ತಿತ prefill ಕೆಲಸ",
+        "ಉಚಿತ cache",
+        "ಯಾವಾಗಲೂ ವೇಗ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321643",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Multi-Region LLM Serving and KV Cache Locality — Failover and Consistency",
+  "titleKn": "ಬಹು-ಪ್ರದೇಶ LLM Serving ಮತ್ತು KV Cache Locality — Failover ಮತ್ತು ಸ್ಥಿರತೆ",
+  "desc": "Plan region failover, keep model versions consistent and accept that a failover loses cache but not correctness.",
+  "descKn": "ಪ್ರದೇಶ failover ಯೋಜಿಸಿ, ಮಾದರಿ ಆವೃತ್ತಿ ಸ್ಥಿರವಾಗಿಡಿ, failover cache ಕಳೆಯುತ್ತದೆ ಆದರೆ ಸರಿತನ ಕಳೆಯುವುದಿಲ್ಲ ಎಂದು ಒಪ್ಪಿ.",
+  "objectives": [
+   "Design health checks and traffic shifting.",
+   "Keep model versions aligned across regions."
+  ],
+  "objectivesKn": [
+   "ಆರೋಗ್ಯ ಪರಿಶೀಲನೆ, ಟ್ರಾಫಿಕ್ ಸರಿಸುವಿಕೆ ವಿನ್ಯಾಸ.",
+   "ಪ್ರದೇಶಗಳಲ್ಲಿ ಮಾದರಿ ಆವೃತ್ತಿ ಹೊಂದಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Multi-Region LLM Serving and KV Cache Locality — Failover and Consistency",
+     "textKn": "Multi-Region LLM Serving and KV Cache Locality — Failover and Consistency",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Multi-Region LLM Serving and KV Cache Locality",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Shifting Traffic",
+     "headingKn": "ಟ್ರಾಫಿಕ್ ಸರಿಸುವಿಕೆ",
+     "bodyEn": "Health checks detect a failing region and shift traffic. Remaining regions need headroom to absorb it, and the extra cold-cache prefill will briefly raise latency.",
+     "bodyKn": "ಆರೋಗ್ಯ ಪರಿಶೀಲನೆ ವಿಫಲ ಪ್ರದೇಶ ಪತ್ತೆ ಮಾಡಿ ಟ್ರಾಫಿಕ್ ಸರಿಸುತ್ತದೆ. ಉಳಿದ ಪ್ರದೇಶಗಳಿಗೆ ಅದನ್ನು ಹೀರಲು ಸ್ಥಳ ಬೇಕು; ಹೆಚ್ಚುವರಿ ಶೀತ-cache prefill ವಿಳಂಬ ಸ್ವಲ್ಪ ಹೆಚ್ಚಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Version Consistency",
+     "headingKn": "ಆವೃತ್ತಿ ಸ್ಥಿರತೆ",
+     "bodyEn": "If regions run different model versions, the same request can give different answers. Roll out updates region by region with monitoring, and track which version served each request.",
+     "bodyKn": "ಪ್ರದೇಶಗಳು ಬೇರೆ ಮಾದರಿ ಆವೃತ್ತಿ ಚಲಾಯಿಸಿದರೆ ಒಂದೇ ವಿನಂತಿ ಬೇರೆ ಉತ್ತರ ನೀಡಬಹುದು. ಪ್ರದೇಶವಾರು ನಿಗಾದೊಂದಿಗೆ ನವೀಕರಣ ಜಾರಿ, ಪ್ರತಿ ವಿನಂತಿಗೆ ಯಾವ ಆವೃತ್ತಿ ಸೇವೆ ಸಲ್ಲಿಸಿತು ದಾಖಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Leave headroom to absorb failover traffic.\n• Roll out versions region by region and log them.",
+     "bodyKn": "• failover ಹೀರಲು ಸ್ಥಳ ಬಿಡಿ.\n• ಪ್ರದೇಶವಾರು ಜಾರಿ, ಆವೃತ್ತಿ ದಾಖಲು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Failover regions need:",
+       "qKn": "failover ಪ್ರದೇಶಗಳಿಗೆ:",
+       "opts": [
+        "Spare headroom",
+        "No capacity",
+        "Nothing",
+        "Fewer GPUs"
+       ],
+       "optsKn": [
+        "ಉಳಿದ ಸ್ಥಳ",
+        "ಸಾಮರ್ಥ್ಯ ಇಲ್ಲ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಕಡಿಮೆ GPUs"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Different versions can cause:",
+       "qKn": "ಬೇರೆ ಆವೃತ್ತಿ ಕಾರಣ:",
+       "opts": [
+        "Different answers",
+        "Identical answers",
+        "Faster answers",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಬೇರೆ ಉತ್ತರ",
+        "ಒಂದೇ ಉತ್ತರ",
+        "ವೇಗದ ಉತ್ತರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "After failover latency briefly:",
+       "qKn": "failover ನಂತರ ವಿಳಂಬ ಸ್ವಲ್ಪ ಕಾಲ:",
+       "opts": [
+        "Rises",
+        "Falls",
+        "Vanishes",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಏರುತ್ತದೆ",
+        "ಇಳಿಯುತ್ತದೆ",
+        "ಮಾಯ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321646",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Edge Inference: ANE, Hexagon, WebGPU, Jetson — Why Run on the Edge",
+  "titleKn": "Edge Inference: ANE, Hexagon, WebGPU, Jetson — Edge ನಲ್ಲಿ ಏಕೆ ಚಲಾಯಿಸಬೇಕು",
+  "desc": "On-device inference offers privacy, offline use, low latency and no per-request cloud cost.",
+  "descKn": "ಸಾಧನದ ಮೇಲಿನ inference ಗೌಪ್ಯತೆ, ಆಫ್‌ಲೈನ್ ಬಳಕೆ, ಕಡಿಮೆ ವಿಳಂಬ, ಪ್ರತಿ-ವಿನಂತಿ ಕ್ಲೌಡ್ ವೆಚ್ಚ ಇಲ್ಲದಿರುವುದನ್ನು ನೀಡುತ್ತದೆ.",
+  "objectives": [
+   "List benefits of edge inference.",
+   "Name limits: memory, power, model size."
+  ],
+  "objectivesKn": [
+   "edge inference ಲಾಭ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಮಿತಿ: ಮೆಮೊರಿ, ಶಕ್ತಿ, ಮಾದರಿ ಗಾತ್ರ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Edge Inference: ANE, Hexagon, WebGPU, Jetson — Why Run on the Edge",
+     "textKn": "Edge Inference: ANE, Hexagon, WebGPU, Jetson — Why Run on the Edge",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Edge Inference: ANE, Hexagon, WebGPU, Jetson",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Benefits",
+     "headingKn": "ಲಾಭಗಳು",
+     "bodyEn": "Data can stay on the device, the feature works offline, latency avoids the network round trip and there is no per-token cloud bill.",
+     "bodyKn": "ಡೇಟಾ ಸಾಧನದಲ್ಲೇ ಉಳಿಯಬಹುದು, ವೈಶಿಷ್ಟ್ಯ ಆಫ್‌ಲೈನ್ ಕೆಲಸ ಮಾಡುತ್ತದೆ, ವಿಳಂಬ ನೆಟ್‌ವರ್ಕ್ round trip ತಪ್ಪಿಸುತ್ತದೆ, ಪ್ರತಿ-token ಕ್ಲೌಡ್ ಬಿಲ್ ಇಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Constraints",
+     "headingKn": "ನಿರ್ಬಂಧಗಳು",
+     "bodyEn": "Devices have limited memory, battery and thermal headroom, so models must be small and quantised, and quality is usually below the largest cloud models.",
+     "bodyKn": "ಸಾಧನಗಳಿಗೆ ಸೀಮಿತ ಮೆಮೊರಿ, ಬ್ಯಾಟರಿ, ಉಷ್ಣ ಸ್ಥಳ; ಮಾದರಿ ಚಿಕ್ಕ ಮತ್ತು quantised ಆಗಿರಬೇಕು, ಗುಣಮಟ್ಟ ಸಾಮಾನ್ಯವಾಗಿ ಅತಿ ದೊಡ್ಡ ಕ್ಲೌಡ್ ಮಾದರಿಗಳಿಗಿಂತ ಕಡಿಮೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Privacy, offline use, low latency, no cloud bill.\n• Memory, battery and heat limit model size.",
+     "bodyKn": "• ಗೌಪ್ಯತೆ, ಆಫ್‌ಲೈನ್, ಕಡಿಮೆ ವಿಳಂಬ.\n• ಮೆಮೊರಿ, ಬ್ಯಾಟರಿ, ಶಾಖ ಮಿತಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "An edge benefit:",
+       "qKn": "edge ಲಾಭ:",
+       "opts": [
+        "Works offline",
+        "Needs the internet always",
+        "Bigger models",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಆಫ್‌ಲೈನ್ ಕೆಲಸ",
+        "ಯಾವಾಗಲೂ ಇಂಟರ್ನೆಟ್ ಬೇಕು",
+        "ದೊಡ್ಡ ಮಾದರಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A constraint:",
+       "qKn": "ನಿರ್ಬಂಧ:",
+       "opts": [
+        "Battery and thermal limits",
+        "Unlimited memory",
+        "No limits",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಬ್ಯಾಟರಿ ಮತ್ತು ಉಷ್ಣ ಮಿತಿ",
+        "ಅನಿಯಮಿತ ಮೆಮೊರಿ",
+        "ಮಿತಿ ಇಲ್ಲ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Edge models are usually:",
+       "qKn": "edge ಮಾದರಿಗಳು ಸಾಮಾನ್ಯವಾಗಿ:",
+       "opts": [
+        "Small and quantised",
+        "Huge",
+        "Uncompressed",
+        "Absent"
+       ],
+       "optsKn": [
+        "ಚಿಕ್ಕ ಮತ್ತು quantised",
+        "ಬೃಹತ್",
+        "ಸಂಕುಚಿಸದ",
+        "ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321646",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Edge Inference: ANE, Hexagon, WebGPU, Jetson — The Hardware Landscape",
+  "titleKn": "Edge Inference: ANE, Hexagon, WebGPU, Jetson — ಹಾರ್ಡ್‌ವೇರ್ ಚಿತ್ರಣ",
+  "desc": "Phones and laptops have NPUs, browsers offer WebGPU and embedded boards offer small GPUs, each with its own toolchain.",
+  "descKn": "ಫೋನ್ ಮತ್ತು ಲ್ಯಾಪ್‌ಟಾಪ್‌ಗಳಲ್ಲಿ NPUs, ಬ್ರೌಸರ್‌ಗಳಲ್ಲಿ WebGPU, embedded ಬೋರ್ಡ್‌ಗಳಲ್ಲಿ ಸಣ್ಣ GPUs ಇವೆ; ಪ್ರತಿಯೊಂದಕ್ಕೂ ಸ್ವಂತ toolchain.",
+  "objectives": [
+   "Place each target by device class.",
+   "Expect toolchain differences."
+  ],
+  "objectivesKn": [
+   "ಸಾಧನ ವರ್ಗದ ಪ್ರಕಾರ ಪ್ರತಿ ಗುರಿ ಗುರುತಿಸಿ.",
+   "toolchain ವ್ಯತ್ಯಾಸ ನಿರೀಕ್ಷಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Edge Inference: ANE, Hexagon, WebGPU, Jetson — The Hardware Landscape",
+     "textKn": "Edge Inference: ANE, Hexagon, WebGPU, Jetson — The Hardware Landscape",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Edge Inference: ANE, Hexagon, WebGPU, Jetson",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Device Classes",
+     "headingKn": "ಸಾಧನ ವರ್ಗಗಳು",
+     "bodyEn": "Apple's Neural Engine and Qualcomm's Hexagon NPU serve phones and laptops. WebGPU runs models in the browser. Jetson boards target robots and embedded systems.",
+     "bodyKn": "Apple Neural Engine ಮತ್ತು Qualcomm Hexagon NPU ಫೋನ್ ಮತ್ತು ಲ್ಯಾಪ್‌ಟಾಪ್‌ಗಳಿಗೆ. WebGPU ಬ್ರೌಸರ್‌ನಲ್ಲಿ ಮಾದರಿ ಚಲಾಯಿಸುತ್ತದೆ. Jetson ಬೋರ್ಡ್‌ಗಳು ರೋಬೋಟ್ ಮತ್ತು embedded ವ್ಯವಸ್ಥೆಗಳಿಗೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Toolchains Differ",
+     "headingKn": "Toolchains ಭಿನ್ನ",
+     "bodyEn": "Each platform has its own conversion tools, supported operators and quirks, so a model that runs on one may need changes to run on another.",
+     "bodyKn": "ಪ್ರತಿ ವೇದಿಕೆಗೆ ಸ್ವಂತ ಪರಿವರ್ತನಾ ಸಾಧನ, ಬೆಂಬಲಿತ ಆಪರೇಟರ್, ವಿಶೇಷತೆ ಇದೆ; ಒಂದರಲ್ಲಿ ಚಲಿಸುವ ಮಾದರಿ ಇನ್ನೊಂದರಲ್ಲಿ ಬದಲಾವಣೆ ಬೇಕಾಗಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• NPUs, WebGPU and embedded GPUs target different devices.\n• Each has its own toolchain.",
+     "bodyKn": "• NPUs, WebGPU, embedded GPUs ಬೇರೆ ಸಾಧನ.\n• ಪ್ರತಿಯೊಂದಕ್ಕೆ toolchain."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "WebGPU runs models in:",
+       "qKn": "WebGPU ಮಾದರಿ ಚಲಾಯಿಸುವುದು:",
+       "opts": [
+        "The browser",
+        "A printer",
+        "A watch only",
+        "Nowhere"
+       ],
+       "optsKn": [
+        "ಬ್ರೌಸರ್‌ನಲ್ಲಿ",
+        "ಪ್ರಿಂಟರ್",
+        "ಗಡಿಯಾರ ಮಾತ್ರ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Jetson targets:",
+       "qKn": "Jetson ಗುರಿ:",
+       "opts": [
+        "Robots and embedded systems",
+        "Only clouds",
+        "Only phones",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ರೋಬೋಟ್ ಮತ್ತು embedded",
+        "ಕ್ಲೌಡ್ ಮಾತ್ರ",
+        "ಫೋನ್ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Toolchains:",
+       "qKn": "toolchains:",
+       "opts": [
+        "Differ per platform",
+        "Are identical",
+        "Do not exist",
+        "Are free of limits"
+       ],
+       "optsKn": [
+        "ವೇದಿಕೆಗೆ ಭಿನ್ನ",
+        "ಒಂದೇ",
+        "ಇಲ್ಲ",
+        "ಮಿತಿ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321646",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Edge Inference: ANE, Hexagon, WebGPU, Jetson — Designing for the Edge",
+  "titleKn": "Edge Inference: ANE, Hexagon, WebGPU, Jetson — Edge ಗಾಗಿ ವಿನ್ಯಾಸ",
+  "desc": "Pick small models, quantise, keep hybrid cloud fallback and measure real devices, not just simulators.",
+  "descKn": "ಚಿಕ್ಕ ಮಾದರಿ ಆರಿಸಿ, quantise ಮಾಡಿ, ಹೈಬ್ರಿಡ್ ಕ್ಲೌಡ್ fallback ಇಡಿ, ಸಿಮ್ಯುಲೇಟರ್‌ಗಳಲ್ಲ, ನಿಜ ಸಾಧನಗಳಲ್ಲಿ ಅಳೆಯಿರಿ.",
+  "objectives": [
+   "Design a hybrid edge-cloud path.",
+   "Test on real devices."
+  ],
+  "objectivesKn": [
+   "ಹೈಬ್ರಿಡ್ edge-ಕ್ಲೌಡ್ ಹಾದಿ ವಿನ್ಯಾಸ.",
+   "ನಿಜ ಸಾಧನಗಳಲ್ಲಿ ಪರೀಕ್ಷಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Edge Inference: ANE, Hexagon, WebGPU, Jetson — Designing for the Edge",
+     "textKn": "Edge Inference: ANE, Hexagon, WebGPU, Jetson — Designing for the Edge",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Edge Inference: ANE, Hexagon, WebGPU, Jetson",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Hybrid Design",
+     "headingKn": "ಹೈಬ್ರಿಡ್ ವಿನ್ಯಾಸ",
+     "bodyEn": "Handle simple, private or offline requests on-device and route hard ones to the cloud when allowed, with clear rules for what leaves the device.",
+     "bodyKn": "ಸರಳ, ಖಾಸಗಿ ಅಥವಾ ಆಫ್‌ಲೈನ್ ವಿನಂತಿಗಳನ್ನು ಸಾಧನದಲ್ಲಿ ನಿರ್ವಹಿಸಿ, ಕಠಿಣವಾದವನ್ನು ಅನುಮತಿಸಿದಾಗ ಕ್ಲೌಡ್‌ಗೆ ರೂಟ್ ಮಾಡಿ; ಸಾಧನ ಬಿಟ್ಟು ಹೋಗುವುದರ ಬಗ್ಗೆ ಸ್ಪಷ್ಟ ನಿಯಮ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Test on Real Hardware",
+     "headingKn": "ನಿಜ ಹಾರ್ಡ್‌ವೇರ್‌ನಲ್ಲಿ ಪರೀಕ್ಷೆ",
+     "bodyEn": "Speed, battery drain and heat depend on the actual chip and OS. Measure across the range of devices your users own, including older ones.",
+     "bodyKn": "ವೇಗ, ಬ್ಯಾಟರಿ ಬಳಕೆ, ಶಾಖ ನಿಜ ಚಿಪ್ ಮತ್ತು OS ಮೇಲೆ ಅವಲಂಬಿತ. ನಿಮ್ಮ ಬಳಕೆದಾರರ ಸಾಧನಗಳ ವ್ಯಾಪ್ತಿಯಲ್ಲಿ, ಹಳೆಯವು ಸೇರಿ, ಅಳೆಯಿರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Hybrid: local for simple/private, cloud for hard.\n• Measure on real, including older, devices.",
+     "bodyKn": "• ಹೈಬ್ರಿಡ್: ಸರಳ/ಖಾಸಗಿ ಸ್ಥಳೀಯ, ಕಠಿಣ ಕ್ಲೌಡ್.\n• ಹಳೆಯವು ಸೇರಿ ನಿಜ ಸಾಧನಗಳಲ್ಲಿ ಅಳೆಯಿರಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Hybrid design routes hard requests to:",
+       "qKn": "ಹೈಬ್ರಿಡ್ ಕಠಿಣ ವಿನಂತಿ ರೂಟ್:",
+       "opts": [
+        "The cloud when allowed",
+        "Nowhere",
+        "A printer",
+        "A watch"
+       ],
+       "optsKn": [
+        "ಅನುಮತಿಸಿದರೆ ಕ್ಲೌಡ್",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಪ್ರಿಂಟರ್",
+        "ಗಡಿಯಾರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Test on:",
+       "qKn": "ಪರೀಕ್ಷೆ:",
+       "opts": [
+        "Real devices",
+        "Only simulators",
+        "Nothing",
+        "Screenshots"
+       ],
+       "optsKn": [
+        "ನಿಜ ಸಾಧನಗಳಲ್ಲಿ",
+        "ಸಿಮ್ಯುಲೇಟರ್ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಸ್ಕ್ರೀನ್‌ಶಾಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Define clearly:",
+       "qKn": "ಸ್ಪಷ್ಟವಾಗಿ ವ್ಯಾಖ್ಯಾನಿಸಿ:",
+       "opts": [
+        "What leaves the device",
+        "Fonts",
+        "Logos",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸಾಧನ ಬಿಟ್ಟು ಹೋಗುವುದು",
+        "ಫಾಂಟ್",
+        "ಲೋಗೋ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321649",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "LLM Observability Stack Selection — What LLM Observability Must Capture",
+  "titleKn": "LLM Observability Stack ಆಯ್ಕೆ — LLM Observability ಏನು ಸೆರೆಹಿಡಿಯಬೇಕು",
+  "desc": "Capture traces of prompts, tool calls and responses along with latency, tokens, cost and quality signals.",
+  "descKn": "prompts, tool ಕರೆ, ಉತ್ತರಗಳ traces ಜೊತೆ ವಿಳಂಬ, tokens, ವೆಚ್ಚ, ಗುಣಮಟ್ಟ ಸಂಕೇತ ಸೆರೆಹಿಡಿಯಿರಿ.",
+  "objectives": [
+   "List the core signals.",
+   "Handle sensitive content carefully."
+  ],
+  "objectivesKn": [
+   "ಮುಖ್ಯ ಸಂಕೇತಗಳ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಸೂಕ್ಷ್ಮ ವಿಷಯ ಎಚ್ಚರಿಕೆಯಿಂದ ನಿರ್ವಹಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "LLM Observability Stack Selection — What LLM Observability Must Capture",
+     "textKn": "LLM Observability Stack Selection — What LLM Observability Must Capture",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in LLM Observability Stack Selection",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Core Signals",
+     "headingKn": "ಮುಖ್ಯ ಸಂಕೇತಗಳು",
+     "bodyEn": "A trace shows each step of a request: the prompt, model and parameters, tool calls, outputs, timings and token counts, tied together by an id.",
+     "bodyKn": "trace ವಿನಂತಿಯ ಪ್ರತಿ ಹಂತ ತೋರಿಸುತ್ತದೆ: prompt, ಮಾದರಿ ಮತ್ತು ಪ್ಯಾರಾಮೀಟರ್, tool ಕರೆ, ಔಟ್‌ಪುಟ್, ಸಮಯ, token ಎಣಿಕೆ, id ಯಿಂದ ಜೋಡಿತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Sensitive Content",
+     "headingKn": "ಸೂಕ್ಷ್ಮ ವಿಷಯ",
+     "bodyEn": "Logged prompts can contain personal data. Redact or hash sensitive fields, restrict access and set retention limits.",
+     "bodyKn": "ಲಾಗ್ ಮಾಡಿದ prompts ವೈಯಕ್ತಿಕ ಡೇಟಾ ಹೊಂದಿರಬಹುದು. ಸೂಕ್ಷ್ಮ fields ಮರೆಮಾಡಿ ಅಥವಾ hash ಮಾಡಿ, ಪ್ರವೇಶ ನಿರ್ಬಂಧಿಸಿ, ಉಳಿಸುವ ಅವಧಿ ಮಿತಿ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Trace prompts, tools, outputs, timings and tokens.\n• Redact sensitive fields and limit retention.",
+     "bodyKn": "• prompts, tools, ಔಟ್‌ಪುಟ್, ಸಮಯ, tokens trace.\n• ಸೂಕ್ಷ್ಮ fields ಮರೆ, ಅವಧಿ ಮಿತಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A trace is tied by:",
+       "qKn": "trace ಜೋಡಿಸುವುದು:",
+       "opts": [
+        "An id",
+        "A colour",
+        "A logo",
+        "Nothing"
+       ],
+       "optsKn": [
+        "id",
+        "ಬಣ್ಣ",
+        "ಲೋಗೋ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Logged prompts may contain:",
+       "qKn": "ಲಾಗ್ prompts ಹೊಂದಿರಬಹುದು:",
+       "opts": [
+        "Personal data",
+        "Nothing",
+        "Only code",
+        "Only images"
+       ],
+       "optsKn": [
+        "ವೈಯಕ್ತಿಕ ಡೇಟಾ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಕೋಡ್ ಮಾತ್ರ",
+        "ಚಿತ್ರ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Reduce risk by:",
+       "qKn": "ಅಪಾಯ ಕಡಿಮೆ:",
+       "opts": [
+        "Redaction and retention limits",
+        "Logging everything forever",
+        "Sharing publicly",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮರೆಮಾಚುವಿಕೆ ಮತ್ತು ಅವಧಿ ಮಿತಿ",
+        "ಎಲ್ಲವನ್ನೂ ಶಾಶ್ವತ ಲಾಗ್",
+        "ಸಾರ್ವಜನಿಕವಾಗಿ ಹಂಚಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321649",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "LLM Observability Stack Selection — Comparing Tools",
+  "titleKn": "LLM Observability Stack ಆಯ್ಕೆ — ಸಾಧನಗಳ ಹೋಲಿಕೆ",
+  "desc": "Compare hosted and self-hosted tools on standards support, evaluation features, cost, data control and integration.",
+  "descKn": "ಮಾನದಂಡ ಬೆಂಬಲ, ಮೌಲ್ಯಮಾಪನ ವೈಶಿಷ್ಟ್ಯ, ವೆಚ್ಚ, ಡೇಟಾ ನಿಯಂತ್ರಣ, ಸಂಯೋಜನೆಯಲ್ಲಿ hosted ಮತ್ತು ಸ್ವ-ಹೋಸ್ಟ್ ಸಾಧನ ಹೋಲಿಸಿ.",
+  "objectives": [
+   "Prefer open standards such as OpenTelemetry.",
+   "Weigh hosted convenience against data control."
+  ],
+  "objectivesKn": [
+   "OpenTelemetry ನಂತಹ ಮುಕ್ತ ಮಾನದಂಡ ಆದ್ಯತೆ.",
+   "hosted ಅನುಕೂಲ ಮತ್ತು ಡೇಟಾ ನಿಯಂತ್ರಣ ತೂಗಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "LLM Observability Stack Selection — Comparing Tools",
+     "textKn": "LLM Observability Stack Selection — Comparing Tools",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in LLM Observability Stack Selection",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Open Standards",
+     "headingKn": "ಮುಕ್ತ ಮಾನದಂಡ",
+     "bodyEn": "Emitting traces in an open format such as OpenTelemetry lets you switch backends without re-instrumenting your code.",
+     "bodyKn": "OpenTelemetry ನಂತಹ ಮುಕ್ತ ರೂಪದಲ್ಲಿ traces ಹೊರಸೂಸಿದರೆ ಕೋಡ್ ಮರು-instrument ಮಾಡದೆ backends ಬದಲಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Hosted or Self-Hosted",
+     "headingKn": "Hosted ಅಥವಾ ಸ್ವ-ಹೋಸ್ಟ್",
+     "bodyEn": "Hosted tools are quick to adopt but send prompts to a vendor. Self-hosted tools keep data in your control at the cost of operating them.",
+     "bodyKn": "hosted ಸಾಧನ ಅಳವಡಿಸಲು ಬೇಗ ಆದರೆ prompts ಮಾರಾಟಗಾರನಿಗೆ ಕಳುಹಿಸುತ್ತದೆ. ಸ್ವ-ಹೋಸ್ಟ್ ಸಾಧನ ಡೇಟಾ ನಿಮ್ಮ ನಿಯಂತ್ರಣದಲ್ಲಿಡುತ್ತದೆ, ನಿರ್ವಹಣೆ ವೆಚ್ಚದೊಂದಿಗೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Emit open-format traces to avoid lock-in.\n• Hosted is quick; self-hosted keeps control.",
+     "bodyKn": "• ಮುಕ್ತ ರೂಪ traces ಲಾಕ್-ಇನ್ ತಪ್ಪಿಸುತ್ತದೆ.\n• hosted ಬೇಗ; ಸ್ವ-ಹೋಸ್ಟ್ ನಿಯಂತ್ರಣ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Open trace formats help:",
+       "qKn": "ಮುಕ್ತ trace ರೂಪ ಸಹಾಯ:",
+       "opts": [
+        "Switch backends easily",
+        "Lock you in",
+        "Hide data",
+        "Nothing"
+       ],
+       "optsKn": [
+        "backends ಸುಲಭ ಬದಲಿಸಲು",
+        "ಲಾಕ್-ಇನ್",
+        "ಡೇಟಾ ಮರೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Hosted tools:",
+       "qKn": "hosted ಸಾಧನ:",
+       "opts": [
+        "Send prompts to a vendor",
+        "Keep all data local",
+        "Need no account",
+        "Are illegal"
+       ],
+       "optsKn": [
+        "prompts ಮಾರಾಟಗಾರನಿಗೆ ಕಳುಹಿಸುತ್ತವೆ",
+        "ಎಲ್ಲ ಡೇಟಾ ಸ್ಥಳೀಯ",
+        "ಖಾತೆ ಬೇಡ",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Self-hosting costs:",
+       "qKn": "ಸ್ವ-ಹೋಸ್ಟಿಂಗ್ ವೆಚ್ಚ:",
+       "opts": [
+        "Operating effort",
+        "Nothing",
+        "Data control",
+        "Openness"
+       ],
+       "optsKn": [
+        "ನಿರ್ವಹಣೆ ಶ್ರಮ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಡೇಟಾ ನಿಯಂತ್ರಣ",
+        "ಮುಕ್ತತೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321649",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "LLM Observability Stack Selection — From Traces to Decisions",
+  "titleKn": "LLM Observability Stack ಆಯ್ಕೆ — Traces ನಿಂದ ನಿರ್ಧಾರಗಳಿಗೆ",
+  "desc": "Observability pays off when traces feed evals, alerts, cost dashboards and debugging workflows.",
+  "descKn": "traces evals, alerts, ವೆಚ್ಚ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್, debugging ಕೆಲಸ ಹರಿವಿಗೆ ಆಹಾರವಾದಾಗ observability ಲಾಭ ನೀಡುತ್ತದೆ.",
+  "objectives": [
+   "Turn production traces into eval cases.",
+   "Alert on cost, latency and quality."
+  ],
+  "objectivesKn": [
+   "ಉತ್ಪಾದನಾ traces ಅನ್ನು eval ಪ್ರಕರಣಗಳಾಗಿಸಿ.",
+   "ವೆಚ್ಚ, ವಿಳಂಬ, ಗುಣಮಟ್ಟಕ್ಕೆ alert."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "LLM Observability Stack Selection — From Traces to Decisions",
+     "textKn": "LLM Observability Stack Selection — From Traces to Decisions",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in LLM Observability Stack Selection",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Traces Become Evals",
+     "headingKn": "Traces ಗಳು Evals ಆಗುತ್ತವೆ",
+     "bodyEn": "Sample failing or thumbs-down traces into a dataset and replay them against new prompts or models, so real failures drive improvements.",
+     "bodyKn": "ವಿಫಲ ಅಥವಾ thumbs-down traces ಅನ್ನು ಡೇಟಾಸೆಟ್‌ಗೆ ಮಾದರಿ ಮಾಡಿ ಹೊಸ prompts ಅಥವಾ ಮಾದರಿಗಳ ವಿರುದ್ಧ replay ಮಾಡಿ; ನಿಜ ವೈಫಲ್ಯಗಳು ಸುಧಾರಣೆ ಚಾಲಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Alerts and Dashboards",
+     "headingKn": "Alerts ಮತ್ತು ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+     "bodyEn": "Track latency percentiles, error rate, token spend and quality scores, and alert on sudden shifts so regressions are caught before users report them.",
+     "bodyKn": "ವಿಳಂಬ percentiles, ದೋಷ ದರ, token ಖರ್ಚು, ಗುಣಮಟ್ಟ ಅಂಕ ಗಮನಿಸಿ, ಹಠಾತ್ ಬದಲಾವಣೆಗೆ alert; ಬಳಕೆದಾರರು ವರದಿ ಮಾಡುವ ಮೊದಲೇ regressions ಹಿಡಿಯಲ್ಪಡುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Feed failing traces into evals.\n• Alert on latency, cost and quality shifts.",
+     "bodyKn": "• ವಿಫಲ traces evals ಗೆ.\n• ವಿಳಂಬ, ವೆಚ್ಚ, ಗುಣಮಟ್ಟ ಬದಲಾವಣೆಗೆ alert."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Failing traces should feed:",
+       "qKn": "ವಿಫಲ traces ಹೋಗಬೇಕು:",
+       "opts": [
+        "Eval datasets",
+        "The trash",
+        "Ads",
+        "Nothing"
+       ],
+       "optsKn": [
+        "eval ಡೇಟಾಸೆಟ್‌ಗೆ",
+        "ಕಸಕ್ಕೆ",
+        "ಜಾಹೀರಾತಿಗೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Alert on:",
+       "qKn": "alert:",
+       "opts": [
+        "Sudden cost or latency shifts",
+        "Colours",
+        "Fonts",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹಠಾತ್ ವೆಚ್ಚ ಅಥವಾ ವಿಳಂಬ ಬದಲಾವಣೆ",
+        "ಬಣ್ಣ",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Goal:",
+       "qKn": "ಗುರಿ:",
+       "opts": [
+        "Catch regressions before users",
+        "Hide regressions",
+        "Add noise",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಬಳಕೆದಾರರ ಮೊದಲು regressions ಹಿಡಿಯುವುದು",
+        "regressions ಮರೆ",
+        "ಗದ್ದಲ ಸೇರಿಸು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

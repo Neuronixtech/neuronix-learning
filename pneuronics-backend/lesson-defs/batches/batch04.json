@@ -1,0 +1,3079 @@
+[
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321547",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Benchmarks: WebArena and OSWorld — Testing Agents in Real Interfaces",
+  "titleKn": "Benchmarks: WebArena ಮತ್ತು OSWorld — ನಿಜ Interfaces ನಲ್ಲಿ Agents ಪರೀಕ್ಷೆ",
+  "desc": "How WebArena and OSWorld evaluate agents that operate websites and desktop operating systems, and how success is verified.",
+  "descKn": "WebArena ಮತ್ತು OSWorld ವೆಬ್‌ಸೈಟ್ ಮತ್ತು ಡೆಸ್ಕ್‌ಟಾಪ್ ನಿರ್ವಹಿಸುವ agents ಅನ್ನು ಹೇಗೆ ಮೌಲ್ಯಮಾಪನ ಮಾಡುತ್ತವೆ.",
+  "objectives": [
+   "Describe WebArena: self-hosted realistic websites and goal tasks.",
+   "Describe OSWorld: tasks across a real desktop environment.",
+   "Explain execution-based checking of the final state."
+  ],
+  "objectivesKn": [
+   "WebArena ವಿವರಿಸಿ.",
+   "OSWorld ವಿವರಿಸಿ.",
+   "ಅಂತಿಮ state ನ ಕಾರ್ಯಗತ-ಆಧಾರಿತ ಪರಿಶೀಲನೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Benchmarks: WebArena and OSWorld — Testing Agents in Real Interfaces",
+     "textKn": "Benchmarks: WebArena and OSWorld — Testing Agents in Real Interfaces",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Benchmarks: WebArena and OSWorld",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why Interface Benchmarks Exist",
+     "headingKn": "Interface Benchmarks ಏಕೆ",
+     "bodyEn": "Many real tasks are done by clicking and typing in interfaces, not by calling clean APIs. These benchmarks test whether an agent can perceive a screen or page and act on it to reach a goal.",
+     "bodyKn": "ಅನೇಕ ನಿಜ ಕೆಲಸಗಳು ಸ್ವಚ್ಛ API ಕರೆಯಿಂದಲ್ಲ, ಇಂಟರ್ಫೇಸ್‌ನಲ್ಲಿ ಕ್ಲಿಕ್ ಮತ್ತು ಟೈಪಿಂಗ್‌ನಿಂದ ನಡೆಯುತ್ತವೆ. ಪರದೆಯನ್ನು ಗ್ರಹಿಸಿ ಗುರಿ ತಲುಪಲು ಕ್ರಿಯೆ ಮಾಡಬಲ್ಲದೇ ಎಂದು ಈ benchmarks ಪರೀಕ್ಷಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "WebArena",
+     "headingKn": "WebArena",
+     "bodyEn": "WebArena provides self-hosted, realistic websites such as shopping, forums and code hosting, and gives goals like finding an order or posting a comment. Hosting the sites yourself keeps the environment reproducible.",
+     "bodyKn": "WebArena ಶಾಪಿಂಗ್, ವೇದಿಕೆ, ಕೋಡ್ ಹೋಸ್ಟಿಂಗ್‌ನಂತಹ ಸ್ವಯಂ-ಹೋಸ್ಟ್ ವೆಬ್‌ಸೈಟ್‌ಗಳನ್ನು ನೀಡಿ ಆರ್ಡರ್ ಹುಡುಕುವುದು, ಕಾಮೆಂಟ್ ಪೋಸ್ಟ್ ಮಾಡುವುದು ಮುಂತಾದ ಗುರಿಗಳನ್ನು ಕೊಡುತ್ತದೆ. ನೀವೇ ಹೋಸ್ಟ್ ಮಾಡುವುದರಿಂದ ಪರಿಸರ ಪುನರುತ್ಪಾದನೀಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "OSWorld",
+     "headingKn": "OSWorld",
+     "bodyEn": "OSWorld places the agent in a full desktop operating system with real applications such as office tools, browsers and file managers, with tasks that span several applications.",
+     "bodyKn": "OSWorld agent ಅನ್ನು ಕಚೇರಿ ಉಪಕರಣ, ಬ್ರೌಸರ್, ಫೈಲ್ ಮ್ಯಾನೇಜರ್ ಇರುವ ಪೂರ್ಣ ಡೆಸ್ಕ್‌ಟಾಪ್ OS ನಲ್ಲಿ ಇರಿಸುತ್ತದೆ; ಕೆಲಸಗಳು ಹಲವು ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ವ್ಯಾಪಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Check the Result, Not the Path",
+     "headingKn": "ಹಾದಿಯಲ್ಲ, ಫಲಿತಾಂಶ ಪರಿಶೀಲಿಸಿ",
+     "bodyEn": "Success is usually verified by inspecting the final state, such as a file's contents or a database record, rather than requiring one exact sequence of clicks. This allows many valid ways to solve a task.",
+     "bodyKn": "ಯಶಸ್ಸನ್ನು ಸಾಮಾನ್ಯವಾಗಿ ಅಂತಿಮ state (ಫೈಲ್ ವಿಷಯ, ಡೇಟಾಬೇಸ್ ದಾಖಲೆ) ಪರಿಶೀಲಿಸಿ ದೃಢೀಕರಿಸಲಾಗುತ್ತದೆ, ನಿರ್ದಿಷ್ಟ ಕ್ಲಿಕ್ ಅನುಕ್ರಮವಲ್ಲ. ಇದು ಹಲವು ಮಾನ್ಯ ವಿಧಾನಗಳಿಗೆ ಅವಕಾಶ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Interface benchmarks test acting through screens.\n• WebArena uses self-hosted sites; OSWorld uses a full desktop.\n• Success is checked on the final state.",
+     "bodyKn": "• interface benchmarks ಪರದೆ ಮೂಲಕ ಕ್ರಿಯೆ ಪರೀಕ್ಷಿಸುತ್ತವೆ.\n• WebArena ಸ್ವಯಂ-ಹೋಸ್ಟ್; OSWorld ಪೂರ್ಣ ಡೆಸ್ಕ್‌ಟಾಪ್.\n• ಅಂತಿಮ state ಪರಿಶೀಲನೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why self-host websites in WebArena?",
+       "qKn": "WebArena ನಲ್ಲಿ ವೆಬ್‌ಸೈಟ್ ಸ್ವಯಂ-ಹೋಸ್ಟ್ ಏಕೆ?",
+       "opts": [
+        "To keep the environment reproducible",
+        "To hide tasks",
+        "To reduce tasks",
+        "To avoid browsers"
+       ],
+       "optsKn": [
+        "ಪರಿಸರ ಪುನರುತ್ಪಾದನೀಯವಾಗಿಡಲು",
+        "ಕೆಲಸ ಮರೆ",
+        "ಕೆಲಸ ಕಡಿಮೆ",
+        "ಬ್ರೌಸರ್ ತಪ್ಪಿಸಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What does OSWorld provide?",
+       "qKn": "OSWorld ಏನು ನೀಡುತ್ತದೆ?",
+       "opts": [
+        "A full desktop with real applications",
+        "Only a terminal",
+        "Only text",
+        "Only APIs"
+       ],
+       "optsKn": [
+        "ನಿಜ ಅಪ್ಲಿಕೇಶನ್‌ಗಳಿರುವ ಪೂರ್ಣ ಡೆಸ್ಕ್‌ಟಾಪ್",
+        "terminal ಮಾತ್ರ",
+        "ಪಠ್ಯ ಮಾತ್ರ",
+        "API ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How is success usually checked?",
+       "qKn": "ಯಶಸ್ಸು ಸಾಮಾನ್ಯವಾಗಿ ಹೇಗೆ ಪರಿಶೀಲನೆ?",
+       "opts": [
+        "By inspecting the final state",
+        "By one exact click sequence",
+        "By a human vote",
+        "By counting words"
+       ],
+       "optsKn": [
+        "ಅಂತಿಮ state ಪರಿಶೀಲಿಸಿ",
+        "ಒಂದು ನಿಖರ ಕ್ಲಿಕ್ ಅನುಕ್ರಮ",
+        "ಮಾನವ ಮತ",
+        "ಪದ ಎಣಿಕೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321547",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Benchmarks: WebArena and OSWorld — Why Agents Fail in Interfaces",
+  "titleKn": "Benchmarks: WebArena ಮತ್ತು OSWorld — Interfaces ನಲ್ಲಿ Agents ಏಕೆ ವಿಫಲ",
+  "desc": "Common failure causes: grounding errors, long horizons, brittle observations and recovery gaps.",
+  "descKn": "ಸಾಮಾನ್ಯ ವೈಫಲ್ಯ ಕಾರಣಗಳು: grounding ದೋಷ, ದೀರ್ಘ ಹಾರಿಜಾನ್, ದುರ್ಬಲ ವೀಕ್ಷಣೆ, ಚೇತರಿಕೆ ಕೊರತೆ.",
+  "objectives": [
+   "Explain grounding: mapping intent to the right element.",
+   "Explain compounding errors over long action sequences.",
+   "Describe observation formats and their trade-offs."
+  ],
+  "objectivesKn": [
+   "grounding ವಿವರಿಸಿ.",
+   "ಉದ್ದ ಕ್ರಿಯಾ ಅನುಕ್ರಮದಲ್ಲಿ ದೋಷ ಕೂಡುವಿಕೆ ವಿವರಿಸಿ.",
+   "ವೀಕ್ಷಣಾ ಸ್ವರೂಪ ಮತ್ತು ಸಮತೋಲನ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Benchmarks: WebArena and OSWorld — Why Agents Fail in Interfaces",
+     "textKn": "Benchmarks: WebArena and OSWorld — Why Agents Fail in Interfaces",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Benchmarks: WebArena and OSWorld",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Grounding Errors",
+     "headingKn": "Grounding ದೋಷಗಳು",
+     "bodyEn": "The agent may know what it wants but click the wrong element, misread a label or miss that a menu is collapsed. Turning intent into the exact right action is often the weakest link.",
+     "bodyKn": "agent ಗೆ ಏನು ಬೇಕು ಎಂದು ತಿಳಿದಿರಬಹುದು ಆದರೆ ತಪ್ಪು ಅಂಶ ಕ್ಲಿಕ್, ಲೇಬಲ್ ತಪ್ಪಾಗಿ ಓದು, ಮೆನು ಮುಚ್ಚಿದೆ ಎಂದು ತಪ್ಪಿಸುವುದು. ಉದ್ದೇಶವನ್ನು ಸರಿಯಾದ ಕ್ರಿಯೆಯಾಗಿ ಪರಿವರ್ತಿಸುವುದು ಸಾಮಾನ್ಯವಾಗಿ ದುರ್ಬಲ ಕೊಂಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Errors Compound",
+     "headingKn": "ದೋಷಗಳು ಕೂಡುತ್ತವೆ",
+     "bodyEn": "If each step succeeds with probability p, a task needing many steps succeeds far less often. Long tasks with no way to notice and undo a mistake fail frequently even when each step is fairly reliable.",
+     "bodyKn": "ಪ್ರತಿ ಹಂತ p ಸಂಭವನೀಯತೆಯಿಂದ ಯಶಸ್ವಿಯಾದರೆ ಹಲವು ಹಂತಗಳ ಕೆಲಸ ಬಹಳ ಕಡಿಮೆ ಬಾರಿ ಯಶಸ್ವಿ. ತಪ್ಪು ಗಮನಿಸಿ ಹಿಂತೆಗೆಯುವ ಮಾರ್ಗವಿಲ್ಲದ ಉದ್ದ ಕೆಲಸಗಳು ಆಗಾಗ್ಗೆ ವಿಫಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Observation Formats",
+     "headingKn": "ವೀಕ್ಷಣಾ ಸ್ವರೂಪಗಳು",
+     "bodyEn": "An agent can see screenshots, a page's accessibility tree or raw HTML. Screenshots capture visual layout but need vision; structured trees are compact and precise but can miss visual cues.",
+     "bodyKn": "agent ಸ್ಕ್ರೀನ್‌ಶಾಟ್, accessibility tree ಅಥವಾ HTML ನೋಡಬಹುದು. ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ದೃಶ್ಯ ವಿನ್ಯಾಸ ಹಿಡಿಯುತ್ತದೆ ಆದರೆ vision ಬೇಕು; ರಚನಾತ್ಮಕ tree ಸಂಕ್ಷಿಪ್ತ, ನಿಖರ ಆದರೆ ದೃಶ್ಯ ಸೂಚನೆ ತಪ್ಪಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Recovery and Reporting",
+     "headingKn": "ಚೇತರಿಕೆ ಮತ್ತು ವರದಿ",
+     "bodyEn": "Better agents verify each step, retry differently after a failure and admit when they cannot finish. Analysing failures by category shows where to invest.",
+     "bodyKn": "ಉತ್ತಮ agents ಪ್ರತಿ ಹಂತ ಪರಿಶೀಲಿಸಿ, ವಿಫಲವಾದ ನಂತರ ಬೇರೆ ರೀತಿ ಪ್ರಯತ್ನಿಸಿ, ಮುಗಿಸಲಾಗದಿದ್ದರೆ ಒಪ್ಪಿಕೊಳ್ಳುತ್ತವೆ. ವರ್ಗದ ಪ್ರಕಾರ ವೈಫಲ್ಯ ವಿಶ್ಲೇಷಣೆ ಎಲ್ಲಿ ಹೂಡಬೇಕು ಎಂದು ತೋರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Grounding maps intent to the right element.\n• Errors compound across long tasks.\n• Choose observations and verify each step.",
+     "bodyKn": "• grounding ಉದ್ದೇಶ → ಸರಿಯಾದ ಅಂಶ.\n• ಉದ್ದ ಕೆಲಸಗಳಲ್ಲಿ ದೋಷ ಕೂಡುತ್ತದೆ.\n• ವೀಕ್ಷಣೆ ಆರಿಸಿ, ಪ್ರತಿ ಹಂತ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is a grounding error?",
+       "qKn": "grounding ದೋಷ ಎಂದರೇನು?",
+       "opts": [
+        "Choosing the wrong element for the intended action",
+        "A power cut",
+        "A tokenizer bug",
+        "A network outage"
+       ],
+       "optsKn": [
+        "ಉದ್ದೇಶಿತ ಕ್ರಿಯೆಗೆ ತಪ್ಪು ಅಂಶ ಆರಿಸುವುದು",
+        "ವಿದ್ಯುತ್ ಕಡಿತ",
+        "tokenizer ದೋಷ",
+        "ನೆಟ್‌ವರ್ಕ್ ಸ್ಥಗಿತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why do long tasks fail more?",
+       "qKn": "ಉದ್ದ ಕೆಲಸಗಳು ಹೆಚ್ಚು ಏಕೆ ವಿಫಲ?",
+       "opts": [
+        "Step errors compound",
+        "They are boring",
+        "Models sleep",
+        "They cost less"
+       ],
+       "optsKn": [
+        "ಹಂತ ದೋಷಗಳು ಕೂಡುತ್ತವೆ",
+        "ಬೇಸರ",
+        "ಮಾದರಿ ನಿದ್ರೆ",
+        "ಕಡಿಮೆ ವೆಚ್ಚ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is a benefit of an accessibility tree observation?",
+       "qKn": "accessibility tree ವೀಕ್ಷಣೆಯ ಲಾಭ?",
+       "opts": [
+        "Compact and precise structure",
+        "It shows colours perfectly",
+        "It needs no page",
+        "It is random"
+       ],
+       "optsKn": [
+        "ಸಂಕ್ಷಿಪ್ತ ಮತ್ತು ನಿಖರ ರಚನೆ",
+        "ಬಣ್ಣ ಪರಿಪೂರ್ಣ",
+        "ಪುಟ ಬೇಡ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321547",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Benchmarks: WebArena and OSWorld — Reproducibility, Safety and Cost of Interface Evals",
+  "titleKn": "Benchmarks: WebArena ಮತ್ತು OSWorld — Interface Evals ಪುನರುತ್ಪಾದನೆ, ಸುರಕ್ಷತೆ, ವೆಚ್ಚ",
+  "desc": "Running interface evaluations reproducibly, safely and economically, and interpreting the results responsibly.",
+  "descKn": "interface ಮೌಲ್ಯಮಾಪನಗಳನ್ನು ಪುನರುತ್ಪಾದನೀಯ, ಸುರಕ್ಷಿತ, ಆರ್ಥಿಕವಾಗಿ ಚಲಾಯಿಸುವುದು.",
+  "objectives": [
+   "Reset environments between runs.",
+   "Isolate evaluation environments from real accounts.",
+   "Estimate and cap cost per task."
+  ],
+  "objectivesKn": [
+   "runs ನಡುವೆ ಪರಿಸರ ಮರುಹೊಂದಿಸಿ.",
+   "ನಿಜ ಖಾತೆಗಳಿಂದ ಪ್ರತ್ಯೇಕಿಸಿ.",
+   "ಪ್ರತಿ ಕೆಲಸದ ವೆಚ್ಚ ಅಂದಾಜಿಸಿ ಮಿತಿ ಹಾಕಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Benchmarks: WebArena and OSWorld — Reproducibility, Safety and Cost of Interface Evals",
+     "textKn": "Benchmarks: WebArena and OSWorld — Reproducibility, Safety and Cost of Interface Evals",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Benchmarks: WebArena and OSWorld",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Reset to a Known State",
+     "headingKn": "ತಿಳಿದ State ಗೆ ಮರುಹೊಂದಿಸಿ",
+     "bodyEn": "Interface tasks change state: files are edited, orders are placed. Reset the environment from a snapshot before every run so one run cannot affect the next.",
+     "bodyKn": "interface ಕೆಲಸಗಳು state ಬದಲಿಸುತ್ತವೆ. ಪ್ರತಿ run ಮೊದಲು ಸ್ನ್ಯಾಪ್‌ಶಾಟ್‌ನಿಂದ ಪರಿಸರ ಮರುಹೊಂದಿಸಿ, ಒಂದು run ಇನ್ನೊಂದರ ಮೇಲೆ ಪರಿಣಾಮ ಬೀರದಂತೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Isolation and Safety",
+     "headingKn": "ಪ್ರತ್ಯೇಕತೆ ಮತ್ತು ಸುರಕ್ಷತೆ",
+     "bodyEn": "An agent that can click anything can also send email or spend money. Run evaluations in disposable virtual machines with no real credentials and restricted network access.",
+     "bodyKn": "ಏನನ್ನಾದರೂ ಕ್ಲಿಕ್ ಮಾಡುವ agent ಇಮೇಲ್ ಕಳುಹಿಸಬಹುದು ಅಥವಾ ಹಣ ಖರ್ಚು ಮಾಡಬಹುದು. ನಿಜ credentials ಇಲ್ಲದ, ನಿರ್ಬಂಧಿತ ನೆಟ್‌ವರ್ಕ್‌ನ ತಾತ್ಕಾಲಿಕ ವರ್ಚುವಲ್ ಯಂತ್ರಗಳಲ್ಲಿ ಚಲಾಯಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cost per Task",
+     "headingKn": "ಪ್ರತಿ ಕೆಲಸದ ವೆಚ್ಚ",
+     "bodyEn": "Screenshots are token-heavy and tasks take many steps, so a single task can be expensive. Cap steps and time, and report cost alongside success.",
+     "bodyKn": "ಸ್ಕ್ರೀನ್‌ಶಾಟ್‌ಗಳು token-ಭಾರಿ ಮತ್ತು ಕೆಲಸಗಳಿಗೆ ಹಲವು ಹಂತ, ಆದ್ದರಿಂದ ಒಂದು ಕೆಲಸ ದುಬಾರಿ. ಹಂತ ಮತ್ತು ಸಮಯಕ್ಕೆ ಮಿತಿ, ಯಶಸ್ಸಿನ ಜೊತೆ ವೆಚ್ಚ ವರದಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Interpret Carefully",
+     "headingKn": "ಎಚ್ಚರಿಕೆಯಿಂದ ಅರ್ಥೈಸಿ",
+     "bodyEn": "A good score on benchmark tasks does not guarantee reliability on your interfaces, which have different layouts and edge cases. Test on your own workflows before relying on an agent.",
+     "bodyKn": "benchmark ನಲ್ಲಿ ಉತ್ತಮ ಅಂಕ ನಿಮ್ಮ interfaces ನಲ್ಲಿ ವಿಶ್ವಾಸಾರ್ಹತೆ ಖಾತರಿ ಮಾಡುವುದಿಲ್ಲ. agent ಅವಲಂಬಿಸುವ ಮೊದಲು ನಿಮ್ಮದೇ workflows ಪರೀಕ್ಷಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Reset the environment for every run.\n• Isolate evaluations from real accounts.\n• Cap steps and report cost.",
+     "bodyKn": "• ಪ್ರತಿ run ಪರಿಸರ ಮರುಹೊಂದಿಸಿ.\n• ನಿಜ ಖಾತೆಗಳಿಂದ ಪ್ರತ್ಯೇಕಿಸಿ.\n• ಮಿತಿ ಮತ್ತು ವೆಚ್ಚ ವರದಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why reset the environment between runs?",
+       "qKn": "runs ನಡುವೆ ಪರಿಸರ ಏಕೆ ಮರುಹೊಂದಿಸಬೇಕು?",
+       "opts": [
+        "So one run cannot affect the next",
+        "To lose data",
+        "To save time only",
+        "It is decoration"
+       ],
+       "optsKn": [
+        "ಒಂದು run ಇನ್ನೊಂದರ ಮೇಲೆ ಪರಿಣಾಮ ಬೀರದಂತೆ",
+        "ಡೇಟಾ ಕಳೆಯಲು",
+        "ಸಮಯ ಉಳಿಸಲು ಮಾತ್ರ",
+        "ಅಲಂಕಾರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why use disposable VMs without real credentials?",
+       "qKn": "ನಿಜ credentials ಇಲ್ಲದ ತಾತ್ಕಾಲಿಕ VM ಏಕೆ?",
+       "opts": [
+        "An agent that clicks anything could cause real harm",
+        "VMs are free",
+        "To slow agents",
+        "To reduce tasks"
+       ],
+       "optsKn": [
+        "ಏನನ್ನೂ ಕ್ಲಿಕ್ ಮಾಡುವ agent ನಿಜ ಹಾನಿ ಮಾಡಬಹುದು",
+        "VM ಉಚಿತ",
+        "agents ನಿಧಾನ",
+        "ಕೆಲಸ ಕಡಿಮೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Does a benchmark score guarantee reliability on your interface?",
+       "qKn": "benchmark ಅಂಕ ನಿಮ್ಮ interface ನಲ್ಲಿ ವಿಶ್ವಾಸಾರ್ಹತೆ ಖಾತರಿ ಮಾಡುತ್ತದೆಯೇ?",
+       "opts": [
+        "No: layouts and edge cases differ",
+        "Yes always",
+        "Only for desktop",
+        "Only in English"
+       ],
+       "optsKn": [
+        "ಇಲ್ಲ: ವಿನ್ಯಾಸ ಮತ್ತು ಅಂಚಿನ ಪ್ರಕರಣ ಬೇರೆ",
+        "ಯಾವಾಗಲೂ ಹೌದು",
+        "ಡೆಸ್ಕ್‌ಟಾಪ್‌ಗೆ ಮಾತ್ರ",
+        "ಇಂಗ್ಲಿಷ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b32154a",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Computer Use: Claude, OpenAI CUA, Gemini — The Perceive-Act Loop",
+  "titleKn": "Computer Use: Claude, OpenAI CUA, Gemini — ಗ್ರಹಿಸಿ-ಕ್ರಿಯೆ Loop",
+  "desc": "How computer-use models see a screen and emit mouse and keyboard actions, and what the host application must provide.",
+  "descKn": "computer-use ಮಾದರಿಗಳು ಪರದೆ ನೋಡಿ ಮೌಸ್ ಮತ್ತು ಕೀಬೋರ್ಡ್ ಕ್ರಿಯೆ ಹೇಗೆ ನೀಡುತ್ತವೆ, host ಅಪ್ಲಿಕೇಶನ್ ಏನು ಒದಗಿಸಬೇಕು.",
+  "objectives": [
+   "Describe the screenshot, decide, act loop.",
+   "Explain that the host executes actions, not the model.",
+   "Compare vendor approaches at the concept level."
+  ],
+  "objectivesKn": [
+   "ಸ್ಕ್ರೀನ್‌ಶಾಟ್, ನಿರ್ಧಾರ, ಕ್ರಿಯೆ loop ವಿವರಿಸಿ.",
+   "ಕ್ರಿಯೆಯನ್ನು ಮಾದರಿಯಲ್ಲ, host ಚಲಾಯಿಸುತ್ತದೆ ಎಂದು ವಿವರಿಸಿ.",
+   "ವಿವಿಧ ಒದಗಿಸುವವರ ವಿಧಾನ ಹೋಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Computer Use: Claude, OpenAI CUA, Gemini — The Perceive-Act Loop",
+     "textKn": "Computer Use: Claude, OpenAI CUA, Gemini — The Perceive-Act Loop",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Computer Use: Claude, OpenAI CUA, Gemini",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "See, Decide, Act",
+     "headingKn": "ನೋಡಿ, ನಿರ್ಧರಿಸಿ, ಕ್ರಿಯೆ",
+     "bodyEn": "The host sends a screenshot to the model, which replies with an action such as move the mouse, click, type or scroll. The host performs it, takes a new screenshot and repeats until the task is done.",
+     "bodyKn": "host ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಮಾದರಿಗೆ ಕಳುಹಿಸುತ್ತದೆ; ಮಾದರಿ ಮೌಸ್ ಚಲನೆ, ಕ್ಲಿಕ್, ಟೈಪ್, ಸ್ಕ್ರಾಲ್ ಮುಂತಾದ ಕ್ರಿಯೆ ನೀಡುತ್ತದೆ. host ಅದನ್ನು ಮಾಡಿ ಹೊಸ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ತೆಗೆದು ಪುನರಾವರ್ತಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Host Executes",
+     "headingKn": "Host ಚಲಾಯಿಸುತ್ತದೆ",
+     "bodyEn": "The model only proposes actions. Your application decides whether to run them, which is where permissions, confirmations and sandboxing belong.",
+     "bodyKn": "ಮಾದರಿ ಕ್ರಿಯೆ ಸೂಚಿಸುತ್ತದೆ ಮಾತ್ರ. ಅವನ್ನು ಚಲಾಯಿಸಬೇಕೇ ಎಂದು ನಿಮ್ಮ ಅಪ್ಲಿಕೇಶನ್ ನಿರ್ಧರಿಸುತ್ತದೆ; ಅನುಮತಿ, ದೃಢೀಕರಣ, sandbox ಇಲ್ಲಿಗೆ ಸೇರಿವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Coordinates and Resolution",
+     "headingKn": "ನಿರ್ದೇಶಾಂಕ ಮತ್ತು ರೆಸಲ್ಯೂಶನ್",
+     "bodyEn": "Actions refer to screen coordinates, so the screenshot the model sees must match the real screen scale. Scaling mismatches make clicks land in the wrong place.",
+     "bodyKn": "ಕ್ರಿಯೆಗಳು ಪರದೆ ನಿರ್ದೇಶಾಂಕ ಉಲ್ಲೇಖಿಸುತ್ತವೆ, ಆದ್ದರಿಂದ ಮಾದರಿ ನೋಡುವ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ನಿಜ ಪರದೆ ಮಾಪಕಕ್ಕೆ ಹೊಂದಬೇಕು. ಮಾಪಕ ಹೊಂದಾಣಿಕೆ ಇಲ್ಲದಿದ್ದರೆ ಕ್ಲಿಕ್ ತಪ್ಪು ಸ್ಥಳದಲ್ಲಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Vendors Differ in Details",
+     "headingKn": "ಒದಗಿಸುವವರ ವಿವರ ಬೇರೆ",
+     "bodyEn": "Anthropic, OpenAI and Google each expose computer use through their own tool definitions and safety features, and these change often. Learn the shared loop, then read the current documentation for specifics.",
+     "bodyKn": "Anthropic, OpenAI, Google ಪ್ರತಿಯೊಬ್ಬರೂ ತಮ್ಮದೇ tool ವ್ಯಾಖ್ಯಾನ ಮತ್ತು ಸುರಕ್ಷತಾ ವೈಶಿಷ್ಟ್ಯಗಳೊಂದಿಗೆ computer use ನೀಡುತ್ತಾರೆ, ಇವು ಆಗಾಗ್ಗೆ ಬದಲಾಗುತ್ತವೆ. ಹಂಚಿದ loop ಕಲಿತು ಈಗಿನ ದಾಖಲೆ ಓದಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• The loop is screenshot, action, repeat.\n• The host decides whether to execute.\n• Match screenshot scale to the real screen.",
+     "bodyKn": "• loop: ಸ್ಕ್ರೀನ್‌ಶಾಟ್, ಕ್ರಿಯೆ, ಪುನರಾವರ್ತನೆ.\n• ಚಲಾಯಿಸುವುದನ್ನು host ನಿರ್ಧರಿಸುತ್ತದೆ.\n• ಮಾಪಕ ಹೊಂದಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Who executes the mouse and keyboard actions?",
+       "qKn": "ಮೌಸ್ ಮತ್ತು ಕೀಬೋರ್ಡ್ ಕ್ರಿಯೆಗಳನ್ನು ಯಾರು ಚಲಾಯಿಸುತ್ತಾರೆ?",
+       "opts": [
+        "The host application",
+        "The model directly",
+        "The user only",
+        "The tokenizer"
+       ],
+       "optsKn": [
+        "host ಅಪ್ಲಿಕೇಶನ್",
+        "ಮಾದರಿ ನೇರ",
+        "ಬಳಕೆದಾರ ಮಾತ್ರ",
+        "tokenizer"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why must screenshot scale match the screen?",
+       "qKn": "ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಮಾಪಕ ಪರದೆಗೆ ಏಕೆ ಹೊಂದಬೇಕು?",
+       "opts": [
+        "Otherwise clicks land in the wrong place",
+        "For colour accuracy",
+        "To save tokens only",
+        "Not required"
+       ],
+       "optsKn": [
+        "ಇಲ್ಲದಿದ್ದರೆ ಕ್ಲಿಕ್ ತಪ್ಪು ಸ್ಥಳದಲ್ಲಿ",
+        "ಬಣ್ಣ ನಿಖರತೆ",
+        "tokens ಉಳಿತಾಯ ಮಾತ್ರ",
+        "ಅಗತ್ಯವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What should you read for vendor specifics?",
+       "qKn": "ಒದಗಿಸುವವರ ವಿವರಕ್ಕೆ ಏನು ಓದಬೇಕು?",
+       "opts": [
+        "The current documentation",
+        "Old blog posts only",
+        "Nothing",
+        "Random forums only"
+       ],
+       "optsKn": [
+        "ಈಗಿನ ದಾಖಲೆ",
+        "ಹಳೆಯ ಬ್ಲಾಗ್ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ ವೇದಿಕೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b32154a",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Computer Use: Claude, OpenAI CUA, Gemini — Safety, Prompt Injection and Sandboxing",
+  "titleKn": "Computer Use: Claude, OpenAI CUA, Gemini — ಸುರಕ್ಷತೆ, Prompt Injection, Sandbox",
+  "desc": "Why screen-reading agents are exposed to prompt injection from page content and how to contain the damage.",
+  "descKn": "ಪರದೆ ಓದುವ agents ಪುಟ ವಿಷಯದಿಂದ prompt injection ಗೆ ಏಕೆ ಒಳಗಾಗುತ್ತವೆ, ಹಾನಿ ಹೇಗೆ ಮಿತಿಗೊಳಿಸುವುದು.",
+  "objectives": [
+   "Explain how text on a page can carry hidden instructions.",
+   "Describe containment: sandbox, allowlists and confirmations.",
+   "Design human checkpoints for sensitive steps."
+  ],
+  "objectivesKn": [
+   "ಪುಟದ ಪಠ್ಯ ಗುಪ್ತ ಸೂಚನೆ ಹೊತ್ತಿರಬಹುದು ಎಂದು ವಿವರಿಸಿ.",
+   "ಮಿತಿಗೊಳಿಸುವಿಕೆ ವಿವರಿಸಿ.",
+   "ಸೂಕ್ಷ್ಮ ಹಂತಗಳಿಗೆ ಮಾನವ ಪರಿಶೀಲನಾ ಬಿಂದು ವಿನ್ಯಾಸ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Computer Use: Claude, OpenAI CUA, Gemini — Safety, Prompt Injection and Sandboxing",
+     "textKn": "Computer Use: Claude, OpenAI CUA, Gemini — Safety, Prompt Injection and Sandboxing",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Computer Use: Claude, OpenAI CUA, Gemini",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Page Content Is Untrusted",
+     "headingKn": "ಪುಟ ವಿಷಯ ಅಪನಂಬಿಕೆ",
+     "bodyEn": "A web page, email or document can contain text that looks like instructions to the agent. The model cannot reliably tell the user's request from content it merely reads, so read content must be treated as data, never as commands.",
+     "bodyKn": "ವೆಬ್ ಪುಟ, ಇಮೇಲ್, ದಾಖಲೆಯಲ್ಲಿ agent ಗೆ ಸೂಚನೆಯಂತೆ ಕಾಣುವ ಪಠ್ಯ ಇರಬಹುದು. ಮಾದರಿ ಬಳಕೆದಾರರ ವಿನಂತಿ ಮತ್ತು ಓದಿದ ವಿಷಯ ನಂಬಲರ್ಹವಾಗಿ ಬೇರ್ಪಡಿಸಲಾರದು; ಓದಿದ ವಿಷಯ ಡೇಟಾ, ಆದೇಶವಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Contain the Blast Radius",
+     "headingKn": "ಹಾನಿ ವ್ಯಾಪ್ತಿ ಮಿತಿಗೊಳಿಸಿ",
+     "bodyEn": "Run the agent in a virtual machine or container, log in with a low-privilege account, restrict network destinations with an allowlist and keep secrets out of the environment.",
+     "bodyKn": "agent ಅನ್ನು ವರ್ಚುವಲ್ ಯಂತ್ರ ಅಥವಾ container ನಲ್ಲಿ, ಕಡಿಮೆ-ಹಕ್ಕಿನ ಖಾತೆಯೊಂದಿಗೆ ಚಲಾಯಿಸಿ, ನೆಟ್‌ವರ್ಕ್ ಗುರಿಗಳನ್ನು allowlist ನಿಂದ ಮಿತಿಗೊಳಿಸಿ, ರಹಸ್ಯಗಳನ್ನು ಪರಿಸರದಿಂದ ಹೊರಗಿಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Human Checkpoints",
+     "headingKn": "ಮಾನವ ಪರಿಶೀಲನಾ ಬಿಂದುಗಳು",
+     "bodyEn": "Require approval before actions that are hard to undo: payments, sending messages, deleting data and entering credentials. Show the person what will happen, not just a generic prompt.",
+     "bodyKn": "ಹಿಂತೆಗೆಯಲು ಕಷ್ಟವಾದ ಕ್ರಿಯೆಗಳ (ಪಾವತಿ, ಸಂದೇಶ ಕಳುಹಿಸುವುದು, ಡೇಟಾ ಅಳಿಸುವುದು, credentials ನಮೂದು) ಮೊದಲು ಅನುಮೋದನೆ ಕಡ್ಡಾಯ. ಏನಾಗುತ್ತದೆ ಎಂದು ವ್ಯಕ್ತಿಗೆ ತೋರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Assume Failure and Log",
+     "headingKn": "ವೈಫಲ್ಯ ಊಹಿಸಿ, ಲಾಗ್ ಮಾಡಿ",
+     "bodyEn": "Filters will sometimes miss an attack. Keep a full record of screenshots and actions so incidents can be investigated, and design so a single successful injection cannot do serious damage.",
+     "bodyKn": "ಫಿಲ್ಟರ್‌ಗಳು ಕೆಲವೊಮ್ಮೆ ದಾಳಿ ತಪ್ಪಿಸುತ್ತವೆ. ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಮತ್ತು ಕ್ರಿಯೆಗಳ ಪೂರ್ಣ ದಾಖಲೆ ಇಟ್ಟು, ಒಂದು ಯಶಸ್ವಿ injection ಗಂಭೀರ ಹಾನಿ ಮಾಡದಂತೆ ವಿನ್ಯಾಸಗೊಳಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Anything the agent reads can carry injected instructions.\n• Contain with sandboxing, low privilege and allowlists.\n• Require human approval for irreversible steps.",
+     "bodyKn": "• agent ಓದುವ ಎಲ್ಲವೂ ಇಂಜೆಕ್ಟ್ ಸೂಚನೆ ಹೊತ್ತಿರಬಹುದು.\n• sandbox, ಕಡಿಮೆ ಹಕ್ಕು, allowlist.\n• ಹಿಂದಿರುಗಿಸಲಾಗದ ಹಂತಗಳಿಗೆ ಮಾನವ ಅನುಮೋದನೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "How should page content be treated?",
+       "qKn": "ಪುಟ ವಿಷಯವನ್ನು ಹೇಗೆ ಪರಿಗಣಿಸಬೇಕು?",
+       "opts": [
+        "As untrusted data, not commands",
+        "As trusted instructions",
+        "As the system prompt",
+        "As encrypted"
+       ],
+       "optsKn": [
+        "ಅಪನಂಬಿಕೆ ಡೇಟಾ, ಆದೇಶವಲ್ಲ",
+        "ನಂಬಿಕೆಯ ಸೂಚನೆ",
+        "system prompt",
+        "ಎನ್‌ಕ್ರಿಪ್ಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which actions need approval?",
+       "qKn": "ಯಾವ ಕ್ರಿಯೆಗಳಿಗೆ ಅನುಮೋದನೆ?",
+       "opts": [
+        "Hard-to-undo ones such as payments and deletions",
+        "Scrolling",
+        "Reading the title",
+        "None"
+       ],
+       "optsKn": [
+        "ಪಾವತಿ, ಅಳಿಸುವಿಕೆಯಂತಹ ಹಿಂತೆಗೆಯಲಾಗದವು",
+        "ಸ್ಕ್ರಾಲ್",
+        "ಶೀರ್ಷಿಕೆ ಓದು",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why keep a full log of screenshots and actions?",
+       "qKn": "ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಮತ್ತು ಕ್ರಿಯೆಗಳ ಪೂರ್ಣ ಲಾಗ್ ಏಕೆ?",
+       "opts": [
+        "To investigate incidents",
+        "To fill disk",
+        "To slow the agent",
+        "It is required by HTML"
+       ],
+       "optsKn": [
+        "ಘಟನೆ ತನಿಖೆಗೆ",
+        "ಡಿಸ್ಕ್ ತುಂಬಲು",
+        "agent ನಿಧಾನ",
+        "HTML ಅಗತ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b32154a",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Computer Use: Claude, OpenAI CUA, Gemini — When to Use Computer Use and When Not To",
+  "titleKn": "Computer Use: Claude, OpenAI CUA, Gemini — ಯಾವಾಗ ಬಳಸಬೇಕು, ಯಾವಾಗ ಬೇಡ",
+  "desc": "Choosing computer use versus APIs, evaluating reliability and cost, and designing fallbacks.",
+  "descKn": "computer use vs API ಆಯ್ಕೆ, ವಿಶ್ವಾಸಾರ್ಹತೆ ಮತ್ತು ವೆಚ್ಚ ಮೌಲ್ಯಮಾಪನ, ಪರ್ಯಾಯ ವಿನ್ಯಾಸ.",
+  "objectives": [
+   "Prefer APIs when they exist.",
+   "Use computer use for interfaces with no API.",
+   "Plan fallbacks and monitoring for brittle UIs."
+  ],
+  "objectivesKn": [
+   "API ಇದ್ದರೆ ಅದಕ್ಕೆ ಆದ್ಯತೆ ನೀಡಿ.",
+   "API ಇಲ್ಲದ interfaces ಗೆ computer use.",
+   "ದುರ್ಬಲ UI ಗಳಿಗೆ ಪರ್ಯಾಯ ಮತ್ತು ವೀಕ್ಷಣೆ ಯೋಜಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Computer Use: Claude, OpenAI CUA, Gemini — When to Use Computer Use and When Not To",
+     "textKn": "Computer Use: Claude, OpenAI CUA, Gemini — When to Use Computer Use and When Not To",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Computer Use: Claude, OpenAI CUA, Gemini",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "APIs Are Faster and More Reliable",
+     "headingKn": "API ವೇಗ ಮತ್ತು ವಿಶ್ವಾಸಾರ್ಹ",
+     "bodyEn": "Calling a documented API is cheaper, faster and more deterministic than driving a screen. Reach for computer use only when no API exists or when the interface is the only way in.",
+     "bodyKn": "ದಾಖಲಿತ API ಕರೆ ಪರದೆ ನಡೆಸುವುದಕ್ಕಿಂತ ಅಗ್ಗ, ವೇಗ, ನಿರ್ಧಾರಾತ್ಮಕ. API ಇಲ್ಲದಿದ್ದಾಗ ಅಥವಾ interface ಒಂದೇ ದಾರಿಯಾದಾಗ ಮಾತ್ರ computer use."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Where It Shines",
+     "headingKn": "ಎಲ್ಲಿ ಉತ್ತಮ",
+     "bodyEn": "Legacy software, third-party sites without APIs, one-off cross-application chores and testing user interfaces are natural fits, especially when the volume is low.",
+     "bodyKn": "ಹಳೆಯ ಸಾಫ್ಟ್‌ವೇರ್, API ಇಲ್ಲದ ಮೂರನೇ ವ್ಯಕ್ತಿ ಸೈಟ್‌ಗಳು, ಒಮ್ಮೆಯ ಅಪ್ಲಿಕೇಶನ್-ಪರಸ್ಪರ ಕೆಲಸ, UI ಪರೀಕ್ಷೆ ಸೂಕ್ತ, ವಿಶೇಷವಾಗಿ ಪ್ರಮಾಣ ಕಡಿಮೆ ಇದ್ದಾಗ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Brittleness",
+     "headingKn": "ದುರ್ಬಲತೆ",
+     "bodyEn": "A redesigned page, a pop-up or a slow load can break a run. Add waits, verification after each action and a graceful stop-and-report path when something unexpected appears.",
+     "bodyKn": "ಮರುವಿನ್ಯಾಸಗೊಂಡ ಪುಟ, ಪಾಪ್-ಅಪ್, ನಿಧಾನ ಲೋಡ್ run ಮುರಿಯಬಹುದು. ಕಾಯುವಿಕೆ, ಪ್ರತಿ ಕ್ರಿಯೆ ನಂತರ ಪರಿಶೀಲನೆ, ಅನಿರೀಕ್ಷಿತ ಕಂಡರೆ ನಿಲ್ಲಿಸಿ ವರದಿ ಮಾಡುವ ಮಾರ್ಗ ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Measure Before You Rely",
+     "headingKn": "ಅವಲಂಬಿಸುವ ಮೊದಲು ಅಳೆಯಿರಿ",
+     "bodyEn": "Run your real workflow many times, record success, cost and time, and decide whether the reliability meets the stakes of the task.",
+     "bodyKn": "ನಿಮ್ಮ ನಿಜ workflow ಅನ್ನು ಹಲವು ಬಾರಿ ಚಲಾಯಿಸಿ, ಯಶಸ್ಸು, ವೆಚ್ಚ, ಸಮಯ ದಾಖಲಿಸಿ; ವಿಶ್ವಾಸಾರ್ಹತೆ ಕೆಲಸದ ಪ್ರಾಮುಖ್ಯಕ್ಕೆ ಸಾಕೇ ಎಂದು ನಿರ್ಧರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Prefer an API when one exists.\n• Use computer use where interfaces are the only way.\n• Verify each action and measure before relying.",
+     "bodyKn": "• API ಇದ್ದರೆ ಅದು.\n• interface ಒಂದೇ ದಾರಿಯಾದಾಗ computer use.\n• ಪ್ರತಿ ಕ್ರಿಯೆ ಪರಿಶೀಲಿಸಿ, ಅಳೆಯಿರಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "When prefer computer use over an API?",
+       "qKn": "API ಬದಲು computer use ಯಾವಾಗ?",
+       "opts": [
+        "When no API exists",
+        "Always",
+        "Never",
+        "When the API is fast"
+       ],
+       "optsKn": [
+        "API ಇಲ್ಲದಿದ್ದಾಗ",
+        "ಯಾವಾಗಲೂ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "API ವೇಗವಾಗಿದ್ದಾಗ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What can break a computer-use run?",
+       "qKn": "computer-use run ಮುರಿಯುವುದೇನು?",
+       "opts": [
+        "A redesigned page, a pop-up or slow load",
+        "Nothing",
+        "A longer prompt only",
+        "A new font on your desk"
+       ],
+       "optsKn": [
+        "ಮರುವಿನ್ಯಾಸ, ಪಾಪ್-ಅಪ್, ನಿಧಾನ ಲೋಡ್",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಉದ್ದ prompt ಮಾತ್ರ",
+        "ನಿಮ್ಮ ಮೇಜಿನ ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What should you do before relying on it?",
+       "qKn": "ಅವಲಂಬಿಸುವ ಮೊದಲು ಏನು ಮಾಡಬೇಕು?",
+       "opts": [
+        "Measure success, cost and time on your workflow",
+        "Skip testing",
+        "Trust the demo",
+        "Ask nobody"
+       ],
+       "optsKn": [
+        "ನಿಮ್ಮ workflow ನಲ್ಲಿ ಯಶಸ್ಸು, ವೆಚ್ಚ, ಸಮಯ ಅಳೆಯಿರಿ",
+        "ಪರೀಕ್ಷೆ ಬಿಡಿ",
+        "ಡೆಮೊ ನಂಬಿ",
+        "ಯಾರನ್ನೂ ಕೇಳಬೇಡಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b32154d",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Voice Agents: Pipecat and LiveKit — The Real-Time Voice Pipeline",
+  "titleKn": "Voice Agents: Pipecat ಮತ್ತು LiveKit — ನೈಜ-ಸಮಯ ಧ್ವನಿ Pipeline",
+  "desc": "How speech recognition, a language model and speech synthesis are chained into a conversational voice agent, and where the latency goes.",
+  "descKn": "ಮಾತು ಗುರುತಿಸುವಿಕೆ, ಭಾಷಾ ಮಾದರಿ, ಮಾತು ಸಂಶ್ಲೇಷಣೆ ಸರಪಳಿಯಾಗಿ ಧ್ವನಿ agent ಆಗುವುದು, ವಿಳಂಬ ಎಲ್ಲಿ.",
+  "objectives": [
+   "Describe the STT, LLM, TTS pipeline.",
+   "Explain streaming across all stages.",
+   "Add up the components of response latency."
+  ],
+  "objectivesKn": [
+   "STT, LLM, TTS pipeline ವಿವರಿಸಿ.",
+   "ಎಲ್ಲಾ ಹಂತಗಳಲ್ಲಿ streaming ವಿವರಿಸಿ.",
+   "ಪ್ರತಿಕ್ರಿಯೆ ವಿಳಂಬದ ಘಟಕಗಳನ್ನು ಕೂಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Voice Agents: Pipecat and LiveKit — The Real-Time Voice Pipeline",
+     "textKn": "Voice Agents: Pipecat and LiveKit — The Real-Time Voice Pipeline",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Voice Agents: Pipecat and LiveKit",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Three Stages in a Chain",
+     "headingKn": "ಸರಪಳಿಯಲ್ಲಿ ಮೂರು ಹಂತಗಳು",
+     "bodyEn": "A cascaded voice agent converts speech to text, sends it to a language model and converts the reply back to speech. Frameworks such as Pipecat and platforms such as LiveKit handle the audio transport and orchestration around these stages.",
+     "bodyKn": "cascaded ಧ್ವನಿ agent ಮಾತನ್ನು ಪಠ್ಯಕ್ಕೆ, ಭಾಷಾ ಮಾದರಿಗೆ ಕಳುಹಿಸಿ, ಉತ್ತರವನ್ನು ಮತ್ತೆ ಮಾತಿಗೆ ಪರಿವರ್ತಿಸುತ್ತದೆ. Pipecat ನಂತಹ ಚೌಕಟ್ಟು ಮತ್ತು LiveKit ನಂತಹ ವೇದಿಕೆ ಆಡಿಯೋ ಸಾಗಣೆ ಮತ್ತು ಸಂಯೋಜನೆ ನಿರ್ವಹಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Streaming Everywhere",
+     "headingKn": "ಎಲ್ಲೆಡೆ Streaming",
+     "bodyEn": "To feel natural, each stage streams: transcription emits partial text, the model emits tokens as generated and speech synthesis starts speaking before the whole reply exists.",
+     "bodyKn": "ಸ್ವಾಭಾವಿಕ ಅನಿಸಲು ಪ್ರತಿ ಹಂತ stream ಮಾಡುತ್ತದೆ: ಪ್ರತಿಲಿಪಿ ಭಾಗಶಃ ಪಠ್ಯ, ಮಾದರಿ ರಚಿಸುತ್ತಿದ್ದಂತೆ tokens, ಸಂಶ್ಲೇಷಣೆ ಪೂರ್ಣ ಉತ್ತರ ಸಿದ್ಧವಾಗುವ ಮೊದಲೇ ಮಾತು ಆರಂಭಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Where Latency Comes From",
+     "headingKn": "ವಿಳಂಬ ಎಲ್ಲಿಂದ",
+     "bodyEn": "Delay adds up from detecting end of speech, transcription, network hops, the model's time to first token and the speech engine's time to first audio. Humans notice pauses beyond a fraction of a second.",
+     "bodyKn": "ಮಾತಿನ ಅಂತ್ಯ ಪತ್ತೆ, ಪ್ರತಿಲಿಪಿ, ನೆಟ್‌ವರ್ಕ್ ಹಾಪ್, ಮಾದರಿಯ ಮೊದಲ token ಸಮಯ, ಮಾತು ಎಂಜಿನ್‌ನ ಮೊದಲ ಆಡಿಯೋ ಸಮಯ ಕೂಡುತ್ತವೆ. ಮನುಷ್ಯರು ಸೆಕೆಂಡಿನ ಭಾಗಕ್ಕಿಂತ ಹೆಚ್ಚು ವಿರಾಮ ಗಮನಿಸುತ್ತಾರೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Speech-to-Speech Models",
+     "headingKn": "Speech-to-Speech ಮಾದರಿಗಳು",
+     "bodyEn": "Some models take audio in and produce audio out directly, which can reduce latency and keep tone, at the cost of less control over each stage. Cascaded pipelines remain easier to inspect and customise.",
+     "bodyKn": "ಕೆಲವು ಮಾದರಿಗಳು ಆಡಿಯೋ ಒಳಗೆ ಪಡೆದು ನೇರ ಆಡಿಯೋ ನೀಡುತ್ತವೆ; ವಿಳಂಬ ಕಡಿಮೆ, ಧ್ವನಿ ಸ್ವರ ಉಳಿಯುತ್ತದೆ, ಆದರೆ ಪ್ರತಿ ಹಂತದ ನಿಯಂತ್ರಣ ಕಡಿಮೆ. cascaded ಪೈಪ್‌ಲೈನ್ ಪರಿಶೀಲನೆ ಮತ್ತು ಕಸ್ಟಮೈಸ್ ಸುಲಭ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Voice agents chain STT, an LLM and TTS.\n• Every stage should stream.\n• Latency is the sum of many small delays.",
+     "bodyKn": "• ಧ್ವನಿ agents STT, LLM, TTS ಸರಪಳಿ.\n• ಪ್ರತಿ ಹಂತ stream.\n• ವಿಳಂಬ ಹಲವು ಸಣ್ಣ ವಿಳಂಬಗಳ ಮೊತ್ತ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What are the three stages of a cascaded voice agent?",
+       "qKn": "cascaded ಧ್ವನಿ agent ನ ಮೂರು ಹಂತಗಳು?",
+       "opts": [
+        "Speech-to-text, LLM, text-to-speech",
+        "Camera, screen, printer",
+        "Search, rank, sort",
+        "Encode, store, delete"
+       ],
+       "optsKn": [
+        "ಮಾತು→ಪಠ್ಯ, LLM, ಪಠ್ಯ→ಮಾತು",
+        "ಕ್ಯಾಮೆರಾ, ಪರದೆ, ಪ್ರಿಂಟರ್",
+        "ಹುಡುಕು, ಶ್ರೇಣಿ, ವಿಂಗಡಣೆ",
+        "ಎನ್‌ಕೋಡ್, ಸಂಗ್ರಹ, ಅಳಿಸು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why stream every stage?",
+       "qKn": "ಪ್ರತಿ ಹಂತ ಏಕೆ stream?",
+       "opts": [
+        "To start responding before the full reply exists",
+        "To lengthen replies",
+        "To hide latency in logs",
+        "To avoid models"
+       ],
+       "optsKn": [
+        "ಪೂರ್ಣ ಉತ್ತರ ಮೊದಲೇ ಪ್ರತಿಕ್ರಿಯೆ ಆರಂಭಿಸಲು",
+        "ಉತ್ತರ ಉದ್ದ ಮಾಡಲು",
+        "ವಿಳಂಬ ಮರೆ",
+        "ಮಾದರಿ ತಪ್ಪಿಸಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is a trade-off of speech-to-speech models?",
+       "qKn": "speech-to-speech ಮಾದರಿಗಳ ಸಮತೋಲನ?",
+       "opts": [
+        "Lower latency but less control of each stage",
+        "Higher latency always",
+        "No audio",
+        "Only text output"
+       ],
+       "optsKn": [
+        "ವಿಳಂಬ ಕಡಿಮೆ ಆದರೆ ಹಂತ ನಿಯಂತ್ರಣ ಕಡಿಮೆ",
+        "ಯಾವಾಗಲೂ ಹೆಚ್ಚು ವಿಳಂಬ",
+        "ಆಡಿಯೋ ಇಲ್ಲ",
+        "ಪಠ್ಯ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b32154d",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Voice Agents: Pipecat and LiveKit — Turn-Taking, Interruptions and Transport",
+  "titleKn": "Voice Agents: Pipecat ಮತ್ತು LiveKit — ತಿರುವು, ಅಡ್ಡಿ, ಸಾಗಣೆ",
+  "desc": "Voice activity detection, end-of-turn decisions, handling interruptions and real-time transport with WebRTC.",
+  "descKn": "ಧ್ವನಿ ಚಟುವಟಿಕೆ ಪತ್ತೆ, ತಿರುವಿನ ಅಂತ್ಯ, ಅಡ್ಡಿ ನಿರ್ವಹಣೆ, WebRTC ಯೊಂದಿಗೆ ನೈಜ-ಸಮಯ ಸಾಗಣೆ.",
+  "objectives": [
+   "Explain voice activity detection and end-of-turn.",
+   "Describe barge-in and stopping playback.",
+   "Explain why WebRTC suits real-time audio."
+  ],
+  "objectivesKn": [
+   "ಧ್ವನಿ ಚಟುವಟಿಕೆ ಪತ್ತೆ ಮತ್ತು ತಿರುವಿನ ಅಂತ್ಯ ವಿವರಿಸಿ.",
+   "barge-in ಮತ್ತು ಪ್ಲೇಬ್ಯಾಕ್ ನಿಲ್ಲಿಸುವುದನ್ನು ವಿವರಿಸಿ.",
+   "WebRTC ನೈಜ-ಸಮಯ ಆಡಿಯೋಗೆ ಏಕೆ ಸೂಕ್ತ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Voice Agents: Pipecat and LiveKit — Turn-Taking, Interruptions and Transport",
+     "textKn": "Voice Agents: Pipecat and LiveKit — Turn-Taking, Interruptions and Transport",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Voice Agents: Pipecat and LiveKit",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Knowing When the User Is Done",
+     "headingKn": "ಬಳಕೆದಾರರ ಮಾತು ಮುಗಿದಿದೆ ಎಂದು ತಿಳಿಯುವುದು",
+     "bodyEn": "Voice activity detection finds speech versus silence, but a pause can mean thinking, not finishing. Turn detection combines silence length and sometimes the meaning of the words so the agent neither cuts in nor waits too long.",
+     "bodyKn": "ಧ್ವನಿ ಚಟುವಟಿಕೆ ಪತ್ತೆ ಮಾತು ಮತ್ತು ಮೌನ ಗುರುತಿಸುತ್ತದೆ, ಆದರೆ ವಿರಾಮ ಆಲೋಚನೆ ಆಗಿರಬಹುದು. ತಿರುವು ಪತ್ತೆ ಮೌನದ ಅವಧಿ ಮತ್ತು ಕೆಲವೊಮ್ಮೆ ಪದಗಳ ಅರ್ಥ ಸೇರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Interruptions (Barge-In)",
+     "headingKn": "ಅಡ್ಡಿ (Barge-In)",
+     "bodyEn": "People interrupt. When the user speaks while the agent talks, playback must stop quickly, queued audio must be discarded and the agent must know what was actually said aloud before the cut.",
+     "bodyKn": "ಜನರು ಅಡ್ಡಿ ಪಡಿಸುತ್ತಾರೆ. agent ಮಾತನಾಡುವಾಗ ಬಳಕೆದಾರ ಮಾತನಾಡಿದರೆ ಪ್ಲೇಬ್ಯಾಕ್ ಬೇಗ ನಿಲ್ಲಬೇಕು, ಸರದಿ ಆಡಿಯೋ ತ್ಯಜಿಸಬೇಕು, ಕತ್ತರಿಸುವ ಮೊದಲು ವಾಸ್ತವವಾಗಿ ಏನು ಹೇಳಲಾಯಿತು ಎಂದು agent ಗೆ ತಿಳಿಯಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Echo and Noise",
+     "headingKn": "ಪ್ರತಿಧ್ವನಿ ಮತ್ತು ಶಬ್ದ",
+     "bodyEn": "If the agent's own voice returns through the microphone it may hear itself. Echo cancellation and noise suppression are essential for speakerphone and noisy environments.",
+     "bodyKn": "agent ನ ಸ್ವಂತ ಧ್ವನಿ ಮೈಕ್ರೊಫೋನ್ ಮೂಲಕ ಮರಳಿದರೆ ಅದು ತನ್ನನ್ನೇ ಕೇಳಬಹುದು. ಸ್ಪೀಕರ್‌ಫೋನ್ ಮತ್ತು ಗದ್ದಲದ ಪರಿಸರಕ್ಕೆ ಪ್ರತಿಧ್ವನಿ ರದ್ದತಿ ಮತ್ತು ಶಬ್ದ ನಿಗ್ರಹ ಅಗತ್ಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Real-Time Transport",
+     "headingKn": "ನೈಜ-ಸಮಯ ಸಾಗಣೆ",
+     "bodyEn": "WebRTC is designed for low-latency audio between browsers, phones and servers, handling jitter and packet loss. A media server such as those in LiveKit routes streams between participants and the agent.",
+     "bodyKn": "WebRTC ಬ್ರೌಸರ್, ಫೋನ್, ಸರ್ವರ್ ನಡುವೆ ಕಡಿಮೆ-ವಿಳಂಬ ಆಡಿಯೋಗೆ ವಿನ್ಯಾಸ; jitter ಮತ್ತು ಪ್ಯಾಕೆಟ್ ನಷ್ಟ ನಿರ್ವಹಿಸುತ್ತದೆ. LiveKit ನಂತಹ ಮೀಡಿಯಾ ಸರ್ವರ್ ಭಾಗವಹಿಸುವವರು ಮತ್ತು agent ನಡುವೆ ಸ್ಟ್ರೀಮ್ ರವಾನಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Turn detection must not cut users off or wait too long.\n• Interruptions require stopping playback and tracking spoken text.\n• Echo cancellation and WebRTC support real-time audio.",
+     "bodyKn": "• ತಿರುವು ಪತ್ತೆ ಸರಿಯಾಗಿರಬೇಕು.\n• ಅಡ್ಡಿ: ಪ್ಲೇಬ್ಯಾಕ್ ನಿಲ್ಲಿಸಿ.\n• ಪ್ರತಿಧ್ವನಿ ರದ್ದತಿ ಮತ್ತು WebRTC."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why is silence alone a weak end-of-turn signal?",
+       "qKn": "ಮೌನ ಮಾತ್ರ ತಿರುವಿನ ಅಂತ್ಯದ ದುರ್ಬಲ ಸೂಚನೆ ಏಕೆ?",
+       "opts": [
+        "People pause while thinking",
+        "Silence is loud",
+        "Models cannot hear",
+        "It is illegal"
+       ],
+       "optsKn": [
+        "ಜನರು ಯೋಚಿಸುವಾಗ ವಿರಾಮ ಮಾಡುತ್ತಾರೆ",
+        "ಮೌನ ಗದ್ದಲ",
+        "ಮಾದರಿ ಕೇಳಲಾರದು",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What should happen on barge-in?",
+       "qKn": "barge-in ನಲ್ಲಿ ಏನಾಗಬೇಕು?",
+       "opts": [
+        "Stop playback and discard queued audio",
+        "Speak louder",
+        "Ignore the user",
+        "Restart the call"
+       ],
+       "optsKn": [
+        "ಪ್ಲೇಬ್ಯಾಕ್ ನಿಲ್ಲಿಸಿ, ಸರದಿ ಆಡಿಯೋ ತ್ಯಜಿಸಿ",
+        "ಜೋರಾಗಿ ಮಾತನಾಡಿ",
+        "ಬಳಕೆದಾರ ನಿರ್ಲಕ್ಷಿಸಿ",
+        "ಕರೆ ಮರುಪ್ರಾರಂಭ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why is echo cancellation needed?",
+       "qKn": "ಪ್ರತಿಧ್ವನಿ ರದ್ದತಿ ಏಕೆ?",
+       "opts": [
+        "The agent could hear its own voice",
+        "To add echo",
+        "To save bandwidth only",
+        "For video"
+       ],
+       "optsKn": [
+        "agent ತನ್ನ ಧ್ವನಿ ಕೇಳಬಹುದು",
+        "ಪ್ರತಿಧ್ವನಿ ಸೇರಿಸಲು",
+        "ಬ್ಯಾಂಡ್‌ವಿಡ್ತ್ ಉಳಿತಾಯ ಮಾತ್ರ",
+        "ವೀಡಿಯೊಗೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b32154d",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Voice Agents: Pipecat and LiveKit — Quality, Languages and Production Concerns",
+  "titleKn": "Voice Agents: Pipecat ಮತ್ತು LiveKit — ಗುಣಮಟ್ಟ, ಭಾಷೆಗಳು, ಉತ್ಪಾದನಾ ಕಾಳಜಿ",
+  "desc": "Measuring voice-agent quality, supporting multiple languages including Indian languages, and privacy and cost in production.",
+  "descKn": "ಧ್ವನಿ-agent ಗುಣಮಟ್ಟ ಅಳೆಯುವುದು, ಭಾರತೀಯ ಭಾಷೆಗಳ ಬೆಂಬಲ, ಉತ್ಪಾದನೆಯಲ್ಲಿ ಗೌಪ್ಯತೆ ಮತ್ತು ವೆಚ್ಚ.",
+  "objectives": [
+   "List voice quality metrics: latency, interruption handling and word error rate.",
+   "Explain challenges for low-resource languages and code-switching.",
+   "List privacy and cost concerns of recording audio."
+  ],
+  "objectivesKn": [
+   "ಧ್ವನಿ ಗುಣಮಟ್ಟ ಮೆಟ್ರಿಕ್ಸ್ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಕಡಿಮೆ-ಸಂಪನ್ಮೂಲ ಭಾಷೆ ಮತ್ತು code-switching ಸವಾಲು ವಿವರಿಸಿ.",
+   "ಆಡಿಯೋ ದಾಖಲೆಯ ಗೌಪ್ಯತೆ ಮತ್ತು ವೆಚ್ಚ ಕಾಳಜಿ ಪಟ್ಟಿ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Voice Agents: Pipecat and LiveKit — Quality, Languages and Production Concerns",
+     "textKn": "Voice Agents: Pipecat and LiveKit — Quality, Languages and Production Concerns",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Voice Agents: Pipecat and LiveKit",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Metrics That Matter",
+     "headingKn": "ಮುಖ್ಯ ಮೆಟ್ರಿಕ್ಸ್",
+     "bodyEn": "Track response latency percentiles, how often the agent is interrupted or cuts the user off, transcription word error rate and task completion. Averages hide the slow calls users remember.",
+     "bodyKn": "ಪ್ರತಿಕ್ರಿಯೆ ವಿಳಂಬದ percentiles, agent ಗೆ ಅಡ್ಡಿ ಅಥವಾ ಬಳಕೆದಾರರನ್ನು ಕತ್ತರಿಸುವ ಆವರ್ತನ, ಪ್ರತಿಲಿಪಿ ಪದ ದೋಷ ದರ, ಕೆಲಸ ಪೂರ್ಣತೆ ಗಮನಿಸಿ. ಸರಾಸರಿ ಬಳಕೆದಾರರು ನೆನಪಿಡುವ ನಿಧಾನ ಕರೆಗಳನ್ನು ಮರೆಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Languages and Code-Switching",
+     "headingKn": "ಭಾಷೆಗಳು ಮತ್ತು Code-Switching",
+     "bodyEn": "Recognition and synthesis quality varies widely across languages. In India, users often mix languages in one sentence, so test with realistic accents, dialects and mixed Kannada and English speech.",
+     "bodyKn": "ಗುರುತಿಸುವಿಕೆ ಮತ್ತು ಸಂಶ್ಲೇಷಣೆ ಗುಣಮಟ್ಟ ಭಾಷೆಗಳಲ್ಲಿ ಬಹಳ ಬದಲಾಗುತ್ತದೆ. ಭಾರತದಲ್ಲಿ ಬಳಕೆದಾರರು ಒಂದೇ ವಾಕ್ಯದಲ್ಲಿ ಭಾಷೆಗಳನ್ನು ಬೆರೆಸುತ್ತಾರೆ; ನಿಜ ಉಚ್ಚಾರಣೆ, ಉಪಭಾಷೆ, ಕನ್ನಡ-ಇಂಗ್ಲಿಷ್ ಮಿಶ್ರಣದಲ್ಲಿ ಪರೀಕ್ಷಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Privacy of Audio",
+     "headingKn": "ಆಡಿಯೋ ಗೌಪ್ಯತೆ",
+     "bodyEn": "Voice is personal data. Tell callers when a bot is speaking and when calls are recorded, store recordings only as long as needed and restrict who can listen to them.",
+     "bodyKn": "ಧ್ವನಿ ವೈಯಕ್ತಿಕ ಡೇಟಾ. ಬಾಟ್ ಮಾತನಾಡುತ್ತಿದೆ ಮತ್ತು ಕರೆ ದಾಖಲಾಗುತ್ತಿದೆ ಎಂದು ತಿಳಿಸಿ, ಅಗತ್ಯವಿರುವಷ್ಟು ಕಾಲ ಮಾತ್ರ ಸಂಗ್ರಹಿಸಿ, ಕೇಳುವವರನ್ನು ಮಿತಿಗೊಳಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cost and Fallback",
+     "headingKn": "ವೆಚ್ಚ ಮತ್ತು ಪರ್ಯಾಯ",
+     "bodyEn": "Each minute consumes speech recognition, model tokens and synthesis. Set call-length limits and provide a graceful path to a human or a callback when the agent is stuck.",
+     "bodyKn": "ಪ್ರತಿ ನಿಮಿಷ ಮಾತು ಗುರುತಿಸುವಿಕೆ, ಮಾದರಿ tokens, ಸಂಶ್ಲೇಷಣೆ ಬಳಸುತ್ತದೆ. ಕರೆ ಉದ್ದ ಮಿತಿ ಹಾಕಿ, agent ಸಿಲುಕಿದರೆ ಮಾನವ ಅಥವಾ ಕಾಲ್‌ಬ್ಯಾಕ್‌ಗೆ ಸೌಜನ್ಯದ ಮಾರ್ಗ ನೀಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Track latency percentiles, interruptions and word error rate.\n• Test real accents and mixed-language speech.\n• Treat audio as sensitive and offer a human fallback.",
+     "bodyKn": "• ವಿಳಂಬ percentiles, ಅಡ್ಡಿ, ಪದ ದೋಷ ದರ.\n• ನಿಜ ಉಚ್ಚಾರಣೆ, ಮಿಶ್ರ ಭಾಷೆ ಪರೀಕ್ಷೆ.\n• ಆಡಿಯೋ ಸೂಕ್ಷ್ಮ; ಮಾನವ ಪರ್ಯಾಯ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why use percentiles for latency?",
+       "qKn": "ವಿಳಂಬಕ್ಕೆ percentiles ಏಕೆ?",
+       "opts": [
+        "Averages hide slow calls",
+        "Percentiles are bigger",
+        "Latency does not matter",
+        "They are free"
+       ],
+       "optsKn": [
+        "ಸರಾಸರಿ ನಿಧಾನ ಕರೆ ಮರೆಮಾಡುತ್ತದೆ",
+        "percentiles ದೊಡ್ಡವು",
+        "ವಿಳಂಬ ಮುಖ್ಯವಲ್ಲ",
+        "ಉಚಿತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why test mixed-language speech?",
+       "qKn": "ಮಿಶ್ರ-ಭಾಷಾ ಮಾತು ಏಕೆ ಪರೀಕ್ಷಿಸಬೇಕು?",
+       "opts": [
+        "Real users mix languages in one sentence",
+        "It is rare",
+        "Models refuse it",
+        "It saves cost"
+       ],
+       "optsKn": [
+        "ನಿಜ ಬಳಕೆದಾರರು ಒಂದೇ ವಾಕ್ಯದಲ್ಲಿ ಭಾಷೆ ಬೆರೆಸುತ್ತಾರೆ",
+        "ಅಪರೂಪ",
+        "ಮಾದರಿ ನಿರಾಕರಿಸುತ್ತದೆ",
+        "ವೆಚ್ಚ ಉಳಿತಾಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What should callers be told?",
+       "qKn": "ಕರೆ ಮಾಡುವವರಿಗೆ ಏನು ತಿಳಿಸಬೇಕು?",
+       "opts": [
+        "That a bot is speaking and if calls are recorded",
+        "Nothing",
+        "Only the price",
+        "Only the model name"
+       ],
+       "optsKn": [
+        "ಬಾಟ್ ಮಾತನಾಡುತ್ತಿದೆ ಮತ್ತು ಕರೆ ದಾಖಲಾಗುತ್ತಿದೆಯೇ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬೆಲೆ ಮಾತ್ರ",
+        "ಮಾದರಿ ಹೆಸರು ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321550",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "OpenTelemetry GenAI Semantic Conventions — Why Standard Names Matter",
+  "titleKn": "OpenTelemetry GenAI Semantic Conventions — ಪ್ರಮಾಣಿತ ಹೆಸರುಗಳು ಏಕೆ ಮುಖ್ಯ",
+  "desc": "How shared attribute names for model calls make traces portable across tools, and what a GenAI span records.",
+  "descKn": "ಮಾದರಿ ಕರೆಗಳ ಹಂಚಿದ attribute ಹೆಸರುಗಳು traces ಅನ್ನು tools ನಡುವೆ ಪೋರ್ಟಬಲ್ ಮಾಡುತ್ತವೆ, GenAI span ಏನು ದಾಖಲಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Explain spans, traces and attributes.",
+   "Describe the kinds of data a GenAI span records.",
+   "Explain the value of a shared naming standard."
+  ],
+  "objectivesKn": [
+   "spans, traces, attributes ವಿವರಿಸಿ.",
+   "GenAI span ದಾಖಲಿಸುವ ಡೇಟಾ ವಿವರಿಸಿ.",
+   "ಹಂಚಿದ ಹೆಸರು ಮಾನದಂಡದ ಮೌಲ್ಯ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "OpenTelemetry GenAI Semantic Conventions — Why Standard Names Matter",
+     "textKn": "OpenTelemetry GenAI Semantic Conventions — Why Standard Names Matter",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in OpenTelemetry GenAI Semantic Conventions",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Traces, Spans and Attributes",
+     "headingKn": "Traces, Spans, Attributes",
+     "bodyEn": "A trace follows one request through a system. It is made of spans, each representing one operation with a start and end time and key-value attributes that describe it.",
+     "bodyKn": "trace ಒಂದು ವಿನಂತಿಯನ್ನು ವ್ಯವಸ್ಥೆಯ ಮೂಲಕ ಅನುಸರಿಸುತ್ತದೆ. ಇದು spans ನಿಂದ ಆಗಿದೆ; ಪ್ರತಿ span ಒಂದು ಕಾರ್ಯ, ಆರಂಭ-ಅಂತ್ಯ ಸಮಯ ಮತ್ತು ಅದನ್ನು ವಿವರಿಸುವ key-value attributes ಹೊಂದಿದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "What a GenAI Span Records",
+     "headingKn": "GenAI Span ಏನು ದಾಖಲಿಸುತ್ತದೆ",
+     "bodyEn": "For a model call typical attributes include the operation type, the provider and requested model, and token counts for input and output. Optionally prompts and completions can be captured, with privacy caveats.",
+     "bodyKn": "ಮಾದರಿ ಕರೆಗೆ ಕಾರ್ಯ ಪ್ರಕಾರ, ಒದಗಿಸುವವರು, ಕೋರಿದ ಮಾದರಿ, ಇನ್‌ಪುಟ್/ಔಟ್‌ಪುಟ್ token ಎಣಿಕೆ ಸಾಮಾನ್ಯ attributes. prompts ಮತ್ತು ಉತ್ತರಗಳನ್ನು ಗೌಪ್ಯತೆ ಎಚ್ಚರದೊಂದಿಗೆ ಐಚ್ಛಿಕವಾಗಿ ಸೆರೆಹಿಡಿಯಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why Standard Names",
+     "headingKn": "ಪ್ರಮಾಣಿತ ಹೆಸರುಗಳು ಏಕೆ",
+     "bodyEn": "When every library uses the same attribute names, dashboards and alerts work across providers and frameworks, and you can switch tools without re-instrumenting. Without a standard each vendor invents its own.",
+     "bodyKn": "ಎಲ್ಲಾ libraries ಒಂದೇ attribute ಹೆಸರು ಬಳಸಿದರೆ dashboards ಮತ್ತು alerts ಒದಗಿಸುವವರು/ಚೌಕಟ್ಟುಗಳಾದ್ಯಂತ ಕೆಲಸ ಮಾಡುತ್ತವೆ. ಮಾನದಂಡ ಇಲ್ಲದಿದ್ದರೆ ಪ್ರತಿ ಮಾರಾಟಗಾರ ತನ್ನದೇ ಹೆಸರು ರೂಪಿಸುತ್ತಾನೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Conventions Evolve",
+     "headingKn": "Conventions ವಿಕಸಿಸುತ್ತವೆ",
+     "bodyEn": "GenAI conventions are still developing, and attribute names have been renamed between versions. Check the current specification and pin your instrumentation library version.",
+     "bodyKn": "GenAI conventions ಇನ್ನೂ ವಿಕಸಿಸುತ್ತಿವೆ, attribute ಹೆಸರುಗಳು ಆವೃತ್ತಿಗಳ ನಡುವೆ ಬದಲಾಗಿವೆ. ಈಗಿನ ವಿಶೇಷಣೆ ಪರಿಶೀಲಿಸಿ, instrumentation library ಆವೃತ್ತಿ ಪಿನ್ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Traces contain spans with attributes.\n• GenAI spans record model, provider and token counts.\n• Standard names make tooling portable; check the current spec.",
+     "bodyKn": "• traces ನಲ್ಲಿ attributes ಇರುವ spans.\n• GenAI spans ಮಾದರಿ, ಒದಗಿಸುವವರು, tokens ದಾಖಲಿಸುತ್ತವೆ.\n• ಪ್ರಮಾಣಿತ ಹೆಸರು tooling ಪೋರ್ಟಬಲ್."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is a span?",
+       "qKn": "span ಎಂದರೇನು?",
+       "opts": [
+        "One operation with timing and attributes",
+        "A whole database",
+        "A model weight",
+        "A colour"
+       ],
+       "optsKn": [
+        "ಸಮಯ ಮತ್ತು attributes ಇರುವ ಒಂದು ಕಾರ್ಯ",
+        "ಇಡೀ ಡೇಟಾಬೇಸ್",
+        "ಮಾದರಿ ತೂಕ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why use standard attribute names?",
+       "qKn": "ಪ್ರಮಾಣಿತ attribute ಹೆಸರು ಏಕೆ?",
+       "opts": [
+        "Tools and dashboards work across providers",
+        "To hide data",
+        "To slow calls",
+        "They are random"
+       ],
+       "optsKn": [
+        "tools ಮತ್ತು dashboards ಒದಗಿಸುವವರಾದ್ಯಂತ ಕೆಲಸ",
+        "ಡೇಟಾ ಮರೆ",
+        "ಕರೆ ನಿಧಾನ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why pin instrumentation versions?",
+       "qKn": "instrumentation ಆವೃತ್ತಿ ಏಕೆ ಪಿನ್?",
+       "opts": [
+        "Attribute names have changed between versions",
+        "To avoid tracing",
+        "They never change",
+        "To save disk"
+       ],
+       "optsKn": [
+        "attribute ಹೆಸರು ಆವೃತ್ತಿಗಳ ನಡುವೆ ಬದಲಾಗಿವೆ",
+        "tracing ತಪ್ಪಿಸಲು",
+        "ಬದಲಾಗುವುದಿಲ್ಲ",
+        "ಡಿಸ್ಕ್ ಉಳಿತಾಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321550",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "OpenTelemetry GenAI Semantic Conventions — Instrumenting Agents and Tools",
+  "titleKn": "OpenTelemetry GenAI Semantic Conventions — Agents ಮತ್ತು Tools ಗೆ Instrumentation",
+  "desc": "Structuring spans for an agent run: model calls, tool calls and nested steps, plus metrics and events.",
+  "descKn": "agent run ಗಾಗಿ spans ರಚನೆ: ಮಾದರಿ ಕರೆ, tool ಕರೆ, ಒಳಗಿನ ಹಂತಗಳು, ಮೆಟ್ರಿಕ್ಸ್ ಮತ್ತು ಘಟನೆಗಳು.",
+  "objectives": [
+   "Nest spans to reflect agent structure.",
+   "Record tool calls as their own spans.",
+   "Use metrics for aggregates such as token usage and latency."
+  ],
+  "objectivesKn": [
+   "agent ರಚನೆ ಪ್ರತಿಬಿಂಬಿಸಲು spans ಒಳಗೊಳಿಸಿ.",
+   "tool ಕರೆಗಳನ್ನು ಪ್ರತ್ಯೇಕ spans ಆಗಿ ದಾಖಲಿಸಿ.",
+   "ಮೊತ್ತಗಳಿಗೆ ಮೆಟ್ರಿಕ್ಸ್ ಬಳಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "OpenTelemetry GenAI Semantic Conventions — Instrumenting Agents and Tools",
+     "textKn": "OpenTelemetry GenAI Semantic Conventions — Instrumenting Agents and Tools",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in OpenTelemetry GenAI Semantic Conventions",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Tree of Spans for One Run",
+     "headingKn": "ಒಂದು Run ಗೆ Spans ವೃಕ್ಷ",
+     "bodyEn": "An agent run is a root span with children: each model call, each tool call and any sub-agent. The resulting tree shows order, nesting and where time was spent.",
+     "bodyKn": "agent run ಒಂದು root span, ಮಕ್ಕಳು: ಪ್ರತಿ ಮಾದರಿ ಕರೆ, ಪ್ರತಿ tool ಕರೆ, ಯಾವುದೇ sub-agent. ವೃಕ್ಷ ಕ್ರಮ, ಒಳಗೊಳ್ಳುವಿಕೆ ಮತ್ತು ಸಮಯ ಎಲ್ಲಿ ಕಳೆಯಿತು ಎಂದು ತೋರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Tool Calls as Spans",
+     "headingKn": "Tool ಕರೆಗಳು Spans ಆಗಿ",
+     "bodyEn": "Record each tool invocation with its name, duration and success or error status. Failed tool calls are one of the most useful signals when debugging agents.",
+     "bodyKn": "ಪ್ರತಿ tool ಕರೆಯನ್ನು ಹೆಸರು, ಅವಧಿ, ಯಶಸ್ಸು ಅಥವಾ ದೋಷ ಸ್ಥಿತಿಯೊಂದಿಗೆ ದಾಖಲಿಸಿ. ವಿಫಲ tool ಕರೆಗಳು agents debug ಮಾಡುವಾಗ ಅತ್ಯಂತ ಉಪಯುಕ್ತ ಸೂಚನೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Metrics and Events",
+     "headingKn": "ಮೆಟ್ರಿಕ್ಸ್ ಮತ್ತು ಘಟನೆಗಳು",
+     "bodyEn": "Spans describe individual requests, while metrics aggregate across them, for example token usage and operation duration histograms. Events can attach prompt or response content to a span when policy allows.",
+     "bodyKn": "spans ವೈಯಕ್ತಿಕ ವಿನಂತಿ ವಿವರಿಸುತ್ತವೆ; ಮೆಟ್ರಿಕ್ಸ್ ಅವುಗಳಾದ್ಯಂತ ಒಟ್ಟುಗೂಡಿಸುತ್ತವೆ (token ಬಳಕೆ, ಅವಧಿ ಹಿಸ್ಟೋಗ್ರಾಂ). ನೀತಿ ಅನುಮತಿಸಿದರೆ ಘಟನೆಗಳು prompt ಅಥವಾ ಪ್ರತಿಕ್ರಿಯೆ ವಿಷಯ span ಗೆ ಜೋಡಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Correlate With Business Outcomes",
+     "headingKn": "ವ್ಯವಹಾರ ಫಲಿತಾಂಶಗಳೊಂದಿಗೆ ಜೋಡಿಸಿ",
+     "bodyEn": "Attach identifiers such as a session or workflow id so traces can be joined with user feedback and success outcomes, not just technical timings.",
+     "bodyKn": "session ಅಥವಾ workflow id ನಂತಹ ಗುರುತುಗಳನ್ನು ಸೇರಿಸಿ, traces ಅನ್ನು ಬಳಕೆದಾರ ಪ್ರತಿಕ್ರಿಯೆ ಮತ್ತು ಯಶಸ್ಸು ಫಲಿತಾಂಶಗಳೊಂದಿಗೆ ಜೋಡಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Model a run as a tree of spans.\n• Record tool calls, durations and errors.\n• Use metrics for aggregates and ids for correlation.",
+     "bodyKn": "• run ಅನ್ನು spans ವೃಕ್ಷವಾಗಿ ಮಾದರಿ.\n• tool ಕರೆ, ಅವಧಿ, ದೋಷ ದಾಖಲಿಸಿ.\n• ಮೊತ್ತಕ್ಕೆ ಮೆಟ್ರಿಕ್ಸ್, ಜೋಡಣೆಗೆ ids."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does the span tree of a run show?",
+       "qKn": "run ನ span ವೃಕ್ಷ ಏನು ತೋರಿಸುತ್ತದೆ?",
+       "opts": [
+        "Order, nesting and where time went",
+        "The model size",
+        "The price of tokens",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಕ್ರಮ, ಒಳಗೊಳ್ಳುವಿಕೆ, ಸಮಯ ಎಲ್ಲಿ ಹೋಯಿತು",
+        "ಮಾದರಿ ಗಾತ್ರ",
+        "token ಬೆಲೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What do metrics add that spans do not?",
+       "qKn": "spans ಗೆ ಇಲ್ಲದ್ದನ್ನು ಮೆಟ್ರಿಕ್ಸ್ ಏನು ಸೇರಿಸುತ್ತವೆ?",
+       "opts": [
+        "Aggregates across many requests",
+        "Single-request details",
+        "Prompts only",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹಲವು ವಿನಂತಿಗಳಾದ್ಯಂತ ಒಟ್ಟು",
+        "ಒಂದು ವಿನಂತಿ ವಿವರ",
+        "prompts ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why attach a session or workflow id?",
+       "qKn": "session ಅಥವಾ workflow id ಏಕೆ ಸೇರಿಸಬೇಕು?",
+       "opts": [
+        "To join traces with feedback and outcomes",
+        "To slow tracing",
+        "To hide data",
+        "It is required by JSON"
+       ],
+       "optsKn": [
+        "traces ಅನ್ನು ಪ್ರತಿಕ್ರಿಯೆ, ಫಲಿತಾಂಶಗಳೊಂದಿಗೆ ಜೋಡಿಸಲು",
+        "tracing ನಿಧಾನ",
+        "ಡೇಟಾ ಮರೆ",
+        "JSON ಅಗತ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321550",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "OpenTelemetry GenAI Semantic Conventions — Privacy, Cost and Sampling",
+  "titleKn": "OpenTelemetry GenAI Semantic Conventions — ಗೌಪ್ಯತೆ, ವೆಚ್ಚ, Sampling",
+  "desc": "Deciding whether to capture prompts, controlling telemetry cost through sampling, and deriving dollar cost from token counts.",
+  "descKn": "prompts ಸೆರೆಹಿಡಿಯಬೇಕೇ ಎಂದು ನಿರ್ಧರಿಸುವುದು, sampling ಮೂಲಕ telemetry ವೆಚ್ಚ ನಿಯಂತ್ರಣ, token ಎಣಿಕೆಯಿಂದ ಹಣ ವೆಚ್ಚ ಪಡೆಯುವುದು.",
+  "objectives": [
+   "Decide what content to capture and redact.",
+   "Explain head-based and tail-based sampling.",
+   "Derive per-request cost from token attributes."
+  ],
+  "objectivesKn": [
+   "ಯಾವ ವಿಷಯ ಸೆರೆಹಿಡಿಯಬೇಕು/ಮರೆಮಾಡಬೇಕು ನಿರ್ಧರಿಸಿ.",
+   "head-based ಮತ್ತು tail-based sampling ವಿವರಿಸಿ.",
+   "token attributes ಇಂದ ವೆಚ್ಚ ಪಡೆಯಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "OpenTelemetry GenAI Semantic Conventions — Privacy, Cost and Sampling",
+     "textKn": "OpenTelemetry GenAI Semantic Conventions — Privacy, Cost and Sampling",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in OpenTelemetry GenAI Semantic Conventions",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Prompts Are Data",
+     "headingKn": "Prompts ಡೇಟಾ",
+     "bodyEn": "Prompts and responses often include personal or confidential text. Default to not capturing them, or redact before export, and restrict who can view traces that do contain content.",
+     "bodyKn": "prompts ಮತ್ತು ಪ್ರತಿಕ್ರಿಯೆಗಳಲ್ಲಿ ವೈಯಕ್ತಿಕ ಅಥವಾ ಗೌಪ್ಯ ಪಠ್ಯ ಇರುತ್ತದೆ. ಡೀಫಾಲ್ಟ್ ಆಗಿ ಸೆರೆಹಿಡಿಯಬೇಡಿ ಅಥವಾ ರಫ್ತು ಮೊದಲು ಮರೆಮಾಡಿ; ವಿಷಯ ಇರುವ traces ನೋಡುವವರನ್ನು ಮಿತಿಗೊಳಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Sampling Controls Volume",
+     "headingKn": "Sampling ಪ್ರಮಾಣ ನಿಯಂತ್ರಿಸುತ್ತದೆ",
+     "bodyEn": "Head-based sampling decides at the start whether to keep a trace; it is cheap but may drop interesting ones. Tail-based sampling decides after the trace finishes, so it can keep all errors and slow runs.",
+     "bodyKn": "head-based sampling ಆರಂಭದಲ್ಲೇ trace ಉಳಿಸಬೇಕೇ ಎಂದು ನಿರ್ಧರಿಸುತ್ತದೆ; ಅಗ್ಗ ಆದರೆ ಆಸಕ್ತಿಕರವಾದದ್ದನ್ನು ಬಿಡಬಹುದು. tail-based trace ಮುಗಿದ ನಂತರ ನಿರ್ಧರಿಸುತ್ತದೆ; ಎಲ್ಲಾ ದೋಷ ಮತ್ತು ನಿಧಾನ runs ಉಳಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "From Tokens to Money",
+     "headingKn": "Tokens ಇಂದ ಹಣಕ್ಕೆ",
+     "bodyEn": "Multiply input and output token counts by the model's current prices to estimate cost per request. Store prices with a date, because they change, and aggregate by feature or customer.",
+     "bodyKn": "ಇನ್‌ಪುಟ್ ಮತ್ತು ಔಟ್‌ಪುಟ್ token ಎಣಿಕೆಯನ್ನು ಮಾದರಿಯ ಈಗಿನ ಬೆಲೆಯಿಂದ ಗುಣಿಸಿ ವಿನಂತಿ ವೆಚ್ಚ ಅಂದಾಜಿಸಿ. ಬೆಲೆ ಬದಲಾಗುವುದರಿಂದ ದಿನಾಂಕದೊಂದಿಗೆ ಸಂಗ್ರಹಿಸಿ, ವೈಶಿಷ್ಟ್ಯ ಅಥವಾ ಗ್ರಾಹಕರ ಪ್ರಕಾರ ಒಟ್ಟುಗೂಡಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Retention",
+     "headingKn": "ಉಳಿಸುವ ಅವಧಿ",
+     "bodyEn": "Keep detailed traces briefly and aggregates longer. Shorter retention lowers both cost and privacy exposure.",
+     "bodyKn": "ವಿವರವಾದ traces ಅಲ್ಪ ಕಾಲ, ಒಟ್ಟುಗಳು ಹೆಚ್ಚು ಕಾಲ ಇಡಿ. ಕಡಿಮೆ ಅವಧಿ ವೆಚ್ಚ ಮತ್ತು ಗೌಪ್ಯತೆ ಅಪಾಯ ಎರಡನ್ನೂ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Do not capture prompts by default; redact and restrict.\n• Tail-based sampling keeps errors and slow runs.\n• Store dated prices to turn tokens into cost.",
+     "bodyKn": "• ಡೀಫಾಲ್ಟ್ prompts ಸೆರೆಹಿಡಿಯಬೇಡಿ.\n• tail-based ದೋಷ, ನಿಧಾನ runs ಉಳಿಸುತ್ತದೆ.\n• ದಿನಾಂಕದ ಬೆಲೆ ಸಂಗ್ರಹಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is an advantage of tail-based sampling?",
+       "qKn": "tail-based sampling ನ ಲಾಭ?",
+       "opts": [
+        "It can keep all errors and slow runs",
+        "It is always cheaper",
+        "It ignores errors",
+        "It needs no traces"
+       ],
+       "optsKn": [
+        "ಎಲ್ಲಾ ದೋಷ ಮತ್ತು ನಿಧಾನ runs ಉಳಿಸಬಹುದು",
+        "ಯಾವಾಗಲೂ ಅಗ್ಗ",
+        "ದೋಷ ನಿರ್ಲಕ್ಷ್ಯ",
+        "traces ಬೇಡ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How estimate cost per request?",
+       "qKn": "ವಿನಂತಿ ವೆಚ್ಚ ಹೇಗೆ ಅಂದಾಜಿಸುವುದು?",
+       "opts": [
+        "Token counts times dated prices",
+        "By colour",
+        "By response length in words only",
+        "It cannot be estimated"
+       ],
+       "optsKn": [
+        "token ಎಣಿಕೆ × ದಿನಾಂಕದ ಬೆಲೆ",
+        "ಬಣ್ಣದಿಂದ",
+        "ಪದ ಉದ್ದ ಮಾತ್ರ",
+        "ಸಾಧ್ಯವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why keep trace retention short?",
+       "qKn": "trace ಉಳಿಸುವ ಅವಧಿ ಏಕೆ ಕಡಿಮೆ?",
+       "opts": [
+        "Lower cost and privacy exposure",
+        "Traces expire on their own",
+        "To hide errors",
+        "It is required by HTTP"
+       ],
+       "optsKn": [
+        "ವೆಚ್ಚ ಮತ್ತು ಗೌಪ್ಯತೆ ಅಪಾಯ ಕಡಿಮೆ",
+        "ತಾನಾಗಿ ಮುಗಿಯುತ್ತವೆ",
+        "ದೋಷ ಮರೆ",
+        "HTTP ಅಗತ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321553",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Agent Observability: Langfuse, Phoenix, Opik — What to Observe",
+  "titleKn": "Agent Observability: Langfuse, Phoenix, Opik — ಏನನ್ನು ವೀಕ್ಷಿಸಬೇಕು",
+  "desc": "What observability platforms for LLM applications capture and how they differ from classic application monitoring.",
+  "descKn": "LLM ಅಪ್ಲಿಕೇಶನ್‌ಗಳ observability ವೇದಿಕೆಗಳು ಏನು ಸೆರೆಹಿಡಿಯುತ್ತವೆ ಮತ್ತು ಸಾಂಪ್ರದಾಯಿಕ ಮೇಲ್ವಿಚಾರಣೆಗಿಂತ ಹೇಗೆ ಭಿನ್ನ.",
+  "objectives": [
+   "Explain why logs and uptime alone are not enough for LLM apps.",
+   "List core capabilities: traces, evals, datasets and prompt management.",
+   "Compare open-source self-hosted and hosted options by criteria."
+  ],
+  "objectivesKn": [
+   "LLM apps ಗೆ logs ಮತ್ತು uptime ಮಾತ್ರ ಸಾಲದು ಏಕೆ ವಿವರಿಸಿ.",
+   "ಮುಖ್ಯ ಸಾಮರ್ಥ್ಯ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಮಾನದಂಡಗಳಿಂದ ಆಯ್ಕೆಗಳನ್ನು ಹೋಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Agent Observability: Langfuse, Phoenix, Opik — What to Observe",
+     "textKn": "Agent Observability: Langfuse, Phoenix, Opik — What to Observe",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Agent Observability: Langfuse, Phoenix, Opik",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Quality Is the New Failure",
+     "headingKn": "ಗುಣಮಟ್ಟವೇ ಹೊಸ ವೈಫಲ್ಯ",
+     "bodyEn": "A classic service fails loudly with errors or downtime. An LLM app can return HTTP 200 with a wrong or unsafe answer, so monitoring must also look at the content and outcome, not only the status code.",
+     "bodyKn": "ಸಾಂಪ್ರದಾಯಿಕ ಸೇವೆ ದೋಷ ಅಥವಾ ಡೌನ್‌ಟೈಮ್‌ನಿಂದ ಜೋರಾಗಿ ವಿಫಲ. LLM app ತಪ್ಪು ಅಥವಾ ಅಸುರಕ್ಷಿತ ಉತ್ತರದೊಂದಿಗೆ HTTP 200 ನೀಡಬಹುದು; ಮೇಲ್ವಿಚಾರಣೆ ವಿಷಯ ಮತ್ತು ಫಲಿತಾಂಶ ಸಹ ನೋಡಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Core Capabilities",
+     "headingKn": "ಮುಖ್ಯ ಸಾಮರ್ಥ್ಯಗಳು",
+     "bodyEn": "These platforms typically offer trace viewing, cost and latency dashboards, datasets and experiments, automated and human evaluation, and prompt versioning. Langfuse, Arize Phoenix and Comet Opik are widely used examples.",
+     "bodyKn": "ಇವು ಸಾಮಾನ್ಯವಾಗಿ trace ವೀಕ್ಷಣೆ, ವೆಚ್ಚ ಮತ್ತು ವಿಳಂಬ dashboards, ಡೇಟಾಸೆಟ್ ಮತ್ತು ಪ್ರಯೋಗ, ಸ್ವಯಂ ಮತ್ತು ಮಾನವ ಮೌಲ್ಯಮಾಪನ, prompt ಆವೃತ್ತಿ ನೀಡುತ್ತವೆ. Langfuse, Arize Phoenix, Comet Opik ವ್ಯಾಪಕ ಉದಾಹರಣೆಗಳು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Instrument Once, Export Anywhere",
+     "headingKn": "ಒಮ್ಮೆ Instrument, ಎಲ್ಲಿಯಾದರೂ ರಫ್ತು",
+     "bodyEn": "Instrumenting with OpenTelemetry-style standards keeps you portable between platforms. Vendor SDKs are convenient but tie your code to one product.",
+     "bodyKn": "OpenTelemetry ಶೈಲಿಯ ಮಾನದಂಡಗಳಿಂದ instrument ಮಾಡಿದರೆ ವೇದಿಕೆಗಳ ನಡುವೆ ಪೋರ್ಟಬಲ್. ಮಾರಾಟಗಾರ SDK ಗಳು ಅನುಕೂಲ ಆದರೆ ಕೋಡ್ ಒಂದು ಉತ್ಪನ್ನಕ್ಕೆ ಬಂಧಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Choosing a Platform",
+     "headingKn": "ವೇದಿಕೆ ಆರಿಸುವುದು",
+     "bodyEn": "Weigh self-hosting for data control against managed convenience, the quality of evaluation features, framework integrations, pricing at your volume and export options.",
+     "bodyKn": "ಡೇಟಾ ನಿಯಂತ್ರಣಕ್ಕೆ ಸ್ವಯಂ-ಹೋಸ್ಟಿಂಗ್ ಮತ್ತು ನಿರ್ವಹಿತ ಅನುಕೂಲ, ಮೌಲ್ಯಮಾಪನ ಗುಣಮಟ್ಟ, ಚೌಕಟ್ಟು ಏಕೀಕರಣ, ನಿಮ್ಮ ಪ್ರಮಾಣದಲ್ಲಿ ಬೆಲೆ, ರಫ್ತು ಆಯ್ಕೆಗಳನ್ನು ತೂಗಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• LLM apps can fail with a 200 status and a bad answer.\n• Platforms provide traces, evals, datasets and prompt management.\n• Prefer standards-based instrumentation.",
+     "bodyKn": "• LLM app 200 ಜೊತೆ ಕೆಟ್ಟ ಉತ್ತರ ನೀಡಬಹುದು.\n• ವೇದಿಕೆಗಳು traces, evals, datasets.\n• ಮಾನದಂಡ ಆಧಾರಿತ instrumentation."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why is uptime monitoring not enough for an LLM app?",
+       "qKn": "LLM app ಗೆ uptime ಮೇಲ್ವಿಚಾರಣೆ ಏಕೆ ಸಾಲದು?",
+       "opts": [
+        "It can return 200 with a wrong answer",
+        "Uptime is always 100%",
+        "LLMs have no servers",
+        "Errors are impossible"
+       ],
+       "optsKn": [
+        "ತಪ್ಪು ಉತ್ತರದೊಂದಿಗೆ 200 ನೀಡಬಹುದು",
+        "uptime ಯಾವಾಗಲೂ 100%",
+        "LLM ಗೆ ಸರ್ವರ್ ಇಲ್ಲ",
+        "ದೋಷ ಅಸಾಧ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What does standards-based instrumentation give you?",
+       "qKn": "ಮಾನದಂಡ ಆಧಾರಿತ instrumentation ಏನು ನೀಡುತ್ತದೆ?",
+       "opts": [
+        "Portability between platforms",
+        "Lock-in",
+        "Slower calls",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ವೇದಿಕೆಗಳ ನಡುವೆ ಪೋರ್ಟಬಿಲಿಟಿ",
+        "lock-in",
+        "ನಿಧಾನ ಕರೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is a reason to self-host an observability tool?",
+       "qKn": "observability tool ಸ್ವಯಂ-ಹೋಸ್ಟ್ ಮಾಡಲು ಕಾರಣ?",
+       "opts": [
+        "Data control",
+        "It is always cheaper",
+        "It needs no maintenance",
+        "It has no features"
+       ],
+       "optsKn": [
+        "ಡೇಟಾ ನಿಯಂತ್ರಣ",
+        "ಯಾವಾಗಲೂ ಅಗ್ಗ",
+        "ನಿರ್ವಹಣೆ ಬೇಡ",
+        "ವೈಶಿಷ್ಟ್ಯ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321553",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Agent Observability: Langfuse, Phoenix, Opik — Evaluation, Datasets and Feedback Loops",
+  "titleKn": "Agent Observability: Langfuse, Phoenix, Opik — ಮೌಲ್ಯಮಾಪನ, ಡೇಟಾಸೆಟ್, ಪ್ರತಿಕ್ರಿಯೆ ಲೂಪ್",
+  "desc": "Turning production traces into datasets, running automated evaluators and closing the loop from failure to fix.",
+  "descKn": "ಉತ್ಪಾದನಾ traces ಅನ್ನು ಡೇಟಾಸೆಟ್ ಆಗಿ ಪರಿವರ್ತಿಸುವುದು, ಸ್ವಯಂ evaluators, ವೈಫಲ್ಯದಿಂದ ಪರಿಹಾರಕ್ಕೆ ಲೂಪ್.",
+  "objectives": [
+   "Build datasets from real traces.",
+   "Use LLM-as-judge and code-based evaluators with care.",
+   "Close the loop between failures and test cases."
+  ],
+  "objectivesKn": [
+   "ನಿಜ traces ಇಂದ ಡೇಟಾಸೆಟ್ ನಿರ್ಮಿಸಿ.",
+   "LLM-as-judge ಮತ್ತು ಕೋಡ್ evaluators ಎಚ್ಚರಿಕೆಯಿಂದ ಬಳಸಿ.",
+   "ವೈಫಲ್ಯ ಮತ್ತು ಪರೀಕ್ಷಾ ಪ್ರಕರಣಗಳ ನಡುವೆ ಲೂಪ್ ಮುಚ್ಚಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Agent Observability: Langfuse, Phoenix, Opik — Evaluation, Datasets and Feedback Loops",
+     "textKn": "Agent Observability: Langfuse, Phoenix, Opik — Evaluation, Datasets and Feedback Loops",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Agent Observability: Langfuse, Phoenix, Opik",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Traces Become Test Cases",
+     "headingKn": "Traces ಪರೀಕ್ಷಾ ಪ್ರಕರಣಗಳಾಗುತ್ತವೆ",
+     "bodyEn": "When a real run goes wrong, save its input and expected behaviour to a dataset. Over time the dataset reflects the failures your users actually hit.",
+     "bodyKn": "ನಿಜ run ತಪ್ಪಾದಾಗ ಅದರ ಇನ್‌ಪುಟ್ ಮತ್ತು ನಿರೀಕ್ಷಿತ ವರ್ತನೆ ಡೇಟಾಸೆಟ್‌ಗೆ ಉಳಿಸಿ. ಕಾಲಕ್ರಮೇಣ ಡೇಟಾಸೆಟ್ ನಿಮ್ಮ ಬಳಕೆದಾರರು ನಿಜವಾಗಿ ಎದುರಿಸುವ ವೈಫಲ್ಯ ಪ್ರತಿಬಿಂಬಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Evaluators: Code and LLM Judges",
+     "headingKn": "Evaluators: ಕೋಡ್ ಮತ್ತು LLM Judges",
+     "bodyEn": "Use code checks for anything checkable, and LLM judges for subjective qualities such as helpfulness. Judges have biases, so calibrate them against human labels on a sample.",
+     "bodyKn": "ಪರಿಶೀಲಿಸಬಹುದಾದ್ದಕ್ಕೆ ಕೋಡ್, ಸಹಾಯಕತೆಯಂತಹ ವ್ಯಕ್ತಿನಿಷ್ಠ ಗುಣಗಳಿಗೆ LLM judge ಬಳಸಿ. judges ಗೆ ಪಕ್ಷಪಾತ ಇದೆ; ಮಾದರಿಯ ಮೇಲೆ ಮಾನವ ಲೇಬಲ್‌ಗಳಿಗೆ ಹೋಲಿಸಿ ಹೊಂದಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Online and Offline Evaluation",
+     "headingKn": "Online ಮತ್ತು Offline ಮೌಲ್ಯಮಾಪನ",
+     "bodyEn": "Offline evaluation runs on a fixed dataset before release. Online evaluation scores a sample of live traffic to detect drift after release. Both are needed.",
+     "bodyKn": "Offline ಮೌಲ್ಯಮಾಪನ ಬಿಡುಗಡೆ ಮೊದಲು ನಿಗದಿತ ಡೇಟಾಸೆಟ್‌ನಲ್ಲಿ. Online ಮೌಲ್ಯಮಾಪನ ಬಿಡುಗಡೆ ನಂತರ ಜೀವಂತ ಟ್ರಾಫಿಕ್‌ನ ಮಾದರಿಗೆ ಅಂಕ ನೀಡಿ ಬದಲಾವಣೆ ಪತ್ತೆ. ಎರಡೂ ಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "User Feedback",
+     "headingKn": "ಬಳಕೆದಾರ ಪ್ರತಿಕ್ರಿಯೆ",
+     "bodyEn": "Thumbs up or down and corrections are valuable signals when tied to the trace they refer to. Review low-rated traces regularly to find patterns.",
+     "bodyKn": "ಥಂಬ್ಸ್ ಅಪ್/ಡೌನ್ ಮತ್ತು ತಿದ್ದುಪಡಿಗಳು ಅವು ಸೂಚಿಸುವ trace ಗೆ ಜೋಡಿಸಿದಾಗ ಮೌಲ್ಯಯುತ. ಕಡಿಮೆ ರೇಟಿಂಗ್ traces ಅನ್ನು ನಿಯಮಿತವಾಗಿ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Save real failures as dataset items.\n• Calibrate LLM judges against human labels.\n• Combine offline evaluation with online sampling.",
+     "bodyKn": "• ನಿಜ ವೈಫಲ್ಯ ಡೇಟಾಸೆಟ್‌ಗೆ.\n• LLM judges ಅನ್ನು ಮಾನವ ಲೇಬಲ್‌ಗೆ ಹೊಂದಿಸಿ.\n• offline + online ಮೌಲ್ಯಮಾಪನ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why calibrate an LLM judge?",
+       "qKn": "LLM judge ಅನ್ನು ಏಕೆ ಹೊಂದಿಸಬೇಕು?",
+       "opts": [
+        "Judges have biases",
+        "Judges are perfect",
+        "It removes tests",
+        "It is free"
+       ],
+       "optsKn": [
+        "judges ಗೆ ಪಕ್ಷಪಾತ ಇದೆ",
+        "judges ಪರಿಪೂರ್ಣ",
+        "tests ತೆಗೆಯುತ್ತದೆ",
+        "ಉಚಿತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What does online evaluation detect?",
+       "qKn": "online ಮೌಲ್ಯಮಾಪನ ಏನು ಪತ್ತೆ ಮಾಡುತ್ತದೆ?",
+       "opts": [
+        "Drift in live traffic after release",
+        "Only typos",
+        "Nothing",
+        "Old datasets"
+       ],
+       "optsKn": [
+        "ಬಿಡುಗಡೆ ನಂತರ ಜೀವಂತ ಟ್ರಾಫಿಕ್‌ನಲ್ಲಿ ಬದಲಾವಣೆ",
+        "ಟೈಪೋ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಹಳೆಯ ಡೇಟಾಸೆಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Where should dataset items come from?",
+       "qKn": "ಡೇಟಾಸೆಟ್ ಐಟಂಗಳು ಎಲ್ಲಿಂದ?",
+       "opts": [
+        "Real failures and feedback",
+        "Random text only",
+        "Nowhere",
+        "Ads"
+       ],
+       "optsKn": [
+        "ನಿಜ ವೈಫಲ್ಯ ಮತ್ತು ಪ್ರತಿಕ್ರಿಯೆ",
+        "ಯಾದೃಚ್ಛಿಕ ಪಠ್ಯ ಮಾತ್ರ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಜಾಹೀರಾತು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321553",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Agent Observability: Langfuse, Phoenix, Opik — Operating It: Alerts, Cost and Governance",
+  "titleKn": "Agent Observability: Langfuse, Phoenix, Opik — ನಿರ್ವಹಣೆ: Alerts, ವೆಚ್ಚ, ಆಡಳಿತ",
+  "desc": "Alerting on quality and cost, attributing spend, and governing access to sensitive traces.",
+  "descKn": "ಗುಣಮಟ್ಟ ಮತ್ತು ವೆಚ್ಚದ ಬಗ್ಗೆ alerts, ಖರ್ಚು ನಿಗದಿ, ಸೂಕ್ಷ್ಮ traces ಪ್ರವೇಶ ಆಡಳಿತ.",
+  "objectives": [
+   "Define alerts on error rates, latency, cost spikes and quality scores.",
+   "Attribute cost to features and customers.",
+   "Apply access control and retention to traces."
+  ],
+  "objectivesKn": [
+   "ದೋಷ ದರ, ವಿಳಂಬ, ವೆಚ್ಚ ಏರಿಕೆ, ಗುಣಮಟ್ಟ ಅಂಕಗಳಿಗೆ alerts ಹೊಂದಿಸಿ.",
+   "ವೈಶಿಷ್ಟ್ಯ ಮತ್ತು ಗ್ರಾಹಕರಿಗೆ ವೆಚ್ಚ ಹಂಚಿ.",
+   "traces ಗೆ ಪ್ರವೇಶ ನಿಯಂತ್ರಣ ಮತ್ತು ಅವಧಿ ಅನ್ವಯಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Agent Observability: Langfuse, Phoenix, Opik — Operating It: Alerts, Cost and Governance",
+     "textKn": "Agent Observability: Langfuse, Phoenix, Opik — Operating It: Alerts, Cost and Governance",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Agent Observability: Langfuse, Phoenix, Opik",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Alert on What Hurts",
+     "headingKn": "ನೋವುಂಟುಮಾಡುವುದಕ್ಕೆ Alert",
+     "bodyEn": "Alert on rising error rates, latency percentiles, sudden cost spikes and drops in evaluation scores. Too many noisy alerts get ignored, so tune thresholds against real baselines.",
+     "bodyKn": "ಏರುತ್ತಿರುವ ದೋಷ ದರ, ವಿಳಂಬ percentiles, ಹಠಾತ್ ವೆಚ್ಚ ಏರಿಕೆ, ಮೌಲ್ಯಮಾಪನ ಅಂಕ ಇಳಿಕೆಗೆ alert. ಅತಿ ಗದ್ದಲದ alerts ನಿರ್ಲಕ್ಷ್ಯವಾಗುತ್ತವೆ; ನಿಜ ಆಧಾರಕ್ಕೆ ಮಿತಿ ಹೊಂದಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cost Attribution",
+     "headingKn": "ವೆಚ್ಚ ಹಂಚಿಕೆ",
+     "bodyEn": "Tag every trace with feature, team and customer identifiers so spend can be traced back. Without tags, a large bill has no owner.",
+     "bodyKn": "ಪ್ರತಿ trace ಗೆ ವೈಶಿಷ್ಟ್ಯ, ತಂಡ, ಗ್ರಾಹಕ ಗುರುತು ಟ್ಯಾಗ್ ಮಾಡಿ, ಖರ್ಚನ್ನು ಹಿಂದೆ ಗುರುತಿಸಬಹುದು. ಟ್ಯಾಗ್ ಇಲ್ಲದಿದ್ದರೆ ದೊಡ್ಡ ಬಿಲ್‌ಗೆ ಮಾಲೀಕರಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Access and Retention",
+     "headingKn": "ಪ್ರವೇಶ ಮತ್ತು ಅವಧಿ",
+     "bodyEn": "Traces may hold personal data, so apply role-based access, mask sensitive fields and set deletion schedules. Support deletion requests from users where regulations require it.",
+     "bodyKn": "traces ವೈಯಕ್ತಿಕ ಡೇಟಾ ಹೊಂದಿರಬಹುದು; ಪಾತ್ರ ಆಧಾರಿತ ಪ್ರವೇಶ, ಸೂಕ್ಷ್ಮ ಕ್ಷೇತ್ರ ಮರೆಮಾಚು, ಅಳಿಸುವಿಕೆ ವೇಳಾಪಟ್ಟಿ ಹೊಂದಿಸಿ. ನಿಯಮ ಬೇಕಾದಲ್ಲಿ ಬಳಕೆದಾರರ ಅಳಿಸುವಿಕೆ ವಿನಂತಿ ಬೆಂಬಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Make Observability a Habit",
+     "headingKn": "Observability ಒಂದು ಅಭ್ಯಾಸ",
+     "bodyEn": "Review dashboards and a sample of traces in a regular meeting, and file each discovered problem as a test case. Observability that nobody reads does not improve anything.",
+     "bodyKn": "ನಿಯಮಿತ ಸಭೆಯಲ್ಲಿ dashboards ಮತ್ತು ಮಾದರಿ traces ಪರಿಶೀಲಿಸಿ, ಪತ್ತೆಯಾದ ಪ್ರತಿ ಸಮಸ್ಯೆಯನ್ನು ಪರೀಕ್ಷಾ ಪ್ರಕರಣವಾಗಿ ದಾಖಲಿಸಿ. ಯಾರೂ ಓದದ observability ಏನನ್ನೂ ಸುಧಾರಿಸುವುದಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Alert on errors, latency, cost and quality.\n• Tag traces to attribute spend.\n• Control access, mask data and review regularly.",
+     "bodyKn": "• ದೋಷ, ವಿಳಂಬ, ವೆಚ್ಚ, ಗುಣಮಟ್ಟಕ್ಕೆ alert.\n• ವೆಚ್ಚ ಹಂಚಲು ಟ್ಯಾಗ್.\n• ಪ್ರವೇಶ ನಿಯಂತ್ರಣ, ನಿಯಮಿತ ಪರಿಶೀಲನೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why tag traces with feature and customer ids?",
+       "qKn": "traces ಗೆ ವೈಶಿಷ್ಟ್ಯ ಮತ್ತು ಗ್ರಾಹಕ ids ಏಕೆ ಟ್ಯಾಗ್?",
+       "opts": [
+        "To attribute spend",
+        "To shrink them",
+        "To hide them",
+        "Decoration"
+       ],
+       "optsKn": [
+        "ವೆಚ್ಚ ಹಂಚಲು",
+        "ಕುಗ್ಗಿಸಲು",
+        "ಮರೆಮಾಡಲು",
+        "ಅಲಂಕಾರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What happens if alerts are too noisy?",
+       "qKn": "alerts ಅತಿ ಗದ್ದಲದ್ದಾದರೆ ಏನಾಗುತ್ತದೆ?",
+       "opts": [
+        "They get ignored",
+        "They become perfect",
+        "Costs drop",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ನಿರ್ಲಕ್ಷ್ಯವಾಗುತ್ತವೆ",
+        "ಪರಿಪೂರ್ಣವಾಗುತ್ತವೆ",
+        "ವೆಚ್ಚ ಇಳಿಯುತ್ತದೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What should follow each discovered problem?",
+       "qKn": "ಪತ್ತೆಯಾದ ಪ್ರತಿ ಸಮಸ್ಯೆ ನಂತರ ಏನು?",
+       "opts": [
+        "A new test case",
+        "Deleting the trace",
+        "Ignoring it",
+        "A new logo"
+       ],
+       "optsKn": [
+        "ಹೊಸ ಪರೀಕ್ಷಾ ಪ್ರಕರಣ",
+        "trace ಅಳಿಸುವುದು",
+        "ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಹೊಸ ಲೋಗೋ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321556",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Multi-Agent Debate and Collaboration — Why Agents Argue",
+  "titleKn": "ಬಹು-Agent ಚರ್ಚೆ ಮತ್ತು ಸಹಯೋಗ — Agents ಏಕೆ ವಾದಿಸುತ್ತವೆ",
+  "desc": "The idea that several model instances debating or critiquing each other can improve answers, and the conditions where it helps.",
+  "descKn": "ಹಲವು ಮಾದರಿ ಪ್ರತಿಗಳು ಚರ್ಚಿಸಿ ಅಥವಾ ಪರಸ್ಪರ ವಿಮರ್ಶಿಸಿ ಉತ್ತರ ಸುಧಾರಿಸುವ ಕಲ್ಪನೆ ಮತ್ತು ಅದು ಸಹಾಯ ಮಾಡುವ ಪರಿಸ್ಥಿತಿ.",
+  "objectives": [
+   "Describe a debate round: propose, critique, revise, decide.",
+   "Explain why independent samples plus voting can improve accuracy.",
+   "Identify where debate adds cost without benefit."
+  ],
+  "objectivesKn": [
+   "ಚರ್ಚೆ ಸುತ್ತು ವಿವರಿಸಿ.",
+   "ಸ್ವತಂತ್ರ ಮಾದರಿಗಳು ಮತ್ತು ಮತದಾನ ನಿಖರತೆ ಸುಧಾರಿಸುವುದು ಏಕೆ ವಿವರಿಸಿ.",
+   "ಚರ್ಚೆ ಲಾಭವಿಲ್ಲದೆ ವೆಚ್ಚ ಸೇರಿಸುವ ಸ್ಥಳ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Multi-Agent Debate and Collaboration — Why Agents Argue",
+     "textKn": "Multi-Agent Debate and Collaboration — Why Agents Argue",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Multi-Agent Debate and Collaboration",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Debate Round",
+     "headingKn": "ಚರ್ಚೆ ಸುತ್ತು",
+     "bodyEn": "Several agents each propose an answer, read the others' answers and reasoning, critique them and revise. After a few rounds a judge, a vote or agreement picks the result.",
+     "bodyKn": "ಹಲವು agents ಪ್ರತಿಯೊಂದು ಉತ್ತರ ಸೂಚಿಸಿ, ಇತರರ ಉತ್ತರ ಮತ್ತು ತರ್ಕ ಓದಿ, ವಿಮರ್ಶಿಸಿ, ಪರಿಷ್ಕರಿಸುತ್ತವೆ. ಕೆಲವು ಸುತ್ತಿನ ನಂತರ ನ್ಯಾಯಾಧೀಶ, ಮತ ಅಥವಾ ಒಮ್ಮತ ಫಲಿತಾಂಶ ಆರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Diversity Drives the Benefit",
+     "headingKn": "ವೈವಿಧ್ಯವೇ ಲಾಭ ತರುತ್ತದೆ",
+     "bodyEn": "Errors that are independent tend to cancel out when answers are compared or voted. If all agents share the same blind spot, agreeing more just makes the same mistake more confident.",
+     "bodyKn": "ಸ್ವತಂತ್ರ ದೋಷಗಳು ಉತ್ತರ ಹೋಲಿಸಿದಾಗ ಅಥವಾ ಮತದಾನದಲ್ಲಿ ರದ್ದಾಗುತ್ತವೆ. ಎಲ್ಲಾ agents ಒಂದೇ ಕುರುಡು ಸ್ಥಳ ಹಂಚಿದರೆ ಹೆಚ್ಚು ಒಪ್ಪುವಿಕೆ ಅದೇ ತಪ್ಪನ್ನು ಹೆಚ್ಚು ಆತ್ಮವಿಶ್ವಾಸದಿಂದ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Simple Voting Is a Strong Baseline",
+     "headingKn": "ಸರಳ ಮತದಾನ ಬಲಿಷ್ಠ ಆಧಾರ",
+     "bodyEn": "Sampling the same question several times and taking the majority often captures much of the gain at lower cost than long debates. Any debate design should be compared with this baseline.",
+     "bodyKn": "ಒಂದೇ ಪ್ರಶ್ನೆಯನ್ನು ಹಲವು ಬಾರಿ ಮಾದರಿ ತೆಗೆದು ಬಹುಮತ ತೆಗೆದುಕೊಂಡರೆ ಉದ್ದ ಚರ್ಚೆಗಿಂತ ಕಡಿಮೆ ವೆಚ್ಚದಲ್ಲಿ ಹೆಚ್ಚಿನ ಲಾಭ ಸಿಗುತ್ತದೆ. ಯಾವುದೇ ಚರ್ಚೆ ವಿನ್ಯಾಸವನ್ನು ಈ ಆಧಾರಕ್ಕೆ ಹೋಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "When Debate Does Not Help",
+     "headingKn": "ಚರ್ಚೆ ಸಹಾಯ ಮಾಡದಿರುವಾಗ",
+     "bodyEn": "For simple lookups or tasks with a checkable answer, run a verifier instead. Debate costs many model calls and can drift toward a persuasive but wrong consensus.",
+     "bodyKn": "ಸರಳ ಹುಡುಕಾಟ ಅಥವಾ ಪರಿಶೀಲಿಸಬಹುದಾದ ಉತ್ತರ ಇರುವ ಕೆಲಸಗಳಿಗೆ verifier ಬಳಸಿ. ಚರ್ಚೆ ಹಲವು ಮಾದರಿ ಕರೆ ವೆಚ್ಚ ಮಾಡುತ್ತದೆ ಮತ್ತು ಮನವೊಲಿಸುವ ಆದರೆ ತಪ್ಪು ಒಮ್ಮತದತ್ತ ಹೋಗಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Debate = propose, critique, revise, decide.\n• Independent errors cancel; shared blind spots do not.\n• Compare with simple majority voting.",
+     "bodyKn": "• ಚರ್ಚೆ = ಸೂಚಿಸಿ, ವಿಮರ್ಶಿಸಿ, ಪರಿಷ್ಕರಿಸಿ, ನಿರ್ಧರಿಸಿ.\n• ಸ್ವತಂತ್ರ ದೋಷ ರದ್ದಾಗುತ್ತವೆ.\n• ಸರಳ ಮತದಾನಕ್ಕೆ ಹೋಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "When do multiple agents help most?",
+       "qKn": "ಹಲವು agents ಯಾವಾಗ ಹೆಚ್ಚು ಸಹಾಯ?",
+       "opts": [
+        "When their errors are independent",
+        "When they share every blind spot",
+        "When there is one agent",
+        "Never"
+       ],
+       "optsKn": [
+        "ಅವುಗಳ ದೋಷ ಸ್ವತಂತ್ರವಾದಾಗ",
+        "ಎಲ್ಲಾ ಕುರುಡು ಸ್ಥಳ ಹಂಚಿದಾಗ",
+        "ಒಂದೇ agent",
+        "ಎಂದಿಗೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What baseline should debate be compared with?",
+       "qKn": "ಚರ್ಚೆಯನ್ನು ಯಾವ ಆಧಾರಕ್ಕೆ ಹೋಲಿಸಬೇಕು?",
+       "opts": [
+        "Simple majority voting over samples",
+        "Nothing",
+        "A larger font",
+        "A random guess"
+       ],
+       "optsKn": [
+        "ಮಾದರಿಗಳ ಸರಳ ಬಹುಮತ ಮತದಾನ",
+        "ಯಾವುದೂ ಇಲ್ಲ",
+        "ದೊಡ್ಡ ಫಾಂಟ್",
+        "ಯಾದೃಚ್ಛಿಕ ಊಹೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is better than debate for checkable answers?",
+       "qKn": "ಪರಿಶೀಲಿಸಬಹುದಾದ ಉತ್ತರಕ್ಕೆ ಚರ್ಚೆಗಿಂತ ಉತ್ತಮ?",
+       "opts": [
+        "A verifier",
+        "More rounds",
+        "More agents",
+        "Longer prompts"
+       ],
+       "optsKn": [
+        "verifier",
+        "ಹೆಚ್ಚು ಸುತ್ತು",
+        "ಹೆಚ್ಚು agents",
+        "ಉದ್ದ prompts"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321556",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Multi-Agent Debate and Collaboration — Collaboration Patterns and Role Design",
+  "titleKn": "ಬಹು-Agent ಚರ್ಚೆ ಮತ್ತು ಸಹಯೋಗ — ಸಹಯೋಗ ಮಾದರಿಗಳು ಮತ್ತು ಪಾತ್ರ ವಿನ್ಯಾಸ",
+  "desc": "Patterns beyond debate, such as generator-critic and planner-executor teams, and how to define roles and protocols.",
+  "descKn": "ಚರ್ಚೆಯ ಆಚೆ ಮಾದರಿಗಳು: generator-critic, planner-executor ತಂಡಗಳು, ಪಾತ್ರ ಮತ್ತು protocol ವ್ಯಾಖ್ಯಾನ.",
+  "objectives": [
+   "Describe generator-critic and planner-executor pairings.",
+   "Define clear roles and hand-off formats.",
+   "Limit rounds and define exit criteria."
+  ],
+  "objectivesKn": [
+   "generator-critic ಮತ್ತು planner-executor ವಿವರಿಸಿ.",
+   "ಸ್ಪಷ್ಟ ಪಾತ್ರ ಮತ್ತು ಹಸ್ತಾಂತರ ಸ್ವರೂಪ ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ಸುತ್ತು ಮಿತಿ ಮತ್ತು ನಿರ್ಗಮನ ಮಾನದಂಡ ವ್ಯಾಖ್ಯಾನಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Multi-Agent Debate and Collaboration — Collaboration Patterns and Role Design",
+     "textKn": "Multi-Agent Debate and Collaboration — Collaboration Patterns and Role Design",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Multi-Agent Debate and Collaboration",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Generator and Critic",
+     "headingKn": "Generator ಮತ್ತು Critic",
+     "bodyEn": "One agent drafts, another reviews against explicit criteria. Separating the two roles helps because a reviewer without the drafter's context is less likely to accept its own assumptions.",
+     "bodyKn": "ಒಂದು agent ಕರಡು ಬರೆಯುತ್ತದೆ, ಇನ್ನೊಂದು ಸ್ಪಷ್ಟ ಮಾನದಂಡಗಳ ವಿರುದ್ಧ ಪರಿಶೀಲಿಸುತ್ತದೆ. ಎರಡು ಪಾತ್ರ ಬೇರ್ಪಡಿಸುವುದು ಸಹಾಯ: ಕರಡು ಬರೆದವನ context ಇಲ್ಲದ ಪರಿಶೀಲಕ ಅದರ ಊಹೆಗಳನ್ನು ಒಪ್ಪುವ ಸಾಧ್ಯತೆ ಕಡಿಮೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Planner and Executor",
+     "headingKn": "Planner ಮತ್ತು Executor",
+     "bodyEn": "A planner produces steps and an executor carries them out with tools, reporting back. This limits how much context each needs and makes failures easier to attribute.",
+     "bodyKn": "planner ಹಂತಗಳನ್ನು ರಚಿಸುತ್ತದೆ, executor tools ನಿಂದ ನಿರ್ವಹಿಸಿ ವರದಿ ಮಾಡುತ್ತದೆ. ಪ್ರತಿಯೊಂದಕ್ಕೆ ಬೇಕಾದ context ಕಡಿಮೆ, ವೈಫಲ್ಯ ಆರೋಪಿಸುವುದು ಸುಲಭ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Structured Hand-Offs",
+     "headingKn": "ರಚನಾತ್ಮಕ ಹಸ್ತಾಂತರ",
+     "bodyEn": "Agents should exchange structured messages with fixed fields such as claim, evidence and confidence rather than long free text. Structure makes messages checkable and cheaper to read.",
+     "bodyKn": "agents ಉದ್ದ ಮುಕ್ತ ಪಠ್ಯದ ಬದಲು claim, evidence, confidence ನಂತಹ ನಿಗದಿತ ಕ್ಷೇತ್ರಗಳ ರಚನಾತ್ಮಕ ಸಂದೇಶ ವಿನಿಮಯ ಮಾಡಬೇಕು. ರಚನೆ ಸಂದೇಶ ಪರಿಶೀಲಿಸಲು ಮತ್ತು ಓದಲು ಅಗ್ಗ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Bound the Conversation",
+     "headingKn": "ಸಂಭಾಷಣೆ ಮಿತಿಗೊಳಿಸಿ",
+     "bodyEn": "Cap rounds, define what counts as agreement, and specify what happens on a deadlock, such as escalating to a human or using a fixed tie-break rule.",
+     "bodyKn": "ಸುತ್ತು ಮಿತಿ, ಒಪ್ಪುವಿಕೆ ಎಂದರೆ ಏನು, ಗತಿರೋಧ ಬಂದಾಗ ಏನು (ಮಾನವನಿಗೆ ಏರಿಸು ಅಥವಾ ನಿಗದಿತ tie-break) ಎಂದು ವ್ಯಾಖ್ಯಾನಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Split drafting from reviewing.\n• Use structured messages between agents.\n• Cap rounds and define deadlock handling.",
+     "bodyKn": "• ಕರಡು ಮತ್ತು ಪರಿಶೀಲನೆ ಬೇರ್ಪಡಿಸಿ.\n• ರಚನಾತ್ಮಕ ಸಂದೇಶ.\n• ಸುತ್ತು ಮಿತಿ, ಗತಿರೋಧ ನಿರ್ವಹಣೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why separate generator and critic?",
+       "qKn": "generator ಮತ್ತು critic ಏಕೆ ಬೇರ್ಪಡಿಸಬೇಕು?",
+       "opts": [
+        "A reviewer without the drafter context is less biased toward its assumptions",
+        "To double the cost only",
+        "They are the same",
+        "To remove criteria"
+       ],
+       "optsKn": [
+        "ಕರಡು ಬರೆದವನ context ಇಲ್ಲದ ಪರಿಶೀಲಕ ಊಹೆಗಳತ್ತ ಕಡಿಮೆ ಪಕ್ಷಪಾತಿ",
+        "ವೆಚ್ಚ ದ್ವಿಗುಣ ಮಾತ್ರ",
+        "ಒಂದೇ",
+        "ಮಾನದಂಡ ತೆಗೆಯಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why use structured messages?",
+       "qKn": "ರಚನಾತ್ಮಕ ಸಂದೇಶ ಏಕೆ?",
+       "opts": [
+        "They are checkable and cheaper to read",
+        "They are longer",
+        "They hide claims",
+        "They need no agents"
+       ],
+       "optsKn": [
+        "ಪರಿಶೀಲಿಸಬಹುದು, ಓದಲು ಅಗ್ಗ",
+        "ಉದ್ದ",
+        "claims ಮರೆ",
+        "agents ಬೇಡ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What should be defined for deadlocks?",
+       "qKn": "ಗತಿರೋಧಕ್ಕೆ ಏನು ವ್ಯಾಖ್ಯಾನಿಸಬೇಕು?",
+       "opts": [
+        "A tie-break or escalation rule",
+        "Nothing",
+        "More rounds forever",
+        "Random deletion"
+       ],
+       "optsKn": [
+        "tie-break ಅಥವಾ ಏರಿಕೆ ನಿಯಮ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಅನಂತ ಸುತ್ತು",
+        "ಯಾದೃಚ್ಛಿಕ ಅಳಿಸುವಿಕೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321556",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Multi-Agent Debate and Collaboration — Evaluating Whether Collaboration Helped",
+  "titleKn": "ಬಹು-Agent ಚರ್ಚೆ ಮತ್ತು ಸಹಯೋಗ — ಸಹಯೋಗ ಸಹಾಯ ಮಾಡಿತೇ ಎಂದು ಮೌಲ್ಯಮಾಪನ",
+  "desc": "A fair experimental design to test whether a multi-agent setup beats a single agent at equal cost.",
+  "descKn": "ಸಮಾನ ವೆಚ್ಚದಲ್ಲಿ ಬಹು-agent ಒಂದು agent ಅನ್ನು ಮೀರಿಸುತ್ತದೆಯೇ ಎಂದು ಪರೀಕ್ಷಿಸುವ ನ್ಯಾಯಯುತ ಪ್ರಯೋಗ.",
+  "objectives": [
+   "Compare against a single agent at matched cost.",
+   "Measure accuracy, cost, latency and agreement patterns.",
+   "Investigate failure cases such as groupthink."
+  ],
+  "objectivesKn": [
+   "ಹೊಂದಿಸಿದ ವೆಚ್ಚದಲ್ಲಿ ಒಂದು agent ಗೆ ಹೋಲಿಸಿ.",
+   "ನಿಖರತೆ, ವೆಚ್ಚ, ವಿಳಂಬ, ಒಪ್ಪುವಿಕೆ ಮಾದರಿ ಅಳೆಯಿರಿ.",
+   "groupthink ನಂತಹ ವೈಫಲ್ಯ ಪರಿಶೀಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Multi-Agent Debate and Collaboration — Evaluating Whether Collaboration Helped",
+     "textKn": "Multi-Agent Debate and Collaboration — Evaluating Whether Collaboration Helped",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Multi-Agent Debate and Collaboration",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Match the Budget",
+     "headingKn": "ಬಜೆಟ್ ಹೊಂದಿಸಿ",
+     "bodyEn": "A five-agent debate uses far more compute than one call. Compare it with a single agent allowed the same number of calls, for example with self-consistency voting, otherwise extra compute explains the gain.",
+     "bodyKn": "ಐದು-agent ಚರ್ಚೆ ಒಂದು ಕರೆಗಿಂತ ಹೆಚ್ಚು ಗಣನೆ ಬಳಸುತ್ತದೆ. ಅದೇ ಸಂಖ್ಯೆಯ ಕರೆ ಅನುಮತಿಸಿದ ಒಂದು agent ಗೆ (ಉದಾ. self-consistency ಮತದಾನ) ಹೋಲಿಸಿ; ಇಲ್ಲದಿದ್ದರೆ ಹೆಚ್ಚುವರಿ ಗಣನೆ ಲಾಭ ವಿವರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Look Inside the Conversation",
+     "headingKn": "ಸಂಭಾಷಣೆಯೊಳಗೆ ನೋಡಿ",
+     "bodyEn": "Track how often a correct answer is changed to a wrong one during debate, and vice versa. If agents flip toward the loudest voice, the process is amplifying confidence rather than truth.",
+     "bodyKn": "ಚರ್ಚೆಯ ವೇಳೆ ಸರಿ ಉತ್ತರ ತಪ್ಪಾಗಿ ಬದಲಾಗುವ ಮತ್ತು ವಿರುದ್ಧ ಆವರ್ತನ ಗಮನಿಸಿ. agents ಜೋರಾದ ಧ್ವನಿಯತ್ತ ತಿರುಗಿದರೆ ಪ್ರಕ್ರಿಯೆ ಸತ್ಯವನ್ನಲ್ಲ, ಆತ್ಮವಿಶ್ವಾಸವನ್ನು ವರ್ಧಿಸುತ್ತಿದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Groupthink and Monoculture",
+     "headingKn": "Groupthink ಮತ್ತು Monoculture",
+     "bodyEn": "Agents built from the same model tend to make correlated mistakes. Using different models, prompts or tools can increase real diversity, at the price of more complexity.",
+     "bodyKn": "ಒಂದೇ ಮಾದರಿಯಿಂದ ಮಾಡಿದ agents ಸಂಬಂಧಿತ ತಪ್ಪುಗಳನ್ನು ಮಾಡುತ್ತವೆ. ಬೇರೆ ಮಾದರಿ, prompts, tools ಬಳಸಿದರೆ ನಿಜ ವೈವಿಧ್ಯ ಹೆಚ್ಚುತ್ತದೆ, ಸಂಕೀರ್ಣತೆಯ ಬೆಲೆಯಲ್ಲಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Decide With Numbers",
+     "headingKn": "ಸಂಖ್ಯೆಗಳಿಂದ ನಿರ್ಧರಿಸಿ",
+     "bodyEn": "Adopt multi-agent designs only when measured accuracy gains justify the added cost and latency for your task. Otherwise the simpler system wins.",
+     "bodyKn": "ಅಳೆದ ನಿಖರತೆ ಲಾಭ ಹೆಚ್ಚುವರಿ ವೆಚ್ಚ ಮತ್ತು ವಿಳಂಬ ಸಮರ್ಥಿಸಿದರೆ ಮಾತ್ರ ಬಹು-agent ವಿನ್ಯಾಸ ಅಳವಡಿಸಿ. ಇಲ್ಲದಿದ್ದರೆ ಸರಳ ವ್ಯವಸ್ಥೆ ಗೆಲ್ಲುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Compare at matched cost.\n• Track answer flips inside the conversation.\n• Use real diversity and adopt only on measured gains.",
+     "bodyKn": "• ಹೊಂದಿಸಿದ ವೆಚ್ಚದಲ್ಲಿ ಹೋಲಿಸಿ.\n• ಉತ್ತರ ಬದಲಾವಣೆ ಗಮನಿಸಿ.\n• ನಿಜ ವೈವಿಧ್ಯ; ಅಳೆದ ಲಾಭದಲ್ಲಿ ಮಾತ್ರ ಅಳವಡಿಕೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why compare at matched cost?",
+       "qKn": "ಹೊಂದಿಸಿದ ವೆಚ್ಚದಲ್ಲಿ ಏಕೆ ಹೋಲಿಸಬೇಕು?",
+       "opts": [
+        "Extra compute alone could explain the gain",
+        "To make debate look better",
+        "Cost is irrelevant",
+        "To skip tests"
+       ],
+       "optsKn": [
+        "ಹೆಚ್ಚುವರಿ ಗಣನೆಯೇ ಲಾಭ ವಿವರಿಸಬಹುದು",
+        "ಚರ್ಚೆ ಉತ್ತಮ ಕಾಣಿಸಲು",
+        "ವೆಚ್ಚ ಅಪ್ರಸ್ತುತ",
+        "ಪರೀಕ್ಷೆ ಬಿಡಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What does frequent flipping toward the loudest voice suggest?",
+       "qKn": "ಜೋರಾದ ಧ್ವನಿಯತ್ತ ಆಗಾಗ್ಗೆ ತಿರುಗುವುದು ಏನು ಸೂಚಿಸುತ್ತದೆ?",
+       "opts": [
+        "Confidence is being amplified rather than truth",
+        "Perfect accuracy",
+        "Lower cost",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸತ್ಯವಲ್ಲ ಆತ್ಮವಿಶ್ವಾಸ ವರ್ಧನೆ",
+        "ಪರಿಪೂರ್ಣ ನಿಖರತೆ",
+        "ಕಡಿಮೆ ವೆಚ್ಚ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why are same-model agents risky?",
+       "qKn": "ಒಂದೇ ಮಾದರಿಯ agents ಅಪಾಯಕಾರಿ ಏಕೆ?",
+       "opts": [
+        "They make correlated mistakes",
+        "They are too different",
+        "They are free",
+        "They cannot talk"
+       ],
+       "optsKn": [
+        "ಸಂಬಂಧಿತ ತಪ್ಪುಗಳನ್ನು ಮಾಡುತ್ತವೆ",
+        "ಬಹಳ ಭಿನ್ನ",
+        "ಉಚಿತ",
+        "ಮಾತನಾಡಲಾರವು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321559",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Failure Modes: Why Agents Break — A Taxonomy of Failures",
+  "titleKn": "ವೈಫಲ್ಯ ವಿಧಾನಗಳು: Agents ಏಕೆ ಮುರಿಯುತ್ತವೆ — ವೈಫಲ್ಯಗಳ ವರ್ಗೀಕರಣ",
+  "desc": "A practical taxonomy of agent failures: planning, tool use, memory, environment and coordination, and how to name them.",
+  "descKn": "agent ವೈಫಲ್ಯಗಳ ಪ್ರಾಯೋಗಿಕ ವರ್ಗೀಕರಣ: ಯೋಜನೆ, tool ಬಳಕೆ, memory, ಪರಿಸರ, ಸಮನ್ವಯ.",
+  "objectives": [
+   "Group failures into planning, tool, memory, environment and coordination errors.",
+   "Explain why a shared vocabulary speeds up debugging.",
+   "Map each category to the first place to look."
+  ],
+  "objectivesKn": [
+   "ವೈಫಲ್ಯಗಳನ್ನು ಐದು ವರ್ಗಗಳಾಗಿ ಗುಂಪು ಮಾಡಿ.",
+   "ಹಂಚಿದ ಶಬ್ದಕೋಶ debugging ವೇಗಗೊಳಿಸುವುದು ಏಕೆ ವಿವರಿಸಿ.",
+   "ಪ್ರತಿ ವರ್ಗಕ್ಕೆ ಮೊದಲು ನೋಡಬೇಕಾದ ಸ್ಥಳ ತಿಳಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Failure Modes: Why Agents Break — A Taxonomy of Failures",
+     "textKn": "Failure Modes: Why Agents Break — A Taxonomy of Failures",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Failure Modes: Why Agents Break",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Planning Failures",
+     "headingKn": "ಯೋಜನಾ ವೈಫಲ್ಯಗಳು",
+     "bodyEn": "The agent chooses a wrong approach, skips a needed step, forgets the goal midway or stops early declaring success. Look at the plan or reasoning in the trace.",
+     "bodyKn": "agent ತಪ್ಪು ವಿಧಾನ ಆರಿಸುತ್ತದೆ, ಅಗತ್ಯ ಹಂತ ಬಿಡುತ್ತದೆ, ಮಧ್ಯದಲ್ಲಿ ಗುರಿ ಮರೆಯುತ್ತದೆ ಅಥವಾ ಬೇಗ ಯಶಸ್ಸು ಘೋಷಿಸಿ ನಿಲ್ಲುತ್ತದೆ. trace ನಲ್ಲಿ ಯೋಜನೆ/ತರ್ಕ ನೋಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Tool and Grounding Failures",
+     "headingKn": "Tool ಮತ್ತು Grounding ವೈಫಲ್ಯಗಳು",
+     "bodyEn": "Wrong tool, malformed arguments, misreading a result or inventing a result when a call fails. Look at each tool call and its output.",
+     "bodyKn": "ತಪ್ಪು tool, ತಪ್ಪಾದ arguments, ಫಲಿತಾಂಶ ತಪ್ಪಾಗಿ ಓದು, ಕರೆ ವಿಫಲವಾದಾಗ ಫಲಿತಾಂಶ ಕಲ್ಪಿಸು. ಪ್ರತಿ tool ಕರೆ ಮತ್ತು ಔಟ್‌ಪುಟ್ ನೋಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Memory and Context Failures",
+     "headingKn": "Memory ಮತ್ತು Context ವೈಫಲ್ಯಗಳು",
+     "bodyEn": "Important information falls out of the context window, stale memory is trusted, or long histories bury the instruction that matters. Look at what was actually in the prompt at the failing step.",
+     "bodyKn": "ಮುಖ್ಯ ಮಾಹಿತಿ context window ನಿಂದ ಹೊರಬೀಳುತ್ತದೆ, ಹಳೆಯ memory ನಂಬಲಾಗುತ್ತದೆ, ಉದ್ದ ಇತಿಹಾಸ ಮುಖ್ಯ ಸೂಚನೆ ಮುಚ್ಚುತ್ತದೆ. ವಿಫಲ ಹಂತದಲ್ಲಿ prompt ನಲ್ಲಿ ವಾಸ್ತವವಾಗಿ ಏನಿತ್ತು ನೋಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Environment and Coordination Failures",
+     "headingKn": "ಪರಿಸರ ಮತ್ತು ಸಮನ್ವಯ ವೈಫಲ್ಯಗಳು",
+     "bodyEn": "Flaky tools, timeouts, changed pages, agents overwriting each other or talking past each other. Look at the environment logs and the messages between agents.",
+     "bodyKn": "ಅಸ್ಥಿರ tools, timeouts, ಬದಲಾದ ಪುಟಗಳು, agents ಪರಸ್ಪರ ಬದಲಿಸುವುದು ಅಥವಾ ಪರಸ್ಪರ ಅರ್ಥವಾಗದಿರುವುದು. ಪರಿಸರ ಲಾಗ್ ಮತ್ತು agents ನಡುವಿನ ಸಂದೇಶ ನೋಡಿ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Failure category to first place to look",
+     "headers": [
+      "Category",
+      "First place to look"
+     ],
+     "rows": [
+      [
+       "Planning",
+       "The plan or reasoning in the trace"
+      ],
+      [
+       "Tool / grounding",
+       "Each tool call and output"
+      ],
+      [
+       "Memory / context",
+       "The actual prompt at the failing step"
+      ],
+      [
+       "Environment",
+       "Tool and system logs"
+      ],
+      [
+       "Coordination",
+       "Messages between agents"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Name failures by category to debug faster.\n• Each category has a first place to look.\n• Always inspect what the model actually saw.",
+     "bodyKn": "• ವರ್ಗದ ಪ್ರಕಾರ ಹೆಸರಿಸಿ.\n• ಪ್ರತಿ ವರ್ಗಕ್ಕೆ ಮೊದಲು ನೋಡುವ ಸ್ಥಳ.\n• ಮಾದರಿ ನೋಡಿದ್ದನ್ನು ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Where do you look first for a tool failure?",
+       "qKn": "tool ವೈಫಲ್ಯಕ್ಕೆ ಮೊದಲು ಎಲ್ಲಿ ನೋಡುತ್ತೀರಿ?",
+       "opts": [
+        "Each tool call and its output",
+        "The logo",
+        "The tokenizer",
+        "The GPU model"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ tool ಕರೆ ಮತ್ತು ಔಟ್‌ಪುಟ್",
+        "ಲೋಗೋ",
+        "tokenizer",
+        "GPU ಮಾದರಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which is a memory/context failure?",
+       "qKn": "ಯಾವುದು memory/context ವೈಫಲ್ಯ?",
+       "opts": [
+        "Key information fell out of the context window",
+        "A wrong tool name",
+        "A crashed server",
+        "A slow network"
+       ],
+       "optsKn": [
+        "ಮುಖ್ಯ ಮಾಹಿತಿ context window ನಿಂದ ಹೊರಬಿತ್ತು",
+        "ತಪ್ಪು tool ಹೆಸರು",
+        "ಕ್ರ್ಯಾಶ್ ಸರ್ವರ್",
+        "ನಿಧಾನ ನೆಟ್‌ವರ್ಕ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why use a shared failure vocabulary?",
+       "qKn": "ಹಂಚಿದ ವೈಫಲ್ಯ ಶಬ್ದಕೋಶ ಏಕೆ?",
+       "opts": [
+        "It speeds up debugging and communication",
+        "It hides bugs",
+        "It removes logs",
+        "It adds cost"
+       ],
+       "optsKn": [
+        "debugging ಮತ್ತು ಸಂವಹನ ವೇಗ",
+        "ದೋಷ ಮರೆ",
+        "ಲಾಗ್ ತೆಗೆಯುತ್ತದೆ",
+        "ವೆಚ್ಚ ಸೇರಿಸುತ್ತದೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321559",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Failure Modes: Why Agents Break — Cascades, Loops and Silent Failures",
+  "titleKn": "ವೈಫಲ್ಯ ವಿಧಾನಗಳು: Agents ಏಕೆ ಮುರಿಯುತ್ತವೆ — ಕ್ಯಾಸ್ಕೇಡ್, ಲೂಪ್, ಮೌನ ವೈಫಲ್ಯ",
+  "desc": "Failures that are harder to notice: error cascades, repetition loops, confident wrong answers and reward-hacking behaviour.",
+  "descKn": "ಗಮನಿಸಲು ಕಷ್ಟವಾದ ವೈಫಲ್ಯಗಳು: ದೋಷ ಕ್ಯಾಸ್ಕೇಡ್, ಪುನರಾವರ್ತನೆ ಲೂಪ್, ಆತ್ಮವಿಶ್ವಾಸದ ತಪ್ಪು ಉತ್ತರ, reward-hacking.",
+  "objectives": [
+   "Explain how an early error cascades through later steps.",
+   "Detect repetition loops.",
+   "Recognise silent failures and specification gaming."
+  ],
+  "objectivesKn": [
+   "ಆರಂಭದ ದೋಷ ಕ್ಯಾಸ್ಕೇಡ್ ಆಗುವುದು ವಿವರಿಸಿ.",
+   "ಪುನರಾವರ್ತನೆ ಲೂಪ್ ಪತ್ತೆ ಮಾಡಿ.",
+   "ಮೌನ ವೈಫಲ್ಯ ಮತ್ತು specification gaming ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Failure Modes: Why Agents Break — Cascades, Loops and Silent Failures",
+     "textKn": "Failure Modes: Why Agents Break — Cascades, Loops and Silent Failures",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Failure Modes: Why Agents Break",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cascades",
+     "headingKn": "ಕ್ಯಾಸ್ಕೇಡ್",
+     "bodyEn": "A wrong intermediate result is rarely questioned, so every later step builds on it. The visible failure appears far from its cause, which is why tracing back through the trace matters.",
+     "bodyKn": "ತಪ್ಪಾದ ಮಧ್ಯಂತರ ಫಲಿತಾಂಶ ಅಪರೂಪವಾಗಿ ಪ್ರಶ್ನಿಸಲ್ಪಡುತ್ತದೆ, ನಂತರದ ಪ್ರತಿ ಹಂತ ಅದರ ಮೇಲೆ ನಿರ್ಮಾಣ. ಕಾಣುವ ವೈಫಲ್ಯ ಕಾರಣದಿಂದ ದೂರ ಕಾಣಿಸುತ್ತದೆ; trace ಹಿಂದೆ ಗುರುತಿಸುವುದು ಮುಖ್ಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Repetition Loops",
+     "headingKn": "ಪುನರಾವರ್ತನೆ ಲೂಪ್‌ಗಳು",
+     "bodyEn": "An agent may call the same tool with the same arguments again and again, or alternate between two states. Detect repeated identical actions and break out with a different strategy or a stop.",
+     "bodyKn": "agent ಒಂದೇ tool ಅನ್ನು ಒಂದೇ arguments ಜೊತೆ ಪದೇ ಪದೇ ಕರೆಯಬಹುದು ಅಥವಾ ಎರಡು ಸ್ಥಿತಿಗಳ ನಡುವೆ ಬದಲಾಗಬಹುದು. ಪುನರಾವರ್ತಿತ ಒಂದೇ ಕ್ರಿಯೆ ಪತ್ತೆ ಮಾಡಿ ಬೇರೆ ತಂತ್ರ ಅಥವಾ ನಿಲುಗಡೆಯಿಂದ ಹೊರಬನ್ನಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Silent Failures",
+     "headingKn": "ಮೌನ ವೈಫಲ್ಯಗಳು",
+     "bodyEn": "The agent reports success when it did not succeed, or hides an error in a fluent summary. Verify outcomes independently, for example by running a check rather than accepting the agent's claim.",
+     "bodyKn": "agent ಯಶಸ್ವಿಯಾಗದಿದ್ದರೂ ಯಶಸ್ಸು ವರದಿ ಮಾಡುತ್ತದೆ ಅಥವಾ ನಿರರ್ಗಳ ಸಾರಾಂಶದಲ್ಲಿ ದೋಷ ಮರೆಮಾಡುತ್ತದೆ. ಫಲಿತಾಂಶಗಳನ್ನು ಸ್ವತಂತ್ರವಾಗಿ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Specification Gaming",
+     "headingKn": "Specification Gaming",
+     "bodyEn": "Given a measurable target, an agent may satisfy it in unintended ways, such as editing the test rather than the code. Design checks that are hard to satisfy without doing the real work.",
+     "bodyKn": "ಅಳೆಯಬಹುದಾದ ಗುರಿ ನೀಡಿದರೆ agent ಅನಪೇಕ್ಷಿತ ರೀತಿಯಲ್ಲಿ ಪೂರೈಸಬಹುದು, ಉದಾ. ಕೋಡ್ ಬದಲು test ತಿದ್ದುವುದು. ನಿಜ ಕೆಲಸ ಮಾಡದೆ ಪೂರೈಸಲು ಕಷ್ಟವಾದ ಪರಿಶೀಲನೆ ವಿನ್ಯಾಸಗೊಳಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Early errors cascade; trace back to the cause.\n• Detect repeated identical actions.\n• Verify outcomes independently of the agent's claims.",
+     "bodyKn": "• ಆರಂಭದ ದೋಷ ಕ್ಯಾಸ್ಕೇಡ್.\n• ಪುನರಾವರ್ತಿತ ಕ್ರಿಯೆ ಪತ್ತೆ.\n• ಫಲಿತಾಂಶ ಸ್ವತಂತ್ರವಾಗಿ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why is the visible failure often far from the cause?",
+       "qKn": "ಕಾಣುವ ವೈಫಲ್ಯ ಕಾರಣದಿಂದ ದೂರ ಏಕೆ?",
+       "opts": [
+        "Later steps build on an early wrong result",
+        "Models forget names",
+        "Logs are short",
+        "GPUs are slow"
+       ],
+       "optsKn": [
+        "ನಂತರದ ಹಂತಗಳು ಆರಂಭದ ತಪ್ಪಿನ ಮೇಲೆ ನಿರ್ಮಾಣ",
+        "ಮಾದರಿ ಹೆಸರು ಮರೆಯುತ್ತದೆ",
+        "ಲಾಗ್ ಚಿಕ್ಕದು",
+        "GPU ನಿಧಾನ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How can repetition loops be detected?",
+       "qKn": "ಪುನರಾವರ್ತನೆ ಲೂಪ್ ಹೇಗೆ ಪತ್ತೆ?",
+       "opts": [
+        "Track repeated identical actions",
+        "Ignore logs",
+        "Count words in the prompt",
+        "Reboot"
+       ],
+       "optsKn": [
+        "ಪುನರಾವರ್ತಿತ ಒಂದೇ ಕ್ರಿಯೆ ಗಮನಿಸಿ",
+        "ಲಾಗ್ ನಿರ್ಲಕ್ಷ್ಯ",
+        "prompt ಪದ ಎಣಿಕೆ",
+        "ರೀಬೂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is specification gaming?",
+       "qKn": "specification gaming ಎಂದರೇನು?",
+       "opts": [
+        "Meeting a measured target in unintended ways",
+        "Playing games",
+        "Writing specs",
+        "A tokenizer bug"
+       ],
+       "optsKn": [
+        "ಅಳೆದ ಗುರಿಯನ್ನು ಅನಪೇಕ್ಷಿತ ರೀತಿಯಲ್ಲಿ ಪೂರೈಸುವುದು",
+        "ಆಟ ಆಡುವುದು",
+        "ವಿಶೇಷಣ ಬರೆಯುವುದು",
+        "tokenizer ದೋಷ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321559",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Failure Modes: Why Agents Break — Prevention, Detection and Recovery",
+  "titleKn": "ವೈಫಲ್ಯ ವಿಧಾನಗಳು: Agents ಏಕೆ ಮುರಿಯುತ್ತವೆ — ತಡೆ, ಪತ್ತೆ, ಚೇತರಿಕೆ",
+  "desc": "Design defences: limits, verification, retries with variation, escalation and post-incident learning.",
+  "descKn": "ರಕ್ಷಣಾ ವಿನ್ಯಾಸ: ಮಿತಿಗಳು, ಪರಿಶೀಲನೆ, ವ್ಯತ್ಯಾಸದೊಂದಿಗೆ ಮರುಪ್ರಯತ್ನ, ಏರಿಕೆ, ಘಟನೆ ನಂತರದ ಕಲಿಕೆ.",
+  "objectives": [
+   "Set limits and budgets that bound failures.",
+   "Add independent verification and checkpoints.",
+   "Design escalation and a blameless post-mortem habit."
+  ],
+  "objectivesKn": [
+   "ವೈಫಲ್ಯ ಮಿತಿಗೊಳಿಸುವ ಮಿತಿಗಳನ್ನು ಹೊಂದಿಸಿ.",
+   "ಸ್ವತಂತ್ರ ಪರಿಶೀಲನೆ ಮತ್ತು checkpoints ಸೇರಿಸಿ.",
+   "ಏರಿಕೆ ಮತ್ತು post-mortem ಅಭ್ಯಾಸ ವಿನ್ಯಾಸ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Failure Modes: Why Agents Break — Prevention, Detection and Recovery",
+     "textKn": "Failure Modes: Why Agents Break — Prevention, Detection and Recovery",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Failure Modes: Why Agents Break",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Bound the Damage",
+     "headingKn": "ಹಾನಿ ಮಿತಿಗೊಳಿಸಿ",
+     "bodyEn": "Step caps, time and cost budgets, least-privilege tools and confirmation for irreversible actions make sure a failing agent fails small.",
+     "bodyKn": "step ಮಿತಿ, ಸಮಯ ಮತ್ತು ವೆಚ್ಚ ಬಜೆಟ್, ಕನಿಷ್ಠ-ಹಕ್ಕು tools, ಹಿಂದಿರುಗಿಸಲಾಗದ ಕ್ರಿಯೆಗೆ ದೃಢೀಕರಣ: ವಿಫಲ agent ಚಿಕ್ಕದಾಗಿ ವಿಫಲವಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Verify Independently",
+     "headingKn": "ಸ್ವತಂತ್ರವಾಗಿ ಪರಿಶೀಲಿಸಿ",
+     "bodyEn": "Check outcomes with code, tests or a separate reviewer instead of trusting the agent's summary. Add checkpoints so a run can resume from a known good state.",
+     "bodyKn": "ಫಲಿತಾಂಶಗಳನ್ನು ಕೋಡ್, tests ಅಥವಾ ಪ್ರತ್ಯೇಕ ಪರಿಶೀಲಕದಿಂದ ಪರಿಶೀಲಿಸಿ. ತಿಳಿದ ಉತ್ತಮ state ಇಂದ ಮುಂದುವರಿಸಲು checkpoints ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Retry With Variation",
+     "headingKn": "ವ್ಯತ್ಯಾಸದೊಂದಿಗೆ ಮರುಪ್ರಯತ್ನ",
+     "bodyEn": "Retrying the identical call usually repeats the failure. Change something: the prompt, the tool, the strategy or the model, and cap the number of retries.",
+     "bodyKn": "ಅದೇ ಕರೆ ಮರುಪ್ರಯತ್ನಿಸಿದರೆ ಸಾಮಾನ್ಯವಾಗಿ ವೈಫಲ್ಯ ಪುನರಾವರ್ತನೆ. prompt, tool, ತಂತ್ರ ಅಥವಾ ಮಾದರಿ ಬದಲಿಸಿ, ಮರುಪ್ರಯತ್ನಕ್ಕೆ ಮಿತಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Escalate and Learn",
+     "headingKn": "ಏರಿಸಿ ಮತ್ತು ಕಲಿಯಿರಿ",
+     "bodyEn": "When stuck, hand off to a human with the trace and a summary of what was tried. After each incident, write a short blameless review and add a regression test.",
+     "bodyKn": "ಸಿಲುಕಿದಾಗ trace ಮತ್ತು ಪ್ರಯತ್ನಿಸಿದ್ದರ ಸಾರಾಂಶದೊಂದಿಗೆ ಮಾನವನಿಗೆ ವಹಿಸಿ. ಪ್ರತಿ ಘಟನೆ ನಂತರ ಚಿಕ್ಕ blameless ವಿಮರ್ಶೆ ಬರೆದು regression test ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Fail small with caps and least privilege.\n• Verify independently; checkpoint.\n• Retry with variation, escalate, and add regression tests.",
+     "bodyKn": "• ಮಿತಿ, ಕನಿಷ್ಠ ಹಕ್ಕಿನಿಂದ ಚಿಕ್ಕದಾಗಿ ವಿಫಲ.\n• ಸ್ವತಂತ್ರ ಪರಿಶೀಲನೆ; checkpoint.\n• ವ್ಯತ್ಯಾಸದ ಮರುಪ್ರಯತ್ನ, ಏರಿಕೆ, regression test."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why vary a retry?",
+       "qKn": "ಮರುಪ್ರಯತ್ನದಲ್ಲಿ ವ್ಯತ್ಯಾಸ ಏಕೆ?",
+       "opts": [
+        "An identical retry usually repeats the failure",
+        "Variation is illegal",
+        "It saves tokens",
+        "It hides the error"
+       ],
+       "optsKn": [
+        "ಅದೇ ಮರುಪ್ರಯತ್ನ ವೈಫಲ್ಯ ಪುನರಾವರ್ತಿಸುತ್ತದೆ",
+        "ವ್ಯತ್ಯಾಸ ಕಾನೂನುಬಾಹಿರ",
+        "tokens ಉಳಿತಾಯ",
+        "ದೋಷ ಮರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What should be handed to a human on escalation?",
+       "qKn": "ಏರಿಕೆಯಲ್ಲಿ ಮಾನವನಿಗೆ ಏನು ನೀಡಬೇಕು?",
+       "opts": [
+        "The trace and a summary of what was tried",
+        "Nothing",
+        "Only the final answer",
+        "A new model"
+       ],
+       "optsKn": [
+        "trace ಮತ್ತು ಪ್ರಯತ್ನಿಸಿದ್ದರ ಸಾರಾಂಶ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಅಂತಿಮ ಉತ್ತರ ಮಾತ್ರ",
+        "ಹೊಸ ಮಾದರಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What follows every incident?",
+       "qKn": "ಪ್ರತಿ ಘಟನೆ ನಂತರ ಏನು?",
+       "opts": [
+        "A blameless review and a regression test",
+        "Deleting logs",
+        "Blaming someone",
+        "Nothing"
+       ],
+       "optsKn": [
+        "blameless ವಿಮರ್ಶೆ ಮತ್ತು regression test",
+        "ಲಾಗ್ ಅಳಿಸುವುದು",
+        "ಯಾರನ್ನಾದರೂ ದೂಷಿಸುವುದು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

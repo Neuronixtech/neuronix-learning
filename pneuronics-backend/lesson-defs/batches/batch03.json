@@ -1,0 +1,3075 @@
+[
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321532",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "LangGraph — Agents as Stateful Graphs",
+  "titleKn": "LangGraph — Stateful Graphs ಆಗಿ Agents",
+  "desc": "Modelling an agent as nodes, edges and shared state, and why explicit graphs make control flow inspectable.",
+  "descKn": "agent ಅನ್ನು nodes, edges, ಹಂಚಿದ state ಆಗಿ ಮಾದರಿ ಮಾಡುವುದು, ಸ್ಪಷ್ಟ graph ಹರಿವನ್ನು ಪರಿಶೀಲಿಸಬಹುದಾಗಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Describe nodes, edges and shared state.",
+   "Explain conditional edges and loops.",
+   "Explain why explicit control flow helps debugging."
+  ],
+  "objectivesKn": [
+   "nodes, edges, ಹಂಚಿದ state ವಿವರಿಸಿ.",
+   "ಷರತ್ತು edges ಮತ್ತು loops ವಿವರಿಸಿ.",
+   "ಸ್ಪಷ್ಟ ಹರಿವು debugging ಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "LangGraph — Agents as Stateful Graphs",
+     "textKn": "LangGraph — Agents as Stateful Graphs",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in LangGraph: Stateful Graphs and Durable Execution",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Graph Instead of a Loop",
+     "headingKn": "Loop ಬದಲು Graph",
+     "bodyEn": "A graph-based agent is a set of nodes (steps such as call the model or run a tool) connected by edges that say what runs next. The path is written down rather than hidden inside one big loop.",
+     "bodyKn": "graph ಆಧಾರಿತ agent nodes (ಮಾದರಿ ಕರೆ, tool ಚಾಲನೆ) ಮತ್ತು ಮುಂದೆ ಏನು ಎಂದು ಹೇಳುವ edges ಗಳ ಸಮೂಹ. ಹಾದಿ ಒಂದು ದೊಡ್ಡ loop ಒಳಗೆ ಅಡಗುವ ಬದಲು ಬರೆಯಲ್ಪಟ್ಟಿರುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Shared State",
+     "headingKn": "ಹಂಚಿದ State",
+     "bodyEn": "Nodes read from and write to one typed state object, such as messages and intermediate results. Update rules (for example, append versus replace) define how concurrent writes combine.",
+     "bodyKn": "nodes ಒಂದು ಟೈಪ್ ಮಾಡಿದ state ವಸ್ತುವಿನಿಂದ ಓದಿ ಅದಕ್ಕೆ ಬರೆಯುತ್ತವೆ. ನವೀಕರಣ ನಿಯಮಗಳು (ಸೇರಿಸು vs ಬದಲಿಸು) ಏಕಕಾಲಿಕ ಬರವಣಿಗೆ ಹೇಗೆ ಸೇರುತ್ತವೆ ಎಂದು ನಿರ್ಧರಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Conditional Edges and Cycles",
+     "headingKn": "ಷರತ್ತು Edges ಮತ್ತು Cycles",
+     "bodyEn": "A conditional edge picks the next node from the state, for example go to tools if the model requested one, else finish. Cycles let the graph loop until a condition is met.",
+     "bodyKn": "ಷರತ್ತು edge state ನಿಂದ ಮುಂದಿನ node ಆರಿಸುತ್ತದೆ: ಮಾದರಿ tool ಕೇಳಿದರೆ tools ಗೆ, ಇಲ್ಲದಿದ್ದರೆ ಮುಕ್ತಾಯ. Cycles ಷರತ್ತು ಪೂರೈಸುವವರೆಗೆ ಗ್ರಾಫ್ ಲೂಪ್ ಮಾಡಲು ಬಿಡುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why Explicitness Helps",
+     "headingKn": "ಸ್ಪಷ್ಟತೆ ಏಕೆ ಸಹಾಯ",
+     "bodyEn": "When the flow is data, you can draw it, test individual nodes, add a human approval node or inspect exactly which step failed. That is harder when control flow is buried in prompts.",
+     "bodyKn": "ಹರಿವು ಡೇಟಾ ಆದಾಗ ಅದನ್ನು ಬರೆಯಬಹುದು, ಪ್ರತ್ಯೇಕ nodes ಪರೀಕ್ಷಿಸಬಹುದು, ಮಾನವ ಅನುಮೋದನೆ node ಸೇರಿಸಬಹುದು, ಯಾವ ಹಂತ ವಿಫಲ ಎಂದು ನೋಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Agents become nodes, edges and shared state.\n• Conditional edges route by state.\n• Explicit flow is testable and inspectable.",
+     "bodyKn": "• agent = nodes, edges, state.\n• ಷರತ್ತು edges state ಪ್ರಕಾರ.\n• ಸ್ಪಷ್ಟ ಹರಿವು ಪರೀಕ್ಷಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does a conditional edge do?",
+       "qKn": "ಷರತ್ತು edge ಏನು ಮಾಡುತ್ತದೆ?",
+       "opts": [
+        "Chooses the next node based on state",
+        "Deletes state",
+        "Trains the model",
+        "Formats text"
+       ],
+       "optsKn": [
+        "state ಆಧರಿಸಿ ಮುಂದಿನ node ಆರಿಸುತ್ತದೆ",
+        "state ಅಳಿಸುತ್ತದೆ",
+        "ಮಾದರಿ ತರಬೇತಿ",
+        "ಪಠ್ಯ ರೂಪಿಸುತ್ತದೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why keep control flow explicit?",
+       "qKn": "ಹರಿವು ಸ್ಪಷ್ಟವಾಗಿ ಏಕೆ ಇಡಬೇಕು?",
+       "opts": [
+        "It can be drawn, tested and inspected",
+        "It hides errors",
+        "It removes nodes",
+        "It is required by law"
+       ],
+       "optsKn": [
+        "ಬರೆಯಬಹುದು, ಪರೀಕ್ಷಿಸಬಹುದು",
+        "ದೋಷ ಮರೆಮಾಡುತ್ತದೆ",
+        "nodes ತೆಗೆಯುತ್ತದೆ",
+        "ಕಾನೂನು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is shared state?",
+       "qKn": "ಹಂಚಿದ state ಎಂದರೇನು?",
+       "opts": [
+        "A typed object nodes read and write",
+        "A tokenizer",
+        "A GPU",
+        "A prompt only"
+       ],
+       "optsKn": [
+        "nodes ಓದಿ ಬರೆಯುವ ಟೈಪ್ ವಸ್ತು",
+        "tokenizer",
+        "GPU",
+        "prompt ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321532",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "LangGraph — Persistence, Checkpoints and Durable Execution",
+  "titleKn": "LangGraph — Persistence, Checkpoints, Durable Execution",
+  "desc": "How saving state after each step lets an agent resume after failure, pause for humans and travel back in time.",
+  "descKn": "ಪ್ರತಿ ಹಂತದ ನಂತರ state ಉಳಿಸುವುದು ವೈಫಲ್ಯದ ನಂತರ ಮುಂದುವರಿಯಲು, ಮಾನವರಿಗಾಗಿ ನಿಲ್ಲಲು ಹೇಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
+  "objectives": [
+   "Explain checkpoints and what they store.",
+   "Describe pause-and-resume with human input.",
+   "Explain replay and forking from a past checkpoint."
+  ],
+  "objectivesKn": [
+   "checkpoints ಮತ್ತು ಅವು ಏನು ಸಂಗ್ರಹಿಸುತ್ತವೆ ವಿವರಿಸಿ.",
+   "ಮಾನವ ಇನ್‌ಪುಟ್‌ಗೆ ನಿಲ್ಲಿಸಿ-ಮುಂದುವರಿಸಿ ವಿವರಿಸಿ.",
+   "ಹಿಂದಿನ checkpoint ನಿಂದ replay ಮತ್ತು fork ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "LangGraph — Persistence, Checkpoints and Durable Execution",
+     "textKn": "LangGraph — Persistence, Checkpoints and Durable Execution",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in LangGraph: Stateful Graphs and Durable Execution",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Checkpoint After Every Step",
+     "headingKn": "ಪ್ರತಿ ಹಂತದ ನಂತರ Checkpoint",
+     "bodyEn": "After each node the framework can save the whole state under a thread id. If the process crashes, execution restarts from the last checkpoint instead of from the beginning.",
+     "bodyKn": "ಪ್ರತಿ node ನಂತರ ಚೌಕಟ್ಟು ಇಡೀ state ಅನ್ನು thread id ಅಡಿ ಉಳಿಸಬಹುದು. ಕ್ರ್ಯಾಶ್ ಆದರೆ ಕೊನೆಯ checkpoint ನಿಂದ ಮುಂದುವರಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Human-in-the-Loop Pauses",
+     "headingKn": "ಮಾನವ-ಒಳಗೊಂಡ ವಿರಾಮ",
+     "bodyEn": "A graph can stop before a risky node, wait for a person to approve or edit the state, and then resume. Because state was saved, the wait can last minutes or days.",
+     "bodyKn": "ಅಪಾಯಕಾರಿ node ಮೊದಲು ನಿಲ್ಲಿಸಿ, ವ್ಯಕ್ತಿ ಅನುಮೋದಿಸುವವರೆಗೆ ಕಾಯಿ, state ತಿದ್ದಿ ಮುಂದುವರಿಸಬಹುದು. state ಉಳಿದಿರುವುದರಿಂದ ಕಾಯುವಿಕೆ ನಿಮಿಷ ಅಥವಾ ದಿನಗಳಾಗಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Replay and Forking",
+     "headingKn": "Replay ಮತ್ತು Forking",
+     "bodyEn": "Past checkpoints can be re-run or forked with a changed state, which is useful for debugging a bad decision or trying an alternative without redoing earlier work.",
+     "bodyKn": "ಹಿಂದಿನ checkpoints ಮರುಚಾಲನೆ ಅಥವಾ ಬದಲಾದ state ಜೊತೆ fork ಮಾಡಬಹುದು; ಕೆಟ್ಟ ನಿರ್ಧಾರ debug ಮಾಡಲು ಉಪಯುಕ್ತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Durability Has Requirements",
+     "headingKn": "Durability ಗೆ ಅಗತ್ಯಗಳು",
+     "bodyEn": "State must be serialisable, and side-effecting nodes must be safe to re-run or protected by idempotency keys, because a resumed step may execute twice.",
+     "bodyKn": "state serialise ಆಗಬೇಕು; side-effect nodes ಮರುಚಾಲನೆಗೆ ಸುರಕ್ಷಿತ ಅಥವಾ idempotency keys ನಿಂದ ರಕ್ಷಿತವಾಗಿರಬೇಕು, ಏಕೆಂದರೆ ಮುಂದುವರಿದ ಹಂತ ಎರಡು ಬಾರಿ ಚಲಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Checkpoints let runs resume after failure.\n• Pauses enable human approval.\n• Re-runnable steps need idempotency.",
+     "bodyKn": "• checkpoints ವೈಫಲ್ಯದ ನಂತರ ಮುಂದುವರಿಸಲು.\n• ವಿರಾಮ ಮಾನವ ಅನುಮೋದನೆಗೆ.\n• ಮರುಚಾಲನೆಗೆ idempotency."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does a checkpoint enable?",
+       "qKn": "checkpoint ಏನು ಸಾಧ್ಯಗೊಳಿಸುತ್ತದೆ?",
+       "opts": [
+        "Resuming from the last saved step",
+        "Faster models",
+        "Smaller vocabularies",
+        "Free compute"
+       ],
+       "optsKn": [
+        "ಕೊನೆಯ ಉಳಿಸಿದ ಹಂತದಿಂದ ಮುಂದುವರಿಯುವುದು",
+        "ವೇಗದ ಮಾದರಿ",
+        "ಚಿಕ್ಕ vocabulary",
+        "ಉಚಿತ ಗಣನೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why can a resumed step run twice?",
+       "qKn": "ಮುಂದುವರಿದ ಹಂತ ಎರಡು ಬಾರಿ ಏಕೆ ಚಲಿಸಬಹುದು?",
+       "opts": [
+        "It may have partly executed before the crash",
+        "Graphs always repeat",
+        "Users click twice",
+        "Checkpoints duplicate"
+       ],
+       "optsKn": [
+        "ಕ್ರ್ಯಾಶ್ ಮೊದಲು ಭಾಗಶಃ ಚಲಿಸಿರಬಹುದು",
+        "graphs ಪುನರಾವರ್ತಿಸುತ್ತವೆ",
+        "ಬಳಕೆದಾರ ಎರಡು ಬಾರಿ ಕ್ಲಿಕ್",
+        "checkpoints ನಕಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is forking a checkpoint good for?",
+       "qKn": "checkpoint fork ಯಾವುದಕ್ಕೆ ಉತ್ತಮ?",
+       "opts": [
+        "Trying an alternative without redoing earlier work",
+        "Deleting history",
+        "Encrypting state",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹಿಂದಿನ ಕೆಲಸ ಮರುಮಾಡದೆ ಪರ್ಯಾಯ ಪ್ರಯತ್ನ",
+        "ಇತಿಹಾಸ ಅಳಿಸುವುದು",
+        "state ಎನ್‌ಕ್ರಿಪ್ಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321532",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "LangGraph — Multi-Agent Graphs, Streaming and Production Practice",
+  "titleKn": "LangGraph — ಬಹು-Agent Graphs, Streaming, ಉತ್ಪಾದನಾ ಅಭ್ಯಾಸ",
+  "desc": "Composing graphs into supervisor and subgraph designs, streaming partial results, and operating graphs in production.",
+  "descKn": "graphs ಅನ್ನು supervisor ಮತ್ತು subgraph ವಿನ್ಯಾಸಗಳಾಗಿ ಸಂಯೋಜಿಸುವುದು, ಭಾಗಶಃ ಫಲಿತಾಂಶ streaming, ಉತ್ಪಾದನೆಯಲ್ಲಿ ನಿರ್ವಹಣೆ.",
+  "objectives": [
+   "Describe subgraphs and supervisor routing.",
+   "Explain streaming intermediate events.",
+   "List production concerns: limits, observability and testing."
+  ],
+  "objectivesKn": [
+   "subgraphs ಮತ್ತು supervisor routing ವಿವರಿಸಿ.",
+   "ಮಧ್ಯಂತರ ಘಟನೆ streaming ವಿವರಿಸಿ.",
+   "ಉತ್ಪಾದನಾ ಕಾಳಜಿಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "LangGraph — Multi-Agent Graphs, Streaming and Production Practice",
+     "textKn": "LangGraph — Multi-Agent Graphs, Streaming and Production Practice",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in LangGraph: Stateful Graphs and Durable Execution",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Subgraphs and Supervisors",
+     "headingKn": "Subgraphs ಮತ್ತು Supervisors",
+     "bodyEn": "A graph can be a node inside another graph, so a specialist agent is developed and tested on its own. A supervisor node routes between such specialists based on the task.",
+     "bodyKn": "ಒಂದು graph ಇನ್ನೊಂದು graph ನ node ಆಗಬಹುದು; ತಜ್ಞ agent ಅನ್ನು ಪ್ರತ್ಯೇಕವಾಗಿ ಅಭಿವೃದ್ಧಿಪಡಿಸಿ ಪರೀಕ್ಷಿಸಬಹುದು. supervisor node ಕೆಲಸದ ಆಧಾರದಲ್ಲಿ ತಜ್ಞರ ನಡುವೆ route ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Streaming",
+     "headingKn": "Streaming",
+     "bodyEn": "Instead of waiting for the final answer, a graph can stream node updates and tokens, so a UI can show progress and partial output. Streaming changes how users perceive latency.",
+     "bodyKn": "ಅಂತಿಮ ಉತ್ತರಕ್ಕೆ ಕಾಯದೆ graph node ನವೀಕರಣ ಮತ್ತು tokens stream ಮಾಡಬಹುದು; UI ಪ್ರಗತಿ ತೋರಿಸಬಹುದು. ಬಳಕೆದಾರರ ವಿಳಂಬ ಗ್ರಹಿಕೆ ಬದಲಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Limits and Safety",
+     "headingKn": "ಮಿತಿಗಳು ಮತ್ತು ಸುರಕ್ಷತೆ",
+     "bodyEn": "Cycles need a recursion or step limit so a graph cannot loop forever, and tool nodes need permissions and timeouts like any tool call.",
+     "bodyKn": "Cycles ಗೆ recursion ಅಥವಾ step ಮಿತಿ ಬೇಕು; tool nodes ಗೆ ಅನುಮತಿ ಮತ್ತು timeout ಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Test and Observe",
+     "headingKn": "ಪರೀಕ್ಷೆ ಮತ್ತು ವೀಕ್ಷಣೆ",
+     "bodyEn": "Test nodes individually with fixed state, test whole graphs on outcomes, and trace each run so a failed decision can be located to one node.",
+     "bodyKn": "nodes ಅನ್ನು ನಿಗದಿತ state ಜೊತೆ ಪ್ರತ್ಯೇಕ ಪರೀಕ್ಷಿಸಿ, ಇಡೀ graph ಅನ್ನು ಫಲಿತಾಂಶದಲ್ಲಿ ಪರೀಕ್ಷಿಸಿ, ಪ್ರತಿ run trace ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Subgraphs modularise multi-agent systems.\n• Streaming improves perceived latency.\n• Cap recursion and test nodes and whole graphs.",
+     "bodyKn": "• subgraphs ಮಾಡ್ಯುಲರ್ ಮಾಡುತ್ತವೆ.\n• streaming ವಿಳಂಬ ಗ್ರಹಿಕೆ ಸುಧಾರಿಸುತ್ತದೆ.\n• recursion ಮಿತಿ, ಪರೀಕ್ಷೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why use subgraphs?",
+       "qKn": "subgraphs ಏಕೆ?",
+       "opts": [
+        "Specialist agents can be developed and tested separately",
+        "To remove state",
+        "To avoid nodes",
+        "To slow graphs"
+       ],
+       "optsKn": [
+        "ತಜ್ಞ agents ಪ್ರತ್ಯೇಕ ಅಭಿವೃದ್ಧಿ, ಪರೀಕ್ಷೆ",
+        "state ತೆಗೆಯಲು",
+        "nodes ತಪ್ಪಿಸಲು",
+        "ನಿಧಾನಕ್ಕೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why cap recursion in cyclic graphs?",
+       "qKn": "cyclic graphs ನಲ್ಲಿ recursion ಮಿತಿ ಏಕೆ?",
+       "opts": [
+        "To prevent infinite loops",
+        "To hide state",
+        "To shorten prompts",
+        "To add tools"
+       ],
+       "optsKn": [
+        "ಅನಂತ loop ತಡೆಯಲು",
+        "state ಮರೆಮಾಡಲು",
+        "prompts ಚಿಕ್ಕದಾಗಿಸಲು",
+        "tools ಸೇರಿಸಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What does streaming change for users?",
+       "qKn": "streaming ಬಳಕೆದಾರರಿಗೆ ಏನು ಬದಲಿಸುತ್ತದೆ?",
+       "opts": [
+        "They see progress and partial output",
+        "Nothing",
+        "Answers become longer",
+        "Cost drops to zero"
+       ],
+       "optsKn": [
+        "ಪ್ರಗತಿ ಮತ್ತು ಭಾಗಶಃ ಔಟ್‌ಪುಟ್ ನೋಡುತ್ತಾರೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಉತ್ತರ ಉದ್ದ",
+        "ವೆಚ್ಚ ಶೂನ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321535",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "AutoGen v0.4 — The Actor Model for Agents",
+  "titleKn": "AutoGen v0.4 — Agents ಗಾಗಿ Actor Model",
+  "desc": "How treating each agent as an isolated actor that exchanges messages changes how multi-agent systems scale and fail.",
+  "descKn": "ಪ್ರತಿ agent ಅನ್ನು ಸಂದೇಶ ವಿನಿಮಯ ಮಾಡುವ ಪ್ರತ್ಯೇಕ actor ಆಗಿ ಪರಿಗಣಿಸುವುದು ವ್ಯವಸ್ಥೆ ಹೇಗೆ ಬದಲಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Define an actor: private state plus a mailbox.",
+   "Explain asynchronous message passing.",
+   "Compare actors with direct function calls."
+  ],
+  "objectivesKn": [
+   "actor ಅನ್ನು ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ಅಸಮಕಾಲಿಕ ಸಂದೇಶ ರವಾನೆ ವಿವರಿಸಿ.",
+   "actors ಮತ್ತು ನೇರ ಕರೆಗಳ ಹೋಲಿಕೆ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "AutoGen v0.4 — The Actor Model for Agents",
+     "textKn": "AutoGen v0.4 — The Actor Model for Agents",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in AutoGen v0.4: Actor Model",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "An Actor Owns Its State",
+     "headingKn": "Actor ತನ್ನ State ಹೊಂದಿದೆ",
+     "bodyEn": "An actor keeps private state and only changes it when handling a message. No other actor reaches into its memory, so shared-state bugs are avoided.",
+     "bodyKn": "actor ಖಾಸಗಿ state ಇಟ್ಟು ಸಂದೇಶ ನಿರ್ವಹಿಸುವಾಗ ಮಾತ್ರ ಬದಲಿಸುತ್ತದೆ. ಬೇರೆ actor ಅದರ ಮೆಮೊರಿ ತಲುಪುವುದಿಲ್ಲ, ಆದ್ದರಿಂದ ಹಂಚಿದ-state ದೋಷ ತಪ್ಪುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Messages, Not Calls",
+     "headingKn": "ಸಂದೇಶಗಳು, ಕರೆಗಳಲ್ಲ",
+     "bodyEn": "Agents communicate by sending asynchronous messages to each other's mailboxes and continue working. A sender does not block waiting for the receiver to finish.",
+     "bodyKn": "agents ಒಬ್ಬರ mailbox ಗೆ ಅಸಮಕಾಲಿಕ ಸಂದೇಶ ಕಳುಹಿಸಿ ಕೆಲಸ ಮುಂದುವರಿಸುತ್ತವೆ. ಕಳುಹಿಸುವವರು ಸ್ವೀಕರಿಸುವವರು ಮುಗಿಸುವವರೆಗೆ ನಿರ್ಬಂಧಿತವಾಗುವುದಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Distribution Becomes Natural",
+     "headingKn": "ವಿತರಣೆ ಸ್ವಾಭಾವಿಕ",
+     "bodyEn": "Because agents only exchange messages, the same design can run in one process or across machines with a runtime routing messages between them.",
+     "bodyKn": "agents ಸಂದೇಶ ಮಾತ್ರ ವಿನಿಮಯ ಮಾಡುವುದರಿಂದ ಅದೇ ವಿನ್ಯಾಸ ಒಂದು process ನಲ್ಲಿ ಅಥವಾ ಹಲವು ಯಂತ್ರಗಳಲ್ಲಿ ಚಲಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Trade-Offs",
+     "headingKn": "ಸಮತೋಲನಗಳು",
+     "bodyEn": "Asynchrony makes ordering, timeouts and debugging harder than a simple call stack. The benefit is isolation and scalability; the cost is more design effort.",
+     "bodyKn": "ಅಸಮಕಾಲಿಕತೆ ಕ್ರಮ, timeout, debugging ಕಠಿಣಗೊಳಿಸುತ್ತದೆ. ಲಾಭ ಪ್ರತ್ಯೇಕತೆ ಮತ್ತು ವಿಸ್ತರಣೆ; ವೆಚ್ಚ ಹೆಚ್ಚು ವಿನ್ಯಾಸ ಶ್ರಮ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Actors keep private state and use mailboxes.\n• Messaging is asynchronous.\n• The model scales across processes at a debugging cost.",
+     "bodyKn": "• actors ಖಾಸಗಿ state, mailbox.\n• ಸಂದೇಶ ಅಸಮಕಾಲಿಕ.\n• ವಿಸ್ತರಿಸುತ್ತದೆ, debugging ಕಷ್ಟ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does an actor keep private?",
+       "qKn": "actor ಯಾವುದನ್ನು ಖಾಸಗಿ ಇಡುತ್ತದೆ?",
+       "opts": [
+        "Its state",
+        "The internet",
+        "The tokenizer",
+        "The GPU"
+       ],
+       "optsKn": [
+        "ತನ್ನ state",
+        "ಇಂಟರ್ನೆಟ್",
+        "tokenizer",
+        "GPU"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How do actors communicate?",
+       "qKn": "actors ಹೇಗೆ ಸಂವಹಿಸುತ್ತವೆ?",
+       "opts": [
+        "By asynchronous messages",
+        "By sharing memory",
+        "By editing each other's state",
+        "They cannot"
+       ],
+       "optsKn": [
+        "ಅಸಮಕಾಲಿಕ ಸಂದೇಶಗಳಿಂದ",
+        "ಮೆಮೊರಿ ಹಂಚಿ",
+        "ಪರಸ್ಪರ state ತಿದ್ದಿ",
+        "ಸಾಧ್ಯವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is a downside of the actor model?",
+       "qKn": "actor ಮಾದರಿಯ ಕೊರತೆ?",
+       "opts": [
+        "Ordering and debugging are harder",
+        "It cannot scale",
+        "It forbids messages",
+        "It needs one machine"
+       ],
+       "optsKn": [
+        "ಕ್ರಮ ಮತ್ತು debugging ಕಠಿಣ",
+        "ವಿಸ್ತರಿಸಲಾಗದು",
+        "ಸಂದೇಶ ನಿಷೇಧ",
+        "ಒಂದು ಯಂತ್ರ ಬೇಕು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321535",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "AutoGen v0.4 — Teams, Topics and Conversation Control",
+  "titleKn": "AutoGen v0.4 — Teams, Topics, ಸಂಭಾಷಣೆ ನಿಯಂತ್ರಣ",
+  "desc": "How teams of agents take turns, how topic-based routing works, and how termination conditions keep conversations bounded.",
+  "descKn": "agents ತಂಡಗಳು ಹೇಗೆ ತಿರುವು ತೆಗೆದುಕೊಳ್ಳುತ್ತವೆ, topic ಆಧಾರಿತ routing, ಮುಕ್ತಾಯ ಷರತ್ತುಗಳು.",
+  "objectives": [
+   "Describe team patterns such as round-robin and selector.",
+   "Explain publish-subscribe topics.",
+   "Design termination conditions."
+  ],
+  "objectivesKn": [
+   "round-robin, selector ತಂಡ ಮಾದರಿ ವಿವರಿಸಿ.",
+   "publish-subscribe topics ವಿವರಿಸಿ.",
+   "ಮುಕ್ತಾಯ ಷರತ್ತು ವಿನ್ಯಾಸಗೊಳಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "AutoGen v0.4 — Teams, Topics and Conversation Control",
+     "textKn": "AutoGen v0.4 — Teams, Topics and Conversation Control",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in AutoGen v0.4: Actor Model",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Team Patterns",
+     "headingKn": "ತಂಡ ಮಾದರಿಗಳು",
+     "bodyEn": "A round-robin team gives every agent a turn in fixed order. A selector team lets a model choose who speaks next based on the conversation so far.",
+     "bodyKn": "round-robin ತಂಡದಲ್ಲಿ ಪ್ರತಿ agent ನಿಗದಿತ ಕ್ರಮದಲ್ಲಿ ತಿರುವು ಪಡೆಯುತ್ತದೆ. selector ತಂಡದಲ್ಲಿ ಮಾದರಿ ಮುಂದೆ ಯಾರು ಮಾತನಾಡಬೇಕು ಎಂದು ಆರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Topics and Subscriptions",
+     "headingKn": "Topics ಮತ್ತು Subscriptions",
+     "bodyEn": "In publish-subscribe routing, a message is published to a topic and every agent subscribed to it receives it. This decouples senders from receivers.",
+     "bodyKn": "publish-subscribe routing ನಲ್ಲಿ ಸಂದೇಶ topic ಗೆ ಪ್ರಕಟವಾಗಿ ಅದಕ್ಕೆ ಚಂದಾದಾರರಾದ ಎಲ್ಲಾ agents ಗೆ ಸಿಗುತ್ತದೆ. ಕಳುಹಿಸುವವರು ಮತ್ತು ಸ್ವೀಕರಿಸುವವರು ಬೇರ್ಪಡುತ್ತಾರೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Termination Conditions",
+     "headingKn": "ಮುಕ್ತಾಯ ಷರತ್ತುಗಳು",
+     "bodyEn": "Conversations need explicit stopping rules: a maximum number of messages, a keyword such as an approval, a token budget or a timeout. Without them agents can politely talk forever.",
+     "bodyKn": "ಸಂಭಾಷಣೆಗೆ ಸ್ಪಷ್ಟ ನಿಲ್ಲಿಸುವ ನಿಯಮಗಳು ಬೇಕು: ಗರಿಷ್ಠ ಸಂದೇಶ, ಅನುಮೋದನೆಯಂತಹ ಕೀವರ್ಡ್, token ಬಜೆಟ್, timeout."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cost of Conversation",
+     "headingKn": "ಸಂಭಾಷಣೆಯ ವೆಚ್ಚ",
+     "bodyEn": "Each message re-reads the shared history, so long multi-agent chats grow expensive quickly. Keep teams small and messages purposeful.",
+     "bodyKn": "ಪ್ರತಿ ಸಂದೇಶ ಹಂಚಿದ ಇತಿಹಾಸ ಮತ್ತೆ ಓದುತ್ತದೆ, ಆದ್ದರಿಂದ ಉದ್ದ ಸಂಭಾಷಣೆ ವೇಗವಾಗಿ ದುಬಾರಿ. ತಂಡ ಸಣ್ಣ, ಸಂದೇಶ ಉದ್ದೇಶಪೂರ್ವಕ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Teams use round-robin or model-chosen speakers.\n• Topics decouple senders from receivers.\n• Always set termination conditions and watch cost.",
+     "bodyKn": "• ತಂಡಗಳು round-robin ಅಥವಾ ಮಾದರಿ-ಆಯ್ದ.\n• topics ಬೇರ್ಪಡಿಸುತ್ತವೆ.\n• ಮುಕ್ತಾಯ ಷರತ್ತು ಮತ್ತು ವೆಚ್ಚ ಗಮನಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does a selector team do?",
+       "qKn": "selector ತಂಡ ಏನು ಮಾಡುತ್ತದೆ?",
+       "opts": [
+        "A model chooses who speaks next",
+        "Fixed order only",
+        "Deletes agents",
+        "Stops immediately"
+       ],
+       "optsKn": [
+        "ಮುಂದೆ ಯಾರು ಮಾತನಾಡಬೇಕು ಎಂದು ಮಾದರಿ ಆರಿಸುತ್ತದೆ",
+        "ನಿಗದಿತ ಕ್ರಮ ಮಾತ್ರ",
+        "agents ಅಳಿಸುತ್ತದೆ",
+        "ತಕ್ಷಣ ನಿಲ್ಲುತ್ತದೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why set termination conditions?",
+       "qKn": "ಮುಕ್ತಾಯ ಷರತ್ತು ಏಕೆ?",
+       "opts": [
+        "Agents can otherwise keep talking indefinitely",
+        "To add cost",
+        "To slow down",
+        "They are optional decoration"
+       ],
+       "optsKn": [
+        "ಇಲ್ಲದಿದ್ದರೆ agents ಅನಂತ ಮಾತನಾಡಬಹುದು",
+        "ವೆಚ್ಚ ಸೇರಿಸಲು",
+        "ನಿಧಾನಕ್ಕೆ",
+        "ಅಲಂಕಾರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What does pub-sub decouple?",
+       "qKn": "pub-sub ಏನನ್ನು ಬೇರ್ಪಡಿಸುತ್ತದೆ?",
+       "opts": [
+        "Senders from receivers",
+        "Models from data",
+        "Tokens from words",
+        "Users from prompts"
+       ],
+       "optsKn": [
+        "ಕಳುಹಿಸುವವರು ಮತ್ತು ಸ್ವೀಕರಿಸುವವರು",
+        "ಮಾದರಿ ಮತ್ತು ಡೇಟಾ",
+        "tokens ಮತ್ತು ಪದ",
+        "ಬಳಕೆದಾರ ಮತ್ತು prompts"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321535",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "AutoGen v0.4 — Runtimes, Distribution and Production Concerns",
+  "titleKn": "AutoGen v0.4 — Runtimes, ವಿತರಣೆ, ಉತ್ಪಾದನಾ ಕಾಳಜಿ",
+  "desc": "Running agent systems locally versus distributed, and the operational issues of message loss, retries and observability.",
+  "descKn": "agent ವ್ಯವಸ್ಥೆಗಳನ್ನು ಸ್ಥಳೀಯ vs ವಿತರಿತವಾಗಿ ಚಲಾಯಿಸುವುದು, ಸಂದೇಶ ನಷ್ಟ, ಮರುಪ್ರಯತ್ನ, ವೀಕ್ಷಣೆ.",
+  "objectives": [
+   "Compare local and distributed runtimes.",
+   "Explain at-least-once delivery and idempotent handlers.",
+   "List what to log and trace."
+  ],
+  "objectivesKn": [
+   "ಸ್ಥಳೀಯ ಮತ್ತು ವಿತರಿತ runtimes ಹೋಲಿಸಿ.",
+   "at-least-once ವಿತರಣೆ ಮತ್ತು idempotent handlers ವಿವರಿಸಿ.",
+   "ಏನು ಲಾಗ್ ಮಾಡಬೇಕು ಪಟ್ಟಿ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "AutoGen v0.4 — Runtimes, Distribution and Production Concerns",
+     "textKn": "AutoGen v0.4 — Runtimes, Distribution and Production Concerns",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in AutoGen v0.4: Actor Model",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Local Versus Distributed Runtime",
+     "headingKn": "ಸ್ಥಳೀಯ vs ವಿತರಿತ Runtime",
+     "bodyEn": "A local runtime runs all agents in one process for development. A distributed runtime routes messages over a network, adding fault tolerance and scale but also latency and new failure modes.",
+     "bodyKn": "ಸ್ಥಳೀಯ runtime ಎಲ್ಲಾ agents ಅನ್ನು ಒಂದು process ನಲ್ಲಿ ಚಲಾಯಿಸುತ್ತದೆ. ವಿತರಿತ runtime ನೆಟ್‌ವರ್ಕ್ ಮೂಲಕ ಸಂದೇಶ ರವಾನಿಸಿ ವಿಸ್ತರಣೆ ನೀಡುತ್ತದೆ, ಆದರೆ ವಿಳಂಬ ಮತ್ತು ಹೊಸ ವೈಫಲ್ಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Messages Can Repeat",
+     "headingKn": "ಸಂದೇಶಗಳು ಪುನರಾವರ್ತನೆಯಾಗಬಹುದು",
+     "bodyEn": "Networks lose or duplicate messages, so systems often guarantee at-least-once delivery. Handlers must therefore be idempotent, or a duplicated message will repeat a side effect.",
+     "bodyKn": "ನೆಟ್‌ವರ್ಕ್ ಸಂದೇಶ ಕಳೆದುಕೊಳ್ಳಬಹುದು ಅಥವಾ ನಕಲಿಸಬಹುದು, ಆದ್ದರಿಂದ at-least-once ವಿತರಣೆ ಸಾಮಾನ್ಯ. handlers idempotent ಆಗಿರಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Observability",
+     "headingKn": "ವೀಕ್ಷಣೆ",
+     "bodyEn": "Attach a correlation id to every message so one user request can be followed across many agents. Log message types, sizes, latencies and errors.",
+     "bodyKn": "ಪ್ರತಿ ಸಂದೇಶಕ್ಕೆ correlation id ಸೇರಿಸಿ, ಒಂದು ಬಳಕೆದಾರ ವಿನಂತಿಯನ್ನು ಹಲವು agents ಮೂಲಕ ಅನುಸರಿಸಬಹುದು. ಸಂದೇಶ ಪ್ರಕಾರ, ಗಾತ್ರ, ವಿಳಂಬ, ದೋಷ ಲಾಗ್ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Versioning and Change",
+     "headingKn": "ಆವೃತ್ತಿ ಮತ್ತು ಬದಲಾವಣೆ",
+     "bodyEn": "Frameworks in this area change quickly. Pin versions, isolate framework calls behind your own thin interface and re-read the current documentation before upgrading.",
+     "bodyKn": "ಈ ಕ್ಷೇತ್ರದ ಚೌಕಟ್ಟುಗಳು ವೇಗವಾಗಿ ಬದಲಾಗುತ್ತವೆ. ಆವೃತ್ತಿ ಪಿನ್ ಮಾಡಿ, ನಿಮ್ಮದೇ ತೆಳು ಇಂಟರ್ಫೇಸ್ ಹಿಂದೆ ಇಡಿ, ಅಪ್‌ಗ್ರೇಡ್ ಮೊದಲು ಈಗಿನ ದಾಖಲೆ ಓದಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Distributed runtimes add scale and failure modes.\n• Make handlers idempotent.\n• Correlate messages and pin framework versions.",
+     "bodyKn": "• ವಿತರಿತ runtime ವಿಸ್ತರಣೆ ಮತ್ತು ವೈಫಲ್ಯ ತರುತ್ತದೆ.\n• handlers idempotent.\n• correlation id, ಆವೃತ್ತಿ ಪಿನ್."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why must handlers be idempotent under at-least-once delivery?",
+       "qKn": "at-least-once ವಿತರಣೆಯಲ್ಲಿ handlers idempotent ಏಕೆ?",
+       "opts": [
+        "A message may be delivered twice",
+        "Messages never arrive",
+        "It speeds up models",
+        "It hides logs"
+       ],
+       "optsKn": [
+        "ಸಂದೇಶ ಎರಡು ಬಾರಿ ಬರಬಹುದು",
+        "ಸಂದೇಶ ಬರುವುದಿಲ್ಲ",
+        "ಮಾದರಿ ವೇಗ",
+        "ಲಾಗ್ ಮರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is a correlation id for?",
+       "qKn": "correlation id ಯಾವುದಕ್ಕೆ?",
+       "opts": [
+        "Following one request across many agents",
+        "Encrypting messages",
+        "Selecting models",
+        "Counting tokens"
+       ],
+       "optsKn": [
+        "ಒಂದು ವಿನಂತಿಯನ್ನು ಹಲವು agents ಮೂಲಕ ಅನುಸರಿಸಲು",
+        "ಎನ್‌ಕ್ರಿಪ್ಷನ್",
+        "ಮಾದರಿ ಆಯ್ಕೆ",
+        "tokens ಎಣಿಕೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why isolate framework calls behind your own interface?",
+       "qKn": "ಚೌಕಟ್ಟು ಕರೆಗಳನ್ನು ನಿಮ್ಮ ಇಂಟರ್ಫೇಸ್ ಹಿಂದೆ ಏಕೆ?",
+       "opts": [
+        "The framework changes quickly",
+        "To break tests",
+        "To avoid logging",
+        "It is required by HTTP"
+       ],
+       "optsKn": [
+        "ಚೌಕಟ್ಟು ವೇಗವಾಗಿ ಬದಲಾಗುತ್ತದೆ",
+        "ಪರೀಕ್ಷೆ ಮುರಿಯಲು",
+        "ಲಾಗ್ ತಪ್ಪಿಸಲು",
+        "HTTP ಅಗತ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321538",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "CrewAI — Role-Based Crews",
+  "titleKn": "CrewAI — ಪಾತ್ರ ಆಧಾರಿತ Crews",
+  "desc": "Modelling a team as agents with roles, goals and tasks, and how role clarity shapes output quality.",
+  "descKn": "ತಂಡವನ್ನು ಪಾತ್ರ, ಗುರಿ, ಕಾರ್ಯಗಳಿರುವ agents ಆಗಿ ಮಾದರಿ ಮಾಡುವುದು, ಪಾತ್ರ ಸ್ಪಷ್ಟತೆ ಗುಣಮಟ್ಟ ಹೇಗೆ ರೂಪಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Describe agents defined by role, goal and backstory.",
+   "Explain tasks with expected outputs.",
+   "Compare sequential and hierarchical processes."
+  ],
+  "objectivesKn": [
+   "ಪಾತ್ರ, ಗುರಿ, ಹಿನ್ನೆಲೆಯಿಂದ agents ವಿವರಿಸಿ.",
+   "ನಿರೀಕ್ಷಿತ ಔಟ್‌ಪುಟ್ ಇರುವ ಕಾರ್ಯಗಳನ್ನು ವಿವರಿಸಿ.",
+   "ಅನುಕ್ರಮ ಮತ್ತು ಶ್ರೇಣಿ ಪ್ರಕ್ರಿಯೆ ಹೋಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "CrewAI — Role-Based Crews",
+     "textKn": "CrewAI — Role-Based Crews",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in CrewAI: Role-Based Crews and Flows",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Agents Defined by Role",
+     "headingKn": "ಪಾತ್ರದಿಂದ ವ್ಯಾಖ್ಯಾನಿತ Agents",
+     "bodyEn": "A crew member is described by a role (for example researcher), a goal and short background. These fields become part of the prompt and steer behaviour toward a specialisation.",
+     "bodyKn": "ತಂಡದ ಸದಸ್ಯರನ್ನು ಪಾತ್ರ (ಸಂಶೋಧಕ), ಗುರಿ ಮತ್ತು ಚಿಕ್ಕ ಹಿನ್ನೆಲೆಯಿಂದ ವಿವರಿಸಲಾಗುತ್ತದೆ. ಇವು prompt ನ ಭಾಗವಾಗಿ ವಿಶೇಷತೆಯತ್ತ ವರ್ತನೆ ತಿರುಗಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Tasks With Expected Outputs",
+     "headingKn": "ನಿರೀಕ್ಷಿತ ಔಟ್‌ಪುಟ್ ಇರುವ ಕಾರ್ಯಗಳು",
+     "bodyEn": "A task states what to do and what a finished result looks like, and is assigned to an agent. A precise expected output is the best defence against vague, unusable results.",
+     "bodyKn": "ಕಾರ್ಯ ಏನು ಮಾಡಬೇಕು ಮತ್ತು ಪೂರ್ಣ ಫಲಿತಾಂಶ ಹೇಗಿರಬೇಕು ಎಂದು ಹೇಳಿ agent ಗೆ ನೀಡಲಾಗುತ್ತದೆ. ನಿಖರ ನಿರೀಕ್ಷಿತ ಔಟ್‌ಪುಟ್ ಅಸ್ಪಷ್ಟ ಫಲಿತಾಂಶದ ವಿರುದ್ಧ ಉತ್ತಮ ರಕ್ಷಣೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Sequential and Hierarchical",
+     "headingKn": "ಅನುಕ್ರಮ ಮತ್ತು ಶ್ರೇಣಿ",
+     "bodyEn": "In a sequential process tasks run in order, each seeing earlier outputs. In a hierarchical process a manager agent assigns and reviews work, which adds flexibility and cost.",
+     "bodyKn": "ಅನುಕ್ರಮ ಪ್ರಕ್ರಿಯೆಯಲ್ಲಿ ಕಾರ್ಯಗಳು ಕ್ರಮವಾಗಿ ಚಲಿಸಿ ಹಿಂದಿನ ಔಟ್‌ಪುಟ್ ನೋಡುತ್ತವೆ. ಶ್ರೇಣಿಯಲ್ಲಿ manager agent ಕೆಲಸ ನೀಡಿ ಪರಿಶೀಲಿಸುತ್ತದೆ; ಹೊಂದಾಣಿಕೆ ಮತ್ತು ವೆಚ್ಚ ಹೆಚ್ಚು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Roles Are Not Magic",
+     "headingKn": "ಪಾತ್ರಗಳು ಮಾಯಾಜಾಲವಲ್ಲ",
+     "bodyEn": "Assigning a role does not add knowledge or ability; it changes framing and focus. Real capability still comes from the model, the tools and the quality of the task description.",
+     "bodyKn": "ಪಾತ್ರ ನೀಡುವುದು ಜ್ಞಾನ ಅಥವಾ ಸಾಮರ್ಥ್ಯ ಸೇರಿಸುವುದಿಲ್ಲ; ಚೌಕಟ್ಟು ಮತ್ತು ಗಮನ ಬದಲಿಸುತ್ತದೆ. ನಿಜ ಸಾಮರ್ಥ್ಯ ಮಾದರಿ, tools ಮತ್ತು ಕಾರ್ಯ ವಿವರಣೆಯ ಗುಣಮಟ್ಟದಿಂದ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Agents are defined by role, goal and backstory.\n• Tasks need precise expected outputs.\n• Roles frame behaviour; they do not add ability.",
+     "bodyKn": "• agents ಪಾತ್ರ, ಗುರಿಯಿಂದ.\n• ಕಾರ್ಯಕ್ಕೆ ನಿಖರ ನಿರೀಕ್ಷಿತ ಔಟ್‌ಪುಟ್.\n• ಪಾತ್ರ ಸಾಮರ್ಥ್ಯ ಸೇರಿಸುವುದಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does a role add?",
+       "qKn": "ಪಾತ್ರ ಏನು ಸೇರಿಸುತ್ತದೆ?",
+       "opts": [
+        "Framing and focus, not new ability",
+        "New knowledge",
+        "A bigger model",
+        "Free tools"
+       ],
+       "optsKn": [
+        "ಚೌಕಟ್ಟು ಮತ್ತು ಗಮನ, ಹೊಸ ಸಾಮರ್ಥ್ಯವಲ್ಲ",
+        "ಹೊಸ ಜ್ಞಾನ",
+        "ದೊಡ್ಡ ಮಾದರಿ",
+        "ಉಚಿತ tools"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What guards against vague results?",
+       "qKn": "ಅಸ್ಪಷ್ಟ ಫಲಿತಾಂಶದ ವಿರುದ್ಧ ಯಾವುದು?",
+       "opts": [
+        "A precise expected output",
+        "A longer role name",
+        "More agents",
+        "A random seed"
+       ],
+       "optsKn": [
+        "ನಿಖರ ನಿರೀಕ್ಷಿತ ಔಟ್‌ಪುಟ್",
+        "ಉದ್ದ ಪಾತ್ರ ಹೆಸರು",
+        "ಹೆಚ್ಚು agents",
+        "ಯಾದೃಚ್ಛಿಕ seed"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is added by a hierarchical process?",
+       "qKn": "ಶ್ರೇಣಿ ಪ್ರಕ್ರಿಯೆ ಏನು ಸೇರಿಸುತ್ತದೆ?",
+       "opts": [
+        "A manager agent, with flexibility and cost",
+        "Nothing",
+        "A smaller cost",
+        "No tasks"
+       ],
+       "optsKn": [
+        "manager agent, ಹೊಂದಾಣಿಕೆ ಮತ್ತು ವೆಚ್ಚ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಕಡಿಮೆ ವೆಚ್ಚ",
+        "ಕಾರ್ಯಗಳಿಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321538",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "CrewAI — Flows: Controlling Crews With Deterministic Structure",
+  "titleKn": "CrewAI — Flows: ನಿರ್ಧಾರಾತ್ಮಕ ರಚನೆಯಿಂದ Crews ನಿಯಂತ್ರಣ",
+  "desc": "How event-driven flows wrap crews in explicit, testable control logic, mixing deterministic steps with autonomous ones.",
+  "descKn": "ಘಟನೆ-ಚಾಲಿತ flows crews ಅನ್ನು ಸ್ಪಷ್ಟ, ಪರೀಕ್ಷಿಸಬಹುದಾದ ತರ್ಕದಲ್ಲಿ ಹೇಗೆ ಸುತ್ತುತ್ತವೆ.",
+  "objectives": [
+   "Explain why pure autonomy is hard to control.",
+   "Describe flows as steps triggered by events and state.",
+   "Decide which steps should be code and which agentic."
+  ],
+  "objectivesKn": [
+   "ಶುದ್ಧ ಸ್ವಾಯತ್ತತೆ ನಿಯಂತ್ರಿಸುವುದು ಕಠಿಣ ಏಕೆ ವಿವರಿಸಿ.",
+   "flows ಅನ್ನು ವಿವರಿಸಿ.",
+   "ಯಾವ ಹಂತ ಕೋಡ್, ಯಾವುದು agent ಎಂದು ನಿರ್ಧರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "CrewAI — Flows: Controlling Crews With Deterministic Structure",
+     "textKn": "CrewAI — Flows: Controlling Crews With Deterministic Structure",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in CrewAI: Role-Based Crews and Flows",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Control Problem",
+     "headingKn": "ನಿಯಂತ್ರಣ ಸಮಸ್ಯೆ",
+     "bodyEn": "A crew that decides everything itself is flexible but unpredictable. Production systems usually need guaranteed steps, such as validation and approval, that always run.",
+     "bodyKn": "ಎಲ್ಲವನ್ನೂ ತಾನೇ ನಿರ್ಧರಿಸುವ crew ಹೊಂದಿಕೊಳ್ಳುವಂತಿದ್ದರೂ ಅನಿರೀಕ್ಷಿತ. ಉತ್ಪಾದನೆಗೆ ಮಾನ್ಯತೆ, ಅನುಮೋದನೆ ಮುಂತಾದ ಯಾವಾಗಲೂ ಚಲಿಸುವ ಖಾತರಿ ಹಂತಗಳು ಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Flows as Structured Steps",
+     "headingKn": "ರಚನಾತ್ಮಕ ಹಂತಗಳಾಗಿ Flows",
+     "bodyEn": "A flow defines steps that start on events and share state. Some steps are ordinary code, some launch a crew, and routing between them is explicit.",
+     "bodyKn": "flow ಘಟನೆಗಳಿಂದ ಆರಂಭವಾಗಿ state ಹಂಚುವ ಹಂತಗಳನ್ನು ವ್ಯಾಖ್ಯಾನಿಸುತ್ತದೆ. ಕೆಲವು ಹಂತಗಳು ಸಾಮಾನ್ಯ ಕೋಡ್, ಕೆಲವು crew ಆರಂಭಿಸುತ್ತವೆ; ನಡುವಿನ routing ಸ್ಪಷ್ಟ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Code Where You Can, Agents Where You Must",
+     "headingKn": "ಸಾಧ್ಯವಾದಲ್ಲಿ ಕೋಡ್, ಅನಿವಾರ್ಯವಾದಲ್ಲಿ Agents",
+     "bodyEn": "Use plain code for anything with a known answer, such as formatting, lookups and validation. Reserve agentic steps for parts that truly need judgment.",
+     "bodyKn": "ಸ್ವರೂಪ, ಹುಡುಕಾಟ, ಮಾನ್ಯತೆಯಂತಹ ತಿಳಿದ ಉತ್ತರವಿರುವುದಕ್ಕೆ ಸಾಮಾನ್ಯ ಕೋಡ್. ನಿಜವಾಗಿ ತೀರ್ಪು ಬೇಕಾದ ಭಾಗಕ್ಕೆ ಮಾತ್ರ agent."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Testing Flows",
+     "headingKn": "Flows ಪರೀಕ್ಷೆ",
+     "bodyEn": "Deterministic steps can have ordinary unit tests, while agentic steps need outcome checks. The flow structure tells you exactly where each kind of test belongs.",
+     "bodyKn": "ನಿರ್ಧಾರಾತ್ಮಕ ಹಂತಗಳಿಗೆ ಸಾಮಾನ್ಯ unit tests, agent ಹಂತಗಳಿಗೆ ಫಲಿತಾಂಶ ಪರಿಶೀಲನೆ. flow ರಚನೆ ಪ್ರತಿ ಪರೀಕ್ಷೆ ಎಲ್ಲಿ ಎಂದು ತೋರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Pure autonomy is hard to control.\n• Flows mix code steps and crews.\n• Use agents only where judgment is needed.",
+     "bodyKn": "• ಶುದ್ಧ ಸ್ವಾಯತ್ತತೆ ನಿಯಂತ್ರಿಸಲು ಕಠಿಣ.\n• flows ಕೋಡ್ ಮತ್ತು crews ಬೆರೆಸುತ್ತವೆ.\n• ತೀರ್ಪು ಬೇಕಾದಲ್ಲಿ ಮಾತ್ರ agents."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why use flows around crews?",
+       "qKn": "crews ಸುತ್ತ flows ಏಕೆ?",
+       "opts": [
+        "To guarantee certain steps always run",
+        "To remove agents",
+        "To slow tests",
+        "To hide state"
+       ],
+       "optsKn": [
+        "ಕೆಲವು ಹಂತಗಳು ಯಾವಾಗಲೂ ಚಲಿಸುವುದನ್ನು ಖಾತರಿ ಮಾಡಲು",
+        "agents ತೆಗೆಯಲು",
+        "ಪರೀಕ್ಷೆ ನಿಧಾನ",
+        "state ಮರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which steps should be plain code?",
+       "qKn": "ಯಾವ ಹಂತಗಳು ಸಾಮಾನ್ಯ ಕೋಡ್ ಆಗಿರಬೇಕು?",
+       "opts": [
+        "Ones with known answers like validation",
+        "Only creative ones",
+        "All of them agentic",
+        "None"
+       ],
+       "optsKn": [
+        "ಮಾನ್ಯತೆಯಂತಹ ತಿಳಿದ ಉತ್ತರ ಇರುವವು",
+        "ಸೃಜನಶೀಲ ಮಾತ್ರ",
+        "ಎಲ್ಲವೂ agent",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How do agentic steps get tested?",
+       "qKn": "agent ಹಂತಗಳನ್ನು ಹೇಗೆ ಪರೀಕ್ಷಿಸುವುದು?",
+       "opts": [
+        "With outcome checks",
+        "Not at all",
+        "By exact word matching only",
+        "By counting characters"
+       ],
+       "optsKn": [
+        "ಫಲಿತಾಂಶ ಪರಿಶೀಲನೆಗಳಿಂದ",
+        "ಇಲ್ಲ",
+        "ನಿಖರ ಪದ ಹೊಂದಾಣಿಕೆ ಮಾತ್ರ",
+        "ಅಕ್ಷರ ಎಣಿಕೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321538",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "CrewAI — Tools, Memory and Practical Limits",
+  "titleKn": "CrewAI — Tools, Memory, ಪ್ರಾಯೋಗಿಕ ಮಿತಿಗಳು",
+  "desc": "Giving crews tools and memory responsibly, and recognising where role-based crews cost more than they deliver.",
+  "descKn": "crews ಗೆ tools ಮತ್ತು memory ಜವಾಬ್ದಾರಿಯುತವಾಗಿ ನೀಡುವುದು, ವೆಚ್ಚ ಲಾಭಕ್ಕಿಂತ ಹೆಚ್ಚಾಗುವ ಸ್ಥಳಗಳನ್ನು ಗುರುತಿಸುವುದು.",
+  "objectives": [
+   "Assign tools per agent with least privilege.",
+   "Explain crew memory and its risks.",
+   "Recognise when a single agent is enough."
+  ],
+  "objectivesKn": [
+   "ಕನಿಷ್ಠ ಹಕ್ಕಿನೊಂದಿಗೆ ಪ್ರತಿ agent ಗೆ tools ನೀಡಿ.",
+   "crew memory ಮತ್ತು ಅಪಾಯ ವಿವರಿಸಿ.",
+   "ಒಂದು agent ಸಾಕಾದಾಗ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "CrewAI — Tools, Memory and Practical Limits",
+     "textKn": "CrewAI — Tools, Memory and Practical Limits",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in CrewAI: Role-Based Crews and Flows",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Least-Privilege Tools",
+     "headingKn": "ಕನಿಷ್ಠ-ಹಕ್ಕು Tools",
+     "bodyEn": "Give each agent only the tools its role needs. A researcher needs search, not file deletion, and fewer tools also means fewer wrong choices.",
+     "bodyKn": "ಪ್ರತಿ agent ಗೆ ಅದರ ಪಾತ್ರಕ್ಕೆ ಬೇಕಾದ tools ಮಾತ್ರ. ಸಂಶೋಧಕನಿಗೆ search ಬೇಕು, ಫೈಲ್ ಅಳಿಸುವುದಲ್ಲ; ಕಡಿಮೆ tools ಎಂದರೆ ಕಡಿಮೆ ತಪ್ಪು ಆಯ್ಕೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Memory Between Runs",
+     "headingKn": "Runs ನಡುವಿನ Memory",
+     "bodyEn": "Crews can keep short-term, long-term and entity memory so later tasks reuse earlier findings. Stored content can go stale or contain sensitive data, so it needs review and deletion.",
+     "bodyKn": "crews ಅಲ್ಪಾವಧಿ, ದೀರ್ಘಾವಧಿ ಮತ್ತು ಘಟಕ memory ಇಟ್ಟು ನಂತರದ ಕಾರ್ಯಗಳು ಮರುಬಳಸಬಹುದು. ಸಂಗ್ರಹಿತ ವಿಷಯ ಹಳೆಯದಾಗಬಹುದು ಅಥವಾ ಸೂಕ್ಷ್ಮವಾಗಿರಬಹುದು; ಪರಿಶೀಲನೆ ಮತ್ತು ಅಳಿಸುವಿಕೆ ಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cost Multiplies With Crew Size",
+     "headingKn": "Crew ಗಾತ್ರದೊಂದಿಗೆ ವೆಚ್ಚ ಗುಣಿಸುತ್ತದೆ",
+     "bodyEn": "Every agent step is a model call that reads growing context, so a five-agent crew can cost many times one agent. Add agents only for a measured gain.",
+     "bodyKn": "ಪ್ರತಿ agent ಹಂತ ಬೆಳೆಯುತ್ತಿರುವ context ಓದುವ ಮಾದರಿ ಕರೆ; ಐದು-agent crew ಒಂದು agent ನ ಹಲವು ಪಟ್ಟು ವೆಚ್ಚ ಮಾಡಬಹುದು. ಅಳೆದ ಲಾಭಕ್ಕೆ ಮಾತ್ರ agents ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Single Agent First",
+     "headingKn": "ಮೊದಲು ಒಂದು Agent",
+     "bodyEn": "Many tasks are solved by one agent with good tools and a clear prompt. Move to a crew only when specialisation, parallelism or independent review clearly helps.",
+     "bodyKn": "ಅನೇಕ ಕೆಲಸಗಳನ್ನು ಉತ್ತಮ tools ಮತ್ತು ಸ್ಪಷ್ಟ prompt ಇರುವ ಒಂದು agent ಪರಿಹರಿಸುತ್ತದೆ. ವಿಶೇಷತೆ, ಸಮಾನಾಂತರತೆ ಅಥವಾ ಸ್ವತಂತ್ರ ಪರಿಶೀಲನೆ ಸ್ಪಷ್ಟವಾಗಿ ಸಹಾಯ ಮಾಡುವಾಗ ಮಾತ್ರ crew."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Give each agent only the tools it needs.\n• Review and expire stored memory.\n• Try a single agent before a crew.",
+     "bodyKn": "• ಪ್ರತಿ agent ಗೆ ಬೇಕಾದ tools ಮಾತ್ರ.\n• memory ಪರಿಶೀಲಿಸಿ.\n• ಮೊದಲು ಒಂದು agent."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why give each agent limited tools?",
+       "qKn": "ಪ್ರತಿ agent ಗೆ ಸೀಮಿತ tools ಏಕೆ?",
+       "opts": [
+        "Fewer wrong choices and less risk",
+        "Tools are heavy",
+        "To hide roles",
+        "It is decoration"
+       ],
+       "optsKn": [
+        "ಕಡಿಮೆ ತಪ್ಪು ಆಯ್ಕೆ ಮತ್ತು ಅಪಾಯ",
+        "tools ಭಾರ",
+        "ಪಾತ್ರ ಮರೆ",
+        "ಅಲಂಕಾರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why can a bigger crew cost more?",
+       "qKn": "ದೊಡ್ಡ crew ವೆಚ್ಚ ಹೆಚ್ಚು ಏಕೆ?",
+       "opts": [
+        "Each agent step is a model call over growing context",
+        "Agents are free",
+        "Crews avoid models",
+        "Cost is fixed"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ ಹಂತ ಬೆಳೆಯುವ context ಮೇಲೆ ಮಾದರಿ ಕರೆ",
+        "agents ಉಚಿತ",
+        "crews ಮಾದರಿ ತಪ್ಪಿಸುತ್ತವೆ",
+        "ವೆಚ್ಚ ಸ್ಥಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When move from one agent to a crew?",
+       "qKn": "ಒಂದು agent ಇಂದ crew ಗೆ ಯಾವಾಗ?",
+       "opts": [
+        "When specialisation, parallelism or review clearly helps",
+        "Always",
+        "Never",
+        "When bored"
+       ],
+       "optsKn": [
+        "ವಿಶೇಷತೆ, ಸಮಾನಾಂತರತೆ, ಪರಿಶೀಲನೆ ಸ್ಪಷ್ಟ ಸಹಾಯ ಮಾಡಿದಾಗ",
+        "ಯಾವಾಗಲೂ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಬೇಸರವಾದಾಗ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b32153b",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "OpenAI Agents SDK — Agents, Handoffs and Tools",
+  "titleKn": "OpenAI Agents SDK — Agents, Handoffs, Tools",
+  "desc": "The small set of primitives in the Agents SDK and how handoffs let one agent transfer a conversation to another.",
+  "descKn": "Agents SDK ಯ ಸಣ್ಣ ಮೂಲ ಘಟಕಗಳು ಮತ್ತು handoffs ಹೇಗೆ ಸಂಭಾಷಣೆಯನ್ನು ಇನ್ನೊಂದು agent ಗೆ ವರ್ಗಾಯಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Name the core primitives: agent, tool, handoff, guardrail.",
+   "Explain a handoff as transfer of control.",
+   "Compare handoffs with calling an agent as a tool."
+  ],
+  "objectivesKn": [
+   "agent, tool, handoff, guardrail ಹೆಸರಿಸಿ.",
+   "handoff ಅನ್ನು ನಿಯಂತ್ರಣ ವರ್ಗಾವಣೆ ಎಂದು ವಿವರಿಸಿ.",
+   "handoff ಮತ್ತು agent ಅನ್ನು tool ಆಗಿ ಕರೆಯುವುದನ್ನು ಹೋಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "OpenAI Agents SDK — Agents, Handoffs and Tools",
+     "textKn": "OpenAI Agents SDK — Agents, Handoffs and Tools",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in OpenAI Agents SDK: Handoffs, Guardrails, Tracing",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Small Set of Primitives",
+     "headingKn": "ಸಣ್ಣ ಮೂಲ ಘಟಕಗಳ ಸೆಟ್",
+     "bodyEn": "The SDK is built on a few ideas: an agent is a model with instructions and tools, tools are functions it can call, handoffs pass the conversation to another agent, and guardrails check inputs and outputs.",
+     "bodyKn": "SDK ಕೆಲವು ಕಲ್ಪನೆಗಳ ಮೇಲೆ ನಿಂತಿದೆ: agent = ಸೂಚನೆ ಮತ್ತು tools ಇರುವ ಮಾದರಿ; tools = ಕರೆಯಬಹುದಾದ functions; handoffs ಸಂಭಾಷಣೆಯನ್ನು ಇನ್ನೊಂದು agent ಗೆ ನೀಡುತ್ತವೆ; guardrails ಇನ್‌ಪುಟ್ ಮತ್ತು ಔಟ್‌ಪುಟ್ ಪರಿಶೀಲಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Handoff Means Transfer",
+     "headingKn": "Handoff ಎಂದರೆ ವರ್ಗಾವಣೆ",
+     "bodyEn": "In a handoff the new agent takes over the conversation and answers the user directly. This suits routing to a specialist, such as a billing agent, after triage.",
+     "bodyKn": "handoff ನಲ್ಲಿ ಹೊಸ agent ಸಂಭಾಷಣೆ ವಹಿಸಿಕೊಂಡು ಬಳಕೆದಾರರಿಗೆ ನೇರವಾಗಿ ಉತ್ತರಿಸುತ್ತದೆ. triage ನಂತರ billing agent ಗೆ ಕಳುಹಿಸುವಂತಹ ತಜ್ಞರಿಗೆ ಸೂಕ್ತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Agent as a Tool",
+     "headingKn": "Agent ಅನ್ನು Tool ಆಗಿ",
+     "bodyEn": "Alternatively a manager agent calls another agent like a tool and keeps control, receiving its result and continuing. Choose handoff to transfer ownership, tool-call to keep one coordinator.",
+     "bodyKn": "ಪರ್ಯಾಯವಾಗಿ manager agent ಇನ್ನೊಂದನ್ನು tool ನಂತೆ ಕರೆದು ನಿಯಂತ್ರಣ ಉಳಿಸಿ ಫಲಿತಾಂಶ ಪಡೆದು ಮುಂದುವರಿಯುತ್ತದೆ. ಮಾಲೀಕತ್ವ ವರ್ಗಾವಣೆಗೆ handoff, ಒಬ್ಬ ಸಂಯೋಜಕನಿಗೆ tool-call."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Context Travels With the Conversation",
+     "headingKn": "ಸಂಭಾಷಣೆಯೊಂದಿಗೆ Context ಸಾಗುತ್ತದೆ",
+     "bodyEn": "After a handoff the receiving agent normally sees the conversation history, so instructions must make its role clear. Decide what history to pass or filter when handing off.",
+     "bodyKn": "handoff ನಂತರ ಸ್ವೀಕರಿಸುವ agent ಸಾಮಾನ್ಯವಾಗಿ ಸಂಭಾಷಣೆ ಇತಿಹಾಸ ನೋಡುತ್ತದೆ; ಸೂಚನೆಗಳು ಅದರ ಪಾತ್ರ ಸ್ಪಷ್ಟಪಡಿಸಬೇಕು. ಯಾವ ಇತಿಹಾಸ ನೀಡಬೇಕು ಎಂದು ನಿರ್ಧರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Core primitives: agents, tools, handoffs, guardrails.\n• A handoff transfers the conversation.\n• Agent-as-tool keeps one coordinator in control.",
+     "bodyKn": "• ಮೂಲ ಘಟಕಗಳು: agents, tools, handoffs, guardrails.\n• handoff ಸಂಭಾಷಣೆ ವರ್ಗಾಯಿಸುತ್ತದೆ.\n• agent-as-tool ಸಂಯೋಜಕ ನಿಯಂತ್ರಣ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does a handoff do?",
+       "qKn": "handoff ಏನು ಮಾಡುತ್ತದೆ?",
+       "opts": [
+        "Transfers control of the conversation to another agent",
+        "Deletes the conversation",
+        "Trains a model",
+        "Encrypts data"
+       ],
+       "optsKn": [
+        "ಸಂಭಾಷಣೆ ನಿಯಂತ್ರಣ ಇನ್ನೊಂದು agent ಗೆ ವರ್ಗಾಯಿಸುತ್ತದೆ",
+        "ಸಂಭಾಷಣೆ ಅಳಿಸುತ್ತದೆ",
+        "ಮಾದರಿ ತರಬೇತಿ",
+        "ಎನ್‌ಕ್ರಿಪ್ಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When choose agent-as-tool over handoff?",
+       "qKn": "handoff ಬದಲು agent-as-tool ಯಾವಾಗ?",
+       "opts": [
+        "When one coordinator should keep control",
+        "When no agent exists",
+        "Never",
+        "When transferring ownership"
+       ],
+       "optsKn": [
+        "ಒಬ್ಬ ಸಂಯೋಜಕ ನಿಯಂತ್ರಣ ಉಳಿಸಬೇಕಾದಾಗ",
+        "agent ಇಲ್ಲದಾಗ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಮಾಲೀಕತ್ವ ವರ್ಗಾವಣೆಗೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is a guardrail?",
+       "qKn": "guardrail ಎಂದರೇನು?",
+       "opts": [
+        "A check on inputs or outputs",
+        "A new model",
+        "A database",
+        "A tokenizer"
+       ],
+       "optsKn": [
+        "ಇನ್‌ಪುಟ್ ಅಥವಾ ಔಟ್‌ಪುಟ್ ಪರಿಶೀಲನೆ",
+        "ಹೊಸ ಮಾದರಿ",
+        "ಡೇಟಾಬೇಸ್",
+        "tokenizer"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b32153b",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "OpenAI Agents SDK — Guardrails and Safety Checks",
+  "titleKn": "OpenAI Agents SDK — Guardrails ಮತ್ತು ಸುರಕ್ಷತಾ ಪರಿಶೀಲನೆ",
+  "desc": "How input and output guardrails validate requests and responses, and how tripwires halt a run.",
+  "descKn": "ಇನ್‌ಪುಟ್ ಮತ್ತು ಔಟ್‌ಪುಟ್ guardrails ವಿನಂತಿ ಮತ್ತು ಪ್ರತಿಕ್ರಿಯೆ ಹೇಗೆ ಮಾನ್ಯಗೊಳಿಸುತ್ತವೆ, tripwires ಹೇಗೆ ನಿಲ್ಲಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Distinguish input, output and tool guardrails.",
+   "Explain tripwires and parallel checking.",
+   "Recognise the limits of guardrails."
+  ],
+  "objectivesKn": [
+   "ಇನ್‌ಪುಟ್, ಔಟ್‌ಪುಟ್, tool guardrails ಬೇರ್ಪಡಿಸಿ.",
+   "tripwires ಮತ್ತು ಸಮಾನಾಂತರ ಪರಿಶೀಲನೆ ವಿವರಿಸಿ.",
+   "guardrails ಮಿತಿಗಳನ್ನು ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "OpenAI Agents SDK — Guardrails and Safety Checks",
+     "textKn": "OpenAI Agents SDK — Guardrails and Safety Checks",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in OpenAI Agents SDK: Handoffs, Guardrails, Tracing",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Checks Around the Model",
+     "headingKn": "ಮಾದರಿಯ ಸುತ್ತ ಪರಿಶೀಲನೆಗಳು",
+     "bodyEn": "An input guardrail inspects what the user sent, an output guardrail inspects what the agent is about to return, and tool guardrails can check a tool call. Each returns a pass or a tripwire.",
+     "bodyKn": "input guardrail ಬಳಕೆದಾರರ ಕಳುಹಿಸಿದ್ದನ್ನು, output guardrail agent ಹಿಂತಿರುಗಿಸಲಿರುವುದನ್ನು, tool guardrails tool ಕರೆಯನ್ನು ಪರಿಶೀಲಿಸುತ್ತವೆ. ಪ್ರತಿಯೊಂದು ಪಾಸ್ ಅಥವಾ tripwire ನೀಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Tripwires Halt the Run",
+     "headingKn": "Tripwires ಚಾಲನೆ ನಿಲ್ಲಿಸುತ್ತವೆ",
+     "bodyEn": "When a tripwire fires, the run stops and your code handles it, for example by returning a refusal. Running a cheap guardrail alongside the main call saves time but may waste the main call if it fires.",
+     "bodyKn": "tripwire ಸಕ್ರಿಯವಾದಾಗ ಚಾಲನೆ ನಿಲ್ಲುತ್ತದೆ ಮತ್ತು ನಿಮ್ಮ ಕೋಡ್ ನಿರ್ವಹಿಸುತ್ತದೆ. ಮುಖ್ಯ ಕರೆಯೊಂದಿಗೆ ಸಮಾನಾಂತರ ಚಲಾಯಿಸಿದರೆ ಸಮಯ ಉಳಿಯುತ್ತದೆ, ಆದರೆ ಸಕ್ರಿಯವಾದರೆ ಮುಖ್ಯ ಕರೆ ವ್ಯರ್ಥ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Use Cheap Checks First",
+     "headingKn": "ಅಗ್ಗ ಪರಿಶೀಲನೆ ಮೊದಲು",
+     "bodyEn": "Simple rules and small models catch many problems cheaply. Save expensive checks for cases the cheap ones cannot decide.",
+     "bodyKn": "ಸರಳ ನಿಯಮ ಮತ್ತು ಸಣ್ಣ ಮಾದರಿಗಳು ಅನೇಕ ಸಮಸ್ಯೆ ಅಗ್ಗವಾಗಿ ಹಿಡಿಯುತ್ತವೆ. ದುಬಾರಿ ಪರಿಶೀಲನೆ ಅವು ನಿರ್ಧರಿಸಲಾಗದವಕ್ಕೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Guardrails Are Not Security by Themselves",
+     "headingKn": "Guardrails ಮಾತ್ರ ಭದ್ರತೆ ಅಲ್ಲ",
+     "bodyEn": "A classifier can be evaded by clever wording. Treat guardrails as one layer and back them with real permissions, sandboxing and least privilege.",
+     "bodyKn": "ಚಾತುರ್ಯದ ಪದಗಳಿಂದ classifier ತಪ್ಪಿಸಬಹುದು. guardrails ಒಂದು ಪದರ; ನಿಜ ಅನುಮತಿ, sandbox, ಕನಿಷ್ಠ ಹಕ್ಕಿನೊಂದಿಗೆ ಬೆಂಬಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Guardrails check inputs, outputs and tool calls.\n• Tripwires stop the run.\n• Guardrails are one layer, not the whole defence.",
+     "bodyKn": "• guardrails ಇನ್‌ಪುಟ್, ಔಟ್‌ಪುಟ್, tool ಕರೆ ಪರಿಶೀಲಿಸುತ್ತವೆ.\n• tripwires ನಿಲ್ಲಿಸುತ್ತವೆ.\n• ಒಂದು ಪದರ ಮಾತ್ರ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What happens when a tripwire fires?",
+       "qKn": "tripwire ಸಕ್ರಿಯವಾದರೆ ಏನಾಗುತ್ತದೆ?",
+       "opts": [
+        "The run stops and your code handles it",
+        "The model retrains",
+        "Nothing",
+        "The tokenizer changes"
+       ],
+       "optsKn": [
+        "ಚಾಲನೆ ನಿಲ್ಲುತ್ತದೆ, ನಿಮ್ಮ ಕೋಡ್ ನಿರ್ವಹಿಸುತ್ತದೆ",
+        "ಮಾದರಿ ಮರುತರಬೇತಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "tokenizer ಬದಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why start with cheap checks?",
+       "qKn": "ಅಗ್ಗ ಪರಿಶೀಲನೆ ಮೊದಲು ಏಕೆ?",
+       "opts": [
+        "They catch many issues at low cost",
+        "They are perfect",
+        "Expensive ones are illegal",
+        "They replace permissions"
+       ],
+       "optsKn": [
+        "ಕಡಿಮೆ ವೆಚ್ಚದಲ್ಲಿ ಅನೇಕ ಸಮಸ್ಯೆ ಹಿಡಿಯುತ್ತವೆ",
+        "ಪರಿಪೂರ್ಣ",
+        "ದುಬಾರಿ ಕಾನೂನುಬಾಹಿರ",
+        "ಅನುಮತಿ ಬದಲಿಸುತ್ತವೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Are guardrails enough for security?",
+       "qKn": "ಭದ್ರತೆಗೆ guardrails ಸಾಕೇ?",
+       "opts": [
+        "No: back them with permissions and sandboxing",
+        "Yes always",
+        "Only in English",
+        "Only at night"
+       ],
+       "optsKn": [
+        "ಇಲ್ಲ: ಅನುಮತಿ ಮತ್ತು sandbox ನೊಂದಿಗೆ ಬೆಂಬಲಿಸಿ",
+        "ಯಾವಾಗಲೂ ಹೌದು",
+        "ಇಂಗ್ಲಿಷ್ ಮಾತ್ರ",
+        "ರಾತ್ರಿ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b32153b",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "OpenAI Agents SDK — Tracing, Sessions and Production Use",
+  "titleKn": "OpenAI Agents SDK — Tracing, Sessions, ಉತ್ಪಾದನಾ ಬಳಕೆ",
+  "desc": "How built-in tracing captures runs, how sessions keep conversation memory, and how to operate agents safely.",
+  "descKn": "ಅಂತರ್ನಿರ್ಮಿತ tracing runs ಹೇಗೆ ಸೆರೆಹಿಡಿಯುತ್ತದೆ, sessions ಸಂಭಾಷಣೆ ನೆನಪು ಹೇಗೆ ಇಡುತ್ತವೆ.",
+  "objectives": [
+   "Explain traces and spans for an agent run.",
+   "Describe sessions as stored conversation history.",
+   "List production practices: limits, evals and data handling."
+  ],
+  "objectivesKn": [
+   "agent run ನ traces ಮತ್ತು spans ವಿವರಿಸಿ.",
+   "sessions ಅನ್ನು ಸಂಗ್ರಹಿತ ಇತಿಹಾಸವಾಗಿ ವಿವರಿಸಿ.",
+   "ಉತ್ಪಾದನಾ ಅಭ್ಯಾಸಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "OpenAI Agents SDK — Tracing, Sessions and Production Use",
+     "textKn": "OpenAI Agents SDK — Tracing, Sessions and Production Use",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in OpenAI Agents SDK: Handoffs, Guardrails, Tracing",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Traces and Spans",
+     "headingKn": "Traces ಮತ್ತು Spans",
+     "bodyEn": "A trace records one run; spans record the pieces inside it: model calls, tool calls, handoffs and guardrail checks with timing and inputs. It answers \"what did the agent actually do?\".",
+     "bodyKn": "trace ಒಂದು run ದಾಖಲಿಸುತ್ತದೆ; spans ಒಳಗಿನ ತುಣುಕುಗಳನ್ನು (ಮಾದರಿ ಕರೆ, tool ಕರೆ, handoffs, guardrails) ಸಮಯ ಮತ್ತು ಇನ್‌ಪುಟ್ ಸಹಿತ ದಾಖಲಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Sessions Remember",
+     "headingKn": "Sessions ನೆನಪಿಡುತ್ತವೆ",
+     "bodyEn": "A session stores the conversation so a later run continues it without the caller resending history. Decide retention, size limits and how users can clear it.",
+     "bodyKn": "session ಸಂಭಾಷಣೆ ಸಂಗ್ರಹಿಸುತ್ತದೆ; ನಂತರದ run ಕರೆದವರು ಇತಿಹಾಸ ಮರುಕಳುಹಿಸದೆ ಮುಂದುವರಿಸುತ್ತದೆ. ಉಳಿಸುವ ಅವಧಿ, ಗಾತ್ರ ಮಿತಿ, ಬಳಕೆದಾರರು ಹೇಗೆ ತೆರವುಗೊಳಿಸಬಹುದು ಎಂದು ನಿರ್ಧರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Traces Contain Data",
+     "headingKn": "Traces ಡೇಟಾ ಹೊಂದಿವೆ",
+     "bodyEn": "Traces may capture prompts and tool arguments that include personal information. Configure what is recorded and who can read it as carefully as any log.",
+     "bodyKn": "traces ವೈಯಕ್ತಿಕ ಮಾಹಿತಿ ಇರುವ prompts ಮತ್ತು tool arguments ಸೆರೆಹಿಡಿಯಬಹುದು. ಯಾವುದೇ ಲಾಗ್‌ನಂತೆ ಏನು ದಾಖಲಾಗುತ್ತದೆ, ಯಾರು ಓದಬಹುದು ಎಂದು ಎಚ್ಚರಿಕೆಯಿಂದ ಹೊಂದಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Limits and Evaluation",
+     "headingKn": "ಮಿತಿಗಳು ಮತ್ತು ಮೌಲ್ಯಮಾಪನ",
+     "bodyEn": "Set a maximum number of turns, add timeouts, and evaluate on a fixed test set before each change. Use traces from failures to add new test cases.",
+     "bodyKn": "ಗರಿಷ್ಠ ತಿರುವು ಮಿತಿ, timeout ಸೇರಿಸಿ; ಪ್ರತಿ ಬದಲಾವಣೆ ಮೊದಲು ನಿಗದಿತ ಪರೀಕ್ಷಾ ಸೆಟ್‌ನಲ್ಲಿ ಮೌಲ್ಯಮಾಪನ. ವೈಫಲ್ಯದ traces ಇಂದ ಹೊಸ ಪರೀಕ್ಷಾ ಪ್ರಕರಣ ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Traces show what an agent really did.\n• Sessions store history; set retention.\n• Traces contain data: govern access.",
+     "bodyKn": "• traces agent ನಿಜವಾಗಿ ಏನು ಮಾಡಿತು ಎಂದು ತೋರಿಸುತ್ತವೆ.\n• sessions ಇತಿಹಾಸ; ಅವಧಿ ನಿಗದಿ.\n• traces ನಲ್ಲಿ ಡೇಟಾ: ಪ್ರವೇಶ ನಿಯಂತ್ರಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does a trace answer?",
+       "qKn": "trace ಏನನ್ನು ಉತ್ತರಿಸುತ್ತದೆ?",
+       "opts": [
+        "What the agent actually did",
+        "Which model is largest",
+        "The price of GPUs",
+        "Nothing"
+       ],
+       "optsKn": [
+        "agent ನಿಜವಾಗಿ ಏನು ಮಾಡಿತು",
+        "ಯಾವ ಮಾದರಿ ದೊಡ್ಡದು",
+        "GPU ಬೆಲೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why govern trace access?",
+       "qKn": "trace ಪ್ರವೇಶ ಏಕೆ ನಿಯಂತ್ರಿಸಬೇಕು?",
+       "opts": [
+        "They can contain personal data",
+        "They are empty",
+        "They are encrypted always",
+        "They are illegal"
+       ],
+       "optsKn": [
+        "ವೈಯಕ್ತಿಕ ಡೇಟಾ ಇರಬಹುದು",
+        "ಖಾಲಿ",
+        "ಯಾವಾಗಲೂ ಎನ್‌ಕ್ರಿಪ್ಟ್",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What should you decide for sessions?",
+       "qKn": "sessions ಗೆ ಏನು ನಿರ್ಧರಿಸಬೇಕು?",
+       "opts": [
+        "Retention, size limits and clearing",
+        "Only colours",
+        "Nothing",
+        "Only prompts"
+       ],
+       "optsKn": [
+        "ಉಳಿಸುವ ಅವಧಿ, ಗಾತ್ರ, ತೆರವು",
+        "ಬಣ್ಣ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "prompts ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b32153e",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Claude Agent SDK — The Agent Loop, Tools and Permissions",
+  "titleKn": "Claude Agent SDK — Agent Loop, Tools, ಅನುಮತಿಗಳು",
+  "desc": "The loop behind a coding-style agent, built-in and custom tools, and how permission modes control what it may do.",
+  "descKn": "coding ಶೈಲಿಯ agent ಹಿಂದಿನ loop, ಅಂತರ್ನಿರ್ಮಿತ ಮತ್ತು ಕಸ್ಟಮ್ tools, ಅನುಮತಿ ಮೋಡ್‌ಗಳು.",
+  "objectives": [
+   "Describe the gather, act, verify loop.",
+   "Explain tools and permission modes.",
+   "Explain why least privilege matters for agents that act on files."
+  ],
+  "objectivesKn": [
+   "ಸಂಗ್ರಹಿಸಿ-ಕ್ರಿಯೆ-ಪರಿಶೀಲನೆ loop ವಿವರಿಸಿ.",
+   "tools ಮತ್ತು ಅನುಮತಿ ಮೋಡ್ ವಿವರಿಸಿ.",
+   "ಫೈಲ್ ಮೇಲೆ ಕೆಲಸ ಮಾಡುವ agents ಗೆ ಕನಿಷ್ಠ ಹಕ್ಕು ಏಕೆ ಮುಖ್ಯ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Claude Agent SDK — The Agent Loop, Tools and Permissions",
+     "textKn": "Claude Agent SDK — The Agent Loop, Tools and Permissions",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Claude Agent SDK: Subagents and Session Store",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Gather, Act, Verify",
+     "headingKn": "ಸಂಗ್ರಹಿಸಿ, ಕ್ರಿಯೆ, ಪರಿಶೀಲಿಸಿ",
+     "bodyEn": "A capable agent loop gathers context (reads files, searches), takes an action (edits, runs commands) and verifies the result (runs tests, checks output) before deciding the next step.",
+     "bodyKn": "ಸಮರ್ಥ agent loop context ಸಂಗ್ರಹಿಸಿ (ಫೈಲ್ ಓದು, ಹುಡುಕು), ಕ್ರಿಯೆ ಮಾಡಿ (ತಿದ್ದು, ಆದೇಶ ಚಲಾಯಿಸು), ಫಲಿತಾಂಶ ಪರಿಶೀಲಿಸಿ (tests) ನಂತರ ಮುಂದಿನ ಹಂತ ನಿರ್ಧರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Built-In and Custom Tools",
+     "headingKn": "ಅಂತರ್ನಿರ್ಮಿತ ಮತ್ತು ಕಸ್ಟಮ್ Tools",
+     "bodyEn": "The SDK provides tools for files and shell work, and lets you add your own, including tools served over the Model Context Protocol. Each tool is a capability you are granting.",
+     "bodyKn": "SDK ಫೈಲ್ ಮತ್ತು shell ಕೆಲಸದ tools ನೀಡುತ್ತದೆ, ಮತ್ತು Model Context Protocol ಮೂಲಕ ಸೇವೆ ನೀಡುವ ನಿಮ್ಮದೇ tools ಸೇರಿಸಲು ಬಿಡುತ್ತದೆ. ಪ್ರತಿ tool ನೀವು ನೀಡುವ ಸಾಮರ್ಥ್ಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Permissions Decide Autonomy",
+     "headingKn": "ಅನುಮತಿಗಳು ಸ್ವಾಯತ್ತತೆ ನಿರ್ಧರಿಸುತ್ತವೆ",
+     "bodyEn": "Permission settings determine which tools run automatically, which ask a human first and which are blocked. Start restrictive and widen only as trust and testing justify.",
+     "bodyKn": "ಅನುಮತಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಯಾವ tools ಸ್ವಯಂ ಚಲಿಸುತ್ತವೆ, ಯಾವುದು ಮಾನವನನ್ನು ಮೊದಲು ಕೇಳುತ್ತವೆ, ಯಾವುದು ನಿರ್ಬಂಧಿತ ಎಂದು ನಿರ್ಧರಿಸುತ್ತವೆ. ನಿರ್ಬಂಧದಿಂದ ಆರಂಭಿಸಿ, ವಿಶ್ವಾಸ ಮತ್ತು ಪರೀಕ್ಷೆ ಸಮರ್ಥಿಸಿದಂತೆ ಮಾತ್ರ ವಿಸ್ತರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Context Is the Scarce Resource",
+     "headingKn": "Context ಅಪರೂಪದ ಸಂಪನ್ಮೂಲ",
+     "bodyEn": "Long tasks fill the context window, so agents rely on summarising, on files as memory and on subagents to keep the main context focused.",
+     "bodyKn": "ಉದ್ದ ಕೆಲಸಗಳು context window ತುಂಬುತ್ತವೆ, ಆದ್ದರಿಂದ agents ಸಾರಾಂಶ, ಫೈಲ್‌ಗಳನ್ನು ಮೆಮೊರಿಯಾಗಿ ಮತ್ತು subagents ಬಳಸಿ ಮುಖ್ಯ context ಕೇಂದ್ರೀಕೃತವಾಗಿಡುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• The loop is gather, act, verify.\n• Each tool is a granted capability.\n• Start with restrictive permissions and widen deliberately.",
+     "bodyKn": "• loop: ಸಂಗ್ರಹ, ಕ್ರಿಯೆ, ಪರಿಶೀಲನೆ.\n• ಪ್ರತಿ tool ನೀಡಿದ ಸಾಮರ್ಥ್ಯ.\n• ನಿರ್ಬಂಧದಿಂದ ಆರಂಭಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is the verify step for?",
+       "qKn": "ಪರಿಶೀಲನಾ ಹಂತ ಯಾವುದಕ್ಕೆ?",
+       "opts": [
+        "Checking the result of an action, such as running tests",
+        "Deleting files",
+        "Renaming tools",
+        "Skipping actions"
+       ],
+       "optsKn": [
+        "ಕ್ರಿಯೆಯ ಫಲಿತಾಂಶ ಪರಿಶೀಲಿಸಲು, ಉದಾ. tests",
+        "ಫೈಲ್ ಅಳಿಸಲು",
+        "tools ಮರುಹೆಸರಿಸಲು",
+        "ಕ್ರಿಯೆ ಬಿಡಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How should permissions start?",
+       "qKn": "ಅನುಮತಿಗಳು ಹೇಗೆ ಆರಂಭವಾಗಬೇಕು?",
+       "opts": [
+        "Restrictive, widened as trust grows",
+        "Fully open",
+        "Random",
+        "Disabled forever"
+       ],
+       "optsKn": [
+        "ನಿರ್ಬಂಧ, ವಿಶ್ವಾಸ ಬೆಳೆದಂತೆ ವಿಸ್ತರಣೆ",
+        "ಪೂರ್ಣ ತೆರೆದ",
+        "ಯಾದೃಚ್ಛಿಕ",
+        "ಶಾಶ್ವತ ನಿಷ್ಕ್ರಿಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What does each tool represent?",
+       "qKn": "ಪ್ರತಿ tool ಏನನ್ನು ಪ್ರತಿನಿಧಿಸುತ್ತದೆ?",
+       "opts": [
+        "A capability you are granting",
+        "A decoration",
+        "A tokenizer",
+        "A prompt"
+       ],
+       "optsKn": [
+        "ನೀವು ನೀಡುವ ಸಾಮರ್ಥ್ಯ",
+        "ಅಲಂಕಾರ",
+        "tokenizer",
+        "prompt"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b32153e",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Claude Agent SDK — Subagents, Hooks and Sessions",
+  "titleKn": "Claude Agent SDK — Subagents, Hooks, Sessions",
+  "desc": "How subagents isolate context, how hooks add deterministic control points, and how sessions persist a conversation.",
+  "descKn": "subagents context ಹೇಗೆ ಪ್ರತ್ಯೇಕಿಸುತ್ತವೆ, hooks ನಿರ್ಧಾರಾತ್ಮಕ ನಿಯಂತ್ರಣ ಬಿಂದು ಹೇಗೆ ಸೇರಿಸುತ್ತವೆ, sessions ಹೇಗೆ ಉಳಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Explain subagents as isolated contexts with their own tools.",
+   "Describe hooks that run at fixed events.",
+   "Explain resuming a session."
+  ],
+  "objectivesKn": [
+   "subagents ಅನ್ನು ಪ್ರತ್ಯೇಕ context ಎಂದು ವಿವರಿಸಿ.",
+   "ನಿಗದಿತ ಘಟನೆಗಳಲ್ಲಿ ಚಲಿಸುವ hooks ವಿವರಿಸಿ.",
+   "session ಮುಂದುವರಿಸುವುದನ್ನು ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Claude Agent SDK — Subagents, Hooks and Sessions",
+     "textKn": "Claude Agent SDK — Subagents, Hooks and Sessions",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Claude Agent SDK: Subagents and Session Store",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Subagents Isolate Context",
+     "headingKn": "Subagents Context ಪ್ರತ್ಯೇಕಿಸುತ್ತವೆ",
+     "bodyEn": "A subagent gets its own fresh context, instructions and tool set for a focused task, such as searching a large codebase, and returns only a short result. The main conversation stays uncluttered.",
+     "bodyKn": "subagent ಗೆ ಕೇಂದ್ರೀಕೃತ ಕೆಲಸಕ್ಕೆ ತನ್ನದೇ ಹೊಸ context, ಸೂಚನೆ, tool ಸೆಟ್ ಸಿಗುತ್ತದೆ ಮತ್ತು ಸಣ್ಣ ಫಲಿತಾಂಶ ಮಾತ್ರ ಹಿಂತಿರುಗಿಸುತ್ತದೆ. ಮುಖ್ಯ ಸಂಭಾಷಣೆ ಗೊಂದಲವಿಲ್ಲದೆ ಉಳಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Hooks Are Deterministic",
+     "headingKn": "Hooks ನಿರ್ಧಾರಾತ್ಮಕ",
+     "bodyEn": "Hooks run your code at fixed points such as before a tool call or after an edit. Unlike instructions the model may ignore, a hook always runs, so it suits rules that must hold every time.",
+     "bodyKn": "hooks ನಿಮ್ಮ ಕೋಡ್ ಅನ್ನು tool ಕರೆ ಮೊದಲು, ತಿದ್ದಿದ ನಂತರ ಮುಂತಾದ ನಿಗದಿತ ಸ್ಥಳಗಳಲ್ಲಿ ಚಲಾಯಿಸುತ್ತವೆ. ಮಾದರಿ ನಿರ್ಲಕ್ಷಿಸಬಹುದಾದ ಸೂಚನೆಗಳಂತಲ್ಲ, hook ಯಾವಾಗಲೂ ಚಲಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Sessions and Resumption",
+     "headingKn": "Sessions ಮತ್ತು ಮುಂದುವರಿಕೆ",
+     "bodyEn": "Sessions store the conversation so a later call can resume it. Plan where the store lives, how long it is kept and how to fork or discard a session.",
+     "bodyKn": "sessions ಸಂಭಾಷಣೆ ಉಳಿಸಿ ನಂತರದ ಕರೆ ಮುಂದುವರಿಸಲು ಬಿಡುತ್ತವೆ. ಸಂಗ್ರಹ ಎಲ್ಲಿ, ಎಷ್ಟು ಕಾಲ, fork ಅಥವಾ ತ್ಯಜಿಸುವುದು ಹೇಗೆ ಎಂದು ಯೋಜಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Delegation Has a Cost",
+     "headingKn": "ವಹಿಸುವಿಕೆಗೆ ವೆಚ್ಚ",
+     "bodyEn": "Each subagent runs its own model calls. Use them when isolation or parallel work saves more than it costs, not for trivial steps.",
+     "bodyKn": "ಪ್ರತಿ subagent ತನ್ನದೇ ಮಾದರಿ ಕರೆ ಮಾಡುತ್ತದೆ. ಪ್ರತ್ಯೇಕತೆ ಅಥವಾ ಸಮಾನಾಂತರ ಕೆಲಸ ವೆಚ್ಚಕ್ಕಿಂತ ಹೆಚ್ಚು ಉಳಿಸಿದಾಗ ಬಳಸಿ, ಸರಳ ಹಂತಗಳಿಗಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Subagents keep the main context clean.\n• Hooks always run; instructions may not.\n• Plan session storage and retention.",
+     "bodyKn": "• subagents ಮುಖ್ಯ context ಸ್ವಚ್ಛ.\n• hooks ಯಾವಾಗಲೂ ಚಲಿಸುತ್ತವೆ.\n• session ಸಂಗ್ರಹ ಯೋಜಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why use a subagent?",
+       "qKn": "subagent ಏಕೆ?",
+       "opts": [
+        "Isolated context for a focused task",
+        "To avoid tools",
+        "To increase context",
+        "To remove the main agent"
+       ],
+       "optsKn": [
+        "ಕೇಂದ್ರೀಕೃತ ಕೆಲಸಕ್ಕೆ ಪ್ರತ್ಯೇಕ context",
+        "tools ತಪ್ಪಿಸಲು",
+        "context ಹೆಚ್ಚಿಸಲು",
+        "ಮುಖ್ಯ agent ತೆಗೆಯಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How do hooks differ from instructions?",
+       "qKn": "hooks ಮತ್ತು ಸೂಚನೆಗಳ ವ್ಯತ್ಯಾಸ?",
+       "opts": [
+        "Hooks always run at their event",
+        "Hooks are optional to the model",
+        "Hooks are prompts",
+        "No difference"
+       ],
+       "optsKn": [
+        "hooks ಘಟನೆಯಲ್ಲಿ ಯಾವಾಗಲೂ ಚಲಿಸುತ್ತವೆ",
+        "ಮಾದರಿಗೆ ಐಚ್ಛಿಕ",
+        "ಅವು prompts",
+        "ವ್ಯತ್ಯಾಸ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Is delegation free?",
+       "qKn": "ವಹಿಸುವಿಕೆ ಉಚಿತವೇ?",
+       "opts": [
+        "No: each subagent makes its own model calls",
+        "Yes",
+        "Only for hooks",
+        "Only in tests"
+       ],
+       "optsKn": [
+        "ಇಲ್ಲ: ಪ್ರತಿ subagent ಮಾದರಿ ಕರೆ ಮಾಡುತ್ತದೆ",
+        "ಹೌದು",
+        "hooks ಗೆ ಮಾತ್ರ",
+        "ಪರೀಕ್ಷೆಯಲ್ಲಿ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b32153e",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Claude Agent SDK — Building Reliable Agents: Sandboxing, Evaluation and Cost",
+  "titleKn": "Claude Agent SDK — ವಿಶ್ವಾಸಾರ್ಹ Agents ನಿರ್ಮಾಣ: Sandbox, ಮೌಲ್ಯಮಾಪನ, ವೆಚ್ಚ",
+  "desc": "Running an acting agent safely and measuring it: isolation, evaluation loops and cost control.",
+  "descKn": "ಕ್ರಿಯೆ ಮಾಡುವ agent ಸುರಕ್ಷಿತವಾಗಿ ಚಲಾಯಿಸುವುದು ಮತ್ತು ಅಳೆಯುವುದು: ಪ್ರತ್ಯೇಕತೆ, ಮೌಲ್ಯಮಾಪನ, ವೆಚ್ಚ ನಿಯಂತ್ರಣ.",
+  "objectives": [
+   "Explain why an agent that runs commands needs a sandbox.",
+   "Design an evaluation loop for an agent.",
+   "Control cost with budgets and context management."
+  ],
+  "objectivesKn": [
+   "ಆದೇಶ ಚಲಾಯಿಸುವ agent ಗೆ sandbox ಏಕೆ ಬೇಕು ವಿವರಿಸಿ.",
+   "agent ಗೆ ಮೌಲ್ಯಮಾಪನ loop ವಿನ್ಯಾಸ.",
+   "ಬಜೆಟ್ ಮತ್ತು context ನಿರ್ವಹಣೆಯಿಂದ ವೆಚ್ಚ ನಿಯಂತ್ರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Claude Agent SDK — Building Reliable Agents: Sandboxing, Evaluation and Cost",
+     "textKn": "Claude Agent SDK — Building Reliable Agents: Sandboxing, Evaluation and Cost",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Claude Agent SDK: Subagents and Session Store",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Sandbox Anything That Executes",
+     "headingKn": "ಚಲಾಯಿಸುವ ಎಲ್ಲವನ್ನೂ Sandbox ಮಾಡಿ",
+     "bodyEn": "An agent that can run commands can also run harmful ones, by mistake or through injected instructions. Run it in a container or restricted environment with limited files, network and credentials.",
+     "bodyKn": "ಆದೇಶ ಚಲಾಯಿಸುವ agent ತಪ್ಪಿನಿಂದ ಅಥವಾ ಇಂಜೆಕ್ಟ್ ಮಾಡಿದ ಸೂಚನೆಗಳಿಂದ ಹಾನಿಕರ ಆದೇಶ ಚಲಾಯಿಸಬಹುದು. ಸೀಮಿತ ಫೈಲ್, ನೆಟ್‌ವರ್ಕ್, credentials ಇರುವ container ನಲ್ಲಿ ಚಲಾಯಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Evaluate on Real Tasks",
+     "headingKn": "ನಿಜ ಕೆಲಸಗಳಲ್ಲಿ ಮೌಲ್ಯಮಾಪನ",
+     "bodyEn": "Build a set of representative tasks with automatic checks, such as tests that must pass. Run it after each change to prompts, tools or model versions to catch regressions.",
+     "bodyKn": "ಸ್ವಯಂ ಪರಿಶೀಲನೆ ಇರುವ ಪ್ರತಿನಿಧಿ ಕೆಲಸಗಳ ಸೆಟ್ ನಿರ್ಮಿಸಿ (ಪಾಸ್ ಆಗಬೇಕಾದ tests). prompts, tools, ಮಾದರಿ ಆವೃತ್ತಿ ಬದಲಾದಾಗ ಚಲಾಯಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Budgets",
+     "headingKn": "ಬಜೆಟ್‌ಗಳು",
+     "bodyEn": "Set limits on turns, tokens and wall-clock time, and stop with a clear report when a limit is hit. Unbounded agents can turn a small bug into a large bill.",
+     "bodyKn": "ತಿರುವು, tokens, ಸಮಯಕ್ಕೆ ಮಿತಿ ಹಾಕಿ; ಮಿತಿ ತಲುಪಿದರೆ ಸ್ಪಷ್ಟ ವರದಿಯೊಂದಿಗೆ ನಿಲ್ಲಿಸಿ. ಮಿತಿಯಿಲ್ಲದ agents ಸಣ್ಣ ದೋಷವನ್ನು ದೊಡ್ಡ ಬಿಲ್ ಮಾಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Keep a Human in Charge of Irreversible Actions",
+     "headingKn": "ಹಿಂದಿರುಗಿಸಲಾಗದ ಕ್ರಿಯೆಗಳಿಗೆ ಮಾನವ",
+     "bodyEn": "For actions such as deleting, deploying or sending, require confirmation and log what was approved. Autonomy should grow where mistakes are cheap and stay limited where they are not.",
+     "bodyKn": "ಅಳಿಸುವುದು, ನಿಯೋಜಿಸುವುದು, ಕಳುಹಿಸುವುದಕ್ಕೆ ದೃಢೀಕರಣ ಕಡ್ಡಾಯ, ಅನುಮೋದಿಸಿದ್ದನ್ನು ಲಾಗ್ ಮಾಡಿ. ತಪ್ಪು ಅಗ್ಗವಾದಲ್ಲಿ ಸ್ವಾಯತ್ತತೆ ಹೆಚ್ಚಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Sandbox agents that execute commands.\n• Evaluate on representative tasks after every change.\n• Cap turns, tokens and time; confirm irreversible actions.",
+     "bodyKn": "• ಆದೇಶ ಚಲಾಯಿಸುವ agents sandbox ನಲ್ಲಿ.\n• ಪ್ರತಿ ಬದಲಾವಣೆ ನಂತರ ಮೌಲ್ಯಮಾಪನ.\n• ಮಿತಿ ಹಾಕಿ, ದೃಢೀಕರಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why sandbox an agent that runs commands?",
+       "qKn": "ಆದೇಶ ಚಲಾಯಿಸುವ agent ಅನ್ನು ಏಕೆ sandbox ಮಾಡಬೇಕು?",
+       "opts": [
+        "Mistakes or injected instructions could cause harm",
+        "To make it faster",
+        "To reduce tokens",
+        "It is optional decoration"
+       ],
+       "optsKn": [
+        "ತಪ್ಪು ಅಥವಾ ಇಂಜೆಕ್ಟ್ ಸೂಚನೆ ಹಾನಿ ಮಾಡಬಹುದು",
+        "ವೇಗಕ್ಕೆ",
+        "tokens ಕಡಿಮೆಗೆ",
+        "ಅಲಂಕಾರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When run the evaluation set?",
+       "qKn": "ಮೌಲ್ಯಮಾಪನ ಸೆಟ್ ಯಾವಾಗ ಚಲಾಯಿಸಬೇಕು?",
+       "opts": [
+        "After changes to prompts, tools or model versions",
+        "Never",
+        "Only once",
+        "Only on weekends"
+       ],
+       "optsKn": [
+        "prompts, tools, ಮಾದರಿ ಬದಲಾದಾಗ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಒಮ್ಮೆ ಮಾತ್ರ",
+        "ವಾರಾಂತ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which actions need human confirmation?",
+       "qKn": "ಯಾವ ಕ್ರಿಯೆಗಳಿಗೆ ಮಾನವ ದೃಢೀಕರಣ?",
+       "opts": [
+        "Irreversible ones like delete or deploy",
+        "Reading files",
+        "None",
+        "Only comments"
+       ],
+       "optsKn": [
+        "ಅಳಿಸು, ನಿಯೋಜಿಸು ಮುಂತಾದ ಹಿಂದಿರುಗಿಸಲಾಗದವು",
+        "ಫೈಲ್ ಓದುವುದು",
+        "ಯಾವುದೂ ಇಲ್ಲ",
+        "ಕಾಮೆಂಟ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321541",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Agno and Mastra — What Production Agent Runtimes Provide",
+  "titleKn": "Agno ಮತ್ತು Mastra — ಉತ್ಪಾದನಾ Agent Runtimes ಏನು ನೀಡುತ್ತವೆ",
+  "desc": "What a production runtime adds beyond a loop: storage, memory, workflows, evals and deployment, and how to choose one.",
+  "descKn": "ಉತ್ಪಾದನಾ runtime loop ಗಿಂತ ಹೆಚ್ಚಿಗೆ ಏನು ಸೇರಿಸುತ್ತದೆ ಮತ್ತು ಹೇಗೆ ಆರಿಸುವುದು.",
+  "objectives": [
+   "List capabilities a production runtime should provide.",
+   "Compare Python and TypeScript ecosystems.",
+   "Apply criteria for choosing a framework."
+  ],
+  "objectivesKn": [
+   "ಉತ್ಪಾದನಾ runtime ನೀಡಬೇಕಾದ ಸಾಮರ್ಥ್ಯ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "Python ಮತ್ತು TypeScript ಪರಿಸರ ಹೋಲಿಸಿ.",
+   "ಚೌಕಟ್ಟು ಆರಿಸುವ ಮಾನದಂಡ ಅನ್ವಯಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Agno and Mastra — What Production Agent Runtimes Provide",
+     "textKn": "Agno and Mastra — What Production Agent Runtimes Provide",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Agno and Mastra: Production Runtimes",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Beyond the Loop",
+     "headingKn": "Loop ಗಿಂತ ಆಚೆ",
+     "bodyEn": "A demo needs a model call in a loop. A production agent also needs persistent storage, memory, retries, tracing, evaluation and a way to serve requests. Runtimes such as Agno (Python) and Mastra (TypeScript) package these pieces.",
+     "bodyKn": "ಡೆಮೊಗೆ loop ನಲ್ಲಿ ಮಾದರಿ ಕರೆ ಸಾಕು. ಉತ್ಪಾದನಾ agent ಗೆ ಶಾಶ್ವತ ಸಂಗ್ರಹ, memory, ಮರುಪ್ರಯತ್ನ, tracing, ಮೌಲ್ಯಮಾಪನ, ವಿನಂತಿ ಸೇವೆ ಬೇಕು. Agno (Python) ಮತ್ತು Mastra (TypeScript) ಇವನ್ನು ಪ್ಯಾಕೇಜ್ ಮಾಡುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Typical Building Blocks",
+     "headingKn": "ಸಾಮಾನ್ಯ ಘಟಕಗಳು",
+     "bodyEn": "Common pieces are agents, tools, workflows with steps, a memory layer, knowledge or retrieval, evaluation helpers and an API server or playground for testing.",
+     "bodyKn": "ಸಾಮಾನ್ಯ ಭಾಗಗಳು: agents, tools, ಹಂತಗಳಿರುವ workflows, memory ಪದರ, ಜ್ಞಾನ/ಹಿಂಪಡೆಯುವಿಕೆ, ಮೌಲ್ಯಮಾಪನ ಸಹಾಯಕ, API server ಅಥವಾ ಪರೀಕ್ಷಾ playground."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Choosing a Runtime",
+     "headingKn": "Runtime ಆರಿಸುವುದು",
+     "bodyEn": "Consider your language and team skills, how well it integrates with your data and deployment, quality of tracing, community and maintenance activity, and how easy it is to leave.",
+     "bodyKn": "ನಿಮ್ಮ ಭಾಷೆ ಮತ್ತು ತಂಡದ ಕೌಶಲ್ಯ, ಡೇಟಾ ಮತ್ತು ನಿಯೋಜನೆ ಏಕೀಕರಣ, tracing ಗುಣಮಟ್ಟ, ಸಮುದಾಯ ಮತ್ತು ನಿರ್ವಹಣೆ, ಬಿಟ್ಟು ಹೋಗುವುದು ಎಷ್ಟು ಸುಲಭ ಎಂದು ಪರಿಗಣಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Avoid Lock-In",
+     "headingKn": "Lock-In ತಪ್ಪಿಸಿ",
+     "bodyEn": "Keep prompts, tool logic and evaluation data in your own code and files, and wrap framework calls. A framework is a means of delivery, not the place your business logic must live.",
+     "bodyKn": "prompts, tool ತರ್ಕ, ಮೌಲ್ಯಮಾಪನ ಡೇಟಾ ನಿಮ್ಮದೇ ಕೋಡ್‌ನಲ್ಲಿ ಇಡಿ, ಚೌಕಟ್ಟು ಕರೆಗಳನ್ನು ಸುತ್ತಿ. ಚೌಕಟ್ಟು ಒಂದು ವಿತರಣಾ ಸಾಧನ, ವ್ಯವಹಾರ ತರ್ಕದ ಸ್ಥಳವಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Production needs storage, memory, tracing and evaluation.\n• Choose by language, integration and maintenance.\n• Keep your logic portable.",
+     "bodyKn": "• ಉತ್ಪಾದನೆಗೆ ಸಂಗ್ರಹ, memory, tracing, ಮೌಲ್ಯಮಾಪನ.\n• ಭಾಷೆ, ಏಕೀಕರಣ, ನಿರ್ವಹಣೆ ಆಧಾರ.\n• ತರ್ಕ ಪೋರ್ಟಬಲ್ ಇಡಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does a production runtime add beyond a loop?",
+       "qKn": "ಉತ್ಪಾದನಾ runtime loop ಗಿಂತ ಹೆಚ್ಚು ಏನು ಸೇರಿಸುತ್ತದೆ?",
+       "opts": [
+        "Storage, memory, tracing, evaluation and serving",
+        "A smaller model",
+        "Free GPUs",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸಂಗ್ರಹ, memory, tracing, ಮೌಲ್ಯಮಾಪನ, ಸೇವೆ",
+        "ಚಿಕ್ಕ ಮಾದರಿ",
+        "ಉಚಿತ GPU",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How to reduce lock-in?",
+       "qKn": "lock-in ಹೇಗೆ ಕಡಿಮೆ ಮಾಡಬಹುದು?",
+       "opts": [
+        "Keep prompts and logic in your own code, wrap framework calls",
+        "Use one framework everywhere",
+        "Avoid tests",
+        "Copy the docs"
+       ],
+       "optsKn": [
+        "prompts ಮತ್ತು ತರ್ಕ ನಿಮ್ಮ ಕೋಡ್‌ನಲ್ಲಿ, ಚೌಕಟ್ಟು ಕರೆ ಸುತ್ತಿ",
+        "ಎಲ್ಲೆಡೆ ಒಂದೇ ಚೌಕಟ್ಟು",
+        "ಪರೀಕ್ಷೆ ತಪ್ಪಿಸಿ",
+        "ದಾಖಲೆ ನಕಲಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which is a selection criterion?",
+       "qKn": "ಯಾವುದು ಆಯ್ಕೆ ಮಾನದಂಡ?",
+       "opts": [
+        "Language fit, tracing quality and maintenance",
+        "Logo colour",
+        "Number of stars only",
+        "Age of the website"
+       ],
+       "optsKn": [
+        "ಭಾಷೆ ಹೊಂದಾಣಿಕೆ, tracing ಗುಣಮಟ್ಟ, ನಿರ್ವಹಣೆ",
+        "ಲೋಗೋ ಬಣ್ಣ",
+        "ನಕ್ಷತ್ರ ಸಂಖ್ಯೆ ಮಾತ್ರ",
+        "ವೆಬ್‌ಸೈಟ್ ವಯಸ್ಸು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321541",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Agno and Mastra — Workflows, Memory and Knowledge in Practice",
+  "titleKn": "Agno ಮತ್ತು Mastra — ಪ್ರಾಯೋಗಿಕವಾಗಿ Workflows, Memory, Knowledge",
+  "desc": "How workflows orchestrate steps, how memory and knowledge differ, and how each is kept correct over time.",
+  "descKn": "workflows ಹಂತಗಳನ್ನು ಹೇಗೆ ಸಂಯೋಜಿಸುತ್ತವೆ, memory ಮತ್ತು knowledge ವ್ಯತ್ಯಾಸ, ಕಾಲಕ್ರಮೇಣ ಸರಿಯಾಗಿ ಇಡುವುದು.",
+  "objectives": [
+   "Describe workflows as steps with branching and retries.",
+   "Distinguish memory of interactions from a knowledge base.",
+   "Explain how to keep knowledge fresh."
+  ],
+  "objectivesKn": [
+   "workflows ಅನ್ನು ವಿವರಿಸಿ.",
+   "memory ಮತ್ತು knowledge base ಬೇರ್ಪಡಿಸಿ.",
+   "knowledge ಹೊಸದಾಗಿಡುವುದು ಹೇಗೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Agno and Mastra — Workflows, Memory and Knowledge in Practice",
+     "textKn": "Agno and Mastra — Workflows, Memory and Knowledge in Practice",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Agno and Mastra: Production Runtimes",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Workflows",
+     "headingKn": "Workflows",
+     "bodyEn": "A workflow defines steps, their order, branches, parallel parts and retry behaviour, with an agent or plain code in each step. It makes a multi-step process repeatable and observable.",
+     "bodyKn": "workflow ಹಂತಗಳು, ಕ್ರಮ, ಶಾಖೆಗಳು, ಸಮಾನಾಂತರ ಭಾಗಗಳು, ಮರುಪ್ರಯತ್ನ ವರ್ತನೆ ವ್ಯಾಖ್ಯಾನಿಸುತ್ತದೆ; ಪ್ರತಿ ಹಂತದಲ್ಲಿ agent ಅಥವಾ ಕೋಡ್. ಬಹು-ಹಂತ ಪ್ರಕ್ರಿಯೆ ಪುನರಾವರ್ತನೀಯ ಮತ್ತು ವೀಕ್ಷಿಸಬಹುದಾದ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Memory Versus Knowledge",
+     "headingKn": "Memory vs Knowledge",
+     "bodyEn": "Memory holds what happened in interactions with a user, such as preferences and past requests. Knowledge is a curated body of documents the agent retrieves from. They have different owners and update patterns.",
+     "bodyKn": "memory ಬಳಕೆದಾರರೊಂದಿಗಿನ ಸಂವಾದದಲ್ಲಿ ನಡೆದದ್ದನ್ನು (ಆದ್ಯತೆ, ಹಿಂದಿನ ವಿನಂತಿ) ಹಿಡಿಯುತ್ತದೆ. knowledge agent ಹಿಂಪಡೆಯುವ ಸಂಗ್ರಹಿತ ದಾಖಲೆಗಳು. ಮಾಲೀಕರು ಮತ್ತು ನವೀಕರಣ ಮಾದರಿ ಬೇರೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Freshness of Knowledge",
+     "headingKn": "Knowledge ಹೊಸತನ",
+     "bodyEn": "Documents change, so a knowledge base needs re-ingestion, deletion of removed sources and a way to see when each item was indexed. Stale knowledge produces confident wrong answers.",
+     "bodyKn": "ದಾಖಲೆಗಳು ಬದಲಾಗುತ್ತವೆ, ಆದ್ದರಿಂದ ಮರು-ಸೇರ್ಪಡೆ, ತೆಗೆದ ಮೂಲಗಳ ಅಳಿಸುವಿಕೆ, ಪ್ರತಿ ಐಟಂ ಯಾವಾಗ ಇಂಡೆಕ್ಸ್ ಆಯಿತು ಎಂದು ನೋಡುವ ಮಾರ್ಗ ಬೇಕು. ಹಳೆಯ ಜ್ಞಾನ ಆತ್ಮವಿಶ್ವಾಸದ ತಪ್ಪು ಉತ್ತರ ನೀಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Test Retrieval Separately",
+     "headingKn": "Retrieval ಅನ್ನು ಪ್ರತ್ಯೇಕ ಪರೀಕ್ಷಿಸಿ",
+     "bodyEn": "Check that the right documents are retrieved before judging the final answer. A wrong answer with good retrieval is a prompt problem; with bad retrieval it is a search problem.",
+     "bodyKn": "ಅಂತಿಮ ಉತ್ತರ ನಿರ್ಣಯಿಸುವ ಮೊದಲು ಸರಿಯಾದ ದಾಖಲೆಗಳು ಬಂದಿವೆಯೇ ಎಂದು ಪರಿಶೀಲಿಸಿ. ಉತ್ತಮ retrieval ನಲ್ಲಿ ತಪ್ಪು ಉತ್ತರ prompt ಸಮಸ್ಯೆ; ಕೆಟ್ಟ retrieval ನಲ್ಲಿ ಹುಡುಕಾಟ ಸಮಸ್ಯೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Workflows make multi-step processes repeatable.\n• Memory is about interactions; knowledge is a curated corpus.\n• Keep knowledge fresh and test retrieval on its own.",
+     "bodyKn": "• workflows ಪುನರಾವರ್ತನೀಯ.\n• memory ಸಂವಾದ; knowledge ಸಂಗ್ರಹಿತ ದಾಖಲೆ.\n• ಹೊಸತನ ಮತ್ತು retrieval ಪ್ರತ್ಯೇಕ ಪರೀಕ್ಷೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is the difference between memory and knowledge?",
+       "qKn": "memory ಮತ್ತು knowledge ವ್ಯತ್ಯಾಸ?",
+       "opts": [
+        "Memory is about interactions; knowledge is a curated document set",
+        "They are identical",
+        "Knowledge is only for users",
+        "Memory is only code"
+       ],
+       "optsKn": [
+        "memory ಸಂವಾದ; knowledge ದಾಖಲೆ ಸೆಟ್",
+        "ಒಂದೇ",
+        "knowledge ಬಳಕೆದಾರರಿಗೆ ಮಾತ್ರ",
+        "memory ಕೋಡ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why test retrieval separately?",
+       "qKn": "retrieval ಅನ್ನು ಪ್ರತ್ಯೇಕ ಏಕೆ ಪರೀಕ್ಷಿಸಬೇಕು?",
+       "opts": [
+        "To tell search problems from prompt problems",
+        "To skip answers",
+        "It is faster to ignore",
+        "Retrieval is random"
+       ],
+       "optsKn": [
+        "ಹುಡುಕಾಟ ಮತ್ತು prompt ಸಮಸ್ಯೆ ಬೇರ್ಪಡಿಸಲು",
+        "ಉತ್ತರ ಬಿಡಲು",
+        "ನಿರ್ಲಕ್ಷಿಸುವುದು ವೇಗ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What does stale knowledge cause?",
+       "qKn": "ಹಳೆಯ knowledge ಏನು ಉಂಟುಮಾಡುತ್ತದೆ?",
+       "opts": [
+        "Confident wrong answers",
+        "Faster answers",
+        "Smaller prompts",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಆತ್ಮವಿಶ್ವಾಸದ ತಪ್ಪು ಉತ್ತರ",
+        "ವೇಗ ಉತ್ತರ",
+        "ಚಿಕ್ಕ prompts",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321541",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Agno and Mastra — Deploying, Monitoring and Evaluating Agents",
+  "titleKn": "Agno ಮತ್ತು Mastra — Agents ನಿಯೋಜನೆ, ವೀಕ್ಷಣೆ, ಮೌಲ್ಯಮಾಪನ",
+  "desc": "Serving agents as APIs, monitoring cost and quality in production, and building an evaluation habit.",
+  "descKn": "agents ಅನ್ನು API ಗಳಾಗಿ ಸೇವೆ, ಉತ್ಪಾದನೆಯಲ್ಲಿ ವೆಚ್ಚ ಮತ್ತು ಗುಣಮಟ್ಟ ವೀಕ್ಷಣೆ, ಮೌಲ್ಯಮಾಪನ ಅಭ್ಯಾಸ.",
+  "objectives": [
+   "Describe serving an agent behind an API with limits.",
+   "List production metrics: latency, cost, errors and quality.",
+   "Set up a regression-evaluation habit."
+  ],
+  "objectivesKn": [
+   "ಮಿತಿಗಳೊಂದಿಗೆ agent ಅನ್ನು API ಹಿಂದೆ ಸೇವೆ ವಿವರಿಸಿ.",
+   "ಉತ್ಪಾದನಾ ಮೆಟ್ರಿಕ್ಸ್ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "regression ಮೌಲ್ಯಮಾಪನ ಅಭ್ಯಾಸ ಸ್ಥಾಪಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Agno and Mastra — Deploying, Monitoring and Evaluating Agents",
+     "textKn": "Agno and Mastra — Deploying, Monitoring and Evaluating Agents",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Agno and Mastra: Production Runtimes",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Serve With Limits",
+     "headingKn": "ಮಿತಿಗಳೊಂದಿಗೆ ಸೇವೆ",
+     "bodyEn": "Expose the agent through an authenticated API with rate limits, request timeouts and maximum turns. Streaming responses make long runs feel responsive.",
+     "bodyKn": "ಪ್ರಮಾಣೀಕೃತ API ಮೂಲಕ, ದರ ಮಿತಿ, timeout, ಗರಿಷ್ಠ ತಿರುವಿನೊಂದಿಗೆ agent ಒಡ್ಡಿ. streaming ಉದ್ದ runs ಗೆ ಸ್ಪಂದನೆ ನೀಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Watch the Right Numbers",
+     "headingKn": "ಸರಿಯಾದ ಸಂಖ್ಯೆಗಳನ್ನು ನೋಡಿ",
+     "bodyEn": "Track latency, token cost per request, error and retry rates, tool failure rates and some measure of answer quality such as user feedback or automated grading.",
+     "bodyKn": "ವಿಳಂಬ, ಪ್ರತಿ ವಿನಂತಿ token ವೆಚ್ಚ, ದೋಷ ಮತ್ತು ಮರುಪ್ರಯತ್ನ ದರ, tool ವೈಫಲ್ಯ ದರ, ಮತ್ತು ಉತ್ತರ ಗುಣಮಟ್ಟದ ಅಳತೆ (ಬಳಕೆದಾರ ಪ್ರತಿಕ್ರಿಯೆ, ಸ್ವಯಂ ಗ್ರೇಡಿಂಗ್) ಗಮನಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Evaluation as a Habit",
+     "headingKn": "ಮೌಲ್ಯಮಾಪನ ಒಂದು ಅಭ್ಯಾಸ",
+     "bodyEn": "Keep a growing test set from real failures. Run it before deploying any prompt, tool or model change, and treat a drop as a blocking issue.",
+     "bodyKn": "ನಿಜ ವೈಫಲ್ಯಗಳಿಂದ ಬೆಳೆಯುವ ಪರೀಕ್ಷಾ ಸೆಟ್ ಇಡಿ. ಯಾವುದೇ prompt, tool, ಮಾದರಿ ಬದಲಾವಣೆ ನಿಯೋಜಿಸುವ ಮೊದಲು ಚಲಾಯಿಸಿ; ಇಳಿಕೆಯನ್ನು ತಡೆಯುವ ಸಮಸ್ಯೆ ಎಂದು ಪರಿಗಣಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Plan for Model and Framework Change",
+     "headingKn": "ಮಾದರಿ ಮತ್ತು ಚೌಕಟ್ಟು ಬದಲಾವಣೆಗೆ ಯೋಜನೆ",
+     "bodyEn": "Providers retire and update models, and frameworks release breaking changes. Version everything and use the evaluation set to check each upgrade.",
+     "bodyKn": "ಒದಗಿಸುವವರು ಮಾದರಿಗಳನ್ನು ನಿವೃತ್ತಿ/ನವೀಕರಣ ಮಾಡುತ್ತಾರೆ, ಚೌಕಟ್ಟುಗಳು ಮುರಿಯುವ ಬದಲಾವಣೆ ಬಿಡುಗಡೆ ಮಾಡುತ್ತವೆ. ಎಲ್ಲದಕ್ಕೂ ಆವೃತ್ತಿ ಇಟ್ಟು ಪ್ರತಿ ಅಪ್‌ಗ್ರೇಡ್ ಅನ್ನು ಮೌಲ್ಯಮಾಪನ ಸೆಟ್‌ನಿಂದ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Serve agents with auth, limits and timeouts.\n• Track latency, cost, errors and quality.\n• Run a growing evaluation set before every change.",
+     "bodyKn": "• auth, ಮಿತಿ, timeout ಜೊತೆ ಸೇವೆ.\n• ವಿಳಂಬ, ವೆಚ್ಚ, ದೋಷ, ಗುಣಮಟ್ಟ ಗಮನಿಸಿ.\n• ಪ್ರತಿ ಬದಲಾವಣೆ ಮೊದಲು ಮೌಲ್ಯಮಾಪನ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Where should a growing test set come from?",
+       "qKn": "ಬೆಳೆಯುವ ಪರೀಕ್ಷಾ ಸೆಟ್ ಎಲ್ಲಿಂದ ಬರಬೇಕು?",
+       "opts": [
+        "Real failures",
+        "Random text",
+        "Nowhere",
+        "Marketing copy"
+       ],
+       "optsKn": [
+        "ನಿಜ ವೈಫಲ್ಯಗಳು",
+        "ಯಾದೃಚ್ಛಿಕ ಪಠ್ಯ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಮಾರ್ಕೆಟಿಂಗ್ ಪಠ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which is a good production metric set?",
+       "qKn": "ಉತ್ತಮ ಉತ್ಪಾದನಾ ಮೆಟ್ರಿಕ್ಸ್ ಯಾವುದು?",
+       "opts": [
+        "Latency, cost, errors and quality",
+        "Only colour",
+        "Only logo size",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ವಿಳಂಬ, ವೆಚ್ಚ, ದೋಷ, ಗುಣಮಟ್ಟ",
+        "ಬಣ್ಣ ಮಾತ್ರ",
+        "ಲೋಗೋ ಗಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why version everything?",
+       "qKn": "ಎಲ್ಲದಕ್ಕೂ ಆವೃತ್ತಿ ಏಕೆ?",
+       "opts": [
+        "Models and frameworks change and upgrades need checking",
+        "To slow releases",
+        "To hide changes",
+        "It is decoration"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ ಮತ್ತು ಚೌಕಟ್ಟು ಬದಲಾಗುತ್ತವೆ",
+        "ಬಿಡುಗಡೆ ನಿಧಾನ",
+        "ಬದಲಾವಣೆ ಮರೆ",
+        "ಅಲಂಕಾರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321544",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Benchmarks: SWE-bench, GAIA, AgentBench — What They Measure",
+  "titleKn": "Benchmarks: SWE-bench, GAIA, AgentBench — ಅವು ಏನನ್ನು ಅಳೆಯುತ್ತವೆ",
+  "desc": "What each major agent benchmark tests, how tasks are scored, and what a headline number does and does not mean.",
+  "descKn": "ಪ್ರತಿ ಮುಖ್ಯ agent benchmark ಏನು ಪರೀಕ್ಷಿಸುತ್ತದೆ, ಅಂಕ ಹೇಗೆ, ಮತ್ತು ಒಂದು ಸಂಖ್ಯೆಯ ಅರ್ಥ.",
+  "objectives": [
+   "Describe SWE-bench: fixing real repository issues verified by tests.",
+   "Describe GAIA and AgentBench task styles.",
+   "Explain why one score is not a full picture."
+  ],
+  "objectivesKn": [
+   "SWE-bench ವಿವರಿಸಿ.",
+   "GAIA ಮತ್ತು AgentBench ಕೆಲಸ ಶೈಲಿ ವಿವರಿಸಿ.",
+   "ಒಂದು ಅಂಕ ಪೂರ್ಣ ಚಿತ್ರವಲ್ಲ ಏಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Benchmarks: SWE-bench, GAIA, AgentBench — What They Measure",
+     "textKn": "Benchmarks: SWE-bench, GAIA, AgentBench — What They Measure",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Benchmarks: SWE-bench, GAIA, AgentBench",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "SWE-bench: Real Issues, Test-Verified",
+     "headingKn": "SWE-bench: ನಿಜ Issues, Test ಪರಿಶೀಲಿತ",
+     "bodyEn": "SWE-bench gives an agent a real repository and a real issue, and the agent must produce a patch. A patch counts as solved only if the project's tests that failed before now pass and the others still pass.",
+     "bodyKn": "SWE-bench agent ಗೆ ನಿಜ ರೆಪೊ ಮತ್ತು ನಿಜ issue ನೀಡುತ್ತದೆ; agent patch ರಚಿಸಬೇಕು. ಮೊದಲು ವಿಫಲವಾಗುತ್ತಿದ್ದ tests ಈಗ ಪಾಸ್ ಆಗಿ ಉಳಿದವು ಪಾಸ್ ಆಗಿಯೇ ಇದ್ದರೆ ಮಾತ್ರ ಪರಿಹಾರ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "GAIA: General Assistant Questions",
+     "headingKn": "GAIA: ಸಾಮಾನ್ಯ ಸಹಾಯಕ ಪ್ರಶ್ನೆಗಳು",
+     "bodyEn": "GAIA poses questions that are simple for people but need several steps such as web browsing, reading files and calculation. Answers are short and checked against a known correct value.",
+     "bodyKn": "GAIA ಜನರಿಗೆ ಸರಳ ಆದರೆ ವೆಬ್ ಬ್ರೌಸಿಂಗ್, ಫೈಲ್ ಓದು, ಲೆಕ್ಕಾಚಾರದಂತಹ ಹಲವು ಹಂತ ಬೇಕಾದ ಪ್ರಶ್ನೆಗಳನ್ನು ಕೇಳುತ್ತದೆ. ಉತ್ತರ ಚಿಕ್ಕದು ಮತ್ತು ತಿಳಿದ ಸರಿ ಮೌಲ್ಯಕ್ಕೆ ಹೋಲಿಸಲಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "AgentBench: Many Environments",
+     "headingKn": "AgentBench: ಹಲವು ಪರಿಸರಗಳು",
+     "bodyEn": "AgentBench evaluates language models as agents across varied environments such as operating-system tasks, databases and games, testing whether skills transfer across settings.",
+     "bodyKn": "AgentBench ಭಾಷಾ ಮಾದರಿಗಳನ್ನು ಆಪರೇಟಿಂಗ್-ಸಿಸ್ಟಮ್ ಕೆಲಸ, ಡೇಟಾಬೇಸ್, ಆಟಗಳಂತಹ ವಿವಿಧ ಪರಿಸರಗಳಲ್ಲಿ agents ಆಗಿ ಮೌಲ್ಯಮಾಪನ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Score Is Not the Whole Story",
+     "headingKn": "ಒಂದು ಅಂಕ ಪೂರ್ಣ ಕಥೆಯಲ್ಲ",
+     "bodyEn": "A benchmark score depends on the harness, tools, time and cost budget and prompts used. Comparing numbers from different setups is misleading, so read how the result was produced.",
+     "bodyKn": "ಅಂಕ harness, tools, ಸಮಯ ಮತ್ತು ವೆಚ್ಚ ಬಜೆಟ್, prompts ಮೇಲೆ ಅವಲಂಬಿತ. ಬೇರೆ ಸೆಟಪ್‌ಗಳ ಸಂಖ್ಯೆ ಹೋಲಿಸುವುದು ದಾರಿತಪ್ಪಿಸುತ್ತದೆ; ಫಲಿತಾಂಶ ಹೇಗೆ ಬಂತು ಎಂದು ಓದಿ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Benchmark styles",
+     "headers": [
+      "Benchmark",
+      "Task style",
+      "How it is scored"
+     ],
+     "rows": [
+      [
+       "SWE-bench",
+       "Fix a real repository issue",
+       "Project tests"
+      ],
+      [
+       "GAIA",
+       "Multi-step assistant questions",
+       "Match a known short answer"
+      ],
+      [
+       "AgentBench",
+       "Varied interactive environments",
+       "Task success per environment"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• SWE-bench scores patches by tests.\n• GAIA needs multi-step tool use with short answers.\n• Always check the setup behind a score.",
+     "bodyKn": "• SWE-bench tests ಮೂಲಕ ಅಂಕ.\n• GAIA ಬಹು-ಹಂತ tool ಬಳಕೆ.\n• ಅಂಕದ ಹಿಂದಿನ ಸೆಟಪ್ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "How is a SWE-bench task judged solved?",
+       "qKn": "SWE-bench ಕೆಲಸ ಪರಿಹಾರ ಎಂದು ಹೇಗೆ ನಿರ್ಣಯ?",
+       "opts": [
+        "Failing tests now pass and others still pass",
+        "The patch looks nice",
+        "A human likes it",
+        "It is short"
+       ],
+       "optsKn": [
+        "ವಿಫಲ tests ಪಾಸ್, ಉಳಿದವು ಪಾಸ್",
+        "patch ಚೆನ್ನಾಗಿ ಕಾಣುತ್ತದೆ",
+        "ಮಾನವನಿಗೆ ಇಷ್ಟ",
+        "ಚಿಕ್ಕದು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What does GAIA emphasise?",
+       "qKn": "GAIA ಏನನ್ನು ಒತ್ತಿ ಹೇಳುತ್ತದೆ?",
+       "opts": [
+        "Multi-step questions needing tools",
+        "Image generation",
+        "Translation only",
+        "Typing speed"
+       ],
+       "optsKn": [
+        "tools ಬೇಕಾದ ಬಹು-ಹಂತ ಪ್ರಶ್ನೆಗಳು",
+        "ಚಿತ್ರ ರಚನೆ",
+        "ಅನುವಾದ ಮಾತ್ರ",
+        "ಟೈಪಿಂಗ್ ವೇಗ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why compare scores carefully?",
+       "qKn": "ಅಂಕಗಳನ್ನು ಎಚ್ಚರಿಕೆಯಿಂದ ಏಕೆ ಹೋಲಿಸಬೇಕು?",
+       "opts": [
+        "Harness, tools and budgets differ between setups",
+        "Scores never change",
+        "All setups are identical",
+        "Numbers are random"
+       ],
+       "optsKn": [
+        "ಸೆಟಪ್‌ಗಳಲ್ಲಿ harness, tools, ಬಜೆಟ್ ಬೇರೆ",
+        "ಅಂಕ ಬದಲಾಗುವುದಿಲ್ಲ",
+        "ಎಲ್ಲಾ ಒಂದೇ",
+        "ಸಂಖ್ಯೆ ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321544",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Benchmarks: SWE-bench, GAIA, AgentBench — Contamination, Gaming and Honest Reporting",
+  "titleKn": "Benchmarks: SWE-bench, GAIA, AgentBench — ಕಲುಷಿತತೆ, ದುರುಪಯೋಗ, ಪ್ರಾಮಾಣಿಕ ವರದಿ",
+  "desc": "Why benchmark results can be inflated by training-data overlap, scaffold tuning and weak tests, and how to report honestly.",
+  "descKn": "training-data ಅತಿಕ್ರಮಣ, scaffold ಹೊಂದಾಣಿಕೆ, ದುರ್ಬಲ tests ಗಳಿಂದ ಫಲಿತಾಂಶ ಹೇಗೆ ಉಬ್ಬಬಹುದು, ಪ್ರಾಮಾಣಿಕ ವರದಿ ಹೇಗೆ.",
+  "objectives": [
+   "Explain data contamination.",
+   "Explain how weak tests and scaffolds distort scores.",
+   "Write a report that discloses setup and cost."
+  ],
+  "objectivesKn": [
+   "ಡೇಟಾ ಕಲುಷಿತತೆ ವಿವರಿಸಿ.",
+   "ದುರ್ಬಲ tests ಮತ್ತು scaffolds ಅಂಕ ಹೇಗೆ ವಿರೂಪಗೊಳಿಸುತ್ತವೆ ವಿವರಿಸಿ.",
+   "ಸೆಟಪ್ ಮತ್ತು ವೆಚ್ಚ ಬಹಿರಂಗಪಡಿಸುವ ವರದಿ ಬರೆಯಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Benchmarks: SWE-bench, GAIA, AgentBench — Contamination, Gaming and Honest Reporting",
+     "textKn": "Benchmarks: SWE-bench, GAIA, AgentBench — Contamination, Gaming and Honest Reporting",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Benchmarks: SWE-bench, GAIA, AgentBench",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Contamination",
+     "headingKn": "ಕಲುಷಿತತೆ",
+     "bodyEn": "If benchmark problems or their solutions appeared in a model's training data, a high score may reflect memory rather than ability. Public benchmarks are especially exposed, which is why newer or held-out sets matter.",
+     "bodyKn": "benchmark ಸಮಸ್ಯೆ ಅಥವಾ ಪರಿಹಾರ ಮಾದರಿಯ training ಡೇಟಾದಲ್ಲಿದ್ದರೆ ಹೆಚ್ಚಿನ ಅಂಕ ಸಾಮರ್ಥ್ಯವಲ್ಲ, ನೆನಪಿನ ಸೂಚಕವಾಗಿರಬಹುದು. ಸಾರ್ವಜನಿಕ benchmarks ಗೆ ಹೆಚ್ಚು ಅಪಾಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Weak Tests Accept Wrong Fixes",
+     "headingKn": "ದುರ್ಬಲ Tests ತಪ್ಪು ಪರಿಹಾರ ಒಪ್ಪುತ್ತವೆ",
+     "bodyEn": "When a task's tests are incomplete, a wrong patch can pass them. Careful benchmarks audit tests and remove ambiguous tasks, and headline numbers can change after such audits.",
+     "bodyKn": "ಕೆಲಸದ tests ಅಪೂರ್ಣವಾದರೆ ತಪ್ಪು patch ಪಾಸ್ ಆಗಬಹುದು. ಎಚ್ಚರಿಕೆಯ benchmarks tests ಪರಿಶೋಧಿಸುತ್ತವೆ; ಅಂತಹ ಪರಿಶೋಧನೆ ನಂತರ ಸಂಖ್ಯೆ ಬದಲಾಗಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Scaffold Tuning",
+     "headingKn": "Scaffold ಹೊಂದಾಣಿಕೆ",
+     "bodyEn": "Much of a high score can come from the agent scaffold around the model, such as retries, extra tools and prompt tuning for the benchmark. That does not always transfer to your tasks.",
+     "bodyKn": "ಹೆಚ್ಚಿನ ಅಂಕದ ಬಹುಪಾಲು ಮಾದರಿಯ ಸುತ್ತಲಿನ scaffold (ಮರುಪ್ರಯತ್ನ, ಹೆಚ್ಚುವರಿ tools, benchmark ಗೆ prompt ಹೊಂದಾಣಿಕೆ) ಇಂದ ಬರಬಹುದು. ಅದು ನಿಮ್ಮ ಕೆಲಸಗಳಿಗೆ ಯಾವಾಗಲೂ ವರ್ಗಾಯಿಸುವುದಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Report Honestly",
+     "headingKn": "ಪ್ರಾಮಾಣಿಕವಾಗಿ ವರದಿ ಮಾಡಿ",
+     "bodyEn": "State the model version, scaffold, tool set, attempts allowed, cost per task and whether results are single runs or averages. Then evaluate on your own tasks, which matter more than any public score.",
+     "bodyKn": "ಮಾದರಿ ಆವೃತ್ತಿ, scaffold, tool ಸೆಟ್, ಅನುಮತಿಸಿದ ಪ್ರಯತ್ನ, ಪ್ರತಿ ಕೆಲಸದ ವೆಚ್ಚ, ಒಂದು run ಅಥವಾ ಸರಾಸರಿ ಎಂದು ತಿಳಿಸಿ. ನಂತರ ನಿಮ್ಮದೇ ಕೆಲಸಗಳಲ್ಲಿ ಮೌಲ್ಯಮಾಪನ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Contamination can inflate scores.\n• Weak tests and heavy scaffolds distort results.\n• Report setup and cost, and test on your own tasks.",
+     "bodyKn": "• ಕಲುಷಿತತೆ ಅಂಕ ಉಬ್ಬಿಸಬಹುದು.\n• ದುರ್ಬಲ tests ವಿರೂಪ.\n• ಸೆಟಪ್, ವೆಚ್ಚ ವರದಿ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is benchmark contamination?",
+       "qKn": "benchmark ಕಲುಷಿತತೆ ಎಂದರೇನು?",
+       "opts": [
+        "Test items appearing in training data",
+        "A virus",
+        "A slow GPU",
+        "A formatting error"
+       ],
+       "optsKn": [
+        "test ಐಟಂಗಳು training ಡೇಟಾದಲ್ಲಿರುವುದು",
+        "ವೈರಸ್",
+        "ನಿಧಾನ GPU",
+        "ಸ್ವರೂಪ ದೋಷ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What can incomplete tests cause?",
+       "qKn": "ಅಪೂರ್ಣ tests ಏನು ಉಂಟುಮಾಡಬಹುದು?",
+       "opts": [
+        "Wrong solutions passing",
+        "More accuracy",
+        "Faster models",
+        "Smaller vocabularies"
+       ],
+       "optsKn": [
+        "ತಪ್ಪು ಪರಿಹಾರ ಪಾಸ್ ಆಗುವುದು",
+        "ಹೆಚ್ಚು ನಿಖರತೆ",
+        "ವೇಗದ ಮಾದರಿ",
+        "ಚಿಕ್ಕ vocabulary"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What should an honest report include?",
+       "qKn": "ಪ್ರಾಮಾಣಿಕ ವರದಿ ಏನು ಒಳಗೊಳ್ಳಬೇಕು?",
+       "opts": [
+        "Model, scaffold, tools, attempts and cost",
+        "Only the score",
+        "Only a logo",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ, scaffold, tools, ಪ್ರಯತ್ನ, ವೆಚ್ಚ",
+        "ಅಂಕ ಮಾತ್ರ",
+        "ಲೋಗೋ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321544",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Benchmarks: SWE-bench, GAIA, AgentBench — Building Your Own Agent Evaluation",
+  "titleKn": "Benchmarks: SWE-bench, GAIA, AgentBench — ನಿಮ್ಮದೇ Agent ಮೌಲ್ಯಮಾಪನ ನಿರ್ಮಾಣ",
+  "desc": "Using benchmark ideas to build a small, trustworthy evaluation for your own agent tasks.",
+  "descKn": "benchmark ಕಲ್ಪನೆಗಳನ್ನು ಬಳಸಿ ನಿಮ್ಮ agent ಕೆಲಸಗಳಿಗೆ ಚಿಕ್ಕ, ನಂಬಲರ್ಹ ಮೌಲ್ಯಮಾಪನ ನಿರ್ಮಿಸುವುದು.",
+  "objectives": [
+   "Define tasks with automatic pass or fail checks.",
+   "Run multiple trials and report variance.",
+   "Track cost and time alongside success."
+  ],
+  "objectivesKn": [
+   "ಸ್ವಯಂ ಪಾಸ್/ಫೇಲ್ ಪರಿಶೀಲನೆ ಇರುವ ಕೆಲಸ ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ಹಲವು ಪ್ರಯೋಗ ನಡೆಸಿ ಭಿನ್ನತೆ ವರದಿ ಮಾಡಿ.",
+   "ಯಶಸ್ಸಿನ ಜೊತೆ ವೆಚ್ಚ ಮತ್ತು ಸಮಯ ಟ್ರ್ಯಾಕ್ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Benchmarks: SWE-bench, GAIA, AgentBench — Building Your Own Agent Evaluation",
+     "textKn": "Benchmarks: SWE-bench, GAIA, AgentBench — Building Your Own Agent Evaluation",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Benchmarks: SWE-bench, GAIA, AgentBench",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Verifiable Tasks",
+     "headingKn": "ಪರಿಶೀಲಿಸಬಹುದಾದ ಕೆಲಸಗಳು",
+     "bodyEn": "Prefer tasks whose success can be checked by code, such as tests, exact-match answers or state assertions. Human grading is slower and inconsistent, so reserve it for what code cannot check.",
+     "bodyKn": "ಕೋಡ್‌ನಿಂದ ಯಶಸ್ಸು ಪರಿಶೀಲಿಸಬಹುದಾದ ಕೆಲಸಗಳಿಗೆ (tests, ನಿಖರ ಹೊಂದಾಣಿಕೆ, state ದೃಢೀಕರಣ) ಆದ್ಯತೆ. ಮಾನವ ಗ್ರೇಡಿಂಗ್ ನಿಧಾನ ಮತ್ತು ಅಸಮಂಜಸ; ಕೋಡ್ ಪರಿಶೀಲಿಸಲಾಗದ್ದಕ್ಕೆ ಮಾತ್ರ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Repeat Trials",
+     "headingKn": "ಪ್ರಯೋಗ ಪುನರಾವರ್ತಿಸಿ",
+     "bodyEn": "Agents are non-deterministic, so run each task several times and report the pass rate with its spread. A single lucky run says little.",
+     "bodyKn": "agents ಅನಿರ್ದಿಷ್ಟ, ಆದ್ದರಿಂದ ಪ್ರತಿ ಕೆಲಸವನ್ನು ಹಲವು ಬಾರಿ ಚಲಾಯಿಸಿ ಪಾಸ್ ದರ ಮತ್ತು ಹರಡುವಿಕೆ ವರದಿ ಮಾಡಿ. ಒಂದು ಅದೃಷ್ಟದ run ಸ್ವಲ್ಪವೇ ಹೇಳುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cost and Time Are Metrics",
+     "headingKn": "ವೆಚ್ಚ ಮತ್ತು ಸಮಯವೂ ಮೆಟ್ರಿಕ್ಸ್",
+     "bodyEn": "Two agents with the same success rate differ greatly if one costs ten times more or takes ten times longer. Report success together with cost and latency.",
+     "bodyKn": "ಒಂದೇ ಯಶಸ್ಸು ದರದ ಎರಡು agents ಒಂದು ಹತ್ತು ಪಟ್ಟು ದುಬಾರಿ ಅಥವಾ ನಿಧಾನವಾದರೆ ಬಹಳ ಭಿನ್ನ. ಯಶಸ್ಸಿನ ಜೊತೆ ವೆಚ್ಚ ಮತ್ತು ವಿಳಂಬ ವರದಿ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Keep a Held-Out Set",
+     "headingKn": "Held-Out ಸೆಟ್ ಇಡಿ",
+     "bodyEn": "Tune on one set of tasks and report on another you have not looked at, otherwise your evaluation only measures how well you fitted it.",
+     "bodyKn": "ಒಂದು ಸೆಟ್‌ನಲ್ಲಿ ಹೊಂದಿಸಿ ನೀವು ನೋಡದ ಇನ್ನೊಂದರಲ್ಲಿ ವರದಿ ಮಾಡಿ; ಇಲ್ಲದಿದ್ದರೆ ಮೌಲ್ಯಮಾಪನ ನೀವು ಎಷ್ಟು ಚೆನ್ನಾಗಿ ಹೊಂದಿಸಿದಿರಿ ಎಂದು ಮಾತ್ರ ಅಳೆಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Prefer code-checkable tasks.\n• Repeat trials and report spread.\n• Report cost and latency with success; keep a held-out set.",
+     "bodyKn": "• ಕೋಡ್ ಪರಿಶೀಲಿಸಬಹುದಾದ ಕೆಲಸಗಳು.\n• ಪ್ರಯೋಗ ಪುನರಾವರ್ತಿಸಿ.\n• ವೆಚ್ಚ ಮತ್ತು held-out ಸೆಟ್."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why run each task several times?",
+       "qKn": "ಪ್ರತಿ ಕೆಲಸ ಹಲವು ಬಾರಿ ಏಕೆ ಚಲಾಯಿಸಬೇಕು?",
+       "opts": [
+        "Agents are non-deterministic",
+        "To waste time",
+        "Tasks change",
+        "Scores add up"
+       ],
+       "optsKn": [
+        "agents ಅನಿರ್ದಿಷ್ಟ",
+        "ಸಮಯ ವ್ಯರ್ಥ",
+        "ಕೆಲಸ ಬದಲಾಗುತ್ತದೆ",
+        "ಅಂಕ ಕೂಡುತ್ತವೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why report cost with success?",
+       "qKn": "ಯಶಸ್ಸಿನ ಜೊತೆ ವೆಚ್ಚ ಏಕೆ?",
+       "opts": [
+        "Equal success can hide very different costs",
+        "Cost is irrelevant",
+        "It shortens reports",
+        "Models are free"
+       ],
+       "optsKn": [
+        "ಸಮಾನ ಯಶಸ್ಸು ಬೇರೆ ವೆಚ್ಚ ಮರೆಮಾಡಬಹುದು",
+        "ವೆಚ್ಚ ಅಪ್ರಸ್ತುತ",
+        "ವರದಿ ಚಿಕ್ಕದು",
+        "ಮಾದರಿ ಉಚಿತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is a held-out set for?",
+       "qKn": "held-out ಸೆಟ್ ಯಾವುದಕ್ಕೆ?",
+       "opts": [
+        "Reporting on tasks you did not tune on",
+        "Training",
+        "Deleting data",
+        "Ignoring tests"
+       ],
+       "optsKn": [
+        "ನೀವು ಹೊಂದಿಸದ ಕೆಲಸಗಳಲ್ಲಿ ವರದಿ",
+        "ತರಬೇತಿ",
+        "ಡೇಟಾ ಅಳಿಸುವುದು",
+        "tests ನಿರ್ಲಕ್ಷ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

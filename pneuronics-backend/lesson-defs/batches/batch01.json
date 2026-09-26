@@ -1,0 +1,2581 @@
+[
+ {
+  "phaseId": "6a369d5a66020ed05b3213f4",
+  "moduleId": "6a369d5a66020ed05b3213f7",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Tokenizers: BPE, WordPiece, SentencePiece — Why Text Becomes Tokens",
+  "titleKn": "Tokenizers: BPE, WordPiece, SentencePiece — ಪಠ್ಯ Tokens ಆಗುವುದು ಏಕೆ",
+  "desc": "Why language models read subword tokens instead of characters or words, and what a vocabulary is.",
+  "descKn": "ಭಾಷಾ ಮಾದರಿಗಳು ಅಕ್ಷರ ಅಥವಾ ಪದಗಳ ಬದಲು subword tokens ಏಕೆ ಓದುತ್ತವೆ, vocabulary ಎಂದರೇನು.",
+  "objectives": [
+   "Explain why models use subword tokens rather than characters or whole words.",
+   "Describe a vocabulary and how text maps to token ids.",
+   "State the trade-off between vocabulary size and sequence length."
+  ],
+  "objectivesKn": [
+   "ಮಾದರಿಗಳು subword tokens ಏಕೆ ಬಳಸುತ್ತವೆ ಎಂದು ವಿವರಿಸಿ.",
+   "vocabulary ಮತ್ತು ಪಠ್ಯ token id ಗೆ ಹೇಗೆ ನಕ್ಷೆಯಾಗುತ್ತದೆ ಎಂದು ವಿವರಿಸಿ.",
+   "vocabulary ಗಾತ್ರ ಮತ್ತು sequence ಉದ್ದದ ನಡುವಿನ ಸಮತೋಲನ ತಿಳಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Tokenizers: BPE, WordPiece, SentencePiece — Why Text Becomes Tokens",
+     "textKn": "Tokenizers: BPE, WordPiece, SentencePiece — Why Text Becomes Tokens",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Tokenizers: BPE, WordPiece, SentencePiece",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Models Read Numbers, Not Text",
+     "headingKn": "ಮಾದರಿಗಳು ಸಂಖ್ಯೆಗಳನ್ನು ಓದುತ್ತವೆ, ಪಠ್ಯವನ್ನಲ್ಲ",
+     "bodyEn": "A neural network only consumes numbers, so text must first be cut into pieces called tokens, and every piece gets an integer id. The list of all pieces is the vocabulary.",
+     "bodyKn": "ನ್ಯೂರಲ್ ನೆಟ್‌ವರ್ಕ್ ಸಂಖ್ಯೆಗಳನ್ನು ಮಾತ್ರ ಬಳಸುತ್ತದೆ, ಆದ್ದರಿಂದ ಪಠ್ಯವನ್ನು tokens ಎಂಬ ತುಂಡುಗಳಾಗಿ ಕತ್ತರಿಸಿ ಪ್ರತಿಯೊಂದಕ್ಕೆ ಪೂರ್ಣಾಂಕ id ನೀಡಲಾಗುತ್ತದೆ. ಎಲ್ಲಾ ತುಂಡುಗಳ ಪಟ್ಟಿಯೇ vocabulary."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why Not Characters or Words",
+     "headingKn": "ಅಕ್ಷರಗಳು ಅಥವಾ ಪದಗಳು ಏಕೆ ಬೇಡ",
+     "bodyEn": "Characters make sequences very long and force the model to relearn spelling. Whole words need an enormous vocabulary and cannot handle unseen words. Subwords sit in between: common words stay whole and rare words split into reusable pieces.",
+     "bodyKn": "ಅಕ್ಷರಗಳು sequence ಅನ್ನು ಬಹಳ ಉದ್ದ ಮಾಡುತ್ತವೆ. ಪೂರ್ಣ ಪದಗಳಿಗೆ ದೊಡ್ಡ vocabulary ಬೇಕು ಮತ್ತು ಹೊಸ ಪದಗಳನ್ನು ನಿರ್ವಹಿಸಲಾಗದು. Subwords ಮಧ್ಯದಲ್ಲಿವೆ: ಸಾಮಾನ್ಯ ಪದಗಳು ಪೂರ್ಣವಾಗಿ, ಅಪರೂಪದವು ಮರುಬಳಕೆ ತುಂಡುಗಳಾಗಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Size Trade-Off",
+     "headingKn": "ಗಾತ್ರದ ಸಮತೋಲನ",
+     "bodyEn": "A larger vocabulary shortens sequences, which saves compute per sentence, but makes the embedding and output layers bigger and leaves many tokens rarely seen. A smaller vocabulary does the opposite.",
+     "bodyKn": "ದೊಡ್ಡ vocabulary sequence ಗಳನ್ನು ಚಿಕ್ಕದಾಗಿಸಿ ಗಣನೆ ಉಳಿಸುತ್ತದೆ, ಆದರೆ embedding ಮತ್ತು output ಪದರಗಳನ್ನು ದೊಡ್ಡದಾಗಿಸುತ್ತದೆ. ಚಿಕ್ಕ vocabulary ವಿರುದ್ಧವಾಗಿ ಕೆಲಸ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Tokenization Is Part of the Model",
+     "headingKn": "Tokenization ಮಾದರಿಯ ಭಾಗ",
+     "bodyEn": "The tokenizer is trained before the model and must be used unchanged at inference. Swapping tokenizers on a trained model breaks it, because the ids no longer mean what the model learned.",
+     "bodyKn": "Tokenizer ಮಾದರಿಗಿಂತ ಮೊದಲು ತರಬೇತಿ ಪಡೆಯುತ್ತದೆ ಮತ್ತು inference ನಲ್ಲಿ ಬದಲಾಗದೇ ಬಳಸಬೇಕು. ತರಬೇತಿ ಪಡೆದ ಮಾದರಿಯಲ್ಲಿ tokenizer ಬದಲಿಸಿದರೆ ids ಅರ್ಥ ಕಳೆದುಕೊಳ್ಳುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Granularity comparison",
+     "headers": [
+      "Unit",
+      "Vocabulary size",
+      "Sequence length",
+      "Unseen words"
+     ],
+     "rows": [
+      [
+       "Characters",
+       "Tiny",
+       "Very long",
+       "Handled"
+      ],
+      [
+       "Words",
+       "Huge",
+       "Short",
+       "Fail"
+      ],
+      [
+       "Subwords",
+       "Moderate",
+       "Moderate",
+       "Handled by splitting"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Models consume token ids, not text.\n• Subwords balance vocabulary size against sequence length.\n• The tokenizer is fixed once the model is trained.",
+     "bodyKn": "• ಮಾದರಿಗಳು token ids ಬಳಸುತ್ತವೆ, ಪಠ್ಯವಲ್ಲ.\n• Subwords vocabulary ಮತ್ತು ಉದ್ದವನ್ನು ಸಮತೋಲನಗೊಳಿಸುತ್ತವೆ.\n• ತರಬೇತಿ ನಂತರ tokenizer ಬದಲಾಗುವುದಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why not use whole words as tokens?",
+       "qKn": "ಪೂರ್ಣ ಪದಗಳನ್ನು tokens ಆಗಿ ಏಕೆ ಬಳಸಬಾರದು?",
+       "opts": [
+        "They make sequences too long",
+        "They need a huge vocabulary and fail on unseen words",
+        "They cannot be numbered",
+        "They are always ambiguous"
+       ],
+       "optsKn": [
+        "ಉದ್ದ ಹೆಚ್ಚಾಗುತ್ತದೆ",
+        "ದೊಡ್ಡ vocabulary ಬೇಕು, ಹೊಸ ಪದಗಳಲ್ಲಿ ವಿಫಲ",
+        "ಸಂಖ್ಯೆ ನೀಡಲಾಗದು",
+        "ಯಾವಾಗಲೂ ಅಸ್ಪಷ್ಟ"
+       ],
+       "correct": 1
+      },
+      {
+       "q": "What does a larger vocabulary usually do?",
+       "qKn": "ದೊಡ್ಡ vocabulary ಸಾಮಾನ್ಯವಾಗಿ ಏನು ಮಾಡುತ್ತದೆ?",
+       "opts": [
+        "Lengthen sequences",
+        "Shorten sequences but enlarge the embedding layers",
+        "Remove the need for a tokenizer",
+        "Make training free"
+       ],
+       "optsKn": [
+        "sequence ಉದ್ದಗೊಳಿಸುತ್ತದೆ",
+        "sequence ಚಿಕ್ಕದಾಗಿಸುತ್ತದೆ ಆದರೆ embedding ದೊಡ್ಡದಾಗುತ್ತದೆ",
+        "tokenizer ಬೇಡ",
+        "ತರಬೇತಿ ಉಚಿತ"
+       ],
+       "correct": 1
+      },
+      {
+       "q": "Can you swap the tokenizer of a trained model?",
+       "qKn": "ತರಬೇತಿ ಪಡೆದ ಮಾದರಿಯ tokenizer ಬದಲಿಸಬಹುದೇ?",
+       "opts": [
+        "Yes, freely",
+        "No: the ids would no longer mean what the model learned",
+        "Only for English",
+        "Only at night"
+       ],
+       "optsKn": [
+        "ಹೌದು",
+        "ಇಲ್ಲ: ids ಅರ್ಥ ಕಳೆದುಕೊಳ್ಳುತ್ತವೆ",
+        "ಇಂಗ್ಲಿಷ್‌ಗೆ ಮಾತ್ರ",
+        "ರಾತ್ರಿ ಮಾತ್ರ"
+       ],
+       "correct": 1
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d5a66020ed05b3213f4",
+  "moduleId": "6a369d5a66020ed05b3213f7",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Tokenizers: BPE, WordPiece, SentencePiece — How the Three Algorithms Differ",
+  "titleKn": "Tokenizers: BPE, WordPiece, SentencePiece — ಮೂರು ಅಲ್ಗಾರಿದಮ್‌ಗಳ ವ್ಯತ್ಯಾಸ",
+  "desc": "How byte-pair encoding, WordPiece and SentencePiece build vocabularies and where each is used.",
+  "descKn": "byte-pair encoding, WordPiece, SentencePiece vocabulary ಹೇಗೆ ನಿರ್ಮಿಸುತ್ತವೆ ಮತ್ತು ಎಲ್ಲಿ ಬಳಕೆ.",
+  "objectives": [
+   "Describe how BPE builds a vocabulary by merging frequent pairs.",
+   "Explain how WordPiece chooses merges differently.",
+   "Explain what SentencePiece adds: language-independent, whitespace-aware tokenization."
+  ],
+  "objectivesKn": [
+   "BPE ಹೆಚ್ಚು ಬರುವ ಜೋಡಿಗಳನ್ನು ವಿಲೀನಗೊಳಿಸಿ vocabulary ಹೇಗೆ ನಿರ್ಮಿಸುತ್ತದೆ ಎಂದು ವಿವರಿಸಿ.",
+   "WordPiece ವಿಲೀನ ಆಯ್ಕೆ ಹೇಗೆ ಬೇರೆ ಎಂದು ವಿವರಿಸಿ.",
+   "SentencePiece ಏನು ಸೇರಿಸುತ್ತದೆ ಎಂದು ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Tokenizers: BPE, WordPiece, SentencePiece — How the Three Algorithms Differ",
+     "textKn": "Tokenizers: BPE, WordPiece, SentencePiece — How the Three Algorithms Differ",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Tokenizers: BPE, WordPiece, SentencePiece",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Byte-Pair Encoding",
+     "headingKn": "Byte-Pair Encoding",
+     "bodyEn": "BPE starts from single characters (or bytes) and repeatedly merges the most frequent adjacent pair in the training corpus into a new token, until the vocabulary reaches the target size. Encoding new text replays those merges in order.",
+     "bodyKn": "BPE ಒಂದೇ ಅಕ್ಷರ (ಅಥವಾ bytes) ಗಳಿಂದ ಆರಂಭಿಸಿ, ತರಬೇತಿ ಪಠ್ಯದಲ್ಲಿ ಅತಿ ಹೆಚ್ಚು ಬರುವ ಪಕ್ಕದ ಜೋಡಿಯನ್ನು ಹೊಸ token ಆಗಿ ವಿಲೀನಗೊಳಿಸುತ್ತದೆ. ಹೊಸ ಪಠ್ಯ ಎನ್‌ಕೋಡ್ ಮಾಡುವಾಗ ಅದೇ ವಿಲೀನಗಳನ್ನು ಕ್ರಮವಾಗಿ ಪುನರಾವರ್ತಿಸಲಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Byte-Level BPE",
+     "headingKn": "Byte-Level BPE",
+     "bodyEn": "Starting from raw bytes guarantees any text can be encoded, because every string is a sequence of bytes. There is no unknown-token problem, at the cost of rare scripts using many tokens.",
+     "bodyKn": "ಕಚ್ಚಾ bytes ಇಂದ ಆರಂಭಿಸಿದರೆ ಯಾವುದೇ ಪಠ್ಯ ಎನ್‌ಕೋಡ್ ಆಗುತ್ತದೆ. unknown-token ಸಮಸ್ಯೆ ಇಲ್ಲ, ಆದರೆ ಅಪರೂಪದ ಲಿಪಿಗಳಿಗೆ ಹೆಚ್ಚು tokens ಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "WordPiece",
+     "headingKn": "WordPiece",
+     "bodyEn": "WordPiece also grows a vocabulary by merging, but it picks the merge that most increases the likelihood of the training data rather than the raw pair count. It marks word-internal pieces with a continuation prefix.",
+     "bodyKn": "WordPiece ಸಹ ವಿಲೀನದಿಂದ ಬೆಳೆಯುತ್ತದೆ, ಆದರೆ ಕಚ್ಚಾ ಜೋಡಿ ಎಣಿಕೆಯ ಬದಲು ತರಬೇತಿ ಡೇಟಾದ likelihood ಹೆಚ್ಚು ಹೆಚ್ಚಿಸುವ ವಿಲೀನ ಆರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "SentencePiece",
+     "headingKn": "SentencePiece",
+     "bodyEn": "SentencePiece is a library that tokenizes raw text directly, treating whitespace as an ordinary symbol, so it needs no language-specific pre-splitting. It can run BPE or a unigram model inside it, and works well for languages without spaces.",
+     "bodyKn": "SentencePiece ಕಚ್ಚಾ ಪಠ್ಯವನ್ನು ನೇರವಾಗಿ tokenize ಮಾಡುತ್ತದೆ; whitespace ಒಂದು ಸಾಮಾನ್ಯ ಚಿಹ್ನೆ. ಭಾಷೆ-ನಿರ್ದಿಷ್ಟ ಮೊದಲ ವಿಭಜನೆ ಬೇಕಿಲ್ಲ; ಅಂತರವಿಲ್ಲದ ಭಾಷೆಗಳಿಗೆ ಚೆನ್ನಾಗಿ ಕೆಲಸ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Algorithm comparison",
+     "headers": [
+      "Method",
+      "Merge or pick rule",
+      "Notable feature"
+     ],
+     "rows": [
+      [
+       "BPE",
+       "Most frequent pair",
+       "Simple; byte-level variant has no unknowns"
+      ],
+      [
+       "WordPiece",
+       "Best likelihood gain",
+       "Continuation-prefix marking"
+      ],
+      [
+       "SentencePiece",
+       "BPE or unigram inside",
+       "Works on raw text, whitespace-aware"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• BPE merges the most frequent pairs.\n• WordPiece merges by likelihood gain.\n• SentencePiece tokenizes raw text and is language independent.",
+     "bodyKn": "• BPE ಹೆಚ್ಚು ಬರುವ ಜೋಡಿಗಳನ್ನು ವಿಲೀನಗೊಳಿಸುತ್ತದೆ.\n• WordPiece likelihood ಲಾಭದಿಂದ.\n• SentencePiece ಕಚ್ಚಾ ಪಠ್ಯ, ಭಾಷಾ-ಸ್ವತಂತ್ರ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "How does BPE choose what to merge?",
+       "qKn": "BPE ಯಾವುದನ್ನು ವಿಲೀನ ಮಾಡುತ್ತದೆ ಎಂದು ಹೇಗೆ ಆರಿಸುತ್ತದೆ?",
+       "opts": [
+        "The rarest pair",
+        "The most frequent adjacent pair",
+        "A random pair",
+        "The longest word"
+       ],
+       "optsKn": [
+        "ಅತಿ ಅಪರೂಪದ ಜೋಡಿ",
+        "ಅತಿ ಹೆಚ್ಚು ಬರುವ ಪಕ್ಕದ ಜೋಡಿ",
+        "ಯಾದೃಚ್ಛಿಕ",
+        "ಅತಿ ಉದ್ದ ಪದ"
+       ],
+       "correct": 1
+      },
+      {
+       "q": "Why does byte-level BPE have no unknown-token problem?",
+       "qKn": "byte-level BPE ಗೆ unknown-token ಸಮಸ್ಯೆ ಏಕೆ ಇಲ್ಲ?",
+       "opts": [
+        "It ignores rare text",
+        "Every string is a sequence of bytes, so everything can be encoded",
+        "It uses a huge vocabulary",
+        "It deletes unknowns"
+       ],
+       "optsKn": [
+        "ಅಪರೂಪದ ಪಠ್ಯ ನಿರ್ಲಕ್ಷಿಸುತ್ತದೆ",
+        "ಪ್ರತಿ string bytes ಅನುಕ್ರಮ, ಎಲ್ಲವೂ ಎನ್‌ಕೋಡ್ ಆಗುತ್ತದೆ",
+        "ದೊಡ್ಡ vocabulary",
+        "unknown ಅಳಿಸುತ್ತದೆ"
+       ],
+       "correct": 1
+      },
+      {
+       "q": "What is distinctive about SentencePiece?",
+       "qKn": "SentencePiece ವಿಶೇಷತೆ ಏನು?",
+       "opts": [
+        "It needs language-specific word splitting",
+        "It works on raw text and treats whitespace as a symbol",
+        "It only supports English",
+        "It has no vocabulary"
+       ],
+       "optsKn": [
+        "ಭಾಷಾ-ನಿರ್ದಿಷ್ಟ ವಿಭಜನೆ ಬೇಕು",
+        "ಕಚ್ಚಾ ಪಠ್ಯ, whitespace ಒಂದು ಚಿಹ್ನೆ",
+        "ಇಂಗ್ಲಿಷ್ ಮಾತ್ರ",
+        "vocabulary ಇಲ್ಲ"
+       ],
+       "correct": 1
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d5a66020ed05b3213f4",
+  "moduleId": "6a369d5a66020ed05b3213f7",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Tokenizers: BPE, WordPiece, SentencePiece — Practical Consequences and Pitfalls",
+  "titleKn": "Tokenizers: BPE, WordPiece, SentencePiece — ಪ್ರಾಯೋಗಿಕ ಪರಿಣಾಮಗಳು ಮತ್ತು ಅಪಾಯಗಳು",
+  "desc": "How tokenization affects cost, multilingual fairness, arithmetic and prompt behaviour, and how to avoid common mistakes.",
+  "descKn": "tokenization ವೆಚ್ಚ, ಬಹುಭಾಷಾ ನ್ಯಾಯ, ಅಂಕಗಣಿತ ಮತ್ತು prompt ವರ್ತನೆಯ ಮೇಲೆ ಹೇಗೆ ಪರಿಣಾಮ ಬೀರುತ್ತದೆ.",
+  "objectives": [
+   "Explain why token counts drive cost and context limits.",
+   "Describe why some languages and numbers tokenize poorly.",
+   "List practical pitfalls: special tokens, whitespace, and mismatched tokenizers."
+  ],
+  "objectivesKn": [
+   "token ಎಣಿಕೆ ವೆಚ್ಚ ಮತ್ತು context ಮಿತಿ ನಿರ್ಧರಿಸುತ್ತದೆ ಎಂದು ವಿವರಿಸಿ.",
+   "ಕೆಲವು ಭಾಷೆಗಳು ಮತ್ತು ಸಂಖ್ಯೆಗಳು ಕಳಪೆಯಾಗಿ tokenize ಆಗುವುದು ಏಕೆ ಎಂದು ವಿವರಿಸಿ.",
+   "ಪ್ರಾಯೋಗಿಕ ಅಪಾಯಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Tokenizers: BPE, WordPiece, SentencePiece — Practical Consequences and Pitfalls",
+     "textKn": "Tokenizers: BPE, WordPiece, SentencePiece — Practical Consequences and Pitfalls",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Tokenizers: BPE, WordPiece, SentencePiece",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Tokens Are the Unit of Cost and Context",
+     "headingKn": "Tokens ವೆಚ್ಚ ಮತ್ತು context ಘಟಕ",
+     "bodyEn": "APIs bill by tokens and models have a context window measured in tokens. The same sentence can use different token counts under different tokenizers, so token counts must be measured with the model's own tokenizer.",
+     "bodyKn": "API ಗಳು tokens ಪ್ರಕಾರ ಬಿಲ್ ಮಾಡುತ್ತವೆ; context window ಸಹ tokens ನಲ್ಲಿ. ಒಂದೇ ವಾಕ್ಯ ಬೇರೆ tokenizer ಗಳಲ್ಲಿ ಬೇರೆ ಎಣಿಕೆ ಬಳಸುತ್ತದೆ, ಆದ್ದರಿಂದ ಮಾದರಿಯ ಸ್ವಂತ tokenizer ನಿಂದ ಎಣಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Uneven Treatment of Languages",
+     "headingKn": "ಭಾಷೆಗಳ ಅಸಮಾನ ಚಿಕಿತ್ಸೆ",
+     "bodyEn": "A vocabulary learned mostly from English text splits other languages into many small pieces, so the same meaning costs more tokens and fits less into the context window. This is a fairness and cost issue for languages such as Kannada.",
+     "bodyKn": "ಹೆಚ್ಚಾಗಿ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯದಿಂದ ಕಲಿತ vocabulary ಬೇರೆ ಭಾಷೆಗಳನ್ನು ಅನೇಕ ಸಣ್ಣ ತುಂಡುಗಳಾಗಿ ವಿಭಜಿಸುತ್ತದೆ; ಅದೇ ಅರ್ಥಕ್ಕೆ ಹೆಚ್ಚು tokens. ಕನ್ನಡದಂತಹ ಭಾಷೆಗಳಿಗೆ ಇದು ವೆಚ್ಚ ಮತ್ತು ನ್ಯಾಯದ ವಿಷಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Numbers, Spelling and Whitespace",
+     "headingKn": "ಸಂಖ್ಯೆ, ಕಾಗುಣಿತ, whitespace",
+     "bodyEn": "Long numbers may split at arbitrary points, which makes arithmetic harder. Models also do not see letters directly, which explains why counting letters in a word can be unreliable. Leading spaces are often part of a token, so a stray space changes the ids.",
+     "bodyKn": "ಉದ್ದ ಸಂಖ್ಯೆಗಳು ಯಾದೃಚ್ಛಿಕ ಸ್ಥಳದಲ್ಲಿ ಒಡೆಯಬಹುದು, ಅಂಕಗಣಿತ ಕಠಿಣ. ಮಾದರಿ ಅಕ್ಷರಗಳನ್ನು ನೇರವಾಗಿ ನೋಡುವುದಿಲ್ಲ, ಆದ್ದರಿಂದ ಪದದಲ್ಲಿ ಅಕ್ಷರ ಎಣಿಕೆ ವಿಶ್ವಾಸಾರ್ಹವಲ್ಲ. ಆರಂಭದ ಖಾಲಿ ಜಾಗ token ನ ಭಾಗವಾಗಿರಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Special Tokens and Mismatches",
+     "headingKn": "ವಿಶೇಷ Tokens ಮತ್ತು ಹೊಂದಾಣಿಕೆಯಿಲ್ಲದಿರುವುದು",
+     "bodyEn": "Chat models use special tokens to mark roles and end of text; formatting them wrongly degrades output. Using a different tokenizer at inference than at training is a silent bug that produces nonsense rather than an error.",
+     "bodyKn": "Chat ಮಾದರಿಗಳು ಪಾತ್ರ ಮತ್ತು ಪಠ್ಯದ ಅಂತ್ಯ ಗುರುತಿಸಲು ವಿಶೇಷ tokens ಬಳಸುತ್ತವೆ; ತಪ್ಪಾಗಿ ರೂಪಿಸಿದರೆ ಗುಣಮಟ್ಟ ಕುಸಿಯುತ್ತದೆ. ತರಬೇತಿಗಿಂತ ಬೇರೆ tokenizer ಬಳಸುವುದು ದೋಷ ಸಂದೇಶವಿಲ್ಲದ ಮೌನ ದೋಷ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Measure tokens with the model's own tokenizer.\n• Non-English text and numbers can tokenize inefficiently.\n• Match tokenizers and special-token formats exactly.",
+     "bodyKn": "• ಮಾದರಿಯ ಸ್ವಂತ tokenizer ನಿಂದ ಅಳೆಯಿರಿ.\n• ಇಂಗ್ಲಿಷೇತರ ಪಠ್ಯ ಮತ್ತು ಸಂಖ್ಯೆಗಳು ಅಸಮರ್ಥವಾಗಿ tokenize ಆಗಬಹುದು.\n• tokenizer ಮತ್ತು ವಿಶೇಷ token ರೂಪ ನಿಖರವಾಗಿ ಹೊಂದಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why should token counts be measured with the model's own tokenizer?",
+       "qKn": "token ಎಣಿಕೆ ಮಾದರಿಯ ಸ್ವಂತ tokenizer ನಿಂದ ಏಕೆ ಅಳೆಯಬೇಕು?",
+       "opts": [
+        "All tokenizers count the same",
+        "Different tokenizers give different counts for the same text",
+        "It is faster",
+        "It is required by law"
+       ],
+       "optsKn": [
+        "ಎಲ್ಲಾ ಒಂದೇ ಎಣಿಕೆ",
+        "ಬೇರೆ tokenizer ಗಳು ಬೇರೆ ಎಣಿಕೆ ನೀಡುತ್ತವೆ",
+        "ವೇಗ",
+        "ಕಾನೂನು ಅಗತ್ಯ"
+       ],
+       "correct": 1
+      },
+      {
+       "q": "Why can a mostly-English vocabulary be costly for Kannada?",
+       "qKn": "ಹೆಚ್ಚಾಗಿ ಇಂಗ್ಲಿಷ್ vocabulary ಕನ್ನಡಕ್ಕೆ ದುಬಾರಿ ಏಕೆ?",
+       "opts": [
+        "Kannada has no letters",
+        "It splits Kannada into many small pieces, so the same meaning uses more tokens",
+        "Kannada cannot be encoded",
+        "Models refuse Kannada"
+       ],
+       "optsKn": [
+        "ಕನ್ನಡಕ್ಕೆ ಅಕ್ಷರಗಳಿಲ್ಲ",
+        "ಕನ್ನಡವನ್ನು ಅನೇಕ ಸಣ್ಣ ತುಂಡುಗಳಾಗಿ ಒಡೆಯುತ್ತದೆ, ಹೆಚ್ಚು tokens",
+        "ಕನ್ನಡ ಎನ್‌ಕೋಡ್ ಆಗದು",
+        "ಮಾದರಿ ನಿರಾಕರಿಸುತ್ತದೆ"
+       ],
+       "correct": 1
+      },
+      {
+       "q": "What happens if inference uses a different tokenizer than training?",
+       "qKn": "inference ನಲ್ಲಿ ತರಬೇತಿಗಿಂತ ಬೇರೆ tokenizer ಬಳಸಿದರೆ ಏನಾಗುತ್ತದೆ?",
+       "opts": [
+        "Nothing",
+        "A silent bug: the ids mean different things and output degrades",
+        "The model retrains itself",
+        "It becomes faster"
+       ],
+       "optsKn": [
+        "ಏನೂ ಇಲ್ಲ",
+        "ಮೌನ ದೋಷ: ids ಬೇರೆ ಅರ್ಥ, ಔಟ್‌ಪುಟ್ ಕುಸಿತ",
+        "ಮಾದರಿ ತಾನೇ ಮರುತರಬೇತಿ",
+        "ವೇಗವಾಗುತ್ತದೆ"
+       ],
+       "correct": 1
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d5e66020ed05b3214c3",
+  "moduleId": "6a369d6066020ed05b3214f9",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "MCP Auth in Production — Client Enrollment and Trust",
+  "titleKn": "ಉತ್ಪಾದನೆಯಲ್ಲಿ MCP Auth — Client ದಾಖಲಾತಿ ಮತ್ತು ವಿಶ್ವಾಸ",
+  "desc": "How MCP clients are enrolled with an authorization server and how trust is established before any token is issued.",
+  "descKn": "MCP clients authorization server ನಲ್ಲಿ ಹೇಗೆ ದಾಖಲಾಗುತ್ತವೆ ಮತ್ತು token ನೀಡುವ ಮೊದಲು ವಿಶ್ವಾಸ ಹೇಗೆ ಸ್ಥಾಪಿತವಾಗುತ್ತದೆ.",
+  "objectives": [
+   "Explain why an MCP client must be enrolled before it requests tokens.",
+   "Compare pre-registration with metadata-document based enrollment.",
+   "Describe what a production enrollment policy should record and review."
+  ],
+  "objectivesKn": [
+   "token ಕೇಳುವ ಮೊದಲು MCP client ಏಕೆ ದಾಖಲಾಗಬೇಕು ಎಂದು ವಿವರಿಸಿ.",
+   "ಪೂರ್ವ-ನೋಂದಣಿ ಮತ್ತು metadata-ದಾಖಲೆ ಆಧಾರಿತ ದಾಖಲಾತಿ ಹೋಲಿಸಿ.",
+   "ದಾಖಲಾತಿ ನೀತಿ ಏನನ್ನು ದಾಖಲಿಸಿ ಪರಿಶೀಲಿಸಬೇಕು ಎಂದು ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "MCP Auth in Production — Client Enrollment and Trust",
+     "textKn": "MCP Auth in Production — Client Enrollment and Trust",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in MCP Auth in Production: Enrollment, JWKS Refresh, Audience Pinning",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why Enrollment Comes First",
+     "headingKn": "ದಾಖಲಾತಿ ಮೊದಲು ಏಕೆ",
+     "bodyEn": "An authorization server needs to know who a client is, where it may redirect users, and what it may ask for before it can issue anything safely. Enrollment is where that identity and those boundaries are established.",
+     "bodyKn": "authorization server ಗೆ client ಯಾರು, ಎಲ್ಲಿಗೆ redirect ಮಾಡಬಹುದು, ಏನು ಕೇಳಬಹುದು ಎಂದು ತಿಳಿದಿರಬೇಕು. ದಾಖಲಾತಿಯಲ್ಲಿ ಆ ಗುರುತು ಮತ್ತು ಗಡಿಗಳು ನಿರ್ಧಾರವಾಗುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Pre-Registration Versus Discoverable Metadata",
+     "headingKn": "ಪೂರ್ವ-ನೋಂದಣಿ vs ಪತ್ತೆಯಾಗುವ Metadata",
+     "bodyEn": "A closed set of known clients can be registered by hand. Open ecosystems cannot know every client in advance, so a client can publish a metadata document at a stable URL that the server fetches and validates. Either way the server should not trust a claim it has not verified.",
+     "bodyKn": "ಪರಿಚಿತ clients ಅನ್ನು ಕೈಯಿಂದ ನೋಂದಾಯಿಸಬಹುದು. ತೆರೆದ ವ್ಯವಸ್ಥೆಗಳಲ್ಲಿ ಎಲ್ಲಾ clients ಮುಂಚಿತವಾಗಿ ತಿಳಿಯದು; client ಸ್ಥಿರ URL ನಲ್ಲಿ metadata ದಾಖಲೆ ಪ್ರಕಟಿಸಿ server ಅದನ್ನು ತಂದು ಮಾನ್ಯಗೊಳಿಸುತ್ತದೆ. ಪರಿಶೀಲಿಸದ ಹೇಳಿಕೆಯನ್ನು ನಂಬಬಾರದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Redirect URIs Are a Security Boundary",
+     "headingKn": "Redirect URI ಭದ್ರತಾ ಗಡಿ",
+     "bodyEn": "Authorization codes are sent to a redirect URI, so the server must accept only exact, pre-approved values. Loose matching lets an attacker steal codes.",
+     "bodyKn": "Authorization codes redirect URI ಗೆ ಹೋಗುತ್ತವೆ, ಆದ್ದರಿಂದ ನಿಖರ, ಮೊದಲೇ ಅನುಮೋದಿತ ಮೌಲ್ಯಗಳನ್ನು ಮಾತ್ರ ಒಪ್ಪಬೇಕು. ಸಡಿಲ ಹೊಂದಾಣಿಕೆ ದಾಳಿಕೋರರಿಗೆ codes ಕದಿಯಲು ಅವಕಾಶ ನೀಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Record and Review Enrollments",
+     "headingKn": "ದಾಖಲಾತಿಗಳನ್ನು ದಾಖಲಿಸಿ ಪರಿಶೀಲಿಸಿ",
+     "bodyEn": "A production policy records who enrolled a client, when, with which redirect URIs and scopes, and supports revoking it. Enrollments are a list that should be reviewed, not a one-time setup.",
+     "bodyKn": "ಯಾರು, ಯಾವಾಗ, ಯಾವ redirect URI ಮತ್ತು scopes ಜೊತೆ client ದಾಖಲಿಸಿದರು ಎಂದು ದಾಖಲಿಸಿ, ರದ್ದುಗೊಳಿಸಲು ಬೆಂಬಲಿಸಿ. ದಾಖಲಾತಿಗಳು ಪರಿಶೀಲಿಸಬೇಕಾದ ಪಟ್ಟಿ, ಒಮ್ಮೆಯ ಸೆಟಪ್ ಅಲ್ಲ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Enrollment options",
+     "headers": [
+      "Approach",
+      "Best for",
+      "Main risk"
+     ],
+     "rows": [
+      [
+       "Manual pre-registration",
+       "Small, known client set",
+       "Does not scale to open ecosystems"
+      ],
+      [
+       "Metadata document at a URL",
+       "Open ecosystems",
+       "Server must fetch and validate it safely"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Enroll and constrain a client before any token is issued.\n• Verify claims; do not trust unverified metadata.\n• Redirect URIs must match exactly.",
+     "bodyKn": "• token ನೀಡುವ ಮೊದಲು client ದಾಖಲಿಸಿ ಮಿತಗೊಳಿಸಿ.\n• ಹೇಳಿಕೆಗಳನ್ನು ಪರಿಶೀಲಿಸಿ.\n• Redirect URI ನಿಖರವಾಗಿ ಹೊಂದಬೇಕು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why must redirect URIs match exactly?",
+       "qKn": "Redirect URI ಗಳು ನಿಖರವಾಗಿ ಏಕೆ ಹೊಂದಬೇಕು?",
+       "opts": [
+        "Loose matching can let an attacker capture authorization codes",
+        "It is faster",
+        "URIs are case secret",
+        "It reduces token size"
+       ],
+       "optsKn": [
+        "ಸಡಿಲ ಹೊಂದಾಣಿಕೆ ದಾಳಿಕೋರರಿಗೆ codes ಸಿಗಲು ಅವಕಾಶ ನೀಡುತ್ತದೆ",
+        "ವೇಗ",
+        "URI ರಹಸ್ಯ",
+        "token ಗಾತ್ರ ಕಡಿಮೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When is a metadata-document approach useful?",
+       "qKn": "metadata-ದಾಖಲೆ ವಿಧಾನ ಯಾವಾಗ ಉಪಯುಕ್ತ?",
+       "opts": [
+        "When every client is known in advance",
+        "In open ecosystems where clients cannot all be pre-registered",
+        "Never",
+        "Only for servers"
+       ],
+       "optsKn": [
+        "ಎಲ್ಲಾ clients ಮುಂಚಿತವಾಗಿ ತಿಳಿದಿದ್ದರೆ",
+        "ಎಲ್ಲಾ clients ಪೂರ್ವ-ನೋಂದಣಿ ಸಾಧ್ಯವಿಲ್ಲದ ತೆರೆದ ವ್ಯವಸ್ಥೆಗಳಲ್ಲಿ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "servers ಗೆ ಮಾತ್ರ"
+       ],
+       "correct": 1
+      },
+      {
+       "q": "What should a production enrollment policy support?",
+       "qKn": "ಉತ್ಪಾದನಾ ದಾಖಲಾತಿ ನೀತಿ ಏನನ್ನು ಬೆಂಬಲಿಸಬೇಕು?",
+       "opts": [
+        "Only creation",
+        "Recording, review and revocation",
+        "Nothing after setup",
+        "Automatic approval of all"
+       ],
+       "optsKn": [
+        "ರಚನೆ ಮಾತ್ರ",
+        "ದಾಖಲೆ, ಪರಿಶೀಲನೆ, ರದ್ದತಿ",
+        "ಸೆಟಪ್ ನಂತರ ಏನೂ ಇಲ್ಲ",
+        "ಎಲ್ಲವನ್ನೂ ಸ್ವಯಂ ಅನುಮೋದನೆ"
+       ],
+       "correct": 1
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d5e66020ed05b3214c3",
+  "moduleId": "6a369d6066020ed05b3214f9",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "MCP Auth in Production — Signing Keys and JWKS Refresh",
+  "titleKn": "ಉತ್ಪಾದನೆಯಲ್ಲಿ MCP Auth — Signing Keys ಮತ್ತು JWKS Refresh",
+  "desc": "How a resource server verifies token signatures with published keys, and how to refresh and rotate them safely.",
+  "descKn": "resource server ಪ್ರಕಟಿತ keys ನಿಂದ token ಸಹಿ ಹೇಗೆ ಪರಿಶೀಲಿಸುತ್ತದೆ, keys ಅನ್ನು ಸುರಕ್ಷಿತವಾಗಿ ಹೇಗೆ ರಿಫ್ರೆಶ್/ತಿರುಗಿಸುವುದು.",
+  "objectives": [
+   "Explain how a JWKS document lets a server verify signatures without sharing secrets.",
+   "Describe key rotation and why caching needs a refresh strategy.",
+   "Identify failure modes: stale caches, unknown key ids and unsafe key fetching."
+  ],
+  "objectivesKn": [
+   "JWKS ರಹಸ್ಯ ಹಂಚದೆ ಸಹಿ ಪರಿಶೀಲಿಸಲು ಹೇಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ ಎಂದು ವಿವರಿಸಿ.",
+   "key rotation ಮತ್ತು caching ಗೆ ರಿಫ್ರೆಶ್ ತಂತ್ರ ಏಕೆ ಬೇಕು ಎಂದು ವಿವರಿಸಿ.",
+   "ವೈಫಲ್ಯ ವಿಧಾನಗಳನ್ನು ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "MCP Auth in Production — Signing Keys and JWKS Refresh",
+     "textKn": "MCP Auth in Production — Signing Keys and JWKS Refresh",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in MCP Auth in Production: Enrollment, JWKS Refresh, Audience Pinning",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Public Keys for Verification",
+     "headingKn": "ಪರಿಶೀಲನೆಗೆ Public Keys",
+     "bodyEn": "The authorization server signs tokens with a private key and publishes the matching public keys as a JSON Web Key Set. A resource server fetches that set and verifies signatures, and no secret ever leaves the authorization server.",
+     "bodyKn": "authorization server private key ನಿಂದ tokens ಸಹಿ ಮಾಡಿ ಹೊಂದುವ public keys ಅನ್ನು JSON Web Key Set ಆಗಿ ಪ್ರಕಟಿಸುತ್ತದೆ. resource server ಅದನ್ನು ತಂದು ಸಹಿ ಪರಿಶೀಲಿಸುತ್ತದೆ; ಯಾವುದೇ ರಹಸ್ಯ ಹೊರಗೆ ಹೋಗುವುದಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Ids and Rotation",
+     "headingKn": "Key Ids ಮತ್ತು Rotation",
+     "bodyEn": "Each key has an id carried in the token header. Keys are rotated periodically, so the published set contains old and new keys during a transition and a token must be checked against the key its header names.",
+     "bodyKn": "ಪ್ರತಿ key ಗೆ id ಇದ್ದು token header ನಲ್ಲಿ ಇರುತ್ತದೆ. Keys ನಿಯತವಾಗಿ ತಿರುಗುತ್ತವೆ; ಪರಿವರ್ತನೆ ವೇಳೆ ಹಳೆಯ ಮತ್ತು ಹೊಸ ಎರಡೂ ಇರುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Caching and Refresh",
+     "headingKn": "Caching ಮತ್ತು Refresh",
+     "bodyEn": "Fetching keys on every request is slow and fragile, so servers cache them. A cache must refresh when it meets an unknown key id, but must rate-limit that refresh so an attacker cannot force endless fetches.",
+     "bodyKn": "ಪ್ರತಿ request ನಲ್ಲಿ keys ತರುವುದು ನಿಧಾನ ಮತ್ತು ದುರ್ಬಲ, ಆದ್ದರಿಂದ cache ಮಾಡಲಾಗುತ್ತದೆ. ಅಪರಿಚಿತ key id ಬಂದಾಗ ರಿಫ್ರೆಶ್ ಮಾಡಬೇಕು, ಆದರೆ ದಾಳಿಕೋರ ಅನಂತ fetch ಒತ್ತಾಯಿಸದಂತೆ ದರ ಮಿತಿ ಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Fetch Keys Only From a Trusted Source",
+     "headingKn": "ವಿಶ್ವಾಸಾರ್ಹ ಮೂಲದಿಂದ ಮಾತ್ರ Keys",
+     "bodyEn": "The key set location must come from trusted configuration or validated discovery, never from a value inside the token itself. Otherwise an attacker can point the server at keys they control.",
+     "bodyKn": "Key set ಸ್ಥಳ ವಿಶ್ವಾಸಾರ್ಹ ಸಂರಚನೆ ಅಥವಾ ಮಾನ್ಯಗೊಳಿಸಿದ discovery ಇಂದ ಬರಬೇಕು, token ಒಳಗಿನ ಮೌಲ್ಯದಿಂದಲ್ಲ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "JWKS failure modes",
+     "headers": [
+      "Failure",
+      "Cause",
+      "Mitigation"
+     ],
+     "rows": [
+      [
+       "Valid tokens rejected after rotation",
+       "Stale key cache",
+       "Refresh on unknown key id"
+      ],
+      [
+       "Endless fetch traffic",
+       "Attacker sends random key ids",
+       "Rate-limit refresh"
+      ],
+      [
+       "Forged tokens accepted",
+       "Key location taken from the token",
+       "Fixed, trusted key source"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• JWKS shares only public keys.\n• Cache keys but refresh on unknown ids, with a rate limit.\n• Never take the key location from the token.",
+     "bodyKn": "• JWKS public keys ಮಾತ್ರ ಹಂಚುತ್ತದೆ.\n• ಅಪರಿಚಿತ id ಗೆ ದರ ಮಿತಿಯೊಂದಿಗೆ ರಿಫ್ರೆಶ್.\n• token ನಿಂದ key ಸ್ಥಳ ತೆಗೆದುಕೊಳ್ಳಬೇಡಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does a resource server need to verify a token signature?",
+       "qKn": "token ಸಹಿ ಪರಿಶೀಲಿಸಲು resource server ಗೆ ಏನು ಬೇಕು?",
+       "opts": [
+        "The private signing key",
+        "The matching public key from the key set",
+        "The user password",
+        "Nothing"
+       ],
+       "optsKn": [
+        "private signing key",
+        "key set ನ ಹೊಂದುವ public key",
+        "ಬಳಕೆದಾರ ಪಾಸ್‌ವರ್ಡ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 1
+      },
+      {
+       "q": "Why rate-limit key refresh?",
+       "qKn": "key ರಿಫ್ರೆಶ್ ಅನ್ನು ದರ ಮಿತಿ ಏಕೆ?",
+       "opts": [
+        "To save disk",
+        "So an attacker cannot force endless fetches with random key ids",
+        "Keys expire daily",
+        "It is required by HTTP"
+       ],
+       "optsKn": [
+        "ಡಿಸ್ಕ್ ಉಳಿತಾಯ",
+        "ದಾಳಿಕೋರ ಯಾದೃಚ್ಛಿಕ key id ಗಳಿಂದ ಅನಂತ fetch ಒತ್ತಾಯಿಸದಿರಲು",
+        "keys ದಿನಾ ಮುಗಿಯುತ್ತವೆ",
+        "HTTP ಅಗತ್ಯ"
+       ],
+       "correct": 1
+      },
+      {
+       "q": "Where should the key set location come from?",
+       "qKn": "Key set ಸ್ಥಳ ಎಲ್ಲಿಂದ ಬರಬೇಕು?",
+       "opts": [
+        "A value inside the token",
+        "Trusted configuration or validated discovery",
+        "The user request",
+        "A random header"
+       ],
+       "optsKn": [
+        "token ಒಳಗಿನ ಮೌಲ್ಯ",
+        "ವಿಶ್ವಾಸಾರ್ಹ ಸಂರಚನೆ ಅಥವಾ ಮಾನ್ಯಗೊಳಿಸಿದ discovery",
+        "ಬಳಕೆದಾರ request",
+        "ಯಾದೃಚ್ಛಿಕ header"
+       ],
+       "correct": 1
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d5e66020ed05b3214c3",
+  "moduleId": "6a369d6066020ed05b3214f9",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "MCP Auth in Production — Audience Pinning and Token Validation",
+  "titleKn": "ಉತ್ಪಾದನೆಯಲ್ಲಿ MCP Auth — Audience Pinning ಮತ್ತು Token ಮಾನ್ಯತೆ",
+  "desc": "Why a token must be bound to one resource, how audience pinning stops token replay across servers, and the full validation checklist.",
+  "descKn": "token ಒಂದು resource ಗೆ ಬಂಧಿಸಬೇಕು ಏಕೆ, audience pinning token ಮರುಬಳಕೆ ಹೇಗೆ ತಡೆಯುತ್ತದೆ, ಮತ್ತು ಪೂರ್ಣ ಮಾನ್ಯತೆ ಪಟ್ಟಿ.",
+  "objectives": [
+   "Explain the confused-deputy risk of tokens that name no specific audience.",
+   "List the checks a resource server must perform on every token.",
+   "Explain why an MCP server must not pass a client token through to another API."
+  ],
+  "objectivesKn": [
+   "ನಿರ್ದಿಷ್ಟ audience ಇಲ್ಲದ tokens ನ confused-deputy ಅಪಾಯ ವಿವರಿಸಿ.",
+   "ಪ್ರತಿ token ಮೇಲೆ resource server ಮಾಡಬೇಕಾದ ಪರಿಶೀಲನೆಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ.",
+   "MCP server client token ಅನ್ನು ಇನ್ನೊಂದು API ಗೆ ಏಕೆ ರವಾನಿಸಬಾರದು ಎಂದು ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "MCP Auth in Production — Audience Pinning and Token Validation",
+     "textKn": "MCP Auth in Production — Audience Pinning and Token Validation",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in MCP Auth in Production: Enrollment, JWKS Refresh, Audience Pinning",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Audience Claim",
+     "headingKn": "Audience Claim",
+     "bodyEn": "A token names the resource it is meant for. A server must accept only tokens whose audience is itself, so a token stolen from or issued for one service cannot be replayed at another.",
+     "bodyKn": "token ಯಾವ resource ಗಾಗಿ ಎಂದು ಹೆಸರಿಸುತ್ತದೆ. server ತನ್ನದೇ audience ಇರುವ tokens ಮಾತ್ರ ಒಪ್ಪಬೇಕು; ಒಂದು ಸೇವೆಯ token ಇನ್ನೊಂದರಲ್ಲಿ ಮರುಬಳಕೆ ಆಗಬಾರದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Confused Deputy and Passthrough",
+     "headingKn": "Confused Deputy ಮತ್ತು Passthrough",
+     "bodyEn": "If an MCP server forwards the token it received to a downstream API, that API may honour it for the wrong reasons. The server should obtain its own token for the downstream call, so each hop has a token meant for it.",
+     "bodyKn": "MCP server ತಾನು ಪಡೆದ token ಅನ್ನು ಕೆಳಗಿನ API ಗೆ ರವಾನಿಸಿದರೆ ಆ API ತಪ್ಪು ಕಾರಣಕ್ಕೆ ಒಪ್ಪಬಹುದು. ಕೆಳಗಿನ ಕರೆಗೆ ಸ್ವಂತ token ಪಡೆಯಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Validation Checklist",
+     "headingKn": "ಮಾನ್ಯತೆ ಪಟ್ಟಿ",
+     "bodyEn": "For every request check the signature, the issuer, the audience, the expiry and not-before times, and the scopes required for the specific operation. Passing one check does not excuse skipping another.",
+     "bodyKn": "ಪ್ರತಿ request ನಲ್ಲಿ ಸಹಿ, issuer, audience, ಅವಧಿ ಮತ್ತು ಆರಂಭ ಸಮಯ, ಹಾಗೂ ನಿರ್ದಿಷ್ಟ ಕಾರ್ಯಕ್ಕೆ ಬೇಕಾದ scopes ಪರಿಶೀಲಿಸಿ. ಒಂದು ಪಾಸ್ ಆದರೆ ಇನ್ನೊಂದು ಬಿಡಬಹುದು ಎಂದಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Fail Closed and Log",
+     "headingKn": "Fail Closed ಮತ್ತು Log",
+     "bodyEn": "Any check that cannot be completed should reject the request, and rejections should be logged with the reason so incidents can be investigated without logging the token itself.",
+     "bodyKn": "ಪೂರ್ಣಗೊಳ್ಳದ ಯಾವ ಪರಿಶೀಲನೆಯೂ request ತಿರಸ್ಕರಿಸಬೇಕು; ಕಾರಣದೊಂದಿಗೆ ದಾಖಲಿಸಿ, ಆದರೆ token ಅನ್ನು ದಾಖಲಿಸಬೇಡಿ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Checks on every token",
+     "headers": [
+      "Check",
+      "Stops"
+     ],
+     "rows": [
+      [
+       "Signature",
+       "Forged tokens"
+      ],
+      [
+       "Issuer",
+       "Tokens from an untrusted server"
+      ],
+      [
+       "Audience",
+       "Replay across services"
+      ],
+      [
+       "Expiry / not-before",
+       "Old or premature tokens"
+      ],
+      [
+       "Scope",
+       "Actions beyond what was granted"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Accept only tokens whose audience is this server.\n• Do not pass client tokens through downstream.\n• Check signature, issuer, audience, time and scope every time; fail closed.",
+     "bodyKn": "• ಈ server ಗಾಗಿ audience ಇರುವ tokens ಮಾತ್ರ.\n• client tokens ಅನ್ನು ಕೆಳಗೆ ರವಾನಿಸಬೇಡಿ.\n• ಸಹಿ, issuer, audience, ಸಮಯ, scope ಪ್ರತಿ ಬಾರಿ; fail closed."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does audience pinning prevent?",
+       "qKn": "Audience pinning ಏನನ್ನು ತಡೆಯುತ್ತದೆ?",
+       "opts": [
+        "Slow logins",
+        "A token for one service being replayed at another",
+        "Expired tokens",
+        "Large tokens"
+       ],
+       "optsKn": [
+        "ನಿಧಾನ ಲಾಗಿನ್",
+        "ಒಂದು ಸೇವೆಯ token ಇನ್ನೊಂದರಲ್ಲಿ ಮರುಬಳಕೆ",
+        "ಅವಧಿ ಮುಗಿದ tokens",
+        "ದೊಡ್ಡ tokens"
+       ],
+       "correct": 1
+      },
+      {
+       "q": "Why should an MCP server not forward a client token to another API?",
+       "qKn": "MCP server client token ಅನ್ನು ಇನ್ನೊಂದು API ಗೆ ಏಕೆ ರವಾನಿಸಬಾರದು?",
+       "opts": [
+        "It is slower",
+        "The downstream API may honour a token not meant for it (confused deputy)",
+        "Tokens are single character",
+        "It breaks JSON"
+       ],
+       "optsKn": [
+        "ನಿಧಾನ",
+        "ಕೆಳಗಿನ API ತನಗೆ ಉದ್ದೇಶಿಸದ token ಒಪ್ಪಬಹುದು",
+        "tokens ಒಂದು ಅಕ್ಷರ",
+        "JSON ಮುರಿಯುತ್ತದೆ"
+       ],
+       "correct": 1
+      },
+      {
+       "q": "If a validation step cannot be completed, what should the server do?",
+       "qKn": "ಮಾನ್ಯತೆ ಹಂತ ಪೂರ್ಣಗೊಳ್ಳದಿದ್ದರೆ server ಏನು ಮಾಡಬೇಕು?",
+       "opts": [
+        "Accept the token",
+        "Reject the request (fail closed)",
+        "Ask the user",
+        "Ignore it"
+       ],
+       "optsKn": [
+        "token ಒಪ್ಪಿ",
+        "request ತಿರಸ್ಕರಿಸಿ (fail closed)",
+        "ಬಳಕೆದಾರರನ್ನು ಕೇಳಿ",
+        "ನಿರ್ಲಕ್ಷಿಸಿ"
+       ],
+       "correct": 1
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6066020ed05b32150e",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "The Agent Loop — Design Choices: State, Stopping and Tool Results",
+  "titleKn": "The Agent Loop — ವಿನ್ಯಾಸ ಆಯ್ಕೆಗಳು: ಸ್ಥಿತಿ, ನಿಲ್ಲಿಸುವುದು ಮತ್ತು Tool ಫಲಿತಾಂಶ",
+  "desc": "The decisions that shape a reliable agent loop: what state it carries, when it stops, and how tool results re-enter the context.",
+  "descKn": "ವಿಶ್ವಾಸಾರ್ಹ agent loop ರೂಪಿಸುವ ನಿರ್ಧಾರಗಳು: ಸ್ಥಿತಿ, ನಿಲ್ಲಿಸುವಿಕೆ, tool ಫಲಿತಾಂಶಗಳು.",
+  "objectives": [
+   "Describe what state an agent loop must carry between steps.",
+   "List sound stopping conditions and why a step cap is essential.",
+   "Explain how to present tool results, including errors, back to the model."
+  ],
+  "objectivesKn": [
+   "agent loop ಹಂತಗಳ ನಡುವೆ ಯಾವ ಸ್ಥಿತಿ ಹೊತ್ತಿರಬೇಕು ಎಂದು ವಿವರಿಸಿ.",
+   "ಸರಿಯಾದ ನಿಲ್ಲಿಸುವ ಷರತ್ತುಗಳು ಮತ್ತು step ಮಿತಿ ಏಕೆ ಮುಖ್ಯ ಎಂದು ತಿಳಿಸಿ.",
+   "tool ಫಲಿತಾಂಶ ಮತ್ತು ದೋಷಗಳನ್ನು ಮಾದರಿಗೆ ಹೇಗೆ ನೀಡಬೇಕು ಎಂದು ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "The Agent Loop — Design Choices: State, Stopping and Tool Results",
+     "textKn": "The Agent Loop — Design Choices: State, Stopping and Tool Results",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in The Agent Loop",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "State Is the Message History Plus More",
+     "headingKn": "ಸ್ಥಿತಿ ಎಂದರೆ ಸಂದೇಶ ಇತಿಹಾಸ ಜೊತೆಗೆ ಹೆಚ್ಚು",
+     "bodyEn": "The core state is the running list of messages, but production loops also track step count, cost, elapsed time and any structured scratch data. Keeping these explicit makes limits and debugging possible.",
+     "bodyKn": "ಮೂಲ ಸ್ಥಿತಿ ಸಂದೇಶಗಳ ಪಟ್ಟಿ, ಆದರೆ ಉತ್ಪಾದನಾ loops step ಎಣಿಕೆ, ವೆಚ್ಚ, ಸಮಯ ಮತ್ತು ರಚನಾತ್ಮಕ ತಾತ್ಕಾಲಿಕ ಡೇಟಾ ಸಹ ಇಡುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Stopping Conditions",
+     "headingKn": "ನಿಲ್ಲಿಸುವ ಷರತ್ತುಗಳು",
+     "bodyEn": "A loop should stop when the model gives a final answer, when a step or cost budget is exhausted, or when an unrecoverable error occurs. Without a hard cap, a confused agent repeats itself indefinitely.",
+     "bodyKn": "ಮಾದರಿ ಅಂತಿಮ ಉತ್ತರ ನೀಡಿದಾಗ, step ಅಥವಾ ವೆಚ್ಚ ಬಜೆಟ್ ಮುಗಿದಾಗ, ಅಥವಾ ಸರಿಪಡಿಸಲಾಗದ ದೋಷ ಬಂದಾಗ loop ನಿಲ್ಲಬೇಕು. ಕಠಿಣ ಮಿತಿ ಇಲ್ಲದಿದ್ದರೆ ಗೊಂದಲಗೊಂಡ agent ಅನಂತವಾಗಿ ಪುನರಾವರ್ತಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Return Tool Results Faithfully",
+     "headingKn": "Tool ಫಲಿತಾಂಶಗಳನ್ನು ನಿಷ್ಠೆಯಿಂದ ಹಿಂತಿರುಗಿಸಿ",
+     "bodyEn": "Results go back as observations tied to the call that produced them. Errors should be returned as clear messages rather than hidden, because the model can often correct a bad call if it can read why it failed.",
+     "bodyKn": "ಫಲಿತಾಂಶಗಳು ಅವನ್ನು ಉತ್ಪಾದಿಸಿದ ಕರೆಗೆ ಜೋಡಿತ observations ಆಗಿ ಹಿಂತಿರುಗುತ್ತವೆ. ದೋಷಗಳನ್ನು ಮರೆಮಾಡದೆ ಸ್ಪಷ್ಟ ಸಂದೇಶವಾಗಿ ನೀಡಿ; ಮಾದರಿ ಏಕೆ ವಿಫಲ ಎಂದು ಓದಿದರೆ ಸರಿಪಡಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Context Grows Every Step",
+     "headingKn": "ಪ್ರತಿ ಹಂತದಲ್ಲೂ Context ಬೆಳೆಯುತ್ತದೆ",
+     "bodyEn": "Each thought, call and result is appended, so long loops eventually hit the context limit. Designs must summarize, truncate large results, or move data to external memory before that happens.",
+     "bodyKn": "ಪ್ರತಿ ಆಲೋಚನೆ, ಕರೆ, ಫಲಿತಾಂಶ ಸೇರಿಕೊಳ್ಳುತ್ತದೆ, ಆದ್ದರಿಂದ ಉದ್ದ loops context ಮಿತಿ ತಲುಪುತ್ತವೆ. ಸಾರಾಂಶ, ದೊಡ್ಡ ಫಲಿತಾಂಶ ಕತ್ತರಿಸುವುದು ಅಥವಾ ಬಾಹ್ಯ memory ಬಳಸಿ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Stop conditions",
+     "headers": [
+      "Condition",
+      "Why it exists"
+     ],
+     "rows": [
+      [
+       "Final answer produced",
+       "The task is done"
+      ],
+      [
+       "Step cap reached",
+       "Prevents infinite loops"
+      ],
+      [
+       "Cost or time budget reached",
+       "Bounds spending"
+      ],
+      [
+       "Unrecoverable error",
+       "Avoids pointless retries"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Track steps, cost and time explicitly.\n• Always enforce a hard step cap.\n• Return errors clearly and manage context growth.",
+     "bodyKn": "• steps, ವೆಚ್ಚ, ಸಮಯ ಸ್ಪಷ್ಟವಾಗಿ ಇಡಿ.\n• ಕಠಿಣ step ಮಿತಿ ಯಾವಾಗಲೂ.\n• ದೋಷ ಸ್ಪಷ್ಟವಾಗಿ ಹಿಂತಿರುಗಿಸಿ, context ಬೆಳವಣಿಗೆ ನಿರ್ವಹಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why is a hard step cap essential?",
+       "qKn": "ಕಠಿಣ step ಮಿತಿ ಏಕೆ ಅಗತ್ಯ?",
+       "opts": [
+        "It makes answers longer",
+        "A confused agent can otherwise loop forever",
+        "It improves accuracy",
+        "It hides errors"
+       ],
+       "optsKn": [
+        "ಉತ್ತರ ಉದ್ದವಾಗುತ್ತದೆ",
+        "ಗೊಂದಲಗೊಂಡ agent ಅನಂತ loop ಮಾಡಬಹುದು",
+        "ನಿಖರತೆ ಹೆಚ್ಚುತ್ತದೆ",
+        "ದೋಷ ಮರೆಮಾಡುತ್ತದೆ"
+       ],
+       "correct": 1
+      },
+      {
+       "q": "How should tool errors be handled?",
+       "qKn": "tool ದೋಷಗಳನ್ನು ಹೇಗೆ ನಿರ್ವಹಿಸಬೇಕು?",
+       "opts": [
+        "Hidden from the model",
+        "Returned as clear messages so the model can correct the call",
+        "Always ignored",
+        "Turned into final answers"
+       ],
+       "optsKn": [
+        "ಮಾದರಿಯಿಂದ ಮರೆಮಾಡಿ",
+        "ಸ್ಪಷ್ಟ ಸಂದೇಶವಾಗಿ ನೀಡಿ, ಮಾದರಿ ಕರೆ ಸರಿಪಡಿಸಬಹುದು",
+        "ಯಾವಾಗಲೂ ನಿರ್ಲಕ್ಷಿಸಿ",
+        "ಅಂತಿಮ ಉತ್ತರ ಮಾಡಿ"
+       ],
+       "correct": 1
+      },
+      {
+       "q": "What happens to context as a loop runs?",
+       "qKn": "loop ಚಲಿಸುವಾಗ context ಗೆ ಏನಾಗುತ್ತದೆ?",
+       "opts": [
+        "It shrinks",
+        "It grows each step and can hit the limit",
+        "It stays fixed",
+        "It resets each step"
+       ],
+       "optsKn": [
+        "ಕುಗ್ಗುತ್ತದೆ",
+        "ಪ್ರತಿ ಹಂತ ಬೆಳೆದು ಮಿತಿ ತಲುಪಬಹುದು",
+        "ಸ್ಥಿರ",
+        "ಪ್ರತಿ ಹಂತ ಮರುಹೊಂದಿಕೆ"
+       ],
+       "correct": 1
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6066020ed05b32150e",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "The Agent Loop — Production Concerns: Cost, Latency and Debugging",
+  "titleKn": "The Agent Loop — ಉತ್ಪಾದನಾ ಕಾಳಜಿಗಳು: ವೆಚ್ಚ, ವಿಳಂಬ, Debugging",
+  "desc": "What changes when an agent loop leaves the lab: compounding cost and latency, non-determinism, and how to trace and test it.",
+  "descKn": "agent loop ಪ್ರಯೋಗಾಲಯ ಬಿಟ್ಟಾಗ ಏನು ಬದಲಾಗುತ್ತದೆ: ವೆಚ್ಚ, ವಿಳಂಬ, ಅನಿರ್ದಿಷ್ಟತೆ, tracing.",
+  "objectives": [
+   "Explain how cost and latency compound across loop steps.",
+   "Describe why agent behaviour is hard to reproduce.",
+   "List what a useful trace of one run should contain."
+  ],
+  "objectivesKn": [
+   "loop ಹಂತಗಳಲ್ಲಿ ವೆಚ್ಚ ಮತ್ತು ವಿಳಂಬ ಹೇಗೆ ಕೂಡಿಕೊಳ್ಳುತ್ತವೆ ಎಂದು ವಿವರಿಸಿ.",
+   "agent ವರ್ತನೆ ಪುನರುತ್ಪಾದಿಸುವುದು ಕಷ್ಟ ಏಕೆ ಎಂದು ವಿವರಿಸಿ.",
+   "ಒಂದು run ನ ಉಪಯುಕ್ತ trace ಏನು ಹೊಂದಿರಬೇಕು ಎಂದು ಪಟ್ಟಿ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "The Agent Loop — Production Concerns: Cost, Latency and Debugging",
+     "textKn": "The Agent Loop — Production Concerns: Cost, Latency and Debugging",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in The Agent Loop",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cost Compounds",
+     "headingKn": "ವೆಚ್ಚ ಕೂಡಿಕೊಳ್ಳುತ್ತದೆ",
+     "bodyEn": "Every step re-sends a growing history, so total tokens grow faster than the number of steps. A ten-step task can cost far more than ten times a single call.",
+     "bodyKn": "ಪ್ರತಿ ಹಂತ ಬೆಳೆಯುತ್ತಿರುವ ಇತಿಹಾಸವನ್ನು ಮತ್ತೆ ಕಳುಹಿಸುತ್ತದೆ, ಆದ್ದರಿಂದ ಒಟ್ಟು tokens ಹಂತಗಳಿಗಿಂತ ವೇಗವಾಗಿ ಬೆಳೆಯುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Latency Is Serial",
+     "headingKn": "ವಿಳಂಬ ಅನುಕ್ರಮ",
+     "bodyEn": "Steps depend on the previous result, so their delays add up. Where calls are independent, running them in parallel is the main way to cut wall-clock time.",
+     "bodyKn": "ಹಂತಗಳು ಹಿಂದಿನ ಫಲಿತಾಂಶವನ್ನು ಅವಲಂಬಿಸುತ್ತವೆ, ಆದ್ದರಿಂದ ವಿಳಂಬ ಕೂಡುತ್ತದೆ. ಸ್ವತಂತ್ರ ಕರೆಗಳನ್ನು ಸಮಾನಾಂತರವಾಗಿ ಚಲಾಯಿಸುವುದು ಸಮಯ ಕಡಿಮೆ ಮಾಡುವ ಮುಖ್ಯ ಮಾರ್ಗ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Non-Determinism",
+     "headingKn": "ಅನಿರ್ದಿಷ್ಟತೆ",
+     "bodyEn": "Sampling, changing tool outputs and small prompt differences mean two runs of the same task can take different paths. Tests must therefore check outcomes and invariants, not exact step sequences.",
+     "bodyKn": "Sampling, ಬದಲಾಗುವ tool ಔಟ್‌ಪುಟ್ ಮತ್ತು ಸಣ್ಣ prompt ವ್ಯತ್ಯಾಸಗಳಿಂದ ಒಂದೇ ಕೆಲಸದ ಎರಡು run ಬೇರೆ ಹಾದಿ ಹಿಡಿಯಬಹುದು. ಪರೀಕ್ಷೆಗಳು ಫಲಿತಾಂಶ ಮತ್ತು invariants ಪರಿಶೀಲಿಸಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Trace Everything",
+     "headingKn": "ಎಲ್ಲವನ್ನೂ Trace ಮಾಡಿ",
+     "bodyEn": "A good trace records each step: the messages sent, the model output, each tool call with arguments and result, timing, tokens and the stop reason. Without it, a wrong final answer cannot be traced to its cause.",
+     "bodyKn": "ಉತ್ತಮ trace ಪ್ರತಿ ಹಂತವನ್ನು ದಾಖಲಿಸುತ್ತದೆ: ಕಳುಹಿಸಿದ ಸಂದೇಶ, ಮಾದರಿ ಔಟ್‌ಪುಟ್, ಪ್ರತಿ tool ಕರೆ ಮತ್ತು ಫಲಿತಾಂಶ, ಸಮಯ, tokens, ನಿಲ್ಲಿಸಿದ ಕಾರಣ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Cost grows faster than step count; latency adds up.\n• Test outcomes, not exact paths.\n• Record full traces of every run.",
+     "bodyKn": "• ವೆಚ್ಚ step ಎಣಿಕೆಗಿಂತ ವೇಗವಾಗಿ ಬೆಳೆಯುತ್ತದೆ.\n• ಫಲಿತಾಂಶಗಳನ್ನು ಪರೀಕ್ಷಿಸಿ.\n• ಪ್ರತಿ run ನ ಪೂರ್ಣ trace ದಾಖಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why does cost grow faster than the number of steps?",
+       "qKn": "ವೆಚ್ಚ step ಸಂಖ್ಯೆಗಿಂತ ವೇಗವಾಗಿ ಏಕೆ ಬೆಳೆಯುತ್ತದೆ?",
+       "opts": [
+        "Each step re-sends a growing history",
+        "Models charge more at night",
+        "Tools are expensive",
+        "Steps are longer"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ ಹಂತ ಬೆಳೆಯುತ್ತಿರುವ ಇತಿಹಾಸ ಮತ್ತೆ ಕಳುಹಿಸುತ್ತದೆ",
+        "ರಾತ್ರಿ ಹೆಚ್ಚು ದರ",
+        "tools ದುಬಾರಿ",
+        "ಹಂತಗಳು ಉದ್ದ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How should agent tests be designed given non-determinism?",
+       "qKn": "ಅನಿರ್ದಿಷ್ಟತೆ ಇರುವಾಗ agent ಪರೀಕ್ಷೆಗಳನ್ನು ಹೇಗೆ ವಿನ್ಯಾಸಗೊಳಿಸಬೇಕು?",
+       "opts": [
+        "Check exact step sequences",
+        "Check outcomes and invariants",
+        "Never test",
+        "Test only once"
+       ],
+       "optsKn": [
+        "ನಿಖರ step ಅನುಕ್ರಮ",
+        "ಫಲಿತಾಂಶ ಮತ್ತು invariants",
+        "ಎಂದಿಗೂ ಪರೀಕ್ಷಿಸಬೇಡಿ",
+        "ಒಮ್ಮೆ ಮಾತ್ರ"
+       ],
+       "correct": 1
+      },
+      {
+       "q": "What is the main way to cut latency for independent tool calls?",
+       "qKn": "ಸ್ವತಂತ್ರ tool ಕರೆಗಳ ವಿಳಂಬ ಕಡಿಮೆ ಮಾಡುವ ಮುಖ್ಯ ಮಾರ್ಗ?",
+       "opts": [
+        "Run them in parallel",
+        "Run them more slowly",
+        "Skip the model",
+        "Add more steps"
+       ],
+       "optsKn": [
+        "ಸಮಾನಾಂತರವಾಗಿ ಚಲಾಯಿಸಿ",
+        "ನಿಧಾನವಾಗಿ",
+        "ಮಾದರಿ ಬಿಡಿ",
+        "ಹೆಚ್ಚು ಹಂತ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6066020ed05b321511",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "ReWOO and Plan-and-Execute — When Planning First Pays Off",
+  "titleKn": "ReWOO ಮತ್ತು Plan-and-Execute — ಮೊದಲು ಯೋಜನೆ ಯಾವಾಗ ಲಾಭ",
+  "desc": "How separating planning from execution changes cost, control and failure behaviour, and when it is the wrong choice.",
+  "descKn": "ಯೋಜನೆ ಮತ್ತು ಕಾರ್ಯಗತವನ್ನು ಬೇರ್ಪಡಿಸುವುದು ವೆಚ್ಚ, ನಿಯಂತ್ರಣ, ವೈಫಲ್ಯದ ಮೇಲೆ ಏನು ಪರಿಣಾಮ, ಯಾವಾಗ ತಪ್ಪು ಆಯ್ಕೆ.",
+  "objectives": [
+   "Contrast interleaved reasoning with plan-then-execute designs.",
+   "Explain the benefits: fewer model calls, inspectable plans, easier limits.",
+   "Identify tasks where a fixed plan is fragile."
+  ],
+  "objectivesKn": [
+   "ಹೆಣೆದ ತರ್ಕ ಮತ್ತು ಯೋಜನೆ-ನಂತರ-ಕಾರ್ಯಗತ ವಿನ್ಯಾಸ ಹೋಲಿಸಿ.",
+   "ಲಾಭಗಳನ್ನು ವಿವರಿಸಿ.",
+   "ಸ್ಥಿರ ಯೋಜನೆ ದುರ್ಬಲವಾಗುವ ಕೆಲಸಗಳನ್ನು ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "ReWOO and Plan-and-Execute — When Planning First Pays Off",
+     "textKn": "ReWOO and Plan-and-Execute — When Planning First Pays Off",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in ReWOO and Plan-and-Execute",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Interleaved Versus Planned",
+     "headingKn": "ಹೆಣೆದ vs ಯೋಜಿತ",
+     "bodyEn": "A ReAct-style loop decides one step at a time after seeing each result. A plan-and-execute design writes the whole plan first, runs the steps, and only then combines results. ReWOO goes further by letting the plan refer to earlier step outputs by name so the steps can run without calling the planner again.",
+     "bodyKn": "ReAct ರೀತಿಯ loop ಪ್ರತಿ ಫಲಿತಾಂಶ ನೋಡಿ ಒಂದೊಂದು ಹಂತ ನಿರ್ಧರಿಸುತ್ತದೆ. plan-and-execute ಮೊದಲು ಪೂರ್ಣ ಯೋಜನೆ ಬರೆದು ಹಂತಗಳನ್ನು ಚಲಾಯಿಸಿ ನಂತರ ಫಲಿತಾಂಶ ಸೇರಿಸುತ್ತದೆ. ReWOO ಯೋಜನೆಯಲ್ಲಿ ಹಿಂದಿನ ಹಂತದ ಔಟ್‌ಪುಟ್ ಹೆಸರಿನಿಂದ ಉಲ್ಲೇಖಿಸಿ ಯೋಜಕನನ್ನು ಮತ್ತೆ ಕರೆಯದೇ ಚಲಾಯಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Benefits",
+     "headingKn": "ಲಾಭಗಳು",
+     "bodyEn": "Fewer model calls lower cost and latency, a written plan can be reviewed or approved before anything runs, and limits such as allowed tools are easy to enforce on a plan.",
+     "bodyKn": "ಕಡಿಮೆ ಮಾದರಿ ಕರೆಗಳು ವೆಚ್ಚ ಮತ್ತು ವಿಳಂಬ ಕಡಿಮೆ ಮಾಡುತ್ತವೆ; ಬರೆದ ಯೋಜನೆಯನ್ನು ಚಲಾಯಿಸುವ ಮೊದಲು ಪರಿಶೀಲಿಸಬಹುದು; ಯೋಜನೆ ಮೇಲೆ ನಿರ್ಬಂಧ ಜಾರಿ ಸುಲಭ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Where a Fixed Plan Breaks",
+     "headingKn": "ಸ್ಥಿರ ಯೋಜನೆ ಎಲ್ಲಿ ಮುರಿಯುತ್ತದೆ",
+     "bodyEn": "If a step returns something unexpected, a rigid plan cannot adapt, and later steps may act on bad data. Tasks with uncertain or discovery-heavy paths favour interleaved reasoning.",
+     "bodyKn": "ಒಂದು ಹಂತ ಅನಿರೀಕ್ಷಿತ ಫಲಿತಾಂಶ ನೀಡಿದರೆ ಕಠಿಣ ಯೋಜನೆ ಹೊಂದಿಕೊಳ್ಳಲಾರದು. ಅನಿಶ್ಚಿತ, ಶೋಧನೆ-ಭಾರಿ ಕೆಲಸಗಳಿಗೆ ಹೆಣೆದ ತರ್ಕ ಸೂಕ್ತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Replanning as a Middle Path",
+     "headingKn": "ಮರುಯೋಜನೆ ಮಧ್ಯ ಮಾರ್ಗ",
+     "bodyEn": "Many systems plan first but allow a replan when a step fails or a check does not match expectations, keeping most of the cost benefit while gaining some adaptivity.",
+     "bodyKn": "ಅನೇಕ ವ್ಯವಸ್ಥೆಗಳು ಮೊದಲು ಯೋಜಿಸಿ, ಹಂತ ವಿಫಲವಾದರೆ ಮರುಯೋಜನೆ ಅನುಮತಿಸುತ್ತವೆ; ವೆಚ್ಚ ಲಾಭ ಉಳಿಸಿ ಸ್ವಲ್ಪ ಹೊಂದಾಣಿಕೆ ಪಡೆಯುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Design comparison",
+     "headers": [
+      "Design",
+      "Model calls",
+      "Adaptivity",
+      "Reviewability"
+     ],
+     "rows": [
+      [
+       "Interleaved (ReAct)",
+       "Many",
+       "High",
+       "Low until done"
+      ],
+      [
+       "Plan-and-execute",
+       "Few",
+       "Low",
+       "High"
+      ],
+      [
+       "Plan with replanning",
+       "Moderate",
+       "Moderate",
+       "High"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Planning first cuts model calls and allows review.\n• A rigid plan cannot react to surprises.\n• Replanning balances cost and adaptivity.",
+     "bodyKn": "• ಮೊದಲು ಯೋಜನೆ ಕರೆಗಳನ್ನು ಕಡಿಮೆ ಮಾಡಿ ಪರಿಶೀಲನೆಗೆ ಅವಕಾಶ.\n• ಕಠಿಣ ಯೋಜನೆ ಆಶ್ಚರ್ಯಗಳಿಗೆ ಸ್ಪಂದಿಸದು.\n• ಮರುಯೋಜನೆ ಸಮತೋಲನ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is a main benefit of planning first?",
+       "qKn": "ಮೊದಲು ಯೋಜನೆಯ ಮುಖ್ಯ ಲಾಭ?",
+       "opts": [
+        "Fewer model calls and a reviewable plan",
+        "No tools needed",
+        "Perfect accuracy",
+        "No cost"
+       ],
+       "optsKn": [
+        "ಕಡಿಮೆ ಮಾದರಿ ಕರೆಗಳು, ಪರಿಶೀಲಿಸಬಹುದಾದ ಯೋಜನೆ",
+        "tools ಬೇಡ",
+        "ಪರಿಪೂರ್ಣ ನಿಖರತೆ",
+        "ವೆಚ್ಚವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When is a fixed plan risky?",
+       "qKn": "ಸ್ಥಿರ ಯೋಜನೆ ಯಾವಾಗ ಅಪಾಯಕಾರಿ?",
+       "opts": [
+        "When steps may return unexpected results",
+        "When the task is trivial",
+        "When there is one step",
+        "Never"
+       ],
+       "optsKn": [
+        "ಹಂತಗಳು ಅನಿರೀಕ್ಷಿತ ಫಲಿತಾಂಶ ನೀಡಬಹುದಾದಾಗ",
+        "ಕೆಲಸ ಸರಳ",
+        "ಒಂದೇ ಹಂತ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What does replanning add?",
+       "qKn": "ಮರುಯೋಜನೆ ಏನು ಸೇರಿಸುತ್ತದೆ?",
+       "opts": [
+        "Some adaptivity while keeping much of the cost benefit",
+        "More tools",
+        "Nothing",
+        "Randomness only"
+       ],
+       "optsKn": [
+        "ವೆಚ್ಚ ಲಾಭ ಉಳಿಸಿ ಸ್ವಲ್ಪ ಹೊಂದಾಣಿಕೆ",
+        "ಹೆಚ್ಚು tools",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕತೆ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6066020ed05b321511",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "ReWOO and Plan-and-Execute — Designing Plans, Validation and Failure Handling",
+  "titleKn": "ReWOO ಮತ್ತು Plan-and-Execute — ಯೋಜನೆ ವಿನ್ಯಾಸ, ಮಾನ್ಯತೆ, ವೈಫಲ್ಯ ನಿರ್ವಹಣೆ",
+  "desc": "How to represent plans as data, validate them before running, and handle step failures and dependencies.",
+  "descKn": "ಯೋಜನೆಗಳನ್ನು ಡೇಟಾ ಆಗಿ ಹೇಗೆ ನಿರೂಪಿಸುವುದು, ಚಲಾಯಿಸುವ ಮೊದಲು ಮಾನ್ಯಗೊಳಿಸುವುದು, ವೈಫಲ್ಯ ನಿರ್ವಹಿಸುವುದು.",
+  "objectives": [
+   "Represent a plan as structured steps with dependencies.",
+   "Validate a plan before execution.",
+   "Handle step failure through retry, skip or replan."
+  ],
+  "objectivesKn": [
+   "ಯೋಜನೆಯನ್ನು ಅವಲಂಬನೆಗಳಿರುವ ರಚನಾತ್ಮಕ ಹಂತಗಳಾಗಿ ನಿರೂಪಿಸಿ.",
+   "ಚಲಾಯಿಸುವ ಮೊದಲು ಮಾನ್ಯಗೊಳಿಸಿ.",
+   "ಹಂತ ವೈಫಲ್ಯವನ್ನು ನಿರ್ವಹಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "ReWOO and Plan-and-Execute — Designing Plans, Validation and Failure Handling",
+     "textKn": "ReWOO and Plan-and-Execute — Designing Plans, Validation and Failure Handling",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in ReWOO and Plan-and-Execute",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Plans as Structured Data",
+     "headingKn": "ಯೋಜನೆಗಳು ರಚನಾತ್ಮಕ ಡೇಟಾ",
+     "bodyEn": "A plan is best a list of steps, each naming a tool, its arguments and which earlier steps it depends on. Structured plans can be checked and executed by ordinary code rather than by re-reading free text.",
+     "bodyKn": "ಯೋಜನೆ ಹಂತಗಳ ಪಟ್ಟಿ: ಪ್ರತಿಯೊಂದು tool, ಅದರ arguments ಮತ್ತು ಅವಲಂಬಿತ ಹಂತಗಳನ್ನು ಹೆಸರಿಸುತ್ತದೆ. ರಚನಾತ್ಮಕ ಯೋಜನೆಯನ್ನು ಸಾಮಾನ್ಯ ಕೋಡ್ ಪರಿಶೀಲಿಸಿ ಚಲಾಯಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Validate Before Running",
+     "headingKn": "ಚಲಾಯಿಸುವ ಮೊದಲು ಮಾನ್ಯಗೊಳಿಸಿ",
+     "bodyEn": "Check that every tool exists and is allowed, arguments match schemas, dependencies point to earlier steps, and there are no cycles. Rejecting a bad plan is far cheaper than discovering the problem halfway through.",
+     "bodyKn": "ಪ್ರತಿ tool ಇದೆಯೇ ಮತ್ತು ಅನುಮತಿಸಲಾಗಿದೆಯೇ, arguments schema ಗೆ ಹೊಂದುತ್ತವೆಯೇ, ಅವಲಂಬನೆಗಳು ಹಿಂದಿನ ಹಂತಗಳಿಗೆ ಸೂಚಿಸುತ್ತವೆಯೇ, ಚಕ್ರಗಳಿಲ್ಲವೇ ಎಂದು ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Dependencies Enable Parallelism",
+     "headingKn": "ಅವಲಂಬನೆಗಳು ಸಮಾನಾಂತರ ಸಾಧ್ಯಗೊಳಿಸುತ್ತವೆ",
+     "bodyEn": "Steps that do not depend on each other can run at the same time. A dependency graph lets the executor find them and cut total time.",
+     "bodyKn": "ಪರಸ್ಪರ ಅವಲಂಬಿಸದ ಹಂತಗಳು ಒಂದೇ ಸಮಯದಲ್ಲಿ ಚಲಿಸಬಹುದು. ಅವಲಂಬನೆ ಗ್ರಾಫ್ ಅವನ್ನು ಗುರುತಿಸಿ ಒಟ್ಟು ಸಮಯ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "When a Step Fails",
+     "headingKn": "ಹಂತ ವಿಫಲವಾದಾಗ",
+     "bodyEn": "Options are retry (for transient errors), skip (if the step is optional), replan (if the approach was wrong) or stop and report. The plan should say which steps are optional so the executor does not guess.",
+     "bodyKn": "ಆಯ್ಕೆಗಳು: ಮರುಪ್ರಯತ್ನ (ತಾತ್ಕಾಲಿಕ ದೋಷ), ಬಿಟ್ಟುಬಿಡಿ (ಐಚ್ಛಿಕ), ಮರುಯೋಜನೆ (ವಿಧಾನ ತಪ್ಪು), ಅಥವಾ ನಿಲ್ಲಿಸಿ ವರದಿ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Store plans as structured steps with dependencies.\n• Validate tools, arguments and cycles before running.\n• Decide retry, skip, replan or stop for each failure.",
+     "bodyKn": "• ಯೋಜನೆಗಳು ಅವಲಂಬನೆಗಳಿರುವ ರಚನಾತ್ಮಕ ಹಂತಗಳು.\n• ಚಲಾಯಿಸುವ ಮೊದಲು ಮಾನ್ಯಗೊಳಿಸಿ.\n• ಪ್ರತಿ ವೈಫಲ್ಯಕ್ಕೆ ನಿರ್ಧಾರ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why validate a plan before running it?",
+       "qKn": "ಯೋಜನೆಯನ್ನು ಚಲಾಯಿಸುವ ಮೊದಲು ಏಕೆ ಮಾನ್ಯಗೊಳಿಸಬೇಕು?",
+       "opts": [
+        "Rejecting a bad plan is cheaper than failing midway",
+        "It makes plans longer",
+        "Plans are always correct",
+        "It removes tools"
+       ],
+       "optsKn": [
+        "ಕೆಟ್ಟ ಯೋಜನೆ ತಿರಸ್ಕರಿಸುವುದು ಮಧ್ಯದಲ್ಲಿ ವಿಫಲವಾಗುವುದಕ್ಕಿಂತ ಅಗ್ಗ",
+        "ಯೋಜನೆ ಉದ್ದವಾಗುತ್ತದೆ",
+        "ಯೋಜನೆಗಳು ಯಾವಾಗಲೂ ಸರಿ",
+        "tools ತೆಗೆಯುತ್ತದೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What do dependencies allow?",
+       "qKn": "ಅವಲಂಬನೆಗಳು ಏನನ್ನು ಸಾಧ್ಯಗೊಳಿಸುತ್ತವೆ?",
+       "opts": [
+        "Parallel execution of independent steps",
+        "Skipping validation",
+        "Removing the executor",
+        "Random ordering"
+       ],
+       "optsKn": [
+        "ಸ್ವತಂತ್ರ ಹಂತಗಳ ಸಮಾನಾಂತರ ಕಾರ್ಯಗತ",
+        "ಮಾನ್ಯತೆ ಬಿಡುವುದು",
+        "executor ತೆಗೆಯುವುದು",
+        "ಯಾದೃಚ್ಛಿಕ ಕ್ರಮ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which failure response fits a transient network error?",
+       "qKn": "ತಾತ್ಕಾಲಿಕ ನೆಟ್‌ವರ್ಕ್ ದೋಷಕ್ಕೆ ಯಾವ ಪ್ರತಿಕ್ರಿಯೆ ಸೂಕ್ತ?",
+       "opts": [
+        "Retry",
+        "Delete the plan",
+        "Ignore forever",
+        "Change the model"
+       ],
+       "optsKn": [
+        "ಮರುಪ್ರಯತ್ನ",
+        "ಯೋಜನೆ ಅಳಿಸಿ",
+        "ಶಾಶ್ವತವಾಗಿ ನಿರ್ಲಕ್ಷಿಸಿ",
+        "ಮಾದರಿ ಬದಲಿಸಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6066020ed05b321514",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Reflexion and Verbal Reinforcement Learning — Learning From Feedback in Text",
+  "titleKn": "Reflexion ಮತ್ತು Verbal Reinforcement Learning — ಪಠ್ಯದಲ್ಲಿ ಪ್ರತಿಕ್ರಿಯೆಯಿಂದ ಕಲಿಕೆ",
+  "desc": "How agents improve across attempts by writing reflections in text rather than updating weights, and what makes a reflection useful.",
+  "descKn": "ತೂಕ ಬದಲಿಸದೆ ಪಠ್ಯದಲ್ಲಿ ಪ್ರತಿಬಿಂಬ ಬರೆದು ಪ್ರಯತ್ನಗಳ ನಡುವೆ agent ಹೇಗೆ ಸುಧಾರಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Explain verbal reinforcement as an alternative to weight updates.",
+   "Describe the attempt, evaluate, reflect, retry cycle.",
+   "Identify what makes a reflection actionable."
+  ],
+  "objectivesKn": [
+   "ತೂಕ ಬದಲಿಗೆ ಪಠ್ಯ ಪ್ರತಿಕ್ರಿಯೆ ಕಲಿಕೆ ವಿವರಿಸಿ.",
+   "ಪ್ರಯತ್ನ, ಮೌಲ್ಯಮಾಪನ, ಪ್ರತಿಬಿಂಬ, ಮರುಪ್ರಯತ್ನ ಚಕ್ರ ವಿವರಿಸಿ.",
+   "ಕ್ರಿಯಾತ್ಮಕ ಪ್ರತಿಬಿಂಬ ಏನು ಎಂದು ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Reflexion and Verbal Reinforcement Learning — Learning From Feedback in Text",
+     "textKn": "Reflexion and Verbal Reinforcement Learning — Learning From Feedback in Text",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Reflexion and Verbal Reinforcement Learning",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Learning Without Gradients",
+     "headingKn": "Gradients ಇಲ್ಲದೆ ಕಲಿಕೆ",
+     "bodyEn": "Instead of changing model weights, a Reflexion agent stores short natural-language lessons from failed attempts and includes them in later prompts. The model itself stays frozen; the memory of lessons carries the improvement.",
+     "bodyKn": "ಮಾದರಿಯ ತೂಕ ಬದಲಿಸುವ ಬದಲು Reflexion agent ವಿಫಲ ಪ್ರಯತ್ನಗಳಿಂದ ಸಣ್ಣ ಪಠ್ಯ ಪಾಠಗಳನ್ನು ಉಳಿಸಿ ನಂತರದ prompts ನಲ್ಲಿ ಸೇರಿಸುತ್ತದೆ. ಮಾದರಿ ಬದಲಾಗುವುದಿಲ್ಲ; ಪಾಠಗಳ memory ಸುಧಾರಣೆ ಹೊತ್ತೊಯ್ಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Cycle",
+     "headingKn": "ಚಕ್ರ",
+     "bodyEn": "Attempt the task, evaluate the result against some signal, write a reflection that says what went wrong and what to try next, then retry with the reflection in context. The loop ends on success or after a fixed number of attempts.",
+     "bodyKn": "ಕೆಲಸ ಪ್ರಯತ್ನಿಸಿ, ಸಂಕೇತದ ವಿರುದ್ಧ ಫಲಿತಾಂಶ ಮೌಲ್ಯಮಾಪನ ಮಾಡಿ, ಏನು ತಪ್ಪಾಯಿತು ಮತ್ತು ಮುಂದೆ ಏನು ಪ್ರಯತ್ನಿಸಬೇಕು ಎಂದು ಪ್ರತಿಬಿಂಬ ಬರೆದು, context ನಲ್ಲಿ ಇಟ್ಟು ಮರುಪ್ರಯತ್ನಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Evaluation Signal Decides Everything",
+     "headingKn": "ಮೌಲ್ಯಮಾಪನ ಸಂಕೇತವೇ ಎಲ್ಲವನ್ನು ನಿರ್ಧರಿಸುತ್ತದೆ",
+     "bodyEn": "Reflection only helps if the signal is reliable, such as unit tests passing or an exact-match check. If the signal is the model's own opinion, it can reinforce a wrong belief.",
+     "bodyKn": "ಸಂಕೇತ ವಿಶ್ವಾಸಾರ್ಹವಾಗಿದ್ದರೆ ಮಾತ್ರ ಪ್ರತಿಬಿಂಬ ಸಹಾಯ ಮಾಡುತ್ತದೆ, ಉದಾ. unit tests ಪಾಸ್. ಮಾದರಿಯ ಸ್ವಂತ ಅಭಿಪ್ರಾಯವೇ ಸಂಕೇತವಾದರೆ ತಪ್ಪು ನಂಬಿಕೆ ಬಲಗೊಳ್ಳಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "What Makes a Reflection Useful",
+     "headingKn": "ಪ್ರತಿಬಿಂಬ ಉಪಯುಕ್ತವಾಗುವುದು ಯಾವಾಗ",
+     "bodyEn": "A useful reflection is specific and actionable, for example naming the wrong assumption and the concrete change to make. Vague notes such as \"be more careful\" add tokens without changing behaviour.",
+     "bodyKn": "ಉಪಯುಕ್ತ ಪ್ರತಿಬಿಂಬ ನಿರ್ದಿಷ್ಟ ಮತ್ತು ಕ್ರಿಯಾತ್ಮಕ: ತಪ್ಪು ಊಹೆ ಮತ್ತು ಮಾಡಬೇಕಾದ ನಿಖರ ಬದಲಾವಣೆ. \"ಇನ್ನಷ್ಟು ಎಚ್ಚರಿಕೆ\" ಎಂಬ ಅಸ್ಪಷ್ಟ ಟಿಪ್ಪಣಿ ವರ್ತನೆ ಬದಲಿಸುವುದಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Reflexion improves via stored text lessons, not weight updates.\n• The cycle is attempt, evaluate, reflect, retry.\n• A reliable signal and specific reflections are essential.",
+     "bodyKn": "• Reflexion ಪಠ್ಯ ಪಾಠಗಳಿಂದ ಸುಧಾರಿಸುತ್ತದೆ.\n• ಚಕ್ರ: ಪ್ರಯತ್ನ, ಮೌಲ್ಯಮಾಪನ, ಪ್ರತಿಬಿಂಬ, ಮರುಪ್ರಯತ್ನ.\n• ವಿಶ್ವಾಸಾರ್ಹ ಸಂಕೇತ ಮತ್ತು ನಿರ್ದಿಷ್ಟ ಪ್ರತಿಬಿಂಬ ಅಗತ್ಯ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What changes between attempts in Reflexion?",
+       "qKn": "Reflexion ನಲ್ಲಿ ಪ್ರಯತ್ನಗಳ ನಡುವೆ ಏನು ಬದಲಾಗುತ್ತದೆ?",
+       "opts": [
+        "Model weights",
+        "The stored text reflections in the prompt",
+        "The tokenizer",
+        "The hardware"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ ತೂಕ",
+        "prompt ನಲ್ಲಿರುವ ಸಂಗ್ರಹಿತ ಪಠ್ಯ ಪ್ರತಿಬಿಂಬಗಳು",
+        "tokenizer",
+        "ಹಾರ್ಡ್‌ವೇರ್"
+       ],
+       "correct": 1
+      },
+      {
+       "q": "Why does the evaluation signal matter so much?",
+       "qKn": "ಮೌಲ್ಯಮಾಪನ ಸಂಕೇತ ಏಕೆ ಮುಖ್ಯ?",
+       "opts": [
+        "An unreliable signal can reinforce wrong beliefs",
+        "It sets the price",
+        "It picks the tokenizer",
+        "It is optional"
+       ],
+       "optsKn": [
+        "ಅವಿಶ್ವಾಸಾರ್ಹ ಸಂಕೇತ ತಪ್ಪು ನಂಬಿಕೆ ಬಲಪಡಿಸಬಹುದು",
+        "ಬೆಲೆ ನಿರ್ಧರಿಸುತ್ತದೆ",
+        "tokenizer ಆರಿಸುತ್ತದೆ",
+        "ಐಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which reflection is most useful?",
+       "qKn": "ಯಾವ ಪ್ರತಿಬಿಂಬ ಹೆಚ್ಚು ಉಪಯುಕ್ತ?",
+       "opts": [
+        "Be more careful next time",
+        "I assumed the list was sorted; check ordering before binary search",
+        "Try again",
+        "This was hard"
+       ],
+       "optsKn": [
+        "ಮುಂದಿನ ಬಾರಿ ಎಚ್ಚರಿಕೆ",
+        "ಪಟ್ಟಿ ವಿಂಗಡಿತ ಎಂದು ಊಹಿಸಿದೆ; binary search ಮೊದಲು ಕ್ರಮ ಪರಿಶೀಲಿಸಿ",
+        "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ",
+        "ಇದು ಕಠಿಣವಾಗಿತ್ತು"
+       ],
+       "correct": 1
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6066020ed05b321514",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Reflexion and Verbal Reinforcement Learning — Limits, Memory Growth and Evaluation",
+  "titleKn": "Reflexion ಮತ್ತು Verbal Reinforcement Learning — ಮಿತಿಗಳು, Memory ಬೆಳವಣಿಗೆ, ಮೌಲ್ಯಮಾಪನ",
+  "desc": "Where reflection-based improvement fails, how to manage the reflection memory, and how to measure real gains.",
+  "descKn": "ಪ್ರತಿಬಿಂಬ ಆಧಾರಿತ ಸುಧಾರಣೆ ಎಲ್ಲಿ ವಿಫಲ, memory ಹೇಗೆ ನಿರ್ವಹಿಸುವುದು, ನಿಜ ಲಾಭ ಹೇಗೆ ಅಳೆಯುವುದು.",
+  "objectives": [
+   "Describe failure modes such as wrong reflections and repeated mistakes.",
+   "Explain how to bound and curate reflection memory.",
+   "Design a fair evaluation of attempt-over-attempt improvement."
+  ],
+  "objectivesKn": [
+   "ತಪ್ಪು ಪ್ರತಿಬಿಂಬ, ಪುನರಾವರ್ತಿತ ತಪ್ಪುಗಳಂತಹ ವೈಫಲ್ಯ ವಿಧಾನ ವಿವರಿಸಿ.",
+   "ಪ್ರತಿಬಿಂಬ memory ಮಿತಿ ಮತ್ತು ಆಯ್ಕೆ ವಿವರಿಸಿ.",
+   "ನ್ಯಾಯಯುತ ಮೌಲ್ಯಮಾಪನ ವಿನ್ಯಾಸಗೊಳಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Reflexion and Verbal Reinforcement Learning — Limits, Memory Growth and Evaluation",
+     "textKn": "Reflexion and Verbal Reinforcement Learning — Limits, Memory Growth and Evaluation",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Reflexion and Verbal Reinforcement Learning",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Wrong Reflections",
+     "headingKn": "ತಪ್ಪು ಪ್ರತಿಬಿಂಬಗಳು",
+     "bodyEn": "A model can blame the wrong cause, and once stored, a wrong lesson misleads every later attempt. Verifying reflections against the evidence, or dropping ones that did not help, limits the damage.",
+     "bodyKn": "ಮಾದರಿ ತಪ್ಪು ಕಾರಣ ಆರೋಪಿಸಬಹುದು; ಸಂಗ್ರಹವಾದ ತಪ್ಪು ಪಾಠ ನಂತರದ ಪ್ರತಿ ಪ್ರಯತ್ನವನ್ನು ದಾರಿತಪ್ಪಿಸುತ್ತದೆ. ಸಾಕ್ಷ್ಯದ ವಿರುದ್ಧ ಪರಿಶೀಲಿಸುವುದು ಅಥವಾ ಸಹಾಯ ಮಾಡದ್ದನ್ನು ಬಿಡುವುದು ಹಾನಿ ಮಿತಿಗೊಳಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Bounded Memory",
+     "headingKn": "ಮಿತ ಮೆಮೊರಿ",
+     "bodyEn": "Reflections consume context, so the memory needs a cap and a policy: keep the latest few, or merge similar lessons. Unbounded reflection lists eventually crowd out the task itself.",
+     "bodyKn": "ಪ್ರತಿಬಿಂಬಗಳು context ಬಳಸುತ್ತವೆ, ಆದ್ದರಿಂದ ಮಿತಿ ಮತ್ತು ನೀತಿ ಬೇಕು: ಇತ್ತೀಚಿನ ಕೆಲವು ಉಳಿಸಿ ಅಥವಾ ಸಮಾನ ಪಾಠ ವಿಲೀನಗೊಳಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "When It Cannot Help",
+     "headingKn": "ಸಹಾಯ ಮಾಡಲಾಗದಾಗ",
+     "bodyEn": "If the model lacks the needed knowledge or ability, no reflection can create it. Reflection helps most when the model can do the task but made a fixable mistake.",
+     "bodyKn": "ಮಾದರಿಗೆ ಅಗತ್ಯ ಜ್ಞಾನ ಅಥವಾ ಸಾಮರ್ಥ್ಯ ಇಲ್ಲದಿದ್ದರೆ ಪ್ರತಿಬಿಂಬ ಅದನ್ನು ಸೃಷ್ಟಿಸಲಾರದು. ಮಾದರಿ ಕೆಲಸ ಮಾಡಬಲ್ಲದು ಆದರೆ ಸರಿಪಡಿಸಬಹುದಾದ ತಪ್ಪು ಮಾಡಿದಾಗ ಹೆಚ್ಚು ಸಹಾಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Measure Fairly",
+     "headingKn": "ನ್ಯಾಯಯುತವಾಗಿ ಅಳೆಯಿರಿ",
+     "bodyEn": "Compare success after N attempts with reflection against N independent attempts without it, using the same budget. Otherwise extra tries, not reflection, may explain the gain.",
+     "bodyKn": "ಪ್ರತಿಬಿಂಬದೊಂದಿಗೆ N ಪ್ರಯತ್ನಗಳ ಯಶಸ್ಸನ್ನು ಇಲ್ಲದೆ N ಸ್ವತಂತ್ರ ಪ್ರಯತ್ನಗಳಿಗೆ ಅದೇ ಬಜೆಟ್‌ನಲ್ಲಿ ಹೋಲಿಸಿ. ಇಲ್ಲದಿದ್ದರೆ ಹೆಚ್ಚುವರಿ ಪ್ರಯತ್ನಗಳೇ ಲಾಭದ ಕಾರಣವಾಗಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Wrong reflections mislead later attempts.\n• Cap and curate reflection memory.\n• Compare against equal-budget independent retries.",
+     "bodyKn": "• ತಪ್ಪು ಪ್ರತಿಬಿಂಬ ದಾರಿತಪ್ಪಿಸುತ್ತದೆ.\n• ಪ್ರತಿಬಿಂಬ memory ಮಿತಿ, ಆಯ್ಕೆ.\n• ಸಮಾನ ಬಜೆಟ್ ಸ್ವತಂತ್ರ ಮರುಪ್ರಯತ್ನಗಳೊಂದಿಗೆ ಹೋಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why compare against independent retries?",
+       "qKn": "ಸ್ವತಂತ್ರ ಮರುಪ್ರಯತ್ನಗಳೊಂದಿಗೆ ಏಕೆ ಹೋಲಿಸಬೇಕು?",
+       "opts": [
+        "Extra tries alone may explain the gain",
+        "Retries are illegal",
+        "It is cheaper",
+        "Reflections cannot be measured"
+       ],
+       "optsKn": [
+        "ಹೆಚ್ಚುವರಿ ಪ್ರಯತ್ನಗಳೇ ಲಾಭ ವಿವರಿಸಬಹುದು",
+        "ಮರುಪ್ರಯತ್ನ ಕಾನೂನುಬಾಹಿರ",
+        "ಅಗ್ಗ",
+        "ಅಳೆಯಲಾಗದು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why cap the reflection memory?",
+       "qKn": "ಪ್ರತಿಬಿಂಬ memory ಗೆ ಮಿತಿ ಏಕೆ?",
+       "opts": [
+        "Reflections consume context and can crowd out the task",
+        "To hide mistakes",
+        "Memory is free",
+        "Models cannot read them"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿಬಿಂಬಗಳು context ಬಳಸಿ ಕೆಲಸವನ್ನು ಹೊರದಬ್ಬಬಹುದು",
+        "ತಪ್ಪು ಮರೆಮಾಡಲು",
+        "memory ಉಚಿತ",
+        "ಮಾದರಿ ಓದಲಾರದು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When does reflection help most?",
+       "qKn": "ಪ್ರತಿಬಿಂಬ ಹೆಚ್ಚು ಯಾವಾಗ ಸಹಾಯ ಮಾಡುತ್ತದೆ?",
+       "opts": [
+        "When the model can do the task but made a fixable mistake",
+        "When the model lacks the needed knowledge",
+        "Never",
+        "Only with no feedback"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ ಮಾಡಬಲ್ಲದು ಆದರೆ ಸರಿಪಡಿಸಬಹುದಾದ ತಪ್ಪು ಮಾಡಿದಾಗ",
+        "ಜ್ಞಾನ ಇಲ್ಲದಾಗ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಪ್ರತಿಕ್ರಿಯೆ ಇಲ್ಲದಾಗ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6066020ed05b321517",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Tree of Thoughts and LATS — Search Over Reasoning Steps",
+  "titleKn": "Tree of Thoughts ಮತ್ತು LATS — ತರ್ಕ ಹಂತಗಳ ಮೇಲೆ ಶೋಧನೆ",
+  "desc": "How treating reasoning as a search tree, with branching, evaluation and pruning, differs from a single chain of thought.",
+  "descKn": "ತರ್ಕವನ್ನು branching, ಮೌಲ್ಯಮಾಪನ, pruning ಇರುವ ಶೋಧನಾ ವೃಕ್ಷವಾಗಿ ಪರಿಗಣಿಸುವುದು ಒಂದೇ ಸರಪಳಿ ತರ್ಕಕ್ಕಿಂತ ಹೇಗೆ ಭಿನ್ನ.",
+  "objectives": [
+   "Explain the limits of a single greedy chain of thought.",
+   "Describe branching, state evaluation and pruning.",
+   "Compare breadth-first, depth-first and best-first exploration."
+  ],
+  "objectivesKn": [
+   "ಒಂದೇ ದುರಾಸೆ ತರ್ಕ ಸರಪಳಿಯ ಮಿತಿಗಳನ್ನು ವಿವರಿಸಿ.",
+   "branching, ಸ್ಥಿತಿ ಮೌಲ್ಯಮಾಪನ, pruning ವಿವರಿಸಿ.",
+   "ಶೋಧನಾ ಕ್ರಮಗಳನ್ನು ಹೋಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Tree of Thoughts and LATS — Search Over Reasoning Steps",
+     "textKn": "Tree of Thoughts and LATS — Search Over Reasoning Steps",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Tree of Thoughts and LATS",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why One Chain Can Fail",
+     "headingKn": "ಒಂದು ಸರಪಳಿ ಏಕೆ ವಿಫಲವಾಗಬಹುದು",
+     "bodyEn": "A single chain of thought commits to each step and cannot back up. One early mistake sends the rest of the reasoning down a wrong path with no chance to recover.",
+     "bodyKn": "ಒಂದೇ ತರ್ಕ ಸರಪಳಿ ಪ್ರತಿ ಹಂತಕ್ಕೆ ಬದ್ಧವಾಗುತ್ತದೆ, ಹಿಂದೆ ಸರಿಯಲಾಗದು. ಆರಂಭದ ತಪ್ಪು ಉಳಿದ ತರ್ಕವನ್ನು ತಪ್ಪು ಹಾದಿಗೆ ಒಯ್ಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Branch, Evaluate, Prune",
+     "headingKn": "ಶಾಖೆ, ಮೌಲ್ಯಮಾಪನ, Prune",
+     "bodyEn": "Tree search proposes several candidate next steps, scores how promising each partial solution looks, keeps the good ones and drops the rest. The scorer can be the model itself or an external check.",
+     "bodyKn": "ವೃಕ್ಷ ಶೋಧನೆ ಹಲವು ಮುಂದಿನ ಹಂತಗಳನ್ನು ಪ್ರಸ್ತಾಪಿಸಿ, ಪ್ರತಿ ಭಾಗಶಃ ಪರಿಹಾರ ಎಷ್ಟು ಭರವಸೆಯದು ಎಂದು ಅಂಕ ನೀಡಿ, ಒಳ್ಳೆಯದನ್ನು ಉಳಿಸಿ ಉಳಿದದ್ದನ್ನು ಬಿಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Search Strategies",
+     "headingKn": "ಶೋಧನಾ ತಂತ್ರಗಳು",
+     "bodyEn": "Breadth-first keeps many options at each depth, depth-first follows one path far before backing up, and best-first always expands the highest-scored node. LATS adds Monte Carlo tree search ideas: balance exploring new branches against exploiting good ones, and learn from failed rollouts.",
+     "bodyKn": "Breadth-first ಪ್ರತಿ ಆಳದಲ್ಲಿ ಹಲವು ಆಯ್ಕೆ ಇಡುತ್ತದೆ; depth-first ಒಂದು ಹಾದಿ ದೂರ ಹೋಗಿ ಹಿಂದೆ ಸರಿಯುತ್ತದೆ; best-first ಅತ್ಯುತ್ತಮ ಅಂಕದ node ವಿಸ್ತರಿಸುತ್ತದೆ. LATS Monte Carlo tree search ಕಲ್ಪನೆ ಸೇರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Cost of Search",
+     "headingKn": "ಶೋಧನೆಯ ವೆಚ್ಚ",
+     "bodyEn": "Every branch and every evaluation is a model call, so search multiplies cost. It pays off on problems where wrong early steps are common and a reliable way to score partial progress exists.",
+     "bodyKn": "ಪ್ರತಿ ಶಾಖೆ ಮತ್ತು ಮೌಲ್ಯಮಾಪನ ಒಂದು ಮಾದರಿ ಕರೆ, ಆದ್ದರಿಂದ ಶೋಧನೆ ವೆಚ್ಚ ಗುಣಿಸುತ್ತದೆ. ಆರಂಭದ ತಪ್ಪು ಸಾಮಾನ್ಯ ಮತ್ತು ಭಾಗಶಃ ಪ್ರಗತಿ ಅಳೆಯಲು ವಿಶ್ವಾಸಾರ್ಹ ಮಾರ್ಗ ಇರುವ ಸಮಸ್ಯೆಗಳಲ್ಲಿ ಲಾಭ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Search strategies",
+     "headers": [
+      "Strategy",
+      "Idea",
+      "Good when"
+     ],
+     "rows": [
+      [
+       "Breadth-first",
+       "Keep many options per depth",
+       "Wide, shallow problems"
+      ],
+      [
+       "Depth-first",
+       "Follow one path then backtrack",
+       "Solutions are deep"
+      ],
+      [
+       "Best-first",
+       "Expand highest-scoring node",
+       "Scores are reliable"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Search lets reasoning back up from bad steps.\n• Branching needs a way to score partial progress.\n• Search multiplies model calls and cost.",
+     "bodyKn": "• ಶೋಧನೆ ಕೆಟ್ಟ ಹಂತಗಳಿಂದ ಹಿಂದೆ ಸರಿಯಲು ಬಿಡುತ್ತದೆ.\n• ಭಾಗಶಃ ಪ್ರಗತಿ ಅಳೆಯುವ ಮಾರ್ಗ ಬೇಕು.\n• ವೆಚ್ಚ ಗುಣಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What can tree search do that a single chain cannot?",
+       "qKn": "ಒಂದೇ ಸರಪಳಿ ಮಾಡಲಾರದ್ದು ವೃಕ್ಷ ಶೋಧನೆ ಏನು ಮಾಡುತ್ತದೆ?",
+       "opts": [
+        "Back up from a bad step and try alternatives",
+        "Skip evaluation",
+        "Use fewer tokens always",
+        "Avoid all mistakes"
+       ],
+       "optsKn": [
+        "ಕೆಟ್ಟ ಹಂತದಿಂದ ಹಿಂದೆ ಸರಿದು ಪರ್ಯಾಯ ಪ್ರಯತ್ನಿಸುತ್ತದೆ",
+        "ಮೌಲ್ಯಮಾಪನ ಬಿಡುತ್ತದೆ",
+        "ಯಾವಾಗಲೂ ಕಡಿಮೆ tokens",
+        "ಎಲ್ಲಾ ತಪ್ಪು ತಪ್ಪಿಸುತ್ತದೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What must exist for pruning to work?",
+       "qKn": "pruning ಕೆಲಸ ಮಾಡಲು ಏನು ಇರಬೇಕು?",
+       "opts": [
+        "A way to score partial solutions",
+        "A bigger vocabulary",
+        "A faster GPU only",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಭಾಗಶಃ ಪರಿಹಾರಗಳಿಗೆ ಅಂಕ ನೀಡುವ ಮಾರ್ಗ",
+        "ದೊಡ್ಡ vocabulary",
+        "ವೇಗದ GPU ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is the main downside of search?",
+       "qKn": "ಶೋಧನೆಯ ಮುಖ್ಯ ಕೊರತೆ?",
+       "opts": [
+        "It multiplies model calls and cost",
+        "It removes accuracy",
+        "It needs no model",
+        "It is always faster"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ ಕರೆ ಮತ್ತು ವೆಚ್ಚ ಗುಣಿಸುತ್ತದೆ",
+        "ನಿಖರತೆ ತೆಗೆಯುತ್ತದೆ",
+        "ಮಾದರಿ ಬೇಡ",
+        "ಯಾವಾಗಲೂ ವೇಗ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6066020ed05b321517",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Tree of Thoughts and LATS — Choosing Search, Budgets and Evaluators",
+  "titleKn": "Tree of Thoughts ಮತ್ತು LATS — ಶೋಧನೆ, ಬಜೆಟ್, ಮೌಲ್ಯಮಾಪಕರ ಆಯ್ಕೆ",
+  "desc": "When search is worth its cost, how to set budgets and depth limits, and how to build evaluators you can trust.",
+  "descKn": "ಶೋಧನೆ ಯಾವಾಗ ವೆಚ್ಚಕ್ಕೆ ಯೋಗ್ಯ, ಬಜೆಟ್ ಮತ್ತು ಆಳ ಮಿತಿ ಹೇಗೆ, ನಂಬಬಹುದಾದ ಮೌಲ್ಯಮಾಪಕ ಹೇಗೆ.",
+  "objectives": [
+   "Decide whether a task justifies tree search.",
+   "Set branching factor, depth and budget limits.",
+   "Compare model-based and programmatic evaluators."
+  ],
+  "objectivesKn": [
+   "ಕೆಲಸಕ್ಕೆ ವೃಕ್ಷ ಶೋಧನೆ ಸಮರ್ಥನೀಯವೇ ಎಂದು ನಿರ್ಧರಿಸಿ.",
+   "branching, ಆಳ, ಬಜೆಟ್ ಮಿತಿ ಹೊಂದಿಸಿ.",
+   "ಮಾದರಿ ಆಧಾರಿತ ಮತ್ತು ಪ್ರೋಗ್ರಾಂ ಮೌಲ್ಯಮಾಪಕ ಹೋಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Tree of Thoughts and LATS — Choosing Search, Budgets and Evaluators",
+     "textKn": "Tree of Thoughts and LATS — Choosing Search, Budgets and Evaluators",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Tree of Thoughts and LATS",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Is the Task Worth It?",
+     "headingKn": "ಕೆಲಸ ಯೋಗ್ಯವೇ?",
+     "bodyEn": "Use search when a single attempt often fails, correct answers are checkable, and the value of a right answer exceeds several times the cost. For easy or open-ended tasks with no clear scoring, a plain chain is usually enough.",
+     "bodyKn": "ಒಂದು ಪ್ರಯತ್ನ ಆಗಾಗ್ಗೆ ವಿಫಲ, ಸರಿ ಉತ್ತರ ಪರಿಶೀಲಿಸಬಹುದು, ಸರಿ ಉತ್ತರದ ಮೌಲ್ಯ ವೆಚ್ಚದ ಹಲವು ಪಟ್ಟು ಇದ್ದಾಗ ಶೋಧನೆ ಬಳಸಿ. ಸುಲಭ ಅಥವಾ ಸ್ಪಷ್ಟ ಅಂಕವಿಲ್ಲದ ಕೆಲಸಗಳಿಗೆ ಸರಳ ಸರಪಳಿ ಸಾಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Budgets and Limits",
+     "headingKn": "ಬಜೆಟ್ ಮತ್ತು ಮಿತಿಗಳು",
+     "bodyEn": "Total cost is roughly branching factor times depth times evaluation cost, so cap all three and add a global call budget. Without caps, search can grow far beyond what the answer is worth.",
+     "bodyKn": "ಒಟ್ಟು ವೆಚ್ಚ ಸುಮಾರು branching ಗುಣಕ × ಆಳ × ಮೌಲ್ಯಮಾಪನ ವೆಚ್ಚ; ಮೂರಕ್ಕೂ ಮಿತಿ ಮತ್ತು ಜಾಗತಿಕ ಕರೆ ಬಜೆಟ್ ಹಾಕಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Programmatic Evaluators Beat Opinions",
+     "headingKn": "ಪ್ರೋಗ್ರಾಂ ಮೌಲ್ಯಮಾಪಕ ಅಭಿಪ್ರಾಯಕ್ಕಿಂತ ಉತ್ತಮ",
+     "bodyEn": "When you can score a state with code, such as counting satisfied constraints or running tests, do so. Model-based scoring is flexible but noisy, and a noisy scorer can prune the very branch that was right.",
+     "bodyKn": "ಕೋಡ್‌ನಿಂದ ಅಂಕ ನೀಡಲು ಸಾಧ್ಯವಿದ್ದರೆ (ಉದಾ. ತೃಪ್ತ ನಿರ್ಬಂಧ ಎಣಿಕೆ, tests) ಅದನ್ನೇ ಮಾಡಿ. ಮಾದರಿ ಅಂಕ ಹೊಂದಿಕೊಳ್ಳುವಂತಿದ್ದರೂ ಗದ್ದಲಮಯ; ಸರಿಯಾದ ಶಾಖೆಯನ್ನೇ ತೆಗೆಯಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Diversity of Candidates",
+     "headingKn": "ಅಭ್ಯರ್ಥಿಗಳ ವೈವಿಧ್ಯ",
+     "bodyEn": "If all branches are near-copies, search wastes calls. Sampling with some variety, or prompting for distinct approaches, keeps the tree useful.",
+     "bodyKn": "ಎಲ್ಲಾ ಶಾಖೆಗಳು ಸುಮಾರು ನಕಲಾಗಿದ್ದರೆ ಕರೆಗಳು ವ್ಯರ್ಥ. ವೈವಿಧ್ಯದ ಮಾದರಿ ಅಥವಾ ವಿಭಿನ್ನ ವಿಧಾನ ಕೇಳುವುದು ವೃಕ್ಷ ಉಪಯುಕ್ತವಾಗಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Use search only when attempts fail often and answers are checkable.\n• Cap branching, depth and total calls.\n• Prefer programmatic scoring; keep candidates diverse.",
+     "bodyKn": "• ಪ್ರಯತ್ನ ಆಗಾಗ್ಗೆ ವಿಫಲ ಮತ್ತು ಉತ್ತರ ಪರಿಶೀಲಿಸಬಹುದಾದರೆ ಮಾತ್ರ.\n• ಮಿತಿ ಹಾಕಿ.\n• ಪ್ರೋಗ್ರಾಂ ಅಂಕ ಆದ್ಯತೆ; ವೈವಿಧ್ಯ ಇಡಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "When is tree search worth its cost?",
+       "qKn": "ವೃಕ್ಷ ಶೋಧನೆ ವೆಚ್ಚಕ್ಕೆ ಯಾವಾಗ ಯೋಗ್ಯ?",
+       "opts": [
+        "When single attempts often fail and answers are checkable",
+        "For every trivial question",
+        "When no scoring exists",
+        "Never"
+       ],
+       "optsKn": [
+        "ಒಂದು ಪ್ರಯತ್ನ ಆಗಾಗ್ಗೆ ವಿಫಲ ಮತ್ತು ಉತ್ತರ ಪರಿಶೀಲಿಸಬಹುದಾದಾಗ",
+        "ಪ್ರತಿ ಸರಳ ಪ್ರಶ್ನೆಗೆ",
+        "ಅಂಕವಿಲ್ಲದಾಗ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why prefer a programmatic evaluator when possible?",
+       "qKn": "ಸಾಧ್ಯವಾದಾಗ ಪ್ರೋಗ್ರಾಂ ಮೌಲ್ಯಮಾಪಕ ಏಕೆ ಆದ್ಯತೆ?",
+       "opts": [
+        "It is less noisy than model opinions",
+        "It costs more",
+        "It is slower",
+        "It is random"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ ಅಭಿಪ್ರಾಯಕ್ಕಿಂತ ಕಡಿಮೆ ಗದ್ದಲ",
+        "ಹೆಚ್ಚು ವೆಚ್ಚ",
+        "ನಿಧಾನ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What three things scale search cost?",
+       "qKn": "ಶೋಧನೆ ವೆಚ್ಚ ಹೆಚ್ಚಿಸುವ ಮೂರು ವಿಷಯಗಳು?",
+       "opts": [
+        "Branching factor, depth and evaluation cost",
+        "Font, colour and size",
+        "Only the vocabulary",
+        "Only the tokenizer"
+       ],
+       "optsKn": [
+        "branching, ಆಳ, ಮೌಲ್ಯಮಾಪನ ವೆಚ್ಚ",
+        "ಫಾಂಟ್, ಬಣ್ಣ, ಗಾತ್ರ",
+        "vocabulary ಮಾತ್ರ",
+        "tokenizer ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6066020ed05b32151a",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Self-Refine and CRITIC — Iterative Improvement With Feedback",
+  "titleKn": "Self-Refine ಮತ್ತು CRITIC — ಪ್ರತಿಕ್ರಿಯೆಯೊಂದಿಗೆ ಪುನರಾವರ್ತಿತ ಸುಧಾರಣೆ",
+  "desc": "How generate, critique and revise loops work, and why external tools make critique far more reliable than self-opinion.",
+  "descKn": "ರಚಿಸಿ-ವಿಮರ್ಶಿಸಿ-ಪರಿಷ್ಕರಿಸಿ loops ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತವೆ, ಬಾಹ್ಯ tools ವಿಮರ್ಶೆಯನ್ನು ಹೇಗೆ ವಿಶ್ವಾಸಾರ್ಹಗೊಳಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Describe the generate, critique, revise loop.",
+   "Explain why self-critique has blind spots.",
+   "Explain how CRITIC uses external tools to verify claims."
+  ],
+  "objectivesKn": [
+   "ರಚಿಸಿ-ವಿಮರ್ಶಿಸಿ-ಪರಿಷ್ಕರಿಸಿ loop ವಿವರಿಸಿ.",
+   "ಸ್ವ-ವಿಮರ್ಶೆಯ ಕುರುಡು ಸ್ಥಳಗಳನ್ನು ವಿವರಿಸಿ.",
+   "CRITIC ಬಾಹ್ಯ tools ಬಳಸಿ ಹೇಳಿಕೆ ಹೇಗೆ ಪರಿಶೀಲಿಸುತ್ತದೆ ಎಂದು ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Self-Refine and CRITIC — Iterative Improvement With Feedback",
+     "textKn": "Self-Refine and CRITIC — Iterative Improvement With Feedback",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Self-Refine and CRITIC",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Refinement Loop",
+     "headingKn": "ಪರಿಷ್ಕರಣಾ Loop",
+     "bodyEn": "The model writes a draft, critiques it against stated criteria, and rewrites it using the critique, repeating until the critique finds nothing important or a round limit is reached. No extra training is needed.",
+     "bodyKn": "ಮಾದರಿ ಕರಡು ಬರೆದು, ನಿರ್ದಿಷ್ಟ ಮಾನದಂಡಗಳ ವಿರುದ್ಧ ವಿಮರ್ಶಿಸಿ, ವಿಮರ್ಶೆ ಬಳಸಿ ಮತ್ತೆ ಬರೆಯುತ್ತದೆ. ವಿಮರ್ಶೆ ಮುಖ್ಯವಾದುದನ್ನು ಕಂಡುಹಿಡಿಯದವರೆಗೆ ಅಥವಾ ಸುತ್ತಿನ ಮಿತಿ ತಲುಪುವವರೆಗೆ ಪುನರಾವರ್ತಿಸುತ್ತದೆ. ಹೆಚ್ಚುವರಿ ತರಬೇತಿ ಬೇಡ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Where Self-Critique Falls Short",
+     "headingKn": "ಸ್ವ-ವಿಮರ್ಶೆ ಎಲ್ಲಿ ವಿಫಲ",
+     "bodyEn": "A model that wrote a false claim usually believes it, so asking it to check itself often confirms the error. Style, structure and clarity improve well; factual and logical errors are the hard cases.",
+     "bodyKn": "ಸುಳ್ಳು ಹೇಳಿಕೆ ಬರೆದ ಮಾದರಿ ಸಾಮಾನ್ಯವಾಗಿ ಅದನ್ನು ನಂಬುತ್ತದೆ; ತನ್ನನ್ನು ಪರಿಶೀಲಿಸಲು ಹೇಳಿದರೆ ದೋಷ ದೃಢವಾಗುತ್ತದೆ. ಶೈಲಿ, ರಚನೆ ಚೆನ್ನಾಗಿ ಸುಧಾರಿಸುತ್ತವೆ; ಸತ್ಯ ಮತ್ತು ತರ್ಕ ದೋಷಗಳು ಕಠಿಣ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "CRITIC: Verify With Tools",
+     "headingKn": "CRITIC: Tools ನಿಂದ ಪರಿಶೀಲಿಸಿ",
+     "bodyEn": "CRITIC has the model extract checkable claims, verify them with external tools such as search or a code runner, and revise based on what the tools returned. The evidence comes from outside the model, so it can catch errors the model cannot see.",
+     "bodyKn": "CRITIC ಮಾದರಿ ಪರಿಶೀಲಿಸಬಹುದಾದ ಹೇಳಿಕೆಗಳನ್ನು ಹೊರತೆಗೆದು, search ಅಥವಾ code runner ನಂತಹ ಬಾಹ್ಯ tools ನಿಂದ ಪರಿಶೀಲಿಸಿ, tools ನ ಫಲಿತಾಂಶದ ಆಧಾರದಲ್ಲಿ ಪರಿಷ್ಕರಿಸುತ್ತದೆ. ಸಾಕ್ಷ್ಯ ಮಾದರಿಯ ಹೊರಗಿನಿಂದ ಬರುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Stopping",
+     "headingKn": "ನಿಲ್ಲಿಸುವುದು",
+     "bodyEn": "More rounds do not always help and can drift or over-edit. Stop on a round cap, on no meaningful change, or when a verifier passes.",
+     "bodyKn": "ಹೆಚ್ಚು ಸುತ್ತುಗಳು ಯಾವಾಗಲೂ ಸಹಾಯ ಮಾಡುವುದಿಲ್ಲ; ದಾರಿತಪ್ಪಬಹುದು. ಸುತ್ತಿನ ಮಿತಿ, ಅರ್ಥಪೂರ್ಣ ಬದಲಾವಣೆ ಇಲ್ಲದಿದ್ದಾಗ, ಅಥವಾ verifier ಪಾಸ್ ಆದಾಗ ನಿಲ್ಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Refine by generate, critique, revise.\n• Self-critique misses errors the model believes.\n• External tool checks catch what self-opinion cannot.",
+     "bodyKn": "• ರಚಿಸಿ, ವಿಮರ್ಶಿಸಿ, ಪರಿಷ್ಕರಿಸಿ.\n• ಸ್ವ-ವಿಮರ್ಶೆ ತಾನು ನಂಬಿದ ದೋಷ ತಪ್ಪಿಸುತ್ತದೆ.\n• ಬಾಹ್ಯ tool ಪರಿಶೀಲನೆ ಹಿಡಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why is self-critique weak on factual errors?",
+       "qKn": "ಸತ್ಯ ದೋಷಗಳಲ್ಲಿ ಸ್ವ-ವಿಮರ್ಶೆ ದುರ್ಬಲ ಏಕೆ?",
+       "opts": [
+        "The model often believes its own false claim",
+        "It cannot write",
+        "It is too fast",
+        "It uses tools"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ ತನ್ನ ಸುಳ್ಳು ಹೇಳಿಕೆಯನ್ನು ನಂಬುತ್ತದೆ",
+        "ಬರೆಯಲಾಗದು",
+        "ಬಹಳ ವೇಗ",
+        "tools ಬಳಸುತ್ತದೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What does CRITIC add?",
+       "qKn": "CRITIC ಏನು ಸೇರಿಸುತ್ತದೆ?",
+       "opts": [
+        "External tool verification of claims",
+        "A bigger model",
+        "Longer prompts only",
+        "Random edits"
+       ],
+       "optsKn": [
+        "ಹೇಳಿಕೆಗಳ ಬಾಹ್ಯ tool ಪರಿಶೀಲನೆ",
+        "ದೊಡ್ಡ ಮಾದರಿ",
+        "ಉದ್ದ prompts ಮಾತ್ರ",
+        "ಯಾದೃಚ್ಛಿಕ ಬದಲಾವಣೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which is a sensible stop rule?",
+       "qKn": "ಯಾವುದು ಸಮಂಜಸ ನಿಲ್ಲಿಸುವ ನಿಯಮ?",
+       "opts": [
+        "A round cap or a verifier passing",
+        "Never stop",
+        "Stop at round one always",
+        "Stop when tired"
+       ],
+       "optsKn": [
+        "ಸುತ್ತಿನ ಮಿತಿ ಅಥವಾ verifier ಪಾಸ್",
+        "ಎಂದಿಗೂ ನಿಲ್ಲಿಸಬೇಡಿ",
+        "ಯಾವಾಗಲೂ ಮೊದಲ ಸುತ್ತು",
+        "ದಣಿದಾಗ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6066020ed05b32151a",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Self-Refine and CRITIC — Designing Critics and Measuring Real Improvement",
+  "titleKn": "Self-Refine ಮತ್ತು CRITIC — ವಿಮರ್ಶಕರ ವಿನ್ಯಾಸ ಮತ್ತು ನಿಜ ಸುಧಾರಣೆ ಅಳತೆ",
+  "desc": "How to write critique prompts and choose verifiers, avoid over-editing, and evaluate whether refinement helped.",
+  "descKn": "ವಿಮರ್ಶೆ prompts ಬರೆಯುವುದು, verifier ಆಯ್ಕೆ, ಅತಿ-ತಿದ್ದುವಿಕೆ ತಪ್ಪಿಸುವುದು, ಸುಧಾರಣೆ ಅಳೆಯುವುದು.",
+  "objectives": [
+   "Write critique prompts with explicit, checkable criteria.",
+   "Choose an appropriate external verifier per error type.",
+   "Measure improvement against a fixed-budget baseline."
+  ],
+  "objectivesKn": [
+   "ಸ್ಪಷ್ಟ, ಪರಿಶೀಲಿಸಬಹುದಾದ ಮಾನದಂಡಗಳ critique prompts ಬರೆಯಿರಿ.",
+   "ದೋಷ ಪ್ರಕಾರಕ್ಕೆ ಸೂಕ್ತ verifier ಆರಿಸಿ.",
+   "ನಿಗದಿತ ಬಜೆಟ್ ಆಧಾರದೊಂದಿಗೆ ಹೋಲಿಸಿ ಅಳೆಯಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Self-Refine and CRITIC — Designing Critics and Measuring Real Improvement",
+     "textKn": "Self-Refine and CRITIC — Designing Critics and Measuring Real Improvement",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Self-Refine and CRITIC",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Specific Criteria Beat \"Improve This\"",
+     "headingKn": "\"ಇದನ್ನು ಸುಧಾರಿಸಿ\" ಗಿಂತ ನಿರ್ದಿಷ್ಟ ಮಾನದಂಡ",
+     "bodyEn": "A critique prompt that lists concrete criteria, such as required sections, length limits or claims that need sources, gives actionable feedback. A generic request tends to produce generic praise or arbitrary rewrites.",
+     "bodyKn": "ನಿರ್ದಿಷ್ಟ ಮಾನದಂಡ (ಅಗತ್ಯ ವಿಭಾಗಗಳು, ಉದ್ದ ಮಿತಿ, ಮೂಲ ಬೇಕಾದ ಹೇಳಿಕೆಗಳು) ಪಟ್ಟಿ ಮಾಡಿದ critique prompt ಕ್ರಿಯಾತ್ಮಕ ಪ್ರತಿಕ್ರಿಯೆ ನೀಡುತ್ತದೆ. ಸಾಮಾನ್ಯ ವಿನಂತಿ ಸಾಮಾನ್ಯ ಹೊಗಳಿಕೆ ಅಥವಾ ಯಾದೃಚ್ಛಿಕ ಮರುಬರಹ ನೀಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Match the Verifier to the Error",
+     "headingKn": "ದೋಷಕ್ಕೆ ತಕ್ಕ Verifier",
+     "bodyEn": "Use a code runner for code and math, search or a database for facts, a schema checker for structure, and a linter for style. A wrongly matched verifier gives false confidence.",
+     "bodyKn": "ಕೋಡ್ ಮತ್ತು ಗಣಿತಕ್ಕೆ code runner, ಸತ್ಯಕ್ಕೆ search ಅಥವಾ ಡೇಟಾಬೇಸ್, ರಚನೆಗೆ schema checker, ಶೈಲಿಗೆ linter ಬಳಸಿ. ತಪ್ಪಾಗಿ ಹೊಂದಿಸಿದ verifier ಸುಳ್ಳು ವಿಶ್ವಾಸ ನೀಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Avoiding Over-Editing",
+     "headingKn": "ಅತಿ-ತಿದ್ದುವಿಕೆ ತಪ್ಪಿಸಿ",
+     "bodyEn": "Each round can change parts that were already fine. Asking the model to change only what the critique flagged, and keeping the previous version to compare, guards against drift.",
+     "bodyKn": "ಪ್ರತಿ ಸುತ್ತು ಈಗಾಗಲೇ ಸರಿಯಿದ್ದ ಭಾಗಗಳನ್ನು ಬದಲಿಸಬಹುದು. ವಿಮರ್ಶೆ ಗುರುತಿಸಿದ್ದನ್ನು ಮಾತ್ರ ಬದಲಿಸಲು ಹೇಳಿ, ಹಿಂದಿನ ಆವೃತ್ತಿ ಹೋಲಿಕೆಗೆ ಇಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Measure the Gain",
+     "headingKn": "ಲಾಭ ಅಳೆಯಿರಿ",
+     "bodyEn": "Compare refined outputs with a single-pass output from the same model at similar total cost, scored by the same checker. Report cases where refinement made an answer worse as well as better.",
+     "bodyKn": "ಪರಿಷ್ಕೃತ ಔಟ್‌ಪುಟ್ ಅನ್ನು ಅದೇ ಮಾದರಿಯ ಒಂದು-ಪಾಸ್ ಔಟ್‌ಪುಟ್‌ಗೆ ಸಮಾನ ವೆಚ್ಚದಲ್ಲಿ ಅದೇ ಪರಿಶೀಲಕದಿಂದ ಹೋಲಿಸಿ. ಪರಿಷ್ಕರಣೆ ಕೆಟ್ಟದಾಗಿಸಿದ ಪ್ರಕರಣಗಳನ್ನೂ ವರದಿ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Verifier by error type",
+     "headers": [
+      "Error type",
+      "Verifier"
+     ],
+     "rows": [
+      [
+       "Code and math",
+       "Code runner"
+      ],
+      [
+       "Facts",
+       "Search or database lookup"
+      ],
+      [
+       "Structure",
+       "Schema validator"
+      ],
+      [
+       "Style",
+       "Linter or rubric"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Give the critic concrete criteria.\n• Match the verifier to the error type.\n• Compare to a single-pass baseline and report regressions.",
+     "bodyKn": "• ವಿಮರ್ಶಕನಿಗೆ ನಿರ್ದಿಷ್ಟ ಮಾನದಂಡ ನೀಡಿ.\n• ದೋಷ ಪ್ರಕಾರಕ್ಕೆ ತಕ್ಕ verifier.\n• ಒಂದು-ಪಾಸ್ ಆಧಾರದೊಂದಿಗೆ ಹೋಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why give the critic concrete criteria?",
+       "qKn": "ವಿಮರ್ಶಕನಿಗೆ ನಿರ್ದಿಷ್ಟ ಮಾನದಂಡ ಏಕೆ?",
+       "opts": [
+        "Vague requests yield generic feedback",
+        "Criteria slow the model",
+        "Critics ignore them",
+        "They are required by law"
+       ],
+       "optsKn": [
+        "ಅಸ್ಪಷ್ಟ ವಿನಂತಿ ಸಾಮಾನ್ಯ ಪ್ರತಿಕ್ರಿಯೆ ನೀಡುತ್ತದೆ",
+        "ಮಾದರಿ ನಿಧಾನ",
+        "ವಿಮರ್ಶಕರು ನಿರ್ಲಕ್ಷಿಸುತ್ತಾರೆ",
+        "ಕಾನೂನು ಅಗತ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which verifier suits a math claim?",
+       "qKn": "ಗಣಿತ ಹೇಳಿಕೆಗೆ ಯಾವ verifier?",
+       "opts": [
+        "A code runner",
+        "A colour picker",
+        "A linter for style",
+        "Nothing"
+       ],
+       "optsKn": [
+        "code runner",
+        "ಬಣ್ಣ ಆಯ್ಕೆ",
+        "ಶೈಲಿ linter",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What guards against drift across rounds?",
+       "qKn": "ಸುತ್ತುಗಳಲ್ಲಿ ದಾರಿತಪ್ಪುವುದನ್ನು ಯಾವುದು ತಡೆಯುತ್ತದೆ?",
+       "opts": [
+        "Change only what the critique flagged and compare to the previous version",
+        "Rewrite everything each time",
+        "Remove the verifier",
+        "Use more rounds always"
+       ],
+       "optsKn": [
+        "ವಿಮರ್ಶೆ ಗುರುತಿಸಿದ್ದನ್ನು ಮಾತ್ರ ಬದಲಿಸಿ, ಹಿಂದಿನ ಆವೃತ್ತಿಗೆ ಹೋಲಿಸಿ",
+        "ಪ್ರತಿ ಬಾರಿ ಎಲ್ಲವನ್ನೂ ಮರುಬರೆಯಿರಿ",
+        "verifier ತೆಗೆಯಿರಿ",
+        "ಯಾವಾಗಲೂ ಹೆಚ್ಚು ಸುತ್ತು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

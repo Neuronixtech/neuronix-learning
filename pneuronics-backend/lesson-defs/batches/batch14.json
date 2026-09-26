@@ -1,0 +1,2627 @@
+[
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b32161f",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Case Studies and 2026 State of the Art — Learning From Case Studies",
+  "titleKn": "ಕೇಸ್ ಸ್ಟಡೀಸ್ ಮತ್ತು 2026 ಸ್ಥಿತಿ — ಕೇಸ್ ಸ್ಟಡೀಸ್‌ನಿಂದ ಕಲಿಕೆ",
+  "desc": "Case studies show what multi-agent designs actually did in practice, including what did not work.",
+  "descKn": "ಕೇಸ್ ಸ್ಟಡೀಸ್ ಬಹು-agent ವಿನ್ಯಾಸಗಳು ಆಚರಣೆಯಲ್ಲಿ ಏನು ಮಾಡಿದವು, ಏನು ಕೆಲಸ ಮಾಡಲಿಲ್ಲ ಎಂದು ತೋರಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Extract lessons from a case study.",
+   "Separate reported results from marketing."
+  ],
+  "objectivesKn": [
+   "ಕೇಸ್ ಸ್ಟಡಿಯಿಂದ ಪಾಠ ಹೊರತೆಗೆಯಿರಿ.",
+   "ವರದಿ ಫಲಿತಾಂಶ ಮತ್ತು ಮಾರ್ಕೆಟಿಂಗ್ ಬೇರ್ಪಡಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Case Studies and 2026 State of the Art — Learning From Case Studies",
+     "textKn": "Case Studies and 2026 State of the Art — Learning From Case Studies",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Case Studies and 2026 State of the Art",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Read for Decisions",
+     "headingKn": "ನಿರ್ಧಾರಗಳಿಗಾಗಿ ಓದಿ",
+     "bodyEn": "For each case ask what problem was solved, why multiple agents were chosen, what was measured and what trade-offs were accepted.",
+     "bodyKn": "ಪ್ರತಿ ಪ್ರಕರಣದಲ್ಲಿ ಯಾವ ಸಮಸ್ಯೆ ಪರಿಹರಿಸಲಾಯಿತು, ಹಲವು agents ಏಕೆ ಆರಿಸಲಾಯಿತು, ಏನು ಅಳೆಯಲಾಯಿತು, ಯಾವ ವಿನಿಮಯ ಒಪ್ಪಲಾಯಿತು ಕೇಳಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Discount Marketing",
+     "headingKn": "ಮಾರ್ಕೆಟಿಂಗ್ ಕಡಿಮೆ ನಂಬಿ",
+     "bodyEn": "Vendor write-ups emphasise successes. Look for concrete numbers, described failures and independent reproduction before trusting a claim.",
+     "bodyKn": "ಮಾರಾಟಗಾರರ ವರದಿ ಯಶಸ್ಸನ್ನು ಒತ್ತಿ ಹೇಳುತ್ತದೆ. ಹೇಳಿಕೆ ನಂಬುವ ಮೊದಲು ನಿರ್ದಿಷ್ಟ ಸಂಖ್ಯೆ, ವಿವರಿಸಿದ ವೈಫಲ್ಯ, ಸ್ವತಂತ್ರ ಪುನರುತ್ಪಾದನೆ ಹುಡುಕಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Ask what, why, how measured, what trade-off.\n• Look for numbers and failures, not slogans.",
+     "bodyKn": "• ಏನು, ಏಕೆ, ಹೇಗೆ ಅಳೆಯಲಾಯಿತು, ವಿನಿಮಯ.\n• ಸಂಖ್ಯೆ ಮತ್ತು ವೈಫಲ್ಯ ಹುಡುಕಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A good case-study question:",
+       "qKn": "ಉತ್ತಮ ಕೇಸ್-ಸ್ಟಡಿ ಪ್ರಶ್ನೆ:",
+       "opts": [
+        "What was measured?",
+        "What colour was the logo?",
+        "Who won?",
+        "None"
+       ],
+       "optsKn": [
+        "ಏನು ಅಳೆಯಲಾಯಿತು?",
+        "ಲೋಗೋ ಬಣ್ಣ?",
+        "ಯಾರು ಗೆದ್ದರು?",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Vendor write-ups tend to:",
+       "qKn": "ಮಾರಾಟಗಾರ ವರದಿ:",
+       "opts": [
+        "Emphasise successes",
+        "Emphasise failures",
+        "Be neutral always",
+        "Be absent"
+       ],
+       "optsKn": [
+        "ಯಶಸ್ಸು ಒತ್ತಿ ಹೇಳುತ್ತವೆ",
+        "ವೈಫಲ್ಯ ಒತ್ತಿ ಹೇಳುತ್ತವೆ",
+        "ಯಾವಾಗಲೂ ತಟಸ್ಥ",
+        "ಇರುವುದಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Trust claims more when there is:",
+       "qKn": "ಹೇಳಿಕೆ ಹೆಚ್ಚು ನಂಬಿ ಯಾವಾಗ:",
+       "opts": [
+        "Independent reproduction",
+        "A slogan",
+        "A logo",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸ್ವತಂತ್ರ ಪುನರುತ್ಪಾದನೆ",
+        "ಘೋಷವಾಕ್ಯ",
+        "ಲೋಗೋ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b32161f",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Case Studies and 2026 State of the Art — Patterns That Keep Working",
+  "titleKn": "ಕೇಸ್ ಸ್ಟಡೀಸ್ ಮತ್ತು 2026 ಸ್ಥಿತಿ — ಕೆಲಸ ಮಾಡುತ್ತಲೇ ಇರುವ ಮಾದರಿಗಳು",
+  "desc": "Across cases, simple structures, strong verification and human oversight recur in systems that survive production.",
+  "descKn": "ಪ್ರಕರಣಗಳಲ್ಲಿ, ಉತ್ಪಾದನೆಯಲ್ಲಿ ಬದುಕುವ ವ್ಯವಸ್ಥೆಗಳಲ್ಲಿ ಸರಳ ರಚನೆ, ಬಲವಾದ ಪರಿಶೀಲನೆ, ಮಾನವ ಮೇಲ್ವಿಚಾರಣೆ ಪುನರಾವರ್ತಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Name recurring success patterns.",
+   "Prefer the simplest workable design."
+  ],
+  "objectivesKn": [
+   "ಪುನರಾವರ್ತಿತ ಯಶಸ್ಸು ಮಾದರಿ ಹೆಸರಿಸಿ.",
+   "ಸರಳ ಕೆಲಸ ಮಾಡುವ ವಿನ್ಯಾಸ ಆದ್ಯತೆ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Case Studies and 2026 State of the Art — Patterns That Keep Working",
+     "textKn": "Case Studies and 2026 State of the Art — Patterns That Keep Working",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Case Studies and 2026 State of the Art",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Simple Structures",
+     "headingKn": "ಸರಳ ರಚನೆಗಳು",
+     "bodyEn": "Many successful systems use a small number of agents with clear roles and narrow tools, rather than large free-form societies.",
+     "bodyKn": "ಅನೇಕ ಯಶಸ್ವಿ ವ್ಯವಸ್ಥೆಗಳು ದೊಡ್ಡ ಮುಕ್ತ ಸಮಾಜಗಳ ಬದಲು ಸ್ಪಷ್ಟ ಪಾತ್ರ, ಕಿರಿದಾದ tools ಇರುವ ಕೆಲವೇ agents ಬಳಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Verification and Oversight",
+     "headingKn": "ಪರಿಶೀಲನೆ ಮತ್ತು ಮೇಲ್ವಿಚಾರಣೆ",
+     "bodyEn": "Reliable systems check outputs with tests or sources and keep humans in the loop for consequential actions.",
+     "bodyKn": "ವಿಶ್ವಾಸಾರ್ಹ ವ್ಯವಸ್ಥೆಗಳು tests ಅಥವಾ ಮೂಲಗಳಿಂದ ಔಟ್‌ಪುಟ್ ಪರಿಶೀಲಿಸಿ ಪರಿಣಾಮಕಾರಿ ಕ್ರಿಯೆಗೆ ಮಾನವರನ್ನು loop ನಲ್ಲಿಡುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Few agents, clear roles, narrow tools.\n• Verify and keep humans in the loop.",
+     "bodyKn": "• ಕೆಲವೇ agents, ಸ್ಪಷ್ಟ ಪಾತ್ರ, ಕಿರಿದು tools.\n• ಪರಿಶೀಲಿಸಿ, ಮಾನವರನ್ನು loop ನಲ್ಲಿಡಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Successful systems often use:",
+       "qKn": "ಯಶಸ್ವಿ ವ್ಯವಸ್ಥೆಗಳು ಬಳಸುವುದು:",
+       "opts": [
+        "A few agents with clear roles",
+        "Hundreds of free agents",
+        "No tools",
+        "No roles"
+       ],
+       "optsKn": [
+        "ಸ್ಪಷ್ಟ ಪಾತ್ರದ ಕೆಲವೇ agents",
+        "ನೂರಾರು ಮುಕ್ತ agents",
+        "tools ಇಲ್ಲ",
+        "ಪಾತ್ರ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "For consequential actions keep:",
+       "qKn": "ಪರಿಣಾಮಕಾರಿ ಕ್ರಿಯೆಗೆ ಇಡಿ:",
+       "opts": [
+        "Humans in the loop",
+        "Nobody",
+        "Only agents",
+        "Random"
+       ],
+       "optsKn": [
+        "ಮಾನವರನ್ನು loop ನಲ್ಲಿ",
+        "ಯಾರೂ ಇಲ್ಲ",
+        "agents ಮಾತ್ರ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Prefer:",
+       "qKn": "ಆದ್ಯತೆ:",
+       "opts": [
+        "The simplest workable design",
+        "The most complex",
+        "The newest",
+        "The loudest"
+       ],
+       "optsKn": [
+        "ಸರಳ ಕೆಲಸ ಮಾಡುವ ವಿನ್ಯಾಸ",
+        "ಅತಿ ಸಂಕೀರ್ಣ",
+        "ಹೊಸದು",
+        "ಜೋರಾದದ್ದು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b32161f",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Case Studies and 2026 State of the Art — Staying Current",
+  "titleKn": "ಕೇಸ್ ಸ್ಟಡೀಸ್ ಮತ್ತು 2026 ಸ್ಥಿತಿ — ಪ್ರಸ್ತುತವಾಗಿರುವುದು",
+  "desc": "The field changes fast, so build habits for tracking primary sources and re-testing your assumptions.",
+  "descKn": "ಕ್ಷೇತ್ರ ವೇಗವಾಗಿ ಬದಲಾಗುತ್ತದೆ; ಮೂಲ ಮೂಲಗಳನ್ನು ಗಮನಿಸುವ ಮತ್ತು ಊಹೆಗಳನ್ನು ಮರುಪರೀಕ್ಷಿಸುವ ಅಭ್ಯಾಸ ಬೆಳೆಸಿ.",
+  "objectives": [
+   "Follow primary sources.",
+   "Re-run your evals when models change."
+  ],
+  "objectivesKn": [
+   "ಮೂಲ ಮೂಲಗಳನ್ನು ಅನುಸರಿಸಿ.",
+   "ಮಾದರಿ ಬದಲಾದಾಗ evals ಮರುಚಾಲನೆ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Case Studies and 2026 State of the Art — Staying Current",
+     "textKn": "Case Studies and 2026 State of the Art — Staying Current",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Case Studies and 2026 State of the Art",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Primary Sources",
+     "headingKn": "ಮೂಲ ಮೂಲಗಳು",
+     "bodyEn": "Read papers, official documentation and release notes rather than only summaries, and record the date you read them.",
+     "bodyKn": "ಕೇವಲ ಸಾರಾಂಶವಲ್ಲ, ಪ್ರಬಂಧ, ಅಧಿಕೃತ ದಾಖಲೆ, ಬಿಡುಗಡೆ ಟಿಪ್ಪಣಿ ಓದಿ; ಓದಿದ ದಿನಾಂಕ ದಾಖಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Re-Test Assumptions",
+     "headingKn": "ಊಹೆ ಮರುಪರೀಕ್ಷಿಸಿ",
+     "bodyEn": "A design choice that was right for last year's model may be unnecessary now. Keep evals so you can re-check quickly when models or tools change.",
+     "bodyKn": "ಕಳೆದ ವರ್ಷದ ಮಾದರಿಗೆ ಸರಿಯಾದ ವಿನ್ಯಾಸ ಆಯ್ಕೆ ಈಗ ಅನಗತ್ಯವಾಗಿರಬಹುದು. ಮಾದರಿ ಅಥವಾ tools ಬದಲಾದಾಗ ಬೇಗ ಮರುಪರಿಶೀಲಿಸಲು evals ಇಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Read primary sources and note dates.\n• Keep evals to re-test as models change.",
+     "bodyKn": "• ಮೂಲ ಮೂಲ ಓದಿ, ದಿನಾಂಕ ಗಮನಿಸಿ.\n• ಮಾದರಿ ಬದಲಾದಾಗ ಮರುಪರೀಕ್ಷೆಗೆ evals."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Best source:",
+       "qKn": "ಉತ್ತಮ ಮೂಲ:",
+       "opts": [
+        "Primary documentation",
+        "A rumour",
+        "A meme",
+        "None"
+       ],
+       "optsKn": [
+        "ಮೂಲ ದಾಖಲೆ",
+        "ವದಂತಿ",
+        "ಮೀಮ್",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why keep evals?",
+       "qKn": "evals ಏಕೆ ಇಡಬೇಕು?",
+       "opts": [
+        "To re-test when things change",
+        "Decoration",
+        "To slow",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಬದಲಾದಾಗ ಮರುಪರೀಕ್ಷೆಗೆ",
+        "ಅಲಂಕಾರ",
+        "ನಿಧಾನ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Old design choices may be:",
+       "qKn": "ಹಳೆಯ ವಿನ್ಯಾಸ ಆಯ್ಕೆ:",
+       "opts": [
+        "Unnecessary now",
+        "Always right",
+        "Illegal",
+        "Permanent"
+       ],
+       "optsKn": [
+        "ಈಗ ಅನಗತ್ಯ",
+        "ಯಾವಾಗಲೂ ಸರಿ",
+        "ಕಾನೂನುಬಾಹಿರ",
+        "ಶಾಶ್ವತ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6666020ed05b321625",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Managed LLM Platforms: Bedrock, Azure OpenAI, Vertex AI — What Managed Platforms Offer",
+  "titleKn": "Managed LLM ವೇದಿಕೆಗಳು: Bedrock, Azure OpenAI, Vertex AI — Managed ವೇದಿಕೆಗಳು ಏನು ನೀಡುತ್ತವೆ",
+  "desc": "Cloud platforms host models behind managed APIs with enterprise features such as networking, identity and compliance.",
+  "descKn": "ಕ್ಲೌಡ್ ವೇದಿಕೆಗಳು ನೆಟ್‌ವರ್ಕಿಂಗ್, ಗುರುತು, ಅನುಸರಣೆಯಂತಹ ಎಂಟರ್‌ಪ್ರೈಸ್ ವೈಶಿಷ್ಟ್ಯದೊಂದಿಗೆ managed API ಹಿಂದೆ ಮಾದರಿ ಹೋಸ್ಟ್ ಮಾಡುತ್ತವೆ.",
+  "objectives": [
+   "List typical managed-platform features.",
+   "Explain the value of using your existing cloud account."
+  ],
+  "objectivesKn": [
+   "ಸಾಮಾನ್ಯ managed ವೈಶಿಷ್ಟ್ಯ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ನಿಮ್ಮ ಈಗಿನ ಕ್ಲೌಡ್ ಖಾತೆ ಬಳಕೆಯ ಮೌಲ್ಯ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Managed LLM Platforms: Bedrock, Azure OpenAI, Vertex AI — What Managed Platforms Offer",
+     "textKn": "Managed LLM Platforms: Bedrock, Azure OpenAI, Vertex AI — What Managed Platforms Offer",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Managed LLM Platforms: Bedrock, Azure OpenAI, Vertex AI",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Enterprise Wrapping",
+     "headingKn": "ಎಂಟರ್‌ಪ್ರೈಸ್ ಹೊದಿಕೆ",
+     "bodyEn": "Platforms add private networking, IAM integration, logging, regional hosting and contractual data-handling terms around model access.",
+     "bodyKn": "ವೇದಿಕೆಗಳು ಮಾದರಿ ಪ್ರವೇಶದ ಸುತ್ತ ಖಾಸಗಿ ನೆಟ್‌ವರ್ಕ್, IAM ಸಂಯೋಜನೆ, ಲಾಗಿಂಗ್, ಪ್ರಾದೇಶಿಕ ಹೋಸ್ಟಿಂಗ್, ಒಪ್ಪಂದದ ಡೇಟಾ ನಿರ್ವಹಣೆ ನಿಯಮ ಸೇರಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Fit With Existing Cloud",
+     "headingKn": "ಈಗಿನ ಕ್ಲೌಡ್‌ಗೆ ಹೊಂದಾಣಿಕೆ",
+     "bodyEn": "If your data and workloads already live in one cloud, using its model service simplifies security review, billing and procurement.",
+     "bodyKn": "ನಿಮ್ಮ ಡೇಟಾ ಮತ್ತು ಕೆಲಸ ಈಗಾಗಲೇ ಒಂದು ಕ್ಲೌಡ್‌ನಲ್ಲಿದ್ದರೆ ಅದರ ಮಾದರಿ ಸೇವೆ ಬಳಸುವುದು ಭದ್ರತಾ ವಿಮರ್ಶೆ, ಬಿಲ್ಲಿಂಗ್, ಖರೀದಿ ಸರಳಗೊಳಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Networking, IAM, logging and data terms.\n• Fits workloads already in that cloud.",
+     "bodyKn": "• ನೆಟ್‌ವರ್ಕ್, IAM, ಲಾಗ್, ಡೇಟಾ ನಿಯಮ.\n• ಆ ಕ್ಲೌಡ್‌ನ ಕೆಲಸಕ್ಕೆ ಹೊಂದುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A managed-platform feature:",
+       "qKn": "managed ವೇದಿಕೆ ವೈಶಿಷ್ಟ್ಯ:",
+       "opts": [
+        "IAM integration",
+        "A new keyboard",
+        "A monitor",
+        "Fonts"
+       ],
+       "optsKn": [
+        "IAM ಸಂಯೋಜನೆ",
+        "ಹೊಸ ಕೀಬೋರ್ಡ್",
+        "ಮಾನಿಟರ್",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Using your existing cloud can simplify:",
+       "qKn": "ಈಗಿನ ಕ್ಲೌಡ್ ಬಳಕೆ ಸರಳಗೊಳಿಸುವುದು:",
+       "opts": [
+        "Security review and billing",
+        "Nothing",
+        "Only colours",
+        "Only speed"
+       ],
+       "optsKn": [
+        "ಭದ್ರತಾ ವಿಮರ್ಶೆ ಮತ್ತು ಬಿಲ್ಲಿಂಗ್",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ ಮಾತ್ರ",
+        "ವೇಗ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Data terms are:",
+       "qKn": "ಡೇಟಾ ನಿಯಮಗಳು:",
+       "opts": [
+        "Contractual",
+        "Random",
+        "Absent",
+        "Secret always"
+       ],
+       "optsKn": [
+        "ಒಪ್ಪಂದದ",
+        "ಯಾದೃಚ್ಛಿಕ",
+        "ಇಲ್ಲ",
+        "ಯಾವಾಗಲೂ ರಹಸ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6666020ed05b321625",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Managed LLM Platforms: Bedrock, Azure OpenAI, Vertex AI — Comparing Platforms",
+  "titleKn": "Managed LLM ವೇದಿಕೆಗಳು: Bedrock, Azure OpenAI, Vertex AI — ವೇದಿಕೆಗಳ ಹೋಲಿಕೆ",
+  "desc": "Compare model availability, regions, quotas, pricing, latency and feature parity, and expect them to differ between clouds.",
+  "descKn": "ಮಾದರಿ ಲಭ್ಯತೆ, ಪ್ರದೇಶ, quotas, ಬೆಲೆ, ವಿಳಂಬ, ವೈಶಿಷ್ಟ್ಯ ಸಮಾನತೆ ಹೋಲಿಸಿ; ಕ್ಲೌಡ್‌ಗಳ ನಡುವೆ ಭಿನ್ನವಾಗಿರುತ್ತವೆ ಎಂದು ನಿರೀಕ್ಷಿಸಿ.",
+  "objectives": [
+   "Build a comparison checklist.",
+   "Verify claims against current documentation."
+  ],
+  "objectivesKn": [
+   "ಹೋಲಿಕೆ ಚೆಕ್‌ಲಿಸ್ಟ್ ನಿರ್ಮಿಸಿ.",
+   "ಪ್ರಸ್ತುತ ದಾಖಲೆಗೆ ಹೇಳಿಕೆ ಪರಿಶೀಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Managed LLM Platforms: Bedrock, Azure OpenAI, Vertex AI — Comparing Platforms",
+     "textKn": "Managed LLM Platforms: Bedrock, Azure OpenAI, Vertex AI — Comparing Platforms",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Managed LLM Platforms: Bedrock, Azure OpenAI, Vertex AI",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Checklist",
+     "headingKn": "ಚೆಕ್‌ಲಿಸ್ಟ್",
+     "bodyEn": "Check which models are available in your region, default and maximum quotas, supported features such as tool use and caching, and how quickly new versions arrive.",
+     "bodyKn": "ನಿಮ್ಮ ಪ್ರದೇಶದಲ್ಲಿ ಯಾವ ಮಾದರಿ ಲಭ್ಯ, ಡೀಫಾಲ್ಟ್ ಮತ್ತು ಗರಿಷ್ಠ quotas, tool ಬಳಕೆ ಮತ್ತು caching ನಂತಹ ವೈಶಿಷ್ಟ್ಯ ಬೆಂಬಲ, ಹೊಸ ಆವೃತ್ತಿ ಎಷ್ಟು ಬೇಗ ಬರುತ್ತದೆ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Documentation Changes",
+     "headingKn": "ದಾಖಲೆ ಬದಲಾಗುತ್ತದೆ",
+     "bodyEn": "Model lists, prices and limits change often. Treat any comparison as a snapshot and confirm on the provider's current pages before deciding.",
+     "bodyKn": "ಮಾದರಿ ಪಟ್ಟಿ, ಬೆಲೆ, ಮಿತಿ ಆಗಾಗ ಬದಲಾಗುತ್ತವೆ. ಯಾವುದೇ ಹೋಲಿಕೆಯನ್ನು ಸ್ನ್ಯಾಪ್‌ಶಾಟ್ ಎಂದು ಪರಿಗಣಿಸಿ, ನಿರ್ಧರಿಸುವ ಮೊದಲು ಒದಗಿಸುವವರ ಪ್ರಸ್ತುತ ಪುಟಗಳಲ್ಲಿ ದೃಢೀಕರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Compare models, regions, quotas, features.\n• Confirm on current provider pages.",
+     "bodyKn": "• ಮಾದರಿ, ಪ್ರದೇಶ, quotas, ವೈಶಿಷ್ಟ್ಯ ಹೋಲಿಸಿ.\n• ಪ್ರಸ್ತುತ ಪುಟಗಳಲ್ಲಿ ದೃಢೀಕರಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Compare:",
+       "qKn": "ಹೋಲಿಸಿ:",
+       "opts": [
+        "Regional model availability",
+        "Logo colours",
+        "CEO names",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪ್ರಾದೇಶಿಕ ಮಾದರಿ ಲಭ್ಯತೆ",
+        "ಲೋಗೋ ಬಣ್ಣ",
+        "CEO ಹೆಸರು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A comparison is:",
+       "qKn": "ಹೋಲಿಕೆ:",
+       "opts": [
+        "A snapshot in time",
+        "Permanent",
+        "Legally binding",
+        "Secret"
+       ],
+       "optsKn": [
+        "ಕಾಲದ ಒಂದು ಸ್ನ್ಯಾಪ್‌ಶಾಟ್",
+        "ಶಾಶ್ವತ",
+        "ಕಾನೂನು ಬದ್ಧ",
+        "ರಹಸ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Confirm on:",
+       "qKn": "ದೃಢೀಕರಿಸಿ:",
+       "opts": [
+        "Current provider pages",
+        "A forum rumour",
+        "An old blog",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪ್ರಸ್ತುತ ಒದಗಿಸುವವರ ಪುಟ",
+        "ಫೋರಂ ವದಂತಿ",
+        "ಹಳೆಯ ಬ್ಲಾಗ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6666020ed05b321625",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Managed LLM Platforms: Bedrock, Azure OpenAI, Vertex AI — Quotas, Limits and Lock-In",
+  "titleKn": "Managed LLM ವೇದಿಕೆಗಳು: Bedrock, Azure OpenAI, Vertex AI — Quotas, ಮಿತಿ ಮತ್ತು ಲಾಕ್-ಇನ್",
+  "desc": "Plan for throttling, request quota increases early and keep an abstraction layer to limit lock-in.",
+  "descKn": "throttling ಗೆ ಯೋಜಿಸಿ, quota ಹೆಚ್ಚಳ ಬೇಗ ಕೇಳಿ, ಲಾಕ್-ಇನ್ ಮಿತಿಗೊಳಿಸಲು abstraction ಪದರ ಇಡಿ.",
+  "objectives": [
+   "Handle throttling with retries and fallbacks.",
+   "Use an abstraction to stay portable."
+  ],
+  "objectivesKn": [
+   "retries ಮತ್ತು fallbacks ನಿಂದ throttling ನಿರ್ವಹಿಸಿ.",
+   "ಪೋರ್ಟಬಲ್ ಆಗಿರಲು abstraction ಬಳಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Managed LLM Platforms: Bedrock, Azure OpenAI, Vertex AI — Quotas, Limits and Lock-In",
+     "textKn": "Managed LLM Platforms: Bedrock, Azure OpenAI, Vertex AI — Quotas, Limits and Lock-In",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Managed LLM Platforms: Bedrock, Azure OpenAI, Vertex AI",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Quotas",
+     "headingKn": "Quotas",
+     "bodyEn": "Managed services enforce per-region limits on requests and tokens. New accounts often start low, so request increases well before launch.",
+     "bodyKn": "managed ಸೇವೆಗಳು ಪ್ರತಿ ಪ್ರದೇಶಕ್ಕೆ ವಿನಂತಿ ಮತ್ತು tokens ಮಿತಿ ವಿಧಿಸುತ್ತವೆ. ಹೊಸ ಖಾತೆ ಆಗಾಗ ಕಡಿಮೆಯಿಂದ ಆರಂಭ; ಬಿಡುಗಡೆಗೆ ಮೊದಲೇ ಹೆಚ್ಚಳ ಕೇಳಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Limiting Lock-In",
+     "headingKn": "ಲಾಕ್-ಇನ್ ಮಿತಿ",
+     "bodyEn": "Put provider-specific code behind a thin interface and keep prompts and evals portable, so switching clouds or models is a configuration change.",
+     "bodyKn": "ಒದಗಿಸುವವರ-ನಿರ್ದಿಷ್ಟ ಕೋಡ್ ತೆಳು ಇಂಟರ್ಫೇಸ್ ಹಿಂದೆ ಇಡಿ, prompts ಮತ್ತು evals ಪೋರ್ಟಬಲ್ ಇಡಿ; ಕ್ಲೌಡ್ ಅಥವಾ ಮಾದರಿ ಬದಲಿಸುವುದು ಸಂರಚನೆ ಬದಲಾವಣೆಯಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Request quota increases early.\n• Hide provider code behind an interface.",
+     "bodyKn": "• quota ಹೆಚ್ಚಳ ಬೇಗ ಕೇಳಿ.\n• ಒದಗಿಸುವವರ ಕೋಡ್ ಇಂಟರ್ಫೇಸ್ ಹಿಂದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "When request quota increases?",
+       "qKn": "quota ಹೆಚ್ಚಳ ಯಾವಾಗ ಕೇಳಬೇಕು?",
+       "opts": [
+        "Well before launch",
+        "After outage only",
+        "Never",
+        "On launch day"
+       ],
+       "optsKn": [
+        "ಬಿಡುಗಡೆಗೆ ಮೊದಲೇ",
+        "ಸ್ಥಗಿತ ನಂತರ ಮಾತ್ರ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಬಿಡುಗಡೆ ದಿನ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Reduce lock-in with:",
+       "qKn": "ಲಾಕ್-ಇನ್ ಕಡಿಮೆ:",
+       "opts": [
+        "A thin abstraction layer",
+        "More provider code everywhere",
+        "Nothing",
+        "Copying keys"
+       ],
+       "optsKn": [
+        "ತೆಳು abstraction ಪದರ",
+        "ಎಲ್ಲೆಡೆ ಒದಗಿಸುವವರ ಕೋಡ್",
+        "ಏನೂ ಇಲ್ಲ",
+        "keys ನಕಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "On throttling:",
+       "qKn": "throttling ಆದಾಗ:",
+       "opts": [
+        "Retry with backoff or fall back",
+        "Ignore",
+        "Crash",
+        "Delete requests"
+       ],
+       "optsKn": [
+        "backoff ನೊಂದಿಗೆ ಮರುಪ್ರಯತ್ನ ಅಥವಾ fallback",
+        "ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಕ್ರ್ಯಾಶ್",
+        "ವಿನಂತಿ ಅಳಿಸು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6666020ed05b321628",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Inference Platform Economics: Fireworks, Together, Baseten, Modal — How Inference Platforms Price",
+  "titleKn": "Inference ವೇದಿಕೆ ಅರ್ಥಶಾಸ್ತ್ರ — Inference ವೇದಿಕೆ ಬೆಲೆ ನಿಗದಿ",
+  "desc": "Platforms bill per token, per second of GPU time or per dedicated deployment, each with different economics.",
+  "descKn": "ವೇದಿಕೆಗಳು ಪ್ರತಿ token, ಪ್ರತಿ GPU ಸೆಕೆಂಡ್ ಅಥವಾ ಮೀಸಲು ನಿಯೋಜನೆಗೆ ಬಿಲ್ ಮಾಡುತ್ತವೆ; ಪ್ರತಿಯೊಂದಕ್ಕೆ ಬೇರೆ ಅರ್ಥಶಾಸ್ತ್ರ.",
+  "objectives": [
+   "Distinguish per-token, per-second and dedicated pricing.",
+   "Identify when each is cheapest."
+  ],
+  "objectivesKn": [
+   "ಪ್ರತಿ token, ಪ್ರತಿ ಸೆಕೆಂಡ್, ಮೀಸಲು ಬೆಲೆ ಬೇರ್ಪಡಿಸಿ.",
+   "ಪ್ರತಿಯೊಂದು ಯಾವಾಗ ಅಗ್ಗ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Inference Platform Economics: Fireworks, Together, Baseten, Modal — How Inference Platforms Price",
+     "textKn": "Inference Platform Economics: Fireworks, Together, Baseten, Modal — How Inference Platforms Price",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Inference Platform Economics: Fireworks, Together, Baseten, Modal",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Three Billing Models",
+     "headingKn": "ಮೂರು ಬಿಲ್ಲಿಂಗ್ ಮಾದರಿ",
+     "bodyEn": "Per-token suits variable, low volume. Per-second GPU billing suits custom models with bursty use. Dedicated deployments suit steady high volume where utilisation is high.",
+     "bodyKn": "ಪ್ರತಿ token ಬದಲಾಗುವ, ಕಡಿಮೆ ಪ್ರಮಾಣಕ್ಕೆ. ಪ್ರತಿ ಸೆಕೆಂಡ್ GPU ಬಿಲ್ಲಿಂಗ್ ಏರಿಳಿತದ ಬಳಕೆಯ ಕಸ್ಟಮ್ ಮಾದರಿಗೆ. ಮೀಸಲು ನಿಯೋಜನೆ ಬಳಕೆ ಹೆಚ್ಚಿರುವ ಸ್ಥಿರ ಹೆಚ್ಚಿನ ಪ್ರಮಾಣಕ್ಕೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Utilisation Drives Cost",
+     "headingKn": "ಬಳಕೆ ವೆಚ್ಚ ನಿರ್ಧರಿಸುತ್ತದೆ",
+     "bodyEn": "A GPU you pay for but leave idle costs the same as a busy one. The cheaper option is whichever keeps your effective utilisation highest.",
+     "bodyKn": "ಪಾವತಿಸಿ ನಿಷ್ಕ್ರಿಯ ಬಿಟ್ಟ GPU ಕಾರ್ಯನಿರತದ ಸಮಾನ ವೆಚ್ಚ. ಅಗ್ಗದ ಆಯ್ಕೆ ನಿಮ್ಮ ಪರಿಣಾಮಕಾರಿ ಬಳಕೆ ಹೆಚ್ಚಿಡುವುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Per-token, per-second and dedicated billing.\n• Utilisation decides the cheapest option.",
+     "bodyKn": "• ಪ್ರತಿ token, ಸೆಕೆಂಡ್, ಮೀಸಲು.\n• ಬಳಕೆ ಅಗ್ಗದ ಆಯ್ಕೆ ನಿರ್ಧರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Per-token pricing suits:",
+       "qKn": "ಪ್ರತಿ token ಬೆಲೆ ಸೂಕ್ತ:",
+       "opts": [
+        "Variable low volume",
+        "Steady huge volume only",
+        "Nothing",
+        "Idle GPUs"
+       ],
+       "optsKn": [
+        "ಬದಲಾಗುವ ಕಡಿಮೆ ಪ್ರಮಾಣ",
+        "ಸ್ಥಿರ ಬೃಹತ್ ಪ್ರಮಾಣ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ನಿಷ್ಕ್ರಿಯ GPUs"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "An idle paid GPU:",
+       "qKn": "ಪಾವತಿಸಿದ ನಿಷ್ಕ್ರಿಯ GPU:",
+       "opts": [
+        "Still costs money",
+        "Is free",
+        "Earns money",
+        "Cools"
+       ],
+       "optsKn": [
+        "ಇನ್ನೂ ವೆಚ್ಚ",
+        "ಉಚಿತ",
+        "ಹಣ ಗಳಿಸುತ್ತದೆ",
+        "ತಣಿಯುತ್ತದೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Dedicated suits:",
+       "qKn": "ಮೀಸಲು ಸೂಕ್ತ:",
+       "opts": [
+        "Steady high volume",
+        "Rare use",
+        "Nothing",
+        "Tiny tests"
+       ],
+       "optsKn": [
+        "ಸ್ಥಿರ ಹೆಚ್ಚಿನ ಪ್ರಮಾಣ",
+        "ಅಪರೂಪದ ಬಳಕೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಸಣ್ಣ ಪರೀಕ್ಷೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6666020ed05b321628",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Inference Platform Economics: Fireworks, Together, Baseten, Modal — Break-Even Analysis",
+  "titleKn": "Inference ವೇದಿಕೆ ಅರ್ಥಶಾಸ್ತ್ರ — Break-Even ವಿಶ್ಲೇಷಣೆ",
+  "desc": "Compute the request volume at which dedicated capacity becomes cheaper than pay-per-use.",
+  "descKn": "ಮೀಸಲು ಸಾಮರ್ಥ್ಯ ಪ್ರತಿ-ಬಳಕೆ ಪಾವತಿಗಿಂತ ಅಗ್ಗವಾಗುವ ವಿನಂತಿ ಪ್ರಮಾಣ ಲೆಕ್ಕಿಸಿ.",
+  "objectives": [
+   "Compute cost per million tokens for each option.",
+   "Find the break-even volume."
+  ],
+  "objectivesKn": [
+   "ಪ್ರತಿ ಆಯ್ಕೆಗೆ ಮಿಲಿಯನ್ tokens ವೆಚ್ಚ ಲೆಕ್ಕಿಸಿ.",
+   "break-even ಪ್ರಮಾಣ ಕಂಡುಹಿಡಿಯಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Inference Platform Economics: Fireworks, Together, Baseten, Modal — Break-Even Analysis",
+     "textKn": "Inference Platform Economics: Fireworks, Together, Baseten, Modal — Break-Even Analysis",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Inference Platform Economics: Fireworks, Together, Baseten, Modal",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cost per Million Tokens",
+     "headingKn": "ಮಿಲಿಯನ್ Tokens ಗೆ ವೆಚ್ಚ",
+     "bodyEn": "For dedicated capacity divide hourly price by tokens actually served per hour. For pay-per-use it is the listed price. Compare them at your real traffic level.",
+     "bodyKn": "ಮೀಸಲು ಸಾಮರ್ಥ್ಯಕ್ಕೆ ಗಂಟೆ ಬೆಲೆಯನ್ನು ಗಂಟೆಗೆ ನಿಜವಾಗಿ ಸೇವೆ ಮಾಡಿದ tokens ನಿಂದ ಭಾಗಿಸಿ. ಪ್ರತಿ-ಬಳಕೆಗೆ ಪಟ್ಟಿ ಬೆಲೆ. ನಿಮ್ಮ ನಿಜ ಟ್ರಾಫಿಕ್ ಮಟ್ಟದಲ್ಲಿ ಹೋಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Include Hidden Costs",
+     "headingKn": "ಗುಪ್ತ ವೆಚ್ಚ ಸೇರಿಸಿ",
+     "bodyEn": "Include engineering time, on-call, cold starts and over-provisioning for peaks. The cheapest per-token rate is not always the cheapest total cost.",
+     "bodyKn": "ಎಂಜಿನಿಯರಿಂಗ್ ಸಮಯ, on-call, cold starts, ಗರಿಷ್ಠಕ್ಕೆ ಹೆಚ್ಚು ಒದಗಿಸುವಿಕೆ ಸೇರಿಸಿ. ಅಗ್ಗದ ಪ್ರತಿ-token ದರ ಯಾವಾಗಲೂ ಅಗ್ಗದ ಒಟ್ಟು ವೆಚ್ಚವಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Dedicated cost = hourly price / tokens served per hour.\n• Include engineering and peak headroom.",
+     "bodyKn": "• ಮೀಸಲು ವೆಚ್ಚ = ಗಂಟೆ ಬೆಲೆ / ಗಂಟೆ tokens.\n• ಎಂಜಿನಿಯರಿಂಗ್ ಮತ್ತು ಗರಿಷ್ಠ ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Dedicated cost per token equals:",
+       "qKn": "ಮೀಸಲು token ವೆಚ್ಚ:",
+       "opts": [
+        "Hourly price over tokens per hour",
+        "Price times zero",
+        "A fixed constant",
+        "Random"
+       ],
+       "optsKn": [
+        "ಗಂಟೆ ಬೆಲೆ ÷ ಗಂಟೆ tokens",
+        "ಬೆಲೆ × ಸೊನ್ನೆ",
+        "ಸ್ಥಿರ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Hidden costs include:",
+       "qKn": "ಗುಪ್ತ ವೆಚ್ಚ:",
+       "opts": [
+        "Engineering time",
+        "Nothing",
+        "Only fonts",
+        "Only speed"
+       ],
+       "optsKn": [
+        "ಎಂಜಿನಿಯರಿಂಗ್ ಸಮಯ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್ ಮಾತ್ರ",
+        "ವೇಗ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Compare at:",
+       "qKn": "ಹೋಲಿಸಿ:",
+       "opts": [
+        "Your real traffic level",
+        "Imaginary traffic",
+        "Zero traffic",
+        "Random"
+       ],
+       "optsKn": [
+        "ನಿಮ್ಮ ನಿಜ ಟ್ರಾಫಿಕ್",
+        "ಕಾಲ್ಪನಿಕ ಟ್ರಾಫಿಕ್",
+        "ಶೂನ್ಯ ಟ್ರಾಫಿಕ್",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6666020ed05b321628",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Inference Platform Economics: Fireworks, Together, Baseten, Modal — Choosing a Platform",
+  "titleKn": "Inference ವೇದಿಕೆ ಅರ್ಥಶಾಸ್ತ್ರ — ವೇದಿಕೆ ಆಯ್ಕೆ",
+  "desc": "Beyond price, weigh model choice, latency, reliability, custom-model support and data-handling terms.",
+  "descKn": "ಬೆಲೆಯ ಆಚೆ, ಮಾದರಿ ಆಯ್ಕೆ, ವಿಳಂಬ, ವಿಶ್ವಾಸಾರ್ಹತೆ, ಕಸ್ಟಮ್ ಮಾದರಿ ಬೆಂಬಲ, ಡೇಟಾ ನಿಯಮ ತೂಗಿ.",
+  "objectives": [
+   "Benchmark on your own workload.",
+   "Plan a multi-provider fallback."
+  ],
+  "objectivesKn": [
+   "ನಿಮ್ಮದೇ ಕೆಲಸದಲ್ಲಿ ಬೆಂಚ್‌ಮಾರ್ಕ್ ಮಾಡಿ.",
+   "ಬಹು-ಒದಗಿಸುವವ fallback ಯೋಜಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Inference Platform Economics: Fireworks, Together, Baseten, Modal — Choosing a Platform",
+     "textKn": "Inference Platform Economics: Fireworks, Together, Baseten, Modal — Choosing a Platform",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Inference Platform Economics: Fireworks, Together, Baseten, Modal",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Benchmark Your Workload",
+     "headingKn": "ನಿಮ್ಮ ಕೆಲಸದ ಬೆಂಚ್‌ಮಾರ್ಕ್",
+     "bodyEn": "Send a representative sample of your traffic to each candidate and record latency, error rate and cost. Vendor benchmarks rarely match your prompt shapes.",
+     "bodyKn": "ನಿಮ್ಮ ಟ್ರಾಫಿಕ್‌ನ ಪ್ರಾತಿನಿಧಿಕ ಮಾದರಿ ಪ್ರತಿ ಅಭ್ಯರ್ಥಿಗೆ ಕಳುಹಿಸಿ ವಿಳಂಬ, ದೋಷ ದರ, ವೆಚ್ಚ ದಾಖಲಿಸಿ. ಮಾರಾಟಗಾರ ಬೆಂಚ್‌ಮಾರ್ಕ್ ನಿಮ್ಮ prompt ಆಕಾರಕ್ಕೆ ಅಪರೂಪವಾಗಿ ಹೊಂದುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Fallback Plans",
+     "headingKn": "Fallback ಯೋಜನೆ",
+     "bodyEn": "Any single provider can have outages. A second provider or self-hosted fallback protects availability, provided you test the failover path.",
+     "bodyKn": "ಯಾವುದೇ ಒಬ್ಬ ಒದಗಿಸುವವನಿಗೆ ಸ್ಥಗಿತ ಆಗಬಹುದು. ಎರಡನೇ ಒದಗಿಸುವವ ಅಥವಾ ಸ್ವ-ಹೋಸ್ಟ್ fallback ಲಭ್ಯತೆ ಕಾಪಾಡುತ್ತದೆ, failover ಹಾದಿ ಪರೀಕ್ಷಿಸಿದರೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Benchmark with your own traffic.\n• Test the failover path.",
+     "bodyKn": "• ನಿಮ್ಮ ಟ್ರಾಫಿಕ್‌ನಿಂದ ಬೆಂಚ್‌ಮಾರ್ಕ್.\n• failover ಹಾದಿ ಪರೀಕ್ಷಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Benchmark using:",
+       "qKn": "ಬೆಂಚ್‌ಮಾರ್ಕ್ ಬಳಸಿ:",
+       "opts": [
+        "Your representative traffic",
+        "Vendor slides only",
+        "Nothing",
+        "Random text"
+       ],
+       "optsKn": [
+        "ನಿಮ್ಮ ಪ್ರಾತಿನಿಧಿಕ ಟ್ರಾಫಿಕ್",
+        "ಮಾರಾಟಗಾರ ಸ್ಲೈಡ್ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ ಪಠ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A fallback provider protects:",
+       "qKn": "fallback ಒದಗಿಸುವವ ಕಾಪಾಡುವುದು:",
+       "opts": [
+        "Availability",
+        "Only prices",
+        "Fonts",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಲಭ್ಯತೆ",
+        "ಬೆಲೆ ಮಾತ್ರ",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Test the:",
+       "qKn": "ಪರೀಕ್ಷಿಸಿ:",
+       "opts": [
+        "Failover path",
+        "Logo",
+        "Colour",
+        "Nothing"
+       ],
+       "optsKn": [
+        "failover ಹಾದಿ",
+        "ಲೋಗೋ",
+        "ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6666020ed05b32162b",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "GPU Autoscaling on Kubernetes: Karpenter, KAI Scheduler — Why GPU Autoscaling Is Hard",
+  "titleKn": "Kubernetes ನಲ್ಲಿ GPU Autoscaling — GPU Autoscaling ಏಕೆ ಕಷ್ಟ",
+  "desc": "GPU nodes are expensive, slow to start and coarse-grained, so naive CPU-style autoscaling wastes money or misses demand.",
+  "descKn": "GPU ನೋಡ್‌ಗಳು ದುಬಾರಿ, ಆರಂಭ ನಿಧಾನ, ಒರಟು; ಸರಳ CPU ಶೈಲಿ autoscaling ಹಣ ವ್ಯರ್ಥ ಅಥವಾ ಬೇಡಿಕೆ ತಪ್ಪಿಸುತ್ತದೆ.",
+  "objectives": [
+   "List why GPU scaling differs from CPU scaling.",
+   "Identify the right scaling signals."
+  ],
+  "objectivesKn": [
+   "GPU ವಿಸ್ತರಣೆ CPU ಗಿಂತ ಭಿನ್ನ ಏಕೆ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಸರಿಯಾದ ವಿಸ್ತರಣೆ ಸಂಕೇತ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "GPU Autoscaling on Kubernetes: Karpenter, KAI Scheduler — Why GPU Autoscaling Is Hard",
+     "textKn": "GPU Autoscaling on Kubernetes: Karpenter, KAI Scheduler — Why GPU Autoscaling Is Hard",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in GPU Autoscaling on Kubernetes: Karpenter, KAI Scheduler",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Slow and Costly",
+     "headingKn": "ನಿಧಾನ ಮತ್ತು ದುಬಾರಿ",
+     "bodyEn": "A new GPU node can take minutes to join, pull large images and load model weights. Meanwhile users wait, so scale-up must anticipate demand.",
+     "bodyKn": "ಹೊಸ GPU ನೋಡ್ ಸೇರಲು, ದೊಡ್ಡ images ಎಳೆಯಲು, ಮಾದರಿ ತೂಕ ಲೋಡ್ ಮಾಡಲು ನಿಮಿಷ ಬೇಕಾಗಬಹುದು. ಅಷ್ಟರಲ್ಲಿ ಬಳಕೆದಾರರು ಕಾಯುತ್ತಾರೆ; ಬೇಡಿಕೆ ಮುಂಚಿತವಾಗಿ ಊಹಿಸಿ ವಿಸ್ತರಿಸಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Better Signals Than CPU",
+     "headingKn": "CPU ಗಿಂತ ಉತ್ತಮ ಸಂಕೇತ",
+     "bodyEn": "GPU utilisation alone is misleading for LLMs. Queue depth, in-flight requests and time to first token track user experience more directly.",
+     "bodyKn": "LLM ಗೆ GPU ಬಳಕೆ ಮಾತ್ರ ದಾರಿ ತಪ್ಪಿಸುತ್ತದೆ. ಸರತಿ ಆಳ, ಪ್ರಗತಿಯಲ್ಲಿರುವ ವಿನಂತಿ, ಮೊದಲ token ಸಮಯ ಬಳಕೆದಾರ ಅನುಭವವನ್ನು ನೇರವಾಗಿ ಅನುಸರಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• GPU nodes start slowly; scale ahead of demand.\n• Use queue depth and TTFT, not just utilisation.",
+     "bodyKn": "• GPU ನೋಡ್ ನಿಧಾನ; ಬೇಡಿಕೆಗೆ ಮುಂಚೆ ವಿಸ್ತರಿಸಿ.\n• ಸರತಿ ಆಳ ಮತ್ತು TTFT ಬಳಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "New GPU nodes:",
+       "qKn": "ಹೊಸ GPU ನೋಡ್‌ಗಳು:",
+       "opts": [
+        "Take minutes to become useful",
+        "Start instantly",
+        "Are free",
+        "Need no image"
+       ],
+       "optsKn": [
+        "ಉಪಯುಕ್ತವಾಗಲು ನಿಮಿಷ ತೆಗೆದುಕೊಳ್ಳುತ್ತವೆ",
+        "ತಕ್ಷಣ ಆರಂಭ",
+        "ಉಚಿತ",
+        "image ಬೇಡ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A better scaling signal:",
+       "qKn": "ಉತ್ತಮ ವಿಸ್ತರಣೆ ಸಂಕೇತ:",
+       "opts": [
+        "Queue depth",
+        "Font size",
+        "Colour",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸರತಿ ಆಳ",
+        "ಫಾಂಟ್ ಗಾತ್ರ",
+        "ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "GPU utilisation alone:",
+       "qKn": "GPU ಬಳಕೆ ಮಾತ್ರ:",
+       "opts": [
+        "Can mislead",
+        "Is perfect",
+        "Is useless always",
+        "Is secret"
+       ],
+       "optsKn": [
+        "ದಾರಿ ತಪ್ಪಿಸಬಹುದು",
+        "ಪರಿಪೂರ್ಣ",
+        "ಯಾವಾಗಲೂ ನಿರುಪಯುಕ್ತ",
+        "ರಹಸ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6666020ed05b32162b",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "GPU Autoscaling on Kubernetes: Karpenter, KAI Scheduler — Node Provisioning: Karpenter Style",
+  "titleKn": "Kubernetes ನಲ್ಲಿ GPU Autoscaling — ನೋಡ್ ಒದಗಿಸುವಿಕೆ: Karpenter ಶೈಲಿ",
+  "desc": "Node provisioners watch unschedulable pods and launch right-sized nodes, then consolidate when capacity is idle.",
+  "descKn": "ನೋಡ್ provisioners ಶೆಡ್ಯೂಲ್ ಆಗದ pods ಗಮನಿಸಿ ಸರಿಯಾದ ಗಾತ್ರದ ನೋಡ್ ಆರಂಭಿಸಿ, ಸಾಮರ್ಥ್ಯ ನಿಷ್ಕ್ರಿಯವಾದಾಗ ಕ್ರೋಢೀಕರಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Describe just-in-time node launch.",
+   "Explain consolidation and spot instances."
+  ],
+  "objectivesKn": [
+   "just-in-time ನೋಡ್ ಆರಂಭ ವಿವರಿಸಿ.",
+   "ಕ್ರೋಢೀಕರಣ ಮತ್ತು spot instances ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "GPU Autoscaling on Kubernetes: Karpenter, KAI Scheduler — Node Provisioning: Karpenter Style",
+     "textKn": "GPU Autoscaling on Kubernetes: Karpenter, KAI Scheduler — Node Provisioning: Karpenter Style",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in GPU Autoscaling on Kubernetes: Karpenter, KAI Scheduler",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Right-Sized Nodes",
+     "headingKn": "ಸರಿಯಾದ ಗಾತ್ರದ ನೋಡ್‌ಗಳು",
+     "bodyEn": "When pods cannot be scheduled, the provisioner picks an instance type that fits their GPU and memory needs and launches it, instead of scaling fixed node groups.",
+     "bodyKn": "pods ಶೆಡ್ಯೂಲ್ ಆಗದಿದ್ದಾಗ provisioner ಅವುಗಳ GPU ಮತ್ತು ಮೆಮೊರಿ ಅಗತ್ಯಕ್ಕೆ ಹೊಂದುವ instance ವಿಧ ಆರಿಸಿ ಆರಂಭಿಸುತ್ತದೆ, ನಿಗದಿತ ನೋಡ್ ಗುಂಪು ವಿಸ್ತರಿಸುವ ಬದಲು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Consolidation and Spot",
+     "headingKn": "ಕ್ರೋಢೀಕರಣ ಮತ್ತು Spot",
+     "bodyEn": "Idle or under-used nodes are drained and removed. Spot capacity is cheaper but can be reclaimed, so serving needs graceful draining and on-demand fallback.",
+     "bodyKn": "ನಿಷ್ಕ್ರಿಯ ಅಥವಾ ಕಡಿಮೆ ಬಳಕೆ ನೋಡ್‌ಗಳನ್ನು drain ಮಾಡಿ ತೆಗೆಯಲಾಗುತ್ತದೆ. Spot ಅಗ್ಗ ಆದರೆ ಹಿಂಪಡೆಯಬಹುದು; ಸೇವೆಗೆ ಸುಗಮ draining ಮತ್ತು on-demand fallback ಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Launch right-sized nodes just in time.\n• Consolidate idle nodes; handle spot reclaim.",
+     "bodyKn": "• ಸರಿಯಾದ ಗಾತ್ರದ ನೋಡ್ ಅಗತ್ಯಕ್ಕೆ ತಕ್ಕಂತೆ.\n• ನಿಷ್ಕ್ರಿಯ ಕ್ರೋಢೀಕರಣ; spot ಹಿಂಪಡೆ ನಿರ್ವಹಣೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A provisioner reacts to:",
+       "qKn": "provisioner ಸ್ಪಂದಿಸುವುದು:",
+       "opts": [
+        "Unschedulable pods",
+        "Fonts",
+        "Colours",
+        "Logos"
+       ],
+       "optsKn": [
+        "ಶೆಡ್ಯೂಲ್ ಆಗದ pods",
+        "ಫಾಂಟ್",
+        "ಬಣ್ಣ",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Spot capacity is:",
+       "qKn": "Spot ಸಾಮರ್ಥ್ಯ:",
+       "opts": [
+        "Cheaper but reclaimable",
+        "Free forever",
+        "Unreclaimable",
+        "Slow always"
+       ],
+       "optsKn": [
+        "ಅಗ್ಗ ಆದರೆ ಹಿಂಪಡೆಯಬಹುದು",
+        "ಶಾಶ್ವತ ಉಚಿತ",
+        "ಹಿಂಪಡೆಯಲಾಗದು",
+        "ಯಾವಾಗಲೂ ನಿಧಾನ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Consolidation:",
+       "qKn": "ಕ್ರೋಢೀಕರಣ:",
+       "opts": [
+        "Removes idle nodes",
+        "Adds idle nodes",
+        "Deletes pods",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ನಿಷ್ಕ್ರಿಯ ನೋಡ್ ತೆಗೆಯುತ್ತದೆ",
+        "ನಿಷ್ಕ್ರಿಯ ನೋಡ್ ಸೇರಿಸುತ್ತದೆ",
+        "pods ಅಳಿಸುತ್ತದೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6666020ed05b32162b",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "GPU Autoscaling on Kubernetes: Karpenter, KAI Scheduler — GPU-Aware Scheduling",
+  "titleKn": "Kubernetes ನಲ್ಲಿ GPU Autoscaling — GPU-ಜಾಗೃತ ಶೆಡ್ಯೂಲಿಂಗ್",
+  "desc": "Schedulers can share and pack GPUs across teams with quotas, priorities and fractional allocation.",
+  "descKn": "ಶೆಡ್ಯೂಲರ್‌ಗಳು quotas, ಆದ್ಯತೆ, ಭಾಗಶಃ ಹಂಚಿಕೆಯೊಂದಿಗೆ ತಂಡಗಳ ನಡುವೆ GPU ಹಂಚಿ ಪ್ಯಾಕ್ ಮಾಡಬಹುದು.",
+  "objectives": [
+   "Explain fair sharing and priorities.",
+   "Describe gang scheduling for multi-GPU jobs."
+  ],
+  "objectivesKn": [
+   "ನ್ಯಾಯಯುತ ಹಂಚಿಕೆ ಮತ್ತು ಆದ್ಯತೆ ವಿವರಿಸಿ.",
+   "ಬಹು-GPU ಕೆಲಸಕ್ಕೆ gang ಶೆಡ್ಯೂಲಿಂಗ್ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "GPU Autoscaling on Kubernetes: Karpenter, KAI Scheduler — GPU-Aware Scheduling",
+     "textKn": "GPU Autoscaling on Kubernetes: Karpenter, KAI Scheduler — GPU-Aware Scheduling",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in GPU Autoscaling on Kubernetes: Karpenter, KAI Scheduler",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Fair Sharing",
+     "headingKn": "ನ್ಯಾಯಯುತ ಹಂಚಿಕೆ",
+     "bodyEn": "A GPU-aware scheduler enforces per-team quotas and priorities so training jobs and inference services do not starve each other, and can allocate fractions of a GPU.",
+     "bodyKn": "GPU-ಜಾಗೃತ ಶೆಡ್ಯೂಲರ್ ಪ್ರತಿ ತಂಡ quotas ಮತ್ತು ಆದ್ಯತೆ ಜಾರಿಗೊಳಿಸಿ ತರಬೇತಿ ಮತ್ತು inference ಸೇವೆಗಳು ಪರಸ್ಪರ ಹಸಿವಿನಿಂದ ಬಳಲದಂತೆ ಮಾಡುತ್ತದೆ, GPU ಭಾಗ ಹಂಚಬಲ್ಲದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Gang Scheduling",
+     "headingKn": "Gang ಶೆಡ್ಯೂಲಿಂಗ್",
+     "bodyEn": "A multi-GPU job needs all its pods at once. Gang scheduling starts them together or not at all, avoiding partial starts that hold GPUs idle.",
+     "bodyKn": "ಬಹು-GPU ಕೆಲಸಕ್ಕೆ ಎಲ್ಲ pods ಒಮ್ಮೆಲೇ ಬೇಕು. gang ಶೆಡ್ಯೂಲಿಂಗ್ ಒಟ್ಟಿಗೆ ಅಥವಾ ಇಲ್ಲ ಎಂದು ಆರಂಭಿಸುತ್ತದೆ; GPU ನಿಷ್ಕ್ರಿಯ ಹಿಡಿಯುವ ಭಾಗಶಃ ಆರಂಭ ತಪ್ಪಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Quotas and priorities prevent starvation.\n• Gang scheduling avoids partial starts.",
+     "bodyKn": "• quotas, ಆದ್ಯತೆ ಹಸಿವು ತಡೆ.\n• gang ಶೆಡ್ಯೂಲಿಂಗ್ ಭಾಗಶಃ ಆರಂಭ ತಪ್ಪಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Gang scheduling starts pods:",
+       "qKn": "gang ಶೆಡ್ಯೂಲಿಂಗ್ pods ಆರಂಭ:",
+       "opts": [
+        "Together or not at all",
+        "One by one always",
+        "Randomly",
+        "Never"
+       ],
+       "optsKn": [
+        "ಒಟ್ಟಿಗೆ ಅಥವಾ ಇಲ್ಲ",
+        "ಯಾವಾಗಲೂ ಒಂದೊಂದಾಗಿ",
+        "ಯಾದೃಚ್ಛಿಕ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Quotas prevent:",
+       "qKn": "quotas ತಡೆಯುವುದು:",
+       "opts": [
+        "Teams starving each other",
+        "All usage",
+        "Scheduling",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ತಂಡಗಳು ಪರಸ್ಪರ ಹಸಿವು",
+        "ಎಲ್ಲ ಬಳಕೆ",
+        "ಶೆಡ್ಯೂಲಿಂಗ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Fractional GPUs allow:",
+       "qKn": "ಭಾಗಶಃ GPUs ಅನುಮತಿಸುವುದು:",
+       "opts": [
+        "Sharing one GPU",
+        "Removing GPUs",
+        "Bigger GPUs",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಒಂದು GPU ಹಂಚಿಕೆ",
+        "GPUs ತೆಗೆಯುವುದು",
+        "ದೊಡ್ಡ GPUs",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6666020ed05b32162e",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "vLLM Serving Internals: PagedAttention, Continuous Batching, Chunked Prefill — PagedAttention",
+  "titleKn": "vLLM Serving ಆಂತರಿಕ: PagedAttention, Continuous Batching, Chunked Prefill — PagedAttention",
+  "desc": "PagedAttention stores the KV cache in fixed-size blocks, avoiding the fragmentation of contiguous allocation.",
+  "descKn": "PagedAttention KV cache ಅನ್ನು ನಿಗದಿತ ಗಾತ್ರದ ಬ್ಲಾಕ್‌ಗಳಲ್ಲಿ ಸಂಗ್ರಹಿಸಿ ನಿರಂತರ ಹಂಚಿಕೆಯ ವಿಭಜನೆ ತಪ್ಪಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Explain KV cache memory waste.",
+   "Describe block tables like virtual memory."
+  ],
+  "objectivesKn": [
+   "KV cache ಮೆಮೊರಿ ವ್ಯರ್ಥ ವಿವರಿಸಿ.",
+   "virtual memory ಯಂತೆ block tables ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "vLLM Serving Internals: PagedAttention, Continuous Batching, Chunked Prefill — PagedAttention",
+     "textKn": "vLLM Serving Internals: PagedAttention, Continuous Batching, Chunked Prefill — PagedAttention",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in vLLM Serving Internals: PagedAttention, Continuous Batching, Chunked Prefill",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Memory Problem",
+     "headingKn": "ಮೆಮೊರಿ ಸಮಸ್ಯೆ",
+     "bodyEn": "Each request's KV cache grows as it generates tokens. Reserving a maximum-length contiguous region per request wastes memory and limits how many requests fit.",
+     "bodyKn": "ಪ್ರತಿ ವಿನಂತಿಯ KV cache token ರಚಿಸಿದಂತೆ ಬೆಳೆಯುತ್ತದೆ. ಪ್ರತಿ ವಿನಂತಿಗೆ ಗರಿಷ್ಠ ಉದ್ದದ ನಿರಂತರ ಪ್ರದೇಶ ಕಾಯ್ದಿರಿಸಿದರೆ ಮೆಮೊರಿ ವ್ಯರ್ಥ ಮತ್ತು ಹೊಂದುವ ವಿನಂತಿ ಸಂಖ್ಯೆ ಮಿತಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Blocks and Tables",
+     "headingKn": "ಬ್ಲಾಕ್ ಮತ್ತು Tables",
+     "bodyEn": "PagedAttention splits the cache into small blocks allocated on demand and tracked by a block table, like pages in virtual memory. Waste falls and more requests run at once.",
+     "bodyKn": "PagedAttention cache ಅನ್ನು ಬೇಡಿಕೆಯ ಮೇಲೆ ಹಂಚುವ ಸಣ್ಣ ಬ್ಲಾಕ್‌ಗಳಾಗಿ ಒಡೆದು virtual memory ಪುಟಗಳಂತೆ block table ನಿಂದ ಗಮನಿಸುತ್ತದೆ. ವ್ಯರ್ಥ ಕಡಿಮೆ, ಹೆಚ್ಚು ವಿನಂತಿ ಒಮ್ಮೆಲೇ ಚಲಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Contiguous reservation wastes memory.\n• Paged blocks cut waste and raise concurrency.",
+     "bodyKn": "• ನಿರಂತರ ಕಾಯ್ದಿರಿಸುವಿಕೆ ಮೆಮೊರಿ ವ್ಯರ್ಥ.\n• ಬ್ಲಾಕ್ ವ್ಯರ್ಥ ಕಡಿಮೆ, concurrency ಹೆಚ್ಚು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "The KV cache grows as:",
+       "qKn": "KV cache ಬೆಳೆಯುವುದು:",
+       "opts": [
+        "Tokens are generated",
+        "Time passes only",
+        "Never",
+        "Files close"
+       ],
+       "optsKn": [
+        "tokens ರಚಿಸಿದಂತೆ",
+        "ಸಮಯ ಕಳೆದಂತೆ ಮಾತ್ರ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಫೈಲ್ ಮುಚ್ಚಿದಂತೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "PagedAttention resembles:",
+       "qKn": "PagedAttention ಹೋಲುವುದು:",
+       "opts": [
+        "Virtual memory paging",
+        "A database index",
+        "A CSS grid",
+        "A queue"
+       ],
+       "optsKn": [
+        "virtual memory paging",
+        "ಡೇಟಾಬೇಸ್ index",
+        "CSS grid",
+        "queue"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Result:",
+       "qKn": "ಫಲಿತಾಂಶ:",
+       "opts": [
+        "Less waste, more concurrent requests",
+        "More waste",
+        "Fewer requests",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಕಡಿಮೆ ವ್ಯರ್ಥ, ಹೆಚ್ಚು ಏಕಕಾಲಿಕ ವಿನಂತಿ",
+        "ಹೆಚ್ಚು ವ್ಯರ್ಥ",
+        "ಕಡಿಮೆ ವಿನಂತಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6666020ed05b32162e",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "vLLM Serving Internals: PagedAttention, Continuous Batching, Chunked Prefill — Continuous Batching",
+  "titleKn": "vLLM Serving ಆಂತರಿಕ: PagedAttention, Continuous Batching, Chunked Prefill — Continuous Batching",
+  "desc": "Continuous batching adds and removes requests from the running batch at every step instead of waiting for the whole batch to finish.",
+  "descKn": "continuous batching ಇಡೀ batch ಮುಗಿಯುವವರೆಗೆ ಕಾಯದೆ ಪ್ರತಿ ಹಂತದಲ್ಲಿ ಚಲಿಸುವ batch ಗೆ ವಿನಂತಿ ಸೇರಿಸಿ ತೆಗೆಯುತ್ತದೆ.",
+  "objectives": [
+   "Contrast static and continuous batching.",
+   "Explain the throughput benefit."
+  ],
+  "objectivesKn": [
+   "static ಮತ್ತು continuous batching ಹೋಲಿಸಿ.",
+   "throughput ಲಾಭ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "vLLM Serving Internals: PagedAttention, Continuous Batching, Chunked Prefill — Continuous Batching",
+     "textKn": "vLLM Serving Internals: PagedAttention, Continuous Batching, Chunked Prefill — Continuous Batching",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in vLLM Serving Internals: PagedAttention, Continuous Batching, Chunked Prefill",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Static Batching Waits",
+     "headingKn": "Static Batching ಕಾಯುತ್ತದೆ",
+     "bodyEn": "In static batching a short request waits for the longest one in its batch to finish, leaving GPU capacity idle.",
+     "bodyKn": "static batching ನಲ್ಲಿ ಚಿಕ್ಕ ವಿನಂತಿ ತನ್ನ batch ನ ಅತಿ ಉದ್ದದ್ದು ಮುಗಿಯುವವರೆಗೆ ಕಾಯುತ್ತದೆ; GPU ಸಾಮರ್ಥ್ಯ ನಿಷ್ಕ್ರಿಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Iteration-Level Scheduling",
+     "headingKn": "Iteration-ಮಟ್ಟದ ಶೆಡ್ಯೂಲಿಂಗ್",
+     "bodyEn": "Continuous batching schedules per generation step. Finished requests leave and new ones join immediately, keeping the GPU busy and raising throughput.",
+     "bodyKn": "continuous batching ಪ್ರತಿ ರಚನೆ ಹಂತಕ್ಕೆ ಶೆಡ್ಯೂಲ್ ಮಾಡುತ್ತದೆ. ಮುಗಿದ ವಿನಂತಿ ಹೊರಡುತ್ತದೆ, ಹೊಸವು ತಕ್ಷಣ ಸೇರುತ್ತವೆ; GPU ಕಾರ್ಯನಿರತ, throughput ಹೆಚ್ಚು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Static batches wait for the longest request.\n• Continuous batching schedules every step.",
+     "bodyKn": "• static batch ಅತಿ ಉದ್ದದ್ದಕ್ಕೆ ಕಾಯುತ್ತದೆ.\n• continuous batching ಪ್ರತಿ ಹಂತ ಶೆಡ್ಯೂಲ್."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "In static batching short requests:",
+       "qKn": "static batching ನಲ್ಲಿ ಚಿಕ್ಕ ವಿನಂತಿ:",
+       "opts": [
+        "Wait for the longest",
+        "Finish first and leave",
+        "Are skipped",
+        "Are faster"
+       ],
+       "optsKn": [
+        "ಅತಿ ಉದ್ದದ್ದಕ್ಕೆ ಕಾಯುತ್ತವೆ",
+        "ಮೊದಲು ಮುಗಿದು ಹೊರಡುತ್ತವೆ",
+        "ಬಿಡಲಾಗುತ್ತವೆ",
+        "ವೇಗ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Continuous batching schedules:",
+       "qKn": "continuous batching ಶೆಡ್ಯೂಲ್:",
+       "opts": [
+        "Per generation step",
+        "Per day",
+        "Once",
+        "Never"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ ರಚನೆ ಹಂತ",
+        "ಪ್ರತಿ ದಿನ",
+        "ಒಮ್ಮೆ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Benefit:",
+       "qKn": "ಲಾಭ:",
+       "opts": [
+        "Higher throughput",
+        "Lower throughput",
+        "None",
+        "Slower"
+       ],
+       "optsKn": [
+        "ಹೆಚ್ಚು throughput",
+        "ಕಡಿಮೆ throughput",
+        "ಯಾವುದೂ ಇಲ್ಲ",
+        "ನಿಧಾನ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6666020ed05b32162e",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "vLLM Serving Internals: PagedAttention, Continuous Batching, Chunked Prefill — Chunked Prefill",
+  "titleKn": "vLLM Serving ಆಂತರಿಕ: PagedAttention, Continuous Batching, Chunked Prefill — Chunked Prefill",
+  "desc": "Chunked prefill splits long prompt processing into pieces mixed with decode steps to keep latency smooth.",
+  "descKn": "chunked prefill ಉದ್ದ prompt ಸಂಸ್ಕರಣೆಯನ್ನು ತುಣುಕುಗಳಾಗಿ ಒಡೆದು decode ಹಂತಗಳೊಂದಿಗೆ ಬೆರೆಸಿ ವಿಳಂಬ ಸುಗಮವಾಗಿಡುತ್ತದೆ.",
+  "objectives": [
+   "Explain prefill versus decode.",
+   "Describe how chunking reduces stalls."
+  ],
+  "objectivesKn": [
+   "prefill ಮತ್ತು decode ವಿವರಿಸಿ.",
+   "chunking ನಿಲುಗಡೆ ಹೇಗೆ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "vLLM Serving Internals: PagedAttention, Continuous Batching, Chunked Prefill — Chunked Prefill",
+     "textKn": "vLLM Serving Internals: PagedAttention, Continuous Batching, Chunked Prefill — Chunked Prefill",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in vLLM Serving Internals: PagedAttention, Continuous Batching, Chunked Prefill",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Prefill Is Heavy",
+     "headingKn": "Prefill ಭಾರ",
+     "bodyEn": "Prefill processes the whole prompt at once and is compute-heavy, while decode generates one token at a time. A huge prefill can stall other requests' decoding.",
+     "bodyKn": "prefill ಇಡೀ prompt ಒಮ್ಮೆಲೇ ಸಂಸ್ಕರಿಸುತ್ತದೆ, ಗಣನೆ-ಭಾರ; decode ಒಂದೊಂದೇ token ರಚಿಸುತ್ತದೆ. ದೊಡ್ಡ prefill ಇತರ ವಿನಂತಿಗಳ decode ನಿಲ್ಲಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Chunking",
+     "headingKn": "Chunking",
+     "bodyEn": "Splitting the prompt into chunks lets each step also include decode work, so ongoing users keep receiving tokens steadily while a long prompt is processed.",
+     "bodyKn": "prompt ಅನ್ನು chunks ಆಗಿ ಒಡೆದರೆ ಪ್ರತಿ ಹಂತದಲ್ಲಿ decode ಕೆಲಸವೂ ಇರಬಹುದು; ಉದ್ದ prompt ಸಂಸ್ಕರಿಸುವಾಗ ಈಗಿನ ಬಳಕೆದಾರರು ಸ್ಥಿರವಾಗಿ tokens ಪಡೆಯುತ್ತಾರೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Prefill is compute-heavy; decode is per-token.\n• Chunking smooths latency for other users.",
+     "bodyKn": "• prefill ಗಣನೆ-ಭಾರ; decode ಪ್ರತಿ token.\n• chunking ಇತರರ ವಿಳಂಬ ಸುಗಮ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Decode generates:",
+       "qKn": "decode ರಚಿಸುವುದು:",
+       "opts": [
+        "One token at a time",
+        "The whole prompt",
+        "Images",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಒಂದೊಂದು token",
+        "ಇಡೀ prompt",
+        "ಚಿತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A huge prefill can:",
+       "qKn": "ದೊಡ್ಡ prefill:",
+       "opts": [
+        "Stall others' decoding",
+        "Speed everyone",
+        "Save memory",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಇತರರ decode ನಿಲ್ಲಿಸಬಹುದು",
+        "ಎಲ್ಲರ ವೇಗ",
+        "ಮೆಮೊರಿ ಉಳಿತಾಯ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Chunking:",
+       "qKn": "chunking:",
+       "opts": [
+        "Mixes prefill pieces with decode",
+        "Deletes prompts",
+        "Adds GPUs",
+        "Nothing"
+       ],
+       "optsKn": [
+        "prefill ತುಣುಕುಗಳನ್ನು decode ನೊಂದಿಗೆ ಬೆರೆಸುತ್ತದೆ",
+        "prompts ಅಳಿಸುತ್ತದೆ",
+        "GPUs ಸೇರಿಸುತ್ತದೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6666020ed05b321631",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "EAGLE-3 Speculative Decoding in Production — Speculative Decoding Basics",
+  "titleKn": "ಉತ್ಪಾದನೆಯಲ್ಲಿ EAGLE-3 Speculative Decoding — Speculative Decoding ಮೂಲಗಳು",
+  "desc": "A cheap draft proposes several tokens and the large model verifies them in one pass, keeping the output identical.",
+  "descKn": "ಅಗ್ಗದ draft ಹಲವು tokens ಪ್ರಸ್ತಾಪಿಸಿ ದೊಡ್ಡ ಮಾದರಿ ಒಂದೇ ಪಾಸ್‌ನಲ್ಲಿ ಪರಿಶೀಲಿಸುತ್ತದೆ; ಔಟ್‌ಪುಟ್ ಅದೇ ಉಳಿಯುತ್ತದೆ.",
+  "objectives": [
+   "Describe draft and verify.",
+   "Explain why output distribution is preserved."
+  ],
+  "objectivesKn": [
+   "draft ಮತ್ತು verify ವಿವರಿಸಿ.",
+   "ಔಟ್‌ಪುಟ್ ವಿತರಣೆ ಉಳಿಯುವುದೇಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "EAGLE-3 Speculative Decoding in Production — Speculative Decoding Basics",
+     "textKn": "EAGLE-3 Speculative Decoding in Production — Speculative Decoding Basics",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in EAGLE-3 Speculative Decoding in Production",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Draft and Verify",
+     "headingKn": "Draft ಮತ್ತು Verify",
+     "bodyEn": "Generating one token per large-model pass is slow because decoding is memory-bound. A small drafter guesses several tokens and the large model checks them all at once.",
+     "bodyKn": "ದೊಡ್ಡ ಮಾದರಿಯ ಪ್ರತಿ ಪಾಸ್‌ಗೆ ಒಂದು token ರಚಿಸುವುದು ನಿಧಾನ; decode ಮೆಮೊರಿ-ಬದ್ಧ. ಸಣ್ಣ drafter ಹಲವು tokens ಊಹಿಸಿ ದೊಡ್ಡ ಮಾದರಿ ಎಲ್ಲವನ್ನೂ ಒಮ್ಮೆಲೇ ಪರಿಶೀಲಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lossless by Design",
+     "headingKn": "ವಿನ್ಯಾಸದಿಂದ ನಷ್ಟರಹಿತ",
+     "bodyEn": "Accepted tokens are exactly those the large model would have produced, using a verification rule that preserves its distribution. Speed rises, quality does not change.",
+     "bodyKn": "ಸ್ವೀಕರಿಸಿದ tokens ದೊಡ್ಡ ಮಾದರಿ ಉತ್ಪಾದಿಸುತ್ತಿದ್ದವೇ, ಅದರ ವಿತರಣೆ ಉಳಿಸುವ ಪರಿಶೀಲನಾ ನಿಯಮದೊಂದಿಗೆ. ವೇಗ ಹೆಚ್ಚು, ಗುಣಮಟ್ಟ ಬದಲಾಗದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Draft several tokens, verify in one pass.\n• Output distribution is preserved.",
+     "bodyKn": "• ಹಲವು tokens draft, ಒಂದೇ ಪಾಸ್‌ನಲ್ಲಿ verify.\n• ಔಟ್‌ಪುಟ್ ವಿತರಣೆ ಉಳಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Who verifies the draft?",
+       "qKn": "draft ಪರಿಶೀಲಿಸುವುದು ಯಾರು?",
+       "opts": [
+        "The large model",
+        "The user",
+        "A database",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ದೊಡ್ಡ ಮಾದರಿ",
+        "ಬಳಕೆದಾರ",
+        "ಡೇಟಾಬೇಸ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Quality with speculative decoding:",
+       "qKn": "speculative decoding ನಲ್ಲಿ ಗುಣಮಟ್ಟ:",
+       "opts": [
+        "Unchanged",
+        "Always lower",
+        "Always higher",
+        "Random"
+       ],
+       "optsKn": [
+        "ಬದಲಾಗುವುದಿಲ್ಲ",
+        "ಯಾವಾಗಲೂ ಕಡಿಮೆ",
+        "ಯಾವಾಗಲೂ ಹೆಚ್ಚು",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Decoding is usually:",
+       "qKn": "decode ಸಾಮಾನ್ಯವಾಗಿ:",
+       "opts": [
+        "Memory-bound",
+        "Free",
+        "Instant",
+        "Disk-bound"
+       ],
+       "optsKn": [
+        "ಮೆಮೊರಿ-ಬದ್ಧ",
+        "ಉಚಿತ",
+        "ತಕ್ಷಣ",
+        "ಡಿಸ್ಕ್-ಬದ್ಧ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6666020ed05b321631",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "EAGLE-3 Speculative Decoding in Production — EAGLE-Style Draft Heads",
+  "titleKn": "ಉತ್ಪಾದನೆಯಲ್ಲಿ EAGLE-3 Speculative Decoding — EAGLE ಶೈಲಿ Draft Heads",
+  "desc": "EAGLE-style methods predict from the target model's own hidden features with a light head, giving higher acceptance than separate small models.",
+  "descKn": "EAGLE ಶೈಲಿ ವಿಧಾನಗಳು ಗುರಿ ಮಾದರಿಯ ಸ್ವಂತ hidden features ನಿಂದ ಹಗುರ head ಮೂಲಕ ಊಹಿಸಿ ಪ್ರತ್ಯೇಕ ಸಣ್ಣ ಮಾದರಿಗಿಂತ ಹೆಚ್ಚು ಸ್ವೀಕಾರ ನೀಡುತ್ತವೆ.",
+  "objectives": [
+   "Explain acceptance rate.",
+   "Describe why using hidden features helps."
+  ],
+  "objectivesKn": [
+   "ಸ್ವೀಕಾರ ದರ ವಿವರಿಸಿ.",
+   "hidden features ಬಳಕೆ ಏಕೆ ಸಹಾಯ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "EAGLE-3 Speculative Decoding in Production — EAGLE-Style Draft Heads",
+     "textKn": "EAGLE-3 Speculative Decoding in Production — EAGLE-Style Draft Heads",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in EAGLE-3 Speculative Decoding in Production",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Acceptance Rate",
+     "headingKn": "ಸ್ವೀಕಾರ ದರ",
+     "bodyEn": "Speedup depends on how many drafted tokens the target accepts on average. Better drafts mean more tokens accepted per verification pass.",
+     "bodyKn": "ವೇಗ ಹೆಚ್ಚಳ ಗುರಿ ಮಾದರಿ ಸರಾಸರಿ ಎಷ್ಟು draft tokens ಸ್ವೀಕರಿಸುತ್ತದೆ ಎಂಬುದರ ಮೇಲೆ ಅವಲಂಬಿತ. ಉತ್ತಮ drafts ಎಂದರೆ ಪ್ರತಿ ಪರಿಶೀಲನೆ ಪಾಸ್‌ಗೆ ಹೆಚ್ಚು tokens ಸ್ವೀಕಾರ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Using Target Features",
+     "headingKn": "ಗುರಿ Features ಬಳಕೆ",
+     "bodyEn": "A head that reads the target's internal features can anticipate its choices better than an independent small model, raising acceptance at modest extra cost.",
+     "bodyKn": "ಗುರಿಯ ಆಂತರಿಕ features ಓದುವ head ಸ್ವತಂತ್ರ ಸಣ್ಣ ಮಾದರಿಗಿಂತ ಅದರ ಆಯ್ಕೆ ಉತ್ತಮವಾಗಿ ಮುನ್ನೋಡಬಲ್ಲದು; ಸ್ವಲ್ಪ ಹೆಚ್ಚುವರಿ ವೆಚ್ಚದಲ್ಲಿ ಸ್ವೀಕಾರ ಹೆಚ್ಚು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Speedup follows acceptance rate.\n• Heads using target features draft better.",
+     "bodyKn": "• ವೇಗ ಸ್ವೀಕಾರ ದರ ಅನುಸರಿಸುತ್ತದೆ.\n• ಗುರಿ features ಬಳಸುವ heads ಉತ್ತಮ draft."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Higher acceptance means:",
+       "qKn": "ಹೆಚ್ಚು ಸ್ವೀಕಾರ ಎಂದರೆ:",
+       "opts": [
+        "Greater speedup",
+        "Slower output",
+        "More errors",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹೆಚ್ಚು ವೇಗ",
+        "ನಿಧಾನ ಔಟ್‌ಪುಟ್",
+        "ಹೆಚ್ಚು ದೋಷ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "EAGLE-style heads read:",
+       "qKn": "EAGLE ಶೈಲಿ heads ಓದುವುದು:",
+       "opts": [
+        "The target's hidden features",
+        "Only the prompt text",
+        "Nothing",
+        "Images"
+       ],
+       "optsKn": [
+        "ಗುರಿಯ hidden features",
+        "prompt ಪಠ್ಯ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಚಿತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Speedup depends on:",
+       "qKn": "ವೇಗ ಅವಲಂಬನೆ:",
+       "opts": [
+        "Draft quality",
+        "Font size",
+        "Colour",
+        "Nothing"
+       ],
+       "optsKn": [
+        "draft ಗುಣಮಟ್ಟ",
+        "ಫಾಂಟ್ ಗಾತ್ರ",
+        "ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6666020ed05b321631",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "EAGLE-3 Speculative Decoding in Production — Running It in Production",
+  "titleKn": "ಉತ್ಪಾದನೆಯಲ್ಲಿ EAGLE-3 Speculative Decoding — ಉತ್ಪಾದನೆಯಲ್ಲಿ ಚಲಾಯಿಸುವುದು",
+  "desc": "Speculation helps most at low batch sizes and can hurt at high load, so measure on real traffic and monitor acceptance.",
+  "descKn": "speculation ಕಡಿಮೆ batch ಗಾತ್ರದಲ್ಲಿ ಹೆಚ್ಚು ಸಹಾಯ, ಹೆಚ್ಚು ಹೊರೆಯಲ್ಲಿ ಹಾನಿ ಮಾಡಬಹುದು; ನಿಜ ಟ್ರಾಫಿಕ್‌ನಲ್ಲಿ ಅಳೆದು ಸ್ವೀಕಾರ ಗಮನಿಸಿ.",
+  "objectives": [
+   "Recognise load-dependent benefit.",
+   "Monitor acceptance and fall back."
+  ],
+  "objectivesKn": [
+   "ಹೊರೆ-ಅವಲಂಬಿತ ಲಾಭ ಗುರುತಿಸಿ.",
+   "ಸ್ವೀಕಾರ ಗಮನಿಸಿ fallback ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "EAGLE-3 Speculative Decoding in Production — Running It in Production",
+     "textKn": "EAGLE-3 Speculative Decoding in Production — Running It in Production",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in EAGLE-3 Speculative Decoding in Production",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Load Matters",
+     "headingKn": "ಹೊರೆ ಮುಖ್ಯ",
+     "bodyEn": "At low load the GPU has spare compute for drafting and verifying. At very high load that spare compute vanishes and speculation can reduce throughput.",
+     "bodyKn": "ಕಡಿಮೆ ಹೊರೆಯಲ್ಲಿ GPU ಗೆ draft ಮತ್ತು verify ಮಾಡಲು ಉಳಿದ ಗಣನೆ ಇರುತ್ತದೆ. ಬಹಳ ಹೆಚ್ಚು ಹೊರೆಯಲ್ಲಿ ಆ ಉಳಿತಾಯ ಮಾಯವಾಗಿ speculation throughput ಕಡಿಮೆ ಮಾಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Monitor and Adapt",
+     "headingKn": "ಗಮನಿಸಿ ಮತ್ತು ಹೊಂದಿಸಿ",
+     "bodyEn": "Track acceptance rate per workload, since code and chat behave differently. Disable or reduce speculation when it stops paying off.",
+     "bodyKn": "ಕೋಡ್ ಮತ್ತು ಚಾಟ್ ಬೇರೆ ವರ್ತಿಸುವುದರಿಂದ ಕೆಲಸ ಪ್ರಕಾರ ಸ್ವೀಕಾರ ದರ ಗಮನಿಸಿ. ಲಾಭವಾಗದಿದ್ದಾಗ speculation ನಿಷ್ಕ್ರಿಯ ಅಥವಾ ಕಡಿಮೆ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Best at low batch sizes.\n• Monitor acceptance; disable when it does not pay.",
+     "bodyKn": "• ಕಡಿಮೆ batch ಗಾತ್ರದಲ್ಲಿ ಉತ್ತಮ.\n• ಸ್ವೀಕಾರ ಗಮನಿಸಿ; ಲಾಭವಿಲ್ಲದಿದ್ದರೆ ನಿಷ್ಕ್ರಿಯ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Speculation helps most at:",
+       "qKn": "speculation ಹೆಚ್ಚು ಸಹಾಯ:",
+       "opts": [
+        "Low load",
+        "Extreme load",
+        "No load only",
+        "Never"
+       ],
+       "optsKn": [
+        "ಕಡಿಮೆ ಹೊರೆ",
+        "ತೀವ್ರ ಹೊರೆ",
+        "ಹೊರೆ ಇಲ್ಲದಾಗ ಮಾತ್ರ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "At very high load it may:",
+       "qKn": "ಬಹಳ ಹೆಚ್ಚು ಹೊರೆಯಲ್ಲಿ:",
+       "opts": [
+        "Reduce throughput",
+        "Always help",
+        "Fix bugs",
+        "Nothing"
+       ],
+       "optsKn": [
+        "throughput ಕಡಿಮೆ ಮಾಡಬಹುದು",
+        "ಯಾವಾಗಲೂ ಸಹಾಯ",
+        "ದೋಷ ಸರಿಪಡಿಸು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Track acceptance:",
+       "qKn": "ಸ್ವೀಕಾರ ಗಮನಿಸಿ:",
+       "opts": [
+        "Per workload",
+        "Never",
+        "Only once",
+        "Only for logos"
+       ],
+       "optsKn": [
+        "ಕೆಲಸ ಪ್ರಕಾರ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಒಮ್ಮೆ ಮಾತ್ರ",
+        "ಲೋಗೋಗೆ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321634",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "SGLang and RadixAttention for Prefix-Heavy Workloads — Prefix Reuse",
+  "titleKn": "SGLang ಮತ್ತು RadixAttention — Prefix ಮರುಬಳಕೆ",
+  "desc": "Many requests share long prefixes such as system prompts and few-shot examples, so their KV cache can be reused.",
+  "descKn": "ಅನೇಕ ವಿನಂತಿಗಳು system prompts ಮತ್ತು few-shot ಉದಾಹರಣೆಯಂತಹ ಉದ್ದ prefixes ಹಂಚುತ್ತವೆ; ಅವುಗಳ KV cache ಮರುಬಳಸಬಹುದು.",
+  "objectives": [
+   "Identify prefix-heavy workloads.",
+   "Explain the saving from reusing computed KV cache."
+  ],
+  "objectivesKn": [
+   "prefix-ಭಾರಿ ಕೆಲಸ ಗುರುತಿಸಿ.",
+   "ಲೆಕ್ಕಿಸಿದ KV cache ಮರುಬಳಕೆ ಉಳಿತಾಯ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "SGLang and RadixAttention for Prefix-Heavy Workloads — Prefix Reuse",
+     "textKn": "SGLang and RadixAttention for Prefix-Heavy Workloads — Prefix Reuse",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in SGLang and RadixAttention for Prefix-Heavy Workloads",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Shared Prefixes",
+     "headingKn": "ಹಂಚಿದ Prefixes",
+     "bodyEn": "Chatbots, agents and RAG apps often start every request with the same long instructions. Recomputing them each time wastes compute.",
+     "bodyKn": "chatbots, agents, RAG ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಪ್ರತಿ ವಿನಂತಿಯನ್ನು ಅದೇ ಉದ್ದ ಸೂಚನೆಗಳಿಂದ ಆರಂಭಿಸುತ್ತವೆ. ಪ್ರತಿ ಬಾರಿ ಮರುಗಣನೆ ಗಣನೆ ವ್ಯರ್ಥ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Reuse the Cache",
+     "headingKn": "Cache ಮರುಬಳಕೆ",
+     "bodyEn": "If the KV cache for a prefix is already computed, a new request can skip that prefill work and start from the first new token, cutting latency and cost.",
+     "bodyKn": "prefix ನ KV cache ಈಗಾಗಲೇ ಲೆಕ್ಕಿಸಿದ್ದರೆ ಹೊಸ ವಿನಂತಿ ಆ prefill ಕೆಲಸ ಬಿಟ್ಟು ಮೊದಲ ಹೊಸ token ನಿಂದ ಆರಂಭಿಸಿ ವಿಳಂಬ ಮತ್ತು ವೆಚ್ಚ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Many requests share long prefixes.\n• Reusing cached KV skips prefill work.",
+     "bodyKn": "• ಅನೇಕ ವಿನಂತಿ ಉದ್ದ prefixes ಹಂಚುತ್ತವೆ.\n• ಮರುಬಳಕೆ prefill ಕೆಲಸ ಬಿಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Prefix reuse saves:",
+       "qKn": "prefix ಮರುಬಳಕೆ ಉಳಿತಾಯ:",
+       "opts": [
+        "Prefill compute",
+        "Disk space only",
+        "Nothing",
+        "Fonts"
+       ],
+       "optsKn": [
+        "prefill ಗಣನೆ",
+        "ಡಿಸ್ಕ್ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A prefix-heavy workload:",
+       "qKn": "prefix-ಭಾರಿ ಕೆಲಸ:",
+       "opts": [
+        "Shared system prompts",
+        "Unique random prompts only",
+        "No prompts",
+        "Only images"
+       ],
+       "optsKn": [
+        "ಹಂಚಿದ system prompts",
+        "ಅನನ್ಯ ಯಾದೃಚ್ಛಿಕ prompts ಮಾತ್ರ",
+        "prompts ಇಲ್ಲ",
+        "ಚಿತ್ರ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Skipping prefill lowers:",
+       "qKn": "prefill ಬಿಡುವುದು ಕಡಿಮೆ ಮಾಡುತ್ತದೆ:",
+       "opts": [
+        "Latency and cost",
+        "Quality only",
+        "Nothing",
+        "Users"
+       ],
+       "optsKn": [
+        "ವಿಳಂಬ ಮತ್ತು ವೆಚ್ಚ",
+        "ಗುಣಮಟ್ಟ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಳಕೆದಾರರು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321634",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "SGLang and RadixAttention for Prefix-Heavy Workloads — The Radix Tree",
+  "titleKn": "SGLang ಮತ್ತು RadixAttention — Radix Tree",
+  "desc": "RadixAttention keeps cached prefixes in a radix tree so any new request finds its longest cached match quickly.",
+  "descKn": "RadixAttention ಕ್ಯಾಶ್ ಮಾಡಿದ prefixes ಅನ್ನು radix tree ನಲ್ಲಿ ಇಡುತ್ತದೆ; ಹೊಸ ವಿನಂತಿ ತನ್ನ ಅತಿ ಉದ್ದದ ಕ್ಯಾಶ್ ಹೊಂದಾಣಿಕೆ ಬೇಗ ಕಂಡುಕೊಳ್ಳುತ್ತದೆ.",
+  "objectives": [
+   "Describe a radix tree of token sequences.",
+   "Explain eviction of least recently used branches."
+  ],
+  "objectivesKn": [
+   "token ಅನುಕ್ರಮಗಳ radix tree ವಿವರಿಸಿ.",
+   "ಇತ್ತೀಚೆಗೆ ಕಡಿಮೆ ಬಳಸಿದ ಶಾಖೆ ತೆಗೆಯುವಿಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "SGLang and RadixAttention for Prefix-Heavy Workloads — The Radix Tree",
+     "textKn": "SGLang and RadixAttention for Prefix-Heavy Workloads — The Radix Tree",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in SGLang and RadixAttention for Prefix-Heavy Workloads",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Tree of Prefixes",
+     "headingKn": "Prefixes ವೃಕ್ಷ",
+     "bodyEn": "Token sequences that share a beginning share a path in the tree. A new request walks the tree to find the longest prefix already cached.",
+     "bodyKn": "ಆರಂಭ ಹಂಚುವ token ಅನುಕ್ರಮಗಳು ವೃಕ್ಷದಲ್ಲಿ ಒಂದೇ ಹಾದಿ ಹಂಚುತ್ತವೆ. ಹೊಸ ವಿನಂತಿ ವೃಕ್ಷದಲ್ಲಿ ನಡೆದು ಈಗಾಗಲೇ ಕ್ಯಾಶ್ ಆದ ಅತಿ ಉದ್ದದ prefix ಕಂಡುಕೊಳ್ಳುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Eviction",
+     "headingKn": "ತೆಗೆಯುವಿಕೆ",
+     "bodyEn": "GPU memory is limited, so least recently used leaf branches are evicted first. Popular shared prefixes stay resident and keep paying off.",
+     "bodyKn": "GPU ಮೆಮೊರಿ ಸೀಮಿತ; ಇತ್ತೀಚೆಗೆ ಕಡಿಮೆ ಬಳಸಿದ ಎಲೆ ಶಾಖೆಗಳನ್ನು ಮೊದಲು ತೆಗೆಯಲಾಗುತ್ತದೆ. ಜನಪ್ರಿಯ ಹಂಚಿದ prefixes ಉಳಿದು ಲಾಭ ನೀಡುತ್ತಲೇ ಇರುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• A radix tree shares common prefixes.\n• LRU eviction keeps popular prefixes.",
+     "bodyKn": "• radix tree ಸಾಮಾನ್ಯ prefixes ಹಂಚುತ್ತದೆ.\n• LRU ತೆಗೆಯುವಿಕೆ ಜನಪ್ರಿಯ prefixes ಉಳಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A radix tree stores:",
+       "qKn": "radix tree ಸಂಗ್ರಹಿಸುವುದು:",
+       "opts": [
+        "Token prefixes",
+        "Images",
+        "Passwords",
+        "Fonts"
+       ],
+       "optsKn": [
+        "token prefixes",
+        "ಚಿತ್ರ",
+        "ಪಾಸ್‌ವರ್ಡ್",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Eviction removes:",
+       "qKn": "ತೆಗೆಯುವಿಕೆ ತೆಗೆಯುವುದು:",
+       "opts": [
+        "Least recently used branches",
+        "Most used",
+        "Everything",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಇತ್ತೀಚೆಗೆ ಕಡಿಮೆ ಬಳಸಿದ ಶಾಖೆ",
+        "ಹೆಚ್ಚು ಬಳಸಿದ್ದು",
+        "ಎಲ್ಲವೂ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A new request finds:",
+       "qKn": "ಹೊಸ ವಿನಂತಿ ಕಂಡುಕೊಳ್ಳುವುದು:",
+       "opts": [
+        "Its longest cached prefix",
+        "A random block",
+        "Nothing",
+        "A file"
+       ],
+       "optsKn": [
+        "ಅತಿ ಉದ್ದದ ಕ್ಯಾಶ್ prefix",
+        "ಯಾದೃಚ್ಛಿಕ ಬ್ಲಾಕ್",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫೈಲ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321634",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "SGLang and RadixAttention for Prefix-Heavy Workloads — Structured Programs and Cache-Aware Routing",
+  "titleKn": "SGLang ಮತ್ತು RadixAttention — ರಚನಾತ್ಮಕ ಪ್ರೋಗ್ರಾಂ ಮತ್ತು Cache-ಜಾಗೃತ Routing",
+  "desc": "SGLang lets programs with many dependent calls share cache, and routers can send similar requests to the same replica.",
+  "descKn": "SGLang ಹಲವು ಅವಲಂಬಿತ ಕರೆಗಳ ಪ್ರೋಗ್ರಾಂಗಳಿಗೆ cache ಹಂಚಲು ಬಿಡುತ್ತದೆ; routers ಸಮಾನ ವಿನಂತಿಗಳನ್ನು ಅದೇ ಪ್ರತಿಕೃತಿಗೆ ಕಳುಹಿಸಬಹುದು.",
+  "objectives": [
+   "Explain why agent loops benefit.",
+   "Describe cache-aware load balancing."
+  ],
+  "objectivesKn": [
+   "agent loops ಏಕೆ ಲಾಭ ವಿವರಿಸಿ.",
+   "cache-ಜಾಗೃತ ಲೋಡ್ ಬ್ಯಾಲೆನ್ಸಿಂಗ್ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "SGLang and RadixAttention for Prefix-Heavy Workloads — Structured Programs and Cache-Aware Routing",
+     "textKn": "SGLang and RadixAttention for Prefix-Heavy Workloads — Structured Programs and Cache-Aware Routing",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in SGLang and RadixAttention for Prefix-Heavy Workloads",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Agent Loops and Branching",
+     "headingKn": "Agent Loops ಮತ್ತು ಶಾಖೆ",
+     "bodyEn": "Agents call the model repeatedly with a growing shared history, and programs may branch into several continuations. Both reuse large prefixes heavily.",
+     "bodyKn": "agents ಬೆಳೆಯುವ ಹಂಚಿದ ಇತಿಹಾಸದೊಂದಿಗೆ ಮಾದರಿಯನ್ನು ಪದೇ ಪದೇ ಕರೆಯುತ್ತವೆ; ಪ್ರೋಗ್ರಾಂಗಳು ಹಲವು ಮುಂದುವರಿಕೆಗಳಾಗಿ ಶಾಖೆಯಾಗಬಹುದು. ಎರಡೂ ದೊಡ್ಡ prefixes ಹೆಚ್ಚು ಮರುಬಳಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cache-Aware Routing",
+     "headingKn": "Cache-ಜಾಗೃತ Routing",
+     "bodyEn": "With several replicas, sending requests with the same prefix to the same replica keeps hit rates high. Round-robin scatters them and loses the benefit.",
+     "bodyKn": "ಹಲವು ಪ್ರತಿಕೃತಿಗಳಿದ್ದಾಗ ಅದೇ prefix ವಿನಂತಿಗಳನ್ನು ಅದೇ ಪ್ರತಿಕೃತಿಗೆ ಕಳುಹಿಸಿದರೆ hit ದರ ಹೆಚ್ಚು. round-robin ಅವನ್ನು ಚದುರಿಸಿ ಲಾಭ ಕಳೆಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Agent loops and branching reuse big prefixes.\n• Route same-prefix requests to the same replica.",
+     "bodyKn": "• agent loops ಮತ್ತು ಶಾಖೆ prefixes ಮರುಬಳಕೆ.\n• ಅದೇ prefix ಅದೇ ಪ್ರತಿಕೃತಿಗೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Agent loops benefit because:",
+       "qKn": "agent loops ಲಾಭ ಏಕೆ?",
+       "opts": [
+        "They reuse a growing shared history",
+        "They are short",
+        "They use no model",
+        "They avoid prefixes"
+       ],
+       "optsKn": [
+        "ಬೆಳೆಯುವ ಹಂಚಿದ ಇತಿಹಾಸ ಮರುಬಳಸುತ್ತವೆ",
+        "ಚಿಕ್ಕ",
+        "ಮಾದರಿ ಬಳಸದು",
+        "prefixes ತಪ್ಪಿಸುತ್ತವೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Round-robin routing:",
+       "qKn": "round-robin routing:",
+       "opts": [
+        "Scatters similar requests, losing hits",
+        "Keeps hits high",
+        "Deletes caches",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸಮಾನ ವಿನಂತಿ ಚದುರಿಸಿ hits ಕಳೆಯುತ್ತದೆ",
+        "hits ಹೆಚ್ಚು ಇಡುತ್ತದೆ",
+        "caches ಅಳಿಸುತ್ತದೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Cache-aware routing sends similar requests to:",
+       "qKn": "cache-ಜಾಗೃತ routing ಸಮಾನ ವಿನಂತಿ ಕಳುಹಿಸುವುದು:",
+       "opts": [
+        "The same replica",
+        "Different replicas",
+        "Nowhere",
+        "A random one"
+       ],
+       "optsKn": [
+        "ಅದೇ ಪ್ರತಿಕೃತಿಗೆ",
+        "ಬೇರೆ ಪ್ರತಿಕೃತಿಗೆ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

@@ -1,0 +1,2627 @@
+[
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215c8",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "OpenAI Preparedness Framework and DeepMind FSF — Frontier Safety Frameworks in General",
+  "titleKn": "OpenAI Preparedness Framework ಮತ್ತು DeepMind FSF — ಫ್ರಂಟಿಯರ್ ಸುರಕ್ಷತಾ ಚೌಕಟ್ಟುಗಳು",
+  "desc": "Several labs publish frameworks that track dangerous capabilities and attach safeguards to them.",
+  "descKn": "ಹಲವು ಪ್ರಯೋಗಾಲಯಗಳು ಅಪಾಯಕಾರಿ ಸಾಮರ್ಥ್ಯ ಗಮನಿಸಿ ಅವಕ್ಕೆ ರಕ್ಷಣೆ ಜೋಡಿಸುವ ಚೌಕಟ್ಟುಗಳನ್ನು ಪ್ರಕಟಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Describe the shared structure of frontier safety frameworks.",
+   "Name typical risk domains."
+  ],
+  "objectivesKn": [
+   "ಫ್ರಂಟಿಯರ್ ಸುರಕ್ಷತಾ ಚೌಕಟ್ಟುಗಳ ಹಂಚಿದ ರಚನೆ ವಿವರಿಸಿ.",
+   "ಸಾಮಾನ್ಯ ಅಪಾಯ ಕ್ಷೇತ್ರ ಹೆಸರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "OpenAI Preparedness Framework and DeepMind FSF — Frontier Safety Frameworks in General",
+     "textKn": "OpenAI Preparedness Framework and DeepMind FSF — Frontier Safety Frameworks in General",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in OpenAI Preparedness Framework and DeepMind FSF",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Common Skeleton",
+     "headingKn": "ಸಾಮಾನ್ಯ ರಚನೆ",
+     "bodyEn": "Most frameworks define risk domains, evaluate models for dangerous capabilities, set thresholds, and require mitigations or pauses when thresholds are reached.",
+     "bodyKn": "ಹೆಚ್ಚಿನ ಚೌಕಟ್ಟುಗಳು ಅಪಾಯ ಕ್ಷೇತ್ರ ವ್ಯಾಖ್ಯಾನಿಸುತ್ತವೆ, ಅಪಾಯಕಾರಿ ಸಾಮರ್ಥ್ಯಕ್ಕೆ ಮಾದರಿ ಮೌಲ್ಯಮಾಪನ, ಮಿತಿ ನಿಗದಿ, ಮಿತಿ ತಲುಪಿದಾಗ ಕ್ರಮ ಅಥವಾ ನಿಲುಗಡೆ ಕೇಳುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Typical Risk Domains",
+     "headingKn": "ಸಾಮಾನ್ಯ ಅಪಾಯ ಕ್ಷೇತ್ರಗಳು",
+     "bodyEn": "Common domains include biological and chemical misuse, cybersecurity, and autonomous AI research and self-improvement.",
+     "bodyKn": "ಸಾಮಾನ್ಯ ಕ್ಷೇತ್ರಗಳು: ಜೈವಿಕ ಮತ್ತು ರಾಸಾಯನಿಕ ದುರ್ಬಳಕೆ, ಸೈಬರ್ ಭದ್ರತೆ, ಸ್ವಾಯತ್ತ AI ಸಂಶೋಧನೆ ಮತ್ತು ಸ್ವ-ಸುಧಾರಣೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Domains, evaluations, thresholds, mitigations.\n• Bio/chem, cyber and AI R&D are common domains.",
+     "bodyKn": "• ಕ್ಷೇತ್ರ, ಮೌಲ್ಯಮಾಪನ, ಮಿತಿ, ಕ್ರಮ.\n• ಜೈವಿಕ/ರಾಸಾಯನಿಕ, ಸೈಬರ್, AI R&D."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A framework typically sets:",
+       "qKn": "ಚೌಕಟ್ಟು ಸಾಮಾನ್ಯವಾಗಿ ನಿಗದಿ ಮಾಡುತ್ತದೆ:",
+       "opts": [
+        "Capability thresholds",
+        "Logo colours",
+        "Office rules",
+        "Fonts"
+       ],
+       "optsKn": [
+        "ಸಾಮರ್ಥ್ಯ ಮಿತಿಗಳು",
+        "ಲೋಗೋ ಬಣ್ಣ",
+        "ಕಚೇರಿ ನಿಯಮ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A common risk domain:",
+       "qKn": "ಸಾಮಾನ್ಯ ಅಪಾಯ ಕ್ಷೇತ್ರ:",
+       "opts": [
+        "Cybersecurity",
+        "Gardening",
+        "Sport",
+        "Fashion"
+       ],
+       "optsKn": [
+        "ಸೈಬರ್ ಭದ್ರತೆ",
+        "ತೋಟಗಾರಿಕೆ",
+        "ಕ್ರೀಡೆ",
+        "ಫ್ಯಾಷನ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When a threshold is reached:",
+       "qKn": "ಮಿತಿ ತಲುಪಿದಾಗ:",
+       "opts": [
+        "Mitigations or a pause are required",
+        "Nothing happens",
+        "Release faster",
+        "Delete the model"
+       ],
+       "optsKn": [
+        "ಕ್ರಮ ಅಥವಾ ನಿಲುಗಡೆ ಕಡ್ಡಾಯ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬೇಗ ಬಿಡುಗಡೆ",
+        "ಮಾದರಿ ಅಳಿಸು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215c8",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "OpenAI Preparedness Framework and DeepMind FSF — Comparing Frameworks",
+  "titleKn": "OpenAI Preparedness Framework ಮತ್ತು DeepMind FSF — ಚೌಕಟ್ಟುಗಳ ಹೋಲಿಕೆ",
+  "desc": "Frameworks differ in names, levels and commitments, so compare them on the same questions.",
+  "descKn": "ಚೌಕಟ್ಟುಗಳು ಹೆಸರು, ಮಟ್ಟ, ಬದ್ಧತೆಯಲ್ಲಿ ಭಿನ್ನ; ಅದೇ ಪ್ರಶ್ನೆಗಳ ಮೇಲೆ ಹೋಲಿಸಿ.",
+  "objectives": [
+   "Compare frameworks on thresholds, governance and transparency.",
+   "Read primary documents, not summaries."
+  ],
+  "objectivesKn": [
+   "ಮಿತಿ, ಆಡಳಿತ, ಪಾರದರ್ಶಕತೆಯಲ್ಲಿ ಹೋಲಿಸಿ.",
+   "ಸಾರಾಂಶಗಳಲ್ಲ, ಮೂಲ ದಾಖಲೆ ಓದಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "OpenAI Preparedness Framework and DeepMind FSF — Comparing Frameworks",
+     "textKn": "OpenAI Preparedness Framework and DeepMind FSF — Comparing Frameworks",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in OpenAI Preparedness Framework and DeepMind FSF",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Same Questions",
+     "headingKn": "ಅದೇ ಪ್ರಶ್ನೆಗಳು",
+     "bodyEn": "For each framework ask: what triggers action, who decides, what safeguards follow, and what is published about results.",
+     "bodyKn": "ಪ್ರತಿ ಚೌಕಟ್ಟಿಗೆ ಕೇಳಿ: ಯಾವುದು ಕ್ರಿಯೆ ಪ್ರಚೋದಿಸುತ್ತದೆ, ಯಾರು ನಿರ್ಧರಿಸುತ್ತಾರೆ, ಯಾವ ರಕ್ಷಣೆ ಅನುಸರಿಸುತ್ತದೆ, ಫಲಿತಾಂಶದ ಬಗ್ಗೆ ಏನು ಪ್ರಕಟವಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Use Primary Sources",
+     "headingKn": "ಮೂಲ ಮೂಲಗಳನ್ನು ಬಳಸಿ",
+     "bodyEn": "These documents are revised over time. Read the current version from the lab itself and note the date, rather than relying on second-hand descriptions.",
+     "bodyKn": "ಈ ದಾಖಲೆಗಳು ಕಾಲಕ್ರಮೇಣ ತಿದ್ದಲ್ಪಡುತ್ತವೆ. ಎರಡನೇ ಕೈ ವಿವರಣೆ ನಂಬುವ ಬದಲು ಪ್ರಯೋಗಾಲಯದ ಪ್ರಸ್ತುತ ಆವೃತ್ತಿ ಓದಿ, ದಿನಾಂಕ ಗಮನಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Compare trigger, decider, safeguard, disclosure.\n• Read current primary documents.",
+     "bodyKn": "• ಪ್ರಚೋದಕ, ನಿರ್ಧಾರಕ, ರಕ್ಷಣೆ, ಬಹಿರಂಗ ಹೋಲಿಸಿ.\n• ಪ್ರಸ್ತುತ ಮೂಲ ದಾಖಲೆ ಓದಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Best source for a framework:",
+       "qKn": "ಚೌಕಟ್ಟಿಗೆ ಉತ್ತಮ ಮೂಲ:",
+       "opts": [
+        "The lab's current published text",
+        "A rumour",
+        "A meme",
+        "An old summary"
+       ],
+       "optsKn": [
+        "ಪ್ರಯೋಗಾಲಯದ ಪ್ರಸ್ತುತ ಪ್ರಕಟಿತ ಪಠ್ಯ",
+        "ವದಂತಿ",
+        "ಮೀಮ್",
+        "ಹಳೆಯ ಸಾರಾಂಶ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A comparison question:",
+       "qKn": "ಹೋಲಿಕೆ ಪ್ರಶ್ನೆ:",
+       "opts": [
+        "Who decides?",
+        "Who has the best logo?",
+        "What font?",
+        "None"
+       ],
+       "optsKn": [
+        "ಯಾರು ನಿರ್ಧರಿಸುತ್ತಾರೆ?",
+        "ಉತ್ತಮ ಲೋಗೋ?",
+        "ಯಾವ ಫಾಂಟ್?",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why note the date?",
+       "qKn": "ದಿನಾಂಕ ಏಕೆ ಗಮನಿಸಬೇಕು?",
+       "opts": [
+        "Documents are revised",
+        "For style",
+        "It is required by law",
+        "No reason"
+       ],
+       "optsKn": [
+        "ದಾಖಲೆಗಳು ತಿದ್ದಲ್ಪಡುತ್ತವೆ",
+        "ಶೈಲಿ",
+        "ಕಾನೂನು",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215c8",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "OpenAI Preparedness Framework and DeepMind FSF — From Framework to Practice",
+  "titleKn": "OpenAI Preparedness Framework ಮತ್ತು DeepMind FSF — ಚೌಕಟ್ಟಿನಿಂದ ಆಚರಣೆಗೆ",
+  "desc": "A framework matters only if it changes decisions; look for evidence of that in reports and behaviour.",
+  "descKn": "ಚೌಕಟ್ಟು ನಿರ್ಧಾರ ಬದಲಿಸಿದರೆ ಮಾತ್ರ ಮುಖ್ಯ; ವರದಿ ಮತ್ತು ವರ್ತನೆಯಲ್ಲಿ ಅದರ ಸಾಕ್ಷ್ಯ ನೋಡಿ.",
+  "objectives": [
+   "Look for evidence of framework-driven decisions.",
+   "Recognise gaps between text and practice."
+  ],
+  "objectivesKn": [
+   "ಚೌಕಟ್ಟು-ಚಾಲಿತ ನಿರ್ಧಾರದ ಸಾಕ್ಷ್ಯ ನೋಡಿ.",
+   "ಪಠ್ಯ ಮತ್ತು ಆಚರಣೆ ನಡುವಿನ ಅಂತರ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "OpenAI Preparedness Framework and DeepMind FSF — From Framework to Practice",
+     "textKn": "OpenAI Preparedness Framework and DeepMind FSF — From Framework to Practice",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in OpenAI Preparedness Framework and DeepMind FSF",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Look for Evidence",
+     "headingKn": "ಸಾಕ್ಷ್ಯ ಹುಡುಕಿ",
+     "bodyEn": "System cards, evaluation reports and published safeguards show whether a release followed the framework and what was found.",
+     "bodyKn": "system cards, ಮೌಲ್ಯಮಾಪನ ವರದಿ, ಪ್ರಕಟಿತ ರಕ್ಷಣೆಗಳು ಬಿಡುಗಡೆ ಚೌಕಟ್ಟು ಅನುಸರಿಸಿತೇ ಮತ್ತು ಏನು ಕಂಡುಬಂತು ಎಂದು ತೋರಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Gaps",
+     "headingKn": "ಅಂತರಗಳು",
+     "bodyEn": "Vague thresholds, missing details or unpublished results make it hard to check compliance. Independent evaluators help fill those gaps.",
+     "bodyKn": "ಅಸ್ಪಷ್ಟ ಮಿತಿ, ಕೊರತೆ ವಿವರ, ಪ್ರಕಟಿಸದ ಫಲಿತಾಂಶ ಪಾಲನೆ ಪರಿಶೀಲಿಸಲು ಕಷ್ಟ ಮಾಡುತ್ತವೆ. ಸ್ವತಂತ್ರ ಮೌಲ್ಯಮಾಪಕರು ಅಂತರ ತುಂಬಲು ಸಹಾಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• System cards show whether the framework was applied.\n• Independent evaluators help close gaps.",
+     "bodyKn": "• system cards ಚೌಕಟ್ಟು ಅನ್ವಯಿಸಿತೇ ತೋರಿಸುತ್ತವೆ.\n• ಸ್ವತಂತ್ರ ಮೌಲ್ಯಮಾಪಕರು ಅಂತರ ತುಂಬುತ್ತಾರೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Where see evidence of application?",
+       "qKn": "ಅನ್ವಯದ ಸಾಕ್ಷ್ಯ ಎಲ್ಲಿ?",
+       "opts": [
+        "System cards and reports",
+        "Advertising",
+        "Comments",
+        "Nowhere"
+       ],
+       "optsKn": [
+        "system cards ಮತ್ತು ವರದಿ",
+        "ಜಾಹೀರಾತು",
+        "ಕಾಮೆಂಟ್",
+        "ಎಲ್ಲೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Vague thresholds make:",
+       "qKn": "ಅಸ್ಪಷ್ಟ ಮಿತಿ:",
+       "opts": [
+        "Compliance hard to check",
+        "Checks easy",
+        "Nothing",
+        "Faster releases"
+       ],
+       "optsKn": [
+        "ಪಾಲನೆ ಪರಿಶೀಲನೆ ಕಷ್ಟ",
+        "ಪರಿಶೀಲನೆ ಸುಲಭ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ವೇಗದ ಬಿಡುಗಡೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Who helps fill gaps?",
+       "qKn": "ಅಂತರ ತುಂಬಲು ಯಾರು?",
+       "opts": [
+        "Independent evaluators",
+        "Nobody",
+        "Advertisers",
+        "Random"
+       ],
+       "optsKn": [
+        "ಸ್ವತಂತ್ರ ಮೌಲ್ಯಮಾಪಕರು",
+        "ಯಾರೂ ಇಲ್ಲ",
+        "ಜಾಹೀರಾತುದಾರರು",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215cb",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "METR Time Horizons and External Evaluation — Why External Evaluation",
+  "titleKn": "METR Time Horizons ಮತ್ತು ಬಾಹ್ಯ ಮೌಲ್ಯಮಾಪನ — ಬಾಹ್ಯ ಮೌಲ್ಯಮಾಪನ ಏಕೆ",
+  "desc": "Independent evaluators reduce the conflict of interest in labs grading their own models.",
+  "descKn": "ಸ್ವತಂತ್ರ ಮೌಲ್ಯಮಾಪಕರು ಪ್ರಯೋಗಾಲಯಗಳು ತಮ್ಮದೇ ಮಾದರಿಗೆ ಅಂಕ ನೀಡುವ ಹಿತಾಸಕ್ತಿ ಸಂಘರ್ಷ ಕಡಿಮೆ ಮಾಡುತ್ತಾರೆ.",
+  "objectives": [
+   "Explain the value of outside evaluators.",
+   "Describe what access they need."
+  ],
+  "objectivesKn": [
+   "ಹೊರಗಿನ ಮೌಲ್ಯಮಾಪಕರ ಮೌಲ್ಯ ವಿವರಿಸಿ.",
+   "ಅವರಿಗೆ ಯಾವ ಪ್ರವೇಶ ಬೇಕು ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "METR Time Horizons and External Evaluation — Why External Evaluation",
+     "textKn": "METR Time Horizons and External Evaluation — Why External Evaluation",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in METR Time Horizons and External Evaluation",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Independence",
+     "headingKn": "ಸ್ವಾತಂತ್ರ್ಯ",
+     "bodyEn": "A lab has incentives to present its models favourably. An outside group with its own methods can check claims and find issues the lab missed.",
+     "bodyKn": "ಪ್ರಯೋಗಾಲಯಕ್ಕೆ ತನ್ನ ಮಾದರಿ ಅನುಕೂಲಕರವಾಗಿ ತೋರಿಸುವ ಪ್ರೋತ್ಸಾಹವಿದೆ. ಸ್ವಂತ ವಿಧಾನವಿರುವ ಹೊರಗಿನ ಗುಂಪು ಹೇಳಿಕೆ ಪರಿಶೀಲಿಸಿ ಪ್ರಯೋಗಾಲಯ ತಪ್ಪಿಸಿದ ಸಮಸ್ಯೆ ಕಂಡುಹಿಡಿಯಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Access Matters",
+     "headingKn": "ಪ್ರವೇಶ ಮುಖ್ಯ",
+     "bodyEn": "Meaningful evaluation needs enough time, model access and information. Rushed or limited access can understate what a model can do.",
+     "bodyKn": "ಅರ್ಥಪೂರ್ಣ ಮೌಲ್ಯಮಾಪನಕ್ಕೆ ಸಾಕಷ್ಟು ಸಮಯ, ಮಾದರಿ ಪ್ರವೇಶ ಮತ್ತು ಮಾಹಿತಿ ಬೇಕು. ಆತುರ ಅಥವಾ ಸೀಮಿತ ಪ್ರವೇಶ ಮಾದರಿಯ ಸಾಮರ್ಥ್ಯ ಕಡಿಮೆ ತೋರಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Outsiders reduce conflict of interest.\n• Limited access can understate capability.",
+     "bodyKn": "• ಹೊರಗಿನವರು ಹಿತಾಸಕ್ತಿ ಸಂಘರ್ಷ ಕಡಿಮೆ.\n• ಸೀಮಿತ ಪ್ರವೇಶ ಸಾಮರ್ಥ್ಯ ಕಡಿಮೆ ತೋರಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why outside evaluators?",
+       "qKn": "ಹೊರಗಿನ ಮೌಲ್ಯಮಾಪಕರು ಏಕೆ?",
+       "opts": [
+        "Reduce conflict of interest",
+        "Save money always",
+        "Look good",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಹಿತಾಸಕ್ತಿ ಸಂಘರ್ಷ ಕಡಿಮೆ",
+        "ಯಾವಾಗಲೂ ಹಣ ಉಳಿತಾಯ",
+        "ಚೆನ್ನಾಗಿ ಕಾಣಲು",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Limited access can:",
+       "qKn": "ಸೀಮಿತ ಪ್ರವೇಶ:",
+       "opts": [
+        "Understate capability",
+        "Overstate always",
+        "Improve safety",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸಾಮರ್ಥ್ಯ ಕಡಿಮೆ ತೋರಿಸಬಹುದು",
+        "ಯಾವಾಗಲೂ ಹೆಚ್ಚು ತೋರಿಸು",
+        "ಸುರಕ್ಷತೆ ಸುಧಾರಿಸು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Good evaluation needs:",
+       "qKn": "ಉತ್ತಮ ಮೌಲ್ಯಮಾಪನಕ್ಕೆ:",
+       "opts": [
+        "Time, access and information",
+        "Only a logo",
+        "Nothing",
+        "Secrecy only"
+       ],
+       "optsKn": [
+        "ಸಮಯ, ಪ್ರವೇಶ, ಮಾಹಿತಿ",
+        "ಲೋಗೋ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ರಹಸ್ಯ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215cb",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "METR Time Horizons and External Evaluation — Time Horizon Methodology",
+  "titleKn": "METR Time Horizons ಮತ್ತು ಬಾಹ್ಯ ಮೌಲ್ಯಮಾಪನ — ಸಮಯ ಹಾರಿಜಾನ್ ವಿಧಾನ",
+  "desc": "The time horizon method fits a curve of success versus human task length to find the length at a chosen success rate.",
+  "descKn": "ಸಮಯ ಹಾರಿಜಾನ್ ವಿಧಾನ ಯಶಸ್ಸು ಮತ್ತು ಮಾನವ ಕೆಲಸ ಉದ್ದದ ವಕ್ರರೇಖೆ ಹೊಂದಿಸಿ ಆಯ್ದ ಯಶಸ್ಸು ದರದ ಉದ್ದ ಕಂಡುಹಿಡಿಯುತ್ತದೆ.",
+  "objectives": [
+   "Describe fitting success rate against task length.",
+   "Explain how human baselines calibrate task length."
+  ],
+  "objectivesKn": [
+   "ಯಶಸ್ಸು ದರ ಮತ್ತು ಕೆಲಸ ಉದ್ದದ ಹೊಂದಾಣಿಕೆ ವಿವರಿಸಿ.",
+   "ಮಾನವ ಆಧಾರ ಕೆಲಸ ಉದ್ದ ಹೇಗೆ ಅಳೆಯುತ್ತದೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "METR Time Horizons and External Evaluation — Time Horizon Methodology",
+     "textKn": "METR Time Horizons and External Evaluation — Time Horizon Methodology",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in METR Time Horizons and External Evaluation",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Success Versus Length",
+     "headingKn": "ಯಶಸ್ಸು vs ಉದ್ದ",
+     "bodyEn": "Tasks are grouped by how long humans take. The model's success rate usually falls as tasks get longer, and a fitted curve gives the length where success crosses a chosen level.",
+     "bodyKn": "ಕೆಲಸಗಳನ್ನು ಮಾನವರಿಗೆ ಬೇಕಾದ ಸಮಯದಿಂದ ಗುಂಪು ಮಾಡಲಾಗುತ್ತದೆ. ಕೆಲಸ ಉದ್ದವಾದಂತೆ ಯಶಸ್ಸು ದರ ಸಾಮಾನ್ಯವಾಗಿ ಇಳಿಯುತ್ತದೆ; ಹೊಂದಿದ ವಕ್ರರೇಖೆ ಯಶಸ್ಸು ಆಯ್ದ ಮಟ್ಟ ದಾಟುವ ಉದ್ದ ನೀಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Human Baselines",
+     "headingKn": "ಮಾನವ ಆಧಾರ",
+     "bodyEn": "Skilled people attempt the same tasks to measure how long they take. The quality of these baselines affects how meaningful the resulting numbers are.",
+     "bodyKn": "ಕೌಶಲ್ಯ ಜನರು ಅದೇ ಕೆಲಸ ಪ್ರಯತ್ನಿಸಿ ಎಷ್ಟು ಸಮಯ ಬೇಕು ಅಳೆಯುತ್ತಾರೆ. ಈ ಆಧಾರಗಳ ಗುಣಮಟ್ಟ ಫಲಿತಾಂಶ ಸಂಖ್ಯೆಗಳ ಅರ್ಥಪೂರ್ಣತೆ ಮೇಲೆ ಪರಿಣಾಮ ಬೀರುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• A fitted curve gives the length at a chosen success rate.\n• Human baseline quality matters.",
+     "bodyKn": "• ವಕ್ರರೇಖೆ ಆಯ್ದ ಯಶಸ್ಸು ದರದ ಉದ್ದ ನೀಡುತ್ತದೆ.\n• ಮಾನವ ಆಧಾರ ಗುಣಮಟ್ಟ ಮುಖ್ಯ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Task length is measured by:",
+       "qKn": "ಕೆಲಸ ಉದ್ದ ಅಳೆಯುವುದು:",
+       "opts": [
+        "Human completion time",
+        "Token count",
+        "Line count",
+        "File size"
+       ],
+       "optsKn": [
+        "ಮಾನವ ಪೂರ್ಣ ಸಮಯ",
+        "token ಎಣಿಕೆ",
+        "ಸಾಲು ಎಣಿಕೆ",
+        "ಫೈಲ್ ಗಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "As tasks lengthen, success usually:",
+       "qKn": "ಕೆಲಸ ಉದ್ದವಾದಂತೆ ಯಶಸ್ಸು:",
+       "opts": [
+        "Falls",
+        "Rises",
+        "Is constant",
+        "Vanishes"
+       ],
+       "optsKn": [
+        "ಇಳಿಯುತ್ತದೆ",
+        "ಏರುತ್ತದೆ",
+        "ಸ್ಥಿರ",
+        "ಮಾಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Human baselines affect:",
+       "qKn": "ಮಾನವ ಆಧಾರ ಪರಿಣಾಮ:",
+       "opts": [
+        "How meaningful results are",
+        "Nothing",
+        "Only fonts",
+        "Only speed"
+       ],
+       "optsKn": [
+        "ಫಲಿತಾಂಶ ಅರ್ಥಪೂರ್ಣತೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್ ಮಾತ್ರ",
+        "ವೇಗ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215cb",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "METR Time Horizons and External Evaluation — Reading Evaluation Reports Critically",
+  "titleKn": "METR Time Horizons ಮತ್ತು ಬಾಹ್ಯ ಮೌಲ್ಯಮಾಪನ — ಮೌಲ್ಯಮಾಪನ ವರದಿ ವಿಮರ್ಶಾತ್ಮಕ ಓದು",
+  "desc": "Look at task suites, elicitation effort, error bars and limitations before trusting a headline number.",
+  "descKn": "ಮುಖ್ಯ ಸಂಖ್ಯೆ ನಂಬುವ ಮೊದಲು ಕೆಲಸ ಸೂಟ್, elicitation ಪ್ರಯತ್ನ, error bars, ಮಿತಿಗಳನ್ನು ನೋಡಿ.",
+  "objectives": [
+   "Ask how hard the evaluator tried to elicit capability.",
+   "Notice uncertainty and task-mix effects."
+  ],
+  "objectivesKn": [
+   "evaluator ಸಾಮರ್ಥ್ಯ ಹೊರತೆಗೆಯಲು ಎಷ್ಟು ಪ್ರಯತ್ನಿಸಿತು ಕೇಳಿ.",
+   "ಅನಿಶ್ಚಿತತೆ ಮತ್ತು ಕೆಲಸ-ಮಿಶ್ರಣ ಪರಿಣಾಮ ಗಮನಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "METR Time Horizons and External Evaluation — Reading Evaluation Reports Critically",
+     "textKn": "METR Time Horizons and External Evaluation — Reading Evaluation Reports Critically",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in METR Time Horizons and External Evaluation",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Elicitation Effort",
+     "headingKn": "Elicitation ಪ್ರಯತ್ನ",
+     "bodyEn": "Poor prompting or tools can make a capable model look weak. A result is best read as a lower bound on what the model can do with more effort.",
+     "bodyKn": "ಕಳಪೆ prompting ಅಥವಾ tools ಸಮರ್ಥ ಮಾದರಿಯನ್ನು ದುರ್ಬಲವಾಗಿ ತೋರಿಸಬಹುದು. ಫಲಿತಾಂಶ ಹೆಚ್ಚು ಪ್ರಯತ್ನದಲ್ಲಿ ಮಾದರಿ ಏನು ಮಾಡಬಲ್ಲದು ಎಂಬುದರ ಕೆಳಮಿತಿ ಎಂದು ಓದುವುದು ಉತ್ತಮ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Uncertainty and Mix",
+     "headingKn": "ಅನಿಶ್ಚಿತತೆ ಮತ್ತು ಮಿಶ್ರಣ",
+     "bodyEn": "Confidence intervals can be wide, and results depend on which tasks are in the suite. Compare like with like and be cautious about small differences.",
+     "bodyKn": "confidence intervals ವಿಶಾಲವಾಗಿರಬಹುದು; ಫಲಿತಾಂಶ ಸೂಟ್‌ನ ಕೆಲಸಗಳ ಮೇಲೆ ಅವಲಂಬಿತ. ಸಮಾನದೊಂದಿಗೆ ಸಮಾನ ಹೋಲಿಸಿ, ಸಣ್ಣ ವ್ಯತ್ಯಾಸದ ಬಗ್ಗೆ ಎಚ್ಚರ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Read results as lower bounds.\n• Check intervals and task mix.",
+     "bodyKn": "• ಫಲಿತಾಂಶ ಕೆಳಮಿತಿಯಾಗಿ ಓದಿ.\n• intervals ಮತ್ತು ಕೆಲಸ ಮಿಶ್ರಣ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Poor elicitation can make a model:",
+       "qKn": "ಕಳಪೆ elicitation ಮಾದರಿಯನ್ನು:",
+       "opts": [
+        "Look weaker than it is",
+        "Look stronger always",
+        "Disappear",
+        "Faster"
+       ],
+       "optsKn": [
+        "ನಿಜಕ್ಕಿಂತ ದುರ್ಬಲ ತೋರಿಸಬಹುದು",
+        "ಯಾವಾಗಲೂ ಬಲವಾಗಿ",
+        "ಮಾಯ",
+        "ವೇಗ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Wide intervals mean:",
+       "qKn": "ವಿಶಾಲ intervals ಅರ್ಥ:",
+       "opts": [
+        "High uncertainty",
+        "Certainty",
+        "Nothing",
+        "Speed"
+       ],
+       "optsKn": [
+        "ಹೆಚ್ಚು ಅನಿಶ್ಚಿತತೆ",
+        "ಖಚಿತತೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ವೇಗ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Compare:",
+       "qKn": "ಹೋಲಿಸಿ:",
+       "opts": [
+        "Like with like",
+        "Anything with anything",
+        "Nothing",
+        "Only names"
+       ],
+       "optsKn": [
+        "ಸಮಾನದೊಂದಿಗೆ ಸಮಾನ",
+        "ಯಾವುದೇ ಜೊತೆ ಯಾವುದೇ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಹೆಸರು ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215ce",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "CAIS, CAISI and Societal-Scale Risk — Categories of Societal Risk",
+  "titleKn": "CAIS, CAISI ಮತ್ತು ಸಮಾಜ-ಮಟ್ಟದ ಅಪಾಯ — ಸಾಮಾಜಿಕ ಅಪಾಯ ವರ್ಗಗಳು",
+  "desc": "Societal-scale AI risk is often grouped into malicious use, accidents, competitive pressure and loss of control.",
+  "descKn": "ಸಮಾಜ-ಮಟ್ಟದ AI ಅಪಾಯವನ್ನು ದುರುದ್ದೇಶದ ಬಳಕೆ, ಅಪಘಾತ, ಸ್ಪರ್ಧಾತ್ಮಕ ಒತ್ತಡ, ನಿಯಂತ್ರಣ ನಷ್ಟ ಎಂದು ವರ್ಗೀಕರಿಸಲಾಗುತ್ತದೆ.",
+  "objectives": [
+   "Name the main categories of AI risk.",
+   "Give an example of each."
+  ],
+  "objectivesKn": [
+   "AI ಅಪಾಯದ ಮುಖ್ಯ ವರ್ಗ ಹೆಸರಿಸಿ.",
+   "ಪ್ರತಿಯೊಂದಕ್ಕೆ ಉದಾಹರಣೆ ನೀಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "CAIS, CAISI and Societal-Scale Risk — Categories of Societal Risk",
+     "textKn": "CAIS, CAISI and Societal-Scale Risk — Categories of Societal Risk",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in CAIS, CAISI, and Societal-Scale Risk",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Four Broad Categories",
+     "headingKn": "ನಾಲ್ಕು ವಿಶಾಲ ವರ್ಗಗಳು",
+     "bodyEn": "Malicious use is people using AI to cause harm. Accidents are unintended failures. Competitive pressure pushes actors to cut safety corners. Loss of control covers systems that pursue goals humans cannot correct.",
+     "bodyKn": "ದುರುದ್ದೇಶದ ಬಳಕೆ ಎಂದರೆ ಹಾನಿಗೆ AI ಬಳಕೆ. ಅಪಘಾತ ಉದ್ದೇಶವಿಲ್ಲದ ವೈಫಲ್ಯ. ಸ್ಪರ್ಧಾತ್ಮಕ ಒತ್ತಡ ಸುರಕ್ಷತೆ ಕಡಿತಕ್ಕೆ ತಳ್ಳುತ್ತದೆ. ನಿಯಂತ್ರಣ ನಷ್ಟ ಮಾನವರು ಸರಿಪಡಿಸಲಾಗದ ಗುರಿ ಅನುಸರಿಸುವ ವ್ಯವಸ್ಥೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why Group Them",
+     "headingKn": "ಏಕೆ ಗುಂಪು",
+     "bodyEn": "Different categories need different responses: access controls for misuse, engineering for accidents, coordination for competition, and alignment research for control.",
+     "bodyKn": "ಬೇರೆ ವರ್ಗಕ್ಕೆ ಬೇರೆ ಪ್ರತಿಕ್ರಿಯೆ: ದುರ್ಬಳಕೆಗೆ ಪ್ರವೇಶ ನಿಯಂತ್ರಣ, ಅಪಘಾತಕ್ಕೆ ಎಂಜಿನಿಯರಿಂಗ್, ಸ್ಪರ್ಧೆಗೆ ಸಮನ್ವಯ, ನಿಯಂತ್ರಣಕ್ಕೆ alignment ಸಂಶೋಧನೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Misuse, accidents, competition, loss of control.\n• Each needs a different response.",
+     "bodyKn": "• ದುರ್ಬಳಕೆ, ಅಪಘಾತ, ಸ್ಪರ್ಧೆ, ನಿಯಂತ್ರಣ ನಷ್ಟ.\n• ಪ್ರತಿಯೊಂದಕ್ಕೆ ಬೇರೆ ಪ್ರತಿಕ್ರಿಯೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Malicious use means:",
+       "qKn": "ದುರುದ್ದೇಶದ ಬಳಕೆ ಎಂದರೆ:",
+       "opts": [
+        "People using AI to cause harm",
+        "A bug",
+        "A slow model",
+        "A GPU"
+       ],
+       "optsKn": [
+        "ಹಾನಿಗೆ AI ಬಳಕೆ",
+        "ದೋಷ",
+        "ನಿಧಾನ ಮಾದರಿ",
+        "GPU"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Competitive pressure can lead to:",
+       "qKn": "ಸ್ಪರ್ಧಾತ್ಮಕ ಒತ್ತಡದ ಫಲಿತಾಂಶ:",
+       "opts": [
+        "Cutting safety corners",
+        "More safety always",
+        "Nothing",
+        "Cheaper GPUs"
+       ],
+       "optsKn": [
+        "ಸುರಕ್ಷತೆ ಕಡಿತ",
+        "ಯಾವಾಗಲೂ ಹೆಚ್ಚು ಸುರಕ್ಷತೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಅಗ್ಗ GPU"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A response to accidents:",
+       "qKn": "ಅಪಘಾತಕ್ಕೆ ಪ್ರತಿಕ್ರಿಯೆ:",
+       "opts": [
+        "Engineering and testing",
+        "Ignoring",
+        "Advertising",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಎಂಜಿನಿಯರಿಂಗ್ ಮತ್ತು ಪರೀಕ್ಷೆ",
+        "ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಜಾಹೀರಾತು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215ce",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "CAIS, CAISI and Societal-Scale Risk — Institutions Working on AI Safety",
+  "titleKn": "CAIS, CAISI ಮತ್ತು ಸಮಾಜ-ಮಟ್ಟದ ಅಪಾಯ — AI ಸುರಕ್ಷತೆ ಸಂಸ್ಥೆಗಳು",
+  "desc": "Research organisations and government institutes study and test frontier AI, with different roles and mandates.",
+  "descKn": "ಸಂಶೋಧನಾ ಸಂಸ್ಥೆಗಳು ಮತ್ತು ಸರ್ಕಾರಿ ಸಂಸ್ಥೆಗಳು ಫ್ರಂಟಿಯರ್ AI ಅಧ್ಯಯನ ಮತ್ತು ಪರೀಕ್ಷೆ ಮಾಡುತ್ತವೆ, ಬೇರೆ ಪಾತ್ರ ಮತ್ತು ಆದೇಶಗಳೊಂದಿಗೆ.",
+  "objectives": [
+   "Distinguish a non-profit research centre from a government institute.",
+   "Explain why both roles exist."
+  ],
+  "objectivesKn": [
+   "ಲಾಭರಹಿತ ಸಂಶೋಧನಾ ಕೇಂದ್ರ ಮತ್ತು ಸರ್ಕಾರಿ ಸಂಸ್ಥೆ ಬೇರ್ಪಡಿಸಿ.",
+   "ಎರಡೂ ಪಾತ್ರ ಏಕೆ ಇವೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "CAIS, CAISI and Societal-Scale Risk — Institutions Working on AI Safety",
+     "textKn": "CAIS, CAISI and Societal-Scale Risk — Institutions Working on AI Safety",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in CAIS, CAISI, and Societal-Scale Risk",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Research and Advocacy",
+     "headingKn": "ಸಂಶೋಧನೆ ಮತ್ತು ಪ್ರತಿಪಾದನೆ",
+     "bodyEn": "Non-profit centres such as CAIS research safety topics, build benchmarks and publish statements to inform the public and policymakers.",
+     "bodyKn": "CAIS ನಂತಹ ಲಾಭರಹಿತ ಕೇಂದ್ರಗಳು ಸುರಕ್ಷತಾ ವಿಷಯ ಸಂಶೋಧಿಸಿ, ಬೆಂಚ್‌ಮಾರ್ಕ್ ನಿರ್ಮಿಸಿ, ಸಾರ್ವಜನಿಕ ಮತ್ತು ನೀತಿನಿರೂಪಕರಿಗೆ ತಿಳಿಸಲು ಹೇಳಿಕೆ ಪ್ರಕಟಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Government Evaluation",
+     "headingKn": "ಸರ್ಕಾರಿ ಮೌಲ್ಯಮಾಪನ",
+     "bodyEn": "Government bodies such as CAISI test models for national-security and public-safety risks and work with developers on evaluation and standards. Check each body's current mandate.",
+     "bodyKn": "CAISI ನಂತಹ ಸರ್ಕಾರಿ ಸಂಸ್ಥೆಗಳು ರಾಷ್ಟ್ರೀಯ ಭದ್ರತೆ ಮತ್ತು ಸಾರ್ವಜನಿಕ ಸುರಕ್ಷತಾ ಅಪಾಯಕ್ಕೆ ಮಾದರಿ ಪರೀಕ್ಷಿಸಿ ಮೌಲ್ಯಮಾಪನ ಮತ್ತು ಮಾನದಂಡಗಳಲ್ಲಿ ಡೆವಲಪರ್‌ಗಳೊಂದಿಗೆ ಕೆಲಸ ಮಾಡುತ್ತವೆ. ಪ್ರತಿ ಸಂಸ್ಥೆಯ ಪ್ರಸ್ತುತ ಆದೇಶ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Non-profits research and inform.\n• Government institutes test and set standards; mandates change.",
+     "bodyKn": "• ಲಾಭರಹಿತ ಸಂಶೋಧನೆ ಮತ್ತು ಮಾಹಿತಿ.\n• ಸರ್ಕಾರಿ ಸಂಸ್ಥೆ ಪರೀಕ್ಷೆ, ಮಾನದಂಡ; ಆದೇಶ ಬದಲಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Non-profit safety centres often:",
+       "qKn": "ಲಾಭರಹಿತ ಸುರಕ್ಷತಾ ಕೇಂದ್ರಗಳು:",
+       "opts": [
+        "Research and inform the public",
+        "Sell GPUs",
+        "Run clouds",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸಂಶೋಧನೆ, ಸಾರ್ವಜನಿಕರಿಗೆ ಮಾಹಿತಿ",
+        "GPU ಮಾರಾಟ",
+        "ಕ್ಲೌಡ್ ನಡೆಸು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Government institutes often:",
+       "qKn": "ಸರ್ಕಾರಿ ಸಂಸ್ಥೆಗಳು:",
+       "opts": [
+        "Test models for public-safety risk",
+        "Write ads",
+        "Design logos",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸಾರ್ವಜನಿಕ ಸುರಕ್ಷತಾ ಅಪಾಯಕ್ಕೆ ಪರೀಕ್ಷೆ",
+        "ಜಾಹೀರಾತು ಬರೆ",
+        "ಲೋಗೋ ವಿನ್ಯಾಸ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Mandates:",
+       "qKn": "ಆದೇಶಗಳು:",
+       "opts": [
+        "Can change, so check current ones",
+        "Never change",
+        "Are secret",
+        "Are random"
+       ],
+       "optsKn": [
+        "ಬದಲಾಗಬಹುದು, ಪ್ರಸ್ತುತ ಪರಿಶೀಲಿಸಿ",
+        "ಎಂದಿಗೂ ಬದಲಾಗದು",
+        "ರಹಸ್ಯ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215ce",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "CAIS, CAISI and Societal-Scale Risk — Reasoning About Uncertain Large Risks",
+  "titleKn": "CAIS, CAISI ಮತ್ತು ಸಮಾಜ-ಮಟ್ಟದ ಅಪಾಯ — ಅನಿಶ್ಚಿತ ದೊಡ್ಡ ಅಪಾಯಗಳ ಬಗ್ಗೆ ತರ್ಕ",
+  "desc": "Large-scale AI risk is uncertain and contested, so reason with evidence, scenarios and humility.",
+  "descKn": "ದೊಡ್ಡ ಪ್ರಮಾಣದ AI ಅಪಾಯ ಅನಿಶ್ಚಿತ ಮತ್ತು ವಿವಾದಾತ್ಮಕ; ಸಾಕ್ಷ್ಯ, ಸನ್ನಿವೇಶ, ವಿನಯದೊಂದಿಗೆ ತರ್ಕಿಸಿ.",
+  "objectives": [
+   "Separate evidence from speculation.",
+   "Consider both over- and under-reaction."
+  ],
+  "objectivesKn": [
+   "ಸಾಕ್ಷ್ಯ ಮತ್ತು ಊಹೆ ಬೇರ್ಪಡಿಸಿ.",
+   "ಅತಿ ಮತ್ತು ಕಡಿಮೆ ಪ್ರತಿಕ್ರಿಯೆ ಎರಡನ್ನೂ ಪರಿಗಣಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "CAIS, CAISI and Societal-Scale Risk — Reasoning About Uncertain Large Risks",
+     "textKn": "CAIS, CAISI and Societal-Scale Risk — Reasoning About Uncertain Large Risks",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in CAIS, CAISI, and Societal-Scale Risk",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Evidence and Scenarios",
+     "headingKn": "ಸಾಕ್ಷ್ಯ ಮತ್ತು ಸನ್ನಿವೇಶ",
+     "bodyEn": "Distinguish what has been demonstrated, what is plausible and what is speculative. Scenario analysis helps plan without claiming to predict.",
+     "bodyKn": "ಪ್ರದರ್ಶಿತ, ಸಾಧ್ಯ, ಊಹಾತ್ಮಕವನ್ನು ಬೇರ್ಪಡಿಸಿ. ಸನ್ನಿವೇಶ ವಿಶ್ಲೇಷಣೆ ಮುನ್ಸೂಚನೆ ಹೇಳದೆ ಯೋಜಿಸಲು ಸಹಾಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Two Ways to Be Wrong",
+     "headingKn": "ತಪ್ಪುವ ಎರಡು ವಿಧ",
+     "bodyEn": "Overreacting can waste resources and trust; underreacting can leave real risks unaddressed. Good policy weighs both and updates as evidence arrives.",
+     "bodyKn": "ಅತಿ ಪ್ರತಿಕ್ರಿಯೆ ಸಂಪನ್ಮೂಲ ಮತ್ತು ನಂಬಿಕೆ ವ್ಯರ್ಥ; ಕಡಿಮೆ ಪ್ರತಿಕ್ರಿಯೆ ನಿಜ ಅಪಾಯ ನಿರ್ಲಕ್ಷಿಸುತ್ತದೆ. ಉತ್ತಮ ನೀತಿ ಎರಡನ್ನೂ ತೂಗಿ ಸಾಕ್ಷ್ಯ ಬಂದಂತೆ ನವೀಕರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Separate demonstrated, plausible and speculative.\n• Weigh over- and under-reaction; update.",
+     "bodyKn": "• ಪ್ರದರ್ಶಿತ, ಸಾಧ್ಯ, ಊಹಾತ್ಮಕ ಬೇರ್ಪಡಿಸಿ.\n• ಎರಡೂ ತೂಗಿ ನವೀಕರಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Scenario analysis helps:",
+       "qKn": "ಸನ್ನಿವೇಶ ವಿಶ್ಲೇಷಣೆ ಸಹಾಯ:",
+       "opts": [
+        "Plan without claiming prediction",
+        "Predict exactly",
+        "Avoid planning",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮುನ್ಸೂಚನೆ ಹೇಳದೆ ಯೋಜನೆ",
+        "ನಿಖರ ಮುನ್ಸೂಚನೆ",
+        "ಯೋಜನೆ ತಪ್ಪಿಸು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Overreacting risks:",
+       "qKn": "ಅತಿ ಪ್ರತಿಕ್ರಿಯೆ ಅಪಾಯ:",
+       "opts": [
+        "Wasting resources and trust",
+        "Nothing",
+        "Perfect safety",
+        "Speed"
+       ],
+       "optsKn": [
+        "ಸಂಪನ್ಮೂಲ ಮತ್ತು ನಂಬಿಕೆ ವ್ಯರ್ಥ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಪರಿಪೂರ್ಣ ಸುರಕ್ಷತೆ",
+        "ವೇಗ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Good policy:",
+       "qKn": "ಉತ್ತಮ ನೀತಿ:",
+       "opts": [
+        "Updates as evidence arrives",
+        "Never changes",
+        "Ignores evidence",
+        "Is random"
+       ],
+       "optsKn": [
+        "ಸಾಕ್ಷ್ಯ ಬಂದಂತೆ ನವೀಕರಿಸುತ್ತದೆ",
+        "ಎಂದಿಗೂ ಬದಲಾಗದು",
+        "ಸಾಕ್ಷ್ಯ ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6466020ed05b3215d4",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Why Multi-Agent — When One Agent Is Not Enough",
+  "titleKn": "ಬಹು-Agent ಏಕೆ — ಒಂದು Agent ಸಾಲದಾದಾಗ",
+  "desc": "Multiple agents help when work is parallel, needs different expertise or would overflow one context.",
+  "descKn": "ಕೆಲಸ ಸಮಾನಾಂತರ, ಬೇರೆ ಪರಿಣತಿ ಬೇಕಾದಾಗ ಅಥವಾ ಒಂದು context ತುಂಬಿ ಹರಿಯುವಾಗ ಹಲವು agents ಸಹಾಯ.",
+  "objectives": [
+   "Name situations that justify multiple agents.",
+   "Recognise when a single agent is better."
+  ],
+  "objectivesKn": [
+   "ಹಲವು agents ಸಮರ್ಥಿಸುವ ಸಂದರ್ಭ ಹೆಸರಿಸಿ.",
+   "ಒಂದು agent ಉತ್ತಮವಾದಾಗ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Why Multi-Agent — When One Agent Is Not Enough",
+     "textKn": "Why Multi-Agent — When One Agent Is Not Enough",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Why Multi-Agent",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Good Reasons",
+     "headingKn": "ಒಳ್ಳೆಯ ಕಾರಣಗಳು",
+     "bodyEn": "Independent subtasks can run in parallel. Specialists can hold focused instructions. Splitting work keeps each context small enough to reason well.",
+     "bodyKn": "ಸ್ವತಂತ್ರ ಉಪಕಾರ್ಯ ಸಮಾನಾಂತರವಾಗಿ ಚಲಿಸಬಹುದು. ತಜ್ಞರು ಕೇಂದ್ರೀಕೃತ ಸೂಚನೆ ಹೊಂದಬಹುದು. ವಿಭಜನೆ ಪ್ರತಿ context ಚೆನ್ನಾಗಿ ತರ್ಕಿಸುವಷ್ಟು ಚಿಕ್ಕದಾಗಿಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "When Single Is Better",
+     "headingKn": "ಒಂದೇ ಉತ್ತಮವಾದಾಗ",
+     "bodyEn": "Tightly coupled tasks that share lots of context suffer from hand-offs. Start with one agent and add more only when a measured problem calls for it.",
+     "bodyKn": "ಹೆಚ್ಚು context ಹಂಚುವ ಬಿಗಿಯಾಗಿ ಜೋಡಿತ ಕೆಲಸಕ್ಕೆ ಹಸ್ತಾಂತರ ಹಾನಿ. ಒಂದು agent ನಿಂದ ಆರಂಭಿಸಿ, ಅಳೆದ ಸಮಸ್ಯೆ ಕೇಳಿದಾಗ ಮಾತ್ರ ಹೆಚ್ಚು ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Parallelism, specialisation and context size justify splitting.\n• Coupled tasks favour one agent.",
+     "bodyKn": "• ಸಮಾನಾಂತರತೆ, ವಿಶೇಷೀಕರಣ, context ಗಾತ್ರ ಸಮರ್ಥಿಸುತ್ತವೆ.\n• ಜೋಡಿತ ಕೆಲಸಕ್ಕೆ ಒಂದು agent."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A good reason for multiple agents:",
+       "qKn": "ಹಲವು agents ಗೆ ಒಳ್ಳೆಯ ಕಾರಣ:",
+       "opts": [
+        "Independent parallel subtasks",
+        "Fashion",
+        "Colour",
+        "None"
+       ],
+       "optsKn": [
+        "ಸ್ವತಂತ್ರ ಸಮಾನಾಂತರ ಉಪಕಾರ್ಯ",
+        "ಫ್ಯಾಷನ್",
+        "ಬಣ್ಣ",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Tightly coupled tasks suit:",
+       "qKn": "ಬಿಗಿಯಾಗಿ ಜೋಡಿತ ಕೆಲಸಕ್ಕೆ:",
+       "opts": [
+        "One agent",
+        "Ten agents",
+        "No agent",
+        "Random"
+       ],
+       "optsKn": [
+        "ಒಂದು agent",
+        "ಹತ್ತು agents",
+        "agent ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Add agents only when:",
+       "qKn": "agents ಸೇರಿಸಿ ಯಾವಾಗ:",
+       "opts": [
+        "A measured problem calls for it",
+        "Always",
+        "Never",
+        "On a whim"
+       ],
+       "optsKn": [
+        "ಅಳೆದ ಸಮಸ್ಯೆ ಕೇಳಿದಾಗ",
+        "ಯಾವಾಗಲೂ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಮನಸ್ಸಿಗೆ ಬಂದಾಗ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6466020ed05b3215d4",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Why Multi-Agent — The Costs of Multi-Agent Systems",
+  "titleKn": "ಬಹು-Agent ಏಕೆ — ಬಹು-Agent ವ್ಯವಸ್ಥೆ ವೆಚ್ಚಗಳು",
+  "desc": "More agents mean more tokens, latency, coordination failures and harder debugging.",
+  "descKn": "ಹೆಚ್ಚು agents ಎಂದರೆ ಹೆಚ್ಚು tokens, ವಿಳಂಬ, ಸಮನ್ವಯ ವೈಫಲ್ಯ, ಕಷ್ಟದ debugging.",
+  "objectives": [
+   "List the overheads of coordination.",
+   "Estimate cost before adopting."
+  ],
+  "objectivesKn": [
+   "ಸಮನ್ವಯದ ಹೆಚ್ಚುವರಿ ವೆಚ್ಚ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಅಳವಡಿಸುವ ಮೊದಲು ವೆಚ್ಚ ಅಂದಾಜಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Why Multi-Agent — The Costs of Multi-Agent Systems",
+     "textKn": "Why Multi-Agent — The Costs of Multi-Agent Systems",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Why Multi-Agent",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Overheads",
+     "headingKn": "ಹೆಚ್ಚುವರಿ ವೆಚ್ಚ",
+     "bodyEn": "Each message between agents costs tokens and time. Agents can misunderstand each other, duplicate work or contradict one another.",
+     "bodyKn": "agents ನಡುವಿನ ಪ್ರತಿ ಸಂದೇಶ tokens ಮತ್ತು ಸಮಯ ಖರ್ಚು ಮಾಡುತ್ತದೆ. agents ಪರಸ್ಪರ ತಪ್ಪಾಗಿ ಅರ್ಥೈಸಬಹುದು, ಕೆಲಸ ನಕಲಿಸಬಹುದು, ವಿರೋಧಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Debugging",
+     "headingKn": "Debugging",
+     "bodyEn": "A failure may come from any agent or any message. Without tracing every hand-off, finding the cause is slow and uncertain.",
+     "bodyKn": "ವೈಫಲ್ಯ ಯಾವುದೇ agent ಅಥವಾ ಸಂದೇಶದಿಂದ ಬರಬಹುದು. ಪ್ರತಿ ಹಸ್ತಾಂತರ trace ಮಾಡದಿದ್ದರೆ ಕಾರಣ ಹುಡುಕುವುದು ನಿಧಾನ ಮತ್ತು ಅನಿಶ್ಚಿತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Messages cost tokens and time.\n• Trace every hand-off to debug.",
+     "bodyKn": "• ಸಂದೇಶ tokens ಮತ್ತು ಸಮಯ ಖರ್ಚು.\n• debug ಗೆ ಪ್ರತಿ ಹಸ್ತಾಂತರ trace."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Each inter-agent message costs:",
+       "qKn": "ಪ್ರತಿ agent ಸಂದೇಶ ಖರ್ಚು:",
+       "opts": [
+        "Tokens and time",
+        "Nothing",
+        "Only colour",
+        "Only disk"
+       ],
+       "optsKn": [
+        "tokens ಮತ್ತು ಸಮಯ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ ಮಾತ್ರ",
+        "ಡಿಸ್ಕ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Debugging needs:",
+       "qKn": "Debugging ಗೆ:",
+       "opts": [
+        "Tracing hand-offs",
+        "Guessing",
+        "Nothing",
+        "More agents only"
+       ],
+       "optsKn": [
+        "ಹಸ್ತಾಂತರ trace",
+        "ಊಹೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಹೆಚ್ಚು agents ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Agents can:",
+       "qKn": "agents:",
+       "opts": [
+        "Duplicate or contradict work",
+        "Never disagree",
+        "Always agree",
+        "Be free"
+       ],
+       "optsKn": [
+        "ಕೆಲಸ ನಕಲು ಅಥವಾ ವಿರೋಧ",
+        "ಎಂದಿಗೂ ಭಿನ್ನವಲ್ಲ",
+        "ಯಾವಾಗಲೂ ಒಪ್ಪುತ್ತವೆ",
+        "ಉಚಿತ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6466020ed05b3215d4",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Why Multi-Agent — A Decision Checklist",
+  "titleKn": "ಬಹು-Agent ಏಕೆ — ನಿರ್ಧಾರ ಚೆಕ್‌ಲಿಸ್ಟ್",
+  "desc": "A short checklist helps decide whether a multi-agent design is justified.",
+  "descKn": "ಬಹು-agent ವಿನ್ಯಾಸ ಸಮರ್ಥನೀಯವೇ ಎಂದು ನಿರ್ಧರಿಸಲು ಚಿಕ್ಕ ಚೆಕ್‌ಲಿಸ್ಟ್ ಸಹಾಯ.",
+  "objectives": [
+   "Apply a checklist to a real task.",
+   "Record the measured baseline."
+  ],
+  "objectivesKn": [
+   "ನಿಜ ಕೆಲಸಕ್ಕೆ ಚೆಕ್‌ಲಿಸ್ಟ್ ಅನ್ವಯಿಸಿ.",
+   "ಅಳೆದ ಆಧಾರ ದಾಖಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Why Multi-Agent — A Decision Checklist",
+     "textKn": "Why Multi-Agent — A Decision Checklist",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Why Multi-Agent",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Checklist",
+     "headingKn": "ಚೆಕ್‌ಲಿಸ್ಟ್",
+     "bodyEn": "Is there real parallelism? Do roles need different context or tools? Did a single agent fail in a specific measured way? Is the extra cost acceptable?",
+     "bodyKn": "ನಿಜ ಸಮಾನಾಂತರತೆ ಇದೆಯೇ? ಪಾತ್ರಗಳಿಗೆ ಬೇರೆ context ಅಥವಾ tools ಬೇಕೇ? ಒಂದು agent ನಿರ್ದಿಷ್ಟ ಅಳೆದ ರೀತಿ ವಿಫಲವಾಯಿತೇ? ಹೆಚ್ಚುವರಿ ವೆಚ್ಚ ಸ್ವೀಕಾರಾರ್ಹವೇ?"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Measure Both",
+     "headingKn": "ಎರಡನ್ನೂ ಅಳೆಯಿರಿ",
+     "bodyEn": "Run the single-agent baseline and the multi-agent design on the same tasks, and compare quality, cost and latency before deciding.",
+     "bodyKn": "ಅದೇ ಕೆಲಸಗಳಲ್ಲಿ ಒಂದು-agent ಆಧಾರ ಮತ್ತು ಬಹು-agent ವಿನ್ಯಾಸ ಚಲಾಯಿಸಿ, ನಿರ್ಧರಿಸುವ ಮೊದಲು ಗುಣಮಟ್ಟ, ವೆಚ್ಚ, ವಿಳಂಬ ಹೋಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Ask about parallelism, roles, measured failure, cost.\n• Compare against a single-agent baseline.",
+     "bodyKn": "• ಸಮಾನಾಂತರತೆ, ಪಾತ್ರ, ಅಳೆದ ವೈಫಲ್ಯ, ವೆಚ್ಚ ಕೇಳಿ.\n• ಒಂದು-agent ಆಧಾರಕ್ಕೆ ಹೋಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "First question:",
+       "qKn": "ಮೊದಲ ಪ್ರಶ್ನೆ:",
+       "opts": [
+        "Is there real parallelism?",
+        "What colour?",
+        "Who is famous?",
+        "None"
+       ],
+       "optsKn": [
+        "ನಿಜ ಸಮಾನಾಂತರತೆ ಇದೆಯೇ?",
+        "ಯಾವ ಬಣ್ಣ?",
+        "ಯಾರು ಪ್ರಸಿದ್ಧ?",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Compare against:",
+       "qKn": "ಹೋಲಿಸಿ:",
+       "opts": [
+        "A single-agent baseline",
+        "A rumour",
+        "Nothing",
+        "A logo"
+       ],
+       "optsKn": [
+        "ಒಂದು-agent ಆಧಾರ",
+        "ವದಂತಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Metrics to compare:",
+       "qKn": "ಹೋಲಿಸುವ ಮೆಟ್ರಿಕ್ಸ್:",
+       "opts": [
+        "Quality, cost, latency",
+        "Fonts",
+        "Colours",
+        "None"
+       ],
+       "optsKn": [
+        "ಗುಣಮಟ್ಟ, ವೆಚ್ಚ, ವಿಳಂಬ",
+        "ಫಾಂಟ್",
+        "ಬಣ್ಣ",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6466020ed05b3215d7",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "TypeScript for Multi-Agent Systems — Typed Messages Between Agents",
+  "titleKn": "ಬಹು-Agent ವ್ಯವಸ್ಥೆಗಳಿಗೆ TypeScript — Agents ನಡುವೆ Typed ಸಂದೇಶಗಳು",
+  "desc": "TypeScript types describe the shape of messages so mismatches are caught before runtime.",
+  "descKn": "TypeScript types ಸಂದೇಶಗಳ ಆಕಾರ ವಿವರಿಸುತ್ತವೆ; ಹೊಂದಿಕೆಯಾಗದಿರುವುದು ಚಾಲನೆಗೆ ಮೊದಲು ಹಿಡಿಯಲ್ಪಡುತ್ತದೆ.",
+  "objectives": [
+   "Define message types.",
+   "Explain compile-time versus runtime checks."
+  ],
+  "objectivesKn": [
+   "ಸಂದೇಶ types ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "compile-time ಮತ್ತು runtime ಪರಿಶೀಲನೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "TypeScript for Multi-Agent Systems — Typed Messages Between Agents",
+     "textKn": "TypeScript for Multi-Agent Systems — Typed Messages Between Agents",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in TypeScript for Multi-Agent Systems",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Types as Contracts",
+     "headingKn": "Types ಒಪ್ಪಂದವಾಗಿ",
+     "bodyEn": "A type for each message says which fields exist and what they hold. Sender and receiver agree on the contract, and the compiler flags mistakes.",
+     "bodyKn": "ಪ್ರತಿ ಸಂದೇಶಕ್ಕೆ type ಯಾವ fields ಇವೆ ಮತ್ತು ಏನು ಹೊಂದಿವೆ ಎಂದು ಹೇಳುತ್ತದೆ. ಕಳುಹಿಸುವವ ಮತ್ತು ಸ್ವೀಕರಿಸುವವ ಒಪ್ಪಂದಕ್ಕೆ ಸಮ್ಮತಿಸುತ್ತಾರೆ, compiler ತಪ್ಪು ಗುರುತಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Types Vanish at Runtime",
+     "headingKn": "Runtime ನಲ್ಲಿ Types ಮಾಯ",
+     "bodyEn": "Model output is text, so types alone do not guarantee its shape. Validate incoming data at runtime as well.",
+     "bodyKn": "ಮಾದರಿ ಔಟ್‌ಪುಟ್ ಪಠ್ಯ, ಆದ್ದರಿಂದ types ಮಾತ್ರ ಅದರ ಆಕಾರ ಖಾತರಿ ಮಾಡವು. ಬರುವ ಡೇಟಾವನ್ನು runtime ನಲ್ಲೂ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Types document and check message contracts.\n• Validate model output at runtime too.",
+     "bodyKn": "• types ಸಂದೇಶ ಒಪ್ಪಂದ ದಾಖಲಿಸಿ ಪರಿಶೀಲಿಸುತ್ತವೆ.\n• ಮಾದರಿ ಔಟ್‌ಪುಟ್ runtime ನಲ್ಲೂ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A message type describes:",
+       "qKn": "ಸಂದೇಶ type ವಿವರಿಸುವುದು:",
+       "opts": [
+        "Its fields and their types",
+        "Its colour",
+        "Its price",
+        "Nothing"
+       ],
+       "optsKn": [
+        "fields ಮತ್ತು ಅವುಗಳ types",
+        "ಬಣ್ಣ",
+        "ಬೆಲೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why validate at runtime?",
+       "qKn": "runtime ನಲ್ಲಿ ಏಕೆ ಪರಿಶೀಲನೆ?",
+       "opts": [
+        "Types disappear and model output is text",
+        "To be slow",
+        "By law",
+        "No reason"
+       ],
+       "optsKn": [
+        "types ಮಾಯ, ಮಾದರಿ ಔಟ್‌ಪುಟ್ ಪಠ್ಯ",
+        "ನಿಧಾನವಾಗಲು",
+        "ಕಾನೂನು",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The compiler flags:",
+       "qKn": "compiler ಗುರುತಿಸುವುದು:",
+       "opts": [
+        "Contract mismatches",
+        "Nothing",
+        "Only colours",
+        "Only speed"
+       ],
+       "optsKn": [
+        "ಒಪ್ಪಂದ ಹೊಂದಿಕೆಯಿಲ್ಲದಿರುವುದು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ ಮಾತ್ರ",
+        "ವೇಗ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6466020ed05b3215d7",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "TypeScript for Multi-Agent Systems — Discriminated Unions for Agent Events",
+  "titleKn": "ಬಹು-Agent ವ್ಯವಸ್ಥೆಗಳಿಗೆ TypeScript — Agent Events ಗೆ Discriminated Unions",
+  "desc": "A tagged union models the different message kinds and makes handling exhaustive.",
+  "descKn": "tagged union ಬೇರೆ ಸಂದೇಶ ವಿಧಗಳನ್ನು ಮಾದರಿ ಮಾಡಿ ನಿರ್ವಹಣೆಯನ್ನು ಸಂಪೂರ್ಣಗೊಳಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Model messages with a type tag.",
+   "Use exhaustive checks to avoid missed cases."
+  ],
+  "objectivesKn": [
+   "type tag ನೊಂದಿಗೆ ಸಂದೇಶ ಮಾದರಿ ಮಾಡಿ.",
+   "ತಪ್ಪಿದ ಪ್ರಕರಣ ತಪ್ಪಿಸಲು exhaustive ಪರಿಶೀಲನೆ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "TypeScript for Multi-Agent Systems — Discriminated Unions for Agent Events",
+     "textKn": "TypeScript for Multi-Agent Systems — Discriminated Unions for Agent Events",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in TypeScript for Multi-Agent Systems",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Tagged Unions",
+     "headingKn": "Tagged Unions",
+     "bodyEn": "Give every message a kind field such as request, result or error. The type of the rest of the message depends on that kind.",
+     "bodyKn": "ಪ್ರತಿ ಸಂದೇಶಕ್ಕೆ request, result ಅಥವಾ error ನಂತಹ kind field ನೀಡಿ. ಉಳಿದ ಸಂದೇಶದ type ಆ kind ಮೇಲೆ ಅವಲಂಬಿತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Exhaustiveness",
+     "headingKn": "ಸಂಪೂರ್ಣತೆ",
+     "bodyEn": "When a new message kind is added, the compiler can point to every place that forgot to handle it, which prevents silent gaps.",
+     "bodyKn": "ಹೊಸ ಸಂದೇಶ ವಿಧ ಸೇರಿಸಿದಾಗ ಅದನ್ನು ನಿರ್ವಹಿಸಲು ಮರೆತ ಪ್ರತಿ ಸ್ಥಳವನ್ನು compiler ತೋರಿಸಬಲ್ಲದು; ಮೌನ ಅಂತರ ತಡೆಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Tag each message with a kind.\n• Exhaustive checks catch unhandled kinds.",
+     "bodyKn": "• ಪ್ರತಿ ಸಂದೇಶಕ್ಕೆ kind tag.\n• exhaustive ಪರಿಶೀಲನೆ ನಿರ್ವಹಿಸದ ವಿಧ ಹಿಡಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A tagged union uses:",
+       "qKn": "tagged union ಬಳಸುವುದು:",
+       "opts": [
+        "A kind field",
+        "A colour",
+        "A logo",
+        "Nothing"
+       ],
+       "optsKn": [
+        "kind field",
+        "ಬಣ್ಣ",
+        "ಲೋಗೋ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Exhaustive checks prevent:",
+       "qKn": "exhaustive ಪರಿಶೀಲನೆ ತಡೆಯುವುದು:",
+       "opts": [
+        "Silent unhandled cases",
+        "All bugs",
+        "Typing",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮೌನ ನಿರ್ವಹಿಸದ ಪ್ರಕರಣ",
+        "ಎಲ್ಲ ದೋಷ",
+        "ಟೈಪಿಂಗ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Example kinds:",
+       "qKn": "ಉದಾಹರಣೆ ವಿಧಗಳು:",
+       "opts": [
+        "request, result, error",
+        "red, green, blue",
+        "a, b, c",
+        "none"
+       ],
+       "optsKn": [
+        "request, result, error",
+        "ಕೆಂಪು, ಹಸಿರು, ನೀಲಿ",
+        "a, b, c",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6466020ed05b3215d7",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "TypeScript for Multi-Agent Systems — Async Orchestration in TypeScript",
+  "titleKn": "ಬಹು-Agent ವ್ಯವಸ್ಥೆಗಳಿಗೆ TypeScript — TypeScript ನಲ್ಲಿ Async Orchestration",
+  "desc": "Promises and async iteration let TypeScript run agents concurrently and stream their results.",
+  "descKn": "Promises ಮತ್ತು async iteration TypeScript ಗೆ agents ಸಮಕಾಲೀನವಾಗಿ ಚಲಾಯಿಸಿ ಫಲಿತಾಂಶ ಸ್ಟ್ರೀಮ್ ಮಾಡಲು ಬಿಡುತ್ತವೆ.",
+  "objectives": [
+   "Run agents concurrently with Promise.all.",
+   "Handle failures and timeouts per agent."
+  ],
+  "objectivesKn": [
+   "Promise.all ನಿಂದ agents ಸಮಕಾಲೀನ ಚಲಾಯಿಸಿ.",
+   "ಪ್ರತಿ agent ವೈಫಲ್ಯ ಮತ್ತು timeout ನಿರ್ವಹಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "TypeScript for Multi-Agent Systems — Async Orchestration in TypeScript",
+     "textKn": "TypeScript for Multi-Agent Systems — Async Orchestration in TypeScript",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in TypeScript for Multi-Agent Systems",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Concurrency",
+     "headingKn": "ಸಮಕಾಲೀನತೆ",
+     "bodyEn": "Independent agent calls can start together and be awaited as a group. Limit how many run at once to respect provider rate limits.",
+     "bodyKn": "ಸ್ವತಂತ್ರ agent ಕರೆಗಳು ಒಟ್ಟಿಗೆ ಆರಂಭವಾಗಿ ಗುಂಪಾಗಿ await ಆಗಬಹುದು. ಒದಗಿಸುವವರ rate limits ಗೌರವಿಸಲು ಒಮ್ಮೆಗೆ ಎಷ್ಟು ಚಲಿಸಬೇಕು ಮಿತಿ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Failure Isolation",
+     "headingKn": "ವೈಫಲ್ಯ ಪ್ರತ್ಯೇಕತೆ",
+     "bodyEn": "One agent failing should not silently lose the others' work. Catch errors per agent, set timeouts and return partial results with clear status.",
+     "bodyKn": "ಒಂದು agent ವಿಫಲವಾದರೆ ಇತರರ ಕೆಲಸ ಮೌನವಾಗಿ ಕಳೆಯಬಾರದು. ಪ್ರತಿ agent ದೋಷ ಹಿಡಿಯಿರಿ, timeouts ಹೊಂದಿಸಿ, ಸ್ಪಷ್ಟ ಸ್ಥಿತಿಯೊಂದಿಗೆ ಭಾಗಶಃ ಫಲಿತಾಂಶ ನೀಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Run independent agents together, with a concurrency cap.\n• Isolate failures per agent.",
+     "bodyKn": "• ಸ್ವತಂತ್ರ agents ಒಟ್ಟಿಗೆ, concurrency ಮಿತಿ.\n• ಪ್ರತಿ agent ವೈಫಲ್ಯ ಪ್ರತ್ಯೇಕ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why cap concurrency?",
+       "qKn": "concurrency ಮಿತಿ ಏಕೆ?",
+       "opts": [
+        "Provider rate limits",
+        "To slow",
+        "For style",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಒದಗಿಸುವವರ rate limits",
+        "ನಿಧಾನ",
+        "ಶೈಲಿ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "One agent fails. Others' work should:",
+       "qKn": "ಒಂದು agent ವಿಫಲ. ಇತರರ ಕೆಲಸ:",
+       "opts": [
+        "Be preserved as partial results",
+        "Be lost silently",
+        "Be deleted",
+        "Be repeated"
+       ],
+       "optsKn": [
+        "ಭಾಗಶಃ ಫಲಿತಾಂಶವಾಗಿ ಉಳಿಯಬೇಕು",
+        "ಮೌನವಾಗಿ ಕಳೆಯಬೇಕು",
+        "ಅಳಿಸಬೇಕು",
+        "ಪುನರಾವರ್ತಿಸಬೇಕು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Every agent call needs:",
+       "qKn": "ಪ್ರತಿ agent ಕರೆಗೆ:",
+       "opts": [
+        "A timeout",
+        "A logo",
+        "Nothing",
+        "A poem"
+       ],
+       "optsKn": [
+        "timeout",
+        "ಲೋಗೋ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಕವಿತೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215da",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "FIPA-ACL Heritage and Speech Acts — Speech Act Theory",
+  "titleKn": "FIPA-ACL ಪರಂಪರೆ ಮತ್ತು Speech Acts — Speech Act ಸಿದ್ಧಾಂತ",
+  "desc": "Speech act theory treats a message as an action, such as requesting or informing, not only as information.",
+  "descKn": "speech act ಸಿದ್ಧಾಂತ ಸಂದೇಶವನ್ನು ಕೇವಲ ಮಾಹಿತಿಯಲ್ಲ, ವಿನಂತಿಸುವ ಅಥವಾ ತಿಳಿಸುವ ಕ್ರಿಯೆಯಾಗಿ ಪರಿಗಣಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Define a speech act.",
+   "Distinguish the content of a message from its intent."
+  ],
+  "objectivesKn": [
+   "speech act ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ಸಂದೇಶದ ವಿಷಯ ಮತ್ತು ಉದ್ದೇಶ ಬೇರ್ಪಡಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "FIPA-ACL Heritage and Speech Acts — Speech Act Theory",
+     "textKn": "FIPA-ACL Heritage and Speech Acts — Speech Act Theory",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in FIPA-ACL Heritage and Speech Acts",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Saying as Doing",
+     "headingKn": "ಹೇಳುವುದು ಮಾಡುವುದು",
+     "bodyEn": "Saying \"I promise\" performs a promise. Messages between agents likewise do things: ask, tell, propose, refuse.",
+     "bodyKn": "\"ನಾನು ಭರವಸೆ ನೀಡುತ್ತೇನೆ\" ಎನ್ನುವುದು ಭರವಸೆಯನ್ನು ನಿರ್ವಹಿಸುತ್ತದೆ. agents ನಡುವಿನ ಸಂದೇಶಗಳೂ ಹಾಗೆಯೇ: ಕೇಳು, ಹೇಳು, ಪ್ರಸ್ತಾಪಿಸು, ನಿರಾಕರಿಸು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Content Versus Intent",
+     "headingKn": "ವಿಷಯ vs ಉದ್ದೇಶ",
+     "bodyEn": "The same content \"the door is open\" can inform, request or warn. Making the intent explicit removes ambiguity between agents.",
+     "bodyKn": "ಒಂದೇ ವಿಷಯ \"ಬಾಗಿಲು ತೆರೆದಿದೆ\" ತಿಳಿಸಬಹುದು, ವಿನಂತಿಸಬಹುದು ಅಥವಾ ಎಚ್ಚರಿಸಬಹುದು. ಉದ್ದೇಶ ಸ್ಪಷ್ಟಪಡಿಸಿದರೆ agents ನಡುವಿನ ಅಸ್ಪಷ್ಟತೆ ಹೋಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Messages perform actions.\n• Separate content from intent.",
+     "bodyKn": "• ಸಂದೇಶಗಳು ಕ್ರಿಯೆ ನಿರ್ವಹಿಸುತ್ತವೆ.\n• ವಿಷಯ ಮತ್ತು ಉದ್ದೇಶ ಬೇರ್ಪಡಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A speech act is:",
+       "qKn": "speech act:",
+       "opts": [
+        "A message that performs an action",
+        "A picture",
+        "A loud voice",
+        "A table"
+       ],
+       "optsKn": [
+        "ಕ್ರಿಯೆ ನಿರ್ವಹಿಸುವ ಸಂದೇಶ",
+        "ಚಿತ್ರ",
+        "ಜೋರು ಧ್ವನಿ",
+        "ಟೇಬಲ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The same content can have different:",
+       "qKn": "ಒಂದೇ ವಿಷಯಕ್ಕೆ ಬೇರೆ:",
+       "opts": [
+        "Intents",
+        "Fonts",
+        "Prices",
+        "Colours"
+       ],
+       "optsKn": [
+        "ಉದ್ದೇಶಗಳು",
+        "ಫಾಂಟ್",
+        "ಬೆಲೆ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Explicit intent:",
+       "qKn": "ಸ್ಪಷ್ಟ ಉದ್ದೇಶ:",
+       "opts": [
+        "Reduces ambiguity",
+        "Adds ambiguity",
+        "Is decorative",
+        "Is slow"
+       ],
+       "optsKn": [
+        "ಅಸ್ಪಷ್ಟತೆ ಕಡಿಮೆ",
+        "ಅಸ್ಪಷ್ಟತೆ ಹೆಚ್ಚು",
+        "ಅಲಂಕಾರ",
+        "ನಿಧಾನ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215da",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "FIPA-ACL Heritage and Speech Acts — FIPA-ACL Performatives",
+  "titleKn": "FIPA-ACL ಪರಂಪರೆ ಮತ್ತು Speech Acts — FIPA-ACL Performatives",
+  "desc": "FIPA-ACL defined a standard set of performatives such as inform, request, propose and refuse for agent messages.",
+  "descKn": "FIPA-ACL agent ಸಂದೇಶಗಳಿಗೆ inform, request, propose, refuse ನಂತಹ ಪ್ರಮಾಣಿತ performatives ಸೆಟ್ ವ್ಯಾಖ್ಯಾನಿಸಿತು.",
+  "objectives": [
+   "Name common performatives.",
+   "Describe a message envelope: sender, receiver, performative, content."
+  ],
+  "objectivesKn": [
+   "ಸಾಮಾನ್ಯ performatives ಹೆಸರಿಸಿ.",
+   "ಸಂದೇಶ envelope ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "FIPA-ACL Heritage and Speech Acts — FIPA-ACL Performatives",
+     "textKn": "FIPA-ACL Heritage and Speech Acts — FIPA-ACL Performatives",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in FIPA-ACL Heritage and Speech Acts",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Standard Performatives",
+     "headingKn": "ಪ್ರಮಾಣಿತ Performatives",
+     "bodyEn": "Inform shares a fact, request asks for an action, propose offers terms, and refuse or agree responds. A shared vocabulary lets independently built agents interoperate.",
+     "bodyKn": "inform ಸಂಗತಿ ಹಂಚುತ್ತದೆ, request ಕ್ರಿಯೆ ಕೇಳುತ್ತದೆ, propose ನಿಯಮ ನೀಡುತ್ತದೆ, refuse ಅಥವಾ agree ಪ್ರತಿಕ್ರಿಯಿಸುತ್ತದೆ. ಹಂಚಿದ ಶಬ್ದಕೋಶ ಸ್ವತಂತ್ರ agents ಅನ್ನು ಪರಸ್ಪರ ಕೆಲಸ ಮಾಡಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Envelope",
+     "headingKn": "Envelope",
+     "bodyEn": "A message names its sender and receiver, states the performative, carries the content and can reference the conversation it belongs to.",
+     "bodyKn": "ಸಂದೇಶ ಕಳುಹಿಸುವವ ಮತ್ತು ಸ್ವೀಕರಿಸುವವರನ್ನು ಹೆಸರಿಸುತ್ತದೆ, performative ಹೇಳುತ್ತದೆ, ವಿಷಯ ಹೊತ್ತಿರುತ್ತದೆ, ಸೇರಿದ ಸಂಭಾಷಣೆ ಉಲ್ಲೇಖಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Standard performatives: inform, request, propose, refuse.\n• Messages carry sender, receiver, performative, content.",
+     "bodyKn": "• inform, request, propose, refuse.\n• sender, receiver, performative, content."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Which is a performative?",
+       "qKn": "ಯಾವುದು performative?",
+       "opts": [
+        "request",
+        "colour",
+        "font",
+        "logo"
+       ],
+       "optsKn": [
+        "request",
+        "ಬಣ್ಣ",
+        "ಫಾಂಟ್",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A shared vocabulary allows:",
+       "qKn": "ಹಂಚಿದ ಶಬ್ದಕೋಶ ಅನುಮತಿಸುವುದು:",
+       "opts": [
+        "Interoperability",
+        "Confusion",
+        "Secrecy",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪರಸ್ಪರ ಕಾರ್ಯಾಚರಣೆ",
+        "ಗೊಂದಲ",
+        "ರಹಸ್ಯ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "An envelope names:",
+       "qKn": "envelope ಹೆಸರಿಸುವುದು:",
+       "opts": [
+        "Sender and receiver",
+        "A colour",
+        "A price",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಕಳುಹಿಸುವವ ಮತ್ತು ಸ್ವೀಕರಿಸುವವ",
+        "ಬಣ್ಣ",
+        "ಬೆಲೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215da",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "FIPA-ACL Heritage and Speech Acts — What Modern Agents Inherit",
+  "titleKn": "FIPA-ACL ಪರಂಪರೆ ಮತ್ತು Speech Acts — ಆಧುನಿಕ Agents ಪಡೆದದ್ದು",
+  "desc": "Modern LLM agent protocols reuse ideas from FIPA-ACL while dropping its heavy formal semantics.",
+  "descKn": "ಆಧುನಿಕ LLM agent ಪ್ರೋಟೋಕಾಲ್‌ಗಳು FIPA-ACL ಕಲ್ಪನೆಗಳನ್ನು ಮರುಬಳಸಿ ಅದರ ಭಾರೀ ಔಪಚಾರಿಕ ಅರ್ಥಶಾಸ್ತ್ರ ಬಿಡುತ್ತವೆ.",
+  "objectives": [
+   "Trace ideas that survived into modern protocols.",
+   "Explain why natural language changed the design."
+  ],
+  "objectivesKn": [
+   "ಆಧುನಿಕ ಪ್ರೋಟೋಕಾಲ್‌ಗಳಲ್ಲಿ ಉಳಿದ ಕಲ್ಪನೆ ಗುರುತಿಸಿ.",
+   "ನೈಸರ್ಗಿಕ ಭಾಷೆ ವಿನ್ಯಾಸ ಬದಲಿಸಿದ್ದು ಏಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "FIPA-ACL Heritage and Speech Acts — What Modern Agents Inherit",
+     "textKn": "FIPA-ACL Heritage and Speech Acts — What Modern Agents Inherit",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in FIPA-ACL Heritage and Speech Acts",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Ideas That Survived",
+     "headingKn": "ಉಳಿದ ಕಲ್ಪನೆಗಳು",
+     "bodyEn": "Explicit message kinds, conversation identifiers, task lifecycle states and capability descriptions all appear again in current agent protocols.",
+     "bodyKn": "ಸ್ಪಷ್ಟ ಸಂದೇಶ ವಿಧ, ಸಂಭಾಷಣೆ ಗುರುತು, ಕೆಲಸ ಜೀವನಚಕ್ರ ಸ್ಥಿತಿ, ಸಾಮರ್ಥ್ಯ ವಿವರಣೆ ಈಗಿನ agent ಪ್ರೋಟೋಕಾಲ್‌ಗಳಲ್ಲಿ ಮತ್ತೆ ಕಾಣಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "What Changed",
+     "headingKn": "ಏನು ಬದಲಾಯಿತು",
+     "bodyEn": "LLMs understand free text, so message content is often natural language inside a lightweight structured wrapper rather than a formal logic language.",
+     "bodyKn": "LLM ಗಳು ಮುಕ್ತ ಪಠ್ಯ ಅರ್ಥೈಸುತ್ತವೆ; ಆದ್ದರಿಂದ ಸಂದೇಶ ವಿಷಯ ಔಪಚಾರಿಕ ತರ್ಕ ಭಾಷೆಯ ಬದಲು ಹಗುರ ರಚನಾತ್ಮಕ wrapper ಒಳಗಿನ ನೈಸರ್ಗಿಕ ಭಾಷೆಯಾಗಿರುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Message kinds, ids and lifecycles survived.\n• Free text replaced formal logic content.",
+     "bodyKn": "• ಸಂದೇಶ ವಿಧ, ಗುರುತು, ಜೀವನಚಕ್ರ ಉಳಿದವು.\n• ಮುಕ್ತ ಪಠ್ಯ ಔಪಚಾರಿಕ ತರ್ಕ ಬದಲಿಸಿತು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Which idea survived?",
+       "qKn": "ಯಾವ ಕಲ್ಪನೆ ಉಳಿಯಿತು?",
+       "opts": [
+        "Explicit message kinds",
+        "Punch cards",
+        "Floppy disks",
+        "None"
+       ],
+       "optsKn": [
+        "ಸ್ಪಷ್ಟ ಸಂದೇಶ ವಿಧ",
+        "punch cards",
+        "floppy disks",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why is content now free text?",
+       "qKn": "ವಿಷಯ ಈಗ ಮುಕ್ತ ಪಠ್ಯ ಏಕೆ?",
+       "opts": [
+        "LLMs understand it",
+        "It is required by law",
+        "To hide it",
+        "No reason"
+       ],
+       "optsKn": [
+        "LLM ಗಳು ಅರ್ಥೈಸುತ್ತವೆ",
+        "ಕಾನೂನು",
+        "ಮರೆಮಾಡಲು",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What was dropped?",
+       "qKn": "ಏನು ಬಿಡಲಾಯಿತು?",
+       "opts": [
+        "Heavy formal semantics",
+        "All structure",
+        "All messages",
+        "Everything"
+       ],
+       "optsKn": [
+        "ಭಾರೀ ಔಪಚಾರಿಕ ಅರ್ಥಶಾಸ್ತ್ರ",
+        "ಎಲ್ಲ ರಚನೆ",
+        "ಎಲ್ಲ ಸಂದೇಶ",
+        "ಎಲ್ಲವೂ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215dd",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Communication Protocols — Why Agents Need Protocols",
+  "titleKn": "ಸಂವಹನ ಪ್ರೋಟೋಕಾಲ್‌ಗಳು — Agents ಗೆ ಪ್ರೋಟೋಕಾಲ್ ಏಕೆ",
+  "desc": "A protocol fixes how agents find each other, exchange messages and report task progress.",
+  "descKn": "ಪ್ರೋಟೋಕಾಲ್ agents ಪರಸ್ಪರ ಹೇಗೆ ಕಂಡುಕೊಳ್ಳುತ್ತವೆ, ಸಂದೇಶ ವಿನಿಮಯ ಮಾಡುತ್ತವೆ, ಪ್ರಗತಿ ವರದಿ ಮಾಡುತ್ತವೆ ಎಂದು ನಿಗದಿ ಮಾಡುತ್ತದೆ.",
+  "objectives": [
+   "Explain discovery, messaging and task lifecycle.",
+   "Say why open standards help."
+  ],
+  "objectivesKn": [
+   "discovery, messaging, ಕೆಲಸ ಜೀವನಚಕ್ರ ವಿವರಿಸಿ.",
+   "ಮುಕ್ತ ಮಾನದಂಡ ಏಕೆ ಸಹಾಯ ಹೇಳಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Communication Protocols — Why Agents Need Protocols",
+     "textKn": "Communication Protocols — Why Agents Need Protocols",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Communication Protocols",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Three Concerns",
+     "headingKn": "ಮೂರು ಆತಂಕಗಳು",
+     "bodyEn": "A protocol answers: how does one agent find another and learn what it can do, how are messages formatted and delivered, and how is a long task tracked to completion?",
+     "bodyKn": "ಪ್ರೋಟೋಕಾಲ್ ಉತ್ತರಿಸುತ್ತದೆ: ಒಂದು agent ಇನ್ನೊಂದನ್ನು ಹೇಗೆ ಕಂಡು ಅದು ಏನು ಮಾಡಬಲ್ಲದು ಕಲಿಯುತ್ತದೆ, ಸಂದೇಶ ಹೇಗೆ ರೂಪಿತ ಮತ್ತು ತಲುಪುತ್ತದೆ, ದೀರ್ಘ ಕೆಲಸ ಪೂರ್ಣತೆವರೆಗೆ ಹೇಗೆ ಟ್ರ್ಯಾಕ್ ಆಗುತ್ತದೆ?"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Open Standards",
+     "headingKn": "ಮುಕ್ತ ಮಾನದಂಡ",
+     "bodyEn": "Agents built by different teams can cooperate only if they share a standard. Open standards avoid lock-in and let ecosystems grow.",
+     "bodyKn": "ಬೇರೆ ತಂಡಗಳು ನಿರ್ಮಿಸಿದ agents ಮಾನದಂಡ ಹಂಚಿದರೆ ಮಾತ್ರ ಸಹಕರಿಸಬಹುದು. ಮುಕ್ತ ಮಾನದಂಡ ಲಾಕ್-ಇನ್ ತಪ್ಪಿಸಿ ಪರಿಸರ ಬೆಳೆಯಲು ಬಿಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Discovery, messaging and task tracking.\n• Open standards prevent lock-in.",
+     "bodyKn": "• discovery, messaging, ಕೆಲಸ ಟ್ರ್ಯಾಕಿಂಗ್.\n• ಮುಕ್ತ ಮಾನದಂಡ ಲಾಕ್-ಇನ್ ತಡೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A protocol covers:",
+       "qKn": "ಪ್ರೋಟೋಕಾಲ್ ಒಳಗೊಳ್ಳುತ್ತದೆ:",
+       "opts": [
+        "Discovery, messaging, task tracking",
+        "Only colours",
+        "Only logos",
+        "Nothing"
+       ],
+       "optsKn": [
+        "discovery, messaging, ಕೆಲಸ ಟ್ರ್ಯಾಕಿಂಗ್",
+        "ಬಣ್ಣ ಮಾತ್ರ",
+        "ಲೋಗೋ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Open standards avoid:",
+       "qKn": "ಮುಕ್ತ ಮಾನದಂಡ ತಪ್ಪಿಸುವುದು:",
+       "opts": [
+        "Lock-in",
+        "Cooperation",
+        "Growth",
+        "Testing"
+       ],
+       "optsKn": [
+        "ಲಾಕ್-ಇನ್",
+        "ಸಹಕಾರ",
+        "ಬೆಳವಣಿಗೆ",
+        "ಪರೀಕ್ಷೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Different teams' agents cooperate if they:",
+       "qKn": "ಬೇರೆ ತಂಡಗಳ agents ಸಹಕರಿಸುವುದು:",
+       "opts": [
+        "Share a standard",
+        "Use the same colour",
+        "Never talk",
+        "Are identical"
+       ],
+       "optsKn": [
+        "ಮಾನದಂಡ ಹಂಚಿದರೆ",
+        "ಒಂದೇ ಬಣ್ಣ",
+        "ಎಂದಿಗೂ ಮಾತಾಡದೆ",
+        "ಒಂದೇ ಆದರೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215dd",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Communication Protocols — Message Patterns",
+  "titleKn": "ಸಂವಹನ ಪ್ರೋಟೋಕಾಲ್‌ಗಳು — ಸಂದೇಶ ಮಾದರಿಗಳು",
+  "desc": "Request-response, streaming, and publish-subscribe suit different agent interactions.",
+  "descKn": "request-response, streaming, publish-subscribe ಬೇರೆ agent ಸಂವಹನಗಳಿಗೆ ಸೂಕ್ತ.",
+  "objectives": [
+   "Choose a message pattern for a use case.",
+   "Note trade-offs in latency and coupling."
+  ],
+  "objectivesKn": [
+   "ಬಳಕೆ ಪ್ರಕರಣಕ್ಕೆ ಸಂದೇಶ ಮಾದರಿ ಆರಿಸಿ.",
+   "ವಿಳಂಬ ಮತ್ತು ಜೋಡಣೆ ವಿನಿಮಯ ಗಮನಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Communication Protocols — Message Patterns",
+     "textKn": "Communication Protocols — Message Patterns",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Communication Protocols",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Patterns",
+     "headingKn": "ಮಾದರಿಗಳು",
+     "bodyEn": "Request-response suits short tasks. Streaming suits long outputs and progress updates. Publish-subscribe suits many listeners reacting to events.",
+     "bodyKn": "request-response ಚಿಕ್ಕ ಕೆಲಸಕ್ಕೆ. streaming ಉದ್ದ ಔಟ್‌ಪುಟ್ ಮತ್ತು ಪ್ರಗತಿ ನವೀಕರಣಕ್ಕೆ. publish-subscribe ಘಟನೆಗೆ ಸ್ಪಂದಿಸುವ ಹಲವು ಕೇಳುಗರಿಗೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Coupling and Latency",
+     "headingKn": "ಜೋಡಣೆ ಮತ್ತು ವಿಳಂಬ",
+     "bodyEn": "Direct calls are simple but tie agents together. Event-based messaging decouples them at the cost of harder tracing and ordering.",
+     "bodyKn": "ನೇರ ಕರೆ ಸರಳ ಆದರೆ agents ಅನ್ನು ಜೋಡಿಸುತ್ತದೆ. event-ಆಧಾರಿತ ಸಂದೇಶ ಅವನ್ನು ಬೇರ್ಪಡಿಸುತ್ತದೆ, ಆದರೆ trace ಮತ್ತು ಕ್ರಮ ಕಷ್ಟ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Request-response, streaming, pub-sub.\n• Events decouple but complicate tracing.",
+     "bodyKn": "• request-response, streaming, pub-sub.\n• events ಬೇರ್ಪಡಿಸುತ್ತವೆ, trace ಕಷ್ಟ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Streaming suits:",
+       "qKn": "streaming ಸೂಕ್ತ:",
+       "opts": [
+        "Long outputs and progress",
+        "Nothing",
+        "Only tiny tasks",
+        "Only images"
+       ],
+       "optsKn": [
+        "ಉದ್ದ ಔಟ್‌ಪುಟ್ ಮತ್ತು ಪ್ರಗತಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಚಿಕ್ಕ ಕೆಲಸ ಮಾತ್ರ",
+        "ಚಿತ್ರ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Pub-sub suits:",
+       "qKn": "pub-sub ಸೂಕ್ತ:",
+       "opts": [
+        "Many listeners reacting to events",
+        "One caller",
+        "No events",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಘಟನೆಗೆ ಸ್ಪಂದಿಸುವ ಹಲವು ಕೇಳುಗರು",
+        "ಒಬ್ಬ ಕರೆದಾರ",
+        "ಘಟನೆ ಇಲ್ಲ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A cost of event-based messaging:",
+       "qKn": "event-ಆಧಾರಿತ ಸಂದೇಶ ವೆಚ್ಚ:",
+       "opts": [
+        "Harder tracing and ordering",
+        "Nothing",
+        "Tighter coupling",
+        "Less flexibility"
+       ],
+       "optsKn": [
+        "trace ಮತ್ತು ಕ್ರಮ ಕಷ್ಟ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಿಗಿ ಜೋಡಣೆ",
+        "ಕಡಿಮೆ ನಮ್ಯತೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215dd",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Communication Protocols — Trust, Identity and Security",
+  "titleKn": "ಸಂವಹನ ಪ್ರೋಟೋಕಾಲ್‌ಗಳು — ನಂಬಿಕೆ, ಗುರುತು, ಭದ್ರತೆ",
+  "desc": "Agents talking across boundaries need authentication, authorisation and protection against malicious messages.",
+  "descKn": "ಗಡಿ ದಾಟಿ ಮಾತಾಡುವ agents ಗೆ ದೃಢೀಕರಣ, ಅಧಿಕಾರ, ದುರುದ್ದೇಶದ ಸಂದೇಶದ ವಿರುದ್ಧ ರಕ್ಷಣೆ ಬೇಕು.",
+  "objectives": [
+   "Authenticate agents and scope their permissions.",
+   "Treat incoming agent messages as untrusted input."
+  ],
+  "objectivesKn": [
+   "agents ದೃಢೀಕರಿಸಿ, ಅನುಮತಿ ಮಿತಿಗೊಳಿಸಿ.",
+   "ಬರುವ agent ಸಂದೇಶಗಳನ್ನು ಅಪನಂಬಿಕೆ ಇನ್‌ಪುಟ್ ಎಂದು ಪರಿಗಣಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Communication Protocols — Trust, Identity and Security",
+     "textKn": "Communication Protocols — Trust, Identity and Security",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Communication Protocols",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Who Is Calling",
+     "headingKn": "ಯಾರು ಕರೆಯುತ್ತಿದ್ದಾರೆ",
+     "bodyEn": "Verify the identity of the calling agent and grant only the permissions its task needs. A remote agent should not automatically inherit yours.",
+     "bodyKn": "ಕರೆಯುವ agent ಗುರುತು ಪರಿಶೀಲಿಸಿ, ಅದರ ಕೆಲಸಕ್ಕೆ ಬೇಕಾದ ಅನುಮತಿ ಮಾತ್ರ ನೀಡಿ. ದೂರದ agent ನಿಮ್ಮ ಅನುಮತಿ ಸ್ವಯಂ ಪಡೆಯಬಾರದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Messages Are Untrusted",
+     "headingKn": "ಸಂದೇಶಗಳು ಅಪನಂಬಿಕೆ",
+     "bodyEn": "Another agent's output can carry injected instructions. Validate structure, limit what messages can trigger and log all exchanges for audit.",
+     "bodyKn": "ಇನ್ನೊಂದು agent ಔಟ್‌ಪುಟ್ injected ಸೂಚನೆ ಹೊತ್ತಿರಬಹುದು. ರಚನೆ ಪರಿಶೀಲಿಸಿ, ಸಂದೇಶ ಪ್ರಚೋದಿಸಬಹುದಾದ್ದು ಮಿತಿಗೊಳಿಸಿ, ಲೆಕ್ಕಪರಿಶೋಧನೆಗೆ ಎಲ್ಲ ವಿನಿಮಯ ದಾಖಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Authenticate and scope permissions.\n• Treat agent messages as untrusted; log them.",
+     "bodyKn": "• ದೃಢೀಕರಿಸಿ, ಅನುಮತಿ ಮಿತಿ.\n• agent ಸಂದೇಶ ಅಪನಂಬಿಕೆ; ದಾಖಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A remote agent should:",
+       "qKn": "ದೂರದ agent:",
+       "opts": [
+        "Get only the permissions it needs",
+        "Inherit all yours",
+        "Get admin",
+        "Be anonymous"
+       ],
+       "optsKn": [
+        "ಬೇಕಾದ ಅನುಮತಿ ಮಾತ್ರ",
+        "ನಿಮ್ಮೆಲ್ಲ ಪಡೆಯಲಿ",
+        "admin ಪಡೆಯಲಿ",
+        "ಅನಾಮಧೇಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Other agents' output is:",
+       "qKn": "ಇತರ agents ಔಟ್‌ಪುಟ್:",
+       "opts": [
+        "Untrusted input",
+        "Always safe",
+        "A command",
+        "Encrypted"
+       ],
+       "optsKn": [
+        "ಅಪನಂಬಿಕೆ ಇನ್‌ಪುಟ್",
+        "ಯಾವಾಗಲೂ ಸುರಕ್ಷಿತ",
+        "ಆದೇಶ",
+        "ಎನ್‌ಕ್ರಿಪ್ಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why log exchanges?",
+       "qKn": "ವಿನಿಮಯ ಏಕೆ ದಾಖಲಿಸಬೇಕು?",
+       "opts": [
+        "Audit",
+        "Decoration",
+        "To hide",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಲೆಕ್ಕಪರಿಶೋಧನೆ",
+        "ಅಲಂಕಾರ",
+        "ಮರೆಮಾಡಲು",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

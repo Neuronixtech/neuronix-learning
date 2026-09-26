@@ -1,0 +1,2627 @@
+[
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215e0",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "The Multi-Agent Primitive Model — The Building Blocks",
+  "titleKn": "ಬಹು-Agent ಮೂಲ ಮಾದರಿ — ನಿರ್ಮಾಣ ಘಟಕಗಳು",
+  "desc": "Every multi-agent system is built from a few primitives: agents, messages, state, tools and a coordinator.",
+  "descKn": "ಪ್ರತಿ ಬಹು-agent ವ್ಯವಸ್ಥೆ ಕೆಲವು ಮೂಲ ಘಟಕಗಳಿಂದ ನಿರ್ಮಿತ: agents, ಸಂದೇಶ, state, tools, ಸಮನ್ವಯಕ.",
+  "objectives": [
+   "Name the primitives.",
+   "Describe how they combine."
+  ],
+  "objectivesKn": [
+   "ಮೂಲ ಘಟಕ ಹೆಸರಿಸಿ.",
+   "ಅವು ಹೇಗೆ ಸೇರುತ್ತವೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "The Multi-Agent Primitive Model — The Building Blocks",
+     "textKn": "The Multi-Agent Primitive Model — The Building Blocks",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in The Multi-Agent Primitive Model",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Five Primitives",
+     "headingKn": "ಐದು ಮೂಲ ಘಟಕಗಳು",
+     "bodyEn": "An agent is a model with instructions and tools. Messages carry information between agents. State is what persists. Tools let agents act. A coordinator decides who runs next.",
+     "bodyKn": "agent ಎಂದರೆ ಸೂಚನೆ ಮತ್ತು tools ಇರುವ ಮಾದರಿ. ಸಂದೇಶ agents ನಡುವೆ ಮಾಹಿತಿ ಹೊರುತ್ತದೆ. state ಉಳಿಯುವುದು. tools agents ಗೆ ಕ್ರಿಯೆ ನೀಡುತ್ತವೆ. ಸಮನ್ವಯಕ ಮುಂದೆ ಯಾರು ಚಲಿಸಬೇಕು ನಿರ್ಧರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Composition",
+     "headingKn": "ಸಂಯೋಜನೆ",
+     "bodyEn": "Patterns such as supervisors, debates and swarms are different arrangements of the same primitives, so understanding them makes new patterns easy to read.",
+     "bodyKn": "supervisor, debate, swarm ಮಾದರಿಗಳು ಅದೇ ಘಟಕಗಳ ಬೇರೆ ಜೋಡಣೆ; ಅವುಗಳನ್ನು ಅರ್ಥೈಸಿಕೊಂಡರೆ ಹೊಸ ಮಾದರಿ ಓದುವುದು ಸುಲಭ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Agents, messages, state, tools, coordinator.\n• Patterns are arrangements of these.",
+     "bodyKn": "• agents, ಸಂದೇಶ, state, tools, ಸಮನ್ವಯಕ.\n• ಮಾದರಿಗಳು ಇವುಗಳ ಜೋಡಣೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A coordinator decides:",
+       "qKn": "ಸಮನ್ವಯಕ ನಿರ್ಧರಿಸುವುದು:",
+       "opts": [
+        "Who runs next",
+        "The colour",
+        "The price",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮುಂದೆ ಯಾರು ಚಲಿಸಬೇಕು",
+        "ಬಣ್ಣ",
+        "ಬೆಲೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "An agent is:",
+       "qKn": "agent ಎಂದರೆ:",
+       "opts": [
+        "A model with instructions and tools",
+        "A database",
+        "A screen",
+        "A file"
+       ],
+       "optsKn": [
+        "ಸೂಚನೆ ಮತ್ತು tools ಇರುವ ಮಾದರಿ",
+        "ಡೇಟಾಬೇಸ್",
+        "ಪರದೆ",
+        "ಫೈಲ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Patterns are:",
+       "qKn": "ಮಾದರಿಗಳು:",
+       "opts": [
+        "Arrangements of primitives",
+        "New physics",
+        "Unrelated",
+        "Random"
+       ],
+       "optsKn": [
+        "ಮೂಲ ಘಟಕಗಳ ಜೋಡಣೆ",
+        "ಹೊಸ ಭೌತಶಾಸ್ತ್ರ",
+        "ಸಂಬಂಧವಿಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215e0",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "The Multi-Agent Primitive Model — State and Messages",
+  "titleKn": "ಬಹು-Agent ಮೂಲ ಮಾದರಿ — State ಮತ್ತು ಸಂದೇಶ",
+  "desc": "Decide what is passed as messages, what lives in shared state and what stays private to an agent.",
+  "descKn": "ಯಾವುದು ಸಂದೇಶವಾಗಿ ಹೋಗುತ್ತದೆ, ಯಾವುದು ಹಂಚಿದ state ನಲ್ಲಿರುತ್ತದೆ, ಯಾವುದು agent ಗೆ ಖಾಸಗಿ ಎಂದು ನಿರ್ಧರಿಸಿ.",
+  "objectives": [
+   "Choose between message passing and shared state.",
+   "Keep private context private."
+  ],
+  "objectivesKn": [
+   "ಸಂದೇಶ ಮತ್ತು ಹಂಚಿದ state ಆಯ್ಕೆ ಮಾಡಿ.",
+   "ಖಾಸಗಿ context ಖಾಸಗಿಯಾಗಿಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "The Multi-Agent Primitive Model — State and Messages",
+     "textKn": "The Multi-Agent Primitive Model — State and Messages",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in The Multi-Agent Primitive Model",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Passing Versus Sharing",
+     "headingKn": "ಹಸ್ತಾಂತರ vs ಹಂಚಿಕೆ",
+     "bodyEn": "Messages are explicit and easy to trace. Shared state is convenient but lets agents overwrite each other, so writes need clear ownership.",
+     "bodyKn": "ಸಂದೇಶಗಳು ಸ್ಪಷ್ಟ ಮತ್ತು trace ಸುಲಭ. ಹಂಚಿದ state ಅನುಕೂಲ ಆದರೆ agents ಪರಸ್ಪರ ಮೇಲ್ಬರಹ ಮಾಡಬಹುದು; ಬರೆಯುವಿಕೆಗೆ ಸ್ಪಷ್ಟ ಮಾಲೀಕತ್ವ ಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Private Context",
+     "headingKn": "ಖಾಸಗಿ Context",
+     "bodyEn": "Not every agent needs every detail. Sharing only what is relevant reduces cost, noise and the chance of leaking sensitive data.",
+     "bodyKn": "ಪ್ರತಿ agent ಗೆ ಪ್ರತಿ ವಿವರ ಬೇಕಿಲ್ಲ. ಸಂಬಂಧಿತವಾದದ್ದನ್ನು ಮಾತ್ರ ಹಂಚಿದರೆ ವೆಚ್ಚ, ಗದ್ದಲ, ಸೂಕ್ಷ್ಮ ಡೇಟಾ ಸೋರಿಕೆ ಕಡಿಮೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Messages are traceable; shared state needs ownership.\n• Share only what is relevant.",
+     "bodyKn": "• ಸಂದೇಶ trace ಸುಲಭ; state ಗೆ ಮಾಲೀಕತ್ವ.\n• ಸಂಬಂಧಿತ ಮಾತ್ರ ಹಂಚಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Shared state risk:",
+       "qKn": "ಹಂಚಿದ state ಅಪಾಯ:",
+       "opts": [
+        "Agents overwriting each other",
+        "Nothing",
+        "Faster always",
+        "Less memory"
+       ],
+       "optsKn": [
+        "agents ಪರಸ್ಪರ ಮೇಲ್ಬರಹ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಯಾವಾಗಲೂ ವೇಗ",
+        "ಕಡಿಮೆ ಮೆಮೊರಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Messages are:",
+       "qKn": "ಸಂದೇಶಗಳು:",
+       "opts": [
+        "Explicit and traceable",
+        "Invisible",
+        "Random",
+        "Encrypted always"
+       ],
+       "optsKn": [
+        "ಸ್ಪಷ್ಟ ಮತ್ತು trace ಮಾಡಬಹುದಾದ",
+        "ಅದೃಶ್ಯ",
+        "ಯಾದೃಚ್ಛಿಕ",
+        "ಯಾವಾಗಲೂ ಎನ್‌ಕ್ರಿಪ್ಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Share:",
+       "qKn": "ಹಂಚಿ:",
+       "opts": [
+        "Only relevant context",
+        "Everything",
+        "Nothing",
+        "Secrets"
+       ],
+       "optsKn": [
+        "ಸಂಬಂಧಿತ context ಮಾತ್ರ",
+        "ಎಲ್ಲವನ್ನೂ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ರಹಸ್ಯಗಳು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215e0",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "The Multi-Agent Primitive Model — Termination and Control Flow",
+  "titleKn": "ಬಹು-Agent ಮೂಲ ಮಾದರಿ — ಮುಕ್ತಾಯ ಮತ್ತು ನಿಯಂತ್ರಣ ಹರಿವು",
+  "desc": "Systems need clear rules for who goes next and when the whole run is finished.",
+  "descKn": "ವ್ಯವಸ್ಥೆಗೆ ಮುಂದೆ ಯಾರು ಮತ್ತು ಇಡೀ run ಯಾವಾಗ ಮುಗಿಯಿತು ಎಂಬ ಸ್ಪಷ್ಟ ನಿಯಮ ಬೇಕು.",
+  "objectives": [
+   "Define stop conditions.",
+   "Prevent endless conversations."
+  ],
+  "objectivesKn": [
+   "ನಿಲ್ಲಿಸುವ ಷರತ್ತು ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ಅಂತ್ಯವಿಲ್ಲದ ಸಂಭಾಷಣೆ ತಡೆಯಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "The Multi-Agent Primitive Model — Termination and Control Flow",
+     "textKn": "The Multi-Agent Primitive Model — Termination and Control Flow",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in The Multi-Agent Primitive Model",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Who Goes Next",
+     "headingKn": "ಮುಂದೆ ಯಾರು",
+     "bodyEn": "A fixed order, a coordinator decision or agents choosing each other are all options. Each trades predictability for flexibility.",
+     "bodyKn": "ನಿಗದಿತ ಕ್ರಮ, ಸಮನ್ವಯಕ ನಿರ್ಧಾರ, ಅಥವಾ agents ಪರಸ್ಪರ ಆರಿಸುವುದು ಆಯ್ಕೆಗಳು. ಪ್ರತಿಯೊಂದು ಊಹಿಸುವಿಕೆ ಮತ್ತು ನಮ್ಯತೆ ವಿನಿಮಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Stopping",
+     "headingKn": "ನಿಲ್ಲಿಸುವುದು",
+     "bodyEn": "Define success, failure and budget-exceeded conditions explicitly. Without them agents can keep talking without progress.",
+     "bodyKn": "ಯಶಸ್ಸು, ವೈಫಲ್ಯ, ಬಜೆಟ್ ಮೀರಿದ ಷರತ್ತು ಸ್ಪಷ್ಟವಾಗಿ ವ್ಯಾಖ್ಯಾನಿಸಿ. ಇಲ್ಲದಿದ್ದರೆ agents ಪ್ರಗತಿ ಇಲ್ಲದೆ ಮಾತಾಡುತ್ತಲೇ ಇರಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Choose next-speaker policy deliberately.\n• Define success, failure and budget stops.",
+     "bodyKn": "• ಮುಂದಿನ ಮಾತಾಡುವವ ನೀತಿ ಉದ್ದೇಶಪೂರ್ವಕ.\n• ಯಶಸ್ಸು, ವೈಫಲ್ಯ, ಬಜೆಟ್ ನಿಲುಗಡೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Without stop conditions agents may:",
+       "qKn": "ನಿಲ್ಲಿಸುವ ಷರತ್ತಿಲ್ಲದೆ agents:",
+       "opts": [
+        "Talk forever",
+        "Finish faster",
+        "Save cost",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಶಾಶ್ವತ ಮಾತಾಡಬಹುದು",
+        "ಬೇಗ ಮುಗಿಸಬಹುದು",
+        "ವೆಚ್ಚ ಉಳಿತಾಯ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A fixed order is:",
+       "qKn": "ನಿಗದಿತ ಕ್ರಮ:",
+       "opts": [
+        "Predictable but rigid",
+        "Flexible but chaotic",
+        "Random",
+        "Illegal"
+       ],
+       "optsKn": [
+        "ಊಹಿಸಬಹುದಾದ ಆದರೆ ಬಿಗಿ",
+        "ನಮ್ಯ ಆದರೆ ಅಸ್ತವ್ಯಸ್ತ",
+        "ಯಾದೃಚ್ಛಿಕ",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Define explicitly:",
+       "qKn": "ಸ್ಪಷ್ಟವಾಗಿ ವ್ಯಾಖ್ಯಾನಿಸಿ:",
+       "opts": [
+        "Success and failure conditions",
+        "Fonts",
+        "Logos",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಯಶಸ್ಸು ಮತ್ತು ವೈಫಲ್ಯ ಷರತ್ತು",
+        "ಫಾಂಟ್",
+        "ಲೋಗೋ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215e3",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Supervisor / Orchestrator-Worker Pattern — How the Pattern Works",
+  "titleKn": "Supervisor / Orchestrator-Worker ಮಾದರಿ — ಮಾದರಿ ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ",
+  "desc": "An orchestrator splits a task, assigns subtasks to workers and assembles their results.",
+  "descKn": "orchestrator ಕೆಲಸ ವಿಭಜಿಸಿ ಉಪಕಾರ್ಯಗಳನ್ನು workers ಗೆ ನೀಡಿ ಫಲಿತಾಂಶ ಜೋಡಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Describe decomposition, delegation and synthesis.",
+   "Identify what the orchestrator must know."
+  ],
+  "objectivesKn": [
+   "ವಿಭಜನೆ, ವಹಿಸುವಿಕೆ, ಸಂಶ್ಲೇಷಣೆ ವಿವರಿಸಿ.",
+   "orchestrator ಗೆ ಏನು ತಿಳಿದಿರಬೇಕು ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Supervisor / Orchestrator-Worker Pattern — How the Pattern Works",
+     "textKn": "Supervisor / Orchestrator-Worker Pattern — How the Pattern Works",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Supervisor / Orchestrator-Worker Pattern",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Decompose, Delegate, Synthesise",
+     "headingKn": "ವಿಭಜಿಸಿ, ವಹಿಸಿ, ಸಂಶ್ಲೇಷಿಸಿ",
+     "bodyEn": "The orchestrator plans subtasks, sends each to a worker with just the context it needs, then merges results into one answer.",
+     "bodyKn": "orchestrator ಉಪಕಾರ್ಯ ಯೋಜಿಸಿ, ಪ್ರತಿಯೊಂದನ್ನು ಬೇಕಾದ context ಮಾತ್ರ ಸಹಿತ worker ಗೆ ಕಳುಹಿಸಿ, ಫಲಿತಾಂಶವನ್ನು ಒಂದು ಉತ್ತರಕ್ಕೆ ವಿಲೀನಗೊಳಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Clear Contract",
+     "headingKn": "ಸ್ಪಷ್ಟ ಒಪ್ಪಂದ",
+     "bodyEn": "Each worker instruction should state the goal, output format and boundaries. Vague delegation produces vague or duplicated work.",
+     "bodyKn": "ಪ್ರತಿ worker ಸೂಚನೆ ಗುರಿ, ಔಟ್‌ಪುಟ್ ರೂಪ, ಗಡಿ ತಿಳಿಸಬೇಕು. ಅಸ್ಪಷ್ಟ ವಹಿಸುವಿಕೆ ಅಸ್ಪಷ್ಟ ಅಥವಾ ನಕಲು ಕೆಲಸ ನೀಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Decompose, delegate, synthesise.\n• Give workers goal, format and boundaries.",
+     "bodyKn": "• ವಿಭಜಿಸಿ, ವಹಿಸಿ, ಸಂಶ್ಲೇಷಿಸಿ.\n• ಗುರಿ, ರೂಪ, ಗಡಿ ನೀಡಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "The orchestrator:",
+       "qKn": "orchestrator:",
+       "opts": [
+        "Splits, assigns and merges",
+        "Only reads",
+        "Only writes logs",
+        "Is optional"
+       ],
+       "optsKn": [
+        "ವಿಭಜಿಸಿ, ನೀಡಿ, ವಿಲೀನ",
+        "ಓದುತ್ತದೆ ಮಾತ್ರ",
+        "ಲಾಗ್ ಮಾತ್ರ",
+        "ಐಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Vague delegation yields:",
+       "qKn": "ಅಸ್ಪಷ್ಟ ವಹಿಸುವಿಕೆ ನೀಡುವುದು:",
+       "opts": [
+        "Vague or duplicated work",
+        "Perfect work",
+        "Nothing",
+        "Faster work"
+       ],
+       "optsKn": [
+        "ಅಸ್ಪಷ್ಟ ಅಥವಾ ನಕಲು ಕೆಲಸ",
+        "ಪರಿಪೂರ್ಣ ಕೆಲಸ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ವೇಗದ ಕೆಲಸ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Workers get:",
+       "qKn": "workers ಪಡೆಯುವುದು:",
+       "opts": [
+        "Only the context they need",
+        "Everything",
+        "Nothing",
+        "Secrets"
+       ],
+       "optsKn": [
+        "ಬೇಕಾದ context ಮಾತ್ರ",
+        "ಎಲ್ಲವನ್ನೂ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ರಹಸ್ಯಗಳು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215e3",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Supervisor / Orchestrator-Worker Pattern — Failure Modes",
+  "titleKn": "Supervisor / Orchestrator-Worker ಮಾದರಿ — ವೈಫಲ್ಯ ವಿಧಗಳು",
+  "desc": "Common problems are bad decomposition, lost details in synthesis and an orchestrator bottleneck.",
+  "descKn": "ಕೆಟ್ಟ ವಿಭಜನೆ, ಸಂಶ್ಲೇಷಣೆಯಲ್ಲಿ ವಿವರ ನಷ್ಟ, orchestrator ಅಡಚಣೆ ಸಾಮಾನ್ಯ ಸಮಸ್ಯೆಗಳು.",
+  "objectives": [
+   "Recognise poor decomposition.",
+   "Guard against lossy synthesis."
+  ],
+  "objectivesKn": [
+   "ಕೆಟ್ಟ ವಿಭಜನೆ ಗುರುತಿಸಿ.",
+   "ವಿವರ ಕಳೆಯುವ ಸಂಶ್ಲೇಷಣೆ ತಡೆಯಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Supervisor / Orchestrator-Worker Pattern — Failure Modes",
+     "textKn": "Supervisor / Orchestrator-Worker Pattern — Failure Modes",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Supervisor / Orchestrator-Worker Pattern",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Bad Splits",
+     "headingKn": "ಕೆಟ್ಟ ವಿಭಜನೆ",
+     "bodyEn": "If subtasks overlap or leave gaps, the final answer will have holes or contradictions. Check that the pieces together cover the goal.",
+     "bodyKn": "ಉಪಕಾರ್ಯ ಅತಿಕ್ರಮಿಸಿದರೆ ಅಥವಾ ಅಂತರ ಬಿಟ್ಟರೆ ಅಂತಿಮ ಉತ್ತರದಲ್ಲಿ ರಂಧ್ರ ಅಥವಾ ವಿರೋಧ. ತುಣುಕುಗಳು ಒಟ್ಟಾಗಿ ಗುರಿ ಒಳಗೊಳ್ಳುತ್ತವೆ ಎಂದು ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lossy Synthesis",
+     "headingKn": "ವಿವರ ಕಳೆಯುವ ಸಂಶ್ಲೇಷಣೆ",
+     "bodyEn": "Summarising worker output can drop important details or errors. Have workers return structured results and let the orchestrator cite them.",
+     "bodyKn": "worker ಔಟ್‌ಪುಟ್ ಸಾರಾಂಶ ಮಾಡಿದರೆ ಮುಖ್ಯ ವಿವರ ಅಥವಾ ದೋಷ ಕಳೆಯಬಹುದು. workers ರಚನಾತ್ಮಕ ಫಲಿತಾಂಶ ನೀಡಲಿ, orchestrator ಉಲ್ಲೇಖಿಸಲಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Check that subtasks cover the goal without overlap.\n• Structured worker results reduce loss.",
+     "bodyKn": "• ಉಪಕಾರ್ಯ ಗುರಿ ಒಳಗೊಳ್ಳಬೇಕು, ಅತಿಕ್ರಮಣ ಇಲ್ಲ.\n• ರಚನಾತ್ಮಕ ಫಲಿತಾಂಶ ನಷ್ಟ ಕಡಿಮೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Overlapping subtasks cause:",
+       "qKn": "ಅತಿಕ್ರಮಣ ಉಪಕಾರ್ಯ ಕಾರಣ:",
+       "opts": [
+        "Duplication or contradictions",
+        "Perfection",
+        "Speed",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ನಕಲು ಅಥವಾ ವಿರೋಧ",
+        "ಪರಿಪೂರ್ಣತೆ",
+        "ವೇಗ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Reduce synthesis loss with:",
+       "qKn": "ಸಂಶ್ಲೇಷಣೆ ನಷ್ಟ ಕಡಿಮೆ:",
+       "opts": [
+        "Structured worker results",
+        "Longer prompts only",
+        "Nothing",
+        "Deleting results"
+       ],
+       "optsKn": [
+        "ರಚನಾತ್ಮಕ worker ಫಲಿತಾಂಶ",
+        "ಉದ್ದ prompts ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಲಿತಾಂಶ ಅಳಿಸು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A central risk:",
+       "qKn": "ಕೇಂದ್ರ ಅಪಾಯ:",
+       "opts": [
+        "Orchestrator bottleneck",
+        "Too many humans",
+        "No workers",
+        "Free compute"
+       ],
+       "optsKn": [
+        "orchestrator ಅಡಚಣೆ",
+        "ಹೆಚ್ಚು ಮಾನವರು",
+        "workers ಇಲ್ಲ",
+        "ಉಚಿತ ಗಣನೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215e3",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Supervisor / Orchestrator-Worker Pattern — Scaling and Evaluating It",
+  "titleKn": "Supervisor / Orchestrator-Worker ಮಾದರಿ — ವಿಸ್ತರಣೆ ಮತ್ತು ಮೌಲ್ಯಮಾಪನ",
+  "desc": "Parallel workers speed up work, but quality and cost must be measured against a simpler baseline.",
+  "descKn": "ಸಮಾನಾಂತರ workers ಕೆಲಸ ವೇಗಗೊಳಿಸುತ್ತವೆ, ಆದರೆ ಗುಣಮಟ್ಟ ಮತ್ತು ವೆಚ್ಚ ಸರಳ ಆಧಾರಕ್ಕೆ ಹೋಲಿಸಿ ಅಳೆಯಬೇಕು.",
+  "objectives": [
+   "Run workers in parallel with limits.",
+   "Compare against a single-agent baseline."
+  ],
+  "objectivesKn": [
+   "ಮಿತಿಯೊಂದಿಗೆ workers ಸಮಾನಾಂತರ ಚಲಾಯಿಸಿ.",
+   "ಒಂದು-agent ಆಧಾರಕ್ಕೆ ಹೋಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Supervisor / Orchestrator-Worker Pattern — Scaling and Evaluating It",
+     "textKn": "Supervisor / Orchestrator-Worker Pattern — Scaling and Evaluating It",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Supervisor / Orchestrator-Worker Pattern",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Parallelism With Limits",
+     "headingKn": "ಮಿತಿಯೊಂದಿಗೆ ಸಮಾನಾಂತರತೆ",
+     "bodyEn": "Independent subtasks can run at once, cutting wall-clock time. Cap the number of workers to control cost and rate limits.",
+     "bodyKn": "ಸ್ವತಂತ್ರ ಉಪಕಾರ್ಯ ಒಮ್ಮೆಗೆ ಚಲಿಸಿ ಗಡಿಯಾರ ಸಮಯ ಕಡಿಮೆ ಮಾಡಬಹುದು. ವೆಚ್ಚ ಮತ್ತು rate limits ನಿಯಂತ್ರಿಸಲು workers ಸಂಖ್ಯೆಗೆ ಮಿತಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Measure the Benefit",
+     "headingKn": "ಲಾಭ ಅಳೆಯಿರಿ",
+     "bodyEn": "Compare quality, cost and latency with one agent doing the same tasks. Keep the orchestrator design only if it clearly wins.",
+     "bodyKn": "ಅದೇ ಕೆಲಸಗಳನ್ನು ಒಂದು agent ಮಾಡಿದಾಗಿನ ಗುಣಮಟ್ಟ, ವೆಚ್ಚ, ವಿಳಂಬಕ್ಕೆ ಹೋಲಿಸಿ. ಸ್ಪಷ್ಟವಾಗಿ ಗೆದ್ದರೆ ಮಾತ್ರ orchestrator ವಿನ್ಯಾಸ ಉಳಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Parallel workers cut time; cap them.\n• Keep the design only if it beats the baseline.",
+     "bodyKn": "• ಸಮಾನಾಂತರ workers ಸಮಯ ಕಡಿಮೆ; ಮಿತಿ.\n• ಆಧಾರ ಮೀರಿದರೆ ಮಾತ್ರ ಉಳಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Parallel workers reduce:",
+       "qKn": "ಸಮಾನಾಂತರ workers ಕಡಿಮೆ ಮಾಡುತ್ತವೆ:",
+       "opts": [
+        "Wall-clock time",
+        "Quality always",
+        "Nothing",
+        "All cost"
+       ],
+       "optsKn": [
+        "ಗಡಿಯಾರ ಸಮಯ",
+        "ಯಾವಾಗಲೂ ಗುಣಮಟ್ಟ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಎಲ್ಲ ವೆಚ್ಚ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why cap workers?",
+       "qKn": "workers ಗೆ ಮಿತಿ ಏಕೆ?",
+       "opts": [
+        "Cost and rate limits",
+        "Style",
+        "Tradition",
+        "No reason"
+       ],
+       "optsKn": [
+        "ವೆಚ್ಚ ಮತ್ತು rate limits",
+        "ಶೈಲಿ",
+        "ಸಂಪ್ರದಾಯ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Keep the design if it:",
+       "qKn": "ವಿನ್ಯಾಸ ಉಳಿಸಿ ಯಾವಾಗ:",
+       "opts": [
+        "Clearly beats a baseline",
+        "Sounds impressive",
+        "Uses more agents",
+        "Is popular"
+       ],
+       "optsKn": [
+        "ಆಧಾರ ಸ್ಪಷ್ಟವಾಗಿ ಮೀರಿದರೆ",
+        "ಪ್ರಭಾವಶಾಲಿ ಎನಿಸಿದರೆ",
+        "ಹೆಚ್ಚು agents ಬಳಸಿದರೆ",
+        "ಜನಪ್ರಿಯವಾದರೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215e6",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Hierarchical Architecture and Decomposition Drift — Layers of Delegation",
+  "titleKn": "ಶ್ರೇಣಿ ವಾಸ್ತುಶಿಲ್ಪ ಮತ್ತು ವಿಭಜನೆ Drift — ವಹಿಸುವಿಕೆಯ ಪದರಗಳು",
+  "desc": "In a hierarchy, managers delegate to sub-managers who delegate to workers, each seeing a narrower slice.",
+  "descKn": "ಶ್ರೇಣಿಯಲ್ಲಿ ವ್ಯವಸ್ಥಾಪಕರು ಉಪ-ವ್ಯವಸ್ಥಾಪಕರಿಗೆ, ಅವರು workers ಗೆ ವಹಿಸುತ್ತಾರೆ; ಪ್ರತಿಯೊಬ್ಬರು ಕಿರಿದಾದ ಭಾಗ ನೋಡುತ್ತಾರೆ.",
+  "objectives": [
+   "Describe multi-level delegation.",
+   "State the benefit of narrower context."
+  ],
+  "objectivesKn": [
+   "ಬಹು-ಮಟ್ಟದ ವಹಿಸುವಿಕೆ ವಿವರಿಸಿ.",
+   "ಕಿರಿದಾದ context ಲಾಭ ಹೇಳಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Hierarchical Architecture and Decomposition Drift — Layers of Delegation",
+     "textKn": "Hierarchical Architecture and Decomposition Drift — Layers of Delegation",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Hierarchical Architecture and Decomposition Drift",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Tree of Agents",
+     "headingKn": "Agents ವೃಕ್ಷ",
+     "bodyEn": "The top agent holds the overall goal, mid-level agents own sub-goals, and leaf agents do concrete work. Each level sees only what it needs.",
+     "bodyKn": "ಮೇಲಿನ agent ಒಟ್ಟು ಗುರಿ ಹಿಡಿಯುತ್ತದೆ, ಮಧ್ಯಮ ಮಟ್ಟ ಉಪ-ಗುರಿ ಹೊಂದಿರುತ್ತದೆ, ಎಲೆ agents ನಿಜ ಕೆಲಸ ಮಾಡುತ್ತವೆ. ಪ್ರತಿ ಮಟ್ಟ ಬೇಕಾದದ್ದನ್ನು ಮಾತ್ರ ನೋಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "When Depth Helps",
+     "headingKn": "ಆಳ ಸಹಾಯ ಮಾಡುವಾಗ",
+     "bodyEn": "Very large tasks that cannot fit one supervisor's context benefit from extra levels. Small tasks do not, since each level adds cost and delay.",
+     "bodyKn": "ಒಬ್ಬ supervisor ನ context ಗೆ ಹೊಂದದ ಬಹಳ ದೊಡ್ಡ ಕೆಲಸಕ್ಕೆ ಹೆಚ್ಚುವರಿ ಮಟ್ಟ ಲಾಭ. ಸಣ್ಣ ಕೆಲಸಕ್ಕೆ ಇಲ್ಲ; ಪ್ರತಿ ಮಟ್ಟ ವೆಚ್ಚ ಮತ್ತು ವಿಳಂಬ ಸೇರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• A tree: goals narrow as you descend.\n• Add depth only for very large tasks.",
+     "bodyKn": "• ವೃಕ್ಷ: ಇಳಿದಂತೆ ಗುರಿ ಕಿರಿದು.\n• ಬಹಳ ದೊಡ್ಡ ಕೆಲಸಕ್ಕೆ ಮಾತ್ರ ಆಳ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Leaf agents:",
+       "qKn": "ಎಲೆ agents:",
+       "opts": [
+        "Do concrete work",
+        "Hold the overall goal",
+        "Are managers",
+        "Do nothing"
+       ],
+       "optsKn": [
+        "ನಿಜ ಕೆಲಸ ಮಾಡುತ್ತವೆ",
+        "ಒಟ್ಟು ಗುರಿ ಹಿಡಿಯುತ್ತವೆ",
+        "ವ್ಯವಸ್ಥಾಪಕರು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Depth helps when:",
+       "qKn": "ಆಳ ಸಹಾಯ ಯಾವಾಗ?",
+       "opts": [
+        "Tasks are too large for one context",
+        "Tasks are tiny",
+        "Never",
+        "Always"
+       ],
+       "optsKn": [
+        "ಕೆಲಸ ಒಂದು context ಗೆ ತುಂಬಾ ದೊಡ್ಡದು",
+        "ಕೆಲಸ ಸಣ್ಣ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಯಾವಾಗಲೂ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Each extra level adds:",
+       "qKn": "ಪ್ರತಿ ಹೆಚ್ಚುವರಿ ಮಟ್ಟ ಸೇರಿಸುತ್ತದೆ:",
+       "opts": [
+        "Cost and delay",
+        "Free speed",
+        "Nothing",
+        "Certainty"
+       ],
+       "optsKn": [
+        "ವೆಚ್ಚ ಮತ್ತು ವಿಳಂಬ",
+        "ಉಚಿತ ವೇಗ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಖಚಿತತೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215e6",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Hierarchical Architecture and Decomposition Drift — Decomposition Drift",
+  "titleKn": "ಶ್ರೇಣಿ ವಾಸ್ತುಶಿಲ್ಪ ಮತ್ತು ವಿಭಜನೆ Drift — ವಿಭಜನೆ Drift",
+  "desc": "As goals pass down through levels, meaning can shift until leaf work no longer serves the original intent.",
+  "descKn": "ಗುರಿಗಳು ಮಟ್ಟಗಳ ಮೂಲಕ ಇಳಿಯುವಾಗ ಅರ್ಥ ಬದಲಾಗಿ ಎಲೆ ಕೆಲಸ ಮೂಲ ಉದ್ದೇಶ ಪೂರೈಸದಂತಾಗಬಹುದು.",
+  "objectives": [
+   "Explain drift as a telephone-game effect.",
+   "Detect goal shift between levels."
+  ],
+  "objectivesKn": [
+   "drift ಅನ್ನು ಟೆಲಿಫೋನ್-ಆಟ ಪರಿಣಾಮವಾಗಿ ವಿವರಿಸಿ.",
+   "ಮಟ್ಟಗಳ ನಡುವೆ ಗುರಿ ಬದಲಾವಣೆ ಪತ್ತೆ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Hierarchical Architecture and Decomposition Drift — Decomposition Drift",
+     "textKn": "Hierarchical Architecture and Decomposition Drift — Decomposition Drift",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Hierarchical Architecture and Decomposition Drift",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Telephone Game",
+     "headingKn": "ಟೆಲಿಫೋನ್ ಆಟ",
+     "bodyEn": "Each rewording of the goal loses a little. After several levels, the leaf task can solve a slightly different problem than the one the user asked for.",
+     "bodyKn": "ಗುರಿಯ ಪ್ರತಿ ಮರುಪದ ಸ್ವಲ್ಪ ಕಳೆಯುತ್ತದೆ. ಹಲವು ಮಟ್ಟಗಳ ನಂತರ ಎಲೆ ಕೆಲಸ ಬಳಕೆದಾರ ಕೇಳಿದ್ದಕ್ಕಿಂತ ಸ್ವಲ್ಪ ಬೇರೆ ಸಮಸ್ಯೆ ಬಿಡಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Anchoring",
+     "headingKn": "ಆಧಾರಗೊಳಿಸುವುದು",
+     "bodyEn": "Pass the original user request down verbatim alongside each sub-goal, and have each level state how its output serves that request.",
+     "bodyKn": "ಪ್ರತಿ ಉಪ-ಗುರಿಯೊಂದಿಗೆ ಮೂಲ ಬಳಕೆದಾರ ವಿನಂತಿ ಅಕ್ಷರಶಃ ಕೆಳಗೆ ನೀಡಿ; ಪ್ರತಿ ಮಟ್ಟ ತನ್ನ ಔಟ್‌ಪುಟ್ ಆ ವಿನಂತಿಗೆ ಹೇಗೆ ಸೇವೆ ಸಲ್ಲಿಸುತ್ತದೆ ಹೇಳಲಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Rewording erodes the goal.\n• Pass the original request down verbatim.",
+     "bodyKn": "• ಮರುಪದ ಗುರಿ ಸವೆಸುತ್ತದೆ.\n• ಮೂಲ ವಿನಂತಿ ಅಕ್ಷರಶಃ ಕೆಳಗೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Decomposition drift is:",
+       "qKn": "ವಿಭಜನೆ drift:",
+       "opts": [
+        "Goal meaning shifting across levels",
+        "A faster model",
+        "A UI bug",
+        "A GPU fault"
+       ],
+       "optsKn": [
+        "ಮಟ್ಟಗಳಲ್ಲಿ ಗುರಿ ಅರ್ಥ ಬದಲಾವಣೆ",
+        "ವೇಗದ ಮಾದರಿ",
+        "UI ದೋಷ",
+        "GPU ದೋಷ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Reduce it by:",
+       "qKn": "ಕಡಿಮೆ ಮಾಡಲು:",
+       "opts": [
+        "Passing the original request verbatim",
+        "Adding more levels",
+        "Removing goals",
+        "Ignoring"
+       ],
+       "optsKn": [
+        "ಮೂಲ ವಿನಂತಿ ಅಕ್ಷರಶಃ ನೀಡಿ",
+        "ಹೆಚ್ಚು ಮಟ್ಟ",
+        "ಗುರಿ ತೆಗೆ",
+        "ನಿರ್ಲಕ್ಷ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The effect resembles:",
+       "qKn": "ಪರಿಣಾಮ ಹೋಲುವುದು:",
+       "opts": [
+        "The telephone game",
+        "A race",
+        "A puzzle",
+        "A tournament"
+       ],
+       "optsKn": [
+        "ಟೆಲಿಫೋನ್ ಆಟ",
+        "ಓಟ",
+        "ಒಗಟು",
+        "ಪಂದ್ಯಾವಳಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215e6",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Hierarchical Architecture and Decomposition Drift — Keeping Hierarchies Honest",
+  "titleKn": "ಶ್ರೇಣಿ ವಾಸ್ತುಶಿಲ್ಪ ಮತ್ತು ವಿಭಜನೆ Drift — ಶ್ರೇಣಿಗಳನ್ನು ಪ್ರಾಮಾಣಿಕವಾಗಿಡುವುದು",
+  "desc": "Checks at each level, end-to-end evaluation and traces keep deep hierarchies reliable.",
+  "descKn": "ಪ್ರತಿ ಮಟ್ಟದಲ್ಲಿ ಪರಿಶೀಲನೆ, ಅಂತ್ಯದಿಂದ ಅಂತ್ಯ ಮೌಲ್ಯಮಾಪನ, traces ಆಳವಾದ ಶ್ರೇಣಿಗಳನ್ನು ವಿಶ್ವಾಸಾರ್ಹವಾಗಿಡುತ್ತವೆ.",
+  "objectives": [
+   "Verify sub-results before merging.",
+   "Evaluate end to end, not only per level."
+  ],
+  "objectivesKn": [
+   "ವಿಲೀನ ಮೊದಲು ಉಪ-ಫಲಿತಾಂಶ ಪರಿಶೀಲಿಸಿ.",
+   "ಪ್ರತಿ ಮಟ್ಟ ಮಾತ್ರವಲ್ಲ, ಅಂತ್ಯದಿಂದ ಅಂತ್ಯ ಮೌಲ್ಯಮಾಪನ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Hierarchical Architecture and Decomposition Drift — Keeping Hierarchies Honest",
+     "textKn": "Hierarchical Architecture and Decomposition Drift — Keeping Hierarchies Honest",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Hierarchical Architecture and Decomposition Drift",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Verify Upward",
+     "headingKn": "ಮೇಲ್ಮುಖ ಪರಿಶೀಲನೆ",
+     "bodyEn": "Each manager checks sub-results against its sub-goal before passing them up, so errors do not accumulate silently.",
+     "bodyKn": "ಪ್ರತಿ ವ್ಯವಸ್ಥಾಪಕ ಮೇಲೆ ಕಳುಹಿಸುವ ಮೊದಲು ಉಪ-ಫಲಿತಾಂಶ ಉಪ-ಗುರಿಗೆ ಹೋಲಿಸಿ ಪರಿಶೀಲಿಸುತ್ತದೆ; ದೋಷ ಮೌನವಾಗಿ ಸೇರುವುದಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "End-to-End Evals",
+     "headingKn": "ಅಂತ್ಯದಿಂದ ಅಂತ್ಯ Evals",
+     "bodyEn": "Each level can look fine while the whole misses the goal. Evaluate the final output against the original request, and trace failures back to the responsible level.",
+     "bodyKn": "ಪ್ರತಿ ಮಟ್ಟ ಸರಿ ಎನಿಸಿದರೂ ಒಟ್ಟು ಗುರಿ ತಪ್ಪಬಹುದು. ಅಂತಿಮ ಔಟ್‌ಪುಟ್ ಅನ್ನು ಮೂಲ ವಿನಂತಿಗೆ ಹೋಲಿಸಿ ಮೌಲ್ಯಮಾಪನ ಮಾಡಿ, ವೈಫಲ್ಯವನ್ನು ಜವಾಬ್ದಾರಿ ಮಟ್ಟಕ್ಕೆ trace ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Verify sub-results before passing up.\n• Evaluate end to end and trace failures.",
+     "bodyKn": "• ಮೇಲೆ ಕಳುಹಿಸುವ ಮೊದಲು ಪರಿಶೀಲನೆ.\n• ಅಂತ್ಯದಿಂದ ಅಂತ್ಯ ಮತ್ತು trace."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why verify sub-results?",
+       "qKn": "ಉಪ-ಫಲಿತಾಂಶ ಏಕೆ ಪರಿಶೀಲಿಸಬೇಕು?",
+       "opts": [
+        "Errors should not accumulate silently",
+        "For style",
+        "To slow",
+        "No reason"
+       ],
+       "optsKn": [
+        "ದೋಷ ಮೌನವಾಗಿ ಸೇರದಿರಲು",
+        "ಶೈಲಿ",
+        "ನಿಧಾನ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "End-to-end evals compare output to:",
+       "qKn": "ಅಂತ್ಯದಿಂದ ಅಂತ್ಯ evals ಹೋಲಿಸುವುದು:",
+       "opts": [
+        "The original request",
+        "A sub-goal only",
+        "A logo",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮೂಲ ವಿನಂತಿ",
+        "ಉಪ-ಗುರಿ ಮಾತ್ರ",
+        "ಲೋಗೋ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Failures should be:",
+       "qKn": "ವೈಫಲ್ಯಗಳನ್ನು:",
+       "opts": [
+        "Traced to a level",
+        "Ignored",
+        "Hidden",
+        "Deleted"
+       ],
+       "optsKn": [
+        "ಮಟ್ಟಕ್ಕೆ trace ಮಾಡಬೇಕು",
+        "ನಿರ್ಲಕ್ಷಿಸಬೇಕು",
+        "ಮರೆ",
+        "ಅಳಿಸಬೇಕು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215e9",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Society of Mind and Multi-Agent Debate — Society of Mind",
+  "titleKn": "Society of Mind ಮತ್ತು ಬಹು-Agent Debate — Society of Mind",
+  "desc": "Minsky proposed that intelligence emerges from many simple interacting parts, an idea echoed in multi-agent LLM systems.",
+  "descKn": "Minsky ಬುದ್ಧಿವಂತಿಕೆ ಹಲವು ಸರಳ ಪರಸ್ಪರ ಕ್ರಿಯೆ ಭಾಗಗಳಿಂದ ಹೊರಹೊಮ್ಮುತ್ತದೆ ಎಂದರು; ಇದು ಬಹು-agent LLM ವ್ಯವಸ್ಥೆಗಳಲ್ಲಿ ಪ್ರತಿಧ್ವನಿಸುತ್ತದೆ.",
+  "objectives": [
+   "State the society-of-mind idea.",
+   "Distinguish metaphor from engineering claim."
+  ],
+  "objectivesKn": [
+   "society-of-mind ಕಲ್ಪನೆ ಹೇಳಿ.",
+   "ರೂಪಕ ಮತ್ತು ಎಂಜಿನಿಯರಿಂಗ್ ಹೇಳಿಕೆ ಬೇರ್ಪಡಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Society of Mind and Multi-Agent Debate — Society of Mind",
+     "textKn": "Society of Mind and Multi-Agent Debate — Society of Mind",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Society of Mind and Multi-Agent Debate",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Many Simple Parts",
+     "headingKn": "ಹಲವು ಸರಳ ಭಾಗಗಳು",
+     "bodyEn": "The idea is that a mind is a society of small specialised processes, none intelligent alone. Multi-agent systems borrow the picture of cooperating specialists.",
+     "bodyKn": "ಮನಸ್ಸು ಸಣ್ಣ ವಿಶೇಷ ಪ್ರಕ್ರಿಯೆಗಳ ಸಮಾಜ, ಒಂಟಿಯಾಗಿ ಯಾವುದೂ ಬುದ್ಧಿವಂತವಲ್ಲ ಎಂಬುದು ಕಲ್ಪನೆ. ಬಹು-agent ವ್ಯವಸ್ಥೆಗಳು ಸಹಕರಿಸುವ ತಜ್ಞರ ಚಿತ್ರ ಎರವಲು ಪಡೆಯುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Metaphor, Not Proof",
+     "headingKn": "ರೂಪಕ, ಸಾಕ್ಷ್ಯವಲ್ಲ",
+     "bodyEn": "The metaphor is inspiring but does not show that many LLM agents beat one. That has to be tested on real tasks.",
+     "bodyKn": "ರೂಪಕ ಸ್ಫೂರ್ತಿದಾಯಕ ಆದರೆ ಹಲವು LLM agents ಒಂದನ್ನು ಮೀರಿಸುತ್ತವೆ ಎಂದು ತೋರಿಸದು. ಅದನ್ನು ನಿಜ ಕೆಲಸಗಳಲ್ಲಿ ಪರೀಕ್ಷಿಸಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Intelligence from many simple parts.\n• A metaphor, not evidence.",
+     "bodyKn": "• ಹಲವು ಸರಳ ಭಾಗಗಳಿಂದ ಬುದ್ಧಿವಂತಿಕೆ.\n• ರೂಪಕ, ಸಾಕ್ಷ್ಯವಲ್ಲ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Society of mind says a mind is:",
+       "qKn": "society of mind ಪ್ರಕಾರ ಮನಸ್ಸು:",
+       "opts": [
+        "Many small processes",
+        "One process",
+        "A screen",
+        "A file"
+       ],
+       "optsKn": [
+        "ಹಲವು ಸಣ್ಣ ಪ್ರಕ್ರಿಯೆ",
+        "ಒಂದು ಪ್ರಕ್ರಿಯೆ",
+        "ಪರದೆ",
+        "ಫೈಲ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Does the metaphor prove many agents win?",
+       "qKn": "ರೂಪಕ ಹಲವು agents ಗೆಲ್ಲುತ್ತವೆ ಎಂದು ಸಾಬೀತು ಮಾಡುತ್ತದೆಯೇ?",
+       "opts": [
+        "No, testing is needed",
+        "Yes",
+        "Always",
+        "Sometimes randomly"
+       ],
+       "optsKn": [
+        "ಇಲ್ಲ, ಪರೀಕ್ಷೆ ಬೇಕು",
+        "ಹೌದು",
+        "ಯಾವಾಗಲೂ",
+        "ಕೆಲವೊಮ್ಮೆ ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Test claims on:",
+       "qKn": "ಹೇಳಿಕೆ ಪರೀಕ್ಷಿಸಿ:",
+       "opts": [
+        "Real tasks",
+        "Slogans",
+        "Nothing",
+        "Ads"
+       ],
+       "optsKn": [
+        "ನಿಜ ಕೆಲಸಗಳಲ್ಲಿ",
+        "ಘೋಷವಾಕ್ಯ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಜಾಹೀರಾತು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215e9",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Society of Mind and Multi-Agent Debate — How Multi-Agent Debate Works",
+  "titleKn": "Society of Mind ಮತ್ತು ಬಹು-Agent Debate — ಬಹು-Agent Debate ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ",
+  "desc": "In debate, several agents propose answers, critique each other over rounds and converge on a final answer.",
+  "descKn": "debate ನಲ್ಲಿ ಹಲವು agents ಉತ್ತರ ಪ್ರಸ್ತಾಪಿಸಿ, ಸುತ್ತುಗಳಲ್ಲಿ ಪರಸ್ಪರ ಟೀಕಿಸಿ, ಅಂತಿಮ ಉತ್ತರಕ್ಕೆ ಒಮ್ಮತಕ್ಕೆ ಬರುತ್ತವೆ.",
+  "objectives": [
+   "Describe rounds of proposal and critique.",
+   "Explain the role of a judge or vote."
+  ],
+  "objectivesKn": [
+   "ಪ್ರಸ್ತಾವನೆ ಮತ್ತು ಟೀಕೆ ಸುತ್ತು ವಿವರಿಸಿ.",
+   "judge ಅಥವಾ ಮತದ ಪಾತ್ರ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Society of Mind and Multi-Agent Debate — How Multi-Agent Debate Works",
+     "textKn": "Society of Mind and Multi-Agent Debate — How Multi-Agent Debate Works",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Society of Mind and Multi-Agent Debate",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Rounds of Critique",
+     "headingKn": "ಟೀಕೆ ಸುತ್ತುಗಳು",
+     "bodyEn": "Each agent answers independently, reads the others' answers and revises. Disagreement surfaces errors that one agent might miss.",
+     "bodyKn": "ಪ್ರತಿ agent ಸ್ವತಂತ್ರವಾಗಿ ಉತ್ತರಿಸಿ, ಇತರರ ಉತ್ತರ ಓದಿ, ತಿದ್ದುತ್ತದೆ. ಭಿನ್ನಾಭಿಪ್ರಾಯ ಒಬ್ಬ agent ತಪ್ಪಿಸುವ ದೋಷ ಹೊರತರುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Reaching a Decision",
+     "headingKn": "ನಿರ್ಧಾರಕ್ಕೆ ಬರುವುದು",
+     "bodyEn": "A judge agent, a majority vote or agreement after a set number of rounds ends the debate. Choose the rule in advance.",
+     "bodyKn": "judge agent, ಬಹುಮತ ಮತ ಅಥವಾ ನಿಗದಿತ ಸುತ್ತುಗಳ ನಂತರ ಒಪ್ಪಿಗೆ ಚರ್ಚೆ ಮುಗಿಸುತ್ತದೆ. ನಿಯಮ ಮೊದಲೇ ಆರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Independent answers, then critique and revise.\n• Fix the ending rule in advance.",
+     "bodyKn": "• ಸ್ವತಂತ್ರ ಉತ್ತರ, ನಂತರ ಟೀಕೆ ಮತ್ತು ತಿದ್ದುಪಡಿ.\n• ಅಂತ್ಯ ನಿಯಮ ಮೊದಲೇ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Debate starts with:",
+       "qKn": "debate ಆರಂಭ:",
+       "opts": [
+        "Independent answers",
+        "A vote",
+        "A verdict",
+        "Silence"
+       ],
+       "optsKn": [
+        "ಸ್ವತಂತ್ರ ಉತ್ತರಗಳು",
+        "ಮತ",
+        "ತೀರ್ಪು",
+        "ಮೌನ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Disagreement helps by:",
+       "qKn": "ಭಿನ್ನಾಭಿಪ್ರಾಯ ಸಹಾಯ:",
+       "opts": [
+        "Surfacing errors",
+        "Hiding errors",
+        "Adding noise only",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ದೋಷ ಹೊರತರುವುದು",
+        "ದೋಷ ಮರೆ",
+        "ಗದ್ದಲ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Ending rule:",
+       "qKn": "ಅಂತ್ಯ ನಿಯಮ:",
+       "opts": [
+        "Choose in advance",
+        "Never set",
+        "Random",
+        "Decided by the loudest"
+       ],
+       "optsKn": [
+        "ಮೊದಲೇ ಆರಿಸಿ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ",
+        "ಜೋರಾಗಿ ಮಾತಾಡುವವ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215e9",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Society of Mind and Multi-Agent Debate — When Debate Helps and When It Does Not",
+  "titleKn": "Society of Mind ಮತ್ತು ಬಹು-Agent Debate — Debate ಯಾವಾಗ ಸಹಾಯ, ಯಾವಾಗ ಇಲ್ಲ",
+  "desc": "Debate can improve reasoning but costs more and can converge on a confident wrong answer.",
+  "descKn": "debate ತರ್ಕ ಸುಧಾರಿಸಬಹುದು ಆದರೆ ಹೆಚ್ಚು ವೆಚ್ಚ ಮತ್ತು ವಿಶ್ವಾಸದ ತಪ್ಪು ಉತ್ತರಕ್ಕೆ ಒಮ್ಮತ ಬರಬಹುದು.",
+  "objectives": [
+   "Recognise groupthink and sycophancy.",
+   "Compare with cheaper alternatives like self-consistency."
+  ],
+  "objectivesKn": [
+   "groupthink ಮತ್ತು ಓಲೈಕೆ ಗುರುತಿಸಿ.",
+   "self-consistency ನಂತಹ ಅಗ್ಗ ಪರ್ಯಾಯಕ್ಕೆ ಹೋಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Society of Mind and Multi-Agent Debate — When Debate Helps and When It Does Not",
+     "textKn": "Society of Mind and Multi-Agent Debate — When Debate Helps and When It Does Not",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Society of Mind and Multi-Agent Debate",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Groupthink",
+     "headingKn": "Groupthink",
+     "bodyEn": "Agents built on the same model share blind spots and tend to agree with confident peers. Agreement is not the same as correctness.",
+     "bodyKn": "ಒಂದೇ ಮಾದರಿಯ agents ಕುರುಡು ಬಿಂದು ಹಂಚುತ್ತವೆ ಮತ್ತು ವಿಶ್ವಾಸಿ ಸಹವರ್ತಿಗಳನ್ನು ಒಪ್ಪುತ್ತವೆ. ಒಪ್ಪಿಗೆ ಸರಿತನಕ್ಕೆ ಸಮಾನವಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cheaper Baselines",
+     "headingKn": "ಅಗ್ಗ ಆಧಾರಗಳು",
+     "bodyEn": "Sampling several answers and taking the majority, or using a verifier, may match debate at lower cost. Compare before adopting.",
+     "bodyKn": "ಹಲವು ಉತ್ತರ ಮಾದರಿ ಮಾಡಿ ಬಹುಮತ ತೆಗೆಯುವುದು ಅಥವಾ verifier ಬಳಸುವುದು ಕಡಿಮೆ ವೆಚ್ಚದಲ್ಲಿ debate ಗೆ ಸಮಾನವಾಗಬಹುದು. ಅಳವಡಿಸುವ ಮೊದಲು ಹೋಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Shared models share blind spots.\n• Compare with majority voting or verifiers.",
+     "bodyKn": "• ಒಂದೇ ಮಾದರಿ ಕುರುಡು ಬಿಂದು ಹಂಚುತ್ತದೆ.\n• ಬಹುಮತ ಅಥವಾ verifier ಗೆ ಹೋಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Same-model agents share:",
+       "qKn": "ಒಂದೇ ಮಾದರಿ agents ಹಂಚುವುದು:",
+       "opts": [
+        "Blind spots",
+        "Nothing",
+        "Only fonts",
+        "Only speed"
+       ],
+       "optsKn": [
+        "ಕುರುಡು ಬಿಂದು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್ ಮಾತ್ರ",
+        "ವೇಗ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Agreement means:",
+       "qKn": "ಒಪ್ಪಿಗೆ ಎಂದರೆ:",
+       "opts": [
+        "Not necessarily correct",
+        "Always correct",
+        "Never correct",
+        "Wrong"
+       ],
+       "optsKn": [
+        "ಸರಿಯೆಂದೇನಿಲ್ಲ",
+        "ಯಾವಾಗಲೂ ಸರಿ",
+        "ಎಂದಿಗೂ ಸರಿ ಅಲ್ಲ",
+        "ತಪ್ಪು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A cheaper alternative:",
+       "qKn": "ಅಗ್ಗ ಪರ್ಯಾಯ:",
+       "opts": [
+        "Majority vote over samples",
+        "More debate rounds",
+        "Nothing",
+        "Deleting answers"
+       ],
+       "optsKn": [
+        "ಮಾದರಿಗಳ ಬಹುಮತ ಮತ",
+        "ಹೆಚ್ಚು debate ಸುತ್ತು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಉತ್ತರ ಅಳಿಸು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215ec",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Role Specialization: Planner, Critic, Executor, Verifier — The Four Roles",
+  "titleKn": "ಪಾತ್ರ ವಿಶೇಷೀಕರಣ: Planner, Critic, Executor, Verifier — ನಾಲ್ಕು ಪಾತ್ರಗಳು",
+  "desc": "A common split gives one agent planning, one executing, one critiquing and one verifying results.",
+  "descKn": "ಸಾಮಾನ್ಯ ವಿಭಜನೆ ಒಬ್ಬರಿಗೆ ಯೋಜನೆ, ಒಬ್ಬರಿಗೆ ಕಾರ್ಯಗತ, ಒಬ್ಬರಿಗೆ ಟೀಕೆ, ಒಬ್ಬರಿಗೆ ಫಲಿತಾಂಶ ಪರಿಶೀಲನೆ ನೀಡುತ್ತದೆ.",
+  "objectives": [
+   "Describe each role's responsibility.",
+   "Explain why separation helps."
+  ],
+  "objectivesKn": [
+   "ಪ್ರತಿ ಪಾತ್ರದ ಜವಾಬ್ದಾರಿ ವಿವರಿಸಿ.",
+   "ಪ್ರತ್ಯೇಕತೆ ಏಕೆ ಸಹಾಯ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Role Specialization: Planner, Critic, Executor, Verifier — The Four Roles",
+     "textKn": "Role Specialization: Planner, Critic, Executor, Verifier — The Four Roles",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Role Specialization: Planner / Critic / Executor / Verifier",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Responsibilities",
+     "headingKn": "ಜವಾಬ್ದಾರಿಗಳು",
+     "bodyEn": "The planner breaks down the goal, the executor carries out steps with tools, the critic reviews plans and outputs, and the verifier checks results against objective criteria.",
+     "bodyKn": "planner ಗುರಿ ವಿಭಜಿಸುತ್ತದೆ, executor tools ನೊಂದಿಗೆ ಹಂತ ನಿರ್ವಹಿಸುತ್ತದೆ, critic ಯೋಜನೆ ಮತ್ತು ಔಟ್‌ಪುಟ್ ವಿಮರ್ಶಿಸುತ್ತದೆ, verifier ವಸ್ತುನಿಷ್ಠ ಮಾನದಂಡದ ವಿರುದ್ಧ ಫಲಿತಾಂಶ ಪರಿಶೀಲಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why Separate",
+     "headingKn": "ಏಕೆ ಪ್ರತ್ಯೇಕ",
+     "bodyEn": "An agent that both does and grades its own work tends to approve it. Separate roles give focused instructions and independent checks.",
+     "bodyKn": "ಕೆಲಸ ಮಾಡಿ ತಾನೇ ಅಂಕ ನೀಡುವ agent ಅನುಮೋದಿಸುವ ಒಲವು. ಪ್ರತ್ಯೇಕ ಪಾತ್ರಗಳು ಕೇಂದ್ರೀಕೃತ ಸೂಚನೆ ಮತ್ತು ಸ್ವತಂತ್ರ ಪರಿಶೀಲನೆ ನೀಡುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Plan, execute, critique, verify.\n• Separation avoids self-approval.",
+     "bodyKn": "• ಯೋಜನೆ, ಕಾರ್ಯಗತ, ಟೀಕೆ, ಪರಿಶೀಲನೆ.\n• ಪ್ರತ್ಯೇಕತೆ ಸ್ವ-ಅನುಮೋದನೆ ತಪ್ಪಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "The executor:",
+       "qKn": "executor:",
+       "opts": [
+        "Carries out steps with tools",
+        "Only plans",
+        "Only critiques",
+        "Sleeps"
+       ],
+       "optsKn": [
+        "tools ನೊಂದಿಗೆ ಹಂತ ನಿರ್ವಹಿಸುತ್ತದೆ",
+        "ಯೋಜಿಸುತ್ತದೆ ಮಾತ್ರ",
+        "ಟೀಕಿಸುತ್ತದೆ ಮಾತ್ರ",
+        "ನಿದ್ರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The verifier checks against:",
+       "qKn": "verifier ಪರಿಶೀಲಿಸುವುದು:",
+       "opts": [
+        "Objective criteria",
+        "Opinions only",
+        "Nothing",
+        "Colours"
+       ],
+       "optsKn": [
+        "ವಸ್ತುನಿಷ್ಠ ಮಾನದಂಡ",
+        "ಅಭಿಪ್ರಾಯ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Separation avoids:",
+       "qKn": "ಪ್ರತ್ಯೇಕತೆ ತಪ್ಪಿಸುವುದು:",
+       "opts": [
+        "Self-approval bias",
+        "All errors",
+        "Tools",
+        "Plans"
+       ],
+       "optsKn": [
+        "ಸ್ವ-ಅನುಮೋದನೆ ಪಕ್ಷಪಾತ",
+        "ಎಲ್ಲ ದೋಷ",
+        "tools",
+        "ಯೋಜನೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215ec",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Role Specialization: Planner, Critic, Executor, Verifier — Writing Role Instructions",
+  "titleKn": "ಪಾತ್ರ ವಿಶೇಷೀಕರಣ: Planner, Critic, Executor, Verifier — ಪಾತ್ರ ಸೂಚನೆ ಬರೆಯುವುದು",
+  "desc": "Good role prompts state the goal, inputs, outputs and what the role must not do.",
+  "descKn": "ಉತ್ತಮ ಪಾತ್ರ prompts ಗುರಿ, ಇನ್‌ಪುಟ್, ಔಟ್‌ಪುಟ್, ಆ ಪಾತ್ರ ಮಾಡಬಾರದ್ದನ್ನು ತಿಳಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Give each role a narrow output format.",
+   "Prevent role bleed."
+  ],
+  "objectivesKn": [
+   "ಪ್ರತಿ ಪಾತ್ರಕ್ಕೆ ಕಿರಿದಾದ ಔಟ್‌ಪುಟ್ ರೂಪ ನೀಡಿ.",
+   "ಪಾತ್ರ ಸೋರಿಕೆ ತಡೆಯಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Role Specialization: Planner, Critic, Executor, Verifier — Writing Role Instructions",
+     "textKn": "Role Specialization: Planner, Critic, Executor, Verifier — Writing Role Instructions",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Role Specialization: Planner / Critic / Executor / Verifier",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Narrow Outputs",
+     "headingKn": "ಕಿರಿದಾದ ಔಟ್‌ಪುಟ್",
+     "bodyEn": "A critic should return specific issues, not rewrite the work. A verifier returns pass or fail with evidence. Narrow outputs make hand-offs reliable.",
+     "bodyKn": "critic ಕೆಲಸ ಮರುಬರೆಯದೆ ನಿರ್ದಿಷ್ಟ ಸಮಸ್ಯೆ ನೀಡಬೇಕು. verifier ಸಾಕ್ಷ್ಯ ಸಹಿತ pass ಅಥವಾ fail ನೀಡುತ್ತದೆ. ಕಿರಿದಾದ ಔಟ್‌ಪುಟ್ ಹಸ್ತಾಂತರ ನಂಬಲರ್ಹವಾಗಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Role Bleed",
+     "headingKn": "ಪಾತ್ರ ಸೋರಿಕೆ",
+     "bodyEn": "Roles drift into each other, for example a planner starting to execute. State explicit boundaries and check outputs against the role's format.",
+     "bodyKn": "ಪಾತ್ರಗಳು ಒಂದರೊಳಗೊಂದು ಜಾರುತ್ತವೆ, ಉದಾ. planner ಕಾರ್ಯಗತ ಮಾಡತೊಡಗುವುದು. ಸ್ಪಷ್ಟ ಗಡಿ ತಿಳಿಸಿ, ಔಟ್‌ಪುಟ್ ಪಾತ್ರದ ರೂಪಕ್ಕೆ ಹೊಂದುತ್ತದೆಯೇ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Give each role a narrow output format.\n• Watch for role bleed.",
+     "bodyKn": "• ಪ್ರತಿ ಪಾತ್ರಕ್ಕೆ ಕಿರಿದಾದ ಔಟ್‌ಪುಟ್.\n• ಪಾತ್ರ ಸೋರಿಕೆ ಗಮನಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A verifier returns:",
+       "qKn": "verifier ನೀಡುವುದು:",
+       "opts": [
+        "Pass or fail with evidence",
+        "A story",
+        "A rewrite",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸಾಕ್ಷ್ಯ ಸಹಿತ pass ಅಥವಾ fail",
+        "ಕಥೆ",
+        "ಮರುಬರಹ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Role bleed is:",
+       "qKn": "ಪಾತ್ರ ಸೋರಿಕೆ:",
+       "opts": [
+        "Roles drifting into each other",
+        "A leak of data",
+        "A UI bug",
+        "A feature"
+       ],
+       "optsKn": [
+        "ಪಾತ್ರಗಳು ಒಂದರೊಳಗೊಂದು ಜಾರುವುದು",
+        "ಡೇಟಾ ಸೋರಿಕೆ",
+        "UI ದೋಷ",
+        "ವೈಶಿಷ್ಟ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A critic should:",
+       "qKn": "critic:",
+       "opts": [
+        "List specific issues",
+        "Rewrite everything",
+        "Stay silent",
+        "Delete"
+       ],
+       "optsKn": [
+        "ನಿರ್ದಿಷ್ಟ ಸಮಸ್ಯೆ ಪಟ್ಟಿ",
+        "ಎಲ್ಲ ಮರುಬರೆ",
+        "ಮೌನ",
+        "ಅಳಿಸು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215ec",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Role Specialization: Planner, Critic, Executor, Verifier — Verifiers That Actually Verify",
+  "titleKn": "ಪಾತ್ರ ವಿಶೇಷೀಕರಣ: Planner, Critic, Executor, Verifier — ನಿಜವಾಗಿ ಪರಿಶೀಲಿಸುವ Verifiers",
+  "desc": "A verifier is only useful if it checks something real, ideally with code, tests or sources.",
+  "descKn": "verifier ನಿಜವಾದದ್ದನ್ನು, ಆದರ್ಶವಾಗಿ ಕೋಡ್, tests ಅಥವಾ ಮೂಲಗಳಿಂದ, ಪರಿಶೀಲಿಸಿದರೆ ಮಾತ್ರ ಉಪಯುಕ್ತ.",
+  "objectives": [
+   "Prefer executable checks to opinion.",
+   "Avoid rubber-stamp verifiers."
+  ],
+  "objectivesKn": [
+   "ಅಭಿಪ್ರಾಯಕ್ಕಿಂತ ಕಾರ್ಯಗತ ಪರಿಶೀಲನೆ ಆದ್ಯತೆ.",
+   "ಕುರುಡು ಅನುಮೋದಿಸುವ verifiers ತಪ್ಪಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Role Specialization: Planner, Critic, Executor, Verifier — Verifiers That Actually Verify",
+     "textKn": "Role Specialization: Planner, Critic, Executor, Verifier — Verifiers That Actually Verify",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Role Specialization: Planner / Critic / Executor / Verifier",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Check With Tools",
+     "headingKn": "Tools ನಿಂದ ಪರಿಶೀಲಿಸಿ",
+     "bodyEn": "Run tests, execute code, look up sources or compute values. A verifier that only re-reads the answer usually agrees with it.",
+     "bodyKn": "tests ಚಲಾಯಿಸಿ, ಕೋಡ್ ಚಲಾಯಿಸಿ, ಮೂಲ ಹುಡುಕಿ, ಮೌಲ್ಯ ಲೆಕ್ಕಿಸಿ. ಉತ್ತರ ಮತ್ತೆ ಓದುವ verifier ಸಾಮಾನ್ಯವಾಗಿ ಅದನ್ನು ಒಪ್ಪುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Test the Verifier",
+     "headingKn": "Verifier ಪರೀಕ್ಷಿಸಿ",
+     "bodyEn": "Feed it known-bad outputs and confirm it rejects them. A verifier that never fails is not verifying.",
+     "bodyKn": "ತಿಳಿದ ಕೆಟ್ಟ ಔಟ್‌ಪುಟ್ ನೀಡಿ ತಿರಸ್ಕರಿಸುತ್ತದೆಯೇ ಪರಿಶೀಲಿಸಿ. ಎಂದಿಗೂ ವಿಫಲವಾಗದ verifier ಪರಿಶೀಲಿಸುತ್ತಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Verify with tests, code and sources.\n• Feed it known-bad outputs.",
+     "bodyKn": "• tests, ಕೋಡ್, ಮೂಲಗಳಿಂದ ಪರಿಶೀಲನೆ.\n• ತಿಳಿದ ಕೆಟ್ಟ ಔಟ್‌ಪುಟ್ ನೀಡಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A better verification method:",
+       "qKn": "ಉತ್ತಮ ಪರಿಶೀಲನೆ ವಿಧಾನ:",
+       "opts": [
+        "Running tests",
+        "Re-reading only",
+        "Guessing",
+        "Nothing"
+       ],
+       "optsKn": [
+        "tests ಚಲಾಯಿಸುವುದು",
+        "ಮತ್ತೆ ಓದು ಮಾತ್ರ",
+        "ಊಹೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A verifier that never fails is:",
+       "qKn": "ಎಂದಿಗೂ ವಿಫಲವಾಗದ verifier:",
+       "opts": [
+        "Probably not verifying",
+        "Perfect",
+        "Fast",
+        "Ideal"
+       ],
+       "optsKn": [
+        "ಬಹುಶಃ ಪರಿಶೀಲಿಸುತ್ತಿಲ್ಲ",
+        "ಪರಿಪೂರ್ಣ",
+        "ವೇಗ",
+        "ಆದರ್ಶ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Test a verifier with:",
+       "qKn": "verifier ಪರೀಕ್ಷೆ:",
+       "opts": [
+        "Known-bad outputs",
+        "Only good outputs",
+        "Nothing",
+        "Random text"
+       ],
+       "optsKn": [
+        "ತಿಳಿದ ಕೆಟ್ಟ ಔಟ್‌ಪುಟ್",
+        "ಒಳ್ಳೆಯ ಔಟ್‌ಪುಟ್ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ ಪಠ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215ef",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Parallel Swarm and Networked Architectures — Swarm Basics",
+  "titleKn": "ಸಮಾನಾಂತರ Swarm ಮತ್ತು ಜಾಲ ವಾಸ್ತುಶಿಲ್ಪ — Swarm ಮೂಲಗಳು",
+  "desc": "Swarms use many peer agents with simple rules and local interaction rather than a central controller.",
+  "descKn": "swarms ಕೇಂದ್ರ ನಿಯಂತ್ರಕದ ಬದಲು ಸರಳ ನಿಯಮ ಮತ್ತು ಸ್ಥಳೀಯ ಸಂವಹನವಿರುವ ಹಲವು ಸಮಾನ agents ಬಳಸುತ್ತವೆ.",
+  "objectives": [
+   "Describe decentralised coordination.",
+   "Name swarm use cases."
+  ],
+  "objectivesKn": [
+   "ವಿಕೇಂದ್ರೀಕೃತ ಸಮನ್ವಯ ವಿವರಿಸಿ.",
+   "swarm ಬಳಕೆ ಪ್ರಕರಣ ಹೆಸರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Parallel Swarm and Networked Architectures — Swarm Basics",
+     "textKn": "Parallel Swarm and Networked Architectures — Swarm Basics",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Parallel Swarm and Networked Architectures",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "No Central Boss",
+     "headingKn": "ಕೇಂದ್ರ ಮೇಲಧಿಕಾರಿ ಇಲ್ಲ",
+     "bodyEn": "Each agent follows simple rules, reacts to what it sees and hands off or shares results with peers. Global behaviour emerges from these local actions.",
+     "bodyKn": "ಪ್ರತಿ agent ಸರಳ ನಿಯಮ ಅನುಸರಿಸಿ, ತಾನು ನೋಡುವುದಕ್ಕೆ ಸ್ಪಂದಿಸಿ, ಸಹವರ್ತಿಗಳಿಗೆ ಹಸ್ತಾಂತರ ಅಥವಾ ಫಲಿತಾಂಶ ಹಂಚುತ್ತದೆ. ಸ್ಥಳೀಯ ಕ್ರಿಯೆಗಳಿಂದ ಒಟ್ಟು ವರ್ತನೆ ಹೊರಹೊಮ್ಮುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Good Fits",
+     "headingKn": "ಸೂಕ್ತ ಪ್ರಕರಣ",
+     "bodyEn": "Wide exploration tasks such as searching many sources or trying many candidate solutions suit swarms, because each explorer can work independently.",
+     "bodyKn": "ಹಲವು ಮೂಲ ಹುಡುಕುವ ಅಥವಾ ಹಲವು ಅಭ್ಯರ್ಥಿ ಪರಿಹಾರ ಪ್ರಯತ್ನಿಸುವ ವಿಶಾಲ ಅನ್ವೇಷಣೆ ಕೆಲಸ swarms ಗೆ ಸೂಕ್ತ; ಪ್ರತಿ ಅನ್ವೇಷಕ ಸ್ವತಂತ್ರವಾಗಿ ಕೆಲಸ ಮಾಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Simple local rules, no central boss.\n• Good for wide independent exploration.",
+     "bodyKn": "• ಸರಳ ಸ್ಥಳೀಯ ನಿಯಮ, ಕೇಂದ್ರ ಮೇಲಧಿಕಾರಿ ಇಲ್ಲ.\n• ವಿಶಾಲ ಸ್ವತಂತ್ರ ಅನ್ವೇಷಣೆಗೆ ಉತ್ತಮ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A swarm has:",
+       "qKn": "swarm ಹೊಂದಿದೆ:",
+       "opts": [
+        "No central controller",
+        "One boss",
+        "One agent",
+        "A single file"
+       ],
+       "optsKn": [
+        "ಕೇಂದ್ರ ನಿಯಂತ್ರಕ ಇಲ್ಲ",
+        "ಒಬ್ಬ ಮೇಲಧಿಕಾರಿ",
+        "ಒಂದು agent",
+        "ಒಂದು ಫೈಲ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Global behaviour:",
+       "qKn": "ಒಟ್ಟು ವರ್ತನೆ:",
+       "opts": [
+        "Emerges from local actions",
+        "Is programmed centrally",
+        "Is random",
+        "Is fixed"
+       ],
+       "optsKn": [
+        "ಸ್ಥಳೀಯ ಕ್ರಿಯೆಯಿಂದ ಹೊರಹೊಮ್ಮುತ್ತದೆ",
+        "ಕೇಂದ್ರೀಯವಾಗಿ ಪ್ರೋಗ್ರಾಂ",
+        "ಯಾದೃಚ್ಛಿಕ",
+        "ಸ್ಥಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A good fit:",
+       "qKn": "ಸೂಕ್ತ ಪ್ರಕರಣ:",
+       "opts": [
+        "Searching many sources",
+        "One tiny step",
+        "A single edit",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹಲವು ಮೂಲ ಹುಡುಕುವುದು",
+        "ಒಂದು ಸಣ್ಣ ಹಂತ",
+        "ಒಂದು ತಿದ್ದುಪಡಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215ef",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Parallel Swarm and Networked Architectures — Network Topologies",
+  "titleKn": "ಸಮಾನಾಂತರ Swarm ಮತ್ತು ಜಾಲ ವಾಸ್ತುಶಿಲ್ಪ — ಜಾಲ Topologies",
+  "desc": "Who can talk to whom, whether a mesh, ring, star or tree, shapes speed, cost and failure behaviour.",
+  "descKn": "ಯಾರು ಯಾರೊಂದಿಗೆ ಮಾತಾಡಬಹುದು (mesh, ring, star, tree) ವೇಗ, ವೆಚ್ಚ, ವೈಫಲ್ಯ ವರ್ತನೆ ರೂಪಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Compare mesh, star and ring layouts.",
+   "Relate topology to message volume."
+  ],
+  "objectivesKn": [
+   "mesh, star, ring ಹೋಲಿಸಿ.",
+   "topology ಮತ್ತು ಸಂದೇಶ ಪ್ರಮಾಣ ಸಂಬಂಧಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Parallel Swarm and Networked Architectures — Network Topologies",
+     "textKn": "Parallel Swarm and Networked Architectures — Network Topologies",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Parallel Swarm and Networked Architectures",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Common Layouts",
+     "headingKn": "ಸಾಮಾನ್ಯ ವಿನ್ಯಾಸಗಳು",
+     "bodyEn": "A star routes through a hub. A ring passes work along neighbours. A mesh lets any agent contact any other, which is flexible but creates many messages.",
+     "bodyKn": "star hub ಮೂಲಕ ರೂಟ್. ring ನೆರೆಯವರ ಮೂಲಕ ಕೆಲಸ ಹಾದುಹೋಗುತ್ತದೆ. mesh ಯಾವುದೇ agent ಯಾವುದೇ ಇನ್ನೊಂದನ್ನು ಸಂಪರ್ಕಿಸಲು ಬಿಡುತ್ತದೆ: ನಮ್ಯ ಆದರೆ ಹೆಚ್ಚು ಸಂದೇಶ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cost Grows With Links",
+     "headingKn": "ಲಿಂಕ್‌ಗಳೊಂದಿಗೆ ವೆಚ್ಚ ಬೆಳೆಯುತ್ತದೆ",
+     "bodyEn": "A full mesh of n agents has about n squared links. Restrict who may talk to whom to keep messages, tokens and confusion under control.",
+     "bodyKn": "n agents ಪೂರ್ಣ mesh ಗೆ ಸುಮಾರು n ವರ್ಗ ಲಿಂಕ್. ಸಂದೇಶ, tokens, ಗೊಂದಲ ನಿಯಂತ್ರಿಸಲು ಯಾರು ಯಾರೊಂದಿಗೆ ಮಾತಾಡಬಹುದು ಎಂದು ನಿರ್ಬಂಧಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Star, ring, mesh differ in flexibility and cost.\n• Full meshes grow roughly with n squared.",
+     "bodyKn": "• star, ring, mesh ನಮ್ಯತೆ, ವೆಚ್ಚ ಭಿನ್ನ.\n• ಪೂರ್ಣ mesh ಸುಮಾರು n ವರ್ಗ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A star routes through:",
+       "qKn": "star ರೂಟ್ ಆಗುವುದು:",
+       "opts": [
+        "A hub",
+        "Every agent",
+        "Nothing",
+        "A ring"
+       ],
+       "optsKn": [
+        "hub ಮೂಲಕ",
+        "ಪ್ರತಿ agent",
+        "ಏನೂ ಇಲ್ಲ",
+        "ring"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A full mesh grows about:",
+       "qKn": "ಪೂರ್ಣ mesh ಬೆಳೆಯುವುದು:",
+       "opts": [
+        "n squared",
+        "Log n",
+        "Constant",
+        "Zero"
+       ],
+       "optsKn": [
+        "n ವರ್ಗ",
+        "log n",
+        "ಸ್ಥಿರ",
+        "ಸೊನ್ನೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Restricting links:",
+       "qKn": "ಲಿಂಕ್ ನಿರ್ಬಂಧ:",
+       "opts": [
+        "Controls cost and confusion",
+        "Breaks everything",
+        "Adds cost",
+        "Is illegal"
+       ],
+       "optsKn": [
+        "ವೆಚ್ಚ ಮತ್ತು ಗೊಂದಲ ನಿಯಂತ್ರಣ",
+        "ಎಲ್ಲ ಮುರಿ",
+        "ವೆಚ್ಚ ಸೇರಿಸು",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215ef",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Parallel Swarm and Networked Architectures — Controlling Swarms",
+  "titleKn": "ಸಮಾನಾಂತರ Swarm ಮತ್ತು ಜಾಲ ವಾಸ್ತುಶಿಲ್ಪ — Swarms ನಿಯಂತ್ರಣ",
+  "desc": "Decentralised systems still need budgets, deduplication and an aggregation step.",
+  "descKn": "ವಿಕೇಂದ್ರೀಕೃತ ವ್ಯವಸ್ಥೆಗಳಿಗೂ ಬಜೆಟ್, ನಕಲು ನಿವಾರಣೆ, ಸಂಗ್ರಹ ಹಂತ ಬೇಕು.",
+  "objectives": [
+   "Set global budgets for a swarm.",
+   "Aggregate and deduplicate results."
+  ],
+  "objectivesKn": [
+   "swarm ಗೆ ಜಾಗತಿಕ ಬಜೆಟ್ ಹೊಂದಿಸಿ.",
+   "ಫಲಿತಾಂಶ ಸಂಗ್ರಹಿಸಿ ನಕಲು ತೆಗೆಯಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Parallel Swarm and Networked Architectures — Controlling Swarms",
+     "textKn": "Parallel Swarm and Networked Architectures — Controlling Swarms",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Parallel Swarm and Networked Architectures",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Global Budgets",
+     "headingKn": "ಜಾಗತಿಕ ಬಜೆಟ್",
+     "bodyEn": "With no boss, nothing stops agents from spawning more agents or looping. Enforce a total agent, token and time budget outside the swarm.",
+     "bodyKn": "ಮೇಲಧಿಕಾರಿ ಇಲ್ಲದಿದ್ದರೆ agents ಹೆಚ್ಚು agents ಹುಟ್ಟಿಸುವುದು ಅಥವಾ loop ಮಾಡುವುದನ್ನು ಯಾವುದೂ ತಡೆಯದು. swarm ಹೊರಗೆ ಒಟ್ಟು agent, token, ಸಮಯ ಬಜೆಟ್ ಜಾರಿ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Aggregation",
+     "headingKn": "ಸಂಗ್ರಹ",
+     "bodyEn": "Many explorers return overlapping results. A final step merges them, removes duplicates, resolves conflicts and reports what remains uncertain.",
+     "bodyKn": "ಹಲವು ಅನ್ವೇಷಕರು ಅತಿಕ್ರಮಿಸುವ ಫಲಿತಾಂಶ ನೀಡುತ್ತಾರೆ. ಅಂತಿಮ ಹಂತ ಅವನ್ನು ವಿಲೀನಗೊಳಿಸಿ, ನಕಲು ತೆಗೆದು, ಸಂಘರ್ಷ ಪರಿಹರಿಸಿ, ಉಳಿದ ಅನಿಶ್ಚಿತತೆ ವರದಿ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Enforce a global budget outside the swarm.\n• Aggregate, deduplicate and flag uncertainty.",
+     "bodyKn": "• swarm ಹೊರಗೆ ಜಾಗತಿಕ ಬಜೆಟ್.\n• ಸಂಗ್ರಹ, ನಕಲು ತೆಗೆ, ಅನಿಶ್ಚಿತತೆ ಗುರುತಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Where enforce swarm budgets?",
+       "qKn": "swarm ಬಜೆಟ್ ಎಲ್ಲಿ ಜಾರಿ?",
+       "opts": [
+        "Outside the swarm",
+        "Inside each prompt only",
+        "Nowhere",
+        "In comments"
+       ],
+       "optsKn": [
+        "swarm ಹೊರಗೆ",
+        "ಪ್ರತಿ prompt ನಲ್ಲಿ ಮಾತ್ರ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಕಾಮೆಂಟ್‌ನಲ್ಲಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Aggregation removes:",
+       "qKn": "ಸಂಗ್ರಹ ತೆಗೆಯುವುದು:",
+       "opts": [
+        "Duplicates",
+        "All results",
+        "Budgets",
+        "Agents"
+       ],
+       "optsKn": [
+        "ನಕಲುಗಳು",
+        "ಎಲ್ಲ ಫಲಿತಾಂಶ",
+        "ಬಜೆಟ್",
+        "agents"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Without a boss, agents may:",
+       "qKn": "ಮೇಲಧಿಕಾರಿ ಇಲ್ಲದೆ agents:",
+       "opts": [
+        "Spawn endlessly",
+        "Stop instantly",
+        "Save cost",
+        "Never act"
+       ],
+       "optsKn": [
+        "ಅನಂತ ಹುಟ್ಟಿಸಬಹುದು",
+        "ತಕ್ಷಣ ನಿಲ್ಲಬಹುದು",
+        "ವೆಚ್ಚ ಉಳಿತಾಯ",
+        "ಎಂದಿಗೂ ಕ್ರಿಯೆ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215f2",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Group Chat and Speaker Selection — The Group Chat Pattern",
+  "titleKn": "Group Chat ಮತ್ತು ಮಾತಾಡುವವರ ಆಯ್ಕೆ — Group Chat ಮಾದರಿ",
+  "desc": "Agents share one conversation thread and take turns speaking, like participants in a meeting.",
+  "descKn": "agents ಒಂದೇ ಸಂಭಾಷಣೆ ಎಳೆ ಹಂಚಿ ಸಭೆಯ ಭಾಗವಹಿಸುವವರಂತೆ ಸರದಿಯಲ್ಲಿ ಮಾತಾಡುತ್ತವೆ.",
+  "objectives": [
+   "Describe a shared transcript.",
+   "Note benefits and costs of shared context."
+  ],
+  "objectivesKn": [
+   "ಹಂಚಿದ transcript ವಿವರಿಸಿ.",
+   "ಹಂಚಿದ context ಲಾಭ ಮತ್ತು ವೆಚ್ಚ ಗಮನಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Group Chat and Speaker Selection — The Group Chat Pattern",
+     "textKn": "Group Chat and Speaker Selection — The Group Chat Pattern",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Group Chat and Speaker Selection",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Shared Transcript",
+     "headingKn": "ಹಂಚಿದ Transcript",
+     "bodyEn": "Every agent sees all messages so far. This makes collaboration natural, since anyone can build on anyone's contribution.",
+     "bodyKn": "ಪ್ರತಿ agent ಇದುವರೆಗಿನ ಎಲ್ಲ ಸಂದೇಶ ನೋಡುತ್ತದೆ. ಇದರಿಂದ ಸಹಕಾರ ಸಹಜ; ಯಾರು ಯಾರ ಕೊಡುಗೆಯ ಮೇಲೂ ನಿರ್ಮಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Cost of Everyone Seeing Everything",
+     "headingKn": "ಎಲ್ಲರೂ ಎಲ್ಲವನ್ನೂ ನೋಡುವ ವೆಚ್ಚ",
+     "bodyEn": "The transcript grows with every turn and is re-read by every agent, so tokens and noise rise quickly. Summarise or trim long threads.",
+     "bodyKn": "transcript ಪ್ರತಿ ಸರದಿಗೆ ಬೆಳೆದು ಪ್ರತಿ agent ಮತ್ತೆ ಓದುತ್ತದೆ; tokens ಮತ್ತು ಗದ್ದಲ ವೇಗವಾಗಿ ಏರುತ್ತದೆ. ಉದ್ದ ಎಳೆಗಳನ್ನು ಸಾರಾಂಶ ಅಥವಾ ಕತ್ತರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• All agents share one transcript.\n• Long threads cost tokens; trim them.",
+     "bodyKn": "• ಎಲ್ಲ agents ಒಂದೇ transcript.\n• ಉದ್ದ ಎಳೆ ವೆಚ್ಚ; ಕತ್ತರಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "In group chat every agent sees:",
+       "qKn": "group chat ನಲ್ಲಿ ಪ್ರತಿ agent ನೋಡುತ್ತದೆ:",
+       "opts": [
+        "All messages so far",
+        "Nothing",
+        "Only its own",
+        "Only the last"
+       ],
+       "optsKn": [
+        "ಇದುವರೆಗಿನ ಎಲ್ಲ ಸಂದೇಶ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ತನ್ನದು ಮಾತ್ರ",
+        "ಕೊನೆಯದು ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A downside:",
+       "qKn": "ಒಂದು ದೋಷ:",
+       "opts": [
+        "Growing token cost",
+        "No collaboration",
+        "No context",
+        "Fewer messages"
+       ],
+       "optsKn": [
+        "ಬೆಳೆಯುವ token ವೆಚ್ಚ",
+        "ಸಹಕಾರ ಇಲ್ಲ",
+        "context ಇಲ್ಲ",
+        "ಕಡಿಮೆ ಸಂದೇಶ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Long threads should be:",
+       "qKn": "ಉದ್ದ ಎಳೆ:",
+       "opts": [
+        "Summarised or trimmed",
+        "Ignored",
+        "Doubled",
+        "Deleted always"
+       ],
+       "optsKn": [
+        "ಸಾರಾಂಶ ಅಥವಾ ಕತ್ತರಿಸಿ",
+        "ನಿರ್ಲಕ್ಷಿಸಿ",
+        "ದ್ವಿಗುಣ",
+        "ಯಾವಾಗಲೂ ಅಳಿಸು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215f2",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Group Chat and Speaker Selection — Choosing the Next Speaker",
+  "titleKn": "Group Chat ಮತ್ತು ಮಾತಾಡುವವರ ಆಯ್ಕೆ — ಮುಂದಿನ ಮಾತಾಡುವವನ ಆಯ್ಕೆ",
+  "desc": "Speaker selection can be round-robin, rule-based or chosen by a model, each with trade-offs.",
+  "descKn": "ಮಾತಾಡುವವರ ಆಯ್ಕೆ round-robin, ನಿಯಮ-ಆಧಾರಿತ ಅಥವಾ ಮಾದರಿ ಆರಿಸುವುದು ಆಗಿರಬಹುದು; ಪ್ರತಿಯೊಂದಕ್ಕೆ ವಿನಿಮಯ.",
+  "objectives": [
+   "Compare selection strategies.",
+   "Avoid one agent dominating."
+  ],
+  "objectivesKn": [
+   "ಆಯ್ಕೆ ತಂತ್ರ ಹೋಲಿಸಿ.",
+   "ಒಬ್ಬ agent ಪ್ರಾಬಲ್ಯ ತಪ್ಪಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Group Chat and Speaker Selection — Choosing the Next Speaker",
+     "textKn": "Group Chat and Speaker Selection — Choosing the Next Speaker",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Group Chat and Speaker Selection",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Strategies",
+     "headingKn": "ತಂತ್ರಗಳು",
+     "bodyEn": "Round-robin is simple and fair but wastes turns. Rules encode known workflows. A selector model adapts to context but adds cost and unpredictability.",
+     "bodyKn": "round-robin ಸರಳ ಮತ್ತು ನ್ಯಾಯ ಆದರೆ ಸರದಿ ವ್ಯರ್ಥ. ನಿಯಮಗಳು ತಿಳಿದ workflow ಸಂಕೇತಿಸುತ್ತವೆ. selector ಮಾದರಿ context ಗೆ ಹೊಂದಿಕೊಳ್ಳುತ್ತದೆ ಆದರೆ ವೆಚ್ಚ ಮತ್ತು ಅನಿರೀಕ್ಷಿತತೆ ಸೇರುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Preventing Domination",
+     "headingKn": "ಪ್ರಾಬಲ್ಯ ತಡೆ",
+     "bodyEn": "A verbose or confident agent can take most turns. Limit consecutive turns and make sure quieter, relevant specialists get to speak.",
+     "bodyKn": "ಮಾತುಗಾರ ಅಥವಾ ವಿಶ್ವಾಸಿ agent ಹೆಚ್ಚಿನ ಸರದಿ ತೆಗೆದುಕೊಳ್ಳಬಹುದು. ನಿರಂತರ ಸರದಿ ಮಿತಿ ಮಾಡಿ, ಸಂಬಂಧಿತ ಮೌನ ತಜ್ಞರಿಗೂ ಮಾತಾಡಲು ಅವಕಾಶ ನೀಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Round-robin, rules or a selector model.\n• Limit consecutive turns per agent.",
+     "bodyKn": "• round-robin, ನಿಯಮ, ಅಥವಾ selector ಮಾದರಿ.\n• ಪ್ರತಿ agent ನಿರಂತರ ಸರದಿ ಮಿತಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Round-robin is:",
+       "qKn": "round-robin:",
+       "opts": [
+        "Simple and fair but wasteful",
+        "Complex",
+        "Adaptive",
+        "Random"
+       ],
+       "optsKn": [
+        "ಸರಳ, ನ್ಯಾಯ ಆದರೆ ವ್ಯರ್ಥ",
+        "ಸಂಕೀರ್ಣ",
+        "ಹೊಂದಿಕೊಳ್ಳುವ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A selector model adds:",
+       "qKn": "selector ಮಾದರಿ ಸೇರಿಸುತ್ತದೆ:",
+       "opts": [
+        "Adaptivity and cost",
+        "Nothing",
+        "Certainty",
+        "Free speed"
+       ],
+       "optsKn": [
+        "ಹೊಂದಾಣಿಕೆ ಮತ್ತು ವೆಚ್ಚ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಖಚಿತತೆ",
+        "ಉಚಿತ ವೇಗ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Prevent domination by:",
+       "qKn": "ಪ್ರಾಬಲ್ಯ ತಡೆಯಲು:",
+       "opts": [
+        "Limiting consecutive turns",
+        "Giving one agent all turns",
+        "Ignoring",
+        "Muting all"
+       ],
+       "optsKn": [
+        "ನಿರಂತರ ಸರದಿ ಮಿತಿ",
+        "ಒಬ್ಬರಿಗೆ ಎಲ್ಲ ಸರದಿ",
+        "ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಎಲ್ಲರನ್ನೂ ಮೌನ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215f2",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Group Chat and Speaker Selection — Ending the Conversation",
+  "titleKn": "Group Chat ಮತ್ತು ಮಾತಾಡುವವರ ಆಯ್ಕೆ — ಸಂಭಾಷಣೆ ಮುಗಿಸುವುದು",
+  "desc": "Group chats need explicit termination conditions or they drift, repeat and burn budget.",
+  "descKn": "group chats ಗೆ ಸ್ಪಷ್ಟ ಮುಕ್ತಾಯ ಷರತ್ತು ಬೇಕು, ಇಲ್ಲದಿದ್ದರೆ ಜಾರಿ, ಪುನರಾವರ್ತಿಸಿ, ಬಜೆಟ್ ಸುಡುತ್ತವೆ.",
+  "objectives": [
+   "Define termination signals.",
+   "Detect repetition and stalls."
+  ],
+  "objectivesKn": [
+   "ಮುಕ್ತಾಯ ಸಂಕೇತ ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ಪುನರಾವರ್ತನೆ ಮತ್ತು ನಿಶ್ಚಲತೆ ಪತ್ತೆ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Group Chat and Speaker Selection — Ending the Conversation",
+     "textKn": "Group Chat and Speaker Selection — Ending the Conversation",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Group Chat and Speaker Selection",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Termination Signals",
+     "headingKn": "ಮುಕ್ತಾಯ ಸಂಕೇತಗಳು",
+     "bodyEn": "Stop when a designated agent declares the task done and the verifier agrees, when a maximum number of turns is reached, or when the budget is exhausted.",
+     "bodyKn": "ನಿಯೋಜಿತ agent ಕೆಲಸ ಮುಗಿದಿದೆ ಎಂದು ಘೋಷಿಸಿ verifier ಒಪ್ಪಿದಾಗ, ಗರಿಷ್ಠ ಸರದಿ ತಲುಪಿದಾಗ, ಅಥವಾ ಬಜೆಟ್ ಮುಗಿದಾಗ ನಿಲ್ಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Detect Stalls",
+     "headingKn": "ನಿಶ್ಚಲತೆ ಪತ್ತೆ",
+     "bodyEn": "If recent messages repeat earlier ones or make no progress, intervene: summarise, change strategy or escalate to a human.",
+     "bodyKn": "ಇತ್ತೀಚಿನ ಸಂದೇಶಗಳು ಹಿಂದಿನದನ್ನು ಪುನರಾವರ್ತಿಸಿದರೆ ಅಥವಾ ಪ್ರಗತಿ ಇಲ್ಲದಿದ್ದರೆ ಮಧ್ಯಪ್ರವೇಶಿಸಿ: ಸಾರಾಂಶ, ತಂತ್ರ ಬದಲಿಸಿ ಅಥವಾ ಮಾನವರಿಗೆ ಏರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Stop on verified completion, turn cap or budget.\n• Intervene when messages repeat.",
+     "bodyKn": "• ಪರಿಶೀಲಿತ ಪೂರ್ಣತೆ, ಸರದಿ ಮಿತಿ, ಬಜೆಟ್‌ನಲ್ಲಿ ನಿಲ್ಲಿಸಿ.\n• ಪುನರಾವರ್ತನೆಯಲ್ಲಿ ಮಧ್ಯಪ್ರವೇಶ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A termination signal:",
+       "qKn": "ಮುಕ್ತಾಯ ಸಂಕೇತ:",
+       "opts": [
+        "Maximum turns reached",
+        "A new colour",
+        "A logo",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಗರಿಷ್ಠ ಸರದಿ ತಲುಪಿದೆ",
+        "ಹೊಸ ಬಣ್ಣ",
+        "ಲೋಗೋ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Repeated messages suggest:",
+       "qKn": "ಪುನರಾವರ್ತಿತ ಸಂದೇಶ ಸೂಚಿಸುವುದು:",
+       "opts": [
+        "A stall",
+        "Progress",
+        "Success",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ನಿಶ್ಚಲತೆ",
+        "ಪ್ರಗತಿ",
+        "ಯಶಸ್ಸು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When stalled:",
+       "qKn": "ನಿಶ್ಚಲವಾದಾಗ:",
+       "opts": [
+        "Intervene or escalate",
+        "Keep going",
+        "Delete chat",
+        "Add agents"
+       ],
+       "optsKn": [
+        "ಮಧ್ಯಪ್ರವೇಶಿಸಿ ಅಥವಾ ಏರಿಸಿ",
+        "ಮುಂದುವರಿ",
+        "ಚಾಟ್ ಅಳಿಸಿ",
+        "agents ಸೇರಿಸಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

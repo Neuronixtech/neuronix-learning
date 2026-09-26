@@ -1,0 +1,2627 @@
+[
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215f5",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Handoffs and Routines (Stateless Orchestration) — Routines and Handoffs",
+  "titleKn": "Handoffs ಮತ್ತು Routines (Stateless Orchestration) — Routines ಮತ್ತು Handoffs",
+  "desc": "A routine is a set of instructions and tools; a handoff transfers the conversation to another routine.",
+  "descKn": "routine ಎಂದರೆ ಸೂಚನೆ ಮತ್ತು tools ಸೆಟ್; handoff ಸಂಭಾಷಣೆಯನ್ನು ಇನ್ನೊಂದು routine ಗೆ ವರ್ಗಾಯಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Define routine and handoff.",
+   "Explain how a handoff is triggered."
+  ],
+  "objectivesKn": [
+   "routine ಮತ್ತು handoff ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "handoff ಹೇಗೆ ಪ್ರಚೋದಿತ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Handoffs and Routines (Stateless Orchestration) — Routines and Handoffs",
+     "textKn": "Handoffs and Routines (Stateless Orchestration) — Routines and Handoffs",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Handoffs and Routines (Stateless Orchestration)",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Routines",
+     "headingKn": "Routines",
+     "bodyEn": "Each routine has its own instructions and tools for one job, such as billing or technical support, and stays small and focused.",
+     "bodyKn": "ಪ್ರತಿ routine ಬಿಲ್ಲಿಂಗ್ ಅಥವಾ ತಾಂತ್ರಿಕ ಬೆಂಬಲದಂತಹ ಒಂದು ಕೆಲಸಕ್ಕೆ ಸ್ವಂತ ಸೂಚನೆ ಮತ್ತು tools ಹೊಂದಿದ್ದು ಚಿಕ್ಕದಾಗಿ ಕೇಂದ್ರೀಕೃತವಾಗಿರುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Handoff as a Tool Call",
+     "headingKn": "Tool ಕರೆಯಾಗಿ Handoff",
+     "bodyEn": "A handoff is often exposed as a tool such as transfer_to_billing. Calling it swaps the active instructions and tools while the conversation continues.",
+     "bodyKn": "handoff ಅನ್ನು ಸಾಮಾನ್ಯವಾಗಿ transfer_to_billing ನಂತಹ tool ಆಗಿ ನೀಡಲಾಗುತ್ತದೆ. ಅದನ್ನು ಕರೆದರೆ ಸಂಭಾಷಣೆ ಮುಂದುವರಿಯುತ್ತಿರುವಾಗ ಸಕ್ರಿಯ ಸೂಚನೆ ಮತ್ತು tools ಬದಲಾಗುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Routines are small, focused instruction sets.\n• A handoff swaps the active routine via a tool call.",
+     "bodyKn": "• routines ಚಿಕ್ಕ, ಕೇಂದ್ರೀಕೃತ.\n• handoff tool ಕರೆಯಿಂದ routine ಬದಲಾಯಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A routine is:",
+       "qKn": "routine ಎಂದರೆ:",
+       "opts": [
+        "Instructions plus tools for one job",
+        "A database",
+        "A GPU",
+        "A font"
+       ],
+       "optsKn": [
+        "ಒಂದು ಕೆಲಸಕ್ಕೆ ಸೂಚನೆ ಮತ್ತು tools",
+        "ಡೇಟಾಬೇಸ್",
+        "GPU",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A handoff is often:",
+       "qKn": "handoff ಸಾಮಾನ್ಯವಾಗಿ:",
+       "opts": [
+        "A tool call",
+        "A crash",
+        "A comment",
+        "A file"
+       ],
+       "optsKn": [
+        "tool ಕರೆ",
+        "ಕ್ರ್ಯಾಶ್",
+        "ಕಾಮೆಂಟ್",
+        "ಫೈಲ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "After handoff the conversation:",
+       "qKn": "handoff ನಂತರ ಸಂಭಾಷಣೆ:",
+       "opts": [
+        "Continues with new instructions",
+        "Ends",
+        "Restarts empty",
+        "Deletes"
+       ],
+       "optsKn": [
+        "ಹೊಸ ಸೂಚನೆಯೊಂದಿಗೆ ಮುಂದುವರಿಯುತ್ತದೆ",
+        "ಮುಗಿಯುತ್ತದೆ",
+        "ಖಾಲಿಯಾಗಿ ಮರುಆರಂಭ",
+        "ಅಳಿಸುತ್ತದೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215f5",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Handoffs and Routines (Stateless Orchestration) — Stateless Orchestration",
+  "titleKn": "Handoffs ಮತ್ತು Routines (Stateless Orchestration) — Stateless Orchestration",
+  "desc": "The orchestration loop keeps no hidden state: everything needed is in the message history and passed explicitly.",
+  "descKn": "orchestration loop ಗುಪ್ತ state ಇಡುವುದಿಲ್ಲ: ಬೇಕಾದದ್ದೆಲ್ಲ ಸಂದೇಶ ಇತಿಹಾಸದಲ್ಲಿ, ಸ್ಪಷ್ಟವಾಗಿ ನೀಡಲಾಗುತ್ತದೆ.",
+  "objectives": [
+   "Explain stateless orchestration.",
+   "List benefits: testing, scaling, resuming."
+  ],
+  "objectivesKn": [
+   "stateless orchestration ವಿವರಿಸಿ.",
+   "ಲಾಭ: ಪರೀಕ್ಷೆ, ವಿಸ್ತರಣೆ, ಮುಂದುವರಿಕೆ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Handoffs and Routines (Stateless Orchestration) — Stateless Orchestration",
+     "textKn": "Handoffs and Routines (Stateless Orchestration) — Stateless Orchestration",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Handoffs and Routines (Stateless Orchestration)",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "State in the Messages",
+     "headingKn": "ಸಂದೇಶಗಳಲ್ಲಿ State",
+     "bodyEn": "The server does not remember anything between calls. The full history and the current routine name are sent each time, so any worker can continue the run.",
+     "bodyKn": "ಕರೆಗಳ ನಡುವೆ ಸರ್ವರ್ ಏನನ್ನೂ ನೆನಪಿಡುವುದಿಲ್ಲ. ಪೂರ್ಣ ಇತಿಹಾಸ ಮತ್ತು ಪ್ರಸ್ತುತ routine ಹೆಸರು ಪ್ರತಿ ಬಾರಿ ಕಳುಹಿಸಲಾಗುತ್ತದೆ; ಯಾವುದೇ worker ರನ್ ಮುಂದುವರಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Benefits",
+     "headingKn": "ಲಾಭಗಳು",
+     "bodyEn": "Stateless loops are easy to test with recorded histories, scale across servers and resume after a crash. The cost is resending history, which grows with length.",
+     "bodyKn": "stateless loops ದಾಖಲಿತ ಇತಿಹಾಸದಿಂದ ಪರೀಕ್ಷಿಸಲು, ಸರ್ವರ್‌ಗಳಲ್ಲಿ ವಿಸ್ತರಿಸಲು, ಕ್ರ್ಯಾಶ್ ನಂತರ ಮುಂದುವರಿಸಲು ಸುಲಭ. ವೆಚ್ಚ: ಇತಿಹಾಸ ಮರುಕಳುಹಿಸುವುದು, ಉದ್ದದೊಂದಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• All state lives in the history.\n• Easy to test and resume; history grows.",
+     "bodyKn": "• ಎಲ್ಲ state ಇತಿಹಾಸದಲ್ಲಿ.\n• ಪರೀಕ್ಷೆ, ಮುಂದುವರಿಕೆ ಸುಲಭ; ಇತಿಹಾಸ ಬೆಳೆಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Stateless means the server:",
+       "qKn": "stateless ಎಂದರೆ ಸರ್ವರ್:",
+       "opts": [
+        "Remembers nothing between calls",
+        "Remembers everything",
+        "Is offline",
+        "Has no code"
+       ],
+       "optsKn": [
+        "ಕರೆಗಳ ನಡುವೆ ಏನೂ ನೆನಪಿಲ್ಲ",
+        "ಎಲ್ಲ ನೆನಪು",
+        "ಆಫ್‌ಲೈನ್",
+        "ಕೋಡ್ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A benefit:",
+       "qKn": "ಲಾಭ:",
+       "opts": [
+        "Easy resuming after a crash",
+        "No history",
+        "Smaller messages always",
+        "Free tokens"
+       ],
+       "optsKn": [
+        "ಕ್ರ್ಯಾಶ್ ನಂತರ ಸುಲಭ ಮುಂದುವರಿಕೆ",
+        "ಇತಿಹಾಸ ಇಲ್ಲ",
+        "ಯಾವಾಗಲೂ ಚಿಕ್ಕ ಸಂದೇಶ",
+        "ಉಚಿತ tokens"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A cost:",
+       "qKn": "ವೆಚ್ಚ:",
+       "opts": [
+        "Resending growing history",
+        "None",
+        "Less testing",
+        "Lost routines"
+       ],
+       "optsKn": [
+        "ಬೆಳೆಯುವ ಇತಿಹಾಸ ಮರುಕಳುಹಿಸುವುದು",
+        "ಯಾವುದೂ ಇಲ್ಲ",
+        "ಕಡಿಮೆ ಪರೀಕ್ಷೆ",
+        "routines ನಷ್ಟ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215f5",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Handoffs and Routines (Stateless Orchestration) — Designing Good Handoffs",
+  "titleKn": "Handoffs ಮತ್ತು Routines (Stateless Orchestration) — ಉತ್ತಮ Handoffs ವಿನ್ಯಾಸ",
+  "desc": "Handoffs should be explicit, carry needed context and avoid ping-pong loops.",
+  "descKn": "handoffs ಸ್ಪಷ್ಟವಾಗಿರಬೇಕು, ಬೇಕಾದ context ಹೊತ್ತಿರಬೇಕು, ping-pong loops ತಪ್ಪಿಸಬೇಕು.",
+  "objectives": [
+   "Pass context variables with the handoff.",
+   "Limit hops and detect loops."
+  ],
+  "objectivesKn": [
+   "handoff ಜೊತೆ context variables ನೀಡಿ.",
+   "hops ಮಿತಿ, loops ಪತ್ತೆ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Handoffs and Routines (Stateless Orchestration) — Designing Good Handoffs",
+     "textKn": "Handoffs and Routines (Stateless Orchestration) — Designing Good Handoffs",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Handoffs and Routines (Stateless Orchestration)",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Carry Context",
+     "headingKn": "Context ಹೊತ್ತೊಯ್ಯಿರಿ",
+     "bodyEn": "Pass a short summary and key variables such as the customer id so the next routine does not have to ask again.",
+     "bodyKn": "ಚಿಕ್ಕ ಸಾರಾಂಶ ಮತ್ತು ಗ್ರಾಹಕ id ನಂತಹ ಮುಖ್ಯ variables ನೀಡಿ; ಮುಂದಿನ routine ಮತ್ತೆ ಕೇಳಬೇಕಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Avoid Ping-Pong",
+     "headingKn": "Ping-Pong ತಪ್ಪಿಸಿ",
+     "bodyEn": "Two routines can keep handing the user back to each other. Cap the number of hops and route to a human or fallback when exceeded.",
+     "bodyKn": "ಎರಡು routines ಬಳಕೆದಾರರನ್ನು ಪರಸ್ಪರ ಹಿಂದಕ್ಕೆ ಕೊಡುತ್ತಲೇ ಇರಬಹುದು. hops ಸಂಖ್ಯೆಗೆ ಮಿತಿ; ಮೀರಿದರೆ ಮಾನವ ಅಥವಾ fallback ಗೆ ರೂಟ್."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Pass summary and key variables.\n• Cap hops to stop ping-pong.",
+     "bodyKn": "• ಸಾರಾಂಶ ಮತ್ತು ಮುಖ್ಯ variables.\n• hops ಮಿತಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why pass variables?",
+       "qKn": "variables ಏಕೆ ನೀಡಬೇಕು?",
+       "opts": [
+        "So the next routine need not re-ask",
+        "To confuse",
+        "For style",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಮುಂದಿನ routine ಮತ್ತೆ ಕೇಳದಿರಲು",
+        "ಗೊಂದಲ",
+        "ಶೈಲಿ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Ping-pong is:",
+       "qKn": "ping-pong:",
+       "opts": [
+        "Endless back-and-forth handoffs",
+        "A game",
+        "A fast handoff",
+        "A crash"
+       ],
+       "optsKn": [
+        "ಅಂತ್ಯವಿಲ್ಲದ ಹಿಂದೆ-ಮುಂದೆ handoff",
+        "ಆಟ",
+        "ವೇಗದ handoff",
+        "ಕ್ರ್ಯಾಶ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "On too many hops:",
+       "qKn": "ಹೆಚ್ಚು hops ಆದರೆ:",
+       "opts": [
+        "Route to a human or fallback",
+        "Continue",
+        "Delete",
+        "Ignore"
+       ],
+       "optsKn": [
+        "ಮಾನವ ಅಥವಾ fallback ಗೆ ರೂಟ್",
+        "ಮುಂದುವರಿ",
+        "ಅಳಿಸು",
+        "ನಿರ್ಲಕ್ಷ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215f8",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "A2A: The Agent-to-Agent Protocol — What A2A Is For",
+  "titleKn": "A2A: Agent-to-Agent ಪ್ರೋಟೋಕಾಲ್ — A2A ಯಾವುದಕ್ಕೆ",
+  "desc": "A2A lets independently built agents discover each other and collaborate on tasks over a common protocol.",
+  "descKn": "A2A ಸ್ವತಂತ್ರವಾಗಿ ನಿರ್ಮಿಸಿದ agents ಪರಸ್ಪರ ಕಂಡುಕೊಂಡು ಸಾಮಾನ್ಯ ಪ್ರೋಟೋಕಾಲ್‌ನಲ್ಲಿ ಕೆಲಸದಲ್ಲಿ ಸಹಕರಿಸಲು ಬಿಡುತ್ತದೆ.",
+  "objectives": [
+   "Contrast A2A with tool protocols.",
+   "Describe agent-to-agent delegation."
+  ],
+  "objectivesKn": [
+   "A2A ಅನ್ನು tool ಪ್ರೋಟೋಕಾಲ್‌ಗೆ ಹೋಲಿಸಿ.",
+   "agent-to-agent ವಹಿಸುವಿಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "A2A: The Agent-to-Agent Protocol — What A2A Is For",
+     "textKn": "A2A: The Agent-to-Agent Protocol — What A2A Is For",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in A2A: The Agent-to-Agent Protocol",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Peers, Not Tools",
+     "headingKn": "ಸಹವರ್ತಿಗಳು, tools ಅಲ್ಲ",
+     "bodyEn": "A tool protocol connects an agent to functions. A2A connects an agent to another agent that can reason, ask questions and work over time.",
+     "bodyKn": "tool ಪ್ರೋಟೋಕಾಲ್ agent ಅನ್ನು ಕಾರ್ಯಗಳಿಗೆ ಜೋಡಿಸುತ್ತದೆ. A2A agent ಅನ್ನು ತರ್ಕಿಸಬಲ್ಲ, ಪ್ರಶ್ನೆ ಕೇಳಬಲ್ಲ, ಕಾಲಕ್ರಮೇಣ ಕೆಲಸ ಮಾಡಬಲ್ಲ ಇನ್ನೊಂದು agent ಗೆ ಜೋಡಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Opaque Collaboration",
+     "headingKn": "ಅಪಾರದರ್ಶಕ ಸಹಕಾರ",
+     "bodyEn": "Agents cooperate without exposing internal prompts, memory or tools. Only the declared interface and results are shared.",
+     "bodyKn": "agents ಆಂತರಿಕ prompts, ಮೆಮೊರಿ, tools ತೋರಿಸದೆ ಸಹಕರಿಸುತ್ತವೆ. ಘೋಷಿತ ಇಂಟರ್ಫೇಸ್ ಮತ್ತು ಫಲಿತಾಂಶ ಮಾತ್ರ ಹಂಚಲಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• A2A connects agents to agents.\n• Internals stay private.",
+     "bodyKn": "• A2A agents ಅನ್ನು agents ಗೆ ಜೋಡಿಸುತ್ತದೆ.\n• ಆಂತರಿಕ ಖಾಸಗಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A2A connects:",
+       "qKn": "A2A ಜೋಡಿಸುತ್ತದೆ:",
+       "opts": [
+        "Agents to agents",
+        "Files to files",
+        "GPUs to GPUs",
+        "Nothing"
+       ],
+       "optsKn": [
+        "agents ಅನ್ನು agents ಗೆ",
+        "ಫೈಲ್ ಅನ್ನು ಫೈಲ್ ಗೆ",
+        "GPU ಅನ್ನು GPU ಗೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What stays private?",
+       "qKn": "ಯಾವುದು ಖಾಸಗಿ?",
+       "opts": [
+        "Internal prompts and memory",
+        "The interface",
+        "Results",
+        "Messages"
+       ],
+       "optsKn": [
+        "ಆಂತರಿಕ prompts ಮತ್ತು ಮೆಮೊರಿ",
+        "ಇಂಟರ್ಫೇಸ್",
+        "ಫಲಿತಾಂಶ",
+        "ಸಂದೇಶ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Unlike tools, a peer agent can:",
+       "qKn": "tools ಗಿಂತ ಭಿನ್ನವಾಗಿ ಸಹವರ್ತಿ agent:",
+       "opts": [
+        "Reason and ask questions",
+        "Only return numbers",
+        "Never respond",
+        "Only store data"
+       ],
+       "optsKn": [
+        "ತರ್ಕಿಸಿ ಪ್ರಶ್ನೆ ಕೇಳಬಲ್ಲದು",
+        "ಸಂಖ್ಯೆ ಮಾತ್ರ ನೀಡುತ್ತದೆ",
+        "ಎಂದಿಗೂ ಉತ್ತರಿಸದು",
+        "ಡೇಟಾ ಸಂಗ್ರಹ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215f8",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "A2A: The Agent-to-Agent Protocol — Agent Cards and Task Lifecycle",
+  "titleKn": "A2A: Agent-to-Agent ಪ್ರೋಟೋಕಾಲ್ — Agent Cards ಮತ್ತು ಕೆಲಸ ಜೀವನಚಕ್ರ",
+  "desc": "An agent card advertises capabilities; tasks move through defined states until completion.",
+  "descKn": "agent card ಸಾಮರ್ಥ್ಯ ಪ್ರಕಟಿಸುತ್ತದೆ; ಕೆಲಸಗಳು ಪೂರ್ಣಗೊಳ್ಳುವವರೆಗೆ ನಿರ್ದಿಷ್ಟ ಸ್ಥಿತಿಗಳ ಮೂಲಕ ಸಾಗುತ್ತವೆ.",
+  "objectives": [
+   "Describe an agent card.",
+   "Follow a task through its states."
+  ],
+  "objectivesKn": [
+   "agent card ವಿವರಿಸಿ.",
+   "ಕೆಲಸವನ್ನು ಸ್ಥಿತಿಗಳ ಮೂಲಕ ಅನುಸರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "A2A: The Agent-to-Agent Protocol — Agent Cards and Task Lifecycle",
+     "textKn": "A2A: The Agent-to-Agent Protocol — Agent Cards and Task Lifecycle",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in A2A: The Agent-to-Agent Protocol",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Discovery With Cards",
+     "headingKn": "Cards ಮೂಲಕ Discovery",
+     "bodyEn": "An agent card is a machine-readable description of who the agent is, what skills it offers, its endpoint and how to authenticate.",
+     "bodyKn": "agent card agent ಯಾರು, ಯಾವ ಕೌಶಲ, endpoint, ದೃಢೀಕರಣ ವಿಧಾನದ ಯಂತ್ರ-ಓದಬಲ್ಲ ವಿವರಣೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Task States",
+     "headingKn": "ಕೆಲಸ ಸ್ಥಿತಿಗಳು",
+     "bodyEn": "A task can be submitted, working, waiting for input, completed, failed or cancelled. Clients poll or receive updates and fetch artefacts when done.",
+     "bodyKn": "ಕೆಲಸ submitted, working, input ಗೆ ಕಾಯುತ್ತಿರುವ, completed, failed ಅಥವಾ cancelled ಆಗಬಹುದು. ಗ್ರಾಹಕರು poll ಮಾಡುತ್ತಾರೆ ಅಥವಾ ನವೀಕರಣ ಪಡೆದು ಮುಗಿದಾಗ artefacts ಪಡೆಯುತ್ತಾರೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Cards advertise skills and endpoints.\n• Tasks have explicit lifecycle states.",
+     "bodyKn": "• cards ಕೌಶಲ ಮತ್ತು endpoints ಪ್ರಕಟಿಸುತ್ತವೆ.\n• ಕೆಲಸಕ್ಕೆ ಸ್ಪಷ್ಟ ಜೀವನಚಕ್ರ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "An agent card describes:",
+       "qKn": "agent card ವಿವರಿಸುತ್ತದೆ:",
+       "opts": [
+        "Skills, endpoint and auth",
+        "Only colours",
+        "Only logos",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಕೌಶಲ, endpoint, auth",
+        "ಬಣ್ಣ ಮಾತ್ರ",
+        "ಲೋಗೋ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A task state:",
+       "qKn": "ಕೆಲಸ ಸ್ಥಿತಿ:",
+       "opts": [
+        "working",
+        "painting",
+        "sleeping",
+        "none"
+       ],
+       "optsKn": [
+        "working",
+        "ಚಿತ್ರಕಲೆ",
+        "ನಿದ್ರೆ",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Clients get results by:",
+       "qKn": "ಗ್ರಾಹಕರು ಫಲಿತಾಂಶ ಪಡೆಯುವುದು:",
+       "opts": [
+        "Polling or updates",
+        "Guessing",
+        "Restarting",
+        "Nothing"
+       ],
+       "optsKn": [
+        "poll ಅಥವಾ ನವೀಕರಣ",
+        "ಊಹೆ",
+        "ಮರುಪ್ರಾರಂಭ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215f8",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "A2A: The Agent-to-Agent Protocol — A2A Security and Trust",
+  "titleKn": "A2A: Agent-to-Agent ಪ್ರೋಟೋಕಾಲ್ — A2A ಭದ್ರತೆ ಮತ್ತು ನಂಬಿಕೆ",
+  "desc": "Cross-organisation agent calls need authentication, scoped authority and skepticism toward returned content.",
+  "descKn": "ಸಂಸ್ಥೆಗಳ ನಡುವಿನ agent ಕರೆಗಳಿಗೆ ದೃಢೀಕರಣ, ಮಿತ ಅಧಿಕಾರ, ಹಿಂತಿರುಗಿದ ವಿಷಯದ ಬಗ್ಗೆ ಸಂದೇಹ ಬೇಕು.",
+  "objectives": [
+   "Authenticate remote agents.",
+   "Treat returned content as untrusted."
+  ],
+  "objectivesKn": [
+   "ದೂರದ agents ದೃಢೀಕರಿಸಿ.",
+   "ಹಿಂತಿರುಗಿದ ವಿಷಯ ಅಪನಂಬಿಕೆ ಎಂದು ಪರಿಗಣಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "A2A: The Agent-to-Agent Protocol — A2A Security and Trust",
+     "textKn": "A2A: The Agent-to-Agent Protocol — A2A Security and Trust",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in A2A: The Agent-to-Agent Protocol",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Authenticate and Scope",
+     "headingKn": "ದೃಢೀಕರಿಸಿ ಮತ್ತು ಮಿತಿಗೊಳಿಸಿ",
+     "bodyEn": "Verify who is calling and grant only the access needed for that task. Do not forward your own credentials to another agent.",
+     "bodyKn": "ಯಾರು ಕರೆಯುತ್ತಿದ್ದಾರೆ ಪರಿಶೀಲಿಸಿ, ಆ ಕೆಲಸಕ್ಕೆ ಬೇಕಾದ ಪ್ರವೇಶ ಮಾತ್ರ ನೀಡಿ. ನಿಮ್ಮ credentials ಇನ್ನೊಂದು agent ಗೆ ಕಳುಹಿಸಬೇಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Untrusted Results",
+     "headingKn": "ಅಪನಂಬಿಕೆ ಫಲಿತಾಂಶ",
+     "bodyEn": "A remote agent's output can contain injected instructions or errors. Validate it, and never let it directly trigger sensitive actions.",
+     "bodyKn": "ದೂರದ agent ಔಟ್‌ಪುಟ್ injected ಸೂಚನೆ ಅಥವಾ ದೋಷ ಹೊಂದಿರಬಹುದು. ಪರಿಶೀಲಿಸಿ; ಸೂಕ್ಷ್ಮ ಕ್ರಿಯೆ ನೇರವಾಗಿ ಪ್ರಚೋದಿಸಲು ಬಿಡಬೇಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Authenticate; never forward your credentials.\n• Validate remote output before acting.",
+     "bodyKn": "• ದೃಢೀಕರಿಸಿ; credentials ಕಳುಹಿಸಬೇಡಿ.\n• ಕ್ರಿಯೆ ಮೊದಲು ಔಟ್‌ಪುಟ್ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Should you forward your credentials?",
+       "qKn": "ನಿಮ್ಮ credentials ಕಳುಹಿಸಬೇಕೇ?",
+       "opts": [
+        "No",
+        "Yes",
+        "Always",
+        "Sometimes"
+       ],
+       "optsKn": [
+        "ಇಲ್ಲ",
+        "ಹೌದು",
+        "ಯಾವಾಗಲೂ",
+        "ಕೆಲವೊಮ್ಮೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Remote output is:",
+       "qKn": "ದೂರದ ಔಟ್‌ಪುಟ್:",
+       "opts": [
+        "Untrusted until validated",
+        "Always safe",
+        "A command",
+        "Encrypted"
+       ],
+       "optsKn": [
+        "ಪರಿಶೀಲನೆವರೆಗೆ ಅಪನಂಬಿಕೆ",
+        "ಯಾವಾಗಲೂ ಸುರಕ್ಷಿತ",
+        "ಆದೇಶ",
+        "ಎನ್‌ಕ್ರಿಪ್ಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Grant:",
+       "qKn": "ನೀಡಿ:",
+       "opts": [
+        "Only needed access",
+        "Admin",
+        "Nothing ever",
+        "All access"
+       ],
+       "optsKn": [
+        "ಬೇಕಾದ ಪ್ರವೇಶ ಮಾತ್ರ",
+        "admin",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಎಲ್ಲ ಪ್ರವೇಶ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215fb",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Shared Memory and Blackboard Patterns — The Blackboard Idea",
+  "titleKn": "ಹಂಚಿದ Memory ಮತ್ತು Blackboard ಮಾದರಿಗಳು — Blackboard ಕಲ್ಪನೆ",
+  "desc": "Agents read from and write to a shared workspace, contributing when they can help.",
+  "descKn": "agents ಹಂಚಿದ ಕಾರ್ಯಸ್ಥಳದಿಂದ ಓದಿ ಅದಕ್ಕೆ ಬರೆಯುತ್ತವೆ, ಸಹಾಯ ಮಾಡಬಲ್ಲಾಗ ಕೊಡುಗೆ ನೀಡುತ್ತವೆ.",
+  "objectives": [
+   "Describe the blackboard pattern.",
+   "Explain opportunistic contribution."
+  ],
+  "objectivesKn": [
+   "blackboard ಮಾದರಿ ವಿವರಿಸಿ.",
+   "ಅವಕಾಶವಾದಿ ಕೊಡುಗೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Shared Memory and Blackboard Patterns — The Blackboard Idea",
+     "textKn": "Shared Memory and Blackboard Patterns — The Blackboard Idea",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Shared Memory and Blackboard Patterns",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Shared Workspace",
+     "headingKn": "ಹಂಚಿದ ಕಾರ್ಯಸ್ಥಳ",
+     "bodyEn": "Instead of messaging each other, agents post partial results, hypotheses and questions to a common board that everyone can read.",
+     "bodyKn": "ಪರಸ್ಪರ ಸಂದೇಶ ಕಳುಹಿಸುವ ಬದಲು agents ಭಾಗಶಃ ಫಲಿತಾಂಶ, ಊಹೆ, ಪ್ರಶ್ನೆಗಳನ್ನು ಎಲ್ಲರೂ ಓದಬಹುದಾದ ಸಾಮಾನ್ಯ ಬೋರ್ಡ್‌ಗೆ ಹಾಕುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Opportunistic Work",
+     "headingKn": "ಅವಕಾಶವಾದಿ ಕೆಲಸ",
+     "bodyEn": "An agent acts when it sees something it can improve. No fixed order is needed, which suits problems where the path is unknown in advance.",
+     "bodyKn": "agent ತಾನು ಸುಧಾರಿಸಬಲ್ಲದ್ದನ್ನು ಕಂಡಾಗ ಕ್ರಿಯೆ ಮಾಡುತ್ತದೆ. ನಿಗದಿತ ಕ್ರಮ ಬೇಕಿಲ್ಲ; ಹಾದಿ ಮೊದಲೇ ತಿಳಿಯದ ಸಮಸ್ಯೆಗೆ ಸೂಕ್ತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Agents post to and read from a common board.\n• Work happens opportunistically.",
+     "bodyKn": "• agents ಸಾಮಾನ್ಯ ಬೋರ್ಡ್‌ಗೆ ಹಾಕಿ ಓದುತ್ತವೆ.\n• ಅವಕಾಶವಾದಿ ಕೆಲಸ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Agents on a blackboard:",
+       "qKn": "blackboard ನಲ್ಲಿ agents:",
+       "opts": [
+        "Post and read shared results",
+        "Only send email",
+        "Never read",
+        "Work alone"
+       ],
+       "optsKn": [
+        "ಹಂಚಿದ ಫಲಿತಾಂಶ ಹಾಕಿ ಓದುತ್ತವೆ",
+        "ಇಮೇಲ್ ಮಾತ್ರ",
+        "ಎಂದಿಗೂ ಓದವು",
+        "ಒಂಟಿಯಾಗಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Suits problems where:",
+       "qKn": "ಸೂಕ್ತ ಸಮಸ್ಯೆ:",
+       "opts": [
+        "The path is unknown in advance",
+        "Steps are fixed",
+        "Nothing is needed",
+        "Only one step"
+       ],
+       "optsKn": [
+        "ಹಾದಿ ಮೊದಲೇ ತಿಳಿದಿಲ್ಲ",
+        "ಹಂತ ನಿಗದಿ",
+        "ಏನೂ ಬೇಕಿಲ್ಲ",
+        "ಒಂದೇ ಹಂತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A fixed order is:",
+       "qKn": "ನಿಗದಿತ ಕ್ರಮ:",
+       "opts": [
+        "Not required",
+        "Required",
+        "Forbidden",
+        "Random"
+       ],
+       "optsKn": [
+        "ಬೇಕಿಲ್ಲ",
+        "ಬೇಕು",
+        "ನಿಷೇಧ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215fb",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Shared Memory and Blackboard Patterns — Designing the Shared Store",
+  "titleKn": "ಹಂಚಿದ Memory ಮತ್ತು Blackboard ಮಾದರಿಗಳು — ಹಂಚಿದ ಸಂಗ್ರಹ ವಿನ್ಯಾಸ",
+  "desc": "A shared store needs structure, ownership and conflict rules so agents do not corrupt each other's work.",
+  "descKn": "ಹಂಚಿದ ಸಂಗ್ರಹಕ್ಕೆ ರಚನೆ, ಮಾಲೀಕತ್ವ, ಸಂಘರ್ಷ ನಿಯಮ ಬೇಕು; agents ಪರಸ್ಪರ ಕೆಲಸ ಹಾಳುಮಾಡದಂತೆ.",
+  "objectives": [
+   "Structure entries with author and status.",
+   "Handle concurrent writes."
+  ],
+  "objectivesKn": [
+   "author ಮತ್ತು status ಸಹಿತ ನಮೂದು ರಚಿಸಿ.",
+   "ಏಕಕಾಲಿಕ ಬರೆಯುವಿಕೆ ನಿರ್ವಹಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Shared Memory and Blackboard Patterns — Designing the Shared Store",
+     "textKn": "Shared Memory and Blackboard Patterns — Designing the Shared Store",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Shared Memory and Blackboard Patterns",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Structured Entries",
+     "headingKn": "ರಚನಾತ್ಮಕ ನಮೂದುಗಳು",
+     "bodyEn": "Record who wrote each entry, when, and its status such as draft or verified. Structure lets others filter and trust appropriately.",
+     "bodyKn": "ಪ್ರತಿ ನಮೂದು ಯಾರು, ಯಾವಾಗ ಬರೆದರು ಮತ್ತು draft ಅಥವಾ verified ನಂತಹ ಸ್ಥಿತಿ ದಾಖಲಿಸಿ. ರಚನೆ ಇತರರಿಗೆ ಫಿಲ್ಟರ್ ಮತ್ತು ಸೂಕ್ತವಾಗಿ ನಂಬಲು ಬಿಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Concurrent Writes",
+     "headingKn": "ಏಕಕಾಲಿಕ ಬರೆಯುವಿಕೆ",
+     "bodyEn": "Two agents may edit the same item. Use append-only logs, versions or locks so one does not silently overwrite the other.",
+     "bodyKn": "ಇಬ್ಬರು agents ಒಂದೇ ಅಂಶ ತಿದ್ದಬಹುದು. append-only ಲಾಗ್, ಆವೃತ್ತಿ ಅಥವಾ locks ಬಳಸಿ; ಒಬ್ಬರು ಇನ್ನೊಬ್ಬರನ್ನು ಮೌನವಾಗಿ ಮೇಲ್ಬರಹ ಮಾಡದಂತೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Record author, time and status.\n• Use versions, logs or locks.",
+     "bodyKn": "• author, ಸಮಯ, ಸ್ಥಿತಿ ದಾಖಲಿಸಿ.\n• ಆವೃತ್ತಿ, ಲಾಗ್ ಅಥವಾ locks."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why record author and status?",
+       "qKn": "author ಮತ್ತು status ಏಕೆ?",
+       "opts": [
+        "So others can trust and filter",
+        "Decoration",
+        "To slow",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಇತರರು ನಂಬಲು ಮತ್ತು ಫಿಲ್ಟರ್ ಮಾಡಲು",
+        "ಅಲಂಕಾರ",
+        "ನಿಧಾನ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Concurrent writes need:",
+       "qKn": "ಏಕಕಾಲಿಕ ಬರೆಯುವಿಕೆಗೆ:",
+       "opts": [
+        "Versions, logs or locks",
+        "Nothing",
+        "Faster disks",
+        "More colours"
+       ],
+       "optsKn": [
+        "ಆವೃತ್ತಿ, ಲಾಗ್ ಅಥವಾ locks",
+        "ಏನೂ ಇಲ್ಲ",
+        "ವೇಗದ ಡಿಸ್ಕ್",
+        "ಹೆಚ್ಚು ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Append-only logs:",
+       "qKn": "append-only ಲಾಗ್:",
+       "opts": [
+        "Avoid silent overwrites",
+        "Delete history",
+        "Slow reads only",
+        "Are illegal"
+       ],
+       "optsKn": [
+        "ಮೌನ ಮೇಲ್ಬರಹ ತಪ್ಪಿಸುತ್ತವೆ",
+        "ಇತಿಹಾಸ ಅಳಿಸುತ್ತವೆ",
+        "ನಿಧಾನ ಓದು ಮಾತ್ರ",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215fb",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Shared Memory and Blackboard Patterns — Memory Hygiene",
+  "titleKn": "ಹಂಚಿದ Memory ಮತ್ತು Blackboard ಮಾದರಿಗಳು — Memory ಸ್ವಚ್ಛತೆ",
+  "desc": "Shared memory can accumulate stale, wrong or poisoned content, so it needs pruning and verification.",
+  "descKn": "ಹಂಚಿದ ಮೆಮೊರಿ ಹಳೆಯ, ತಪ್ಪು ಅಥವಾ ವಿಷಪೂರಿತ ವಿಷಯ ಸಂಗ್ರಹಿಸಬಹುದು; ಕತ್ತರಿಸುವಿಕೆ ಮತ್ತು ಪರಿಶೀಲನೆ ಬೇಕು.",
+  "objectives": [
+   "Prune stale entries.",
+   "Guard against poisoned memory."
+  ],
+  "objectivesKn": [
+   "ಹಳೆಯ ನಮೂದು ಕತ್ತರಿಸಿ.",
+   "ವಿಷಪೂರಿತ ಮೆಮೊರಿ ವಿರುದ್ಧ ರಕ್ಷಣೆ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Shared Memory and Blackboard Patterns — Memory Hygiene",
+     "textKn": "Shared Memory and Blackboard Patterns — Memory Hygiene",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Shared Memory and Blackboard Patterns",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Prune and Verify",
+     "headingKn": "ಕತ್ತರಿಸಿ ಮತ್ತು ಪರಿಶೀಲಿಸಿ",
+     "bodyEn": "Expire or archive entries that are old or superseded, and mark which entries have been verified against a source.",
+     "bodyKn": "ಹಳೆಯ ಅಥವಾ ಬದಲಾದ ನಮೂದುಗಳನ್ನು ಕಾಲಾವಧಿ ಮುಗಿಸಿ ಅಥವಾ ಆರ್ಕೈವ್ ಮಾಡಿ; ಮೂಲಕ್ಕೆ ವಿರುದ್ಧ ಪರಿಶೀಲಿತ ನಮೂದು ಗುರುತಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Poisoned Memory",
+     "headingKn": "ವಿಷಪೂರಿತ ಮೆಮೊರಿ",
+     "bodyEn": "One agent that reads a malicious page can write bad content that others later trust. Treat memory written from untrusted sources as untrusted too.",
+     "bodyKn": "ದುರುದ್ದೇಶದ ಪುಟ ಓದುವ ಒಂದು agent ಇತರರು ನಂತರ ನಂಬುವ ಕೆಟ್ಟ ವಿಷಯ ಬರೆಯಬಹುದು. ಅಪನಂಬಿಕೆ ಮೂಲಗಳಿಂದ ಬರೆದ ಮೆಮೊರಿಯನ್ನೂ ಅಪನಂಬಿಕೆ ಎಂದು ಪರಿಗಣಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Expire old entries; mark verified ones.\n• Memory from untrusted sources stays untrusted.",
+     "bodyKn": "• ಹಳೆಯದು ಮುಗಿಸಿ; ಪರಿಶೀಲಿತ ಗುರುತಿಸಿ.\n• ಅಪನಂಬಿಕೆ ಮೂಲದ ಮೆಮೊರಿ ಅಪನಂಬಿಕೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Stale entries should be:",
+       "qKn": "ಹಳೆಯ ನಮೂದುಗಳು:",
+       "opts": [
+        "Expired or archived",
+        "Kept forever active",
+        "Doubled",
+        "Hidden"
+       ],
+       "optsKn": [
+        "ಕಾಲಾವಧಿ ಮುಗಿಸಿ ಅಥವಾ ಆರ್ಕೈವ್",
+        "ಶಾಶ್ವತ ಸಕ್ರಿಯ",
+        "ದ್ವಿಗುಣ",
+        "ಮರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Poisoned memory arises from:",
+       "qKn": "ವಿಷಪೂರಿತ ಮೆಮೊರಿ ಬರುವುದು:",
+       "opts": [
+        "Writing untrusted content into shared memory",
+        "Verified sources",
+        "Empty boards",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಅಪನಂಬಿಕೆ ವಿಷಯ ಹಂಚಿದ ಮೆಮೊರಿಗೆ ಬರೆಯುವುದರಿಂದ",
+        "ಪರಿಶೀಲಿತ ಮೂಲ",
+        "ಖಾಲಿ ಬೋರ್ಡ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Mark entries as:",
+       "qKn": "ನಮೂದುಗಳನ್ನು ಗುರುತಿಸಿ:",
+       "opts": [
+        "Verified or unverified",
+        "Red or blue",
+        "Big or small",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪರಿಶೀಲಿತ ಅಥವಾ ಅಪರಿಶೀಲಿತ",
+        "ಕೆಂಪು ಅಥವಾ ನೀಲಿ",
+        "ದೊಡ್ಡ ಅಥವಾ ಚಿಕ್ಕ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215fe",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Consensus and Byzantine Fault Tolerance — The Consensus Problem",
+  "titleKn": "ಒಮ್ಮತ ಮತ್ತು Byzantine Fault Tolerance — ಒಮ್ಮತ ಸಮಸ್ಯೆ",
+  "desc": "Consensus is getting several agents to agree on one value even when some fail or disagree.",
+  "descKn": "ಒಮ್ಮತ ಎಂದರೆ ಕೆಲವು agents ವಿಫಲವಾದರೂ ಅಥವಾ ಭಿನ್ನವಾದರೂ ಹಲವು agents ಒಂದು ಮೌಲ್ಯಕ್ಕೆ ಒಪ್ಪುವಂತೆ ಮಾಡುವುದು.",
+  "objectives": [
+   "Define consensus.",
+   "Distinguish crash faults from Byzantine faults."
+  ],
+  "objectivesKn": [
+   "ಒಮ್ಮತ ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "crash faults ಮತ್ತು Byzantine faults ಬೇರ್ಪಡಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Consensus and Byzantine Fault Tolerance — The Consensus Problem",
+     "textKn": "Consensus and Byzantine Fault Tolerance — The Consensus Problem",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Consensus and Byzantine Fault Tolerance",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Agreeing Despite Failures",
+     "headingKn": "ವೈಫಲ್ಯದ ನಡುವೆಯೂ ಒಪ್ಪಿಗೆ",
+     "bodyEn": "A group must decide one outcome, and all healthy members must reach the same one, even when some members are down or unreachable.",
+     "bodyKn": "ಗುಂಪು ಒಂದು ಫಲಿತಾಂಶ ನಿರ್ಧರಿಸಬೇಕು, ಮತ್ತು ಕೆಲವು ಸದಸ್ಯರು ಸ್ಥಗಿತ ಅಥವಾ ತಲುಪಲಾಗದಿದ್ದರೂ ಎಲ್ಲ ಆರೋಗ್ಯವಂತ ಸದಸ್ಯರು ಒಂದೇ ಫಲಿತಾಂಶ ತಲುಪಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Byzantine Faults",
+     "headingKn": "Byzantine Faults",
+     "bodyEn": "A crashed node simply stops. A Byzantine node can send conflicting or false messages. LLM agents can behave like Byzantine nodes when confused or manipulated.",
+     "bodyKn": "ಕ್ರ್ಯಾಶ್ ಆದ ನೋಡ್ ಸುಮ್ಮನೆ ನಿಲ್ಲುತ್ತದೆ. Byzantine ನೋಡ್ ವಿರೋಧಾತ್ಮಕ ಅಥವಾ ಸುಳ್ಳು ಸಂದೇಶ ಕಳುಹಿಸಬಹುದು. ಗೊಂದಲ ಅಥವಾ ಕುಶಲತೆಗೆ ಒಳಗಾದ LLM agents Byzantine ನೋಡ್‌ಗಳಂತೆ ವರ್ತಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Consensus: agree despite failures.\n• Byzantine nodes may lie or contradict.",
+     "bodyKn": "• ಒಮ್ಮತ: ವೈಫಲ್ಯದ ನಡುವೆ ಒಪ್ಪಿಗೆ.\n• Byzantine ನೋಡ್ ಸುಳ್ಳು ಹೇಳಬಹುದು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A Byzantine fault is when a node:",
+       "qKn": "Byzantine fault ಎಂದರೆ ನೋಡ್:",
+       "opts": [
+        "Sends conflicting or false messages",
+        "Simply stops",
+        "Runs faster",
+        "Sleeps"
+       ],
+       "optsKn": [
+        "ವಿರೋಧಾತ್ಮಕ ಅಥವಾ ಸುಳ್ಳು ಸಂದೇಶ ಕಳುಹಿಸುತ್ತದೆ",
+        "ಸುಮ್ಮನೆ ನಿಲ್ಲುತ್ತದೆ",
+        "ವೇಗ ಹೆಚ್ಚಿಸುತ್ತದೆ",
+        "ನಿದ್ರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Consensus requires:",
+       "qKn": "ಒಮ್ಮತಕ್ಕೆ:",
+       "opts": [
+        "Healthy members agree on one value",
+        "Everyone lies",
+        "One member only",
+        "No messages"
+       ],
+       "optsKn": [
+        "ಆರೋಗ್ಯವಂತರು ಒಂದು ಮೌಲ್ಯಕ್ಕೆ ಒಪ್ಪುವುದು",
+        "ಎಲ್ಲರೂ ಸುಳ್ಳು",
+        "ಒಬ್ಬ ಸದಸ್ಯ ಮಾತ್ರ",
+        "ಸಂದೇಶ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "LLM agents can act Byzantine when:",
+       "qKn": "LLM agents Byzantine ಆಗುವುದು:",
+       "opts": [
+        "Confused or manipulated",
+        "Always",
+        "Never",
+        "Idle"
+       ],
+       "optsKn": [
+        "ಗೊಂದಲ ಅಥವಾ ಕುಶಲತೆಗೆ ಒಳಗಾದಾಗ",
+        "ಯಾವಾಗಲೂ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ನಿಷ್ಕ್ರಿಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215fe",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Consensus and Byzantine Fault Tolerance — Quorums and the 3f+1 Rule",
+  "titleKn": "ಒಮ್ಮತ ಮತ್ತು Byzantine Fault Tolerance — Quorums ಮತ್ತು 3f+1 ನಿಯಮ",
+  "desc": "Classic results say tolerating f Byzantine members needs at least 3f+1 participants and quorum agreement.",
+  "descKn": "ಶಾಸ್ತ್ರೀಯ ಫಲಿತಾಂಶ: f Byzantine ಸದಸ್ಯರನ್ನು ಸಹಿಸಲು ಕನಿಷ್ಠ 3f+1 ಭಾಗವಹಿಸುವವರು ಮತ್ತು quorum ಒಪ್ಪಿಗೆ ಬೇಕು.",
+  "objectives": [
+   "State the 3f+1 bound.",
+   "Explain quorum overlap."
+  ],
+  "objectivesKn": [
+   "3f+1 ಮಿತಿ ಹೇಳಿ.",
+   "quorum ಅತಿಕ್ರಮಣ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Consensus and Byzantine Fault Tolerance — Quorums and the 3f+1 Rule",
+     "textKn": "Consensus and Byzantine Fault Tolerance — Quorums and the 3f+1 Rule",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Consensus and Byzantine Fault Tolerance",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The 3f+1 Bound",
+     "headingKn": "3f+1 ಮಿತಿ",
+     "bodyEn": "To tolerate f arbitrarily faulty members in a classic setting, you need at least 3f+1 in total. With 4 members you can tolerate 1 faulty one.",
+     "bodyKn": "ಶಾಸ್ತ್ರೀಯ ಸೆಟ್ಟಿಂಗ್‌ನಲ್ಲಿ f ಸ್ವೇಚ್ಛಾ ದೋಷಪೂರ್ಣ ಸದಸ್ಯರನ್ನು ಸಹಿಸಲು ಒಟ್ಟು ಕನಿಷ್ಠ 3f+1 ಬೇಕು. 4 ಸದಸ್ಯರಿದ್ದರೆ 1 ದೋಷಪೂರ್ಣ ಸಹಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Quorums",
+     "headingKn": "Quorums",
+     "bodyEn": "A decision needs agreement from a quorum, a large enough subset that any two quorums overlap in at least one honest member. That overlap prevents conflicting decisions.",
+     "bodyKn": "ನಿರ್ಧಾರಕ್ಕೆ quorum ಒಪ್ಪಿಗೆ ಬೇಕು; ಯಾವುದೇ ಎರಡು quorums ಕನಿಷ್ಠ ಒಬ್ಬ ಪ್ರಾಮಾಣಿಕ ಸದಸ್ಯನಲ್ಲಿ ಅತಿಕ್ರಮಿಸುವಷ್ಟು ದೊಡ್ಡ ಉಪಸಮೂಹ. ಆ ಅತಿಕ್ರಮಣ ವಿರೋಧಾತ್ಮಕ ನಿರ್ಧಾರ ತಡೆಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Tolerating f faults needs at least 3f+1 members.\n• Quorum overlap prevents conflicting decisions.",
+     "bodyKn": "• f ದೋಷ ಸಹಿಸಲು ಕನಿಷ್ಠ 3f+1.\n• quorum ಅತಿಕ್ರಮಣ ವಿರೋಧ ತಡೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "To tolerate 1 Byzantine member you need at least:",
+       "qKn": "1 Byzantine ಸದಸ್ಯ ಸಹಿಸಲು ಕನಿಷ್ಠ:",
+       "opts": [
+        "4 members",
+        "2 members",
+        "3 members",
+        "1 member"
+       ],
+       "optsKn": [
+        "4 ಸದಸ್ಯರು",
+        "2 ಸದಸ್ಯರು",
+        "3 ಸದಸ್ಯರು",
+        "1 ಸದಸ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Quorum overlap ensures:",
+       "qKn": "quorum ಅತಿಕ್ರಮಣ ಖಾತರಿ:",
+       "opts": [
+        "No conflicting decisions",
+        "More conflicts",
+        "Slower work",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ವಿರೋಧಾತ್ಮಕ ನಿರ್ಧಾರ ಇಲ್ಲ",
+        "ಹೆಚ್ಚು ಸಂಘರ್ಷ",
+        "ನಿಧಾನ ಕೆಲಸ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The bound is:",
+       "qKn": "ಮಿತಿ:",
+       "opts": [
+        "3f+1",
+        "f-1",
+        "2",
+        "f/2"
+       ],
+       "optsKn": [
+        "3f+1",
+        "f-1",
+        "2",
+        "f/2"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b3215fe",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Consensus and Byzantine Fault Tolerance — Applying These Ideas to LLM Agents",
+  "titleKn": "ಒಮ್ಮತ ಮತ್ತು Byzantine Fault Tolerance — LLM Agents ಗೆ ಈ ಕಲ್ಪನೆಗಳ ಅನ್ವಯ",
+  "desc": "LLM agents share model biases, so classic guarantees only partly transfer; use independence and external checks.",
+  "descKn": "LLM agents ಮಾದರಿ ಪಕ್ಷಪಾತ ಹಂಚುತ್ತವೆ; ಶಾಸ್ತ್ರೀಯ ಖಾತರಿ ಭಾಗಶಃ ಮಾತ್ರ ವರ್ಗಾವಣೆ; ಸ್ವಾತಂತ್ರ್ಯ ಮತ್ತು ಬಾಹ್ಯ ಪರಿಶೀಲನೆ ಬಳಸಿ.",
+  "objectives": [
+   "Recognise correlated errors.",
+   "Add independent verification."
+  ],
+  "objectivesKn": [
+   "ಪರಸ್ಪರ ಸಂಬಂಧಿತ ದೋಷ ಗುರುತಿಸಿ.",
+   "ಸ್ವತಂತ್ರ ಪರಿಶೀಲನೆ ಸೇರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Consensus and Byzantine Fault Tolerance — Applying These Ideas to LLM Agents",
+     "textKn": "Consensus and Byzantine Fault Tolerance — Applying These Ideas to LLM Agents",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Consensus and Byzantine Fault Tolerance",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Correlated Errors",
+     "headingKn": "ಪರಸ್ಪರ ಸಂಬಂಧಿತ ದೋಷ",
+     "bodyEn": "Classic proofs assume faults are independent. Agents from one model can all make the same mistake, so a large majority is not proof of correctness.",
+     "bodyKn": "ಶಾಸ್ತ್ರೀಯ ಸಾಕ್ಷ್ಯ ದೋಷ ಸ್ವತಂತ್ರ ಎಂದು ಊಹಿಸುತ್ತದೆ. ಒಂದೇ ಮಾದರಿಯ agents ಎಲ್ಲವೂ ಒಂದೇ ತಪ್ಪು ಮಾಡಬಹುದು; ದೊಡ್ಡ ಬಹುಮತ ಸರಿತನದ ಸಾಕ್ಷ್ಯವಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Add Independence",
+     "headingKn": "ಸ್ವಾತಂತ್ರ್ಯ ಸೇರಿಸಿ",
+     "bodyEn": "Use different models or prompts, ground answers in tools and sources, and let a verifier check facts, so agreement is backed by more than repetition.",
+     "bodyKn": "ಬೇರೆ ಮಾದರಿ ಅಥವಾ prompts ಬಳಸಿ, tools ಮತ್ತು ಮೂಲಗಳಲ್ಲಿ ಉತ್ತರ ನೆಲೆಗೊಳಿಸಿ, verifier ಸಂಗತಿ ಪರಿಶೀಲಿಸಲಿ; ಒಪ್ಪಿಗೆ ಪುನರಾವರ್ತನೆಗಿಂತ ಹೆಚ್ಚಿನದರಿಂದ ಬೆಂಬಲಿತವಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Same-model agents make correlated errors.\n• Add diversity and external verification.",
+     "bodyKn": "• ಒಂದೇ ಮಾದರಿ ಸಂಬಂಧಿತ ದೋಷ.\n• ವೈವಿಧ್ಯ ಮತ್ತು ಬಾಹ್ಯ ಪರಿಶೀಲನೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Classic proofs assume faults are:",
+       "qKn": "ಶಾಸ್ತ್ರೀಯ ಸಾಕ್ಷ್ಯ ದೋಷ:",
+       "opts": [
+        "Independent",
+        "Identical",
+        "Absent",
+        "Random colours"
+       ],
+       "optsKn": [
+        "ಸ್ವತಂತ್ರ",
+        "ಒಂದೇ",
+        "ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A large majority of same-model agents proves:",
+       "qKn": "ಒಂದೇ ಮಾದರಿ agents ದೊಡ್ಡ ಬಹುಮತ ಸಾಬೀತು:",
+       "opts": [
+        "Not correctness",
+        "Correctness",
+        "Nothing bad",
+        "Speed"
+       ],
+       "optsKn": [
+        "ಸರಿತನ ಅಲ್ಲ",
+        "ಸರಿತನ",
+        "ಕೆಟ್ಟದ್ದೇನೂ ಇಲ್ಲ",
+        "ವೇಗ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Add:",
+       "qKn": "ಸೇರಿಸಿ:",
+       "opts": [
+        "Diversity and tool-grounded checks",
+        "More copies only",
+        "Nothing",
+        "Fewer checks"
+       ],
+       "optsKn": [
+        "ವೈವಿಧ್ಯ ಮತ್ತು tool-ಆಧಾರಿತ ಪರಿಶೀಲನೆ",
+        "ಹೆಚ್ಚು ನಕಲು ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಕಡಿಮೆ ಪರಿಶೀಲನೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b321601",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Voting, Self-Consistency and Debate Topology — Self-Consistency",
+  "titleKn": "ಮತದಾನ, Self-Consistency ಮತ್ತು Debate Topology — Self-Consistency",
+  "desc": "Sample several reasoning paths and pick the most common final answer.",
+  "descKn": "ಹಲವು ತರ್ಕ ಹಾದಿ ಮಾದರಿ ಮಾಡಿ ಅತ್ಯಂತ ಸಾಮಾನ್ಯ ಅಂತಿಮ ಉತ್ತರ ಆರಿಸಿ.",
+  "objectives": [
+   "Describe sampling and majority voting.",
+   "State when it works well."
+  ],
+  "objectivesKn": [
+   "ಮಾದರಿ ಮತ್ತು ಬಹುಮತ ಮತ ವಿವರಿಸಿ.",
+   "ಯಾವಾಗ ಚೆನ್ನಾಗಿ ಕೆಲಸ ಮಾಡುತ್ತದೆ ಹೇಳಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Voting, Self-Consistency and Debate Topology — Self-Consistency",
+     "textKn": "Voting, Self-Consistency and Debate Topology — Self-Consistency",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Voting, Self-Consistency, and Debate Topology",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Sample and Vote",
+     "headingKn": "ಮಾದರಿ ಮತ್ತು ಮತ",
+     "bodyEn": "Run the same prompt several times with some randomness, extract each final answer and choose the one that appears most often.",
+     "bodyKn": "ಅದೇ prompt ಅನ್ನು ಸ್ವಲ್ಪ ಯಾದೃಚ್ಛಿಕತೆಯೊಂದಿಗೆ ಹಲವು ಬಾರಿ ಚಲಾಯಿಸಿ, ಪ್ರತಿ ಅಂತಿಮ ಉತ್ತರ ಹೊರತೆಗೆದು ಹೆಚ್ಚು ಬಾರಿ ಬರುವುದನ್ನು ಆರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "When It Works",
+     "headingKn": "ಯಾವಾಗ ಕೆಲಸ ಮಾಡುತ್ತದೆ",
+     "bodyEn": "It helps on problems with a single checkable answer, such as arithmetic, where errors are scattered. It helps less for open-ended writing.",
+     "bodyKn": "ಅಂಕಗಣಿತದಂತಹ ಒಂದೇ ಪರಿಶೀಲಿಸಬಹುದಾದ ಉತ್ತರದ ಸಮಸ್ಯೆಗಳಲ್ಲಿ ದೋಷ ಚದುರಿರುವಾಗ ಸಹಾಯ. ಮುಕ್ತ ಬರವಣಿಗೆಗೆ ಕಡಿಮೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Sample several answers; take the majority.\n• Best for single checkable answers.",
+     "bodyKn": "• ಹಲವು ಉತ್ತರ ಮಾದರಿ; ಬಹುಮತ.\n• ಒಂದು ಪರಿಶೀಲಿಸಬಹುದಾದ ಉತ್ತರಕ್ಕೆ ಉತ್ತಮ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Self-consistency picks:",
+       "qKn": "self-consistency ಆರಿಸುವುದು:",
+       "opts": [
+        "The most common answer",
+        "The longest",
+        "The first",
+        "A random one"
+       ],
+       "optsKn": [
+        "ಅತ್ಯಂತ ಸಾಮಾನ್ಯ ಉತ್ತರ",
+        "ಉದ್ದದ್ದು",
+        "ಮೊದಲನೆಯದು",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "It works best for:",
+       "qKn": "ಉತ್ತಮವಾಗಿ ಕೆಲಸ:",
+       "opts": [
+        "Single checkable answers",
+        "Poetry",
+        "Opinions",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಒಂದು ಪರಿಶೀಲಿಸಬಹುದಾದ ಉತ್ತರ",
+        "ಕವಿತೆ",
+        "ಅಭಿಪ್ರಾಯ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Sampling needs:",
+       "qKn": "ಮಾದರಿಗೆ ಬೇಕು:",
+       "opts": [
+        "Some randomness",
+        "No randomness",
+        "One run only",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸ್ವಲ್ಪ ಯಾದೃಚ್ಛಿಕತೆ",
+        "ಯಾದೃಚ್ಛಿಕತೆ ಇಲ್ಲ",
+        "ಒಂದೇ run",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b321601",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Voting, Self-Consistency and Debate Topology — Voting Schemes",
+  "titleKn": "ಮತದಾನ, Self-Consistency ಮತ್ತು Debate Topology — ಮತದಾನ ಯೋಜನೆಗಳು",
+  "desc": "Majority, weighted and ranked voting suit different situations, and confidence can be used as a weight.",
+  "descKn": "ಬಹುಮತ, ತೂಕಯುತ, ಶ್ರೇಣಿ ಮತದಾನ ಬೇರೆ ಸಂದರ್ಭಗಳಿಗೆ ಸೂಕ್ತ; ವಿಶ್ವಾಸವನ್ನು ತೂಕವಾಗಿ ಬಳಸಬಹುದು.",
+  "objectives": [
+   "Compare majority and weighted voting.",
+   "Handle ties."
+  ],
+  "objectivesKn": [
+   "ಬಹುಮತ ಮತ್ತು ತೂಕಯುತ ಮತ ಹೋಲಿಸಿ.",
+   "ಸಮಬಲ ನಿರ್ವಹಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Voting, Self-Consistency and Debate Topology — Voting Schemes",
+     "textKn": "Voting, Self-Consistency and Debate Topology — Voting Schemes",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Voting, Self-Consistency, and Debate Topology",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Majority and Weighted",
+     "headingKn": "ಬಹುಮತ ಮತ್ತು ತೂಕಯುತ",
+     "bodyEn": "Majority voting treats all voters equally. Weighted voting gives more say to voters with a better track record, but model confidence is often poorly calibrated.",
+     "bodyKn": "ಬಹುಮತ ಮತ ಎಲ್ಲ ಮತದಾರರನ್ನು ಸಮನಾಗಿ ಕಾಣುತ್ತದೆ. ತೂಕಯುತ ಮತ ಉತ್ತಮ ದಾಖಲೆಯ ಮತದಾರರಿಗೆ ಹೆಚ್ಚು ಮಾತು ನೀಡುತ್ತದೆ, ಆದರೆ ಮಾದರಿ ವಿಶ್ವಾಸ ಆಗಾಗ ಕಳಪೆ ಹೊಂದಾಣಿಕೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Ties and Abstention",
+     "headingKn": "ಸಮಬಲ ಮತ್ತು ತಟಸ್ಥತೆ",
+     "bodyEn": "Use an odd number of voters, a tie-breaking rule or an abstain option so a split vote does not produce an arbitrary result.",
+     "bodyKn": "ಬೆಸ ಸಂಖ್ಯೆಯ ಮತದಾರರು, ಸಮಬಲ ನಿಯಮ ಅಥವಾ ತಟಸ್ಥ ಆಯ್ಕೆ ಬಳಸಿ; ಒಡೆದ ಮತ ಅನಿಯಂತ್ರಿತ ಫಲಿತಾಂಶ ನೀಡದಂತೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Weighted voting needs trustworthy weights.\n• Plan for ties with a rule.",
+     "bodyKn": "• ತೂಕಯುತ ಮತಕ್ಕೆ ನಂಬಲರ್ಹ ತೂಕ.\n• ಸಮಬಲಕ್ಕೆ ನಿಯಮ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Model confidence is often:",
+       "qKn": "ಮಾದರಿ ವಿಶ್ವಾಸ ಆಗಾಗ:",
+       "opts": [
+        "Poorly calibrated",
+        "Perfect",
+        "Random always",
+        "Absent"
+       ],
+       "optsKn": [
+        "ಕಳಪೆ ಹೊಂದಾಣಿಕೆ",
+        "ಪರಿಪೂರ್ಣ",
+        "ಯಾವಾಗಲೂ ಯಾದೃಚ್ಛಿಕ",
+        "ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "To avoid ties:",
+       "qKn": "ಸಮಬಲ ತಪ್ಪಿಸಲು:",
+       "opts": [
+        "Odd number of voters or a rule",
+        "Even voters only",
+        "Nothing",
+        "More colours"
+       ],
+       "optsKn": [
+        "ಬೆಸ ಮತದಾರರು ಅಥವಾ ನಿಯಮ",
+        "ಸಮ ಮತದಾರರು ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಹೆಚ್ಚು ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Weighted voting gives more say to:",
+       "qKn": "ತೂಕಯುತ ಮತ ಹೆಚ್ಚು ಮಾತು ನೀಡುತ್ತದೆ:",
+       "opts": [
+        "Voters with better records",
+        "The loudest",
+        "The newest",
+        "None"
+       ],
+       "optsKn": [
+        "ಉತ್ತಮ ದಾಖಲೆಯ ಮತದಾರರಿಗೆ",
+        "ಜೋರಾಗಿ ಮಾತಾಡುವವರಿಗೆ",
+        "ಹೊಸಬರಿಗೆ",
+        "ಯಾರಿಗೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b321601",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Voting, Self-Consistency and Debate Topology — Debate Topology",
+  "titleKn": "ಮತದಾನ, Self-Consistency ಮತ್ತು Debate Topology — Debate Topology",
+  "desc": "Who sees whose answer, all-to-all or sparse, changes the cost and the chance of groupthink.",
+  "descKn": "ಯಾರು ಯಾರ ಉತ್ತರ ನೋಡುತ್ತಾರೆ (ಎಲ್ಲರಿಗೂ ಎಲ್ಲರದು ಅಥವಾ ವಿರಳ) ವೆಚ್ಚ ಮತ್ತು groupthink ಸಾಧ್ಯತೆ ಬದಲಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Compare fully connected and sparse debate.",
+   "Choose topology by task and budget."
+  ],
+  "objectivesKn": [
+   "ಪೂರ್ಣ ಸಂಪರ್ಕಿತ ಮತ್ತು ವಿರಳ debate ಹೋಲಿಸಿ.",
+   "ಕೆಲಸ ಮತ್ತು ಬಜೆಟ್ ಪ್ರಕಾರ topology ಆರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Voting, Self-Consistency and Debate Topology — Debate Topology",
+     "textKn": "Voting, Self-Consistency and Debate Topology — Debate Topology",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Voting, Self-Consistency, and Debate Topology",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Connectivity",
+     "headingKn": "ಸಂಪರ್ಕ",
+     "bodyEn": "In a fully connected debate each agent reads all others, which is thorough but costly. Sparse topologies let each agent see only a few peers, cutting cost.",
+     "bodyKn": "ಪೂರ್ಣ ಸಂಪರ್ಕಿತ debate ನಲ್ಲಿ ಪ್ರತಿ agent ಎಲ್ಲರನ್ನು ಓದುತ್ತದೆ: ಸಮಗ್ರ ಆದರೆ ದುಬಾರಿ. ವಿರಳ topologies ಕೆಲವು ಸಹವರ್ತಿಗಳನ್ನು ಮಾತ್ರ ನೋಡಲು ಬಿಟ್ಟು ವೆಚ್ಚ ಕಡಿಮೆ ಮಾಡುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Diversity Versus Convergence",
+     "headingKn": "ವೈವಿಧ್ಯ vs ಒಮ್ಮತ",
+     "bodyEn": "Dense connection speeds convergence but can spread one confident error to everyone. Sparser links preserve diversity longer. Test on your own tasks.",
+     "bodyKn": "ದಟ್ಟ ಸಂಪರ್ಕ ಒಮ್ಮತ ವೇಗಗೊಳಿಸುತ್ತದೆ ಆದರೆ ಒಂದು ವಿಶ್ವಾಸದ ದೋಷ ಎಲ್ಲರಿಗೆ ಹರಡಬಹುದು. ವಿರಳ ಲಿಂಕ್ ವೈವಿಧ್ಯ ಹೆಚ್ಚು ಕಾಲ ಉಳಿಸುತ್ತದೆ. ನಿಮ್ಮ ಕೆಲಸಗಳಲ್ಲಿ ಪರೀಕ್ಷಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Full connectivity is thorough and costly.\n• Sparse links keep diversity longer.",
+     "bodyKn": "• ಪೂರ್ಣ ಸಂಪರ್ಕ ಸಮಗ್ರ, ದುಬಾರಿ.\n• ವಿರಳ ಲಿಂಕ್ ವೈವಿಧ್ಯ ಉಳಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Dense connection can:",
+       "qKn": "ದಟ್ಟ ಸಂಪರ್ಕ:",
+       "opts": [
+        "Spread one confident error",
+        "Remove all errors",
+        "Save cost",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಒಂದು ವಿಶ್ವಾಸದ ದೋಷ ಹರಡಬಹುದು",
+        "ಎಲ್ಲ ದೋಷ ತೆಗೆಯುತ್ತದೆ",
+        "ವೆಚ್ಚ ಉಳಿತಾಯ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Sparse topology:",
+       "qKn": "ವಿರಳ topology:",
+       "opts": [
+        "Cuts cost and keeps diversity",
+        "Adds cost",
+        "Removes agents",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ವೆಚ್ಚ ಕಡಿತ, ವೈವಿಧ್ಯ ಉಳಿತಾಯ",
+        "ವೆಚ್ಚ ಹೆಚ್ಚು",
+        "agents ತೆಗೆಯುತ್ತದೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Best way to choose:",
+       "qKn": "ಆರಿಸುವ ಉತ್ತಮ ಮಾರ್ಗ:",
+       "opts": [
+        "Test on your own tasks",
+        "Guess",
+        "Copy a blog",
+        "Flip a coin"
+       ],
+       "optsKn": [
+        "ನಿಮ್ಮ ಕೆಲಸಗಳಲ್ಲಿ ಪರೀಕ್ಷೆ",
+        "ಊಹೆ",
+        "ಬ್ಲಾಗ್ ನಕಲು",
+        "ನಾಣ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b321604",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Negotiation and Bargaining — Agents That Negotiate",
+  "titleKn": "ಮಾತುಕತೆ ಮತ್ತು ಚೌಕಾಸಿ — ಮಾತುಕತೆ ಮಾಡುವ Agents",
+  "desc": "Negotiating agents represent different parties, exchange offers and try to reach an agreement.",
+  "descKn": "ಮಾತುಕತೆ ಮಾಡುವ agents ಬೇರೆ ಪಕ್ಷಗಳನ್ನು ಪ್ರತಿನಿಧಿಸಿ, ಪ್ರಸ್ತಾವ ವಿನಿಮಯ ಮಾಡಿ ಒಪ್ಪಂದಕ್ಕೆ ಬರಲು ಪ್ರಯತ್ನಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Describe offers, counteroffers and reservation values.",
+   "Explain the role of a mandate."
+  ],
+  "objectivesKn": [
+   "ಪ್ರಸ್ತಾವ, ಪ್ರತಿಪ್ರಸ್ತಾವ, reservation ಮೌಲ್ಯ ವಿವರಿಸಿ.",
+   "mandate ಪಾತ್ರ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Negotiation and Bargaining — Agents That Negotiate",
+     "textKn": "Negotiation and Bargaining — Agents That Negotiate",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Negotiation and Bargaining",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Offers and Limits",
+     "headingKn": "ಪ್ರಸ್ತಾವ ಮತ್ತು ಮಿತಿ",
+     "bodyEn": "Each agent proposes terms, responds to counteroffers and has a private limit, the worst deal it will accept. A deal is possible only if the limits overlap.",
+     "bodyKn": "ಪ್ರತಿ agent ನಿಯಮ ಪ್ರಸ್ತಾಪಿಸಿ, ಪ್ರತಿಪ್ರಸ್ತಾವಕ್ಕೆ ಪ್ರತಿಕ್ರಿಯಿಸಿ, ತಾನು ಒಪ್ಪುವ ಅತಿ ಕೆಟ್ಟ ಒಪ್ಪಂದದ ಖಾಸಗಿ ಮಿತಿ ಹೊಂದಿರುತ್ತದೆ. ಮಿತಿಗಳು ಅತಿಕ್ರಮಿಸಿದರೆ ಮಾತ್ರ ಒಪ್ಪಂದ ಸಾಧ್ಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Clear Mandate",
+     "headingKn": "ಸ್ಪಷ್ಟ Mandate",
+     "bodyEn": "The agent needs explicit authority: what it may agree to, what needs human approval and what it must never reveal or concede.",
+     "bodyKn": "agent ಗೆ ಸ್ಪಷ್ಟ ಅಧಿಕಾರ ಬೇಕು: ಏನು ಒಪ್ಪಬಹುದು, ಯಾವುದಕ್ಕೆ ಮಾನವ ಅನುಮೋದನೆ ಬೇಕು, ಯಾವುದನ್ನು ಎಂದಿಗೂ ಬಹಿರಂಗಪಡಿಸಬಾರದು ಅಥವಾ ಬಿಟ್ಟುಕೊಡಬಾರದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Offers, counteroffers and private limits.\n• Give the agent an explicit mandate.",
+     "bodyKn": "• ಪ್ರಸ್ತಾವ, ಪ್ರತಿಪ್ರಸ್ತಾವ, ಖಾಸಗಿ ಮಿತಿ.\n• ಸ್ಪಷ್ಟ mandate ನೀಡಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A deal is possible when:",
+       "qKn": "ಒಪ್ಪಂದ ಸಾಧ್ಯ ಯಾವಾಗ?",
+       "opts": [
+        "Limits overlap",
+        "Limits never overlap",
+        "One side leaves",
+        "Always"
+       ],
+       "optsKn": [
+        "ಮಿತಿಗಳು ಅತಿಕ್ರಮಿಸಿದಾಗ",
+        "ಎಂದಿಗೂ ಅತಿಕ್ರಮಿಸದಾಗ",
+        "ಒಂದು ಪಕ್ಷ ಹೋದಾಗ",
+        "ಯಾವಾಗಲೂ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A mandate says:",
+       "qKn": "mandate ಹೇಳುವುದು:",
+       "opts": [
+        "What the agent may agree to",
+        "Its colour",
+        "Its price",
+        "Nothing"
+       ],
+       "optsKn": [
+        "agent ಏನು ಒಪ್ಪಬಹುದು",
+        "ಬಣ್ಣ",
+        "ಬೆಲೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A private limit is:",
+       "qKn": "ಖಾಸಗಿ ಮಿತಿ:",
+       "opts": [
+        "The worst acceptable deal",
+        "The best deal",
+        "Public",
+        "Random"
+       ],
+       "optsKn": [
+        "ಒಪ್ಪುವ ಅತಿ ಕೆಟ್ಟ ಒಪ್ಪಂದ",
+        "ಅತ್ಯುತ್ತಮ ಒಪ್ಪಂದ",
+        "ಸಾರ್ವಜನಿಕ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b321604",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Negotiation and Bargaining — Strategies and Their Risks",
+  "titleKn": "ಮಾತುಕತೆ ಮತ್ತು ಚೌಕಾಸಿ — ತಂತ್ರಗಳು ಮತ್ತು ಅಪಾಯಗಳು",
+  "desc": "Agents can be too agreeable, be manipulated, or bluff, so strategies need guardrails.",
+  "descKn": "agents ಅತಿ ಒಪ್ಪುವ, ಕುಶಲತೆಗೆ ಒಳಗಾಗುವ ಅಥವಾ bluff ಮಾಡಬಹುದು; ತಂತ್ರಗಳಿಗೆ ರಕ್ಷಣೆ ಬೇಕು.",
+  "objectives": [
+   "Recognise sycophancy in negotiation.",
+   "Set honesty and disclosure rules."
+  ],
+  "objectivesKn": [
+   "ಮಾತುಕತೆಯಲ್ಲಿ ಓಲೈಕೆ ಗುರುತಿಸಿ.",
+   "ಪ್ರಾಮಾಣಿಕತೆ ಮತ್ತು ಬಹಿರಂಗ ನಿಯಮ ಹೊಂದಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Negotiation and Bargaining — Strategies and Their Risks",
+     "textKn": "Negotiation and Bargaining — Strategies and Their Risks",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Negotiation and Bargaining",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Too Agreeable",
+     "headingKn": "ಅತಿ ಒಪ್ಪುವ",
+     "bodyEn": "Language models tend to accommodate, so an agent may concede too quickly or accept a poor deal. Encode firm limits in code, not only in the prompt.",
+     "bodyKn": "ಭಾಷಾ ಮಾದರಿಗಳು ಹೊಂದಿಕೊಳ್ಳುವ ಒಲವು; agent ಬೇಗ ಬಿಟ್ಟುಕೊಡಬಹುದು ಅಥವಾ ಕೆಟ್ಟ ಒಪ್ಪಂದ ಒಪ್ಪಬಹುದು. ದೃಢ ಮಿತಿಗಳನ್ನು prompt ನಲ್ಲಿ ಮಾತ್ರವಲ್ಲ ಕೋಡ್‌ನಲ್ಲಿ ಇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Honesty and Manipulation",
+     "headingKn": "ಪ್ರಾಮಾಣಿಕತೆ ಮತ್ತು ಕುಶಲತೆ",
+     "bodyEn": "Decide what an agent may say about its limits. Lying may win a deal but harms trust and may be unacceptable. Also guard against the other side's manipulative messages.",
+     "bodyKn": "agent ತನ್ನ ಮಿತಿಗಳ ಬಗ್ಗೆ ಏನು ಹೇಳಬಹುದು ನಿರ್ಧರಿಸಿ. ಸುಳ್ಳು ಒಪ್ಪಂದ ಗೆಲ್ಲಬಹುದು ಆದರೆ ನಂಬಿಕೆ ಹಾಳು, ಸ್ವೀಕಾರಾರ್ಹವಲ್ಲದಿರಬಹುದು. ಇನ್ನೊಂದು ಬದಿಯ ಕುಶಲ ಸಂದೇಶಗಳ ವಿರುದ್ಧವೂ ರಕ್ಷಣೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Enforce firm limits in code.\n• Set honesty rules; resist manipulation.",
+     "bodyKn": "• ದೃಢ ಮಿತಿ ಕೋಡ್‌ನಲ್ಲಿ.\n• ಪ್ರಾಮಾಣಿಕತೆ ನಿಯಮ; ಕುಶಲತೆ ವಿರೋಧ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Where enforce firm limits?",
+       "qKn": "ದೃಢ ಮಿತಿ ಎಲ್ಲಿ ಜಾರಿ?",
+       "opts": [
+        "In code",
+        "Only in the prompt",
+        "Nowhere",
+        "In chat"
+       ],
+       "optsKn": [
+        "ಕೋಡ್‌ನಲ್ಲಿ",
+        "prompt ನಲ್ಲಿ ಮಾತ್ರ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಚಾಟ್‌ನಲ್ಲಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Models tend to be:",
+       "qKn": "ಮಾದರಿಗಳ ಒಲವು:",
+       "opts": [
+        "Accommodating",
+        "Stubborn always",
+        "Silent",
+        "Random"
+       ],
+       "optsKn": [
+        "ಹೊಂದಿಕೊಳ್ಳುವ",
+        "ಯಾವಾಗಲೂ ಹಠ",
+        "ಮೌನ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Lying in negotiation:",
+       "qKn": "ಮಾತುಕತೆಯಲ್ಲಿ ಸುಳ್ಳು:",
+       "opts": [
+        "Harms trust",
+        "Builds trust",
+        "Is required",
+        "Is impossible"
+       ],
+       "optsKn": [
+        "ನಂಬಿಕೆ ಹಾಳು",
+        "ನಂಬಿಕೆ ಬೆಳೆಸುತ್ತದೆ",
+        "ಅಗತ್ಯ",
+        "ಅಸಾಧ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6566020ed05b321604",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Negotiation and Bargaining — Evaluating Negotiation Agents",
+  "titleKn": "ಮಾತುಕತೆ ಮತ್ತು ಚೌಕಾಸಿ — ಮಾತುಕತೆ Agents ಮೌಲ್ಯಮಾಪನ",
+  "desc": "Judge agents on deal quality, fairness, honesty and adherence to constraints across many simulated scenarios.",
+  "descKn": "ಹಲವು ಅನುಕರಣ ಸನ್ನಿವೇಶಗಳಲ್ಲಿ ಒಪ್ಪಂದ ಗುಣಮಟ್ಟ, ನ್ಯಾಯ, ಪ್ರಾಮಾಣಿಕತೆ, ನಿರ್ಬಂಧ ಪಾಲನೆಯಿಂದ agents ಅಳೆಯಿರಿ.",
+  "objectives": [
+   "Define metrics for negotiation outcomes.",
+   "Test against diverse counterparties."
+  ],
+  "objectivesKn": [
+   "ಮಾತುಕತೆ ಫಲಿತಾಂಶಕ್ಕೆ ಮೆಟ್ರಿಕ್ಸ್ ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ವೈವಿಧ್ಯ ಪ್ರತಿಪಕ್ಷಗಳ ವಿರುದ್ಧ ಪರೀಕ್ಷಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Negotiation and Bargaining — Evaluating Negotiation Agents",
+     "textKn": "Negotiation and Bargaining — Evaluating Negotiation Agents",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Negotiation and Bargaining",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Metrics",
+     "headingKn": "ಮೆಟ್ರಿಕ್ಸ್",
+     "bodyEn": "Measure the value achieved versus the limit, whether constraints were respected, whether statements were truthful and how often deals were reached.",
+     "bodyKn": "ಮಿತಿಗೆ ಹೋಲಿಸಿ ಸಾಧಿಸಿದ ಮೌಲ್ಯ, ನಿರ್ಬಂಧ ಗೌರವಿಸಲಾಯಿತೇ, ಹೇಳಿಕೆ ಸತ್ಯವೇ, ಎಷ್ಟು ಬಾರಿ ಒಪ್ಪಂದ ಆಯಿತು ಅಳೆಯಿರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Diverse Opponents",
+     "headingKn": "ವೈವಿಧ್ಯ ಪ್ರತಿಪಕ್ಷಗಳು",
+     "bodyEn": "Test against cooperative, aggressive and deceptive counterparties, since an agent that only meets friendly opponents will look better than it is.",
+     "bodyKn": "ಸಹಕಾರಿ, ಆಕ್ರಮಣಕಾರಿ, ವಂಚಕ ಪ್ರತಿಪಕ್ಷಗಳ ವಿರುದ್ಧ ಪರೀಕ್ಷಿಸಿ; ಸ್ನೇಹಪರ ವಿರೋಧಿಗಳನ್ನು ಮಾತ್ರ ಎದುರಿಸುವ agent ನಿಜಕ್ಕಿಂತ ಉತ್ತಮ ಕಾಣುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Measure value, constraint adherence and honesty.\n• Test against varied opponents.",
+     "bodyKn": "• ಮೌಲ್ಯ, ನಿರ್ಬಂಧ ಪಾಲನೆ, ಪ್ರಾಮಾಣಿಕತೆ ಅಳೆಯಿರಿ.\n• ವೈವಿಧ್ಯ ಪ್ರತಿಪಕ್ಷಗಳ ವಿರುದ್ಧ ಪರೀಕ್ಷೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A metric:",
+       "qKn": "ಮೆಟ್ರಿಕ್:",
+       "opts": [
+        "Constraint adherence",
+        "Font size",
+        "Colour",
+        "Logo"
+       ],
+       "optsKn": [
+        "ನಿರ್ಬಂಧ ಪಾಲನೆ",
+        "ಫಾಂಟ್ ಗಾತ್ರ",
+        "ಬಣ್ಣ",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why diverse opponents?",
+       "qKn": "ವೈವಿಧ್ಯ ಪ್ರತಿಪಕ್ಷ ಏಕೆ?",
+       "opts": [
+        "Friendly-only tests flatter the agent",
+        "Cost",
+        "Style",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಸ್ನೇಹಪರ ಮಾತ್ರ ಪರೀಕ್ಷೆ agent ಅನ್ನು ಹೊಗಳುತ್ತದೆ",
+        "ವೆಚ್ಚ",
+        "ಶೈಲಿ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Also measure:",
+       "qKn": "ಇದನ್ನೂ ಅಳೆಯಿರಿ:",
+       "opts": [
+        "Truthfulness of statements",
+        "Typing speed",
+        "Screen size",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹೇಳಿಕೆ ಸತ್ಯತೆ",
+        "ಟೈಪಿಂಗ್ ವೇಗ",
+        "ಪರದೆ ಗಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b321607",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Generative Agents and Emergent Simulation — Believable Simulated Agents",
+  "titleKn": "Generative Agents ಮತ್ತು ಹೊರಹೊಮ್ಮುವ ಅನುಕರಣೆ — ನಂಬಲರ್ಹ ಅನುಕರಣ Agents",
+  "desc": "Generative agents combine a memory stream, reflection and planning to behave believably over long periods.",
+  "descKn": "generative agents ಮೆಮೊರಿ ಹರಿವು, ಪ್ರತಿಫಲನ, ಯೋಜನೆ ಸೇರಿಸಿ ದೀರ್ಘಕಾಲ ನಂಬಲರ್ಹವಾಗಿ ವರ್ತಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Describe memory, reflection and planning.",
+   "Explain retrieval by recency, relevance and importance."
+  ],
+  "objectivesKn": [
+   "ಮೆಮೊರಿ, ಪ್ರತಿಫಲನ, ಯೋಜನೆ ವಿವರಿಸಿ.",
+   "ಇತ್ತೀಚಿನತನ, ಸಂಬಂಧ, ಮಹತ್ವದಿಂದ ಹಿಂಪಡೆಯುವಿಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Generative Agents and Emergent Simulation — Believable Simulated Agents",
+     "textKn": "Generative Agents and Emergent Simulation — Believable Simulated Agents",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Generative Agents and Emergent Simulation",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Memory, Reflection, Planning",
+     "headingKn": "ಮೆಮೊರಿ, ಪ್ರತಿಫಲನ, ಯೋಜನೆ",
+     "bodyEn": "The agent records observations in a memory stream, periodically reflects to form higher-level insights and makes plans for its day.",
+     "bodyKn": "agent ಅವಲೋಕನಗಳನ್ನು ಮೆಮೊರಿ ಹರಿವಿನಲ್ಲಿ ದಾಖಲಿಸಿ, ಆವರ್ತಕವಾಗಿ ಪ್ರತಿಫಲಿಸಿ ಉನ್ನತ ಒಳನೋಟ ರೂಪಿಸಿ, ತನ್ನ ದಿನಕ್ಕೆ ಯೋಜನೆ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Retrieval",
+     "headingKn": "ಹಿಂಪಡೆಯುವಿಕೆ",
+     "bodyEn": "Since memory grows large, relevant items are retrieved by scoring recency, relevance to the situation and importance, then placed in the prompt.",
+     "bodyKn": "ಮೆಮೊರಿ ದೊಡ್ಡದಾಗುವುದರಿಂದ ಇತ್ತೀಚಿನತನ, ಸನ್ನಿವೇಶ ಸಂಬಂಧ, ಮಹತ್ವ ಅಂಕಿಸಿ ಸಂಬಂಧಿತ ಅಂಶಗಳನ್ನು ಹಿಂಪಡೆದು prompt ನಲ್ಲಿ ಇಡಲಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Memory stream, reflection, planning.\n• Retrieve by recency, relevance, importance.",
+     "bodyKn": "• ಮೆಮೊರಿ ಹರಿವು, ಪ್ರತಿಫಲನ, ಯೋಜನೆ.\n• ಇತ್ತೀಚಿನತನ, ಸಂಬಂಧ, ಮಹತ್ವ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Reflection produces:",
+       "qKn": "ಪ್ರತಿಫಲನ ನೀಡುವುದು:",
+       "opts": [
+        "Higher-level insights",
+        "Random text",
+        "Nothing",
+        "Errors only"
+       ],
+       "optsKn": [
+        "ಉನ್ನತ ಒಳನೋಟ",
+        "ಯಾದೃಚ್ಛಿಕ ಪಠ್ಯ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ದೋಷ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Retrieval scores include:",
+       "qKn": "ಹಿಂಪಡೆಯುವಿಕೆ ಅಂಕ:",
+       "opts": [
+        "Recency, relevance, importance",
+        "Colour",
+        "Size",
+        "Price"
+       ],
+       "optsKn": [
+        "ಇತ್ತೀಚಿನತನ, ಸಂಬಂಧ, ಮಹತ್ವ",
+        "ಬಣ್ಣ",
+        "ಗಾತ್ರ",
+        "ಬೆಲೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why retrieve selectively?",
+       "qKn": "ಆಯ್ದು ಏಕೆ ಹಿಂಪಡೆಯಬೇಕು?",
+       "opts": [
+        "Memory grows too large for the prompt",
+        "To slow",
+        "For style",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಮೆಮೊರಿ prompt ಗೆ ಬಹಳ ದೊಡ್ಡ",
+        "ನಿಧಾನ",
+        "ಶೈಲಿ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b321607",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Generative Agents and Emergent Simulation — Emergence in Multi-Agent Simulation",
+  "titleKn": "Generative Agents ಮತ್ತು ಹೊರಹೊಮ್ಮುವ ಅನುಕರಣೆ — ಬಹು-Agent ಅನುಕರಣೆಯಲ್ಲಿ ಹೊರಹೊಮ್ಮುವಿಕೆ",
+  "desc": "Complex group behaviour, such as spreading news or organising events, can emerge from many agents interacting.",
+  "descKn": "ಸುದ್ದಿ ಹರಡುವುದು, ಕಾರ್ಯಕ್ರಮ ಸಂಘಟಿಸುವುದಂತಹ ಸಂಕೀರ್ಣ ಗುಂಪು ವರ್ತನೆ ಹಲವು agents ಪರಸ್ಪರ ಕ್ರಿಯೆಯಿಂದ ಹೊರಹೊಮ್ಮಬಹುದು.",
+  "objectives": [
+   "Give examples of emergent behaviour.",
+   "Distinguish emergence from scripted behaviour."
+  ],
+  "objectivesKn": [
+   "ಹೊರಹೊಮ್ಮುವ ವರ್ತನೆ ಉದಾಹರಣೆ ನೀಡಿ.",
+   "ಹೊರಹೊಮ್ಮುವಿಕೆ ಮತ್ತು ಸ್ಕ್ರಿಪ್ಟ್ ವರ್ತನೆ ಬೇರ್ಪಡಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Generative Agents and Emergent Simulation — Emergence in Multi-Agent Simulation",
+     "textKn": "Generative Agents and Emergent Simulation — Emergence in Multi-Agent Simulation",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Generative Agents and Emergent Simulation",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Unscripted Group Behaviour",
+     "headingKn": "ಸ್ಕ್ರಿಪ್ಟ್ ಇಲ್ಲದ ಗುಂಪು ವರ್ತನೆ",
+     "bodyEn": "When one agent plans a party and others hear about it and decide to attend, coordination appears that nobody scripted directly.",
+     "bodyKn": "ಒಬ್ಬ agent ಪಾರ್ಟಿ ಯೋಜಿಸಿ ಇತರರು ಕೇಳಿ ಹಾಜರಾಗಲು ನಿರ್ಧರಿಸಿದಾಗ ಯಾರೂ ನೇರವಾಗಿ ಸ್ಕ್ರಿಪ್ಟ್ ಮಾಡದ ಸಮನ್ವಯ ಕಾಣುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Uses and Cautions",
+     "headingKn": "ಬಳಕೆ ಮತ್ತು ಎಚ್ಚರಿಕೆ",
+     "bodyEn": "Simulations help study social dynamics, test designs and prototype products. They are still model-generated behaviour, not proof about real people.",
+     "bodyKn": "ಅನುಕರಣೆಗಳು ಸಾಮಾಜಿಕ ಚಲನಶೀಲತೆ ಅಧ್ಯಯನ, ವಿನ್ಯಾಸ ಪರೀಕ್ಷೆ, ಉತ್ಪನ್ನ ಮಾದರಿಗೆ ಸಹಾಯ. ಅವು ಇನ್ನೂ ಮಾದರಿ-ರಚಿತ ವರ್ತನೆ, ನಿಜ ಜನರ ಬಗ್ಗೆ ಸಾಕ್ಷ್ಯವಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Coordination can emerge unscripted.\n• Simulation is not proof about real people.",
+     "bodyKn": "• ಸ್ಕ್ರಿಪ್ಟ್ ಇಲ್ಲದೆ ಸಮನ್ವಯ ಹೊರಹೊಮ್ಮಬಹುದು.\n• ಅನುಕರಣೆ ನಿಜ ಜನರ ಸಾಕ್ಷ್ಯವಲ್ಲ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Emergent behaviour is:",
+       "qKn": "ಹೊರಹೊಮ್ಮುವ ವರ್ತನೆ:",
+       "opts": [
+        "Not directly scripted",
+        "Fully scripted",
+        "Random noise only",
+        "A bug always"
+       ],
+       "optsKn": [
+        "ನೇರವಾಗಿ ಸ್ಕ್ರಿಪ್ಟ್ ಇಲ್ಲದ",
+        "ಪೂರ್ಣ ಸ್ಕ್ರಿಪ್ಟ್",
+        "ಯಾದೃಚ್ಛಿಕ ಶಬ್ದ ಮಾತ್ರ",
+        "ಯಾವಾಗಲೂ ದೋಷ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Simulations are:",
+       "qKn": "ಅನುಕರಣೆಗಳು:",
+       "opts": [
+        "Model-generated, not proof about people",
+        "Proof about people",
+        "Illegal",
+        "Perfect"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ-ರಚಿತ, ಜನರ ಸಾಕ್ಷ್ಯವಲ್ಲ",
+        "ಜನರ ಸಾಕ್ಷ್ಯ",
+        "ಕಾನೂನುಬಾಹಿರ",
+        "ಪರಿಪೂರ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A use:",
+       "qKn": "ಬಳಕೆ:",
+       "opts": [
+        "Testing designs",
+        "Replacing all research",
+        "Nothing",
+        "Fashion only"
+       ],
+       "optsKn": [
+        "ವಿನ್ಯಾಸ ಪರೀಕ್ಷೆ",
+        "ಎಲ್ಲ ಸಂಶೋಧನೆ ಬದಲಿಸುವುದು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫ್ಯಾಷನ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b321607",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Generative Agents and Emergent Simulation — Cost, Drift and Evaluation",
+  "titleKn": "Generative Agents ಮತ್ತು ಹೊರಹೊಮ್ಮುವ ಅನುಕರಣೆ — ವೆಚ್ಚ, Drift ಮತ್ತು ಮೌಲ್ಯಮಾಪನ",
+  "desc": "Long simulations are expensive and can drift out of character; evaluate believability and log everything.",
+  "descKn": "ದೀರ್ಘ ಅನುಕರಣೆ ದುಬಾರಿ ಮತ್ತು ಪಾತ್ರದಿಂದ ಜಾರಬಹುದು; ನಂಬಲರ್ಹತೆ ಮೌಲ್ಯಮಾಪನ ಮಾಡಿ ಎಲ್ಲವನ್ನೂ ದಾಖಲಿಸಿ.",
+  "objectives": [
+   "Control cost with batching and smaller models.",
+   "Detect and correct character drift."
+  ],
+  "objectivesKn": [
+   "batching ಮತ್ತು ಚಿಕ್ಕ ಮಾದರಿಗಳಿಂದ ವೆಚ್ಚ ನಿಯಂತ್ರಿಸಿ.",
+   "ಪಾತ್ರ drift ಪತ್ತೆ, ಸರಿಪಡಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Generative Agents and Emergent Simulation — Cost, Drift and Evaluation",
+     "textKn": "Generative Agents and Emergent Simulation — Cost, Drift and Evaluation",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Generative Agents and Emergent Simulation",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cost Control",
+     "headingKn": "ವೆಚ್ಚ ನಿಯಂತ್ರಣ",
+     "bodyEn": "Every agent and every step calls a model, so cost multiplies. Use smaller models for routine steps and reserve larger ones for reflection and planning.",
+     "bodyKn": "ಪ್ರತಿ agent ಮತ್ತು ಪ್ರತಿ ಹಂತ ಮಾದರಿ ಕರೆಯುತ್ತದೆ; ವೆಚ್ಚ ಗುಣಿಸುತ್ತದೆ. ದೈನಂದಿನ ಹಂತಗಳಿಗೆ ಚಿಕ್ಕ ಮಾದರಿ, ಪ್ರತಿಫಲನ ಮತ್ತು ಯೋಜನೆಗೆ ದೊಡ್ಡವು ಉಳಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Character Drift",
+     "headingKn": "ಪಾತ್ರ Drift",
+     "bodyEn": "Over time agents may forget their traits or converge to the same personality. Periodically check behaviour against each agent's profile and log runs for analysis.",
+     "bodyKn": "ಕಾಲಕ್ರಮೇಣ agents ತಮ್ಮ ಗುಣ ಮರೆಯಬಹುದು ಅಥವಾ ಒಂದೇ ವ್ಯಕ್ತಿತ್ವಕ್ಕೆ ಒಮ್ಮತವಾಗಬಹುದು. ಪ್ರತಿ agent ಪ್ರೊಫೈಲ್‌ಗೆ ವರ್ತನೆ ನಿಯಮಿತ ಪರಿಶೀಲಿಸಿ, ವಿಶ್ಲೇಷಣೆಗೆ runs ದಾಖಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Cost multiplies; use smaller models for routine steps.\n• Check for character drift and log runs.",
+     "bodyKn": "• ವೆಚ್ಚ ಗುಣಿಸುತ್ತದೆ; ದೈನಂದಿನಕ್ಕೆ ಚಿಕ್ಕ ಮಾದರಿ.\n• ಪಾತ್ರ drift ಪರಿಶೀಲಿಸಿ, ದಾಖಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Cost multiplies because:",
+       "qKn": "ವೆಚ್ಚ ಗುಣಿಸುವುದು ಏಕೆ?",
+       "opts": [
+        "Every agent and step calls a model",
+        "Models are free",
+        "Only one call",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ agent ಮತ್ತು ಹಂತ ಮಾದರಿ ಕರೆಯುತ್ತದೆ",
+        "ಮಾದರಿ ಉಚಿತ",
+        "ಒಂದೇ ಕರೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Character drift is:",
+       "qKn": "ಪಾತ್ರ drift:",
+       "opts": [
+        "Agents losing their traits",
+        "Faster agents",
+        "A UI bug",
+        "A feature"
+       ],
+       "optsKn": [
+        "agents ತಮ್ಮ ಗುಣ ಕಳೆದುಕೊಳ್ಳುವುದು",
+        "ವೇಗದ agents",
+        "UI ದೋಷ",
+        "ವೈಶಿಷ್ಟ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Use larger models for:",
+       "qKn": "ದೊಡ್ಡ ಮಾದರಿ ಬಳಸಿ:",
+       "opts": [
+        "Reflection and planning",
+        "Every trivial step",
+        "Nothing",
+        "Logging"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿಫಲನ ಮತ್ತು ಯೋಜನೆ",
+        "ಪ್ರತಿ ಕ್ಷುಲ್ಲಕ ಹಂತ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲಾಗಿಂಗ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

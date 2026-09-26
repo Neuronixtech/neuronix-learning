@@ -1,0 +1,2627 @@
+[
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32164c",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Prompt Caching and Semantic Caching Economics — Prompt Caching",
+  "titleKn": "Prompt Caching ಮತ್ತು Semantic Caching ಅರ್ಥಶಾಸ್ತ್ರ — Prompt Caching",
+  "desc": "Providers cache the processed prefix of a prompt so repeated prefixes are cheaper and faster.",
+  "descKn": "ಒದಗಿಸುವವರು prompt ನ ಸಂಸ್ಕರಿಸಿದ prefix ಕ್ಯಾಶ್ ಮಾಡುತ್ತಾರೆ; ಪುನರಾವರ್ತಿತ prefixes ಅಗ್ಗ ಮತ್ತು ವೇಗ.",
+  "objectives": [
+   "Explain prefix-based caching.",
+   "Structure prompts for cache hits."
+  ],
+  "objectivesKn": [
+   "prefix-ಆಧಾರಿತ caching ವಿವರಿಸಿ.",
+   "cache hits ಗೆ prompts ರಚಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Prompt Caching and Semantic Caching Economics — Prompt Caching",
+     "textKn": "Prompt Caching and Semantic Caching Economics — Prompt Caching",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Prompt Caching and Semantic Caching Economics",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "How It Works",
+     "headingKn": "ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ",
+     "bodyEn": "If a new request begins with the same tokens as a recent one, the provider reuses the stored computation for that prefix and bills a discounted rate for those tokens.",
+     "bodyKn": "ಹೊಸ ವಿನಂತಿ ಇತ್ತೀಚಿನದರ ಅದೇ tokens ನಿಂದ ಆರಂಭವಾದರೆ ಒದಗಿಸುವವರು ಆ prefix ಸಂಗ್ರಹಿತ ಗಣನೆ ಮರುಬಳಸಿ ಆ tokens ಗೆ ರಿಯಾಯಿತಿ ದರ ವಿಧಿಸುತ್ತಾರೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Design for Hits",
+     "headingKn": "Hits ಗಾಗಿ ವಿನ್ಯಾಸ",
+     "bodyEn": "Put stable content such as instructions and examples first and variable content last. Changing a token early in the prompt invalidates everything after it.",
+     "bodyKn": "ಸೂಚನೆ ಮತ್ತು ಉದಾಹರಣೆಯಂತಹ ಸ್ಥಿರ ವಿಷಯ ಮೊದಲು, ಬದಲಾಗುವ ವಿಷಯ ಕೊನೆಗೆ ಇಡಿ. prompt ನ ಆರಂಭದಲ್ಲಿ token ಬದಲಿಸಿದರೆ ಅದರ ನಂತರದ್ದೆಲ್ಲ ಅಮಾನ್ಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Matching prefixes are billed at a discount.\n• Put stable content first.",
+     "bodyKn": "• ಹೊಂದುವ prefixes ರಿಯಾಯಿತಿ.\n• ಸ್ಥಿರ ವಿಷಯ ಮೊದಲು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Cached content must be:",
+       "qKn": "ಕ್ಯಾಶ್ ವಿಷಯ:",
+       "opts": [
+        "An identical prefix",
+        "A random suffix",
+        "Anything",
+        "Empty"
+       ],
+       "optsKn": [
+        "ಒಂದೇ prefix",
+        "ಯಾದೃಚ್ಛಿಕ suffix",
+        "ಯಾವುದೇ",
+        "ಖಾಲಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Place stable content:",
+       "qKn": "ಸ್ಥಿರ ವಿಷಯ:",
+       "opts": [
+        "First",
+        "Last",
+        "Nowhere",
+        "In the middle"
+       ],
+       "optsKn": [
+        "ಮೊದಲು",
+        "ಕೊನೆಗೆ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಮಧ್ಯದಲ್ಲಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A change early in the prompt:",
+       "qKn": "prompt ಆರಂಭದಲ್ಲಿ ಬದಲಾವಣೆ:",
+       "opts": [
+        "Invalidates the rest",
+        "Improves caching",
+        "Does nothing",
+        "Deletes the cache"
+       ],
+       "optsKn": [
+        "ಉಳಿದದ್ದನ್ನು ಅಮಾನ್ಯ",
+        "caching ಸುಧಾರಿಸುತ್ತದೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "cache ಅಳಿಸುತ್ತದೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32164c",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Prompt Caching and Semantic Caching Economics — Semantic Caching",
+  "titleKn": "Prompt Caching ಮತ್ತು Semantic Caching ಅರ್ಥಶಾಸ್ತ್ರ — Semantic Caching",
+  "desc": "A semantic cache returns a stored answer when a new question means the same as an earlier one.",
+  "descKn": "ಹೊಸ ಪ್ರಶ್ನೆ ಹಿಂದಿನದರ ಅದೇ ಅರ್ಥವಿದ್ದರೆ semantic cache ಸಂಗ್ರಹಿತ ಉತ್ತರ ನೀಡುತ್ತದೆ.",
+  "objectives": [
+   "Describe embedding-based lookup.",
+   "Recognise risks of wrong matches."
+  ],
+  "objectivesKn": [
+   "embedding-ಆಧಾರಿತ ಹುಡುಕಾಟ ವಿವರಿಸಿ.",
+   "ತಪ್ಪು ಹೊಂದಾಣಿಕೆ ಅಪಾಯ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Prompt Caching and Semantic Caching Economics — Semantic Caching",
+     "textKn": "Prompt Caching and Semantic Caching Economics — Semantic Caching",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Prompt Caching and Semantic Caching Economics",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Similarity Lookup",
+     "headingKn": "ಸಾದೃಶ್ಯ ಹುಡುಕಾಟ",
+     "bodyEn": "Questions are embedded and compared with stored ones. If similarity exceeds a threshold, the cached answer is returned without calling the model.",
+     "bodyKn": "ಪ್ರಶ್ನೆಗಳನ್ನು embed ಮಾಡಿ ಸಂಗ್ರಹಿತದೊಂದಿಗೆ ಹೋಲಿಸಲಾಗುತ್ತದೆ. ಸಾದೃಶ್ಯ ಮಿತಿ ಮೀರಿದರೆ ಮಾದರಿ ಕರೆಯದೆ ಕ್ಯಾಶ್ ಉತ್ತರ ನೀಡಲಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Risk of False Hits",
+     "headingKn": "ಸುಳ್ಳು Hits ಅಪಾಯ",
+     "bodyEn": "Two questions can look similar yet need different answers, such as different account numbers. Use strict thresholds and exclude personalised or time-sensitive queries.",
+     "bodyKn": "ಬೇರೆ ಖಾತೆ ಸಂಖ್ಯೆಯಂತೆ ಎರಡು ಪ್ರಶ್ನೆ ಹೋಲುವಂತೆ ಕಂಡರೂ ಬೇರೆ ಉತ್ತರ ಬೇಕಾಗಬಹುದು. ಕಠಿಣ ಮಿತಿ ಬಳಸಿ, ವೈಯಕ್ತಿಕ ಅಥವಾ ಸಮಯ-ಸೂಕ್ಷ್ಮ ಪ್ರಶ್ನೆ ಹೊರಗಿಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Similar questions can reuse answers.\n• Guard against false hits.",
+     "bodyKn": "• ಸಮಾನ ಪ್ರಶ್ನೆ ಉತ್ತರ ಮರುಬಳಕೆ.\n• ಸುಳ್ಳು hits ರಕ್ಷಣೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A semantic cache compares:",
+       "qKn": "semantic cache ಹೋಲಿಸುವುದು:",
+       "opts": [
+        "Embeddings",
+        "Fonts",
+        "Colours",
+        "Files"
+       ],
+       "optsKn": [
+        "embeddings",
+        "ಫಾಂಟ್",
+        "ಬಣ್ಣ",
+        "ಫೈಲ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A risk:",
+       "qKn": "ಅಪಾಯ:",
+       "opts": [
+        "Wrong answer for a similar-looking question",
+        "Perfect answers",
+        "No hits",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹೋಲುವ ಪ್ರಶ್ನೆಗೆ ತಪ್ಪು ಉತ್ತರ",
+        "ಪರಿಪೂರ್ಣ ಉತ್ತರ",
+        "hits ಇಲ್ಲ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Exclude:",
+       "qKn": "ಹೊರಗಿಡಿ:",
+       "opts": [
+        "Personalised queries",
+        "Generic FAQs",
+        "Nothing",
+        "Static text"
+       ],
+       "optsKn": [
+        "ವೈಯಕ್ತಿಕ ಪ್ರಶ್ನೆ",
+        "ಸಾಮಾನ್ಯ FAQ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಸ್ಥಿರ ಪಠ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32164c",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Prompt Caching and Semantic Caching Economics — Caching Economics",
+  "titleKn": "Prompt Caching ಮತ್ತು Semantic Caching ಅರ್ಥಶಾಸ್ತ್ರ — Caching ಅರ್ಥಶಾಸ್ತ್ರ",
+  "desc": "Estimate hit rate, savings and added costs to decide whether a cache pays for itself.",
+  "descKn": "hit ದರ, ಉಳಿತಾಯ, ಸೇರಿದ ವೆಚ್ಚ ಅಂದಾಜಿಸಿ cache ತನ್ನ ವೆಚ್ಚ ಭರಿಸುತ್ತದೆಯೇ ನಿರ್ಧರಿಸಿ.",
+  "objectives": [
+   "Compute expected savings from hit rate.",
+   "Include cache write and storage costs."
+  ],
+  "objectivesKn": [
+   "hit ದರದಿಂದ ನಿರೀಕ್ಷಿತ ಉಳಿತಾಯ ಲೆಕ್ಕಿಸಿ.",
+   "cache ಬರೆಯುವಿಕೆ ಮತ್ತು ಸಂಗ್ರಹ ವೆಚ್ಚ ಸೇರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Prompt Caching and Semantic Caching Economics — Caching Economics",
+     "textKn": "Prompt Caching and Semantic Caching Economics — Caching Economics",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Prompt Caching and Semantic Caching Economics",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Expected Savings",
+     "headingKn": "ನಿರೀಕ್ಷಿತ ಉಳಿತಾಯ",
+     "bodyEn": "Savings equal hit rate times the discount on cached tokens, minus any extra charge for writing to the cache. Measure the real hit rate before assuming a number.",
+     "bodyKn": "ಉಳಿತಾಯ = hit ದರ × ಕ್ಯಾಶ್ tokens ರಿಯಾಯಿತಿ, ಮೈನಸ್ cache ಗೆ ಬರೆಯುವ ಹೆಚ್ಚುವರಿ ಶುಲ್ಕ. ಸಂಖ್ಯೆ ಊಹಿಸುವ ಮೊದಲು ನಿಜ hit ದರ ಅಳೆಯಿರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Time to Live",
+     "headingKn": "ಬದುಕುವ ಸಮಯ",
+     "bodyEn": "Caches expire after a short time. Steady traffic keeps entries alive; sparse traffic may see mostly misses, so check whether your request pattern fits.",
+     "bodyKn": "caches ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಮುಗಿಯುತ್ತವೆ. ಸ್ಥಿರ ಟ್ರಾಫಿಕ್ ನಮೂದುಗಳನ್ನು ಜೀವಂತವಿಡುತ್ತದೆ; ವಿರಳ ಟ್ರಾಫಿಕ್‌ನಲ್ಲಿ ಹೆಚ್ಚಾಗಿ misses; ನಿಮ್ಮ ವಿನಂತಿ ಮಾದರಿ ಹೊಂದುತ್ತದೆಯೇ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Savings = hit rate x discount minus write cost.\n• Sparse traffic may miss because entries expire.",
+     "bodyKn": "• ಉಳಿತಾಯ = hit ದರ × ರಿಯಾಯಿತಿ − ಬರೆಯುವ ವೆಚ್ಚ.\n• ವಿರಳ ಟ್ರಾಫಿಕ್ misses."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Savings depend on:",
+       "qKn": "ಉಳಿತಾಯ ಅವಲಂಬನೆ:",
+       "opts": [
+        "Hit rate and discount",
+        "Font size",
+        "Logo",
+        "Nothing"
+       ],
+       "optsKn": [
+        "hit ದರ ಮತ್ತು ರಿಯಾಯಿತಿ",
+        "ಫಾಂಟ್ ಗಾತ್ರ",
+        "ಲೋಗೋ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Sparse traffic:",
+       "qKn": "ವಿರಳ ಟ್ರಾಫಿಕ್:",
+       "opts": [
+        "May mostly miss the cache",
+        "Always hits",
+        "Improves hits",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹೆಚ್ಚಾಗಿ cache miss",
+        "ಯಾವಾಗಲೂ hit",
+        "hits ಸುಧಾರಣೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Measure:",
+       "qKn": "ಅಳೆಯಿರಿ:",
+       "opts": [
+        "The real hit rate",
+        "An imagined rate",
+        "Nothing",
+        "Colours"
+       ],
+       "optsKn": [
+        "ನಿಜ hit ದರ",
+        "ಕಾಲ್ಪನಿಕ ದರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32164f",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Batch APIs: The 50% Discount as Industry Standard — What Batch APIs Offer",
+  "titleKn": "Batch APIs: 50% ರಿಯಾಯಿತಿ ಉದ್ಯಮ ಮಾನದಂಡ — Batch APIs ಏನು ನೀಡುತ್ತವೆ",
+  "desc": "Batch endpoints accept many requests to be completed within a window, usually at a substantial discount.",
+  "descKn": "batch endpoints ಹಲವು ವಿನಂತಿಗಳನ್ನು ನಿರ್ದಿಷ್ಟ ಅವಧಿಯೊಳಗೆ ಪೂರ್ಣಗೊಳಿಸಲು ಸ್ವೀಕರಿಸುತ್ತವೆ, ಸಾಮಾನ್ಯವಾಗಿ ಗಣನೀಯ ರಿಯಾಯಿತಿಯೊಂದಿಗೆ.",
+  "objectives": [
+   "Describe asynchronous batch processing.",
+   "Explain why discounts exist."
+  ],
+  "objectivesKn": [
+   "ಅಸಮಕಾಲಿಕ batch ಸಂಸ್ಕರಣೆ ವಿವರಿಸಿ.",
+   "ರಿಯಾಯಿತಿ ಏಕೆ ಇದೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Batch APIs: The 50% Discount as Industry Standard — What Batch APIs Offer",
+     "textKn": "Batch APIs: The 50% Discount as Industry Standard — What Batch APIs Offer",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Batch APIs: The 50% Discount as Industry Standard",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Trade Time for Price",
+     "headingKn": "ಸಮಯಕ್ಕೆ ಬೆಲೆ ವಿನಿಮಯ",
+     "bodyEn": "You submit a file of requests and collect results later, often within a day. In return providers commonly charge about half the normal rate.",
+     "bodyKn": "ವಿನಂತಿಗಳ ಫೈಲ್ ಸಲ್ಲಿಸಿ ಫಲಿತಾಂಶ ನಂತರ ಸಂಗ್ರಹಿಸುತ್ತೀರಿ, ಆಗಾಗ ಒಂದು ದಿನದೊಳಗೆ. ಪ್ರತಿಯಾಗಿ ಒದಗಿಸುವವರು ಸಾಮಾನ್ಯ ದರದ ಸುಮಾರು ಅರ್ಧ ವಿಧಿಸುತ್ತಾರೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why Providers Discount",
+     "headingKn": "ಒದಗಿಸುವವರು ಏಕೆ ರಿಯಾಯಿತಿ ನೀಡುತ್ತಾರೆ",
+     "bodyEn": "Batch work can fill idle GPU capacity and be scheduled flexibly, which lets providers offer lower prices. Check current terms since they change.",
+     "bodyKn": "batch ಕೆಲಸ ನಿಷ್ಕ್ರಿಯ GPU ಸಾಮರ್ಥ್ಯ ತುಂಬಿ ನಮ್ಯವಾಗಿ ಶೆಡ್ಯೂಲ್ ಮಾಡಬಹುದು; ಒದಗಿಸುವವರು ಕಡಿಮೆ ಬೆಲೆ ನೀಡಬಹುದು. ನಿಯಮ ಬದಲಾಗುವುದರಿಂದ ಪ್ರಸ್ತುತ ನಿಯಮ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Submit now, collect later, pay less.\n• Discounts reflect flexible scheduling.",
+     "bodyKn": "• ಈಗ ಸಲ್ಲಿಸಿ, ನಂತರ ಪಡೆಯಿರಿ, ಕಡಿಮೆ ಪಾವತಿ.\n• ರಿಯಾಯಿತಿ ನಮ್ಯ ಶೆಡ್ಯೂಲಿಂಗ್."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Batch APIs return results:",
+       "qKn": "batch APIs ಫಲಿತಾಂಶ ನೀಡುವುದು:",
+       "opts": [
+        "Later, within a window",
+        "Instantly always",
+        "Never",
+        "Before you ask"
+       ],
+       "optsKn": [
+        "ನಂತರ, ಅವಧಿಯೊಳಗೆ",
+        "ಯಾವಾಗಲೂ ತಕ್ಷಣ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಕೇಳುವ ಮೊದಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The typical trade:",
+       "qKn": "ಸಾಮಾನ್ಯ ವಿನಿಮಯ:",
+       "opts": [
+        "Time for a lower price",
+        "Price for time",
+        "Nothing",
+        "Quality for speed"
+       ],
+       "optsKn": [
+        "ಕಡಿಮೆ ಬೆಲೆಗೆ ಸಮಯ",
+        "ಸಮಯಕ್ಕೆ ಬೆಲೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ವೇಗಕ್ಕೆ ಗುಣಮಟ್ಟ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Check:",
+       "qKn": "ಪರಿಶೀಲಿಸಿ:",
+       "opts": [
+        "Current terms",
+        "Old blogs",
+        "Nothing",
+        "Rumours"
+       ],
+       "optsKn": [
+        "ಪ್ರಸ್ತುತ ನಿಯಮ",
+        "ಹಳೆಯ ಬ್ಲಾಗ್",
+        "ಏನೂ ಇಲ್ಲ",
+        "ವದಂತಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32164f",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Batch APIs: The 50% Discount as Industry Standard — Workloads That Fit",
+  "titleKn": "Batch APIs: 50% ರಿಯಾಯಿತಿ ಉದ್ಯಮ ಮಾನದಂಡ — ಹೊಂದುವ ಕೆಲಸಗಳು",
+  "desc": "Batch suits offline, non-urgent tasks such as evals, data labelling, summarisation and embeddings.",
+  "descKn": "batch ಆಫ್‌ಲೈನ್, ತುರ್ತಿಲ್ಲದ ಕೆಲಸ (evals, ಡೇಟಾ ಲೇಬಲಿಂಗ್, ಸಾರಾಂಶ, embeddings) ಗೆ ಸೂಕ್ತ.",
+  "objectives": [
+   "Choose batch for non-interactive work.",
+   "Avoid batch for user-facing latency."
+  ],
+  "objectivesKn": [
+   "ಸಂವಾದರಹಿತ ಕೆಲಸಕ್ಕೆ batch ಆರಿಸಿ.",
+   "ಬಳಕೆದಾರ-ಮುಖಿ ವಿಳಂಬಕ್ಕೆ batch ತಪ್ಪಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Batch APIs: The 50% Discount as Industry Standard — Workloads That Fit",
+     "textKn": "Batch APIs: The 50% Discount as Industry Standard — Workloads That Fit",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Batch APIs: The 50% Discount as Industry Standard",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Good Fits",
+     "headingKn": "ಸೂಕ್ತ ಪ್ರಕರಣ",
+     "bodyEn": "Nightly evaluation runs, bulk classification, dataset generation and large summarisation jobs have no user waiting and can tolerate delay.",
+     "bodyKn": "ರಾತ್ರಿ ಮೌಲ್ಯಮಾಪನ, ಬೃಹತ್ ವರ್ಗೀಕರಣ, ಡೇಟಾಸೆಟ್ ರಚನೆ, ದೊಡ್ಡ ಸಾರಾಂಶ ಕೆಲಸಕ್ಕೆ ಕಾಯುವ ಬಳಕೆದಾರರಿಲ್ಲ, ವಿಳಂಬ ಸಹಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Poor Fits",
+     "headingKn": "ಕಳಪೆ ಹೊಂದಾಣಿಕೆ",
+     "bodyEn": "Interactive chat and agents that need immediate answers should use the normal API. Splitting work into a fast lane and a batch lane often saves the most.",
+     "bodyKn": "ತಕ್ಷಣದ ಉತ್ತರ ಬೇಕಾದ ಸಂವಾದಾತ್ಮಕ ಚಾಟ್ ಮತ್ತು agents ಸಾಮಾನ್ಯ API ಬಳಸಬೇಕು. ಕೆಲಸವನ್ನು ವೇಗ ಮತ್ತು batch ಪಥಗಳಾಗಿ ಒಡೆದರೆ ಹೆಚ್ಚು ಉಳಿತಾಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Offline, non-urgent jobs suit batch.\n• Keep interactive work on the normal API.",
+     "bodyKn": "• ಆಫ್‌ಲೈನ್, ತುರ್ತಿಲ್ಲದ ಕೆಲಸ batch ಗೆ.\n• ಸಂವಾದಾತ್ಮಕ ಕೆಲಸ ಸಾಮಾನ್ಯ API."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A good batch job:",
+       "qKn": "ಉತ್ತಮ batch ಕೆಲಸ:",
+       "opts": [
+        "Nightly evaluation",
+        "Live chat",
+        "Voice call",
+        "Typing"
+       ],
+       "optsKn": [
+        "ರಾತ್ರಿ ಮೌಲ್ಯಮಾಪನ",
+        "ಲೈವ್ ಚಾಟ್",
+        "ಧ್ವನಿ ಕರೆ",
+        "ಟೈಪಿಂಗ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Avoid batch for:",
+       "qKn": "batch ತಪ್ಪಿಸಿ:",
+       "opts": [
+        "User-facing latency",
+        "Bulk labelling",
+        "Dataset generation",
+        "Evals"
+       ],
+       "optsKn": [
+        "ಬಳಕೆದಾರ-ಮುಖಿ ವಿಳಂಬ",
+        "ಬೃಹತ್ ಲೇಬಲಿಂಗ್",
+        "ಡೇಟಾಸೆಟ್ ರಚನೆ",
+        "evals"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Splitting lanes:",
+       "qKn": "ಪಥ ವಿಭಜನೆ:",
+       "opts": [
+        "Often saves the most",
+        "Costs more",
+        "Is illegal",
+        "Does nothing"
+       ],
+       "optsKn": [
+        "ಆಗಾಗ ಹೆಚ್ಚು ಉಳಿತಾಯ",
+        "ಹೆಚ್ಚು ವೆಚ್ಚ",
+        "ಕಾನೂನುಬಾಹಿರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32164f",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Batch APIs: The 50% Discount as Industry Standard — Operating Batch Jobs",
+  "titleKn": "Batch APIs: 50% ರಿಯಾಯಿತಿ ಉದ್ಯಮ ಮಾನದಂಡ — Batch ಕೆಲಸ ನಿರ್ವಹಣೆ",
+  "desc": "Handle partial failures, retries, result matching and cost tracking for large batches.",
+  "descKn": "ದೊಡ್ಡ batches ಗೆ ಭಾಗಶಃ ವೈಫಲ್ಯ, ಮರುಪ್ರಯತ್ನ, ಫಲಿತಾಂಶ ಹೊಂದಾಣಿಕೆ, ವೆಚ್ಚ ಟ್ರ್ಯಾಕಿಂಗ್ ನಿರ್ವಹಿಸಿ.",
+  "objectives": [
+   "Use custom ids to match results.",
+   "Retry only the failed items."
+  ],
+  "objectivesKn": [
+   "ಫಲಿತಾಂಶ ಹೊಂದಿಸಲು custom ids ಬಳಸಿ.",
+   "ವಿಫಲ ಅಂಶಗಳನ್ನು ಮಾತ್ರ ಮರುಪ್ರಯತ್ನಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Batch APIs: The 50% Discount as Industry Standard — Operating Batch Jobs",
+     "textKn": "Batch APIs: The 50% Discount as Industry Standard — Operating Batch Jobs",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Batch APIs: The 50% Discount as Industry Standard",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Match Results by Id",
+     "headingKn": "Id ಯಿಂದ ಫಲಿತಾಂಶ ಹೊಂದಿಸಿ",
+     "bodyEn": "Results may return in a different order. Give each request a unique custom id and match outputs by id rather than position.",
+     "bodyKn": "ಫಲಿತಾಂಶ ಬೇರೆ ಕ್ರಮದಲ್ಲಿ ಬರಬಹುದು. ಪ್ರತಿ ವಿನಂತಿಗೆ ಅನನ್ಯ custom id ನೀಡಿ, ಸ್ಥಾನದ ಬದಲು id ಯಿಂದ ಔಟ್‌ಪುಟ್ ಹೊಂದಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Partial Failures",
+     "headingKn": "ಭಾಗಶಃ ವೈಫಲ್ಯ",
+     "bodyEn": "A few items in a large batch may fail or expire. Collect the failed ids and resubmit only those, and track spend per batch.",
+     "bodyKn": "ದೊಡ್ಡ batch ನ ಕೆಲವು ಅಂಶ ವಿಫಲ ಅಥವಾ ಮುಗಿಯಬಹುದು. ವಿಫಲ ids ಸಂಗ್ರಹಿಸಿ ಅವನ್ನು ಮಾತ್ರ ಮರುಸಲ್ಲಿಸಿ, ಪ್ರತಿ batch ಖರ್ಚು ಟ್ರ್ಯಾಕ್ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Match by custom id, not position.\n• Resubmit only failed items.",
+     "bodyKn": "• ಸ್ಥಾನವಲ್ಲ, custom id ಯಿಂದ ಹೊಂದಿಸಿ.\n• ವಿಫಲವನ್ನು ಮಾತ್ರ ಮರುಸಲ್ಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Match results by:",
+       "qKn": "ಫಲಿತಾಂಶ ಹೊಂದಿಸಿ:",
+       "opts": [
+        "Custom id",
+        "Position only",
+        "Guess",
+        "Colour"
+       ],
+       "optsKn": [
+        "custom id",
+        "ಸ್ಥಾನ ಮಾತ್ರ",
+        "ಊಹೆ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Failed items should be:",
+       "qKn": "ವಿಫಲ ಅಂಶಗಳು:",
+       "opts": [
+        "Resubmitted alone",
+        "Ignored",
+        "Deleted",
+        "Duplicated all"
+       ],
+       "optsKn": [
+        "ಮಾತ್ರ ಮರುಸಲ್ಲಿಸಿ",
+        "ನಿರ್ಲಕ್ಷಿಸಿ",
+        "ಅಳಿಸಿ",
+        "ಎಲ್ಲ ನಕಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Track:",
+       "qKn": "ಟ್ರ್ಯಾಕ್:",
+       "opts": [
+        "Spend per batch",
+        "Fonts",
+        "Logos",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ batch ಖರ್ಚು",
+        "ಫಾಂಟ್",
+        "ಲೋಗೋ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321652",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Model Routing as a Cost-Reduction Primitive — Route by Difficulty",
+  "titleKn": "ವೆಚ್ಚ ಕಡಿತ ಮೂಲವಾಗಿ ಮಾದರಿ Routing — ಕಷ್ಟದ ಪ್ರಕಾರ Route",
+  "desc": "Send easy requests to cheap models and hard ones to strong models to cut average cost.",
+  "descKn": "ಸುಲಭ ವಿನಂತಿ ಅಗ್ಗದ ಮಾದರಿಗೆ, ಕಠಿಣ ವಿನಂತಿ ಬಲಿಷ್ಠ ಮಾದರಿಗೆ ಕಳುಹಿಸಿ ಸರಾಸರಿ ವೆಚ್ಚ ಕಡಿಮೆ ಮಾಡಿ.",
+  "objectives": [
+   "Explain cost-quality routing.",
+   "Identify signals of difficulty."
+  ],
+  "objectivesKn": [
+   "ವೆಚ್ಚ-ಗುಣಮಟ್ಟ routing ವಿವರಿಸಿ.",
+   "ಕಷ್ಟದ ಸಂಕೇತ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Model Routing as a Cost-Reduction Primitive — Route by Difficulty",
+     "textKn": "Model Routing as a Cost-Reduction Primitive — Route by Difficulty",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Model Routing as a Cost-Reduction Primitive",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Not Every Query Needs the Best Model",
+     "headingKn": "ಪ್ರತಿ ಪ್ರಶ್ನೆಗೆ ಉತ್ತಮ ಮಾದರಿ ಬೇಕಿಲ್ಲ",
+     "bodyEn": "Many requests, such as formatting or simple extraction, are handled well by small models at a fraction of the price. Reserve large models for hard cases.",
+     "bodyKn": "ಫಾರ್ಮಾಟಿಂಗ್ ಅಥವಾ ಸರಳ ಹೊರತೆಗೆಯುವಿಕೆಯಂತಹ ಅನೇಕ ವಿನಂತಿಗಳನ್ನು ಸಣ್ಣ ಮಾದರಿಗಳು ಬೆಲೆಯ ಒಂದು ಭಾಗದಲ್ಲಿ ಚೆನ್ನಾಗಿ ನಿರ್ವಹಿಸುತ್ತವೆ. ದೊಡ್ಡ ಮಾದರಿಯನ್ನು ಕಠಿಣ ಪ್ರಕರಣಕ್ಕೆ ಉಳಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Difficulty Signals",
+     "headingKn": "ಕಷ್ಟ ಸಂಕೇತಗಳು",
+     "bodyEn": "Prompt length, task type, required tools, a small classifier or the small model's own uncertainty can indicate which route a request should take.",
+     "bodyKn": "prompt ಉದ್ದ, ಕೆಲಸ ವಿಧ, ಬೇಕಾದ tools, ಸಣ್ಣ classifier ಅಥವಾ ಸಣ್ಣ ಮಾದರಿಯ ಸ್ವಂತ ಅನಿಶ್ಚಿತತೆ ವಿನಂತಿ ಯಾವ ಮಾರ್ಗ ಹಿಡಿಯಬೇಕು ಸೂಚಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Use cheap models for easy work.\n• Task type, length or a classifier signal difficulty.",
+     "bodyKn": "• ಸುಲಭ ಕೆಲಸಕ್ಕೆ ಅಗ್ಗ ಮಾದರಿ.\n• ಕೆಲಸ ವಿಧ, ಉದ್ದ, classifier ಸಂಕೇತ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Easy tasks should go to:",
+       "qKn": "ಸುಲಭ ಕೆಲಸ ಹೋಗಬೇಕು:",
+       "opts": [
+        "Cheap models",
+        "Only the biggest",
+        "Nowhere",
+        "Humans only"
+       ],
+       "optsKn": [
+        "ಅಗ್ಗದ ಮಾದರಿ",
+        "ದೊಡ್ಡದಕ್ಕೆ ಮಾತ್ರ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಮಾನವರಿಗೆ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A difficulty signal:",
+       "qKn": "ಕಷ್ಟ ಸಂಕೇತ:",
+       "opts": [
+        "Task type",
+        "Font",
+        "Colour",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಕೆಲಸ ವಿಧ",
+        "ಫಾಂಟ್",
+        "ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Large models are for:",
+       "qKn": "ದೊಡ್ಡ ಮಾದರಿ ಯಾವುದಕ್ಕೆ:",
+       "opts": [
+        "Hard cases",
+        "Every request",
+        "Nothing",
+        "Only logs"
+       ],
+       "optsKn": [
+        "ಕಠಿಣ ಪ್ರಕರಣ",
+        "ಪ್ರತಿ ವಿನಂತಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲಾಗ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321652",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Model Routing as a Cost-Reduction Primitive — Cascades and Fallbacks",
+  "titleKn": "ವೆಚ್ಚ ಕಡಿತ ಮೂಲವಾಗಿ ಮಾದರಿ Routing — Cascades ಮತ್ತು Fallbacks",
+  "desc": "A cascade tries a cheap model first and escalates when its answer is not good enough.",
+  "descKn": "cascade ಮೊದಲು ಅಗ್ಗದ ಮಾದರಿ ಪ್ರಯತ್ನಿಸಿ ಉತ್ತರ ಸಾಕಾಗದಿದ್ದರೆ ಏರಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Design a cascade with a quality check.",
+   "Account for the cost of failed cheap attempts."
+  ],
+  "objectivesKn": [
+   "ಗುಣಮಟ್ಟ ಪರಿಶೀಲನೆಯೊಂದಿಗೆ cascade ವಿನ್ಯಾಸ.",
+   "ವಿಫಲ ಅಗ್ಗ ಪ್ರಯತ್ನಗಳ ವೆಚ್ಚ ಲೆಕ್ಕಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Model Routing as a Cost-Reduction Primitive — Cascades and Fallbacks",
+     "textKn": "Model Routing as a Cost-Reduction Primitive — Cascades and Fallbacks",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Model Routing as a Cost-Reduction Primitive",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Try Cheap First",
+     "headingKn": "ಮೊದಲು ಅಗ್ಗ ಪ್ರಯತ್ನಿಸಿ",
+     "bodyEn": "Run the small model and check its answer with a verifier, schema or confidence signal. If it passes, return it; otherwise call the larger model.",
+     "bodyKn": "ಸಣ್ಣ ಮಾದರಿ ಚಲಾಯಿಸಿ ಉತ್ತರವನ್ನು verifier, schema ಅಥವಾ ವಿಶ್ವಾಸ ಸಂಕೇತದಿಂದ ಪರಿಶೀಲಿಸಿ. ಪಾಸ್ ಆದರೆ ಹಿಂದಿರುಗಿಸಿ; ಇಲ್ಲದಿದ್ದರೆ ದೊಡ್ಡ ಮಾದರಿ ಕರೆಯಿರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Cost of Misses",
+     "headingKn": "Misses ವೆಚ್ಚ",
+     "bodyEn": "Every escalation pays for both models and adds latency. A cascade saves money only if enough requests succeed at the cheap tier.",
+     "bodyKn": "ಪ್ರತಿ ಏರಿಕೆ ಎರಡೂ ಮಾದರಿಗಳಿಗೆ ಪಾವತಿ ಮತ್ತು ವಿಳಂಬ ಸೇರಿಸುತ್ತದೆ. ಸಾಕಷ್ಟು ವಿನಂತಿಗಳು ಅಗ್ಗ ಹಂತದಲ್ಲಿ ಯಶಸ್ವಿಯಾದರೆ ಮಾತ್ರ cascade ಹಣ ಉಳಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Verify the cheap answer; escalate on failure.\n• Escalations cost both models plus latency.",
+     "bodyKn": "• ಅಗ್ಗ ಉತ್ತರ ಪರಿಶೀಲಿಸಿ; ವಿಫಲವಾದರೆ ಏರಿಸಿ.\n• ಏರಿಕೆ ಎರಡೂ ವೆಚ್ಚ + ವಿಳಂಬ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A cascade tries first:",
+       "qKn": "cascade ಮೊದಲು ಪ್ರಯತ್ನಿಸುವುದು:",
+       "opts": [
+        "The cheap model",
+        "The most expensive",
+        "Nothing",
+        "A human"
+       ],
+       "optsKn": [
+        "ಅಗ್ಗದ ಮಾದರಿ",
+        "ಅತಿ ದುಬಾರಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಮಾನವ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "An escalation costs:",
+       "qKn": "ಏರಿಕೆ ವೆಚ್ಚ:",
+       "opts": [
+        "Both models and extra latency",
+        "Nothing",
+        "Only the big one",
+        "Only the small one"
+       ],
+       "optsKn": [
+        "ಎರಡೂ ಮಾದರಿ ಮತ್ತು ವಿಳಂಬ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ದೊಡ್ಡದು ಮಾತ್ರ",
+        "ಸಣ್ಣದು ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Cascades pay off when:",
+       "qKn": "cascades ಲಾಭ ಯಾವಾಗ?",
+       "opts": [
+        "Most requests succeed cheaply",
+        "Most fail",
+        "Never",
+        "Always"
+       ],
+       "optsKn": [
+        "ಹೆಚ್ಚಿನ ವಿನಂತಿ ಅಗ್ಗವಾಗಿ ಯಶಸ್ವಿ",
+        "ಹೆಚ್ಚಿನವು ವಿಫಲ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಯಾವಾಗಲೂ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321652",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Model Routing as a Cost-Reduction Primitive — Evaluating a Router",
+  "titleKn": "ವೆಚ್ಚ ಕಡಿತ ಮೂಲವಾಗಿ ಮಾದರಿ Routing — Router ಮೌಲ್ಯಮಾಪನ",
+  "desc": "Measure quality, cost and misroutes on real traffic against the always-large-model baseline.",
+  "descKn": "ನಿಜ ಟ್ರಾಫಿಕ್‌ನಲ್ಲಿ ಯಾವಾಗಲೂ-ದೊಡ್ಡ-ಮಾದರಿ ಆಧಾರಕ್ಕೆ ಹೋಲಿಸಿ ಗುಣಮಟ್ಟ, ವೆಚ್ಚ, ತಪ್ಪು routes ಅಳೆಯಿರಿ.",
+  "objectives": [
+   "Compare routed versus always-large.",
+   "Track misroutes and drift."
+  ],
+  "objectivesKn": [
+   "routed ಮತ್ತು ಯಾವಾಗಲೂ-ದೊಡ್ಡದನ್ನು ಹೋಲಿಸಿ.",
+   "ತಪ್ಪು routes ಮತ್ತು drift ಗಮನಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Model Routing as a Cost-Reduction Primitive — Evaluating a Router",
+     "textKn": "Model Routing as a Cost-Reduction Primitive — Evaluating a Router",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Model Routing as a Cost-Reduction Primitive",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Fair Baseline",
+     "headingKn": "ನ್ಯಾಯಯುತ ಆಧಾರ",
+     "bodyEn": "Send a sample of traffic to the large model alone and compare quality and cost with the routed system. Savings only count if quality holds.",
+     "bodyKn": "ಟ್ರಾಫಿಕ್‌ನ ಮಾದರಿ ದೊಡ್ಡ ಮಾದರಿಗೆ ಮಾತ್ರ ಕಳುಹಿಸಿ ರೂಟ್ ಮಾಡಿದ ವ್ಯವಸ್ಥೆಗೆ ಗುಣಮಟ್ಟ ಮತ್ತು ವೆಚ್ಚ ಹೋಲಿಸಿ. ಗುಣಮಟ್ಟ ಉಳಿದರೆ ಮಾತ್ರ ಉಳಿತಾಯ ಲೆಕ್ಕ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Watch for Drift",
+     "headingKn": "Drift ಗಮನಿಸಿ",
+     "bodyEn": "As traffic and models change, a router's decisions can go stale. Re-evaluate regularly and log which route each request took.",
+     "bodyKn": "ಟ್ರಾಫಿಕ್ ಮತ್ತು ಮಾದರಿ ಬದಲಾದಂತೆ router ನಿರ್ಧಾರ ಹಳೆಯದಾಗಬಹುದು. ನಿಯಮಿತ ಮರುಮೌಲ್ಯಮಾಪನ ಮಾಡಿ, ಪ್ರತಿ ವಿನಂತಿ ಯಾವ ಮಾರ್ಗ ಹಿಡಿಯಿತು ದಾಖಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Compare against an always-large baseline.\n• Re-evaluate and log routes.",
+     "bodyKn": "• ಯಾವಾಗಲೂ-ದೊಡ್ಡ ಆಧಾರಕ್ಕೆ ಹೋಲಿಕೆ.\n• ಮರುಮೌಲ್ಯಮಾಪನ, ಮಾರ್ಗ ದಾಖಲು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Savings count only if:",
+       "qKn": "ಉಳಿತಾಯ ಲೆಕ್ಕ ಯಾವಾಗ?",
+       "opts": [
+        "Quality holds",
+        "Never",
+        "Always",
+        "Speed drops"
+       ],
+       "optsKn": [
+        "ಗುಣಮಟ್ಟ ಉಳಿದರೆ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಯಾವಾಗಲೂ",
+        "ವೇಗ ಇಳಿದರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Router decisions can:",
+       "qKn": "router ನಿರ್ಧಾರ:",
+       "opts": [
+        "Go stale",
+        "Never change",
+        "Be perfect forever",
+        "Vanish"
+       ],
+       "optsKn": [
+        "ಹಳೆಯದಾಗಬಹುದು",
+        "ಎಂದಿಗೂ ಬದಲಾಗದು",
+        "ಶಾಶ್ವತ ಪರಿಪೂರ್ಣ",
+        "ಮಾಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Log:",
+       "qKn": "ದಾಖಲಿಸಿ:",
+       "opts": [
+        "The route each request took",
+        "Nothing",
+        "Fonts",
+        "Logos"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ ವಿನಂತಿ ಹಿಡಿದ ಮಾರ್ಗ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321655",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Disaggregated Prefill/Decode: NVIDIA Dynamo and llm-d — Prefill and Decode Have Different Needs",
+  "titleKn": "Disaggregated Prefill/Decode: NVIDIA Dynamo ಮತ್ತು llm-d — Prefill ಮತ್ತು Decode ಗೆ ಬೇರೆ ಅಗತ್ಯ",
+  "desc": "Prefill is compute-bound and decode is memory-bound, so one GPU pool serving both is a compromise.",
+  "descKn": "prefill ಗಣನೆ-ಬದ್ಧ, decode ಮೆಮೊರಿ-ಬದ್ಧ; ಎರಡನ್ನೂ ಒಂದೇ GPU ಪೂಲ್ ಸೇವೆ ಮಾಡುವುದು ರಾಜಿ.",
+  "objectives": [
+   "Contrast prefill and decode.",
+   "Explain interference between them."
+  ],
+  "objectivesKn": [
+   "prefill ಮತ್ತು decode ಹೋಲಿಸಿ.",
+   "ಅವುಗಳ ನಡುವಿನ ಹಸ್ತಕ್ಷೇಪ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Disaggregated Prefill/Decode: NVIDIA Dynamo and llm-d — Prefill and Decode Have Different Needs",
+     "textKn": "Disaggregated Prefill/Decode: NVIDIA Dynamo and llm-d — Prefill and Decode Have Different Needs",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Disaggregated Prefill/Decode: NVIDIA Dynamo and llm-d",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Two Different Jobs",
+     "headingKn": "ಎರಡು ಬೇರೆ ಕೆಲಸ",
+     "bodyEn": "Prefill processes the whole prompt in parallel and stresses compute. Decode produces tokens one by one and stresses memory bandwidth and KV cache capacity.",
+     "bodyKn": "prefill ಇಡೀ prompt ಸಮಾನಾಂತರ ಸಂಸ್ಕರಿಸಿ ಗಣನೆಗೆ ಒತ್ತಡ ಹಾಕುತ್ತದೆ. decode tokens ಒಂದೊಂದಾಗಿ ರಚಿಸಿ ಮೆಮೊರಿ bandwidth ಮತ್ತು KV cache ಸಾಮರ್ಥ್ಯಕ್ಕೆ ಒತ್ತಡ ಹಾಕುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Interference",
+     "headingKn": "ಹಸ್ತಕ್ಷೇಪ",
+     "bodyEn": "When both run on the same GPU, a long prefill delays decoding for others, hurting inter-token latency, while decode-heavy batches slow prefill.",
+     "bodyKn": "ಎರಡೂ ಒಂದೇ GPU ನಲ್ಲಿ ಚಲಿಸಿದಾಗ ಉದ್ದ prefill ಇತರರ decode ವಿಳಂಬಿಸಿ inter-token ವಿಳಂಬ ಹಾಳುಮಾಡುತ್ತದೆ; decode-ಭಾರಿ batches prefill ನಿಧಾನಗೊಳಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Prefill: compute-bound; decode: memory-bound.\n• Sharing a GPU causes interference.",
+     "bodyKn": "• prefill ಗಣನೆ; decode ಮೆಮೊರಿ.\n• ಒಂದೇ GPU ಹಸ್ತಕ್ಷೇಪ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Decode stresses:",
+       "qKn": "decode ಒತ್ತಡ:",
+       "opts": [
+        "Memory bandwidth",
+        "Only compute",
+        "Nothing",
+        "Screens"
+       ],
+       "optsKn": [
+        "ಮೆಮೊರಿ bandwidth",
+        "ಗಣನೆ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಪರದೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Prefill stresses:",
+       "qKn": "prefill ಒತ್ತಡ:",
+       "opts": [
+        "Compute",
+        "Only disk",
+        "Nothing",
+        "Fonts"
+       ],
+       "optsKn": [
+        "ಗಣನೆ",
+        "ಡಿಸ್ಕ್ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Sharing causes:",
+       "qKn": "ಹಂಚಿಕೆ ಕಾರಣ:",
+       "opts": [
+        "Interference",
+        "Perfection",
+        "Cost drops always",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹಸ್ತಕ್ಷೇಪ",
+        "ಪರಿಪೂರ್ಣತೆ",
+        "ಯಾವಾಗಲೂ ವೆಚ್ಚ ಇಳಿಕೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321655",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Disaggregated Prefill/Decode: NVIDIA Dynamo and llm-d — Disaggregated Serving",
+  "titleKn": "Disaggregated Prefill/Decode: NVIDIA Dynamo ಮತ್ತು llm-d — Disaggregated Serving",
+  "desc": "Separate worker pools handle prefill and decode, with the KV cache transferred between them.",
+  "descKn": "ಪ್ರತ್ಯೇಕ worker ಪೂಲ್‌ಗಳು prefill ಮತ್ತು decode ನಿರ್ವಹಿಸುತ್ತವೆ; KV cache ಅವುಗಳ ನಡುವೆ ವರ್ಗಾಯಿಸಲಾಗುತ್ತದೆ.",
+  "objectives": [
+   "Describe the two-pool architecture.",
+   "Explain KV transfer cost."
+  ],
+  "objectivesKn": [
+   "ಎರಡು-ಪೂಲ್ ವಾಸ್ತುಶಿಲ್ಪ ವಿವರಿಸಿ.",
+   "KV ವರ್ಗಾವಣೆ ವೆಚ್ಚ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Disaggregated Prefill/Decode: NVIDIA Dynamo and llm-d — Disaggregated Serving",
+     "textKn": "Disaggregated Prefill/Decode: NVIDIA Dynamo and llm-d — Disaggregated Serving",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Disaggregated Prefill/Decode: NVIDIA Dynamo and llm-d",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Two Pools",
+     "headingKn": "ಎರಡು ಪೂಲ್‌ಗಳು",
+     "bodyEn": "Prefill workers process prompts and hand the resulting KV cache to decode workers. Each pool can be sized and tuned for its own bottleneck and latency goal.",
+     "bodyKn": "prefill workers prompts ಸಂಸ್ಕರಿಸಿ ಫಲಿತ KV cache ಅನ್ನು decode workers ಗೆ ಹಸ್ತಾಂತರಿಸುತ್ತವೆ. ಪ್ರತಿ ಪೂಲ್ ತನ್ನ ಅಡಚಣೆ ಮತ್ತು ವಿಳಂಬ ಗುರಿಗೆ ಗಾತ್ರ ಮತ್ತು ಹೊಂದಾಣಿಕೆ ಮಾಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Transfer Cost",
+     "headingKn": "ವರ್ಗಾವಣೆ ವೆಚ್ಚ",
+     "bodyEn": "Moving the KV cache needs a fast interconnect. If transfer is slow it erases the benefit, so the approach suits deployments with high-bandwidth links.",
+     "bodyKn": "KV cache ಸರಿಸಲು ವೇಗದ interconnect ಬೇಕು. ವರ್ಗಾವಣೆ ನಿಧಾನವಾದರೆ ಲಾಭ ಅಳಿಸುತ್ತದೆ; ಆದ್ದರಿಂದ ಹೆಚ್ಚಿನ-bandwidth ಲಿಂಕ್ ಇರುವ ನಿಯೋಜನೆಗೆ ಸೂಕ್ತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Separate prefill and decode pools.\n• Needs a fast link to move the KV cache.",
+     "bodyKn": "• ಪ್ರತ್ಯೇಕ prefill ಮತ್ತು decode ಪೂಲ್.\n• KV ಸರಿಸಲು ವೇಗದ ಲಿಂಕ್."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Prefill workers hand over:",
+       "qKn": "prefill workers ಹಸ್ತಾಂತರಿಸುವುದು:",
+       "opts": [
+        "KV cache",
+        "Fonts",
+        "Users",
+        "Nothing"
+       ],
+       "optsKn": [
+        "KV cache",
+        "ಫಾಂಟ್",
+        "ಬಳಕೆದಾರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Slow transfer:",
+       "qKn": "ನಿಧಾನ ವರ್ಗಾವಣೆ:",
+       "opts": [
+        "Erases the benefit",
+        "Improves it",
+        "Is required",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಲಾಭ ಅಳಿಸುತ್ತದೆ",
+        "ಸುಧಾರಿಸುತ್ತದೆ",
+        "ಅಗತ್ಯ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Each pool can be:",
+       "qKn": "ಪ್ರತಿ ಪೂಲ್:",
+       "opts": [
+        "Sized for its own bottleneck",
+        "Ignored",
+        "Identical always",
+        "Removed"
+       ],
+       "optsKn": [
+        "ತನ್ನ ಅಡಚಣೆಗೆ ಗಾತ್ರ",
+        "ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಯಾವಾಗಲೂ ಒಂದೇ",
+        "ತೆಗೆಯಲ್ಪಟ್ಟ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321655",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Disaggregated Prefill/Decode: NVIDIA Dynamo and llm-d — When to Disaggregate",
+  "titleKn": "Disaggregated Prefill/Decode: NVIDIA Dynamo ಮತ್ತು llm-d — ಯಾವಾಗ Disaggregate ಮಾಡಬೇಕು",
+  "desc": "Disaggregation helps at scale with strict latency goals and long prompts; smaller deployments may not need it.",
+  "descKn": "disaggregation ಕಟ್ಟುನಿಟ್ಟಿನ ವಿಳಂಬ ಗುರಿ ಮತ್ತು ಉದ್ದ prompts ಇರುವ ದೊಡ್ಡ ಪ್ರಮಾಣದಲ್ಲಿ ಸಹಾಯ; ಚಿಕ್ಕ ನಿಯೋಜನೆಗೆ ಬೇಕಿಲ್ಲದಿರಬಹುದು.",
+  "objectives": [
+   "Decide using workload shape and scale.",
+   "Compare with chunked prefill first."
+  ],
+  "objectivesKn": [
+   "ಕೆಲಸ ಆಕಾರ ಮತ್ತು ಪ್ರಮಾಣದಿಂದ ನಿರ್ಧರಿಸಿ.",
+   "ಮೊದಲು chunked prefill ಗೆ ಹೋಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Disaggregated Prefill/Decode: NVIDIA Dynamo and llm-d — When to Disaggregate",
+     "textKn": "Disaggregated Prefill/Decode: NVIDIA Dynamo and llm-d — When to Disaggregate",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Disaggregated Prefill/Decode: NVIDIA Dynamo and llm-d",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Workload Shape",
+     "headingKn": "ಕೆಲಸದ ಆಕಾರ",
+     "bodyEn": "Long prompts with short outputs, or strict TTFT and inter-token goals at high load, benefit most. Short chats on small clusters usually do not.",
+     "bodyKn": "ಚಿಕ್ಕ ಔಟ್‌ಪುಟ್‌ನ ಉದ್ದ prompts, ಅಥವಾ ಹೆಚ್ಚು ಹೊರೆಯಲ್ಲಿ ಕಟ್ಟುನಿಟ್ಟಿನ TTFT ಮತ್ತು inter-token ಗುರಿ ಹೆಚ್ಚು ಲಾಭ. ಸಣ್ಣ ಕ್ಲಸ್ಟರ್‌ನ ಚಿಕ್ಕ ಚಾಟ್‌ಗಳಿಗೆ ಸಾಮಾನ್ಯವಾಗಿ ಇಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Try Simpler Options First",
+     "headingKn": "ಮೊದಲು ಸರಳ ಆಯ್ಕೆ ಪ್ರಯತ್ನಿಸಿ",
+     "bodyEn": "Chunked prefill and better batching may meet your goals with less complexity. Adopt disaggregation only if measurements show remaining problems.",
+     "bodyKn": "chunked prefill ಮತ್ತು ಉತ್ತಮ batching ಕಡಿಮೆ ಸಂಕೀರ್ಣತೆಯಲ್ಲಿ ನಿಮ್ಮ ಗುರಿ ಪೂರೈಸಬಹುದು. ಅಳತೆ ಉಳಿದ ಸಮಸ್ಯೆ ತೋರಿಸಿದರೆ ಮಾತ್ರ disaggregation ಅಳವಡಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Best for long prompts and strict latency at scale.\n• Try chunked prefill first.",
+     "bodyKn": "• ಉದ್ದ prompts ಮತ್ತು ಕಟ್ಟುನಿಟ್ಟು ವಿಳಂಬಕ್ಕೆ ಉತ್ತಮ.\n• ಮೊದಲು chunked prefill."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Who benefits most?",
+       "qKn": "ಯಾರಿಗೆ ಹೆಚ್ಚು ಲಾಭ?",
+       "opts": [
+        "Long prompts with strict latency at scale",
+        "Tiny clusters",
+        "No traffic",
+        "Static pages"
+       ],
+       "optsKn": [
+        "ಕಟ್ಟುನಿಟ್ಟು ವಿಳಂಬದ ಉದ್ದ prompts",
+        "ಸಣ್ಣ ಕ್ಲಸ್ಟರ್",
+        "ಟ್ರಾಫಿಕ್ ಇಲ್ಲ",
+        "ಸ್ಥಿರ ಪುಟ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Try first:",
+       "qKn": "ಮೊದಲು ಪ್ರಯತ್ನಿಸಿ:",
+       "opts": [
+        "Chunked prefill",
+        "Nothing",
+        "Deleting caches",
+        "More agents"
+       ],
+       "optsKn": [
+        "chunked prefill",
+        "ಏನೂ ಇಲ್ಲ",
+        "caches ಅಳಿಸು",
+        "ಹೆಚ್ಚು agents"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Adopt only if:",
+       "qKn": "ಅಳವಡಿಸಿ ಯಾವಾಗ ಮಾತ್ರ:",
+       "opts": [
+        "Measurements show remaining problems",
+        "It is fashionable",
+        "Always",
+        "Never"
+       ],
+       "optsKn": [
+        "ಅಳತೆ ಉಳಿದ ಸಮಸ್ಯೆ ತೋರಿಸಿದರೆ",
+        "ಫ್ಯಾಷನ್ ಆದರೆ",
+        "ಯಾವಾಗಲೂ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321658",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "vLLM Production Stack with LMCache KV Offloading — The KV Cache Capacity Problem",
+  "titleKn": "vLLM Production Stack ಮತ್ತು LMCache KV Offloading — KV Cache ಸಾಮರ್ಥ್ಯ ಸಮಸ್ಯೆ",
+  "desc": "GPU memory limits how much KV cache can stay resident, so evicted prefixes must be recomputed.",
+  "descKn": "GPU ಮೆಮೊರಿ ಎಷ್ಟು KV cache ಉಳಿಯಬಹುದು ಎಂಬುದನ್ನು ಮಿತಿಗೊಳಿಸುತ್ತದೆ; ತೆಗೆದ prefixes ಮರುಗಣನೆ ಮಾಡಬೇಕು.",
+  "objectives": [
+   "Explain eviction and recomputation.",
+   "Motivate offloading to cheaper tiers."
+  ],
+  "objectivesKn": [
+   "ತೆಗೆಯುವಿಕೆ ಮತ್ತು ಮರುಗಣನೆ ವಿವರಿಸಿ.",
+   "ಅಗ್ಗ ಹಂತಗಳಿಗೆ offloading ಪ್ರೇರಣೆ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "vLLM Production Stack with LMCache KV Offloading — The KV Cache Capacity Problem",
+     "textKn": "vLLM Production Stack with LMCache KV Offloading — The KV Cache Capacity Problem",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in vLLM Production Stack with LMCache KV Offloading",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Limited GPU Memory",
+     "headingKn": "ಸೀಮಿತ GPU ಮೆಮೊರಿ",
+     "bodyEn": "Large models leave limited room for KV cache. Under load, useful prefixes are evicted and later requests must pay for prefill again.",
+     "bodyKn": "ದೊಡ್ಡ ಮಾದರಿಗಳು KV cache ಗೆ ಸೀಮಿತ ಸ್ಥಳ ಬಿಡುತ್ತವೆ. ಹೊರೆಯಲ್ಲಿ ಉಪಯುಕ್ತ prefixes ತೆಗೆಯಲ್ಪಟ್ಟು ನಂತರದ ವಿನಂತಿಗಳು ಮತ್ತೆ prefill ಗೆ ಪಾವತಿಸಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Storage Hierarchy",
+     "headingKn": "ಸಂಗ್ರಹ ಶ್ರೇಣಿ",
+     "bodyEn": "CPU memory and disk are far larger and cheaper than GPU memory. Keeping evicted cache there can be faster than recomputing it.",
+     "bodyKn": "CPU ಮೆಮೊರಿ ಮತ್ತು ಡಿಸ್ಕ್ GPU ಮೆಮೊರಿಗಿಂತ ಬಹಳ ದೊಡ್ಡ ಮತ್ತು ಅಗ್ಗ. ತೆಗೆದ cache ಅಲ್ಲಿಟ್ಟರೆ ಮರುಗಣನೆಗಿಂತ ವೇಗವಾಗಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• GPU memory limits resident KV cache.\n• CPU memory and disk are larger, cheaper tiers.",
+     "bodyKn": "• GPU ಮೆಮೊರಿ KV cache ಮಿತಿ.\n• CPU ಮೆಮೊರಿ, ಡಿಸ್ಕ್ ದೊಡ್ಡ, ಅಗ್ಗ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Evicted prefixes may need:",
+       "qKn": "ತೆಗೆದ prefixes ಬೇಕಾಗಬಹುದು:",
+       "opts": [
+        "Recomputation",
+        "Nothing",
+        "Deletion",
+        "Encryption"
+       ],
+       "optsKn": [
+        "ಮರುಗಣನೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಅಳಿಸುವಿಕೆ",
+        "ಎನ್‌ಕ್ರಿಪ್ಶನ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "CPU memory is:",
+       "qKn": "CPU ಮೆಮೊರಿ:",
+       "opts": [
+        "Larger and cheaper than GPU memory",
+        "Smaller",
+        "Faster than GPU always",
+        "Nothing"
+       ],
+       "optsKn": [
+        "GPU ಮೆಮೊರಿಗಿಂತ ದೊಡ್ಡ ಮತ್ತು ಅಗ್ಗ",
+        "ಚಿಕ್ಕ",
+        "ಯಾವಾಗಲೂ GPU ಗಿಂತ ವೇಗ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Offloading aims to avoid:",
+       "qKn": "offloading ತಪ್ಪಿಸುವುದು:",
+       "opts": [
+        "Repeated prefill",
+        "All memory use",
+        "Users",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪುನರಾವರ್ತಿತ prefill",
+        "ಎಲ್ಲ ಮೆಮೊರಿ ಬಳಕೆ",
+        "ಬಳಕೆದಾರರು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321658",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "vLLM Production Stack with LMCache KV Offloading — KV Offloading and Sharing",
+  "titleKn": "vLLM Production Stack ಮತ್ತು LMCache KV Offloading — KV Offloading ಮತ್ತು ಹಂಚಿಕೆ",
+  "desc": "A cache layer stores KV blocks across GPU, CPU and remote storage and lets replicas reuse each other's work.",
+  "descKn": "cache ಪದರ KV ಬ್ಲಾಕ್‌ಗಳನ್ನು GPU, CPU, ದೂರ ಸಂಗ್ರಹದಲ್ಲಿ ಇಟ್ಟು ಪ್ರತಿಕೃತಿಗಳು ಪರಸ್ಪರ ಕೆಲಸ ಮರುಬಳಸಲು ಬಿಡುತ್ತದೆ.",
+  "objectives": [
+   "Describe tiered KV storage.",
+   "Explain cross-replica reuse."
+  ],
+  "objectivesKn": [
+   "ಶ್ರೇಣಿ KV ಸಂಗ್ರಹ ವಿವರಿಸಿ.",
+   "ಪ್ರತಿಕೃತಿಗಳ ನಡುವೆ ಮರುಬಳಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "vLLM Production Stack with LMCache KV Offloading — KV Offloading and Sharing",
+     "textKn": "vLLM Production Stack with LMCache KV Offloading — KV Offloading and Sharing",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in vLLM Production Stack with LMCache KV Offloading",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Tiered Storage",
+     "headingKn": "ಶ್ರೇಣಿ ಸಂಗ್ರಹ",
+     "bodyEn": "Hot blocks stay in GPU memory, warm ones move to CPU memory and cold ones to disk or remote storage, fetched back when a matching prefix arrives.",
+     "bodyKn": "ಬಿಸಿ ಬ್ಲಾಕ್‌ಗಳು GPU ಮೆಮೊರಿಯಲ್ಲಿ, ಬೆಚ್ಚಗಿನವು CPU ಮೆಮೊರಿಗೆ, ಶೀತವು ಡಿಸ್ಕ್ ಅಥವಾ ದೂರ ಸಂಗ್ರಹಕ್ಕೆ ಹೋಗಿ ಹೊಂದುವ prefix ಬಂದಾಗ ಮರಳಿ ತರಲ್ಪಡುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Sharing Across Replicas",
+     "headingKn": "ಪ್ರತಿಕೃತಿಗಳ ನಡುವೆ ಹಂಚಿಕೆ",
+     "bodyEn": "With a shared cache layer, a prefix computed on one replica can be reused by another, reducing repeated prefill in multi-replica deployments.",
+     "bodyKn": "ಹಂಚಿದ cache ಪದರದೊಂದಿಗೆ ಒಂದು ಪ್ರತಿಕೃತಿ ಲೆಕ್ಕಿಸಿದ prefix ಇನ್ನೊಂದು ಮರುಬಳಸಬಹುದು; ಬಹು-ಪ್ರತಿಕೃತಿ ನಿಯೋಜನೆಯಲ್ಲಿ ಪುನರಾವರ್ತಿತ prefill ಕಡಿಮೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Hot in GPU, warm in CPU, cold on disk.\n• A shared layer lets replicas reuse cache.",
+     "bodyKn": "• ಬಿಸಿ GPU, ಬೆಚ್ಚಗಿನ CPU, ಶೀತ ಡಿಸ್ಕ್.\n• ಹಂಚಿದ ಪದರ ಪ್ರತಿಕೃತಿಗಳ ಮರುಬಳಕೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Cold KV blocks go to:",
+       "qKn": "ಶೀತ KV ಬ್ಲಾಕ್‌ಗಳು:",
+       "opts": [
+        "Disk or remote storage",
+        "GPU registers",
+        "Nowhere",
+        "Screens"
+       ],
+       "optsKn": [
+        "ಡಿಸ್ಕ್ ಅಥವಾ ದೂರ ಸಂಗ್ರಹ",
+        "GPU registers",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಪರದೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A shared layer lets:",
+       "qKn": "ಹಂಚಿದ ಪದರ:",
+       "opts": [
+        "Replicas reuse each other's prefixes",
+        "Nothing",
+        "Deletes caches",
+        "Slows all"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿಕೃತಿಗಳು ಪರಸ್ಪರ prefixes ಮರುಬಳಸುತ್ತವೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "caches ಅಳಿಸುತ್ತದೆ",
+        "ಎಲ್ಲ ನಿಧಾನ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Hot blocks live in:",
+       "qKn": "ಬಿಸಿ ಬ್ಲಾಕ್‌ಗಳು:",
+       "opts": [
+        "GPU memory",
+        "Disk",
+        "Tape",
+        "Nowhere"
+       ],
+       "optsKn": [
+        "GPU ಮೆಮೊರಿ",
+        "ಡಿಸ್ಕ್",
+        "ಟೇಪ್",
+        "ಎಲ್ಲೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321658",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "vLLM Production Stack with LMCache KV Offloading — Running the Stack in Production",
+  "titleKn": "vLLM Production Stack ಮತ್ತು LMCache KV Offloading — ಉತ್ಪಾದನೆಯಲ್ಲಿ Stack ಚಲಾಯಿಸುವುದು",
+  "desc": "A production stack adds routing, autoscaling, monitoring and cache-aware policies around the inference engine.",
+  "descKn": "ಉತ್ಪಾದನಾ stack inference engine ಸುತ್ತ routing, autoscaling, ನಿಗಾ, cache-ಜಾಗೃತ ನೀತಿ ಸೇರಿಸುತ್ತದೆ.",
+  "objectives": [
+   "List production components.",
+   "Measure hit rate and transfer overhead."
+  ],
+  "objectivesKn": [
+   "ಉತ್ಪಾದನಾ ಘಟಕ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "hit ದರ ಮತ್ತು ವರ್ಗಾವಣೆ ಹೊರೆ ಅಳೆಯಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "vLLM Production Stack with LMCache KV Offloading — Running the Stack in Production",
+     "textKn": "vLLM Production Stack with LMCache KV Offloading — Running the Stack in Production",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in vLLM Production Stack with LMCache KV Offloading",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Components",
+     "headingKn": "ಘಟಕಗಳು",
+     "bodyEn": "A router that is aware of cache contents, autoscaling on queue and latency signals, dashboards for hit rate and latency, and config management for engine settings.",
+     "bodyKn": "cache ವಿಷಯ ತಿಳಿದ router, ಸರತಿ ಮತ್ತು ವಿಳಂಬ ಸಂಕೇತಗಳ ಮೇಲೆ autoscaling, hit ದರ ಮತ್ತು ವಿಳಂಬ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್, engine ಸೆಟ್ಟಿಂಗ್‌ಗೆ ಸಂರಚನಾ ನಿರ್ವಹಣೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Does It Pay Off",
+     "headingKn": "ಲಾಭವಾಗುತ್ತದೆಯೇ",
+     "bodyEn": "Fetching from CPU or disk has its own latency. Measure cache hit rate and TTFT with and without offloading on your traffic before enabling it broadly.",
+     "bodyKn": "CPU ಅಥವಾ ಡಿಸ್ಕ್‌ನಿಂದ ತರುವುದಕ್ಕೆ ಸ್ವಂತ ವಿಳಂಬ. ವ್ಯಾಪಕವಾಗಿ ಸಕ್ರಿಯಗೊಳಿಸುವ ಮೊದಲು ನಿಮ್ಮ ಟ್ರಾಫಿಕ್‌ನಲ್ಲಿ offloading ಇಲ್ಲದೆ ಮತ್ತು ಇರುವಾಗ cache hit ದರ ಮತ್ತು TTFT ಅಳೆಯಿರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Router, autoscaling, dashboards and config.\n• Measure hit rate and TTFT with and without offloading.",
+     "bodyKn": "• router, autoscaling, ಡ್ಯಾಶ್‌ಬೋರ್ಡ್, ಸಂರಚನೆ.\n• offloading ಸಹಿತ ಮತ್ತು ರಹಿತ ಅಳತೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Fetching from disk:",
+       "qKn": "ಡಿಸ್ಕ್‌ನಿಂದ ತರುವುದು:",
+       "opts": [
+        "Has its own latency",
+        "Is instant",
+        "Is free",
+        "Never helps"
+       ],
+       "optsKn": [
+        "ಸ್ವಂತ ವಿಳಂಬ ಹೊಂದಿದೆ",
+        "ತಕ್ಷಣ",
+        "ಉಚಿತ",
+        "ಎಂದಿಗೂ ಸಹಾಯ ಮಾಡದು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Before enabling broadly:",
+       "qKn": "ವ್ಯಾಪಕ ಸಕ್ರಿಯಗೊಳಿಸುವ ಮೊದಲು:",
+       "opts": [
+        "Measure with and without",
+        "Guess",
+        "Skip tests",
+        "Delete logs"
+       ],
+       "optsKn": [
+        "ಸಹಿತ ಮತ್ತು ರಹಿತ ಅಳೆಯಿರಿ",
+        "ಊಹೆ",
+        "tests ಬಿಡಿ",
+        "ಲಾಗ್ ಅಳಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A production component:",
+       "qKn": "ಉತ್ಪಾದನಾ ಘಟಕ:",
+       "opts": [
+        "Cache-aware router",
+        "A logo",
+        "A font",
+        "Nothing"
+       ],
+       "optsKn": [
+        "cache-ಜಾಗೃತ router",
+        "ಲೋಗೋ",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32165b",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "AI Gateways: LiteLLM, Portkey, Kong, Bifrost — What a Gateway Does",
+  "titleKn": "AI Gateways: LiteLLM, Portkey, Kong, Bifrost — Gateway ಏನು ಮಾಡುತ್ತದೆ",
+  "desc": "An AI gateway sits between apps and model providers, adding a unified API, keys, limits, caching and logging.",
+  "descKn": "AI gateway ಅಪ್ಲಿಕೇಶನ್ ಮತ್ತು ಮಾದರಿ ಒದಗಿಸುವವರ ನಡುವೆ ಇದ್ದು ಏಕೀಕೃತ API, keys, ಮಿತಿ, caching, ಲಾಗಿಂಗ್ ಸೇರಿಸುತ್ತದೆ.",
+  "objectives": [
+   "List gateway functions.",
+   "Explain the single point of control."
+  ],
+  "objectivesKn": [
+   "gateway ಕಾರ್ಯಗಳ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಏಕ ನಿಯಂತ್ರಣ ಬಿಂದು ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "AI Gateways: LiteLLM, Portkey, Kong, Bifrost — What a Gateway Does",
+     "textKn": "AI Gateways: LiteLLM, Portkey, Kong, Bifrost — What a Gateway Does",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in AI Gateways: LiteLLM, Portkey, Kong, Bifrost",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Central Control",
+     "headingKn": "ಕೇಂದ್ರ ನಿಯಂತ್ರಣ",
+     "bodyEn": "Applications call one endpoint. The gateway holds provider keys, enforces budgets and rate limits, records usage and can cache or retry requests.",
+     "bodyKn": "ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಒಂದು endpoint ಕರೆಯುತ್ತವೆ. gateway ಒದಗಿಸುವವರ keys ಹಿಡಿದು, ಬಜೆಟ್ ಮತ್ತು rate limits ಜಾರಿ ಮಾಡಿ, ಬಳಕೆ ದಾಖಲಿಸಿ, ವಿನಂತಿ cache ಅಥವಾ ಮರುಪ್ರಯತ್ನ ಮಾಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Provider Abstraction",
+     "headingKn": "ಒದಗಿಸುವವರ Abstraction",
+     "bodyEn": "A unified interface lets you swap or add providers without changing application code, which reduces lock-in.",
+     "bodyKn": "ಏಕೀಕೃತ ಇಂಟರ್ಫೇಸ್ ಅಪ್ಲಿಕೇಶನ್ ಕೋಡ್ ಬದಲಿಸದೆ ಒದಗಿಸುವವರನ್ನು ಬದಲಿಸಲು ಅಥವಾ ಸೇರಿಸಲು ಬಿಡುತ್ತದೆ; ಲಾಕ್-ಇನ್ ಕಡಿಮೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• One endpoint; keys, limits and logs centralised.\n• Swap providers without code changes.",
+     "bodyKn": "• ಒಂದು endpoint; keys, ಮಿತಿ, ಲಾಗ್ ಕೇಂದ್ರೀಕೃತ.\n• ಕೋಡ್ ಬದಲಿಸದೆ ಒದಗಿಸುವವರ ಬದಲಾವಣೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A gateway holds:",
+       "qKn": "gateway ಹಿಡಿಯುವುದು:",
+       "opts": [
+        "Provider keys",
+        "Only fonts",
+        "Screens",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಒದಗಿಸುವವರ keys",
+        "ಫಾಂಟ್ ಮಾತ್ರ",
+        "ಪರದೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A unified API reduces:",
+       "qKn": "ಏಕೀಕೃತ API ಕಡಿಮೆ ಮಾಡುತ್ತದೆ:",
+       "opts": [
+        "Lock-in",
+        "Quality",
+        "Users",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಲಾಕ್-ಇನ್",
+        "ಗುಣಮಟ್ಟ",
+        "ಬಳಕೆದಾರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A gateway can enforce:",
+       "qKn": "gateway ಜಾರಿ ಮಾಡಬಹುದು:",
+       "opts": [
+        "Budgets and rate limits",
+        "Nothing",
+        "Colours",
+        "Fonts"
+       ],
+       "optsKn": [
+        "ಬಜೆಟ್ ಮತ್ತು rate limits",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32165b",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "AI Gateways: LiteLLM, Portkey, Kong, Bifrost — Policies at the Gateway",
+  "titleKn": "AI Gateways: LiteLLM, Portkey, Kong, Bifrost — Gateway ನಲ್ಲಿ ನೀತಿಗಳು",
+  "desc": "Apply guardrails, PII redaction, per-team quotas and routing rules centrally rather than in every app.",
+  "descKn": "ಪ್ರತಿ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ಅಲ್ಲ, ಕೇಂದ್ರೀಯವಾಗಿ guardrails, PII ಮರೆಮಾಚುವಿಕೆ, ತಂಡ quotas, routing ನಿಯಮ ಅನ್ವಯಿಸಿ.",
+  "objectives": [
+   "Centralise safety and cost policy.",
+   "Give teams virtual keys with budgets."
+  ],
+  "objectivesKn": [
+   "ಸುರಕ್ಷತೆ ಮತ್ತು ವೆಚ್ಚ ನೀತಿ ಕೇಂದ್ರೀಕರಿಸಿ.",
+   "ತಂಡಗಳಿಗೆ ಬಜೆಟ್ ಇರುವ virtual keys ನೀಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "AI Gateways: LiteLLM, Portkey, Kong, Bifrost — Policies at the Gateway",
+     "textKn": "AI Gateways: LiteLLM, Portkey, Kong, Bifrost — Policies at the Gateway",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in AI Gateways: LiteLLM, Portkey, Kong, Bifrost",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Central Guardrails",
+     "headingKn": "ಕೇಂದ್ರ Guardrails",
+     "bodyEn": "Content filters, PII redaction and allowed-model lists can be enforced once at the gateway so every app benefits and none can forget them.",
+     "bodyKn": "ವಿಷಯ ಫಿಲ್ಟರ್, PII ಮರೆಮಾಚುವಿಕೆ, ಅನುಮತಿತ-ಮಾದರಿ ಪಟ್ಟಿ gateway ನಲ್ಲಿ ಒಮ್ಮೆ ಜಾರಿ ಮಾಡಬಹುದು; ಪ್ರತಿ ಅಪ್ಲಿಕೇಶನ್ ಲಾಭ ಪಡೆಯುತ್ತದೆ, ಯಾವುದೂ ಮರೆಯುವುದಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Virtual Keys and Budgets",
+     "headingKn": "Virtual Keys ಮತ್ತು ಬಜೆಟ್",
+     "bodyEn": "Issue each team a virtual key with its own budget and rate limits. Usage and cost are attributed per key and a runaway app cannot exhaust everyone's quota.",
+     "bodyKn": "ಪ್ರತಿ ತಂಡಕ್ಕೆ ಸ್ವಂತ ಬಜೆಟ್ ಮತ್ತು rate limits ಇರುವ virtual key ನೀಡಿ. ಬಳಕೆ ಮತ್ತು ವೆಚ್ಚ ಪ್ರತಿ key ಗೆ ಆರೋಪಿತ, ನಿಯಂತ್ರಣ ತಪ್ಪಿದ ಅಪ್ಲಿಕೇಶನ್ ಎಲ್ಲರ quota ಮುಗಿಸಲಾರದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Enforce filters and PII rules once.\n• Virtual keys attribute cost and isolate runaway apps.",
+     "bodyKn": "• ಫಿಲ್ಟರ್, PII ನಿಯಮ ಒಮ್ಮೆ ಜಾರಿ.\n• virtual keys ವೆಚ್ಚ ಆರೋಪ, ಪ್ರತ್ಯೇಕತೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A virtual key gives a team:",
+       "qKn": "virtual key ತಂಡಕ್ಕೆ ನೀಡುತ್ತದೆ:",
+       "opts": [
+        "Its own budget and limits",
+        "Unlimited access",
+        "Nothing",
+        "A logo"
+       ],
+       "optsKn": [
+        "ಸ್ವಂತ ಬಜೆಟ್ ಮತ್ತು ಮಿತಿ",
+        "ಅನಿಯಮಿತ ಪ್ರವೇಶ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Central guardrails mean:",
+       "qKn": "ಕೇಂದ್ರ guardrails ಅರ್ಥ:",
+       "opts": [
+        "Every app is covered",
+        "No app is covered",
+        "Fewer rules",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ ಅಪ್ಲಿಕೇಶನ್ ಒಳಗೊಂಡಿದೆ",
+        "ಯಾವುದೂ ಇಲ್ಲ",
+        "ಕಡಿಮೆ ನಿಯಮ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A runaway app:",
+       "qKn": "ನಿಯಂತ್ರಣ ತಪ್ಪಿದ ಅಪ್ಲಿಕೇಶನ್:",
+       "opts": [
+        "Cannot exhaust others' quota",
+        "Exhausts all quota",
+        "Is invisible",
+        "Fixes itself"
+       ],
+       "optsKn": [
+        "ಇತರರ quota ಮುಗಿಸಲಾರದು",
+        "ಎಲ್ಲ quota ಮುಗಿಸುತ್ತದೆ",
+        "ಅದೃಶ್ಯ",
+        "ತಾನೇ ಸರಿಯಾಗುತ್ತದೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32165b",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "AI Gateways: LiteLLM, Portkey, Kong, Bifrost — Choosing and Operating a Gateway",
+  "titleKn": "AI Gateways: LiteLLM, Portkey, Kong, Bifrost — Gateway ಆಯ್ಕೆ ಮತ್ತು ನಿರ್ವಹಣೆ",
+  "desc": "Weigh added latency, availability and feature fit, and treat the gateway as critical infrastructure.",
+  "descKn": "ಸೇರಿದ ವಿಳಂಬ, ಲಭ್ಯತೆ, ವೈಶಿಷ್ಟ್ಯ ಹೊಂದಾಣಿಕೆ ತೂಗಿ, gateway ಅನ್ನು ನಿರ್ಣಾಯಕ ಮೂಲಸೌಕರ್ಯವಾಗಿ ಪರಿಗಣಿಸಿ.",
+  "objectives": [
+   "Measure gateway overhead.",
+   "Avoid making it a single point of failure."
+  ],
+  "objectivesKn": [
+   "gateway ಹೊರೆ ಅಳೆಯಿರಿ.",
+   "ಅದನ್ನು ಒಂದೇ ವೈಫಲ್ಯ ಬಿಂದುವಾಗಿಸಬೇಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "AI Gateways: LiteLLM, Portkey, Kong, Bifrost — Choosing and Operating a Gateway",
+     "textKn": "AI Gateways: LiteLLM, Portkey, Kong, Bifrost — Choosing and Operating a Gateway",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in AI Gateways: LiteLLM, Portkey, Kong, Bifrost",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Overhead and Fit",
+     "headingKn": "ಹೊರೆ ಮತ್ತು ಹೊಂದಾಣಿಕೆ",
+     "bodyEn": "A gateway adds a network hop and some processing time. Measure it, and check that it supports the providers, features and deployment model you need.",
+     "bodyKn": "gateway ಒಂದು ನೆಟ್‌ವರ್ಕ್ hop ಮತ್ತು ಸ್ವಲ್ಪ ಸಂಸ್ಕರಣಾ ಸಮಯ ಸೇರಿಸುತ್ತದೆ. ಅಳೆಯಿರಿ, ನಿಮಗೆ ಬೇಕಾದ ಒದಗಿಸುವವರು, ವೈಶಿಷ್ಟ್ಯ, ನಿಯೋಜನೆ ಮಾದರಿ ಬೆಂಬಲಿಸುತ್ತದೆ ಎಂದು ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "High Availability",
+     "headingKn": "ಹೆಚ್ಚಿನ ಲಭ್ಯತೆ",
+     "bodyEn": "If every request passes through the gateway, its outage is your outage. Run multiple instances, monitor it and plan a bypass or fallback path.",
+     "bodyKn": "ಪ್ರತಿ ವಿನಂತಿ gateway ಮೂಲಕ ಹೋದರೆ ಅದರ ಸ್ಥಗಿತ ನಿಮ್ಮ ಸ್ಥಗಿತ. ಹಲವು instances ಚಲಾಯಿಸಿ, ನಿಗಾ ಇಡಿ, bypass ಅಥವಾ fallback ಹಾದಿ ಯೋಜಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Measure added latency and check feature fit.\n• Run redundantly with a fallback path.",
+     "bodyKn": "• ಸೇರಿದ ವಿಳಂಬ ಅಳೆಯಿರಿ.\n• ಪುನರಾವರ್ತಿತ ಚಾಲನೆ, fallback ಹಾದಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A gateway adds:",
+       "qKn": "gateway ಸೇರಿಸುವುದು:",
+       "opts": [
+        "A network hop",
+        "Nothing",
+        "A GPU",
+        "A font"
+       ],
+       "optsKn": [
+        "ನೆಟ್‌ವರ್ಕ್ hop",
+        "ಏನೂ ಇಲ್ಲ",
+        "GPU",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "If the gateway fails:",
+       "qKn": "gateway ವಿಫಲವಾದರೆ:",
+       "opts": [
+        "All requests are affected",
+        "Nothing happens",
+        "Only one app",
+        "Nobody notices"
+       ],
+       "optsKn": [
+        "ಎಲ್ಲ ವಿನಂತಿ ಪರಿಣಾಮ",
+        "ಏನೂ ಆಗದು",
+        "ಒಂದು ಅಪ್ಲಿಕೇಶನ್ ಮಾತ್ರ",
+        "ಯಾರೂ ಗಮನಿಸರು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Mitigate with:",
+       "qKn": "ಪರಿಹಾರ:",
+       "opts": [
+        "Multiple instances and fallback",
+        "A single instance",
+        "Nothing",
+        "Deleting logs"
+       ],
+       "optsKn": [
+        "ಹಲವು instances ಮತ್ತು fallback",
+        "ಒಂದೇ instance",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲಾಗ್ ಅಳಿಸು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32165e",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Shadow, Canary and Progressive Deployment — Why LLM Changes Need Careful Rollout",
+  "titleKn": "Shadow, Canary ಮತ್ತು ಕ್ರಮೇಣ ನಿಯೋಜನೆ — LLM ಬದಲಾವಣೆಗೆ ಎಚ್ಚರದ ಜಾರಿ ಏಕೆ",
+  "desc": "A prompt or model change can shift behaviour in ways tests miss, so release it gradually and watch.",
+  "descKn": "prompt ಅಥವಾ ಮಾದರಿ ಬದಲಾವಣೆ tests ತಪ್ಪಿಸುವ ರೀತಿ ವರ್ತನೆ ಬದಲಿಸಬಹುದು; ಕ್ರಮೇಣ ಬಿಡುಗಡೆ ಮಾಡಿ ಗಮನಿಸಿ.",
+  "objectives": [
+   "Explain why offline tests are not enough.",
+   "Define blast radius."
+  ],
+  "objectivesKn": [
+   "ಆಫ್‌ಲೈನ್ tests ಸಾಲದು ಏಕೆ ವಿವರಿಸಿ.",
+   "blast radius ವ್ಯಾಖ್ಯಾನಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Shadow, Canary and Progressive Deployment — Why LLM Changes Need Careful Rollout",
+     "textKn": "Shadow, Canary and Progressive Deployment — Why LLM Changes Need Careful Rollout",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Shadow, Canary, and Progressive Deployment",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Tests Miss Things",
+     "headingKn": "Tests ಕೆಲವನ್ನು ತಪ್ಪಿಸುತ್ತವೆ",
+     "bodyEn": "Real users send inputs that evals never imagined. A change that passes evals can still hurt on live traffic.",
+     "bodyKn": "ನಿಜ ಬಳಕೆದಾರರು evals ಕಲ್ಪಿಸದ ಇನ್‌ಪುಟ್ ಕಳುಹಿಸುತ್ತಾರೆ. evals ಪಾಸ್ ಮಾಡಿದ ಬದಲಾವಣೆ ನಿಜ ಟ್ರಾಫಿಕ್‌ನಲ್ಲಿ ಇನ್ನೂ ಹಾನಿ ಮಾಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Limit the Blast Radius",
+     "headingKn": "Blast Radius ಮಿತಿ",
+     "bodyEn": "Expose a change to a small share of traffic first, so a problem affects few users and can be reversed quickly.",
+     "bodyKn": "ಬದಲಾವಣೆಯನ್ನು ಮೊದಲು ಟ್ರಾಫಿಕ್‌ನ ಸಣ್ಣ ಭಾಗಕ್ಕೆ ತೆರೆಯಿರಿ; ಸಮಸ್ಯೆ ಕಡಿಮೆ ಬಳಕೆದಾರರ ಮೇಲೆ ಪರಿಣಾಮ ಮತ್ತು ಬೇಗ ಹಿಂತೆಗೆಯಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Live traffic reveals what evals miss.\n• Start with a small share of users.",
+     "bodyKn": "• ನಿಜ ಟ್ರಾಫಿಕ್ evals ತಪ್ಪಿಸಿದ್ದನ್ನು ತೋರಿಸುತ್ತದೆ.\n• ಸಣ್ಣ ಭಾಗದಿಂದ ಆರಂಭ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why not rely on evals alone?",
+       "qKn": "evals ಮಾತ್ರ ಏಕೆ ಅವಲಂಬಿಸಬಾರದು?",
+       "opts": [
+        "Users send unanticipated inputs",
+        "Evals are illegal",
+        "Evals are slow",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಬಳಕೆದಾರರು ಊಹಿಸದ ಇನ್‌ಪುಟ್ ಕಳುಹಿಸುತ್ತಾರೆ",
+        "evals ಕಾನೂನುಬಾಹಿರ",
+        "evals ನಿಧಾನ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Blast radius is:",
+       "qKn": "blast radius:",
+       "opts": [
+        "How many users a problem affects",
+        "A font",
+        "A model size",
+        "A cost"
+       ],
+       "optsKn": [
+        "ಸಮಸ್ಯೆ ಎಷ್ಟು ಬಳಕೆದಾರರ ಮೇಲೆ ಪರಿಣಾಮ",
+        "ಫಾಂಟ್",
+        "ಮಾದರಿ ಗಾತ್ರ",
+        "ವೆಚ್ಚ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Start rollout with:",
+       "qKn": "ಜಾರಿ ಆರಂಭ:",
+       "opts": [
+        "A small share of traffic",
+        "All traffic",
+        "No traffic ever",
+        "Only staff"
+       ],
+       "optsKn": [
+        "ಟ್ರಾಫಿಕ್‌ನ ಸಣ್ಣ ಭಾಗ",
+        "ಎಲ್ಲ ಟ್ರಾಫಿಕ್",
+        "ಎಂದಿಗೂ ಟ್ರಾಫಿಕ್ ಇಲ್ಲ",
+        "ಸಿಬ್ಬಂದಿ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32165e",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Shadow, Canary and Progressive Deployment — Shadow and Canary",
+  "titleKn": "Shadow, Canary ಮತ್ತು ಕ್ರಮೇಣ ನಿಯೋಜನೆ — Shadow ಮತ್ತು Canary",
+  "desc": "Shadow runs the new version on copies of traffic without affecting users; canary serves it to a small live share.",
+  "descKn": "shadow ಹೊಸ ಆವೃತ್ತಿಯನ್ನು ಬಳಕೆದಾರರ ಮೇಲೆ ಪರಿಣಾಮವಿಲ್ಲದೆ ಟ್ರಾಫಿಕ್ ನಕಲುಗಳ ಮೇಲೆ ಚಲಾಯಿಸುತ್ತದೆ; canary ಸಣ್ಣ ನೇರ ಭಾಗಕ್ಕೆ ನೀಡುತ್ತದೆ.",
+  "objectives": [
+   "Contrast shadow and canary.",
+   "Compare outputs safely in shadow mode."
+  ],
+  "objectivesKn": [
+   "shadow ಮತ್ತು canary ಹೋಲಿಸಿ.",
+   "shadow ಮೋಡ್‌ನಲ್ಲಿ ಔಟ್‌ಪುಟ್ ಸುರಕ್ಷಿತವಾಗಿ ಹೋಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Shadow, Canary and Progressive Deployment — Shadow and Canary",
+     "textKn": "Shadow, Canary and Progressive Deployment — Shadow and Canary",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Shadow, Canary, and Progressive Deployment",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Shadow Mode",
+     "headingKn": "Shadow ಮೋಡ್",
+     "bodyEn": "The new version receives a copy of live requests but its answers are only logged, never shown. You can compare quality, cost and latency without risk.",
+     "bodyKn": "ಹೊಸ ಆವೃತ್ತಿ ನೇರ ವಿನಂತಿಗಳ ನಕಲು ಪಡೆಯುತ್ತದೆ ಆದರೆ ಅದರ ಉತ್ತರ ಕೇವಲ ದಾಖಲಿಸಲ್ಪಡುತ್ತದೆ, ತೋರಿಸಲ್ಪಡುವುದಿಲ್ಲ. ಅಪಾಯವಿಲ್ಲದೆ ಗುಣಮಟ್ಟ, ವೆಚ್ಚ, ವಿಳಂಬ ಹೋಲಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Canary Release",
+     "headingKn": "Canary ಬಿಡುಗಡೆ",
+     "bodyEn": "A canary serves real answers to a small percentage of users, with automatic checks on errors, latency and quality signals before widening.",
+     "bodyKn": "canary ಸಣ್ಣ ಶೇಕಡ ಬಳಕೆದಾರರಿಗೆ ನಿಜ ಉತ್ತರ ನೀಡುತ್ತದೆ; ವಿಸ್ತರಿಸುವ ಮೊದಲು ದೋಷ, ವಿಳಂಬ, ಗುಣಮಟ್ಟ ಸಂಕೇತಗಳ ಮೇಲೆ ಸ್ವಯಂ ಪರಿಶೀಲನೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Shadow: log answers without showing them.\n• Canary: small real share with automatic checks.",
+     "bodyKn": "• shadow: ಉತ್ತರ ತೋರಿಸದೆ ದಾಖಲು.\n• canary: ಸಣ್ಣ ನಿಜ ಭಾಗ, ಸ್ವಯಂ ಪರಿಶೀಲನೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "In shadow mode answers are:",
+       "qKn": "shadow ಮೋಡ್‌ನಲ್ಲಿ ಉತ್ತರ:",
+       "opts": [
+        "Logged, not shown",
+        "Shown to all",
+        "Deleted",
+        "Encrypted"
+       ],
+       "optsKn": [
+        "ದಾಖಲು, ತೋರಿಸುವುದಿಲ್ಲ",
+        "ಎಲ್ಲರಿಗೆ ತೋರಿಸು",
+        "ಅಳಿಸು",
+        "ಎನ್‌ಕ್ರಿಪ್ಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Canary serves:",
+       "qKn": "canary ನೀಡುವುದು:",
+       "opts": [
+        "A small percentage of users",
+        "Nobody",
+        "Everyone",
+        "Bots only"
+       ],
+       "optsKn": [
+        "ಸಣ್ಣ ಶೇಕಡ ಬಳಕೆದಾರರಿಗೆ",
+        "ಯಾರಿಗೂ ಇಲ್ಲ",
+        "ಎಲ್ಲರಿಗೆ",
+        "bots ಗೆ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Shadow gives:",
+       "qKn": "shadow ನೀಡುವುದು:",
+       "opts": [
+        "Risk-free comparison",
+        "User risk",
+        "Nothing",
+        "Cost only"
+       ],
+       "optsKn": [
+        "ಅಪಾಯರಹಿತ ಹೋಲಿಕೆ",
+        "ಬಳಕೆದಾರ ಅಪಾಯ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ವೆಚ್ಚ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b32165e",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Shadow, Canary and Progressive Deployment — Progressive Rollout and Rollback",
+  "titleKn": "Shadow, Canary ಮತ್ತು ಕ್ರಮೇಣ ನಿಯೋಜನೆ — ಕ್ರಮೇಣ ಜಾರಿ ಮತ್ತು Rollback",
+  "desc": "Increase exposure in stages guarded by metrics, and roll back automatically when thresholds are breached.",
+  "descKn": "ಮೆಟ್ರಿಕ್ಸ್ ಕಾವಲಿನಲ್ಲಿ ಹಂತ ಹಂತವಾಗಿ ಒಡ್ಡುವಿಕೆ ಹೆಚ್ಚಿಸಿ, ಮಿತಿ ಮೀರಿದಾಗ ಸ್ವಯಂ rollback ಮಾಡಿ.",
+  "objectives": [
+   "Define promotion and rollback criteria.",
+   "Keep the previous version ready."
+  ],
+  "objectivesKn": [
+   "ಬಡ್ತಿ ಮತ್ತು rollback ಮಾನದಂಡ ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ಹಿಂದಿನ ಆವೃತ್ತಿ ಸಿದ್ಧವಿಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Shadow, Canary and Progressive Deployment — Progressive Rollout and Rollback",
+     "textKn": "Shadow, Canary and Progressive Deployment — Progressive Rollout and Rollback",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Shadow, Canary, and Progressive Deployment",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Staged Promotion",
+     "headingKn": "ಹಂತ ಬಡ್ತಿ",
+     "bodyEn": "Move from a few percent to more only while error rate, latency, cost and quality metrics stay within agreed bounds, and pause if they drift.",
+     "bodyKn": "ದೋಷ ದರ, ವಿಳಂಬ, ವೆಚ್ಚ, ಗುಣಮಟ್ಟ ಮೆಟ್ರಿಕ್ಸ್ ಒಪ್ಪಿದ ಮಿತಿಯೊಳಗಿರುವವರೆಗೆ ಮಾತ್ರ ಕೆಲವು ಶೇಕಡದಿಂದ ಹೆಚ್ಚಿಗೆ ಸಾಗಿ; ಬದಲಾದರೆ ನಿಲ್ಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Fast Rollback",
+     "headingKn": "ವೇಗದ Rollback",
+     "bodyEn": "Keep the previous prompt, model and config deployable so reverting is one action. Rehearse it so it works when you are under pressure.",
+     "bodyKn": "ಹಿಂದಿನ prompt, ಮಾದರಿ, ಸಂರಚನೆ ನಿಯೋಜಿಸಲು ಸಿದ್ಧವಿಡಿ; ಹಿಂತೆಗೆಯುವುದು ಒಂದೇ ಕ್ರಿಯೆ. ಒತ್ತಡದಲ್ಲಿ ಕೆಲಸ ಮಾಡುವಂತೆ ಅಭ್ಯಾಸ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Promote only while metrics stay in bounds.\n• Keep one-step rollback rehearsed.",
+     "bodyKn": "• ಮೆಟ್ರಿಕ್ಸ್ ಮಿತಿಯೊಳಗಿದ್ದರೆ ಮಾತ್ರ ಬಡ್ತಿ.\n• ಒಂದು-ಹಂತ rollback ಅಭ್ಯಾಸ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Promote only while:",
+       "qKn": "ಬಡ್ತಿ ಯಾವಾಗ ಮಾತ್ರ?",
+       "opts": [
+        "Metrics stay within bounds",
+        "Always",
+        "Never",
+        "Randomly"
+       ],
+       "optsKn": [
+        "ಮೆಟ್ರಿಕ್ಸ್ ಮಿತಿಯೊಳಗೆ",
+        "ಯಾವಾಗಲೂ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Rollback should be:",
+       "qKn": "rollback:",
+       "opts": [
+        "One rehearsed action",
+        "Complicated",
+        "Impossible",
+        "Untested"
+       ],
+       "optsKn": [
+        "ಒಂದು ಅಭ್ಯಾಸ ಮಾಡಿದ ಕ್ರಿಯೆ",
+        "ಸಂಕೀರ್ಣ",
+        "ಅಸಾಧ್ಯ",
+        "ಪರೀಕ್ಷಿಸದ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Keep ready:",
+       "qKn": "ಸಿದ್ಧವಿಡಿ:",
+       "opts": [
+        "The previous version",
+        "Nothing",
+        "A logo",
+        "A font"
+       ],
+       "optsKn": [
+        "ಹಿಂದಿನ ಆವೃತ್ತಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲೋಗೋ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

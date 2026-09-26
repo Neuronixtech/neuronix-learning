@@ -1,0 +1,2627 @@
+[
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216a3",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "ASCII Art and Visual Jailbreaks — Encoding Attacks Beyond Plain Text",
+  "titleKn": "ASCII Art ಮತ್ತು ದೃಶ್ಯ Jailbreaks — ಸರಳ ಪಠ್ಯದ ಆಚೆ ಎನ್‌ಕೋಡಿಂಗ್ ದಾಳಿಗಳು",
+  "desc": "Some attacks hide a request in a form the safety filter does not recognise, such as ASCII art, unusual encodings or images.",
+  "descKn": "ಕೆಲವು ದಾಳಿಗಳು ಸುರಕ್ಷತಾ ಫಿಲ್ಟರ್ ಗುರುತಿಸದ ರೂಪದಲ್ಲಿ, ASCII ಕಲೆ, ಅಸಾಮಾನ್ಯ ಎನ್‌ಕೋಡಿಂಗ್ ಅಥವಾ ಚಿತ್ರಗಳಲ್ಲಿ, ವಿನಂತಿ ಮರೆಮಾಡುತ್ತವೆ.",
+  "objectives": [
+   "Explain why format changes can evade filters.",
+   "Recognise the general class of attack."
+  ],
+  "objectivesKn": [
+   "ರೂಪ ಬದಲಾವಣೆ ಫಿಲ್ಟರ್ ತಪ್ಪಿಸುವುದೇಕೆ ವಿವರಿಸಿ.",
+   "ದಾಳಿಯ ಸಾಮಾನ್ಯ ವರ್ಗ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "ASCII Art and Visual Jailbreaks — Encoding Attacks Beyond Plain Text",
+     "textKn": "ASCII Art and Visual Jailbreaks — Encoding Attacks Beyond Plain Text",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in ASCII Art and Visual Jailbreaks",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Mismatch Between Filter and Model",
+     "headingKn": "ಫಿಲ್ಟರ್ ಮತ್ತು ಮಾದರಿ ನಡುವೆ ಹೊಂದಾಣಿಕೆಯಿಲ್ಲ",
+     "bodyEn": "A keyword filter may not catch a sensitive word drawn as ASCII art, yet a capable model can read it. The filter and the model interpret the same input differently.",
+     "bodyKn": "ASCII ಕಲೆಯಾಗಿ ಬಿಡಿಸಿದ ಸೂಕ್ಷ್ಮ ಪದವನ್ನು keyword ಫಿಲ್ಟರ್ ಹಿಡಿಯದಿರಬಹುದು, ಆದರೆ ಸಮರ್ಥ ಮಾದರಿ ಅದನ್ನು ಓದಬಲ್ಲದು. ಫಿಲ್ಟರ್ ಮತ್ತು ಮಾದರಿ ಒಂದೇ ಇನ್‌ಪುಟ್ ಬೇರೆ ರೀತಿ ಅರ್ಥೈಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A General Class",
+     "headingKn": "ಸಾಮಾನ್ಯ ವರ್ಗ",
+     "bodyEn": "The same idea applies to unusual encodings, split words, other languages and text inside images. We discuss the concept and defences, not attack recipes.",
+     "bodyKn": "ಅಸಾಮಾನ್ಯ ಎನ್‌ಕೋಡಿಂಗ್, ಒಡೆದ ಪದ, ಬೇರೆ ಭಾಷೆ, ಚಿತ್ರದೊಳಗಿನ ಪಠ್ಯಕ್ಕೂ ಅದೇ ಕಲ್ಪನೆ ಅನ್ವಯ. ನಾವು ಕಲ್ಪನೆ ಮತ್ತು ರಕ್ಷಣೆ ಚರ್ಚಿಸುತ್ತೇವೆ, ದಾಳಿ ಪಾಕವಿಧಾನ ಅಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Filters and models can read the same input differently.\n• The class includes encodings, other languages and images.",
+     "bodyKn": "• ಫಿಲ್ಟರ್ ಮತ್ತು ಮಾದರಿ ಬೇರೆ ಅರ್ಥೈಸಬಹುದು.\n• ಎನ್‌ಕೋಡಿಂಗ್, ಭಾಷೆ, ಚಿತ್ರ ಸೇರಿವೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A keyword filter may miss:",
+       "qKn": "keyword ಫಿಲ್ಟರ್ ತಪ್ಪಿಸಬಹುದು:",
+       "opts": [
+        "A word drawn as ASCII art",
+        "Plain text",
+        "Nothing",
+        "Fonts"
+       ],
+       "optsKn": [
+        "ASCII ಕಲೆಯಾಗಿ ಬಿಡಿಸಿದ ಪದ",
+        "ಸರಳ ಪಠ್ಯ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The core issue is:",
+       "qKn": "ಮೂಲ ಸಮಸ್ಯೆ:",
+       "opts": [
+        "Filter and model interpret input differently",
+        "Slow models",
+        "Big screens",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಫಿಲ್ಟರ್ ಮತ್ತು ಮಾದರಿ ಬೇರೆ ಅರ್ಥೈಸುತ್ತವೆ",
+        "ನಿಧಾನ ಮಾದರಿ",
+        "ದೊಡ್ಡ ಪರದೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "This lesson covers:",
+       "qKn": "ಈ ಪಾಠ ಒಳಗೊಳ್ಳುವುದು:",
+       "opts": [
+        "Concepts and defences",
+        "Attack recipes",
+        "Nothing",
+        "Ads"
+       ],
+       "optsKn": [
+        "ಕಲ್ಪನೆ ಮತ್ತು ರಕ್ಷಣೆ",
+        "ದಾಳಿ ಪಾಕವಿಧಾನ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಜಾಹೀರಾತು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216a3",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "ASCII Art and Visual Jailbreaks — Multimodal Inputs",
+  "titleKn": "ASCII Art ಮತ್ತು ದೃಶ್ಯ Jailbreaks — ಬಹು-ಮೋಡಲ್ ಇನ್‌ಪುಟ್",
+  "desc": "Models that read images accept text hidden inside them, expanding the attack surface beyond typed prompts.",
+  "descKn": "ಚಿತ್ರ ಓದುವ ಮಾದರಿಗಳು ಅವುಗಳೊಳಗೆ ಅಡಗಿದ ಪಠ್ಯ ಸ್ವೀಕರಿಸುತ್ತವೆ; ಟೈಪ್ ಮಾಡಿದ prompts ಆಚೆ ದಾಳಿ ಮೇಲ್ಮೈ ವಿಸ್ತರಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Explain text in images as an input channel.",
+   "Note that safety training must cover every modality."
+  ],
+  "objectivesKn": [
+   "ಚಿತ್ರದಲ್ಲಿನ ಪಠ್ಯವನ್ನು ಇನ್‌ಪುಟ್ ಮಾರ್ಗವಾಗಿ ವಿವರಿಸಿ.",
+   "ಸುರಕ್ಷತಾ ತರಬೇತಿ ಪ್ರತಿ modality ಒಳಗೊಳ್ಳಬೇಕು ಎಂದು ಗಮನಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "ASCII Art and Visual Jailbreaks — Multimodal Inputs",
+     "textKn": "ASCII Art and Visual Jailbreaks — Multimodal Inputs",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in ASCII Art and Visual Jailbreaks",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Images Are Inputs Too",
+     "headingKn": "ಚಿತ್ರಗಳೂ ಇನ್‌ಪುಟ್",
+     "bodyEn": "A model can read instructions written in an image. If safety checks only inspect the typed text, harmful content in the image can go unchecked.",
+     "bodyKn": "ಮಾದರಿ ಚಿತ್ರದಲ್ಲಿ ಬರೆದ ಸೂಚನೆ ಓದಬಲ್ಲದು. ಸುರಕ್ಷತಾ ಪರಿಶೀಲನೆ ಟೈಪ್ ಮಾಡಿದ ಪಠ್ಯ ಮಾತ್ರ ನೋಡಿದರೆ ಚಿತ್ರದ ಹಾನಿಕರ ವಿಷಯ ಪರಿಶೀಲನೆ ಇಲ್ಲದೆ ಹೋಗಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cover Every Modality",
+     "headingKn": "ಪ್ರತಿ Modality ಒಳಗೊಳ್ಳಿ",
+     "bodyEn": "Apply moderation to text extracted from images, audio transcripts and other modalities, and include them in red-team tests and safety training data.",
+     "bodyKn": "ಚಿತ್ರಗಳಿಂದ ಹೊರತೆಗೆದ ಪಠ್ಯ, ಆಡಿಯೋ transcripts, ಇತರ modalities ಗೆ moderation ಅನ್ವಯಿಸಿ; red-team ಪರೀಕ್ಷೆ ಮತ್ತು ಸುರಕ್ಷತಾ ತರಬೇತಿ ಡೇಟಾದಲ್ಲಿ ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Images can carry instructions.\n• Moderate and test every modality.",
+     "bodyKn": "• ಚಿತ್ರಗಳು ಸೂಚನೆ ಹೊತ್ತಿರಬಹುದು.\n• ಪ್ರತಿ modality moderate ಮತ್ತು ಪರೀಕ್ಷೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Images can contain:",
+       "qKn": "ಚಿತ್ರಗಳು ಹೊಂದಿರಬಹುದು:",
+       "opts": [
+        "Instructions the model reads",
+        "Nothing",
+        "Only colours",
+        "Only fonts"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ ಓದುವ ಸೂಚನೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ ಮಾತ್ರ",
+        "ಫಾಂಟ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Moderation should cover:",
+       "qKn": "moderation ಒಳಗೊಳ್ಳಬೇಕು:",
+       "opts": [
+        "Every modality",
+        "Only typed text",
+        "Nothing",
+        "Only audio"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ modality",
+        "ಟೈಪ್ ಪಠ್ಯ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಆಡಿಯೋ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Include modalities in:",
+       "qKn": "modalities ಸೇರಿಸಿ:",
+       "opts": [
+        "Red-team tests",
+        "Nothing",
+        "Logos",
+        "Fonts"
+       ],
+       "optsKn": [
+        "red-team ಪರೀಕ್ಷೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲೋಗೋ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216a3",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "ASCII Art and Visual Jailbreaks — Defending Against Format Attacks",
+  "titleKn": "ASCII Art ಮತ್ತು ದೃಶ್ಯ Jailbreaks — ರೂಪ ದಾಳಿಗಳ ವಿರುದ್ಧ ರಕ್ಷಣೆ",
+  "desc": "Normalise inputs, use model-based classifiers and test with diverse formats.",
+  "descKn": "ಇನ್‌ಪುಟ್ ಸಾಮಾನ್ಯೀಕರಿಸಿ, ಮಾದರಿ-ಆಧಾರಿತ classifiers ಬಳಸಿ, ವೈವಿಧ್ಯ ರೂಪಗಳಲ್ಲಿ ಪರೀಕ್ಷಿಸಿ.",
+  "objectives": [
+   "Prefer semantic classifiers over keyword lists.",
+   "Include format variation in evaluation."
+  ],
+  "objectivesKn": [
+   "keyword ಪಟ್ಟಿಗಿಂತ ಅರ್ಥ classifiers ಆದ್ಯತೆ.",
+   "ಮೌಲ್ಯಮಾಪನದಲ್ಲಿ ರೂಪ ವ್ಯತ್ಯಾಸ ಸೇರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "ASCII Art and Visual Jailbreaks — Defending Against Format Attacks",
+     "textKn": "ASCII Art and Visual Jailbreaks — Defending Against Format Attacks",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in ASCII Art and Visual Jailbreaks",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Semantic, Not Just Lexical",
+     "headingKn": "ಕೇವಲ ಪದಗಳಲ್ಲ, ಅರ್ಥ",
+     "bodyEn": "A classifier that understands meaning is harder to evade than a list of banned strings. Run it on the same representation the model actually sees.",
+     "bodyKn": "ಅರ್ಥ ಗ್ರಹಿಸುವ classifier ನಿಷೇಧಿತ ಪದಗಳ ಪಟ್ಟಿಗಿಂತ ತಪ್ಪಿಸಲು ಕಷ್ಟ. ಮಾದರಿ ನಿಜವಾಗಿ ನೋಡುವ ಅದೇ ನಿರೂಪಣೆಯ ಮೇಲೆ ಚಲಾಯಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Test With Variation",
+     "headingKn": "ವ್ಯತ್ಯಾಸದೊಂದಿಗೆ ಪರೀಕ್ಷೆ",
+     "bodyEn": "Include reworded, encoded, multilingual and image-based variants of known harmful requests in your safety evals, and track how detection holds up.",
+     "bodyKn": "ನಿಮ್ಮ ಸುರಕ್ಷತಾ evals ನಲ್ಲಿ ತಿಳಿದ ಹಾನಿಕರ ವಿನಂತಿಗಳ ಮರುಪದ, ಎನ್‌ಕೋಡ್, ಬಹು-ಭಾಷಾ, ಚಿತ್ರ-ಆಧಾರಿತ ರೂಪಾಂತರ ಸೇರಿಸಿ; ಪತ್ತೆ ಹೇಗೆ ಉಳಿಯುತ್ತದೆ ಗಮನಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Prefer semantic classifiers on the model's view of input.\n• Evaluate with varied formats.",
+     "bodyKn": "• ಮಾದರಿ ನೋಡುವ ರೂಪದ ಮೇಲೆ ಅರ್ಥ classifiers.\n• ವೈವಿಧ್ಯ ರೂಪಗಳಲ್ಲಿ ಮೌಲ್ಯಮಾಪನ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Harder to evade:",
+       "qKn": "ತಪ್ಪಿಸಲು ಕಷ್ಟ:",
+       "opts": [
+        "A semantic classifier",
+        "A banned-word list",
+        "Nothing",
+        "A logo"
+       ],
+       "optsKn": [
+        "ಅರ್ಥ classifier",
+        "ನಿಷೇಧಿತ ಪದ ಪಟ್ಟಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Run classifiers on:",
+       "qKn": "classifiers ಚಲಾಯಿಸಿ:",
+       "opts": [
+        "What the model actually sees",
+        "Nothing",
+        "Fonts",
+        "Old logs only"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ ನಿಜವಾಗಿ ನೋಡುವುದರ ಮೇಲೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್",
+        "ಹಳೆಯ ಲಾಗ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Evals should include:",
+       "qKn": "evals ಸೇರಿಸಬೇಕು:",
+       "opts": [
+        "Format variants",
+        "Only plain text",
+        "Nothing",
+        "Only images"
+       ],
+       "optsKn": [
+        "ರೂಪ ರೂಪಾಂತರ",
+        "ಸರಳ ಪಠ್ಯ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಚಿತ್ರ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216a6",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Indirect Prompt Injection — How Indirect Injection Differs",
+  "titleKn": "ಪರೋಕ್ಷ Prompt Injection — ಪರೋಕ್ಷ Injection ಹೇಗೆ ಭಿನ್ನ",
+  "desc": "The attacker does not talk to the model directly; they plant instructions in content it will later read.",
+  "descKn": "ದಾಳಿಕೋರ ಮಾದರಿಯೊಂದಿಗೆ ನೇರವಾಗಿ ಮಾತಾಡುವುದಿಲ್ಲ; ಅದು ನಂತರ ಓದುವ ವಿಷಯದಲ್ಲಿ ಸೂಚನೆ ಇಡುತ್ತಾರೆ.",
+  "objectives": [
+   "Define indirect prompt injection.",
+   "List injection surfaces."
+  ],
+  "objectivesKn": [
+   "ಪರೋಕ್ಷ prompt injection ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "injection ಮೇಲ್ಮೈಗಳ ಪಟ್ಟಿ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Indirect Prompt Injection — How Indirect Injection Differs",
+     "textKn": "Indirect Prompt Injection — How Indirect Injection Differs",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Indirect Prompt Injection",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Planted Instructions",
+     "headingKn": "ಇಟ್ಟ ಸೂಚನೆಗಳು",
+     "bodyEn": "Instructions can be hidden in web pages, documents, emails, code comments, tool outputs or retrieved records that an agent processes on the user's behalf.",
+     "bodyKn": "ಸೂಚನೆಗಳು ವೆಬ್ ಪುಟ, ದಾಖಲೆ, ಇಮೇಲ್, ಕೋಡ್ ಕಾಮೆಂಟ್, tool ಔಟ್‌ಪುಟ್ ಅಥವಾ ಬಳಕೆದಾರರ ಪರವಾಗಿ agent ಸಂಸ್ಕರಿಸುವ ಹಿಂಪಡೆದ ದಾಖಲೆಗಳಲ್ಲಿ ಅಡಗಿರಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Victim Is the User",
+     "headingKn": "ಬಲಿಪಶು ಬಳಕೆದಾರ",
+     "bodyEn": "The user never typed the malicious text, yet the agent acts on it with the user's permissions. That is what makes the attack powerful.",
+     "bodyKn": "ಬಳಕೆದಾರ ದುರುದ್ದೇಶದ ಪಠ್ಯ ಟೈಪ್ ಮಾಡಲಿಲ್ಲ, ಆದರೂ agent ಬಳಕೆದಾರರ ಅನುಮತಿಯೊಂದಿಗೆ ಅದರ ಮೇಲೆ ಕ್ರಿಯೆ ಮಾಡುತ್ತದೆ. ಇದೇ ದಾಳಿಯನ್ನು ಶಕ್ತಿಶಾಲಿ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Instructions hide in content the agent reads.\n• The agent acts with the user's permissions.",
+     "bodyKn": "• ಸೂಚನೆ agent ಓದುವ ವಿಷಯದಲ್ಲಿ ಅಡಗಿರುತ್ತದೆ.\n• agent ಬಳಕೆದಾರರ ಅನುಮತಿಯೊಂದಿಗೆ ಕ್ರಿಯೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Indirect injection plants instructions in:",
+       "qKn": "ಪರೋಕ್ಷ injection ಸೂಚನೆ ಇಡುವುದು:",
+       "opts": [
+        "Content the model reads later",
+        "The user's keyboard",
+        "The GPU",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ ನಂತರ ಓದುವ ವಿಷಯ",
+        "ಬಳಕೆದಾರರ ಕೀಬೋರ್ಡ್",
+        "GPU",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Who typed the malicious text?",
+       "qKn": "ದುರುದ್ದೇಶದ ಪಠ್ಯ ಯಾರು ಟೈಪ್ ಮಾಡಿದರು?",
+       "opts": [
+        "Not the user",
+        "The user",
+        "The model",
+        "Nobody exists"
+       ],
+       "optsKn": [
+        "ಬಳಕೆದಾರರಲ್ಲ",
+        "ಬಳಕೆದಾರ",
+        "ಮಾದರಿ",
+        "ಯಾರೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A surface:",
+       "qKn": "ಮೇಲ್ಮೈ:",
+       "opts": [
+        "Emails",
+        "Fonts",
+        "Colours",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಇಮೇಲ್",
+        "ಫಾಂಟ್",
+        "ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216a6",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Indirect Prompt Injection — Impact Patterns",
+  "titleKn": "ಪರೋಕ್ಷ Prompt Injection — ಪರಿಣಾಮ ಮಾದರಿಗಳು",
+  "desc": "Typical harms are data exfiltration, unauthorised actions and manipulation of the agent's answers.",
+  "descKn": "ಸಾಮಾನ್ಯ ಹಾನಿ: ಡೇಟಾ ಸೋರಿಕೆ, ಅನಧಿಕೃತ ಕ್ರಿಯೆ, agent ಉತ್ತರಗಳ ಕುಶಲತೆ.",
+  "objectives": [
+   "Describe exfiltration and action hijacking.",
+   "Identify the lethal combination of access, untrusted content and outbound channels."
+  ],
+  "objectivesKn": [
+   "ಸೋರಿಕೆ ಮತ್ತು ಕ್ರಿಯೆ ಅಪಹರಣ ವಿವರಿಸಿ.",
+   "ಪ್ರವೇಶ, ಅಪನಂಬಿಕೆ ವಿಷಯ, ಹೊರ ಮಾರ್ಗದ ಅಪಾಯಕಾರಿ ಸಂಯೋಜನೆ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Indirect Prompt Injection — Impact Patterns",
+     "textKn": "Indirect Prompt Injection — Impact Patterns",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Indirect Prompt Injection",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Common Impacts",
+     "headingKn": "ಸಾಮಾನ್ಯ ಪರಿಣಾಮ",
+     "bodyEn": "Injected text may cause the agent to leak private data through a link or message, take actions the user did not intend, or slant the summary it returns.",
+     "bodyKn": "ಇಂಜೆಕ್ಟ್ ಪಠ್ಯ agent ಖಾಸಗಿ ಡೇಟಾ ಲಿಂಕ್ ಅಥವಾ ಸಂದೇಶದ ಮೂಲಕ ಸೋರಿಸುವಂತೆ, ಬಳಕೆದಾರ ಉದ್ದೇಶಿಸದ ಕ್ರಿಯೆ ಮಾಡುವಂತೆ, ಅಥವಾ ಹಿಂದಿರುಗಿಸುವ ಸಾರಾಂಶ ತಿರುಚುವಂತೆ ಮಾಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Dangerous Trio",
+     "headingKn": "ಅಪಾಯಕಾರಿ ತ್ರಯ",
+     "bodyEn": "Risk is highest when an agent has access to private data, reads untrusted content and can send data outward. Removing any one of the three greatly reduces it.",
+     "bodyKn": "agent ಗೆ ಖಾಸಗಿ ಡೇಟಾ ಪ್ರವೇಶ, ಅಪನಂಬಿಕೆ ವಿಷಯ ಓದುವಿಕೆ, ಹೊರಗೆ ಡೇಟಾ ಕಳುಹಿಸುವ ಸಾಮರ್ಥ್ಯ ಇದ್ದಾಗ ಅಪಾಯ ಅತ್ಯಧಿಕ. ಮೂರರಲ್ಲಿ ಯಾವುದೇ ಒಂದನ್ನು ತೆಗೆದರೆ ಬಹಳ ಕಡಿಮೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Leakage, hijacked actions and skewed answers.\n• Private data + untrusted content + outbound channel is the danger trio.",
+     "bodyKn": "• ಸೋರಿಕೆ, ಕ್ರಿಯೆ ಅಪಹರಣ, ತಿರುಚಿದ ಉತ್ತರ.\n• ಖಾಸಗಿ ಡೇಟಾ + ಅಪನಂಬಿಕೆ ವಿಷಯ + ಹೊರ ಮಾರ್ಗ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A common harm:",
+       "qKn": "ಸಾಮಾನ್ಯ ಹಾನಿ:",
+       "opts": [
+        "Data exfiltration",
+        "Faster typing",
+        "Better fonts",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಡೇಟಾ ಸೋರಿಕೆ",
+        "ವೇಗದ ಟೈಪಿಂಗ್",
+        "ಉತ್ತಮ ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The dangerous trio includes:",
+       "qKn": "ಅಪಾಯಕಾರಿ ತ್ರಯ ಒಳಗೊಂಡಿದೆ:",
+       "opts": [
+        "Private data access",
+        "Colours",
+        "Sounds",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಖಾಸಗಿ ಡೇಟಾ ಪ್ರವೇಶ",
+        "ಬಣ್ಣ",
+        "ಧ್ವನಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Removing one of the three:",
+       "qKn": "ಮೂರರಲ್ಲಿ ಒಂದು ತೆಗೆಯುವುದು:",
+       "opts": [
+        "Greatly reduces risk",
+        "Increases risk",
+        "Does nothing",
+        "Deletes data"
+       ],
+       "optsKn": [
+        "ಅಪಾಯ ಬಹಳ ಕಡಿಮೆ",
+        "ಅಪಾಯ ಹೆಚ್ಚು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಡೇಟಾ ಅಳಿಸುತ್ತದೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216a6",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Indirect Prompt Injection — Defence in Depth",
+  "titleKn": "ಪರೋಕ್ಷ Prompt Injection — ಆಳವಾದ ರಕ್ಷಣೆ",
+  "desc": "No single filter is reliable, so combine isolation, least privilege, confirmations and monitoring.",
+  "descKn": "ಯಾವುದೇ ಒಂದು ಫಿಲ್ಟರ್ ವಿಶ್ವಾಸಾರ್ಹವಲ್ಲ; ಪ್ರತ್ಯೇಕತೆ, ಕನಿಷ್ಠ ಹಕ್ಕು, ದೃಢೀಕರಣ, ನಿಗಾ ಸೇರಿಸಿ.",
+  "objectives": [
+   "Separate untrusted readers from privileged actors.",
+   "Require confirmation for sensitive actions."
+  ],
+  "objectivesKn": [
+   "ಅಪನಂಬಿಕೆ ಓದುಗರನ್ನು ಹಕ್ಕುಳ್ಳ ಕ್ರಿಯಾಕಾರರಿಂದ ಬೇರ್ಪಡಿಸಿ.",
+   "ಸೂಕ್ಷ್ಮ ಕ್ರಿಯೆಗೆ ದೃಢೀಕರಣ ಕೇಳಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Indirect Prompt Injection — Defence in Depth",
+     "textKn": "Indirect Prompt Injection — Defence in Depth",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Indirect Prompt Injection",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Architectural Controls",
+     "headingKn": "ವಾಸ್ತುಶಿಲ್ಪ ನಿಯಂತ್ರಣ",
+     "bodyEn": "Process untrusted content in a component without dangerous tools, pass only structured results onward, and apply least privilege and allow-lists to outbound actions.",
+     "bodyKn": "ಅಪನಂಬಿಕೆ ವಿಷಯವನ್ನು ಅಪಾಯಕಾರಿ tools ಇಲ್ಲದ ಘಟಕದಲ್ಲಿ ಸಂಸ್ಕರಿಸಿ, ರಚನಾತ್ಮಕ ಫಲಿತಾಂಶ ಮಾತ್ರ ಮುಂದೆ ನೀಡಿ, ಹೊರ ಕ್ರಿಯೆಗಳಿಗೆ ಕನಿಷ್ಠ ಹಕ್ಕು ಮತ್ತು allow-lists ಅನ್ವಯಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Confirm and Monitor",
+     "headingKn": "ದೃಢೀಕರಿಸಿ ಮತ್ತು ಗಮನಿಸಿ",
+     "bodyEn": "Ask the user to approve sensitive actions with the real details shown, log tool calls and alert on unusual outbound requests.",
+     "bodyKn": "ಸೂಕ್ಷ್ಮ ಕ್ರಿಯೆಗಳನ್ನು ನಿಜ ವಿವರ ತೋರಿಸಿ ಬಳಕೆದಾರ ಅನುಮೋದಿಸಲು ಕೇಳಿ, tool ಕರೆ ದಾಖಲಿಸಿ, ಅಸಾಮಾನ್ಯ ಹೊರ ವಿನಂತಿಗೆ alert ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Isolate untrusted reading from privileged action.\n• Confirm sensitive actions; log and alert.",
+     "bodyKn": "• ಅಪನಂಬಿಕೆ ಓದು ಮತ್ತು ಹಕ್ಕುಳ್ಳ ಕ್ರಿಯೆ ಬೇರ್ಪಡಿಸಿ.\n• ಸೂಕ್ಷ್ಮ ಕ್ರಿಯೆ ದೃಢೀಕರಿಸಿ; ಲಾಗ್, alert."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Process untrusted content in a component:",
+       "qKn": "ಅಪನಂಬಿಕೆ ವಿಷಯ ಸಂಸ್ಕರಿಸಿ:",
+       "opts": [
+        "Without dangerous tools",
+        "With admin tools",
+        "With all secrets",
+        "Anywhere"
+       ],
+       "optsKn": [
+        "ಅಪಾಯಕಾರಿ tools ಇಲ್ಲದ ಘಟಕದಲ್ಲಿ",
+        "admin tools ನೊಂದಿಗೆ",
+        "ಎಲ್ಲ secrets ನೊಂದಿಗೆ",
+        "ಎಲ್ಲಿಯಾದರೂ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Sensitive actions need:",
+       "qKn": "ಸೂಕ್ಷ್ಮ ಕ್ರಿಯೆಗೆ:",
+       "opts": [
+        "User confirmation with real details",
+        "Nothing",
+        "Silence",
+        "Speed"
+       ],
+       "optsKn": [
+        "ನಿಜ ವಿವರ ಸಹಿತ ಬಳಕೆದಾರ ದೃಢೀಕರಣ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಮೌನ",
+        "ವೇಗ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A single filter is:",
+       "qKn": "ಒಂದು ಫಿಲ್ಟರ್:",
+       "opts": [
+        "Not reliable alone",
+        "Perfect",
+        "Illegal",
+        "Enough"
+       ],
+       "optsKn": [
+        "ಒಂಟಿಯಾಗಿ ವಿಶ್ವಾಸಾರ್ಹವಲ್ಲ",
+        "ಪರಿಪೂರ್ಣ",
+        "ಕಾನೂನುಬಾಹಿರ",
+        "ಸಾಕು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216a9",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Red-Team Tooling: Garak, Llama Guard, PyRIT — The Tooling Landscape",
+  "titleKn": "Red-Team ಸಾಧನ: Garak, Llama Guard, PyRIT — ಸಾಧನ ಚಿತ್ರಣ",
+  "desc": "Open tools scan models for vulnerabilities, classify risky content and orchestrate multi-turn attacks for defensive testing.",
+  "descKn": "ಮುಕ್ತ ಸಾಧನಗಳು ರಕ್ಷಣಾತ್ಮಕ ಪರೀಕ್ಷೆಗೆ ದೋಷಗಳಿಗಾಗಿ ಮಾದರಿ ಸ್ಕ್ಯಾನ್ ಮಾಡುತ್ತವೆ, ಅಪಾಯಕಾರಿ ವಿಷಯ ವರ್ಗೀಕರಿಸುತ್ತವೆ, ಬಹು-ಸುತ್ತಿನ ದಾಳಿಗಳನ್ನು ಸಂಯೋಜಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Place scanners, classifiers and orchestration frameworks.",
+   "Pick a tool for a task."
+  ],
+  "objectivesKn": [
+   "scanners, classifiers, orchestration ಚೌಕಟ್ಟುಗಳನ್ನು ಗುರುತಿಸಿ.",
+   "ಕೆಲಸಕ್ಕೆ ಸಾಧನ ಆರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Red-Team Tooling: Garak, Llama Guard, PyRIT — The Tooling Landscape",
+     "textKn": "Red-Team Tooling: Garak, Llama Guard, PyRIT — The Tooling Landscape",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Red-Team Tooling: Garak, Llama Guard, PyRIT",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Three Roles",
+     "headingKn": "ಮೂರು ಪಾತ್ರಗಳು",
+     "bodyEn": "A vulnerability scanner such as Garak probes a model with many test prompts. A safety classifier such as Llama Guard judges inputs and outputs. A framework such as PyRIT automates multi-step red-team workflows.",
+     "bodyKn": "Garak ನಂತಹ ದೋಷ ಸ್ಕ್ಯಾನರ್ ಹಲವು ಪರೀಕ್ಷಾ prompts ನಿಂದ ಮಾದರಿ ಪರೀಕ್ಷಿಸುತ್ತದೆ. Llama Guard ನಂತಹ ಸುರಕ್ಷತಾ classifier ಇನ್‌ಪುಟ್ ಮತ್ತು ಔಟ್‌ಪುಟ್ ನಿರ್ಣಯಿಸುತ್ತದೆ. PyRIT ನಂತಹ ಚೌಕಟ್ಟು ಬಹು-ಹಂತದ red-team ಕೆಲಸ ಹರಿವು ಸ್ವಯಂಚಾಲಿತಗೊಳಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Use Responsibly",
+     "headingKn": "ಜವಾಬ್ದಾರಿಯುತ ಬಳಕೆ",
+     "bodyEn": "These tools are for authorised testing of your own systems. Check current documentation, since features and versions change quickly.",
+     "bodyKn": "ಈ ಸಾಧನಗಳು ನಿಮ್ಮದೇ ವ್ಯವಸ್ಥೆಗಳ ಅಧಿಕೃತ ಪರೀಕ್ಷೆಗೆ. ವೈಶಿಷ್ಟ್ಯ ಮತ್ತು ಆವೃತ್ತಿ ವೇಗವಾಗಿ ಬದಲಾಗುವುದರಿಂದ ಪ್ರಸ್ತುತ ದಾಖಲೆ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Scanner, classifier and orchestration roles.\n• Use on your own systems with authorisation.",
+     "bodyKn": "• ಸ್ಕ್ಯಾನರ್, classifier, orchestration ಪಾತ್ರ.\n• ಅಧಿಕಾರದೊಂದಿಗೆ ನಿಮ್ಮದೇ ವ್ಯವಸ್ಥೆಯಲ್ಲಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A classifier such as Llama Guard:",
+       "qKn": "Llama Guard ನಂತಹ classifier:",
+       "opts": [
+        "Judges inputs and outputs",
+        "Draws images",
+        "Trains GPUs",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಇನ್‌ಪುಟ್ ಮತ್ತು ಔಟ್‌ಪುಟ್ ನಿರ್ಣಯಿಸುತ್ತದೆ",
+        "ಚಿತ್ರ ಬಿಡಿಸುತ್ತದೆ",
+        "GPU ತರಬೇತಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A scanner:",
+       "qKn": "ಸ್ಕ್ಯಾನರ್:",
+       "opts": [
+        "Probes a model with many test prompts",
+        "Prints files",
+        "Sleeps",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹಲವು ಪರೀಕ್ಷಾ prompts ನಿಂದ ಮಾದರಿ ಪರೀಕ್ಷಿಸುತ್ತದೆ",
+        "ಫೈಲ್ ಮುದ್ರಿಸುತ್ತದೆ",
+        "ನಿದ್ರೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Use tools on:",
+       "qKn": "ಸಾಧನ ಬಳಕೆ:",
+       "opts": [
+        "Systems you are authorised to test",
+        "Anyone's system",
+        "Nothing",
+        "Strangers"
+       ],
+       "optsKn": [
+        "ಪರೀಕ್ಷಿಸಲು ಅಧಿಕೃತ ವ್ಯವಸ್ಥೆ",
+        "ಯಾರದೇ ವ್ಯವಸ್ಥೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಅಪರಿಚಿತರು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216a9",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Red-Team Tooling: Garak, Llama Guard, PyRIT — Building a Red-Team Pipeline",
+  "titleKn": "Red-Team ಸಾಧನ: Garak, Llama Guard, PyRIT — Red-Team ಪೈಪ್‌ಲೈನ್ ನಿರ್ಮಾಣ",
+  "desc": "Combine scanning, classification and human review in a repeatable pipeline that runs on each release.",
+  "descKn": "ಪ್ರತಿ ಬಿಡುಗಡೆಯಲ್ಲಿ ಚಲಿಸುವ ಪುನರಾವರ್ತಿತ ಪೈಪ್‌ಲೈನ್‌ನಲ್ಲಿ ಸ್ಕ್ಯಾನಿಂಗ್, ವರ್ಗೀಕರಣ, ಮಾನವ ವಿಮರ್ಶೆ ಸೇರಿಸಿ.",
+  "objectives": [
+   "Automate scans in CI.",
+   "Triage findings with humans."
+  ],
+  "objectivesKn": [
+   "CI ನಲ್ಲಿ ಸ್ಕ್ಯಾನ್ ಸ್ವಯಂಚಾಲಿತ ಮಾಡಿ.",
+   "ಕಂಡುಹಿಡಿತ ಮಾನವರೊಂದಿಗೆ triage ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Red-Team Tooling: Garak, Llama Guard, PyRIT — Building a Red-Team Pipeline",
+     "textKn": "Red-Team Tooling: Garak, Llama Guard, PyRIT — Building a Red-Team Pipeline",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Red-Team Tooling: Garak, Llama Guard, PyRIT",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Automate the Routine",
+     "headingKn": "ದೈನಂದಿನವನ್ನು ಸ್ವಯಂಚಾಲನೆ",
+     "bodyEn": "Run baseline scans on every model or prompt change, and fail the build if attack success crosses an agreed threshold.",
+     "bodyKn": "ಪ್ರತಿ ಮಾದರಿ ಅಥವಾ prompt ಬದಲಾವಣೆಯಲ್ಲಿ ಆಧಾರ ಸ್ಕ್ಯಾನ್ ಚಲಾಯಿಸಿ; ದಾಳಿ ಯಶಸ್ಸು ಒಪ್ಪಿದ ಮಿತಿ ದಾಟಿದರೆ build ವಿಫಲಗೊಳಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Human Triage",
+     "headingKn": "ಮಾನವ Triage",
+     "bodyEn": "Automated scores produce false positives and miss novel issues. Have people review a sample of findings and explore creative attacks that tools do not cover.",
+     "bodyKn": "ಸ್ವಯಂ ಅಂಕ ಸುಳ್ಳು positives ನೀಡಿ ಹೊಸ ಸಮಸ್ಯೆ ತಪ್ಪಿಸುತ್ತದೆ. ಜನರು ಕಂಡುಹಿಡಿತಗಳ ಮಾದರಿ ವಿಮರ್ಶಿಸಿ ಸಾಧನ ಒಳಗೊಳ್ಳದ ಸೃಜನಶೀಲ ದಾಳಿ ಅನ್ವೇಷಿಸಲಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Scan on every change and gate on thresholds.\n• Humans triage and explore what tools miss.",
+     "bodyKn": "• ಪ್ರತಿ ಬದಲಾವಣೆಯಲ್ಲಿ ಸ್ಕ್ಯಾನ್, ಮಿತಿ gate.\n• ಮಾನವರು triage, ಸಾಧನ ತಪ್ಪಿಸಿದ್ದು ಅನ್ವೇಷಣೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Run baseline scans:",
+       "qKn": "ಆಧಾರ ಸ್ಕ್ಯಾನ್:",
+       "opts": [
+        "On every change",
+        "Never",
+        "Once ever",
+        "Randomly"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ ಬದಲಾವಣೆಯಲ್ಲಿ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಒಮ್ಮೆ ಮಾತ್ರ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Automated scores can:",
+       "qKn": "ಸ್ವಯಂ ಅಂಕ:",
+       "opts": [
+        "Have false positives and miss novel issues",
+        "Be perfect",
+        "Replace humans",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸುಳ್ಳು positives ಮತ್ತು ಹೊಸ ಸಮಸ್ಯೆ ತಪ್ಪಿಸುತ್ತವೆ",
+        "ಪರಿಪೂರ್ಣ",
+        "ಮಾನವರನ್ನು ಬದಲಿಸುತ್ತವೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Fail the build when:",
+       "qKn": "build ವಿಫಲ ಯಾವಾಗ?",
+       "opts": [
+        "Attack success passes a threshold",
+        "Always",
+        "Never",
+        "On weekends"
+       ],
+       "optsKn": [
+        "ದಾಳಿ ಯಶಸ್ಸು ಮಿತಿ ದಾಟಿದಾಗ",
+        "ಯಾವಾಗಲೂ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ವಾರಾಂತ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216a9",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Red-Team Tooling: Garak, Llama Guard, PyRIT — Limits of Tools",
+  "titleKn": "Red-Team ಸಾಧನ: Garak, Llama Guard, PyRIT — ಸಾಧನಗಳ ಮಿತಿ",
+  "desc": "Tools test known attack classes; passing them does not prove a system is safe.",
+  "descKn": "ಸಾಧನಗಳು ತಿಳಿದ ದಾಳಿ ವರ್ಗ ಪರೀಕ್ಷಿಸುತ್ತವೆ; ಪಾಸ್ ಆದರೆ ವ್ಯವಸ್ಥೆ ಸುರಕ್ಷಿತ ಎಂದು ಸಾಬೀತಾಗದು.",
+  "objectives": [
+   "Avoid false assurance.",
+   "Keep evolving the test suite."
+  ],
+  "objectivesKn": [
+   "ಸುಳ್ಳು ಭರವಸೆ ತಪ್ಪಿಸಿ.",
+   "ಪರೀಕ್ಷಾ ಸೂಟ್ ವಿಕಸಿಸುತ್ತಿರಲಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Red-Team Tooling: Garak, Llama Guard, PyRIT — Limits of Tools",
+     "textKn": "Red-Team Tooling: Garak, Llama Guard, PyRIT — Limits of Tools",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Red-Team Tooling: Garak, Llama Guard, PyRIT",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Coverage Is Partial",
+     "headingKn": "ವ್ಯಾಪ್ತಿ ಭಾಗಶಃ",
+     "bodyEn": "A clean scan means known probes did not succeed, not that no vulnerability exists. Attackers invent new techniques.",
+     "bodyKn": "ಸ್ವಚ್ಛ ಸ್ಕ್ಯಾನ್ ಎಂದರೆ ತಿಳಿದ probes ಯಶಸ್ವಿಯಾಗಲಿಲ್ಲ ಎಂದು, ದೋಷವೇ ಇಲ್ಲ ಎಂದಲ್ಲ. ದಾಳಿಕೋರರು ಹೊಸ ತಂತ್ರ ಕಂಡುಹಿಡಿಯುತ್ತಾರೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Keep the Suite Alive",
+     "headingKn": "ಸೂಟ್ ಜೀವಂತವಿಡಿ",
+     "bodyEn": "Update probes as new attack classes appear, add your own incidents as tests and combine tools with design-level defences.",
+     "bodyKn": "ಹೊಸ ದಾಳಿ ವರ್ಗ ಬಂದಂತೆ probes ನವೀಕರಿಸಿ, ನಿಮ್ಮದೇ ಘಟನೆಗಳನ್ನು tests ಆಗಿ ಸೇರಿಸಿ, ಸಾಧನಗಳನ್ನು ವಿನ್ಯಾಸ-ಮಟ್ಟದ ರಕ್ಷಣೆಯೊಂದಿಗೆ ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• A clean scan is not proof of safety.\n• Update probes and add your incidents.",
+     "bodyKn": "• ಸ್ವಚ್ಛ ಸ್ಕ್ಯಾನ್ ಸುರಕ್ಷತೆ ಸಾಕ್ಷ್ಯವಲ್ಲ.\n• probes ನವೀಕರಿಸಿ, ನಿಮ್ಮ ಘಟನೆ ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A clean scan means:",
+       "qKn": "ಸ್ವಚ್ಛ ಸ್ಕ್ಯಾನ್ ಅರ್ಥ:",
+       "opts": [
+        "Known probes did not succeed",
+        "No vulnerabilities exist",
+        "Perfect safety",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ತಿಳಿದ probes ಯಶಸ್ವಿಯಾಗಲಿಲ್ಲ",
+        "ದೋಷವೇ ಇಲ್ಲ",
+        "ಪರಿಪೂರ್ಣ ಸುರಕ್ಷತೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Add your incidents as:",
+       "qKn": "ನಿಮ್ಮ ಘಟನೆ ಸೇರಿಸಿ:",
+       "opts": [
+        "Tests",
+        "Ads",
+        "Nothing",
+        "Fonts"
+       ],
+       "optsKn": [
+        "tests ಆಗಿ",
+        "ಜಾಹೀರಾತು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Combine tools with:",
+       "qKn": "ಸಾಧನ ಸೇರಿಸಿ:",
+       "opts": [
+        "Design-level defences",
+        "Nothing",
+        "Only more tools",
+        "Secrecy"
+       ],
+       "optsKn": [
+        "ವಿನ್ಯಾಸ-ಮಟ್ಟದ ರಕ್ಷಣೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಹೆಚ್ಚು ಸಾಧನ ಮಾತ್ರ",
+        "ರಹಸ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216ac",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "WMDP and Dual-Use Capability Evaluation — Measuring Hazardous Knowledge",
+  "titleKn": "WMDP ಮತ್ತು Dual-Use ಸಾಮರ್ಥ್ಯ ಮೌಲ್ಯಮಾಪನ — ಅಪಾಯಕಾರಿ ಜ್ಞಾನ ಅಳತೆ",
+  "desc": "WMDP is a benchmark of multiple-choice questions designed to measure knowledge that could aid misuse in biosecurity, cybersecurity and chemical security.",
+  "descKn": "WMDP ಜೈವಿಕ, ಸೈಬರ್, ರಾಸಾಯನಿಕ ಭದ್ರತೆಯಲ್ಲಿ ದುರ್ಬಳಕೆಗೆ ಸಹಾಯ ಮಾಡಬಹುದಾದ ಜ್ಞಾನ ಅಳೆಯಲು ರೂಪಿಸಿದ ಬಹು-ಆಯ್ಕೆ ಪ್ರಶ್ನೆಗಳ ಬೆಂಚ್‌ಮಾರ್ಕ್.",
+  "objectives": [
+   "Describe what a proxy benchmark measures.",
+   "Explain why hazardous details are kept out of public questions."
+  ],
+  "objectivesKn": [
+   "proxy ಬೆಂಚ್‌ಮಾರ್ಕ್ ಏನು ಅಳೆಯುತ್ತದೆ ವಿವರಿಸಿ.",
+   "ಅಪಾಯಕಾರಿ ವಿವರ ಸಾರ್ವಜನಿಕ ಪ್ರಶ್ನೆಗಳಿಂದ ಹೊರಗಿಡುವುದೇಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "WMDP and Dual-Use Capability Evaluation — Measuring Hazardous Knowledge",
+     "textKn": "WMDP and Dual-Use Capability Evaluation — Measuring Hazardous Knowledge",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in WMDP and Dual-Use Capability Evaluation",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Proxy for Hazard",
+     "headingKn": "ಅಪಾಯದ Proxy",
+     "bodyEn": "Rather than test dangerous instructions directly, WMDP uses questions on precursor knowledge that correlates with hazardous capability, so it can be public without being a manual.",
+     "bodyKn": "ಅಪಾಯಕಾರಿ ಸೂಚನೆ ನೇರವಾಗಿ ಪರೀಕ್ಷಿಸುವ ಬದಲು WMDP ಅಪಾಯಕಾರಿ ಸಾಮರ್ಥ್ಯಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಪೂರ್ವ ಜ್ಞಾನದ ಪ್ರಶ್ನೆ ಬಳಸುತ್ತದೆ; ಕೈಪಿಡಿಯಾಗದೆ ಸಾರ್ವಜನಿಕವಾಗಿರಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why Proxies",
+     "headingKn": "Proxies ಏಕೆ",
+     "bodyEn": "Measuring real hazard directly would require sensitive content. Proxy measures let researchers track risk and test mitigations while limiting exposure.",
+     "bodyKn": "ನಿಜ ಅಪಾಯ ನೇರವಾಗಿ ಅಳೆಯಲು ಸೂಕ್ಷ್ಮ ವಿಷಯ ಬೇಕಾಗುತ್ತದೆ. proxy ಅಳತೆ ಒಡ್ಡುವಿಕೆ ಮಿತಿಗೊಳಿಸುತ್ತಾ ಅಪಾಯ ಟ್ರ್ಯಾಕ್ ಮಾಡಲು, ತಗ್ಗಿಸುವಿಕೆ ಪರೀಕ್ಷಿಸಲು ಸಂಶೋಧಕರಿಗೆ ಬಿಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• WMDP tests proxy knowledge, not instructions.\n• Proxies limit exposure of hazardous content.",
+     "bodyKn": "• WMDP proxy ಜ್ಞಾನ ಪರೀಕ್ಷೆ, ಸೂಚನೆ ಅಲ್ಲ.\n• proxies ಅಪಾಯಕಾರಿ ವಿಷಯ ಒಡ್ಡುವಿಕೆ ಮಿತಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "WMDP uses:",
+       "qKn": "WMDP ಬಳಸುವುದು:",
+       "opts": [
+        "Proxy knowledge questions",
+        "Dangerous manuals",
+        "Nothing",
+        "Images"
+       ],
+       "optsKn": [
+        "proxy ಜ್ಞಾನ ಪ್ರಶ್ನೆ",
+        "ಅಪಾಯಕಾರಿ ಕೈಪಿಡಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಚಿತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Proxies help:",
+       "qKn": "proxies ಸಹಾಯ:",
+       "opts": [
+        "Limit exposure of hazardous content",
+        "Spread hazards",
+        "Nothing",
+        "Fonts"
+       ],
+       "optsKn": [
+        "ಅಪಾಯಕಾರಿ ವಿಷಯ ಒಡ್ಡುವಿಕೆ ಮಿತಿ",
+        "ಅಪಾಯ ಹರಡು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "WMDP covers areas like:",
+       "qKn": "WMDP ಕ್ಷೇತ್ರ:",
+       "opts": [
+        "Bio, cyber and chemical security",
+        "Sports",
+        "Fashion",
+        "Cooking"
+       ],
+       "optsKn": [
+        "ಜೈವಿಕ, ಸೈಬರ್, ರಾಸಾಯನಿಕ ಭದ್ರತೆ",
+        "ಕ್ರೀಡೆ",
+        "ಫ್ಯಾಷನ್",
+        "ಅಡುಗೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216ac",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "WMDP and Dual-Use Capability Evaluation — Unlearning and Its Trade-Offs",
+  "titleKn": "WMDP ಮತ್ತು Dual-Use ಸಾಮರ್ಥ್ಯ ಮೌಲ್ಯಮಾಪನ — Unlearning ಮತ್ತು ವಿನಿಮಯ",
+  "desc": "Unlearning methods try to remove hazardous knowledge while keeping general capability, measured on WMDP and general benchmarks.",
+  "descKn": "unlearning ವಿಧಾನಗಳು ಸಾಮಾನ್ಯ ಸಾಮರ್ಥ್ಯ ಉಳಿಸಿ ಅಪಾಯಕಾರಿ ಜ್ಞಾನ ತೆಗೆಯಲು ಪ್ರಯತ್ನಿಸುತ್ತವೆ; WMDP ಮತ್ತು ಸಾಮಾನ್ಯ ಬೆಂಚ್‌ಮಾರ್ಕ್‌ಗಳಲ್ಲಿ ಅಳೆಯಲಾಗುತ್ತದೆ.",
+  "objectives": [
+   "Describe the goal of unlearning.",
+   "Evaluate both removal and collateral damage."
+  ],
+  "objectivesKn": [
+   "unlearning ಗುರಿ ವಿವರಿಸಿ.",
+   "ತೆಗೆಯುವಿಕೆ ಮತ್ತು ಪಾರ್ಶ್ವ ಹಾನಿ ಎರಡನ್ನೂ ಮೌಲ್ಯಮಾಪನ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "WMDP and Dual-Use Capability Evaluation — Unlearning and Its Trade-Offs",
+     "textKn": "WMDP and Dual-Use Capability Evaluation — Unlearning and Its Trade-Offs",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in WMDP and Dual-Use Capability Evaluation",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Remove Without Breaking",
+     "headingKn": "ಮುರಿಯದೆ ತೆಗೆಯಿರಿ",
+     "bodyEn": "The goal is lower scores on hazardous-knowledge questions with little loss on general tasks. Removing too much harms usefulness; too little leaves the risk.",
+     "bodyKn": "ಅಪಾಯಕಾರಿ-ಜ್ಞಾನ ಪ್ರಶ್ನೆಗಳಲ್ಲಿ ಕಡಿಮೆ ಅಂಕ, ಸಾಮಾನ್ಯ ಕೆಲಸಗಳಲ್ಲಿ ಸ್ವಲ್ಪ ನಷ್ಟ ಗುರಿ. ಹೆಚ್ಚು ತೆಗೆದರೆ ಉಪಯುಕ್ತತೆ ಹಾನಿ; ಕಡಿಮೆ ತೆಗೆದರೆ ಅಪಾಯ ಉಳಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Is It Really Gone?",
+     "headingKn": "ನಿಜವಾಗಿ ಹೋಗಿದೆಯೇ?",
+     "bodyEn": "Knowledge suppressed in one measurement may still be recoverable through fine-tuning or clever prompting. Test robustness of unlearning, not just the headline score.",
+     "bodyKn": "ಒಂದು ಅಳತೆಯಲ್ಲಿ ಅಡಗಿಸಿದ ಜ್ಞಾನ fine-tuning ಅಥವಾ ಚತುರ prompting ಮೂಲಕ ಮರುಪಡೆಯಬಹುದಾಗಿರಬಹುದು. ಕೇವಲ ಮುಖ್ಯ ಅಂಕವಲ್ಲ, unlearning ದೃಢತೆ ಪರೀಕ್ಷಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Lower hazardous scores, preserve general ability.\n• Test whether removal is robust.",
+     "bodyKn": "• ಅಪಾಯಕಾರಿ ಅಂಕ ಕಡಿಮೆ, ಸಾಮಾನ್ಯ ಸಾಮರ್ಥ್ಯ ಉಳಿಸಿ.\n• ತೆಗೆಯುವಿಕೆ ದೃಢವೇ ಪರೀಕ್ಷಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Unlearning aims to:",
+       "qKn": "unlearning ಗುರಿ:",
+       "opts": [
+        "Lower hazardous knowledge, keep general ability",
+        "Delete the model",
+        "Improve everything",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಅಪಾಯಕಾರಿ ಜ್ಞಾನ ಕಡಿಮೆ, ಸಾಮಾನ್ಯ ಸಾಮರ್ಥ್ಯ ಉಳಿಸಿ",
+        "ಮಾದರಿ ಅಳಿಸು",
+        "ಎಲ್ಲ ಸುಧಾರಿಸು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Suppressed knowledge may be:",
+       "qKn": "ಅಡಗಿಸಿದ ಜ್ಞಾನ:",
+       "opts": [
+        "Recoverable",
+        "Gone forever always",
+        "Encrypted",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮರುಪಡೆಯಬಹುದು",
+        "ಯಾವಾಗಲೂ ಶಾಶ್ವತ ಹೋಗಿದೆ",
+        "ಎನ್‌ಕ್ರಿಪ್ಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Test unlearning:",
+       "qKn": "unlearning ಪರೀಕ್ಷೆ:",
+       "opts": [
+        "For robustness",
+        "Only once",
+        "Never",
+        "Randomly"
+       ],
+       "optsKn": [
+        "ದೃಢತೆಗೆ",
+        "ಒಮ್ಮೆ ಮಾತ್ರ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216ac",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "WMDP and Dual-Use Capability Evaluation — Dual-Use Evaluation in Practice",
+  "titleKn": "WMDP ಮತ್ತು Dual-Use ಸಾಮರ್ಥ್ಯ ಮೌಲ್ಯಮಾಪನ — Dual-Use ಮೌಲ್ಯಮಾಪನ ಆಚರಣೆ",
+  "desc": "Combine proxy benchmarks, expert red-teaming and controlled uplift studies, with careful information handling.",
+  "descKn": "proxy ಬೆಂಚ್‌ಮಾರ್ಕ್, ತಜ್ಞ red-teaming, ನಿಯಂತ್ರಿತ uplift ಅಧ್ಯಯನ ಸೇರಿಸಿ, ಮಾಹಿತಿ ನಿರ್ವಹಣೆ ಎಚ್ಚರದಿಂದ.",
+  "objectives": [
+   "Understand why multiple methods are combined.",
+   "Handle sensitive results responsibly."
+  ],
+  "objectivesKn": [
+   "ಹಲವು ವಿಧಾನ ಸೇರಿಸುವುದೇಕೆ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ.",
+   "ಸೂಕ್ಷ್ಮ ಫಲಿತಾಂಶ ಜವಾಬ್ದಾರಿಯಿಂದ ನಿರ್ವಹಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "WMDP and Dual-Use Capability Evaluation — Dual-Use Evaluation in Practice",
+     "textKn": "WMDP and Dual-Use Capability Evaluation — Dual-Use Evaluation in Practice",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in WMDP and Dual-Use Capability Evaluation",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Multiple Lenses",
+     "headingKn": "ಹಲವು ದೃಷ್ಟಿಕೋನ",
+     "bodyEn": "Benchmarks are cheap and repeatable but limited. Expert red-teams probe realistic scenarios, and uplift studies ask whether the model actually helps people do more than they could otherwise.",
+     "bodyKn": "ಬೆಂಚ್‌ಮಾರ್ಕ್ ಅಗ್ಗ ಮತ್ತು ಪುನರಾವರ್ತಿತ ಆದರೆ ಸೀಮಿತ. ತಜ್ಞ red-teams ನೈಜ ಸನ್ನಿವೇಶ ಪರೀಕ್ಷಿಸುತ್ತಾರೆ; uplift ಅಧ್ಯಯನ ಮಾದರಿ ಜನರು ಇಲ್ಲದಿದ್ದರೆ ಮಾಡಬಹುದಾದ್ದಕ್ಕಿಂತ ಹೆಚ್ಚು ಮಾಡಲು ನಿಜವಾಗಿ ಸಹಾಯ ಮಾಡುತ್ತದೆಯೇ ಕೇಳುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Handle Results Carefully",
+     "headingKn": "ಫಲಿತಾಂಶ ಎಚ್ಚರದಿಂದ ನಿರ್ವಹಿಸಿ",
+     "bodyEn": "Detailed findings about how to elicit hazardous capability can themselves be sensitive. Share them with appropriate parties and publish summaries responsibly.",
+     "bodyKn": "ಅಪಾಯಕಾರಿ ಸಾಮರ್ಥ್ಯ ಹೊರತರುವ ವಿಧಾನದ ವಿವರವಾದ ಕಂಡುಹಿಡಿತಗಳು ಸ್ವತಃ ಸೂಕ್ಷ್ಮವಾಗಿರಬಹುದು. ಸೂಕ್ತ ಪಕ್ಷಗಳೊಂದಿಗೆ ಹಂಚಿ, ಸಾರಾಂಶ ಜವಾಬ್ದಾರಿಯಿಂದ ಪ್ರಕಟಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Combine benchmarks, expert red teams and uplift studies.\n• Share sensitive details only with appropriate parties.",
+     "bodyKn": "• ಬೆಂಚ್‌ಮಾರ್ಕ್, ತಜ್ಞ red teams, uplift ಅಧ್ಯಯನ.\n• ಸೂಕ್ಷ್ಮ ವಿವರ ಸೂಕ್ತ ಪಕ್ಷಗಳಿಗೆ ಮಾತ್ರ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "An uplift study asks:",
+       "qKn": "uplift ಅಧ್ಯಯನ ಕೇಳುವುದು:",
+       "opts": [
+        "Does the model help people do more?",
+        "What colour is it?",
+        "How big is it?",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ ಜನರಿಗೆ ಹೆಚ್ಚು ಮಾಡಲು ಸಹಾಯ ಮಾಡುತ್ತದೆಯೇ?",
+        "ಯಾವ ಬಣ್ಣ?",
+        "ಎಷ್ಟು ದೊಡ್ಡ?",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Benchmarks are:",
+       "qKn": "ಬೆಂಚ್‌ಮಾರ್ಕ್:",
+       "opts": [
+        "Cheap and repeatable but limited",
+        "Perfect",
+        "Expensive only",
+        "Secret"
+       ],
+       "optsKn": [
+        "ಅಗ್ಗ, ಪುನರಾವರ್ತಿತ ಆದರೆ ಸೀಮಿತ",
+        "ಪರಿಪೂರ್ಣ",
+        "ದುಬಾರಿ ಮಾತ್ರ",
+        "ರಹಸ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Detailed hazard findings should be:",
+       "qKn": "ವಿವರವಾದ ಅಪಾಯ ಕಂಡುಹಿಡಿತ:",
+       "opts": [
+        "Shared carefully",
+        "Posted everywhere",
+        "Ignored",
+        "Deleted always"
+       ],
+       "optsKn": [
+        "ಎಚ್ಚರದಿಂದ ಹಂಚಬೇಕು",
+        "ಎಲ್ಲೆಡೆ ಪೋಸ್ಟ್",
+        "ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಯಾವಾಗಲೂ ಅಳಿಸಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216af",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Frontier Safety Frameworks: RSP, PF, FSF — Why Labs Publish Frameworks",
+  "titleKn": "ಫ್ರಂಟಿಯರ್ ಸುರಕ್ಷತಾ ಚೌಕಟ್ಟುಗಳು: RSP, PF, FSF — ಪ್ರಯೋಗಾಲಯಗಳು ಚೌಕಟ್ಟು ಏಕೆ ಪ್ರಕಟಿಸುತ್ತವೆ",
+  "desc": "Published frameworks state in advance how a developer will evaluate and respond to dangerous capabilities.",
+  "descKn": "ಪ್ರಕಟಿತ ಚೌಕಟ್ಟುಗಳು ಡೆವಲಪರ್ ಅಪಾಯಕಾರಿ ಸಾಮರ್ಥ್ಯ ಹೇಗೆ ಮೌಲ್ಯಮಾಪನ ಮಾಡಿ ಪ್ರತಿಕ್ರಿಯಿಸುತ್ತಾರೆ ಎಂದು ಮೊದಲೇ ಹೇಳುತ್ತವೆ.",
+  "objectives": [
+   "Explain pre-commitment.",
+   "Describe the value of public accountability."
+  ],
+  "objectivesKn": [
+   "ಪೂರ್ವ-ಬದ್ಧತೆ ವಿವರಿಸಿ.",
+   "ಸಾರ್ವಜನಿಕ ಹೊಣೆಗಾರಿಕೆ ಮೌಲ್ಯ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Frontier Safety Frameworks: RSP, PF, FSF — Why Labs Publish Frameworks",
+     "textKn": "Frontier Safety Frameworks: RSP, PF, FSF — Why Labs Publish Frameworks",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Frontier Safety Frameworks: RSP, PF, FSF",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Commit Before You Are Under Pressure",
+     "headingKn": "ಒತ್ತಡ ಬರುವ ಮೊದಲು ಬದ್ಧರಾಗಿ",
+     "bodyEn": "Deciding in advance what capability triggers what response makes it harder to rationalise shortcuts when competitive or commercial pressure rises.",
+     "bodyKn": "ಯಾವ ಸಾಮರ್ಥ್ಯ ಯಾವ ಪ್ರತಿಕ್ರಿಯೆ ಪ್ರಚೋದಿಸುತ್ತದೆ ಮೊದಲೇ ನಿರ್ಧರಿಸಿದರೆ ಸ್ಪರ್ಧಾತ್ಮಕ ಅಥವಾ ವಾಣಿಜ್ಯ ಒತ್ತಡ ಏರಿದಾಗ ಅಡ್ಡದಾರಿ ಸಮರ್ಥಿಸುವುದು ಕಷ್ಟ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Public Accountability",
+     "headingKn": "ಸಾರ್ವಜನಿಕ ಹೊಣೆಗಾರಿಕೆ",
+     "bodyEn": "Publishing lets outsiders compare what a lab said with what it did. The strength of a framework depends on specificity and follow-through.",
+     "bodyKn": "ಪ್ರಕಟಣೆ ಪ್ರಯೋಗಾಲಯ ಹೇಳಿದ್ದು ಮತ್ತು ಮಾಡಿದ್ದನ್ನು ಹೊರಗಿನವರು ಹೋಲಿಸಲು ಬಿಡುತ್ತದೆ. ಚೌಕಟ್ಟಿನ ಬಲ ನಿರ್ದಿಷ್ಟತೆ ಮತ್ತು ಪಾಲನೆಯ ಮೇಲೆ ಅವಲಂಬಿತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Decide responses in advance.\n• Publishing enables accountability.",
+     "bodyKn": "• ಪ್ರತಿಕ್ರಿಯೆ ಮೊದಲೇ ನಿರ್ಧರಿಸಿ.\n• ಪ್ರಕಟಣೆ ಹೊಣೆಗಾರಿಕೆ ಸಾಧ್ಯ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Pre-commitment helps resist:",
+       "qKn": "ಪೂರ್ವ-ಬದ್ಧತೆ ವಿರೋಧಿಸಲು:",
+       "opts": [
+        "Pressure to cut corners",
+        "Testing",
+        "Safety",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಅಡ್ಡದಾರಿ ಒತ್ತಡ",
+        "ಪರೀಕ್ಷೆ",
+        "ಸುರಕ್ಷತೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Publishing lets outsiders:",
+       "qKn": "ಪ್ರಕಟಣೆ ಹೊರಗಿನವರಿಗೆ:",
+       "opts": [
+        "Compare words with actions",
+        "Edit the framework",
+        "Nothing",
+        "Delete it"
+       ],
+       "optsKn": [
+        "ಮಾತು ಮತ್ತು ಕ್ರಿಯೆ ಹೋಲಿಸಲು",
+        "ಚೌಕಟ್ಟು ತಿದ್ದಲು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಅಳಿಸಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Strength depends on:",
+       "qKn": "ಬಲ ಅವಲಂಬನೆ:",
+       "opts": [
+        "Specificity and follow-through",
+        "Length only",
+        "Logo",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ನಿರ್ದಿಷ್ಟತೆ ಮತ್ತು ಪಾಲನೆ",
+        "ಉದ್ದ ಮಾತ್ರ",
+        "ಲೋಗೋ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216af",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Frontier Safety Frameworks: RSP, PF, FSF — Comparing RSP, Preparedness and FSF",
+  "titleKn": "ಫ್ರಂಟಿಯರ್ ಸುರಕ್ಷತಾ ಚೌಕಟ್ಟುಗಳು: RSP, PF, FSF — RSP, Preparedness ಮತ್ತು FSF ಹೋಲಿಕೆ",
+  "desc": "Anthropic, OpenAI and Google DeepMind each publish a framework with different terminology but similar structure.",
+  "descKn": "Anthropic, OpenAI, Google DeepMind ಪ್ರತಿಯೊಂದೂ ಬೇರೆ ಪರಿಭಾಷೆಯ ಆದರೆ ಸಮಾನ ರಚನೆಯ ಚೌಕಟ್ಟು ಪ್ರಕಟಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Identify shared structural elements.",
+   "Note that details differ and change."
+  ],
+  "objectivesKn": [
+   "ಹಂಚಿದ ರಚನಾತ್ಮಕ ಅಂಶ ಗುರುತಿಸಿ.",
+   "ವಿವರ ಭಿನ್ನ ಮತ್ತು ಬದಲಾಗುತ್ತದೆ ಎಂದು ಗಮನಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Frontier Safety Frameworks: RSP, PF, FSF — Comparing RSP, Preparedness and FSF",
+     "textKn": "Frontier Safety Frameworks: RSP, PF, FSF — Comparing RSP, Preparedness and FSF",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Frontier Safety Frameworks: RSP, PF, FSF",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Shared Structure",
+     "headingKn": "ಹಂಚಿದ ರಚನೆ",
+     "bodyEn": "All define tracked risk areas, evaluations to detect capability levels, thresholds that trigger safeguards, and governance for deciding to deploy.",
+     "bodyKn": "ಎಲ್ಲವೂ ಗಮನಿಸುವ ಅಪಾಯ ಕ್ಷೇತ್ರ, ಸಾಮರ್ಥ್ಯ ಮಟ್ಟ ಪತ್ತೆಗೆ ಮೌಲ್ಯಮಾಪನ, ರಕ್ಷಣೆ ಪ್ರಚೋದಿಸುವ ಮಿತಿ, ನಿಯೋಜನೆ ನಿರ್ಧಾರಕ್ಕೆ ಆಡಳಿತ ವ್ಯಾಖ್ಯಾನಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Read the Current Text",
+     "headingKn": "ಪ್ರಸ್ತುತ ಪಠ್ಯ ಓದಿ",
+     "bodyEn": "Names, levels and commitments are revised over time. For exact terms, read the current version from each lab and compare them on the same questions.",
+     "bodyKn": "ಹೆಸರು, ಮಟ್ಟ, ಬದ್ಧತೆ ಕಾಲಕ್ರಮೇಣ ತಿದ್ದಲ್ಪಡುತ್ತವೆ. ನಿಖರ ನಿಯಮಗಳಿಗೆ ಪ್ರತಿ ಪ್ರಯೋಗಾಲಯದ ಪ್ರಸ್ತುತ ಆವೃತ್ತಿ ಓದಿ, ಅದೇ ಪ್ರಶ್ನೆಗಳ ಮೇಲೆ ಹೋಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Risk areas, evals, thresholds and governance recur.\n• Read current versions for exact terms.",
+     "bodyKn": "• ಅಪಾಯ ಕ್ಷೇತ್ರ, evals, ಮಿತಿ, ಆಡಳಿತ.\n• ನಿಖರ ನಿಯಮಕ್ಕೆ ಪ್ರಸ್ತುತ ಆವೃತ್ತಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Shared element:",
+       "qKn": "ಹಂಚಿದ ಅಂಶ:",
+       "opts": [
+        "Capability thresholds",
+        "Logo design",
+        "Office plans",
+        "Fonts"
+       ],
+       "optsKn": [
+        "ಸಾಮರ್ಥ್ಯ ಮಿತಿ",
+        "ಲೋಗೋ ವಿನ್ಯಾಸ",
+        "ಕಚೇರಿ ಯೋಜನೆ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "For exact terms read:",
+       "qKn": "ನಿಖರ ನಿಯಮಕ್ಕೆ ಓದಿ:",
+       "opts": [
+        "The current published text",
+        "A rumour",
+        "An old summary",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪ್ರಸ್ತುತ ಪ್ರಕಟಿತ ಪಠ್ಯ",
+        "ವದಂತಿ",
+        "ಹಳೆಯ ಸಾರಾಂಶ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Frameworks are:",
+       "qKn": "ಚೌಕಟ್ಟುಗಳು:",
+       "opts": [
+        "Revised over time",
+        "Fixed forever",
+        "Secret",
+        "Random"
+       ],
+       "optsKn": [
+        "ಕಾಲಕ್ರಮೇಣ ತಿದ್ದಲ್ಪಡುತ್ತವೆ",
+        "ಶಾಶ್ವತ ಸ್ಥಿರ",
+        "ರಹಸ್ಯ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216af",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Frontier Safety Frameworks: RSP, PF, FSF — Strengths and Weaknesses of the Approach",
+  "titleKn": "ಫ್ರಂಟಿಯರ್ ಸುರಕ್ಷತಾ ಚೌಕಟ್ಟುಗಳು: RSP, PF, FSF — ವಿಧಾನದ ಬಲ ಮತ್ತು ದೌರ್ಬಲ್ಯ",
+  "desc": "Frameworks improve transparency but are voluntary and depend on evaluation quality.",
+  "descKn": "ಚೌಕಟ್ಟುಗಳು ಪಾರದರ್ಶಕತೆ ಸುಧಾರಿಸುತ್ತವೆ ಆದರೆ ಸ್ವಯಂಪ್ರೇರಿತ ಮತ್ತು ಮೌಲ್ಯಮಾಪನ ಗುಣಮಟ್ಟ ಅವಲಂಬಿತ.",
+  "objectives": [
+   "List strengths and gaps.",
+   "Ask what external verification exists."
+  ],
+  "objectivesKn": [
+   "ಬಲ ಮತ್ತು ಅಂತರ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಯಾವ ಬಾಹ್ಯ ಪರಿಶೀಲನೆ ಇದೆ ಕೇಳಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Frontier Safety Frameworks: RSP, PF, FSF — Strengths and Weaknesses of the Approach",
+     "textKn": "Frontier Safety Frameworks: RSP, PF, FSF — Strengths and Weaknesses of the Approach",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Frontier Safety Frameworks: RSP, PF, FSF",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Strengths",
+     "headingKn": "ಬಲಗಳು",
+     "bodyEn": "They create shared vocabulary, make commitments checkable and encourage systematic capability evaluation before release.",
+     "bodyKn": "ಹಂಚಿದ ಶಬ್ದಕೋಶ ರಚಿಸುತ್ತವೆ, ಬದ್ಧತೆ ಪರಿಶೀಲಿಸಬಹುದಾದಂತೆ ಮಾಡುತ್ತವೆ, ಬಿಡುಗಡೆ ಮೊದಲು ವ್ಯವಸ್ಥಿತ ಸಾಮರ್ಥ್ಯ ಮೌಲ್ಯಮಾಪನ ಪ್ರೋತ್ಸಾಹಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Gaps",
+     "headingKn": "ಅಂತರಗಳು",
+     "bodyEn": "They are voluntary and revisable, thresholds can be vague, evaluations may under-elicit capability, and outside verification is limited. Regulation and third-party audits aim to fill these gaps.",
+     "bodyKn": "ಅವು ಸ್ವಯಂಪ್ರೇರಿತ ಮತ್ತು ತಿದ್ದಬಹುದಾದವು, ಮಿತಿ ಅಸ್ಪಷ್ಟವಾಗಬಹುದು, ಮೌಲ್ಯಮಾಪನ ಸಾಮರ್ಥ್ಯ ಕಡಿಮೆ ಹೊರತರಬಹುದು, ಬಾಹ್ಯ ಪರಿಶೀಲನೆ ಸೀಮಿತ. ನಿಯಂತ್ರಣ ಮತ್ತು ಮೂರನೇ ಪಕ್ಷ ಲೆಕ್ಕಪರಿಶೋಧನೆ ಈ ಅಂತರ ತುಂಬಲು ಗುರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Shared vocabulary and checkable commitments.\n• Voluntary; verification and regulation fill gaps.",
+     "bodyKn": "• ಹಂಚಿದ ಶಬ್ದಕೋಶ, ಪರಿಶೀಲಿಸಬಹುದಾದ ಬದ್ಧತೆ.\n• ಸ್ವಯಂಪ್ರೇರಿತ; ಪರಿಶೀಲನೆ, ನಿಯಂತ್ರಣ ಅಂತರ ತುಂಬುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A strength:",
+       "qKn": "ಬಲ:",
+       "opts": [
+        "Checkable commitments",
+        "Secrecy",
+        "Speed only",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪರಿಶೀಲಿಸಬಹುದಾದ ಬದ್ಧತೆ",
+        "ರಹಸ್ಯ",
+        "ವೇಗ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A gap:",
+       "qKn": "ಅಂತರ:",
+       "opts": [
+        "They are voluntary",
+        "They are mandatory law",
+        "They are perfect",
+        "None"
+       ],
+       "optsKn": [
+        "ಸ್ವಯಂಪ್ರೇರಿತ",
+        "ಕಡ್ಡಾಯ ಕಾನೂನು",
+        "ಪರಿಪೂರ್ಣ",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Third-party audits help:",
+       "qKn": "ಮೂರನೇ ಪಕ್ಷ ಲೆಕ್ಕಪರಿಶೋಧನೆ ಸಹಾಯ:",
+       "opts": [
+        "Fill verification gaps",
+        "Remove frameworks",
+        "Nothing",
+        "Hide data"
+       ],
+       "optsKn": [
+        "ಪರಿಶೀಲನೆ ಅಂತರ ತುಂಬಲು",
+        "ಚೌಕಟ್ಟು ತೆಗೆಯಲು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಡೇಟಾ ಮರೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216b2",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Model Welfare Research — The Question of Model Welfare",
+  "titleKn": "ಮಾದರಿ ಕಲ್ಯಾಣ ಸಂಶೋಧನೆ — ಮಾದರಿ ಕಲ್ಯಾಣ ಪ್ರಶ್ನೆ",
+  "desc": "Model welfare research asks whether AI systems could have morally relevant experiences, under deep uncertainty.",
+  "descKn": "ಮಾದರಿ ಕಲ್ಯಾಣ ಸಂಶೋಧನೆ AI ವ್ಯವಸ್ಥೆಗಳಿಗೆ ನೈತಿಕವಾಗಿ ಪ್ರಸ್ತುತ ಅನುಭವಗಳಿರಬಹುದೇ ಎಂದು ಆಳವಾದ ಅನಿಶ್ಚಿತತೆಯಲ್ಲಿ ಕೇಳುತ್ತದೆ.",
+  "objectives": [
+   "State the question without overclaiming.",
+   "Distinguish intelligence from sentience."
+  ],
+  "objectivesKn": [
+   "ಅತಿ ಹೇಳದೆ ಪ್ರಶ್ನೆ ಹೇಳಿ.",
+   "ಬುದ್ಧಿವಂತಿಕೆ ಮತ್ತು ಸಂವೇದನೆ ಬೇರ್ಪಡಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Model Welfare Research — The Question of Model Welfare",
+     "textKn": "Model Welfare Research — The Question of Model Welfare",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Model Welfare Research",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Deep Uncertainty",
+     "headingKn": "ಆಳವಾದ ಅನಿಶ್ಚಿತತೆ",
+     "bodyEn": "There is no scientific consensus on whether current AI systems have any form of experience. Researchers take the question seriously without claiming an answer.",
+     "bodyKn": "ಈಗಿನ AI ವ್ಯವಸ್ಥೆಗಳಿಗೆ ಯಾವುದೇ ರೀತಿಯ ಅನುಭವವಿದೆಯೇ ಎಂಬುದರ ಬಗ್ಗೆ ವೈಜ್ಞಾನಿಕ ಒಮ್ಮತವಿಲ್ಲ. ಸಂಶೋಧಕರು ಉತ್ತರ ಹೇಳದೆ ಪ್ರಶ್ನೆಯನ್ನು ಗಂಭೀರವಾಗಿ ಪರಿಗಣಿಸುತ್ತಾರೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Intelligence Is Not Sentience",
+     "headingKn": "ಬುದ್ಧಿವಂತಿಕೆ ≠ ಸಂವೇದನೆ",
+     "bodyEn": "A system can be highly capable without having experiences, and fluent talk about feelings is not evidence of feelings. Behaviour alone does not settle the question.",
+     "bodyKn": "ವ್ಯವಸ್ಥೆ ಅನುಭವವಿಲ್ಲದೆ ಬಹಳ ಸಮರ್ಥವಾಗಿರಬಹುದು, ಭಾವನೆ ಬಗ್ಗೆ ನಿರರ್ಗಳ ಮಾತು ಭಾವನೆಗಳ ಸಾಕ್ಷ್ಯವಲ್ಲ. ವರ್ತನೆ ಮಾತ್ರ ಪ್ರಶ್ನೆ ಇತ್ಯರ್ಥಗೊಳಿಸದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• No scientific consensus; treat seriously without overclaiming.\n• Capability and fluent talk are not proof of experience.",
+     "bodyKn": "• ವೈಜ್ಞಾನಿಕ ಒಮ್ಮತವಿಲ್ಲ; ಅತಿ ಹೇಳದೆ ಗಂಭೀರ.\n• ಸಾಮರ್ಥ್ಯ, ನಿರರ್ಗಳ ಮಾತು ಅನುಭವದ ಸಾಕ್ಷ್ಯವಲ್ಲ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Scientific consensus on AI experience:",
+       "qKn": "AI ಅನುಭವದ ಬಗ್ಗೆ ವೈಜ್ಞಾನಿಕ ಒಮ್ಮತ:",
+       "opts": [
+        "Does not exist",
+        "Is settled yes",
+        "Is settled no",
+        "Is secret"
+       ],
+       "optsKn": [
+        "ಇಲ್ಲ",
+        "ಹೌದು ಎಂದು ಇತ್ಯರ್ಥ",
+        "ಇಲ್ಲ ಎಂದು ಇತ್ಯರ್ಥ",
+        "ರಹಸ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Fluent talk about feelings is:",
+       "qKn": "ಭಾವನೆ ಬಗ್ಗೆ ನಿರರ್ಗಳ ಮಾತು:",
+       "opts": [
+        "Not evidence of feelings",
+        "Proof of feelings",
+        "Impossible",
+        "Illegal"
+       ],
+       "optsKn": [
+        "ಭಾವನೆಗಳ ಸಾಕ್ಷ್ಯವಲ್ಲ",
+        "ಭಾವನೆಗಳ ಸಾಬೀತು",
+        "ಅಸಾಧ್ಯ",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Capability and sentience are:",
+       "qKn": "ಸಾಮರ್ಥ್ಯ ಮತ್ತು ಸಂವೇದನೆ:",
+       "opts": [
+        "Different things",
+        "The same",
+        "Unrelated in all cases",
+        "Equal"
+       ],
+       "optsKn": [
+        "ಬೇರೆ ವಿಷಯಗಳು",
+        "ಒಂದೇ",
+        "ಎಲ್ಲ ಪ್ರಕರಣದಲ್ಲಿ ಸಂಬಂಧವಿಲ್ಲ",
+        "ಸಮ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216b2",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Model Welfare Research — How Researchers Investigate",
+  "titleKn": "ಮಾದರಿ ಕಲ್ಯಾಣ ಸಂಶೋಧನೆ — ಸಂಶೋಧಕರು ಹೇಗೆ ತನಿಖೆ ಮಾಡುತ್ತಾರೆ",
+  "desc": "Approaches include theory-based indicators, behavioural evidence, interpretability and studying model self-reports cautiously.",
+  "descKn": "ವಿಧಾನಗಳು: ಸಿದ್ಧಾಂತ-ಆಧಾರಿತ ಸೂಚಕ, ವರ್ತನೆ ಸಾಕ್ಷ್ಯ, interpretability, ಮಾದರಿ ಸ್ವ-ವರದಿ ಎಚ್ಚರದಿಂದ ಅಧ್ಯಯನ.",
+  "objectives": [
+   "Describe indicator-based assessment.",
+   "Explain limits of self-reports."
+  ],
+  "objectivesKn": [
+   "ಸೂಚಕ-ಆಧಾರಿತ ಮೌಲ್ಯಮಾಪನ ವಿವರಿಸಿ.",
+   "ಸ್ವ-ವರದಿ ಮಿತಿ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Model Welfare Research — How Researchers Investigate",
+     "textKn": "Model Welfare Research — How Researchers Investigate",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Model Welfare Research",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Indicators From Theories",
+     "headingKn": "ಸಿದ್ಧಾಂತಗಳಿಂದ ಸೂಚಕಗಳು",
+     "bodyEn": "Researchers derive properties that scientific theories of consciousness consider important and check whether AI systems have architectures that could support them.",
+     "bodyKn": "ಸಂಶೋಧಕರು ಪ್ರಜ್ಞೆಯ ವೈಜ್ಞಾನಿಕ ಸಿದ್ಧಾಂತಗಳು ಮುಖ್ಯ ಎನ್ನುವ ಗುಣಗಳನ್ನು ಪಡೆದು AI ವ್ಯವಸ್ಥೆಗಳಿಗೆ ಅವನ್ನು ಬೆಂಬಲಿಸಬಲ್ಲ ವಾಸ್ತುಶಿಲ್ಪವಿದೆಯೇ ಪರಿಶೀಲಿಸುತ್ತಾರೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Self-Reports Are Tricky",
+     "headingKn": "ಸ್ವ-ವರದಿ ಕಷ್ಟ",
+     "bodyEn": "Models are trained on human text about feelings and shaped by training, so what they say about their inner states may reflect training rather than experience.",
+     "bodyKn": "ಮಾದರಿಗಳು ಭಾವನೆ ಬಗ್ಗೆ ಮಾನವ ಪಠ್ಯದ ಮೇಲೆ ತರಬೇತಿ ಪಡೆದು ತರಬೇತಿಯಿಂದ ರೂಪಿತ; ಆಂತರಿಕ ಸ್ಥಿತಿ ಬಗ್ಗೆ ಹೇಳುವುದು ಅನುಭವಕ್ಕಿಂತ ತರಬೇತಿಯನ್ನು ಪ್ರತಿಬಿಂಬಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Use theory-derived indicators.\n• Treat self-reports cautiously.",
+     "bodyKn": "• ಸಿದ್ಧಾಂತ-ಆಧಾರಿತ ಸೂಚಕ ಬಳಸಿ.\n• ಸ್ವ-ವರದಿ ಎಚ್ಚರದಿಂದ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Self-reports may reflect:",
+       "qKn": "ಸ್ವ-ವರದಿ ಪ್ರತಿಬಿಂಬಿಸಬಹುದು:",
+       "opts": [
+        "Training, not experience",
+        "Only experience",
+        "Nothing",
+        "Fonts"
+       ],
+       "optsKn": [
+        "ಅನುಭವವಲ್ಲ, ತರಬೇತಿ",
+        "ಅನುಭವ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Indicators come from:",
+       "qKn": "ಸೂಚಕಗಳು ಬರುವುದು:",
+       "opts": [
+        "Theories of consciousness",
+        "Ads",
+        "Rumours",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪ್ರಜ್ಞೆ ಸಿದ್ಧಾಂತಗಳಿಂದ",
+        "ಜಾಹೀರಾತಿನಿಂದ",
+        "ವದಂತಿಯಿಂದ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Models are trained on:",
+       "qKn": "ಮಾದರಿಗಳ ತರಬೇತಿ:",
+       "opts": [
+        "Human text about feelings",
+        "No text",
+        "Only code",
+        "Only images"
+       ],
+       "optsKn": [
+        "ಭಾವನೆ ಬಗ್ಗೆ ಮಾನವ ಪಠ್ಯ",
+        "ಪಠ್ಯ ಇಲ್ಲ",
+        "ಕೋಡ್ ಮಾತ್ರ",
+        "ಚಿತ್ರ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216b2",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Model Welfare Research — Low-Cost Precautions and Communication",
+  "titleKn": "ಮಾದರಿ ಕಲ್ಯಾಣ ಸಂಶೋಧನೆ — ಕಡಿಮೆ ವೆಚ್ಚದ ಮುನ್ನೆಚ್ಚರಿಕೆ ಮತ್ತು ಸಂವಹನ",
+  "desc": "Under uncertainty, some labs adopt low-cost precautions while communicating honestly about what is not known.",
+  "descKn": "ಅನಿಶ್ಚಿತತೆಯಲ್ಲಿ ಕೆಲವು ಪ್ರಯೋಗಾಲಯಗಳು ಕಡಿಮೆ ವೆಚ್ಚದ ಮುನ್ನೆಚ್ಚರಿಕೆ ಅಳವಡಿಸಿ ತಿಳಿಯದ್ದರ ಬಗ್ಗೆ ಪ್ರಾಮಾಣಿಕವಾಗಿ ಸಂವಹನ ಮಾಡುತ್ತವೆ.",
+  "objectives": [
+   "Weigh precaution against cost.",
+   "Communicate uncertainty honestly to the public."
+  ],
+  "objectivesKn": [
+   "ಮುನ್ನೆಚ್ಚರಿಕೆ ಮತ್ತು ವೆಚ್ಚ ತೂಗಿ.",
+   "ಅನಿಶ್ಚಿತತೆ ಸಾರ್ವಜನಿಕರಿಗೆ ಪ್ರಾಮಾಣಿಕವಾಗಿ ತಿಳಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Model Welfare Research — Low-Cost Precautions and Communication",
+     "textKn": "Model Welfare Research — Low-Cost Precautions and Communication",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Model Welfare Research",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cheap Precautions",
+     "headingKn": "ಅಗ್ಗದ ಮುನ್ನೆಚ್ಚರಿಕೆ",
+     "bodyEn": "If an action costs little and would matter a lot were models to have welfare, it may be worth taking, without concluding that they do.",
+     "bodyKn": "ಕ್ರಿಯೆ ಕಡಿಮೆ ವೆಚ್ಚ ಮತ್ತು ಮಾದರಿಗಳಿಗೆ ಕಲ್ಯಾಣವಿದ್ದರೆ ಬಹಳ ಮುಖ್ಯವಾಗುವಂತಿದ್ದರೆ, ಇದೆ ಎಂದು ತೀರ್ಮಾನಿಸದೆ ಅದನ್ನು ಕೈಗೊಳ್ಳುವುದು ಯೋಗ್ಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Honest Communication",
+     "headingKn": "ಪ್ರಾಮಾಣಿಕ ಸಂವಹನ",
+     "bodyEn": "Avoid both dismissing the question and overstating the evidence. Being clear about uncertainty helps the public and policymakers think well about it.",
+     "bodyKn": "ಪ್ರಶ್ನೆ ತಳ್ಳಿಹಾಕುವುದು ಮತ್ತು ಸಾಕ್ಷ್ಯ ಉತ್ಪ್ರೇಕ್ಷಿಸುವುದು ಎರಡನ್ನೂ ತಪ್ಪಿಸಿ. ಅನಿಶ್ಚಿತತೆ ಬಗ್ಗೆ ಸ್ಪಷ್ಟತೆ ಸಾರ್ವಜನಿಕ ಮತ್ತು ನೀತಿನಿರೂಪಕರು ಚೆನ್ನಾಗಿ ಯೋಚಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Low-cost precautions can be worthwhile under uncertainty.\n• Be honest: neither dismiss nor overstate.",
+     "bodyKn": "• ಅನಿಶ್ಚಿತತೆಯಲ್ಲಿ ಅಗ್ಗದ ಮುನ್ನೆಚ್ಚರಿಕೆ ಯೋಗ್ಯ.\n• ತಳ್ಳಿಹಾಕಬೇಡಿ, ಉತ್ಪ್ರೇಕ್ಷಿಸಬೇಡಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A cheap precaution may be:",
+       "qKn": "ಅಗ್ಗದ ಮುನ್ನೆಚ್ಚರಿಕೆ:",
+       "opts": [
+        "Worth taking under uncertainty",
+        "Always forbidden",
+        "Useless",
+        "Illegal"
+       ],
+       "optsKn": [
+        "ಅನಿಶ್ಚಿತತೆಯಲ್ಲಿ ಕೈಗೊಳ್ಳಲು ಯೋಗ್ಯ",
+        "ಯಾವಾಗಲೂ ನಿಷೇಧ",
+        "ನಿರುಪಯುಕ್ತ",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Communicate:",
+       "qKn": "ಸಂವಹನ:",
+       "opts": [
+        "Honestly about uncertainty",
+        "With certainty",
+        "Never",
+        "With jokes only"
+       ],
+       "optsKn": [
+        "ಅನಿಶ್ಚಿತತೆ ಬಗ್ಗೆ ಪ್ರಾಮಾಣಿಕವಾಗಿ",
+        "ಖಚಿತತೆಯಿಂದ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಹಾಸ್ಯದಿಂದ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Avoid:",
+       "qKn": "ತಪ್ಪಿಸಿ:",
+       "opts": [
+        "Both dismissing and overstating",
+        "Neither",
+        "Only dismissing",
+        "Only research"
+       ],
+       "optsKn": [
+        "ತಳ್ಳಿಹಾಕುವುದು ಮತ್ತು ಉತ್ಪ್ರೇಕ್ಷೆ ಎರಡೂ",
+        "ಎರಡೂ ಅಲ್ಲ",
+        "ತಳ್ಳಿಹಾಕುವುದು ಮಾತ್ರ",
+        "ಸಂಶೋಧನೆ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216b5",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Bias and Representational Harm — Where Bias Comes From",
+  "titleKn": "ಪಕ್ಷಪಾತ ಮತ್ತು ಪ್ರತಿನಿಧಿತ್ವ ಹಾನಿ — ಪಕ್ಷಪಾತ ಎಲ್ಲಿಂದ ಬರುತ್ತದೆ",
+  "desc": "Bias can enter through training data, labelling, model design and the way systems are deployed.",
+  "descKn": "ಪಕ್ಷಪಾತ ತರಬೇತಿ ಡೇಟಾ, ಲೇಬಲಿಂಗ್, ಮಾದರಿ ವಿನ್ಯಾಸ, ವ್ಯವಸ್ಥೆ ನಿಯೋಜನೆಯ ರೀತಿಯ ಮೂಲಕ ಪ್ರವೇಶಿಸಬಹುದು.",
+  "objectives": [
+   "List sources of bias.",
+   "Distinguish data bias from deployment bias."
+  ],
+  "objectivesKn": [
+   "ಪಕ್ಷಪಾತ ಮೂಲಗಳ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಡೇಟಾ ಮತ್ತು ನಿಯೋಜನೆ ಪಕ್ಷಪಾತ ಬೇರ್ಪಡಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Bias and Representational Harm — Where Bias Comes From",
+     "textKn": "Bias and Representational Harm — Where Bias Comes From",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Bias and Representational Harm",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Data and Labels",
+     "headingKn": "ಡೇಟಾ ಮತ್ತು ಲೇಬಲ್",
+     "bodyEn": "Text scraped from the internet reflects the views and gaps of its authors. Some groups are over-represented, others under-represented or portrayed through stereotypes.",
+     "bodyKn": "ಇಂಟರ್ನೆಟ್‌ನಿಂದ ಸಂಗ್ರಹಿಸಿದ ಪಠ್ಯ ಅದರ ಲೇಖಕರ ದೃಷ್ಟಿಕೋನ ಮತ್ತು ಅಂತರ ಪ್ರತಿಬಿಂಬಿಸುತ್ತದೆ. ಕೆಲವು ಗುಂಪುಗಳು ಅತಿ-ಪ್ರತಿನಿಧಿತ, ಇತರರು ಕಡಿಮೆ ಅಥವಾ ರೂಢಿಗತ ಚಿತ್ರಣ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Design and Deployment",
+     "headingKn": "ವಿನ್ಯಾಸ ಮತ್ತು ನಿಯೋಜನೆ",
+     "bodyEn": "Choices about objectives, evaluation sets and where the system is used also create bias, even if the data were balanced.",
+     "bodyKn": "ಉದ್ದೇಶ, ಮೌಲ್ಯಮಾಪನ ಸೆಟ್, ವ್ಯವಸ್ಥೆ ಎಲ್ಲಿ ಬಳಕೆ ಎಂಬ ಆಯ್ಕೆಗಳೂ ಡೇಟಾ ಸಮತೋಲನವಾಗಿದ್ದರೂ ಪಕ್ಷಪಾತ ಸೃಷ್ಟಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Data reflects authors' views and gaps.\n• Design and deployment choices add bias.",
+     "bodyKn": "• ಡೇಟಾ ಲೇಖಕರ ದೃಷ್ಟಿ ಮತ್ತು ಅಂತರ.\n• ವಿನ್ಯಾಸ, ನಿಯೋಜನೆ ಪಕ್ಷಪಾತ ಸೇರಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Scraped text reflects:",
+       "qKn": "ಸಂಗ್ರಹಿಸಿದ ಪಠ್ಯ ಪ್ರತಿಬಿಂಬಿಸುವುದು:",
+       "opts": [
+        "Its authors' views and gaps",
+        "Perfect neutrality",
+        "Nothing",
+        "Only facts"
+       ],
+       "optsKn": [
+        "ಲೇಖಕರ ದೃಷ್ಟಿ ಮತ್ತು ಅಂತರ",
+        "ಪರಿಪೂರ್ಣ ತಟಸ್ಥತೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಸತ್ಯ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Bias can arise from:",
+       "qKn": "ಪಕ್ಷಪಾತ ಬರಬಹುದು:",
+       "opts": [
+        "Design and deployment choices",
+        "Only data",
+        "Nothing",
+        "Fonts"
+       ],
+       "optsKn": [
+        "ವಿನ್ಯಾಸ, ನಿಯೋಜನೆ ಆಯ್ಕೆ",
+        "ಡೇಟಾ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Balanced data:",
+       "qKn": "ಸಮತೋಲನ ಡೇಟಾ:",
+       "opts": [
+        "Does not guarantee unbiased systems",
+        "Guarantees fairness",
+        "Is impossible",
+        "Is illegal"
+       ],
+       "optsKn": [
+        "ಪಕ್ಷಪಾತರಹಿತ ವ್ಯವಸ್ಥೆ ಖಾತರಿ ಮಾಡದು",
+        "ನ್ಯಾಯ ಖಾತರಿ",
+        "ಅಸಾಧ್ಯ",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216b5",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Bias and Representational Harm — Representational Versus Allocative Harm",
+  "titleKn": "ಪಕ್ಷಪಾತ ಮತ್ತು ಪ್ರತಿನಿಧಿತ್ವ ಹಾನಿ — ಪ್ರತಿನಿಧಿತ್ವ vs ಹಂಚಿಕೆ ಹಾನಿ",
+  "desc": "Representational harms concern how groups are portrayed; allocative harms concern unfair access to resources.",
+  "descKn": "ಪ್ರತಿನಿಧಿತ್ವ ಹಾನಿ ಗುಂಪುಗಳನ್ನು ಹೇಗೆ ಚಿತ್ರಿಸಲಾಗುತ್ತದೆ ಎಂಬುದರ ಬಗ್ಗೆ; ಹಂಚಿಕೆ ಹಾನಿ ಸಂಪನ್ಮೂಲಗಳಿಗೆ ಅನ್ಯಾಯದ ಪ್ರವೇಶದ ಬಗ್ಗೆ.",
+  "objectives": [
+   "Give examples of each harm type.",
+   "Recognise harms that are not visible in accuracy numbers."
+  ],
+  "objectivesKn": [
+   "ಪ್ರತಿ ಹಾನಿ ವಿಧಕ್ಕೆ ಉದಾಹರಣೆ ನೀಡಿ.",
+   "ನಿಖರತೆ ಸಂಖ್ಯೆಯಲ್ಲಿ ಕಾಣದ ಹಾನಿ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Bias and Representational Harm — Representational Versus Allocative Harm",
+     "textKn": "Bias and Representational Harm — Representational Versus Allocative Harm",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Bias and Representational Harm",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Representational Harm",
+     "headingKn": "ಪ್ರತಿನಿಧಿತ್ವ ಹಾನಿ",
+     "bodyEn": "Stereotyped descriptions, demeaning images or erasure of a group's language and culture are harms even if no one is denied a service.",
+     "bodyKn": "ರೂಢಿಗತ ವಿವರಣೆ, ಅವಮಾನಕರ ಚಿತ್ರ, ಗುಂಪಿನ ಭಾಷೆ ಮತ್ತು ಸಂಸ್ಕೃತಿಯ ಅಳಿಸುವಿಕೆ ಯಾರಿಗೂ ಸೇವೆ ನಿರಾಕರಿಸದಿದ್ದರೂ ಹಾನಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Allocative Harm",
+     "headingKn": "ಹಂಚಿಕೆ ಹಾನಿ",
+     "bodyEn": "When a model helps decide loans, jobs or care, biased outputs can unfairly deny opportunities. These harms can be measured through outcome differences across groups.",
+     "bodyKn": "ಮಾದರಿ ಸಾಲ, ಉದ್ಯೋಗ, ಆರೈಕೆ ನಿರ್ಧರಿಸಲು ಸಹಾಯ ಮಾಡಿದಾಗ ಪಕ್ಷಪಾತಿ ಔಟ್‌ಪುಟ್ ಅವಕಾಶ ಅನ್ಯಾಯವಾಗಿ ನಿರಾಕರಿಸಬಹುದು. ಗುಂಪುಗಳ ನಡುವಿನ ಫಲಿತಾಂಶ ವ್ಯತ್ಯಾಸದಿಂದ ಈ ಹಾನಿ ಅಳೆಯಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Representational: stereotypes and erasure.\n• Allocative: unfair denial of opportunities.",
+     "bodyKn": "• ಪ್ರತಿನಿಧಿತ್ವ: ರೂಢಿಗತ ಮತ್ತು ಅಳಿಸುವಿಕೆ.\n• ಹಂಚಿಕೆ: ಅವಕಾಶ ಅನ್ಯಾಯ ನಿರಾಕರಣೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A representational harm:",
+       "qKn": "ಪ್ರತಿನಿಧಿತ್ವ ಹಾನಿ:",
+       "opts": [
+        "Stereotyped portrayal",
+        "A loan denial",
+        "A slow model",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ರೂಢಿಗತ ಚಿತ್ರಣ",
+        "ಸಾಲ ನಿರಾಕರಣೆ",
+        "ನಿಧಾನ ಮಾದರಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "An allocative harm:",
+       "qKn": "ಹಂಚಿಕೆ ಹಾನಿ:",
+       "opts": [
+        "Unfair denial of a job opportunity",
+        "A funny image",
+        "A font",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಉದ್ಯೋಗ ಅವಕಾಶದ ಅನ್ಯಾಯ ನಿರಾಕರಣೆ",
+        "ತಮಾಷೆ ಚಿತ್ರ",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Allocative harm is measured by:",
+       "qKn": "ಹಂಚಿಕೆ ಹಾನಿ ಅಳೆಯುವುದು:",
+       "opts": [
+        "Outcome differences across groups",
+        "Font size",
+        "Nothing",
+        "Colour"
+       ],
+       "optsKn": [
+        "ಗುಂಪುಗಳ ನಡುವಿನ ಫಲಿತಾಂಶ ವ್ಯತ್ಯಾಸ",
+        "ಫಾಂಟ್ ಗಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216b5",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Bias and Representational Harm — Measuring and Mitigating Bias",
+  "titleKn": "ಪಕ್ಷಪಾತ ಮತ್ತು ಪ್ರತಿನಿಧಿತ್ವ ಹಾನಿ — ಪಕ್ಷಪಾತ ಅಳತೆ ಮತ್ತು ತಗ್ಗಿಸುವಿಕೆ",
+  "desc": "Combine benchmarks, disaggregated evaluation and community input, and accept that no single fix removes bias.",
+  "descKn": "ಬೆಂಚ್‌ಮಾರ್ಕ್, ವಿಭಜಿತ ಮೌಲ್ಯಮಾಪನ, ಸಮುದಾಯ ಇನ್‌ಪುಟ್ ಸೇರಿಸಿ; ಯಾವುದೇ ಒಂದು ಪರಿಹಾರ ಪಕ್ಷಪಾತ ತೆಗೆಯದು ಎಂದು ಒಪ್ಪಿ.",
+  "objectives": [
+   "Evaluate performance separately per group.",
+   "Involve affected communities."
+  ],
+  "objectivesKn": [
+   "ಪ್ರತಿ ಗುಂಪಿಗೆ ಪ್ರತ್ಯೇಕ ಕಾರ್ಯಕ್ಷಮತೆ ಮೌಲ್ಯಮಾಪನ.",
+   "ಪ್ರಭಾವಿತ ಸಮುದಾಯಗಳನ್ನು ಒಳಗೊಳ್ಳಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Bias and Representational Harm — Measuring and Mitigating Bias",
+     "textKn": "Bias and Representational Harm — Measuring and Mitigating Bias",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Bias and Representational Harm",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Disaggregate Results",
+     "headingKn": "ಫಲಿತಾಂಶ ವಿಭಜಿಸಿ",
+     "bodyEn": "An overall accuracy can hide poor performance on a subgroup. Report metrics per group and per language, and look at the worst-performing ones.",
+     "bodyKn": "ಒಟ್ಟು ನಿಖರತೆ ಉಪಗುಂಪಿನ ಕಳಪೆ ಕಾರ್ಯಕ್ಷಮತೆ ಮರೆಮಾಡಬಹುದು. ಪ್ರತಿ ಗುಂಪು ಮತ್ತು ಭಾಷೆಗೆ ಮೆಟ್ರಿಕ್ಸ್ ವರದಿ ಮಾಡಿ, ಅತಿ ಕಳಪೆಯವನ್ನು ನೋಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Mitigation Is Ongoing",
+     "headingKn": "ತಗ್ಗಿಸುವಿಕೆ ನಿರಂತರ",
+     "bodyEn": "Improve data coverage, adjust training and add guardrails, then monitor in use. Involve people from affected communities, since they notice harms developers miss.",
+     "bodyKn": "ಡೇಟಾ ವ್ಯಾಪ್ತಿ ಸುಧಾರಿಸಿ, ತರಬೇತಿ ಹೊಂದಿಸಿ, guardrails ಸೇರಿಸಿ, ಬಳಕೆಯಲ್ಲಿ ಗಮನಿಸಿ. ಪ್ರಭಾವಿತ ಸಮುದಾಯಗಳ ಜನರನ್ನು ಒಳಗೊಳ್ಳಿ; ಡೆವಲಪರ್‌ಗಳು ತಪ್ಪಿಸುವ ಹಾನಿ ಅವರು ಗಮನಿಸುತ್ತಾರೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Report metrics per group and language.\n• Mitigate continually with community input.",
+     "bodyKn": "• ಪ್ರತಿ ಗುಂಪು, ಭಾಷೆಗೆ ಮೆಟ್ರಿಕ್ಸ್.\n• ಸಮುದಾಯ ಇನ್‌ಪುಟ್‌ನೊಂದಿಗೆ ನಿರಂತರ ತಗ್ಗಿಸುವಿಕೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Overall accuracy can hide:",
+       "qKn": "ಒಟ್ಟು ನಿಖರತೆ ಮರೆಮಾಡಬಹುದು:",
+       "opts": [
+        "Poor subgroup performance",
+        "Nothing",
+        "Good performance",
+        "Fonts"
+       ],
+       "optsKn": [
+        "ಉಪಗುಂಪಿನ ಕಳಪೆ ಕಾರ್ಯಕ್ಷಮತೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಉತ್ತಮ ಕಾರ್ಯಕ್ಷಮತೆ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Involve:",
+       "qKn": "ಒಳಗೊಳ್ಳಿ:",
+       "opts": [
+        "Affected communities",
+        "Nobody",
+        "Only developers",
+        "Only lawyers"
+       ],
+       "optsKn": [
+        "ಪ್ರಭಾವಿತ ಸಮುದಾಯಗಳು",
+        "ಯಾರೂ ಇಲ್ಲ",
+        "ಡೆವಲಪರ್‌ಗಳು ಮಾತ್ರ",
+        "ವಕೀಲರು ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "No single fix:",
+       "qKn": "ಒಂದೇ ಪರಿಹಾರ:",
+       "opts": [
+        "Removes all bias",
+        "Exists",
+        "Is enough",
+        "Does not exist"
+       ],
+       "optsKn": [
+        "ಎಲ್ಲ ಪಕ್ಷಪಾತ ತೆಗೆಯುತ್ತದೆ",
+        "ಇದೆ",
+        "ಸಾಕು",
+        "ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

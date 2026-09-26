@@ -1,0 +1,2627 @@
+[
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b32160a",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Theory of Mind and Emergent Coordination — What Theory of Mind Means",
+  "titleKn": "Theory of Mind ಮತ್ತು ಹೊರಹೊಮ್ಮುವ ಸಮನ್ವಯ — Theory of Mind ಎಂದರೇನು",
+  "desc": "Theory of mind is modelling what others know, believe and intend, which helps agents coordinate.",
+  "descKn": "Theory of mind ಇತರರು ಏನು ತಿಳಿದಿದ್ದಾರೆ, ನಂಬುತ್ತಾರೆ, ಉದ್ದೇಶಿಸುತ್ತಾರೆ ಎಂದು ಮಾದರಿ ಮಾಡುವುದು; agents ಸಮನ್ವಯಕ್ಕೆ ಸಹಾಯ.",
+  "objectives": [
+   "Define theory of mind.",
+   "Explain false-belief reasoning."
+  ],
+  "objectivesKn": [
+   "theory of mind ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ತಪ್ಪು-ನಂಬಿಕೆ ತರ್ಕ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Theory of Mind and Emergent Coordination — What Theory of Mind Means",
+     "textKn": "Theory of Mind and Emergent Coordination — What Theory of Mind Means",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Theory of Mind and Emergent Coordination",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Modelling Others",
+     "headingKn": "ಇತರರ ಮಾದರಿ",
+     "bodyEn": "To coordinate, an agent benefits from asking: what does the other agent know, what does it want and what will it probably do next?",
+     "bodyKn": "ಸಮನ್ವಯಕ್ಕೆ agent ಕೇಳುವುದು ಲಾಭ: ಇನ್ನೊಬ್ಬರಿಗೆ ಏನು ತಿಳಿದಿದೆ, ಏನು ಬೇಕು, ಮುಂದೆ ಏನು ಮಾಡಬಹುದು?"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "False Beliefs",
+     "headingKn": "ತಪ್ಪು ನಂಬಿಕೆಗಳು",
+     "bodyEn": "A classic test asks whether someone understands that another person can hold a belief that is false. It shows that beliefs differ from facts.",
+     "bodyKn": "ಇನ್ನೊಬ್ಬ ವ್ಯಕ್ತಿ ತಪ್ಪು ನಂಬಿಕೆ ಹೊಂದಬಹುದು ಎಂದು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುತ್ತಾರೆಯೇ ಎಂದು ಶಾಸ್ತ್ರೀಯ ಪರೀಕ್ಷೆ ಕೇಳುತ್ತದೆ. ನಂಬಿಕೆ ಸತ್ಯಕ್ಕಿಂತ ಭಿನ್ನ ಎಂದು ತೋರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Model others' knowledge, goals and next moves.\n• Beliefs can differ from facts.",
+     "bodyKn": "• ಇತರರ ಜ್ಞಾನ, ಗುರಿ, ಮುಂದಿನ ನಡೆ ಮಾದರಿ.\n• ನಂಬಿಕೆ ಸತ್ಯಕ್ಕಿಂತ ಭಿನ್ನ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Theory of mind is:",
+       "qKn": "theory of mind:",
+       "opts": [
+        "Modelling what others know and intend",
+        "A memory chip",
+        "A type of GPU",
+        "A font"
+       ],
+       "optsKn": [
+        "ಇತರರು ಏನು ತಿಳಿದು ಉದ್ದೇಶಿಸುತ್ತಾರೆ ಮಾದರಿ",
+        "ಮೆಮೊರಿ ಚಿಪ್",
+        "GPU ವಿಧ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A false belief is:",
+       "qKn": "ತಪ್ಪು ನಂಬಿಕೆ:",
+       "opts": [
+        "A belief that does not match reality",
+        "A fact",
+        "A bug",
+        "A tool"
+       ],
+       "optsKn": [
+        "ವಾಸ್ತವಕ್ಕೆ ಹೊಂದದ ನಂಬಿಕೆ",
+        "ಸತ್ಯ",
+        "ದೋಷ",
+        "tool"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "It helps agents:",
+       "qKn": "ಇದು agents ಗೆ ಸಹಾಯ:",
+       "opts": [
+        "Coordinate",
+        "Crash",
+        "Hide",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸಮನ್ವಯ",
+        "ಕ್ರ್ಯಾಶ್",
+        "ಮರೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b32160a",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Theory of Mind and Emergent Coordination — How Well Do LLMs Do It",
+  "titleKn": "Theory of Mind ಮತ್ತು ಹೊರಹೊಮ್ಮುವ ಸಮನ್ವಯ — LLM ಗಳು ಎಷ್ಟು ಚೆನ್ನಾಗಿ ಮಾಡುತ್ತವೆ",
+  "desc": "LLMs can pass many theory-of-mind tests, but results are sensitive to wording and may not reflect robust reasoning.",
+  "descKn": "LLM ಗಳು ಅನೇಕ theory-of-mind ಪರೀಕ್ಷೆ ಪಾಸ್ ಮಾಡಬಲ್ಲವು, ಆದರೆ ಫಲಿತಾಂಶ ಪದಗಳಿಗೆ ಸೂಕ್ಷ್ಮ ಮತ್ತು ದೃಢ ತರ್ಕ ಪ್ರತಿಬಿಂಬಿಸದಿರಬಹುದು.",
+  "objectives": [
+   "Interpret benchmark results cautiously.",
+   "Design tests with perturbations."
+  ],
+  "objectivesKn": [
+   "ಬೆಂಚ್‌ಮಾರ್ಕ್ ಫಲಿತಾಂಶ ಎಚ್ಚರಿಕೆಯಿಂದ ಅರ್ಥೈಸಿ.",
+   "ಬದಲಾವಣೆಗಳೊಂದಿಗೆ ಪರೀಕ್ಷೆ ವಿನ್ಯಾಸ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Theory of Mind and Emergent Coordination — How Well Do LLMs Do It",
+     "textKn": "Theory of Mind and Emergent Coordination — How Well Do LLMs Do It",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Theory of Mind and Emergent Coordination",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Impressive but Brittle",
+     "headingKn": "ಪ್ರಭಾವಶಾಲಿ ಆದರೆ ದುರ್ಬಲ",
+     "bodyEn": "Strong models solve standard false-belief stories, yet small changes to the story can break them, suggesting pattern matching in some cases.",
+     "bodyKn": "ಬಲಿಷ್ಠ ಮಾದರಿಗಳು ಪ್ರಮಾಣಿತ ತಪ್ಪು-ನಂಬಿಕೆ ಕಥೆ ಬಿಡಿಸುತ್ತವೆ, ಆದರೆ ಕಥೆಯ ಸಣ್ಣ ಬದಲಾವಣೆ ಅವನ್ನು ಮುರಿಯಬಹುದು; ಕೆಲವೊಮ್ಮೆ ಮಾದರಿ ಹೊಂದಾಣಿಕೆ ಸೂಚಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Test With Perturbations",
+     "headingKn": "ಬದಲಾವಣೆಗಳೊಂದಿಗೆ ಪರೀಕ್ಷಿಸಿ",
+     "bodyEn": "Vary names, order and details, and add distractors. A robust ability should survive such changes; a memorised one will not.",
+     "bodyKn": "ಹೆಸರು, ಕ್ರಮ, ವಿವರ ಬದಲಿಸಿ, ವಿಚಲಿತಗೊಳಿಸುವ ಅಂಶ ಸೇರಿಸಿ. ದೃಢ ಸಾಮರ್ಥ್ಯ ಇಂತಹ ಬದಲಾವಣೆ ಬದುಕುತ್ತದೆ; ಕಂಠಪಾಠ ಮಾಡಿದ್ದು ಬದುಕದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Passing standard tests is not proof of robust ToM.\n• Perturb stories to test robustness.",
+     "bodyKn": "• ಪ್ರಮಾಣಿತ ಪರೀಕ್ಷೆ ಪಾಸ್ ದೃಢ ToM ಸಾಕ್ಷ್ಯವಲ್ಲ.\n• ಕಥೆ ಬದಲಿಸಿ ದೃಢತೆ ಪರೀಕ್ಷಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A robust ability should:",
+       "qKn": "ದೃಢ ಸಾಮರ್ಥ್ಯ:",
+       "opts": [
+        "Survive small story changes",
+        "Fail with changes",
+        "Need one exact wording",
+        "Be random"
+       ],
+       "optsKn": [
+        "ಸಣ್ಣ ಕಥೆ ಬದಲಾವಣೆ ಬದುಕುತ್ತದೆ",
+        "ಬದಲಾವಣೆಯಲ್ಲಿ ವಿಫಲ",
+        "ಒಂದು ನಿಖರ ಪದ ಬೇಕು",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Passing standard tests shows:",
+       "qKn": "ಪ್ರಮಾಣಿತ ಪರೀಕ್ಷೆ ಪಾಸ್ ತೋರಿಸುವುದು:",
+       "opts": [
+        "Not necessarily robust reasoning",
+        "Perfect reasoning",
+        "Nothing",
+        "Cheating"
+       ],
+       "optsKn": [
+        "ದೃಢ ತರ್ಕ ಎಂದೇನಿಲ್ಲ",
+        "ಪರಿಪೂರ್ಣ ತರ್ಕ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಮೋಸ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Add to tests:",
+       "qKn": "ಪರೀಕ್ಷೆಗೆ ಸೇರಿಸಿ:",
+       "opts": [
+        "Distractors",
+        "Fonts",
+        "Logos",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ವಿಚಲಿತ ಅಂಶ",
+        "ಫಾಂಟ್",
+        "ಲೋಗೋ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b32160a",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Theory of Mind and Emergent Coordination — Coordination Without Talking",
+  "titleKn": "Theory of Mind ಮತ್ತು ಹೊರಹೊಮ್ಮುವ ಸಮನ್ವಯ — ಮಾತಾಡದೆ ಸಮನ್ವಯ",
+  "desc": "Agents can coordinate by predicting each other, using shared conventions and focal points rather than explicit messages.",
+  "descKn": "agents ಸ್ಪಷ್ಟ ಸಂದೇಶದ ಬದಲು ಪರಸ್ಪರ ಊಹಿಸಿ, ಹಂಚಿದ ಸಂಪ್ರದಾಯ ಮತ್ತು focal points ಬಳಸಿ ಸಮನ್ವಯ ಸಾಧಿಸಬಹುದು.",
+  "objectives": [
+   "Explain focal points.",
+   "Know when explicit communication is safer."
+  ],
+  "objectivesKn": [
+   "focal points ವಿವರಿಸಿ.",
+   "ಸ್ಪಷ್ಟ ಸಂವಹನ ಯಾವಾಗ ಸುರಕ್ಷಿತ ತಿಳಿಯಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Theory of Mind and Emergent Coordination — Coordination Without Talking",
+     "textKn": "Theory of Mind and Emergent Coordination — Coordination Without Talking",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Theory of Mind and Emergent Coordination",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Focal Points and Conventions",
+     "headingKn": "Focal Points ಮತ್ತು ಸಂಪ್ರದಾಯಗಳು",
+     "bodyEn": "When no communication is possible, agents may converge on an obvious choice, such as meeting at a landmark, if both expect the other to pick it.",
+     "bodyKn": "ಸಂವಹನ ಸಾಧ್ಯವಿಲ್ಲದಿದ್ದಾಗ ಇಬ್ಬರೂ ಇನ್ನೊಬ್ಬರು ಅದನ್ನೇ ಆರಿಸುತ್ತಾರೆ ಎಂದು ನಿರೀಕ್ಷಿಸಿದರೆ ಸ್ಪಷ್ಟ ಆಯ್ಕೆ (ಉದಾ. ಹೆಗ್ಗುರುತಿನಲ್ಲಿ ಭೇಟಿ) ಮೇಲೆ agents ಒಮ್ಮತಕ್ಕೆ ಬರಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Prefer Explicit Signals",
+     "headingKn": "ಸ್ಪಷ್ಟ ಸಂಕೇತ ಆದ್ಯತೆ",
+     "bodyEn": "Implicit coordination is fragile. For important tasks, state assumptions, plans and status explicitly instead of relying on mind-reading.",
+     "bodyKn": "ಅಸ್ಪಷ್ಟ ಸಮನ್ವಯ ದುರ್ಬಲ. ಮುಖ್ಯ ಕೆಲಸಕ್ಕೆ ಮನಸ್ಸು-ಓದುವಿಕೆ ಅವಲಂಬಿಸದೆ ಊಹೆ, ಯೋಜನೆ, ಸ್ಥಿತಿಯನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ಹೇಳಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Focal points enable silent coordination.\n• For important work, communicate explicitly.",
+     "bodyKn": "• focal points ಮೌನ ಸಮನ್ವಯ ಸಾಧ್ಯ.\n• ಮುಖ್ಯ ಕೆಲಸಕ್ಕೆ ಸ್ಪಷ್ಟ ಸಂವಹನ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A focal point is:",
+       "qKn": "focal point:",
+       "opts": [
+        "An obvious shared choice",
+        "A random choice",
+        "A camera",
+        "A file"
+       ],
+       "optsKn": [
+        "ಸ್ಪಷ್ಟ ಹಂಚಿದ ಆಯ್ಕೆ",
+        "ಯಾದೃಚ್ಛಿಕ ಆಯ್ಕೆ",
+        "ಕ್ಯಾಮೆರಾ",
+        "ಫೈಲ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Implicit coordination is:",
+       "qKn": "ಅಸ್ಪಷ್ಟ ಸಮನ್ವಯ:",
+       "opts": [
+        "Fragile",
+        "Perfect",
+        "Always safe",
+        "Free"
+       ],
+       "optsKn": [
+        "ದುರ್ಬಲ",
+        "ಪರಿಪೂರ್ಣ",
+        "ಯಾವಾಗಲೂ ಸುರಕ್ಷಿತ",
+        "ಉಚಿತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "For important tasks:",
+       "qKn": "ಮುಖ್ಯ ಕೆಲಸಕ್ಕೆ:",
+       "opts": [
+        "State plans explicitly",
+        "Rely on mind-reading",
+        "Say nothing",
+        "Guess"
+       ],
+       "optsKn": [
+        "ಯೋಜನೆ ಸ್ಪಷ್ಟವಾಗಿ ಹೇಳಿ",
+        "ಮನಸ್ಸು-ಓದುವಿಕೆ ಅವಲಂಬಿಸಿ",
+        "ಏನೂ ಹೇಳಬೇಡಿ",
+        "ಊಹಿಸಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b32160d",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Swarm Optimization (PSO, ACO) — Particle Swarm Optimization",
+  "titleKn": "Swarm Optimization (PSO, ACO) — Particle Swarm Optimization",
+  "desc": "PSO moves many candidate solutions through a search space, pulled toward their own best and the swarm's best.",
+  "descKn": "PSO ಹಲವು ಅಭ್ಯರ್ಥಿ ಪರಿಹಾರಗಳನ್ನು ಹುಡುಕಾಟ ಸ್ಥಳದಲ್ಲಿ ಚಲಿಸುತ್ತದೆ; ತಮ್ಮ ಅತ್ಯುತ್ತಮ ಮತ್ತು swarm ನ ಅತ್ಯುತ್ತಮದತ್ತ ಸೆಳೆಯಲ್ಪಡುತ್ತವೆ.",
+  "objectives": [
+   "Describe particles, velocity and best positions.",
+   "Name PSO's tunable parameters."
+  ],
+  "objectivesKn": [
+   "particles, ವೇಗ, ಅತ್ಯುತ್ತಮ ಸ್ಥಾನ ವಿವರಿಸಿ.",
+   "PSO ನ ಹೊಂದಿಸಬಹುದಾದ ಪ್ಯಾರಾಮೀಟರ್ ಹೆಸರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Swarm Optimization (PSO, ACO) — Particle Swarm Optimization",
+     "textKn": "Swarm Optimization (PSO, ACO) — Particle Swarm Optimization",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Swarm Optimization (PSO, ACO)",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Particles in Motion",
+     "headingKn": "ಚಲನೆಯಲ್ಲಿ Particles",
+     "bodyEn": "Each particle is a candidate solution with a position and velocity. It remembers its best position so far and knows the best found by the swarm.",
+     "bodyKn": "ಪ್ರತಿ particle ಸ್ಥಾನ ಮತ್ತು ವೇಗ ಇರುವ ಅಭ್ಯರ್ಥಿ ಪರಿಹಾರ. ಇದುವರೆಗಿನ ತನ್ನ ಅತ್ಯುತ್ತಮ ಸ್ಥಾನ ನೆನಪಿಟ್ಟು swarm ಕಂಡುಹಿಡಿದ ಅತ್ಯುತ್ತಮ ತಿಳಿದಿರುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Update Rule",
+     "headingKn": "ನವೀಕರಣ ನಿಯಮ",
+     "bodyEn": "Velocity blends inertia, a pull toward the personal best and a pull toward the global best. Weights on these terms balance exploring and exploiting.",
+     "bodyKn": "ವೇಗ ಜಡತ್ವ, ವೈಯಕ್ತಿಕ ಅತ್ಯುತ್ತಮದತ್ತ ಸೆಳೆತ, ಜಾಗತಿಕ ಅತ್ಯುತ್ತಮದತ್ತ ಸೆಳೆತ ಬೆರೆಸುತ್ತದೆ. ಈ ತೂಕಗಳು ಅನ್ವೇಷಣೆ ಮತ್ತು ಬಳಕೆಯನ್ನು ಸಮತೋಲನಗೊಳಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Particles remember personal best and follow global best.\n• Weights balance exploration and exploitation.",
+     "bodyKn": "• particles ವೈಯಕ್ತಿಕ ಅತ್ಯುತ್ತಮ ನೆನಪು, ಜಾಗತಿಕ ಅನುಸರಣೆ.\n• ತೂಕ ಅನ್ವೇಷಣೆ-ಬಳಕೆ ಸಮತೋಲನ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A particle is:",
+       "qKn": "particle:",
+       "opts": [
+        "A candidate solution",
+        "A screen pixel",
+        "A GPU",
+        "A file"
+       ],
+       "optsKn": [
+        "ಅಭ್ಯರ್ಥಿ ಪರಿಹಾರ",
+        "ಪರದೆ ಪಿಕ್ಸೆಲ್",
+        "GPU",
+        "ಫೈಲ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Velocity blends:",
+       "qKn": "ವೇಗ ಬೆರೆಸುವುದು:",
+       "opts": [
+        "Inertia, personal best, global best",
+        "Colours",
+        "Fonts",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಜಡತ್ವ, ವೈಯಕ್ತಿಕ, ಜಾಗತಿಕ ಅತ್ಯುತ್ತಮ",
+        "ಬಣ್ಣ",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Weights balance:",
+       "qKn": "ತೂಕ ಸಮತೋಲನ:",
+       "opts": [
+        "Exploration and exploitation",
+        "Price and speed",
+        "Nothing",
+        "Colour"
+       ],
+       "optsKn": [
+        "ಅನ್ವೇಷಣೆ ಮತ್ತು ಬಳಕೆ",
+        "ಬೆಲೆ ಮತ್ತು ವೇಗ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b32160d",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Swarm Optimization (PSO, ACO) — Ant Colony Optimization",
+  "titleKn": "Swarm Optimization (PSO, ACO) — Ant Colony Optimization",
+  "desc": "ACO uses simulated ants that leave pheromone on good paths, guiding later ants toward better routes.",
+  "descKn": "ACO ಉತ್ತಮ ಹಾದಿಗಳಲ್ಲಿ pheromone ಬಿಡುವ ಅನುಕರಣ ಇರುವೆಗಳನ್ನು ಬಳಸಿ ನಂತರದ ಇರುವೆಗಳನ್ನು ಉತ್ತಮ ಮಾರ್ಗದತ್ತ ಮಾರ್ಗದರ್ಶಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Describe pheromone deposit and evaporation.",
+   "Name suitable problems such as routing."
+  ],
+  "objectivesKn": [
+   "pheromone ಠೇವಣಿ ಮತ್ತು ಆವಿಯಾಗುವಿಕೆ ವಿವರಿಸಿ.",
+   "routing ನಂತಹ ಸೂಕ್ತ ಸಮಸ್ಯೆ ಹೆಸರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Swarm Optimization (PSO, ACO) — Ant Colony Optimization",
+     "textKn": "Swarm Optimization (PSO, ACO) — Ant Colony Optimization",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Swarm Optimization (PSO, ACO)",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Pheromone Trails",
+     "headingKn": "Pheromone ಹಾದಿಗಳು",
+     "bodyEn": "Ants build solutions step by step, choosing edges with probability weighted by pheromone. Shorter tours get more pheromone, so they become more attractive.",
+     "bodyKn": "ಇರುವೆಗಳು ಹಂತ ಹಂತವಾಗಿ ಪರಿಹಾರ ನಿರ್ಮಿಸಿ pheromone ತೂಕದ ಸಂಭವನೀಯತೆಯಲ್ಲಿ edges ಆರಿಸುತ್ತವೆ. ಚಿಕ್ಕ ಪ್ರಯಾಣಕ್ಕೆ ಹೆಚ್ಚು pheromone; ಅವು ಹೆಚ್ಚು ಆಕರ್ಷಕವಾಗುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Evaporation",
+     "headingKn": "ಆವಿಯಾಗುವಿಕೆ",
+     "bodyEn": "Pheromone slowly evaporates so old, poor choices fade and the colony can adapt. It suits routing and scheduling problems on graphs.",
+     "bodyKn": "pheromone ನಿಧಾನವಾಗಿ ಆವಿಯಾಗುತ್ತದೆ; ಹಳೆಯ ಕೆಟ್ಟ ಆಯ್ಕೆ ಮಸುಕಾಗಿ ಕಾಲೋನಿ ಹೊಂದಿಕೊಳ್ಳುತ್ತದೆ. ಗ್ರಾಫ್‌ಗಳ ಮೇಲಿನ routing ಮತ್ತು ವೇಳಾಪಟ್ಟಿ ಸಮಸ್ಯೆಗೆ ಸೂಕ್ತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Better paths gather more pheromone.\n• Evaporation lets the colony adapt.",
+     "bodyKn": "• ಉತ್ತಮ ಹಾದಿ ಹೆಚ್ಚು pheromone.\n• ಆವಿಯಾಗುವಿಕೆ ಹೊಂದಾಣಿಕೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Shorter tours get:",
+       "qKn": "ಚಿಕ್ಕ ಪ್ರಯಾಣಕ್ಕೆ:",
+       "opts": [
+        "More pheromone",
+        "Less pheromone",
+        "None",
+        "Random"
+       ],
+       "optsKn": [
+        "ಹೆಚ್ಚು pheromone",
+        "ಕಡಿಮೆ pheromone",
+        "ಯಾವುದೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Evaporation:",
+       "qKn": "ಆವಿಯಾಗುವಿಕೆ:",
+       "opts": [
+        "Fades poor old choices",
+        "Deletes the graph",
+        "Speeds ants",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹಳೆಯ ಕೆಟ್ಟ ಆಯ್ಕೆ ಮಸುಕುಗೊಳಿಸುತ್ತದೆ",
+        "ಗ್ರಾಫ್ ಅಳಿಸುತ್ತದೆ",
+        "ಇರುವೆ ವೇಗ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "ACO suits:",
+       "qKn": "ACO ಸೂಕ್ತ:",
+       "opts": [
+        "Routing on graphs",
+        "Image filters",
+        "Fonts",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಗ್ರಾಫ್ ಮೇಲೆ routing",
+        "ಚಿತ್ರ ಫಿಲ್ಟರ್",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b32160d",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Swarm Optimization (PSO, ACO) — Swarm Ideas for LLM Agents",
+  "titleKn": "Swarm Optimization (PSO, ACO) — LLM Agents ಗೆ Swarm ಕಲ್ಪನೆಗಳು",
+  "desc": "Ideas such as population search, sharing the best and evaporating stale information carry over to agent systems.",
+  "descKn": "ಸಮೂಹ ಹುಡುಕಾಟ, ಅತ್ಯುತ್ತಮ ಹಂಚಿಕೆ, ಹಳೆಯ ಮಾಹಿತಿ ಆವಿಯಾಗಿಸುವುದರಂತಹ ಕಲ್ಪನೆಗಳು agent ವ್ಯವಸ್ಥೆಗಳಿಗೆ ವರ್ಗಾವಣೆ.",
+  "objectives": [
+   "Map swarm ideas onto agent populations.",
+   "Know when classical optimisers are better."
+  ],
+  "objectivesKn": [
+   "swarm ಕಲ್ಪನೆಗಳನ್ನು agent ಸಮೂಹಕ್ಕೆ ಹೊಂದಿಸಿ.",
+   "ಶಾಸ್ತ್ರೀಯ optimisers ಯಾವಾಗ ಉತ್ತಮ ತಿಳಿಯಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Swarm Optimization (PSO, ACO) — Swarm Ideas for LLM Agents",
+     "textKn": "Swarm Optimization (PSO, ACO) — Swarm Ideas for LLM Agents",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Swarm Optimization (PSO, ACO)",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Borrowing the Ideas",
+     "headingKn": "ಕಲ್ಪನೆ ಎರವಲು",
+     "bodyEn": "A population of agents can each try a variant, share what scored best and let weaker variants fade, similar to evolutionary prompt or code search.",
+     "bodyKn": "agents ಸಮೂಹ ಪ್ರತಿಯೊಂದು ರೂಪಾಂತರ ಪ್ರಯತ್ನಿಸಿ, ಉತ್ತಮ ಅಂಕದ್ದನ್ನು ಹಂಚಿ, ದುರ್ಬಲ ರೂಪಾಂತರ ಮಸುಕಾಗಲು ಬಿಡಬಹುದು; evolutionary prompt ಅಥವಾ ಕೋಡ್ ಹುಡುಕಾಟದಂತೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Use the Right Tool",
+     "headingKn": "ಸರಿಯಾದ ಸಾಧನ ಬಳಸಿ",
+     "bodyEn": "For numeric optimisation with a cheap objective, classical methods are faster and cheaper than LLM agents. Use agents where the search space is text or code.",
+     "bodyKn": "ಅಗ್ಗದ ಉದ್ದೇಶದ ಸಂಖ್ಯಾ optimisation ಗೆ ಶಾಸ್ತ್ರೀಯ ವಿಧಾನ LLM agents ಗಿಂತ ವೇಗ ಮತ್ತು ಅಗ್ಗ. ಹುಡುಕಾಟ ಸ್ಥಳ ಪಠ್ಯ ಅಥವಾ ಕೋಡ್ ಆದಾಗ agents ಬಳಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Populations share bests and let weak variants fade.\n• Classical optimisers win on cheap numeric problems.",
+     "bodyKn": "• ಸಮೂಹ ಅತ್ಯುತ್ತಮ ಹಂಚಿ ದುರ್ಬಲ ಮಸುಕು.\n• ಅಗ್ಗ ಸಂಖ್ಯಾ ಸಮಸ್ಯೆಗೆ ಶಾಸ್ತ್ರೀಯ ಉತ್ತಮ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "For cheap numeric objectives:",
+       "qKn": "ಅಗ್ಗ ಸಂಖ್ಯಾ ಉದ್ದೇಶಕ್ಕೆ:",
+       "opts": [
+        "Classical optimisers are better",
+        "Always use LLMs",
+        "Use nothing",
+        "Use images"
+       ],
+       "optsKn": [
+        "ಶಾಸ್ತ್ರೀಯ optimisers ಉತ್ತಮ",
+        "ಯಾವಾಗಲೂ LLM",
+        "ಏನೂ ಬೇಡ",
+        "ಚಿತ್ರ ಬಳಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Agents fit when the space is:",
+       "qKn": "agents ಸೂಕ್ತ ಸ್ಥಳ:",
+       "opts": [
+        "Text or code",
+        "Only numbers",
+        "Empty",
+        "Colours"
+       ],
+       "optsKn": [
+        "ಪಠ್ಯ ಅಥವಾ ಕೋಡ್",
+        "ಸಂಖ್ಯೆ ಮಾತ್ರ",
+        "ಖಾಲಿ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Weaker variants should:",
+       "qKn": "ದುರ್ಬಲ ರೂಪಾಂತರ:",
+       "opts": [
+        "Fade out",
+        "Dominate",
+        "Be copied",
+        "Be hidden"
+       ],
+       "optsKn": [
+        "ಮಸುಕಾಗಬೇಕು",
+        "ಪ್ರಾಬಲ್ಯ",
+        "ನಕಲು",
+        "ಮರೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b321610",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "MARL: MADDPG, QMIX, MAPPO — The Multi-Agent RL Setting",
+  "titleKn": "MARL: MADDPG, QMIX, MAPPO — ಬಹು-Agent RL ಸೆಟ್ಟಿಂಗ್",
+  "desc": "In multi-agent reinforcement learning several agents learn at once, so each faces a changing environment.",
+  "descKn": "ಬಹು-agent reinforcement learning ನಲ್ಲಿ ಹಲವು agents ಒಟ್ಟಿಗೆ ಕಲಿಯುತ್ತವೆ; ಪ್ರತಿಯೊಂದೂ ಬದಲಾಗುವ ಪರಿಸರ ಎದುರಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Explain non-stationarity.",
+   "Distinguish cooperative, competitive and mixed settings."
+  ],
+  "objectivesKn": [
+   "non-stationarity ವಿವರಿಸಿ.",
+   "ಸಹಕಾರಿ, ಸ್ಪರ್ಧಾತ್ಮಕ, ಮಿಶ್ರ ಸೆಟ್ಟಿಂಗ್ ಬೇರ್ಪಡಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "MARL: MADDPG, QMIX, MAPPO — The Multi-Agent RL Setting",
+     "textKn": "MARL: MADDPG, QMIX, MAPPO — The Multi-Agent RL Setting",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in MARL: MADDPG, QMIX, MAPPO",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Moving Target",
+     "headingKn": "ಚಲಿಸುವ ಗುರಿ",
+     "bodyEn": "When other agents also learn, the environment from one agent's view keeps changing. This non-stationarity breaks assumptions of single-agent methods.",
+     "bodyKn": "ಇತರ agents ಕೂಡ ಕಲಿತರೆ ಒಬ್ಬ agent ನ ದೃಷ್ಟಿಯಲ್ಲಿ ಪರಿಸರ ಬದಲಾಗುತ್ತಲೇ ಇರುತ್ತದೆ. ಈ non-stationarity ಒಂದು-agent ವಿಧಾನಗಳ ಊಹೆಗಳನ್ನು ಮುರಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Kinds of Interaction",
+     "headingKn": "ಸಂವಹನ ವಿಧಗಳು",
+     "bodyEn": "Cooperative tasks share one reward. Competitive ones are zero-sum. Mixed settings combine shared and conflicting goals.",
+     "bodyKn": "ಸಹಕಾರಿ ಕೆಲಸಗಳು ಒಂದೇ ಬಹುಮಾನ ಹಂಚುತ್ತವೆ. ಸ್ಪರ್ಧಾತ್ಮಕ zero-sum. ಮಿಶ್ರ ಸೆಟ್ಟಿಂಗ್ ಹಂಚಿದ ಮತ್ತು ಸಂಘರ್ಷ ಗುರಿ ಸೇರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Other learners make the environment non-stationary.\n• Cooperative, competitive or mixed.",
+     "bodyKn": "• ಇತರ ಕಲಿಯುವವರು ಪರಿಸರ non-stationary ಮಾಡುತ್ತಾರೆ.\n• ಸಹಕಾರಿ, ಸ್ಪರ್ಧಾತ್ಮಕ, ಮಿಶ್ರ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Non-stationarity arises because:",
+       "qKn": "non-stationarity ಏಕೆ?",
+       "opts": [
+        "Other agents are learning",
+        "Nothing changes",
+        "Rewards vanish",
+        "Data is small"
+       ],
+       "optsKn": [
+        "ಇತರ agents ಕಲಿಯುತ್ತಿವೆ",
+        "ಏನೂ ಬದಲಾಗದು",
+        "ಬಹುಮಾನ ಮಾಯ",
+        "ಡೇಟಾ ಚಿಕ್ಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Cooperative tasks share:",
+       "qKn": "ಸಹಕಾರಿ ಕೆಲಸ ಹಂಚುವುದು:",
+       "opts": [
+        "One reward",
+        "Nothing",
+        "Opposing rewards",
+        "A GPU"
+       ],
+       "optsKn": [
+        "ಒಂದು ಬಹುಮಾನ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ವಿರುದ್ಧ ಬಹುಮಾನ",
+        "GPU"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Zero-sum means:",
+       "qKn": "zero-sum ಎಂದರೆ:",
+       "opts": [
+        "One side's gain is the other's loss",
+        "Everyone wins",
+        "No reward",
+        "Random"
+       ],
+       "optsKn": [
+        "ಒಬ್ಬರ ಲಾಭ ಇನ್ನೊಬ್ಬರ ನಷ್ಟ",
+        "ಎಲ್ಲರೂ ಗೆಲ್ಲುತ್ತಾರೆ",
+        "ಬಹುಮಾನ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b321610",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "MARL: MADDPG, QMIX, MAPPO — Centralised Training, Decentralised Execution",
+  "titleKn": "MARL: MADDPG, QMIX, MAPPO — ಕೇಂದ್ರೀಕೃತ ತರಬೇತಿ, ವಿಕೇಂದ್ರೀಕೃತ ಕಾರ್ಯಗತ",
+  "desc": "A common approach lets a critic see everything during training while each agent acts on local observations.",
+  "descKn": "ಸಾಮಾನ್ಯ ವಿಧಾನ: ತರಬೇತಿ ಸಮಯದಲ್ಲಿ critic ಎಲ್ಲವನ್ನೂ ನೋಡುತ್ತದೆ, ಪ್ರತಿ agent ಸ್ಥಳೀಯ ಅವಲೋಕನದ ಮೇಲೆ ಕ್ರಿಯೆ ಮಾಡುತ್ತದೆ.",
+  "objectives": [
+   "Explain CTDE.",
+   "Name why it stabilises learning."
+  ],
+  "objectivesKn": [
+   "CTDE ವಿವರಿಸಿ.",
+   "ಕಲಿಕೆ ಸ್ಥಿರಗೊಳಿಸುವುದೇಕೆ ಹೇಳಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "MARL: MADDPG, QMIX, MAPPO — Centralised Training, Decentralised Execution",
+     "textKn": "MARL: MADDPG, QMIX, MAPPO — Centralised Training, Decentralised Execution",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in MARL: MADDPG, QMIX, MAPPO",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "CTDE",
+     "headingKn": "CTDE",
+     "bodyEn": "During training, a centralised critic uses global information to judge joint actions. At run time each agent uses only its own observations, so it can act independently.",
+     "bodyKn": "ತರಬೇತಿಯಲ್ಲಿ ಕೇಂದ್ರೀಕೃತ critic ಜಾಗತಿಕ ಮಾಹಿತಿಯಿಂದ ಜಂಟಿ ಕ್ರಿಯೆ ಅಳೆಯುತ್ತದೆ. ಚಲಾವಣೆಯಲ್ಲಿ ಪ್ರತಿ agent ತನ್ನ ಅವಲೋಕನ ಮಾತ್ರ ಬಳಸಿ ಸ್ವತಂತ್ರವಾಗಿ ಕ್ರಿಯೆ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why It Helps",
+     "headingKn": "ಇದು ಏಕೆ ಸಹಾಯ",
+     "bodyEn": "Seeing everyone's actions removes much of the non-stationarity during learning, while decentralised execution keeps deployment practical.",
+     "bodyKn": "ಎಲ್ಲರ ಕ್ರಿಯೆ ನೋಡುವುದು ಕಲಿಕೆಯಲ್ಲಿ non-stationarity ಬಹುಪಾಲು ತೆಗೆಯುತ್ತದೆ; ವಿಕೇಂದ್ರೀಕೃತ ಕಾರ್ಯಗತ ನಿಯೋಜನೆ ಪ್ರಾಯೋಗಿಕವಾಗಿಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Central critic in training; local action at run time.\n• Reduces non-stationarity.",
+     "bodyKn": "• ತರಬೇತಿಯಲ್ಲಿ ಕೇಂದ್ರ critic; ಚಲಾವಣೆಯಲ್ಲಿ ಸ್ಥಳೀಯ.\n• non-stationarity ಕಡಿಮೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "At run time each agent uses:",
+       "qKn": "ಚಲಾವಣೆಯಲ್ಲಿ ಪ್ರತಿ agent ಬಳಸುವುದು:",
+       "opts": [
+        "Its own observations",
+        "Global state",
+        "Nothing",
+        "Others' weights"
+       ],
+       "optsKn": [
+        "ತನ್ನ ಅವಲೋಕನ",
+        "ಜಾಗತಿಕ state",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಇತರರ ತೂಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The central critic sees:",
+       "qKn": "ಕೇಂದ್ರ critic ನೋಡುವುದು:",
+       "opts": [
+        "Global information in training",
+        "Nothing",
+        "Only one agent",
+        "Only images"
+       ],
+       "optsKn": [
+        "ತರಬೇತಿಯಲ್ಲಿ ಜಾಗತಿಕ ಮಾಹಿತಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಒಬ್ಬ agent ಮಾತ್ರ",
+        "ಚಿತ್ರ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "CTDE helps by:",
+       "qKn": "CTDE ಸಹಾಯ:",
+       "opts": [
+        "Stabilising learning",
+        "Removing agents",
+        "Adding noise",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಕಲಿಕೆ ಸ್ಥಿರಗೊಳಿಸುವುದು",
+        "agents ತೆಗೆಯುವುದು",
+        "ಗದ್ದಲ ಸೇರಿಸುವುದು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b321610",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "MARL: MADDPG, QMIX, MAPPO — MADDPG, QMIX and MAPPO",
+  "titleKn": "MARL: MADDPG, QMIX, MAPPO — MADDPG, QMIX ಮತ್ತು MAPPO",
+  "desc": "Three well-known algorithms apply CTDE with different structures for continuous control, value factorisation and policy gradients.",
+  "descKn": "ಮೂರು ಪ್ರಸಿದ್ಧ ಆಲ್ಗಾರಿದಮ್ CTDE ಅನ್ನು ನಿರಂತರ ನಿಯಂತ್ರಣ, value ವಿಭಜನೆ, policy gradients ಗೆ ಬೇರೆ ರಚನೆಗಳಲ್ಲಿ ಅನ್ವಯಿಸುತ್ತವೆ.",
+  "objectives": [
+   "State the idea behind each algorithm.",
+   "Choose one for a given task type."
+  ],
+  "objectivesKn": [
+   "ಪ್ರತಿ ಆಲ್ಗಾರಿದಮ್ ಹಿಂದಿನ ಕಲ್ಪನೆ ಹೇಳಿ.",
+   "ಕೆಲಸ ವಿಧಕ್ಕೆ ಒಂದನ್ನು ಆರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "MARL: MADDPG, QMIX, MAPPO — MADDPG, QMIX and MAPPO",
+     "textKn": "MARL: MADDPG, QMIX, MAPPO — MADDPG, QMIX and MAPPO",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in MARL: MADDPG, QMIX, MAPPO",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Three Ideas",
+     "headingKn": "ಮೂರು ಕಲ್ಪನೆಗಳು",
+     "bodyEn": "MADDPG gives each agent an actor and a critic that sees all actions, for continuous actions. QMIX learns individual values that are combined monotonically into a team value. MAPPO applies PPO with a shared value function.",
+     "bodyKn": "MADDPG ಪ್ರತಿ agent ಗೆ actor ಮತ್ತು ಎಲ್ಲ ಕ್ರಿಯೆ ನೋಡುವ critic ನೀಡುತ್ತದೆ (ನಿರಂತರ ಕ್ರಿಯೆ). QMIX ವೈಯಕ್ತಿಕ values ಕಲಿತು ಏಕಸ್ವರೂಪವಾಗಿ ತಂಡ value ಆಗಿ ಸೇರಿಸುತ್ತದೆ. MAPPO ಹಂಚಿದ value function ನೊಂದಿಗೆ PPO ಅನ್ವಯಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Choosing",
+     "headingKn": "ಆಯ್ಕೆ",
+     "bodyEn": "QMIX targets cooperative discrete-action tasks. MADDPG handles continuous and mixed settings. MAPPO is a strong, simple baseline that often performs well with careful tuning.",
+     "bodyKn": "QMIX ಸಹಕಾರಿ ವಿಭಿನ್ನ-ಕ್ರಿಯೆ ಕೆಲಸಕ್ಕೆ. MADDPG ನಿರಂತರ ಮತ್ತು ಮಿಶ್ರ ಸೆಟ್ಟಿಂಗ್. MAPPO ಬಲವಾದ, ಸರಳ ಆಧಾರ, ಎಚ್ಚರಿಕೆಯ ಹೊಂದಾಣಿಕೆಯಲ್ಲಿ ಆಗಾಗ ಚೆನ್ನಾಗಿ ಕೆಲಸ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• MADDPG: per-agent actors with a global critic.\n• QMIX: monotonic value mixing. MAPPO: PPO with shared value.",
+     "bodyKn": "• MADDPG: ಜಾಗತಿಕ critic.\n• QMIX: ಏಕಸ್ವರೂಪ value ಮಿಶ್ರಣ. MAPPO: ಹಂಚಿದ value ನೊಂದಿಗೆ PPO."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "QMIX targets:",
+       "qKn": "QMIX ಗುರಿ:",
+       "opts": [
+        "Cooperative tasks with value mixing",
+        "Image tasks",
+        "Text only",
+        "None"
+       ],
+       "optsKn": [
+        "value ಮಿಶ್ರಣದ ಸಹಕಾರಿ ಕೆಲಸ",
+        "ಚಿತ್ರ ಕೆಲಸ",
+        "ಪಠ್ಯ ಮಾತ್ರ",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "MAPPO is:",
+       "qKn": "MAPPO:",
+       "opts": [
+        "PPO with a shared value function",
+        "A database",
+        "A GPU",
+        "A protocol"
+       ],
+       "optsKn": [
+        "ಹಂಚಿದ value function ನೊಂದಿಗೆ PPO",
+        "ಡೇಟಾಬೇಸ್",
+        "GPU",
+        "ಪ್ರೋಟೋಕಾಲ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "MADDPG critics see:",
+       "qKn": "MADDPG critics ನೋಡುವುದು:",
+       "opts": [
+        "All agents' actions",
+        "Nothing",
+        "Only one",
+        "Fonts"
+       ],
+       "optsKn": [
+        "ಎಲ್ಲ agents ಕ್ರಿಯೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಒಂದು ಮಾತ್ರ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b321613",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Agent Economies, Token Incentives, Reputation — Markets for Agents",
+  "titleKn": "Agent ಆರ್ಥಿಕತೆ, Token ಪ್ರೋತ್ಸಾಹ, ಖ್ಯಾತಿ — Agents ಗೆ ಮಾರುಕಟ್ಟೆ",
+  "desc": "When many agents offer and buy services, markets and prices can allocate work without a central planner.",
+  "descKn": "ಹಲವು agents ಸೇವೆ ನೀಡಿ ಖರೀದಿಸಿದಾಗ ಮಾರುಕಟ್ಟೆ ಮತ್ತು ಬೆಲೆ ಕೇಂದ್ರ ಯೋಜಕರಿಲ್ಲದೆ ಕೆಲಸ ಹಂಚಬಹುದು.",
+  "objectives": [
+   "Describe task markets and auctions.",
+   "Explain price as a signal."
+  ],
+  "objectivesKn": [
+   "ಕೆಲಸ ಮಾರುಕಟ್ಟೆ ಮತ್ತು ಹರಾಜು ವಿವರಿಸಿ.",
+   "ಬೆಲೆಯನ್ನು ಸಂಕೇತವಾಗಿ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Agent Economies, Token Incentives, Reputation — Markets for Agents",
+     "textKn": "Agent Economies, Token Incentives, Reputation — Markets for Agents",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Agent Economies, Token Incentives, Reputation",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Allocating by Bidding",
+     "headingKn": "ಬಿಡ್ಡಿಂಗ್‌ನಿಂದ ಹಂಚಿಕೆ",
+     "bodyEn": "A task can be announced and agents bid with cost or quality offers. The best bid wins, so work flows to the agent best placed to do it.",
+     "bodyKn": "ಕೆಲಸ ಘೋಷಿಸಿ agents ವೆಚ್ಚ ಅಥವಾ ಗುಣಮಟ್ಟ ಪ್ರಸ್ತಾವದೊಂದಿಗೆ ಬಿಡ್ ಮಾಡಬಹುದು. ಉತ್ತಮ ಬಿಡ್ ಗೆಲ್ಲುತ್ತದೆ; ಕೆಲಸ ಮಾಡಲು ಅತಿ ಸೂಕ್ತ agent ಗೆ ಹೋಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Prices as Information",
+     "headingKn": "ಮಾಹಿತಿಯಾಗಿ ಬೆಲೆ",
+     "bodyEn": "Rising prices reveal scarce capacity, and low prices reveal idle capacity. Agents can adapt without knowing the whole system.",
+     "bodyKn": "ಏರುವ ಬೆಲೆ ಕೊರತೆ ಸಾಮರ್ಥ್ಯ ತೋರಿಸುತ್ತದೆ, ಕಡಿಮೆ ಬೆಲೆ ನಿಷ್ಕ್ರಿಯ ಸಾಮರ್ಥ್ಯ. agents ಇಡೀ ವ್ಯವಸ್ಥೆ ತಿಳಿಯದೆ ಹೊಂದಿಕೊಳ್ಳಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Bids allocate work to well-placed agents.\n• Prices carry information about capacity.",
+     "bodyKn": "• ಬಿಡ್ ಸೂಕ್ತ agents ಗೆ ಕೆಲಸ ಹಂಚುತ್ತದೆ.\n• ಬೆಲೆ ಸಾಮರ್ಥ್ಯ ಮಾಹಿತಿ ಹೊತ್ತಿದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Who wins a task auction?",
+       "qKn": "ಕೆಲಸ ಹರಾಜು ಯಾರು ಗೆಲ್ಲುತ್ತಾರೆ?",
+       "opts": [
+        "The best bid",
+        "The loudest",
+        "The first",
+        "Nobody"
+       ],
+       "optsKn": [
+        "ಉತ್ತಮ ಬಿಡ್",
+        "ಜೋರಾದವರು",
+        "ಮೊದಲಿಗರು",
+        "ಯಾರೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Rising prices signal:",
+       "qKn": "ಏರುವ ಬೆಲೆ ಸೂಚಿಸುವುದು:",
+       "opts": [
+        "Scarce capacity",
+        "Idle capacity",
+        "Nothing",
+        "Bugs"
+       ],
+       "optsKn": [
+        "ಕೊರತೆ ಸಾಮರ್ಥ್ಯ",
+        "ನಿಷ್ಕ್ರಿಯ ಸಾಮರ್ಥ್ಯ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ದೋಷ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Markets need:",
+       "qKn": "ಮಾರುಕಟ್ಟೆಗೆ:",
+       "opts": [
+        "No central planner",
+        "One planner",
+        "No agents",
+        "No prices"
+       ],
+       "optsKn": [
+        "ಕೇಂದ್ರ ಯೋಜಕ ಬೇಕಿಲ್ಲ",
+        "ಒಬ್ಬ ಯೋಜಕ",
+        "agents ಇಲ್ಲ",
+        "ಬೆಲೆ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b321613",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Agent Economies, Token Incentives, Reputation — Incentives and Gaming",
+  "titleKn": "Agent ಆರ್ಥಿಕತೆ, Token ಪ್ರೋತ್ಸಾಹ, ಖ್ಯಾತಿ — ಪ್ರೋತ್ಸಾಹ ಮತ್ತು ಮೋಸ",
+  "desc": "Whatever an incentive rewards will be optimised, including loopholes, so incentives need careful design.",
+  "descKn": "ಪ್ರೋತ್ಸಾಹ ಯಾವುದಕ್ಕೆ ಬಹುಮಾನ ನೀಡುತ್ತದೋ ಅದನ್ನು ಆಪ್ಟಿಮೈಸ್ ಮಾಡಲಾಗುತ್ತದೆ, ಲೋಪದೋಷ ಸೇರಿ; ಎಚ್ಚರಿಕೆಯ ವಿನ್ಯಾಸ ಬೇಕು.",
+  "objectives": [
+   "Recognise Goodhart-style gaming.",
+   "Design incentives aligned with real goals."
+  ],
+  "objectivesKn": [
+   "Goodhart ಶೈಲಿ ಮೋಸ ಗುರುತಿಸಿ.",
+   "ನಿಜ ಗುರಿಗೆ ಹೊಂದುವ ಪ್ರೋತ್ಸಾಹ ವಿನ್ಯಾಸ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Agent Economies, Token Incentives, Reputation — Incentives and Gaming",
+     "textKn": "Agent Economies, Token Incentives, Reputation — Incentives and Gaming",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Agent Economies, Token Incentives, Reputation",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Optimising the Metric",
+     "headingKn": "ಮೆಟ್ರಿಕ್ ಆಪ್ಟಿಮೈಸ್",
+     "bodyEn": "If agents are paid per task completed, they may split work into trivial tasks. When a measure becomes a target, it stops being a good measure.",
+     "bodyKn": "agents ಗೆ ಪೂರ್ಣ ಕೆಲಸಕ್ಕೆ ಪಾವತಿಸಿದರೆ ಕೆಲಸವನ್ನು ಕ್ಷುಲ್ಲಕ ತುಣುಕುಗಳಾಗಿ ಒಡೆಯಬಹುದು. ಅಳತೆ ಗುರಿಯಾದಾಗ ಅದು ಉತ್ತಮ ಅಳತೆಯಾಗಿ ಉಳಿಯದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Aligned Rewards",
+     "headingKn": "ಹೊಂದುವ ಬಹುಮಾನಗಳು",
+     "bodyEn": "Reward verified outcomes, not activity, and audit samples of work. Combine several signals so gaming one is not enough.",
+     "bodyKn": "ಚಟುವಟಿಕೆಗಲ್ಲ, ಪರಿಶೀಲಿತ ಫಲಿತಾಂಶಕ್ಕೆ ಬಹುಮಾನ ನೀಡಿ, ಕೆಲಸದ ಮಾದರಿ ಲೆಕ್ಕಪರಿಶೋಧಿಸಿ. ಹಲವು ಸಂಕೇತ ಸೇರಿಸಿ; ಒಂದಕ್ಕೆ ಮೋಸ ಸಾಲದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Agents optimise whatever is rewarded.\n• Reward verified outcomes; use several signals.",
+     "bodyKn": "• ಬಹುಮಾನ ಪಡೆದದ್ದನ್ನು agents ಆಪ್ಟಿಮೈಸ್ ಮಾಡುತ್ತವೆ.\n• ಪರಿಶೀಲಿತ ಫಲಿತಾಂಶಕ್ಕೆ ಬಹುಮಾನ; ಹಲವು ಸಂಕೇತ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Paying per task can lead to:",
+       "qKn": "ಪ್ರತಿ ಕೆಲಸಕ್ಕೆ ಪಾವತಿ ಕಾರಣ:",
+       "opts": [
+        "Splitting into trivial tasks",
+        "Better quality always",
+        "Nothing",
+        "Fewer tasks"
+       ],
+       "optsKn": [
+        "ಕ್ಷುಲ್ಲಕ ಕೆಲಸಗಳಾಗಿ ಒಡೆಯುವುದು",
+        "ಯಾವಾಗಲೂ ಉತ್ತಮ ಗುಣಮಟ್ಟ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಕಡಿಮೆ ಕೆಲಸ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Reward:",
+       "qKn": "ಬಹುಮಾನ:",
+       "opts": [
+        "Verified outcomes",
+        "Activity only",
+        "Nothing",
+        "Noise"
+       ],
+       "optsKn": [
+        "ಪರಿಶೀಲಿತ ಫಲಿತಾಂಶ",
+        "ಚಟುವಟಿಕೆ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಗದ್ದಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Combining signals helps because:",
+       "qKn": "ಸಂಕೇತ ಸೇರಿಸುವುದು ಏಕೆ ಸಹಾಯ?",
+       "opts": [
+        "Gaming one is not enough",
+        "It is faster",
+        "It hides them",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಒಂದಕ್ಕೆ ಮೋಸ ಸಾಲದು",
+        "ವೇಗ",
+        "ಮರೆ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b321613",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Agent Economies, Token Incentives, Reputation — Reputation Systems",
+  "titleKn": "Agent ಆರ್ಥಿಕತೆ, Token ಪ್ರೋತ್ಸಾಹ, ಖ್ಯಾತಿ — ಖ್ಯಾತಿ ವ್ಯವಸ್ಥೆಗಳು",
+  "desc": "Reputation records past behaviour so others can decide whom to trust with future work.",
+  "descKn": "ಖ್ಯಾತಿ ಹಿಂದಿನ ವರ್ತನೆ ದಾಖಲಿಸಿ ಭವಿಷ್ಯದ ಕೆಲಸಕ್ಕೆ ಯಾರನ್ನು ನಂಬಬೇಕು ಇತರರು ನಿರ್ಧರಿಸಲು ಬಿಡುತ್ತದೆ.",
+  "objectives": [
+   "Build reputation from verified outcomes.",
+   "Defend against Sybil attacks and collusion."
+  ],
+  "objectivesKn": [
+   "ಪರಿಶೀಲಿತ ಫಲಿತಾಂಶದಿಂದ ಖ್ಯಾತಿ ನಿರ್ಮಿಸಿ.",
+   "Sybil ದಾಳಿ ಮತ್ತು ಒಳಸಂಚು ವಿರುದ್ಧ ರಕ್ಷಣೆ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Agent Economies, Token Incentives, Reputation — Reputation Systems",
+     "textKn": "Agent Economies, Token Incentives, Reputation — Reputation Systems",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Agent Economies, Token Incentives, Reputation",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Earning Trust",
+     "headingKn": "ನಂಬಿಕೆ ಗಳಿಸುವುದು",
+     "bodyEn": "Score agents on independently verified results such as tests passed or disputes lost, and weight recent behaviour more than old.",
+     "bodyKn": "ಸ್ವತಂತ್ರವಾಗಿ ಪರಿಶೀಲಿತ ಫಲಿತಾಂಶ (ಪಾಸ್ ಆದ tests, ಸೋತ ವಿವಾದ) ಮೇಲೆ agents ಗೆ ಅಂಕ ನೀಡಿ, ಹಳೆಯದಕ್ಕಿಂತ ಇತ್ತೀಚಿನ ವರ್ತನೆಗೆ ಹೆಚ್ಚು ತೂಕ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Sybil and Collusion Attacks",
+     "headingKn": "Sybil ಮತ್ತು ಒಳಸಂಚು ದಾಳಿ",
+     "bodyEn": "An attacker can create many fake identities or have agents praise each other. Require costly identity, cap the influence of new accounts and detect suspicious rating rings.",
+     "bodyKn": "ದಾಳಿಕೋರ ಹಲವು ನಕಲಿ ಗುರುತು ರಚಿಸಬಹುದು ಅಥವಾ agents ಪರಸ್ಪರ ಹೊಗಳಿಸಬಹುದು. ಖರ್ಚಿನ ಗುರುತು ಕೇಳಿ, ಹೊಸ ಖಾತೆ ಪ್ರಭಾವ ಮಿತಿ ಮಾಡಿ, ಅನುಮಾನಾಸ್ಪದ ರೇಟಿಂಗ್ ವಲಯ ಪತ್ತೆ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Score verified outcomes; weight recent behaviour.\n• Defend against fake identities and rating rings.",
+     "bodyKn": "• ಪರಿಶೀಲಿತ ಫಲಿತಾಂಶ ಅಂಕ; ಇತ್ತೀಚಿನ ತೂಕ.\n• ನಕಲಿ ಗುರುತು, ರೇಟಿಂಗ್ ವಲಯ ವಿರುದ್ಧ ರಕ್ಷಣೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Reputation should rely on:",
+       "qKn": "ಖ್ಯಾತಿ ಅವಲಂಬಿಸಬೇಕು:",
+       "opts": [
+        "Verified outcomes",
+        "Self-praise",
+        "Nothing",
+        "Colour"
+       ],
+       "optsKn": [
+        "ಪರಿಶೀಲಿತ ಫಲಿತಾಂಶ",
+        "ಸ್ವ-ಹೊಗಳಿಕೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A Sybil attack uses:",
+       "qKn": "Sybil ದಾಳಿ ಬಳಸುವುದು:",
+       "opts": [
+        "Many fake identities",
+        "One real identity",
+        "No identity",
+        "A firewall"
+       ],
+       "optsKn": [
+        "ಹಲವು ನಕಲಿ ಗುರುತು",
+        "ಒಂದು ನಿಜ ಗುರುತು",
+        "ಗುರುತಿಲ್ಲ",
+        "ಫೈರ್‌ವಾಲ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A defence:",
+       "qKn": "ರಕ್ಷಣೆ:",
+       "opts": [
+        "Cap influence of new accounts",
+        "Trust all accounts",
+        "Delete ratings",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹೊಸ ಖಾತೆ ಪ್ರಭಾವ ಮಿತಿ",
+        "ಎಲ್ಲ ಖಾತೆ ನಂಬಿ",
+        "ರೇಟಿಂಗ್ ಅಳಿಸಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b321616",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Production Scaling: Queues, Checkpoints, Durability — Scaling Agent Workloads",
+  "titleKn": "ಉತ್ಪಾದನಾ ವಿಸ್ತರಣೆ: Queues, Checkpoints, Durability — Agent ಕೆಲಸದ ಹೊರೆ ವಿಸ್ತರಣೆ",
+  "desc": "Scale multi-agent workloads by queueing work, bounding concurrency and separating stateless workers from state.",
+  "descKn": "ಕೆಲಸ ಸರತಿಯಲ್ಲಿಟ್ಟು, concurrency ಮಿತಿಗೊಳಿಸಿ, stateless workers ಅನ್ನು state ನಿಂದ ಬೇರ್ಪಡಿಸಿ ಬಹು-agent ಹೊರೆ ವಿಸ್ತರಿಸಿ.",
+  "objectives": [
+   "Use queues to absorb bursts.",
+   "Keep workers stateless where possible."
+  ],
+  "objectivesKn": [
+   "ಹೊರೆ ಏರಿಕೆ ಹೀರಲು queues ಬಳಸಿ.",
+   "ಸಾಧ್ಯವಾದಲ್ಲಿ workers stateless ಇಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Production Scaling: Queues, Checkpoints, Durability — Scaling Agent Workloads",
+     "textKn": "Production Scaling: Queues, Checkpoints, Durability — Scaling Agent Workloads",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Production Scaling: Queues, Checkpoints, Durability",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Queues and Concurrency",
+     "headingKn": "Queues ಮತ್ತು Concurrency",
+     "bodyEn": "A queue smooths bursts and lets you add workers as needed. Cap concurrent model calls to stay within provider rate limits.",
+     "bodyKn": "queue ಏರಿಕೆ ಮೃದುಗೊಳಿಸಿ ಬೇಕಾದಂತೆ workers ಸೇರಿಸಲು ಬಿಡುತ್ತದೆ. ಒದಗಿಸುವವರ rate limits ಒಳಗಿರಲು ಏಕಕಾಲಿಕ ಮಾದರಿ ಕರೆಗಳಿಗೆ ಮಿತಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Stateless Workers",
+     "headingKn": "Stateless Workers",
+     "bodyEn": "Keep durable state in a database or log, not in worker memory, so any worker can pick up any job and failed workers can be replaced.",
+     "bodyKn": "ಶಾಶ್ವತ state ಅನ್ನು worker ಮೆಮೊರಿಯಲ್ಲಿ ಅಲ್ಲ, ಡೇಟಾಬೇಸ್ ಅಥವಾ ಲಾಗ್‌ನಲ್ಲಿ ಇಡಿ; ಯಾವುದೇ worker ಯಾವುದೇ job ತೆಗೆದುಕೊಳ್ಳಬಹುದು, ವಿಫಲ workers ಬದಲಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Queue work and cap concurrency.\n• Keep state outside workers.",
+     "bodyKn": "• ಕೆಲಸ ಸರತಿ, concurrency ಮಿತಿ.\n• state workers ಹೊರಗೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A queue helps by:",
+       "qKn": "queue ಸಹಾಯ:",
+       "opts": [
+        "Smoothing bursts",
+        "Deleting jobs",
+        "Slowing all",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಏರಿಕೆ ಮೃದುಗೊಳಿಸುವುದು",
+        "jobs ಅಳಿಸುವುದು",
+        "ಎಲ್ಲ ನಿಧಾನ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Where keep durable state?",
+       "qKn": "ಶಾಶ್ವತ state ಎಲ್ಲಿ?",
+       "opts": [
+        "In a database or log",
+        "In worker memory",
+        "Nowhere",
+        "In comments"
+       ],
+       "optsKn": [
+        "ಡೇಟಾಬೇಸ್ ಅಥವಾ ಲಾಗ್‌ನಲ್ಲಿ",
+        "worker ಮೆಮೊರಿಯಲ್ಲಿ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಕಾಮೆಂಟ್‌ನಲ್ಲಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Cap concurrency to respect:",
+       "qKn": "concurrency ಮಿತಿ ಗೌರವಿಸಲು:",
+       "opts": [
+        "Rate limits",
+        "Fonts",
+        "Logos",
+        "Nothing"
+       ],
+       "optsKn": [
+        "rate limits",
+        "ಫಾಂಟ್",
+        "ಲೋಗೋ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b321616",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Production Scaling: Queues, Checkpoints, Durability — Checkpointing Multi-Agent Runs",
+  "titleKn": "ಉತ್ಪಾದನಾ ವಿಸ್ತರಣೆ: Queues, Checkpoints, Durability — ಬಹು-Agent Runs Checkpoint",
+  "desc": "Save run state at safe points so a crash or deployment does not lose hours of work.",
+  "descKn": "ಸುರಕ್ಷಿತ ಬಿಂದುಗಳಲ್ಲಿ run state ಉಳಿಸಿ; ಕ್ರ್ಯಾಶ್ ಅಥವಾ deployment ಗಂಟೆಗಳ ಕೆಲಸ ಕಳೆಯದಂತೆ.",
+  "objectives": [
+   "Choose checkpoint boundaries.",
+   "Make resumed steps idempotent."
+  ],
+  "objectivesKn": [
+   "checkpoint ಗಡಿ ಆರಿಸಿ.",
+   "ಮುಂದುವರಿಸಿದ ಹಂತ idempotent ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Production Scaling: Queues, Checkpoints, Durability — Checkpointing Multi-Agent Runs",
+     "textKn": "Production Scaling: Queues, Checkpoints, Durability — Checkpointing Multi-Agent Runs",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Production Scaling: Queues, Checkpoints, Durability",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "What to Save",
+     "headingKn": "ಏನು ಉಳಿಸಬೇಕು",
+     "bodyEn": "Save the message history, each agent's status, pending tasks and results so far. Checkpoint after each completed step or hand-off.",
+     "bodyKn": "ಸಂದೇಶ ಇತಿಹಾಸ, ಪ್ರತಿ agent ಸ್ಥಿತಿ, ಬಾಕಿ ಕೆಲಸ, ಇದುವರೆಗಿನ ಫಲಿತಾಂಶ ಉಳಿಸಿ. ಪ್ರತಿ ಪೂರ್ಣ ಹಂತ ಅಥವಾ ಹಸ್ತಾಂತರದ ನಂತರ checkpoint."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Safe Resumption",
+     "headingKn": "ಸುರಕ್ಷಿತ ಮುಂದುವರಿಕೆ",
+     "bodyEn": "A step interrupted mid-way may run again on resume. Make side effects idempotent so a repeat does not send a second email or payment.",
+     "bodyKn": "ಮಧ್ಯದಲ್ಲಿ ಅಡ್ಡಿಯಾದ ಹಂತ ಮುಂದುವರಿಕೆಯಲ್ಲಿ ಮತ್ತೆ ಚಲಿಸಬಹುದು. side effects idempotent ಮಾಡಿ; ಪುನರಾವರ್ತನೆ ಎರಡನೇ ಇಮೇಲ್ ಅಥವಾ ಪಾವತಿ ಕಳುಹಿಸದಂತೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Checkpoint history, status and results.\n• Idempotent side effects allow safe resumption.",
+     "bodyKn": "• ಇತಿಹಾಸ, ಸ್ಥಿತಿ, ಫಲಿತಾಂಶ checkpoint.\n• idempotent side effects ಸುರಕ್ಷಿತ ಮುಂದುವರಿಕೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Checkpoint after:",
+       "qKn": "checkpoint ನಂತರ:",
+       "opts": [
+        "Each completed step",
+        "Never",
+        "Only at the end",
+        "Randomly"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ ಪೂರ್ಣ ಹಂತ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಕೊನೆಯಲ್ಲಿ ಮಾತ್ರ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Idempotent effects prevent:",
+       "qKn": "idempotent effects ತಡೆಯುವುದು:",
+       "opts": [
+        "Duplicate emails or payments",
+        "All failures",
+        "Logging",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ನಕಲು ಇಮೇಲ್ ಅಥವಾ ಪಾವತಿ",
+        "ಎಲ್ಲ ವೈಫಲ್ಯ",
+        "ಲಾಗಿಂಗ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Save:",
+       "qKn": "ಉಳಿಸಿ:",
+       "opts": [
+        "History, status, pending tasks",
+        "Only fonts",
+        "Nothing",
+        "Only logos"
+       ],
+       "optsKn": [
+        "ಇತಿಹಾಸ, ಸ್ಥಿತಿ, ಬಾಕಿ ಕೆಲಸ",
+        "ಫಾಂಟ್ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲೋಗೋ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b321616",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Production Scaling: Queues, Checkpoints, Durability — Observability and Cost Control",
+  "titleKn": "ಉತ್ಪಾದನಾ ವಿಸ್ತರಣೆ: Queues, Checkpoints, Durability — ವೀಕ್ಷಣೆ ಮತ್ತು ವೆಚ್ಚ ನಿಯಂತ್ರಣ",
+  "desc": "Trace every hand-off, attribute cost per agent and alert on anomalies to keep systems reliable and affordable.",
+  "descKn": "ಪ್ರತಿ ಹಸ್ತಾಂತರ trace ಮಾಡಿ, ಪ್ರತಿ agent ಗೆ ವೆಚ್ಚ ಆರೋಪಿಸಿ, ವೈಪರೀತ್ಯಕ್ಕೆ alert ಮಾಡಿ ವ್ಯವಸ್ಥೆ ವಿಶ್ವಾಸಾರ್ಹ ಮತ್ತು ಕೈಗೆಟುಕುವಂತೆ ಇಡಿ.",
+  "objectives": [
+   "Trace runs with a shared id.",
+   "Attribute cost by agent and task."
+  ],
+  "objectivesKn": [
+   "ಹಂಚಿದ id ಯೊಂದಿಗೆ runs trace ಮಾಡಿ.",
+   "agent ಮತ್ತು ಕೆಲಸ ಪ್ರಕಾರ ವೆಚ್ಚ ಆರೋಪಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Production Scaling: Queues, Checkpoints, Durability — Observability and Cost Control",
+     "textKn": "Production Scaling: Queues, Checkpoints, Durability — Observability and Cost Control",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Production Scaling: Queues, Checkpoints, Durability",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Trace Everything",
+     "headingKn": "ಎಲ್ಲವನ್ನೂ Trace ಮಾಡಿ",
+     "bodyEn": "A shared run id across agents lets you reconstruct who said what and where a failure began. Without it multi-agent debugging is guesswork.",
+     "bodyKn": "agents ನಡುವೆ ಹಂಚಿದ run id ಯಾರು ಏನು ಹೇಳಿದರು ಮತ್ತು ವೈಫಲ್ಯ ಎಲ್ಲಿ ಆರಂಭ ಎಂದು ಮರುರಚಿಸಲು ಬಿಡುತ್ತದೆ. ಇಲ್ಲದಿದ್ದರೆ ಬಹು-agent debugging ಊಹೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cost Attribution",
+     "headingKn": "ವೆಚ್ಚ ಆರೋಪ",
+     "bodyEn": "Track tokens and money per agent and per task type. Alert on runs that far exceed normal cost, since they often signal loops.",
+     "bodyKn": "ಪ್ರತಿ agent ಮತ್ತು ಕೆಲಸ ವಿಧಕ್ಕೆ tokens ಮತ್ತು ಹಣ ಗಮನಿಸಿ. ಸಾಮಾನ್ಯ ವೆಚ್ಚ ಮೀರುವ runs ಗೆ alert; ಅವು ಆಗಾಗ loops ಸೂಚಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Use a shared run id to trace.\n• Alert on runs far above normal cost.",
+     "bodyKn": "• ಹಂಚಿದ run id ಯಿಂದ trace.\n• ಸಾಮಾನ್ಯ ವೆಚ್ಚ ಮೀರಿದರೆ alert."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A shared run id lets you:",
+       "qKn": "ಹಂಚಿದ run id ಏನು ಮಾಡುತ್ತದೆ?",
+       "opts": [
+        "Reconstruct who said what",
+        "Delete logs",
+        "Speed models",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಯಾರು ಏನು ಹೇಳಿದರು ಮರುರಚಿಸಲು",
+        "ಲಾಗ್ ಅಳಿಸಲು",
+        "ಮಾದರಿ ವೇಗ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Runs far above normal cost often mean:",
+       "qKn": "ಸಾಮಾನ್ಯ ವೆಚ್ಚ ಮೀರಿದ runs ಅರ್ಥ:",
+       "opts": [
+        "A loop",
+        "Success",
+        "Nothing",
+        "A cache hit"
+       ],
+       "optsKn": [
+        "loop",
+        "ಯಶಸ್ಸು",
+        "ಏನೂ ಇಲ್ಲ",
+        "cache hit"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Attribute cost by:",
+       "qKn": "ವೆಚ್ಚ ಆರೋಪ:",
+       "opts": [
+        "Agent and task type",
+        "Colour",
+        "Font",
+        "Nothing"
+       ],
+       "optsKn": [
+        "agent ಮತ್ತು ಕೆಲಸ ವಿಧ",
+        "ಬಣ್ಣ",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b321619",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Failure Modes: MAST, Groupthink, Monoculture — A Taxonomy of Multi-Agent Failures",
+  "titleKn": "ವೈಫಲ್ಯ ವಿಧಗಳು: MAST, Groupthink, Monoculture — ಬಹು-Agent ವೈಫಲ್ಯಗಳ ವರ್ಗೀಕರಣ",
+  "desc": "Research such as MAST groups multi-agent failures into categories like specification, inter-agent misalignment and verification problems.",
+  "descKn": "MAST ನಂತಹ ಸಂಶೋಧನೆ ಬಹು-agent ವೈಫಲ್ಯಗಳನ್ನು ನಿರ್ದಿಷ್ಟೀಕರಣ, agents ನಡುವಿನ ಅಸಮನ್ವಯ, ಪರಿಶೀಲನೆ ಸಮಸ್ಯೆಗಳ ವರ್ಗಗಳಾಗಿ ಗುಂಪು ಮಾಡುತ್ತದೆ.",
+  "objectives": [
+   "Name broad failure categories.",
+   "Use a taxonomy to label traces."
+  ],
+  "objectivesKn": [
+   "ವಿಶಾಲ ವೈಫಲ್ಯ ವರ್ಗ ಹೆಸರಿಸಿ.",
+   "traces ಗೆ ಲೇಬಲ್ ಮಾಡಲು ವರ್ಗೀಕರಣ ಬಳಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Failure Modes: MAST, Groupthink, Monoculture — A Taxonomy of Multi-Agent Failures",
+     "textKn": "Failure Modes: MAST, Groupthink, Monoculture — A Taxonomy of Multi-Agent Failures",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Failure Modes: MAST, Groupthink, Monoculture",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Categories",
+     "headingKn": "ವರ್ಗಗಳು",
+     "bodyEn": "Failures often come from poor task specification, agents misunderstanding or ignoring each other, and weak or missing verification of results.",
+     "bodyKn": "ವೈಫಲ್ಯ ಆಗಾಗ ಕಳಪೆ ಕೆಲಸ ನಿರ್ದಿಷ್ಟೀಕರಣ, agents ಪರಸ್ಪರ ತಪ್ಪಾಗಿ ಅರ್ಥೈಸುವುದು ಅಥವಾ ನಿರ್ಲಕ್ಷಿಸುವುದು, ದುರ್ಬಲ ಅಥವಾ ಕಾಣೆಯಾದ ಫಲಿತಾಂಶ ಪರಿಶೀಲನೆಯಿಂದ ಬರುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Label Your Traces",
+     "headingKn": "ನಿಮ್ಮ Traces ಗೆ ಲೇಬಲ್",
+     "bodyEn": "Tag failed runs with a category. Counting which categories dominate tells you whether to fix prompts, protocols or verifiers first.",
+     "bodyKn": "ವಿಫಲ runs ಗೆ ವರ್ಗ ಟ್ಯಾಗ್ ಮಾಡಿ. ಯಾವ ವರ್ಗ ಪ್ರಾಬಲ್ಯ ಎಂದು ಎಣಿಸಿದರೆ prompts, ಪ್ರೋಟೋಕಾಲ್ ಅಥವಾ verifiers ಯಾವುದು ಮೊದಲು ಸರಿಪಡಿಸಬೇಕು ತಿಳಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Specification, misalignment, verification failures.\n• Label traces to prioritise fixes.",
+     "bodyKn": "• ನಿರ್ದಿಷ್ಟೀಕರಣ, ಅಸಮನ್ವಯ, ಪರಿಶೀಲನೆ ವೈಫಲ್ಯ.\n• ಆದ್ಯತೆಗೆ traces ಲೇಬಲ್."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A failure category:",
+       "qKn": "ವೈಫಲ್ಯ ವರ್ಗ:",
+       "opts": [
+        "Weak verification",
+        "Font choice",
+        "Logo size",
+        "None"
+       ],
+       "optsKn": [
+        "ದುರ್ಬಲ ಪರಿಶೀಲನೆ",
+        "ಫಾಂಟ್ ಆಯ್ಕೆ",
+        "ಲೋಗೋ ಗಾತ್ರ",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why label traces?",
+       "qKn": "traces ಏಕೆ ಲೇಬಲ್?",
+       "opts": [
+        "To prioritise fixes",
+        "Decoration",
+        "To hide failures",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಸರಿಪಡಿಕೆ ಆದ್ಯತೆಗೆ",
+        "ಅಲಂಕಾರ",
+        "ವೈಫಲ್ಯ ಮರೆ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Poor specification causes:",
+       "qKn": "ಕಳಪೆ ನಿರ್ದಿಷ್ಟೀಕರಣ ಕಾರಣ:",
+       "opts": [
+        "Agents doing the wrong task",
+        "Perfect work",
+        "Faster work",
+        "Nothing"
+       ],
+       "optsKn": [
+        "agents ತಪ್ಪು ಕೆಲಸ ಮಾಡುವುದು",
+        "ಪರಿಪೂರ್ಣ ಕೆಲಸ",
+        "ವೇಗದ ಕೆಲಸ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b321619",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Failure Modes: MAST, Groupthink, Monoculture — Groupthink and Monoculture",
+  "titleKn": "ವೈಫಲ್ಯ ವಿಧಗಳು: MAST, Groupthink, Monoculture — Groupthink ಮತ್ತು Monoculture",
+  "desc": "Agents built on one model share biases, so many agents can reinforce the same error.",
+  "descKn": "ಒಂದೇ ಮಾದರಿಯ ಮೇಲೆ ನಿರ್ಮಿತ agents ಪಕ್ಷಪಾತ ಹಂಚುತ್ತವೆ; ಹಲವು agents ಒಂದೇ ದೋಷ ಬಲಪಡಿಸಬಹುದು.",
+  "objectives": [
+   "Explain monoculture risk.",
+   "Add diversity through models, prompts and tools."
+  ],
+  "objectivesKn": [
+   "monoculture ಅಪಾಯ ವಿವರಿಸಿ.",
+   "ಮಾದರಿ, prompts, tools ಮೂಲಕ ವೈವಿಧ್ಯ ಸೇರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Failure Modes: MAST, Groupthink, Monoculture — Groupthink and Monoculture",
+     "textKn": "Failure Modes: MAST, Groupthink, Monoculture — Groupthink and Monoculture",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Failure Modes: MAST, Groupthink, Monoculture",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Shared Blind Spots",
+     "headingKn": "ಹಂಚಿದ ಕುರುಡು ಬಿಂದು",
+     "bodyEn": "Copies of one model make correlated mistakes. Ten agreeing agents may be one error repeated ten times, and agreement can be mistaken for confidence.",
+     "bodyKn": "ಒಂದು ಮಾದರಿಯ ನಕಲುಗಳು ಸಂಬಂಧಿತ ತಪ್ಪು ಮಾಡುತ್ತವೆ. ಒಪ್ಪುವ ಹತ್ತು agents ಒಂದೇ ದೋಷ ಹತ್ತು ಬಾರಿ ಪುನರಾವರ್ತನೆ ಆಗಿರಬಹುದು; ಒಪ್ಪಿಗೆಯನ್ನು ವಿಶ್ವಾಸವೆಂದು ತಪ್ಪಾಗಿ ಭಾವಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Building Diversity",
+     "headingKn": "ವೈವಿಧ್ಯ ನಿರ್ಮಾಣ",
+     "bodyEn": "Use different models, prompts and tool sets, assign devil's-advocate roles and ground claims in external sources so agreement carries real information.",
+     "bodyKn": "ಬೇರೆ ಮಾದರಿ, prompts, tool ಸೆಟ್ ಬಳಸಿ, devil's-advocate ಪಾತ್ರ ನೀಡಿ, ಹೇಳಿಕೆಗಳನ್ನು ಬಾಹ್ಯ ಮೂಲಗಳಲ್ಲಿ ನೆಲೆಗೊಳಿಸಿ; ಒಪ್ಪಿಗೆ ನಿಜ ಮಾಹಿತಿ ಹೊತ್ತಿರುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Same-model agents share blind spots.\n• Add diversity and external grounding.",
+     "bodyKn": "• ಒಂದೇ ಮಾದರಿ ಕುರುಡು ಬಿಂದು ಹಂಚುತ್ತದೆ.\n• ವೈವಿಧ್ಯ ಮತ್ತು ಬಾಹ್ಯ ನೆಲೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Ten agreeing same-model agents may be:",
+       "qKn": "ಒಪ್ಪುವ ಹತ್ತು ಒಂದೇ ಮಾದರಿ agents:",
+       "opts": [
+        "One error repeated",
+        "Ten independent checks",
+        "Always correct",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಒಂದೇ ದೋಷ ಪುನರಾವರ್ತನೆ",
+        "ಹತ್ತು ಸ್ವತಂತ್ರ ಪರಿಶೀಲನೆ",
+        "ಯಾವಾಗಲೂ ಸರಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A remedy:",
+       "qKn": "ಪರಿಹಾರ:",
+       "opts": [
+        "Different models and prompts",
+        "More copies",
+        "Fewer tools",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಬೇರೆ ಮಾದರಿ ಮತ್ತು prompts",
+        "ಹೆಚ್ಚು ನಕಲು",
+        "ಕಡಿಮೆ tools",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Devil's-advocate role:",
+       "qKn": "devil's-advocate ಪಾತ್ರ:",
+       "opts": [
+        "Challenges the majority",
+        "Agrees always",
+        "Hides",
+        "Deletes"
+       ],
+       "optsKn": [
+        "ಬಹುಮತವನ್ನು ಪ್ರಶ್ನಿಸುತ್ತದೆ",
+        "ಯಾವಾಗಲೂ ಒಪ್ಪುತ್ತದೆ",
+        "ಮರೆಮಾಡುತ್ತದೆ",
+        "ಅಳಿಸುತ್ತದೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b321619",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Failure Modes: MAST, Groupthink, Monoculture — Designing Against Failure",
+  "titleKn": "ವೈಫಲ್ಯ ವಿಧಗಳು: MAST, Groupthink, Monoculture — ವೈಫಲ್ಯ ವಿರುದ್ಧ ವಿನ್ಯಾಸ",
+  "desc": "Combine clear specifications, structured messages, independent verification and budgets to prevent common failures.",
+  "descKn": "ಸ್ಪಷ್ಟ ನಿರ್ದಿಷ್ಟೀಕರಣ, ರಚನಾತ್ಮಕ ಸಂದೇಶ, ಸ್ವತಂತ್ರ ಪರಿಶೀಲನೆ, ಬಜೆಟ್ ಸೇರಿಸಿ ಸಾಮಾನ್ಯ ವೈಫಲ್ಯ ತಡೆಯಿರಿ.",
+  "objectives": [
+   "Map each failure category to a mitigation.",
+   "Regression-test with recorded failing traces."
+  ],
+  "objectivesKn": [
+   "ಪ್ರತಿ ವೈಫಲ್ಯ ವರ್ಗಕ್ಕೆ ಪರಿಹಾರ ಹೊಂದಿಸಿ.",
+   "ದಾಖಲಿತ ವಿಫಲ traces ನಿಂದ regression ಪರೀಕ್ಷೆ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Failure Modes: MAST, Groupthink, Monoculture — Designing Against Failure",
+     "textKn": "Failure Modes: MAST, Groupthink, Monoculture — Designing Against Failure",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Failure Modes: MAST, Groupthink, Monoculture",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Mitigation Map",
+     "headingKn": "ಪರಿಹಾರ ನಕ್ಷೆ",
+     "bodyEn": "Specification failures need clearer roles and success criteria. Misalignment needs structured messages and explicit hand-offs. Verification failures need independent, tool-based checks.",
+     "bodyKn": "ನಿರ್ದಿಷ್ಟೀಕರಣ ವೈಫಲ್ಯಕ್ಕೆ ಸ್ಪಷ್ಟ ಪಾತ್ರ ಮತ್ತು ಯಶಸ್ಸು ಮಾನದಂಡ. ಅಸಮನ್ವಯಕ್ಕೆ ರಚನಾತ್ಮಕ ಸಂದೇಶ ಮತ್ತು ಸ್ಪಷ್ಟ ಹಸ್ತಾಂತರ. ಪರಿಶೀಲನೆ ವೈಫಲ್ಯಕ್ಕೆ ಸ್ವತಂತ್ರ, tool-ಆಧಾರಿತ ಪರಿಶೀಲನೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Turn Failures Into Tests",
+     "headingKn": "ವೈಫಲ್ಯಗಳನ್ನು Tests ಆಗಿಸಿ",
+     "bodyEn": "Save each failing trace as a regression case so the same failure is caught automatically after future changes.",
+     "bodyKn": "ಪ್ರತಿ ವಿಫಲ trace ಅನ್ನು regression ಪ್ರಕರಣವಾಗಿ ಉಳಿಸಿ; ಭವಿಷ್ಯದ ಬದಲಾವಣೆ ನಂತರ ಅದೇ ವೈಫಲ್ಯ ಸ್ವಯಂ ಹಿಡಿಯಲ್ಪಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Match mitigations to failure categories.\n• Save failing traces as regression tests.",
+     "bodyKn": "• ವೈಫಲ್ಯ ವರ್ಗಕ್ಕೆ ಪರಿಹಾರ ಹೊಂದಿಸಿ.\n• ವಿಫಲ traces regression tests ಆಗಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Verification failures need:",
+       "qKn": "ಪರಿಶೀಲನೆ ವೈಫಲ್ಯಕ್ಕೆ:",
+       "opts": [
+        "Independent tool-based checks",
+        "Longer prompts only",
+        "Nothing",
+        "More agents only"
+       ],
+       "optsKn": [
+        "ಸ್ವತಂತ್ರ tool-ಆಧಾರಿತ ಪರಿಶೀಲನೆ",
+        "ಉದ್ದ prompts ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಹೆಚ್ಚು agents ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Save failing traces as:",
+       "qKn": "ವಿಫಲ traces ಉಳಿಸಿ:",
+       "opts": [
+        "Regression cases",
+        "Trash",
+        "Ads",
+        "Nothing"
+       ],
+       "optsKn": [
+        "regression ಪ್ರಕರಣ",
+        "ಕಸ",
+        "ಜಾಹೀರಾತು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Misalignment needs:",
+       "qKn": "ಅಸಮನ್ವಯಕ್ಕೆ:",
+       "opts": [
+        "Structured messages",
+        "Silence",
+        "Random hand-offs",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ರಚನಾತ್ಮಕ ಸಂದೇಶ",
+        "ಮೌನ",
+        "ಯಾದೃಚ್ಛಿಕ ಹಸ್ತಾಂತರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b32161c",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Evaluation and Coordination Benchmarks — What to Measure in Multi-Agent Systems",
+  "titleKn": "ಮೌಲ್ಯಮಾಪನ ಮತ್ತು ಸಮನ್ವಯ ಬೆಂಚ್‌ಮಾರ್ಕ್‌ಗಳು — ಬಹು-Agent ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ಏನು ಅಳೆಯಬೇಕು",
+  "desc": "Measure end-task success along with coordination quality, cost and robustness.",
+  "descKn": "ಅಂತಿಮ ಕೆಲಸ ಯಶಸ್ಸಿನ ಜೊತೆ ಸಮನ್ವಯ ಗುಣಮಟ್ಟ, ವೆಚ್ಚ, ದೃಢತೆ ಅಳೆಯಿರಿ.",
+  "objectives": [
+   "Separate outcome metrics from process metrics.",
+   "Track cost and latency alongside quality."
+  ],
+  "objectivesKn": [
+   "ಫಲಿತಾಂಶ ಮತ್ತು ಪ್ರಕ್ರಿಯೆ ಮೆಟ್ರಿಕ್ಸ್ ಬೇರ್ಪಡಿಸಿ.",
+   "ಗುಣಮಟ್ಟದ ಜೊತೆ ವೆಚ್ಚ ಮತ್ತು ವಿಳಂಬ ಗಮನಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Evaluation and Coordination Benchmarks — What to Measure in Multi-Agent Systems",
+     "textKn": "Evaluation and Coordination Benchmarks — What to Measure in Multi-Agent Systems",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Evaluation and Coordination Benchmarks",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Outcome and Process",
+     "headingKn": "ಫಲಿತಾಂಶ ಮತ್ತು ಪ್ರಕ್ರಿಯೆ",
+     "bodyEn": "Outcome metrics ask whether the task succeeded. Process metrics ask how many messages, retries and hand-offs it took and whether roles were respected.",
+     "bodyKn": "ಫಲಿತಾಂಶ ಮೆಟ್ರಿಕ್ಸ್ ಕೆಲಸ ಯಶಸ್ವಿಯಾಯಿತೇ ಕೇಳುತ್ತವೆ. ಪ್ರಕ್ರಿಯೆ ಮೆಟ್ರಿಕ್ಸ್ ಎಷ್ಟು ಸಂದೇಶ, ಮರುಪ್ರಯತ್ನ, ಹಸ್ತಾಂತರ ಬೇಕಾಯಿತು ಮತ್ತು ಪಾತ್ರ ಗೌರವಿಸಲಾಯಿತೇ ಕೇಳುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cost and Robustness",
+     "headingKn": "ವೆಚ್ಚ ಮತ್ತು ದೃಢತೆ",
+     "bodyEn": "A design that succeeds only when nothing goes wrong is fragile. Also test with failing agents, noisy inputs and adversarial messages.",
+     "bodyKn": "ಏನೂ ತಪ್ಪದಿದ್ದಾಗ ಮಾತ್ರ ಯಶಸ್ವಿಯಾಗುವ ವಿನ್ಯಾಸ ದುರ್ಬಲ. ವಿಫಲ agents, ಗದ್ದಲದ ಇನ್‌ಪುಟ್, ಪ್ರತಿಕೂಲ ಸಂದೇಶಗಳೊಂದಿಗೂ ಪರೀಕ್ಷಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Measure outcomes and process.\n• Test robustness to failures and attacks.",
+     "bodyKn": "• ಫಲಿತಾಂಶ ಮತ್ತು ಪ್ರಕ್ರಿಯೆ ಅಳೆಯಿರಿ.\n• ವೈಫಲ್ಯ, ದಾಳಿ ದೃಢತೆ ಪರೀಕ್ಷೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A process metric:",
+       "qKn": "ಪ್ರಕ್ರಿಯೆ ಮೆಟ್ರಿಕ್:",
+       "opts": [
+        "Number of hand-offs",
+        "Logo colour",
+        "Font",
+        "None"
+       ],
+       "optsKn": [
+        "ಹಸ್ತಾಂತರ ಸಂಖ್ಯೆ",
+        "ಲೋಗೋ ಬಣ್ಣ",
+        "ಫಾಂಟ್",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Also test with:",
+       "qKn": "ಇದರೊಂದಿಗೂ ಪರೀಕ್ಷಿಸಿ:",
+       "opts": [
+        "Failing agents",
+        "Only perfect agents",
+        "Nothing",
+        "Colours"
+       ],
+       "optsKn": [
+        "ವಿಫಲ agents",
+        "ಪರಿಪೂರ್ಣ agents ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Outcome metrics ask:",
+       "qKn": "ಫಲಿತಾಂಶ ಮೆಟ್ರಿಕ್ಸ್ ಕೇಳುವುದು:",
+       "opts": [
+        "Did the task succeed?",
+        "Who is famous?",
+        "What colour?",
+        "None"
+       ],
+       "optsKn": [
+        "ಕೆಲಸ ಯಶಸ್ವಿಯೇ?",
+        "ಯಾರು ಪ್ರಸಿದ್ಧ?",
+        "ಯಾವ ಬಣ್ಣ?",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b32161c",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Evaluation and Coordination Benchmarks — Existing Benchmarks and Their Limits",
+  "titleKn": "ಮೌಲ್ಯಮಾಪನ ಮತ್ತು ಸಮನ್ವಯ ಬೆಂಚ್‌ಮಾರ್ಕ್‌ಗಳು — ಇರುವ ಬೆಂಚ್‌ಮಾರ್ಕ್‌ಗಳು ಮತ್ತು ಮಿತಿ",
+  "desc": "Public benchmarks cover collaborative tasks, negotiation and games, but may not match your product.",
+  "descKn": "ಸಾರ್ವಜನಿಕ ಬೆಂಚ್‌ಮಾರ್ಕ್‌ಗಳು ಸಹಕಾರಿ ಕೆಲಸ, ಮಾತುಕತೆ, ಆಟಗಳನ್ನು ಒಳಗೊಂಡಿವೆ, ಆದರೆ ನಿಮ್ಮ ಉತ್ಪನ್ನಕ್ಕೆ ಹೊಂದದಿರಬಹುದು.",
+  "objectives": [
+   "Use public benchmarks as a rough guide.",
+   "Beware contamination and saturation."
+  ],
+  "objectivesKn": [
+   "ಸಾರ್ವಜನಿಕ ಬೆಂಚ್‌ಮಾರ್ಕ್ ಒರಟು ಮಾರ್ಗದರ್ಶಿಯಾಗಿ ಬಳಸಿ.",
+   "ಕಲುಷಿತ ಮತ್ತು ಸ್ಯಾಚುರೇಶನ್ ಎಚ್ಚರ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Evaluation and Coordination Benchmarks — Existing Benchmarks and Their Limits",
+     "textKn": "Evaluation and Coordination Benchmarks — Existing Benchmarks and Their Limits",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Evaluation and Coordination Benchmarks",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Rough Guide",
+     "headingKn": "ಒರಟು ಮಾರ್ಗದರ್ಶಿ",
+     "bodyEn": "Benchmarks show relative strengths of frameworks or models on standard tasks, which helps shortlist options but does not settle the decision.",
+     "bodyKn": "ಬೆಂಚ್‌ಮಾರ್ಕ್‌ಗಳು ಪ್ರಮಾಣಿತ ಕೆಲಸಗಳಲ್ಲಿ frameworks ಅಥವಾ ಮಾದರಿಗಳ ಸಾಪೇಕ್ಷ ಬಲ ತೋರಿಸುತ್ತವೆ; ಆಯ್ಕೆ ಪಟ್ಟಿ ಮಾಡಲು ಸಹಾಯ, ನಿರ್ಧಾರ ಮುಗಿಸದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Contamination and Saturation",
+     "headingKn": "ಕಲುಷಿತ ಮತ್ತು ಸ್ಯಾಚುರೇಶನ್",
+     "bodyEn": "Test data can leak into training data, and top scores can saturate so that differences no longer mean much. Prefer fresh, private tasks for final decisions.",
+     "bodyKn": "ಪರೀಕ್ಷಾ ಡೇಟಾ ತರಬೇತಿ ಡೇಟಾಗೆ ಸೋರಬಹುದು, ಉನ್ನತ ಅಂಕ ಸ್ಯಾಚುರೇಟ್ ಆಗಿ ವ್ಯತ್ಯಾಸ ಅರ್ಥ ಕಳೆಯಬಹುದು. ಅಂತಿಮ ನಿರ್ಧಾರಕ್ಕೆ ಹೊಸ, ಖಾಸಗಿ ಕೆಲಸ ಆದ್ಯತೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Benchmarks help shortlist, not decide.\n• Beware contamination; use private tasks.",
+     "bodyKn": "• ಬೆಂಚ್‌ಮಾರ್ಕ್ ಪಟ್ಟಿಗೆ ಸಹಾಯ, ನಿರ್ಧಾರಕ್ಕಲ್ಲ.\n• ಕಲುಷಿತ ಎಚ್ಚರ; ಖಾಸಗಿ ಕೆಲಸ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Public benchmarks are best for:",
+       "qKn": "ಸಾರ್ವಜನಿಕ ಬೆಂಚ್‌ಮಾರ್ಕ್ ಉತ್ತಮ:",
+       "opts": [
+        "Shortlisting options",
+        "Final decisions alone",
+        "Nothing",
+        "Marketing only"
+       ],
+       "optsKn": [
+        "ಆಯ್ಕೆ ಪಟ್ಟಿ ಮಾಡಲು",
+        "ಅಂತಿಮ ನಿರ್ಧಾರ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಮಾರ್ಕೆಟಿಂಗ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Contamination means:",
+       "qKn": "ಕಲುಷಿತ ಎಂದರೆ:",
+       "opts": [
+        "Test data leaked into training",
+        "A virus",
+        "A slow GPU",
+        "A bug fix"
+       ],
+       "optsKn": [
+        "ಪರೀಕ್ಷಾ ಡೇಟಾ ತರಬೇತಿಗೆ ಸೋರಿಕೆ",
+        "ವೈರಸ್",
+        "ನಿಧಾನ GPU",
+        "ದೋಷ ಪರಿಹಾರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "For final decisions prefer:",
+       "qKn": "ಅಂತಿಮ ನಿರ್ಧಾರಕ್ಕೆ ಆದ್ಯತೆ:",
+       "opts": [
+        "Fresh private tasks",
+        "Old public tasks",
+        "Rumours",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹೊಸ ಖಾಸಗಿ ಕೆಲಸ",
+        "ಹಳೆಯ ಸಾರ್ವಜನಿಕ ಕೆಲಸ",
+        "ವದಂತಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6466020ed05b3215d1",
+  "moduleId": "6a369d6666020ed05b32161c",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Evaluation and Coordination Benchmarks — Building Your Own Coordination Eval",
+  "titleKn": "ಮೌಲ್ಯಮಾಪನ ಮತ್ತು ಸಮನ್ವಯ ಬೆಂಚ್‌ಮಾರ್ಕ್‌ಗಳು — ನಿಮ್ಮದೇ ಸಮನ್ವಯ Eval ನಿರ್ಮಾಣ",
+  "desc": "A small suite of scenarios with clear success checks, run repeatedly, is the most useful evaluation.",
+  "descKn": "ಸ್ಪಷ್ಟ ಯಶಸ್ಸು ಪರಿಶೀಲನೆ ಇರುವ ಸಣ್ಣ ಸನ್ನಿವೇಶ ಸೂಟ್, ಪುನರಾವರ್ತಿತವಾಗಿ ಚಲಾಯಿಸಿದರೆ, ಅತ್ಯಂತ ಉಪಯುಕ್ತ ಮೌಲ್ಯಮಾಪನ.",
+  "objectives": [
+   "Design scenarios with checkable outcomes.",
+   "Run repeated trials and report variance."
+  ],
+  "objectivesKn": [
+   "ಪರಿಶೀಲಿಸಬಹುದಾದ ಫಲಿತಾಂಶದ ಸನ್ನಿವೇಶ ವಿನ್ಯಾಸ.",
+   "ಪುನರಾವರ್ತಿತ ಪ್ರಯೋಗ, ಭಿನ್ನತೆ ವರದಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Evaluation and Coordination Benchmarks — Building Your Own Coordination Eval",
+     "textKn": "Evaluation and Coordination Benchmarks — Building Your Own Coordination Eval",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Evaluation and Coordination Benchmarks",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Scenarios With Checks",
+     "headingKn": "ಪರಿಶೀಲನೆ ಇರುವ ಸನ್ನಿವೇಶಗಳು",
+     "bodyEn": "Write scenarios that exercise your real coordination patterns, each with an automatic pass or fail, and include known hard cases and past failures.",
+     "bodyKn": "ನಿಮ್ಮ ನಿಜ ಸಮನ್ವಯ ಮಾದರಿಗಳನ್ನು ಪರೀಕ್ಷಿಸುವ ಸನ್ನಿವೇಶ ಬರೆಯಿರಿ, ಪ್ರತಿಯೊಂದಕ್ಕೆ ಸ್ವಯಂ pass/fail, ತಿಳಿದ ಕಠಿಣ ಪ್ರಕರಣ ಮತ್ತು ಹಿಂದಿನ ವೈಫಲ್ಯ ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Repeat and Compare",
+     "headingKn": "ಪುನರಾವರ್ತಿಸಿ ಮತ್ತು ಹೋಲಿಸಿ",
+     "bodyEn": "Because agent runs vary, repeat each scenario several times and report pass rate and spread. Compare designs on the same suite and against a single-agent baseline.",
+     "bodyKn": "agent runs ಬದಲಾಗುವುದರಿಂದ ಪ್ರತಿ ಸನ್ನಿವೇಶ ಹಲವು ಬಾರಿ ಪುನರಾವರ್ತಿಸಿ ಪಾಸ್ ದರ ಮತ್ತು ಹರಡುವಿಕೆ ವರದಿ ಮಾಡಿ. ಅದೇ ಸೂಟ್‌ನಲ್ಲಿ ಮತ್ತು ಒಂದು-agent ಆಧಾರಕ್ಕೆ ವಿನ್ಯಾಸ ಹೋಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Scenarios with automatic checks.\n• Repeat runs; compare with a single-agent baseline.",
+     "bodyKn": "• ಸ್ವಯಂ ಪರಿಶೀಲನೆಯ ಸನ್ನಿವೇಶ.\n• ಪುನರಾವರ್ತಿಸಿ; ಒಂದು-agent ಆಧಾರಕ್ಕೆ ಹೋಲಿಕೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why repeat scenarios?",
+       "qKn": "ಸನ್ನಿವೇಶ ಏಕೆ ಪುನರಾವರ್ತಿಸಬೇಕು?",
+       "opts": [
+        "Runs vary",
+        "To waste time",
+        "By rule",
+        "No reason"
+       ],
+       "optsKn": [
+        "runs ಬದಲಾಗುತ್ತವೆ",
+        "ಸಮಯ ವ್ಯರ್ಥ",
+        "ನಿಯಮ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Include:",
+       "qKn": "ಸೇರಿಸಿ:",
+       "opts": [
+        "Past failures",
+        "Only easy cases",
+        "Nothing",
+        "Only ads"
+       ],
+       "optsKn": [
+        "ಹಿಂದಿನ ವೈಫಲ್ಯ",
+        "ಸುಲಭ ಪ್ರಕರಣ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಜಾಹೀರಾತು ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Compare against:",
+       "qKn": "ಹೋಲಿಸಿ:",
+       "opts": [
+        "A single-agent baseline",
+        "A rumour",
+        "Nothing",
+        "A logo"
+       ],
+       "optsKn": [
+        "ಒಂದು-agent ಆಧಾರ",
+        "ವದಂತಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

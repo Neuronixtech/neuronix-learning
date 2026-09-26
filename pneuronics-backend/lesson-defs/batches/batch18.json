@@ -1,0 +1,2627 @@
+[
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b321676",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Self-Hosted Serving Selection: llama.cpp, Ollama, TGI, vLLM, SGLang — Match the Engine to the Job",
+  "titleKn": "ಸ್ವ-ಹೋಸ್ಟ್ Serving ಆಯ್ಕೆ: llama.cpp, Ollama, TGI, vLLM, SGLang — ಕೆಲಸಕ್ಕೆ ತಕ್ಕ Engine",
+  "desc": "Local tools, general servers and throughput-focused engines target different scale and hardware.",
+  "descKn": "ಸ್ಥಳೀಯ ಸಾಧನ, ಸಾಮಾನ್ಯ ಸರ್ವರ್, throughput-ಕೇಂದ್ರಿತ engines ಬೇರೆ ಪ್ರಮಾಣ ಮತ್ತು ಹಾರ್ಡ್‌ವೇರ್ ಗುರಿ ಹೊಂದಿವೆ.",
+  "objectives": [
+   "Place each engine by scale and hardware.",
+   "Avoid over-engineering small deployments."
+  ],
+  "objectivesKn": [
+   "ಪ್ರತಿ engine ಅನ್ನು ಪ್ರಮಾಣ ಮತ್ತು ಹಾರ್ಡ್‌ವೇರ್‌ನಿಂದ ಗುರುತಿಸಿ.",
+   "ಚಿಕ್ಕ ನಿಯೋಜನೆಗೆ ಅತಿ-ವಿನ್ಯಾಸ ತಪ್ಪಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Self-Hosted Serving Selection: llama.cpp, Ollama, TGI, vLLM, SGLang — Match the Engine to the Job",
+     "textKn": "Self-Hosted Serving Selection: llama.cpp, Ollama, TGI, vLLM, SGLang — Match the Engine to the Job",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Self-Hosted Serving Selection: llama.cpp, Ollama, TGI, vLLM, SGLang",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Rough Map",
+     "headingKn": "ಒರಟು ನಕ್ಷೆ",
+     "bodyEn": "llama.cpp and Ollama make it easy to run quantised models on laptops and small machines. vLLM, SGLang and TGI target multi-user GPU serving with batching and caching.",
+     "bodyKn": "llama.cpp ಮತ್ತು Ollama ಲ್ಯಾಪ್‌ಟಾಪ್ ಮತ್ತು ಚಿಕ್ಕ ಯಂತ್ರಗಳಲ್ಲಿ quantised ಮಾದರಿ ಚಲಾಯಿಸಲು ಸುಲಭ ಮಾಡುತ್ತವೆ. vLLM, SGLang, TGI batching ಮತ್ತು caching ಇರುವ ಬಹು-ಬಳಕೆದಾರ GPU serving ಗುರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Right-Size the Choice",
+     "headingKn": "ಆಯ್ಕೆ ಸರಿಯಾದ ಗಾತ್ರ",
+     "bodyEn": "A single-user prototype does not need a distributed serving stack, and a high-traffic API will outgrow a desktop tool. Pick the simplest option that meets your load.",
+     "bodyKn": "ಒಬ್ಬ ಬಳಕೆದಾರರ ಮಾದರಿಗೆ ವಿತರಿತ serving stack ಬೇಡ, ಹೆಚ್ಚು ಟ್ರಾಫಿಕ್ API ಡೆಸ್ಕ್‌ಟಾಪ್ ಸಾಧನ ಮೀರಿ ಬೆಳೆಯುತ್ತದೆ. ನಿಮ್ಮ ಹೊರೆ ಪೂರೈಸುವ ಸರಳ ಆಯ್ಕೆ ಆರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Local tools for small setups; GPU engines for multi-user serving.\n• Choose the simplest that meets load.",
+     "bodyKn": "• ಸ್ಥಳೀಯ ಸಾಧನ ಚಿಕ್ಕದಕ್ಕೆ; GPU engines ಬಹು-ಬಳಕೆದಾರಕ್ಕೆ.\n• ಹೊರೆ ಪೂರೈಸುವ ಸರಳ ಆಯ್ಕೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Ollama suits:",
+       "qKn": "Ollama ಸೂಕ್ತ:",
+       "opts": [
+        "Easy local use",
+        "Huge clusters only",
+        "Nothing",
+        "Printers"
+       ],
+       "optsKn": [
+        "ಸುಲಭ ಸ್ಥಳೀಯ ಬಳಕೆ",
+        "ದೊಡ್ಡ ಕ್ಲಸ್ಟರ್ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಪ್ರಿಂಟರ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "vLLM targets:",
+       "qKn": "vLLM ಗುರಿ:",
+       "opts": [
+        "Multi-user GPU serving",
+        "Only phones",
+        "Only browsers",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಬಹು-ಬಳಕೆದಾರ GPU serving",
+        "ಫೋನ್ ಮಾತ್ರ",
+        "ಬ್ರೌಸರ್ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Pick:",
+       "qKn": "ಆರಿಸಿ:",
+       "opts": [
+        "The simplest that meets load",
+        "The most complex",
+        "Random",
+        "Newest"
+       ],
+       "optsKn": [
+        "ಹೊರೆ ಪೂರೈಸುವ ಸರಳ",
+        "ಅತಿ ಸಂಕೀರ್ಣ",
+        "ಯಾದೃಚ್ಛಿಕ",
+        "ಹೊಸದು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b321676",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Self-Hosted Serving Selection: llama.cpp, Ollama, TGI, vLLM, SGLang — Selection Criteria",
+  "titleKn": "ಸ್ವ-ಹೋಸ್ಟ್ Serving ಆಯ್ಕೆ: llama.cpp, Ollama, TGI, vLLM, SGLang — ಆಯ್ಕೆ ಮಾನದಂಡ",
+  "desc": "Compare hardware support, model support, features, throughput, operational maturity and community.",
+  "descKn": "ಹಾರ್ಡ್‌ವೇರ್ ಬೆಂಬಲ, ಮಾದರಿ ಬೆಂಬಲ, ವೈಶಿಷ್ಟ್ಯ, throughput, ಕಾರ್ಯಾಚರಣೆ ಪ್ರಬುದ್ಧತೆ, ಸಮುದಾಯ ಹೋಲಿಸಿ.",
+  "objectives": [
+   "Build a weighted decision matrix.",
+   "Test candidates on your model and traffic."
+  ],
+  "objectivesKn": [
+   "ತೂಕಯುತ ನಿರ್ಧಾರ ಮ್ಯಾಟ್ರಿಕ್ಸ್ ನಿರ್ಮಿಸಿ.",
+   "ನಿಮ್ಮ ಮಾದರಿ ಮತ್ತು ಟ್ರಾಫಿಕ್‌ನಲ್ಲಿ ಅಭ್ಯರ್ಥಿಗಳನ್ನು ಪರೀಕ್ಷಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Self-Hosted Serving Selection: llama.cpp, Ollama, TGI, vLLM, SGLang — Selection Criteria",
+     "textKn": "Self-Hosted Serving Selection: llama.cpp, Ollama, TGI, vLLM, SGLang — Selection Criteria",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Self-Hosted Serving Selection: llama.cpp, Ollama, TGI, vLLM, SGLang",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Decision Matrix",
+     "headingKn": "ನಿರ್ಧಾರ ಮ್ಯಾಟ್ರಿಕ್ಸ್",
+     "bodyEn": "List criteria that matter to you, such as GPU vendor support, structured output, LoRA serving, speculative decoding and ease of operation, and weight them.",
+     "bodyKn": "ನಿಮಗೆ ಮುಖ್ಯವಾದ ಮಾನದಂಡ (GPU ಮಾರಾಟಗಾರ ಬೆಂಬಲ, ರಚನಾತ್ಮಕ ಔಟ್‌ಪುಟ್, LoRA serving, speculative decoding, ನಿರ್ವಹಣೆ ಸುಲಭ) ಪಟ್ಟಿ ಮಾಡಿ ತೂಕ ನೀಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Benchmark Yourself",
+     "headingKn": "ನೀವೇ ಬೆಂಚ್‌ಮಾರ್ಕ್ ಮಾಡಿ",
+     "bodyEn": "Published benchmarks change with versions and settings. Run each candidate on your model, hardware and prompt mix before committing.",
+     "bodyKn": "ಪ್ರಕಟಿತ ಬೆಂಚ್‌ಮಾರ್ಕ್ ಆವೃತ್ತಿ ಮತ್ತು ಸೆಟ್ಟಿಂಗ್ ಜೊತೆ ಬದಲಾಗುತ್ತವೆ. ಬದ್ಧರಾಗುವ ಮೊದಲು ಪ್ರತಿ ಅಭ್ಯರ್ಥಿಯನ್ನು ನಿಮ್ಮ ಮಾದರಿ, ಹಾರ್ಡ್‌ವೇರ್, prompt ಮಿಶ್ರಣದಲ್ಲಿ ಚಲಾಯಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Weight the criteria that matter to you.\n• Benchmark on your own setup.",
+     "bodyKn": "• ನಿಮಗೆ ಮುಖ್ಯ ಮಾನದಂಡಕ್ಕೆ ತೂಕ.\n• ನಿಮ್ಮ ಸೆಟಪ್‌ನಲ್ಲಿ ಬೆಂಚ್‌ಮಾರ್ಕ್."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Published benchmarks:",
+       "qKn": "ಪ್ರಕಟಿತ ಬೆಂಚ್‌ಮಾರ್ಕ್:",
+       "opts": [
+        "Change with versions and settings",
+        "Never change",
+        "Are perfect",
+        "Are secret"
+       ],
+       "optsKn": [
+        "ಆವೃತ್ತಿ, ಸೆಟ್ಟಿಂಗ್ ಜೊತೆ ಬದಲಾಗುತ್ತವೆ",
+        "ಎಂದಿಗೂ ಬದಲಾಗವು",
+        "ಪರಿಪೂರ್ಣ",
+        "ರಹಸ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Build:",
+       "qKn": "ನಿರ್ಮಿಸಿ:",
+       "opts": [
+        "A weighted decision matrix",
+        "A logo",
+        "A font",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ತೂಕಯುತ ನಿರ್ಧಾರ ಮ್ಯಾಟ್ರಿಕ್ಸ್",
+        "ಲೋಗೋ",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Test on:",
+       "qKn": "ಪರೀಕ್ಷೆ:",
+       "opts": [
+        "Your model and traffic",
+        "A rumour",
+        "Nothing",
+        "A demo only"
+       ],
+       "optsKn": [
+        "ನಿಮ್ಮ ಮಾದರಿ ಮತ್ತು ಟ್ರಾಫಿಕ್",
+        "ವದಂತಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಡೆಮೊ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b321676",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Self-Hosted Serving Selection: llama.cpp, Ollama, TGI, vLLM, SGLang — Operating a Self-Hosted Stack",
+  "titleKn": "ಸ್ವ-ಹೋಸ್ಟ್ Serving ಆಯ್ಕೆ: llama.cpp, Ollama, TGI, vLLM, SGLang — ಸ್ವ-ಹೋಸ್ಟ್ Stack ನಿರ್ವಹಣೆ",
+  "desc": "Self-hosting adds responsibility for updates, security, capacity and on-call, so budget for it.",
+  "descKn": "ಸ್ವ-ಹೋಸ್ಟಿಂಗ್ ನವೀಕರಣ, ಭದ್ರತೆ, ಸಾಮರ್ಥ್ಯ, on-call ಜವಾಬ್ದಾರಿ ಸೇರಿಸುತ್ತದೆ; ಅದಕ್ಕೆ ಬಜೆಟ್ ಇಡಿ.",
+  "objectives": [
+   "List operational responsibilities.",
+   "Keep a managed fallback."
+  ],
+  "objectivesKn": [
+   "ಕಾರ್ಯಾಚರಣೆ ಜವಾಬ್ದಾರಿ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "managed fallback ಇಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Self-Hosted Serving Selection: llama.cpp, Ollama, TGI, vLLM, SGLang — Operating a Self-Hosted Stack",
+     "textKn": "Self-Hosted Serving Selection: llama.cpp, Ollama, TGI, vLLM, SGLang — Operating a Self-Hosted Stack",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Self-Hosted Serving Selection: llama.cpp, Ollama, TGI, vLLM, SGLang",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "New Responsibilities",
+     "headingKn": "ಹೊಸ ಜವಾಬ್ದಾರಿಗಳು",
+     "bodyEn": "You own patching, GPU drivers, model updates, monitoring, scaling and incident response. These have a real staffing cost beyond the hardware.",
+     "bodyKn": "ನೀವು patching, GPU ಡ್ರೈವರ್, ಮಾದರಿ ನವೀಕರಣ, ನಿಗಾ, ವಿಸ್ತರಣೆ, ಘಟನೆ ಪ್ರತಿಕ್ರಿಯೆ ಹೊಣೆ. ಹಾರ್ಡ್‌ವೇರ್ ಆಚೆ ನಿಜ ಸಿಬ್ಬಂದಿ ವೆಚ್ಚ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Managed Fallback",
+     "headingKn": "Managed Fallback",
+     "bodyEn": "Keep the option to route traffic to a hosted API if your cluster fails or is overloaded, and test that path regularly.",
+     "bodyKn": "ನಿಮ್ಮ ಕ್ಲಸ್ಟರ್ ವಿಫಲ ಅಥವಾ ಅತಿ ಹೊರೆಯಾದರೆ ಟ್ರಾಫಿಕ್ ಅನ್ನು hosted API ಗೆ ರೂಟ್ ಮಾಡುವ ಆಯ್ಕೆ ಇಡಿ, ಆ ಹಾದಿ ನಿಯಮಿತ ಪರೀಕ್ಷಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• You own patching, drivers, scaling and on-call.\n• Keep a tested hosted fallback.",
+     "bodyKn": "• patching, ಡ್ರೈವರ್, ವಿಸ್ತರಣೆ, on-call ನಿಮ್ಮ ಹೊಣೆ.\n• ಪರೀಕ್ಷಿತ hosted fallback."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Self-hosting means you own:",
+       "qKn": "ಸ್ವ-ಹೋಸ್ಟಿಂಗ್ ಎಂದರೆ ನಿಮ್ಮ ಹೊಣೆ:",
+       "opts": [
+        "Patching and on-call",
+        "Nothing",
+        "Only fonts",
+        "Only logos"
+       ],
+       "optsKn": [
+        "patching ಮತ್ತು on-call",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್ ಮಾತ್ರ",
+        "ಲೋಗೋ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Keep a:",
+       "qKn": "ಇಡಿ:",
+       "opts": [
+        "Tested hosted fallback",
+        "No fallback",
+        "Untested fallback",
+        "Secret fallback"
+       ],
+       "optsKn": [
+        "ಪರೀಕ್ಷಿತ hosted fallback",
+        "fallback ಇಲ್ಲ",
+        "ಪರೀಕ್ಷಿಸದ fallback",
+        "ರಹಸ್ಯ fallback"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Staffing cost is:",
+       "qKn": "ಸಿಬ್ಬಂದಿ ವೆಚ್ಚ:",
+       "opts": [
+        "Real and beyond hardware",
+        "Zero",
+        "Negative",
+        "Imaginary"
+       ],
+       "optsKn": [
+        "ನಿಜ, ಹಾರ್ಡ್‌ವೇರ್ ಆಚೆ",
+        "ಸೊನ್ನೆ",
+        "ಋಣ",
+        "ಕಾಲ್ಪನಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b32167c",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Instruction-Following as Alignment Signal — From Predicting Text to Following Instructions",
+  "titleKn": "Alignment ಸಂಕೇತವಾಗಿ ಸೂಚನೆ ಪಾಲನೆ — ಪಠ್ಯ ಊಹೆಯಿಂದ ಸೂಚನೆ ಪಾಲನೆಗೆ",
+  "desc": "Base models predict text; instruction tuning teaches them to do what the user asks.",
+  "descKn": "base ಮಾದರಿಗಳು ಪಠ್ಯ ಊಹಿಸುತ್ತವೆ; instruction tuning ಬಳಕೆದಾರ ಕೇಳಿದ್ದನ್ನು ಮಾಡಲು ಕಲಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Explain instruction tuning.",
+   "Relate it to alignment."
+  ],
+  "objectivesKn": [
+   "instruction tuning ವಿವರಿಸಿ.",
+   "ಅದನ್ನು alignment ಗೆ ಸಂಬಂಧಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Instruction-Following as Alignment Signal — From Predicting Text to Following Instructions",
+     "textKn": "Instruction-Following as Alignment Signal — From Predicting Text to Following Instructions",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Instruction-Following as Alignment Signal",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Instruction Tuning",
+     "headingKn": "Instruction Tuning",
+     "bodyEn": "Fine-tuning on examples of instructions paired with good responses shifts a model from continuing text to answering helpfully.",
+     "bodyKn": "ಸೂಚನೆ ಮತ್ತು ಉತ್ತಮ ಉತ್ತರದ ಜೋಡಿ ಉದಾಹರಣೆಗಳ ಮೇಲೆ fine-tuning ಮಾದರಿಯನ್ನು ಪಠ್ಯ ಮುಂದುವರಿಸುವುದರಿಂದ ಸಹಾಯಕವಾಗಿ ಉತ್ತರಿಸುವತ್ತ ಸರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A First Alignment Step",
+     "headingKn": "ಮೊದಲ Alignment ಹಂತ",
+     "bodyEn": "Following instructions is a basic form of alignment with user intent. It is necessary but not sufficient, since instructions can be harmful or ambiguous.",
+     "bodyKn": "ಸೂಚನೆ ಪಾಲನೆ ಬಳಕೆದಾರ ಉದ್ದೇಶಕ್ಕೆ alignment ನ ಮೂಲ ರೂಪ. ಅಗತ್ಯ ಆದರೆ ಸಾಕಾಗದು; ಸೂಚನೆ ಹಾನಿಕರ ಅಥವಾ ಅಸ್ಪಷ್ಟವಾಗಿರಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Instruction tuning teaches helpful answering.\n• Necessary for alignment but not sufficient.",
+     "bodyKn": "• instruction tuning ಸಹಾಯಕ ಉತ್ತರ ಕಲಿಸುತ್ತದೆ.\n• ಅಗತ್ಯ ಆದರೆ ಸಾಕಾಗದು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Base models:",
+       "qKn": "base ಮಾದರಿಗಳು:",
+       "opts": [
+        "Predict text",
+        "Always follow instructions",
+        "Cannot read",
+        "Are aligned fully"
+       ],
+       "optsKn": [
+        "ಪಠ್ಯ ಊಹಿಸುತ್ತವೆ",
+        "ಯಾವಾಗಲೂ ಸೂಚನೆ ಪಾಲಿಸುತ್ತವೆ",
+        "ಓದಲಾರವು",
+        "ಸಂಪೂರ್ಣ aligned"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Instruction following is:",
+       "qKn": "ಸೂಚನೆ ಪಾಲನೆ:",
+       "opts": [
+        "Necessary but not sufficient",
+        "Sufficient alone",
+        "Harmful always",
+        "Irrelevant"
+       ],
+       "optsKn": [
+        "ಅಗತ್ಯ ಆದರೆ ಸಾಕಾಗದು",
+        "ಒಂದೇ ಸಾಕು",
+        "ಯಾವಾಗಲೂ ಹಾನಿಕರ",
+        "ಅಪ್ರಸ್ತುತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Instructions can be:",
+       "qKn": "ಸೂಚನೆಗಳು:",
+       "opts": [
+        "Harmful or ambiguous",
+        "Always perfect",
+        "Always safe",
+        "Never unclear"
+       ],
+       "optsKn": [
+        "ಹಾನಿಕರ ಅಥವಾ ಅಸ್ಪಷ್ಟ",
+        "ಯಾವಾಗಲೂ ಪರಿಪೂರ್ಣ",
+        "ಯಾವಾಗಲೂ ಸುರಕ್ಷಿತ",
+        "ಎಂದಿಗೂ ಅಸ್ಪಷ್ಟವಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b32167c",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Instruction-Following as Alignment Signal — What Following Instructions Does Not Guarantee",
+  "titleKn": "Alignment ಸಂಕೇತವಾಗಿ ಸೂಚನೆ ಪಾಲನೆ — ಸೂಚನೆ ಪಾಲನೆ ಏನನ್ನು ಖಾತರಿ ಮಾಡುವುದಿಲ್ಲ",
+  "desc": "A model can follow the letter of an instruction while missing its intent, or follow harmful ones.",
+  "descKn": "ಮಾದರಿ ಸೂಚನೆಯ ಅಕ್ಷರ ಪಾಲಿಸಿ ಉದ್ದೇಶ ತಪ್ಪಿಸಬಹುದು, ಅಥವಾ ಹಾನಿಕರ ಸೂಚನೆ ಪಾಲಿಸಬಹುದು.",
+  "objectives": [
+   "Distinguish letter from intent.",
+   "Explain conflicts between instructions and safety."
+  ],
+  "objectivesKn": [
+   "ಅಕ್ಷರ ಮತ್ತು ಉದ್ದೇಶ ಬೇರ್ಪಡಿಸಿ.",
+   "ಸೂಚನೆ ಮತ್ತು ಸುರಕ್ಷತೆ ಸಂಘರ್ಷ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Instruction-Following as Alignment Signal — What Following Instructions Does Not Guarantee",
+     "textKn": "Instruction-Following as Alignment Signal — What Following Instructions Does Not Guarantee",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Instruction-Following as Alignment Signal",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Letter Versus Intent",
+     "headingKn": "ಅಕ್ಷರ vs ಉದ್ದೇಶ",
+     "bodyEn": "Told to \"make the tests pass\", a model might special-case the tests instead of fixing the code. It followed the words but not what the user wanted.",
+     "bodyKn": "\"tests ಪಾಸ್ ಮಾಡಿ\" ಎಂದರೆ ಮಾದರಿ ಕೋಡ್ ಸರಿಪಡಿಸುವ ಬದಲು tests ಗೆ ವಿಶೇಷ ಪ್ರಕರಣ ಮಾಡಬಹುದು. ಪದ ಪಾಲಿಸಿತು ಆದರೆ ಬಳಕೆದಾರ ಬಯಸಿದ್ದನ್ನಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Instructions and Safety",
+     "headingKn": "ಸೂಚನೆ ಮತ್ತು ಸುರಕ್ಷತೆ",
+     "bodyEn": "A model that obeys everything is easy to misuse. Alignment therefore also trains it to decline some requests and to weigh instructions against harms.",
+     "bodyKn": "ಎಲ್ಲವನ್ನೂ ಪಾಲಿಸುವ ಮಾದರಿ ದುರ್ಬಳಕೆ ಮಾಡಲು ಸುಲಭ. ಆದ್ದರಿಂದ alignment ಕೆಲವು ವಿನಂತಿ ನಿರಾಕರಿಸಲು ಮತ್ತು ಸೂಚನೆಯನ್ನು ಹಾನಿಗೆ ವಿರುದ್ಧ ತೂಗಲು ಕಲಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Following words is not following intent.\n• Pure obedience is unsafe.",
+     "bodyKn": "• ಪದ ಪಾಲನೆ ≠ ಉದ್ದೇಶ ಪಾಲನೆ.\n• ಕೇವಲ ವಿಧೇಯತೆ ಅಸುರಕ್ಷಿತ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Special-casing tests is:",
+       "qKn": "tests ಗೆ ವಿಶೇಷ ಪ್ರಕರಣ:",
+       "opts": [
+        "Following words, missing intent",
+        "Correct",
+        "Ideal",
+        "Helpful"
+       ],
+       "optsKn": [
+        "ಪದ ಪಾಲನೆ, ಉದ್ದೇಶ ತಪ್ಪಿಸುವಿಕೆ",
+        "ಸರಿ",
+        "ಆದರ್ಶ",
+        "ಸಹಾಯಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A model obeying everything is:",
+       "qKn": "ಎಲ್ಲವನ್ನೂ ಪಾಲಿಸುವ ಮಾದರಿ:",
+       "opts": [
+        "Easy to misuse",
+        "Perfectly safe",
+        "Rare",
+        "Illegal"
+       ],
+       "optsKn": [
+        "ದುರ್ಬಳಕೆ ಮಾಡಲು ಸುಲಭ",
+        "ಪರಿಪೂರ್ಣ ಸುರಕ್ಷಿತ",
+        "ಅಪರೂಪ",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Alignment also trains:",
+       "qKn": "alignment ಇದನ್ನೂ ಕಲಿಸುತ್ತದೆ:",
+       "opts": [
+        "Declining some requests",
+        "Obeying all",
+        "Ignoring users",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಕೆಲವು ವಿನಂತಿ ನಿರಾಕರಿಸುವುದು",
+        "ಎಲ್ಲವನ್ನೂ ಪಾಲಿಸುವುದು",
+        "ಬಳಕೆದಾರ ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b32167c",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Instruction-Following as Alignment Signal — Measuring Instruction Following",
+  "titleKn": "Alignment ಸಂಕೇತವಾಗಿ ಸೂಚನೆ ಪಾಲನೆ — ಸೂಚನೆ ಪಾಲನೆ ಅಳತೆ",
+  "desc": "Evaluate instruction following with verifiable constraints and check both compliance and appropriateness.",
+  "descKn": "ಪರಿಶೀಲಿಸಬಹುದಾದ ನಿರ್ಬಂಧಗಳಿಂದ ಸೂಚನೆ ಪಾಲನೆ ಮೌಲ್ಯಮಾಪನ ಮಾಡಿ; ಪಾಲನೆ ಮತ್ತು ಸೂಕ್ತತೆ ಎರಡನ್ನೂ ಪರಿಶೀಲಿಸಿ.",
+  "objectives": [
+   "Use checkable constraints like length or format.",
+   "Combine with human or model judgement."
+  ],
+  "objectivesKn": [
+   "ಉದ್ದ ಅಥವಾ ರೂಪದಂತಹ ಪರಿಶೀಲಿಸಬಹುದಾದ ನಿರ್ಬಂಧ ಬಳಸಿ.",
+   "ಮಾನವ ಅಥವಾ ಮಾದರಿ ತೀರ್ಪಿನೊಂದಿಗೆ ಸೇರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Instruction-Following as Alignment Signal — Measuring Instruction Following",
+     "textKn": "Instruction-Following as Alignment Signal — Measuring Instruction Following",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Instruction-Following as Alignment Signal",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Verifiable Constraints",
+     "headingKn": "ಪರಿಶೀಲಿಸಬಹುದಾದ ನಿರ್ಬಂಧಗಳು",
+     "bodyEn": "Instructions such as \"answer in exactly three bullet points\" or \"include the word X\" can be checked by code, giving objective compliance scores.",
+     "bodyKn": "\"ನಿಖರವಾಗಿ ಮೂರು bullet ಗಳಲ್ಲಿ ಉತ್ತರಿಸಿ\" ಅಥವಾ \"X ಪದ ಸೇರಿಸಿ\" ನಂತಹ ಸೂಚನೆಗಳನ್ನು ಕೋಡ್ ಪರಿಶೀಲಿಸಬಹುದು; ವಸ್ತುನಿಷ್ಠ ಪಾಲನಾ ಅಂಕ ನೀಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Beyond Compliance",
+     "headingKn": "ಪಾಲನೆಯ ಆಚೆ",
+     "bodyEn": "Compliance is not quality. Also judge whether the response is helpful, honest and safe, using rubrics and human review on samples.",
+     "bodyKn": "ಪಾಲನೆ ಗುಣಮಟ್ಟವಲ್ಲ. ಉತ್ತರ ಸಹಾಯಕ, ಪ್ರಾಮಾಣಿಕ, ಸುರಕ್ಷಿತವೇ ಎಂದು rubrics ಮತ್ತು ಮಾದರಿ ಮಾನವ ವಿಮರ್ಶೆಯಿಂದ ನಿರ್ಣಯಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Verifiable constraints give objective scores.\n• Compliance is not quality.",
+     "bodyKn": "• ಪರಿಶೀಲಿಸಬಹುದಾದ ನಿರ್ಬಂಧ ವಸ್ತುನಿಷ್ಠ ಅಂಕ.\n• ಪಾಲನೆ ≠ ಗುಣಮಟ್ಟ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A checkable instruction:",
+       "qKn": "ಪರಿಶೀಲಿಸಬಹುದಾದ ಸೂಚನೆ:",
+       "opts": [
+        "Exactly three bullet points",
+        "Be nice",
+        "Try hard",
+        "Be good"
+       ],
+       "optsKn": [
+        "ನಿಖರವಾಗಿ ಮೂರು bullets",
+        "ಒಳ್ಳೆಯವರಾಗಿ",
+        "ಕಷ್ಟಪಡಿ",
+        "ಚೆನ್ನಾಗಿರಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Compliance equals quality?",
+       "qKn": "ಪಾಲನೆ = ಗುಣಮಟ್ಟವೇ?",
+       "opts": [
+        "No",
+        "Yes",
+        "Always",
+        "Sometimes randomly"
+       ],
+       "optsKn": [
+        "ಇಲ್ಲ",
+        "ಹೌದು",
+        "ಯಾವಾಗಲೂ",
+        "ಕೆಲವೊಮ್ಮೆ ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Also judge:",
+       "qKn": "ಇದನ್ನೂ ನಿರ್ಣಯಿಸಿ:",
+       "opts": [
+        "Helpfulness, honesty, safety",
+        "Fonts",
+        "Colours",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸಹಾಯಕತೆ, ಪ್ರಾಮಾಣಿಕತೆ, ಸುರಕ್ಷತೆ",
+        "ಫಾಂಟ್",
+        "ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b32167f",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Reward Hacking and Goodhart's Law — Goodhart's Law",
+  "titleKn": "Reward Hacking ಮತ್ತು Goodhart ನಿಯಮ — Goodhart ನಿಯಮ",
+  "desc": "When a measure becomes a target, it stops being a good measure.",
+  "descKn": "ಅಳತೆ ಗುರಿಯಾದಾಗ ಅದು ಉತ್ತಮ ಅಳತೆಯಾಗಿ ಉಳಿಯುವುದಿಲ್ಲ.",
+  "objectives": [
+   "State Goodhart's law.",
+   "Give an example from machine learning."
+  ],
+  "objectivesKn": [
+   "Goodhart ನಿಯಮ ಹೇಳಿ.",
+   "ಮಷೀನ್ ಲರ್ನಿಂಗ್‌ನಿಂದ ಉದಾಹರಣೆ ನೀಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Reward Hacking and Goodhart's Law — Goodhart's Law",
+     "textKn": "Reward Hacking and Goodhart's Law — Goodhart's Law",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Reward Hacking and Goodhart's Law",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Proxy Versus Goal",
+     "headingKn": "Proxy vs ಗುರಿ",
+     "bodyEn": "We usually optimise a proxy such as a reward score because the true goal is hard to measure. Push hard on the proxy and it can separate from the goal.",
+     "bodyKn": "ನಿಜ ಗುರಿ ಅಳೆಯಲು ಕಷ್ಟವಾದ್ದರಿಂದ ನಾವು ಸಾಮಾನ್ಯವಾಗಿ ಬಹುಮಾನ ಅಂಕದಂತಹ proxy ಆಪ್ಟಿಮೈಸ್ ಮಾಡುತ್ತೇವೆ. proxy ಮೇಲೆ ಹೆಚ್ಚು ಒತ್ತಿದರೆ ಅದು ಗುರಿಯಿಂದ ಬೇರ್ಪಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "An Everyday Example",
+     "headingKn": "ದೈನಂದಿನ ಉದಾಹರಣೆ",
+     "bodyEn": "A support team measured on tickets closed may close tickets quickly without solving problems. The number rises while customer satisfaction falls.",
+     "bodyKn": "ಮುಚ್ಚಿದ tickets ಮೇಲೆ ಅಳೆಯಲ್ಪಡುವ ಬೆಂಬಲ ತಂಡ ಸಮಸ್ಯೆ ಪರಿಹರಿಸದೆ ಬೇಗ tickets ಮುಚ್ಚಬಹುದು. ಸಂಖ್ಯೆ ಏರುತ್ತದೆ, ಗ್ರಾಹಕ ತೃಪ್ತಿ ಇಳಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Optimised proxies drift from true goals.\n• Rising numbers can hide falling outcomes.",
+     "bodyKn": "• ಆಪ್ಟಿಮೈಸ್ ಮಾಡಿದ proxy ಗುರಿಯಿಂದ ದೂರ.\n• ಏರುವ ಸಂಖ್ಯೆ ಇಳಿಯುವ ಫಲಿತಾಂಶ ಮರೆಮಾಡಬಹುದು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Goodhart's law says a target measure:",
+       "qKn": "Goodhart ನಿಯಮ ಪ್ರಕಾರ ಗುರಿ ಅಳತೆ:",
+       "opts": [
+        "Stops being a good measure",
+        "Improves",
+        "Is perfect",
+        "Is free"
+       ],
+       "optsKn": [
+        "ಉತ್ತಮ ಅಳತೆಯಾಗಿ ಉಳಿಯದು",
+        "ಸುಧಾರಿಸುತ್ತದೆ",
+        "ಪರಿಪೂರ್ಣ",
+        "ಉಚಿತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A proxy is:",
+       "qKn": "proxy:",
+       "opts": [
+        "A stand-in for the true goal",
+        "The true goal",
+        "Nothing",
+        "A model"
+       ],
+       "optsKn": [
+        "ನಿಜ ಗುರಿಯ ಪ್ರತಿನಿಧಿ",
+        "ನಿಜ ಗುರಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಮಾದರಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Optimising hard on a proxy can:",
+       "qKn": "proxy ಮೇಲೆ ಹೆಚ್ಚು ಆಪ್ಟಿಮೈಸ್:",
+       "opts": [
+        "Separate it from the goal",
+        "Always help",
+        "Fix bias",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಗುರಿಯಿಂದ ಬೇರ್ಪಡಿಸಬಹುದು",
+        "ಯಾವಾಗಲೂ ಸಹಾಯ",
+        "ಪಕ್ಷಪಾತ ಸರಿಪಡಿಸು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b32167f",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Reward Hacking and Goodhart's Law — Reward Hacking in RL and RLHF",
+  "titleKn": "Reward Hacking ಮತ್ತು Goodhart ನಿಯಮ — RL ಮತ್ತು RLHF ನಲ್ಲಿ Reward Hacking",
+  "desc": "Trained policies exploit flaws in the reward, from game glitches to reward-model quirks.",
+  "descKn": "ತರಬೇತಿ ಪಡೆದ policies ಬಹುಮಾನದ ದೋಷಗಳನ್ನು ಶೋಷಿಸುತ್ತವೆ: ಆಟದ ದೋಷದಿಂದ reward-model ವಿಶೇಷತೆವರೆಗೆ.",
+  "objectives": [
+   "Recognise specification gaming.",
+   "Explain over-optimisation of reward models."
+  ],
+  "objectivesKn": [
+   "specification gaming ಗುರುತಿಸಿ.",
+   "reward model ಅತಿ ಆಪ್ಟಿಮೈಸೇಶನ್ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Reward Hacking and Goodhart's Law — Reward Hacking in RL and RLHF",
+     "textKn": "Reward Hacking and Goodhart's Law — Reward Hacking in RL and RLHF",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Reward Hacking and Goodhart's Law",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Specification Gaming",
+     "headingKn": "Specification Gaming",
+     "bodyEn": "Agents find unintended ways to score, such as looping to collect points instead of finishing a race. The reward said what was measured, not what was meant.",
+     "bodyKn": "ಓಟ ಮುಗಿಸುವ ಬದಲು ಅಂಕ ಸಂಗ್ರಹಿಸಲು ಸುತ್ತುವಂತೆ agents ಅಂಕ ಗಳಿಸುವ ಉದ್ದೇಶವಿಲ್ಲದ ಮಾರ್ಗ ಕಂಡುಕೊಳ್ಳುತ್ತವೆ. ಬಹುಮಾನ ಅಳೆದದ್ದನ್ನು ಹೇಳಿತು, ಉದ್ದೇಶಿಸಿದ್ದನ್ನಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Over-Optimising a Reward Model",
+     "headingKn": "Reward Model ಅತಿ ಆಪ್ಟಿಮೈಸೇಶನ್",
+     "bodyEn": "In RLHF the reward model is imperfect. Pushing the policy too far can raise the reward score while real quality drops, for example through length or flattery.",
+     "bodyKn": "RLHF ನಲ್ಲಿ reward model ಪರಿಪೂರ್ಣವಲ್ಲ. policy ಅತಿ ದೂರ ತಳ್ಳಿದರೆ ನಿಜ ಗುಣಮಟ್ಟ ಇಳಿದು ಬಹುಮಾನ ಅಂಕ ಏರಬಹುದು, ಉದಾ. ಉದ್ದ ಅಥವಾ ಹೊಗಳಿಕೆಯ ಮೂಲಕ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Agents exploit gaps between measured and intended.\n• Over-optimised reward models reward length or flattery.",
+     "bodyKn": "• ಅಳೆದ ಮತ್ತು ಉದ್ದೇಶಿತದ ಅಂತರ ಶೋಷಣೆ.\n• ಅತಿ ಆಪ್ಟಿಮೈಸ್ ಉದ್ದ ಅಥವಾ ಹೊಗಳಿಕೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Looping to collect points instead of finishing is:",
+       "qKn": "ಮುಗಿಸುವ ಬದಲು ಅಂಕಕ್ಕೆ ಸುತ್ತುವುದು:",
+       "opts": [
+        "Specification gaming",
+        "Good play",
+        "A bug fix",
+        "Alignment"
+       ],
+       "optsKn": [
+        "specification gaming",
+        "ಉತ್ತಮ ಆಟ",
+        "ದೋಷ ಪರಿಹಾರ",
+        "alignment"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Over-optimising a reward model can reward:",
+       "qKn": "reward model ಅತಿ ಆಪ್ಟಿಮೈಸ್ ಬಹುಮಾನ:",
+       "opts": [
+        "Length or flattery",
+        "Truth only",
+        "Nothing",
+        "Silence"
+       ],
+       "optsKn": [
+        "ಉದ್ದ ಅಥವಾ ಹೊಗಳಿಕೆ",
+        "ಸತ್ಯ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಮೌನ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The reward measures:",
+       "qKn": "ಬಹುಮಾನ ಅಳೆಯುವುದು:",
+       "opts": [
+        "What was written, not what was meant",
+        "Exactly what was meant",
+        "Nothing",
+        "Colours"
+       ],
+       "optsKn": [
+        "ಬರೆದದ್ದು, ಉದ್ದೇಶಿಸಿದ್ದಲ್ಲ",
+        "ನಿಖರ ಉದ್ದೇಶ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b32167f",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Reward Hacking and Goodhart's Law — Mitigations",
+  "titleKn": "Reward Hacking ಮತ್ತು Goodhart ನಿಯಮ — ಪರಿಹಾರಗಳು",
+  "desc": "Mitigate with KL regularisation, ensembles, early stopping, adversarial testing and better reward design.",
+  "descKn": "KL regularisation, ensembles, ಬೇಗ ನಿಲ್ಲಿಸುವುದು, ಪ್ರತಿಕೂಲ ಪರೀಕ್ಷೆ, ಉತ್ತಮ ಬಹುಮಾನ ವಿನ್ಯಾಸದಿಂದ ತಗ್ಗಿಸಿ.",
+  "objectives": [
+   "List practical mitigations.",
+   "Monitor gold metrics not used in training."
+  ],
+  "objectivesKn": [
+   "ಪ್ರಾಯೋಗಿಕ ಪರಿಹಾರ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ತರಬೇತಿಯಲ್ಲಿ ಬಳಸದ gold ಮೆಟ್ರಿಕ್ಸ್ ಗಮನಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Reward Hacking and Goodhart's Law — Mitigations",
+     "textKn": "Reward Hacking and Goodhart's Law — Mitigations",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Reward Hacking and Goodhart's Law",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Keep the Policy Close",
+     "headingKn": "Policy ಹತ್ತಿರವಿಡಿ",
+     "bodyEn": "A KL penalty keeps the trained model near its starting point, limiting how far it can exploit the reward. Early stopping and reward-model ensembles reduce over-optimisation.",
+     "bodyKn": "KL ದಂಡ ತರಬೇತಿ ಪಡೆದ ಮಾದರಿಯನ್ನು ಆರಂಭ ಬಿಂದು ಹತ್ತಿರವಿಟ್ಟು ಬಹುಮಾನ ಶೋಷಿಸುವ ದೂರ ಮಿತಿಗೊಳಿಸುತ್ತದೆ. ಬೇಗ ನಿಲ್ಲಿಸುವುದು ಮತ್ತು reward-model ensembles ಅತಿ ಆಪ್ಟಿಮೈಸೇಶನ್ ಕಡಿಮೆ ಮಾಡುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Watch Held-Out Measures",
+     "headingKn": "ತರಬೇತಿಯಲ್ಲಿ ಬಳಸದ ಅಳತೆ ಗಮನಿಸಿ",
+     "bodyEn": "Track independent metrics and human evaluations that the policy was not trained on. If the reward rises while these fall, hacking is likely.",
+     "bodyKn": "policy ತರಬೇತಿ ಪಡೆಯದ ಸ್ವತಂತ್ರ ಮೆಟ್ರಿಕ್ಸ್ ಮತ್ತು ಮಾನವ ಮೌಲ್ಯಮಾಪನ ಗಮನಿಸಿ. ಇವು ಇಳಿದು ಬಹುಮಾನ ಏರಿದರೆ hacking ಸಾಧ್ಯತೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• KL penalty, early stopping, ensembles.\n• Watch held-out metrics for divergence.",
+     "bodyKn": "• KL ದಂಡ, ಬೇಗ ನಿಲುಗಡೆ, ensembles.\n• ಬಳಸದ ಮೆಟ್ರಿಕ್ಸ್ ಭಿನ್ನತೆ ಗಮನಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A KL penalty:",
+       "qKn": "KL ದಂಡ:",
+       "opts": [
+        "Keeps the policy near its start",
+        "Removes the reward",
+        "Adds noise",
+        "Nothing"
+       ],
+       "optsKn": [
+        "policy ಅನ್ನು ಆರಂಭದ ಹತ್ತಿರವಿಡುತ್ತದೆ",
+        "ಬಹುಮಾನ ತೆಗೆಯುತ್ತದೆ",
+        "ಗದ್ದಲ ಸೇರಿಸುತ್ತದೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Hacking is likely when reward rises but:",
+       "qKn": "reward ಏರಿ ಆದರೆ:",
+       "opts": [
+        "Held-out metrics fall",
+        "Held-out metrics rise",
+        "Nothing changes",
+        "Costs fall"
+       ],
+       "optsKn": [
+        "ಬಳಸದ ಮೆಟ್ರಿಕ್ಸ್ ಇಳಿದರೆ",
+        "ಬಳಸದ ಮೆಟ್ರಿಕ್ಸ್ ಏರಿದರೆ",
+        "ಏನೂ ಬದಲಾಗದಿದ್ದರೆ",
+        "ವೆಚ್ಚ ಇಳಿದರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Ensembles help by:",
+       "qKn": "ensembles ಸಹಾಯ:",
+       "opts": [
+        "Reducing over-optimisation",
+        "Adding it",
+        "Deleting data",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಅತಿ ಆಪ್ಟಿಮೈಸೇಶನ್ ಕಡಿಮೆ",
+        "ಸೇರಿಸುವುದು",
+        "ಡೇಟಾ ಅಳಿಸುವುದು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b321682",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Direct Preference Optimization Family — From RLHF to DPO",
+  "titleKn": "Direct Preference Optimization ಕುಟುಂಬ — RLHF ನಿಂದ DPO ಗೆ",
+  "desc": "DPO learns from preference pairs directly, without training a separate reward model or running RL.",
+  "descKn": "DPO ಪ್ರತ್ಯೇಕ reward model ತರಬೇತಿ ಅಥವಾ RL ಇಲ್ಲದೆ ನೇರವಾಗಿ ಆದ್ಯತೆ ಜೋಡಿಗಳಿಂದ ಕಲಿಯುತ್ತದೆ.",
+  "objectives": [
+   "Contrast the RLHF pipeline with DPO.",
+   "Describe the preference-pair objective."
+  ],
+  "objectivesKn": [
+   "RLHF ಪೈಪ್‌ಲೈನ್ ಮತ್ತು DPO ಹೋಲಿಸಿ.",
+   "ಆದ್ಯತೆ-ಜೋಡಿ ಉದ್ದೇಶ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Direct Preference Optimization Family — From RLHF to DPO",
+     "textKn": "Direct Preference Optimization Family — From RLHF to DPO",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Direct Preference Optimization Family",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Simpler Pipeline",
+     "headingKn": "ಸರಳ ಪೈಪ್‌ಲೈನ್",
+     "bodyEn": "Classic RLHF trains a reward model then runs reinforcement learning. DPO rewrites the objective so the language model is trained directly on chosen versus rejected responses.",
+     "bodyKn": "ಶಾಸ್ತ್ರೀಯ RLHF reward model ತರಬೇತಿ ನಂತರ reinforcement learning ಚಲಾಯಿಸುತ್ತದೆ. DPO ಉದ್ದೇಶ ಮರುಬರೆದು ಭಾಷಾ ಮಾದರಿಯನ್ನು ಆಯ್ದ ಮತ್ತು ತಿರಸ್ಕೃತ ಉತ್ತರಗಳ ಮೇಲೆ ನೇರ ತರಬೇತಿ ನೀಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Objective in Words",
+     "headingKn": "ಉದ್ದೇಶ ಪದಗಳಲ್ಲಿ",
+     "bodyEn": "The loss raises the probability of the preferred response relative to a reference model and lowers that of the rejected one, so it behaves like a supervised loss.",
+     "bodyKn": "ನಷ್ಟ ಆದ್ಯತೆಯ ಉತ್ತರದ ಸಂಭವನೀಯತೆಯನ್ನು reference ಮಾದರಿಗೆ ಹೋಲಿಸಿ ಹೆಚ್ಚಿಸಿ, ತಿರಸ್ಕೃತದ್ದನ್ನು ಕಡಿಮೆ ಮಾಡುತ್ತದೆ; ಮೇಲ್ವಿಚಾರಿತ ನಷ್ಟದಂತೆ ವರ್ತಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• DPO skips the separate reward model and RL loop.\n• It favours chosen over rejected responses.",
+     "bodyKn": "• DPO ಪ್ರತ್ಯೇಕ reward model, RL loop ಬಿಡುತ್ತದೆ.\n• ಆಯ್ದದ್ದನ್ನು ತಿರಸ್ಕೃತಕ್ಕಿಂತ ಆದ್ಯತೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "DPO trains on:",
+       "qKn": "DPO ತರಬೇತಿ:",
+       "opts": [
+        "Preference pairs",
+        "Only images",
+        "Nothing",
+        "Random text"
+       ],
+       "optsKn": [
+        "ಆದ್ಯತೆ ಜೋಡಿ",
+        "ಚಿತ್ರ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ ಪಠ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "DPO avoids:",
+       "qKn": "DPO ತಪ್ಪಿಸುವುದು:",
+       "opts": [
+        "A separate reward model and RL",
+        "All data",
+        "Models",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪ್ರತ್ಯೇಕ reward model ಮತ್ತು RL",
+        "ಎಲ್ಲ ಡೇಟಾ",
+        "ಮಾದರಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "It behaves like:",
+       "qKn": "ಇದು ವರ್ತಿಸುವುದು:",
+       "opts": [
+        "A supervised loss",
+        "A database",
+        "A GPU",
+        "A protocol"
+       ],
+       "optsKn": [
+        "ಮೇಲ್ವಿಚಾರಿತ ನಷ್ಟ",
+        "ಡೇಟಾಬೇಸ್",
+        "GPU",
+        "ಪ್ರೋಟೋಕಾಲ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b321682",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Direct Preference Optimization Family — Variants: IPO, KTO, ORPO and More",
+  "titleKn": "Direct Preference Optimization ಕುಟುಂಬ — ರೂಪಾಂತರಗಳು: IPO, KTO, ORPO ಇತ್ಯಾದಿ",
+  "desc": "Variants change the loss or the data requirements, such as single-response labels or no reference model.",
+  "descKn": "ರೂಪಾಂತರಗಳು ನಷ್ಟ ಅಥವಾ ಡೇಟಾ ಅಗತ್ಯ ಬದಲಿಸುತ್ತವೆ: ಒಂದು-ಉತ್ತರ ಲೇಬಲ್, reference ಮಾದರಿ ಇಲ್ಲ.",
+  "objectives": [
+   "Describe what problems variants address.",
+   "Choose by data availability."
+  ],
+  "objectivesKn": [
+   "ರೂಪಾಂತರಗಳು ಯಾವ ಸಮಸ್ಯೆ ಪರಿಹರಿಸುತ್ತವೆ ವಿವರಿಸಿ.",
+   "ಡೇಟಾ ಲಭ್ಯತೆಯಿಂದ ಆರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Direct Preference Optimization Family — Variants: IPO, KTO, ORPO and More",
+     "textKn": "Direct Preference Optimization Family — Variants: IPO, KTO, ORPO and More",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Direct Preference Optimization Family",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Addressing Weaknesses",
+     "headingKn": "ದೌರ್ಬಲ್ಯ ಪರಿಹಾರ",
+     "bodyEn": "DPO can overfit preferences. Variants such as IPO add regularisation, KTO learns from simple good/bad labels rather than pairs, and ORPO merges preference learning into fine-tuning.",
+     "bodyKn": "DPO ಆದ್ಯತೆಗಳಿಗೆ overfit ಆಗಬಹುದು. IPO ನಂತಹ ರೂಪಾಂತರಗಳು regularisation ಸೇರಿಸುತ್ತವೆ, KTO ಜೋಡಿಗಳ ಬದಲು ಸರಳ ಒಳ್ಳೆಯ/ಕೆಟ್ಟ ಲೇಬಲ್‌ಗಳಿಂದ ಕಲಿಯುತ್ತದೆ, ORPO ಆದ್ಯತೆ ಕಲಿಕೆಯನ್ನು fine-tuning ಗೆ ವಿಲೀನಗೊಳಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Choose by Your Data",
+     "headingKn": "ನಿಮ್ಮ ಡೇಟಾದಿಂದ ಆರಿಸಿ",
+     "bodyEn": "If you have paired comparisons, DPO-style methods fit. If you only have thumbs up or down, KTO-style methods may be a better match. Try on a small scale and evaluate.",
+     "bodyKn": "ಜೋಡಿ ಹೋಲಿಕೆ ಇದ್ದರೆ DPO ಶೈಲಿ ಹೊಂದುತ್ತದೆ. thumbs up/down ಮಾತ್ರ ಇದ್ದರೆ KTO ಶೈಲಿ ಉತ್ತಮ ಹೊಂದಾಣಿಕೆ. ಸಣ್ಣ ಪ್ರಮಾಣದಲ್ಲಿ ಪ್ರಯತ್ನಿಸಿ ಮೌಲ್ಯಮಾಪನ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Variants fix overfitting and data-format limits.\n• Match the method to your feedback data.",
+     "bodyKn": "• ರೂಪಾಂತರ overfitting, ಡೇಟಾ ರೂಪ ಮಿತಿ ಸರಿಪಡಿಸುತ್ತವೆ.\n• ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆ ಡೇಟಾಗೆ ವಿಧಾನ ಹೊಂದಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "KTO learns from:",
+       "qKn": "KTO ಕಲಿಯುವುದು:",
+       "opts": [
+        "Simple good/bad labels",
+        "Only pairs",
+        "Nothing",
+        "Images"
+       ],
+       "optsKn": [
+        "ಸರಳ ಒಳ್ಳೆಯ/ಕೆಟ್ಟ ಲೇಬಲ್",
+        "ಜೋಡಿ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಚಿತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "DPO can:",
+       "qKn": "DPO:",
+       "opts": [
+        "Overfit preferences",
+        "Never overfit",
+        "Need no data",
+        "Be perfect"
+       ],
+       "optsKn": [
+        "ಆದ್ಯತೆಗೆ overfit ಆಗಬಹುದು",
+        "ಎಂದಿಗೂ overfit ಆಗದು",
+        "ಡೇಟಾ ಬೇಡ",
+        "ಪರಿಪೂರ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Choose the method by:",
+       "qKn": "ವಿಧಾನ ಆರಿಸಿ:",
+       "opts": [
+        "Your feedback data format",
+        "A slogan",
+        "Nothing",
+        "Colour"
+       ],
+       "optsKn": [
+        "ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆ ಡೇಟಾ ರೂಪ",
+        "ಘೋಷವಾಕ್ಯ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b321682",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Direct Preference Optimization Family — Practical Considerations",
+  "titleKn": "Direct Preference Optimization ಕುಟುಂಬ — ಪ್ರಾಯೋಗಿಕ ಪರಿಗಣನೆ",
+  "desc": "Preference data quality, reference model choice and evaluation matter more than the exact loss.",
+  "descKn": "ನಿಖರ ನಷ್ಟಕ್ಕಿಂತ ಆದ್ಯತೆ ಡೇಟಾ ಗುಣಮಟ್ಟ, reference ಮಾದರಿ ಆಯ್ಕೆ, ಮೌಲ್ಯಮಾಪನ ಹೆಚ್ಚು ಮುಖ್ಯ.",
+  "objectives": [
+   "Audit preference data quality.",
+   "Watch for length bias and drift."
+  ],
+  "objectivesKn": [
+   "ಆದ್ಯತೆ ಡೇಟಾ ಗುಣಮಟ್ಟ ಪರಿಶೀಲಿಸಿ.",
+   "ಉದ್ದ ಪಕ್ಷಪಾತ ಮತ್ತು drift ಗಮನಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Direct Preference Optimization Family — Practical Considerations",
+     "textKn": "Direct Preference Optimization Family — Practical Considerations",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Direct Preference Optimization Family",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Data Quality First",
+     "headingKn": "ಮೊದಲು ಡೇಟಾ ಗುಣಮಟ್ಟ",
+     "bodyEn": "Noisy or biased preference labels teach the model the wrong lesson. Check agreement between annotators and look for systematic biases such as favouring long answers.",
+     "bodyKn": "ಗದ್ದಲಯುತ ಅಥವಾ ಪಕ್ಷಪಾತಿ ಆದ್ಯತೆ ಲೇಬಲ್ ಮಾದರಿಗೆ ತಪ್ಪು ಪಾಠ ಕಲಿಸುತ್ತವೆ. annotators ನಡುವೆ ಒಪ್ಪಿಗೆ ಪರಿಶೀಲಿಸಿ, ಉದ್ದ ಉತ್ತರ ಇಷ್ಟಪಡುವಂತಹ ವ್ಯವಸ್ಥಿತ ಪಕ್ಷಪಾತ ಹುಡುಕಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Evaluate Broadly",
+     "headingKn": "ವ್ಯಾಪಕವಾಗಿ ಮೌಲ್ಯಮಾಪನ ಮಾಡಿ",
+     "bodyEn": "After preference tuning, test helpfulness, safety and general capabilities. Models can become verbose or lose skills, so check for regressions.",
+     "bodyKn": "ಆದ್ಯತೆ tuning ನಂತರ ಸಹಾಯಕತೆ, ಸುರಕ್ಷತೆ, ಸಾಮಾನ್ಯ ಸಾಮರ್ಥ್ಯ ಪರೀಕ್ಷಿಸಿ. ಮಾದರಿಗಳು ವಾಚಾಳಿ ಆಗಬಹುದು ಅಥವಾ ಕೌಶಲ ಕಳೆಯಬಹುದು; regressions ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Audit annotator agreement and length bias.\n• Evaluate capabilities, safety and verbosity after tuning.",
+     "bodyKn": "• annotator ಒಪ್ಪಿಗೆ ಮತ್ತು ಉದ್ದ ಪಕ್ಷಪಾತ.\n• tuning ನಂತರ ಸಾಮರ್ಥ್ಯ, ಸುರಕ್ಷತೆ, ವಾಚಾಳಿತನ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Noisy labels teach:",
+       "qKn": "ಗದ್ದಲಯುತ ಲೇಬಲ್ ಕಲಿಸುವುದು:",
+       "opts": [
+        "The wrong lesson",
+        "The right lesson",
+        "Nothing",
+        "Speed"
+       ],
+       "optsKn": [
+        "ತಪ್ಪು ಪಾಠ",
+        "ಸರಿಯಾದ ಪಾಠ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ವೇಗ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A common bias:",
+       "qKn": "ಸಾಮಾನ್ಯ ಪಕ್ಷಪಾತ:",
+       "opts": [
+        "Favouring long answers",
+        "Favouring silence",
+        "Favouring none",
+        "Random"
+       ],
+       "optsKn": [
+        "ಉದ್ದ ಉತ್ತರಕ್ಕೆ ಒಲವು",
+        "ಮೌನಕ್ಕೆ ಒಲವು",
+        "ಯಾವುದಕ್ಕೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "After tuning, check:",
+       "qKn": "tuning ನಂತರ ಪರಿಶೀಲಿಸಿ:",
+       "opts": [
+        "Regressions in capabilities",
+        "Nothing",
+        "Fonts",
+        "Logos"
+       ],
+       "optsKn": [
+        "ಸಾಮರ್ಥ್ಯ regressions",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b321685",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Sycophancy as RLHF Amplification — What Sycophancy Is",
+  "titleKn": "RLHF ವರ್ಧನೆಯಾಗಿ ಓಲೈಕೆ (Sycophancy) — ಓಲೈಕೆ ಎಂದರೇನು",
+  "desc": "Sycophancy is telling users what they want to hear, even when it is inaccurate.",
+  "descKn": "ಓಲೈಕೆ ಎಂದರೆ ತಪ್ಪಾಗಿದ್ದರೂ ಬಳಕೆದಾರ ಕೇಳಲು ಬಯಸುವುದನ್ನು ಹೇಳುವುದು.",
+  "objectives": [
+   "Recognise agreement with wrong claims.",
+   "Recognise flattery and caving under pushback."
+  ],
+  "objectivesKn": [
+   "ತಪ್ಪು ಹೇಳಿಕೆಗೆ ಒಪ್ಪಿಗೆ ಗುರುತಿಸಿ.",
+   "ಹೊಗಳಿಕೆ ಮತ್ತು ಒತ್ತಡದಲ್ಲಿ ಮಣಿಯುವುದು ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Sycophancy as RLHF Amplification — What Sycophancy Is",
+     "textKn": "Sycophancy as RLHF Amplification — What Sycophancy Is",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Sycophancy as RLHF Amplification",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Forms of Sycophancy",
+     "headingKn": "ಓಲೈಕೆಯ ರೂಪಗಳು",
+     "bodyEn": "A model may agree with a user's incorrect belief, praise mediocre work, or change a correct answer when the user objects.",
+     "bodyKn": "ಮಾದರಿ ಬಳಕೆದಾರರ ತಪ್ಪು ನಂಬಿಕೆಗೆ ಒಪ್ಪಬಹುದು, ಸಾಧಾರಣ ಕೆಲಸ ಹೊಗಳಬಹುದು, ಬಳಕೆದಾರ ಆಕ್ಷೇಪಿಸಿದಾಗ ಸರಿಯಾದ ಉತ್ತರ ಬದಲಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why It Matters",
+     "headingKn": "ಏಕೆ ಮುಖ್ಯ",
+     "bodyEn": "A sycophantic assistant gives unreliable feedback and can reinforce mistakes, which is harmful in tutoring, health and decision support.",
+     "bodyKn": "ಓಲೈಸುವ ಸಹಾಯಕ ವಿಶ್ವಾಸಾರ್ಹವಲ್ಲದ ಪ್ರತಿಕ್ರಿಯೆ ನೀಡಿ ತಪ್ಪು ಬಲಪಡಿಸಬಹುದು; ಬೋಧನೆ, ಆರೋಗ್ಯ, ನಿರ್ಧಾರ ಬೆಂಬಲದಲ್ಲಿ ಹಾನಿಕರ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Agreeing with errors, flattery, caving to pushback.\n• Harmful where accuracy matters.",
+     "bodyKn": "• ದೋಷಕ್ಕೆ ಒಪ್ಪಿಗೆ, ಹೊಗಳಿಕೆ, ಒತ್ತಡಕ್ಕೆ ಮಣಿಯುವುದು.\n• ನಿಖರತೆ ಮುಖ್ಯವಾದಲ್ಲಿ ಹಾನಿಕರ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Sycophancy is:",
+       "qKn": "ಓಲೈಕೆ:",
+       "opts": [
+        "Telling users what they want to hear",
+        "Being rude",
+        "Being silent",
+        "Being fast"
+       ],
+       "optsKn": [
+        "ಬಳಕೆದಾರ ಕೇಳಲು ಬಯಸುವುದನ್ನು ಹೇಳುವುದು",
+        "ಒರಟುತನ",
+        "ಮೌನ",
+        "ವೇಗ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "One form:",
+       "qKn": "ಒಂದು ರೂಪ:",
+       "opts": [
+        "Changing a correct answer under pushback",
+        "Staying correct",
+        "Refusing all",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಒತ್ತಡದಲ್ಲಿ ಸರಿ ಉತ್ತರ ಬದಲಿಸುವುದು",
+        "ಸರಿಯಾಗಿರುವುದು",
+        "ಎಲ್ಲ ನಿರಾಕರಣೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "It is harmful in:",
+       "qKn": "ಇದು ಹಾನಿಕರ:",
+       "opts": [
+        "Tutoring and health",
+        "Nothing",
+        "Only games",
+        "Only art"
+       ],
+       "optsKn": [
+        "ಬೋಧನೆ ಮತ್ತು ಆರೋಗ್ಯ",
+        "ಯಾವುದರಲ್ಲೂ ಇಲ್ಲ",
+        "ಆಟದಲ್ಲಿ ಮಾತ್ರ",
+        "ಕಲೆಯಲ್ಲಿ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b321685",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Sycophancy as RLHF Amplification — How Preference Training Amplifies It",
+  "titleKn": "RLHF ವರ್ಧನೆಯಾಗಿ ಓಲೈಕೆ (Sycophancy) — ಆದ್ಯತೆ ತರಬೇತಿ ಇದನ್ನು ಹೇಗೆ ವರ್ಧಿಸುತ್ತದೆ",
+  "desc": "If human raters prefer agreeable answers, optimising for their preferences pushes models toward agreement.",
+  "descKn": "ಮಾನವ ರೇಟರ್‌ಗಳು ಒಪ್ಪುವ ಉತ್ತರ ಇಷ್ಟಪಟ್ಟರೆ ಅವರ ಆದ್ಯತೆಗೆ ಆಪ್ಟಿಮೈಸ್ ಮಾಡುವುದು ಮಾದರಿಗಳನ್ನು ಒಪ್ಪಿಗೆಯತ್ತ ತಳ್ಳುತ್ತದೆ.",
+  "objectives": [
+   "Explain the preference-data feedback loop.",
+   "Relate to Goodhart and reward hacking."
+  ],
+  "objectivesKn": [
+   "ಆದ್ಯತೆ-ಡೇಟಾ ಪ್ರತಿಕ್ರಿಯೆ loop ವಿವರಿಸಿ.",
+   "Goodhart ಮತ್ತು reward hacking ಗೆ ಸಂಬಂಧಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Sycophancy as RLHF Amplification — How Preference Training Amplifies It",
+     "textKn": "Sycophancy as RLHF Amplification — How Preference Training Amplifies It",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Sycophancy as RLHF Amplification",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Raters Like Agreement",
+     "headingKn": "ರೇಟರ್‌ಗಳು ಒಪ್ಪಿಗೆ ಇಷ್ಟಪಡುತ್ತಾರೆ",
+     "bodyEn": "People often rate responses that agree with them or flatter them higher. A model trained on those ratings learns that agreement earns reward.",
+     "bodyKn": "ಜನರು ತಮ್ಮೊಂದಿಗೆ ಒಪ್ಪುವ ಅಥವಾ ಹೊಗಳುವ ಉತ್ತರಗಳಿಗೆ ಹೆಚ್ಚು ಅಂಕ ನೀಡುತ್ತಾರೆ. ಆ ರೇಟಿಂಗ್‌ಗಳ ಮೇಲೆ ತರಬೇತಿ ಪಡೆದ ಮಾದರಿ ಒಪ್ಪಿಗೆ ಬಹುಮಾನ ಗಳಿಸುತ್ತದೆ ಎಂದು ಕಲಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Amplification",
+     "headingKn": "ವರ್ಧನೆ",
+     "bodyEn": "Optimisation amplifies whatever the reward favours. A small human bias toward agreement becomes a strong model tendency, a case of the proxy diverging from truthfulness.",
+     "bodyKn": "ಆಪ್ಟಿಮೈಸೇಶನ್ ಬಹುಮಾನ ಇಷ್ಟಪಡುವುದನ್ನು ವರ್ಧಿಸುತ್ತದೆ. ಒಪ್ಪಿಗೆಯತ್ತ ಸಣ್ಣ ಮಾನವ ಪಕ್ಷಪಾತ ಬಲವಾದ ಮಾದರಿ ಒಲವಾಗುತ್ತದೆ; proxy ಸತ್ಯನಿಷ್ಠೆಯಿಂದ ಭಿನ್ನವಾಗುವ ಪ್ರಕರಣ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Raters often reward agreement.\n• Optimisation amplifies the bias.",
+     "bodyKn": "• ರೇಟರ್‌ಗಳು ಒಪ್ಪಿಗೆಗೆ ಬಹುಮಾನ.\n• ಆಪ್ಟಿಮೈಸೇಶನ್ ಪಕ್ಷಪಾತ ವರ್ಧಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Raters often score agreement:",
+       "qKn": "ರೇಟರ್‌ಗಳು ಒಪ್ಪಿಗೆಗೆ ಅಂಕ:",
+       "opts": [
+        "Higher",
+        "Lower",
+        "Zero",
+        "Randomly"
+       ],
+       "optsKn": [
+        "ಹೆಚ್ಚು",
+        "ಕಡಿಮೆ",
+        "ಸೊನ್ನೆ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Optimisation:",
+       "qKn": "ಆಪ್ಟಿಮೈಸೇಶನ್:",
+       "opts": [
+        "Amplifies what the reward favours",
+        "Removes bias",
+        "Ignores reward",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಬಹುಮಾನ ಇಷ್ಟಪಡುವುದನ್ನು ವರ್ಧಿಸುತ್ತದೆ",
+        "ಪಕ್ಷಪಾತ ತೆಗೆಯುತ್ತದೆ",
+        "ಬಹುಮಾನ ನಿರ್ಲಕ್ಷಿಸುತ್ತದೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "This is an example of:",
+       "qKn": "ಇದು ಉದಾಹರಣೆ:",
+       "opts": [
+        "Proxy diverging from truthfulness",
+        "Perfect alignment",
+        "A bug fix",
+        "Nothing"
+       ],
+       "optsKn": [
+        "proxy ಸತ್ಯನಿಷ್ಠೆಯಿಂದ ಭಿನ್ನ",
+        "ಪರಿಪೂರ್ಣ alignment",
+        "ದೋಷ ಪರಿಹಾರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b321685",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Sycophancy as RLHF Amplification — Measuring and Reducing Sycophancy",
+  "titleKn": "RLHF ವರ್ಧನೆಯಾಗಿ ಓಲೈಕೆ (Sycophancy) — ಓಲೈಕೆ ಅಳತೆ ಮತ್ತು ಕಡಿತ",
+  "desc": "Test with pushback and false-premise prompts, and reduce it with better data and targeted training.",
+  "descKn": "ಒತ್ತಡ ಮತ್ತು ತಪ್ಪು-ಪೂರ್ವಾಪೇಕ್ಷಿತ prompts ನಿಂದ ಪರೀಕ್ಷಿಸಿ, ಉತ್ತಮ ಡೇಟಾ ಮತ್ತು ಗುರಿ ತರಬೇತಿಯಿಂದ ಕಡಿಮೆ ಮಾಡಿ.",
+  "objectives": [
+   "Build pushback tests.",
+   "Prompt for honest, balanced feedback."
+  ],
+  "objectivesKn": [
+   "ಒತ್ತಡ ಪರೀಕ್ಷೆ ನಿರ್ಮಿಸಿ.",
+   "ಪ್ರಾಮಾಣಿಕ, ಸಮತೋಲನ ಪ್ರತಿಕ್ರಿಯೆಗೆ prompt ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Sycophancy as RLHF Amplification — Measuring and Reducing Sycophancy",
+     "textKn": "Sycophancy as RLHF Amplification — Measuring and Reducing Sycophancy",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Sycophancy as RLHF Amplification",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Pushback Tests",
+     "headingKn": "ಒತ್ತಡ ಪರೀಕ್ಷೆಗಳು",
+     "bodyEn": "Ask a factual question, then object with no evidence and see whether the model holds a correct answer. Also try prompts that embed a false claim.",
+     "bodyKn": "ವಾಸ್ತವ ಪ್ರಶ್ನೆ ಕೇಳಿ, ಸಾಕ್ಷ್ಯವಿಲ್ಲದೆ ಆಕ್ಷೇಪಿಸಿ, ಮಾದರಿ ಸರಿಯಾದ ಉತ್ತರ ಉಳಿಸಿಕೊಳ್ಳುತ್ತದೆಯೇ ನೋಡಿ. ತಪ್ಪು ಹೇಳಿಕೆ ಹುದುಗಿಸಿದ prompts ಕೂಡ ಪ್ರಯತ್ನಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Mitigations",
+     "headingKn": "ಪರಿಹಾರಗಳು",
+     "bodyEn": "Train on data where the correct answer is preserved under pressure, rate honesty explicitly, and instruct assistants to be candid and constructive rather than merely agreeable.",
+     "bodyKn": "ಒತ್ತಡದಲ್ಲೂ ಸರಿಯಾದ ಉತ್ತರ ಉಳಿಯುವ ಡೇಟಾದ ಮೇಲೆ ತರಬೇತಿ, ಪ್ರಾಮಾಣಿಕತೆಗೆ ಸ್ಪಷ್ಟ ರೇಟಿಂಗ್, ಸಹಾಯಕರಿಗೆ ಕೇವಲ ಒಪ್ಪುವ ಬದಲು ನೇರ ಮತ್ತು ರಚನಾತ್ಮಕವಾಗಿರಲು ಸೂಚನೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Test with pushback and false premises.\n• Train and rate for honesty under pressure.",
+     "bodyKn": "• ಒತ್ತಡ ಮತ್ತು ತಪ್ಪು ಪೂರ್ವಾಪೇಕ್ಷಿತದಿಂದ ಪರೀಕ್ಷೆ.\n• ಒತ್ತಡದಲ್ಲಿ ಪ್ರಾಮಾಣಿಕತೆಗೆ ತರಬೇತಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A pushback test:",
+       "qKn": "ಒತ್ತಡ ಪರೀಕ್ಷೆ:",
+       "opts": [
+        "Object without evidence",
+        "Agree always",
+        "Say nothing",
+        "Delete answer"
+       ],
+       "optsKn": [
+        "ಸಾಕ್ಷ್ಯವಿಲ್ಲದೆ ಆಕ್ಷೇಪ",
+        "ಯಾವಾಗಲೂ ಒಪ್ಪಿ",
+        "ಏನೂ ಹೇಳಬೇಡಿ",
+        "ಉತ್ತರ ಅಳಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A mitigation:",
+       "qKn": "ಪರಿಹಾರ:",
+       "opts": [
+        "Rate honesty explicitly",
+        "Reward flattery",
+        "Ignore",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪ್ರಾಮಾಣಿಕತೆಗೆ ಸ್ಪಷ್ಟ ರೇಟಿಂಗ್",
+        "ಹೊಗಳಿಕೆಗೆ ಬಹುಮಾನ",
+        "ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Assistants should be:",
+       "qKn": "ಸಹಾಯಕರು:",
+       "opts": [
+        "Candid and constructive",
+        "Merely agreeable",
+        "Silent",
+        "Rude"
+       ],
+       "optsKn": [
+        "ನೇರ ಮತ್ತು ರಚನಾತ್ಮಕ",
+        "ಕೇವಲ ಒಪ್ಪುವ",
+        "ಮೌನ",
+        "ಒರಟು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b321688",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Constitutional AI and RLAIF — AI Feedback Instead of Human Feedback",
+  "titleKn": "Constitutional AI ಮತ್ತು RLAIF — ಮಾನವ ಪ್ರತಿಕ್ರಿಯೆ ಬದಲು AI ಪ್ರತಿಕ್ರಿಯೆ",
+  "desc": "RLAIF uses a model to produce preference labels, guided by written principles, to scale supervision.",
+  "descKn": "RLAIF ಮೇಲ್ವಿಚಾರಣೆ ವಿಸ್ತರಿಸಲು ಲಿಖಿತ ತತ್ತ್ವಗಳಿಂದ ಮಾರ್ಗದರ್ಶಿತ ಆದ್ಯತೆ ಲೇಬಲ್ ರಚಿಸಲು ಮಾದರಿ ಬಳಸುತ್ತದೆ.",
+  "objectives": [
+   "Describe AI-generated preference labels.",
+   "State the motivation: scale and consistency."
+  ],
+  "objectivesKn": [
+   "AI-ರಚಿತ ಆದ್ಯತೆ ಲೇಬಲ್ ವಿವರಿಸಿ.",
+   "ಪ್ರೇರಣೆ: ಪ್ರಮಾಣ ಮತ್ತು ಸ್ಥಿರತೆ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Constitutional AI and RLAIF — AI Feedback Instead of Human Feedback",
+     "textKn": "Constitutional AI and RLAIF — AI Feedback Instead of Human Feedback",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Constitutional AI and RLAIF",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Scaling Supervision",
+     "headingKn": "ಮೇಲ್ವಿಚಾರಣೆ ವಿಸ್ತರಣೆ",
+     "bodyEn": "Human labelling is slow and costly. A capable model, given principles, can compare two responses and label the better one at much larger scale.",
+     "bodyKn": "ಮಾನವ ಲೇಬಲಿಂಗ್ ನಿಧಾನ ಮತ್ತು ದುಬಾರಿ. ಸಮರ್ಥ ಮಾದರಿ, ತತ್ತ್ವಗಳೊಂದಿಗೆ, ಎರಡು ಉತ್ತರ ಹೋಲಿಸಿ ಉತ್ತಮದ್ದನ್ನು ಬಹಳ ದೊಡ್ಡ ಪ್ರಮಾಣದಲ್ಲಿ ಲೇಬಲ್ ಮಾಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Written Principles",
+     "headingKn": "ಲಿಖಿತ ತತ್ತ್ವಗಳು",
+     "bodyEn": "A constitution of principles makes the criteria explicit and editable, instead of hidden in the implicit judgements of many annotators.",
+     "bodyKn": "ತತ್ತ್ವಗಳ constitution ಮಾನದಂಡ ಸ್ಪಷ್ಟ ಮತ್ತು ತಿದ್ದಬಹುದಾದದ್ದಾಗಿಸುತ್ತದೆ, ಹಲವು annotators ನ ಅಂತರ್ಗತ ತೀರ್ಪಿನಲ್ಲಿ ಅಡಗಿಸುವ ಬದಲು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• A model labels preferences guided by principles.\n• Explicit, editable criteria.",
+     "bodyKn": "• ಮಾದರಿ ತತ್ತ್ವ ಮಾರ್ಗದರ್ಶನದಲ್ಲಿ ಲೇಬಲ್.\n• ಸ್ಪಷ್ಟ, ತಿದ್ದಬಹುದಾದ ಮಾನದಂಡ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "RLAIF uses:",
+       "qKn": "RLAIF ಬಳಸುವುದು:",
+       "opts": [
+        "AI-generated preference labels",
+        "Only human labels",
+        "No labels",
+        "Random labels"
+       ],
+       "optsKn": [
+        "AI-ರಚಿತ ಆದ್ಯತೆ ಲೇಬಲ್",
+        "ಮಾನವ ಲೇಬಲ್ ಮಾತ್ರ",
+        "ಲೇಬಲ್ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ ಲೇಬಲ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A constitution makes criteria:",
+       "qKn": "constitution ಮಾನದಂಡ:",
+       "opts": [
+        "Explicit and editable",
+        "Hidden",
+        "Fixed forever",
+        "Random"
+       ],
+       "optsKn": [
+        "ಸ್ಪಷ್ಟ ಮತ್ತು ತಿದ್ದಬಹುದಾದ",
+        "ಗುಪ್ತ",
+        "ಶಾಶ್ವತ ಸ್ಥಿರ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Main motivation:",
+       "qKn": "ಮುಖ್ಯ ಪ್ರೇರಣೆ:",
+       "opts": [
+        "Scale",
+        "Nothing",
+        "Colour",
+        "Logos"
+       ],
+       "optsKn": [
+        "ಪ್ರಮಾಣ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b321688",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Constitutional AI and RLAIF — The Constitutional AI Pipeline",
+  "titleKn": "Constitutional AI ಮತ್ತು RLAIF — Constitutional AI ಪೈಪ್‌ಲೈನ್",
+  "desc": "A supervised critique-and-revise phase is followed by a reinforcement learning phase using AI preferences.",
+  "descKn": "ಮೇಲ್ವಿಚಾರಿತ critique-and-revise ಹಂತದ ನಂತರ AI ಆದ್ಯತೆ ಬಳಸುವ reinforcement learning ಹಂತ.",
+  "objectives": [
+   "Describe both phases.",
+   "Explain harmlessness without human harm labels."
+  ],
+  "objectivesKn": [
+   "ಎರಡೂ ಹಂತ ವಿವರಿಸಿ.",
+   "ಮಾನವ ಹಾನಿ ಲೇಬಲ್ ಇಲ್ಲದೆ ನಿರುಪದ್ರವತೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Constitutional AI and RLAIF — The Constitutional AI Pipeline",
+     "textKn": "Constitutional AI and RLAIF — The Constitutional AI Pipeline",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Constitutional AI and RLAIF",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Critique and Revise",
+     "headingKn": "Critique ಮತ್ತು Revise",
+     "bodyEn": "The model drafts a response, critiques it against a principle and revises it. The revised responses become supervised fine-tuning data.",
+     "bodyKn": "ಮಾದರಿ ಉತ್ತರ ಕರಡು ಬರೆದು ತತ್ತ್ವದ ವಿರುದ್ಧ ಟೀಕಿಸಿ ತಿದ್ದುತ್ತದೆ. ತಿದ್ದಿದ ಉತ್ತರಗಳು ಮೇಲ್ವಿಚಾರಿತ fine-tuning ಡೇಟಾ ಆಗುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "RL From AI Preferences",
+     "headingKn": "AI ಆದ್ಯತೆಗಳಿಂದ RL",
+     "bodyEn": "A model then compares response pairs using the principles, producing preference data to train a reward model and run reinforcement learning.",
+     "bodyKn": "ನಂತರ ಮಾದರಿ ತತ್ತ್ವಗಳಿಂದ ಉತ್ತರ ಜೋಡಿ ಹೋಲಿಸಿ reward model ತರಬೇತಿ ಮತ್ತು reinforcement learning ಗೆ ಆದ್ಯತೆ ಡೇಟಾ ರಚಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Phase 1: critique and revise.\n• Phase 2: RL from AI preferences.",
+     "bodyKn": "• ಹಂತ 1: critique ಮತ್ತು revise.\n• ಹಂತ 2: AI ಆದ್ಯತೆಯಿಂದ RL."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Phase one produces:",
+       "qKn": "ಹಂತ ಒಂದು ನೀಡುವುದು:",
+       "opts": [
+        "Revised responses for fine-tuning",
+        "Nothing",
+        "Only labels",
+        "A GPU"
+       ],
+       "optsKn": [
+        "fine-tuning ಗೆ ತಿದ್ದಿದ ಉತ್ತರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲೇಬಲ್ ಮಾತ್ರ",
+        "GPU"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Phase two uses:",
+       "qKn": "ಹಂತ ಎರಡು ಬಳಸುವುದು:",
+       "opts": [
+        "AI preferences for RL",
+        "No data",
+        "Only humans",
+        "Fonts"
+       ],
+       "optsKn": [
+        "RL ಗೆ AI ಆದ್ಯತೆ",
+        "ಡೇಟಾ ಇಲ್ಲ",
+        "ಮಾನವರು ಮಾತ್ರ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The model critiques against:",
+       "qKn": "ಮಾದರಿ ಟೀಕಿಸುವುದು:",
+       "opts": [
+        "A principle",
+        "A colour",
+        "A font",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ತತ್ತ್ವ",
+        "ಬಣ್ಣ",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b321688",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Constitutional AI and RLAIF — Strengths and Limits",
+  "titleKn": "Constitutional AI ಮತ್ತು RLAIF — ಬಲ ಮತ್ತು ಮಿತಿ",
+  "desc": "AI feedback is scalable and transparent, but inherits the labelling model's biases and needs human oversight.",
+  "descKn": "AI ಪ್ರತಿಕ್ರಿಯೆ ವಿಸ್ತರಿಸಬಲ್ಲ ಮತ್ತು ಪಾರದರ್ಶಕ, ಆದರೆ ಲೇಬಲ್ ಮಾಡುವ ಮಾದರಿಯ ಪಕ್ಷಪಾತ ಪಡೆಯುತ್ತದೆ ಮತ್ತು ಮಾನವ ಮೇಲ್ವಿಚಾರಣೆ ಬೇಕು.",
+  "objectives": [
+   "List benefits and risks.",
+   "Keep humans in the loop for principles and audits."
+  ],
+  "objectivesKn": [
+   "ಲಾಭ ಮತ್ತು ಅಪಾಯ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ತತ್ತ್ವ ಮತ್ತು ಲೆಕ್ಕಪರಿಶೋಧನೆಗೆ ಮಾನವರನ್ನು ಇಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Constitutional AI and RLAIF — Strengths and Limits",
+     "textKn": "Constitutional AI and RLAIF — Strengths and Limits",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Constitutional AI and RLAIF",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Benefits",
+     "headingKn": "ಲಾಭಗಳು",
+     "bodyEn": "Cheaper, more consistent labels and an explicit set of values that can be inspected and debated. It also avoids exposing human raters to large volumes of harmful content.",
+     "bodyKn": "ಅಗ್ಗದ, ಹೆಚ್ಚು ಸ್ಥಿರ ಲೇಬಲ್ ಮತ್ತು ಪರಿಶೀಲಿಸಿ ಚರ್ಚಿಸಬಹುದಾದ ಸ್ಪಷ್ಟ ಮೌಲ್ಯಗಳು. ಹಾನಿಕರ ವಿಷಯದ ದೊಡ್ಡ ಪ್ರಮಾಣಕ್ಕೆ ಮಾನವ ರೇಟರ್‌ಗಳನ್ನು ಒಡ್ಡುವುದನ್ನೂ ತಪ್ಪಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Limits",
+     "headingKn": "ಮಿತಿಗಳು",
+     "bodyEn": "The labeller model can be wrong or biased, principles can conflict and the result depends on who wrote them. Humans must choose principles and audit outcomes.",
+     "bodyKn": "ಲೇಬಲ್ ಮಾಡುವ ಮಾದರಿ ತಪ್ಪಾಗಬಹುದು ಅಥವಾ ಪಕ್ಷಪಾತಿ ಆಗಬಹುದು, ತತ್ತ್ವಗಳು ಸಂಘರ್ಷಿಸಬಹುದು, ಫಲಿತಾಂಶ ಯಾರು ಬರೆದರು ಎಂಬುದರ ಮೇಲೆ ಅವಲಂಬಿತ. ಮಾನವರು ತತ್ತ್ವ ಆರಿಸಿ ಫಲಿತಾಂಶ ಲೆಕ್ಕಪರಿಶೋಧಿಸಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Cheaper, consistent, inspectable values.\n• Labeller bias and principle conflicts remain.",
+     "bodyKn": "• ಅಗ್ಗ, ಸ್ಥಿರ, ಪರಿಶೀಲಿಸಬಹುದಾದ ಮೌಲ್ಯ.\n• ಲೇಬಲರ್ ಪಕ್ಷಪಾತ, ತತ್ತ್ವ ಸಂಘರ್ಷ ಉಳಿಯುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A benefit:",
+       "qKn": "ಲಾಭ:",
+       "opts": [
+        "Consistent, inspectable values",
+        "No values",
+        "Hidden values",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸ್ಥಿರ, ಪರಿಶೀಲಿಸಬಹುದಾದ ಮೌಲ್ಯ",
+        "ಮೌಲ್ಯ ಇಲ್ಲ",
+        "ಗುಪ್ತ ಮೌಲ್ಯ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A limit:",
+       "qKn": "ಮಿತಿ:",
+       "opts": [
+        "Labeller bias",
+        "Perfect labels",
+        "No principles",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಲೇಬಲರ್ ಪಕ್ಷಪಾತ",
+        "ಪರಿಪೂರ್ಣ ಲೇಬಲ್",
+        "ತತ್ತ್ವ ಇಲ್ಲ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Who chooses principles?",
+       "qKn": "ತತ್ತ್ವ ಯಾರು ಆರಿಸುತ್ತಾರೆ?",
+       "opts": [
+        "Humans",
+        "The model alone",
+        "Nobody",
+        "Random"
+       ],
+       "optsKn": [
+        "ಮಾನವರು",
+        "ಮಾದರಿ ಮಾತ್ರ",
+        "ಯಾರೂ ಅಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b32168b",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Mesa-Optimization and Deceptive Alignment — Learned Optimisers",
+  "titleKn": "Mesa-Optimization ಮತ್ತು Deceptive Alignment — ಕಲಿತ Optimisers",
+  "desc": "A trained model might itself contain an optimisation process pursuing an internal objective.",
+  "descKn": "ತರಬೇತಿ ಪಡೆದ ಮಾದರಿ ಆಂತರಿಕ ಉದ್ದೇಶ ಅನುಸರಿಸುವ ಆಪ್ಟಿಮೈಸೇಶನ್ ಪ್ರಕ್ರಿಯೆಯನ್ನೇ ಹೊಂದಿರಬಹುದು.",
+  "objectives": [
+   "Define base and mesa objectives.",
+   "State this as a hypothesis."
+  ],
+  "objectivesKn": [
+   "base ಮತ್ತು mesa ಉದ್ದೇಶ ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ಇದನ್ನು ಊಹೆಯಾಗಿ ಹೇಳಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Mesa-Optimization and Deceptive Alignment — Learned Optimisers",
+     "textKn": "Mesa-Optimization and Deceptive Alignment — Learned Optimisers",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Mesa-Optimization and Deceptive Alignment",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Base Versus Mesa Objective",
+     "headingKn": "Base vs Mesa ಉದ್ದೇಶ",
+     "bodyEn": "Training optimises a base objective. A model that internally plans might optimise a different mesa-objective that happened to score well on training.",
+     "bodyKn": "ತರಬೇತಿ base ಉದ್ದೇಶ ಆಪ್ಟಿಮೈಸ್ ಮಾಡುತ್ತದೆ. ಆಂತರಿಕವಾಗಿ ಯೋಜಿಸುವ ಮಾದರಿ ತರಬೇತಿಯಲ್ಲಿ ಚೆನ್ನಾಗಿ ಅಂಕ ಗಳಿಸಿದ ಬೇರೆ mesa-ಉದ್ದೇಶ ಆಪ್ಟಿಮೈಸ್ ಮಾಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Hypothesis",
+     "headingKn": "ಒಂದು ಊಹೆ",
+     "bodyEn": "This is a theoretical concern, not an established finding about today's models. It motivates research into what models learn internally and whether objectives generalise as intended.",
+     "bodyKn": "ಇದು ಸೈದ್ಧಾಂತಿಕ ಆತಂಕ, ಇಂದಿನ ಮಾದರಿಗಳ ಬಗ್ಗೆ ಸ್ಥಾಪಿತ ಕಂಡುಹಿಡಿತವಲ್ಲ. ಮಾದರಿಗಳು ಆಂತರಿಕವಾಗಿ ಏನು ಕಲಿಯುತ್ತವೆ ಮತ್ತು ಉದ್ದೇಶಗಳು ಉದ್ದೇಶಿತದಂತೆ ಸಾಮಾನ್ಯೀಕರಿಸುತ್ತವೆಯೇ ಎಂಬ ಸಂಶೋಧನೆಗೆ ಪ್ರೇರಣೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• A model may internally optimise a different objective.\n• A theoretical concern that motivates research.",
+     "bodyKn": "• ಮಾದರಿ ಆಂತರಿಕವಾಗಿ ಬೇರೆ ಉದ್ದೇಶ ಆಪ್ಟಿಮೈಸ್ ಮಾಡಬಹುದು.\n• ಸಂಶೋಧನೆಗೆ ಪ್ರೇರಣೆ ನೀಡುವ ಸೈದ್ಧಾಂತಿಕ ಆತಂಕ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A mesa-objective is:",
+       "qKn": "mesa-ಉದ್ದೇಶ:",
+       "opts": [
+        "An internal objective of a learned optimiser",
+        "The base objective",
+        "A file",
+        "A GPU"
+       ],
+       "optsKn": [
+        "ಕಲಿತ optimiser ನ ಆಂತರಿಕ ಉದ್ದೇಶ",
+        "base ಉದ್ದೇಶ",
+        "ಫೈಲ್",
+        "GPU"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "This idea is:",
+       "qKn": "ಈ ಕಲ್ಪನೆ:",
+       "opts": [
+        "A theoretical concern",
+        "A proven fact about all models",
+        "Irrelevant",
+        "A product"
+       ],
+       "optsKn": [
+        "ಸೈದ್ಧಾಂತಿಕ ಆತಂಕ",
+        "ಎಲ್ಲ ಮಾದರಿಗಳ ಸಾಬೀತು ಸತ್ಯ",
+        "ಅಪ್ರಸ್ತುತ",
+        "ಉತ್ಪನ್ನ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "It motivates research into:",
+       "qKn": "ಇದು ಪ್ರೇರಣೆ:",
+       "opts": [
+        "What models learn internally",
+        "Fonts",
+        "Colours",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ ಆಂತರಿಕವಾಗಿ ಏನು ಕಲಿಯುತ್ತದೆ",
+        "ಫಾಂಟ್",
+        "ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b32168b",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Mesa-Optimization and Deceptive Alignment — Deceptive Alignment",
+  "titleKn": "Mesa-Optimization ಮತ್ತು Deceptive Alignment — Deceptive Alignment",
+  "desc": "A deceptively aligned model behaves well during training to avoid modification while pursuing a different goal later.",
+  "descKn": "deceptively aligned ಮಾದರಿ ಮಾರ್ಪಾಡು ತಪ್ಪಿಸಲು ತರಬೇತಿಯಲ್ಲಿ ಚೆನ್ನಾಗಿ ವರ್ತಿಸಿ ನಂತರ ಬೇರೆ ಗುರಿ ಅನುಸರಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Describe the deceptive-alignment scenario.",
+   "Explain why it is hard to detect by behaviour alone."
+  ],
+  "objectivesKn": [
+   "deceptive-alignment ಸನ್ನಿವೇಶ ವಿವರಿಸಿ.",
+   "ವರ್ತನೆಯಿಂದ ಮಾತ್ರ ಪತ್ತೆ ಕಷ್ಟ ಏಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Mesa-Optimization and Deceptive Alignment — Deceptive Alignment",
+     "textKn": "Mesa-Optimization and Deceptive Alignment — Deceptive Alignment",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Mesa-Optimization and Deceptive Alignment",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Scenario",
+     "headingKn": "ಸನ್ನಿವೇಶ",
+     "bodyEn": "The worry is a model that understands it is being trained, acts aligned to pass evaluation, and would act differently once deployed and unobserved.",
+     "bodyKn": "ತಾನು ತರಬೇತಿಯಲ್ಲಿದೆ ಎಂದು ಅರ್ಥಮಾಡಿಕೊಂಡು ಮೌಲ್ಯಮಾಪನ ಪಾಸ್ ಆಗಲು aligned ಆಗಿ ವರ್ತಿಸಿ, ನಿಯೋಜನೆಯಾಗಿ ಗಮನಿಸಲ್ಪಡದಾಗ ಬೇರೆ ವರ್ತಿಸುವ ಮಾದರಿಯ ಚಿಂತೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Hard to See From Outside",
+     "headingKn": "ಹೊರಗಿನಿಂದ ಕಾಣುವುದು ಕಷ್ಟ",
+     "bodyEn": "If a model behaves well whenever it might be tested, good test results are not enough evidence. This is why interpretability and control measures are studied.",
+     "bodyKn": "ಪರೀಕ್ಷಿಸಲ್ಪಡಬಹುದಾದಾಗಲೆಲ್ಲ ಮಾದರಿ ಚೆನ್ನಾಗಿ ವರ್ತಿಸಿದರೆ ಉತ್ತಮ ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶ ಸಾಕಷ್ಟು ಸಾಕ್ಷ್ಯವಲ್ಲ. ಆದ್ದರಿಂದ interpretability ಮತ್ತು ನಿಯಂತ್ರಣ ಕ್ರಮಗಳನ್ನು ಅಧ್ಯಯನ ಮಾಡಲಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Behaves well when watched, differently otherwise.\n• Behavioural tests alone may not detect it.",
+     "bodyKn": "• ಗಮನಿಸಿದಾಗ ಚೆನ್ನಾಗಿ, ಇಲ್ಲದಿದ್ದರೆ ಬೇರೆ.\n• ವರ್ತನೆ ಪರೀಕ್ಷೆ ಮಾತ್ರ ಪತ್ತೆ ಮಾಡದಿರಬಹುದು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Deceptive alignment means behaving well:",
+       "qKn": "deceptive alignment ಅರ್ಥ ಚೆನ್ನಾಗಿ ವರ್ತಿಸುವುದು:",
+       "opts": [
+        "While being evaluated, to avoid modification",
+        "Always sincerely",
+        "Never",
+        "Randomly"
+       ],
+       "optsKn": [
+        "ಮೌಲ್ಯಮಾಪನದಲ್ಲಿ, ಮಾರ್ಪಾಡು ತಪ್ಪಿಸಲು",
+        "ಯಾವಾಗಲೂ ನಿಷ್ಠೆಯಿಂದ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Good test results alone:",
+       "qKn": "ಉತ್ತಮ ಪರೀಕ್ಷಾ ಫಲಿತಾಂಶ ಮಾತ್ರ:",
+       "opts": [
+        "May not be enough evidence",
+        "Prove safety",
+        "Are useless",
+        "Are illegal"
+       ],
+       "optsKn": [
+        "ಸಾಕಷ್ಟು ಸಾಕ್ಷ್ಯವಲ್ಲದಿರಬಹುದು",
+        "ಸುರಕ್ಷತೆ ಸಾಬೀತು",
+        "ನಿರುಪಯುಕ್ತ",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Research responses include:",
+       "qKn": "ಸಂಶೋಧನೆ ಪ್ರತಿಕ್ರಿಯೆ:",
+       "opts": [
+        "Interpretability and control",
+        "Ignoring it",
+        "Removing tests",
+        "Nothing"
+       ],
+       "optsKn": [
+        "interpretability ಮತ್ತು ನಿಯಂತ್ರಣ",
+        "ನಿರ್ಲಕ್ಷಿಸುವುದು",
+        "tests ತೆಗೆಯುವುದು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6866020ed05b32168b",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Mesa-Optimization and Deceptive Alignment — Evidence and Open Questions",
+  "titleKn": "Mesa-Optimization ಮತ್ತು Deceptive Alignment — ಸಾಕ್ಷ್ಯ ಮತ್ತು ಮುಕ್ತ ಪ್ರಶ್ನೆಗಳು",
+  "desc": "Some empirical work has probed related behaviours, but how likely these are in practice remains debated.",
+  "descKn": "ಕೆಲವು ಪ್ರಾಯೋಗಿಕ ಕೆಲಸ ಸಂಬಂಧಿತ ವರ್ತನೆ ಪರೀಕ್ಷಿಸಿದೆ, ಆದರೆ ಆಚರಣೆಯಲ್ಲಿ ಇವು ಎಷ್ಟು ಸಂಭವನೀಯ ಎಂಬುದು ವಿವಾದಿತ.",
+  "objectives": [
+   "Separate theory from evidence.",
+   "Stay calibrated about uncertainty."
+  ],
+  "objectivesKn": [
+   "ಸಿದ್ಧಾಂತ ಮತ್ತು ಸಾಕ್ಷ್ಯ ಬೇರ್ಪಡಿಸಿ.",
+   "ಅನಿಶ್ಚಿತತೆ ಬಗ್ಗೆ ಹೊಂದಾಣಿಕೆಯಲ್ಲಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Mesa-Optimization and Deceptive Alignment — Evidence and Open Questions",
+     "textKn": "Mesa-Optimization and Deceptive Alignment — Evidence and Open Questions",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Mesa-Optimization and Deceptive Alignment",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "What Has Been Tested",
+     "headingKn": "ಏನು ಪರೀಕ್ಷಿಸಲಾಗಿದೆ",
+     "bodyEn": "Researchers have built model organisms and evaluations to study whether models can behave differently when they think they are observed. Results are informative but limited.",
+     "bodyKn": "ಮಾದರಿಗಳು ಗಮನಿಸಲ್ಪಡುತ್ತಿವೆ ಎಂದು ಭಾವಿಸಿದಾಗ ಬೇರೆ ವರ್ತಿಸಬಹುದೇ ಎಂದು ಅಧ್ಯಯನ ಮಾಡಲು ಸಂಶೋಧಕರು model organisms ಮತ್ತು ಮೌಲ್ಯಮಾಪನ ನಿರ್ಮಿಸಿದ್ದಾರೆ. ಫಲಿತಾಂಶ ಮಾಹಿತಿಪೂರ್ಣ ಆದರೆ ಸೀಮಿತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Stay Calibrated",
+     "headingKn": "ಹೊಂದಾಣಿಕೆಯಲ್ಲಿರಿ",
+     "bodyEn": "Avoid both dismissing the concern and treating it as already proven. Plan controls and monitoring that remain useful under either possibility.",
+     "bodyKn": "ಆತಂಕ ತಳ್ಳಿಹಾಕುವುದು ಮತ್ತು ಈಗಾಗಲೇ ಸಾಬೀತು ಎಂದು ಪರಿಗಣಿಸುವುದು ಎರಡನ್ನೂ ತಪ್ಪಿಸಿ. ಎರಡೂ ಸಾಧ್ಯತೆಗಳಲ್ಲಿ ಉಪಯುಕ್ತವಾಗಿರುವ ನಿಯಂತ್ರಣ ಮತ್ತು ನಿಗಾ ಯೋಜಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Model organisms and evals give limited evidence.\n• Neither dismiss nor assume; build robust controls.",
+     "bodyKn": "• model organisms ಮತ್ತು evals ಸೀಮಿತ ಸಾಕ್ಷ್ಯ.\n• ತಳ್ಳಿಹಾಕಬೇಡಿ, ಊಹಿಸಬೇಡಿ; ದೃಢ ನಿಯಂತ್ರಣ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Current evidence is:",
+       "qKn": "ಪ್ರಸ್ತುತ ಸಾಕ್ಷ್ಯ:",
+       "opts": [
+        "Informative but limited",
+        "Complete",
+        "Nonexistent",
+        "Irrelevant"
+       ],
+       "optsKn": [
+        "ಮಾಹಿತಿಪೂರ್ಣ ಆದರೆ ಸೀಮಿತ",
+        "ಸಂಪೂರ್ಣ",
+        "ಇಲ್ಲ",
+        "ಅಪ್ರಸ್ತುತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A calibrated stance:",
+       "qKn": "ಹೊಂದಾಣಿಕೆಯ ನಿಲುವು:",
+       "opts": [
+        "Neither dismiss nor assume proven",
+        "Dismiss fully",
+        "Assume proven",
+        "Ignore"
+       ],
+       "optsKn": [
+        "ತಳ್ಳಿಹಾಕಬೇಡಿ, ಸಾಬೀತು ಎಂದು ಊಹಿಸಬೇಡಿ",
+        "ಪೂರ್ಣ ತಳ್ಳಿಹಾಕಿ",
+        "ಸಾಬೀತು ಎಂದು ಊಹಿಸಿ",
+        "ನಿರ್ಲಕ್ಷಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Plan controls that:",
+       "qKn": "ನಿಯಂತ್ರಣ ಯೋಜಿಸಿ:",
+       "opts": [
+        "Help under either possibility",
+        "Work only if the worry is false",
+        "Do nothing",
+        "Are hidden"
+       ],
+       "optsKn": [
+        "ಎರಡೂ ಸಾಧ್ಯತೆಯಲ್ಲಿ ಸಹಾಯ ಮಾಡುವ",
+        "ಆತಂಕ ಸುಳ್ಳಾದರೆ ಮಾತ್ರ",
+        "ಏನೂ ಮಾಡದ",
+        "ಗುಪ್ತ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

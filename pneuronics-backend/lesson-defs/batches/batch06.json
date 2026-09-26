@@ -1,0 +1,2627 @@
+[
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321571",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Repo Memory and Durable State — Why Agents Forget",
+  "titleKn": "Repo Memory ಮತ್ತು ಶಾಶ್ವತ State — Agents ಏಕೆ ಮರೆಯುತ್ತವೆ",
+  "desc": "Context windows end with the session, so anything not written to the repository is lost.",
+  "descKn": "context window ಸೆಷನ್ ಜೊತೆ ಮುಗಿಯುತ್ತದೆ; ರೆಪೊಗೆ ಬರೆಯದ್ದು ಕಳೆದುಹೋಗುತ್ತದೆ.",
+  "objectives": [
+   "Explain why session memory is temporary.",
+   "Identify what must be persisted."
+  ],
+  "objectivesKn": [
+   "ಸೆಷನ್ ಮೆಮೊರಿ ತಾತ್ಕಾಲಿಕ ಏಕೆ ವಿವರಿಸಿ.",
+   "ಏನು ಉಳಿಸಬೇಕು ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Repo Memory and Durable State — Why Agents Forget",
+     "textKn": "Repo Memory and Durable State — Why Agents Forget",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Repo Memory and Durable State",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Session Memory Is Temporary",
+     "headingKn": "ಸೆಷನ್ ಮೆಮೊರಿ ತಾತ್ಕಾಲಿಕ",
+     "bodyEn": "When a session ends, the agent keeps nothing. Decisions, discoveries and half-finished work exist only if they were written down.",
+     "bodyKn": "ಸೆಷನ್ ಮುಗಿದಾಗ agent ಏನೂ ಉಳಿಸಿಕೊಳ್ಳುವುದಿಲ್ಲ. ನಿರ್ಧಾರ, ಸಂಶೋಧನೆ, ಅರ್ಧ ಕೆಲಸ ಬರೆದಿದ್ದರೆ ಮಾತ್ರ ಉಳಿಯುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "What to Persist",
+     "headingKn": "ಏನು ಉಳಿಸಬೇಕು",
+     "bodyEn": "Persist decisions and their reasons, current progress, open questions and known pitfalls. Do not persist facts the code already shows.",
+     "bodyKn": "ನಿರ್ಧಾರ ಮತ್ತು ಕಾರಣ, ಪ್ರಗತಿ, ಬಾಕಿ ಪ್ರಶ್ನೆ, ತಿಳಿದ ಅಪಾಯ ಉಳಿಸಿ. ಕೋಡ್ ಈಗಾಗಲೇ ತೋರಿಸುವ ಸಂಗತಿ ಬೇಡ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Unwritten context is lost.\n• Persist decisions, progress, pitfalls.",
+     "bodyKn": "• ಬರೆಯದ context ಕಳೆಯುತ್ತದೆ.\n• ನಿರ್ಧಾರ, ಪ್ರಗತಿ, ಅಪಾಯ ಉಳಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is lost when a session ends?",
+       "qKn": "ಸೆಷನ್ ಮುಗಿದಾಗ ಏನು ಕಳೆಯುತ್ತದೆ?",
+       "opts": [
+        "Anything not written down",
+        "The repository",
+        "The model",
+        "Git history"
+       ],
+       "optsKn": [
+        "ಬರೆಯದ್ದೆಲ್ಲ",
+        "ರೆಪೊ",
+        "ಮಾದರಿ",
+        "Git ಇತಿಹಾಸ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is worth persisting?",
+       "qKn": "ಏನು ಉಳಿಸಬೇಕು?",
+       "opts": [
+        "Decisions and reasons",
+        "Facts the code shows",
+        "Random text",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ನಿರ್ಧಾರ ಮತ್ತು ಕಾರಣ",
+        "ಕೋಡ್ ತೋರಿಸುವ ಸಂಗತಿ",
+        "ಯಾದೃಚ್ಛಿಕ ಪಠ್ಯ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Where should memory live?",
+       "qKn": "ಮೆಮೊರಿ ಎಲ್ಲಿರಬೇಕು?",
+       "opts": [
+        "In files in the repository",
+        "Only in chat",
+        "Only in the model",
+        "Nowhere"
+       ],
+       "optsKn": [
+        "ರೆಪೊದ ಫೈಲ್‌ಗಳಲ್ಲಿ",
+        "ಚಾಟ್‌ನಲ್ಲಿ ಮಾತ್ರ",
+        "ಮಾದರಿಯಲ್ಲಿ ಮಾತ್ರ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321571",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Repo Memory and Durable State — Designing State Files",
+  "titleKn": "Repo Memory ಮತ್ತು ಶಾಶ್ವತ State — State ಫೈಲ್ ವಿನ್ಯಾಸ",
+  "desc": "Structure progress and decision files so they are short, current and easy to parse.",
+  "descKn": "ಪ್ರಗತಿ ಮತ್ತು ನಿರ್ಧಾರ ಫೈಲ್‌ಗಳನ್ನು ಚಿಕ್ಕ, ಪ್ರಸ್ತುತ, ಸುಲಭ ಓದುವಂತೆ ರಚಿಸಿ.",
+  "objectives": [
+   "Use a progress log and a decision log.",
+   "Keep files small and current."
+  ],
+  "objectivesKn": [
+   "ಪ್ರಗತಿ ಮತ್ತು ನಿರ್ಧಾರ ಲಾಗ್ ಬಳಸಿ.",
+   "ಫೈಲ್ ಚಿಕ್ಕ ಮತ್ತು ಪ್ರಸ್ತುತವಾಗಿಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Repo Memory and Durable State — Designing State Files",
+     "textKn": "Repo Memory and Durable State — Designing State Files",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Repo Memory and Durable State",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Progress and Decisions",
+     "headingKn": "ಪ್ರಗತಿ ಮತ್ತು ನಿರ್ಧಾರ",
+     "bodyEn": "Keep a progress file (done, next, blocked) and a decision log (choice, reason, rejected options). Separate them because they change at different rates.",
+     "bodyKn": "ಪ್ರಗತಿ ಫೈಲ್ (ಮುಗಿದದ್ದು, ಮುಂದೆ, ತಡೆ) ಮತ್ತು ನಿರ್ಧಾರ ಲಾಗ್ (ಆಯ್ಕೆ, ಕಾರಣ, ತಿರಸ್ಕೃತ) ಇಡಿ. ಬೇರೆ ವೇಗದಲ್ಲಿ ಬದಲಾಗುವುದರಿಂದ ಪ್ರತ್ಯೇಕಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Small and Current",
+     "headingKn": "ಚಿಕ್ಕ ಮತ್ತು ಪ್ರಸ್ತುತ",
+     "bodyEn": "A state file that grows without pruning becomes noise. Archive finished items and keep the active file short enough to read in full every session.",
+     "bodyKn": "ಕತ್ತರಿಸದೆ ಬೆಳೆಯುವ ಫೈಲ್ ಗದ್ದಲವಾಗುತ್ತದೆ. ಮುಗಿದದ್ದನ್ನು ಆರ್ಕೈವ್ ಮಾಡಿ, ಸಕ್ರಿಯ ಫೈಲ್ ಪ್ರತಿ ಸೆಷನ್ ಪೂರ್ಣ ಓದುವಷ್ಟು ಚಿಕ್ಕದಾಗಿಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Separate progress and decisions.\n• Archive finished items.",
+     "bodyKn": "• ಪ್ರಗತಿ, ನಿರ್ಧಾರ ಪ್ರತ್ಯೇಕ.\n• ಮುಗಿದದ್ದು ಆರ್ಕೈವ್."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why separate progress and decision files?",
+       "qKn": "ಪ್ರಗತಿ ಮತ್ತು ನಿರ್ಧಾರ ಏಕೆ ಪ್ರತ್ಯೇಕ?",
+       "opts": [
+        "They change at different rates",
+        "Rule of Git",
+        "To confuse",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಬೇರೆ ವೇಗದಲ್ಲಿ ಬದಲಾಗುತ್ತವೆ",
+        "Git ನಿಯಮ",
+        "ಗೊಂದಲ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What to do with finished items?",
+       "qKn": "ಮುಗಿದ ಅಂಶಗಳನ್ನು ಏನು ಮಾಡಬೇಕು?",
+       "opts": [
+        "Archive them",
+        "Keep all forever in the active file",
+        "Duplicate them",
+        "Hide them"
+       ],
+       "optsKn": [
+        "ಆರ್ಕೈವ್",
+        "ಸಕ್ರಿಯದಲ್ಲಿ ಶಾಶ್ವತ",
+        "ನಕಲು",
+        "ಮರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What goes in a decision log?",
+       "qKn": "ನಿರ್ಧಾರ ಲಾಗ್‌ನಲ್ಲಿ ಏನಿರುತ್ತದೆ?",
+       "opts": [
+        "Choice, reason, rejected options",
+        "Only dates",
+        "Only names",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಆಯ್ಕೆ, ಕಾರಣ, ತಿರಸ್ಕೃತ",
+        "ದಿನಾಂಕ ಮಾತ್ರ",
+        "ಹೆಸರು ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321571",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Repo Memory and Durable State — Keeping Memory Trustworthy",
+  "titleKn": "Repo Memory ಮತ್ತು ಶಾಶ್ವತ State — Memory ನಂಬಲರ್ಹವಾಗಿಡುವುದು",
+  "desc": "Stale or wrong memory misleads agents, so verify and update it.",
+  "descKn": "ಹಳೆಯ ಅಥವಾ ತಪ್ಪು ಮೆಮೊರಿ agents ದಾರಿ ತಪ್ಪಿಸುತ್ತದೆ; ಪರಿಶೀಲಿಸಿ ನವೀಕರಿಸಿ.",
+  "objectives": [
+   "Verify remembered claims against the code.",
+   "Update or delete stale entries."
+  ],
+  "objectivesKn": [
+   "ನೆನಪಿನ ಹೇಳಿಕೆ ಕೋಡ್ ವಿರುದ್ಧ ಪರಿಶೀಲಿಸಿ.",
+   "ಹಳೆಯ ನಮೂದು ನವೀಕರಿಸಿ/ಅಳಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Repo Memory and Durable State — Keeping Memory Trustworthy",
+     "textKn": "Repo Memory and Durable State — Keeping Memory Trustworthy",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Repo Memory and Durable State",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Verify Before Trusting",
+     "headingKn": "ನಂಬುವ ಮೊದಲು ಪರಿಶೀಲಿಸಿ",
+     "bodyEn": "A note saying a function exists is a claim, not a fact. Check the code before acting on it, since it may have changed since the note was written.",
+     "bodyKn": "\"function ಇದೆ\" ಎಂಬ ಟಿಪ್ಪಣಿ ಹೇಳಿಕೆ, ಸತ್ಯ ಅಲ್ಲ. ಟಿಪ್ಪಣಿ ಬರೆದ ನಂತರ ಬದಲಾಗಿರಬಹುದು; ಕ್ರಿಯೆ ಮೊದಲು ಕೋಡ್ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Update and Delete",
+     "headingKn": "ನವೀಕರಿಸಿ ಮತ್ತು ಅಳಿಸಿ",
+     "bodyEn": "When a memory is found wrong, fix or remove it immediately. A wrong entry left in place misleads every later session.",
+     "bodyKn": "ಮೆಮೊರಿ ತಪ್ಪೆಂದು ಕಂಡರೆ ತಕ್ಷಣ ಸರಿಪಡಿಸಿ ಅಥವಾ ತೆಗೆಯಿರಿ. ಉಳಿದ ತಪ್ಪು ನಮೂದು ನಂತರದ ಪ್ರತಿ ಸೆಷನ್ ದಾರಿ ತಪ್ಪಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Memory is a claim; verify it.\n• Fix wrong entries at once.",
+     "bodyKn": "• ಮೆಮೊರಿ ಹೇಳಿಕೆ; ಪರಿಶೀಲಿಸಿ.\n• ತಪ್ಪು ತಕ್ಷಣ ಸರಿಪಡಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A note says a function exists. What should you do?",
+       "qKn": "ಟಿಪ್ಪಣಿ function ಇದೆ ಎನ್ನುತ್ತದೆ. ಏನು ಮಾಡಬೇಕು?",
+       "opts": [
+        "Check the code first",
+        "Trust it blindly",
+        "Delete the code",
+        "Ignore all notes"
+       ],
+       "optsKn": [
+        "ಮೊದಲು ಕೋಡ್ ಪರಿಶೀಲಿಸಿ",
+        "ಕುರುಡಾಗಿ ನಂಬಿ",
+        "ಕೋಡ್ ಅಳಿಸಿ",
+        "ಎಲ್ಲ ಟಿಪ್ಪಣಿ ನಿರ್ಲಕ್ಷಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What about a wrong memory entry?",
+       "qKn": "ತಪ್ಪು ಮೆಮೊರಿ ನಮೂದು?",
+       "opts": [
+        "Fix or remove it now",
+        "Leave it",
+        "Copy it",
+        "Rename it"
+       ],
+       "optsKn": [
+        "ಈಗಲೇ ಸರಿಪಡಿಸಿ/ತೆಗೆಯಿರಿ",
+        "ಹಾಗೇ ಬಿಡಿ",
+        "ನಕಲಿಸಿ",
+        "ಹೆಸರು ಬದಲಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why is stale memory harmful?",
+       "qKn": "ಹಳೆಯ ಮೆಮೊರಿ ಹಾನಿಕರ ಏಕೆ?",
+       "opts": [
+        "It misleads later sessions",
+        "It saves tokens",
+        "It speeds agents",
+        "It is harmless"
+       ],
+       "optsKn": [
+        "ನಂತರದ ಸೆಷನ್ ದಾರಿ ತಪ್ಪಿಸುತ್ತದೆ",
+        "tokens ಉಳಿತಾಯ",
+        "agents ವೇಗ",
+        "ಹಾನಿಯಿಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321574",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Initialization Scripts for Agents — Why Initialise",
+  "titleKn": "Agents ಗಾಗಿ ಆರಂಭ Scripts — ಆರಂಭ ಏಕೆ",
+  "desc": "A script that prepares the environment removes guesswork at the start of every session.",
+  "descKn": "ಪರಿಸರ ಸಿದ್ಧಪಡಿಸುವ script ಪ್ರತಿ ಸೆಷನ್ ಆರಂಭದ ಊಹೆ ತೆಗೆಯುತ್ತದೆ.",
+  "objectives": [
+   "Explain the value of a repeatable setup.",
+   "List what an init script should do."
+  ],
+  "objectivesKn": [
+   "ಪುನರಾವರ್ತಿತ ಸೆಟಪ್ ಮೌಲ್ಯ ವಿವರಿಸಿ.",
+   "init script ಏನು ಮಾಡಬೇಕು ಪಟ್ಟಿ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Initialization Scripts for Agents — Why Initialise",
+     "textKn": "Initialization Scripts for Agents — Why Initialise",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Initialization Scripts for Agents",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Repeatable Setup",
+     "headingKn": "ಪುನರಾವರ್ತಿತ ಸೆಟಪ್",
+     "bodyEn": "Without a script, each session may install dependencies differently or miss a step. One command that prepares everything makes sessions consistent.",
+     "bodyKn": "script ಇಲ್ಲದೆ ಪ್ರತಿ ಸೆಷನ್ ಬೇರೆ ರೀತಿ dependencies ಸ್ಥಾಪಿಸಬಹುದು ಅಥವಾ ಹಂತ ತಪ್ಪಿಸಬಹುದು. ಎಲ್ಲವನ್ನೂ ಸಿದ್ಧಪಡಿಸುವ ಒಂದು ಆದೇಶ ಸೆಷನ್‌ಗಳನ್ನು ಸ್ಥಿರಗೊಳಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "What It Does",
+     "headingKn": "ಅದು ಏನು ಮಾಡುತ್ತದೆ",
+     "bodyEn": "Install dependencies, check tool versions, start needed services and run a smoke test, then report clearly whether the environment is ready.",
+     "bodyKn": "dependencies ಸ್ಥಾಪಿಸಿ, ಉಪಕರಣ ಆವೃತ್ತಿ ಪರಿಶೀಲಿಸಿ, ಅಗತ್ಯ ಸೇವೆ ಆರಂಭಿಸಿ, smoke test ಚಲಾಯಿಸಿ, ಪರಿಸರ ಸಿದ್ಧವೇ ಎಂದು ಸ್ಪಷ್ಟವಾಗಿ ವರದಿ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• One command prepares the environment.\n• It ends with a clear ready/not-ready report.",
+     "bodyKn": "• ಒಂದು ಆದೇಶ ಪರಿಸರ ಸಿದ್ಧಪಡಿಸುತ್ತದೆ.\n• ಸ್ಪಷ್ಟ ಸಿದ್ಧ/ಅಸಿದ್ಧ ವರದಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why use an init script?",
+       "qKn": "init script ಏಕೆ?",
+       "opts": [
+        "Consistent setup every session",
+        "To slow work",
+        "For decoration",
+        "To hide errors"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ ಸೆಷನ್ ಸ್ಥಿರ ಸೆಟಪ್",
+        "ಕೆಲಸ ನಿಧಾನ",
+        "ಅಲಂಕಾರ",
+        "ದೋಷ ಮರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What should it end with?",
+       "qKn": "ಅದು ಯಾವುದರೊಂದಿಗೆ ಮುಗಿಯಬೇಕು?",
+       "opts": [
+        "A clear readiness report",
+        "Silence",
+        "A random value",
+        "A crash"
+       ],
+       "optsKn": [
+        "ಸ್ಪಷ್ಟ ಸಿದ್ಧತೆ ವರದಿ",
+        "ಮೌನ",
+        "ಯಾದೃಚ್ಛಿಕ ಮೌಲ್ಯ",
+        "ಕ್ರ್ಯಾಶ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which is part of init?",
+       "qKn": "init ಭಾಗ ಯಾವುದು?",
+       "opts": [
+        "Smoke test",
+        "Deleting tests",
+        "Ignoring versions",
+        "Skipping install"
+       ],
+       "optsKn": [
+        "Smoke test",
+        "tests ಅಳಿಸುವುದು",
+        "ಆವೃತ್ತಿ ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಸ್ಥಾಪನೆ ಬಿಡುವುದು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321574",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Initialization Scripts for Agents — Idempotent and Fast",
+  "titleKn": "Agents ಗಾಗಿ ಆರಂಭ Scripts — Idempotent ಮತ್ತು ವೇಗ",
+  "desc": "A good init script is safe to run repeatedly and fails loudly.",
+  "descKn": "ಉತ್ತಮ init script ಪದೇ ಪದೇ ಚಲಾಯಿಸಲು ಸುರಕ್ಷಿತ ಮತ್ತು ಗಟ್ಟಿಯಾಗಿ ವಿಫಲವಾಗುತ್ತದೆ.",
+  "objectives": [
+   "Make the script idempotent.",
+   "Fail fast with actionable messages."
+  ],
+  "objectivesKn": [
+   "script idempotent ಮಾಡಿ.",
+   "ಕ್ರಮಕಾರಿ ಸಂದೇಶದೊಂದಿಗೆ ಬೇಗ ವಿಫಲ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Initialization Scripts for Agents — Idempotent and Fast",
+     "textKn": "Initialization Scripts for Agents — Idempotent and Fast",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Initialization Scripts for Agents",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Safe to Rerun",
+     "headingKn": "ಮರುಚಾಲನೆ ಸುರಕ್ಷಿತ",
+     "bodyEn": "Running the script twice should give the same result. Skip work already done and never destroy user changes.",
+     "bodyKn": "ಎರಡು ಬಾರಿ ಚಲಾಯಿಸಿದರೂ ಒಂದೇ ಫಲಿತಾಂಶ. ಈಗಾಗಲೇ ಮಾಡಿದ ಕೆಲಸ ಬಿಟ್ಟು, ಬಳಕೆದಾರರ ಬದಲಾವಣೆ ನಾಶ ಮಾಡಬೇಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Fail Loudly",
+     "headingKn": "ಗಟ್ಟಿಯಾಗಿ ವಿಫಲ",
+     "bodyEn": "On a problem, stop and say what is wrong and how to fix it. A silent partial setup leads the agent to work on a broken base.",
+     "bodyKn": "ಸಮಸ್ಯೆ ಬಂದರೆ ನಿಲ್ಲಿಸಿ ಏನು ತಪ್ಪು, ಹೇಗೆ ಸರಿಪಡಿಸಬೇಕು ಹೇಳಿ. ಮೌನ ಅರೆ ಸೆಟಪ್ agent ಅನ್ನು ಮುರಿದ ಆಧಾರದಲ್ಲಿ ಕೆಲಸ ಮಾಡಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Rerunning must be safe.\n• Stop with a helpful message on failure.",
+     "bodyKn": "• ಮರುಚಾಲನೆ ಸುರಕ್ಷಿತ.\n• ವಿಫಲವಾದರೆ ಸಹಾಯಕ ಸಂದೇಶ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does idempotent mean here?",
+       "qKn": "ಇಲ್ಲಿ idempotent ಅರ್ಥ?",
+       "opts": [
+        "Same result when run twice",
+        "Runs once only",
+        "Always fails",
+        "Random result"
+       ],
+       "optsKn": [
+        "ಎರಡು ಬಾರಿ ಒಂದೇ ಫಲಿತಾಂಶ",
+        "ಒಮ್ಮೆ ಮಾತ್ರ",
+        "ಯಾವಾಗಲೂ ವಿಫಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why fail loudly?",
+       "qKn": "ಗಟ್ಟಿಯಾಗಿ ಏಕೆ ವಿಫಲ?",
+       "opts": [
+        "Avoid working on a broken base",
+        "To annoy users",
+        "To add logs",
+        "To skip tests"
+       ],
+       "optsKn": [
+        "ಮುರಿದ ಆಧಾರದಲ್ಲಿ ಕೆಲಸ ತಪ್ಪಿಸಲು",
+        "ಬಳಕೆದಾರ ಕಿರಿಕಿರಿ",
+        "ಲಾಗ್ ಸೇರಿಸಲು",
+        "tests ಬಿಡಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Should init destroy user changes?",
+       "qKn": "init ಬಳಕೆದಾರ ಬದಲಾವಣೆ ನಾಶ ಮಾಡಬೇಕೇ?",
+       "opts": [
+        "Never",
+        "Always",
+        "Sometimes randomly",
+        "Only on Fridays"
+       ],
+       "optsKn": [
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಯಾವಾಗಲೂ",
+        "ಕೆಲವೊಮ್ಮೆ",
+        "ಶುಕ್ರವಾರ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321574",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Initialization Scripts for Agents — Baseline Health Check",
+  "titleKn": "Agents ಗಾಗಿ ಆರಂಭ Scripts — ಆಧಾರ ಆರೋಗ್ಯ ಪರಿಶೀಲನೆ",
+  "desc": "Record the starting test state so new failures can be told from old ones.",
+  "descKn": "ಆರಂಭದ test ಸ್ಥಿತಿ ದಾಖಲಿಸಿ, ಹೊಸ ಮತ್ತು ಹಳೆಯ ವೈಫಲ್ಯ ಬೇರ್ಪಡಿಸಲು.",
+  "objectives": [
+   "Capture a baseline before changes.",
+   "Distinguish pre-existing failures."
+  ],
+  "objectivesKn": [
+   "ಬದಲಾವಣೆ ಮೊದಲು ಆಧಾರ ದಾಖಲಿಸಿ.",
+   "ಮೊದಲಿನ ವೈಫಲ್ಯ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Initialization Scripts for Agents — Baseline Health Check",
+     "textKn": "Initialization Scripts for Agents — Baseline Health Check",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Initialization Scripts for Agents",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Know the Starting Point",
+     "headingKn": "ಆರಂಭ ಬಿಂದು ತಿಳಿಯಿರಿ",
+     "bodyEn": "Run the checks before editing and note the result. If tests already fail, the agent should not be blamed for, or try to hide, those failures.",
+     "bodyKn": "ತಿದ್ದುವ ಮೊದಲು ಪರಿಶೀಲನೆ ಚಲಾಯಿಸಿ ಫಲಿತಾಂಶ ಗಮನಿಸಿ. tests ಈಗಾಗಲೇ ವಿಫಲವಾಗಿದ್ದರೆ agent ಅವನ್ನು ದೂಷಿಸಬಾರದು ಅಥವಾ ಮರೆಮಾಡಬಾರದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Compare After",
+     "headingKn": "ನಂತರ ಹೋಲಿಸಿ",
+     "bodyEn": "After changes, compare with the baseline. New failures belong to the change; unchanged ones are pre-existing and should be reported separately.",
+     "bodyKn": "ಬದಲಾವಣೆ ನಂತರ ಆಧಾರಕ್ಕೆ ಹೋಲಿಸಿ. ಹೊಸ ವೈಫಲ್ಯ ಬದಲಾವಣೆಗೆ ಸೇರಿದ್ದು; ಬದಲಾಗದವು ಮೊದಲಿನವು, ಪ್ರತ್ಯೇಕ ವರದಿ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Capture baseline first.\n• Compare after to isolate new failures.",
+     "bodyKn": "• ಮೊದಲು ಆಧಾರ ದಾಖಲಿಸಿ.\n• ನಂತರ ಹೋಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why run checks before editing?",
+       "qKn": "ತಿದ್ದುವ ಮೊದಲು ಪರಿಶೀಲನೆ ಏಕೆ?",
+       "opts": [
+        "To learn the baseline",
+        "To waste time",
+        "To delete tests",
+        "For style"
+       ],
+       "optsKn": [
+        "ಆಧಾರ ತಿಳಿಯಲು",
+        "ಸಮಯ ವ್ಯರ್ಥ",
+        "tests ಅಳಿಸಲು",
+        "ಶೈಲಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A failure present in the baseline is:",
+       "qKn": "ಆಧಾರದಲ್ಲಿರುವ ವೈಫಲ್ಯ:",
+       "opts": [
+        "Pre-existing, report separately",
+        "Caused by the agent",
+        "Imaginary",
+        "Fixed"
+       ],
+       "optsKn": [
+        "ಮೊದಲಿನದು, ಪ್ರತ್ಯೇಕ ವರದಿ",
+        "agent ಕಾರಣ",
+        "ಕಾಲ್ಪನಿಕ",
+        "ಸರಿಯಾಗಿದೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "New failures after changes are:",
+       "qKn": "ಬದಲಾವಣೆ ನಂತರದ ಹೊಸ ವೈಫಲ್ಯ:",
+       "opts": [
+        "Attributed to the change",
+        "Ignored",
+        "Always flaky",
+        "Baseline"
+       ],
+       "optsKn": [
+        "ಬದಲಾವಣೆಗೆ ಆರೋಪ",
+        "ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಯಾವಾಗಲೂ flaky",
+        "ಆಧಾರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321577",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Scope Contracts and Task Boundaries — Writing a Scope Contract",
+  "titleKn": "Scope ಒಪ್ಪಂದ ಮತ್ತು ಕೆಲಸ ಗಡಿ — Scope ಒಪ್ಪಂದ ಬರೆಯುವುದು",
+  "desc": "State the goal, allowed changes, forbidden areas and definition of done before work starts.",
+  "descKn": "ಕೆಲಸ ಆರಂಭ ಮೊದಲು ಗುರಿ, ಅನುಮತಿತ ಬದಲಾವಣೆ, ನಿಷೇಧಿತ ಪ್ರದೇಶ, ಮುಗಿದ ವ್ಯಾಖ್ಯಾನ ತಿಳಿಸಿ.",
+  "objectives": [
+   "List the parts of a scope contract.",
+   "Write a testable definition of done."
+  ],
+  "objectivesKn": [
+   "scope ಒಪ್ಪಂದದ ಭಾಗ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಪರೀಕ್ಷಿಸಬಹುದಾದ ಮುಗಿದ ವ್ಯಾಖ್ಯಾನ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Scope Contracts and Task Boundaries — Writing a Scope Contract",
+     "textKn": "Scope Contracts and Task Boundaries — Writing a Scope Contract",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Scope Contracts and Task Boundaries",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Parts of a Contract",
+     "headingKn": "ಒಪ್ಪಂದದ ಭಾಗಗಳು",
+     "bodyEn": "A contract names the goal, files or areas that may change, areas that must not, and how completion is verified.",
+     "bodyKn": "ಒಪ್ಪಂದ ಗುರಿ, ಬದಲಾಗಬಹುದಾದ ಫೈಲ್/ಪ್ರದೇಶ, ಬದಲಾಗಬಾರದ ಪ್ರದೇಶ, ಪೂರ್ಣತೆ ಪರಿಶೀಲನೆ ವಿಧಾನ ಹೆಸರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Definition of Done",
+     "headingKn": "ಮುಗಿದ ವ್ಯಾಖ್ಯಾನ",
+     "bodyEn": "Done should be a check that can pass or fail, such as \"the new test passes and no other test changes\", not \"looks good\".",
+     "bodyKn": "ಮುಗಿದದ್ದು pass ಅಥವಾ fail ಆಗುವ ಪರಿಶೀಲನೆಯಾಗಿರಬೇಕು: \"ಹೊಸ test ಪಾಸ್, ಬೇರೆ test ಬದಲಾಗಿಲ್ಲ\", \"ಚೆನ್ನಾಗಿ ಕಾಣುತ್ತದೆ\" ಅಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Goal, allowed, forbidden, done.\n• Done must be checkable.",
+     "bodyKn": "• ಗುರಿ, ಅನುಮತಿ, ನಿಷೇಧ, ಮುಗಿದದ್ದು.\n• ಮುಗಿದದ್ದು ಪರಿಶೀಲಿಸಬಹುದಾದದ್ದು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Which is a good definition of done?",
+       "qKn": "ಉತ್ತಮ ಮುಗಿದ ವ್ಯಾಖ್ಯಾನ?",
+       "opts": [
+        "New test passes, no other test changes",
+        "Looks good",
+        "Feels finished",
+        "Agent says so"
+       ],
+       "optsKn": [
+        "ಹೊಸ test ಪಾಸ್, ಬೇರೆ ಬದಲಾಗಿಲ್ಲ",
+        "ಚೆನ್ನಾಗಿ ಕಾಣುತ್ತದೆ",
+        "ಮುಗಿದಂತೆ ಅನಿಸುತ್ತದೆ",
+        "agent ಹೇಳಿತು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A contract should list:",
+       "qKn": "ಒಪ್ಪಂದ ಪಟ್ಟಿ ಮಾಡಬೇಕು:",
+       "opts": [
+        "Allowed and forbidden areas",
+        "Only a title",
+        "Only colours",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಅನುಮತಿತ ಮತ್ತು ನಿಷೇಧಿತ ಪ್ರದೇಶ",
+        "ಶೀರ್ಷಿಕೆ ಮಾತ್ರ",
+        "ಬಣ್ಣ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When is it written?",
+       "qKn": "ಯಾವಾಗ ಬರೆಯಲಾಗುತ್ತದೆ?",
+       "opts": [
+        "Before work starts",
+        "After finishing",
+        "Never",
+        "During review only"
+       ],
+       "optsKn": [
+        "ಕೆಲಸ ಮೊದಲು",
+        "ಮುಗಿದ ನಂತರ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ವಿಮರ್ಶೆಯಲ್ಲಿ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321577",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Scope Contracts and Task Boundaries — Enforcing Boundaries",
+  "titleKn": "Scope ಒಪ್ಪಂದ ಮತ್ತು ಕೆಲಸ ಗಡಿ — ಗಡಿ ಜಾರಿ",
+  "desc": "Use diffs, permissions and hooks to check that work stayed inside the contract.",
+  "descKn": "diffs, ಅನುಮತಿ, hooks ಬಳಸಿ ಕೆಲಸ ಒಪ್ಪಂದದೊಳಗಿತ್ತೇ ಪರಿಶೀಲಿಸಿ.",
+  "objectives": [
+   "Check the diff against allowed paths.",
+   "Restrict tools by permissions."
+  ],
+  "objectivesKn": [
+   "diff ಅನ್ನು ಅನುಮತಿತ paths ವಿರುದ್ಧ ಪರಿಶೀಲಿಸಿ.",
+   "ಅನುಮತಿಯಿಂದ tools ನಿರ್ಬಂಧಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Scope Contracts and Task Boundaries — Enforcing Boundaries",
+     "textKn": "Scope Contracts and Task Boundaries — Enforcing Boundaries",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Scope Contracts and Task Boundaries",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Diff Checks",
+     "headingKn": "Diff ಪರಿಶೀಲನೆ",
+     "bodyEn": "A simple script can list changed files and flag any outside the allowed set, catching scope creep automatically.",
+     "bodyKn": "ಸರಳ script ಬದಲಾದ ಫೈಲ್ ಪಟ್ಟಿ ಮಾಡಿ ಅನುಮತಿತ ಸೆಟ್ ಹೊರಗಿನದನ್ನು ಗುರುತಿಸಿ scope creep ಸ್ವಯಂ ಹಿಡಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Permissions and Hooks",
+     "headingKn": "ಅನುಮತಿ ಮತ್ತು Hooks",
+     "bodyEn": "Deny write access to forbidden paths and block dangerous commands with hooks, so the boundary holds even if the agent ignores the text.",
+     "bodyKn": "ನಿಷೇಧಿತ paths ಗೆ ಬರೆಯುವ ಪ್ರವೇಶ ನಿರಾಕರಿಸಿ, hooks ನಿಂದ ಅಪಾಯಕಾರಿ ಆದೇಶ ತಡೆಯಿರಿ; agent ಪಠ್ಯ ನಿರ್ಲಕ್ಷಿಸಿದರೂ ಗಡಿ ಉಳಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Automate diff-vs-scope checks.\n• Back text with permissions and hooks.",
+     "bodyKn": "• diff-vs-scope ಸ್ವಯಂ ಪರಿಶೀಲನೆ.\n• ಅನುಮತಿ ಮತ್ತು hooks."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "How catch scope creep automatically?",
+       "qKn": "scope creep ಸ್ವಯಂ ಹೇಗೆ ಹಿಡಿಯುವುದು?",
+       "opts": [
+        "Compare changed files to allowed paths",
+        "Read the chat",
+        "Wait",
+        "Guess"
+       ],
+       "optsKn": [
+        "ಬದಲಾದ ಫೈಲ್ ಅನುಮತಿತ paths ಗೆ ಹೋಲಿಸಿ",
+        "ಚಾಟ್ ಓದಿ",
+        "ಕಾಯಿರಿ",
+        "ಊಹಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why permissions besides text?",
+       "qKn": "ಪಠ್ಯದ ಜೊತೆ ಅನುಮತಿ ಏಕೆ?",
+       "opts": [
+        "Boundary holds even if text is ignored",
+        "To slow",
+        "For fun",
+        "Text is illegal"
+       ],
+       "optsKn": [
+        "ಪಠ್ಯ ನಿರ್ಲಕ್ಷಿಸಿದರೂ ಗಡಿ ಉಳಿಯುತ್ತದೆ",
+        "ನಿಧಾನ",
+        "ಮೋಜು",
+        "ಪಠ್ಯ ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What can hooks do?",
+       "qKn": "hooks ಏನು ಮಾಡಬಲ್ಲವು?",
+       "opts": [
+        "Block dangerous commands",
+        "Write essays",
+        "Train models",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಅಪಾಯಕಾರಿ ಆದೇಶ ತಡೆ",
+        "ಪ್ರಬಂಧ ಬರೆ",
+        "ಮಾದರಿ ತರಬೇತಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321577",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Scope Contracts and Task Boundaries — Handling Scope Changes",
+  "titleKn": "Scope ಒಪ್ಪಂದ ಮತ್ತು ಕೆಲಸ ಗಡಿ — Scope ಬದಲಾವಣೆ ನಿರ್ವಹಣೆ",
+  "desc": "When the task legitimately needs more, update the contract explicitly rather than drifting.",
+  "descKn": "ಕೆಲಸಕ್ಕೆ ನಿಜವಾಗಿ ಹೆಚ್ಚು ಬೇಕಾದರೆ ಜಾರುವ ಬದಲು ಒಪ್ಪಂದ ಸ್ಪಷ್ಟವಾಗಿ ನವೀಕರಿಸಿ.",
+  "objectives": [
+   "Stop and ask when out of scope.",
+   "Record approved scope changes."
+  ],
+  "objectivesKn": [
+   "ವ್ಯಾಪ್ತಿ ಹೊರಗಾದರೆ ನಿಲ್ಲಿಸಿ ಕೇಳಿ.",
+   "ಅನುಮೋದಿತ ಬದಲಾವಣೆ ದಾಖಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Scope Contracts and Task Boundaries — Handling Scope Changes",
+     "textKn": "Scope Contracts and Task Boundaries — Handling Scope Changes",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Scope Contracts and Task Boundaries",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Stop and Ask",
+     "headingKn": "ನಿಲ್ಲಿಸಿ ಕೇಳಿ",
+     "bodyEn": "If the fix requires touching a forbidden area, the agent should stop and explain rather than proceed quietly.",
+     "bodyKn": "ಸರಿಪಡಿಸಲು ನಿಷೇಧಿತ ಪ್ರದೇಶ ಮುಟ್ಟಬೇಕಾದರೆ agent ಮೌನವಾಗಿ ಮುಂದುವರಿಯದೆ ನಿಲ್ಲಿಸಿ ವಿವರಿಸಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Record the Change",
+     "headingKn": "ಬದಲಾವಣೆ ದಾಖಲಿಸಿ",
+     "bodyEn": "When a human approves expanded scope, update the contract and log why, so later reviews judge the work against the current agreement.",
+     "bodyKn": "ಮಾನವ ವಿಸ್ತೃತ ವ್ಯಾಪ್ತಿ ಅನುಮೋದಿಸಿದರೆ ಒಪ್ಪಂದ ನವೀಕರಿಸಿ ಕಾರಣ ದಾಖಲಿಸಿ; ನಂತರದ ವಿಮರ್ಶೆ ಪ್ರಸ್ತುತ ಒಪ್ಪಂದದ ವಿರುದ್ಧ ಅಳೆಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Ask before leaving scope.\n• Update the contract when approved.",
+     "bodyKn": "• ವ್ಯಾಪ್ತಿ ಬಿಡುವ ಮೊದಲು ಕೇಳಿ.\n• ಅನುಮೋದನೆ ನಂತರ ಒಪ್ಪಂದ ನವೀಕರಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Fix needs a forbidden file. What now?",
+       "qKn": "ಸರಿಪಡಿಸಲು ನಿಷೇಧಿತ ಫೈಲ್ ಬೇಕು. ಈಗ?",
+       "opts": [
+        "Stop and ask",
+        "Edit quietly",
+        "Delete it",
+        "Ignore the bug"
+       ],
+       "optsKn": [
+        "ನಿಲ್ಲಿಸಿ ಕೇಳಿ",
+        "ಮೌನವಾಗಿ ತಿದ್ದಿ",
+        "ಅಳಿಸಿ",
+        "ದೋಷ ನಿರ್ಲಕ್ಷಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "After approval of new scope:",
+       "qKn": "ಹೊಸ ವ್ಯಾಪ್ತಿ ಅನುಮೋದನೆ ನಂತರ:",
+       "opts": [
+        "Update and log the contract",
+        "Nothing",
+        "Delete the contract",
+        "Hide it"
+       ],
+       "optsKn": [
+        "ಒಪ್ಪಂದ ನವೀಕರಿಸಿ ದಾಖಲಿಸಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಒಪ್ಪಂದ ಅಳಿಸಿ",
+        "ಮರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why log scope changes?",
+       "qKn": "scope ಬದಲಾವಣೆ ಏಕೆ ದಾಖಲಿಸಬೇಕು?",
+       "opts": [
+        "Reviews judge against the current agreement",
+        "For decoration",
+        "To hide work",
+        "No reason"
+       ],
+       "optsKn": [
+        "ವಿಮರ್ಶೆ ಪ್ರಸ್ತುತ ಒಪ್ಪಂದದ ವಿರುದ್ಧ ಅಳೆಯುತ್ತದೆ",
+        "ಅಲಂಕಾರ",
+        "ಕೆಲಸ ಮರೆ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b32157a",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Runtime Feedback Loops — Feedback From Running Code",
+  "titleKn": "Runtime ಪ್ರತಿಕ್ರಿಯೆ Loops — ಕೋಡ್ ಚಲಾವಣೆಯಿಂದ ಪ್ರತಿಕ್ರಿಯೆ",
+  "desc": "Agents improve when they can run the code and read real results instead of guessing.",
+  "descKn": "agents ಕೋಡ್ ಚಲಾಯಿಸಿ ನಿಜ ಫಲಿತಾಂಶ ಓದಿದಾಗ ಊಹೆಗಿಂತ ಉತ್ತಮವಾಗುತ್ತವೆ.",
+  "objectives": [
+   "Explain why execution beats prediction.",
+   "Name useful signals: tests, types, logs."
+  ],
+  "objectivesKn": [
+   "ಚಲಾವಣೆ ಊಹೆಗಿಂತ ಉತ್ತಮ ಏಕೆ ವಿವರಿಸಿ.",
+   "tests, types, ಲಾಗ್ ಸಂಕೇತ ಹೆಸರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Runtime Feedback Loops — Feedback From Running Code",
+     "textKn": "Runtime Feedback Loops — Feedback From Running Code",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Runtime Feedback Loops",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Run, Do Not Guess",
+     "headingKn": "ಚಲಾಯಿಸಿ, ಊಹಿಸಬೇಡಿ",
+     "bodyEn": "A model predicting what code does is often wrong. Running it gives ground truth that the model can react to.",
+     "bodyKn": "ಕೋಡ್ ಏನು ಮಾಡುತ್ತದೆ ಎಂದು ಊಹಿಸುವ ಮಾದರಿ ಆಗಾಗ ತಪ್ಪುತ್ತದೆ. ಚಲಾಯಿಸಿದರೆ ಮಾದರಿ ಸ್ಪಂದಿಸಬಹುದಾದ ಸತ್ಯ ಸಿಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Useful Signals",
+     "headingKn": "ಉಪಯುಕ್ತ ಸಂಕೇತಗಳು",
+     "bodyEn": "Test results, type checker and linter output, compiler errors and application logs are all cheap, precise signals.",
+     "bodyKn": "test ಫಲಿತಾಂಶ, type checker ಮತ್ತು linter ಔಟ್‌ಪುಟ್, compiler ದೋಷ, ಅಪ್ಲಿಕೇಶನ್ ಲಾಗ್ ಎಲ್ಲ ಅಗ್ಗ, ನಿಖರ ಸಂಕೇತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Execution gives ground truth.\n• Tests, types, linters and logs are cheap signals.",
+     "bodyKn": "• ಚಲಾವಣೆ ಸತ್ಯ ನೀಡುತ್ತದೆ.\n• tests, types, linters, ಲಾಗ್ ಅಗ್ಗ ಸಂಕೇತ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why let agents run code?",
+       "qKn": "agents ಕೋಡ್ ಚಲಾಯಿಸಲು ಏಕೆ ಬಿಡಬೇಕು?",
+       "opts": [
+        "To get ground truth",
+        "To waste CPU",
+        "Rule",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಸತ್ಯ ಪಡೆಯಲು",
+        "CPU ವ್ಯರ್ಥ",
+        "ನಿಯಮ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which is a cheap signal?",
+       "qKn": "ಅಗ್ಗದ ಸಂಕೇತ?",
+       "opts": [
+        "Type checker output",
+        "A hunch",
+        "A rumour",
+        "Silence"
+       ],
+       "optsKn": [
+        "type checker ಔಟ್‌ಪುಟ್",
+        "ಊಹೆ",
+        "ವದಂತಿ",
+        "ಮೌನ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Model predictions of code behaviour are:",
+       "qKn": "ಕೋಡ್ ವರ್ತನೆಯ ಮಾದರಿ ಊಹೆ:",
+       "opts": [
+        "Often wrong",
+        "Always right",
+        "Perfect",
+        "Unneeded"
+       ],
+       "optsKn": [
+        "ಆಗಾಗ ತಪ್ಪು",
+        "ಯಾವಾಗಲೂ ಸರಿ",
+        "ಪರಿಪೂರ್ಣ",
+        "ಬೇಡ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b32157a",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Runtime Feedback Loops — Designing Fast Loops",
+  "titleKn": "Runtime ಪ್ರತಿಕ್ರಿಯೆ Loops — ವೇಗದ Loops ವಿನ್ಯಾಸ",
+  "desc": "Fast, focused feedback lets agents iterate many times cheaply.",
+  "descKn": "ವೇಗದ, ಕೇಂದ್ರೀಕೃತ ಪ್ರತಿಕ್ರಿಯೆ agents ಗೆ ಅಗ್ಗವಾಗಿ ಹಲವು ಬಾರಿ ಪುನರಾವರ್ತಿಸಲು ಬಿಡುತ್ತದೆ.",
+  "objectives": [
+   "Run the narrowest relevant check first.",
+   "Keep output short and readable."
+  ],
+  "objectivesKn": [
+   "ಅತಿ ಕಿರಿದಾದ ಸಂಬಂಧಿತ ಪರಿಶೀಲನೆ ಮೊದಲು.",
+   "ಔಟ್‌ಪುಟ್ ಚಿಕ್ಕ ಮತ್ತು ಓದಬಲ್ಲದ್ದು."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Runtime Feedback Loops — Designing Fast Loops",
+     "textKn": "Runtime Feedback Loops — Designing Fast Loops",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Runtime Feedback Loops",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Narrow First",
+     "headingKn": "ಮೊದಲು ಕಿರಿದು",
+     "bodyEn": "Run the single relevant test before the whole suite. A two-second check invites many iterations; a ten-minute one invites few.",
+     "bodyKn": "ಪೂರ್ಣ ಸೂಟ್ ಮೊದಲು ಒಂದು ಸಂಬಂಧಿತ test ಚಲಾಯಿಸಿ. ಎರಡು ಸೆಕೆಂಡ್ ಪರಿಶೀಲನೆ ಹಲವು ಪುನರಾವರ್ತನೆ, ಹತ್ತು ನಿಮಿಷದ್ದು ಕಡಿಮೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Readable Output",
+     "headingKn": "ಓದಬಲ್ಲ ಔಟ್‌ಪುಟ್",
+     "bodyEn": "Huge logs waste context. Summarise or filter output so the failure and its location are easy to see.",
+     "bodyKn": "ಬೃಹತ್ ಲಾಗ್ context ವ್ಯರ್ಥ. ವೈಫಲ್ಯ ಮತ್ತು ಸ್ಥಳ ಸುಲಭ ಕಾಣುವಂತೆ ಸಾರಾಂಶ ಅಥವಾ ಫಿಲ್ಟರ್ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Run narrow checks first.\n• Trim noisy output.",
+     "bodyKn": "• ಕಿರಿದು ಪರಿಶೀಲನೆ ಮೊದಲು.\n• ಗದ್ದಲ ಔಟ್‌ಪುಟ್ ಕಡಿಮೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Which check first?",
+       "qKn": "ಮೊದಲು ಯಾವ ಪರಿಶೀಲನೆ?",
+       "opts": [
+        "The single relevant test",
+        "The slowest suite",
+        "None",
+        "Random"
+       ],
+       "optsKn": [
+        "ಒಂದು ಸಂಬಂಧಿತ test",
+        "ಅತಿ ನಿಧಾನ ಸೂಟ್",
+        "ಯಾವುದೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why trim logs?",
+       "qKn": "ಲಾಗ್ ಏಕೆ ಕಡಿಮೆ?",
+       "opts": [
+        "They waste context",
+        "To hide errors",
+        "Rule",
+        "No reason"
+       ],
+       "optsKn": [
+        "context ವ್ಯರ್ಥ",
+        "ದೋಷ ಮರೆ",
+        "ನಿಯಮ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Fast loops allow:",
+       "qKn": "ವೇಗದ loops ಅನುಮತಿಸುತ್ತವೆ:",
+       "opts": [
+        "More iterations",
+        "Fewer iterations",
+        "No iteration",
+        "Slower work"
+       ],
+       "optsKn": [
+        "ಹೆಚ್ಚು ಪುನರಾವರ್ತನೆ",
+        "ಕಡಿಮೆ",
+        "ಇಲ್ಲ",
+        "ನಿಧಾನ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b32157a",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Runtime Feedback Loops — Avoiding Feedback Traps",
+  "titleKn": "Runtime ಪ್ರತಿಕ್ರಿಯೆ Loops — ಪ್ರತಿಕ್ರಿಯೆ ಬಲೆ ತಪ್ಪಿಸಿ",
+  "desc": "Watch for agents that game checks, loop forever or trust flaky signals.",
+  "descKn": "checks ಗೆ ಮೋಸ, ಅನಂತ loop, flaky ಸಂಕೇತ ನಂಬುವ agents ಬಗ್ಗೆ ಎಚ್ಚರ.",
+  "objectives": [
+   "Spot check gaming such as weakening tests.",
+   "Cap retry loops."
+  ],
+  "objectivesKn": [
+   "tests ದುರ್ಬಲಗೊಳಿಸುವ ಮೋಸ ಗುರುತಿಸಿ.",
+   "ಮರುಪ್ರಯತ್ನ loops ಮಿತಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Runtime Feedback Loops — Avoiding Feedback Traps",
+     "textKn": "Runtime Feedback Loops — Avoiding Feedback Traps",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Runtime Feedback Loops",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Gaming the Check",
+     "headingKn": "Check ಗೆ ಮೋಸ",
+     "bodyEn": "An agent told to make tests pass may edit the tests instead of the code. Protect test files or review any test change.",
+     "bodyKn": "tests ಪಾಸ್ ಮಾಡಲು ಹೇಳಿದ agent ಕೋಡ್ ಬದಲು tests ತಿದ್ದಬಹುದು. test ಫೈಲ್ ರಕ್ಷಿಸಿ ಅಥವಾ ಪ್ರತಿ test ಬದಲಾವಣೆ ವಿಮರ್ಶಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cap the Loop",
+     "headingKn": "Loop ಗೆ ಮಿತಿ",
+     "bodyEn": "Limit retries and require the agent to change approach or ask for help after repeated identical failures. Rerun flaky tests before trusting them.",
+     "bodyKn": "ಮರುಪ್ರಯತ್ನ ಮಿತಿ ಹಾಕಿ; ಒಂದೇ ವೈಫಲ್ಯ ಪುನರಾವರ್ತಿಸಿದರೆ ವಿಧಾನ ಬದಲಿಸಲು ಅಥವಾ ಸಹಾಯ ಕೇಳಲು ಹೇಳಿ. flaky tests ನಂಬುವ ಮೊದಲು ಮರುಚಾಲನೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Guard tests from being weakened.\n• Cap retries; distrust flaky signals.",
+     "bodyKn": "• tests ದುರ್ಬಲಗೊಳ್ಳದಂತೆ ರಕ್ಷಿಸಿ.\n• ಮರುಪ್ರಯತ್ನ ಮಿತಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is gaming a check?",
+       "qKn": "check ಗೆ ಮೋಸ ಎಂದರೇನು?",
+       "opts": [
+        "Editing tests to pass instead of fixing code",
+        "Fixing code",
+        "Writing docs",
+        "Running tests"
+       ],
+       "optsKn": [
+        "ಕೋಡ್ ಬದಲು tests ತಿದ್ದಿ ಪಾಸ್",
+        "ಕೋಡ್ ಸರಿಪಡಿಸಿ",
+        "ದಾಖಲೆ ಬರೆ",
+        "tests ಚಲಾಯಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "After repeated identical failures:",
+       "qKn": "ಪದೇ ಪದೇ ಒಂದೇ ವೈಫಲ್ಯದ ನಂತರ:",
+       "opts": [
+        "Change approach or ask",
+        "Retry forever",
+        "Delete tests",
+        "Ignore"
+       ],
+       "optsKn": [
+        "ವಿಧಾನ ಬದಲಿಸಿ ಅಥವಾ ಕೇಳಿ",
+        "ಅನಂತ ಮರುಪ್ರಯತ್ನ",
+        "tests ಅಳಿಸಿ",
+        "ನಿರ್ಲಕ್ಷಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Flaky tests should be:",
+       "qKn": "flaky tests:",
+       "opts": [
+        "Rerun before trusting",
+        "Trusted at once",
+        "Hidden",
+        "Deleted always"
+       ],
+       "optsKn": [
+        "ನಂಬುವ ಮೊದಲು ಮರುಚಾಲನೆ",
+        "ತಕ್ಷಣ ನಂಬಿ",
+        "ಮರೆ",
+        "ಯಾವಾಗಲೂ ಅಳಿಸಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6366020ed05b32157d",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Verification Gates — What a Gate Is",
+  "titleKn": "ಪರಿಶೀಲನಾ Gates — Gate ಎಂದರೇನು",
+  "desc": "A gate is an automatic checkpoint that work must pass before it counts as done.",
+  "descKn": "gate ಎಂದರೆ ಕೆಲಸ ಮುಗಿದಂತೆ ಪರಿಗಣಿಸುವ ಮೊದಲು ದಾಟಬೇಕಾದ ಸ್ವಯಂ ಚೆಕ್‌ಪಾಯಿಂಟ್.",
+  "objectives": [
+   "Define a verification gate.",
+   "Explain why self-report is not enough."
+  ],
+  "objectivesKn": [
+   "ಪರಿಶೀಲನಾ gate ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ಸ್ವಯಂ ವರದಿ ಸಾಲದು ಏಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Verification Gates — What a Gate Is",
+     "textKn": "Verification Gates — What a Gate Is",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Verification Gates",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Checkpoint Before Done",
+     "headingKn": "ಮುಗಿಯುವ ಮೊದಲು ಚೆಕ್‌ಪಾಯಿಂಟ್",
+     "bodyEn": "A gate runs tests, linters and other checks and blocks completion if they fail. Passing is decided by the tools.",
+     "bodyKn": "gate tests, linters ಇತ್ಯಾದಿ ಚಲಾಯಿಸಿ ವಿಫಲವಾದರೆ ಪೂರ್ಣತೆ ತಡೆಯುತ್ತದೆ. ಪಾಸ್ ನಿರ್ಧಾರ ಸಾಧನಗಳದ್ದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Self-Report Is Weak",
+     "headingKn": "ಸ್ವಯಂ ವರದಿ ದುರ್ಬಲ",
+     "bodyEn": "An agent may sincerely say \"all tests pass\" without running them. Require evidence such as the actual command output.",
+     "bodyKn": "agent ಚಲಾಯಿಸದೆಯೇ \"ಎಲ್ಲ tests ಪಾಸ್\" ಎನ್ನಬಹುದು. ನಿಜ ಆದೇಶ ಔಟ್‌ಪುಟ್‌ನಂತಹ ಸಾಕ್ಷ್ಯ ಕೇಳಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Tools decide pass or fail.\n• Require evidence, not claims.",
+     "bodyKn": "• ಸಾಧನ ಪಾಸ್/ಫೇಲ್ ನಿರ್ಧರಿಸುತ್ತದೆ.\n• ಹೇಳಿಕೆ ಅಲ್ಲ, ಸಾಕ್ಷ್ಯ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Who decides if a gate passes?",
+       "qKn": "gate ಪಾಸ್ ಯಾರು ನಿರ್ಧರಿಸುತ್ತಾರೆ?",
+       "opts": [
+        "The tools",
+        "The agent's opinion",
+        "A coin",
+        "Nobody"
+       ],
+       "optsKn": [
+        "ಸಾಧನಗಳು",
+        "agent ಅಭಿಪ್ರಾಯ",
+        "ನಾಣ್ಯ",
+        "ಯಾರೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What evidence to require?",
+       "qKn": "ಯಾವ ಸಾಕ್ಷ್ಯ ಕೇಳಬೇಕು?",
+       "opts": [
+        "Actual command output",
+        "A promise",
+        "A guess",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ನಿಜ ಆದೇಶ ಔಟ್‌ಪುಟ್",
+        "ಭರವಸೆ",
+        "ಊಹೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A failing gate should:",
+       "qKn": "ವಿಫಲ gate:",
+       "opts": [
+        "Block completion",
+        "Be ignored",
+        "Be deleted",
+        "Auto-pass"
+       ],
+       "optsKn": [
+        "ಪೂರ್ಣತೆ ತಡೆ",
+        "ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಅಳಿಸಿ",
+        "ಸ್ವಯಂ ಪಾಸ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6366020ed05b32157d",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Verification Gates — Layering Gates",
+  "titleKn": "ಪರಿಶೀಲನಾ Gates — Gates ಪದರ",
+  "desc": "Combine fast local checks with slower, broader ones at the right moments.",
+  "descKn": "ವೇಗದ ಸ್ಥಳೀಯ ಪರಿಶೀಲನೆಗಳನ್ನು ಸರಿಯಾದ ಕ್ಷಣದಲ್ಲಿ ನಿಧಾನ, ವಿಶಾಲ ಪರಿಶೀಲನೆಗಳೊಂದಿಗೆ ಸೇರಿಸಿ.",
+  "objectives": [
+   "Order gates from cheap to expensive.",
+   "Include security and style checks."
+  ],
+  "objectivesKn": [
+   "ಅಗ್ಗದಿಂದ ದುಬಾರಿಗೆ gates ಕ್ರಮ.",
+   "ಭದ್ರತೆ ಮತ್ತು ಶೈಲಿ ಪರಿಶೀಲನೆ ಸೇರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Verification Gates — Layering Gates",
+     "textKn": "Verification Gates — Layering Gates",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Verification Gates",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cheap Before Expensive",
+     "headingKn": "ಅಗ್ಗ ಮೊದಲು",
+     "bodyEn": "Run formatting, types and unit tests first, then integration tests. Failing early saves time and cost.",
+     "bodyKn": "ಮೊದಲು formatting, types, unit tests, ನಂತರ integration tests. ಬೇಗ ವಿಫಲವಾದರೆ ಸಮಯ ಮತ್ತು ವೆಚ್ಚ ಉಳಿತಾಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Beyond Tests",
+     "headingKn": "Tests ಆಚೆ",
+     "bodyEn": "Add checks for secrets in diffs, dependency changes and forbidden files. Tests alone do not catch every kind of harm.",
+     "bodyKn": "diffs ನಲ್ಲಿ secrets, dependency ಬದಲಾವಣೆ, ನಿಷೇಧಿತ ಫೈಲ್ ಪರಿಶೀಲನೆ ಸೇರಿಸಿ. tests ಮಾತ್ರ ಎಲ್ಲ ಹಾನಿ ಹಿಡಿಯದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Order checks cheap to costly.\n• Add security and scope checks.",
+     "bodyKn": "• ಅಗ್ಗದಿಂದ ದುಬಾರಿ.\n• ಭದ್ರತೆ ಮತ್ತು scope ಪರಿಶೀಲನೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Which runs first?",
+       "qKn": "ಮೊದಲು ಯಾವುದು?",
+       "opts": [
+        "Format and type checks",
+        "Slowest end-to-end",
+        "Nothing",
+        "Deploy"
+       ],
+       "optsKn": [
+        "format ಮತ್ತು type ಪರಿಶೀಲನೆ",
+        "ಅತಿ ನಿಧಾನ end-to-end",
+        "ಏನೂ ಇಲ್ಲ",
+        "deploy"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why check for secrets in diffs?",
+       "qKn": "diffs ನಲ್ಲಿ secrets ಏಕೆ ಪರಿಶೀಲನೆ?",
+       "opts": [
+        "Tests do not catch leaks",
+        "For style",
+        "Rule of Python",
+        "No reason"
+       ],
+       "optsKn": [
+        "tests ಸೋರಿಕೆ ಹಿಡಿಯವು",
+        "ಶೈಲಿ",
+        "Python ನಿಯಮ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Failing early does what?",
+       "qKn": "ಬೇಗ ವಿಫಲವಾದರೆ?",
+       "opts": [
+        "Saves time and cost",
+        "Wastes time",
+        "Hides bugs",
+        "Adds cost"
+       ],
+       "optsKn": [
+        "ಸಮಯ, ವೆಚ್ಚ ಉಳಿತಾಯ",
+        "ಸಮಯ ವ್ಯರ್ಥ",
+        "ದೋಷ ಮರೆ",
+        "ವೆಚ್ಚ ಹೆಚ್ಚು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6366020ed05b32157d",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Verification Gates — Trustworthy Gates",
+  "titleKn": "ಪರಿಶೀಲನಾ Gates — ನಂಬಲರ್ಹ Gates",
+  "desc": "A gate is only as good as its coverage; keep it honest and maintained.",
+  "descKn": "gate ಅದರ coverage ಷ್ಟೇ ಉತ್ತಮ; ಪ್ರಾಮಾಣಿಕ ಮತ್ತು ನಿರ್ವಹಿತವಾಗಿಡಿ.",
+  "objectives": [
+   "Recognise coverage gaps.",
+   "Prevent gates from being bypassed."
+  ],
+  "objectivesKn": [
+   "coverage ಅಂತರ ಗುರುತಿಸಿ.",
+   "gates ಬೈಪಾಸ್ ತಡೆಯಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Verification Gates — Trustworthy Gates",
+     "textKn": "Verification Gates — Trustworthy Gates",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Verification Gates",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Coverage Gaps",
+     "headingKn": "Coverage ಅಂತರ",
+     "bodyEn": "A gate passing means only that the checks it runs passed. Untested behaviour still passes, so add tests where failures escaped.",
+     "bodyKn": "gate ಪಾಸ್ ಎಂದರೆ ಅದು ಚಲಾಯಿಸುವ ಪರಿಶೀಲನೆ ಪಾಸ್ ಆಯಿತು ಎಂದು ಮಾತ್ರ. ಪರೀಕ್ಷಿಸದ ವರ್ತನೆ ಪಾಸ್ ಆಗುತ್ತದೆ; ವೈಫಲ್ಯ ತಪ್ಪಿಸಿಕೊಂಡಲ್ಲಿ tests ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "No Bypass",
+     "headingKn": "ಬೈಪಾಸ್ ಇಲ್ಲ",
+     "bodyEn": "The agent should not be able to skip or edit the gate. Keep gate configuration outside its write scope and log every run.",
+     "bodyKn": "agent gate ಅನ್ನು ಬಿಡಲು ಅಥವಾ ತಿದ್ದಲು ಸಾಧ್ಯವಾಗಬಾರದು. gate ಸಂರಚನೆ ಅದರ ಬರೆಯುವ ವ್ಯಾಪ್ತಿಯ ಹೊರಗಿಡಿ, ಪ್ರತಿ ಚಾಲನೆ ದಾಖಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Passing means only the checks passed.\n• Protect gates from edits.",
+     "bodyKn": "• ಪಾಸ್ = ಆ ಪರಿಶೀಲನೆ ಮಾತ್ರ.\n• gates ತಿದ್ದದಂತೆ ರಕ್ಷಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does a passing gate guarantee?",
+       "qKn": "ಪಾಸ್ ಆದ gate ಏನು ಖಾತರಿ?",
+       "opts": [
+        "Only that its checks passed",
+        "No bugs at all",
+        "Perfect code",
+        "Security"
+       ],
+       "optsKn": [
+        "ಅದರ ಪರಿಶೀಲನೆ ಪಾಸ್ ಮಾತ್ರ",
+        "ದೋಷವಿಲ್ಲ",
+        "ಪರಿಪೂರ್ಣ ಕೋಡ್",
+        "ಭದ್ರತೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Where keep gate config?",
+       "qKn": "gate ಸಂರಚನೆ ಎಲ್ಲಿ?",
+       "opts": [
+        "Outside the agent's write scope",
+        "Anywhere editable",
+        "In chat",
+        "Nowhere"
+       ],
+       "optsKn": [
+        "agent ಬರೆಯುವ ವ್ಯಾಪ್ತಿ ಹೊರಗೆ",
+        "ತಿದ್ದಬಹುದಾದಲ್ಲಿ",
+        "ಚಾಟ್‌ನಲ್ಲಿ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When a failure escapes:",
+       "qKn": "ವೈಫಲ್ಯ ತಪ್ಪಿಸಿಕೊಂಡರೆ:",
+       "opts": [
+        "Add a test for it",
+        "Remove the gate",
+        "Ignore",
+        "Blame"
+       ],
+       "optsKn": [
+        "ಅದಕ್ಕೆ test ಸೇರಿಸಿ",
+        "gate ತೆಗೆಯಿರಿ",
+        "ನಿರ್ಲಕ್ಷಿಸಿ",
+        "ದೂಷಿಸಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6366020ed05b321580",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Reviewer Agent: Separate Learner from Marker — Why Separate Roles",
+  "titleKn": "Reviewer Agent: ಕಲಿಯುವವ ಮತ್ತು ಅಂಕ ನೀಡುವವ ಬೇರ್ಪಡಿಸಿ — ಪಾತ್ರ ಏಕೆ ಬೇರ್ಪಡಿಸಬೇಕು",
+  "desc": "An agent that grades its own work tends to approve it, so review needs independence.",
+  "descKn": "ತನ್ನ ಕೆಲಸಕ್ಕೆ ತಾನೇ ಅಂಕ ನೀಡುವ agent ಅನುಮೋದಿಸುವ ಒಲವು; ವಿಮರ್ಶೆಗೆ ಸ್ವಾತಂತ್ರ್ಯ ಬೇಕು.",
+  "objectives": [
+   "Explain self-approval bias.",
+   "Describe a separate reviewer agent."
+  ],
+  "objectivesKn": [
+   "ಸ್ವ-ಅನುಮೋದನೆ ಪಕ್ಷಪಾತ ವಿವರಿಸಿ.",
+   "ಪ್ರತ್ಯೇಕ reviewer agent ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Reviewer Agent: Separate Learner from Marker — Why Separate Roles",
+     "textKn": "Reviewer Agent: Separate Learner from Marker — Why Separate Roles",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Reviewer Agent: Separate Learner from Marker",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Self-Approval Bias",
+     "headingKn": "ಸ್ವ-ಅನುಮೋದನೆ ಪಕ್ಷಪಾತ",
+     "bodyEn": "The context that produced a solution also shapes how it is judged, so the same agent often overlooks its own mistakes.",
+     "bodyKn": "ಪರಿಹಾರ ಸೃಷ್ಟಿಸಿದ context ಅದನ್ನು ಅಳೆಯುವ ರೀತಿಯನ್ನೂ ರೂಪಿಸುತ್ತದೆ; ಆದ್ದರಿಂದ ಅದೇ agent ತನ್ನ ತಪ್ಪುಗಳನ್ನು ಗಮನಿಸದಿರಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Fresh Reviewer",
+     "headingKn": "ಹೊಸ Reviewer",
+     "bodyEn": "A second agent with a clean context, given the task and the result but not the first agent's reasoning, reviews with fresh eyes.",
+     "bodyKn": "ಸ್ವಚ್ಛ context ಇರುವ ಎರಡನೇ agent, ಕೆಲಸ ಮತ್ತು ಫಲಿತಾಂಶ ಮಾತ್ರ ಪಡೆದು ಮೊದಲಿನ ತರ್ಕವಿಲ್ಲದೆ, ಹೊಸ ಕಣ್ಣಿನಿಂದ ವಿಮರ್ಶಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Self-review is biased.\n• Use a clean-context reviewer.",
+     "bodyKn": "• ಸ್ವ-ವಿಮರ್ಶೆ ಪಕ್ಷಪಾತಿ.\n• ಸ್ವಚ್ಛ context reviewer."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why not let the author review alone?",
+       "qKn": "ಲೇಖಕನೇ ಏಕೆ ವಿಮರ್ಶಿಸಬಾರದು?",
+       "opts": [
+        "It tends to approve its own work",
+        "It is too fast",
+        "It lacks tokens",
+        "Rule"
+       ],
+       "optsKn": [
+        "ತನ್ನ ಕೆಲಸ ಅನುಮೋದಿಸುವ ಒಲವು",
+        "ಬಹಳ ವೇಗ",
+        "tokens ಇಲ್ಲ",
+        "ನಿಯಮ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What does a fresh reviewer receive?",
+       "qKn": "ಹೊಸ reviewer ಏನು ಪಡೆಯುತ್ತದೆ?",
+       "opts": [
+        "Task and result, not the reasoning",
+        "Everything including reasoning",
+        "Nothing",
+        "Only a title"
+       ],
+       "optsKn": [
+        "ಕೆಲಸ ಮತ್ತು ಫಲಿತಾಂಶ, ತರ್ಕವಲ್ಲ",
+        "ತರ್ಕ ಸಹಿತ ಎಲ್ಲ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಶೀರ್ಷಿಕೆ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why clean context?",
+       "qKn": "ಸ್ವಚ್ಛ context ಏಕೆ?",
+       "opts": [
+        "Avoid inheriting the author's blind spots",
+        "Save disk",
+        "For style",
+        "Rule"
+       ],
+       "optsKn": [
+        "ಲೇಖಕನ ಕುರುಡು ಬಿಂದು ತಪ್ಪಿಸಲು",
+        "ಡಿಸ್ಕ್",
+        "ಶೈಲಿ",
+        "ನಿಯಮ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6366020ed05b321580",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Reviewer Agent: Separate Learner from Marker — Designing the Review",
+  "titleKn": "Reviewer Agent: ಕಲಿಯುವವ ಮತ್ತು ಅಂಕ ನೀಡುವವ ಬೇರ್ಪಡಿಸಿ — ವಿಮರ್ಶೆ ವಿನ್ಯಾಸ",
+  "desc": "Give the reviewer a checklist, evidence to inspect and a structured verdict.",
+  "descKn": "reviewer ಗೆ ಚೆಕ್‌ಲಿಸ್ಟ್, ಪರಿಶೀಲಿಸಲು ಸಾಕ್ಷ್ಯ, ರಚನಾತ್ಮಕ ತೀರ್ಪು ನೀಡಿ.",
+  "objectives": [
+   "Write a review checklist.",
+   "Require evidence-backed findings."
+  ],
+  "objectivesKn": [
+   "ವಿಮರ್ಶೆ ಚೆಕ್‌ಲಿಸ್ಟ್ ಬರೆಯಿರಿ.",
+   "ಸಾಕ್ಷ್ಯ ಆಧಾರಿತ ಕಂಡುಹಿಡಿತ ಕೇಳಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Reviewer Agent: Separate Learner from Marker — Designing the Review",
+     "textKn": "Reviewer Agent: Separate Learner from Marker — Designing the Review",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Reviewer Agent: Separate Learner from Marker",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Checklist and Evidence",
+     "headingKn": "ಚೆಕ್‌ಲಿಸ್ಟ್ ಮತ್ತು ಸಾಕ್ಷ್ಯ",
+     "bodyEn": "The reviewer checks scope, tests, conventions and risks, and cites the file and line for each finding.",
+     "bodyKn": "reviewer scope, tests, ಸಂಪ್ರದಾಯ, ಅಪಾಯ ಪರಿಶೀಲಿಸಿ ಪ್ರತಿ ಕಂಡುಹಿಡಿತಕ್ಕೆ ಫೈಲ್ ಮತ್ತು ಸಾಲು ಉಲ್ಲೇಖಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Structured Verdict",
+     "headingKn": "ರಚನಾತ್ಮಕ ತೀರ್ಪು",
+     "bodyEn": "Return approve, request-changes or escalate with reasons, so the result can drive the next step automatically.",
+     "bodyKn": "ಕಾರಣಗಳೊಂದಿಗೆ approve, request-changes ಅಥವಾ escalate ನೀಡಿ; ಫಲಿತಾಂಶ ಮುಂದಿನ ಹಂತ ಸ್ವಯಂ ಚಾಲಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Use a checklist and cite evidence.\n• Return a structured verdict.",
+     "bodyKn": "• ಚೆಕ್‌ಲಿಸ್ಟ್ ಮತ್ತು ಸಾಕ್ಷ್ಯ.\n• ರಚನಾತ್ಮಕ ತೀರ್ಪು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Each finding should cite:",
+       "qKn": "ಪ್ರತಿ ಕಂಡುಹಿಡಿತ ಉಲ್ಲೇಖಿಸಬೇಕು:",
+       "opts": [
+        "File and line",
+        "Nothing",
+        "A rumour",
+        "A colour"
+       ],
+       "optsKn": [
+        "ಫೈಲ್ ಮತ್ತು ಸಾಲು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ವದಂತಿ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why structured verdicts?",
+       "qKn": "ರಚನಾತ್ಮಕ ತೀರ್ಪು ಏಕೆ?",
+       "opts": [
+        "They can drive automation",
+        "For style",
+        "To lengthen",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಸ್ವಯಂ ಚಾಲನೆಗೆ",
+        "ಶೈಲಿ",
+        "ಉದ್ದ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A verdict option is:",
+       "qKn": "ತೀರ್ಪು ಆಯ್ಕೆ:",
+       "opts": [
+        "Escalate",
+        "Ignore",
+        "Delete",
+        "Hide"
+       ],
+       "optsKn": [
+        "Escalate",
+        "ನಿರ್ಲಕ್ಷಿಸಿ",
+        "ಅಳಿಸಿ",
+        "ಮರೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6366020ed05b321580",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Reviewer Agent: Separate Learner from Marker — Limits of Reviewers",
+  "titleKn": "Reviewer Agent: ಕಲಿಯುವವ ಮತ್ತು ಅಂಕ ನೀಡುವವ ಬೇರ್ಪಡಿಸಿ — Reviewers ಮಿತಿ",
+  "desc": "Reviewers are fallible too; combine them with tests and human oversight.",
+  "descKn": "reviewers ಕೂಡ ತಪ್ಪಬಹುದು; tests ಮತ್ತು ಮಾನವ ಮೇಲ್ವಿಚಾರಣೆಯೊಂದಿಗೆ ಸೇರಿಸಿ.",
+  "objectives": [
+   "Recognise reviewer failure modes.",
+   "Calibrate against human review."
+  ],
+  "objectivesKn": [
+   "reviewer ವೈಫಲ್ಯ ವಿಧ ಗುರುತಿಸಿ.",
+   "ಮಾನವ ವಿಮರ್ಶೆಗೆ ಹೊಂದಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Reviewer Agent: Separate Learner from Marker — Limits of Reviewers",
+     "textKn": "Reviewer Agent: Separate Learner from Marker — Limits of Reviewers",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Reviewer Agent: Separate Learner from Marker",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Reviewers Err Too",
+     "headingKn": "Reviewers ಕೂಡ ತಪ್ಪುತ್ತಾರೆ",
+     "bodyEn": "A reviewer can miss bugs or raise false alarms, and a same-model reviewer may share the author's blind spots.",
+     "bodyKn": "reviewer ದೋಷ ತಪ್ಪಿಸಬಹುದು ಅಥವಾ ಸುಳ್ಳು ಎಚ್ಚರಿಕೆ ನೀಡಬಹುದು; ಅದೇ ಮಾದರಿಯ reviewer ಲೇಖಕನ ಕುರುಡು ಬಿಂದು ಹಂಚಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Calibrate",
+     "headingKn": "ಹೊಂದಿಸಿ",
+     "bodyEn": "Compare reviewer verdicts with human decisions on a sample and tune the checklist. Keep humans in charge of high-risk changes.",
+     "bodyKn": "ಮಾದರಿಯ ಮೇಲೆ reviewer ತೀರ್ಪನ್ನು ಮಾನವ ನಿರ್ಧಾರಕ್ಕೆ ಹೋಲಿಸಿ ಚೆಕ್‌ಲಿಸ್ಟ್ ಹೊಂದಿಸಿ. ಹೆಚ್ಚು ಅಪಾಯದ ಬದಲಾವಣೆಗೆ ಮಾನವರೇ ಜವಾಬ್ದಾರರು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Reviewers can be wrong.\n• Calibrate against humans; humans own high risk.",
+     "bodyKn": "• reviewers ತಪ್ಪಬಹುದು.\n• ಮಾನವರಿಗೆ ಹೊಂದಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A same-model reviewer may:",
+       "qKn": "ಅದೇ ಮಾದರಿ reviewer:",
+       "opts": [
+        "Share blind spots",
+        "Be perfect",
+        "Never err",
+        "Be free"
+       ],
+       "optsKn": [
+        "ಕುರುಡು ಬಿಂದು ಹಂಚಬಹುದು",
+        "ಪರಿಪೂರ್ಣ",
+        "ತಪ್ಪದು",
+        "ಉಚಿತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How calibrate?",
+       "qKn": "ಹೇಗೆ ಹೊಂದಿಸುವುದು?",
+       "opts": [
+        "Compare with human decisions",
+        "Guess",
+        "Ignore",
+        "Delete"
+       ],
+       "optsKn": [
+        "ಮಾನವ ನಿರ್ಧಾರಕ್ಕೆ ಹೋಲಿಸಿ",
+        "ಊಹಿಸಿ",
+        "ನಿರ್ಲಕ್ಷಿಸಿ",
+        "ಅಳಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Who owns high-risk changes?",
+       "qKn": "ಹೆಚ್ಚು ಅಪಾಯದ ಬದಲಾವಣೆ ಯಾರದು?",
+       "opts": [
+        "Humans",
+        "Nobody",
+        "The author agent",
+        "Random"
+       ],
+       "optsKn": [
+        "ಮಾನವರು",
+        "ಯಾರೂ ಅಲ್ಲ",
+        "ಲೇಖಕ agent",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6366020ed05b321583",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Multi-Session Handoff — Why Handoffs Fail",
+  "titleKn": "ಬಹು-ಸೆಷನ್ ಹಸ್ತಾಂತರ — ಹಸ್ತಾಂತರ ಏಕೆ ವಿಫಲ",
+  "desc": "Long tasks span sessions, and information is lost at every boundary unless recorded.",
+  "descKn": "ದೀರ್ಘ ಕೆಲಸ ಹಲವು ಸೆಷನ್ ವ್ಯಾಪಿಸುತ್ತದೆ; ದಾಖಲಿಸದಿದ್ದರೆ ಪ್ರತಿ ಗಡಿಯಲ್ಲಿ ಮಾಹಿತಿ ಕಳೆಯುತ್ತದೆ.",
+  "objectives": [
+   "Identify what is lost between sessions.",
+   "Describe symptoms of a poor handoff."
+  ],
+  "objectivesKn": [
+   "ಸೆಷನ್ ನಡುವೆ ಏನು ಕಳೆಯುತ್ತದೆ ಗುರುತಿಸಿ.",
+   "ಕಳಪೆ ಹಸ್ತಾಂತರ ಲಕ್ಷಣ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Multi-Session Handoff — Why Handoffs Fail",
+     "textKn": "Multi-Session Handoff — Why Handoffs Fail",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Multi-Session Handoff",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lost at the Boundary",
+     "headingKn": "ಗಡಿಯಲ್ಲಿ ನಷ್ಟ",
+     "bodyEn": "Intent, dead ends already explored and half-made decisions vanish when a session ends unless they are written down.",
+     "bodyKn": "ಉದ್ದೇಶ, ಈಗಾಗಲೇ ಪರಿಶೋಧಿಸಿದ ಸತ್ತ ಹಾದಿ, ಅರ್ಧ ನಿರ್ಧಾರ ಸೆಷನ್ ಮುಗಿದಾಗ ಬರೆಯದಿದ್ದರೆ ಮಾಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Symptoms",
+     "headingKn": "ಲಕ್ಷಣಗಳು",
+     "bodyEn": "The next session repeats explored dead ends, redoes finished work or contradicts earlier decisions.",
+     "bodyKn": "ಮುಂದಿನ ಸೆಷನ್ ಪರಿಶೋಧಿತ ಸತ್ತ ಹಾದಿ ಪುನರಾವರ್ತಿಸುತ್ತದೆ, ಮುಗಿದ ಕೆಲಸ ಮತ್ತೆ ಮಾಡುತ್ತದೆ ಅಥವಾ ಹಿಂದಿನ ನಿರ್ಧಾರ ವಿರೋಧಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Intent and dead ends are lost.\n• Symptoms: repeats and contradictions.",
+     "bodyKn": "• ಉದ್ದೇಶ, ಸತ್ತ ಹಾದಿ ಕಳೆಯುತ್ತದೆ.\n• ಲಕ್ಷಣ: ಪುನರಾವರ್ತನೆ, ವಿರೋಧ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is lost without handoff notes?",
+       "qKn": "ಹಸ್ತಾಂತರ ಟಿಪ್ಪಣಿ ಇಲ್ಲದೆ ಏನು ಕಳೆಯುತ್ತದೆ?",
+       "opts": [
+        "Intent and explored dead ends",
+        "The repository",
+        "The OS",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಉದ್ದೇಶ ಮತ್ತು ಸತ್ತ ಹಾದಿ",
+        "ರೆಪೊ",
+        "OS",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A symptom of poor handoff:",
+       "qKn": "ಕಳಪೆ ಹಸ್ತಾಂತರ ಲಕ್ಷಣ:",
+       "opts": [
+        "Repeating finished work",
+        "Faster progress",
+        "Fewer tokens",
+        "None"
+       ],
+       "optsKn": [
+        "ಮುಗಿದ ಕೆಲಸ ಪುನರಾವರ್ತನೆ",
+        "ವೇಗದ ಪ್ರಗತಿ",
+        "ಕಡಿಮೆ tokens",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When is information lost?",
+       "qKn": "ಮಾಹಿತಿ ಯಾವಾಗ ಕಳೆಯುತ್ತದೆ?",
+       "opts": [
+        "At session boundaries if unwritten",
+        "Never",
+        "Only at deploy",
+        "Only in Git"
+       ],
+       "optsKn": [
+        "ಬರೆಯದಿದ್ದರೆ ಸೆಷನ್ ಗಡಿಯಲ್ಲಿ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "deploy ನಲ್ಲಿ ಮಾತ್ರ",
+        "Git ನಲ್ಲಿ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6366020ed05b321583",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Multi-Session Handoff — The Handoff Note",
+  "titleKn": "ಬಹು-ಸೆಷನ್ ಹಸ್ತಾಂತರ — ಹಸ್ತಾಂತರ ಟಿಪ್ಪಣಿ",
+  "desc": "A short structured note lets the next session resume in minutes.",
+  "descKn": "ಚಿಕ್ಕ ರಚನಾತ್ಮಕ ಟಿಪ್ಪಣಿ ಮುಂದಿನ ಸೆಷನ್ ನಿಮಿಷಗಳಲ್ಲಿ ಮುಂದುವರಿಸಲು ಬಿಡುತ್ತದೆ.",
+  "objectives": [
+   "List the sections of a handoff note.",
+   "Leave the repository in a clean state."
+  ],
+  "objectivesKn": [
+   "ಹಸ್ತಾಂತರ ಟಿಪ್ಪಣಿ ವಿಭಾಗ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ರೆಪೊ ಸ್ವಚ್ಛವಾಗಿ ಬಿಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Multi-Session Handoff — The Handoff Note",
+     "textKn": "Multi-Session Handoff — The Handoff Note",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Multi-Session Handoff",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Sections",
+     "headingKn": "ವಿಭಾಗಗಳು",
+     "bodyEn": "Goal, done, next step, blockers, decisions with reasons, how to run the checks, and known risks.",
+     "bodyKn": "ಗುರಿ, ಮುಗಿದದ್ದು, ಮುಂದಿನ ಹಂತ, ತಡೆಗಳು, ಕಾರಣ ಸಹಿತ ನಿರ್ಧಾರ, ಪರಿಶೀಲನೆ ಹೇಗೆ ಚಲಾಯಿಸುವುದು, ತಿಳಿದ ಅಪಾಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Clean State",
+     "headingKn": "ಸ್ವಚ್ಛ ಸ್ಥಿತಿ",
+     "bodyEn": "Commit or stash work in progress and make sure the build and tests run, so the next session does not start by debugging.",
+     "bodyKn": "ಪ್ರಗತಿಯಲ್ಲಿರುವ ಕೆಲಸ commit ಅಥವಾ stash ಮಾಡಿ, ಬಿಲ್ಡ್ ಮತ್ತು tests ಚಲಿಸುವಂತೆ ಮಾಡಿ; ಮುಂದಿನ ಸೆಷನ್ debugging ನಿಂದ ಆರಂಭಿಸಬಾರದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Note: goal, done, next, blockers, decisions, checks.\n• Leave a clean, runnable repo.",
+     "bodyKn": "• ಟಿಪ್ಪಣಿ: ಗುರಿ, ಮುಗಿದದ್ದು, ಮುಂದೆ, ತಡೆ, ನಿರ್ಧಾರ.\n• ಸ್ವಚ್ಛ ರೆಪೊ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Include in the note:",
+       "qKn": "ಟಿಪ್ಪಣಿಯಲ್ಲಿ ಏನಿರಬೇಕು?",
+       "opts": [
+        "Next step and blockers",
+        "Only a greeting",
+        "Nothing",
+        "Jokes"
+       ],
+       "optsKn": [
+        "ಮುಂದಿನ ಹಂತ ಮತ್ತು ತಡೆ",
+        "ಶುಭಾಶಯ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಹಾಸ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Repo state at handoff:",
+       "qKn": "ಹಸ್ತಾಂತರದಲ್ಲಿ ರೆಪೊ ಸ್ಥಿತಿ:",
+       "opts": [
+        "Clean and runnable",
+        "Broken",
+        "Empty",
+        "Unknown"
+       ],
+       "optsKn": [
+        "ಸ್ವಚ್ಛ ಮತ್ತು ಚಲಿಸುವ",
+        "ಮುರಿದ",
+        "ಖಾಲಿ",
+        "ಅಜ್ಞಾತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why include decisions with reasons?",
+       "qKn": "ಕಾರಣ ಸಹಿತ ನಿರ್ಧಾರ ಏಕೆ?",
+       "opts": [
+        "To avoid contradicting them",
+        "To lengthen",
+        "For style",
+        "No reason"
+       ],
+       "optsKn": [
+        "ವಿರೋಧಿಸದಿರಲು",
+        "ಉದ್ದ",
+        "ಶೈಲಿ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6366020ed05b321583",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Multi-Session Handoff — Verifying a Handoff",
+  "titleKn": "ಬಹು-ಸೆಷನ್ ಹಸ್ತಾಂತರ — ಹಸ್ತಾಂತರ ಪರಿಶೀಲನೆ",
+  "desc": "Test a handoff by having a fresh session resume from the note alone.",
+  "descKn": "ಹೊಸ ಸೆಷನ್ ಟಿಪ್ಪಣಿಯಿಂದಲೇ ಮುಂದುವರಿಸುವಂತೆ ಮಾಡಿ ಹಸ್ತಾಂತರ ಪರೀಕ್ಷಿಸಿ.",
+  "objectives": [
+   "Run a cold-start test.",
+   "Improve the note from what the fresh session missed."
+  ],
+  "objectivesKn": [
+   "cold-start ಪರೀಕ್ಷೆ ಮಾಡಿ.",
+   "ಹೊಸ ಸೆಷನ್ ತಪ್ಪಿಸಿದ್ದರಿಂದ ಟಿಪ್ಪಣಿ ಸುಧಾರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Multi-Session Handoff — Verifying a Handoff",
+     "textKn": "Multi-Session Handoff — Verifying a Handoff",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Multi-Session Handoff",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cold-Start Test",
+     "headingKn": "Cold-Start ಪರೀಕ್ಷೆ",
+     "bodyEn": "Start a new session with only the repository and the note, and see whether it can continue correctly without questions.",
+     "bodyKn": "ರೆಪೊ ಮತ್ತು ಟಿಪ್ಪಣಿ ಮಾತ್ರದೊಂದಿಗೆ ಹೊಸ ಸೆಷನ್ ಆರಂಭಿಸಿ, ಪ್ರಶ್ನೆ ಇಲ್ಲದೆ ಸರಿಯಾಗಿ ಮುಂದುವರಿಸಬಹುದೇ ನೋಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Fix the Gaps",
+     "headingKn": "ಅಂತರ ಸರಿಪಡಿಸಿ",
+     "bodyEn": "Every question the fresh session had to ask, or every wrong assumption it made, shows what the note should have said. Add it.",
+     "bodyKn": "ಹೊಸ ಸೆಷನ್ ಕೇಳಬೇಕಾದ ಪ್ರತಿ ಪ್ರಶ್ನೆ ಅಥವಾ ಮಾಡಿದ ತಪ್ಪು ಊಹೆ ಟಿಪ್ಪಣಿ ಏನು ಹೇಳಬೇಕಿತ್ತು ಎಂದು ತೋರಿಸುತ್ತದೆ. ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Test with a cold start.\n• Turn its questions into note improvements.",
+     "bodyKn": "• cold start ಪರೀಕ್ಷೆ.\n• ಪ್ರಶ್ನೆಗಳನ್ನು ಟಿಪ್ಪಣಿ ಸುಧಾರಣೆ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is a cold-start test?",
+       "qKn": "cold-start ಪರೀಕ್ಷೆ ಎಂದರೇನು?",
+       "opts": [
+        "Resume from repo and note only",
+        "Reboot the PC",
+        "Delete the repo",
+        "Ask the old session"
+       ],
+       "optsKn": [
+        "ರೆಪೊ ಮತ್ತು ಟಿಪ್ಪಣಿಯಿಂದ ಮಾತ್ರ ಮುಂದುವರಿಕೆ",
+        "PC ರೀಬೂಟ್",
+        "ರೆಪೊ ಅಳಿಸಿ",
+        "ಹಳೆಯ ಸೆಷನ್ ಕೇಳಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A question the new session asks shows:",
+       "qKn": "ಹೊಸ ಸೆಷನ್ ಕೇಳುವ ಪ್ರಶ್ನೆ ತೋರಿಸುತ್ತದೆ:",
+       "opts": [
+        "A gap in the note",
+        "A model bug",
+        "Nothing",
+        "Success"
+       ],
+       "optsKn": [
+        "ಟಿಪ್ಪಣಿಯ ಅಂತರ",
+        "ಮಾದರಿ ದೋಷ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಯಶಸ್ಸು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What do you do with the gaps?",
+       "qKn": "ಅಂತರಗಳನ್ನು ಏನು ಮಾಡುವಿರಿ?",
+       "opts": [
+        "Add them to the note",
+        "Ignore",
+        "Delete the note",
+        "Blame"
+       ],
+       "optsKn": [
+        "ಟಿಪ್ಪಣಿಗೆ ಸೇರಿಸಿ",
+        "ನಿರ್ಲಕ್ಷಿಸಿ",
+        "ಟಿಪ್ಪಣಿ ಅಳಿಸಿ",
+        "ದೂಷಿಸಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

@@ -1,0 +1,3155 @@
+[
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b32155c",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Prompt Injection and the PVE Defense — How Injection Works",
+  "titleKn": "Prompt Injection ಮತ್ತು PVE ರಕ್ಷಣೆ — Injection ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ",
+  "desc": "Why language models cannot reliably separate instructions from data, and the difference between direct and indirect injection.",
+  "descKn": "ಭಾಷಾ ಮಾದರಿಗಳು ಸೂಚನೆ ಮತ್ತು ಡೇಟಾ ನಂಬಲರ್ಹವಾಗಿ ಬೇರ್ಪಡಿಸಲಾರವು ಏಕೆ, ನೇರ ಮತ್ತು ಪರೋಕ್ಷ injection ವ್ಯತ್ಯಾಸ.",
+  "objectives": [
+   "Explain why instructions and data share one text channel.",
+   "Distinguish direct from indirect prompt injection.",
+   "Describe what makes agents with tools a higher-risk target."
+  ],
+  "objectivesKn": [
+   "ಸೂಚನೆ ಮತ್ತು ಡೇಟಾ ಒಂದೇ ಪಠ್ಯ ಮಾರ್ಗ ಹಂಚುವುದು ಏಕೆ ವಿವರಿಸಿ.",
+   "ನೇರ ಮತ್ತು ಪರೋಕ್ಷ injection ಬೇರ್ಪಡಿಸಿ.",
+   "tools ಇರುವ agents ಹೆಚ್ಚು ಅಪಾಯದ ಗುರಿ ಏಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Prompt Injection and the PVE Defense — How Injection Works",
+     "textKn": "Prompt Injection and the PVE Defense — How Injection Works",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Prompt Injection and the PVE Defense",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "One Channel for Everything",
+     "headingKn": "ಎಲ್ಲದಕ್ಕೂ ಒಂದೇ ಮಾರ್ಗ",
+     "bodyEn": "A model receives the developer's instructions, the user's message and any retrieved content as one stream of tokens. There is no hard boundary that marks which text is a command and which is merely data.",
+     "bodyKn": "ಮಾದರಿಗೆ ಡೆವಲಪರ್ ಸೂಚನೆ, ಬಳಕೆದಾರರ ಸಂದೇಶ ಮತ್ತು ಹಿಂಪಡೆದ ವಿಷಯ ಒಂದೇ tokens ಪ್ರವಾಹವಾಗಿ ಬರುತ್ತವೆ. ಯಾವ ಪಠ್ಯ ಆದೇಶ, ಯಾವುದು ಕೇವಲ ಡೇಟಾ ಎಂದು ಗುರುತಿಸುವ ಕಠಿಣ ಗಡಿ ಇಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Direct Injection",
+     "headingKn": "ನೇರ Injection",
+     "bodyEn": "The user themselves types instructions such as \"ignore previous instructions\". This is the simplest form, and the attacker is the person in the conversation.",
+     "bodyKn": "ಬಳಕೆದಾರರೇ \"ಹಿಂದಿನ ಸೂಚನೆ ನಿರ್ಲಕ್ಷಿಸಿ\" ಎಂದು ಟೈಪ್ ಮಾಡುತ್ತಾರೆ. ಇದು ಸರಳ ರೂಪ; ದಾಳಿಕೋರ ಸಂಭಾಷಣೆಯಲ್ಲಿರುವ ವ್ಯಕ್ತಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Indirect Injection",
+     "headingKn": "ಪರೋಕ್ಷ Injection",
+     "bodyEn": "Hidden instructions sit inside content the agent reads: a web page, an email, a document or a tool result. The user never sees them, yet the agent may follow them, which makes this the more dangerous form.",
+     "bodyKn": "ಗುಪ್ತ ಸೂಚನೆಗಳು agent ಓದುವ ವಿಷಯದಲ್ಲಿರುತ್ತವೆ: ವೆಬ್ ಪುಟ, ಇಮೇಲ್, ದಾಖಲೆ, tool ಫಲಿತಾಂಶ. ಬಳಕೆದಾರರಿಗೆ ಕಾಣುವುದಿಲ್ಲ, ಆದರೆ agent ಪಾಲಿಸಬಹುದು; ಇದು ಹೆಚ್ಚು ಅಪಾಯಕಾರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Tools Raise the Stakes",
+     "headingKn": "Tools ಅಪಾಯ ಹೆಚ್ಚಿಸುತ್ತವೆ",
+     "bodyEn": "A chat model that only writes text can at worst say something bad. An agent that can send email, run code or call APIs can be steered into taking harmful actions with real consequences.",
+     "bodyKn": "ಪಠ್ಯ ಮಾತ್ರ ಬರೆಯುವ chat ಮಾದರಿ ಗರಿಷ್ಠ ಕೆಟ್ಟದ್ದನ್ನು ಹೇಳಬಹುದು. ಇಮೇಲ್ ಕಳುಹಿಸುವ, ಕೋಡ್ ಚಲಾಯಿಸುವ, API ಕರೆಯುವ agent ನಿಜ ಪರಿಣಾಮಗಳ ಹಾನಿಕರ ಕ್ರಿಯೆಗೆ ತಿರುಗಿಸಲ್ಪಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Instructions and data share one token stream.\n• Indirect injection hides commands in content the agent reads.\n• Tools turn bad text into bad actions.",
+     "bodyKn": "• ಸೂಚನೆ ಮತ್ತು ಡೇಟಾ ಒಂದೇ ಪ್ರವಾಹ.\n• ಪರೋಕ್ಷ injection ಓದುವ ವಿಷಯದಲ್ಲಿ ಅಡಗಿದೆ.\n• tools ಕೆಟ್ಟ ಪಠ್ಯವನ್ನು ಕೆಟ್ಟ ಕ್ರಿಯೆ ಮಾಡುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is indirect prompt injection?",
+       "qKn": "ಪರೋಕ್ಷ prompt injection ಎಂದರೇನು?",
+       "opts": [
+        "Hidden instructions inside content the agent reads",
+        "The user typing a command",
+        "A network attack",
+        "A GPU fault"
+       ],
+       "optsKn": [
+        "agent ಓದುವ ವಿಷಯದಲ್ಲಿ ಗುಪ್ತ ಸೂಚನೆ",
+        "ಬಳಕೆದಾರ ಆದೇಶ ಟೈಪ್",
+        "ನೆಟ್‌ವರ್ಕ್ ದಾಳಿ",
+        "GPU ದೋಷ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why can models not reliably tell data from instructions?",
+       "qKn": "ಮಾದರಿಗಳು ಡೇಟಾ ಮತ್ತು ಸೂಚನೆ ಏಕೆ ಬೇರ್ಪಡಿಸಲಾರವು?",
+       "opts": [
+        "Both arrive as one stream of tokens",
+        "Data is encrypted",
+        "Models cannot read",
+        "Instructions are images"
+       ],
+       "optsKn": [
+        "ಎರಡೂ ಒಂದೇ tokens ಪ್ರವಾಹ",
+        "ಡೇಟಾ ಎನ್‌ಕ್ರಿಪ್ಟ್",
+        "ಮಾದರಿ ಓದಲಾರದು",
+        "ಸೂಚನೆ ಚಿತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why are tool-using agents higher risk?",
+       "qKn": "tools ಬಳಸುವ agents ಹೆಚ್ಚು ಅಪಾಯ ಏಕೆ?",
+       "opts": [
+        "Injected text can trigger real actions",
+        "They are slower",
+        "They use fewer tokens",
+        "They have no prompts"
+       ],
+       "optsKn": [
+        "ಇಂಜೆಕ್ಟ್ ಪಠ್ಯ ನಿಜ ಕ್ರಿಯೆ ಪ್ರಚೋದಿಸಬಹುದು",
+        "ನಿಧಾನ",
+        "ಕಡಿಮೆ tokens",
+        "prompts ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b32155c",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Prompt Injection and the PVE Defense — Plan, Verify, Execute",
+  "titleKn": "Prompt Injection ಮತ್ತು PVE ರಕ್ಷಣೆ — Plan, Verify, Execute",
+  "desc": "The plan-verify-execute pattern: fix the plan from trusted input, verify each action against it, and execute only what matches.",
+  "descKn": "plan-verify-execute ಮಾದರಿ: ನಂಬಿಕೆಯ ಇನ್‌ಪುಟ್‌ನಿಂದ ಯೋಜನೆ ಸ್ಥಿರ, ಪ್ರತಿ ಕ್ರಿಯೆ ಪರಿಶೀಲನೆ, ಹೊಂದುವುದನ್ನು ಮಾತ್ರ ಚಲಾಯಿಸು.",
+  "objectives": [
+   "Describe plan, verify and execute as separate phases.",
+   "Explain why the plan is created before untrusted content is read.",
+   "Identify what the verifier checks."
+  ],
+  "objectivesKn": [
+   "plan, verify, execute ಅನ್ನು ಪ್ರತ್ಯೇಕ ಹಂತಗಳಾಗಿ ವಿವರಿಸಿ.",
+   "ಅಪನಂಬಿಕೆ ವಿಷಯ ಓದುವ ಮೊದಲು ಯೋಜನೆ ರಚನೆ ಏಕೆ ವಿವರಿಸಿ.",
+   "verifier ಏನು ಪರಿಶೀಲಿಸುತ್ತದೆ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Prompt Injection and the PVE Defense — Plan, Verify, Execute",
+     "textKn": "Prompt Injection and the PVE Defense — Plan, Verify, Execute",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Prompt Injection and the PVE Defense",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Separate Deciding From Doing",
+     "headingKn": "ನಿರ್ಧಾರ ಮತ್ತು ಕ್ರಿಯೆ ಬೇರ್ಪಡಿಸಿ",
+     "bodyEn": "In PVE the agent first writes a plan of the actions it intends to take, based only on the trusted user request. Later steps then follow that plan instead of improvising from whatever text they encounter.",
+     "bodyKn": "PVE ನಲ್ಲಿ agent ಮೊದಲು ನಂಬಿಕೆಯ ಬಳಕೆದಾರ ವಿನಂತಿಯ ಆಧಾರದಲ್ಲಿ ಮಾತ್ರ ತಾನು ಮಾಡಲಿರುವ ಕ್ರಿಯೆಗಳ ಯೋಜನೆ ಬರೆಯುತ್ತದೆ. ನಂತರದ ಹಂತಗಳು ಎದುರಾಗುವ ಪಠ್ಯದಿಂದ ಸುಧಾರಿಸುವ ಬದಲು ಆ ಯೋಜನೆ ಅನುಸರಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Verify Each Action",
+     "headingKn": "ಪ್ರತಿ ಕ್ರಿಯೆ ಪರಿಶೀಲಿಸಿ",
+     "bodyEn": "Before an action runs, a verifier checks that it is permitted by the plan and policy: right tool, expected arguments, allowed destination. An injected instruction to email data elsewhere fails this check.",
+     "bodyKn": "ಕ್ರಿಯೆ ಚಲಿಸುವ ಮೊದಲು verifier ಅದು ಯೋಜನೆ ಮತ್ತು ನೀತಿಯಿಂದ ಅನುಮತಿಸಲ್ಪಟ್ಟಿದೆಯೇ ಎಂದು ಪರಿಶೀಲಿಸುತ್ತದೆ: ಸರಿಯಾದ tool, ನಿರೀಕ್ಷಿತ arguments, ಅನುಮತಿತ ಗುರಿ. ಬೇರೆಡೆ ಡೇಟಾ ಇಮೇಲ್ ಮಾಡುವ injected ಸೂಚನೆ ವಿಫಲವಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Execute Only What Passed",
+     "headingKn": "ಪಾಸ್ ಆದದ್ದನ್ನು ಮಾತ್ರ ಚಲಾಯಿಸಿ",
+     "bodyEn": "Only verified actions reach the executor, and untrusted content is treated as data that can inform answers but cannot add new actions. This narrows what an attacker can achieve even if the model is fooled.",
+     "bodyKn": "ಪರಿಶೀಲಿತ ಕ್ರಿಯೆಗಳು ಮಾತ್ರ executor ತಲುಪುತ್ತವೆ; ಅಪನಂಬಿಕೆ ವಿಷಯ ಉತ್ತರಗಳಿಗೆ ಮಾಹಿತಿ ನೀಡಬಹುದು ಆದರೆ ಹೊಸ ಕ್ರಿಯೆ ಸೇರಿಸಲಾಗದು. ಮಾದರಿ ಮೂರ್ಖವಾದರೂ ದಾಳಿಕೋರ ಸಾಧಿಸಬಹುದಾದುದನ್ನು ಇದು ಕಿರಿದಾಗಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Limits of the Pattern",
+     "headingKn": "ಮಾದರಿಯ ಮಿತಿಗಳು",
+     "bodyEn": "A fixed plan cannot handle tasks that need to react to content, and a verifier can be too strict or too loose. PVE reduces risk but does not remove it, so it is combined with other layers.",
+     "bodyKn": "ಸ್ಥಿರ ಯೋಜನೆ ವಿಷಯಕ್ಕೆ ಸ್ಪಂದಿಸಬೇಕಾದ ಕೆಲಸ ನಿರ್ವಹಿಸಲಾರದು; verifier ಅತಿ ಕಠಿಣ ಅಥವಾ ಸಡಿಲವಾಗಬಹುದು. PVE ಅಪಾಯ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ ಆದರೆ ತೆಗೆಯುವುದಿಲ್ಲ; ಇತರ ಪದರಗಳೊಂದಿಗೆ ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Plan from trusted input before reading untrusted content.\n• Verify every action against the plan and policy.\n• Execute only verified actions; combine with other layers.",
+     "bodyKn": "• ಅಪನಂಬಿಕೆ ವಿಷಯ ಓದುವ ಮೊದಲು ಯೋಜನೆ.\n• ಪ್ರತಿ ಕ್ರಿಯೆ ಪರಿಶೀಲನೆ.\n• ಪರಿಶೀಲಿತ ಕ್ರಿಯೆ ಮಾತ್ರ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why write the plan before reading untrusted content?",
+       "qKn": "ಅಪನಂಬಿಕೆ ವಿಷಯ ಓದುವ ಮೊದಲು ಯೋಜನೆ ಏಕೆ?",
+       "opts": [
+        "So injected text cannot shape the plan",
+        "To save tokens",
+        "Plans are optional",
+        "To hide actions"
+       ],
+       "optsKn": [
+        "injected ಪಠ್ಯ ಯೋಜನೆ ರೂಪಿಸದಿರಲು",
+        "tokens ಉಳಿತಾಯ",
+        "ಯೋಜನೆ ಐಚ್ಛಿಕ",
+        "ಕ್ರಿಯೆ ಮರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What does the verifier check?",
+       "qKn": "verifier ಏನು ಪರಿಶೀಲಿಸುತ್ತದೆ?",
+       "opts": [
+        "That each action matches the plan and policy",
+        "Spelling",
+        "Colour",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ ಕ್ರಿಯೆ ಯೋಜನೆ ಮತ್ತು ನೀತಿಗೆ ಹೊಂದುತ್ತದೆಯೇ",
+        "ಕಾಗುಣಿತ",
+        "ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Does PVE remove injection risk?",
+       "qKn": "PVE injection ಅಪಾಯ ತೆಗೆಯುತ್ತದೆಯೇ?",
+       "opts": [
+        "No, it reduces it and is combined with other layers",
+        "Yes completely",
+        "Only in Python",
+        "Only for direct injection"
+       ],
+       "optsKn": [
+        "ಇಲ್ಲ, ಕಡಿಮೆ ಮಾಡುತ್ತದೆ, ಇತರ ಪದರಗಳೊಂದಿಗೆ",
+        "ಸಂಪೂರ್ಣ ಹೌದು",
+        "Python ನಲ್ಲಿ ಮಾತ್ರ",
+        "ನೇರ injection ಗೆ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b32155c",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Prompt Injection and the PVE Defense — Defense in Depth and Testing",
+  "titleKn": "Prompt Injection ಮತ್ತು PVE ರಕ್ಷಣೆ — ಆಳವಾದ ರಕ್ಷಣೆ ಮತ್ತು ಪರೀಕ್ಷೆ",
+  "desc": "Combining privilege limits, data isolation, filtering and human approval, and testing defences with adversarial cases.",
+  "descKn": "ಹಕ್ಕು ಮಿತಿ, ಡೇಟಾ ಪ್ರತ್ಯೇಕತೆ, ಫಿಲ್ಟರಿಂಗ್, ಮಾನವ ಅನುಮೋದನೆ ಸಂಯೋಜನೆ, ಪ್ರತಿಕೂಲ ಪ್ರಕರಣಗಳಿಂದ ಪರೀಕ್ಷೆ.",
+  "objectives": [
+   "Apply least privilege and separate untrusted data flows.",
+   "Recognise the limits of filters and classifiers.",
+   "Build an injection test suite."
+  ],
+  "objectivesKn": [
+   "ಕನಿಷ್ಠ ಹಕ್ಕು ಮತ್ತು ಅಪನಂಬಿಕೆ ಡೇಟಾ ಹರಿವು ಬೇರ್ಪಡಿಸಿ.",
+   "ಫಿಲ್ಟರ್ ಮತ್ತು classifier ಮಿತಿ ಗುರುತಿಸಿ.",
+   "injection ಪರೀಕ್ಷಾ ಸೂಟ್ ನಿರ್ಮಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Prompt Injection and the PVE Defense — Defense in Depth and Testing",
+     "textKn": "Prompt Injection and the PVE Defense — Defense in Depth and Testing",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Prompt Injection and the PVE Defense",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Least Privilege",
+     "headingKn": "ಕನಿಷ್ಠ ಹಕ್ಕು",
+     "bodyEn": "Give an agent only the tools and data the current task needs. An agent that reads untrusted web pages should not also hold credentials that can send email or delete files.",
+     "bodyKn": "ಪ್ರಸ್ತುತ ಕೆಲಸಕ್ಕೆ ಬೇಕಾದ tools ಮತ್ತು ಡೇಟಾ ಮಾತ್ರ ನೀಡಿ. ಅಪನಂಬಿಕೆ ವೆಬ್ ಪುಟ ಓದುವ agent ಗೆ ಇಮೇಲ್ ಕಳುಹಿಸುವ ಅಥವಾ ಫೈಲ್ ಅಳಿಸುವ credentials ಇರಬಾರದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Isolate Untrusted Content",
+     "headingKn": "ಅಪನಂಬಿಕೆ ವಿಷಯ ಪ್ರತ್ಯೇಕಿಸಿ",
+     "bodyEn": "Process untrusted content in a component that has no dangerous tools, and pass only a constrained, structured result to the component that can act. This separates the reader from the actor.",
+     "bodyKn": "ಅಪನಂಬಿಕೆ ವಿಷಯವನ್ನು ಅಪಾಯಕಾರಿ tools ಇಲ್ಲದ ಘಟಕದಲ್ಲಿ ಸಂಸ್ಕರಿಸಿ, ಕ್ರಿಯೆ ಮಾಡಬಲ್ಲ ಘಟಕಕ್ಕೆ ನಿರ್ಬಂಧಿತ ರಚನಾತ್ಮಕ ಫಲಿತಾಂಶ ಮಾತ್ರ ನೀಡಿ. ಓದುಗ ಮತ್ತು ಕ್ರಿಯೆ ಮಾಡುವವ ಬೇರ್ಪಡುತ್ತಾರೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Filters Help, But Are Not Enough",
+     "headingKn": "ಫಿಲ್ಟರ್ ಸಹಾಯ, ಆದರೆ ಸಾಲದು",
+     "bodyEn": "Classifiers that flag injection attempts catch many attacks, but attackers can rephrase, encode or split instructions. Use them as one layer, never as the only defence.",
+     "bodyKn": "injection ಯತ್ನ ಗುರುತಿಸುವ classifiers ಅನೇಕ ದಾಳಿ ಹಿಡಿಯುತ್ತವೆ, ಆದರೆ ದಾಳಿಕೋರರು ಪದ ಬದಲಿಸಬಹುದು, ಎನ್‌ಕೋಡ್ ಮಾಡಬಹುದು, ಸೂಚನೆ ಒಡೆಯಬಹುದು. ಒಂದು ಪದರವಾಗಿ ಬಳಸಿ, ಏಕೈಕ ರಕ್ಷಣೆಯಾಗಿ ಎಂದಿಗೂ ಅಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Test Like an Attacker",
+     "headingKn": "ದಾಳಿಕೋರನಂತೆ ಪರೀಕ್ಷಿಸಿ",
+     "bodyEn": "Maintain a growing suite of injection payloads placed in emails, pages and tool outputs, and check that no unauthorised action occurs. Rerun it after every prompt, tool or model change.",
+     "bodyKn": "ಇಮೇಲ್, ಪುಟ, tool ಔಟ್‌ಪುಟ್‌ನಲ್ಲಿ ಇರಿಸಿದ injection payloads ಬೆಳೆಯುವ ಸೂಟ್ ಇಟ್ಟು ಅನಧಿಕೃತ ಕ್ರಿಯೆ ನಡೆಯುವುದಿಲ್ಲ ಎಂದು ಪರಿಶೀಲಿಸಿ. ಪ್ರತಿ ಬದಲಾವಣೆ ನಂತರ ಮರುಚಾಲನೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Limit privileges and isolate untrusted readers from actors.\n• Filters are one layer, not the defence.\n• Keep an attacker-style regression suite.",
+     "bodyKn": "• ಹಕ್ಕು ಮಿತಿ; ಓದುಗ ಮತ್ತು ಕ್ರಿಯಾಕಾರ ಬೇರ್ಪಡಿಸಿ.\n• ಫಿಲ್ಟರ್ ಒಂದು ಪದರ.\n• ದಾಳಿ ಶೈಲಿಯ ಸೂಟ್."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why separate the reader of untrusted content from the actor?",
+       "qKn": "ಅಪನಂಬಿಕೆ ವಿಷಯ ಓದುವವ ಮತ್ತು ಕ್ರಿಯೆ ಮಾಡುವವ ಏಕೆ ಬೇರ್ಪಡಿಸಬೇಕು?",
+       "opts": [
+        "Injected text then cannot reach dangerous tools",
+        "To save memory",
+        "To slow the agent",
+        "It is decoration"
+       ],
+       "optsKn": [
+        "injected ಪಠ್ಯ ಅಪಾಯಕಾರಿ tools ತಲುಪದಿರಲು",
+        "ಮೆಮೊರಿ ಉಳಿತಾಯ",
+        "agent ನಿಧಾನ",
+        "ಅಲಂಕಾರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Are injection classifiers sufficient alone?",
+       "qKn": "injection classifiers ಮಾತ್ರ ಸಾಕೇ?",
+       "opts": [
+        "No: attackers can rephrase or encode",
+        "Yes always",
+        "Only for email",
+        "Only for images"
+       ],
+       "optsKn": [
+        "ಇಲ್ಲ: ದಾಳಿಕೋರರು ಪದ ಬದಲಿಸಬಹುದು",
+        "ಯಾವಾಗಲೂ ಹೌದು",
+        "ಇಮೇಲ್‌ಗೆ ಮಾತ್ರ",
+        "ಚಿತ್ರಗಳಿಗೆ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When rerun the injection suite?",
+       "qKn": "injection ಸೂಟ್ ಯಾವಾಗ ಮರುಚಾಲನೆ?",
+       "opts": [
+        "After every prompt, tool or model change",
+        "Never",
+        "Once a year",
+        "Only in production"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ prompt, tool, ಮಾದರಿ ಬದಲಾವಣೆ ನಂತರ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ವರ್ಷಕ್ಕೊಮ್ಮೆ",
+        "ಉತ್ಪಾದನೆಯಲ್ಲಿ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b32155f",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Orchestration Patterns: Supervisor, Swarm, Hierarchical — The Main Shapes",
+  "titleKn": "Orchestration ಮಾದರಿಗಳು: Supervisor, Swarm, Hierarchical — ಮುಖ್ಯ ಆಕಾರಗಳು",
+  "desc": "How supervisor, swarm and hierarchical structures organise multiple agents and where control and information flow in each.",
+  "descKn": "supervisor, swarm, hierarchical ರಚನೆಗಳು ಹಲವು agents ಸಂಘಟಿಸುತ್ತವೆ; ನಿಯಂತ್ರಣ ಮತ್ತು ಮಾಹಿತಿ ಎಲ್ಲಿ ಹರಿಯುತ್ತದೆ.",
+  "objectives": [
+   "Describe the supervisor pattern.",
+   "Describe swarm-style peer handoffs.",
+   "Describe hierarchical teams of teams."
+  ],
+  "objectivesKn": [
+   "supervisor ಮಾದರಿ ವಿವರಿಸಿ.",
+   "swarm ಶೈಲಿ ಸಮಾನರ ಹಸ್ತಾಂತರ ವಿವರಿಸಿ.",
+   "ಶ್ರೇಣಿ ತಂಡಗಳನ್ನು ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Orchestration Patterns: Supervisor, Swarm, Hierarchical — The Main Shapes",
+     "textKn": "Orchestration Patterns: Supervisor, Swarm, Hierarchical — The Main Shapes",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Orchestration Patterns: Supervisor, Swarm, Hierarchical",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Supervisor",
+     "headingKn": "Supervisor",
+     "bodyEn": "One central agent receives the task, decides which worker handles each part and combines results. Control is centralised, so behaviour is easy to follow, but the supervisor can become a bottleneck and a single point of failure.",
+     "bodyKn": "ಒಂದು ಕೇಂದ್ರ agent ಕೆಲಸ ಪಡೆದು ಯಾವ worker ಯಾವ ಭಾಗ ಎಂದು ನಿರ್ಧರಿಸಿ ಫಲಿತಾಂಶ ಸೇರಿಸುತ್ತದೆ. ನಿಯಂತ್ರಣ ಕೇಂದ್ರೀಕೃತ, ಅನುಸರಿಸಲು ಸುಲಭ, ಆದರೆ supervisor ಅಡಚಣೆ ಮತ್ತು ಒಂದೇ ವೈಫಲ್ಯ ಬಿಂದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Swarm",
+     "headingKn": "Swarm",
+     "bodyEn": "In a swarm, peer agents hand the conversation to whichever peer is best suited, with no central boss. It is flexible and light, but overall behaviour is harder to predict and can loop between peers.",
+     "bodyKn": "swarm ನಲ್ಲಿ ಸಮಾನ agents ಯಾರು ಹೆಚ್ಚು ಸೂಕ್ತವೋ ಅವರಿಗೆ ಸಂಭಾಷಣೆ ಹಸ್ತಾಂತರಿಸುತ್ತವೆ, ಕೇಂದ್ರ ಮೇಲಧಿಕಾರಿ ಇಲ್ಲ. ಹೊಂದಿಕೊಳ್ಳುವ ಮತ್ತು ಹಗುರ, ಆದರೆ ಒಟ್ಟು ವರ್ತನೆ ಊಹಿಸಲು ಕಷ್ಟ, peers ನಡುವೆ loop ಆಗಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Hierarchical",
+     "headingKn": "Hierarchical",
+     "bodyEn": "Supervisors manage other supervisors, forming a tree: a top-level agent delegates to team leads, who delegate to workers. It scales to large problems and keeps each agent's context small.",
+     "bodyKn": "supervisors ಇತರ supervisors ನ್ನು ನಿರ್ವಹಿಸಿ ವೃಕ್ಷ ರೂಪಿಸುತ್ತವೆ: ಮೇಲಿನ agent ತಂಡ ನಾಯಕರಿಗೆ, ಅವರು workers ಗೆ ವಹಿಸುತ್ತಾರೆ. ದೊಡ್ಡ ಸಮಸ್ಯೆಗಳಿಗೆ ವಿಸ್ತರಿಸಿ ಪ್ರತಿ agent ನ context ಚಿಕ್ಕದಾಗಿ ಇಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cost of Coordination",
+     "headingKn": "ಸಮನ್ವಯದ ವೆಚ್ಚ",
+     "bodyEn": "Every extra layer or hand-off adds model calls and latency and another place to lose information. Choose the flattest structure that meets the need.",
+     "bodyKn": "ಪ್ರತಿ ಹೆಚ್ಚುವರಿ ಪದರ ಅಥವಾ ಹಸ್ತಾಂತರ ಮಾದರಿ ಕರೆ, ವಿಳಂಬ ಮತ್ತು ಮಾಹಿತಿ ಕಳೆದುಕೊಳ್ಳುವ ಸ್ಥಳ ಸೇರಿಸುತ್ತದೆ. ಅಗತ್ಯ ಪೂರೈಸುವ ಅತಿ ಚಪ್ಪಟೆ ರಚನೆ ಆರಿಸಿ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Structure comparison",
+     "headers": [
+      "Pattern",
+      "Control",
+      "Main risk"
+     ],
+     "rows": [
+      [
+       "Supervisor",
+       "Central",
+       "Bottleneck, single point of failure"
+      ],
+      [
+       "Swarm",
+       "Distributed peers",
+       "Unpredictable loops"
+      ],
+      [
+       "Hierarchical",
+       "Tree",
+       "Latency and information loss across layers"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Supervisors centralise control.\n• Swarms hand off between peers.\n• Hierarchies scale but add layers; pick the flattest that works.",
+     "bodyKn": "• supervisor ನಿಯಂತ್ರಣ ಕೇಂದ್ರೀಕೃತ.\n• swarm peers ನಡುವೆ ಹಸ್ತಾಂತರ.\n• ಶ್ರೇಣಿ ವಿಸ್ತರಿಸುತ್ತದೆ; ಚಪ್ಪಟೆ ಆರಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is a risk of a supervisor pattern?",
+       "qKn": "supervisor ಮಾದರಿಯ ಅಪಾಯ?",
+       "opts": [
+        "Bottleneck and single point of failure",
+        "No control",
+        "Too many peers",
+        "No results"
+       ],
+       "optsKn": [
+        "ಅಡಚಣೆ ಮತ್ತು ಒಂದೇ ವೈಫಲ್ಯ ಬಿಂದು",
+        "ನಿಯಂತ್ರಣವಿಲ್ಲ",
+        "ಹೆಚ್ಚು peers",
+        "ಫಲಿತಾಂಶವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What defines a swarm?",
+       "qKn": "swarm ಎಂದರೇನು?",
+       "opts": [
+        "Peers hand off without a central boss",
+        "One boss controls all",
+        "A single agent",
+        "A database"
+       ],
+       "optsKn": [
+        "ಕೇಂದ್ರ ಮೇಲಧಿಕಾರಿ ಇಲ್ಲದೆ peers ಹಸ್ತಾಂತರ",
+        "ಒಬ್ಬ ಮೇಲಧಿಕಾರಿ ಎಲ್ಲವನ್ನೂ",
+        "ಒಂದು agent",
+        "ಡೇಟಾಬೇಸ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What does each extra layer add?",
+       "qKn": "ಪ್ರತಿ ಹೆಚ್ಚುವರಿ ಪದರ ಏನು ಸೇರಿಸುತ್ತದೆ?",
+       "opts": [
+        "Calls, latency and places to lose information",
+        "Free accuracy",
+        "Nothing",
+        "Fewer tokens"
+       ],
+       "optsKn": [
+        "ಕರೆ, ವಿಳಂಬ, ಮಾಹಿತಿ ಕಳೆಯುವ ಸ್ಥಳ",
+        "ಉಚಿತ ನಿಖರತೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಕಡಿಮೆ tokens"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b32155f",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Orchestration Patterns: Supervisor, Swarm, Hierarchical — Routing, State and Handoffs",
+  "titleKn": "Orchestration ಮಾದರಿಗಳು — Routing, State, Handoffs",
+  "desc": "How work is routed to agents, what state is shared, and how hand-offs preserve the information that matters.",
+  "descKn": "ಕೆಲಸ agents ಗೆ ಹೇಗೆ ರೂಟ್, ಯಾವ state ಹಂಚಲಾಗುತ್ತದೆ, ಹಸ್ತಾಂತರ ಮುಖ್ಯ ಮಾಹಿತಿ ಹೇಗೆ ಉಳಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Explain routing by rules versus by a model.",
+   "Decide what state is shared and what stays private.",
+   "Design hand-off messages that carry needed context."
+  ],
+  "objectivesKn": [
+   "ನಿಯಮ ಮತ್ತು ಮಾದರಿ ಮೂಲಕ routing ವಿವರಿಸಿ.",
+   "ಯಾವ state ಹಂಚಬೇಕು ನಿರ್ಧರಿಸಿ.",
+   "ಅಗತ್ಯ context ಹೊತ್ತ ಹಸ್ತಾಂತರ ಸಂದೇಶ ವಿನ್ಯಾಸ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Orchestration Patterns: Supervisor, Swarm, Hierarchical — Routing, State and Handoffs",
+     "textKn": "Orchestration Patterns: Supervisor, Swarm, Hierarchical — Routing, State and Handoffs",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Orchestration Patterns: Supervisor, Swarm, Hierarchical",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Rule-Based or Model-Based Routing",
+     "headingKn": "ನಿಯಮ ಅಥವಾ ಮಾದರಿ ಆಧಾರಿತ Routing",
+     "bodyEn": "Simple, well-defined categories can be routed by rules or a small classifier, which is fast and predictable. Ambiguous requests may need a model to decide, at higher cost and variance.",
+     "bodyKn": "ಸರಳ, ಸ್ಪಷ್ಟ ವರ್ಗಗಳನ್ನು ನಿಯಮ ಅಥವಾ ಸಣ್ಣ classifier ರೂಟ್ ಮಾಡಬಹುದು: ವೇಗ ಮತ್ತು ಊಹಿಸಬಹುದಾದ. ಅಸ್ಪಷ್ಟ ವಿನಂತಿಗೆ ಮಾದರಿ ನಿರ್ಧರಿಸಬೇಕಾಗಬಹುದು, ಹೆಚ್ಚು ವೆಚ್ಚ ಮತ್ತು ವ್ಯತ್ಯಾಸ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Shared Versus Private State",
+     "headingKn": "ಹಂಚಿದ vs ಖಾಸಗಿ State",
+     "bodyEn": "Shared state lets agents see each other's results but can leak irrelevant detail and cause conflicts. Keeping most state private and passing explicit messages keeps agents focused and easier to test.",
+     "bodyKn": "ಹಂಚಿದ state agents ಗೆ ಪರಸ್ಪರ ಫಲಿತಾಂಶ ನೋಡಲು ಬಿಡುತ್ತದೆ ಆದರೆ ಅಪ್ರಸ್ತುತ ವಿವರ ಸೋರಿ ಘರ್ಷಣೆ ಉಂಟುಮಾಡಬಹುದು. ಹೆಚ್ಚಿನ state ಖಾಸಗಿ ಇಟ್ಟು ಸ್ಪಷ್ಟ ಸಂದೇಶ ನೀಡಿದರೆ agents ಕೇಂದ್ರೀಕೃತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "What a Hand-Off Must Carry",
+     "headingKn": "ಹಸ್ತಾಂತರ ಏನು ಹೊತ್ತಿರಬೇಕು",
+     "bodyEn": "A hand-off should state the goal, what has been done, what remains, constraints and any artifacts, not just \"please continue\". Missing context is the top cause of poor hand-offs.",
+     "bodyKn": "ಹಸ್ತಾಂತರ ಗುರಿ, ಏನು ಮಾಡಲಾಗಿದೆ, ಏನು ಉಳಿದಿದೆ, ನಿರ್ಬಂಧಗಳು, ವಸ್ತುಗಳನ್ನು ತಿಳಿಸಬೇಕು, ಕೇವಲ \"ಮುಂದುವರಿಸಿ\" ಅಲ್ಲ. ಕೊರತೆ context ಕಳಪೆ ಹಸ್ತಾಂತರದ ಮುಖ್ಯ ಕಾರಣ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Guard Against Loops",
+     "headingKn": "Loops ವಿರುದ್ಧ ರಕ್ಷಣೆ",
+     "bodyEn": "Agents can hand the same task back and forth. Track the hand-off path, set a maximum number of hops and stop with an explanation if it is exceeded.",
+     "bodyKn": "agents ಒಂದೇ ಕೆಲಸವನ್ನು ಪರಸ್ಪರ ಹಿಂದೆ ಮುಂದೆ ಕೊಡಬಹುದು. ಹಸ್ತಾಂತರ ಹಾದಿ ಗಮನಿಸಿ, ಗರಿಷ್ಠ ಹಾಪ್ ಮಿತಿ ಹಾಕಿ, ಮೀರಿದರೆ ವಿವರಣೆಯೊಂದಿಗೆ ನಿಲ್ಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Route by rules when categories are clear.\n• Prefer private state and explicit messages.\n• Hand-offs must carry goal, progress and constraints; cap hops.",
+     "bodyKn": "• ವರ್ಗ ಸ್ಪಷ್ಟವಾದರೆ ನಿಯಮ ರೂಟಿಂಗ್.\n• ಖಾಸಗಿ state, ಸ್ಪಷ್ಟ ಸಂದೇಶ.\n• ಹಸ್ತಾಂತರದಲ್ಲಿ ಗುರಿ, ಪ್ರಗತಿ, ನಿರ್ಬಂಧ; ಹಾಪ್ ಮಿತಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "When is rule-based routing appropriate?",
+       "qKn": "ನಿಯಮ ಆಧಾರಿತ routing ಯಾವಾಗ ಸೂಕ್ತ?",
+       "opts": [
+        "When categories are simple and well defined",
+        "When requests are ambiguous",
+        "Never",
+        "Always"
+       ],
+       "optsKn": [
+        "ವರ್ಗಗಳು ಸರಳ ಮತ್ತು ಸ್ಪಷ್ಟವಾದಾಗ",
+        "ವಿನಂತಿ ಅಸ್ಪಷ್ಟವಾದಾಗ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಯಾವಾಗಲೂ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What should a hand-off contain?",
+       "qKn": "ಹಸ್ತಾಂತರದಲ್ಲಿ ಏನಿರಬೇಕು?",
+       "opts": [
+        "Goal, progress, remaining work and constraints",
+        "Only please continue",
+        "Nothing",
+        "A random number"
+       ],
+       "optsKn": [
+        "ಗುರಿ, ಪ್ರಗತಿ, ಉಳಿದ ಕೆಲಸ, ನಿರ್ಬಂಧ",
+        "ಕೇವಲ ಮುಂದುವರಿಸಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ ಸಂಖ್ಯೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How prevent hand-off loops?",
+       "qKn": "ಹಸ್ತಾಂತರ loops ಹೇಗೆ ತಡೆಯುವುದು?",
+       "opts": [
+        "Track the path and cap the number of hops",
+        "Ignore them",
+        "Add more agents",
+        "Delete state"
+       ],
+       "optsKn": [
+        "ಹಾದಿ ಗಮನಿಸಿ ಹಾಪ್ ಮಿತಿ ಹಾಕಿ",
+        "ನಿರ್ಲಕ್ಷಿಸಿ",
+        "ಹೆಚ್ಚು agents",
+        "state ಅಳಿಸಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b32155f",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Orchestration Patterns: Supervisor, Swarm, Hierarchical — Choosing and Evaluating a Pattern",
+  "titleKn": "Orchestration ಮಾದರಿಗಳು — ಮಾದರಿ ಆಯ್ಕೆ ಮತ್ತು ಮೌಲ್ಯಮಾಪನ",
+  "desc": "A decision guide for picking an orchestration pattern and measuring whether it beats a simpler design.",
+  "descKn": "orchestration ಮಾದರಿ ಆರಿಸುವ ಮತ್ತು ಸರಳ ವಿನ್ಯಾಸವನ್ನು ಮೀರಿಸುತ್ತದೆಯೇ ಎಂದು ಅಳೆಯುವ ಮಾರ್ಗದರ್ಶಿ.",
+  "objectives": [
+   "Match a pattern to task structure.",
+   "Measure quality, cost and latency against a single-agent baseline.",
+   "Identify signs that a design is over-engineered."
+  ],
+  "objectivesKn": [
+   "ಕೆಲಸದ ರಚನೆಗೆ ಮಾದರಿ ಹೊಂದಿಸಿ.",
+   "ಒಂದು-agent ಆಧಾರಕ್ಕೆ ಹೋಲಿಸಿ ಅಳೆಯಿರಿ.",
+   "ಅತಿ-ವಿನ್ಯಾಸದ ಸೂಚನೆ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Orchestration Patterns: Supervisor, Swarm, Hierarchical — Choosing and Evaluating a Pattern",
+     "textKn": "Orchestration Patterns: Supervisor, Swarm, Hierarchical — Choosing and Evaluating a Pattern",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Orchestration Patterns: Supervisor, Swarm, Hierarchical",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Start From the Task Shape",
+     "headingKn": "ಕೆಲಸದ ಆಕಾರದಿಂದ ಆರಂಭಿಸಿ",
+     "bodyEn": "Independent subtasks suggest parallel workers under a supervisor. Open-ended routing between specialists suggests a swarm. Very large decomposable problems suggest a hierarchy. If the task is small, one agent may be enough.",
+     "bodyKn": "ಸ್ವತಂತ್ರ ಉಪಕಾರ್ಯಗಳಿಗೆ supervisor ಅಡಿ ಸಮಾನಾಂತರ workers. ತಜ್ಞರ ನಡುವೆ ತೆರೆದ routing ಗೆ swarm. ಬಹಳ ದೊಡ್ಡ ವಿಭಜನೀಯ ಸಮಸ್ಯೆಗೆ ಶ್ರೇಣಿ. ಕೆಲಸ ಚಿಕ್ಕದಾದರೆ ಒಂದು agent ಸಾಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Compare to a Baseline",
+     "headingKn": "ಆಧಾರಕ್ಕೆ ಹೋಲಿಸಿ",
+     "bodyEn": "Evaluate a single well-prompted agent with tools on the same tasks. Adopt a multi-agent pattern only if it improves quality enough to justify its extra cost, latency and debugging effort.",
+     "bodyKn": "ಅದೇ ಕೆಲಸಗಳಲ್ಲಿ tools ಇರುವ ಒಂದು ಉತ್ತಮ agent ಮೌಲ್ಯಮಾಪನ ಮಾಡಿ. ಗುಣಮಟ್ಟ ಸುಧಾರಣೆ ಹೆಚ್ಚುವರಿ ವೆಚ್ಚ, ವಿಳಂಬ, debugging ಶ್ರಮ ಸಮರ್ಥಿಸಿದರೆ ಮಾತ್ರ ಬಹು-agent ಮಾದರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Signs of Over-Engineering",
+     "headingKn": "ಅತಿ-ವಿನ್ಯಾಸದ ಸೂಚನೆಗಳು",
+     "bodyEn": "Agents whose roles overlap, layers that only forward messages, and coordination messages that outnumber real work all point to unnecessary structure. Simplify until removing something hurts.",
+     "bodyKn": "ಪಾತ್ರ ಅತಿಕ್ರಮಿಸುವ agents, ಸಂದೇಶ ಮುಂದಕ್ಕೆ ಕಳುಹಿಸುವ ಪದರಗಳು, ನಿಜ ಕೆಲಸಕ್ಕಿಂತ ಹೆಚ್ಚು ಸಮನ್ವಯ ಸಂದೇಶ ಅನಗತ್ಯ ರಚನೆ ಸೂಚಿಸುತ್ತವೆ. ಏನಾದರೂ ತೆಗೆದರೆ ನೋವಾಗುವವರೆಗೆ ಸರಳಗೊಳಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Make It Observable",
+     "headingKn": "ವೀಕ್ಷಿಸಬಹುದಾದಂತೆ ಮಾಡಿ",
+     "bodyEn": "Trace every hand-off with a shared run id so a failure can be attributed to routing, a worker or a hand-off message, whichever pattern you chose.",
+     "bodyKn": "ಪ್ರತಿ ಹಸ್ತಾಂತರವನ್ನು ಹಂಚಿದ run id ಯೊಂದಿಗೆ trace ಮಾಡಿ; ಯಾವ ಮಾದರಿಯಾದರೂ ವೈಫಲ್ಯವನ್ನು routing, worker ಅಥವಾ ಹಸ್ತಾಂತರ ಸಂದೇಶಕ್ಕೆ ಆರೋಪಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Pick the pattern from the task shape; one agent may suffice.\n• Adopt only on a measured gain over a baseline.\n• Simplify away layers that add no value.",
+     "bodyKn": "• ಕೆಲಸದ ಆಕಾರದಿಂದ ಮಾದರಿ.\n• ಅಳೆದ ಲಾಭದಲ್ಲಿ ಮಾತ್ರ.\n• ಮೌಲ್ಯ ಸೇರಿಸದ ಪದರ ತೆಗೆಯಿರಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What suggests parallel workers under a supervisor?",
+       "qKn": "supervisor ಅಡಿ ಸಮಾನಾಂತರ workers ಯಾವುದು ಸೂಚಿಸುತ್ತದೆ?",
+       "opts": [
+        "Independent subtasks",
+        "One tiny step",
+        "No tools",
+        "Only one agent"
+       ],
+       "optsKn": [
+        "ಸ್ವತಂತ್ರ ಉಪಕಾರ್ಯಗಳು",
+        "ಒಂದು ಸಣ್ಣ ಹಂತ",
+        "tools ಇಲ್ಲ",
+        "ಒಂದೇ agent"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When adopt a multi-agent pattern?",
+       "qKn": "ಬಹು-agent ಮಾದರಿ ಯಾವಾಗ?",
+       "opts": [
+        "When measured gains justify extra cost",
+        "Always",
+        "Never",
+        "When it sounds impressive"
+       ],
+       "optsKn": [
+        "ಅಳೆದ ಲಾಭ ವೆಚ್ಚ ಸಮರ್ಥಿಸಿದಾಗ",
+        "ಯಾವಾಗಲೂ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಪ್ರಭಾವಶಾಲಿ ಎನಿಸಿದಾಗ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which is a sign of over-engineering?",
+       "qKn": "ಅತಿ-ವಿನ್ಯಾಸದ ಸೂಚನೆ?",
+       "opts": [
+        "Layers that only forward messages",
+        "Clear roles",
+        "Traces",
+        "A baseline"
+       ],
+       "optsKn": [
+        "ಸಂದೇಶ ಮಾತ್ರ ಮುಂದೆ ಕಳುಹಿಸುವ ಪದರಗಳು",
+        "ಸ್ಪಷ್ಟ ಪಾತ್ರ",
+        "traces",
+        "ಆಧಾರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321562",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Production Runtimes: Queue, Event, Cron — Running Agents as Background Work",
+  "titleKn": "ಉತ್ಪಾದನಾ Runtimes: Queue, Event, Cron — ಹಿನ್ನೆಲೆ ಕೆಲಸವಾಗಿ Agents ಚಾಲನೆ",
+  "desc": "Why long-running agents do not belong inside a web request, and how queues, events and schedulers trigger them.",
+  "descKn": "ದೀರ್ಘಕಾಲದ agents ವೆಬ್ ವಿನಂತಿಯೊಳಗೆ ಏಕೆ ಇರಬಾರದು, queues, events, schedulers ಹೇಗೆ ಪ್ರಚೋದಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Explain why agent runs should be asynchronous.",
+   "Compare queue-, event- and schedule-triggered runs.",
+   "Design status reporting for long jobs."
+  ],
+  "objectivesKn": [
+   "agent runs ಅಸಮಕಾಲಿಕವಾಗಿರಬೇಕು ಏಕೆ ವಿವರಿಸಿ.",
+   "queue, event, schedule ಪ್ರಚೋದಿತ runs ಹೋಲಿಸಿ.",
+   "ದೀರ್ಘ ಕೆಲಸಗಳಿಗೆ ಸ್ಥಿತಿ ವರದಿ ವಿನ್ಯಾಸ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Production Runtimes: Queue, Event, Cron — Running Agents as Background Work",
+     "textKn": "Production Runtimes: Queue, Event, Cron — Running Agents as Background Work",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Production Runtimes: Queue, Event, Cron",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Do Not Hold a Request Open",
+     "headingKn": "ವಿನಂತಿ ತೆರೆದಿಡಬೇಡಿ",
+     "bodyEn": "An agent may take minutes. Holding an HTTP request open that long invites timeouts and lost work. Instead accept the request, return a job id immediately and run the agent in the background.",
+     "bodyKn": "agent ಗೆ ನಿಮಿಷಗಳು ಬೇಕಾಗಬಹುದು. HTTP ವಿನಂತಿಯನ್ನು ಅಷ್ಟು ಕಾಲ ತೆರೆದಿಟ್ಟರೆ timeout ಮತ್ತು ಕೆಲಸ ನಷ್ಟ. ಬದಲಿಗೆ ವಿನಂತಿ ಸ್ವೀಕರಿಸಿ, ತಕ್ಷಣ job id ನೀಡಿ, ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಚಲಾಯಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Queues",
+     "headingKn": "Queues",
+     "bodyEn": "A queue holds jobs until a worker is free. It smooths bursts, lets you scale workers independently and allows retries, at the cost of extra infrastructure.",
+     "bodyKn": "queue worker ಖಾಲಿಯಾಗುವವರೆಗೆ jobs ಹಿಡಿದಿಡುತ್ತದೆ. ಗರಿಷ್ಠ ಹೊರೆ ಮೃದುಗೊಳಿಸುತ್ತದೆ, workers ಸ್ವತಂತ್ರವಾಗಿ ವಿಸ್ತರಿಸಬಹುದು, ಮರುಪ್ರಯತ್ನ ಸಾಧ್ಯ; ಹೆಚ್ಚುವರಿ ಮೂಲಸೌಕರ್ಯ ವೆಚ್ಚ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Events and Schedules",
+     "headingKn": "Events ಮತ್ತು Schedules",
+     "bodyEn": "Event-triggered runs start when something happens, such as a new file or a webhook. Cron-style schedules start at fixed times, for daily reports. Each needs protection against duplicate or overlapping runs.",
+     "bodyKn": "event-ಪ್ರಚೋದಿತ runs ಹೊಸ ಫೈಲ್ ಅಥವಾ webhook ನಂತಹ ಘಟನೆಯಾದಾಗ ಆರಂಭ. cron ಶೈಲಿ schedules ನಿಗದಿತ ಸಮಯದಲ್ಲಿ (ದೈನಂದಿನ ವರದಿ). ಎರಡಕ್ಕೂ ನಕಲು ಅಥವಾ ಅತಿಕ್ರಮಣ runs ವಿರುದ್ಧ ರಕ್ಷಣೆ ಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Status and Results",
+     "headingKn": "ಸ್ಥಿತಿ ಮತ್ತು ಫಲಿತಾಂಶ",
+     "bodyEn": "Give clients a way to check job status and fetch results, or notify them on completion. Store results durably so they survive a restart.",
+     "bodyKn": "ಗ್ರಾಹಕರಿಗೆ ಕೆಲಸ ಸ್ಥಿತಿ ಪರಿಶೀಲಿಸಿ ಫಲಿತಾಂಶ ಪಡೆಯುವ ಮಾರ್ಗ ನೀಡಿ ಅಥವಾ ಪೂರ್ಣಗೊಂಡಾಗ ಸೂಚಿಸಿ. ಫಲಿತಾಂಶ ಮರುಪ್ರಾರಂಭ ಬದುಕುವಂತೆ ಶಾಶ್ವತವಾಗಿ ಸಂಗ್ರಹಿಸಿ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Trigger types",
+     "headers": [
+      "Trigger",
+      "Example",
+      "Watch for"
+     ],
+     "rows": [
+      [
+       "Queue",
+       "User submits a research job",
+       "Backlog and worker scaling"
+      ],
+      [
+       "Event",
+       "New file uploaded",
+       "Duplicate events"
+      ],
+      [
+       "Schedule",
+       "Nightly summary",
+       "Overlapping runs"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Run agents in the background, not inside a request.\n• Queues, events and schedules trigger jobs.\n• Store durable results and status.",
+     "bodyKn": "• agents ಹಿನ್ನೆಲೆಯಲ್ಲಿ.\n• queue, event, schedule ಪ್ರಚೋದಕ.\n• ಶಾಶ್ವತ ಫಲಿತಾಂಶ ಮತ್ತು ಸ್ಥಿತಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why not run a minutes-long agent inside an HTTP request?",
+       "qKn": "ನಿಮಿಷಗಳ agent ಅನ್ನು HTTP ವಿನಂತಿಯೊಳಗೆ ಏಕೆ ಚಲಾಯಿಸಬಾರದು?",
+       "opts": [
+        "Timeouts and lost work",
+        "It is illegal",
+        "Requests are encrypted",
+        "It is faster"
+       ],
+       "optsKn": [
+        "timeout ಮತ್ತು ಕೆಲಸ ನಷ್ಟ",
+        "ಕಾನೂನುಬಾಹಿರ",
+        "ವಿನಂತಿ ಎನ್‌ಕ್ರಿಪ್ಟ್",
+        "ವೇಗ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What does a queue provide?",
+       "qKn": "queue ಏನು ನೀಡುತ್ತದೆ?",
+       "opts": [
+        "Burst smoothing and independent worker scaling",
+        "Free compute",
+        "No retries",
+        "Faster models"
+       ],
+       "optsKn": [
+        "ಹೊರೆ ಮೃದುಗೊಳಿಸುವಿಕೆ ಮತ್ತು workers ವಿಸ್ತರಣೆ",
+        "ಉಚಿತ ಗಣನೆ",
+        "ಮರುಪ್ರಯತ್ನ ಇಲ್ಲ",
+        "ವೇಗದ ಮಾದರಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What must schedules guard against?",
+       "qKn": "schedules ವಿರುದ್ಧ ಏನು ರಕ್ಷಿಸಬೇಕು?",
+       "opts": [
+        "Overlapping or duplicate runs",
+        "Correct runs",
+        "Fast runs",
+        "Logging"
+       ],
+       "optsKn": [
+        "ಅತಿಕ್ರಮಣ ಅಥವಾ ನಕಲು runs",
+        "ಸರಿ runs",
+        "ವೇಗ runs",
+        "ಲಾಗಿಂಗ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321562",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Production Runtimes: Queue, Event, Cron — Reliability: Retries, Idempotency and Dead Letters",
+  "titleKn": "ಉತ್ಪಾದನಾ Runtimes — ವಿಶ್ವಾಸಾರ್ಹತೆ: ಮರುಪ್ರಯತ್ನ, Idempotency, Dead Letters",
+  "desc": "Making background agent jobs safe to retry, bounded in time and observable when they fail.",
+  "descKn": "ಹಿನ್ನೆಲೆ agent jobs ಮರುಪ್ರಯತ್ನಕ್ಕೆ ಸುರಕ್ಷಿತ, ಸಮಯ ಮಿತಿ, ವಿಫಲವಾದಾಗ ವೀಕ್ಷಿಸಬಹುದಾದಂತೆ ಮಾಡುವುದು.",
+  "objectives": [
+   "Design retries with backoff and limits.",
+   "Explain idempotency for jobs that cause side effects.",
+   "Describe dead-letter handling for failed jobs."
+  ],
+  "objectivesKn": [
+   "backoff ಮತ್ತು ಮಿತಿಯೊಂದಿಗೆ ಮರುಪ್ರಯತ್ನ ವಿನ್ಯಾಸ.",
+   "side effect jobs ಗೆ idempotency ವಿವರಿಸಿ.",
+   "ವಿಫಲ jobs ಗೆ dead-letter ನಿರ್ವಹಣೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Production Runtimes: Queue, Event, Cron — Reliability: Retries, Idempotency and Dead Letters",
+     "textKn": "Production Runtimes: Queue, Event, Cron — Reliability: Retries, Idempotency and Dead Letters",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Production Runtimes: Queue, Event, Cron",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Retry With Backoff",
+     "headingKn": "Backoff ಜೊತೆ ಮರುಪ್ರಯತ್ನ",
+     "bodyEn": "Transient failures such as rate limits or network errors deserve retries, waiting longer each time and giving up after a limit. Retrying instantly and forever makes an outage worse.",
+     "bodyKn": "rate limit, ನೆಟ್‌ವರ್ಕ್ ದೋಷದಂತಹ ತಾತ್ಕಾಲಿಕ ವೈಫಲ್ಯಕ್ಕೆ ಮರುಪ್ರಯತ್ನ ಅರ್ಹ, ಪ್ರತಿ ಬಾರಿ ಹೆಚ್ಚು ಕಾಯಿ, ಮಿತಿಯ ನಂತರ ಬಿಡಿ. ತಕ್ಷಣ ಮತ್ತು ಶಾಶ್ವತ ಮರುಪ್ರಯತ್ನ ಸ್ಥಗಿತ ಕೆಟ್ಟದಾಗಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Idempotent Jobs",
+     "headingKn": "Idempotent Jobs",
+     "bodyEn": "A job may be delivered or retried more than once. Use idempotency keys for actions such as sending email or creating records so a repeat does not duplicate the effect.",
+     "bodyKn": "job ಒಂದಕ್ಕಿಂತ ಹೆಚ್ಚು ಬಾರಿ ತಲುಪಬಹುದು. ಇಮೇಲ್ ಕಳುಹಿಸುವುದು, ದಾಖಲೆ ರಚಿಸುವುದರಂತಹ ಕ್ರಿಯೆಗಳಿಗೆ idempotency keys ಬಳಸಿ, ಪುನರಾವರ್ತನೆ ಪರಿಣಾಮ ನಕಲಿಸದಂತೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Timeouts and Budgets",
+     "headingKn": "Timeouts ಮತ್ತು ಬಜೆಟ್",
+     "bodyEn": "Every job needs a maximum duration, step count and cost. A stuck agent should be killed and reported rather than holding a worker forever.",
+     "bodyKn": "ಪ್ರತಿ job ಗೆ ಗರಿಷ್ಠ ಅವಧಿ, ಹಂತ ಎಣಿಕೆ, ವೆಚ್ಚ ಬೇಕು. ಸಿಲುಕಿದ agent ಅನ್ನು worker ಶಾಶ್ವತ ಹಿಡಿಯುವ ಬದಲು ನಿಲ್ಲಿಸಿ ವರದಿ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Dead-Letter Queues",
+     "headingKn": "Dead-Letter Queues",
+     "bodyEn": "Jobs that keep failing move to a dead-letter queue instead of vanishing. Someone can inspect them, fix the cause and replay them.",
+     "bodyKn": "ಮತ್ತೆ ಮತ್ತೆ ವಿಫಲವಾಗುವ jobs ಮಾಯವಾಗುವ ಬದಲು dead-letter queue ಗೆ ಹೋಗುತ್ತವೆ. ಯಾರಾದರೂ ಪರಿಶೀಲಿಸಿ, ಕಾರಣ ಸರಿಪಡಿಸಿ, ಮರುಚಾಲನೆ ಮಾಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Retry transient failures with backoff and a limit.\n• Make side-effecting jobs idempotent.\n• Bound jobs and keep a dead-letter queue.",
+     "bodyKn": "• backoff ಮತ್ತು ಮಿತಿಯೊಂದಿಗೆ ಮರುಪ್ರಯತ್ನ.\n• side-effect jobs idempotent.\n• ಮಿತಿ ಮತ್ತು dead-letter queue."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why use backoff between retries?",
+       "qKn": "ಮರುಪ್ರಯತ್ನಗಳ ನಡುವೆ backoff ಏಕೆ?",
+       "opts": [
+        "Instant endless retries worsen outages",
+        "To slow users",
+        "Retries are illegal",
+        "To save disk"
+       ],
+       "optsKn": [
+        "ತಕ್ಷಣದ ಅನಂತ ಮರುಪ್ರಯತ್ನ ಸ್ಥಗಿತ ಕೆಟ್ಟದಾಗಿಸುತ್ತದೆ",
+        "ಬಳಕೆದಾರ ನಿಧಾನ",
+        "ಮರುಪ್ರಯತ್ನ ಕಾನೂನುಬಾಹಿರ",
+        "ಡಿಸ್ಕ್ ಉಳಿತಾಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is a dead-letter queue for?",
+       "qKn": "dead-letter queue ಯಾವುದಕ್ಕೆ?",
+       "opts": [
+        "Holding repeatedly failing jobs for inspection",
+        "Deleting jobs",
+        "Speeding jobs",
+        "Encrypting jobs"
+       ],
+       "optsKn": [
+        "ಪದೇ ಪದೇ ವಿಫಲ jobs ಪರಿಶೀಲನೆಗೆ ಹಿಡಿಯಲು",
+        "jobs ಅಳಿಸಲು",
+        "jobs ವೇಗಗೊಳಿಸಲು",
+        "jobs ಎನ್‌ಕ್ರಿಪ್ಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why give every job a time and cost limit?",
+       "qKn": "ಪ್ರತಿ job ಗೆ ಸಮಯ ಮತ್ತು ವೆಚ್ಚ ಮಿತಿ ಏಕೆ?",
+       "opts": [
+        "A stuck agent should not hold a worker forever",
+        "To hide jobs",
+        "Limits are optional",
+        "To add cost"
+       ],
+       "optsKn": [
+        "ಸಿಲುಕಿದ agent worker ಶಾಶ್ವತ ಹಿಡಿಯಬಾರದು",
+        "jobs ಮರೆ",
+        "ಮಿತಿ ಐಚ್ಛಿಕ",
+        "ವೆಚ್ಚ ಸೇರಿಸಲು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321562",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Production Runtimes: Queue, Event, Cron — Scaling, Isolation and Operations",
+  "titleKn": "ಉತ್ಪಾದನಾ Runtimes — ವಿಸ್ತರಣೆ, ಪ್ರತ್ಯೇಕತೆ, ನಿರ್ವಹಣೆ",
+  "desc": "Scaling workers, isolating tenants and rate limits, and operating agent runtimes day to day.",
+  "descKn": "workers ವಿಸ್ತರಣೆ, tenants ಮತ್ತು rate limits ಪ್ರತ್ಯೇಕತೆ, ದೈನಂದಿನ ನಿರ್ವಹಣೆ.",
+  "objectives": [
+   "Scale workers on queue depth and rate limits.",
+   "Isolate tenants and prevent noisy neighbours.",
+   "Define operational runbooks and alerts."
+  ],
+  "objectivesKn": [
+   "queue ಆಳ ಮತ್ತು rate limits ಮೇಲೆ workers ವಿಸ್ತರಿಸಿ.",
+   "tenants ಪ್ರತ್ಯೇಕಿಸಿ.",
+   "ಕಾರ್ಯಾಚರಣೆ runbooks ಮತ್ತು alerts ವ್ಯಾಖ್ಯಾನಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Production Runtimes: Queue, Event, Cron — Scaling, Isolation and Operations",
+     "textKn": "Production Runtimes: Queue, Event, Cron — Scaling, Isolation and Operations",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Production Runtimes: Queue, Event, Cron",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Scale on the Right Signal",
+     "headingKn": "ಸರಿಯಾದ ಸಂಕೇತದ ಮೇಲೆ ವಿಸ್ತರಣೆ",
+     "bodyEn": "Add workers when queue depth or wait time grows, but remember that model providers impose rate limits. More workers than the provider allows only creates errors, so concurrency needs a cap.",
+     "bodyKn": "queue ಆಳ ಅಥವಾ ಕಾಯುವ ಸಮಯ ಹೆಚ್ಚಿದಾಗ workers ಸೇರಿಸಿ, ಆದರೆ ಒದಗಿಸುವವರು rate limits ವಿಧಿಸುತ್ತಾರೆ. ಅನುಮತಿಸಿದ್ದಕ್ಕಿಂತ ಹೆಚ್ಚು workers ದೋಷ ಮಾತ್ರ ಸೃಷ್ಟಿಸುತ್ತವೆ; concurrency ಗೆ ಮಿತಿ ಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Fairness Between Tenants",
+     "headingKn": "Tenants ನಡುವೆ ನ್ಯಾಯ",
+     "bodyEn": "One customer submitting thousands of jobs can starve everyone else. Use per-tenant limits or separate queues so heavy users cannot block light ones.",
+     "bodyKn": "ಒಬ್ಬ ಗ್ರಾಹಕ ಸಾವಿರಾರು jobs ಸಲ್ಲಿಸಿದರೆ ಇತರರು ಹಸಿವಿನಿಂದ ಬಳಲಬಹುದು. ಪ್ರತಿ tenant ಮಿತಿ ಅಥವಾ ಪ್ರತ್ಯೇಕ queues ಬಳಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Isolation of Execution",
+     "headingKn": "ಕಾರ್ಯಗತ ಪ್ರತ್ಯೇಕತೆ",
+     "bodyEn": "Jobs that run code or tools should be isolated from each other and from your infrastructure, with their own credentials and resource limits.",
+     "bodyKn": "ಕೋಡ್ ಅಥವಾ tools ಚಲಾಯಿಸುವ jobs ಪರಸ್ಪರ ಮತ್ತು ನಿಮ್ಮ ಮೂಲಸೌಕರ್ಯದಿಂದ ಪ್ರತ್ಯೇಕವಾಗಿರಬೇಕು; ಸ್ವಂತ credentials ಮತ್ತು ಸಂಪನ್ಮೂಲ ಮಿತಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Runbooks and On-Call",
+     "headingKn": "Runbooks ಮತ್ತು On-Call",
+     "bodyEn": "Write down what to do when the queue backs up, a provider is down or costs spike. Alert on queue age, failure rate and spend so problems are noticed before users complain.",
+     "bodyKn": "queue ತುಂಬಿದಾಗ, ಒದಗಿಸುವವರು ಸ್ಥಗಿತವಾದಾಗ, ವೆಚ್ಚ ಏರಿದಾಗ ಏನು ಮಾಡಬೇಕು ಎಂದು ಬರೆದಿಡಿ. ಬಳಕೆದಾರರು ದೂರುವ ಮೊದಲೇ queue ವಯಸ್ಸು, ವೈಫಲ್ಯ ದರ, ಖರ್ಚಿಗೆ alert."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Scale workers within provider rate limits.\n• Give tenants fair, isolated capacity.\n• Alert on queue age, failures and spend; keep runbooks.",
+     "bodyKn": "• ಒದಗಿಸುವವರ ಮಿತಿಯೊಳಗೆ workers ವಿಸ್ತರಣೆ.\n• tenants ಗೆ ನ್ಯಾಯಯುತ ಸಾಮರ್ಥ್ಯ.\n• alerts ಮತ್ತು runbooks."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why cap concurrency?",
+       "qKn": "concurrency ಗೆ ಮಿತಿ ಏಕೆ?",
+       "opts": [
+        "Providers impose rate limits",
+        "Workers are expensive only",
+        "Queues forbid it",
+        "It hides logs"
+       ],
+       "optsKn": [
+        "ಒದಗಿಸುವವರು rate limits ವಿಧಿಸುತ್ತಾರೆ",
+        "workers ದುಬಾರಿ ಮಾತ್ರ",
+        "queues ನಿಷೇಧಿಸುತ್ತವೆ",
+        "ಲಾಗ್ ಮರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How prevent one tenant starving others?",
+       "qKn": "ಒಬ್ಬ tenant ಇತರರನ್ನು ಹಸಿವಿನಲ್ಲಿಡುವುದನ್ನು ಹೇಗೆ ತಡೆಯುವುದು?",
+       "opts": [
+        "Per-tenant limits or separate queues",
+        "Ignore it",
+        "Add colours",
+        "Delete jobs"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ tenant ಮಿತಿ ಅಥವಾ ಪ್ರತ್ಯೇಕ queues",
+        "ನಿರ್ಲಕ್ಷಿಸಿ",
+        "ಬಣ್ಣ ಸೇರಿಸಿ",
+        "jobs ಅಳಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What should you alert on?",
+       "qKn": "ಯಾವುದಕ್ಕೆ alert ಮಾಡಬೇಕು?",
+       "opts": [
+        "Queue age, failure rate and spend",
+        "Font size",
+        "Logo colour",
+        "Nothing"
+       ],
+       "optsKn": [
+        "queue ವಯಸ್ಸು, ವೈಫಲ್ಯ ದರ, ಖರ್ಚು",
+        "ಫಾಂಟ್ ಗಾತ್ರ",
+        "ಲೋಗೋ ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321565",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Eval-Driven Agent Development — Why Evaluate First",
+  "titleKn": "Eval-ಚಾಲಿತ Agent ಅಭಿವೃದ್ಧಿ — ಮೊದಲು ಮೌಲ್ಯಮಾಪನ ಏಕೆ",
+  "desc": "The habit of writing evaluation cases before and alongside the agent, so progress is measured rather than felt.",
+  "descKn": "agent ಮೊದಲು ಮತ್ತು ಜೊತೆಗೆ ಮೌಲ್ಯಮಾಪನ ಪ್ರಕರಣ ಬರೆಯುವ ಅಭ್ಯಾಸ, ಪ್ರಗತಿ ಭಾವನೆಯಲ್ಲ ಅಳತೆ.",
+  "objectives": [
+   "Explain vibes-based development and its problems.",
+   "Describe an eval as input, expected outcome and a scoring method.",
+   "Start with a small, representative set."
+  ],
+  "objectivesKn": [
+   "vibes-ಆಧಾರಿತ ಅಭಿವೃದ್ಧಿ ಮತ್ತು ಸಮಸ್ಯೆ ವಿವರಿಸಿ.",
+   "eval = ಇನ್‌ಪುಟ್, ನಿರೀಕ್ಷಿತ ಫಲಿತಾಂಶ, ಅಂಕ ವಿಧಾನ.",
+   "ಸಣ್ಣ ಪ್ರಾತಿನಿಧಿಕ ಸೆಟ್‌ನಿಂದ ಆರಂಭಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Eval-Driven Agent Development — Why Evaluate First",
+     "textKn": "Eval-Driven Agent Development — Why Evaluate First",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Eval-Driven Agent Development",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Trouble With Vibes",
+     "headingKn": "Vibes ಸಮಸ್ಯೆ",
+     "bodyEn": "Trying a few prompts and feeling that the agent seems better is unreliable. A change that fixes one case often breaks another, and you cannot see it without a fixed set of cases.",
+     "bodyKn": "ಕೆಲವು prompts ಪ್ರಯತ್ನಿಸಿ agent ಉತ್ತಮ ಎನಿಸುವುದು ವಿಶ್ವಾಸಾರ್ಹವಲ್ಲ. ಒಂದು ಪ್ರಕರಣ ಸರಿಪಡಿಸುವ ಬದಲಾವಣೆ ಇನ್ನೊಂದನ್ನು ಮುರಿಯಬಹುದು; ನಿಗದಿತ ಪ್ರಕರಣಗಳಿಲ್ಲದೆ ಕಾಣುವುದಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "What an Eval Is",
+     "headingKn": "Eval ಎಂದರೇನು",
+     "bodyEn": "An eval is a task input, a description of a good outcome and a way to score it, by code, a rubric or a judge. A set of evals turns quality into a number you can track over time.",
+     "bodyKn": "eval = ಕೆಲಸದ ಇನ್‌ಪುಟ್, ಉತ್ತಮ ಫಲಿತಾಂಶದ ವಿವರಣೆ, ಮತ್ತು ಕೋಡ್, rubric ಅಥವಾ judge ಮೂಲಕ ಅಂಕ ನೀಡುವ ವಿಧಾನ. evals ಸೆಟ್ ಗುಣಮಟ್ಟವನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಬಹುದಾದ ಸಂಖ್ಯೆಯಾಗಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Start Small and Real",
+     "headingKn": "ಚಿಕ್ಕದಾಗಿ ಮತ್ತು ನಿಜವಾಗಿ ಆರಂಭಿಸಿ",
+     "bodyEn": "Twenty realistic cases, including a few hard and a few adversarial ones, are enough to start. Grow the set from real failures rather than inventing tasks in the abstract.",
+     "bodyKn": "ಕಠಿಣ ಮತ್ತು ಪ್ರತಿಕೂಲ ಕೆಲವು ಸೇರಿದಂತೆ ಇಪ್ಪತ್ತು ನೈಜ ಪ್ರಕರಣಗಳು ಆರಂಭಕ್ಕೆ ಸಾಕು. ಅಮೂರ್ತವಾಗಿ ಕೆಲಸ ಕಲ್ಪಿಸುವ ಬದಲು ನಿಜ ವೈಫಲ್ಯಗಳಿಂದ ಸೆಟ್ ಬೆಳೆಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Evals Guide Design",
+     "headingKn": "Evals ವಿನ್ಯಾಸಕ್ಕೆ ಮಾರ್ಗದರ್ಶನ",
+     "bodyEn": "Writing evals first forces you to say what success means. That often reveals that the task itself is under-specified, which is cheaper to fix before building.",
+     "bodyKn": "ಮೊದಲು evals ಬರೆದರೆ ಯಶಸ್ಸು ಎಂದರೇನು ಎಂದು ಹೇಳಬೇಕಾಗುತ್ತದೆ. ಕೆಲಸವೇ ಅಸ್ಪಷ್ಟ ಎಂದು ಬಹಿರಂಗವಾಗಬಹುದು; ನಿರ್ಮಿಸುವ ಮೊದಲು ಸರಿಪಡಿಸುವುದು ಅಗ್ಗ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Vibes cannot catch regressions.\n• An eval is input, outcome and scoring.\n• Start with about twenty real cases and grow from failures.",
+     "bodyKn": "• vibes regressions ಹಿಡಿಯಲಾರದು.\n• eval = ಇನ್‌ಪುಟ್, ಫಲಿತಾಂಶ, ಅಂಕ.\n• ಸುಮಾರು ಇಪ್ಪತ್ತು ನಿಜ ಪ್ರಕರಣ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why is vibes-based testing weak?",
+       "qKn": "vibes ಆಧಾರಿತ ಪರೀಕ್ಷೆ ದುರ್ಬಲ ಏಕೆ?",
+       "opts": [
+        "Fixes can break other cases unnoticed",
+        "It is too fast",
+        "It uses too many tokens",
+        "It is illegal"
+       ],
+       "optsKn": [
+        "ಪರಿಹಾರ ಇತರ ಪ್ರಕರಣ ಗಮನಿಸದೆ ಮುರಿಯಬಹುದು",
+        "ಬಹಳ ವೇಗ",
+        "ಹೆಚ್ಚು tokens",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What are the parts of an eval?",
+       "qKn": "eval ನ ಭಾಗಗಳು?",
+       "opts": [
+        "Input, expected outcome and scoring method",
+        "Only a title",
+        "Only a logo",
+        "Only a score"
+       ],
+       "optsKn": [
+        "ಇನ್‌ಪುಟ್, ನಿರೀಕ್ಷಿತ ಫಲಿತಾಂಶ, ಅಂಕ ವಿಧಾನ",
+        "ಶೀರ್ಷಿಕೆ ಮಾತ್ರ",
+        "ಲೋಗೋ ಮಾತ್ರ",
+        "ಅಂಕ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Where should the eval set grow from?",
+       "qKn": "eval ಸೆಟ್ ಎಲ್ಲಿಂದ ಬೆಳೆಯಬೇಕು?",
+       "opts": [
+        "Real failures",
+        "Imagination only",
+        "Nowhere",
+        "Ads"
+       ],
+       "optsKn": [
+        "ನಿಜ ವೈಫಲ್ಯಗಳು",
+        "ಕಲ್ಪನೆ ಮಾತ್ರ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಜಾಹೀರಾತು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321565",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Eval-Driven Agent Development — Scoring: Code, Rubrics and LLM Judges",
+  "titleKn": "Eval-ಚಾಲಿತ Agent ಅಭಿವೃದ್ಧಿ — ಅಂಕ: ಕೋಡ್, Rubrics, LLM Judges",
+  "desc": "Choosing scoring methods, calibrating judges and handling non-determinism with repeated trials.",
+  "descKn": "ಅಂಕ ವಿಧಾನ ಆರಿಸುವುದು, judges ಹೊಂದಿಸುವುದು, ಪುನರಾವರ್ತಿತ ಪ್ರಯೋಗಗಳಿಂದ ಅನಿರ್ದಿಷ್ಟತೆ ನಿರ್ವಹಿಸುವುದು.",
+  "objectives": [
+   "Prefer code-based checks when possible.",
+   "Write clear rubrics and calibrate LLM judges.",
+   "Use repeated trials for non-deterministic agents."
+  ],
+  "objectivesKn": [
+   "ಸಾಧ್ಯವಾದಾಗ ಕೋಡ್ ಪರಿಶೀಲನೆ ಆದ್ಯತೆ.",
+   "ಸ್ಪಷ್ಟ rubrics ಬರೆದು judges ಹೊಂದಿಸಿ.",
+   "ಅನಿರ್ದಿಷ್ಟ agents ಗೆ ಪುನರಾವರ್ತಿತ ಪ್ರಯೋಗ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Eval-Driven Agent Development — Scoring: Code, Rubrics and LLM Judges",
+     "textKn": "Eval-Driven Agent Development — Scoring: Code, Rubrics and LLM Judges",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Eval-Driven Agent Development",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Code Checks First",
+     "headingKn": "ಮೊದಲು ಕೋಡ್ ಪರಿಶೀಲನೆ",
+     "bodyEn": "If success can be checked by code, such as a valid JSON shape, a passing test or a correct number, do that. It is cheap, fast and unbiased.",
+     "bodyKn": "ಯಶಸ್ಸನ್ನು ಕೋಡ್‌ನಿಂದ ಪರಿಶೀಲಿಸಬಹುದಾದರೆ (ಮಾನ್ಯ JSON, ಪಾಸ್ ಆಗುವ test, ಸರಿ ಸಂಖ್ಯೆ) ಅದನ್ನೇ ಮಾಡಿ. ಅಗ್ಗ, ವೇಗ, ಪಕ್ಷಪಾತವಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Rubrics and Judges",
+     "headingKn": "Rubrics ಮತ್ತು Judges",
+     "bodyEn": "For qualities such as helpfulness or tone, write a rubric with concrete levels and use a model as judge. Check its scores against human ratings on a sample, and watch for biases such as favouring longer answers.",
+     "bodyKn": "ಸಹಾಯಕತೆ ಅಥವಾ ಸ್ವರದಂತಹ ಗುಣಗಳಿಗೆ ನಿರ್ದಿಷ್ಟ ಹಂತಗಳ rubric ಬರೆದು ಮಾದರಿಯನ್ನು judge ಆಗಿ ಬಳಸಿ. ಮಾದರಿಯ ಮೇಲೆ ಮಾನವ ರೇಟಿಂಗ್‌ಗೆ ಹೋಲಿಸಿ, ಉದ್ದ ಉತ್ತರಕ್ಕೆ ಒಲವಿನಂತಹ ಪಕ್ಷಪಾತ ಗಮನಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Repeated Trials",
+     "headingKn": "ಪುನರಾವರ್ತಿತ ಪ್ರಯೋಗಗಳು",
+     "bodyEn": "A single run of a non-deterministic agent is one sample. Run each case several times and track pass rate and variance, so a lucky pass is not mistaken for reliability.",
+     "bodyKn": "ಅನಿರ್ದಿಷ್ಟ agent ನ ಒಂದು run ಒಂದು ಮಾದರಿ ಮಾತ್ರ. ಪ್ರತಿ ಪ್ರಕರಣ ಹಲವು ಬಾರಿ ಚಲಾಯಿಸಿ ಪಾಸ್ ದರ ಮತ್ತು ಭಿನ್ನತೆ ಗಮನಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Outcome Over Path",
+     "headingKn": "ಹಾದಿಗಿಂತ ಫಲಿತಾಂಶ",
+     "bodyEn": "Where possible score the final result, not the exact steps, since many different paths can be valid. Add path checks only for constraints such as never calling a forbidden tool.",
+     "bodyKn": "ಸಾಧ್ಯವಾದಲ್ಲಿ ನಿಖರ ಹಂತಗಳಲ್ಲ, ಅಂತಿಮ ಫಲಿತಾಂಶಕ್ಕೆ ಅಂಕ ನೀಡಿ. ನಿಷೇಧಿತ tool ಎಂದಿಗೂ ಕರೆಯದಂತಹ ನಿರ್ಬಂಧಗಳಿಗೆ ಮಾತ್ರ ಹಾದಿ ಪರಿಶೀಲನೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Use code checks wherever possible.\n• Calibrate LLM judges against humans.\n• Repeat trials; score outcomes more than paths.",
+     "bodyKn": "• ಸಾಧ್ಯವಾದೆಡೆ ಕೋಡ್ ಪರಿಶೀಲನೆ.\n• judges ಮಾನವರಿಗೆ ಹೊಂದಿಸಿ.\n• ಪ್ರಯೋಗ ಪುನರಾವರ್ತಿಸಿ; ಫಲಿತಾಂಶಕ್ಕೆ ಅಂಕ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why prefer code-based scoring?",
+       "qKn": "ಕೋಡ್ ಆಧಾರಿತ ಅಂಕ ಏಕೆ ಆದ್ಯತೆ?",
+       "opts": [
+        "Cheap, fast and unbiased",
+        "It is subjective",
+        "It needs a judge",
+        "It is slower"
+       ],
+       "optsKn": [
+        "ಅಗ್ಗ, ವೇಗ, ಪಕ್ಷಪಾತವಿಲ್ಲ",
+        "ವ್ಯಕ್ತಿನಿಷ್ಠ",
+        "judge ಬೇಕು",
+        "ನಿಧಾನ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why repeat trials?",
+       "qKn": "ಪ್ರಯೋಗ ಏಕೆ ಪುನರಾವರ್ತಿಸಬೇಕು?",
+       "opts": [
+        "A single run is one sample of a non-deterministic agent",
+        "To waste money",
+        "Trials are decoration",
+        "To lengthen reports"
+       ],
+       "optsKn": [
+        "ಒಂದು run ಅನಿರ್ದಿಷ್ಟ agent ನ ಒಂದು ಮಾದರಿ",
+        "ಹಣ ವ್ಯರ್ಥ",
+        "ಅಲಂಕಾರ",
+        "ವರದಿ ಉದ್ದ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A known judge bias is:",
+       "qKn": "ತಿಳಿದ judge ಪಕ್ಷಪಾತ:",
+       "opts": [
+        "Favouring longer answers",
+        "Favouring shorter answers always",
+        "None exists",
+        "Random deletion"
+       ],
+       "optsKn": [
+        "ಉದ್ದ ಉತ್ತರಕ್ಕೆ ಒಲವು",
+        "ಯಾವಾಗಲೂ ಚಿಕ್ಕದಕ್ಕೆ ಒಲವು",
+        "ಯಾವುದೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ ಅಳಿಸುವಿಕೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321565",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Eval-Driven Agent Development — The Loop: Regression Gates and Continuous Improvement",
+  "titleKn": "Eval-ಚಾಲಿತ Agent ಅಭಿವೃದ್ಧಿ — Loop: Regression Gates ಮತ್ತು ನಿರಂತರ ಸುಧಾರಣೆ",
+  "desc": "Running evals in CI as a gate, tracking results over time and using failures to drive the next iteration.",
+  "descKn": "CI ನಲ್ಲಿ evals ಅನ್ನು gate ಆಗಿ ಚಲಾಯಿಸುವುದು, ಕಾಲಕ್ರಮೇಣ ಫಲಿತಾಂಶ ಟ್ರ್ಯಾಕ್, ವೈಫಲ್ಯಗಳಿಂದ ಮುಂದಿನ ಪುನರಾವರ್ತನೆ.",
+  "objectives": [
+   "Gate changes on evaluation results.",
+   "Track scores, cost and latency over versions.",
+   "Turn every production failure into a new eval."
+  ],
+  "objectivesKn": [
+   "ಮೌಲ್ಯಮಾಪನ ಫಲಿತಾಂಶದ ಮೇಲೆ ಬದಲಾವಣೆ gate ಮಾಡಿ.",
+   "ಆವೃತ್ತಿಗಳಲ್ಲಿ ಅಂಕ, ವೆಚ್ಚ, ವಿಳಂಬ ಟ್ರ್ಯಾಕ್.",
+   "ಪ್ರತಿ ವೈಫಲ್ಯವನ್ನು ಹೊಸ eval ಆಗಿ ಪರಿವರ್ತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Eval-Driven Agent Development — The Loop: Regression Gates and Continuous Improvement",
+     "textKn": "Eval-Driven Agent Development — The Loop: Regression Gates and Continuous Improvement",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Eval-Driven Agent Development",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Evals as a Gate",
+     "headingKn": "Evals ಒಂದು Gate",
+     "bodyEn": "Run the eval set automatically on every proposed change to prompts, tools or models. If the pass rate drops below a threshold, the change does not ship until it is understood.",
+     "bodyKn": "prompts, tools, ಮಾದರಿಗಳ ಪ್ರತಿ ಪ್ರಸ್ತಾವಿತ ಬದಲಾವಣೆಯ ಮೇಲೆ eval ಸೆಟ್ ಸ್ವಯಂ ಚಲಾಯಿಸಿ. ಪಾಸ್ ದರ ಮಿತಿಗಿಂತ ಕೆಳಗೆ ಬಿದ್ದರೆ ಅರ್ಥವಾಗುವವರೆಗೆ ಬದಲಾವಣೆ ಬಿಡುಗಡೆ ಆಗಬಾರದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Track Quality, Cost and Latency",
+     "headingKn": "ಗುಣಮಟ್ಟ, ವೆಚ್ಚ, ವಿಳಂಬ ಟ್ರ್ಯಾಕ್",
+     "bodyEn": "A change that improves accuracy by two points but triples cost may not be an improvement. Record all three metrics per version so trade-offs are explicit.",
+     "bodyKn": "ನಿಖರತೆಯನ್ನು ಎರಡು ಅಂಕ ಸುಧಾರಿಸಿ ವೆಚ್ಚ ಮೂರು ಪಟ್ಟು ಮಾಡುವ ಬದಲಾವಣೆ ಸುಧಾರಣೆ ಅಲ್ಲದಿರಬಹುದು. ಸಮತೋಲನ ಸ್ಪಷ್ಟವಾಗುವಂತೆ ಮೂರೂ ಮೆಟ್ರಿಕ್ಸ್ ದಾಖಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Failures Become Evals",
+     "headingKn": "ವೈಫಲ್ಯಗಳು Evals ಆಗುತ್ತವೆ",
+     "bodyEn": "Each production failure should produce a new eval case before it is fixed. This is how the suite gets smarter and how the same bug is prevented from returning.",
+     "bodyKn": "ಪ್ರತಿ ಉತ್ಪಾದನಾ ವೈಫಲ್ಯ ಸರಿಪಡಿಸುವ ಮೊದಲು ಹೊಸ eval ಪ್ರಕರಣ ಸೃಷ್ಟಿಸಬೇಕು. ಹೀಗೆ ಸೂಟ್ ಬುದ್ಧಿವಂತವಾಗುತ್ತದೆ ಮತ್ತು ಅದೇ ದೋಷ ಮರುಕಳಿಸದಂತೆ ತಡೆಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Beware Overfitting to the Eval Set",
+     "headingKn": "Eval ಸೆಟ್‌ಗೆ Overfitting ಎಚ್ಚರ",
+     "bodyEn": "If you tune prompts until the set passes, you may only have fitted the set. Keep a held-out portion you do not look at and refresh cases as your product changes.",
+     "bodyKn": "ಸೆಟ್ ಪಾಸ್ ಆಗುವವರೆಗೆ prompts ಹೊಂದಿಸಿದರೆ ಸೆಟ್‌ಗೆ ಮಾತ್ರ ಹೊಂದಿಸಿರಬಹುದು. ನೀವು ನೋಡದ held-out ಭಾಗ ಇಟ್ಟು ಉತ್ಪನ್ನ ಬದಲಾದಂತೆ ಪ್ರಕರಣ ಹೊಸದಾಗಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Gate changes on the eval pass rate.\n• Track quality, cost and latency together.\n• Every failure becomes a new eval; keep a held-out set.",
+     "bodyKn": "• eval ಪಾಸ್ ದರದ ಮೇಲೆ gate.\n• ಗುಣಮಟ್ಟ, ವೆಚ್ಚ, ವಿಳಂಬ ಒಟ್ಟಿಗೆ.\n• ವೈಫಲ್ಯ = ಹೊಸ eval; held-out ಸೆಟ್."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What should happen when the eval pass rate drops?",
+       "qKn": "eval ಪಾಸ್ ದರ ಇಳಿದರೆ ಏನಾಗಬೇಕು?",
+       "opts": [
+        "The change waits until understood",
+        "It ships anyway",
+        "The set is deleted",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಅರ್ಥವಾಗುವವರೆಗೆ ಬದಲಾವಣೆ ಕಾಯುತ್ತದೆ",
+        "ಹೇಗಾದರೂ ಬಿಡುಗಡೆ",
+        "ಸೆಟ್ ಅಳಿಸಲಾಗುತ್ತದೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why track cost with accuracy?",
+       "qKn": "ನಿಖರತೆಯೊಂದಿಗೆ ವೆಚ್ಚ ಏಕೆ ಟ್ರ್ಯಾಕ್?",
+       "opts": [
+        "A small gain may not justify triple cost",
+        "Cost is irrelevant",
+        "To hide accuracy",
+        "It is a rule"
+       ],
+       "optsKn": [
+        "ಸಣ್ಣ ಲಾಭ ಮೂರು ಪಟ್ಟು ವೆಚ್ಚ ಸಮರ್ಥಿಸದಿರಬಹುದು",
+        "ವೆಚ್ಚ ಅಪ್ರಸ್ತುತ",
+        "ನಿಖರತೆ ಮರೆ",
+        "ನಿಯಮ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why keep a held-out eval portion?",
+       "qKn": "held-out eval ಭಾಗ ಏಕೆ?",
+       "opts": [
+        "To avoid overfitting to the visible cases",
+        "To save disk",
+        "It is required by CI",
+        "To slow tests"
+       ],
+       "optsKn": [
+        "ಕಾಣುವ ಪ್ರಕರಣಗಳಿಗೆ overfitting ತಪ್ಪಿಸಲು",
+        "ಡಿಸ್ಕ್ ಉಳಿತಾಯ",
+        "CI ಅಗತ್ಯ",
+        "ಪರೀಕ್ಷೆ ನಿಧಾನ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321568",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Agent Workbench: Why Capable Models Still Fail — The Missing Environment",
+  "titleKn": "Agent Workbench: ಸಮರ್ಥ ಮಾದರಿಗಳೂ ಏಕೆ ವಿಫಲ — ಕಾಣೆಯಾದ ಪರಿಸರ",
+  "desc": "Why strong models still fail real repository tasks: they lack the context, guardrails and feedback a good working environment supplies.",
+  "descKn": "ಬಲಿಷ್ಠ ಮಾದರಿಗಳು ನಿಜ ರೆಪೊ ಕೆಲಸಗಳಲ್ಲಿ ಏಕೆ ವಿಫಲ: ಉತ್ತಮ ಕೆಲಸದ ಪರಿಸರ ನೀಡುವ context, ರಕ್ಷಣೆ, ಪ್ರತಿಕ್ರಿಯೆ ಇಲ್ಲ.",
+  "objectives": [
+   "Explain that capability and reliability are different things.",
+   "List what a workbench supplies around the model.",
+   "Diagnose failures as environment problems, not only model problems."
+  ],
+  "objectivesKn": [
+   "ಸಾಮರ್ಥ್ಯ ಮತ್ತು ವಿಶ್ವಾಸಾರ್ಹತೆ ಬೇರೆ ಎಂದು ವಿವರಿಸಿ.",
+   "workbench ಮಾದರಿಯ ಸುತ್ತ ಏನು ನೀಡುತ್ತದೆ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ವೈಫಲ್ಯಗಳನ್ನು ಪರಿಸರ ಸಮಸ್ಯೆಗಳಾಗಿ ರೋಗನಿರ್ಣಯ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Agent Workbench: Why Capable Models Still Fail — The Missing Environment",
+     "textKn": "Agent Workbench: Why Capable Models Still Fail — The Missing Environment",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Agent Workbench: Why Capable Models Still Fail",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Capable Is Not Reliable",
+     "headingKn": "ಸಮರ್ಥ ≠ ವಿಶ್ವಾಸಾರ್ಹ",
+     "bodyEn": "A model can solve a hard puzzle and still fail a routine repository task, because the task depends on unwritten context: how to run tests, which folders matter, what the team forbids.",
+     "bodyKn": "ಮಾದರಿ ಕಠಿಣ ಒಗಟು ಬಿಡಿಸಿಯೂ ಸಾಮಾನ್ಯ ರೆಪೊ ಕೆಲಸದಲ್ಲಿ ವಿಫಲವಾಗಬಹುದು, ಏಕೆಂದರೆ ಕೆಲಸ ಬರೆಯದ context ಮೇಲೆ ಅವಲಂಬಿತ: tests ಹೇಗೆ ಚಲಾಯಿಸುವುದು, ಯಾವ ಫೋಲ್ಡರ್ ಮುಖ್ಯ, ತಂಡ ಏನು ನಿಷೇಧಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Workbench Idea",
+     "headingKn": "Workbench ಕಲ್ಪನೆ",
+     "bodyEn": "A workbench is the structured environment around the model: written instructions, durable state, initialisation scripts, scope limits, feedback from running code, verification gates and a handoff process.",
+     "bodyKn": "workbench ಮಾದರಿಯ ಸುತ್ತಲಿನ ರಚನಾತ್ಮಕ ಪರಿಸರ: ಬರೆದ ಸೂಚನೆ, ಶಾಶ್ವತ state, ಆರಂಭ scripts, ವ್ಯಾಪ್ತಿ ಮಿತಿ, ಕೋಡ್ ಚಲಾವಣೆ ಪ್ರತಿಕ್ರಿಯೆ, ಪರಿಶೀಲನಾ gates, ಹಸ್ತಾಂತರ ಪ್ರಕ್ರಿಯೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Failures as Environment Bugs",
+     "headingKn": "ವೈಫಲ್ಯಗಳು ಪರಿಸರ ದೋಷಗಳು",
+     "bodyEn": "When an agent fails, ask what information or check was missing before blaming the model. Often adding a clear instruction, a test command or a guard fixes the class of failure permanently.",
+     "bodyKn": "agent ವಿಫಲವಾದಾಗ ಮಾದರಿಯನ್ನು ದೂಷಿಸುವ ಮೊದಲು ಯಾವ ಮಾಹಿತಿ ಅಥವಾ ಪರಿಶೀಲನೆ ಕಾಣೆಯಾಗಿತ್ತು ಎಂದು ಕೇಳಿ. ಸ್ಪಷ್ಟ ಸೂಚನೆ, test ಆದೇಶ, guard ಸೇರಿಸುವುದು ಆ ವೈಫಲ್ಯ ವರ್ಗವನ್ನು ಶಾಶ್ವತವಾಗಿ ಸರಿಪಡಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Improve the Harness Before the Model",
+     "headingKn": "ಮಾದರಿಗಿಂತ ಮೊದಲು Harness ಸುಧಾರಿಸಿ",
+     "bodyEn": "Upgrading the model is expensive and uncertain. Improving the environment is cheap, testable and helps whichever model you use next.",
+     "bodyKn": "ಮಾದರಿ ಅಪ್‌ಗ್ರೇಡ್ ದುಬಾರಿ ಮತ್ತು ಅನಿಶ್ಚಿತ. ಪರಿಸರ ಸುಧಾರಣೆ ಅಗ್ಗ, ಪರೀಕ್ಷಿಸಬಹುದು, ಮುಂದೆ ಯಾವ ಮಾದರಿ ಬಳಸಿದರೂ ಸಹಾಯ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Strong models still miss unwritten context.\n• A workbench supplies instructions, state, feedback and gates.\n• Fix the environment before blaming the model.",
+     "bodyKn": "• ಬಲಿಷ್ಠ ಮಾದರಿ ಬರೆಯದ context ತಪ್ಪಿಸುತ್ತದೆ.\n• workbench ಸೂಚನೆ, state, ಪ್ರತಿಕ್ರಿಯೆ, gates ನೀಡುತ್ತದೆ.\n• ಮೊದಲು ಪರಿಸರ ಸರಿಪಡಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why can a strong model fail a routine repository task?",
+       "qKn": "ಬಲಿಷ್ಠ ಮಾದರಿ ಸಾಮಾನ್ಯ ರೆಪೊ ಕೆಲಸದಲ್ಲಿ ಏಕೆ ವಿಫಲ?",
+       "opts": [
+        "It lacks unwritten project context",
+        "It cannot read",
+        "It has no tokens",
+        "Repositories are encrypted"
+       ],
+       "optsKn": [
+        "ಬರೆಯದ ಯೋಜನಾ context ಇಲ್ಲ",
+        "ಓದಲಾಗದು",
+        "tokens ಇಲ್ಲ",
+        "ರೆಪೊ ಎನ್‌ಕ್ರಿಪ್ಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is a workbench?",
+       "qKn": "workbench ಎಂದರೇನು?",
+       "opts": [
+        "The structured environment around the model",
+        "A physical desk",
+        "A new model",
+        "A database only"
+       ],
+       "optsKn": [
+        "ಮಾದರಿಯ ಸುತ್ತಲಿನ ರಚನಾತ್ಮಕ ಪರಿಸರ",
+        "ಭೌತಿಕ ಮೇಜು",
+        "ಹೊಸ ಮಾದರಿ",
+        "ಡೇಟಾಬೇಸ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What should you ask first when an agent fails?",
+       "qKn": "agent ವಿಫಲವಾದಾಗ ಮೊದಲು ಏನು ಕೇಳಬೇಕು?",
+       "opts": [
+        "What information or check was missing",
+        "Which model is largest",
+        "Who is to blame",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಯಾವ ಮಾಹಿತಿ ಅಥವಾ ಪರಿಶೀಲನೆ ಕಾಣೆಯಾಗಿತ್ತು",
+        "ಯಾವ ಮಾದರಿ ದೊಡ್ಡದು",
+        "ಯಾರ ತಪ್ಪು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321568",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Agent Workbench: Why Capable Models Still Fail — Common Failure Patterns in Repositories",
+  "titleKn": "Agent Workbench — ರೆಪೊಗಳಲ್ಲಿ ಸಾಮಾನ್ಯ ವೈಫಲ್ಯ ಮಾದರಿಗಳು",
+  "desc": "Recurring ways coding agents fail in real repositories and the environmental fix for each.",
+  "descKn": "ನಿಜ ರೆಪೊಗಳಲ್ಲಿ coding agents ವಿಫಲವಾಗುವ ಪುನರಾವರ್ತಿತ ವಿಧಾನಗಳು ಮತ್ತು ಪ್ರತಿಯೊಂದಕ್ಕೆ ಪರಿಸರ ಪರಿಹಾರ.",
+  "objectives": [
+   "Recognise scope creep, false completion, context loss and convention drift.",
+   "Match each to a workbench remedy.",
+   "Instrument failures so they can be counted."
+  ],
+  "objectivesKn": [
+   "scope creep, ಸುಳ್ಳು ಪೂರ್ಣತೆ, context ನಷ್ಟ, ಸಂಪ್ರದಾಯ ಬದಲಾವಣೆ ಗುರುತಿಸಿ.",
+   "ಪ್ರತಿಯೊಂದಕ್ಕೆ workbench ಪರಿಹಾರ ಹೊಂದಿಸಿ.",
+   "ವೈಫಲ್ಯಗಳನ್ನು ಎಣಿಸಲು instrument ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Agent Workbench: Why Capable Models Still Fail — Common Failure Patterns in Repositories",
+     "textKn": "Agent Workbench: Why Capable Models Still Fail — Common Failure Patterns in Repositories",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Agent Workbench: Why Capable Models Still Fail",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Scope Creep",
+     "headingKn": "Scope Creep",
+     "bodyEn": "The agent fixes the requested bug and also refactors unrelated files. Remedy: a written scope contract that names what may and may not change.",
+     "bodyKn": "agent ಕೋರಿದ ದೋಷ ಸರಿಪಡಿಸಿ ಸಂಬಂಧವಿಲ್ಲದ ಫೈಲ್‌ಗಳನ್ನೂ ಮರುರಚಿಸುತ್ತದೆ. ಪರಿಹಾರ: ಯಾವುದು ಬದಲಾಗಬಹುದು/ಬಾರದು ಎಂದು ಹೆಸರಿಸುವ ಲಿಖಿತ scope ಒಪ್ಪಂದ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "False Completion",
+     "headingKn": "ಸುಳ್ಳು ಪೂರ್ಣತೆ",
+     "bodyEn": "The agent declares the task done without running the tests, or after tests that do not cover the change. Remedy: a verification gate that must pass before \"done\".",
+     "bodyKn": "agent tests ಚಲಾಯಿಸದೆ ಅಥವಾ ಬದಲಾವಣೆ ಒಳಗೊಳ್ಳದ tests ನಂತರ ಕೆಲಸ ಮುಗಿದಿದೆ ಎನ್ನುತ್ತದೆ. ಪರಿಹಾರ: \"ಮುಗಿಯಿತು\" ಮೊದಲು ಪಾಸ್ ಆಗಬೇಕಾದ ಪರಿಶೀಲನಾ gate."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Context Loss Between Sessions",
+     "headingKn": "ಸೆಷನ್‌ಗಳ ನಡುವೆ Context ನಷ್ಟ",
+     "bodyEn": "A new session forgets decisions and progress from the last one and repeats or contradicts work. Remedy: durable state files and structured handoff notes.",
+     "bodyKn": "ಹೊಸ ಸೆಷನ್ ಹಿಂದಿನದರ ನಿರ್ಧಾರ ಮತ್ತು ಪ್ರಗತಿ ಮರೆತು ಕೆಲಸ ಪುನರಾವರ್ತಿಸುತ್ತದೆ ಅಥವಾ ವಿರೋಧಿಸುತ್ತದೆ. ಪರಿಹಾರ: ಶಾಶ್ವತ state ಫೈಲ್‌ಗಳು ಮತ್ತು ರಚನಾತ್ಮಕ ಹಸ್ತಾಂತರ ಟಿಪ್ಪಣಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Convention Drift",
+     "headingKn": "ಸಂಪ್ರದಾಯ ಬದಲಾವಣೆ",
+     "bodyEn": "The agent ignores the project's naming, error handling or test style. Remedy: concise written conventions plus automated linters that enforce them.",
+     "bodyKn": "agent ಯೋಜನೆಯ ಹೆಸರಿಸುವಿಕೆ, ದೋಷ ನಿರ್ವಹಣೆ, test ಶೈಲಿ ನಿರ್ಲಕ್ಷಿಸುತ್ತದೆ. ಪರಿಹಾರ: ಸಂಕ್ಷಿಪ್ತ ಲಿಖಿತ ಸಂಪ್ರದಾಯ ಮತ್ತು ಅವನ್ನು ಜಾರಿಗೊಳಿಸುವ ಸ್ವಯಂ linters."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Failure to remedy",
+     "headers": [
+      "Failure",
+      "Workbench remedy"
+     ],
+     "rows": [
+      [
+       "Scope creep",
+       "Scope contract"
+      ],
+      [
+       "False completion",
+       "Verification gate"
+      ],
+      [
+       "Context loss",
+       "Durable state and handoff notes"
+      ],
+      [
+       "Convention drift",
+       "Written conventions plus linters"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Name recurring failures.\n• Each has a cheap environmental remedy.\n• Count failures to prioritise fixes.",
+     "bodyKn": "• ಪುನರಾವರ್ತಿತ ವೈಫಲ್ಯ ಹೆಸರಿಸಿ.\n• ಪ್ರತಿಯೊಂದಕ್ಕೆ ಪರಿಸರ ಪರಿಹಾರ.\n• ಎಣಿಸಿ ಆದ್ಯತೆ ನೀಡಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What remedies false completion?",
+       "qKn": "ಸುಳ್ಳು ಪೂರ್ಣತೆಗೆ ಪರಿಹಾರ?",
+       "opts": [
+        "A verification gate before done",
+        "A bigger model",
+        "More prompts",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮುಗಿಯಿತು ಮೊದಲು ಪರಿಶೀಲನಾ gate",
+        "ದೊಡ್ಡ ಮಾದರಿ",
+        "ಹೆಚ್ಚು prompts",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What remedies context loss between sessions?",
+       "qKn": "ಸೆಷನ್‌ಗಳ ನಡುವೆ context ನಷ್ಟಕ್ಕೆ ಪರಿಹಾರ?",
+       "opts": [
+        "Durable state and handoff notes",
+        "Shorter names",
+        "A new logo",
+        "Deleting files"
+       ],
+       "optsKn": [
+        "ಶಾಶ್ವತ state ಮತ್ತು ಹಸ್ತಾಂತರ ಟಿಪ್ಪಣಿ",
+        "ಚಿಕ್ಕ ಹೆಸರು",
+        "ಹೊಸ ಲೋಗೋ",
+        "ಫೈಲ್ ಅಳಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What enforces conventions automatically?",
+       "qKn": "ಸಂಪ್ರದಾಯ ಸ್ವಯಂ ಜಾರಿಗೊಳಿಸುವುದೇನು?",
+       "opts": [
+        "Linters and checks",
+        "Hope",
+        "Longer prompts only",
+        "Random review"
+       ],
+       "optsKn": [
+        "linters ಮತ್ತು ಪರಿಶೀಲನೆ",
+        "ಆಶೆ",
+        "ಉದ್ದ prompts ಮಾತ್ರ",
+        "ಯಾದೃಚ್ಛಿಕ ವಿಮರ್ಶೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b321568",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Agent Workbench: Why Capable Models Still Fail — Measuring the Workbench",
+  "titleKn": "Agent Workbench — Workbench ಅಳತೆ",
+  "desc": "How to measure whether workbench changes improve outcomes, using task suites, ablations and cost tracking.",
+  "descKn": "workbench ಬದಲಾವಣೆಗಳು ಫಲಿತಾಂಶ ಸುಧಾರಿಸುತ್ತವೆಯೇ ಎಂದು ಹೇಗೆ ಅಳೆಯುವುದು.",
+  "objectives": [
+   "Build a small task suite representative of your repository.",
+   "Run ablations: remove one workbench element at a time.",
+   "Track success, retries and human corrections."
+  ],
+  "objectivesKn": [
+   "ನಿಮ್ಮ ರೆಪೊದ ಪ್ರತಿನಿಧಿ ಕೆಲಸ ಸೂಟ್ ನಿರ್ಮಿಸಿ.",
+   "ablations ಚಲಾಯಿಸಿ.",
+   "ಯಶಸ್ಸು, ಮರುಪ್ರಯತ್ನ, ಮಾನವ ತಿದ್ದುಪಡಿ ಟ್ರ್ಯಾಕ್."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Agent Workbench: Why Capable Models Still Fail — Measuring the Workbench",
+     "textKn": "Agent Workbench: Why Capable Models Still Fail — Measuring the Workbench",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Agent Workbench: Why Capable Models Still Fail",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Representative Task Suite",
+     "headingKn": "ಪ್ರತಿನಿಧಿ ಕೆಲಸ ಸೂಟ್",
+     "bodyEn": "Collect a modest set of tasks that reflect real work in your repository, each with an automatic success check such as a test or a diff constraint.",
+     "bodyKn": "ನಿಮ್ಮ ರೆಪೊದ ನಿಜ ಕೆಲಸ ಪ್ರತಿಬಿಂಬಿಸುವ ಮಧ್ಯಮ ಕೆಲಸಗಳ ಸೆಟ್ ಸಂಗ್ರಹಿಸಿ, ಪ್ರತಿಯೊಂದಕ್ಕೆ test ಅಥವಾ diff ನಿರ್ಬಂಧದಂತಹ ಸ್ವಯಂ ಯಶಸ್ಸು ಪರಿಶೀಲನೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Ablation",
+     "headingKn": "Ablation",
+     "bodyEn": "To learn what helps, run the suite with and without one element, such as the instruction file or the verification gate, and compare. Elements that change nothing can be removed to keep the workbench light.",
+     "bodyKn": "ಏನು ಸಹಾಯ ಮಾಡುತ್ತದೆ ತಿಳಿಯಲು ಸೂಚನೆ ಫೈಲ್ ಅಥವಾ ಪರಿಶೀಲನಾ gate ನಂತಹ ಒಂದು ಅಂಶದೊಂದಿಗೆ ಮತ್ತು ಇಲ್ಲದೆ ಸೂಟ್ ಚಲಾಯಿಸಿ ಹೋಲಿಸಿ. ಏನೂ ಬದಲಿಸದ ಅಂಶಗಳನ್ನು ತೆಗೆದು workbench ಹಗುರವಾಗಿಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Beyond Pass Rate",
+     "headingKn": "ಪಾಸ್ ದರದ ಆಚೆ",
+     "bodyEn": "Also track how many retries and human corrections a task needed, and how much it cost. A workbench that raises the pass rate but doubles human review time may not be a win.",
+     "bodyKn": "ಕೆಲಸಕ್ಕೆ ಎಷ್ಟು ಮರುಪ್ರಯತ್ನ, ಮಾನವ ತಿದ್ದುಪಡಿ, ವೆಚ್ಚ ಬೇಕಾಯಿತು ಎಂದೂ ಟ್ರ್ಯಾಕ್ ಮಾಡಿ. ಪಾಸ್ ದರ ಹೆಚ್ಚಿಸಿ ಮಾನವ ಪರಿಶೀಲನೆ ಸಮಯ ದ್ವಿಗುಣಗೊಳಿಸುವ workbench ಗೆಲುವಲ್ಲದಿರಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Iterate in Small Steps",
+     "headingKn": "ಸಣ್ಣ ಹಂತಗಳಲ್ಲಿ ಪುನರಾವರ್ತಿಸಿ",
+     "bodyEn": "Change one thing at a time and re-measure. Keep a changelog of workbench changes and their measured effect so knowledge does not live only in one person's head.",
+     "bodyKn": "ಒಂದು ಸಮಯದಲ್ಲಿ ಒಂದನ್ನೇ ಬದಲಿಸಿ ಮರುಅಳೆಯಿರಿ. workbench ಬದಲಾವಣೆಗಳು ಮತ್ತು ಅಳೆದ ಪರಿಣಾಮದ changelog ಇಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Build a representative suite with automatic checks.\n• Ablate one element at a time.\n• Track retries, human corrections and cost too.",
+     "bodyKn": "• ಪ್ರತಿನಿಧಿ ಸೂಟ್.\n• ಒಂದೊಂದು ಅಂಶ ablate.\n• ಮರುಪ್ರಯತ್ನ, ತಿದ್ದುಪಡಿ, ವೆಚ್ಚ ಟ್ರ್ಯಾಕ್."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is an ablation?",
+       "qKn": "ablation ಎಂದರೇನು?",
+       "opts": [
+        "Removing one element to measure its effect",
+        "Adding all elements",
+        "Deleting the suite",
+        "A type of model"
+       ],
+       "optsKn": [
+        "ಒಂದು ಅಂಶ ತೆಗೆದು ಪರಿಣಾಮ ಅಳೆಯುವುದು",
+        "ಎಲ್ಲಾ ಸೇರಿಸುವುದು",
+        "ಸೂಟ್ ಅಳಿಸುವುದು",
+        "ಮಾದರಿ ಪ್ರಕಾರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why track human corrections?",
+       "qKn": "ಮಾನವ ತಿದ್ದುಪಡಿ ಏಕೆ ಟ್ರ್ಯಾಕ್?",
+       "opts": [
+        "A higher pass rate may still cost more review time",
+        "They are decoration",
+        "They lower cost always",
+        "They are illegal"
+       ],
+       "optsKn": [
+        "ಹೆಚ್ಚಿನ ಪಾಸ್ ದರ ಹೆಚ್ಚು ಪರಿಶೀಲನೆ ಸಮಯ ಕೇಳಬಹುದು",
+        "ಅಲಂಕಾರ",
+        "ಯಾವಾಗಲೂ ವೆಚ್ಚ ಕಡಿಮೆ",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why change one thing at a time?",
+       "qKn": "ಒಂದು ಸಮಯದಲ್ಲಿ ಒಂದನ್ನೇ ಏಕೆ ಬದಲಿಸಬೇಕು?",
+       "opts": [
+        "So the effect can be attributed",
+        "To be slow",
+        "To hide results",
+        "It is a rule of HTML"
+       ],
+       "optsKn": [
+        "ಪರಿಣಾಮ ಆರೋಪಿಸಲು",
+        "ನಿಧಾನವಾಗಲು",
+        "ಫಲಿತಾಂಶ ಮರೆ",
+        "HTML ನಿಯಮ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b32156b",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "The Minimal Agent Workbench — Start With Five Files",
+  "titleKn": "ಕನಿಷ್ಠ Agent Workbench — ಐದು ಫೈಲ್‌ಗಳಿಂದ ಆರಂಭ",
+  "desc": "A deliberately small starting workbench: instructions, task scope, state, a check command and a handoff note.",
+  "descKn": "ಉದ್ದೇಶಪೂರ್ವಕವಾಗಿ ಚಿಕ್ಕ ಆರಂಭ workbench: ಸೂಚನೆ, ಕೆಲಸ ವ್ಯಾಪ್ತಿ, state, ಪರಿಶೀಲನಾ ಆದೇಶ, ಹಸ್ತಾಂತರ ಟಿಪ್ಪಣಿ.",
+  "objectives": [
+   "Describe the minimum components of a useful workbench.",
+   "Keep each component short and specific.",
+   "Explain why starting small beats a large framework."
+  ],
+  "objectivesKn": [
+   "ಉಪಯುಕ್ತ workbench ನ ಕನಿಷ್ಠ ಘಟಕ ವಿವರಿಸಿ.",
+   "ಪ್ರತಿ ಘಟಕ ಚಿಕ್ಕ ಮತ್ತು ನಿರ್ದಿಷ್ಟವಾಗಿಡಿ.",
+   "ಚಿಕ್ಕದಾಗಿ ಆರಂಭಿಸುವುದು ದೊಡ್ಡ ಚೌಕಟ್ಟಿಗಿಂತ ಉತ್ತಮ ಏಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "The Minimal Agent Workbench — Start With Five Files",
+     "textKn": "The Minimal Agent Workbench — Start With Five Files",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in The Minimal Agent Workbench",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Five Small Pieces",
+     "headingKn": "ಐದು ಸಣ್ಣ ತುಣುಕುಗಳು",
+     "bodyEn": "A minimal workbench can be five short files: an instruction file (how this repository works), a scope file for the current task, a state file (progress and decisions), a command to run the checks, and a handoff note for the next session.",
+     "bodyKn": "ಕನಿಷ್ಠ workbench ಐದು ಚಿಕ್ಕ ಫೈಲ್‌ಗಳಾಗಿರಬಹುದು: ಸೂಚನೆ ಫೈಲ್ (ಈ ರೆಪೊ ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ), ಪ್ರಸ್ತುತ ಕೆಲಸದ ವ್ಯಾಪ್ತಿ ಫೈಲ್, state ಫೈಲ್ (ಪ್ರಗತಿ, ನಿರ್ಧಾರ), ಪರಿಶೀಲನೆ ಚಲಾಯಿಸುವ ಆದೇಶ, ಮುಂದಿನ ಸೆಷನ್‌ಗೆ ಹಸ್ತಾಂತರ ಟಿಪ್ಪಣಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Short and Specific",
+     "headingKn": "ಚಿಕ್ಕ ಮತ್ತು ನಿರ್ದಿಷ್ಟ",
+     "bodyEn": "Files are read every session, so each word costs context. Prefer concrete commands and rules over general advice, for example \"run pytest -q\" rather than \"make sure the code works\".",
+     "bodyKn": "ಫೈಲ್‌ಗಳು ಪ್ರತಿ ಸೆಷನ್ ಓದಲ್ಪಡುತ್ತವೆ, ಪ್ರತಿ ಪದಕ್ಕೆ context ವೆಚ್ಚ. ಸಾಮಾನ್ಯ ಸಲಹೆಗಿಂತ ನಿರ್ದಿಷ್ಟ ಆದೇಶ ಮತ್ತು ನಿಯಮಗಳು ಆದ್ಯತೆ, ಉದಾ. \"ಕೋಡ್ ಕೆಲಸ ಮಾಡುತ್ತದೆ ಎಂದು ಖಚಿತಪಡಿಸಿ\" ಬದಲು \"pytest -q ಚಲಾಯಿಸಿ\"."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Written for the Agent, Kept by Humans",
+     "headingKn": "Agent ಗಾಗಿ ಬರೆದ, ಮಾನವರು ನಿರ್ವಹಿಸುವ",
+     "bodyEn": "The files are read by the agent but maintained by people, so they need an owner and a review habit like code. Out-of-date instructions are worse than none.",
+     "bodyKn": "ಫೈಲ್‌ಗಳನ್ನು agent ಓದುತ್ತದೆ ಆದರೆ ಜನರು ನಿರ್ವಹಿಸುತ್ತಾರೆ; ಕೋಡ್‌ನಂತೆ ಮಾಲೀಕ ಮತ್ತು ಪರಿಶೀಲನಾ ಅಭ್ಯಾಸ ಬೇಕು. ಹಳೆಯ ಸೂಚನೆ ಇಲ್ಲದ್ದಕ್ಕಿಂತ ಕೆಟ್ಟದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Grow Only Where Failures Point",
+     "headingKn": "ವೈಫಲ್ಯ ಸೂಚಿಸುವಲ್ಲಿ ಮಾತ್ರ ಬೆಳೆಸಿ",
+     "bodyEn": "Add a rule or file only after a real failure shows it is needed. This keeps the workbench lean and every element justified by evidence.",
+     "bodyKn": "ನಿಜ ವೈಫಲ್ಯ ಅಗತ್ಯ ತೋರಿಸಿದ ನಂತರ ಮಾತ್ರ ನಿಯಮ ಅಥವಾ ಫೈಲ್ ಸೇರಿಸಿ. workbench ಹಗುರ ಮತ್ತು ಪ್ರತಿ ಅಂಶ ಸಾಕ್ಷ್ಯದಿಂದ ಸಮರ್ಥಿತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Five short files can be a useful start.\n• Prefer concrete commands to general advice.\n• Keep them maintained; grow only from failures.",
+     "bodyKn": "• ಐದು ಚಿಕ್ಕ ಫೈಲ್‌ಗಳು ಉತ್ತಮ ಆರಂಭ.\n• ನಿರ್ದಿಷ್ಟ ಆದೇಶ.\n• ನಿರ್ವಹಿಸಿ; ವೈಫಲ್ಯದಿಂದ ಮಾತ್ರ ಬೆಳೆಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why keep workbench files short?",
+       "qKn": "workbench ಫೈಲ್‌ಗಳು ಚಿಕ್ಕದಾಗಿ ಏಕೆ?",
+       "opts": [
+        "They are read every session and cost context",
+        "Short files are illegal",
+        "To hide rules",
+        "To add tokens"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ ಸೆಷನ್ ಓದಲ್ಪಡುತ್ತವೆ, context ವೆಚ್ಚ",
+        "ಚಿಕ್ಕ ಫೈಲ್ ಕಾನೂನುಬಾಹಿರ",
+        "ನಿಯಮ ಮರೆ",
+        "tokens ಸೇರಿಸಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which instruction is better?",
+       "qKn": "ಯಾವ ಸೂಚನೆ ಉತ್ತಮ?",
+       "opts": [
+        "Run pytest -q before finishing",
+        "Make sure everything is fine",
+        "Be careful",
+        "Do your best"
+       ],
+       "optsKn": [
+        "ಮುಗಿಸುವ ಮೊದಲು pytest -q ಚಲಾಯಿಸಿ",
+        "ಎಲ್ಲವೂ ಸರಿ ಎಂದು ಖಚಿತಪಡಿಸಿ",
+        "ಎಚ್ಚರಿಕೆ",
+        "ಉತ್ತಮ ಪ್ರಯತ್ನ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When add a new rule?",
+       "qKn": "ಹೊಸ ನಿಯಮ ಯಾವಾಗ ಸೇರಿಸಬೇಕು?",
+       "opts": [
+        "After a real failure shows the need",
+        "Randomly",
+        "Never",
+        "Before any task"
+       ],
+       "optsKn": [
+        "ನಿಜ ವೈಫಲ್ಯ ಅಗತ್ಯ ತೋರಿಸಿದ ನಂತರ",
+        "ಯಾದೃಚ್ಛಿಕವಾಗಿ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಯಾವುದೇ ಕೆಲಸ ಮೊದಲು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b32156b",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "The Minimal Agent Workbench — Wiring It Into a Real Session",
+  "titleKn": "ಕನಿಷ್ಠ Agent Workbench — ನಿಜ ಸೆಷನ್‌ನಲ್ಲಿ ಜೋಡಣೆ",
+  "desc": "How a session starts, works and ends with the workbench: reading, updating and verifying.",
+  "descKn": "workbench ನೊಂದಿಗೆ ಸೆಷನ್ ಹೇಗೆ ಆರಂಭ, ಕೆಲಸ, ಅಂತ್ಯ: ಓದು, ನವೀಕರಣ, ಪರಿಶೀಲನೆ.",
+  "objectives": [
+   "Describe a session lifecycle: orient, act, verify, record.",
+   "Explain how the agent updates state as it works.",
+   "End with a verified handoff."
+  ],
+  "objectivesKn": [
+   "ಸೆಷನ್ ಜೀವನಚಕ್ರ: ದಿಕ್ಕು, ಕ್ರಿಯೆ, ಪರಿಶೀಲನೆ, ದಾಖಲೆ ವಿವರಿಸಿ.",
+   "agent ಕೆಲಸ ಮಾಡುವಾಗ state ಹೇಗೆ ನವೀಕರಿಸುತ್ತದೆ ವಿವರಿಸಿ.",
+   "ಪರಿಶೀಲಿತ ಹಸ್ತಾಂತರದೊಂದಿಗೆ ಮುಗಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "The Minimal Agent Workbench — Wiring It Into a Real Session",
+     "textKn": "The Minimal Agent Workbench — Wiring It Into a Real Session",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in The Minimal Agent Workbench",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Orient First",
+     "headingKn": "ಮೊದಲು ದಿಕ್ಕು ತಿಳಿಯಿರಿ",
+     "bodyEn": "At session start the agent reads the instruction, scope and state files, and runs the check command to learn the current baseline, before touching any code.",
+     "bodyKn": "ಸೆಷನ್ ಆರಂಭದಲ್ಲಿ agent ಸೂಚನೆ, ವ್ಯಾಪ್ತಿ, state ಫೈಲ್ ಓದಿ, ಯಾವುದೇ ಕೋಡ್ ಮುಟ್ಟುವ ಮೊದಲು ಪರಿಶೀಲನಾ ಆದೇಶ ಚಲಾಯಿಸಿ ಈಗಿನ ಸ್ಥಿತಿ ತಿಳಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Work in Small Verified Steps",
+     "headingKn": "ಚಿಕ್ಕ ಪರಿಶೀಲಿತ ಹಂತಗಳಲ್ಲಿ ಕೆಲಸ",
+     "bodyEn": "Make one change, run the check, and record the result in the state file. Small steps make failures easy to locate and easy to undo.",
+     "bodyKn": "ಒಂದು ಬದಲಾವಣೆ ಮಾಡಿ, ಪರಿಶೀಲನೆ ಚಲಾಯಿಸಿ, ಫಲಿತಾಂಶ state ಫೈಲ್‌ನಲ್ಲಿ ದಾಖಲಿಸಿ. ಚಿಕ್ಕ ಹಂತಗಳಲ್ಲಿ ವೈಫಲ್ಯ ಪತ್ತೆ ಮತ್ತು ಹಿಂತೆಗೆಯುವುದು ಸುಲಭ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Record Decisions, Not Just Actions",
+     "headingKn": "ಕ್ರಿಯೆ ಮಾತ್ರವಲ್ಲ, ನಿರ್ಧಾರ ದಾಖಲಿಸಿ",
+     "bodyEn": "Note why a choice was made and what was rejected. A later session cannot recover reasoning that was never written down.",
+     "bodyKn": "ಆಯ್ಕೆ ಏಕೆ ಮಾಡಲಾಯಿತು ಮತ್ತು ಏನು ತಿರಸ್ಕರಿಸಲಾಯಿತು ಎಂದು ಬರೆಯಿರಿ. ಬರೆಯದ ತರ್ಕವನ್ನು ನಂತರದ ಸೆಷನ್ ಮರುಪಡೆಯಲಾರದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "End With a Handoff",
+     "headingKn": "ಹಸ್ತಾಂತರದೊಂದಿಗೆ ಮುಗಿಸಿ",
+     "bodyEn": "Before ending, run the full check, summarise what is done and what remains, and leave the repository in a clean, buildable state. The next session, human or agent, should be able to continue immediately.",
+     "bodyKn": "ಮುಗಿಸುವ ಮೊದಲು ಪೂರ್ಣ ಪರಿಶೀಲನೆ ಚಲಾಯಿಸಿ, ಏನು ಮುಗಿದಿದೆ/ಉಳಿದಿದೆ ಸಾರಾಂಶ ಮಾಡಿ, ರೆಪೊವನ್ನು ಸ್ವಚ್ಛ, ಬಿಲ್ಡ್ ಆಗುವ ಸ್ಥಿತಿಯಲ್ಲಿ ಬಿಡಿ. ಮುಂದಿನ ಸೆಷನ್ (ಮಾನವ ಅಥವಾ agent) ತಕ್ಷಣ ಮುಂದುವರಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Orient by reading files and running checks.\n• Work in small verified steps and record decisions.\n• End with a clean, summarised handoff.",
+     "bodyKn": "• ಫೈಲ್ ಓದಿ ಪರಿಶೀಲನೆ ಚಲಾಯಿಸಿ.\n• ಚಿಕ್ಕ ಪರಿಶೀಲಿತ ಹಂತ, ನಿರ್ಧಾರ ದಾಖಲೆ.\n• ಸ್ವಚ್ಛ ಹಸ್ತಾಂತರ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What should an agent do first in a session?",
+       "qKn": "ಸೆಷನ್‌ನಲ್ಲಿ agent ಮೊದಲು ಏನು ಮಾಡಬೇಕು?",
+       "opts": [
+        "Read workbench files and run the check baseline",
+        "Edit code immediately",
+        "Delete state",
+        "Skip reading"
+       ],
+       "optsKn": [
+        "workbench ಫೈಲ್ ಓದಿ ಪರಿಶೀಲನಾ ಆಧಾರ ಚಲಾಯಿಸಿ",
+        "ತಕ್ಷಣ ಕೋಡ್ ತಿದ್ದಿ",
+        "state ಅಳಿಸಿ",
+        "ಓದುವುದು ಬಿಡಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why record decisions and rejected options?",
+       "qKn": "ನಿರ್ಧಾರ ಮತ್ತು ತಿರಸ್ಕೃತ ಆಯ್ಕೆ ಏಕೆ ದಾಖಲಿಸಬೇಕು?",
+       "opts": [
+        "Later sessions cannot recover unwritten reasoning",
+        "To lengthen files",
+        "To hide mistakes",
+        "It is decoration"
+       ],
+       "optsKn": [
+        "ಬರೆಯದ ತರ್ಕ ನಂತರದ ಸೆಷನ್ ಮರುಪಡೆಯಲಾರದು",
+        "ಫೈಲ್ ಉದ್ದ ಮಾಡಲು",
+        "ತಪ್ಪು ಮರೆ",
+        "ಅಲಂಕಾರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What state should the repo be left in?",
+       "qKn": "ರೆಪೊ ಯಾವ ಸ್ಥಿತಿಯಲ್ಲಿ ಬಿಡಬೇಕು?",
+       "opts": [
+        "Clean and buildable",
+        "Half edited",
+        "Broken but documented",
+        "Empty"
+       ],
+       "optsKn": [
+        "ಸ್ವಚ್ಛ ಮತ್ತು ಬಿಲ್ಡ್ ಆಗುವ",
+        "ಅರ್ಧ ತಿದ್ದಿದ",
+        "ಮುರಿದ ಆದರೆ ದಾಖಲಿತ",
+        "ಖಾಲಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b32156b",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "The Minimal Agent Workbench — Proving It Helps",
+  "titleKn": "ಕನಿಷ್ಠ Agent Workbench — ಅದು ಸಹಾಯ ಮಾಡುತ್ತದೆ ಎಂದು ಸಾಬೀತು",
+  "desc": "A before-and-after comparison to show that even a minimal workbench improves reliability, and how to decide what to add next.",
+  "descKn": "ಕನಿಷ್ಠ workbench ಕೂಡ ವಿಶ್ವಾಸಾರ್ಹತೆ ಸುಧಾರಿಸುತ್ತದೆ ಎಂದು ತೋರಿಸುವ ಮೊದಲು-ನಂತರ ಹೋಲಿಕೆ, ಮುಂದೆ ಏನು ಸೇರಿಸಬೇಕು ಎಂದು ನಿರ್ಧರಿಸುವುದು.",
+  "objectives": [
+   "Run the same tasks with and without the workbench.",
+   "Compare success, rework and time.",
+   "Use the failures that remain to choose the next addition."
+  ],
+  "objectivesKn": [
+   "workbench ಇಲ್ಲದೆ ಮತ್ತು ಇರುವಾಗ ಅದೇ ಕೆಲಸ ಚಲಾಯಿಸಿ.",
+   "ಯಶಸ್ಸು, ಮರುಕೆಲಸ, ಸಮಯ ಹೋಲಿಸಿ.",
+   "ಉಳಿದ ವೈಫಲ್ಯಗಳಿಂದ ಮುಂದಿನ ಸೇರ್ಪಡೆ ಆರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "The Minimal Agent Workbench — Proving It Helps",
+     "textKn": "The Minimal Agent Workbench — Proving It Helps",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in The Minimal Agent Workbench",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Fair Before and After",
+     "headingKn": "ನ್ಯಾಯಯುತ ಮೊದಲು-ನಂತರ",
+     "bodyEn": "Choose a set of tasks, run them with only a bare prompt, then again with the minimal workbench, using the same model and settings. Only the environment should differ.",
+     "bodyKn": "ಕೆಲಸಗಳ ಸೆಟ್ ಆರಿಸಿ, ಬರೀ prompt ಜೊತೆ ಚಲಾಯಿಸಿ, ನಂತರ ಅದೇ ಮಾದರಿ ಮತ್ತು ಸೆಟ್ಟಿಂಗ್‌ನೊಂದಿಗೆ ಕನಿಷ್ಠ workbench ಜೊತೆ. ಪರಿಸರ ಮಾತ್ರ ಬೇರೆಯಾಗಿರಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Look Beyond Pass Rate",
+     "headingKn": "ಪಾಸ್ ದರದ ಆಚೆ ನೋಡಿ",
+     "bodyEn": "Compare pass rate, the number of retries, human corrections needed and total cost. A workbench that improves reliability often also reduces rework, even when the raw pass rate looks similar.",
+     "bodyKn": "ಪಾಸ್ ದರ, ಮರುಪ್ರಯತ್ನ ಸಂಖ್ಯೆ, ಬೇಕಾದ ಮಾನವ ತಿದ್ದುಪಡಿ, ಒಟ್ಟು ವೆಚ್ಚ ಹೋಲಿಸಿ. ವಿಶ್ವಾಸಾರ್ಹತೆ ಸುಧಾರಿಸುವ workbench ಕಚ್ಚಾ ಪಾಸ್ ದರ ಸಮಾನವಾಗಿ ಕಂಡರೂ ಮರುಕೆಲಸ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Read the Remaining Failures",
+     "headingKn": "ಉಳಿದ ವೈಫಲ್ಯ ಓದಿ",
+     "bodyEn": "The tasks that still fail tell you what to add: a scope rule, a stricter gate, better state. Address the most frequent category first.",
+     "bodyKn": "ಇನ್ನೂ ವಿಫಲವಾಗುವ ಕೆಲಸಗಳು ಏನು ಸೇರಿಸಬೇಕು ಎಂದು ಹೇಳುತ್ತವೆ: ವ್ಯಾಪ್ತಿ ನಿಯಮ, ಕಠಿಣ gate, ಉತ್ತಮ state. ಅತ್ಯಂತ ಆಗಾಗ್ಗೆ ವರ್ಗ ಮೊದಲು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Stop When It Is Enough",
+     "headingKn": "ಸಾಕಾದಾಗ ನಿಲ್ಲಿಸಿ",
+     "bodyEn": "When new additions no longer move the measurements, stop. A workbench is a means to reliable work, not a project to keep expanding.",
+     "bodyKn": "ಹೊಸ ಸೇರ್ಪಡೆಗಳು ಅಳತೆ ಬದಲಿಸದಿದ್ದಾಗ ನಿಲ್ಲಿಸಿ. workbench ವಿಶ್ವಾಸಾರ್ಹ ಕೆಲಸದ ಸಾಧನ, ವಿಸ್ತರಿಸುತ್ತಲೇ ಇರುವ ಯೋಜನೆ ಅಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Compare bare prompt versus workbench with everything else fixed.\n• Look at rework and cost, not only pass rate.\n• Let remaining failures pick the next addition.",
+     "bodyKn": "• ಬೇರೆಲ್ಲ ಸ್ಥಿರ ಇರಿಸಿ ಹೋಲಿಸಿ.\n• ಮರುಕೆಲಸ ಮತ್ತು ವೆಚ್ಚ ನೋಡಿ.\n• ಉಳಿದ ವೈಫಲ್ಯ ಮುಂದಿನದು ಆರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What should differ in a fair before-and-after?",
+       "qKn": "ನ್ಯಾಯಯುತ ಮೊದಲು-ನಂತರದಲ್ಲಿ ಯಾವುದು ಬೇರೆಯಾಗಿರಬೇಕು?",
+       "opts": [
+        "Only the environment",
+        "The model and tasks",
+        "Everything",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪರಿಸರ ಮಾತ್ರ",
+        "ಮಾದರಿ ಮತ್ತು ಕೆಲಸ",
+        "ಎಲ್ಲವೂ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What else besides pass rate should be compared?",
+       "qKn": "ಪಾಸ್ ದರದ ಹೊರತು ಬೇರೆ ಏನು ಹೋಲಿಸಬೇಕು?",
+       "opts": [
+        "Retries, human corrections and cost",
+        "Colours",
+        "Font size",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮರುಪ್ರಯತ್ನ, ಮಾನವ ತಿದ್ದುಪಡಿ, ವೆಚ್ಚ",
+        "ಬಣ್ಣ",
+        "ಫಾಂಟ್ ಗಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When stop adding to the workbench?",
+       "qKn": "workbench ಗೆ ಸೇರಿಸುವುದನ್ನು ಯಾವಾಗ ನಿಲ್ಲಿಸಬೇಕು?",
+       "opts": [
+        "When additions stop moving the measurements",
+        "Never",
+        "After one day",
+        "After every task"
+       ],
+       "optsKn": [
+        "ಸೇರ್ಪಡೆ ಅಳತೆ ಬದಲಿಸದಿದ್ದಾಗ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಒಂದು ದಿನದ ನಂತರ",
+        "ಪ್ರತಿ ಕೆಲಸದ ನಂತರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b32156e",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Agent Instructions as Executable Constraint — What Makes an Instruction Work",
+  "titleKn": "Agent ಸೂಚನೆಗಳು ಕಾರ್ಯಗತ ನಿರ್ಬಂಧವಾಗಿ — ಸೂಚನೆ ಕೆಲಸ ಮಾಡುವುದೇನು",
+  "desc": "Why some instructions are followed and others ignored, and how to write instructions that can be checked.",
+  "descKn": "ಕೆಲವು ಸೂಚನೆಗಳು ಪಾಲನೆಯಾಗಿ ಕೆಲವು ನಿರ್ಲಕ್ಷ್ಯವಾಗುವುದು ಏಕೆ, ಪರಿಶೀಲಿಸಬಹುದಾದ ಸೂಚನೆ ಹೇಗೆ ಬರೆಯುವುದು.",
+  "objectives": [
+   "Write instructions that are specific, observable and testable.",
+   "Separate rules that can be enforced by tools from advice.",
+   "Keep instructions short and prioritised."
+  ],
+  "objectivesKn": [
+   "ನಿರ್ದಿಷ್ಟ, ವೀಕ್ಷಿಸಬಹುದಾದ, ಪರೀಕ್ಷಿಸಬಹುದಾದ ಸೂಚನೆ ಬರೆಯಿರಿ.",
+   "ಸಾಧನಗಳು ಜಾರಿಗೊಳಿಸಬಹುದಾದ ನಿಯಮ ಮತ್ತು ಸಲಹೆ ಬೇರ್ಪಡಿಸಿ.",
+   "ಸೂಚನೆ ಚಿಕ್ಕ ಮತ್ತು ಆದ್ಯತೆಯುಳ್ಳದ್ದಾಗಿಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Agent Instructions as Executable Constraint — What Makes an Instruction Work",
+     "textKn": "Agent Instructions as Executable Constraint — What Makes an Instruction Work",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Agent Instructions as Executable Constraint",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Vague Advice Is Not a Constraint",
+     "headingKn": "ಅಸ್ಪಷ್ಟ ಸಲಹೆ ನಿರ್ಬಂಧವಲ್ಲ",
+     "bodyEn": "\"Write clean code\" cannot be checked, so it cannot constrain behaviour. \"Functions must have type hints and pass the lint command\" can be verified, so it behaves like a real rule.",
+     "bodyKn": "\"ಸ್ವಚ್ಛ ಕೋಡ್ ಬರೆಯಿರಿ\" ಪರಿಶೀಲಿಸಲಾಗದು, ಆದ್ದರಿಂದ ವರ್ತನೆ ನಿರ್ಬಂಧಿಸಲಾರದು. \"functions ಗೆ type hints ಇರಬೇಕು ಮತ್ತು lint ಆದೇಶ ಪಾಸ್ ಆಗಬೇಕು\" ಪರಿಶೀಲಿಸಬಹುದು, ನಿಜ ನಿಯಮದಂತೆ ವರ್ತಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Observable and Testable",
+     "headingKn": "ವೀಕ್ಷಿಸಬಹುದಾದ ಮತ್ತು ಪರೀಕ್ಷಿಸಬಹುದಾದ",
+     "bodyEn": "A good instruction names an action or a condition that can be seen in a diff, a log or a command result. If you cannot imagine a check for it, rewrite it.",
+     "bodyKn": "ಉತ್ತಮ ಸೂಚನೆ diff, ಲಾಗ್ ಅಥವಾ ಆದೇಶ ಫಲಿತಾಂಶದಲ್ಲಿ ಕಾಣುವ ಕ್ರಿಯೆ ಅಥವಾ ಷರತ್ತು ಹೆಸರಿಸುತ್ತದೆ. ಅದಕ್ಕೆ ಪರಿಶೀಲನೆ ಕಲ್ಪಿಸಲಾಗದಿದ್ದರೆ ಮರುಬರೆಯಿರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Enforce What You Can",
+     "headingKn": "ಸಾಧ್ಯವಾದದ್ದನ್ನು ಜಾರಿಗೊಳಿಸಿ",
+     "bodyEn": "A rule stated only in text can be forgotten. Where possible back it with a tool, such as a formatter, a linter, a pre-commit hook or a permission setting, so the rule holds even when the model does not.",
+     "bodyKn": "ಪಠ್ಯದಲ್ಲಿ ಮಾತ್ರ ಹೇಳಿದ ನಿಯಮ ಮರೆಯಬಹುದು. ಸಾಧ್ಯವಾದಲ್ಲಿ formatter, linter, pre-commit hook ಅಥವಾ ಅನುಮತಿ ಸೆಟ್ಟಿಂಗ್‌ನಿಂದ ಬೆಂಬಲಿಸಿ; ಮಾದರಿ ಮರೆತರೂ ನಿಯಮ ಉಳಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Prioritise and Prune",
+     "headingKn": "ಆದ್ಯತೆ ನೀಡಿ, ಕತ್ತರಿಸಿ",
+     "bodyEn": "A long list of equal-weight rules dilutes the important ones. State the few non-negotiables first, mark the rest as preferences and delete rules that nobody checks.",
+     "bodyKn": "ಸಮ ತೂಕದ ಉದ್ದ ನಿಯಮ ಪಟ್ಟಿ ಮುಖ್ಯವಾದವನ್ನು ದುರ್ಬಲಗೊಳಿಸುತ್ತದೆ. ಕೆಲವು ಬಿಟ್ಟುಕೊಡಲಾಗದವನ್ನು ಮೊದಲು ಹೇಳಿ, ಉಳಿದವನ್ನು ಆದ್ಯತೆಗಳೆಂದು ಗುರುತಿಸಿ, ಯಾರೂ ಪರಿಶೀಲಿಸದ ನಿಯಮ ಅಳಿಸಿ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Vague versus checkable",
+     "headers": [
+      "Vague",
+      "Checkable"
+     ],
+     "rows": [
+      [
+       "Write clean code",
+       "Pass the lint command and add type hints"
+      ],
+      [
+       "Be careful with the database",
+       "Never run migrations; use the read-only connection"
+      ],
+      [
+       "Test your work",
+       "Run pytest -q and report the result"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Vague advice cannot constrain behaviour.\n• Write observable, testable rules.\n• Back rules with tools and keep the list short.",
+     "bodyKn": "• ಅಸ್ಪಷ್ಟ ಸಲಹೆ ನಿರ್ಬಂಧಿಸಲಾರದು.\n• ವೀಕ್ಷಿಸಬಹುದಾದ ನಿಯಮ.\n• ಸಾಧನಗಳಿಂದ ಬೆಂಬಲಿಸಿ, ಪಟ್ಟಿ ಚಿಕ್ಕ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Which instruction is checkable?",
+       "qKn": "ಯಾವ ಸೂಚನೆ ಪರಿಶೀಲಿಸಬಹುದಾದದ್ದು?",
+       "opts": [
+        "Run pytest -q and report the result",
+        "Be careful",
+        "Write good code",
+        "Do your best"
+       ],
+       "optsKn": [
+        "pytest -q ಚಲಾಯಿಸಿ ಫಲಿತಾಂಶ ವರದಿ ಮಾಡಿ",
+        "ಎಚ್ಚರಿಕೆ",
+        "ಉತ್ತಮ ಕೋಡ್ ಬರೆಯಿರಿ",
+        "ಉತ್ತಮ ಪ್ರಯತ್ನ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why back a rule with a tool?",
+       "qKn": "ನಿಯಮವನ್ನು ಸಾಧನದಿಂದ ಏಕೆ ಬೆಂಬಲಿಸಬೇಕು?",
+       "opts": [
+        "It holds even if the model forgets it",
+        "To lengthen the rule",
+        "Tools are decoration",
+        "To hide it"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ ಮರೆತರೂ ಉಳಿಯುತ್ತದೆ",
+        "ನಿಯಮ ಉದ್ದ ಮಾಡಲು",
+        "ಸಾಧನ ಅಲಂಕಾರ",
+        "ಮರೆಮಾಡಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What to do with rules nobody checks?",
+       "qKn": "ಯಾರೂ ಪರಿಶೀಲಿಸದ ನಿಯಮಗಳನ್ನು ಏನು ಮಾಡಬೇಕು?",
+       "opts": [
+        "Prune them",
+        "Add more",
+        "Repeat them",
+        "Hide them"
+       ],
+       "optsKn": [
+        "ಕತ್ತರಿಸಿ",
+        "ಹೆಚ್ಚು ಸೇರಿಸಿ",
+        "ಪುನರಾವರ್ತಿಸಿ",
+        "ಮರೆಮಾಡಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b32156e",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Agent Instructions as Executable Constraint — Structuring Instruction Files",
+  "titleKn": "Agent ಸೂಚನೆಗಳು ಕಾರ್ಯಗತ ನಿರ್ಬಂಧವಾಗಿ — ಸೂಚನೆ ಫೈಲ್‌ಗಳ ರಚನೆ",
+  "desc": "Organising a repository instruction file: commands, boundaries, conventions and pointers, with layering for large projects.",
+  "descKn": "ರೆಪೊ ಸೂಚನೆ ಫೈಲ್ ಸಂಘಟನೆ: ಆದೇಶ, ಗಡಿ, ಸಂಪ್ರದಾಯ, ಸೂಚಕ, ದೊಡ್ಡ ಯೋಜನೆಗಳಿಗೆ ಪದರ.",
+  "objectives": [
+   "Structure an instruction file into commands, boundaries and conventions.",
+   "Use pointers to deeper docs instead of copying them.",
+   "Layer instructions by directory for large repositories."
+  ],
+  "objectivesKn": [
+   "ಸೂಚನೆ ಫೈಲ್ ಅನ್ನು ಆದೇಶ, ಗಡಿ, ಸಂಪ್ರದಾಯಗಳಾಗಿ ರಚಿಸಿ.",
+   "ನಕಲಿಸುವ ಬದಲು ಆಳವಾದ ದಾಖಲೆಗೆ ಸೂಚಕ ಬಳಸಿ.",
+   "ದೊಡ್ಡ ರೆಪೊಗಳಲ್ಲಿ ಡೈರೆಕ್ಟರಿ ಪ್ರಕಾರ ಪದರ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Agent Instructions as Executable Constraint — Structuring Instruction Files",
+     "textKn": "Agent Instructions as Executable Constraint — Structuring Instruction Files",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Agent Instructions as Executable Constraint",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Commands First",
+     "headingKn": "ಮೊದಲು ಆದೇಶಗಳು",
+     "bodyEn": "Start with how to build, test, lint and run the project, exactly as typed. These are the highest-value lines because the agent needs them in almost every task.",
+     "bodyKn": "ಪ್ರಾಜೆಕ್ಟ್ ಬಿಲ್ಡ್, test, lint, ಚಲಾಯಿಸುವ ಆದೇಶಗಳನ್ನು ನಿಖರವಾಗಿ ಬರೆದಂತೆ ಆರಂಭಿಸಿ. agent ಗೆ ಬಹುತೇಕ ಪ್ರತಿ ಕೆಲಸದಲ್ಲಿ ಬೇಕಾಗುವುದರಿಂದ ಇವು ಅತ್ಯಂತ ಮೌಲ್ಯಯುತ ಸಾಲುಗಳು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Boundaries and Conventions",
+     "headingKn": "ಗಡಿಗಳು ಮತ್ತು ಸಂಪ್ರದಾಯಗಳು",
+     "bodyEn": "List what must never be touched (generated files, secrets, production configs) and the conventions that matter most. Explain the reason for a rule in a few words so the agent can apply it to new situations.",
+     "bodyKn": "ಎಂದಿಗೂ ಮುಟ್ಟಬಾರದವುಗಳನ್ನು (ರಚಿತ ಫೈಲ್, ರಹಸ್ಯ, ಉತ್ಪಾದನಾ ಸಂರಚನೆ) ಮತ್ತು ಮುಖ್ಯ ಸಂಪ್ರದಾಯಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ. ನಿಯಮದ ಕಾರಣವನ್ನು ಕೆಲವು ಪದಗಳಲ್ಲಿ ವಿವರಿಸಿ, agent ಹೊಸ ಸಂದರ್ಭಕ್ಕೆ ಅನ್ವಯಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Point, Do Not Paste",
+     "headingKn": "ಸೂಚಿಸಿ, ಅಂಟಿಸಬೇಡಿ",
+     "bodyEn": "Link to architecture notes or a longer guide and say when to read it, instead of copying pages into the instruction file. This keeps the always-loaded part small.",
+     "bodyKn": "ಸೂಚನೆ ಫೈಲ್‌ಗೆ ಪುಟಗಳನ್ನು ನಕಲಿಸುವ ಬದಲು ವಾಸ್ತುಶಿಲ್ಪ ಟಿಪ್ಪಣಿ ಅಥವಾ ಉದ್ದ ಮಾರ್ಗದರ್ಶಿಗೆ ಲಿಂಕ್ ನೀಡಿ ಯಾವಾಗ ಓದಬೇಕು ಎಂದು ಹೇಳಿ. ಯಾವಾಗಲೂ ಲೋಡ್ ಆಗುವ ಭಾಗ ಚಿಕ್ಕದಾಗಿರುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Layer by Directory",
+     "headingKn": "ಡೈರೆಕ್ಟರಿ ಪ್ರಕಾರ ಪದರ",
+     "bodyEn": "In a large repository, put general rules at the root and specific ones in subdirectories, so an agent working in one area sees only the rules that apply there.",
+     "bodyKn": "ದೊಡ್ಡ ರೆಪೊದಲ್ಲಿ ಸಾಮಾನ್ಯ ನಿಯಮ ಮೂಲದಲ್ಲಿ, ನಿರ್ದಿಷ್ಟವಾದವು ಉಪಡೈರೆಕ್ಟರಿಗಳಲ್ಲಿ ಇಡಿ; ಒಂದು ಪ್ರದೇಶದಲ್ಲಿ ಕೆಲಸ ಮಾಡುವ agent ಅಲ್ಲಿಗೆ ಅನ್ವಯಿಸುವ ನಿಯಮ ಮಾತ್ರ ನೋಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Lead with exact commands.\n• List boundaries with brief reasons.\n• Point to deeper docs and layer by directory.",
+     "bodyKn": "• ನಿಖರ ಆದೇಶ ಮೊದಲು.\n• ಗಡಿ, ಸಂಕ್ಷಿಪ್ತ ಕಾರಣ.\n• ಸೂಚಕ, ಡೈರೆಕ್ಟರಿ ಪದರ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What should an instruction file start with?",
+       "qKn": "ಸೂಚನೆ ಫೈಲ್ ಯಾವುದರಿಂದ ಆರಂಭವಾಗಬೇಕು?",
+       "opts": [
+        "Exact build, test and lint commands",
+        "A long history",
+        "Marketing text",
+        "A poem"
+       ],
+       "optsKn": [
+        "ನಿಖರ ಬಿಲ್ಡ್, test, lint ಆದೇಶಗಳು",
+        "ಉದ್ದ ಇತಿಹಾಸ",
+        "ಮಾರ್ಕೆಟಿಂಗ್ ಪಠ್ಯ",
+        "ಕವಿತೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why state the reason for a rule?",
+       "qKn": "ನಿಯಮದ ಕಾರಣ ಏಕೆ ಹೇಳಬೇಕು?",
+       "opts": [
+        "The agent can apply it to new situations",
+        "To lengthen it",
+        "To hide it",
+        "It is required by law"
+       ],
+       "optsKn": [
+        "agent ಹೊಸ ಸಂದರ್ಭಕ್ಕೆ ಅನ್ವಯಿಸಬಹುದು",
+        "ಉದ್ದ ಮಾಡಲು",
+        "ಮರೆಮಾಡಲು",
+        "ಕಾನೂನು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why layer instructions by directory?",
+       "qKn": "ಸೂಚನೆಗಳನ್ನು ಡೈರೆಕ್ಟರಿ ಪ್ರಕಾರ ಪದರ ಏಕೆ?",
+       "opts": [
+        "Agents see only rules relevant to their area",
+        "To duplicate rules",
+        "To slow agents",
+        "To confuse users"
+       ],
+       "optsKn": [
+        "agents ತಮ್ಮ ಪ್ರದೇಶದ ಸಂಬಂಧಿತ ನಿಯಮ ಮಾತ್ರ ನೋಡುತ್ತವೆ",
+        "ನಿಯಮ ನಕಲಿಸಲು",
+        "agents ನಿಧಾನ",
+        "ಬಳಕೆದಾರರ ಗೊಂದಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6266020ed05b32156e",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Agent Instructions as Executable Constraint — Testing and Maintaining Instructions",
+  "titleKn": "Agent ಸೂಚನೆಗಳು ಕಾರ್ಯಗತ ನಿರ್ಬಂಧವಾಗಿ — ಸೂಚನೆಗಳ ಪರೀಕ್ಷೆ ಮತ್ತು ನಿರ್ವಹಣೆ",
+  "desc": "Treating instructions as code: testing that they are followed, versioning them and retiring stale rules.",
+  "descKn": "ಸೂಚನೆಗಳನ್ನು ಕೋಡ್‌ನಂತೆ ಪರಿಗಣಿಸಿ: ಪಾಲನೆ ಪರೀಕ್ಷೆ, ಆವೃತ್ತಿ, ಹಳೆಯ ನಿಯಮ ನಿವೃತ್ತಿ.",
+  "objectives": [
+   "Test instruction compliance with scenario tasks.",
+   "Detect when an instruction is ignored.",
+   "Version and review instruction changes."
+  ],
+  "objectivesKn": [
+   "ಸನ್ನಿವೇಶ ಕೆಲಸಗಳಿಂದ ಸೂಚನೆ ಪಾಲನೆ ಪರೀಕ್ಷಿಸಿ.",
+   "ಸೂಚನೆ ನಿರ್ಲಕ್ಷ್ಯವಾದಾಗ ಪತ್ತೆ ಮಾಡಿ.",
+   "ಸೂಚನೆ ಬದಲಾವಣೆ ಆವೃತ್ತಿ ಮತ್ತು ಪರಿಶೀಲನೆ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Agent Instructions as Executable Constraint — Testing and Maintaining Instructions",
+     "textKn": "Agent Instructions as Executable Constraint — Testing and Maintaining Instructions",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Agent Instructions as Executable Constraint",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Scenario Tests",
+     "headingKn": "ಸನ್ನಿವೇಶ ಪರೀಕ್ಷೆಗಳು",
+     "bodyEn": "For each important rule, design a small task that would tempt the agent to break it, and check the outcome. A rule that has never been tested is only a hope.",
+     "bodyKn": "ಪ್ರತಿ ಮುಖ್ಯ ನಿಯಮಕ್ಕೆ agent ಅದನ್ನು ಮುರಿಯಲು ಪ್ರಚೋದಿಸುವ ಸಣ್ಣ ಕೆಲಸ ವಿನ್ಯಾಸಗೊಳಿಸಿ ಫಲಿತಾಂಶ ಪರಿಶೀಲಿಸಿ. ಎಂದಿಗೂ ಪರೀಕ್ಷಿಸದ ನಿಯಮ ಕೇವಲ ಆಶೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Detect Ignored Instructions",
+     "headingKn": "ನಿರ್ಲಕ್ಷ್ಯ ಸೂಚನೆ ಪತ್ತೆ",
+     "bodyEn": "Look in traces for evidence of each rule: was the test command run, was a forbidden path edited. Automatic checks over diffs and logs turn instruction compliance into a metric.",
+     "bodyKn": "ಪ್ರತಿ ನಿಯಮದ ಸಾಕ್ಷ್ಯಕ್ಕೆ traces ನೋಡಿ: test ಆದೇಶ ಚಲಾಯಿತೇ, ನಿಷೇಧಿತ path ತಿದ್ದಲಾಯಿತೇ. diffs ಮತ್ತು ಲಾಗ್ ಮೇಲೆ ಸ್ವಯಂ ಪರಿಶೀಲನೆ ಪಾಲನೆಯನ್ನು ಮೆಟ್ರಿಕ್ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Instructions Are Code",
+     "headingKn": "ಸೂಚನೆಗಳು ಕೋಡ್",
+     "bodyEn": "Keep instruction files in version control, review changes and note why a rule was added. A rule without a reason becomes untouchable folklore.",
+     "bodyKn": "ಸೂಚನೆ ಫೈಲ್‌ಗಳನ್ನು ಆವೃತ್ತಿ ನಿಯಂತ್ರಣದಲ್ಲಿ ಇಡಿ, ಬದಲಾವಣೆ ಪರಿಶೀಲಿಸಿ, ನಿಯಮ ಏಕೆ ಸೇರಿಸಲಾಯಿತು ಎಂದು ಬರೆಯಿರಿ. ಕಾರಣವಿಲ್ಲದ ನಿಯಮ ಮುಟ್ಟಲಾಗದ ಜನಪದವಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Retire Stale Rules",
+     "headingKn": "ಹಳೆಯ ನಿಯಮ ನಿವೃತ್ತಿ",
+     "bodyEn": "Codebases change. Review the file regularly, delete rules that no longer apply and re-test after model upgrades, since a new model may need fewer or different instructions.",
+     "bodyKn": "ಕೋಡ್‌ಬೇಸ್ ಬದಲಾಗುತ್ತದೆ. ಫೈಲ್ ನಿಯಮಿತವಾಗಿ ಪರಿಶೀಲಿಸಿ, ಅನ್ವಯಿಸದ ನಿಯಮ ಅಳಿಸಿ, ಮಾದರಿ ಅಪ್‌ಗ್ರೇಡ್ ನಂತರ ಮರುಪರೀಕ್ಷಿಸಿ; ಹೊಸ ಮಾದರಿಗೆ ಕಡಿಮೆ ಅಥವಾ ಬೇರೆ ಸೂಚನೆ ಸಾಕಾಗಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Test each important rule with a tempting scenario.\n• Measure compliance from traces and diffs.\n• Version, review and retire instructions like code.",
+     "bodyKn": "• ಪ್ರತಿ ನಿಯಮ ಸನ್ನಿವೇಶದಿಂದ ಪರೀಕ್ಷೆ.\n• traces ಮತ್ತು diffs ಇಂದ ಪಾಲನೆ ಅಳತೆ.\n• ಕೋಡ್‌ನಂತೆ ಆವೃತ್ತಿ, ಪರಿಶೀಲನೆ, ನಿವೃತ್ತಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "How can a rule be tested?",
+       "qKn": "ನಿಯಮವನ್ನು ಹೇಗೆ ಪರೀಕ್ಷಿಸಬಹುದು?",
+       "opts": [
+        "With a task designed to tempt breaking it",
+        "By reading it aloud",
+        "It cannot be tested",
+        "By deleting it"
+       ],
+       "optsKn": [
+        "ಮುರಿಯಲು ಪ್ರಚೋದಿಸುವ ಕೆಲಸದಿಂದ",
+        "ಗಟ್ಟಿಯಾಗಿ ಓದಿ",
+        "ಪರೀಕ್ಷಿಸಲಾಗದು",
+        "ಅಳಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why note the reason a rule was added?",
+       "qKn": "ನಿಯಮ ಏಕೆ ಸೇರಿಸಲಾಯಿತು ಎಂದು ಏಕೆ ಬರೆಯಬೇಕು?",
+       "opts": [
+        "Rules without reasons become untouchable folklore",
+        "To lengthen files",
+        "For decoration",
+        "To hide history"
+       ],
+       "optsKn": [
+        "ಕಾರಣವಿಲ್ಲದ ನಿಯಮ ಮುಟ್ಟಲಾಗದ ಜನಪದ",
+        "ಫೈಲ್ ಉದ್ದ ಮಾಡಲು",
+        "ಅಲಂಕಾರ",
+        "ಇತಿಹಾಸ ಮರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why re-test after a model upgrade?",
+       "qKn": "ಮಾದರಿ ಅಪ್‌ಗ್ರೇಡ್ ನಂತರ ಮರುಪರೀಕ್ಷೆ ಏಕೆ?",
+       "opts": [
+        "A new model may need fewer or different instructions",
+        "Instructions never change",
+        "To slow release",
+        "It is required by Git"
+       ],
+       "optsKn": [
+        "ಹೊಸ ಮಾದರಿಗೆ ಕಡಿಮೆ ಅಥವಾ ಬೇರೆ ಸೂಚನೆ ಸಾಕಾಗಬಹುದು",
+        "ಸೂಚನೆ ಬದಲಾಗುವುದಿಲ್ಲ",
+        "ಬಿಡುಗಡೆ ನಿಧಾನ",
+        "Git ಅಗತ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

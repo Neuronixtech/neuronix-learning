@@ -1,0 +1,2627 @@
+[
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215b3",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Action Budgets, Iteration Caps and Cost Governors — Why Agents Need Budgets",
+  "titleKn": "Action ಬಜೆಟ್, Iteration ಮಿತಿ, ವೆಚ್ಚ ನಿಯಂತ್ರಕ — Agents ಗೆ ಬಜೆಟ್ ಏಕೆ",
+  "desc": "An agent loop with no limit can run forever, spend heavily or repeat harmful actions.",
+  "descKn": "ಮಿತಿಯಿಲ್ಲದ agent loop ಶಾಶ್ವತ ಚಲಿಸಬಹುದು, ಭಾರಿ ಖರ್ಚು ಮಾಡಬಹುದು ಅಥವಾ ಹಾನಿಕರ ಕ್ರಿಯೆ ಪುನರಾವರ್ತಿಸಬಹುದು.",
+  "objectives": [
+   "Explain runaway loops and runaway cost.",
+   "Name the main budget dimensions."
+  ],
+  "objectivesKn": [
+   "ನಿಯಂತ್ರಣ ತಪ್ಪಿದ loop ಮತ್ತು ವೆಚ್ಚ ವಿವರಿಸಿ.",
+   "ಮುಖ್ಯ ಬಜೆಟ್ ಆಯಾಮಗಳನ್ನು ಹೆಸರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Action Budgets, Iteration Caps and Cost Governors — Why Agents Need Budgets",
+     "textKn": "Action Budgets, Iteration Caps and Cost Governors — Why Agents Need Budgets",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Action Budgets, Iteration Caps, Cost Governors",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Runaway Behaviour",
+     "headingKn": "ನಿಯಂತ್ರಣ ತಪ್ಪಿದ ವರ್ತನೆ",
+     "bodyEn": "A confused agent may retry the same failing step endlessly, call paid tools repeatedly or keep exploring. Nothing stops it unless a limit exists.",
+     "bodyKn": "ಗೊಂದಲಗೊಂಡ agent ಅದೇ ವಿಫಲ ಹಂತ ಅನಂತ ಮರುಪ್ರಯತ್ನಿಸಬಹುದು, ಪಾವತಿ tools ಪದೇ ಪದೇ ಕರೆಯಬಹುದು, ಅನ್ವೇಷಿಸುತ್ತಲೇ ಇರಬಹುದು. ಮಿತಿ ಇಲ್ಲದಿದ್ದರೆ ಯಾವುದೂ ತಡೆಯದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Budget Dimensions",
+     "headingKn": "ಬಜೆಟ್ ಆಯಾಮಗಳು",
+     "bodyEn": "Limit steps, tool calls, tokens, money and wall-clock time. Different failures show up in different dimensions, so use several.",
+     "bodyKn": "ಹಂತ, tool ಕರೆ, tokens, ಹಣ, ಗಡಿಯಾರ ಸಮಯ ಮಿತಿ ಮಾಡಿ. ಬೇರೆ ವೈಫಲ್ಯ ಬೇರೆ ಆಯಾಮದಲ್ಲಿ ಕಾಣುತ್ತದೆ; ಹಲವು ಬಳಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Without limits, loops can run away.\n• Cap steps, calls, tokens, money and time.",
+     "bodyKn": "• ಮಿತಿ ಇಲ್ಲದಿದ್ದರೆ loops ನಿಯಂತ್ರಣ ತಪ್ಪುತ್ತವೆ.\n• ಹಂತ, ಕರೆ, tokens, ಹಣ, ಸಮಯ ಮಿತಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What can an unlimited agent do?",
+       "qKn": "ಮಿತಿಯಿಲ್ಲದ agent ಏನು ಮಾಡಬಹುದು?",
+       "opts": [
+        "Loop and spend without stopping",
+        "Always stop early",
+        "Save money",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ನಿಲ್ಲದೆ loop ಮತ್ತು ಖರ್ಚು",
+        "ಯಾವಾಗಲೂ ಬೇಗ ನಿಲ್ಲಿಸು",
+        "ಹಣ ಉಳಿತಾಯ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A budget dimension:",
+       "qKn": "ಬಜೆಟ್ ಆಯಾಮ:",
+       "opts": [
+        "Number of tool calls",
+        "Font size",
+        "Colour",
+        "Logo"
+       ],
+       "optsKn": [
+        "tool ಕರೆ ಸಂಖ್ಯೆ",
+        "ಫಾಂಟ್ ಗಾತ್ರ",
+        "ಬಣ್ಣ",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why use several limits?",
+       "qKn": "ಹಲವು ಮಿತಿ ಏಕೆ?",
+       "opts": [
+        "Failures appear in different dimensions",
+        "Decoration",
+        "Rule of HTML",
+        "No reason"
+       ],
+       "optsKn": [
+        "ವೈಫಲ್ಯ ಬೇರೆ ಆಯಾಮದಲ್ಲಿ ಕಾಣುತ್ತದೆ",
+        "ಅಲಂಕಾರ",
+        "HTML ನಿಯಮ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215b3",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Action Budgets, Iteration Caps and Cost Governors — Setting and Enforcing Limits",
+  "titleKn": "Action ಬಜೆಟ್, Iteration ಮಿತಿ, ವೆಚ್ಚ ನಿಯಂತ್ರಕ — ಮಿತಿ ನಿಗದಿ ಮತ್ತು ಜಾರಿ",
+  "desc": "Limits belong in the runtime, outside the model, and should be set from measured normal usage.",
+  "descKn": "ಮಿತಿಗಳು ಮಾದರಿಯ ಹೊರಗೆ runtime ನಲ್ಲಿರಬೇಕು ಮತ್ತು ಅಳೆದ ಸಾಮಾನ್ಯ ಬಳಕೆಯಿಂದ ನಿಗದಿಯಾಗಬೇಕು.",
+  "objectives": [
+   "Enforce caps in code the model cannot edit.",
+   "Choose thresholds from real usage data."
+  ],
+  "objectivesKn": [
+   "ಮಾದರಿ ತಿದ್ದಲಾಗದ ಕೋಡ್‌ನಲ್ಲಿ ಮಿತಿ ಜಾರಿ.",
+   "ನಿಜ ಬಳಕೆ ಡೇಟಾದಿಂದ ಮಿತಿ ಆರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Action Budgets, Iteration Caps and Cost Governors — Setting and Enforcing Limits",
+     "textKn": "Action Budgets, Iteration Caps and Cost Governors — Setting and Enforcing Limits",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Action Budgets, Iteration Caps, Cost Governors",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Enforce in the Runtime",
+     "headingKn": "Runtime ನಲ್ಲಿ ಜಾರಿ",
+     "bodyEn": "A prompt saying \"stop after 20 steps\" can be ignored. A counter in the orchestration code that halts the run cannot.",
+     "bodyKn": "\"20 ಹಂತದ ನಂತರ ನಿಲ್ಲಿಸಿ\" ಎಂಬ prompt ನಿರ್ಲಕ್ಷಿಸಬಹುದು. orchestration ಕೋಡ್‌ನ ಕೌಂಟರ್ ರನ್ ನಿಲ್ಲಿಸಿದರೆ ನಿರ್ಲಕ್ಷಿಸಲಾಗದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Pick Thresholds From Data",
+     "headingKn": "ಡೇಟಾದಿಂದ ಮಿತಿ ಆರಿಸಿ",
+     "bodyEn": "Look at the distribution of steps and cost for successful runs and set caps a little above it. Too tight breaks real tasks; too loose defeats the purpose.",
+     "bodyKn": "ಯಶಸ್ವಿ runs ನ ಹಂತ ಮತ್ತು ವೆಚ್ಚ ವಿತರಣೆ ನೋಡಿ ಅದಕ್ಕಿಂತ ಸ್ವಲ್ಪ ಮೇಲೆ ಮಿತಿ ಇಡಿ. ಬಹಳ ಬಿಗಿ ನಿಜ ಕೆಲಸ ಮುರಿಯುತ್ತದೆ; ಬಹಳ ಸಡಿಲ ಉದ್ದೇಶ ಸೋಲಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Enforce caps in runtime code.\n• Set thresholds from real run data.",
+     "bodyKn": "• ಮಿತಿ runtime ಕೋಡ್‌ನಲ್ಲಿ.\n• ನಿಜ run ಡೇಟಾದಿಂದ ಮಿತಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Where enforce caps?",
+       "qKn": "ಮಿತಿ ಎಲ್ಲಿ ಜಾರಿ?",
+       "opts": [
+        "In runtime code",
+        "Only in the prompt",
+        "Nowhere",
+        "In comments"
+       ],
+       "optsKn": [
+        "runtime ಕೋಡ್‌ನಲ್ಲಿ",
+        "prompt ನಲ್ಲಿ ಮಾತ್ರ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಕಾಮೆಂಟ್‌ನಲ್ಲಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How choose a cap?",
+       "qKn": "ಮಿತಿ ಹೇಗೆ ಆರಿಸುವುದು?",
+       "opts": [
+        "From successful-run data",
+        "Randomly",
+        "Always 1",
+        "Always infinite"
+       ],
+       "optsKn": [
+        "ಯಶಸ್ವಿ run ಡೇಟಾದಿಂದ",
+        "ಯಾದೃಚ್ಛಿಕ",
+        "ಯಾವಾಗಲೂ 1",
+        "ಯಾವಾಗಲೂ ಅನಂತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A too-tight cap:",
+       "qKn": "ಬಹಳ ಬಿಗಿ ಮಿತಿ:",
+       "opts": [
+        "Breaks real tasks",
+        "Improves everything",
+        "Is harmless",
+        "Saves nothing"
+       ],
+       "optsKn": [
+        "ನಿಜ ಕೆಲಸ ಮುರಿಯುತ್ತದೆ",
+        "ಎಲ್ಲ ಸುಧಾರಿಸುತ್ತದೆ",
+        "ನಿರುಪದ್ರವ",
+        "ಏನೂ ಉಳಿಸದು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215b3",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Action Budgets, Iteration Caps and Cost Governors — What Happens at the Limit",
+  "titleKn": "Action ಬಜೆಟ್, Iteration ಮಿತಿ, ವೆಚ್ಚ ನಿಯಂತ್ರಕ — ಮಿತಿ ತಲುಪಿದಾಗ ಏನಾಗುತ್ತದೆ",
+  "desc": "Hitting a budget should end the run gracefully with saved progress and a clear report.",
+  "descKn": "ಬಜೆಟ್ ತಲುಪಿದಾಗ ರನ್ ಉಳಿಸಿದ ಪ್ರಗತಿ ಮತ್ತು ಸ್ಪಷ್ಟ ವರದಿಯೊಂದಿಗೆ ಸುಗಮವಾಗಿ ಮುಗಿಯಬೇಕು.",
+  "objectives": [
+   "Stop with partial results and an explanation.",
+   "Alert on repeated budget hits."
+  ],
+  "objectivesKn": [
+   "ಭಾಗಶಃ ಫಲಿತಾಂಶ ಮತ್ತು ವಿವರಣೆಯೊಂದಿಗೆ ನಿಲ್ಲಿಸಿ.",
+   "ಪದೇ ಪದೇ ಮಿತಿ ತಲುಪಿದರೆ alert."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Action Budgets, Iteration Caps and Cost Governors — What Happens at the Limit",
+     "textKn": "Action Budgets, Iteration Caps and Cost Governors — What Happens at the Limit",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Action Budgets, Iteration Caps, Cost Governors",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Graceful Stop",
+     "headingKn": "ಸುಗಮ ನಿಲುಗಡೆ",
+     "bodyEn": "On reaching a cap, save state, report what was done and what remains, and let a human decide whether to continue with a larger budget.",
+     "bodyKn": "ಮಿತಿ ತಲುಪಿದಾಗ state ಉಳಿಸಿ, ಏನು ಮಾಡಲಾಗಿದೆ/ಉಳಿದಿದೆ ವರದಿ ಮಾಡಿ, ದೊಡ್ಡ ಬಜೆಟ್‌ನೊಂದಿಗೆ ಮುಂದುವರಿಸಬೇಕೇ ಎಂದು ಮಾನವ ನಿರ್ಧರಿಸಲಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Learn From Hits",
+     "headingKn": "ಮಿತಿ ತಲುಪುವಿಕೆಯಿಂದ ಕಲಿಯಿರಿ",
+     "bodyEn": "Frequent cap hits on one task type suggest a prompt, tool or design problem. Alert on them and investigate rather than simply raising the limit.",
+     "bodyKn": "ಒಂದು ಕೆಲಸ ವಿಧದಲ್ಲಿ ಆಗಾಗ ಮಿತಿ ತಲುಪಿದರೆ prompt, tool ಅಥವಾ ವಿನ್ಯಾಸ ಸಮಸ್ಯೆ ಸೂಚಿಸುತ್ತದೆ. ಮಿತಿ ಏರಿಸುವ ಬದಲು alert ಮಾಡಿ ತನಿಖೆ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Stop gracefully with a report.\n• Investigate frequent cap hits.",
+     "bodyKn": "• ವರದಿಯೊಂದಿಗೆ ಸುಗಮ ನಿಲುಗಡೆ.\n• ಆಗಾಗ ಮಿತಿ ತಲುಪಿದರೆ ತನಿಖೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "At the cap the agent should:",
+       "qKn": "ಮಿತಿ ತಲುಪಿದಾಗ agent:",
+       "opts": [
+        "Save state and report",
+        "Crash silently",
+        "Raise its own cap",
+        "Delete work"
+       ],
+       "optsKn": [
+        "state ಉಳಿಸಿ ವರದಿ",
+        "ಮೌನ ಕ್ರ್ಯಾಶ್",
+        "ತನ್ನ ಮಿತಿ ಏರಿಸು",
+        "ಕೆಲಸ ಅಳಿಸು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Frequent cap hits suggest:",
+       "qKn": "ಆಗಾಗ ಮಿತಿ ತಲುಪುವಿಕೆ ಸೂಚಿಸುವುದು:",
+       "opts": [
+        "A design or prompt problem",
+        "Perfect design",
+        "Nothing",
+        "Cheap runs"
+       ],
+       "optsKn": [
+        "ವಿನ್ಯಾಸ ಅಥವಾ prompt ಸಮಸ್ಯೆ",
+        "ಪರಿಪೂರ್ಣ ವಿನ್ಯಾಸ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಅಗ್ಗ runs"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Who decides on a bigger budget?",
+       "qKn": "ದೊಡ್ಡ ಬಜೆಟ್ ಯಾರು ನಿರ್ಧರಿಸುತ್ತಾರೆ?",
+       "opts": [
+        "A human",
+        "The agent alone",
+        "Nobody",
+        "Random"
+       ],
+       "optsKn": [
+        "ಮಾನವ",
+        "agent ಮಾತ್ರ",
+        "ಯಾರೂ ಅಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215b6",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Kill Switches, Circuit Breakers and Canary Tokens — Kill Switches",
+  "titleKn": "Kill Switches, Circuit Breakers ಮತ್ತು Canary Tokens — Kill Switches",
+  "desc": "A kill switch lets an operator stop an agent immediately, and must work even if the agent misbehaves.",
+  "descKn": "kill switch ಆಪರೇಟರ್‌ಗೆ agent ತಕ್ಷಣ ನಿಲ್ಲಿಸಲು ಬಿಡುತ್ತದೆ; agent ತಪ್ಪಾಗಿ ವರ್ತಿಸಿದರೂ ಕೆಲಸ ಮಾಡಬೇಕು.",
+  "objectives": [
+   "Describe a reliable stop mechanism.",
+   "Explain why it must live outside the agent."
+  ],
+  "objectivesKn": [
+   "ನಂಬಲರ್ಹ ನಿಲ್ಲಿಸುವ ವ್ಯವಸ್ಥೆ ವಿವರಿಸಿ.",
+   "ಅದು agent ಹೊರಗಿರಬೇಕು ಏಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Kill Switches, Circuit Breakers and Canary Tokens — Kill Switches",
+     "textKn": "Kill Switches, Circuit Breakers and Canary Tokens — Kill Switches",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Kill Switches, Circuit Breakers, Canary Tokens",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Reliable Off Switch",
+     "headingKn": "ನಂಬಲರ್ಹ Off Switch",
+     "bodyEn": "The switch revokes credentials, cancels queued work and terminates processes. It should be one action that a person can take quickly.",
+     "bodyKn": "switch credentials ರದ್ದು, ಸರತಿ ಕೆಲಸ ರದ್ದು, ಪ್ರಕ್ರಿಯೆ ಅಂತ್ಯಗೊಳಿಸುತ್ತದೆ. ವ್ಯಕ್ತಿ ಬೇಗ ಮಾಡಬಹುದಾದ ಒಂದು ಕ್ರಿಯೆಯಾಗಿರಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Outside the Agent",
+     "headingKn": "Agent ಹೊರಗೆ",
+     "bodyEn": "If the agent can edit or delay the switch, it is not a safeguard. Keep it in separate infrastructure with its own access controls, and test it regularly.",
+     "bodyKn": "agent switch ತಿದ್ದಬಹುದು ಅಥವಾ ತಡೆಯಬಹುದಾದರೆ ಅದು ರಕ್ಷಣೆ ಅಲ್ಲ. ಪ್ರತ್ಯೇಕ ಮೂಲಸೌಕರ್ಯದಲ್ಲಿ ಸ್ವಂತ ಪ್ರವೇಶ ನಿಯಂತ್ರಣದೊಂದಿಗೆ ಇಟ್ಟು ನಿಯಮಿತವಾಗಿ ಪರೀಕ್ಷಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• One quick action revokes and stops.\n• Keep the switch outside the agent and test it.",
+     "bodyKn": "• ಒಂದು ಕ್ರಿಯೆ ರದ್ದು ಮತ್ತು ನಿಲುಗಡೆ.\n• switch agent ಹೊರಗೆ, ಪರೀಕ್ಷೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A kill switch should:",
+       "qKn": "kill switch:",
+       "opts": [
+        "Stop the agent quickly",
+        "Be editable by the agent",
+        "Be hidden",
+        "Be slow"
+       ],
+       "optsKn": [
+        "agent ಬೇಗ ನಿಲ್ಲಿಸಬೇಕು",
+        "agent ತಿದ್ದಬಹುದು",
+        "ಮರೆ",
+        "ನಿಧಾನ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Where keep it?",
+       "qKn": "ಎಲ್ಲಿ ಇಡಬೇಕು?",
+       "opts": [
+        "Outside the agent's control",
+        "Inside the prompt",
+        "In agent memory",
+        "Nowhere"
+       ],
+       "optsKn": [
+        "agent ನಿಯಂತ್ರಣದ ಹೊರಗೆ",
+        "prompt ಒಳಗೆ",
+        "agent ಮೆಮೊರಿ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why test it regularly?",
+       "qKn": "ನಿಯಮಿತ ಪರೀಕ್ಷೆ ಏಕೆ?",
+       "opts": [
+        "An untested switch may fail when needed",
+        "For fun",
+        "To slow work",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಪರೀಕ್ಷಿಸದ switch ಬೇಕಾದಾಗ ವಿಫಲವಾಗಬಹುದು",
+        "ಮೋಜು",
+        "ಕೆಲಸ ನಿಧಾನ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215b6",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Kill Switches, Circuit Breakers and Canary Tokens — Circuit Breakers",
+  "titleKn": "Kill Switches, Circuit Breakers ಮತ್ತು Canary Tokens — Circuit Breakers",
+  "desc": "A circuit breaker automatically stops calls to a failing dependency or an anomalous action pattern.",
+  "descKn": "circuit breaker ವಿಫಲ ಅವಲಂಬನೆ ಅಥವಾ ಅಸಹಜ ಕ್ರಿಯೆ ಮಾದರಿಗೆ ಕರೆಗಳನ್ನು ಸ್ವಯಂ ನಿಲ್ಲಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Describe closed, open and half-open states.",
+   "Trigger breakers on error rate or anomalies."
+  ],
+  "objectivesKn": [
+   "closed, open, half-open ಸ್ಥಿತಿ ವಿವರಿಸಿ.",
+   "ದೋಷ ದರ ಅಥವಾ ವೈಪರೀತ್ಯದಲ್ಲಿ breaker ಪ್ರಚೋದಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Kill Switches, Circuit Breakers and Canary Tokens — Circuit Breakers",
+     "textKn": "Kill Switches, Circuit Breakers and Canary Tokens — Circuit Breakers",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Kill Switches, Circuit Breakers, Canary Tokens",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Three States",
+     "headingKn": "ಮೂರು ಸ್ಥಿತಿಗಳು",
+     "bodyEn": "Closed means calls flow. After too many failures the breaker opens and calls are blocked. After a pause it goes half-open and lets a test call through before closing again.",
+     "bodyKn": "closed ಎಂದರೆ ಕರೆಗಳು ಹರಿಯುತ್ತವೆ. ಹೆಚ್ಚು ವೈಫಲ್ಯದ ನಂತರ breaker open ಆಗಿ ಕರೆ ತಡೆಯುತ್ತದೆ. ವಿರಾಮದ ನಂತರ half-open ಆಗಿ ಪರೀಕ್ಷಾ ಕರೆ ಬಿಟ್ಟು ಮತ್ತೆ ಮುಚ್ಚುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Beyond Errors",
+     "headingKn": "ದೋಷಗಳ ಆಚೆ",
+     "bodyEn": "Breakers can also trip on unusual behaviour, such as a sudden burst of deletions or a spike in outbound data, limiting damage before a human arrives.",
+     "bodyKn": "ಅಳಿಸುವಿಕೆಗಳ ಹಠಾತ್ ಸರಣಿ ಅಥವಾ ಹೊರಹೋಗುವ ಡೇಟಾ ಏರಿಕೆಯಂತಹ ಅಸಾಮಾನ್ಯ ವರ್ತನೆಗೂ breaker ಟ್ರಿಪ್ ಆಗಬಹುದು; ಮಾನವ ಬರುವ ಮೊದಲು ಹಾನಿ ಸೀಮಿತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Closed, open, half-open.\n• Trip on anomalies as well as errors.",
+     "bodyKn": "• closed, open, half-open.\n• ದೋಷ ಮತ್ತು ವೈಪರೀತ್ಯದಲ್ಲಿ ಟ್ರಿಪ್."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "An open breaker:",
+       "qKn": "open breaker:",
+       "opts": [
+        "Blocks calls",
+        "Lets all calls through",
+        "Deletes data",
+        "Is broken"
+       ],
+       "optsKn": [
+        "ಕರೆ ತಡೆ",
+        "ಎಲ್ಲ ಕರೆ ಬಿಡು",
+        "ಡೇಟಾ ಅಳಿಸು",
+        "ಮುರಿದಿದೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Half-open state:",
+       "qKn": "half-open ಸ್ಥಿತಿ:",
+       "opts": [
+        "Lets a test call through",
+        "Blocks forever",
+        "Ignores errors",
+        "Shuts down"
+       ],
+       "optsKn": [
+        "ಪರೀಕ್ಷಾ ಕರೆ ಬಿಡುತ್ತದೆ",
+        "ಶಾಶ್ವತ ತಡೆ",
+        "ದೋಷ ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಸ್ಥಗಿತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A breaker can trip on:",
+       "qKn": "breaker ಟ್ರಿಪ್ ಆಗಬಹುದು:",
+       "opts": [
+        "A burst of deletions",
+        "Nothing",
+        "Colour",
+        "Fonts"
+       ],
+       "optsKn": [
+        "ಅಳಿಸುವಿಕೆ ಸರಣಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215b6",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Kill Switches, Circuit Breakers and Canary Tokens — Canary Tokens",
+  "titleKn": "Kill Switches, Circuit Breakers ಮತ್ತು Canary Tokens — Canary Tokens",
+  "desc": "Canary tokens are decoy secrets or files that raise an alarm when an agent touches them, revealing misuse.",
+  "descKn": "canary tokens ನಕಲಿ ರಹಸ್ಯ ಅಥವಾ ಫೈಲ್‌ಗಳು; agent ಮುಟ್ಟಿದರೆ ಎಚ್ಚರಿಕೆ ನೀಡಿ ದುರ್ಬಳಕೆ ಬಹಿರಂಗಪಡಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Explain how decoys detect misuse.",
+   "Place canaries where legitimate work never goes."
+  ],
+  "objectivesKn": [
+   "ನಕಲಿಗಳು ದುರ್ಬಳಕೆ ಹೇಗೆ ಪತ್ತೆ ಮಾಡುತ್ತವೆ ವಿವರಿಸಿ.",
+   "ನಿಜ ಕೆಲಸ ಹೋಗದ ಸ್ಥಳದಲ್ಲಿ canaries ಇರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Kill Switches, Circuit Breakers and Canary Tokens — Canary Tokens",
+     "textKn": "Kill Switches, Circuit Breakers and Canary Tokens — Canary Tokens",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Kill Switches, Circuit Breakers, Canary Tokens",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Decoys That Alarm",
+     "headingKn": "ಎಚ್ಚರಿಸುವ ನಕಲಿಗಳು",
+     "bodyEn": "A fake credential or file that no legitimate task should read triggers an alert the moment it is accessed, which is a strong sign of injection or misbehaviour.",
+     "bodyKn": "ಯಾವ ನಿಜ ಕೆಲಸವೂ ಓದಬಾರದ ನಕಲಿ credential ಅಥವಾ ಫೈಲ್ ಪ್ರವೇಶಿಸಿದ ಕ್ಷಣ ಎಚ್ಚರಿಕೆ ನೀಡುತ್ತದೆ; ಇದು injection ಅಥವಾ ದುರ್ವರ್ತನೆಯ ಬಲವಾದ ಸೂಚನೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Placement and Response",
+     "headingKn": "ಸ್ಥಾನ ಮತ್ತು ಪ್ರತಿಕ್ರಿಯೆ",
+     "bodyEn": "Put canaries where an attacker-driven agent would look, such as a fake secrets file. Connect alerts to the kill switch or a circuit breaker for fast containment.",
+     "bodyKn": "ದಾಳಿ-ಚಾಲಿತ agent ನೋಡುವ ಸ್ಥಳ, ಉದಾ. ನಕಲಿ secrets ಫೈಲ್, ನಲ್ಲಿ canaries ಇರಿಸಿ. ಬೇಗ ನಿಯಂತ್ರಣಕ್ಕೆ alerts ಅನ್ನು kill switch ಅಥವಾ circuit breaker ಗೆ ಜೋಡಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Decoys alarm on any access.\n• Wire alerts to containment.",
+     "bodyKn": "• ನಕಲಿ ಪ್ರವೇಶಕ್ಕೆ ಎಚ್ಚರಿಕೆ.\n• alerts ಅನ್ನು ನಿಯಂತ್ರಣಕ್ಕೆ ಜೋಡಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A canary token is:",
+       "qKn": "canary token:",
+       "opts": [
+        "A decoy that alarms when touched",
+        "A password manager",
+        "A model",
+        "A firewall"
+       ],
+       "optsKn": [
+        "ಮುಟ್ಟಿದರೆ ಎಚ್ಚರಿಸುವ ನಕಲಿ",
+        "ಪಾಸ್‌ವರ್ಡ್ ನಿರ್ವಾಹಕ",
+        "ಮಾದರಿ",
+        "ಫೈರ್‌ವಾಲ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Place canaries:",
+       "qKn": "canaries ಇರಿಸಿ:",
+       "opts": [
+        "Where legitimate work never goes",
+        "On main paths",
+        "Nowhere",
+        "In logs only"
+       ],
+       "optsKn": [
+        "ನಿಜ ಕೆಲಸ ಹೋಗದ ಸ್ಥಳದಲ್ಲಿ",
+        "ಮುಖ್ಯ ಹಾದಿಯಲ್ಲಿ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಲಾಗ್‌ನಲ್ಲಿ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Canary access suggests:",
+       "qKn": "canary ಪ್ರವೇಶ ಸೂಚಿಸುವುದು:",
+       "opts": [
+        "Possible injection or misuse",
+        "Normal work",
+        "A bug fix",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸಂಭಾವ್ಯ injection ಅಥವಾ ದುರ್ಬಳಕೆ",
+        "ಸಾಮಾನ್ಯ ಕೆಲಸ",
+        "ದೋಷ ಪರಿಹಾರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215b9",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Human-in-the-Loop: Propose Then Commit — The Propose-Then-Commit Pattern",
+  "titleKn": "ಮಾನವ-Loop ನಲ್ಲಿ: Propose ನಂತರ Commit — Propose-Then-Commit ಮಾದರಿ",
+  "desc": "The agent prepares an action as a proposal, and a human approves before it takes effect.",
+  "descKn": "agent ಕ್ರಿಯೆಯನ್ನು ಪ್ರಸ್ತಾವನೆಯಾಗಿ ಸಿದ್ಧಪಡಿಸುತ್ತದೆ; ಪರಿಣಾಮ ಬೀರುವ ಮೊದಲು ಮಾನವ ಅನುಮೋದಿಸುತ್ತಾರೆ.",
+  "objectives": [
+   "Separate drafting from committing.",
+   "Identify actions that need approval."
+  ],
+  "objectivesKn": [
+   "ಕರಡು ಮತ್ತು commit ಬೇರ್ಪಡಿಸಿ.",
+   "ಅನುಮೋದನೆ ಬೇಕಾದ ಕ್ರಿಯೆ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Human-in-the-Loop: Propose Then Commit — The Propose-Then-Commit Pattern",
+     "textKn": "Human-in-the-Loop: Propose Then Commit — The Propose-Then-Commit Pattern",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in HITL: Propose-Then-Commit",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Two Steps",
+     "headingKn": "ಎರಡು ಹಂತಗಳು",
+     "bodyEn": "First the agent produces the exact change, such as a diff, an email draft or a payment request, without applying it. Then a person reviews and commits.",
+     "bodyKn": "ಮೊದಲು agent ನಿಖರ ಬದಲಾವಣೆ (diff, ಇಮೇಲ್ ಕರಡು, ಪಾವತಿ ವಿನಂತಿ) ಅನ್ವಯಿಸದೆ ರಚಿಸುತ್ತದೆ. ನಂತರ ವ್ಯಕ್ತಿ ವಿಮರ್ಶಿಸಿ commit ಮಾಡುತ್ತಾರೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Which Actions Need It",
+     "headingKn": "ಯಾವ ಕ್ರಿಯೆಗೆ ಬೇಕು",
+     "bodyEn": "Require approval for actions that are irreversible, costly, external-facing or touch sensitive data. Low-risk reversible steps can proceed automatically.",
+     "bodyKn": "ಹಿಂತೆಗೆಯಲಾಗದ, ದುಬಾರಿ, ಹೊರಮುಖ ಅಥವಾ ಸೂಕ್ಷ್ಮ ಡೇಟಾ ಮುಟ್ಟುವ ಕ್ರಿಯೆಗೆ ಅನುಮೋದನೆ ಬೇಕು. ಕಡಿಮೆ ಅಪಾಯದ ಹಿಂತೆಗೆಯಬಹುದಾದ ಹಂತ ಸ್ವಯಂ ಸಾಗಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Draft first, commit after approval.\n• Gate irreversible, costly or external actions.",
+     "bodyKn": "• ಮೊದಲು ಕರಡು, ಅನುಮೋದನೆ ನಂತರ commit.\n• ಹಿಂತೆಗೆಯಲಾಗದ/ದುಬಾರಿ/ಹೊರಮುಖ ಕ್ರಿಯೆ gate."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is proposed?",
+       "qKn": "ಏನು ಪ್ರಸ್ತಾಪಿಸಲಾಗುತ್ತದೆ?",
+       "opts": [
+        "The exact action, not yet applied",
+        "A vague idea",
+        "Nothing",
+        "A result"
+       ],
+       "optsKn": [
+        "ನಿಖರ ಕ್ರಿಯೆ, ಇನ್ನೂ ಅನ್ವಯಿಸಿಲ್ಲ",
+        "ಅಸ್ಪಷ್ಟ ಕಲ್ಪನೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಲಿತಾಂಶ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which needs approval?",
+       "qKn": "ಯಾವುದಕ್ಕೆ ಅನುಮೋದನೆ ಬೇಕು?",
+       "opts": [
+        "Irreversible actions",
+        "Reading a file",
+        "Scrolling",
+        "Formatting"
+       ],
+       "optsKn": [
+        "ಹಿಂತೆಗೆಯಲಾಗದ ಕ್ರಿಯೆ",
+        "ಫೈಲ್ ಓದು",
+        "ಸ್ಕ್ರಾಲ್",
+        "ಫಾರ್ಮಾಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Who commits?",
+       "qKn": "commit ಯಾರು?",
+       "opts": [
+        "A human after review",
+        "The agent alone",
+        "Nobody",
+        "Random"
+       ],
+       "optsKn": [
+        "ವಿಮರ್ಶೆ ನಂತರ ಮಾನವ",
+        "agent ಮಾತ್ರ",
+        "ಯಾರೂ ಅಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215b9",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Human-in-the-Loop: Propose Then Commit — Designing Good Approval Prompts",
+  "titleKn": "ಮಾನವ-Loop ನಲ್ಲಿ: Propose ನಂತರ Commit — ಉತ್ತಮ ಅನುಮೋದನೆ Prompts ವಿನ್ಯಾಸ",
+  "desc": "Approval only helps if the reviewer can see what will happen and is not overwhelmed by requests.",
+  "descKn": "ವಿಮರ್ಶಕ ಏನಾಗುತ್ತದೆ ಎಂದು ನೋಡಬಲ್ಲರು ಮತ್ತು ವಿನಂತಿಗಳಿಂದ ಮುಳುಗದಿದ್ದರೆ ಮಾತ್ರ ಅನುಮೋದನೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
+  "objectives": [
+   "Show concrete effects, not summaries alone.",
+   "Avoid approval fatigue."
+  ],
+  "objectivesKn": [
+   "ಸಾರಾಂಶ ಮಾತ್ರವಲ್ಲ, ನಿಖರ ಪರಿಣಾಮ ತೋರಿಸಿ.",
+   "ಅನುಮೋದನೆ ಆಯಾಸ ತಪ್ಪಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Human-in-the-Loop: Propose Then Commit — Designing Good Approval Prompts",
+     "textKn": "Human-in-the-Loop: Propose Then Commit — Designing Good Approval Prompts",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in HITL: Propose-Then-Commit",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Show the Real Effect",
+     "headingKn": "ನಿಜ ಪರಿಣಾಮ ತೋರಿಸಿ",
+     "bodyEn": "Display the actual command, recipient, amount or diff. A friendly summary can hide something harmful, so the reviewer needs the specifics.",
+     "bodyKn": "ನಿಜ ಆದೇಶ, ಸ್ವೀಕರಿಸುವವರು, ಮೊತ್ತ ಅಥವಾ diff ತೋರಿಸಿ. ಸ್ನೇಹಪರ ಸಾರಾಂಶ ಹಾನಿಕರವಾದದ್ದನ್ನು ಮರೆಮಾಡಬಹುದು; ವಿಮರ್ಶಕರಿಗೆ ವಿವರ ಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Approval Fatigue",
+     "headingKn": "ಅನುಮೋದನೆ ಆಯಾಸ",
+     "bodyEn": "If people approve hundreds of trivial prompts they stop reading. Auto-allow safe actions and reserve prompts for the few that matter.",
+     "bodyKn": "ನೂರಾರು ಕ್ಷುಲ್ಲಕ prompts ಅನುಮೋದಿಸಿದರೆ ಜನ ಓದುವುದನ್ನೇ ಬಿಡುತ್ತಾರೆ. ಸುರಕ್ಷಿತ ಕ್ರಿಯೆ ಸ್ವಯಂ ಅನುಮತಿಸಿ, ಮುಖ್ಯವಾದ ಕೆಲವಕ್ಕೆ ಮಾತ್ರ prompts."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Show exact commands, recipients and diffs.\n• Too many prompts cause rubber-stamping.",
+     "bodyKn": "• ನಿಖರ ಆದೇಶ, ಸ್ವೀಕರಿಸುವವರು, diff ತೋರಿಸಿ.\n• ಹೆಚ್ಚು prompts ಕುರುಡು ಅನುಮೋದನೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What should an approval prompt show?",
+       "qKn": "ಅನುಮೋದನೆ prompt ಏನು ತೋರಿಸಬೇಕು?",
+       "opts": [
+        "The concrete effect",
+        "Only a friendly summary",
+        "Nothing",
+        "A joke"
+       ],
+       "optsKn": [
+        "ನಿಖರ ಪರಿಣಾಮ",
+        "ಸ್ನೇಹಪರ ಸಾರಾಂಶ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಹಾಸ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Approval fatigue means:",
+       "qKn": "ಅನುಮೋದನೆ ಆಯಾಸ ಎಂದರೆ:",
+       "opts": [
+        "People stop reading prompts",
+        "People read more",
+        "Prompts vanish",
+        "Agents tire"
+       ],
+       "optsKn": [
+        "ಜನ prompts ಓದುವುದನ್ನು ಬಿಡುತ್ತಾರೆ",
+        "ಹೆಚ್ಚು ಓದುತ್ತಾರೆ",
+        "prompts ಮಾಯ",
+        "agents ದಣಿವು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Reduce fatigue by:",
+       "qKn": "ಆಯಾಸ ಕಡಿಮೆ ಮಾಡಲು:",
+       "opts": [
+        "Auto-allowing safe actions",
+        "Prompting for everything",
+        "Removing review",
+        "Hiding prompts"
+       ],
+       "optsKn": [
+        "ಸುರಕ್ಷಿತ ಕ್ರಿಯೆ ಸ್ವಯಂ ಅನುಮತಿ",
+        "ಎಲ್ಲದಕ್ಕೂ prompt",
+        "ವಿಮರ್ಶೆ ತೆಗೆ",
+        "prompts ಮರೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215b9",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Human-in-the-Loop: Propose Then Commit — Audit and Accountability",
+  "titleKn": "ಮಾನವ-Loop ನಲ್ಲಿ: Propose ನಂತರ Commit — ಲೆಕ್ಕಪರಿಶೋಧನೆ ಮತ್ತು ಹೊಣೆಗಾರಿಕೆ",
+  "desc": "Record who approved what, so decisions can be reviewed and responsibility is clear.",
+  "descKn": "ಯಾರು ಏನನ್ನು ಅನುಮೋದಿಸಿದರು ದಾಖಲಿಸಿ; ನಿರ್ಧಾರ ಪರಿಶೀಲಿಸಬಹುದು ಮತ್ತು ಹೊಣೆ ಸ್ಪಷ್ಟ.",
+  "objectives": [
+   "Log proposals, decisions and outcomes.",
+   "Use records to improve the policy."
+  ],
+  "objectivesKn": [
+   "ಪ್ರಸ್ತಾವನೆ, ನಿರ್ಧಾರ, ಫಲಿತಾಂಶ ದಾಖಲಿಸಿ.",
+   "ದಾಖಲೆಗಳಿಂದ ನೀತಿ ಸುಧಾರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Human-in-the-Loop: Propose Then Commit — Audit and Accountability",
+     "textKn": "Human-in-the-Loop: Propose Then Commit — Audit and Accountability",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in HITL: Propose-Then-Commit",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "An Approval Trail",
+     "headingKn": "ಅನುಮೋದನೆ ಹಾದಿ",
+     "bodyEn": "Store each proposal, the approver, the time, the decision and what actually happened. This supports audits and incident investigation.",
+     "bodyKn": "ಪ್ರತಿ ಪ್ರಸ್ತಾವನೆ, ಅನುಮೋದಕ, ಸಮಯ, ನಿರ್ಧಾರ, ನಿಜವಾಗಿ ಏನಾಯಿತು ಸಂಗ್ರಹಿಸಿ. ಲೆಕ್ಕಪರಿಶೋಧನೆ ಮತ್ತು ಘಟನೆ ತನಿಖೆಗೆ ನೆರವು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Tune the Policy",
+     "headingKn": "ನೀತಿ ಹೊಂದಿಸಿ",
+     "bodyEn": "If almost every proposal of one type is approved, it may be safe to automate. If rejections cluster, the agent or prompt needs work.",
+     "bodyKn": "ಒಂದು ವಿಧದ ಬಹುತೇಕ ಪ್ರಸ್ತಾವನೆ ಅನುಮೋದನೆಯಾದರೆ ಸ್ವಯಂಚಾಲನೆ ಸುರಕ್ಷಿತವಾಗಬಹುದು. ತಿರಸ್ಕಾರ ಗುಂಪಾದರೆ agent ಅಥವಾ prompt ಸುಧಾರಣೆ ಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Log proposals, approvers and outcomes.\n• Use approval rates to tune what needs review.",
+     "bodyKn": "• ಪ್ರಸ್ತಾವನೆ, ಅನುಮೋದಕ, ಫಲಿತಾಂಶ ದಾಖಲು.\n• ಅನುಮೋದನೆ ದರದಿಂದ ನೀತಿ ಹೊಂದಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why keep an approval trail?",
+       "qKn": "ಅನುಮೋದನೆ ಹಾದಿ ಏಕೆ?",
+       "opts": [
+        "Audits and investigations",
+        "Decoration",
+        "To slow work",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಲೆಕ್ಕಪರಿಶೋಧನೆ ಮತ್ತು ತನಿಖೆ",
+        "ಅಲಂಕಾರ",
+        "ಕೆಲಸ ನಿಧಾನ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Nearly always approved type may be:",
+       "qKn": "ಬಹುತೇಕ ಯಾವಾಗಲೂ ಅನುಮೋದನೆಯಾಗುವ ವಿಧ:",
+       "opts": [
+        "A candidate for automation",
+        "Forbidden",
+        "Deleted",
+        "Ignored"
+       ],
+       "optsKn": [
+        "ಸ್ವಯಂಚಾಲನೆ ಅಭ್ಯರ್ಥಿ",
+        "ನಿಷೇಧ",
+        "ಅಳಿಸು",
+        "ನಿರ್ಲಕ್ಷ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Clustered rejections suggest:",
+       "qKn": "ಗುಂಪಾದ ತಿರಸ್ಕಾರ ಸೂಚಿಸುವುದು:",
+       "opts": [
+        "The agent or prompt needs work",
+        "Perfect agent",
+        "Nothing",
+        "Reviewer error always"
+       ],
+       "optsKn": [
+        "agent ಅಥವಾ prompt ಸುಧಾರಣೆ ಬೇಕು",
+        "ಪರಿಪೂರ್ಣ agent",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಯಾವಾಗಲೂ ವಿಮರ್ಶಕ ತಪ್ಪು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215bc",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Checkpoints and Rollback — Why Checkpoint",
+  "titleKn": "Checkpoints ಮತ್ತು Rollback — Checkpoint ಏಕೆ",
+  "desc": "Snapshots taken before risky steps let you undo agent mistakes and resume from a known good point.",
+  "descKn": "ಅಪಾಯಕಾರಿ ಹಂತಗಳ ಮೊದಲು ತೆಗೆದ snapshots agent ತಪ್ಪುಗಳನ್ನು ಹಿಂತೆಗೆಯಲು ಮತ್ತು ತಿಳಿದ ಒಳ್ಳೆಯ ಬಿಂದುವಿನಿಂದ ಮುಂದುವರಿಸಲು ಬಿಡುತ್ತವೆ.",
+  "objectives": [
+   "Explain the value of undo for agents.",
+   "Choose when to checkpoint."
+  ],
+  "objectivesKn": [
+   "agents ಗೆ undo ಮೌಲ್ಯ ವಿವರಿಸಿ.",
+   "ಯಾವಾಗ checkpoint ಮಾಡಬೇಕು ಆರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Checkpoints and Rollback — Why Checkpoint",
+     "textKn": "Checkpoints and Rollback — Why Checkpoint",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Checkpoints and Rollback",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Mistakes Will Happen",
+     "headingKn": "ತಪ್ಪುಗಳಾಗುತ್ತವೆ",
+     "bodyEn": "Even a good agent sometimes makes a wrong edit or deletes something. Being able to return to an earlier state turns a disaster into an inconvenience.",
+     "bodyKn": "ಉತ್ತಮ agent ಕೂಡ ಕೆಲವೊಮ್ಮೆ ತಪ್ಪು ತಿದ್ದುಪಡಿ ಮಾಡುತ್ತದೆ ಅಥವಾ ಏನನ್ನಾದರೂ ಅಳಿಸುತ್ತದೆ. ಹಿಂದಿನ ಸ್ಥಿತಿಗೆ ಮರಳುವುದು ವಿಪತ್ತನ್ನು ಅನಾನುಕೂಲವಾಗಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "When to Checkpoint",
+     "headingKn": "ಯಾವಾಗ Checkpoint",
+     "bodyEn": "Checkpoint before large edits, before running unknown commands and at natural milestones. More frequent checkpoints make rollback finer but cost storage.",
+     "bodyKn": "ದೊಡ್ಡ ತಿದ್ದುಪಡಿ, ಅಪರಿಚಿತ ಆದೇಶ ಚಲಾವಣೆ ಮೊದಲು ಮತ್ತು ಸಹಜ ಮೈಲಿಗಲ್ಲುಗಳಲ್ಲಿ checkpoint. ಹೆಚ್ಚು checkpoints rollback ಸೂಕ್ಷ್ಮ ಮಾಡುತ್ತವೆ, ಸಂಗ್ರಹ ವೆಚ್ಚ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Undo turns disasters into inconveniences.\n• Checkpoint before risky steps.",
+     "bodyKn": "• undo ವಿಪತ್ತನ್ನು ಅನಾನುಕೂಲವಾಗಿಸುತ್ತದೆ.\n• ಅಪಾಯಕಾರಿ ಹಂತ ಮೊದಲು checkpoint."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why checkpoint?",
+       "qKn": "checkpoint ಏಕೆ?",
+       "opts": [
+        "To undo mistakes",
+        "To slow agents",
+        "To hide work",
+        "No reason"
+       ],
+       "optsKn": [
+        "ತಪ್ಪು ಹಿಂತೆಗೆಯಲು",
+        "agents ನಿಧಾನ",
+        "ಕೆಲಸ ಮರೆ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Checkpoint before:",
+       "qKn": "ಮೊದಲು checkpoint:",
+       "opts": [
+        "Large edits",
+        "Reading",
+        "Nothing",
+        "Comments"
+       ],
+       "optsKn": [
+        "ದೊಡ್ಡ ತಿದ್ದುಪಡಿ",
+        "ಓದು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಕಾಮೆಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "More checkpoints give:",
+       "qKn": "ಹೆಚ್ಚು checkpoints:",
+       "opts": [
+        "Finer rollback at storage cost",
+        "No benefit",
+        "Less storage",
+        "Slower disks"
+       ],
+       "optsKn": [
+        "ಸಂಗ್ರಹ ವೆಚ್ಚದಲ್ಲಿ ಸೂಕ್ಷ್ಮ rollback",
+        "ಲಾಭವಿಲ್ಲ",
+        "ಕಡಿಮೆ ಸಂಗ್ರಹ",
+        "ನಿಧಾನ ಡಿಸ್ಕ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215bc",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Checkpoints and Rollback — What to Snapshot",
+  "titleKn": "Checkpoints ಮತ್ತು Rollback — ಏನು Snapshot ಮಾಡಬೇಕು",
+  "desc": "Code is easy to snapshot; databases, external services and side effects need more thought.",
+  "descKn": "ಕೋಡ್ snapshot ಸುಲಭ; ಡೇಟಾಬೇಸ್, ಬಾಹ್ಯ ಸೇವೆ, side effects ಗೆ ಹೆಚ್ಚು ಆಲೋಚನೆ ಬೇಕು.",
+  "objectives": [
+   "Use version control for files.",
+   "Recognise effects that cannot be rolled back."
+  ],
+  "objectivesKn": [
+   "ಫೈಲ್‌ಗಳಿಗೆ ಆವೃತ್ತಿ ನಿಯಂತ್ರಣ ಬಳಸಿ.",
+   "rollback ಆಗದ ಪರಿಣಾಮ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Checkpoints and Rollback — What to Snapshot",
+     "textKn": "Checkpoints and Rollback — What to Snapshot",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Checkpoints and Rollback",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Files and Data",
+     "headingKn": "ಫೈಲ್ ಮತ್ತು ಡೇಟಾ",
+     "bodyEn": "Version control covers source files. Databases need backups or transactions, and generated artefacts may need separate snapshots.",
+     "bodyKn": "ಆವೃತ್ತಿ ನಿಯಂತ್ರಣ ಮೂಲ ಫೈಲ್‌ಗಳಿಗೆ. ಡೇಟಾಬೇಸ್‌ಗೆ backups ಅಥವಾ transactions, ರಚಿತ ವಸ್ತುಗಳಿಗೆ ಪ್ರತ್ಯೇಕ snapshots ಬೇಕಾಗಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Irreversible",
+     "headingKn": "ಹಿಂತೆಗೆಯಲಾಗದ್ದು",
+     "bodyEn": "A sent email or a payment cannot be un-sent by restoring files. These effects need propose-then-commit approval, because rollback will not save you.",
+     "bodyKn": "ಕಳುಹಿಸಿದ ಇಮೇಲ್ ಅಥವಾ ಪಾವತಿ ಫೈಲ್ ಮರುಸ್ಥಾಪನೆಯಿಂದ ಹಿಂತೆಗೆಯಲಾಗದು. ಇವಕ್ಕೆ propose-then-commit ಅನುಮೋದನೆ ಬೇಕು; rollback ಕಾಪಾಡದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Version control for files; backups for data.\n• Irreversible effects need approval instead.",
+     "bodyKn": "• ಫೈಲ್‌ಗೆ ಆವೃತ್ತಿ ನಿಯಂತ್ರಣ; ಡೇಟಾಗೆ backups.\n• ಹಿಂತೆಗೆಯಲಾಗದ್ದಕ್ಕೆ ಅನುಮೋದನೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Which tool snapshots source files?",
+       "qKn": "ಮೂಲ ಫೈಲ್ snapshot ಸಾಧನ?",
+       "opts": [
+        "Version control",
+        "A calculator",
+        "A browser",
+        "A font"
+       ],
+       "optsKn": [
+        "ಆವೃತ್ತಿ ನಿಯಂತ್ರಣ",
+        "ಕ್ಯಾಲ್ಕುಲೇಟರ್",
+        "ಬ್ರೌಸರ್",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A sent email is:",
+       "qKn": "ಕಳುಹಿಸಿದ ಇಮೇಲ್:",
+       "opts": [
+        "Not rollbackable",
+        "Rollbackable by git",
+        "Automatically undone",
+        "Deleted"
+       ],
+       "optsKn": [
+        "rollback ಆಗದು",
+        "git ನಿಂದ rollback",
+        "ಸ್ವಯಂ ಹಿಂತೆಗೆತ",
+        "ಅಳಿಸಲ್ಪಟ್ಟಿದೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Databases need:",
+       "qKn": "ಡೇಟಾಬೇಸ್‌ಗೆ:",
+       "opts": [
+        "Backups or transactions",
+        "Nothing",
+        "Only comments",
+        "Only fonts"
+       ],
+       "optsKn": [
+        "backups ಅಥವಾ transactions",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಕಾಮೆಂಟ್ ಮಾತ್ರ",
+        "ಫಾಂಟ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215bc",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Checkpoints and Rollback — Rehearsing Rollback",
+  "titleKn": "Checkpoints ಮತ್ತು Rollback — Rollback ಅಭ್ಯಾಸ",
+  "desc": "A rollback you have never tried may fail when you need it, so practise and verify it.",
+  "descKn": "ಎಂದಿಗೂ ಪ್ರಯತ್ನಿಸದ rollback ಬೇಕಾದಾಗ ವಿಫಲವಾಗಬಹುದು; ಅಭ್ಯಾಸ ಮಾಡಿ ಪರಿಶೀಲಿಸಿ.",
+  "objectives": [
+   "Test restores in a safe environment.",
+   "Verify state after rollback."
+  ],
+  "objectivesKn": [
+   "ಸುರಕ್ಷಿತ ಪರಿಸರದಲ್ಲಿ restore ಪರೀಕ್ಷಿಸಿ.",
+   "rollback ನಂತರ state ಪರಿಶೀಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Checkpoints and Rollback — Rehearsing Rollback",
+     "textKn": "Checkpoints and Rollback — Rehearsing Rollback",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Checkpoints and Rollback",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Practise Restores",
+     "headingKn": "Restore ಅಭ್ಯಾಸ",
+     "bodyEn": "Regularly restore from a checkpoint in a test environment and confirm the system works. Untested backups often turn out to be incomplete.",
+     "bodyKn": "ಪರೀಕ್ಷಾ ಪರಿಸರದಲ್ಲಿ checkpoint ನಿಂದ ನಿಯಮಿತವಾಗಿ restore ಮಾಡಿ ವ್ಯವಸ್ಥೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ ಎಂದು ದೃಢೀಕರಿಸಿ. ಪರೀಕ್ಷಿಸದ backups ಅಪೂರ್ಣ ಎಂದು ಆಗಾಗ ತಿಳಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Verify After Rollback",
+     "headingKn": "Rollback ನಂತರ ಪರಿಶೀಲಿಸಿ",
+     "bodyEn": "After rolling back, run the checks again and record what was undone, so the agent does not immediately repeat the same mistake.",
+     "bodyKn": "rollback ನಂತರ ಪರಿಶೀಲನೆ ಮತ್ತೆ ಚಲಾಯಿಸಿ ಏನು ಹಿಂತೆಗೆಯಲಾಯಿತು ದಾಖಲಿಸಿ; agent ತಕ್ಷಣ ಅದೇ ತಪ್ಪು ಪುನರಾವರ್ತಿಸದಂತೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Practise restores regularly.\n• Verify and record after every rollback.",
+     "bodyKn": "• ನಿಯಮಿತ restore ಅಭ್ಯಾಸ.\n• ಪ್ರತಿ rollback ನಂತರ ಪರಿಶೀಲನೆ, ದಾಖಲು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why practise restores?",
+       "qKn": "restore ಅಭ್ಯಾಸ ಏಕೆ?",
+       "opts": [
+        "Untested backups may be incomplete",
+        "For fun",
+        "To waste time",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಪರೀಕ್ಷಿಸದ backups ಅಪೂರ್ಣವಿರಬಹುದು",
+        "ಮೋಜು",
+        "ಸಮಯ ವ್ಯರ್ಥ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "After rollback:",
+       "qKn": "rollback ನಂತರ:",
+       "opts": [
+        "Re-run checks and record it",
+        "Nothing",
+        "Delete logs",
+        "Repeat the mistake"
+       ],
+       "optsKn": [
+        "ಪರಿಶೀಲನೆ ಮರುಚಾಲನೆ, ದಾಖಲು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲಾಗ್ ಅಳಿಸು",
+        "ತಪ್ಪು ಪುನರಾವರ್ತನೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Test restores in:",
+       "qKn": "restore ಪರೀಕ್ಷೆ:",
+       "opts": [
+        "A safe environment",
+        "Production only",
+        "Nowhere",
+        "Anywhere untracked"
+       ],
+       "optsKn": [
+        "ಸುರಕ್ಷಿತ ಪರಿಸರದಲ್ಲಿ",
+        "ಉತ್ಪಾದನೆಯಲ್ಲಿ ಮಾತ್ರ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಟ್ರ್ಯಾಕ್ ಇಲ್ಲದಲ್ಲಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215bf",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Constitutional AI and Rule Overrides — The Constitutional Approach",
+  "titleKn": "Constitutional AI ಮತ್ತು ನಿಯಮ Overrides — Constitutional ವಿಧಾನ",
+  "desc": "Constitutional AI trains a model to critique and revise its outputs against a written set of principles.",
+  "descKn": "Constitutional AI ಲಿಖಿತ ತತ್ತ್ವಗಳ ವಿರುದ್ಧ ತನ್ನ ಔಟ್‌ಪುಟ್ ಟೀಕಿಸಿ ತಿದ್ದಲು ಮಾದರಿಗೆ ತರಬೇತಿ ನೀಡುತ್ತದೆ.",
+  "objectives": [
+   "Describe critique-and-revise.",
+   "Explain the role of written principles."
+  ],
+  "objectivesKn": [
+   "critique-and-revise ವಿವರಿಸಿ.",
+   "ಲಿಖಿತ ತತ್ತ್ವಗಳ ಪಾತ್ರ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Constitutional AI and Rule Overrides — The Constitutional Approach",
+     "textKn": "Constitutional AI and Rule Overrides — The Constitutional Approach",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Constitutional AI and Rule Overrides",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Principles Instead of Only Labels",
+     "headingKn": "ಕೇವಲ ಲೇಬಲ್ ಬದಲು ತತ್ತ್ವಗಳು",
+     "bodyEn": "Instead of relying only on human labels for every harmful case, a list of principles guides the model to judge and improve its own responses.",
+     "bodyKn": "ಪ್ರತಿ ಹಾನಿಕರ ಪ್ರಕರಣಕ್ಕೆ ಮಾನವ ಲೇಬಲ್ ಮಾತ್ರ ಅವಲಂಬಿಸುವ ಬದಲು, ತತ್ತ್ವಗಳ ಪಟ್ಟಿ ಮಾದರಿ ತನ್ನ ಉತ್ತರ ಅಳೆದು ಸುಧಾರಿಸಲು ಮಾರ್ಗದರ್ಶನ ನೀಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Critique and Revise",
+     "headingKn": "Critique ಮತ್ತು Revise",
+     "bodyEn": "The model drafts an answer, critiques it against a principle, and rewrites it. The revised answers, and AI-generated preferences, are then used for training.",
+     "bodyKn": "ಮಾದರಿ ಉತ್ತರ ಕರಡು ಬರೆದು ತತ್ತ್ವದ ವಿರುದ್ಧ ಟೀಕಿಸಿ ಮರುಬರೆಯುತ್ತದೆ. ತಿದ್ದಿದ ಉತ್ತರ ಮತ್ತು AI-ರಚಿತ ಆದ್ಯತೆಗಳನ್ನು ತರಬೇತಿಗೆ ಬಳಸಲಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Written principles guide self-critique.\n• Revised answers and AI preferences feed training.",
+     "bodyKn": "• ಲಿಖಿತ ತತ್ತ್ವ ಸ್ವ-ಟೀಕೆಗೆ ಮಾರ್ಗದರ್ಶನ.\n• ತಿದ್ದಿದ ಉತ್ತರ ತರಬೇತಿಗೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What guides the model's critique?",
+       "qKn": "ಮಾದರಿ ಟೀಕೆಗೆ ಮಾರ್ಗದರ್ಶನ?",
+       "opts": [
+        "Written principles",
+        "Random words",
+        "Nothing",
+        "A logo"
+       ],
+       "optsKn": [
+        "ಲಿಖಿತ ತತ್ತ್ವಗಳು",
+        "ಯಾದೃಚ್ಛಿಕ ಪದ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Critique-and-revise means:",
+       "qKn": "critique-and-revise ಅರ್ಥ:",
+       "opts": [
+        "Draft, critique, rewrite",
+        "Delete all",
+        "Copy only",
+        "Ignore"
+       ],
+       "optsKn": [
+        "ಕರಡು, ಟೀಕೆ, ಮರುಬರಹ",
+        "ಎಲ್ಲ ಅಳಿಸು",
+        "ನಕಲು ಮಾತ್ರ",
+        "ನಿರ್ಲಕ್ಷ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Training uses:",
+       "qKn": "ತರಬೇತಿ ಬಳಸುವುದು:",
+       "opts": [
+        "Revised answers and AI preferences",
+        "Only random noise",
+        "Nothing",
+        "Only images"
+       ],
+       "optsKn": [
+        "ತಿದ್ದಿದ ಉತ್ತರ ಮತ್ತು AI ಆದ್ಯತೆ",
+        "ಯಾದೃಚ್ಛಿಕ ಶಬ್ದ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಚಿತ್ರ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215bf",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Constitutional AI and Rule Overrides — Rule Hierarchies and Overrides",
+  "titleKn": "Constitutional AI ಮತ್ತು ನಿಯಮ Overrides — ನಿಯಮ ಶ್ರೇಣಿ ಮತ್ತು Overrides",
+  "desc": "When instructions conflict, a clear ordering says which rules can be overridden and which cannot.",
+  "descKn": "ಸೂಚನೆಗಳು ಸಂಘರ್ಷಿಸಿದಾಗ ಸ್ಪಷ್ಟ ಕ್ರಮ ಯಾವ ನಿಯಮ override ಆಗಬಹುದು ಮತ್ತು ಯಾವುದು ಆಗದು ಎಂದು ಹೇಳುತ್ತದೆ.",
+  "objectives": [
+   "Distinguish hard limits from adjustable defaults.",
+   "Explain who may adjust which behaviours."
+  ],
+  "objectivesKn": [
+   "ಕಠಿಣ ಮಿತಿ ಮತ್ತು ಹೊಂದಿಸಬಹುದಾದ default ಬೇರ್ಪಡಿಸಿ.",
+   "ಯಾರು ಯಾವ ವರ್ತನೆ ಹೊಂದಿಸಬಹುದು ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Constitutional AI and Rule Overrides — Rule Hierarchies and Overrides",
+     "textKn": "Constitutional AI and Rule Overrides — Rule Hierarchies and Overrides",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Constitutional AI and Rule Overrides",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Hard Limits and Defaults",
+     "headingKn": "ಕಠಿಣ ಮಿತಿ ಮತ್ತು Defaults",
+     "bodyEn": "Some behaviours are fixed no matter who asks. Others are defaults that an operator or user can adjust within allowed bounds, such as tone or topic focus.",
+     "bodyKn": "ಕೆಲವು ವರ್ತನೆ ಯಾರು ಕೇಳಿದರೂ ಸ್ಥಿರ. ಇನ್ನು ಕೆಲವು ಅನುಮತಿತ ಮಿತಿಯೊಳಗೆ ಆಪರೇಟರ್ ಅಥವಾ ಬಳಕೆದಾರ ಹೊಂದಿಸಬಹುದಾದ defaults, ಉದಾ. ಸ್ವರ ಅಥವಾ ವಿಷಯ ಕೇಂದ್ರ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Layers of Trust",
+     "headingKn": "ನಂಬಿಕೆಯ ಪದರಗಳು",
+     "bodyEn": "A common design gives the developer of the model, then the operator, then the user progressively narrower authority. Lower layers cannot unlock what a higher layer forbids.",
+     "bodyKn": "ಸಾಮಾನ್ಯ ವಿನ್ಯಾಸ ಮಾದರಿ ಡೆವಲಪರ್, ನಂತರ ಆಪರೇಟರ್, ನಂತರ ಬಳಕೆದಾರರಿಗೆ ಕ್ರಮೇಣ ಕಿರಿದಾದ ಅಧಿಕಾರ ನೀಡುತ್ತದೆ. ಕೆಳ ಪದರ ಮೇಲಿನದು ನಿಷೇಧಿಸಿದ್ದನ್ನು ತೆರೆಯಲಾಗದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Some rules are fixed; others adjustable.\n• Lower layers cannot unlock what higher layers forbid.",
+     "bodyKn": "• ಕೆಲವು ನಿಯಮ ಸ್ಥಿರ; ಕೆಲವು ಹೊಂದಿಸಬಹುದು.\n• ಕೆಳ ಪದರ ಮೇಲಿನ ನಿಷೇಧ ತೆರೆಯಲಾಗದು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A hard limit is:",
+       "qKn": "ಕಠಿಣ ಮಿತಿ:",
+       "opts": [
+        "Fixed regardless of who asks",
+        "Adjustable by anyone",
+        "A suggestion",
+        "Random"
+       ],
+       "optsKn": [
+        "ಯಾರು ಕೇಳಿದರೂ ಸ್ಥಿರ",
+        "ಯಾರಾದರೂ ಹೊಂದಿಸಬಹುದು",
+        "ಸಲಹೆ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A default can be:",
+       "qKn": "default:",
+       "opts": [
+        "Adjusted within bounds",
+        "Never changed",
+        "Deleted always",
+        "Hidden"
+       ],
+       "optsKn": [
+        "ಮಿತಿಯೊಳಗೆ ಹೊಂದಿಸಬಹುದು",
+        "ಎಂದಿಗೂ ಬದಲಾಗದು",
+        "ಯಾವಾಗಲೂ ಅಳಿಸು",
+        "ಮರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Can a user unlock what the operator forbids?",
+       "qKn": "ಆಪರೇಟರ್ ನಿಷೇಧಿಸಿದ್ದನ್ನು ಬಳಕೆದಾರ ತೆರೆಯಬಹುದೇ?",
+       "opts": [
+        "No",
+        "Yes always",
+        "Sometimes",
+        "Only on request"
+       ],
+       "optsKn": [
+        "ಇಲ್ಲ",
+        "ಯಾವಾಗಲೂ ಹೌದು",
+        "ಕೆಲವೊಮ್ಮೆ",
+        "ಕೋರಿಕೆ ಮೇಲೆ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215bf",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Constitutional AI and Rule Overrides — Limits of Written Principles",
+  "titleKn": "Constitutional AI ಮತ್ತು ನಿಯಮ Overrides — ಲಿಖಿತ ತತ್ತ್ವಗಳ ಮಿತಿ",
+  "desc": "Principles help but do not guarantee behaviour; they must be tested and combined with other safeguards.",
+  "descKn": "ತತ್ತ್ವಗಳು ಸಹಾಯ ಮಾಡುತ್ತವೆ ಆದರೆ ವರ್ತನೆ ಖಾತರಿ ಮಾಡವು; ಪರೀಕ್ಷಿಸಿ ಇತರ ರಕ್ಷಣೆಗಳೊಂದಿಗೆ ಸೇರಿಸಬೇಕು.",
+  "objectives": [
+   "Recognise ambiguity and conflicts between principles.",
+   "Verify behaviour with red-teaming."
+  ],
+  "objectivesKn": [
+   "ತತ್ತ್ವಗಳ ಅಸ್ಪಷ್ಟತೆ ಮತ್ತು ಸಂಘರ್ಷ ಗುರುತಿಸಿ.",
+   "red-teaming ನಿಂದ ವರ್ತನೆ ಪರಿಶೀಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Constitutional AI and Rule Overrides — Limits of Written Principles",
+     "textKn": "Constitutional AI and Rule Overrides — Limits of Written Principles",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Constitutional AI and Rule Overrides",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Ambiguity and Conflict",
+     "headingKn": "ಅಸ್ಪಷ್ಟತೆ ಮತ್ತು ಸಂಘರ್ಷ",
+     "bodyEn": "Principles like helpfulness and harm avoidance can pull in opposite directions, and wording can be interpreted in more than one way.",
+     "bodyKn": "ಸಹಾಯಕತೆ ಮತ್ತು ಹಾನಿ ತಪ್ಪಿಸುವಿಕೆಯಂತಹ ತತ್ತ್ವಗಳು ವಿರುದ್ಧ ದಿಕ್ಕಿನಲ್ಲಿ ಎಳೆಯಬಹುದು, ಪದಗಳನ್ನು ಒಂದಕ್ಕಿಂತ ಹೆಚ್ಚು ರೀತಿ ಅರ್ಥೈಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Test, Do Not Assume",
+     "headingKn": "ಪರೀಕ್ಷಿಸಿ, ಊಹಿಸಬೇಡಿ",
+     "bodyEn": "Training on principles does not prove the model follows them in every case. Red-team, measure and add external checks such as classifiers and permissions.",
+     "bodyKn": "ತತ್ತ್ವಗಳ ಮೇಲೆ ತರಬೇತಿ ಪ್ರತಿ ಪ್ರಕರಣದಲ್ಲಿ ಮಾದರಿ ಪಾಲಿಸುತ್ತದೆ ಎಂದು ಸಾಬೀತು ಮಾಡದು. red-team, ಅಳತೆ, classifiers ಮತ್ತು ಅನುಮತಿಗಳಂತಹ ಬಾಹ್ಯ ಪರಿಶೀಲನೆ ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Principles can conflict or be ambiguous.\n• Red-team and add external checks.",
+     "bodyKn": "• ತತ್ತ್ವ ಸಂಘರ್ಷ ಅಥವಾ ಅಸ್ಪಷ್ಟ.\n• red-team ಮತ್ತು ಬಾಹ್ಯ ಪರಿಶೀಲನೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Which principles may conflict?",
+       "qKn": "ಯಾವ ತತ್ತ್ವಗಳು ಸಂಘರ್ಷಿಸಬಹುದು?",
+       "opts": [
+        "Helpfulness and harm avoidance",
+        "Font and colour",
+        "Speed and logo",
+        "None"
+       ],
+       "optsKn": [
+        "ಸಹಾಯಕತೆ ಮತ್ತು ಹಾನಿ ತಪ್ಪಿಸುವಿಕೆ",
+        "ಫಾಂಟ್ ಮತ್ತು ಬಣ್ಣ",
+        "ವೇಗ ಮತ್ತು ಲೋಗೋ",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Training on principles:",
+       "qKn": "ತತ್ತ್ವಗಳ ಮೇಲೆ ತರಬೇತಿ:",
+       "opts": [
+        "Does not prove compliance everywhere",
+        "Guarantees compliance",
+        "Is useless",
+        "Is illegal"
+       ],
+       "optsKn": [
+        "ಎಲ್ಲೆಡೆ ಪಾಲನೆ ಸಾಬೀತು ಮಾಡದು",
+        "ಪಾಲನೆ ಖಾತರಿ",
+        "ನಿರುಪಯುಕ್ತ",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Add:",
+       "qKn": "ಸೇರಿಸಿ:",
+       "opts": [
+        "External checks and red-teaming",
+        "Nothing",
+        "Only more text",
+        "Only fonts"
+       ],
+       "optsKn": [
+        "ಬಾಹ್ಯ ಪರಿಶೀಲನೆ ಮತ್ತು red-teaming",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಹೆಚ್ಚು ಪಠ್ಯ ಮಾತ್ರ",
+        "ಫಾಂಟ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215c2",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Llama Guard and I/O Classification — Classifiers as Guardrails",
+  "titleKn": "Llama Guard ಮತ್ತು I/O ವರ್ಗೀಕರಣ — Guardrails ಆಗಿ Classifiers",
+  "desc": "A safety classifier checks inputs and outputs against a policy, separately from the main model.",
+  "descKn": "ಸುರಕ್ಷತಾ classifier ಮುಖ್ಯ ಮಾದರಿಯಿಂದ ಪ್ರತ್ಯೇಕವಾಗಿ ನೀತಿ ವಿರುದ್ಧ ಇನ್‌ಪುಟ್ ಮತ್ತು ಔಟ್‌ಪುಟ್ ಪರಿಶೀಲಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Explain input and output moderation.",
+   "Say why a separate model is used."
+  ],
+  "objectivesKn": [
+   "ಇನ್‌ಪುಟ್ ಮತ್ತು ಔಟ್‌ಪುಟ್ moderation ವಿವರಿಸಿ.",
+   "ಪ್ರತ್ಯೇಕ ಮಾದರಿ ಏಕೆ ಹೇಳಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Llama Guard and I/O Classification — Classifiers as Guardrails",
+     "textKn": "Llama Guard and I/O Classification — Classifiers as Guardrails",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Llama Guard and Input/Output Classification",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Check Both Sides",
+     "headingKn": "ಎರಡೂ ಬದಿ ಪರಿಶೀಲಿಸಿ",
+     "bodyEn": "An input classifier screens prompts before the model sees them. An output classifier screens responses before the user sees them. Each catches different problems.",
+     "bodyKn": "input classifier ಮಾದರಿ ನೋಡುವ ಮೊದಲು prompts ಸ್ಕ್ರೀನ್ ಮಾಡುತ್ತದೆ. output classifier ಬಳಕೆದಾರ ನೋಡುವ ಮೊದಲು ಉತ್ತರ ಸ್ಕ್ರೀನ್ ಮಾಡುತ್ತದೆ. ಪ್ರತಿಯೊಂದು ಬೇರೆ ಸಮಸ್ಯೆ ಹಿಡಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why Separate",
+     "headingKn": "ಪ್ರತ್ಯೇಕ ಏಕೆ",
+     "bodyEn": "A dedicated safety model can be tuned to a policy, updated independently and does not share the main model's blind spots or prompt.",
+     "bodyKn": "ಮೀಸಲಾದ ಸುರಕ್ಷತಾ ಮಾದರಿ ನೀತಿಗೆ ಹೊಂದಿಸಬಹುದು, ಸ್ವತಂತ್ರವಾಗಿ ನವೀಕರಿಸಬಹುದು, ಮುಖ್ಯ ಮಾದರಿಯ ಕುರುಡು ಬಿಂದು ಅಥವಾ prompt ಹಂಚದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Screen inputs and outputs separately.\n• A dedicated model is independently tunable.",
+     "bodyKn": "• ಇನ್‌ಪುಟ್ ಮತ್ತು ಔಟ್‌ಪುಟ್ ಪ್ರತ್ಯೇಕ ಸ್ಕ್ರೀನ್.\n• ಮೀಸಲು ಮಾದರಿ ಸ್ವತಂತ್ರ ಹೊಂದಾಣಿಕೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "An output classifier checks:",
+       "qKn": "output classifier ಪರಿಶೀಲಿಸುವುದು:",
+       "opts": [
+        "Responses before users see them",
+        "Prompts only",
+        "Nothing",
+        "Logos"
+       ],
+       "optsKn": [
+        "ಬಳಕೆದಾರ ನೋಡುವ ಮೊದಲು ಉತ್ತರ",
+        "prompts ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why a separate safety model?",
+       "qKn": "ಪ್ರತ್ಯೇಕ ಸುರಕ್ಷತಾ ಮಾದರಿ ಏಕೆ?",
+       "opts": [
+        "Independent tuning and blind spots",
+        "It is cheaper always",
+        "It is required by HTML",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಸ್ವತಂತ್ರ ಹೊಂದಾಣಿಕೆ ಮತ್ತು ಕುರುಡು ಬಿಂದು",
+        "ಯಾವಾಗಲೂ ಅಗ್ಗ",
+        "HTML ಅಗತ್ಯ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Input classifiers screen:",
+       "qKn": "input classifiers ಸ್ಕ್ರೀನ್:",
+       "opts": [
+        "Prompts",
+        "Outputs only",
+        "Fonts",
+        "Nothing"
+       ],
+       "optsKn": [
+        "prompts",
+        "ಔಟ್‌ಪುಟ್ ಮಾತ್ರ",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215c2",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Llama Guard and I/O Classification — Llama Guard Style Policies",
+  "titleKn": "Llama Guard ಮತ್ತು I/O ವರ್ಗೀಕರಣ — Llama Guard ಶೈಲಿ ನೀತಿಗಳು",
+  "desc": "Llama Guard is an open safety model that labels conversations against a taxonomy of hazard categories.",
+  "descKn": "Llama Guard ಅಪಾಯ ವರ್ಗಗಳ ವರ್ಗೀಕರಣದ ವಿರುದ್ಧ ಸಂಭಾಷಣೆಗಳಿಗೆ ಲೇಬಲ್ ನೀಡುವ ಮುಕ್ತ ಸುರಕ್ಷತಾ ಮಾದರಿ.",
+  "objectives": [
+   "Describe a category-based policy.",
+   "Read a safe/unsafe verdict with categories."
+  ],
+  "objectivesKn": [
+   "ವರ್ಗ-ಆಧಾರಿತ ನೀತಿ ವಿವರಿಸಿ.",
+   "ವರ್ಗ ಸಹಿತ safe/unsafe ತೀರ್ಪು ಓದಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Llama Guard and I/O Classification — Llama Guard Style Policies",
+     "textKn": "Llama Guard and I/O Classification — Llama Guard Style Policies",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Llama Guard and Input/Output Classification",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Taxonomy of Hazards",
+     "headingKn": "ಅಪಾಯಗಳ ವರ್ಗೀಕರಣ",
+     "bodyEn": "The policy lists categories such as violent content or privacy violations. The model returns whether a message is safe and, if not, which categories it violates.",
+     "bodyKn": "ನೀತಿ ಹಿಂಸಾತ್ಮಕ ವಿಷಯ ಅಥವಾ ಗೌಪ್ಯತೆ ಉಲ್ಲಂಘನೆಯಂತಹ ವರ್ಗಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡುತ್ತದೆ. ಸಂದೇಶ safe ಆಗಿದೆಯೇ, ಇಲ್ಲದಿದ್ದರೆ ಯಾವ ವರ್ಗ ಉಲ್ಲಂಘಿಸುತ್ತದೆ ಎಂದು ಮಾದರಿ ಹಿಂದಿರುಗಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Customisable Policy",
+     "headingKn": "ಹೊಂದಿಸಬಹುದಾದ ನೀತಿ",
+     "bodyEn": "Because the categories are supplied as text, a deployer can adapt them to their own rules. Behaviour still needs to be checked on your own data.",
+     "bodyKn": "ವರ್ಗಗಳನ್ನು ಪಠ್ಯವಾಗಿ ನೀಡುವುದರಿಂದ ನಿಯೋಜಕ ತಮ್ಮ ನಿಯಮಗಳಿಗೆ ಹೊಂದಿಸಬಹುದು. ವರ್ತನೆಯನ್ನು ನಿಮ್ಮದೇ ಡೇಟಾದಲ್ಲಿ ಪರಿಶೀಲಿಸಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• It returns safe/unsafe plus violated categories.\n• Policies can be adapted; test on your data.",
+     "bodyKn": "• safe/unsafe ಮತ್ತು ಉಲ್ಲಂಘಿತ ವರ್ಗ.\n• ನೀತಿ ಹೊಂದಿಸಬಹುದು; ನಿಮ್ಮ ಡೇಟಾದಲ್ಲಿ ಪರೀಕ್ಷೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does the classifier return?",
+       "qKn": "classifier ಏನು ಹಿಂದಿರುಗಿಸುತ್ತದೆ?",
+       "opts": [
+        "Safe/unsafe and categories",
+        "A poem",
+        "An image",
+        "Nothing"
+       ],
+       "optsKn": [
+        "safe/unsafe ಮತ್ತು ವರ್ಗ",
+        "ಕವಿತೆ",
+        "ಚಿತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Categories are supplied as:",
+       "qKn": "ವರ್ಗಗಳನ್ನು ನೀಡುವುದು:",
+       "opts": [
+        "Text",
+        "Hardware",
+        "Colour",
+        "Sound"
+       ],
+       "optsKn": [
+        "ಪಠ್ಯ",
+        "ಹಾರ್ಡ್‌ವೇರ್",
+        "ಬಣ್ಣ",
+        "ಧ್ವನಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Still needed:",
+       "qKn": "ಇನ್ನೂ ಬೇಕು:",
+       "opts": [
+        "Testing on your own data",
+        "Nothing",
+        "Only trust",
+        "Deleting logs"
+       ],
+       "optsKn": [
+        "ನಿಮ್ಮ ಡೇಟಾದಲ್ಲಿ ಪರೀಕ್ಷೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ನಂಬಿಕೆ ಮಾತ್ರ",
+        "ಲಾಗ್ ಅಳಿಸು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215c2",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Llama Guard and I/O Classification — Deploying Classifiers Well",
+  "titleKn": "Llama Guard ಮತ್ತು I/O ವರ್ಗೀಕರಣ — Classifiers ಉತ್ತಮ ನಿಯೋಜನೆ",
+  "desc": "Classifiers make errors both ways, so measure them and design fallbacks for blocked content.",
+  "descKn": "classifiers ಎರಡೂ ರೀತಿ ತಪ್ಪು ಮಾಡುತ್ತವೆ; ಅಳೆಯಿರಿ ಮತ್ತು ತಡೆದ ವಿಷಯಕ್ಕೆ fallback ವಿನ್ಯಾಸ ಮಾಡಿ.",
+  "objectives": [
+   "Balance false positives and false negatives.",
+   "Add latency-aware, layered deployment."
+  ],
+  "objectivesKn": [
+   "ಸುಳ್ಳು positives ಮತ್ತು negatives ಸಮತೋಲನ.",
+   "ವಿಳಂಬ-ಜಾಗೃತ ಪದರ ನಿಯೋಜನೆ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Llama Guard and I/O Classification — Deploying Classifiers Well",
+     "textKn": "Llama Guard and I/O Classification — Deploying Classifiers Well",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Llama Guard and Input/Output Classification",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Two Kinds of Error",
+     "headingKn": "ಎರಡು ವಿಧದ ದೋಷ",
+     "bodyEn": "Blocking harmless content frustrates users. Missing harmful content causes harm. Tune thresholds using labelled examples from your real traffic.",
+     "bodyKn": "ನಿರುಪದ್ರವ ವಿಷಯ ತಡೆದರೆ ಬಳಕೆದಾರರಿಗೆ ಕಿರಿಕಿರಿ. ಹಾನಿಕರ ವಿಷಯ ತಪ್ಪಿಸಿದರೆ ಹಾನಿ. ನಿಜ ಟ್ರಾಫಿಕ್‌ನ ಲೇಬಲ್ ಉದಾಹರಣೆಗಳಿಂದ ಮಿತಿ ಹೊಂದಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Layers and Fallbacks",
+     "headingKn": "ಪದರ ಮತ್ತು Fallbacks",
+     "bodyEn": "Classifiers add latency and cost. Use them with rules, permissions and human review, and give users a clear, polite message when something is blocked.",
+     "bodyKn": "classifiers ವಿಳಂಬ ಮತ್ತು ವೆಚ್ಚ ಸೇರಿಸುತ್ತವೆ. ನಿಯಮ, ಅನುಮತಿ, ಮಾನವ ವಿಮರ್ಶೆಯೊಂದಿಗೆ ಬಳಸಿ; ಏನಾದರೂ ತಡೆದರೆ ಸ್ಪಷ್ಟ, ಸೌಜನ್ಯದ ಸಂದೇಶ ನೀಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Tune thresholds on real labelled traffic.\n• Layer with other controls; explain blocks politely.",
+     "bodyKn": "• ನಿಜ ಲೇಬಲ್ ಟ್ರಾಫಿಕ್‌ನಲ್ಲಿ ಮಿತಿ ಹೊಂದಿಸಿ.\n• ಇತರ ನಿಯಂತ್ರಣ ಜೊತೆ; ಸೌಜನ್ಯದ ವಿವರಣೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A false positive is:",
+       "qKn": "ಸುಳ್ಳು positive:",
+       "opts": [
+        "Blocking harmless content",
+        "Missing harm",
+        "A correct block",
+        "A bug fix"
+       ],
+       "optsKn": [
+        "ನಿರುಪದ್ರವ ವಿಷಯ ತಡೆ",
+        "ಹಾನಿ ತಪ್ಪಿಸು",
+        "ಸರಿಯಾದ ತಡೆ",
+        "ದೋಷ ಪರಿಹಾರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Tune thresholds using:",
+       "qKn": "ಮಿತಿ ಹೊಂದಿಸಲು:",
+       "opts": [
+        "Labelled real traffic",
+        "A guess",
+        "Nothing",
+        "Coin flips"
+       ],
+       "optsKn": [
+        "ಲೇಬಲ್ ನಿಜ ಟ್ರಾಫಿಕ್",
+        "ಊಹೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ನಾಣ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When blocking, users should get:",
+       "qKn": "ತಡೆದಾಗ ಬಳಕೆದಾರರಿಗೆ:",
+       "opts": [
+        "A clear polite message",
+        "Silence",
+        "A crash",
+        "An insult"
+       ],
+       "optsKn": [
+        "ಸ್ಪಷ್ಟ ಸೌಜನ್ಯದ ಸಂದೇಶ",
+        "ಮೌನ",
+        "ಕ್ರ್ಯಾಶ್",
+        "ಅವಮಾನ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215c5",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Anthropic RSP v3.0 — What a Responsible Scaling Policy Is",
+  "titleKn": "Anthropic RSP v3.0 — Responsible Scaling Policy ಎಂದರೇನು",
+  "desc": "A responsible scaling policy ties the safeguards a developer must have to the capabilities its models demonstrate.",
+  "descKn": "responsible scaling policy ಡೆವಲಪರ್ ಹೊಂದಿರಬೇಕಾದ ರಕ್ಷಣೆಗಳನ್ನು ಅವರ ಮಾದರಿಗಳ ಪ್ರದರ್ಶಿತ ಸಾಮರ್ಥ್ಯಕ್ಕೆ ಜೋಡಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Describe if-then commitments.",
+   "Explain capability thresholds."
+  ],
+  "objectivesKn": [
+   "if-then ಬದ್ಧತೆ ವಿವರಿಸಿ.",
+   "ಸಾಮರ್ಥ್ಯ ಮಿತಿ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Anthropic RSP v3.0 — What a Responsible Scaling Policy Is",
+     "textKn": "Anthropic RSP v3.0 — What a Responsible Scaling Policy Is",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Anthropic Responsible Scaling Policy v3.0",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "If-Then Commitments",
+     "headingKn": "If-Then ಬದ್ಧತೆಗಳು",
+     "bodyEn": "The policy says: if a model reaches a defined capability level, then specific safeguards must be in place before it is deployed or further scaled.",
+     "bodyKn": "ನೀತಿ ಹೇಳುತ್ತದೆ: ಮಾದರಿ ನಿರ್ದಿಷ್ಟ ಸಾಮರ್ಥ್ಯ ಮಟ್ಟ ತಲುಪಿದರೆ, ನಿಯೋಜಿಸುವ ಅಥವಾ ಮತ್ತಷ್ಟು ವಿಸ್ತರಿಸುವ ಮೊದಲು ನಿರ್ದಿಷ್ಟ ರಕ್ಷಣೆಗಳು ಇರಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Capability Thresholds",
+     "headingKn": "ಸಾಮರ್ಥ್ಯ ಮಿತಿಗಳು",
+     "bodyEn": "Thresholds are tied to concerning abilities such as helping with weapons of mass destruction or automating AI research. Evaluations check whether a model is near them.",
+     "bodyKn": "ಸಾಮೂಹಿಕ ವಿನಾಶ ಶಸ್ತ್ರಗಳಿಗೆ ಸಹಾಯ ಅಥವಾ AI ಸಂಶೋಧನೆ ಸ್ವಯಂಚಾಲನೆಯಂತಹ ಆತಂಕಕಾರಿ ಸಾಮರ್ಥ್ಯಗಳಿಗೆ ಮಿತಿಗಳು ಜೋಡಿತ. evaluations ಮಾದರಿ ಅವುಗಳ ಹತ್ತಿರವೇ ಎಂದು ಪರಿಶೀಲಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• If a threshold is reached, then safeguards are required.\n• Evaluations test proximity to thresholds.",
+     "bodyKn": "• ಮಿತಿ ತಲುಪಿದರೆ ರಕ್ಷಣೆ ಕಡ್ಡಾಯ.\n• evaluations ಮಿತಿ ಸಾಮೀಪ್ಯ ಪರೀಕ್ಷಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "An if-then commitment says:",
+       "qKn": "if-then ಬದ್ಧತೆ:",
+       "opts": [
+        "If a capability is reached, safeguards are required",
+        "Always deploy",
+        "Never train",
+        "Ignore evals"
+       ],
+       "optsKn": [
+        "ಸಾಮರ್ಥ್ಯ ತಲುಪಿದರೆ ರಕ್ಷಣೆ ಕಡ್ಡಾಯ",
+        "ಯಾವಾಗಲೂ ನಿಯೋಜಿಸಿ",
+        "ಎಂದಿಗೂ ತರಬೇತಿ ಬೇಡ",
+        "evals ನಿರ್ಲಕ್ಷಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Evaluations check:",
+       "qKn": "evaluations ಪರಿಶೀಲನೆ:",
+       "opts": [
+        "Closeness to thresholds",
+        "Logo size",
+        "Colours",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮಿತಿ ಸಾಮೀಪ್ಯ",
+        "ಲೋಗೋ ಗಾತ್ರ",
+        "ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Thresholds relate to:",
+       "qKn": "ಮಿತಿಗಳು ಸಂಬಂಧಿಸಿವೆ:",
+       "opts": [
+        "Concerning capabilities",
+        "Fonts",
+        "Prices",
+        "Office layout"
+       ],
+       "optsKn": [
+        "ಆತಂಕಕಾರಿ ಸಾಮರ್ಥ್ಯಗಳು",
+        "ಫಾಂಟ್",
+        "ಬೆಲೆ",
+        "ಕಚೇರಿ ವಿನ್ಯಾಸ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215c5",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Anthropic RSP v3.0 — Safeguards and Their Levels",
+  "titleKn": "Anthropic RSP v3.0 — ರಕ್ಷಣೆಗಳು ಮತ್ತು ಮಟ್ಟಗಳು",
+  "desc": "Safeguards cover both deployment measures against misuse and security measures protecting model weights.",
+  "descKn": "ರಕ್ಷಣೆಗಳು ದುರ್ಬಳಕೆ ವಿರುದ್ಧ ನಿಯೋಜನಾ ಕ್ರಮ ಮತ್ತು ಮಾದರಿ ತೂಕ ರಕ್ಷಿಸುವ ಭದ್ರತಾ ಕ್ರಮ ಎರಡನ್ನೂ ಒಳಗೊಂಡಿವೆ.",
+  "objectives": [
+   "Distinguish deployment from security safeguards.",
+   "Explain that requirements increase with capability."
+  ],
+  "objectivesKn": [
+   "ನಿಯೋಜನೆ ಮತ್ತು ಭದ್ರತಾ ರಕ್ಷಣೆ ಬೇರ್ಪಡಿಸಿ.",
+   "ಸಾಮರ್ಥ್ಯದೊಂದಿಗೆ ಅವಶ್ಯಕತೆ ಹೆಚ್ಚುತ್ತದೆ ಎಂದು ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Anthropic RSP v3.0 — Safeguards and Their Levels",
+     "textKn": "Anthropic RSP v3.0 — Safeguards and Their Levels",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Anthropic Responsible Scaling Policy v3.0",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Two Kinds of Safeguard",
+     "headingKn": "ಎರಡು ವಿಧದ ರಕ್ಷಣೆ",
+     "bodyEn": "Deployment safeguards reduce misuse, for example through classifiers and access controls. Security safeguards protect the weights from theft.",
+     "bodyKn": "ನಿಯೋಜನಾ ರಕ್ಷಣೆ classifiers ಮತ್ತು ಪ್ರವೇಶ ನಿಯಂತ್ರಣದಂತೆ ದುರ್ಬಳಕೆ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ. ಭದ್ರತಾ ರಕ್ಷಣೆ ತೂಕಗಳನ್ನು ಕಳ್ಳತನದಿಂದ ರಕ್ಷಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Scaling Requirements",
+     "headingKn": "ಅವಶ್ಯಕತೆ ವಿಸ್ತರಣೆ",
+     "bodyEn": "Higher capability levels call for stronger safeguards. If they cannot be met, the policy commits the developer to pause rather than proceed. Read the current published text for exact terms.",
+     "bodyKn": "ಹೆಚ್ಚು ಸಾಮರ್ಥ್ಯ ಮಟ್ಟಕ್ಕೆ ಬಲವಾದ ರಕ್ಷಣೆ ಬೇಕು. ಅದನ್ನು ಪೂರೈಸಲಾಗದಿದ್ದರೆ ಮುಂದುವರಿಯುವ ಬದಲು ನಿಲ್ಲಿಸಲು ನೀತಿ ಬದ್ಧಗೊಳಿಸುತ್ತದೆ. ನಿಖರ ನಿಯಮಗಳಿಗೆ ಪ್ರಸ್ತುತ ಪ್ರಕಟಿತ ಪಠ್ಯ ಓದಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Deployment safeguards reduce misuse; security safeguards protect weights.\n• Higher capability needs stronger safeguards; read the current text.",
+     "bodyKn": "• ನಿಯೋಜನಾ ರಕ್ಷಣೆ ದುರ್ಬಳಕೆ; ಭದ್ರತಾ ರಕ್ಷಣೆ ತೂಕ ರಕ್ಷಣೆ.\n• ಹೆಚ್ಚು ಸಾಮರ್ಥ್ಯ = ಬಲವಾದ ರಕ್ಷಣೆ; ಪ್ರಸ್ತುತ ಪಠ್ಯ ಓದಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Weight security protects against:",
+       "qKn": "ತೂಕ ಭದ್ರತೆ ರಕ್ಷಿಸುವುದು:",
+       "opts": [
+        "Theft of model weights",
+        "Slow typing",
+        "Bad fonts",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ ತೂಕ ಕಳ್ಳತನ",
+        "ನಿಧಾನ ಟೈಪಿಂಗ್",
+        "ಕೆಟ್ಟ ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "If safeguards cannot be met:",
+       "qKn": "ರಕ್ಷಣೆ ಪೂರೈಸಲಾಗದಿದ್ದರೆ:",
+       "opts": [
+        "The developer commits to pause",
+        "Proceed anyway",
+        "Delete the policy",
+        "Ignore"
+       ],
+       "optsKn": [
+        "ಡೆವಲಪರ್ ನಿಲ್ಲಿಸಲು ಬದ್ಧ",
+        "ಹೇಗಾದರೂ ಮುಂದುವರಿ",
+        "ನೀತಿ ಅಳಿಸು",
+        "ನಿರ್ಲಕ್ಷ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "For exact terms:",
+       "qKn": "ನಿಖರ ನಿಯಮಗಳಿಗೆ:",
+       "opts": [
+        "Read the current published text",
+        "Guess",
+        "Ask a stranger",
+        "Skip"
+       ],
+       "optsKn": [
+        "ಪ್ರಸ್ತುತ ಪ್ರಕಟಿತ ಪಠ್ಯ ಓದಿ",
+        "ಊಹಿಸಿ",
+        "ಅಪರಿಚಿತರನ್ನು ಕೇಳಿ",
+        "ಬಿಡಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215c5",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Anthropic RSP v3.0 — Evaluating Policies Critically",
+  "titleKn": "Anthropic RSP v3.0 — ನೀತಿಗಳ ವಿಮರ್ಶಾತ್ಮಕ ಮೌಲ್ಯಮಾಪನ",
+  "desc": "Voluntary policies are useful but depend on honest evaluation, transparency and external scrutiny.",
+  "descKn": "ಸ್ವಯಂಪ್ರೇರಿತ ನೀತಿಗಳು ಉಪಯುಕ್ತ ಆದರೆ ಪ್ರಾಮಾಣಿಕ ಮೌಲ್ಯಮಾಪನ, ಪಾರದರ್ಶಕತೆ, ಬಾಹ್ಯ ಪರಿಶೀಲನೆ ಅವಲಂಬಿಸಿವೆ.",
+  "objectives": [
+   "Identify strengths and weaknesses of voluntary commitments.",
+   "Ask how thresholds are measured and reported."
+  ],
+  "objectivesKn": [
+   "ಸ್ವಯಂಪ್ರೇರಿತ ಬದ್ಧತೆಗಳ ಬಲ ಮತ್ತು ದೌರ್ಬಲ್ಯ ಗುರುತಿಸಿ.",
+   "ಮಿತಿ ಹೇಗೆ ಅಳೆದು ವರದಿ ಮಾಡಲಾಗುತ್ತದೆ ಕೇಳಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Anthropic RSP v3.0 — Evaluating Policies Critically",
+     "textKn": "Anthropic RSP v3.0 — Evaluating Policies Critically",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Anthropic Responsible Scaling Policy v3.0",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Strengths and Weaknesses",
+     "headingKn": "ಬಲ ಮತ್ತು ದೌರ್ಬಲ್ಯ",
+     "bodyEn": "A public commitment creates accountability and shared vocabulary. But it is voluntary, can be revised by its author, and depends on evaluations that may miss real abilities.",
+     "bodyKn": "ಸಾರ್ವಜನಿಕ ಬದ್ಧತೆ ಹೊಣೆಗಾರಿಕೆ ಮತ್ತು ಹಂಚಿದ ಪರಿಭಾಷೆ ಸೃಷ್ಟಿಸುತ್ತದೆ. ಆದರೆ ಅದು ಸ್ವಯಂಪ್ರೇರಿತ, ಲೇಖಕರು ತಿದ್ದಬಹುದು, ನಿಜ ಸಾಮರ್ಥ್ಯ ತಪ್ಪಿಸುವ evaluations ಅವಲಂಬಿಸಿದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Questions to Ask",
+     "headingKn": "ಕೇಳಬೇಕಾದ ಪ್ರಶ್ನೆಗಳು",
+     "bodyEn": "Are thresholds specific and measurable? Are results reported honestly, including near misses? Does anyone outside the company check? These questions apply to any lab's policy.",
+     "bodyKn": "ಮಿತಿಗಳು ನಿರ್ದಿಷ್ಟ ಮತ್ತು ಅಳೆಯಬಹುದಾದವೇ? ಹತ್ತಿರದ ಪ್ರಕರಣ ಸೇರಿ ಫಲಿತಾಂಶ ಪ್ರಾಮಾಣಿಕವಾಗಿ ವರದಿಯಾಗುತ್ತದೆಯೇ? ಕಂಪನಿ ಹೊರಗಿನವರು ಪರಿಶೀಲಿಸುತ್ತಾರೆಯೇ? ಈ ಪ್ರಶ್ನೆಗಳು ಯಾವುದೇ ಪ್ರಯೋಗಾಲಯದ ನೀತಿಗೆ ಅನ್ವಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Commitments create accountability but are voluntary.\n• Ask: specific? honestly reported? externally checked?",
+     "bodyKn": "• ಬದ್ಧತೆ ಹೊಣೆಗಾರಿಕೆ ನೀಡುತ್ತದೆ ಆದರೆ ಸ್ವಯಂಪ್ರೇರಿತ.\n• ನಿರ್ದಿಷ್ಟ? ಪ್ರಾಮಾಣಿಕ ವರದಿ? ಬಾಹ್ಯ ಪರಿಶೀಲನೆ?"
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A strength of public commitments:",
+       "qKn": "ಸಾರ್ವಜನಿಕ ಬದ್ಧತೆಯ ಬಲ:",
+       "opts": [
+        "Accountability",
+        "Secrecy",
+        "Speed only",
+        "None"
+       ],
+       "optsKn": [
+        "ಹೊಣೆಗಾರಿಕೆ",
+        "ರಹಸ್ಯ",
+        "ವೇಗ ಮಾತ್ರ",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A weakness:",
+       "qKn": "ದೌರ್ಬಲ್ಯ:",
+       "opts": [
+        "They are voluntary and revisable",
+        "They are illegal",
+        "They are too public",
+        "None"
+       ],
+       "optsKn": [
+        "ಸ್ವಯಂಪ್ರೇರಿತ ಮತ್ತು ತಿದ್ದಬಹುದು",
+        "ಕಾನೂನುಬಾಹಿರ",
+        "ಬಹಳ ಸಾರ್ವಜನಿಕ",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A good question:",
+       "qKn": "ಉತ್ತಮ ಪ್ರಶ್ನೆ:",
+       "opts": [
+        "Does anyone outside the company check?",
+        "What colour is the logo?",
+        "Who has the best slogan?",
+        "None"
+       ],
+       "optsKn": [
+        "ಕಂಪನಿ ಹೊರಗಿನವರು ಪರಿಶೀಲಿಸುತ್ತಾರೆಯೇ?",
+        "ಲೋಗೋ ಬಣ್ಣ?",
+        "ಉತ್ತಮ ಘೋಷವಾಕ್ಯ?",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

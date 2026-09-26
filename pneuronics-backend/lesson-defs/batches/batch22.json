@@ -1,0 +1,1127 @@
+[
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216cd",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Alignment Research Ecosystem: MATS, Redwood, Apollo, METR — Who Does Alignment Research",
+  "titleKn": "Alignment ಸಂಶೋಧನಾ ಪರಿಸರ: MATS, Redwood, Apollo, METR — Alignment ಸಂಶೋಧನೆ ಯಾರು ಮಾಡುತ್ತಾರೆ",
+  "desc": "Alignment and safety research is carried out by lab teams, independent non-profits, academic groups and training programmes.",
+  "descKn": "alignment ಮತ್ತು ಸುರಕ್ಷತಾ ಸಂಶೋಧನೆ ಪ್ರಯೋಗಾಲಯ ತಂಡಗಳು, ಸ್ವತಂತ್ರ ಲಾಭರಹಿತ ಸಂಸ್ಥೆಗಳು, ಶೈಕ್ಷಣಿಕ ಗುಂಪುಗಳು, ತರಬೇತಿ ಕಾರ್ಯಕ್ರಮಗಳಿಂದ ನಡೆಯುತ್ತದೆ.",
+  "objectives": [
+   "Distinguish types of organisation.",
+   "Place example groups by role."
+  ],
+  "objectivesKn": [
+   "ಸಂಸ್ಥೆ ವಿಧಗಳನ್ನು ಬೇರ್ಪಡಿಸಿ.",
+   "ಉದಾಹರಣೆ ಗುಂಪುಗಳನ್ನು ಪಾತ್ರದಿಂದ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Alignment Research Ecosystem: MATS, Redwood, Apollo, METR — Who Does Alignment Research",
+     "textKn": "Alignment Research Ecosystem: MATS, Redwood, Apollo, METR — Who Does Alignment Research",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Alignment Research Ecosystem: MATS, Redwood, Apollo, METR",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Mixed Ecosystem",
+     "headingKn": "ಮಿಶ್ರ ಪರಿಸರ",
+     "bodyEn": "Frontier labs run internal safety teams. Independent organisations study evaluations, control and interpretability. Training programmes bring new researchers into the field.",
+     "bodyKn": "ಫ್ರಂಟಿಯರ್ ಪ್ರಯೋಗಾಲಯಗಳು ಆಂತರಿಕ ಸುರಕ್ಷತಾ ತಂಡ ನಡೆಸುತ್ತವೆ. ಸ್ವತಂತ್ರ ಸಂಸ್ಥೆಗಳು ಮೌಲ್ಯಮಾಪನ, ನಿಯಂತ್ರಣ, interpretability ಅಧ್ಯಯನ ಮಾಡುತ್ತವೆ. ತರಬೇತಿ ಕಾರ್ಯಕ್ರಮಗಳು ಹೊಸ ಸಂಶೋಧಕರನ್ನು ಕ್ಷೇತ್ರಕ್ಕೆ ತರುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Example Roles",
+     "headingKn": "ಉದಾಹರಣೆ ಪಾತ್ರಗಳು",
+     "bodyEn": "MATS is a research mentorship programme. Redwood Research works on AI control. Apollo Research studies deceptive behaviour evaluations. METR evaluates autonomous capabilities and time horizons. Check each group's current focus.",
+     "bodyKn": "MATS ಸಂಶೋಧನಾ ಮಾರ್ಗದರ್ಶನ ಕಾರ್ಯಕ್ರಮ. Redwood Research AI control ಮೇಲೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ. Apollo Research ವಂಚನೆ ವರ್ತನೆ ಮೌಲ್ಯಮಾಪನ ಅಧ್ಯಯನ. METR ಸ್ವಾಯತ್ತ ಸಾಮರ್ಥ್ಯ ಮತ್ತು ಸಮಯ ಹಾರಿಜಾನ್ ಮೌಲ್ಯಮಾಪನ. ಪ್ರತಿ ಗುಂಪಿನ ಪ್ರಸ್ತುತ ಗಮನ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Labs, independents and training programmes all contribute.\n• Roles include mentoring, control, deception evals, capability evals.",
+     "bodyKn": "• ಪ್ರಯೋಗಾಲಯ, ಸ್ವತಂತ್ರ, ತರಬೇತಿ ಕಾರ್ಯಕ್ರಮ.\n• ಮಾರ್ಗದರ್ಶನ, control, ವಂಚನೆ evals, ಸಾಮರ್ಥ್ಯ evals."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "MATS is a:",
+       "qKn": "MATS:",
+       "opts": [
+        "Research mentorship programme",
+        "A GPU",
+        "A law",
+        "A font"
+       ],
+       "optsKn": [
+        "ಸಂಶೋಧನಾ ಮಾರ್ಗದರ್ಶನ ಕಾರ್ಯಕ್ರಮ",
+        "GPU",
+        "ಕಾನೂನು",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Redwood Research works on:",
+       "qKn": "Redwood Research:",
+       "opts": [
+        "AI control",
+        "Fonts",
+        "Cooking",
+        "Nothing"
+       ],
+       "optsKn": [
+        "AI control",
+        "ಫಾಂಟ್",
+        "ಅಡುಗೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Check each group's:",
+       "qKn": "ಪ್ರತಿ ಗುಂಪಿನ ಪರಿಶೀಲಿಸಿ:",
+       "opts": [
+        "Current focus",
+        "Logo",
+        "Colour",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪ್ರಸ್ತುತ ಗಮನ",
+        "ಲೋಗೋ",
+        "ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216cd",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Alignment Research Ecosystem: MATS, Redwood, Apollo, METR — How Independent Evaluators Add Value",
+  "titleKn": "Alignment ಸಂಶೋಧನಾ ಪರಿಸರ: MATS, Redwood, Apollo, METR — ಸ್ವತಂತ್ರ ಮೌಲ್ಯಮಾಪಕರು ಮೌಲ್ಯ ಹೇಗೆ ಸೇರಿಸುತ್ತಾರೆ",
+  "desc": "Outside groups provide independent tests, new evaluation methods and public evidence that labs alone may not supply.",
+  "descKn": "ಹೊರಗಿನ ಗುಂಪುಗಳು ಪ್ರಯೋಗಾಲಯಗಳೇ ನೀಡದ ಸ್ವತಂತ್ರ ಪರೀಕ್ಷೆ, ಹೊಸ ಮೌಲ್ಯಮಾಪನ ವಿಧಾನ, ಸಾರ್ವಜನಿಕ ಸಾಕ್ಷ್ಯ ನೀಡುತ್ತವೆ.",
+  "objectives": [
+   "Explain independence and access.",
+   "Read evaluation reports critically."
+  ],
+  "objectivesKn": [
+   "ಸ್ವಾತಂತ್ರ್ಯ ಮತ್ತು ಪ್ರವೇಶ ವಿವರಿಸಿ.",
+   "ಮೌಲ್ಯಮಾಪನ ವರದಿ ವಿಮರ್ಶಾತ್ಮಕವಾಗಿ ಓದಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Alignment Research Ecosystem: MATS, Redwood, Apollo, METR — How Independent Evaluators Add Value",
+     "textKn": "Alignment Research Ecosystem: MATS, Redwood, Apollo, METR — How Independent Evaluators Add Value",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Alignment Research Ecosystem: MATS, Redwood, Apollo, METR",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Independent Evidence",
+     "headingKn": "ಸ್ವತಂತ್ರ ಸಾಕ್ಷ್ಯ",
+     "bodyEn": "Third-party evaluators can test pre-release models, publish methodology and report findings the developer might not emphasise.",
+     "bodyKn": "ಮೂರನೇ ಪಕ್ಷ ಮೌಲ್ಯಮಾಪಕರು ಬಿಡುಗಡೆ ಪೂರ್ವ ಮಾದರಿ ಪರೀಕ್ಷಿಸಿ, ವಿಧಾನ ಪ್ರಕಟಿಸಿ, ಡೆವಲಪರ್ ಒತ್ತಿ ಹೇಳದ ಕಂಡುಹಿಡಿತ ವರದಿ ಮಾಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Read Critically",
+     "headingKn": "ವಿಮರ್ಶಾತ್ಮಕವಾಗಿ ಓದಿ",
+     "bodyEn": "Check what access and time the evaluator had, how they elicited capability, and how results were reviewed with the developer before publication.",
+     "bodyKn": "ಮೌಲ್ಯಮಾಪಕರಿಗೆ ಯಾವ ಪ್ರವೇಶ ಮತ್ತು ಸಮಯ ಇತ್ತು, ಸಾಮರ್ಥ್ಯ ಹೇಗೆ ಹೊರತೆಗೆದರು, ಪ್ರಕಟಣೆ ಮೊದಲು ಡೆವಲಪರ್ ಜೊತೆ ಫಲಿತಾಂಶ ಹೇಗೆ ವಿಮರ್ಶಿಸಲಾಯಿತು ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Third parties supply independent evidence.\n• Ask about access, elicitation and review.",
+     "bodyKn": "• ಮೂರನೇ ಪಕ್ಷ ಸ್ವತಂತ್ರ ಸಾಕ್ಷ್ಯ.\n• ಪ್ರವೇಶ, elicitation, ವಿಮರ್ಶೆ ಕೇಳಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Third-party evaluators can:",
+       "qKn": "ಮೂರನೇ ಪಕ್ಷ ಮೌಲ್ಯಮಾಪಕರು:",
+       "opts": [
+        "Test pre-release models independently",
+        "Only advertise",
+        "Nothing",
+        "Delete models"
+       ],
+       "optsKn": [
+        "ಬಿಡುಗಡೆ ಪೂರ್ವ ಮಾದರಿ ಸ್ವತಂತ್ರವಾಗಿ ಪರೀಕ್ಷಿಸಬಹುದು",
+        "ಜಾಹೀರಾತು ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಮಾದರಿ ಅಳಿಸಬಹುದು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Ask about:",
+       "qKn": "ಕೇಳಿ:",
+       "opts": [
+        "Access and time given",
+        "Logo colour",
+        "Office size",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ನೀಡಿದ ಪ್ರವೇಶ ಮತ್ತು ಸಮಯ",
+        "ಲೋಗೋ ಬಣ್ಣ",
+        "ಕಚೇರಿ ಗಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Reports should be read:",
+       "qKn": "ವರದಿ ಓದಬೇಕು:",
+       "opts": [
+        "Critically",
+        "Blindly",
+        "Never",
+        "Only titles"
+       ],
+       "optsKn": [
+        "ವಿಮರ್ಶಾತ್ಮಕವಾಗಿ",
+        "ಕುರುಡಾಗಿ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಶೀರ್ಷಿಕೆ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216cd",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Alignment Research Ecosystem: MATS, Redwood, Apollo, METR — Getting Involved",
+  "titleKn": "Alignment ಸಂಶೋಧನಾ ಪರಿಸರ: MATS, Redwood, Apollo, METR — ಪಾಲ್ಗೊಳ್ಳುವುದು",
+  "desc": "You can contribute through study, small research projects, evaluations, programmes and applied safety engineering.",
+  "descKn": "ಅಧ್ಯಯನ, ಸಣ್ಣ ಸಂಶೋಧನಾ ಯೋಜನೆ, ಮೌಲ್ಯಮಾಪನ, ಕಾರ್ಯಕ್ರಮ, ಅನ್ವಯಿತ ಸುರಕ್ಷತಾ ಎಂಜಿನಿಯರಿಂಗ್ ಮೂಲಕ ನೀವು ಕೊಡುಗೆ ನೀಡಬಹುದು.",
+  "objectives": [
+   "Build a learning path.",
+   "Contribute with reproducible small projects."
+  ],
+  "objectivesKn": [
+   "ಕಲಿಕಾ ಮಾರ್ಗ ನಿರ್ಮಿಸಿ.",
+   "ಪುನರುತ್ಪಾದನೀಯ ಸಣ್ಣ ಯೋಜನೆಗಳಿಂದ ಕೊಡುಗೆ ನೀಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Alignment Research Ecosystem: MATS, Redwood, Apollo, METR — Getting Involved",
+     "textKn": "Alignment Research Ecosystem: MATS, Redwood, Apollo, METR — Getting Involved",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Alignment Research Ecosystem: MATS, Redwood, Apollo, METR",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Learning Path",
+     "headingKn": "ಕಲಿಕಾ ಮಾರ್ಗ",
+     "bodyEn": "Learn the fundamentals of machine learning, read core papers, reproduce a small result and write up what you find, including failed attempts.",
+     "bodyKn": "ಮಷೀನ್ ಲರ್ನಿಂಗ್ ಮೂಲಗಳನ್ನು ಕಲಿಯಿರಿ, ಮುಖ್ಯ ಪ್ರಬಂಧ ಓದಿ, ಒಂದು ಸಣ್ಣ ಫಲಿತಾಂಶ ಪುನರುತ್ಪಾದಿಸಿ, ವಿಫಲ ಪ್ರಯತ್ನ ಸೇರಿ ಕಂಡುಕೊಂಡದ್ದನ್ನು ಬರೆಯಿರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Many Ways to Help",
+     "headingKn": "ಸಹಾಯ ಮಾಡಲು ಹಲವು ಮಾರ್ಗಗಳು",
+     "bodyEn": "Safety needs researchers, but also engineers, evaluators, policy analysts and people who build reliable, secure systems in products.",
+     "bodyKn": "ಸುರಕ್ಷತೆಗೆ ಸಂಶೋಧಕರ ಜೊತೆ ಎಂಜಿನಿಯರ್‌ಗಳು, ಮೌಲ್ಯಮಾಪಕರು, ನೀತಿ ವಿಶ್ಲೇಷಕರು, ಉತ್ಪನ್ನಗಳಲ್ಲಿ ವಿಶ್ವಾಸಾರ್ಹ, ಸುರಕ್ಷಿತ ವ್ಯವಸ್ಥೆ ನಿರ್ಮಿಸುವವರು ಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Learn, read, reproduce, write up.\n• Roles beyond research also matter.",
+     "bodyKn": "• ಕಲಿಯಿರಿ, ಓದಿ, ಪುನರುತ್ಪಾದಿಸಿ, ಬರೆಯಿರಿ.\n• ಸಂಶೋಧನೆ ಆಚೆಯ ಪಾತ್ರವೂ ಮುಖ್ಯ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A good first project:",
+       "qKn": "ಉತ್ತಮ ಮೊದಲ ಯೋಜನೆ:",
+       "opts": [
+        "Reproduce a small result",
+        "Claim a breakthrough",
+        "Nothing",
+        "Copy without credit"
+       ],
+       "optsKn": [
+        "ಸಣ್ಣ ಫಲಿತಾಂಶ ಪುನರುತ್ಪಾದನೆ",
+        "ಸಾಧನೆ ಎಂದು ಹೇಳಿಕೊಳ್ಳುವುದು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಶ್ರೇಯಸ್ಸು ಇಲ್ಲದೆ ನಕಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Safety needs:",
+       "qKn": "ಸುರಕ್ಷತೆಗೆ ಬೇಕು:",
+       "opts": [
+        "Engineers and policy analysts too",
+        "Only researchers",
+        "Nobody",
+        "Only lawyers"
+       ],
+       "optsKn": [
+        "ಎಂಜಿನಿಯರ್ ಮತ್ತು ನೀತಿ ವಿಶ್ಲೇಷಕರೂ",
+        "ಸಂಶೋಧಕರು ಮಾತ್ರ",
+        "ಯಾರೂ ಇಲ್ಲ",
+        "ವಕೀಲರು ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Write up:",
+       "qKn": "ಬರೆಯಿರಿ:",
+       "opts": [
+        "Including failed attempts",
+        "Only successes",
+        "Nothing",
+        "Only titles"
+       ],
+       "optsKn": [
+        "ವಿಫಲ ಪ್ರಯತ್ನ ಸೇರಿ",
+        "ಯಶಸ್ಸು ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಶೀರ್ಷಿಕೆ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216d0",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Moderation Systems: OpenAI, Perspective, Llama Guard — What Moderation Does",
+  "titleKn": "ಮಾಡರೇಶನ್ ವ್ಯವಸ್ಥೆಗಳು: OpenAI, Perspective, Llama Guard — Moderation ಏನು ಮಾಡುತ್ತದೆ",
+  "desc": "Moderation systems classify content against a policy so products can block, flag or route it for review.",
+  "descKn": "moderation ವ್ಯವಸ್ಥೆಗಳು ನೀತಿಗೆ ವಿರುದ್ಧ ವಿಷಯ ವರ್ಗೀಕರಿಸಿ ಉತ್ಪನ್ನಗಳು ತಡೆಯಲು, ಗುರುತಿಸಲು ಅಥವಾ ವಿಮರ್ಶೆಗೆ ರೂಟ್ ಮಾಡಲು ಬಿಡುತ್ತವೆ.",
+  "objectives": [
+   "Describe classify-then-act.",
+   "Distinguish hosted APIs from open models."
+  ],
+  "objectivesKn": [
+   "classify-then-act ವಿವರಿಸಿ.",
+   "hosted APIs ಮತ್ತು ಮುಕ್ತ ಮಾದರಿ ಬೇರ್ಪಡಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Moderation Systems: OpenAI, Perspective, Llama Guard — What Moderation Does",
+     "textKn": "Moderation Systems: OpenAI, Perspective, Llama Guard — What Moderation Does",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Moderation Systems: OpenAI, Perspective, Llama Guard",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Classify Then Act",
+     "headingKn": "ವರ್ಗೀಕರಿಸಿ ನಂತರ ಕ್ರಿಯೆ",
+     "bodyEn": "A classifier returns categories and scores such as harassment or self-harm. The product then applies a rule: allow, warn, block or escalate to a human.",
+     "bodyKn": "classifier ಕಿರುಕುಳ ಅಥವಾ ಸ್ವ-ಹಾನಿಯಂತಹ ವರ್ಗ ಮತ್ತು ಅಂಕ ನೀಡುತ್ತದೆ. ಉತ್ಪನ್ನ ನಂತರ ನಿಯಮ ಅನ್ವಯಿಸುತ್ತದೆ: ಅನುಮತಿ, ಎಚ್ಚರಿಕೆ, ತಡೆ ಅಥವಾ ಮಾನವರಿಗೆ ಏರಿಕೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Hosted and Open Options",
+     "headingKn": "Hosted ಮತ್ತು ಮುಕ್ತ ಆಯ್ಕೆ",
+     "bodyEn": "Hosted APIs such as OpenAI's moderation endpoint or Perspective are easy to adopt. Open models such as Llama Guard can be self-hosted and adapted to your own policy.",
+     "bodyKn": "OpenAI moderation endpoint ಅಥವಾ Perspective ನಂತಹ hosted APIs ಅಳವಡಿಸಲು ಸುಲಭ. Llama Guard ನಂತಹ ಮುಕ್ತ ಮಾದರಿಗಳನ್ನು ಸ್ವ-ಹೋಸ್ಟ್ ಮಾಡಿ ನಿಮ್ಮ ನೀತಿಗೆ ಹೊಂದಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Classify content, then apply allow/warn/block/escalate.\n• Hosted APIs are easy; open models are adaptable.",
+     "bodyKn": "• ವರ್ಗೀಕರಿಸಿ, ನಂತರ ಅನುಮತಿ/ಎಚ್ಚರಿಕೆ/ತಡೆ/ಏರಿಕೆ.\n• hosted ಸುಲಭ; ಮುಕ್ತ ಹೊಂದಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A classifier returns:",
+       "qKn": "classifier ನೀಡುವುದು:",
+       "opts": [
+        "Categories and scores",
+        "Images",
+        "Nothing",
+        "Fonts"
+       ],
+       "optsKn": [
+        "ವರ್ಗ ಮತ್ತು ಅಂಕ",
+        "ಚಿತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The product then:",
+       "qKn": "ಉತ್ಪನ್ನ ನಂತರ:",
+       "opts": [
+        "Applies a rule such as block or escalate",
+        "Does nothing",
+        "Deletes users",
+        "Prints"
+       ],
+       "optsKn": [
+        "ತಡೆ ಅಥವಾ ಏರಿಕೆಯಂತಹ ನಿಯಮ ಅನ್ವಯಿಸುತ್ತದೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಳಕೆದಾರ ಅಳಿಸುತ್ತದೆ",
+        "ಮುದ್ರಿಸುತ್ತದೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Open models can be:",
+       "qKn": "ಮುಕ್ತ ಮಾದರಿ:",
+       "opts": [
+        "Self-hosted and adapted",
+        "Only hosted",
+        "Unusable",
+        "Illegal"
+       ],
+       "optsKn": [
+        "ಸ್ವ-ಹೋಸ್ಟ್ ಮಾಡಿ ಹೊಂದಿಸಬಹುದು",
+        "hosted ಮಾತ್ರ",
+        "ಬಳಸಲಾಗದು",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216d0",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Moderation Systems: OpenAI, Perspective, Llama Guard — Choosing Thresholds and Handling Errors",
+  "titleKn": "ಮಾಡರೇಶನ್ ವ್ಯವಸ್ಥೆಗಳು: OpenAI, Perspective, Llama Guard — ಮಿತಿ ಆಯ್ಕೆ ಮತ್ತು ದೋಷ ನಿರ್ವಹಣೆ",
+  "desc": "Thresholds trade false positives against false negatives, and context and language affect accuracy.",
+  "descKn": "ಮಿತಿಗಳು ಸುಳ್ಳು positives ಮತ್ತು negatives ನಡುವೆ ವಿನಿಮಯ; ಸಂದರ್ಭ ಮತ್ತು ಭಾಷೆ ನಿಖರತೆ ಮೇಲೆ ಪರಿಣಾಮ ಬೀರುತ್ತವೆ.",
+  "objectives": [
+   "Tune thresholds on labelled samples.",
+   "Handle multilingual and context issues."
+  ],
+  "objectivesKn": [
+   "ಲೇಬಲ್ ಮಾದರಿಗಳಲ್ಲಿ ಮಿತಿ ಹೊಂದಿಸಿ.",
+   "ಬಹು-ಭಾಷಾ ಮತ್ತು ಸಂದರ್ಭ ಸಮಸ್ಯೆ ನಿರ್ವಹಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Moderation Systems: OpenAI, Perspective, Llama Guard — Choosing Thresholds and Handling Errors",
+     "textKn": "Moderation Systems: OpenAI, Perspective, Llama Guard — Choosing Thresholds and Handling Errors",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Moderation Systems: OpenAI, Perspective, Llama Guard",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Two Kinds of Error",
+     "headingKn": "ಎರಡು ವಿಧದ ದೋಷ",
+     "bodyEn": "A strict threshold blocks harmless content and frustrates users; a loose one lets harm through. Measure both on labelled samples from your own traffic.",
+     "bodyKn": "ಕಠಿಣ ಮಿತಿ ನಿರುಪದ್ರವ ವಿಷಯ ತಡೆದು ಬಳಕೆದಾರರಿಗೆ ಕಿರಿಕಿರಿ; ಸಡಿಲ ಮಿತಿ ಹಾನಿ ಹಾದುಹೋಗಲು ಬಿಡುತ್ತದೆ. ನಿಮ್ಮ ಟ್ರಾಫಿಕ್‌ನ ಲೇಬಲ್ ಮಾದರಿಗಳಲ್ಲಿ ಎರಡನ್ನೂ ಅಳೆಯಿರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Language and Context",
+     "headingKn": "ಭಾಷೆ ಮತ್ತು ಸಂದರ್ಭ",
+     "bodyEn": "Accuracy often drops for less-resourced languages, slang and context such as fiction or quotation. Test in the languages your users speak, including Kannada if relevant.",
+     "bodyKn": "ಕಡಿಮೆ ಸಂಪನ್ಮೂಲ ಭಾಷೆ, slang, ಕಥೆ ಅಥವಾ ಉಲ್ಲೇಖದಂತಹ ಸಂದರ್ಭದಲ್ಲಿ ನಿಖರತೆ ಆಗಾಗ ಇಳಿಯುತ್ತದೆ. ನಿಮ್ಮ ಬಳಕೆದಾರರು ಮಾತನಾಡುವ ಭಾಷೆಗಳಲ್ಲಿ, ಪ್ರಸ್ತುತವಾದರೆ ಕನ್ನಡ ಸೇರಿ, ಪರೀಕ್ಷಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Balance false positives and negatives on your data.\n• Test other languages and contexts.",
+     "bodyKn": "• ನಿಮ್ಮ ಡೇಟಾದಲ್ಲಿ ಸುಳ್ಳು positives/negatives ಸಮತೋಲನ.\n• ಇತರ ಭಾಷೆ, ಸಂದರ್ಭ ಪರೀಕ್ಷೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A strict threshold causes:",
+       "qKn": "ಕಠಿಣ ಮಿತಿ ಕಾರಣ:",
+       "opts": [
+        "More false positives",
+        "More harm slipping through",
+        "Nothing",
+        "Faster models"
+       ],
+       "optsKn": [
+        "ಹೆಚ್ಚು ಸುಳ್ಳು positives",
+        "ಹೆಚ್ಚು ಹಾನಿ ಹಾದುಹೋಗುವುದು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ವೇಗದ ಮಾದರಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Accuracy often drops for:",
+       "qKn": "ನಿಖರತೆ ಇಳಿಯುವುದು:",
+       "opts": [
+        "Less-resourced languages",
+        "English only",
+        "Nothing",
+        "Fonts"
+       ],
+       "optsKn": [
+        "ಕಡಿಮೆ ಸಂಪನ್ಮೂಲ ಭಾಷೆ",
+        "ಇಂಗ್ಲಿಷ್ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Measure on:",
+       "qKn": "ಅಳೆಯಿರಿ:",
+       "opts": [
+        "Labelled samples of your traffic",
+        "A guess",
+        "Nothing",
+        "Vendor slides only"
+       ],
+       "optsKn": [
+        "ನಿಮ್ಮ ಟ್ರಾಫಿಕ್‌ನ ಲೇಬಲ್ ಮಾದರಿ",
+        "ಊಹೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಮಾರಾಟಗಾರ ಸ್ಲೈಡ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216d0",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Moderation Systems: OpenAI, Perspective, Llama Guard — A Layered Moderation Design",
+  "titleKn": "ಮಾಡರೇಶನ್ ವ್ಯವಸ್ಥೆಗಳು: OpenAI, Perspective, Llama Guard — ಪದರ Moderation ವಿನ್ಯಾಸ",
+  "desc": "Combine input and output moderation, human review and appeals, and keep logs for audit and improvement.",
+  "descKn": "ಇನ್‌ಪುಟ್ ಮತ್ತು ಔಟ್‌ಪುಟ್ moderation, ಮಾನವ ವಿಮರ್ಶೆ, ಮೇಲ್ಮನವಿ ಸೇರಿಸಿ; ಲೆಕ್ಕಪರಿಶೋಧನೆ ಮತ್ತು ಸುಧಾರಣೆಗೆ ಲಾಗ್ ಇಡಿ.",
+  "objectives": [
+   "Place moderation before and after the model.",
+   "Provide human review and appeals."
+  ],
+  "objectivesKn": [
+   "ಮಾದರಿಯ ಮೊದಲು ಮತ್ತು ನಂತರ moderation ಇರಿಸಿ.",
+   "ಮಾನವ ವಿಮರ್ಶೆ ಮತ್ತು ಮೇಲ್ಮನವಿ ನೀಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Moderation Systems: OpenAI, Perspective, Llama Guard — A Layered Moderation Design",
+     "textKn": "Moderation Systems: OpenAI, Perspective, Llama Guard — A Layered Moderation Design",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Moderation Systems: OpenAI, Perspective, Llama Guard",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Both Sides of the Model",
+     "headingKn": "ಮಾದರಿಯ ಎರಡೂ ಬದಿ",
+     "bodyEn": "Screen user inputs before the model sees them and model outputs before users see them. Use different checks so one miss does not defeat the whole system.",
+     "bodyKn": "ಮಾದರಿ ನೋಡುವ ಮೊದಲು ಬಳಕೆದಾರ ಇನ್‌ಪುಟ್ ಮತ್ತು ಬಳಕೆದಾರ ನೋಡುವ ಮೊದಲು ಮಾದರಿ ಔಟ್‌ಪುಟ್ ಸ್ಕ್ರೀನ್ ಮಾಡಿ. ಒಂದು miss ಇಡೀ ವ್ಯವಸ್ಥೆ ಸೋಲಿಸದಂತೆ ಬೇರೆ ಪರಿಶೀಲನೆ ಬಳಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Humans and Appeals",
+     "headingKn": "ಮಾನವರು ಮತ್ತು ಮೇಲ್ಮನವಿ",
+     "bodyEn": "Route borderline cases to trained reviewers, let users appeal mistakes and feed corrections back into thresholds and training data.",
+     "bodyKn": "ಗಡಿರೇಖೆಯ ಪ್ರಕರಣಗಳನ್ನು ತರಬೇತಿ ಪಡೆದ ವಿಮರ್ಶಕರಿಗೆ ರೂಟ್ ಮಾಡಿ, ತಪ್ಪುಗಳಿಗೆ ಬಳಕೆದಾರರು ಮೇಲ್ಮನವಿ ಮಾಡಲು ಬಿಡಿ, ತಿದ್ದುಪಡಿಗಳನ್ನು ಮಿತಿ ಮತ್ತು ತರಬೇತಿ ಡೇಟಾಗೆ ಹಿಂದಿರುಗಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Moderate inputs and outputs with different checks.\n• Human review and appeals improve the system.",
+     "bodyKn": "• ಬೇರೆ ಪರಿಶೀಲನೆಯೊಂದಿಗೆ ಇನ್‌ಪುಟ್ ಮತ್ತು ಔಟ್‌ಪುಟ್ moderate.\n• ಮಾನವ ವಿಮರ್ಶೆ, ಮೇಲ್ಮನವಿ ಸುಧಾರಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Screen:",
+       "qKn": "ಸ್ಕ್ರೀನ್ ಮಾಡಿ:",
+       "opts": [
+        "Both inputs and outputs",
+        "Only inputs",
+        "Nothing",
+        "Only fonts"
+       ],
+       "optsKn": [
+        "ಇನ್‌ಪುಟ್ ಮತ್ತು ಔಟ್‌ಪುಟ್ ಎರಡೂ",
+        "ಇನ್‌ಪುಟ್ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Borderline cases go to:",
+       "qKn": "ಗಡಿರೇಖೆ ಪ್ರಕರಣ ಹೋಗುವುದು:",
+       "opts": [
+        "Trained human reviewers",
+        "The trash",
+        "Nobody",
+        "Random"
+       ],
+       "optsKn": [
+        "ತರಬೇತಿ ಪಡೆದ ಮಾನವ ವಿಮರ್ಶಕರಿಗೆ",
+        "ಕಸಕ್ಕೆ",
+        "ಯಾರಿಗೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Appeals help:",
+       "qKn": "ಮೇಲ್ಮನವಿ ಸಹಾಯ:",
+       "opts": [
+        "Correct mistakes and improve thresholds",
+        "Hide errors",
+        "Nothing",
+        "Delete users"
+       ],
+       "optsKn": [
+        "ತಪ್ಪು ಸರಿಪಡಿಸಿ ಮಿತಿ ಸುಧಾರಿಸಲು",
+        "ದೋಷ ಮರೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಳಕೆದಾರ ಅಳಿಸಲು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216d3",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Dual-Use Risk: Cyber, Bio, Chem, Nuclear — What Dual-Use Means",
+  "titleKn": "Dual-Use ಅಪಾಯ: ಸೈಬರ್, ಜೈವಿಕ, ರಾಸಾಯನಿಕ, ಪರಮಾಣು — Dual-Use ಎಂದರೇನು",
+  "desc": "Dual-use knowledge and tools serve both beneficial and harmful purposes, and AI can lower barriers to either.",
+  "descKn": "dual-use ಜ್ಞಾನ ಮತ್ತು ಸಾಧನಗಳು ಲಾಭದಾಯಕ ಮತ್ತು ಹಾನಿಕರ ಉದ್ದೇಶ ಎರಡಕ್ಕೂ ಸೇವೆ ಸಲ್ಲಿಸುತ್ತವೆ; AI ಎರಡಕ್ಕೂ ಅಡೆತಡೆ ಕಡಿಮೆ ಮಾಡಬಹುದು.",
+  "objectives": [
+   "Define dual-use.",
+   "Explain uplift and why it is the concern."
+  ],
+  "objectivesKn": [
+   "dual-use ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "uplift ಮತ್ತು ಅದು ಆತಂಕ ಏಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Dual-Use Risk: Cyber, Bio, Chem, Nuclear — What Dual-Use Means",
+     "textKn": "Dual-Use Risk: Cyber, Bio, Chem, Nuclear — What Dual-Use Means",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Dual-Use Risk: Cyber, Bio, Chem, Nuclear",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Two Sides of the Same Knowledge",
+     "headingKn": "ಒಂದೇ ಜ್ಞಾನದ ಎರಡು ಬದಿ",
+     "bodyEn": "Understanding how a pathogen spreads helps public health, and knowing how software is exploited helps defenders. The same knowledge could also help someone cause harm.",
+     "bodyKn": "ರೋಗಕಾರಕ ಹೇಗೆ ಹರಡುತ್ತದೆ ಎಂದು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವುದು ಸಾರ್ವಜನಿಕ ಆರೋಗ್ಯಕ್ಕೆ ಸಹಾಯ; ಸಾಫ್ಟ್‌ವೇರ್ ಹೇಗೆ ಶೋಷಿಸಲ್ಪಡುತ್ತದೆ ತಿಳಿದರೆ ರಕ್ಷಕರಿಗೆ ಸಹಾಯ. ಅದೇ ಜ್ಞಾನ ಯಾರಿಗಾದರೂ ಹಾನಿ ಮಾಡಲೂ ಸಹಾಯ ಮಾಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Uplift",
+     "headingKn": "Uplift",
+     "bodyEn": "The concern is uplift: whether an AI meaningfully helps someone do something harmful that they could not easily do otherwise. Risk depends on capability, access and the real barriers involved.",
+     "bodyKn": "ಆತಂಕ uplift: AI ಬೇರೆ ರೀತಿ ಸುಲಭವಾಗಿ ಮಾಡಲಾಗದ ಹಾನಿಕರ ಕೆಲಸ ಮಾಡಲು ಯಾರಿಗಾದರೂ ಅರ್ಥಪೂರ್ಣ ಸಹಾಯ ಮಾಡುತ್ತದೆಯೇ. ಅಪಾಯ ಸಾಮರ್ಥ್ಯ, ಪ್ರವೇಶ, ನಿಜ ಅಡೆತಡೆಗಳ ಮೇಲೆ ಅವಲಂಬಿತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Same knowledge, beneficial and harmful uses.\n• The key concern is uplift beyond what is easily available.",
+     "bodyKn": "• ಒಂದೇ ಜ್ಞಾನ, ಲಾಭದಾಯಕ ಮತ್ತು ಹಾನಿಕರ ಬಳಕೆ.\n• ಮುಖ್ಯ ಆತಂಕ uplift."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Dual-use means:",
+       "qKn": "dual-use ಅರ್ಥ:",
+       "opts": [
+        "Both beneficial and harmful uses",
+        "Two GPUs",
+        "Two users",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಲಾಭದಾಯಕ ಮತ್ತು ಹಾನಿಕರ ಬಳಕೆ ಎರಡೂ",
+        "ಎರಡು GPUs",
+        "ಇಬ್ಬರು ಬಳಕೆದಾರರು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Uplift is:",
+       "qKn": "uplift:",
+       "opts": [
+        "Meaningful extra help toward harm",
+        "A speed boost",
+        "A font",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹಾನಿಯತ್ತ ಅರ್ಥಪೂರ್ಣ ಹೆಚ್ಚುವರಿ ಸಹಾಯ",
+        "ವೇಗ ಹೆಚ್ಚಳ",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Risk depends on:",
+       "qKn": "ಅಪಾಯ ಅವಲಂಬನೆ:",
+       "opts": [
+        "Capability, access and real barriers",
+        "Colour",
+        "Font",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸಾಮರ್ಥ್ಯ, ಪ್ರವೇಶ, ನಿಜ ಅಡೆತಡೆ",
+        "ಬಣ್ಣ",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216d3",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Dual-Use Risk: Cyber, Bio, Chem, Nuclear — The Four Domains at a High Level",
+  "titleKn": "Dual-Use ಅಪಾಯ: ಸೈಬರ್, ಜೈವಿಕ, ರಾಸಾಯನಿಕ, ಪರಮಾಣು — ನಾಲ್ಕು ಕ್ಷೇತ್ರಗಳು ಮೇಲ್ಮಟ್ಟದಲ್ಲಿ",
+  "desc": "Cyber, biological, chemical and nuclear domains differ in how physical barriers and existing controls limit misuse.",
+  "descKn": "ಸೈಬರ್, ಜೈವಿಕ, ರಾಸಾಯನಿಕ, ಪರಮಾಣು ಕ್ಷೇತ್ರಗಳು ಭೌತಿಕ ಅಡೆತಡೆ ಮತ್ತು ಈಗಿನ ನಿಯಂತ್ರಣ ದುರ್ಬಳಕೆ ಹೇಗೆ ಮಿತಿಗೊಳಿಸುತ್ತವೆ ಎಂಬುದರಲ್ಲಿ ಭಿನ್ನ.",
+  "objectives": [
+   "Compare domains by barriers and controls.",
+   "Understand why this course stays non-operational."
+  ],
+  "objectivesKn": [
+   "ಅಡೆತಡೆ ಮತ್ತು ನಿಯಂತ್ರಣದಿಂದ ಕ್ಷೇತ್ರ ಹೋಲಿಸಿ.",
+   "ಈ ಕೋರ್ಸ್ ಕಾರ್ಯಾಚರಣೆ ವಿವರ ಇಲ್ಲದೆ ಇರುವುದೇಕೆ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Dual-Use Risk: Cyber, Bio, Chem, Nuclear — The Four Domains at a High Level",
+     "textKn": "Dual-Use Risk: Cyber, Bio, Chem, Nuclear — The Four Domains at a High Level",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Dual-Use Risk: Cyber, Bio, Chem, Nuclear",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Digital Versus Physical",
+     "headingKn": "ಡಿಜಿಟಲ್ vs ಭೌತಿಕ",
+     "bodyEn": "Cyber misuse is digital, so knowledge translates quickly into action. Biological, chemical and nuclear harms also need materials, equipment and expertise, which acts as a barrier.",
+     "bodyKn": "ಸೈಬರ್ ದುರ್ಬಳಕೆ ಡಿಜಿಟಲ್, ಆದ್ದರಿಂದ ಜ್ಞಾನ ಬೇಗ ಕ್ರಿಯೆಯಾಗುತ್ತದೆ. ಜೈವಿಕ, ರಾಸಾಯನಿಕ, ಪರಮಾಣು ಹಾನಿಗೆ ವಸ್ತು, ಉಪಕರಣ, ಪರಿಣತಿಯೂ ಬೇಕು; ಅದು ಅಡೆತಡೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why We Stay High Level",
+     "headingKn": "ಮೇಲ್ಮಟ್ಟದಲ್ಲೇ ಏಕೆ",
+     "bodyEn": "This course discusses risk management, evaluation and policy, and deliberately avoids operational detail that could help cause harm. Sensitive specifics belong with vetted experts.",
+     "bodyKn": "ಈ ಕೋರ್ಸ್ ಅಪಾಯ ನಿರ್ವಹಣೆ, ಮೌಲ್ಯಮಾಪನ, ನೀತಿ ಚರ್ಚಿಸುತ್ತದೆ ಮತ್ತು ಹಾನಿಗೆ ಸಹಾಯ ಮಾಡಬಹುದಾದ ಕಾರ್ಯಾಚರಣೆ ವಿವರ ಉದ್ದೇಶಪೂರ್ವಕ ತಪ್ಪಿಸುತ್ತದೆ. ಸೂಕ್ಷ್ಮ ನಿರ್ದಿಷ್ಟತೆ ಪರಿಶೀಲಿತ ತಜ್ಞರಿಗೆ ಸೇರಿದ್ದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Cyber is digital; bio, chem and nuclear have physical barriers.\n• We discuss governance, not operational detail.",
+     "bodyKn": "• ಸೈಬರ್ ಡಿಜಿಟಲ್; ಇತರ ಭೌತಿಕ ಅಡೆತಡೆ.\n• ಆಡಳಿತ ಚರ್ಚೆ, ಕಾರ್ಯಾಚರಣೆ ವಿವರವಲ್ಲ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Which is purely digital?",
+       "qKn": "ಯಾವುದು ಸಂಪೂರ್ಣ ಡಿಜಿಟಲ್?",
+       "opts": [
+        "Cyber misuse",
+        "Nuclear materials",
+        "Chemical equipment",
+        "Lab supplies"
+       ],
+       "optsKn": [
+        "ಸೈಬರ್ ದುರ್ಬಳಕೆ",
+        "ಪರಮಾಣು ವಸ್ತು",
+        "ರಾಸಾಯನಿಕ ಉಪಕರಣ",
+        "ಪ್ರಯೋಗಾಲಯ ಸಾಮಗ್ರಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Physical barriers include:",
+       "qKn": "ಭೌತಿಕ ಅಡೆತಡೆ:",
+       "opts": [
+        "Materials and equipment",
+        "Only fonts",
+        "Nothing",
+        "Only names"
+       ],
+       "optsKn": [
+        "ವಸ್ತು ಮತ್ತು ಉಪಕರಣ",
+        "ಫಾಂಟ್ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಹೆಸರು ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "This course avoids:",
+       "qKn": "ಈ ಕೋರ್ಸ್ ತಪ್ಪಿಸುವುದು:",
+       "opts": [
+        "Operational harmful detail",
+        "Risk management",
+        "Policy",
+        "Evaluation"
+       ],
+       "optsKn": [
+        "ಕಾರ್ಯಾಚರಣೆ ಹಾನಿಕರ ವಿವರ",
+        "ಅಪಾಯ ನಿರ್ವಹಣೆ",
+        "ನೀತಿ",
+        "ಮೌಲ್ಯಮಾಪನ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216d3",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Dual-Use Risk: Cyber, Bio, Chem, Nuclear — Managing Dual-Use Risk in Practice",
+  "titleKn": "Dual-Use ಅಪಾಯ: ಸೈಬರ್, ಜೈವಿಕ, ರಾಸಾಯನಿಕ, ಪರಮಾಣು — ಆಚರಣೆಯಲ್ಲಿ Dual-Use ಅಪಾಯ ನಿರ್ವಹಣೆ",
+  "desc": "Layer evaluation, safeguards, access controls, monitoring and responsible disclosure, balancing risk against legitimate benefit.",
+  "descKn": "ಮೌಲ್ಯಮಾಪನ, ರಕ್ಷಣೆ, ಪ್ರವೇಶ ನಿಯಂತ್ರಣ, ನಿಗಾ, ಜವಾಬ್ದಾರಿಯುತ ಬಹಿರಂಗ ಪದರ ಮಾಡಿ; ಅಪಾಯವನ್ನು ನ್ಯಾಯಸಮ್ಮತ ಲಾಭಕ್ಕೆ ಸಮತೋಲನಗೊಳಿಸಿ.",
+  "objectives": [
+   "Describe layered mitigations.",
+   "Balance safety with legitimate use."
+  ],
+  "objectivesKn": [
+   "ಪದರ ತಗ್ಗಿಸುವಿಕೆ ವಿವರಿಸಿ.",
+   "ಸುರಕ್ಷತೆ ಮತ್ತು ನ್ಯಾಯಸಮ್ಮತ ಬಳಕೆ ಸಮತೋಲನ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Dual-Use Risk: Cyber, Bio, Chem, Nuclear — Managing Dual-Use Risk in Practice",
+     "textKn": "Dual-Use Risk: Cyber, Bio, Chem, Nuclear — Managing Dual-Use Risk in Practice",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Dual-Use Risk: Cyber, Bio, Chem, Nuclear",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Layered Mitigations",
+     "headingKn": "ಪದರ ತಗ್ಗಿಸುವಿಕೆ",
+     "bodyEn": "Combine capability evaluations, refusal training, input and output classifiers, trusted-access programmes for vetted professionals and monitoring for misuse patterns.",
+     "bodyKn": "ಸಾಮರ್ಥ್ಯ ಮೌಲ್ಯಮಾಪನ, ನಿರಾಕರಣೆ ತರಬೇತಿ, ಇನ್‌ಪುಟ್ ಮತ್ತು ಔಟ್‌ಪುಟ್ classifiers, ಪರಿಶೀಲಿತ ವೃತ್ತಿಪರರಿಗೆ ವಿಶ್ವಾಸಾರ್ಹ-ಪ್ರವೇಶ ಕಾರ್ಯಕ್ರಮ, ದುರ್ಬಳಕೆ ಮಾದರಿಗಳ ನಿಗಾ ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Balance Benefit and Risk",
+     "headingKn": "ಲಾಭ ಮತ್ತು ಅಪಾಯ ಸಮತೋಲನ",
+     "bodyEn": "Over-refusing blocks defenders, students and researchers who benefit from the knowledge. Good policy protects against serious misuse while keeping legitimate uses possible.",
+     "bodyKn": "ಅತಿ ನಿರಾಕರಣೆ ಜ್ಞಾನದಿಂದ ಲಾಭ ಪಡೆವ ರಕ್ಷಕರು, ವಿದ್ಯಾರ್ಥಿಗಳು, ಸಂಶೋಧಕರನ್ನು ತಡೆಯುತ್ತದೆ. ಉತ್ತಮ ನೀತಿ ಗಂಭೀರ ದುರ್ಬಳಕೆಯಿಂದ ರಕ್ಷಿಸುತ್ತಾ ನ್ಯಾಯಸಮ್ಮತ ಬಳಕೆ ಸಾಧ್ಯವಾಗಿಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Layer evals, training, classifiers, trusted access and monitoring.\n• Avoid both misuse and over-refusal.",
+     "bodyKn": "• evals, ತರಬೇತಿ, classifiers, ವಿಶ್ವಾಸಾರ್ಹ ಪ್ರವೇಶ, ನಿಗಾ ಪದರ.\n• ದುರ್ಬಳಕೆ ಮತ್ತು ಅತಿ ನಿರಾಕರಣೆ ಎರಡೂ ತಪ್ಪಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A mitigation:",
+       "qKn": "ತಗ್ಗಿಸುವಿಕೆ:",
+       "opts": [
+        "Trusted-access programmes for vetted professionals",
+        "Removing all safeguards",
+        "Nothing",
+        "Publishing hazards"
+       ],
+       "optsKn": [
+        "ಪರಿಶೀಲಿತ ವೃತ್ತಿಪರರಿಗೆ ವಿಶ್ವಾಸಾರ್ಹ-ಪ್ರವೇಶ",
+        "ಎಲ್ಲ ರಕ್ಷಣೆ ತೆಗೆಯುವುದು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಅಪಾಯ ಪ್ರಕಟಿಸುವುದು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Over-refusing harms:",
+       "qKn": "ಅತಿ ನಿರಾಕರಣೆ ಹಾನಿ:",
+       "opts": [
+        "Defenders, students and researchers",
+        "Nobody",
+        "Only attackers",
+        "Only GPUs"
+       ],
+       "optsKn": [
+        "ರಕ್ಷಕರು, ವಿದ್ಯಾರ್ಥಿಗಳು, ಸಂಶೋಧಕರು",
+        "ಯಾರಿಗೂ ಇಲ್ಲ",
+        "ದಾಳಿಕೋರರಿಗೆ ಮಾತ್ರ",
+        "GPU ಗೆ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Good policy:",
+       "qKn": "ಉತ್ತಮ ನೀತಿ:",
+       "opts": [
+        "Protects against serious misuse and keeps legitimate use possible",
+        "Blocks everything",
+        "Allows everything",
+        "Ignores risk"
+       ],
+       "optsKn": [
+        "ಗಂಭೀರ ದುರ್ಬಳಕೆಯಿಂದ ರಕ್ಷಿಸಿ ನ್ಯಾಯಸಮ್ಮತ ಬಳಕೆ ಸಾಧ್ಯ",
+        "ಎಲ್ಲವನ್ನೂ ತಡೆ",
+        "ಎಲ್ಲವನ್ನೂ ಅನುಮತಿಸಿ",
+        "ಅಪಾಯ ನಿರ್ಲಕ್ಷ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

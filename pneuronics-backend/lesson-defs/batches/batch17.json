@@ -1,0 +1,2627 @@
+[
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321661",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "A/B Testing LLM Features: GrowthBook and Statsig — Why A/B Test LLM Features",
+  "titleKn": "LLM ವೈಶಿಷ್ಟ್ಯಗಳ A/B ಪರೀಕ್ಷೆ: GrowthBook ಮತ್ತು Statsig — LLM ವೈಶಿಷ್ಟ್ಯ A/B ಪರೀಕ್ಷೆ ಏಕೆ",
+  "desc": "Randomised experiments measure the real effect of a prompt or model change on user outcomes.",
+  "descKn": "ಯಾದೃಚ್ಛಿಕ ಪ್ರಯೋಗಗಳು prompt ಅಥವಾ ಮಾದರಿ ಬದಲಾವಣೆಯ ಬಳಕೆದಾರ ಫಲಿತಾಂಶದ ಮೇಲಿನ ನಿಜ ಪರಿಣಾಮ ಅಳೆಯುತ್ತವೆ.",
+  "objectives": [
+   "Explain randomised assignment.",
+   "Choose user-outcome metrics."
+  ],
+  "objectivesKn": [
+   "ಯಾದೃಚ್ಛಿಕ ನಿಯೋಜನೆ ವಿವರಿಸಿ.",
+   "ಬಳಕೆದಾರ-ಫಲಿತಾಂಶ ಮೆಟ್ರಿಕ್ಸ್ ಆರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "A/B Testing LLM Features: GrowthBook and Statsig — Why A/B Test LLM Features",
+     "textKn": "A/B Testing LLM Features: GrowthBook and Statsig — Why A/B Test LLM Features",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in A/B Testing LLM Features: GrowthBook and Statsig",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Beyond Offline Evals",
+     "headingKn": "ಆಫ್‌ಲೈನ್ Evals ಆಚೆ",
+     "bodyEn": "Offline scores may not predict whether users actually prefer a change. Randomly assigning users to versions shows the causal effect on behaviour.",
+     "bodyKn": "ಆಫ್‌ಲೈನ್ ಅಂಕ ಬಳಕೆದಾರರು ನಿಜವಾಗಿ ಬದಲಾವಣೆ ಇಷ್ಟಪಡುತ್ತಾರೆಯೇ ಎಂದು ಮುನ್ಸೂಚಿಸದಿರಬಹುದು. ಬಳಕೆದಾರರನ್ನು ಆವೃತ್ತಿಗಳಿಗೆ ಯಾದೃಚ್ಛಿಕವಾಗಿ ನಿಯೋಜಿಸಿದರೆ ವರ್ತನೆ ಮೇಲಿನ ಕಾರಣ ಪರಿಣಾಮ ತೋರುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Pick Real Metrics",
+     "headingKn": "ನಿಜ ಮೆಟ್ರಿಕ್ಸ್ ಆರಿಸಿ",
+     "bodyEn": "Use outcomes such as task completion, retention, thumbs up rate, escalation to humans and cost per session, alongside guardrail metrics like error rate.",
+     "bodyKn": "ಕೆಲಸ ಪೂರ್ಣತೆ, retention, thumbs up ದರ, ಮಾನವರಿಗೆ ಏರಿಕೆ, ಪ್ರತಿ ಸೆಷನ್ ವೆಚ್ಚದಂತಹ ಫಲಿತಾಂಶ, ದೋಷ ದರದಂತಹ guardrail ಮೆಟ್ರಿಕ್ಸ್ ಜೊತೆ ಬಳಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Randomised tests show causal effects.\n• Use outcome and guardrail metrics.",
+     "bodyKn": "• ಯಾದೃಚ್ಛಿಕ ಪರೀಕ್ಷೆ ಕಾರಣ ಪರಿಣಾಮ.\n• ಫಲಿತಾಂಶ ಮತ್ತು guardrail ಮೆಟ್ರಿಕ್ಸ್."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Random assignment shows:",
+       "qKn": "ಯಾದೃಚ್ಛಿಕ ನಿಯೋಜನೆ ತೋರಿಸುವುದು:",
+       "opts": [
+        "Causal effect",
+        "Nothing",
+        "Only correlation",
+        "Colours"
+       ],
+       "optsKn": [
+        "ಕಾರಣ ಪರಿಣಾಮ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಸಂಬಂಧ ಮಾತ್ರ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A guardrail metric:",
+       "qKn": "guardrail ಮೆಟ್ರಿಕ್:",
+       "opts": [
+        "Error rate",
+        "Font size",
+        "Logo",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ದೋಷ ದರ",
+        "ಫಾಂಟ್ ಗಾತ್ರ",
+        "ಲೋಗೋ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Offline scores may:",
+       "qKn": "ಆಫ್‌ಲೈನ್ ಅಂಕ:",
+       "opts": [
+        "Not predict user preference",
+        "Always predict it",
+        "Be illegal",
+        "Be secret"
+       ],
+       "optsKn": [
+        "ಬಳಕೆದಾರ ಆದ್ಯತೆ ಮುನ್ಸೂಚಿಸದಿರಬಹುದು",
+        "ಯಾವಾಗಲೂ ಮುನ್ಸೂಚಿಸುತ್ತದೆ",
+        "ಕಾನೂನುಬಾಹಿರ",
+        "ರಹಸ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321661",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "A/B Testing LLM Features: GrowthBook and Statsig — Designing the Experiment",
+  "titleKn": "LLM ವೈಶಿಷ್ಟ್ಯಗಳ A/B ಪರೀಕ್ಷೆ: GrowthBook ಮತ್ತು Statsig — ಪ್ರಯೋಗ ವಿನ್ಯಾಸ",
+  "desc": "Decide the unit of randomisation, sample size and duration before starting, and avoid peeking at results.",
+  "descKn": "ಆರಂಭಿಸುವ ಮೊದಲು ಯಾದೃಚ್ಛಿಕೀಕರಣ ಘಟಕ, ಮಾದರಿ ಗಾತ್ರ, ಅವಧಿ ನಿರ್ಧರಿಸಿ, ಫಲಿತಾಂಶ ಇಣುಕಿ ನೋಡುವುದನ್ನು ತಪ್ಪಿಸಿ.",
+  "objectives": [
+   "Randomise per user, not per request.",
+   "Estimate needed sample size."
+  ],
+  "objectivesKn": [
+   "ಪ್ರತಿ ವಿನಂತಿಗಲ್ಲ, ಪ್ರತಿ ಬಳಕೆದಾರರಿಗೆ ಯಾದೃಚ್ಛಿಕ.",
+   "ಬೇಕಾದ ಮಾದರಿ ಗಾತ್ರ ಅಂದಾಜಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "A/B Testing LLM Features: GrowthBook and Statsig — Designing the Experiment",
+     "textKn": "A/B Testing LLM Features: GrowthBook and Statsig — Designing the Experiment",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in A/B Testing LLM Features: GrowthBook and Statsig",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Randomise Per User",
+     "headingKn": "ಪ್ರತಿ ಬಳಕೆದಾರರಿಗೆ ಯಾದೃಚ್ಛಿಕ",
+     "bodyEn": "A user who sees different versions mid-conversation gets an inconsistent experience. Assign each user, or each conversation, to one version consistently.",
+     "bodyKn": "ಸಂಭಾಷಣೆ ಮಧ್ಯೆ ಬೇರೆ ಆವೃತ್ತಿ ನೋಡುವ ಬಳಕೆದಾರರಿಗೆ ಅಸಂಗತ ಅನುಭವ. ಪ್ರತಿ ಬಳಕೆದಾರ ಅಥವಾ ಸಂಭಾಷಣೆಯನ್ನು ಒಂದು ಆವೃತ್ತಿಗೆ ಸ್ಥಿರವಾಗಿ ನಿಯೋಜಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Sample Size and Peeking",
+     "headingKn": "ಮಾದರಿ ಗಾತ್ರ ಮತ್ತು ಇಣುಕುವಿಕೆ",
+     "bodyEn": "Small effects need many users. Stopping as soon as a result looks good inflates false positives, so fix the duration or use methods designed for continuous monitoring.",
+     "bodyKn": "ಸಣ್ಣ ಪರಿಣಾಮಕ್ಕೆ ಹೆಚ್ಚು ಬಳಕೆದಾರರು ಬೇಕು. ಫಲಿತಾಂಶ ಚೆನ್ನಾಗಿ ಕಂಡ ತಕ್ಷಣ ನಿಲ್ಲಿಸಿದರೆ ಸುಳ್ಳು positives ಹೆಚ್ಚುತ್ತವೆ; ಅವಧಿ ನಿಗದಿಪಡಿಸಿ ಅಥವಾ ನಿರಂತರ ನಿಗಾಗೆ ರೂಪಿಸಿದ ವಿಧಾನ ಬಳಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Assign users or conversations consistently.\n• Fix duration; do not stop when it looks good.",
+     "bodyKn": "• ಬಳಕೆದಾರ/ಸಂಭಾಷಣೆ ಸ್ಥಿರ ನಿಯೋಜನೆ.\n• ಅವಧಿ ನಿಗದಿ; ಚೆನ್ನಾಗಿ ಕಂಡಾಗ ನಿಲ್ಲಿಸಬೇಡಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Randomise per:",
+       "qKn": "ಯಾದೃಚ್ಛಿಕ:",
+       "opts": [
+        "User or conversation",
+        "Token",
+        "Colour",
+        "Font"
+       ],
+       "optsKn": [
+        "ಬಳಕೆದಾರ ಅಥವಾ ಸಂಭಾಷಣೆ",
+        "token",
+        "ಬಣ್ಣ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Stopping when it looks good:",
+       "qKn": "ಚೆನ್ನಾಗಿ ಕಂಡಾಗ ನಿಲ್ಲಿಸುವುದು:",
+       "opts": [
+        "Inflates false positives",
+        "Is ideal",
+        "Saves cost only",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಸುಳ್ಳು positives ಹೆಚ್ಚಿಸುತ್ತದೆ",
+        "ಆದರ್ಶ",
+        "ವೆಚ್ಚ ಮಾತ್ರ ಉಳಿತಾಯ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Small effects need:",
+       "qKn": "ಸಣ್ಣ ಪರಿಣಾಮಕ್ಕೆ:",
+       "opts": [
+        "Many users",
+        "Few users",
+        "No users",
+        "One user"
+       ],
+       "optsKn": [
+        "ಹೆಚ್ಚು ಬಳಕೆದಾರರು",
+        "ಕಡಿಮೆ ಬಳಕೆದಾರರು",
+        "ಬಳಕೆದಾರರಿಲ್ಲ",
+        "ಒಬ್ಬ ಬಳಕೆದಾರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6766020ed05b321661",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "A/B Testing LLM Features: GrowthBook and Statsig — Interpreting LLM Experiments",
+  "titleKn": "LLM ವೈಶಿಷ್ಟ್ಯಗಳ A/B ಪರೀಕ್ಷೆ: GrowthBook ಮತ್ತು Statsig — LLM ಪ್ರಯೋಗ ಅರ್ಥೈಸುವುದು",
+  "desc": "LLM outputs are noisy and metrics can conflict, so interpret with care and confirm with qualitative review.",
+  "descKn": "LLM ಔಟ್‌ಪುಟ್ ಗದ್ದಲಯುತ, ಮೆಟ್ರಿಕ್ಸ್ ವಿರೋಧಿಸಬಹುದು; ಎಚ್ಚರದಿಂದ ಅರ್ಥೈಸಿ ಗುಣಾತ್ಮಕ ವಿಮರ್ಶೆಯಿಂದ ದೃಢೀಕರಿಸಿ.",
+  "objectives": [
+   "Read confidence intervals, not just p-values.",
+   "Combine numbers with transcript review."
+  ],
+  "objectivesKn": [
+   "ಕೇವಲ p-values ಅಲ್ಲ, confidence intervals ಓದಿ.",
+   "ಸಂಖ್ಯೆ ಮತ್ತು transcript ವಿಮರ್ಶೆ ಸೇರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "A/B Testing LLM Features: GrowthBook and Statsig — Interpreting LLM Experiments",
+     "textKn": "A/B Testing LLM Features: GrowthBook and Statsig — Interpreting LLM Experiments",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in A/B Testing LLM Features: GrowthBook and Statsig",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Noise and Intervals",
+     "headingKn": "ಗದ್ದಲ ಮತ್ತು Intervals",
+     "bodyEn": "Report the size of the effect with a confidence interval. A statistically significant but tiny change may not be worth its cost.",
+     "bodyKn": "ಪರಿಣಾಮದ ಗಾತ್ರವನ್ನು confidence interval ಜೊತೆ ವರದಿ ಮಾಡಿ. ಸಾಂಖ್ಯಿಕವಾಗಿ ಮಹತ್ವದ ಆದರೆ ಸಣ್ಣ ಬದಲಾವಣೆ ತನ್ನ ವೆಚ್ಚಕ್ಕೆ ಯೋಗ್ಯವಲ್ಲದಿರಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Read Transcripts",
+     "headingKn": "Transcripts ಓದಿ",
+     "bodyEn": "Look at sample conversations from each arm. Metrics tell you that something changed; transcripts explain what and why.",
+     "bodyKn": "ಪ್ರತಿ arm ನ ಮಾದರಿ ಸಂಭಾಷಣೆಗಳನ್ನು ನೋಡಿ. ಮೆಟ್ರಿಕ್ಸ್ ಏನೋ ಬದಲಾಯಿತು ಎನ್ನುತ್ತವೆ; transcripts ಏನು ಮತ್ತು ಏಕೆ ಎಂದು ವಿವರಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Report effect size with an interval.\n• Read transcripts to explain the numbers.",
+     "bodyKn": "• ಪರಿಣಾಮ ಗಾತ್ರ interval ಜೊತೆ.\n• ಸಂಖ್ಯೆ ವಿವರಿಸಲು transcripts ಓದಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Report effects with:",
+       "qKn": "ಪರಿಣಾಮ ವರದಿ:",
+       "opts": [
+        "A confidence interval",
+        "A slogan",
+        "Nothing",
+        "A logo"
+       ],
+       "optsKn": [
+        "confidence interval",
+        "ಘೋಷವಾಕ್ಯ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Transcripts explain:",
+       "qKn": "transcripts ವಿವರಿಸುವುದು:",
+       "opts": [
+        "What and why",
+        "Nothing",
+        "Only cost",
+        "Only fonts"
+       ],
+       "optsKn": [
+        "ಏನು ಮತ್ತು ಏಕೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ವೆಚ್ಚ ಮಾತ್ರ",
+        "ಫಾಂಟ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A tiny significant change may be:",
+       "qKn": "ಸಣ್ಣ ಮಹತ್ವದ ಬದಲಾವಣೆ:",
+       "opts": [
+        "Not worth its cost",
+        "Always worth it",
+        "Illegal",
+        "Perfect"
+       ],
+       "optsKn": [
+        "ವೆಚ್ಚಕ್ಕೆ ಯೋಗ್ಯವಲ್ಲದಿರಬಹುದು",
+        "ಯಾವಾಗಲೂ ಯೋಗ್ಯ",
+        "ಕಾನೂನುಬಾಹಿರ",
+        "ಪರಿಪೂರ್ಣ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b321664",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Load Testing LLM APIs: k6, LLMPerf, GenAI-Perf — What LLM Load Tests Must Model",
+  "titleKn": "LLM API ಲೋಡ್ ಪರೀಕ್ಷೆ: k6, LLMPerf, GenAI-Perf — LLM ಲೋಡ್ ಪರೀಕ್ಷೆ ಏನು ಮಾದರಿ ಮಾಡಬೇಕು",
+  "desc": "Realistic tests use representative prompt and output lengths, streaming and concurrency patterns.",
+  "descKn": "ನೈಜ ಪರೀಕ್ಷೆಗಳು ಪ್ರಾತಿನಿಧಿಕ prompt ಮತ್ತು ಔಟ್‌ಪುಟ್ ಉದ್ದ, ಸ್ಟ್ರೀಮಿಂಗ್, concurrency ಮಾದರಿ ಬಳಸುತ್ತವೆ.",
+  "objectives": [
+   "Model prompt and output length distributions.",
+   "Distinguish open and closed loop load."
+  ],
+  "objectivesKn": [
+   "prompt ಮತ್ತು ಔಟ್‌ಪುಟ್ ಉದ್ದ ವಿತರಣೆ ಮಾದರಿ ಮಾಡಿ.",
+   "open ಮತ್ತು closed loop ಹೊರೆ ಬೇರ್ಪಡಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Load Testing LLM APIs: k6, LLMPerf, GenAI-Perf — What LLM Load Tests Must Model",
+     "textKn": "Load Testing LLM APIs: k6, LLMPerf, GenAI-Perf — What LLM Load Tests Must Model",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Load Testing LLM APIs: k6, LLMPerf, GenAI-Perf",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Length Matters",
+     "headingKn": "ಉದ್ದ ಮುಖ್ಯ",
+     "bodyEn": "Cost and latency scale with input and output tokens. A test using one short prompt will badly underestimate the load real traffic creates.",
+     "bodyKn": "ವೆಚ್ಚ ಮತ್ತು ವಿಳಂಬ ಇನ್‌ಪುಟ್ ಮತ್ತು ಔಟ್‌ಪುಟ್ tokens ಜೊತೆ ಹೆಚ್ಚುತ್ತವೆ. ಒಂದು ಚಿಕ್ಕ prompt ಬಳಸುವ ಪರೀಕ್ಷೆ ನಿಜ ಟ್ರಾಫಿಕ್ ಸೃಷ್ಟಿಸುವ ಹೊರೆಯನ್ನು ಬಹಳ ಕಡಿಮೆ ಅಂದಾಜಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Open Versus Closed Loop",
+     "headingKn": "Open vs Closed Loop",
+     "bodyEn": "Closed-loop tests send a new request only after the previous finishes, hiding queueing. Open-loop tests send at a fixed rate, revealing how the system behaves when overloaded.",
+     "bodyKn": "closed-loop ಪರೀಕ್ಷೆ ಹಿಂದಿನದು ಮುಗಿದ ನಂತರ ಮಾತ್ರ ಹೊಸ ವಿನಂತಿ ಕಳುಹಿಸಿ ಸರತಿ ಮರೆಮಾಡುತ್ತದೆ. open-loop ಪರೀಕ್ಷೆ ನಿಗದಿತ ದರದಲ್ಲಿ ಕಳುಹಿಸಿ ಅತಿ ಹೊರೆಯಲ್ಲಿ ವ್ಯವಸ್ಥೆ ಹೇಗೆ ವರ್ತಿಸುತ್ತದೆ ತೋರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Use realistic length distributions.\n• Open-loop tests reveal overload behaviour.",
+     "bodyKn": "• ನೈಜ ಉದ್ದ ವಿತರಣೆ.\n• open-loop ಅತಿ ಹೊರೆ ವರ್ತನೆ ತೋರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A single short prompt test:",
+       "qKn": "ಒಂದು ಚಿಕ್ಕ prompt ಪರೀಕ್ಷೆ:",
+       "opts": [
+        "Underestimates real load",
+        "Is perfect",
+        "Overestimates",
+        "Is illegal"
+       ],
+       "optsKn": [
+        "ನಿಜ ಹೊರೆ ಕಡಿಮೆ ಅಂದಾಜು",
+        "ಪರಿಪೂರ್ಣ",
+        "ಹೆಚ್ಚು ಅಂದಾಜು",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Open-loop sends:",
+       "qKn": "open-loop ಕಳುಹಿಸುವುದು:",
+       "opts": [
+        "At a fixed rate",
+        "Only after replies",
+        "Never",
+        "Randomly"
+       ],
+       "optsKn": [
+        "ನಿಗದಿತ ದರದಲ್ಲಿ",
+        "ಉತ್ತರ ನಂತರ ಮಾತ್ರ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Closed-loop can hide:",
+       "qKn": "closed-loop ಮರೆಮಾಡಬಹುದು:",
+       "opts": [
+        "Queueing",
+        "Errors only",
+        "Nothing",
+        "Colours"
+       ],
+       "optsKn": [
+        "ಸರತಿ",
+        "ದೋಷ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b321664",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Load Testing LLM APIs: k6, LLMPerf, GenAI-Perf — Tools and Metrics",
+  "titleKn": "LLM API ಲೋಡ್ ಪರೀಕ್ಷೆ: k6, LLMPerf, GenAI-Perf — ಸಾಧನಗಳು ಮತ್ತು ಮೆಟ್ರಿಕ್ಸ್",
+  "desc": "General tools such as k6 and LLM-specific tools measure TTFT, inter-token latency and throughput under load.",
+  "descKn": "k6 ನಂತಹ ಸಾಮಾನ್ಯ ಸಾಧನ ಮತ್ತು LLM-ನಿರ್ದಿಷ್ಟ ಸಾಧನ ಹೊರೆಯಲ್ಲಿ TTFT, inter-token ವಿಳಂಬ, throughput ಅಳೆಯುತ್ತವೆ.",
+  "objectives": [
+   "Pick a tool that measures streaming metrics.",
+   "Report percentiles, not just averages."
+  ],
+  "objectivesKn": [
+   "ಸ್ಟ್ರೀಮಿಂಗ್ ಮೆಟ್ರಿಕ್ಸ್ ಅಳೆಯುವ ಸಾಧನ ಆರಿಸಿ.",
+   "ಸರಾಸರಿ ಮಾತ್ರವಲ್ಲ, percentiles ವರದಿ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Load Testing LLM APIs: k6, LLMPerf, GenAI-Perf — Tools and Metrics",
+     "textKn": "Load Testing LLM APIs: k6, LLMPerf, GenAI-Perf — Tools and Metrics",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Load Testing LLM APIs: k6, LLMPerf, GenAI-Perf",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Streaming-Aware Tools",
+     "headingKn": "ಸ್ಟ್ರೀಮಿಂಗ್-ಜಾಗೃತ ಸಾಧನ",
+     "bodyEn": "Ordinary HTTP tools record total response time. LLM-aware tools record time to first token and gaps between tokens, which are what users feel.",
+     "bodyKn": "ಸಾಮಾನ್ಯ HTTP ಸಾಧನ ಒಟ್ಟು ಪ್ರತಿಕ್ರಿಯೆ ಸಮಯ ದಾಖಲಿಸುತ್ತದೆ. LLM-ಜಾಗೃತ ಸಾಧನ ಮೊದಲ token ಸಮಯ ಮತ್ತು tokens ನಡುವಿನ ಅಂತರ ದಾಖಲಿಸುತ್ತದೆ; ಬಳಕೆದಾರರು ಅನುಭವಿಸುವುದು ಇವು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Report Percentiles",
+     "headingKn": "Percentiles ವರದಿ",
+     "bodyEn": "Present P50, P95 and P99 for TTFT and inter-token latency at several load levels so you can see where the system starts to degrade.",
+     "bodyKn": "ಹಲವು ಹೊರೆ ಮಟ್ಟಗಳಲ್ಲಿ TTFT ಮತ್ತು inter-token ವಿಳಂಬಕ್ಕೆ P50, P95, P99 ಮಂಡಿಸಿ; ವ್ಯವಸ್ಥೆ ಎಲ್ಲಿ ಹದಗೆಡಲು ಆರಂಭಿಸುತ್ತದೆ ಕಾಣಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Measure TTFT and inter-token gaps, not just total time.\n• Report P50, P95 and P99 at several loads.",
+     "bodyKn": "• ಒಟ್ಟು ಸಮಯ ಮಾತ್ರವಲ್ಲ, TTFT ಮತ್ತು ಅಂತರ.\n• ಹಲವು ಹೊರೆಯಲ್ಲಿ P50, P95, P99."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "LLM-aware tools measure:",
+       "qKn": "LLM-ಜಾಗೃತ ಸಾಧನ ಅಳೆಯುವುದು:",
+       "opts": [
+        "Time to first token",
+        "Only total time",
+        "Nothing",
+        "Colours"
+       ],
+       "optsKn": [
+        "ಮೊದಲ token ಸಮಯ",
+        "ಒಟ್ಟು ಸಮಯ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Report:",
+       "qKn": "ವರದಿ:",
+       "opts": [
+        "P50, P95, P99",
+        "Only the mean",
+        "Nothing",
+        "A poem"
+       ],
+       "optsKn": [
+        "P50, P95, P99",
+        "ಸರಾಸರಿ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಕವಿತೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Test at:",
+       "qKn": "ಪರೀಕ್ಷೆ:",
+       "opts": [
+        "Several load levels",
+        "One load only",
+        "No load",
+        "Random"
+       ],
+       "optsKn": [
+        "ಹಲವು ಹೊರೆ ಮಟ್ಟ",
+        "ಒಂದೇ ಹೊರೆ",
+        "ಹೊರೆ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b321664",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Load Testing LLM APIs: k6, LLMPerf, GenAI-Perf — Load Testing Safely and Cheaply",
+  "titleKn": "LLM API ಲೋಡ್ ಪರೀಕ್ಷೆ: k6, LLMPerf, GenAI-Perf — ಸುರಕ್ಷಿತ ಮತ್ತು ಅಗ್ಗದ ಲೋಡ್ ಪರೀಕ್ಷೆ",
+  "desc": "Load tests against paid APIs cost money and can hit rate limits, so plan budgets and use isolated environments.",
+  "descKn": "ಪಾವತಿ APIs ವಿರುದ್ಧ ಲೋಡ್ ಪರೀಕ್ಷೆ ಹಣ ಖರ್ಚು ಮಾಡಿ rate limits ತಲುಪಬಹುದು; ಬಜೆಟ್ ಯೋಜಿಸಿ ಪ್ರತ್ಯೇಕ ಪರಿಸರ ಬಳಸಿ.",
+  "objectives": [
+   "Set a spending cap for tests.",
+   "Use mock backends for the app layer."
+  ],
+  "objectivesKn": [
+   "ಪರೀಕ್ಷೆಗೆ ಖರ್ಚು ಮಿತಿ ಹೊಂದಿಸಿ.",
+   "ಅಪ್ಲಿಕೇಶನ್ ಪದರಕ್ಕೆ mock backends ಬಳಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Load Testing LLM APIs: k6, LLMPerf, GenAI-Perf — Load Testing Safely and Cheaply",
+     "textKn": "Load Testing LLM APIs: k6, LLMPerf, GenAI-Perf — Load Testing Safely and Cheaply",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Load Testing LLM APIs: k6, LLMPerf, GenAI-Perf",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Budget the Test",
+     "headingKn": "ಪರೀಕ್ಷೆಗೆ ಬಜೆಟ್",
+     "bodyEn": "Estimate tokens times price before you start and set a hard spending cap, since a runaway test can produce a surprising bill.",
+     "bodyKn": "ಆರಂಭಿಸುವ ಮೊದಲು tokens × ಬೆಲೆ ಅಂದಾಜಿಸಿ ಕಠಿಣ ಖರ್ಚು ಮಿತಿ ಹೊಂದಿಸಿ; ನಿಯಂತ್ರಣ ತಪ್ಪಿದ ಪರೀಕ್ಷೆ ಆಶ್ಚರ್ಯಕರ ಬಿಲ್ ನೀಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Isolate What You Test",
+     "headingKn": "ಪರೀಕ್ಷಿಸುವುದನ್ನು ಪ್ರತ್ಯೇಕಿಸಿ",
+     "bodyEn": "To test your own application layer, point it at a mock model with realistic delays. To test a model server, use a staging deployment, never production.",
+     "bodyKn": "ನಿಮ್ಮ ಅಪ್ಲಿಕೇಶನ್ ಪದರ ಪರೀಕ್ಷಿಸಲು ನೈಜ ವಿಳಂಬದ mock ಮಾದರಿಗೆ ತೋರಿಸಿ. ಮಾದರಿ ಸರ್ವರ್ ಪರೀಕ್ಷಿಸಲು staging ನಿಯೋಜನೆ ಬಳಸಿ, ಉತ್ಪಾದನೆ ಎಂದಿಗೂ ಅಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Estimate cost and cap spending.\n• Use mocks or staging, not production.",
+     "bodyKn": "• ವೆಚ್ಚ ಅಂದಾಜು, ಖರ್ಚು ಮಿತಿ.\n• mocks ಅಥವಾ staging, ಉತ್ಪಾದನೆ ಅಲ್ಲ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Before a paid load test:",
+       "qKn": "ಪಾವತಿ ಲೋಡ್ ಪರೀಕ್ಷೆ ಮೊದಲು:",
+       "opts": [
+        "Set a spending cap",
+        "Nothing",
+        "Disable logs",
+        "Use production"
+       ],
+       "optsKn": [
+        "ಖರ್ಚು ಮಿತಿ ಹೊಂದಿಸಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲಾಗ್ ನಿಷ್ಕ್ರಿಯ",
+        "ಉತ್ಪಾದನೆ ಬಳಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "To test your app layer:",
+       "qKn": "ಅಪ್ಲಿಕೇಶನ್ ಪದರ ಪರೀಕ್ಷೆಗೆ:",
+       "opts": [
+        "Use a mock model",
+        "Use production",
+        "Nothing",
+        "Delete it"
+       ],
+       "optsKn": [
+        "mock ಮಾದರಿ ಬಳಸಿ",
+        "ಉತ್ಪಾದನೆ ಬಳಸಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಅಳಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Never load test:",
+       "qKn": "ಎಂದಿಗೂ ಲೋಡ್ ಪರೀಕ್ಷೆ ಮಾಡಬೇಡಿ:",
+       "opts": [
+        "Production without care",
+        "Staging",
+        "Mocks",
+        "Local"
+       ],
+       "optsKn": [
+        "ಎಚ್ಚರವಿಲ್ಲದೆ ಉತ್ಪಾದನೆ",
+        "staging",
+        "mocks",
+        "ಸ್ಥಳೀಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b321667",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "SRE for AI: Multi-Agent Incident Response — SRE Principles for AI Systems",
+  "titleKn": "AI ಗಾಗಿ SRE: ಬಹು-Agent ಘಟನೆ ಪ್ರತಿಕ್ರಿಯೆ — AI ವ್ಯವಸ್ಥೆಗಳಿಗೆ SRE ತತ್ತ್ವಗಳು",
+  "desc": "Define SLOs, error budgets and on-call practices that account for AI-specific failure modes.",
+  "descKn": "AI-ನಿರ್ದಿಷ್ಟ ವೈಫಲ್ಯ ವಿಧಗಳನ್ನು ಪರಿಗಣಿಸುವ SLOs, error budgets, on-call ಆಚರಣೆ ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+  "objectives": [
+   "Define SLOs including quality.",
+   "Recognise silent failures."
+  ],
+  "objectivesKn": [
+   "ಗುಣಮಟ್ಟ ಸೇರಿ SLOs ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ಮೌನ ವೈಫಲ್ಯ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "SRE for AI: Multi-Agent Incident Response — SRE Principles for AI Systems",
+     "textKn": "SRE for AI: Multi-Agent Incident Response — SRE Principles for AI Systems",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in SRE for AI: Multi-Agent Incident Response",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "SLOs Beyond Uptime",
+     "headingKn": "Uptime ಆಚೆ SLOs",
+     "bodyEn": "An AI service can be up and fast yet giving worse answers. Include quality, safety and cost signals in the objectives, not just availability.",
+     "bodyKn": "AI ಸೇವೆ ಚಾಲನೆಯಲ್ಲಿ ಮತ್ತು ವೇಗವಾಗಿ ಇದ್ದರೂ ಕೆಟ್ಟ ಉತ್ತರ ನೀಡಬಹುದು. ಗುರಿಗಳಲ್ಲಿ ಲಭ್ಯತೆ ಮಾತ್ರವಲ್ಲ, ಗುಣಮಟ್ಟ, ಸುರಕ್ಷತೆ, ವೆಚ್ಚ ಸಂಕೇತ ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Silent Failures",
+     "headingKn": "ಮೌನ ವೈಫಲ್ಯಗಳು",
+     "bodyEn": "A prompt regression or provider model update may raise no errors but still degrade results. Quality monitoring and sampled human review catch these.",
+     "bodyKn": "prompt regression ಅಥವಾ ಒದಗಿಸುವವರ ಮಾದರಿ ನವೀಕರಣ ದೋಷ ಎತ್ತದೆ ಫಲಿತಾಂಶ ಹದಗೆಡಿಸಬಹುದು. ಗುಣಮಟ್ಟ ನಿಗಾ ಮತ್ತು ಮಾದರಿ ಮಾನವ ವಿಮರ್ಶೆ ಇವನ್ನು ಹಿಡಿಯುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Include quality and cost in SLOs.\n• Watch for silent degradation.",
+     "bodyKn": "• SLOs ನಲ್ಲಿ ಗುಣಮಟ್ಟ ಮತ್ತು ವೆಚ್ಚ.\n• ಮೌನ ಹದಗೆಡುವಿಕೆ ಗಮನಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "An AI service can be:",
+       "qKn": "AI ಸೇವೆ:",
+       "opts": [
+        "Up but giving worse answers",
+        "Always perfect when up",
+        "Down only",
+        "Free"
+       ],
+       "optsKn": [
+        "ಚಾಲನೆಯಲ್ಲಿ ಆದರೆ ಕೆಟ್ಟ ಉತ್ತರ",
+        "ಚಾಲನೆಯಲ್ಲಿದ್ದರೆ ಯಾವಾಗಲೂ ಪರಿಪೂರ್ಣ",
+        "ಸ್ಥಗಿತ ಮಾತ್ರ",
+        "ಉಚಿತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Include in SLOs:",
+       "qKn": "SLOs ನಲ್ಲಿ ಸೇರಿಸಿ:",
+       "opts": [
+        "Quality and cost",
+        "Only colours",
+        "Nothing",
+        "Only uptime"
+       ],
+       "optsKn": [
+        "ಗುಣಮಟ್ಟ ಮತ್ತು ವೆಚ್ಚ",
+        "ಬಣ್ಣ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "uptime ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Silent failures are found by:",
+       "qKn": "ಮೌನ ವೈಫಲ್ಯ ಹಿಡಿಯುವುದು:",
+       "opts": [
+        "Quality monitoring",
+        "Luck",
+        "Nothing",
+        "Ignoring"
+       ],
+       "optsKn": [
+        "ಗುಣಮಟ್ಟ ನಿಗಾ",
+        "ಅದೃಷ್ಟ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ನಿರ್ಲಕ್ಷ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b321667",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "SRE for AI: Multi-Agent Incident Response — Runbooks and Incident Roles",
+  "titleKn": "AI ಗಾಗಿ SRE: ಬಹು-Agent ಘಟನೆ ಪ್ರತಿಕ್ರಿಯೆ — Runbooks ಮತ್ತು ಘಟನೆ ಪಾತ್ರಗಳು",
+  "desc": "Prepare runbooks for AI-specific incidents: provider outage, prompt regression, cost spike, safety failure.",
+  "descKn": "AI-ನಿರ್ದಿಷ್ಟ ಘಟನೆಗಳಿಗೆ runbooks ಸಿದ್ಧಪಡಿಸಿ: ಒದಗಿಸುವವರ ಸ್ಥಗಿತ, prompt regression, ವೆಚ್ಚ ಏರಿಕೆ, ಸುರಕ್ಷತಾ ವೈಫಲ್ಯ.",
+  "objectives": [
+   "Write a runbook per incident type.",
+   "Define first-response actions like kill switches."
+  ],
+  "objectivesKn": [
+   "ಪ್ರತಿ ಘಟನೆ ವಿಧಕ್ಕೆ runbook ಬರೆಯಿರಿ.",
+   "kill switches ನಂತಹ ಮೊದಲ ಪ್ರತಿಕ್ರಿಯೆ ಕ್ರಮ ವ್ಯಾಖ್ಯಾನಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "SRE for AI: Multi-Agent Incident Response — Runbooks and Incident Roles",
+     "textKn": "SRE for AI: Multi-Agent Incident Response — Runbooks and Incident Roles",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in SRE for AI: Multi-Agent Incident Response",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Typical Incident Types",
+     "headingKn": "ಸಾಮಾನ್ಯ ಘಟನೆ ವಿಧಗಳು",
+     "bodyEn": "Provider outage, sudden cost spike, quality regression, safety or privacy incident and runaway agent loop each need different first steps.",
+     "bodyKn": "ಒದಗಿಸುವವರ ಸ್ಥಗಿತ, ಹಠಾತ್ ವೆಚ್ಚ ಏರಿಕೆ, ಗುಣಮಟ್ಟ regression, ಸುರಕ್ಷತೆ ಅಥವಾ ಗೌಪ್ಯತೆ ಘಟನೆ, ನಿಯಂತ್ರಣ ತಪ್ಪಿದ agent loop ಪ್ರತಿಯೊಂದಕ್ಕೆ ಬೇರೆ ಮೊದಲ ಹಂತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Fast Mitigations",
+     "headingKn": "ವೇಗದ ಪರಿಹಾರ",
+     "bodyEn": "Have switches ready: fail over to another provider, roll back a prompt, lower a budget, disable a tool or turn off an agent. Fix root causes after the bleeding stops.",
+     "bodyKn": "switches ಸಿದ್ಧವಿಡಿ: ಇನ್ನೊಬ್ಬ ಒದಗಿಸುವವನಿಗೆ failover, prompt rollback, ಬಜೆಟ್ ಕಡಿಮೆ, tool ನಿಷ್ಕ್ರಿಯ ಅಥವಾ agent ಆಫ್. ರಕ್ತಸ್ರಾವ ನಿಂತ ನಂತರ ಮೂಲ ಕಾರಣ ಸರಿಪಡಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Each incident type needs its own runbook.\n• Mitigate first with switches; fix root cause after.",
+     "bodyKn": "• ಪ್ರತಿ ಘಟನೆಗೆ runbook.\n• ಮೊದಲು switches ನಿಂದ ಪರಿಹಾರ; ನಂತರ ಮೂಲ ಕಾರಣ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "First response to a runaway agent:",
+       "qKn": "ನಿಯಂತ್ರಣ ತಪ್ಪಿದ agent ಗೆ ಮೊದಲ ಪ್ರತಿಕ್ರಿಯೆ:",
+       "opts": [
+        "Turn it off",
+        "Investigate for a week",
+        "Ignore",
+        "Add agents"
+       ],
+       "optsKn": [
+        "ಆಫ್ ಮಾಡಿ",
+        "ಒಂದು ವಾರ ತನಿಖೆ",
+        "ನಿರ್ಲಕ್ಷಿಸಿ",
+        "agents ಸೇರಿಸಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Fix root causes:",
+       "qKn": "ಮೂಲ ಕಾರಣ ಸರಿಪಡಿಸಿ:",
+       "opts": [
+        "After mitigation",
+        "Before mitigation",
+        "Never",
+        "During sleep"
+       ],
+       "optsKn": [
+        "ಪರಿಹಾರದ ನಂತರ",
+        "ಪರಿಹಾರ ಮೊದಲು",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ನಿದ್ರೆಯಲ್ಲಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Runbooks:",
+       "qKn": "runbooks:",
+       "opts": [
+        "One per incident type",
+        "One for all",
+        "None",
+        "Only for humans"
+       ],
+       "optsKn": [
+        "ಪ್ರತಿ ಘಟನೆ ವಿಧಕ್ಕೆ ಒಂದು",
+        "ಎಲ್ಲಕ್ಕೂ ಒಂದು",
+        "ಇಲ್ಲ",
+        "ಮಾನವರಿಗೆ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b321667",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "SRE for AI: Multi-Agent Incident Response — Agents in Incident Response",
+  "titleKn": "AI ಗಾಗಿ SRE: ಬಹು-Agent ಘಟನೆ ಪ್ರತಿಕ್ರಿಯೆ — ಘಟನೆ ಪ್ರತಿಕ್ರಿಯೆಯಲ್ಲಿ Agents",
+  "desc": "Agents can triage alerts, gather context and draft summaries, while humans keep authority over risky actions.",
+  "descKn": "agents alerts triage ಮಾಡಬಹುದು, context ಸಂಗ್ರಹಿಸಬಹುದು, ಸಾರಾಂಶ ಕರಡು ಮಾಡಬಹುದು; ಅಪಾಯಕಾರಿ ಕ್ರಿಯೆಯ ಅಧಿಕಾರ ಮಾನವರ ಬಳಿ.",
+  "objectives": [
+   "Use agents for read-only investigation.",
+   "Require approval for remediation."
+  ],
+  "objectivesKn": [
+   "ಓದಲು-ಮಾತ್ರ ತನಿಖೆಗೆ agents ಬಳಸಿ.",
+   "ಪರಿಹಾರಕ್ಕೆ ಅನುಮೋದನೆ ಕಡ್ಡಾಯ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "SRE for AI: Multi-Agent Incident Response — Agents in Incident Response",
+     "textKn": "SRE for AI: Multi-Agent Incident Response — Agents in Incident Response",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in SRE for AI: Multi-Agent Incident Response",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Read-Only Investigation",
+     "headingKn": "ಓದಲು-ಮಾತ್ರ ತನಿಖೆ",
+     "bodyEn": "Agents can query logs, correlate deploys with alerts and propose likely causes. Giving them read-only access keeps the investigation safe.",
+     "bodyKn": "agents ಲಾಗ್ ಪ್ರಶ್ನಿಸಬಹುದು, ನಿಯೋಜನೆಗಳನ್ನು alerts ಗೆ ಸಂಬಂಧಿಸಬಹುದು, ಸಂಭಾವ್ಯ ಕಾರಣ ಪ್ರಸ್ತಾಪಿಸಬಹುದು. ಓದಲು-ಮಾತ್ರ ಪ್ರವೇಶ ತನಿಖೆ ಸುರಕ್ಷಿತವಾಗಿಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Human Approval for Fixes",
+     "headingKn": "ಪರಿಹಾರಕ್ಕೆ ಮಾನವ ಅನುಮೋದನೆ",
+     "bodyEn": "Restarts, rollbacks and configuration changes should be proposed by the agent and approved by an on-call human, with everything logged in the incident timeline.",
+     "bodyKn": "ಮರುಪ್ರಾರಂಭ, rollbacks, ಸಂರಚನೆ ಬದಲಾವಣೆಗಳನ್ನು agent ಪ್ರಸ್ತಾಪಿಸಿ on-call ಮಾನವ ಅನುಮೋದಿಸಬೇಕು; ಎಲ್ಲವನ್ನೂ ಘಟನೆ ಟೈಮ್‌ಲೈನ್‌ನಲ್ಲಿ ದಾಖಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Agents investigate with read-only access.\n• Humans approve remediation; log the timeline.",
+     "bodyKn": "• agents ಓದಲು-ಮಾತ್ರ ತನಿಖೆ.\n• ಮಾನವ ಪರಿಹಾರ ಅನುಮೋದನೆ; ಟೈಮ್‌ಲೈನ್ ದಾಖಲು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Agents investigate with:",
+       "qKn": "agents ತನಿಖೆ:",
+       "opts": [
+        "Read-only access",
+        "Admin rights",
+        "No access",
+        "Random access"
+       ],
+       "optsKn": [
+        "ಓದಲು-ಮಾತ್ರ ಪ್ರವೇಶ",
+        "admin ಹಕ್ಕು",
+        "ಪ್ರವೇಶ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ ಪ್ರವೇಶ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Who approves a rollback?",
+       "qKn": "rollback ಯಾರು ಅನುಮೋದಿಸುತ್ತಾರೆ?",
+       "opts": [
+        "An on-call human",
+        "The agent alone",
+        "Nobody",
+        "A stranger"
+       ],
+       "optsKn": [
+        "on-call ಮಾನವ",
+        "agent ಮಾತ್ರ",
+        "ಯಾರೂ ಅಲ್ಲ",
+        "ಅಪರಿಚಿತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Log everything in:",
+       "qKn": "ಎಲ್ಲವನ್ನೂ ದಾಖಲಿಸಿ:",
+       "opts": [
+        "The incident timeline",
+        "Nowhere",
+        "A font",
+        "A logo"
+       ],
+       "optsKn": [
+        "ಘಟನೆ ಟೈಮ್‌ಲೈನ್‌ನಲ್ಲಿ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b32166a",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Chaos Engineering for LLM Production — Why Inject Failures",
+  "titleKn": "LLM ಉತ್ಪಾದನೆಗೆ Chaos Engineering — ವೈಫಲ್ಯ ಏಕೆ ಸೇರಿಸಬೇಕು",
+  "desc": "Deliberately injecting faults reveals weaknesses before real outages do.",
+  "descKn": "ಉದ್ದೇಶಪೂರ್ವಕವಾಗಿ ದೋಷ ಸೇರಿಸುವುದು ನಿಜ ಸ್ಥಗಿತಕ್ಕೆ ಮೊದಲೇ ದೌರ್ಬಲ್ಯ ಬಹಿರಂಗಪಡಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Define chaos experiments.",
+   "State a steady-state hypothesis."
+  ],
+  "objectivesKn": [
+   "chaos ಪ್ರಯೋಗ ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "steady-state ಊಹೆ ಹೇಳಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Chaos Engineering for LLM Production — Why Inject Failures",
+     "textKn": "Chaos Engineering for LLM Production — Why Inject Failures",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Chaos Engineering for LLM Production",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Hypothesis First",
+     "headingKn": "ಮೊದಲು ಊಹೆ",
+     "bodyEn": "State what should stay true when something breaks, for example \"if provider A fails, users still get answers within five seconds\". Then test it.",
+     "bodyKn": "ಏನಾದರೂ ಮುರಿದಾಗ ಏನು ಸತ್ಯವಾಗಿರಬೇಕು ಹೇಳಿ, ಉದಾ. \"ಒದಗಿಸುವವ A ವಿಫಲವಾದರೆ ಬಳಕೆದಾರರಿಗೆ ಐದು ಸೆಕೆಂಡಿನೊಳಗೆ ಉತ್ತರ\". ನಂತರ ಪರೀಕ್ಷಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Small and Controlled",
+     "headingKn": "ಸಣ್ಣ ಮತ್ತು ನಿಯಂತ್ರಿತ",
+     "bodyEn": "Start in staging or with a tiny share of traffic, with a way to stop the experiment instantly.",
+     "bodyKn": "staging ನಲ್ಲಿ ಅಥವಾ ಟ್ರಾಫಿಕ್‌ನ ಚಿಕ್ಕ ಭಾಗದೊಂದಿಗೆ ಆರಂಭಿಸಿ, ಪ್ರಯೋಗ ತಕ್ಷಣ ನಿಲ್ಲಿಸುವ ವಿಧಾನದೊಂದಿಗೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• State a hypothesis, then inject a fault.\n• Start small with an instant stop.",
+     "bodyKn": "• ಊಹೆ ಹೇಳಿ, ನಂತರ ದೋಷ ಸೇರಿಸಿ.\n• ಸಣ್ಣದಿಂದ ಆರಂಭ, ತಕ್ಷಣ ನಿಲುಗಡೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Chaos engineering injects:",
+       "qKn": "chaos engineering ಸೇರಿಸುವುದು:",
+       "opts": [
+        "Deliberate faults",
+        "Nothing",
+        "Features",
+        "Colours"
+       ],
+       "optsKn": [
+        "ಉದ್ದೇಶಪೂರ್ವಕ ದೋಷ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ವೈಶಿಷ್ಟ್ಯ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Start:",
+       "qKn": "ಆರಂಭ:",
+       "opts": [
+        "Small, in staging or tiny share",
+        "On all production",
+        "Never",
+        "At random"
+       ],
+       "optsKn": [
+        "ಸಣ್ಣ, staging ಅಥವಾ ಸಣ್ಣ ಭಾಗ",
+        "ಎಲ್ಲ ಉತ್ಪಾದನೆ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Always have:",
+       "qKn": "ಯಾವಾಗಲೂ ಇರಲಿ:",
+       "opts": [
+        "A way to stop instantly",
+        "No plan",
+        "A secret",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ತಕ್ಷಣ ನಿಲ್ಲಿಸುವ ಮಾರ್ಗ",
+        "ಯೋಜನೆ ಇಲ್ಲ",
+        "ರಹಸ್ಯ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b32166a",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Chaos Engineering for LLM Production — LLM-Specific Faults to Inject",
+  "titleKn": "LLM ಉತ್ಪಾದನೆಗೆ Chaos Engineering — ಸೇರಿಸಬೇಕಾದ LLM-ನಿರ್ದಿಷ್ಟ ದೋಷಗಳು",
+  "desc": "Simulate provider errors, rate limits, latency spikes, malformed outputs and tool failures.",
+  "descKn": "ಒದಗಿಸುವವರ ದೋಷ, rate limits, ವಿಳಂಬ ಏರಿಕೆ, ದೋಷಪೂರ್ಣ ಔಟ್‌ಪುಟ್, tool ವೈಫಲ್ಯ ಅನುಕರಿಸಿ.",
+  "objectives": [
+   "List realistic fault types.",
+   "Verify retries, fallbacks and validation."
+  ],
+  "objectivesKn": [
+   "ನೈಜ ದೋಷ ವಿಧ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "retries, fallbacks, validation ಪರಿಶೀಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Chaos Engineering for LLM Production — LLM-Specific Faults to Inject",
+     "textKn": "Chaos Engineering for LLM Production — LLM-Specific Faults to Inject",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Chaos Engineering for LLM Production",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Fault Catalogue",
+     "headingKn": "ದೋಷ ಪಟ್ಟಿ",
+     "bodyEn": "Return 429 and 500 errors, add multi-second delays, cut streams mid-response, return invalid JSON and make a tool time out.",
+     "bodyKn": "429 ಮತ್ತು 500 ದೋಷ ಹಿಂದಿರುಗಿಸಿ, ಹಲವು ಸೆಕೆಂಡ್ ವಿಳಂಬ ಸೇರಿಸಿ, ಸ್ಟ್ರೀಮ್ ಮಧ್ಯದಲ್ಲಿ ಕತ್ತರಿಸಿ, ಅಮಾನ್ಯ JSON ನೀಡಿ, tool timeout ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "What to Verify",
+     "headingKn": "ಏನು ಪರಿಶೀಲಿಸಬೇಕು",
+     "bodyEn": "Check that retries use backoff, fallbacks trigger, output validation rejects bad data and users see a clear message instead of a crash.",
+     "bodyKn": "retries backoff ಬಳಸುತ್ತವೆಯೇ, fallbacks ಪ್ರಚೋದಿತವಾಗುತ್ತವೆಯೇ, ಔಟ್‌ಪುಟ್ ಪರಿಶೀಲನೆ ಕೆಟ್ಟ ಡೇಟಾ ತಿರಸ್ಕರಿಸುತ್ತದೆಯೇ, ಬಳಕೆದಾರರು ಕ್ರ್ಯಾಶ್ ಬದಲು ಸ್ಪಷ್ಟ ಸಂದೇಶ ನೋಡುತ್ತಾರೆಯೇ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Inject 429/500, delays, cut streams, bad JSON.\n• Verify backoff, fallback and clear user messages.",
+     "bodyKn": "• 429/500, ವಿಳಂಬ, ಸ್ಟ್ರೀಮ್ ಕತ್ತರಿಕೆ, ಕೆಟ್ಟ JSON.\n• backoff, fallback, ಸ್ಪಷ್ಟ ಸಂದೇಶ ಪರಿಶೀಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A fault to inject:",
+       "qKn": "ಸೇರಿಸಬೇಕಾದ ದೋಷ:",
+       "opts": [
+        "A 429 rate-limit error",
+        "A colour change",
+        "A new font",
+        "Nothing"
+       ],
+       "optsKn": [
+        "429 rate-limit ದೋಷ",
+        "ಬಣ್ಣ ಬದಲಾವಣೆ",
+        "ಹೊಸ ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Verify retries use:",
+       "qKn": "retries ಬಳಸುವುದು ಪರಿಶೀಲಿಸಿ:",
+       "opts": [
+        "Backoff",
+        "Instant infinite loops",
+        "Nothing",
+        "Random"
+       ],
+       "optsKn": [
+        "backoff",
+        "ತಕ್ಷಣ ಅನಂತ loops",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Users should see:",
+       "qKn": "ಬಳಕೆದಾರರು ನೋಡಬೇಕು:",
+       "opts": [
+        "A clear message",
+        "A crash",
+        "Nothing",
+        "A stack trace"
+       ],
+       "optsKn": [
+        "ಸ್ಪಷ್ಟ ಸಂದೇಶ",
+        "ಕ್ರ್ಯಾಶ್",
+        "ಏನೂ ಇಲ್ಲ",
+        "stack trace"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b32166a",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Chaos Engineering for LLM Production — Game Days and Learning",
+  "titleKn": "LLM ಉತ್ಪಾದನೆಗೆ Chaos Engineering — Game Days ಮತ್ತು ಕಲಿಕೆ",
+  "desc": "Run scheduled game days, record findings and turn them into fixes and permanent automated tests.",
+  "descKn": "ನಿಗದಿತ game days ಚಲಾಯಿಸಿ, ಕಂಡುಹಿಡಿತ ದಾಖಲಿಸಿ, ಸರಿಪಡಿಕೆ ಮತ್ತು ಶಾಶ್ವತ ಸ್ವಯಂ tests ಆಗಿ ಪರಿವರ್ತಿಸಿ.",
+  "objectives": [
+   "Plan a game day.",
+   "Convert findings into regression tests."
+  ],
+  "objectivesKn": [
+   "game day ಯೋಜಿಸಿ.",
+   "ಕಂಡುಹಿಡಿತವನ್ನು regression tests ಆಗಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Chaos Engineering for LLM Production — Game Days and Learning",
+     "textKn": "Chaos Engineering for LLM Production — Game Days and Learning",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Chaos Engineering for LLM Production",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Game Days",
+     "headingKn": "Game Days",
+     "bodyEn": "A game day is a planned exercise where the team injects failures and practises the response together, exposing gaps in runbooks, alerts and communication.",
+     "bodyKn": "game day ತಂಡ ವೈಫಲ್ಯ ಸೇರಿಸಿ ಒಟ್ಟಿಗೆ ಪ್ರತಿಕ್ರಿಯೆ ಅಭ್ಯಾಸ ಮಾಡುವ ಯೋಜಿತ ವ್ಯಾಯಾಮ; runbooks, alerts, ಸಂವಹನದ ಅಂತರ ಬಹಿರಂಗ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Close the Loop",
+     "headingKn": "Loop ಮುಚ್ಚಿ",
+     "bodyEn": "For every weakness found, fix it, and add an automated test or recurring experiment so it cannot silently return.",
+     "bodyKn": "ಕಂಡ ಪ್ರತಿ ದೌರ್ಬಲ್ಯವನ್ನು ಸರಿಪಡಿಸಿ, ಸ್ವಯಂ test ಅಥವಾ ಪುನರಾವರ್ತಿತ ಪ್ರಯೋಗ ಸೇರಿಸಿ; ಮೌನವಾಗಿ ಮರಳದಂತೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Practise responses in planned game days.\n• Fix findings and add automated tests.",
+     "bodyKn": "• ಯೋಜಿತ game days ನಲ್ಲಿ ಅಭ್ಯಾಸ.\n• ಸರಿಪಡಿಸಿ, ಸ್ವಯಂ tests ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A game day is:",
+       "qKn": "game day:",
+       "opts": [
+        "A planned failure exercise",
+        "A holiday",
+        "A release",
+        "A bug"
+       ],
+       "optsKn": [
+        "ಯೋಜಿತ ವೈಫಲ್ಯ ವ್ಯಾಯಾಮ",
+        "ರಜೆ",
+        "ಬಿಡುಗಡೆ",
+        "ದೋಷ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Each finding should become:",
+       "qKn": "ಪ್ರತಿ ಕಂಡುಹಿಡಿತ:",
+       "opts": [
+        "A fix and an automated test",
+        "A memory",
+        "Nothing",
+        "A rumour"
+       ],
+       "optsKn": [
+        "ಸರಿಪಡಿಕೆ ಮತ್ತು ಸ್ವಯಂ test",
+        "ನೆನಪು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ವದಂತಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Game days expose gaps in:",
+       "qKn": "game days ಅಂತರ ಬಹಿರಂಗ:",
+       "opts": [
+        "Runbooks and alerts",
+        "Fonts",
+        "Logos",
+        "Nothing"
+       ],
+       "optsKn": [
+        "runbooks ಮತ್ತು alerts",
+        "ಫಾಂಟ್",
+        "ಲೋಗೋ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b32166d",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Security: Secrets, PII Scrubbing, Audit Logs — Managing Secrets",
+  "titleKn": "ಭದ್ರತೆ: Secrets, PII ಮರೆಮಾಚುವಿಕೆ, Audit Logs — Secrets ನಿರ್ವಹಣೆ",
+  "desc": "API keys and credentials must be stored, rotated and scoped carefully, and never placed in prompts or client code.",
+  "descKn": "API keys ಮತ್ತು credentials ಅನ್ನು ಎಚ್ಚರಿಕೆಯಿಂದ ಸಂಗ್ರಹಿಸಿ, ತಿರುಗಿಸಿ, ಮಿತಿಗೊಳಿಸಬೇಕು; prompts ಅಥವಾ ಕ್ಲೈಂಟ್ ಕೋಡ್‌ನಲ್ಲಿ ಎಂದಿಗೂ ಇಡಬಾರದು.",
+  "objectives": [
+   "Use a secrets manager.",
+   "Rotate and scope keys."
+  ],
+  "objectivesKn": [
+   "secrets manager ಬಳಸಿ.",
+   "keys ತಿರುಗಿಸಿ, ಮಿತಿಗೊಳಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Security: Secrets, PII Scrubbing, Audit Logs — Managing Secrets",
+     "textKn": "Security: Secrets, PII Scrubbing, Audit Logs — Managing Secrets",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Security: Secrets, PII Scrubbing, Audit Logs",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Where Secrets Live",
+     "headingKn": "Secrets ಎಲ್ಲಿರಬೇಕು",
+     "bodyEn": "Keep keys in a secrets manager or environment injected at runtime, never in source control, prompts or front-end code where they can leak.",
+     "bodyKn": "keys ಅನ್ನು secrets manager ಅಥವಾ runtime ನಲ್ಲಿ ಚುಚ್ಚುವ ಪರಿಸರದಲ್ಲಿ ಇಡಿ; source control, prompts, ಫ್ರಂಟ್-ಎಂಡ್ ಕೋಡ್‌ನಲ್ಲಿ ಎಂದಿಗೂ ಅಲ್ಲ; ಅಲ್ಲಿ ಸೋರಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Rotate and Scope",
+     "headingKn": "ತಿರುಗಿಸಿ ಮತ್ತು ಮಿತಿಗೊಳಿಸಿ",
+     "bodyEn": "Rotate keys regularly and after any suspected exposure. Give each service its own key with the least permissions and spending limits.",
+     "bodyKn": "keys ನಿಯಮಿತವಾಗಿ ಮತ್ತು ಸಂಶಯಾಸ್ಪದ ಒಡ್ಡುವಿಕೆ ನಂತರ ತಿರುಗಿಸಿ. ಪ್ರತಿ ಸೇವೆಗೆ ಕನಿಷ್ಠ ಅನುಮತಿ ಮತ್ತು ಖರ್ಚು ಮಿತಿಯ ಸ್ವಂತ key ನೀಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Use a secrets manager, not code or prompts.\n• Rotate and give least-privilege keys.",
+     "bodyKn": "• secrets manager; ಕೋಡ್/prompts ಅಲ್ಲ.\n• ತಿರುಗಿಸಿ, ಕನಿಷ್ಠ-ಹಕ್ಕು keys."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Where keep secrets?",
+       "qKn": "secrets ಎಲ್ಲಿ ಇಡಬೇಕು?",
+       "opts": [
+        "In a secrets manager",
+        "In prompts",
+        "In front-end code",
+        "In source control"
+       ],
+       "optsKn": [
+        "secrets manager ನಲ್ಲಿ",
+        "prompts ನಲ್ಲಿ",
+        "ಫ್ರಂಟ್-ಎಂಡ್ ಕೋಡ್‌ನಲ್ಲಿ",
+        "source control ನಲ್ಲಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "After suspected exposure:",
+       "qKn": "ಸಂಶಯಾಸ್ಪದ ಒಡ್ಡುವಿಕೆ ನಂತರ:",
+       "opts": [
+        "Rotate the key",
+        "Ignore",
+        "Publish it",
+        "Nothing"
+       ],
+       "optsKn": [
+        "key ತಿರುಗಿಸಿ",
+        "ನಿರ್ಲಕ್ಷಿಸಿ",
+        "ಪ್ರಕಟಿಸಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Each service gets:",
+       "qKn": "ಪ್ರತಿ ಸೇವೆಗೆ:",
+       "opts": [
+        "Its own least-privilege key",
+        "A shared admin key",
+        "No key",
+        "All keys"
+       ],
+       "optsKn": [
+        "ಸ್ವಂತ ಕನಿಷ್ಠ-ಹಕ್ಕು key",
+        "ಹಂಚಿದ admin key",
+        "key ಇಲ್ಲ",
+        "ಎಲ್ಲ keys"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b32166d",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Security: Secrets, PII Scrubbing, Audit Logs — PII Scrubbing",
+  "titleKn": "ಭದ್ರತೆ: Secrets, PII ಮರೆಮಾಚುವಿಕೆ, Audit Logs — PII ಮರೆಮಾಚುವಿಕೆ",
+  "desc": "Detect and redact personal data before it reaches models or logs, matching the sensitivity of the use case.",
+  "descKn": "ವೈಯಕ್ತಿಕ ಡೇಟಾ ಮಾದರಿ ಅಥವಾ ಲಾಗ್ ತಲುಪುವ ಮೊದಲು ಪತ್ತೆ ಮಾಡಿ ಮರೆಮಾಚಿ, ಬಳಕೆ ಪ್ರಕರಣದ ಸೂಕ್ಷ್ಮತೆಗೆ ಹೊಂದಿಸಿ.",
+  "objectives": [
+   "Identify common PII types.",
+   "Redact or tokenise before sending."
+  ],
+  "objectivesKn": [
+   "ಸಾಮಾನ್ಯ PII ವಿಧ ಗುರುತಿಸಿ.",
+   "ಕಳುಹಿಸುವ ಮೊದಲು ಮರೆಮಾಚಿ ಅಥವಾ tokenise ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Security: Secrets, PII Scrubbing, Audit Logs — PII Scrubbing",
+     "textKn": "Security: Secrets, PII Scrubbing, Audit Logs — PII Scrubbing",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Security: Secrets, PII Scrubbing, Audit Logs",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Find and Replace",
+     "headingKn": "ಹುಡುಕಿ ಬದಲಿಸಿ",
+     "bodyEn": "Names, emails, phone numbers and identifiers can be detected with patterns and classifiers, then replaced with placeholders that can be restored later if needed.",
+     "bodyKn": "ಹೆಸರು, ಇಮೇಲ್, ಫೋನ್ ಸಂಖ್ಯೆ, ಗುರುತುಗಳನ್ನು ಮಾದರಿ ಮತ್ತು classifiers ನಿಂದ ಪತ್ತೆ ಮಾಡಿ, ಅಗತ್ಯವಿದ್ದರೆ ನಂತರ ಮರುಸ್ಥಾಪಿಸಬಹುದಾದ placeholders ನಿಂದ ಬದಲಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Detection Is Imperfect",
+     "headingKn": "ಪತ್ತೆ ಪರಿಪೂರ್ಣವಲ್ಲ",
+     "bodyEn": "Detectors miss some PII and flag some harmless text. Combine scrubbing with access controls and retention limits rather than relying on it alone.",
+     "bodyKn": "ಪತ್ತೆಕಾರರು ಕೆಲವು PII ತಪ್ಪಿಸುತ್ತಾರೆ ಮತ್ತು ಕೆಲವು ನಿರುಪದ್ರವ ಪಠ್ಯ ಗುರುತಿಸುತ್ತಾರೆ. ಮರೆಮಾಚುವಿಕೆಯನ್ನು ಮಾತ್ರ ಅವಲಂಬಿಸದೆ ಪ್ರವೇಶ ನಿಯಂತ್ರಣ ಮತ್ತು ಉಳಿಸುವ ಮಿತಿಯೊಂದಿಗೆ ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Detect and replace PII with placeholders.\n• Combine with access controls and retention limits.",
+     "bodyKn": "• PII ಪತ್ತೆ, placeholders ನಿಂದ ಬದಲಿಸಿ.\n• ಪ್ರವೇಶ ನಿಯಂತ್ರಣ ಮತ್ತು ಅವಧಿ ಮಿತಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "PII examples:",
+       "qKn": "PII ಉದಾಹರಣೆ:",
+       "opts": [
+        "Emails and phone numbers",
+        "Fonts",
+        "Colours",
+        "Logos"
+       ],
+       "optsKn": [
+        "ಇಮೇಲ್ ಮತ್ತು ಫೋನ್ ಸಂಖ್ಯೆ",
+        "ಫಾಂಟ್",
+        "ಬಣ್ಣ",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Detectors:",
+       "qKn": "ಪತ್ತೆಕಾರರು:",
+       "opts": [
+        "Are imperfect",
+        "Are perfect",
+        "Never fail",
+        "Are illegal"
+       ],
+       "optsKn": [
+        "ಪರಿಪೂರ್ಣವಲ್ಲ",
+        "ಪರಿಪೂರ್ಣ",
+        "ಎಂದಿಗೂ ವಿಫಲವಾಗರು",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Also use:",
+       "qKn": "ಇದನ್ನೂ ಬಳಸಿ:",
+       "opts": [
+        "Access controls and retention limits",
+        "Nothing",
+        "More PII",
+        "Public logs"
+       ],
+       "optsKn": [
+        "ಪ್ರವೇಶ ನಿಯಂತ್ರಣ ಮತ್ತು ಅವಧಿ ಮಿತಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಹೆಚ್ಚು PII",
+        "ಸಾರ್ವಜನಿಕ ಲಾಗ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b32166d",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Security: Secrets, PII Scrubbing, Audit Logs — Audit Logs",
+  "titleKn": "ಭದ್ರತೆ: Secrets, PII ಮರೆಮಾಚುವಿಕೆ, Audit Logs — Audit Logs",
+  "desc": "Audit logs record who did what and when, tamper-resistantly, to support investigation and compliance.",
+  "descKn": "audit logs ಯಾರು ಏನು ಯಾವಾಗ ಮಾಡಿದರು ಎಂದು ತಿದ್ದಲಾಗದಂತೆ ದಾಖಲಿಸಿ ತನಿಖೆ ಮತ್ತು ಅನುಸರಣೆಗೆ ನೆರವು ನೀಡುತ್ತವೆ.",
+  "objectives": [
+   "Log identity, action, time and outcome.",
+   "Protect logs from tampering."
+  ],
+  "objectivesKn": [
+   "ಗುರುತು, ಕ್ರಿಯೆ, ಸಮಯ, ಫಲಿತಾಂಶ ದಾಖಲಿಸಿ.",
+   "ಲಾಗ್ ತಿದ್ದುವಿಕೆಯಿಂದ ರಕ್ಷಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Security: Secrets, PII Scrubbing, Audit Logs — Audit Logs",
+     "textKn": "Security: Secrets, PII Scrubbing, Audit Logs — Audit Logs",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Security: Secrets, PII Scrubbing, Audit Logs",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "What to Record",
+     "headingKn": "ಏನು ದಾಖಲಿಸಬೇಕು",
+     "bodyEn": "Record the caller identity, the action, the resource, the time and the result, including tool calls made by agents and approvals given by humans.",
+     "bodyKn": "ಕರೆದಾರರ ಗುರುತು, ಕ್ರಿಯೆ, ಸಂಪನ್ಮೂಲ, ಸಮಯ, ಫಲಿತಾಂಶ ದಾಖಲಿಸಿ; agents ಮಾಡಿದ tool ಕರೆ ಮತ್ತು ಮಾನವರ ಅನುಮೋದನೆ ಸೇರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Tamper Resistance",
+     "headingKn": "ತಿದ್ದುವಿಕೆ ನಿರೋಧ",
+     "bodyEn": "Write logs to append-only, access-controlled storage separate from the systems they describe, so an attacker or a misbehaving agent cannot erase their own trail.",
+     "bodyKn": "ಲಾಗ್‌ಗಳನ್ನು ಅವು ವಿವರಿಸುವ ವ್ಯವಸ್ಥೆಗಳಿಂದ ಪ್ರತ್ಯೇಕ append-only, ಪ್ರವೇಶ-ನಿಯಂತ್ರಿತ ಸಂಗ್ರಹಕ್ಕೆ ಬರೆಯಿರಿ; ದಾಳಿಕೋರ ಅಥವಾ ತಪ್ಪಾಗಿ ವರ್ತಿಸುವ agent ತನ್ನ ಜಾಡು ಅಳಿಸಲಾರದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Record identity, action, resource, time, result.\n• Store logs append-only and separately.",
+     "bodyKn": "• ಗುರುತು, ಕ್ರಿಯೆ, ಸಂಪನ್ಮೂಲ, ಸಮಯ, ಫಲಿತಾಂಶ.\n• append-only, ಪ್ರತ್ಯೇಕ ಸಂಗ್ರಹ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "An audit log records:",
+       "qKn": "audit log ದಾಖಲಿಸುವುದು:",
+       "opts": [
+        "Who did what and when",
+        "Only colours",
+        "Nothing",
+        "Only fonts"
+       ],
+       "optsKn": [
+        "ಯಾರು ಏನು ಯಾವಾಗ ಮಾಡಿದರು",
+        "ಬಣ್ಣ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Store logs:",
+       "qKn": "ಲಾಗ್ ಸಂಗ್ರಹ:",
+       "opts": [
+        "Append-only and separate",
+        "Editable by agents",
+        "In prompts",
+        "Nowhere"
+       ],
+       "optsKn": [
+        "append-only ಮತ್ತು ಪ್ರತ್ಯೇಕ",
+        "agents ತಿದ್ದಬಹುದು",
+        "prompts ನಲ್ಲಿ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Include:",
+       "qKn": "ಸೇರಿಸಿ:",
+       "opts": [
+        "Agent tool calls and human approvals",
+        "Nothing",
+        "Only errors",
+        "Only logins"
+       ],
+       "optsKn": [
+        "agent tool ಕರೆ ಮತ್ತು ಮಾನವ ಅನುಮೋದನೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ದೋಷ ಮಾತ್ರ",
+        "ಲಾಗಿನ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b321670",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Compliance: SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 — A Map of the Frameworks",
+  "titleKn": "ಅನುಸರಣೆ: SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 — ಚೌಕಟ್ಟುಗಳ ನಕ್ಷೆ",
+  "desc": "Different frameworks cover security controls, health data, personal data, AI-specific rules and AI management systems.",
+  "descKn": "ಬೇರೆ ಚೌಕಟ್ಟುಗಳು ಭದ್ರತಾ ನಿಯಂತ್ರಣ, ಆರೋಗ್ಯ ಡೇಟಾ, ವೈಯಕ್ತಿಕ ಡೇಟಾ, AI-ನಿರ್ದಿಷ್ಟ ನಿಯಮ, AI ನಿರ್ವಹಣಾ ವ್ಯವಸ್ಥೆ ಒಳಗೊಳ್ಳುತ್ತವೆ.",
+  "objectives": [
+   "Place each framework by purpose.",
+   "Know that applicability depends on your context."
+  ],
+  "objectivesKn": [
+   "ಪ್ರತಿ ಚೌಕಟ್ಟನ್ನು ಉದ್ದೇಶದಿಂದ ಗುರುತಿಸಿ.",
+   "ಅನ್ವಯತೆ ನಿಮ್ಮ ಸಂದರ್ಭ ಅವಲಂಬಿತ ಎಂದು ತಿಳಿಯಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Compliance: SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 — A Map of the Frameworks",
+     "textKn": "Compliance: SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 — A Map of the Frameworks",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Compliance: SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "What Each One Is For",
+     "headingKn": "ಪ್ರತಿಯೊಂದು ಯಾವುದಕ್ಕೆ",
+     "bodyEn": "SOC 2 is an audit of security and related controls. HIPAA governs protected health information in the US. GDPR governs personal data in the EU. The EU AI Act regulates AI systems by risk. ISO 42001 is a standard for AI management systems.",
+     "bodyKn": "SOC 2 ಭದ್ರತೆ ಮತ್ತು ಸಂಬಂಧಿತ ನಿಯಂತ್ರಣಗಳ ಲೆಕ್ಕಪರಿಶೋಧನೆ. HIPAA US ನಲ್ಲಿ ರಕ್ಷಿತ ಆರೋಗ್ಯ ಮಾಹಿತಿ ನಿಯಂತ್ರಿಸುತ್ತದೆ. GDPR EU ನಲ್ಲಿ ವೈಯಕ್ತಿಕ ಡೇಟಾ. EU AI Act ಅಪಾಯದ ಪ್ರಕಾರ AI ವ್ಯವಸ್ಥೆ ನಿಯಂತ್ರಿಸುತ್ತದೆ. ISO 42001 AI ನಿರ್ವಹಣಾ ವ್ಯವಸ್ಥೆಗಳ ಮಾನದಂಡ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Context Decides",
+     "headingKn": "ಸಂದರ್ಭ ನಿರ್ಧರಿಸುತ್ತದೆ",
+     "bodyEn": "Which ones apply depends on your customers, data and location. This is general education, not legal advice, so involve legal and compliance specialists.",
+     "bodyKn": "ಯಾವುದು ಅನ್ವಯ ಎಂಬುದು ನಿಮ್ಮ ಗ್ರಾಹಕರು, ಡೇಟಾ, ಸ್ಥಳ ಅವಲಂಬಿತ. ಇದು ಸಾಮಾನ್ಯ ಶಿಕ್ಷಣ, ಕಾನೂನು ಸಲಹೆಯಲ್ಲ; ಕಾನೂನು ಮತ್ತು ಅನುಸರಣೆ ತಜ್ಞರನ್ನು ಒಳಗೊಳ್ಳಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Each framework covers a different area.\n• Applicability depends on context; involve specialists.",
+     "bodyKn": "• ಪ್ರತಿ ಚೌಕಟ್ಟು ಬೇರೆ ಕ್ಷೇತ್ರ.\n• ಸಂದರ್ಭ ಅವಲಂಬಿತ; ತಜ್ಞರನ್ನು ಒಳಗೊಳ್ಳಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "GDPR covers:",
+       "qKn": "GDPR ಒಳಗೊಳ್ಳುವುದು:",
+       "opts": [
+        "Personal data in the EU",
+        "Only GPUs",
+        "Only fonts",
+        "Nothing"
+       ],
+       "optsKn": [
+        "EU ನಲ್ಲಿ ವೈಯಕ್ತಿಕ ಡೇಟಾ",
+        "GPUs ಮಾತ್ರ",
+        "ಫಾಂಟ್ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "HIPAA covers:",
+       "qKn": "HIPAA ಒಳಗೊಳ್ಳುವುದು:",
+       "opts": [
+        "Protected health information (US)",
+        "Payments",
+        "Games",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ರಕ್ಷಿತ ಆರೋಗ್ಯ ಮಾಹಿತಿ (US)",
+        "ಪಾವತಿ",
+        "ಆಟ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "This lesson is:",
+       "qKn": "ಈ ಪಾಠ:",
+       "opts": [
+        "General education, not legal advice",
+        "Legal advice",
+        "A contract",
+        "A law"
+       ],
+       "optsKn": [
+        "ಸಾಮಾನ್ಯ ಶಿಕ್ಷಣ, ಕಾನೂನು ಸಲಹೆಯಲ್ಲ",
+        "ಕಾನೂನು ಸಲಹೆ",
+        "ಒಪ್ಪಂದ",
+        "ಕಾನೂನು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b321670",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Compliance: SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 — Controls That Recur",
+  "titleKn": "ಅನುಸರಣೆ: SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 — ಪುನರಾವರ್ತಿತ ನಿಯಂತ್ರಣಗಳು",
+  "desc": "Many frameworks ask for similar controls: access management, logging, data minimisation, risk assessment and incident response.",
+  "descKn": "ಅನೇಕ ಚೌಕಟ್ಟುಗಳು ಇದೇ ರೀತಿಯ ನಿಯಂತ್ರಣ ಕೇಳುತ್ತವೆ: ಪ್ರವೇಶ ನಿರ್ವಹಣೆ, ಲಾಗಿಂಗ್, ಡೇಟಾ ಕನಿಷ್ಠೀಕರಣ, ಅಪಾಯ ಮೌಲ್ಯಮಾಪನ, ಘಟನೆ ಪ್ರತಿಕ್ರಿಯೆ.",
+  "objectives": [
+   "Build reusable controls.",
+   "Document evidence as you go."
+  ],
+  "objectivesKn": [
+   "ಮರುಬಳಕೆ ನಿಯಂತ್ರಣ ನಿರ್ಮಿಸಿ.",
+   "ಮುಂದುವರಿಯುತ್ತಾ ಸಾಕ್ಷ್ಯ ದಾಖಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Compliance: SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 — Controls That Recur",
+     "textKn": "Compliance: SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 — Controls That Recur",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Compliance: SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Common Controls",
+     "headingKn": "ಸಾಮಾನ್ಯ ನಿಯಂತ್ರಣಗಳು",
+     "bodyEn": "Least-privilege access, audit logging, encryption, data minimisation and retention limits, vendor review and incident response satisfy requirements in several frameworks at once.",
+     "bodyKn": "ಕನಿಷ್ಠ-ಹಕ್ಕು ಪ್ರವೇಶ, audit ಲಾಗಿಂಗ್, ಎನ್‌ಕ್ರಿಪ್ಶನ್, ಡೇಟಾ ಕನಿಷ್ಠೀಕರಣ ಮತ್ತು ಉಳಿಸುವ ಮಿತಿ, ಮಾರಾಟಗಾರ ವಿಮರ್ಶೆ, ಘಟನೆ ಪ್ರತಿಕ್ರಿಯೆ ಹಲವು ಚೌಕಟ್ಟುಗಳ ಅಗತ್ಯ ಒಮ್ಮೆಲೇ ಪೂರೈಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Evidence",
+     "headingKn": "ಸಾಕ್ಷ್ಯ",
+     "bodyEn": "Auditors ask for evidence that controls exist and operate. Keep policies, logs, reviews and test results organised as part of normal work, not assembled at the last minute.",
+     "bodyKn": "ನಿಯಂತ್ರಣಗಳಿವೆ ಮತ್ತು ಕೆಲಸ ಮಾಡುತ್ತವೆ ಎಂಬ ಸಾಕ್ಷ್ಯ ಲೆಕ್ಕಪರಿಶೋಧಕರು ಕೇಳುತ್ತಾರೆ. ನೀತಿ, ಲಾಗ್, ವಿಮರ್ಶೆ, test ಫಲಿತಾಂಶ ಸಾಮಾನ್ಯ ಕೆಲಸದ ಭಾಗವಾಗಿ ಸಂಘಟಿಸಿ, ಕೊನೆಯ ಕ್ಷಣದಲ್ಲಿ ಜೋಡಿಸದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Access, logging, minimisation and incident response recur.\n• Keep evidence as part of normal work.",
+     "bodyKn": "• ಪ್ರವೇಶ, ಲಾಗಿಂಗ್, ಕನಿಷ್ಠೀಕರಣ, ಘಟನೆ ಪ್ರತಿಕ್ರಿಯೆ.\n• ಸಾಕ್ಷ್ಯ ಸಾಮಾನ್ಯ ಕೆಲಸದ ಭಾಗ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A common control:",
+       "qKn": "ಸಾಮಾನ್ಯ ನಿಯಂತ್ರಣ:",
+       "opts": [
+        "Least-privilege access",
+        "Big fonts",
+        "Bright colours",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಕನಿಷ್ಠ-ಹಕ್ಕು ಪ್ರವೇಶ",
+        "ದೊಡ್ಡ ಫಾಂಟ್",
+        "ಪ್ರಕಾಶಮಾನ ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Auditors ask for:",
+       "qKn": "ಲೆಕ್ಕಪರಿಶೋಧಕರು ಕೇಳುವುದು:",
+       "opts": [
+        "Evidence",
+        "Slogans",
+        "Nothing",
+        "Logos"
+       ],
+       "optsKn": [
+        "ಸಾಕ್ಷ್ಯ",
+        "ಘೋಷವಾಕ್ಯ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Collect evidence:",
+       "qKn": "ಸಾಕ್ಷ್ಯ ಸಂಗ್ರಹ:",
+       "opts": [
+        "As part of normal work",
+        "Only at the last minute",
+        "Never",
+        "By guessing"
+       ],
+       "optsKn": [
+        "ಸಾಮಾನ್ಯ ಕೆಲಸದ ಭಾಗವಾಗಿ",
+        "ಕೊನೆಯ ಕ್ಷಣದಲ್ಲಿ ಮಾತ್ರ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಊಹೆಯಿಂದ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b321670",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Compliance: SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 — Working With the EU AI Act and ISO 42001",
+  "titleKn": "ಅನುಸರಣೆ: SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 — EU AI Act ಮತ್ತು ISO 42001 ನೊಂದಿಗೆ ಕೆಲಸ",
+  "desc": "Classify your AI systems by risk, document them and keep human oversight and transparency in view.",
+  "descKn": "ನಿಮ್ಮ AI ವ್ಯವಸ್ಥೆಗಳನ್ನು ಅಪಾಯದ ಪ್ರಕಾರ ವರ್ಗೀಕರಿಸಿ, ದಾಖಲಿಸಿ, ಮಾನವ ಮೇಲ್ವಿಚಾರಣೆ ಮತ್ತು ಪಾರದರ್ಶಕತೆ ದೃಷ್ಟಿಯಲ್ಲಿಡಿ.",
+  "objectives": [
+   "Inventory AI systems.",
+   "Classify by risk tier and document."
+  ],
+  "objectivesKn": [
+   "AI ವ್ಯವಸ್ಥೆಗಳ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಅಪಾಯ ಶ್ರೇಣಿ ವರ್ಗೀಕರಿಸಿ ದಾಖಲಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Compliance: SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 — Working With the EU AI Act and ISO 42001",
+     "textKn": "Compliance: SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 — Working With the EU AI Act and ISO 42001",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Compliance: SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Inventory and Classification",
+     "headingKn": "ಪಟ್ಟಿ ಮತ್ತು ವರ್ಗೀಕರಣ",
+     "bodyEn": "List every AI system you build or use, its purpose and its data. Risk-based rules then determine which obligations apply, so classification comes first.",
+     "bodyKn": "ನೀವು ನಿರ್ಮಿಸುವ ಅಥವಾ ಬಳಸುವ ಪ್ರತಿ AI ವ್ಯವಸ್ಥೆ, ಅದರ ಉದ್ದೇಶ ಮತ್ತು ಡೇಟಾ ಪಟ್ಟಿ ಮಾಡಿ. ಅಪಾಯ-ಆಧಾರಿತ ನಿಯಮ ಯಾವ ಬಾಧ್ಯತೆ ಅನ್ವಯ ಎಂದು ನಿರ್ಧರಿಸುತ್ತದೆ; ಆದ್ದರಿಂದ ವರ್ಗೀಕರಣ ಮೊದಲು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Management System Thinking",
+     "headingKn": "ನಿರ್ವಹಣಾ ವ್ಯವಸ್ಥೆ ಚಿಂತನೆ",
+     "bodyEn": "A management-system standard asks for policies, roles, risk assessment, monitoring and continual improvement, much like a quality or security management system.",
+     "bodyKn": "ನಿರ್ವಹಣಾ-ವ್ಯವಸ್ಥೆ ಮಾನದಂಡ ನೀತಿ, ಪಾತ್ರ, ಅಪಾಯ ಮೌಲ್ಯಮಾಪನ, ನಿಗಾ, ನಿರಂತರ ಸುಧಾರಣೆ ಕೇಳುತ್ತದೆ; ಗುಣಮಟ್ಟ ಅಥವಾ ಭದ್ರತಾ ನಿರ್ವಹಣಾ ವ್ಯವಸ್ಥೆಯಂತೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Inventory and classify AI systems first.\n• Management systems need policies, monitoring, improvement.",
+     "bodyKn": "• ಮೊದಲು AI ವ್ಯವಸ್ಥೆ ಪಟ್ಟಿ, ವರ್ಗೀಕರಣ.\n• ನೀತಿ, ನಿಗಾ, ಸುಧಾರಣೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "First step:",
+       "qKn": "ಮೊದಲ ಹಂತ:",
+       "opts": [
+        "Inventory and classify AI systems",
+        "Ignore",
+        "Publish",
+        "Delete"
+       ],
+       "optsKn": [
+        "AI ವ್ಯವಸ್ಥೆ ಪಟ್ಟಿ ಮತ್ತು ವರ್ಗೀಕರಣ",
+        "ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಪ್ರಕಟಣೆ",
+        "ಅಳಿಸು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Risk-based rules decide:",
+       "qKn": "ಅಪಾಯ-ಆಧಾರಿತ ನಿಯಮ ನಿರ್ಧರಿಸುವುದು:",
+       "opts": [
+        "Which obligations apply",
+        "Fonts",
+        "Colours",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಯಾವ ಬಾಧ್ಯತೆ ಅನ್ವಯ",
+        "ಫಾಂಟ್",
+        "ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Management systems need:",
+       "qKn": "ನಿರ್ವಹಣಾ ವ್ಯವಸ್ಥೆಗೆ:",
+       "opts": [
+        "Continual improvement",
+        "One-time effort only",
+        "Nothing",
+        "Secrecy"
+       ],
+       "optsKn": [
+        "ನಿರಂತರ ಸುಧಾರಣೆ",
+        "ಒಂದು ಬಾರಿ ಶ್ರಮ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ರಹಸ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b321673",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "FinOps for LLMs: Unit Economics and Multi-Tenant Attribution — Unit Economics",
+  "titleKn": "LLM ಗಳಿಗೆ FinOps: Unit Economics ಮತ್ತು ಬಹು-Tenant ಆರೋಪ — Unit Economics",
+  "desc": "Express cost per request, per user or per task so pricing and margin decisions rest on real numbers.",
+  "descKn": "ಪ್ರತಿ ವಿನಂತಿ, ಬಳಕೆದಾರ ಅಥವಾ ಕೆಲಸಕ್ಕೆ ವೆಚ್ಚ ವ್ಯಕ್ತಪಡಿಸಿ; ಬೆಲೆ ಮತ್ತು ಲಾಭಾಂಶ ನಿರ್ಧಾರ ನಿಜ ಸಂಖ್ಯೆಗಳ ಮೇಲೆ ಆಧರಿಸಿರಲಿ.",
+  "objectives": [
+   "Compute cost per task.",
+   "Relate cost to revenue."
+  ],
+  "objectivesKn": [
+   "ಪ್ರತಿ ಕೆಲಸ ವೆಚ್ಚ ಲೆಕ್ಕಿಸಿ.",
+   "ವೆಚ್ಚವನ್ನು ಆದಾಯಕ್ಕೆ ಸಂಬಂಧಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "FinOps for LLMs: Unit Economics and Multi-Tenant Attribution — Unit Economics",
+     "textKn": "FinOps for LLMs: Unit Economics and Multi-Tenant Attribution — Unit Economics",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in FinOps for LLMs: Unit Economics and Multi-Tenant Attribution",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Cost per Outcome",
+     "headingKn": "ಫಲಿತಾಂಶಕ್ಕೆ ವೆಚ್ಚ",
+     "bodyEn": "Add model tokens, retrieval, tools, retries and infrastructure to get the real cost of one completed task, not just the raw token price.",
+     "bodyKn": "ಮಾದರಿ tokens, retrieval, tools, ಮರುಪ್ರಯತ್ನ, ಮೂಲಸೌಕರ್ಯ ಸೇರಿಸಿ ಒಂದು ಪೂರ್ಣ ಕೆಲಸದ ನಿಜ ವೆಚ್ಚ ಪಡೆಯಿರಿ, ಕೇವಲ ಕಚ್ಚಾ token ಬೆಲೆ ಅಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Margin View",
+     "headingKn": "ಲಾಭಾಂಶ ನೋಟ",
+     "bodyEn": "Compare cost per task with the revenue or value it produces. Heavy users and long agent runs may be unprofitable even when the average looks fine.",
+     "bodyKn": "ಪ್ರತಿ ಕೆಲಸ ವೆಚ್ಚವನ್ನು ಅದು ನೀಡುವ ಆದಾಯ ಅಥವಾ ಮೌಲ್ಯಕ್ಕೆ ಹೋಲಿಸಿ. ಸರಾಸರಿ ಚೆನ್ನಾಗಿ ಕಂಡರೂ ಭಾರಿ ಬಳಕೆದಾರರು ಮತ್ತು ಉದ್ದ agent runs ಲಾಭದಾಯಕವಲ್ಲದಿರಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Count all costs per completed task.\n• Watch heavy users, not only averages.",
+     "bodyKn": "• ಪೂರ್ಣ ಕೆಲಸಕ್ಕೆ ಎಲ್ಲ ವೆಚ್ಚ.\n• ಸರಾಸರಿ ಮಾತ್ರವಲ್ಲ, ಭಾರಿ ಬಳಕೆದಾರರು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Real task cost includes:",
+       "qKn": "ನಿಜ ಕೆಲಸ ವೆಚ್ಚ ಒಳಗೊಳ್ಳುತ್ತದೆ:",
+       "opts": [
+        "Tokens, tools, retries and infrastructure",
+        "Only tokens",
+        "Nothing",
+        "Only fonts"
+       ],
+       "optsKn": [
+        "tokens, tools, ಮರುಪ್ರಯತ್ನ, ಮೂಲಸೌಕರ್ಯ",
+        "tokens ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Averages can hide:",
+       "qKn": "ಸರಾಸರಿ ಮರೆಮಾಡಬಹುದು:",
+       "opts": [
+        "Unprofitable heavy users",
+        "Nothing",
+        "Profit",
+        "Colours"
+       ],
+       "optsKn": [
+        "ಲಾಭದಾಯಕವಲ್ಲದ ಭಾರಿ ಬಳಕೆದಾರರು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲಾಭ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Compare cost with:",
+       "qKn": "ವೆಚ್ಚ ಹೋಲಿಸಿ:",
+       "opts": [
+        "Revenue or value",
+        "Nothing",
+        "Fonts",
+        "Logos"
+       ],
+       "optsKn": [
+        "ಆದಾಯ ಅಥವಾ ಮೌಲ್ಯ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b321673",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "FinOps for LLMs: Unit Economics and Multi-Tenant Attribution — Attribution in Multi-Tenant Systems",
+  "titleKn": "LLM ಗಳಿಗೆ FinOps: Unit Economics ಮತ್ತು ಬಹು-Tenant ಆರೋಪ — ಬಹು-Tenant ವ್ಯವಸ್ಥೆಗಳಲ್ಲಿ ಆರೋಪ",
+  "desc": "Tag every call with tenant, feature and environment so cost can be attributed and billed accurately.",
+  "descKn": "ಪ್ರತಿ ಕರೆಗೆ tenant, ವೈಶಿಷ್ಟ್ಯ, ಪರಿಸರ ಟ್ಯಾಗ್ ಮಾಡಿ; ವೆಚ್ಚ ನಿಖರವಾಗಿ ಆರೋಪಿಸಿ ಬಿಲ್ ಮಾಡಬಹುದು.",
+  "objectives": [
+   "Tag calls with attribution metadata.",
+   "Allocate shared costs fairly."
+  ],
+  "objectivesKn": [
+   "ಕರೆಗಳಿಗೆ ಆರೋಪ ಮೆಟಾಡೇಟಾ ಟ್ಯಾಗ್ ಮಾಡಿ.",
+   "ಹಂಚಿದ ವೆಚ್ಚ ನ್ಯಾಯಯುತವಾಗಿ ಹಂಚಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "FinOps for LLMs: Unit Economics and Multi-Tenant Attribution — Attribution in Multi-Tenant Systems",
+     "textKn": "FinOps for LLMs: Unit Economics and Multi-Tenant Attribution — Attribution in Multi-Tenant Systems",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in FinOps for LLMs: Unit Economics and Multi-Tenant Attribution",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Tag Everything",
+     "headingKn": "ಎಲ್ಲವನ್ನೂ ಟ್ಯಾಗ್ ಮಾಡಿ",
+     "bodyEn": "Attach tenant id, feature name, model and environment to each request so spend can be sliced by any of them. Untagged spend cannot be attributed later.",
+     "bodyKn": "ಪ್ರತಿ ವಿನಂತಿಗೆ tenant id, ವೈಶಿಷ್ಟ್ಯ ಹೆಸರು, ಮಾದರಿ, ಪರಿಸರ ಸೇರಿಸಿ; ಖರ್ಚನ್ನು ಯಾವುದರಿಂದಲೂ ವಿಭಜಿಸಬಹುದು. ಟ್ಯಾಗ್ ಇಲ್ಲದ ಖರ್ಚು ನಂತರ ಆರೋಪಿಸಲಾಗದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Shared Costs",
+     "headingKn": "ಹಂಚಿದ ವೆಚ್ಚ",
+     "bodyEn": "Shared caches, evals and platform overhead need an allocation rule, for example proportional to usage, that teams accept as fair.",
+     "bodyKn": "ಹಂಚಿದ caches, evals, ವೇದಿಕೆ ಹೊರೆಗೆ ತಂಡಗಳು ನ್ಯಾಯ ಎಂದು ಒಪ್ಪುವ ಹಂಚಿಕೆ ನಿಯಮ ಬೇಕು, ಉದಾ. ಬಳಕೆಗೆ ಅನುಪಾತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Tag tenant, feature, model and environment.\n• Agree an allocation rule for shared costs.",
+     "bodyKn": "• tenant, ವೈಶಿಷ್ಟ್ಯ, ಮಾದರಿ, ಪರಿಸರ ಟ್ಯಾಗ್.\n• ಹಂಚಿದ ವೆಚ್ಚಕ್ಕೆ ನಿಯಮ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Untagged spend:",
+       "qKn": "ಟ್ಯಾಗ್ ಇಲ್ಲದ ಖರ್ಚು:",
+       "opts": [
+        "Cannot be attributed later",
+        "Is easy to attribute",
+        "Is free",
+        "Vanishes"
+       ],
+       "optsKn": [
+        "ನಂತರ ಆರೋಪಿಸಲಾಗದು",
+        "ಆರೋಪಿಸಲು ಸುಲಭ",
+        "ಉಚಿತ",
+        "ಮಾಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Shared costs need:",
+       "qKn": "ಹಂಚಿದ ವೆಚ್ಚಕ್ಕೆ:",
+       "opts": [
+        "An allocation rule",
+        "Nothing",
+        "Secrecy",
+        "Ignoring"
+       ],
+       "optsKn": [
+        "ಹಂಚಿಕೆ ನಿಯಮ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ರಹಸ್ಯ",
+        "ನಿರ್ಲಕ್ಷ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Tag with:",
+       "qKn": "ಟ್ಯಾಗ್:",
+       "opts": [
+        "Tenant and feature",
+        "Colour",
+        "Font",
+        "Nothing"
+       ],
+       "optsKn": [
+        "tenant ಮತ್ತು ವೈಶಿಷ್ಟ್ಯ",
+        "ಬಣ್ಣ",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6666020ed05b321622",
+  "moduleId": "6a369d6866020ed05b321673",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "FinOps for LLMs: Unit Economics and Multi-Tenant Attribution — Budgets, Alerts and Optimisation",
+  "titleKn": "LLM ಗಳಿಗೆ FinOps: Unit Economics ಮತ್ತು ಬಹು-Tenant ಆರೋಪ — ಬಜೆಟ್, Alerts ಮತ್ತು ಆಪ್ಟಿಮೈಸೇಶನ್",
+  "desc": "Set budgets and alerts, review cost regularly and rank optimisations by savings and risk.",
+  "descKn": "ಬಜೆಟ್ ಮತ್ತು alerts ಹೊಂದಿಸಿ, ವೆಚ್ಚ ನಿಯಮಿತ ಪರಿಶೀಲಿಸಿ, ಉಳಿತಾಯ ಮತ್ತು ಅಪಾಯದ ಪ್ರಕಾರ ಆಪ್ಟಿಮೈಸೇಶನ್ ಶ್ರೇಣೀಕರಿಸಿ.",
+  "objectives": [
+   "Alert on anomalous spend.",
+   "Prioritise optimisation by impact and risk."
+  ],
+  "objectivesKn": [
+   "ಅಸಹಜ ಖರ್ಚಿಗೆ alert.",
+   "ಪರಿಣಾಮ ಮತ್ತು ಅಪಾಯದ ಪ್ರಕಾರ ಆದ್ಯತೆ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "FinOps for LLMs: Unit Economics and Multi-Tenant Attribution — Budgets, Alerts and Optimisation",
+     "textKn": "FinOps for LLMs: Unit Economics and Multi-Tenant Attribution — Budgets, Alerts and Optimisation",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in FinOps for LLMs: Unit Economics and Multi-Tenant Attribution",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Budgets and Anomaly Alerts",
+     "headingKn": "ಬಜೆಟ್ ಮತ್ತು ವೈಪರೀತ್ಯ Alerts",
+     "bodyEn": "Set per-tenant and per-feature budgets, and alert on sudden jumps. Cost spikes are often the first sign of a loop or an abusive user.",
+     "bodyKn": "ಪ್ರತಿ tenant ಮತ್ತು ವೈಶಿಷ್ಟ್ಯಕ್ಕೆ ಬಜೆಟ್, ಹಠಾತ್ ಜಿಗಿತಕ್ಕೆ alert. ವೆಚ್ಚ ಏರಿಕೆ ಆಗಾಗ loop ಅಥವಾ ದುರ್ಬಳಕೆ ಬಳಕೆದಾರರ ಮೊದಲ ಸೂಚನೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Rank Optimisations",
+     "headingKn": "ಆಪ್ಟಿಮೈಸೇಶನ್ ಶ್ರೇಣೀಕರಣ",
+     "bodyEn": "Compare caching, routing, batching, prompt shortening and quantisation by savings, effort and quality risk, and do the high-saving, low-risk ones first.",
+     "bodyKn": "caching, routing, batching, prompt ಸಂಕ್ಷೇಪ, quantisation ಅನ್ನು ಉಳಿತಾಯ, ಶ್ರಮ, ಗುಣಮಟ್ಟ ಅಪಾಯದ ಪ್ರಕಾರ ಹೋಲಿಸಿ; ಹೆಚ್ಚು ಉಳಿತಾಯ, ಕಡಿಮೆ ಅಪಾಯದವನ್ನು ಮೊದಲು ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Budgets and anomaly alerts catch loops and abuse.\n• Do high-saving, low-risk optimisations first.",
+     "bodyKn": "• ಬಜೆಟ್, ವೈಪರೀತ್ಯ alerts loops/ದುರ್ಬಳಕೆ ಹಿಡಿಯುತ್ತವೆ.\n• ಹೆಚ್ಚು ಉಳಿತಾಯ, ಕಡಿಮೆ ಅಪಾಯ ಮೊದಲು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A cost spike often signals:",
+       "qKn": "ವೆಚ್ಚ ಏರಿಕೆ ಸೂಚಿಸುವುದು:",
+       "opts": [
+        "A loop or abuse",
+        "Success only",
+        "Nothing",
+        "A holiday"
+       ],
+       "optsKn": [
+        "loop ಅಥವಾ ದುರ್ಬಳಕೆ",
+        "ಯಶಸ್ಸು ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ರಜೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Do first:",
+       "qKn": "ಮೊದಲು ಮಾಡಿ:",
+       "opts": [
+        "High saving, low risk",
+        "Low saving, high risk",
+        "Random",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹೆಚ್ಚು ಉಳಿತಾಯ, ಕಡಿಮೆ ಅಪಾಯ",
+        "ಕಡಿಮೆ ಉಳಿತಾಯ, ಹೆಚ್ಚು ಅಪಾಯ",
+        "ಯಾದೃಚ್ಛಿಕ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Budgets are set per:",
+       "qKn": "ಬಜೆಟ್ ಪ್ರತಿ:",
+       "opts": [
+        "Tenant and feature",
+        "Colour",
+        "Font",
+        "Nothing"
+       ],
+       "optsKn": [
+        "tenant ಮತ್ತು ವೈಶಿಷ್ಟ್ಯ",
+        "ಬಣ್ಣ",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

@@ -1,0 +1,2148 @@
+[
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6066020ed05b32151d",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Tool Use and Function Calling — Designing Tool Interfaces Models Can Use",
+  "titleKn": "Tool Use ಮತ್ತು Function Calling — ಮಾದರಿಗಳು ಬಳಸಬಲ್ಲ Tool ಇಂಟರ್ಫೇಸ್ ವಿನ್ಯಾಸ",
+  "desc": "How names, descriptions and schemas shape whether a model calls a tool correctly, and how to design tools for reliability.",
+  "descKn": "ಹೆಸರು, ವಿವರಣೆ, schema ಮಾದರಿ tool ಅನ್ನು ಸರಿಯಾಗಿ ಕರೆಯುತ್ತದೆಯೇ ಎಂದು ಹೇಗೆ ನಿರ್ಧರಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Explain how a tool description acts as a prompt to the model.",
+   "Design small, unambiguous tools with strict argument schemas.",
+   "Recognise the cost of too many or overlapping tools."
+  ],
+  "objectivesKn": [
+   "tool ವಿವರಣೆ ಮಾದರಿಗೆ prompt ಆಗಿ ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ ಎಂದು ವಿವರಿಸಿ.",
+   "ಸ್ಪಷ್ಟ ಸಣ್ಣ tools ಮತ್ತು ಕಟ್ಟುನಿಟ್ಟಿನ schema ವಿನ್ಯಾಸ ಮಾಡಿ.",
+   "ಹೆಚ್ಚು ಅಥವಾ ಅತಿಕ್ರಮಿಸುವ tools ನ ವೆಚ್ಚ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Tool Use and Function Calling — Designing Tool Interfaces Models Can Use",
+     "textKn": "Tool Use and Function Calling — Designing Tool Interfaces Models Can Use",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Tool Use and Function Calling",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Description Is a Prompt",
+     "headingKn": "ವಿವರಣೆ ಒಂದು Prompt",
+     "bodyEn": "The model decides whether and how to call a tool almost entirely from its name, description and parameter schema. Clear wording about what the tool does, when to use it and what each argument means is the main lever for correct calls.",
+     "bodyKn": "tool ಅನ್ನು ಕರೆಯುವುದು ಮತ್ತು ಹೇಗೆ ಎಂಬುದನ್ನು ಮಾದರಿ ಹೆಸರು, ವಿವರಣೆ ಮತ್ತು schema ಇಂದ ನಿರ್ಧರಿಸುತ್ತದೆ. tool ಏನು ಮಾಡುತ್ತದೆ, ಯಾವಾಗ ಬಳಸಬೇಕು, ಪ್ರತಿ argument ಅರ್ಥ ಸ್ಪಷ್ಟವಾಗಿ ಬರೆಯುವುದು ಮುಖ್ಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Strict Schemas",
+     "headingKn": "ಕಟ್ಟುನಿಟ್ಟಿನ Schemas",
+     "bodyEn": "Use typed arguments, enumerations for fixed choices, and required fields. Rejecting a malformed call with a precise error is better than guessing what the model meant.",
+     "bodyKn": "ಟೈಪ್ ಮಾಡಿದ arguments, ನಿಗದಿತ ಆಯ್ಕೆಗೆ enumerations, ಕಡ್ಡಾಯ ಕ್ಷೇತ್ರಗಳನ್ನು ಬಳಸಿ. ತಪ್ಪಾದ ಕರೆಯನ್ನು ನಿಖರ ದೋಷದೊಂದಿಗೆ ತಿರಸ್ಕರಿಸುವುದು ಊಹಿಸುವುದಕ್ಕಿಂತ ಉತ್ತಮ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Few, Distinct Tools",
+     "headingKn": "ಕಡಿಮೆ, ವಿಭಿನ್ನ Tools",
+     "bodyEn": "Every tool adds description tokens and another chance to pick wrongly. Overlapping tools confuse selection, so prefer a small set with clearly different purposes.",
+     "bodyKn": "ಪ್ರತಿ tool ವಿವರಣೆ tokens ಮತ್ತು ತಪ್ಪಾಗಿ ಆರಿಸುವ ಅವಕಾಶ ಸೇರಿಸುತ್ತದೆ. ಅತಿಕ್ರಮಿಸುವ tools ಆಯ್ಕೆಯನ್ನು ಗೊಂದಲಗೊಳಿಸುತ್ತವೆ; ಸ್ಪಷ್ಟವಾಗಿ ಬೇರೆ ಉದ್ದೇಶದ ಸಣ್ಣ ಸೆಟ್ ಆರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Return Useful Results",
+     "headingKn": "ಉಪಯುಕ್ತ ಫಲಿತಾಂಶ ನೀಡಿ",
+     "bodyEn": "Results should be concise, structured and include what the model needs for the next step. Huge raw dumps waste context and bury the useful part.",
+     "bodyKn": "ಫಲಿತಾಂಶಗಳು ಸಂಕ್ಷಿಪ್ತ, ರಚನಾತ್ಮಕ, ಮುಂದಿನ ಹಂತಕ್ಕೆ ಬೇಕಾದದ್ದನ್ನು ಒಳಗೊಂಡಿರಲಿ. ದೊಡ್ಡ ಕಚ್ಚಾ ಡಂಪ್ context ವ್ಯರ್ಥ ಮಾಡಿ ಉಪಯುಕ್ತ ಭಾಗ ಮುಚ್ಚುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Descriptions and schemas drive correct calls.\n• Validate arguments strictly with precise errors.\n• Keep the tool set small and distinct.",
+     "bodyKn": "• ವಿವರಣೆ ಮತ್ತು schema ಸರಿಯಾದ ಕರೆ ನಿರ್ಧರಿಸುತ್ತವೆ.\n• arguments ಕಟ್ಟುನಿಟ್ಟಾಗಿ ಮಾನ್ಯಗೊಳಿಸಿ.\n• tool ಸೆಟ್ ಸಣ್ಣ, ವಿಭಿನ್ನ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What mostly determines whether a model calls a tool correctly?",
+       "qKn": "ಮಾದರಿ tool ಅನ್ನು ಸರಿಯಾಗಿ ಕರೆಯುವುದನ್ನು ಹೆಚ್ಚಾಗಿ ಯಾವುದು ನಿರ್ಧರಿಸುತ್ತದೆ?",
+       "opts": [
+        "Its name, description and schema",
+        "The file size",
+        "The GPU model",
+        "The date"
+       ],
+       "optsKn": [
+        "ಹೆಸರು, ವಿವರಣೆ, schema",
+        "ಫೈಲ್ ಗಾತ್ರ",
+        "GPU",
+        "ದಿನಾಂಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why prefer few distinct tools?",
+       "qKn": "ಕಡಿಮೆ ವಿಭಿನ್ನ tools ಏಕೆ ಆದ್ಯತೆ?",
+       "opts": [
+        "Overlap confuses selection and adds tokens",
+        "Fewer tools are illegal",
+        "They run faster always",
+        "Models dislike tools"
+       ],
+       "optsKn": [
+        "ಅತಿಕ್ರಮಣ ಆಯ್ಕೆ ಗೊಂದಲಗೊಳಿಸಿ tokens ಸೇರಿಸುತ್ತದೆ",
+        "ಕಡಿಮೆ tools ಕಾನೂನುಬಾಹಿರ",
+        "ಯಾವಾಗಲೂ ವೇಗ",
+        "ಮಾದರಿ ಇಷ್ಟಪಡುವುದಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is better than guessing a malformed call?",
+       "qKn": "ತಪ್ಪಾದ ಕರೆ ಊಹಿಸುವುದಕ್ಕಿಂತ ಉತ್ತಮ ಯಾವುದು?",
+       "opts": [
+        "Rejecting it with a precise error",
+        "Executing it anyway",
+        "Deleting the tool",
+        "Ignoring errors"
+       ],
+       "optsKn": [
+        "ನಿಖರ ದೋಷದೊಂದಿಗೆ ತಿರಸ್ಕರಿಸುವುದು",
+        "ಹೇಗಾದರೂ ಚಲಾಯಿಸುವುದು",
+        "tool ಅಳಿಸುವುದು",
+        "ದೋಷ ನಿರ್ಲಕ್ಷಿಸುವುದು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6066020ed05b32151d",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Tool Use and Function Calling — Safety, Side Effects and Reliability",
+  "titleKn": "Tool Use ಮತ್ತು Function Calling — ಸುರಕ್ಷತೆ, Side Effects, ವಿಶ್ವಾಸಾರ್ಹತೆ",
+  "desc": "How to treat tool calls as untrusted input: permissions, idempotency, retries, timeouts and confirmations for risky actions.",
+  "descKn": "tool ಕರೆಗಳನ್ನು ಅಪನಂಬಿಕೆ ಇನ್‌ಪುಟ್ ಆಗಿ ಪರಿಗಣಿಸುವುದು: ಅನುಮತಿ, idempotency, ಮರುಪ್ರಯತ್ನ, timeout, ದೃಢೀಕರಣ.",
+  "objectives": [
+   "Treat model-generated arguments as untrusted input.",
+   "Distinguish read-only from side-effecting tools and gate the latter.",
+   "Design retries and idempotency for safe recovery."
+  ],
+  "objectivesKn": [
+   "ಮಾದರಿ ರಚಿಸಿದ arguments ಅಪನಂಬಿಕೆ ಇನ್‌ಪುಟ್ ಎಂದು ಪರಿಗಣಿಸಿ.",
+   "ಓದಲು-ಮಾತ್ರ ಮತ್ತು side-effect tools ಬೇರ್ಪಡಿಸಿ.",
+   "ಮರುಪ್ರಯತ್ನ ಮತ್ತು idempotency ವಿನ್ಯಾಸಗೊಳಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Tool Use and Function Calling — Safety, Side Effects and Reliability",
+     "textKn": "Tool Use and Function Calling — Safety, Side Effects and Reliability",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Tool Use and Function Calling",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Arguments Are Untrusted",
+     "headingKn": "Arguments ಅಪನಂಬಿಕೆ",
+     "bodyEn": "A model can be steered by attacker text into calling a tool with harmful arguments. Validate every argument against the schema and against policy, exactly as you would for input from an anonymous user.",
+     "bodyKn": "ದಾಳಿಕೋರರ ಪಠ್ಯ ಮಾದರಿಯನ್ನು ಹಾನಿಕರ arguments ಜೊತೆ tool ಕರೆಯುವಂತೆ ತಿರುಗಿಸಬಹುದು. ಅನಾಮಧೇಯ ಬಳಕೆದಾರರ ಇನ್‌ಪುಟ್‌ನಂತೆ schema ಮತ್ತು ನೀತಿಯ ವಿರುದ್ಧ ಪ್ರತಿ argument ಮಾನ್ಯಗೊಳಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Read-Only Versus Side Effects",
+     "headingKn": "ಓದಲು-ಮಾತ್ರ vs Side Effects",
+     "bodyEn": "Reading data is usually safe to run freely, while sending, deleting, paying or publishing is not. Side-effecting tools should be permissioned, rate-limited and often confirmed by a human first.",
+     "bodyKn": "ಡೇಟಾ ಓದುವುದು ಸಾಮಾನ್ಯವಾಗಿ ಸುರಕ್ಷಿತ; ಕಳುಹಿಸುವುದು, ಅಳಿಸುವುದು, ಪಾವತಿ, ಪ್ರಕಟಣೆ ಅಲ್ಲ. side-effect tools ಗೆ ಅನುಮತಿ, ದರ ಮಿತಿ, ಸಾಮಾನ್ಯವಾಗಿ ಮಾನವ ದೃಢೀಕರಣ ಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Idempotency and Retries",
+     "headingKn": "Idempotency ಮತ್ತು ಮರುಪ್ರಯತ್ನ",
+     "bodyEn": "A call may be retried after a timeout even though it already succeeded. Idempotency keys let the tool recognise a repeat and avoid, for example, charging a customer twice.",
+     "bodyKn": "ಕರೆ ಈಗಾಗಲೇ ಯಶಸ್ವಿಯಾಗಿದ್ದರೂ timeout ನಂತರ ಮರುಪ್ರಯತ್ನ ಆಗಬಹುದು. Idempotency keys ಪುನರಾವರ್ತನೆ ಗುರುತಿಸಿ, ಉದಾ. ಗ್ರಾಹಕರಿಗೆ ಎರಡು ಬಾರಿ ಶುಲ್ಕ ವಿಧಿಸುವುದನ್ನು ತಡೆಯುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Timeouts and Failure Messages",
+     "headingKn": "Timeout ಮತ್ತು ವೈಫಲ್ಯ ಸಂದೇಶ",
+     "bodyEn": "Every external call needs a timeout so the loop cannot hang. On failure return a short, truthful message stating what failed, so the model can choose a sensible next step instead of inventing a result.",
+     "bodyKn": "ಪ್ರತಿ ಬಾಹ್ಯ ಕರೆಗೆ timeout ಬೇಕು. ವಿಫಲವಾದಾಗ ಏನು ವಿಫಲ ಎಂದು ಸತ್ಯವಾದ ಸಂಕ್ಷಿಪ್ತ ಸಂದೇಶ ನೀಡಿ, ಮಾದರಿ ಫಲಿತಾಂಶ ಸೃಷ್ಟಿಸದೆ ಮುಂದಿನ ಹಂತ ಆರಿಸಲು."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Tool risk tiers",
+     "headers": [
+      "Tier",
+      "Example",
+      "Control"
+     ],
+     "rows": [
+      [
+       "Read-only",
+       "Search, lookup",
+       "Rate limit"
+      ],
+      [
+       "Reversible write",
+       "Draft a document",
+       "Log and permit"
+      ],
+      [
+       "Irreversible or external",
+       "Send email, payment",
+       "Human confirmation"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Validate model arguments like untrusted input.\n• Gate side-effecting tools.\n• Use idempotency keys, timeouts and honest error messages.",
+     "bodyKn": "• ಮಾದರಿ arguments ಅಪನಂಬಿಕೆಯಂತೆ ಮಾನ್ಯಗೊಳಿಸಿ.\n• side-effect tools ನಿಯಂತ್ರಿಸಿ.\n• idempotency keys, timeout, ಸತ್ಯ ದೋಷ ಸಂದೇಶ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why use idempotency keys?",
+       "qKn": "Idempotency keys ಏಕೆ?",
+       "opts": [
+        "A retried call can repeat a side effect such as a payment",
+        "They speed up models",
+        "They encrypt data",
+        "They are decoration"
+       ],
+       "optsKn": [
+        "ಮರುಪ್ರಯತ್ನ side effect ಪುನರಾವರ್ತಿಸಬಹುದು",
+        "ಮಾದರಿ ವೇಗ",
+        "ಡೇಟಾ ಎನ್‌ಕ್ರಿಪ್ಟ್",
+        "ಅಲಂಕಾರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which tools need human confirmation first?",
+       "qKn": "ಯಾವ tools ಗೆ ಮೊದಲು ಮಾನವ ದೃಢೀಕರಣ ಬೇಕು?",
+       "opts": [
+        "Irreversible or external actions",
+        "Every read",
+        "None",
+        "Only search"
+       ],
+       "optsKn": [
+        "ಹಿಂದಿರುಗಿಸಲಾಗದ ಅಥವಾ ಬಾಹ್ಯ ಕ್ರಿಯೆಗಳು",
+        "ಪ್ರತಿ ಓದುವಿಕೆ",
+        "ಯಾವುದೂ ಅಲ್ಲ",
+        "search ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How should a failed tool call be reported to the model?",
+       "qKn": "ವಿಫಲ tool ಕರೆ ಮಾದರಿಗೆ ಹೇಗೆ ವರದಿ ಮಾಡಬೇಕು?",
+       "opts": [
+        "A short truthful message saying what failed",
+        "A made-up success result",
+        "Silence",
+        "A random number"
+       ],
+       "optsKn": [
+        "ಏನು ವಿಫಲ ಎಂದು ಸಂಕ್ಷಿಪ್ತ ಸತ್ಯ ಸಂದೇಶ",
+        "ಕಲ್ಪಿತ ಯಶಸ್ಸು",
+        "ಮೌನ",
+        "ಯಾದೃಚ್ಛಿಕ ಸಂಖ್ಯೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6066020ed05b321520",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Memory: Virtual Context and MemGPT — The Context Window as a Scarce Resource",
+  "titleKn": "Memory: Virtual Context ಮತ್ತು MemGPT — Context Window ಒಂದು ಅಪರೂಪದ ಸಂಪನ್ಮೂಲ",
+  "desc": "Why a fixed context window forces memory management, and how virtual-context designs page information in and out like an operating system.",
+  "descKn": "ನಿಗದಿತ context window ಮೆಮೊರಿ ನಿರ್ವಹಣೆ ಏಕೆ ಒತ್ತಾಯಿಸುತ್ತದೆ, virtual-context ವಿನ್ಯಾಸ ಹೇಗೆ ಮಾಹಿತಿಯನ್ನು ಒಳ-ಹೊರಗೆ ಸರಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Explain why long conversations exceed the context window.",
+   "Describe main context versus external storage.",
+   "Explain how the model itself can manage what is stored and recalled."
+  ],
+  "objectivesKn": [
+   "ಉದ್ದ ಸಂಭಾಷಣೆ context window ಮೀರುವುದು ಏಕೆ ಎಂದು ವಿವರಿಸಿ.",
+   "ಮುಖ್ಯ context ಮತ್ತು ಬಾಹ್ಯ ಸಂಗ್ರಹ ವಿವರಿಸಿ.",
+   "ಮಾದರಿಯೇ ಏನು ಸಂಗ್ರಹಿಸಬೇಕು/ನೆನಪಿಸಬೇಕು ಎಂದು ಹೇಗೆ ನಿರ್ವಹಿಸಬಹುದು ಎಂದು ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Memory: Virtual Context and MemGPT — The Context Window as a Scarce Resource",
+     "textKn": "Memory: Virtual Context and MemGPT — The Context Window as a Scarce Resource",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Memory: Virtual Context and MemGPT",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Window Is Not a Memory",
+     "headingKn": "Window ≠ Memory",
+     "bodyEn": "The context window is what the model can see right now, and it has a hard size limit. Anything beyond it is simply invisible, so an agent that keeps everything in the prompt eventually loses its oldest information.",
+     "bodyKn": "Context window ಮಾದರಿಗೆ ಈಗ ಕಾಣುವುದು ಮತ್ತು ಅದಕ್ಕೆ ಕಠಿಣ ಗಾತ್ರ ಮಿತಿ ಇದೆ. ಅದರಾಚೆಗಿನದು ಕಾಣುವುದಿಲ್ಲ, ಆದ್ದರಿಂದ ಎಲ್ಲವನ್ನೂ prompt ನಲ್ಲಿ ಇಡುವ agent ಹಳೆಯ ಮಾಹಿತಿ ಕಳೆದುಕೊಳ್ಳುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Main Context and External Storage",
+     "headingKn": "ಮುಖ್ಯ Context ಮತ್ತು ಬಾಹ್ಯ ಸಂಗ್ರಹ",
+     "bodyEn": "Virtual-context designs borrow from operating systems: a small fast main context holds what is needed now, and a large external store holds the rest. Data moves between them on demand.",
+     "bodyKn": "Virtual-context ವಿನ್ಯಾಸ ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್‌ಗಳಿಂದ ಎರವಲು: ಸಣ್ಣ ವೇಗದ ಮುಖ್ಯ context ಈಗ ಬೇಕಾದದ್ದನ್ನು, ದೊಡ್ಡ ಬಾಹ್ಯ ಸಂಗ್ರಹ ಉಳಿದದ್ದನ್ನು ಹಿಡಿಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Model Manages Its Own Memory",
+     "headingKn": "ಮಾದರಿ ತನ್ನ ಮೆಮೊರಿ ನಿರ್ವಹಿಸುತ್ತದೆ",
+     "bodyEn": "In MemGPT-style agents the model is given memory functions, such as saving a note or searching archived conversation, and decides when to call them. Memory becomes just another tool.",
+     "bodyKn": "MemGPT ರೀತಿಯ agents ಗಳಲ್ಲಿ ಮಾದರಿಗೆ ಟಿಪ್ಪಣಿ ಉಳಿಸುವ ಅಥವಾ ಆರ್ಕೈವ್ ಹುಡುಕುವ memory functions ನೀಡಲಾಗುತ್ತದೆ; ಯಾವಾಗ ಕರೆಯಬೇಕು ಎಂದು ಅದೇ ನಿರ್ಧರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Eviction and Summarization",
+     "headingKn": "ಹೊರಹಾಕುವಿಕೆ ಮತ್ತು ಸಾರಾಂಶ",
+     "bodyEn": "When the main context fills up, older messages are summarised and evicted to storage. Summaries lose detail, so important facts should be saved explicitly rather than trusted to a summary.",
+     "bodyKn": "ಮುಖ್ಯ context ತುಂಬಿದಾಗ ಹಳೆಯ ಸಂದೇಶಗಳನ್ನು ಸಾರಾಂಶ ಮಾಡಿ ಸಂಗ್ರಹಕ್ಕೆ ಹೊರಹಾಕಲಾಗುತ್ತದೆ. ಸಾರಾಂಶ ವಿವರ ಕಳೆದುಕೊಳ್ಳುತ್ತದೆ, ಆದ್ದರಿಂದ ಮುಖ್ಯ ಸತ್ಯಗಳನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ಉಳಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• The context window is finite and not durable memory.\n• Virtual context pages data between main context and storage.\n• Save important facts explicitly; summaries lose detail.",
+     "bodyKn": "• context window ಸೀಮಿತ, ಶಾಶ್ವತ ಮೆಮೊರಿ ಅಲ್ಲ.\n• virtual context ಡೇಟಾ ಸರಿಸುತ್ತದೆ.\n• ಮುಖ್ಯ ಸತ್ಯ ಸ್ಪಷ್ಟವಾಗಿ ಉಳಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What happens to information outside the context window?",
+       "qKn": "context window ಹೊರಗಿನ ಮಾಹಿತಿಗೆ ಏನಾಗುತ್ತದೆ?",
+       "opts": [
+        "The model cannot see it",
+        "The model sees it dimly",
+        "It is automatically remembered",
+        "It is encrypted"
+       ],
+       "optsKn": [
+        "ಮಾದರಿಗೆ ಕಾಣುವುದಿಲ್ಲ",
+        "ಮಂದವಾಗಿ ಕಾಣುತ್ತದೆ",
+        "ಸ್ವಯಂ ನೆನಪಿರುತ್ತದೆ",
+        "ಎನ್‌ಕ್ರಿಪ್ಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is the OS analogy in virtual context?",
+       "qKn": "virtual context ನಲ್ಲಿ OS ಹೋಲಿಕೆ ಏನು?",
+       "opts": [
+        "Paging data between fast small memory and large storage",
+        "Booting the computer",
+        "Installing drivers",
+        "Formatting disks"
+       ],
+       "optsKn": [
+        "ವೇಗದ ಸಣ್ಣ ಮೆಮೊರಿ ಮತ್ತು ದೊಡ್ಡ ಸಂಗ್ರಹದ ನಡುವೆ ಡೇಟಾ ಸರಿಸುವುದು",
+        "ಕಂಪ್ಯೂಟರ್ ಬೂಟ್",
+        "drivers ಇನ್‌ಸ್ಟಾಲ್",
+        "ಡಿಸ್ಕ್ ಫಾರ್ಮ್ಯಾಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why save key facts explicitly?",
+       "qKn": "ಮುಖ್ಯ ಸತ್ಯಗಳನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ಏಕೆ ಉಳಿಸಬೇಕು?",
+       "opts": [
+        "Summaries lose detail",
+        "Facts are illegal to summarise",
+        "It is faster",
+        "Models ignore memory"
+       ],
+       "optsKn": [
+        "ಸಾರಾಂಶ ವಿವರ ಕಳೆದುಕೊಳ್ಳುತ್ತದೆ",
+        "ಸಾರಾಂಶ ಕಾನೂನುಬಾಹಿರ",
+        "ವೇಗ",
+        "ಮಾದರಿ ನಿರ್ಲಕ್ಷಿಸುತ್ತದೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6066020ed05b321520",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Memory: Virtual Context and MemGPT — Retrieval Quality, Cost and Failure Modes",
+  "titleKn": "Memory: Virtual Context ಮತ್ತು MemGPT — ಹಿಂಪಡೆಯುವಿಕೆ ಗುಣಮಟ್ಟ, ವೆಚ್ಚ, ವೈಫಲ್ಯ",
+  "desc": "Why memory retrieval fails, what memory costs at scale, and how to test whether an agent really remembers.",
+  "descKn": "ಮೆಮೊರಿ ಹಿಂಪಡೆಯುವಿಕೆ ಏಕೆ ವಿಫಲ, ಪ್ರಮಾಣದಲ್ಲಿ ವೆಚ್ಚ ಏನು, agent ನಿಜವಾಗಿ ನೆನಪಿಡುತ್ತದೆಯೇ ಹೇಗೆ ಪರೀಕ್ಷಿಸುವುದು.",
+  "objectives": [
+   "List retrieval failures: missed recall, stale facts and irrelevant hits.",
+   "Explain the latency and token cost of memory operations.",
+   "Design a test that checks recall after eviction."
+  ],
+  "objectivesKn": [
+   "ಹಿಂಪಡೆಯುವ ವೈಫಲ್ಯಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಮೆಮೊರಿ ಕಾರ್ಯಗಳ ವಿಳಂಬ ಮತ್ತು token ವೆಚ್ಚ ವಿವರಿಸಿ.",
+   "ಹೊರಹಾಕಿದ ನಂತರ ನೆನಪನ್ನು ಪರೀಕ್ಷಿಸುವ ಪರೀಕ್ಷೆ ವಿನ್ಯಾಸಗೊಳಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Memory: Virtual Context and MemGPT — Retrieval Quality, Cost and Failure Modes",
+     "textKn": "Memory: Virtual Context and MemGPT — Retrieval Quality, Cost and Failure Modes",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Memory: Virtual Context and MemGPT",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Ways Retrieval Fails",
+     "headingKn": "ಹಿಂಪಡೆಯುವಿಕೆ ವಿಫಲವಾಗುವ ವಿಧಾನಗಳು",
+     "bodyEn": "The model may never think to search, the search may return the wrong items, or it may return an out-of-date fact that contradicts a newer one. Each is a distinct bug with a distinct fix.",
+     "bodyKn": "ಮಾದರಿ ಹುಡುಕಲು ಯೋಚಿಸದಿರಬಹುದು, ಹುಡುಕಾಟ ತಪ್ಪು ಫಲಿತಾಂಶ ನೀಡಬಹುದು, ಅಥವಾ ಹೊಸದಕ್ಕೆ ವಿರುದ್ಧವಾದ ಹಳೆಯ ಸತ್ಯ ನೀಡಬಹುದು. ಪ್ರತಿಯೊಂದು ಬೇರೆ ದೋಷ, ಬೇರೆ ಪರಿಹಾರ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Stale and Conflicting Facts",
+     "headingKn": "ಹಳೆಯ ಮತ್ತು ವಿರೋಧಿ ಸತ್ಯಗಳು",
+     "bodyEn": "Stored facts change: an address moves, a preference flips. Memory needs timestamps and an update or overwrite rule, otherwise old and new values sit side by side and the model picks either.",
+     "bodyKn": "ಸಂಗ್ರಹಿತ ಸತ್ಯಗಳು ಬದಲಾಗುತ್ತವೆ. ಮೆಮೊರಿಗೆ ಸಮಯಮುದ್ರೆ ಮತ್ತು ನವೀಕರಣ ನಿಯಮ ಬೇಕು, ಇಲ್ಲದಿದ್ದರೆ ಹಳೆಯ ಮತ್ತು ಹೊಸ ಮೌಲ್ಯ ಒಟ್ಟಿಗೆ ಇದ್ದು ಮಾದರಿ ಯಾವುದನ್ನಾದರೂ ಆರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Memory Has a Price",
+     "headingKn": "ಮೆಮೊರಿಗೆ ಬೆಲೆ ಇದೆ",
+     "bodyEn": "Each memory call adds latency and tokens, and summarising costs a model call too. More memory does not automatically mean a better agent; store what will be needed, not everything.",
+     "bodyKn": "ಪ್ರತಿ ಮೆಮೊರಿ ಕರೆ ವಿಳಂಬ ಮತ್ತು tokens ಸೇರಿಸುತ್ತದೆ, ಸಾರಾಂಶಕ್ಕೂ ಕರೆ ಬೇಕು. ಹೆಚ್ಚು ಮೆಮೊರಿ ಉತ್ತಮ agent ಅಲ್ಲ; ಬೇಕಾಗುವುದನ್ನು ಸಂಗ್ರಹಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Test Recall After Eviction",
+     "headingKn": "ಹೊರಹಾಕಿದ ನಂತರ ನೆನಪು ಪರೀಕ್ಷಿಸಿ",
+     "bodyEn": "Tell the agent a fact, push enough conversation to evict it from the main context, then ask about it. If it answers correctly, memory worked; if it invents an answer, the design failed.",
+     "bodyKn": "agent ಗೆ ಒಂದು ಸತ್ಯ ಹೇಳಿ, ಮುಖ್ಯ context ನಿಂದ ಹೊರಹಾಕುವಷ್ಟು ಸಂಭಾಷಣೆ ನಡೆಸಿ, ನಂತರ ಕೇಳಿ. ಸರಿಯಾಗಿ ಉತ್ತರಿಸಿದರೆ ಮೆಮೊರಿ ಕೆಲಸ ಮಾಡಿದೆ; ಉತ್ತರ ಕಲ್ಪಿಸಿದರೆ ವಿನ್ಯಾಸ ವಿಫಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Retrieval can fail by not searching, wrong hits or stale facts.\n• Memory operations cost latency and tokens.\n• Test recall after eviction.",
+     "bodyKn": "• ಹಿಂಪಡೆಯುವಿಕೆ ವಿವಿಧ ರೀತಿ ವಿಫಲವಾಗಬಹುದು.\n• ಮೆಮೊರಿ ಕರೆಗೆ ವೆಚ್ಚ.\n• ಹೊರಹಾಕಿದ ನಂತರ ನೆನಪು ಪರೀಕ್ಷಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why do memories need timestamps or update rules?",
+       "qKn": "ಮೆಮೊರಿಗೆ ಸಮಯಮುದ್ರೆ ಅಥವಾ ನವೀಕರಣ ನಿಯಮ ಏಕೆ?",
+       "opts": [
+        "Facts change and old values can contradict new ones",
+        "To shrink files",
+        "To hide data",
+        "For colour"
+       ],
+       "optsKn": [
+        "ಸತ್ಯಗಳು ಬದಲಾಗುತ್ತವೆ, ಹಳೆಯದು ಹೊಸದಕ್ಕೆ ವಿರುದ್ಧ",
+        "ಫೈಲ್ ಕುಗ್ಗಿಸಲು",
+        "ಡೇಟಾ ಮರೆಮಾಡಲು",
+        "ಬಣ್ಣಕ್ಕೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How do you test recall after eviction?",
+       "qKn": "ಹೊರಹಾಕಿದ ನಂತರ ನೆನಪು ಹೇಗೆ ಪರೀಕ್ಷಿಸುತ್ತೀರಿ?",
+       "opts": [
+        "State a fact, evict it from context, then ask about it",
+        "Ask before stating",
+        "Never test",
+        "Only read logs"
+       ],
+       "optsKn": [
+        "ಸತ್ಯ ಹೇಳಿ, context ನಿಂದ ಹೊರಹಾಕಿ, ಕೇಳಿ",
+        "ಹೇಳುವ ಮೊದಲು ಕೇಳಿ",
+        "ಎಂದಿಗೂ ಪರೀಕ್ಷಿಸಬೇಡಿ",
+        "ಲಾಗ್ ಓದಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Does more stored memory always improve an agent?",
+       "qKn": "ಹೆಚ್ಚು ಸಂಗ್ರಹಿತ ಮೆಮೊರಿ ಯಾವಾಗಲೂ agent ಸುಧಾರಿಸುತ್ತದೆಯೇ?",
+       "opts": [
+        "No: memory calls cost latency and tokens",
+        "Yes always",
+        "Only on weekends",
+        "Yes if summarised"
+       ],
+       "optsKn": [
+        "ಇಲ್ಲ: ಮೆಮೊರಿ ಕರೆಗಳಿಗೆ ವಿಳಂಬ ಮತ್ತು ವೆಚ್ಚ",
+        "ಯಾವಾಗಲೂ ಹೌದು",
+        "ವಾರಾಂತ್ಯ ಮಾತ್ರ",
+        "ಸಾರಾಂಶ ಮಾಡಿದರೆ ಹೌದು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321523",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Memory Blocks and Sleep-Time Compute — Structured, Editable Memory",
+  "titleKn": "Memory Blocks ಮತ್ತು Sleep-Time Compute — ರಚನಾತ್ಮಕ, ತಿದ್ದಬಹುದಾದ ಮೆಮೊರಿ",
+  "desc": "Why labelled, size-limited memory blocks are safer to edit than one growing text blob, and what belongs in each block.",
+  "descKn": "ಹೆಸರಿಸಿದ, ಗಾತ್ರ-ಮಿತಿ ಇರುವ memory blocks ಒಂದು ಬೆಳೆಯುವ ಪಠ್ಯಕ್ಕಿಂತ ತಿದ್ದಲು ಸುರಕ್ಷಿತ ಏಕೆ.",
+  "objectives": [
+   "Describe memory as named blocks such as persona and user profile.",
+   "Explain why targeted edits beat rewriting a blob.",
+   "Set size limits and ownership rules for blocks."
+  ],
+  "objectivesKn": [
+   "ಮೆಮೊರಿಯನ್ನು persona, user profile ನಂತಹ ಹೆಸರಿಸಿದ blocks ಆಗಿ ವಿವರಿಸಿ.",
+   "ಗುರಿ ತಿದ್ದುಪಡಿ ಪೂರ್ಣ ಮರುಬರಹಕ್ಕಿಂತ ಉತ್ತಮ ಏಕೆ ಎಂದು ವಿವರಿಸಿ.",
+   "ಗಾತ್ರ ಮಿತಿ ಮತ್ತು ಮಾಲೀಕತ್ವ ನಿಯಮ ಹೊಂದಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Memory Blocks and Sleep-Time Compute — Structured, Editable Memory",
+     "textKn": "Memory Blocks and Sleep-Time Compute — Structured, Editable Memory",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Memory Blocks and Sleep-Time Compute",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Memory as Named Blocks",
+     "headingKn": "ಹೆಸರಿಸಿದ Blocks ಆಗಿ ಮೆಮೊರಿ",
+     "bodyEn": "Instead of one long note, memory is split into labelled blocks, for example who the agent is, what it knows about the user and what the current task is. Each block is included in the prompt and can be edited on its own.",
+     "bodyKn": "ಒಂದೇ ಉದ್ದ ಟಿಪ್ಪಣಿಯ ಬದಲು ಮೆಮೊರಿಯನ್ನು ಹೆಸರಿಸಿದ blocks ಆಗಿ ವಿಭಜಿಸಲಾಗುತ್ತದೆ: agent ಯಾರು, ಬಳಕೆದಾರರ ಬಗ್ಗೆ ಏನು ತಿಳಿದಿದೆ, ಪ್ರಸ್ತುತ ಕೆಲಸ ಏನು. ಪ್ರತಿ block ಸ್ವತಂತ್ರವಾಗಿ ತಿದ್ದಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Targeted Edits Are Safer",
+     "headingKn": "ಗುರಿ ತಿದ್ದುಪಡಿ ಸುರಕ್ಷಿತ",
+     "bodyEn": "Rewriting a whole blob to change one fact risks dropping or corrupting the rest. Editing one block, or one field within it, limits the blast radius of a mistake.",
+     "bodyKn": "ಒಂದು ಸತ್ಯ ಬದಲಿಸಲು ಇಡೀ blob ಮರುಬರೆದರೆ ಉಳಿದದ್ದು ಕಳೆದುಹೋಗುವ ಅಥವಾ ಹಾಳಾಗುವ ಅಪಾಯ. ಒಂದು block ತಿದ್ದಿದರೆ ತಪ್ಪಿನ ವ್ಯಾಪ್ತಿ ಸೀಮಿತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Size Limits and Ownership",
+     "headingKn": "ಗಾತ್ರ ಮಿತಿ ಮತ್ತು ಮಾಲೀಕತ್ವ",
+     "bodyEn": "Each block gets a character limit so memory cannot crowd out the task, and clear rules about which agent or process may write it. Shared blocks let several agents coordinate through common state.",
+     "bodyKn": "ಪ್ರತಿ block ಗೆ ಅಕ್ಷರ ಮಿತಿ ಇದ್ದು ಮೆಮೊರಿ ಕೆಲಸವನ್ನು ಹೊರದಬ್ಬುವುದಿಲ್ಲ; ಯಾವ agent ಬರೆಯಬಹುದು ಎಂದು ಸ್ಪಷ್ಟ ನಿಯಮ. ಹಂಚಿದ blocks ಹಲವು agents ಅನ್ನು ಸಮನ್ವಯಗೊಳಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "What Goes Where",
+     "headingKn": "ಯಾವುದು ಎಲ್ಲಿ",
+     "bodyEn": "Stable identity and preferences belong in slow-changing blocks, while transient task notes belong in a scratch block that is cleared often. Mixing them makes the stable parts noisy.",
+     "bodyKn": "ಸ್ಥಿರ ಗುರುತು ಮತ್ತು ಆದ್ಯತೆಗಳು ನಿಧಾನವಾಗಿ ಬದಲಾಗುವ blocks ನಲ್ಲಿ; ತಾತ್ಕಾಲಿಕ ಕೆಲಸ ಟಿಪ್ಪಣಿ ಆಗಾಗ ತೆರವುಗೊಳಿಸುವ scratch block ನಲ್ಲಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Split memory into labelled blocks.\n• Edit narrowly to limit damage.\n• Set size limits and write ownership per block.",
+     "bodyKn": "• ಮೆಮೊರಿಯನ್ನು blocks ಆಗಿ ವಿಭಜಿಸಿ.\n• ಹಾನಿ ಮಿತಿಗೆ ಗುರಿ ತಿದ್ದುಪಡಿ.\n• ಗಾತ್ರ ಮಿತಿ, ಮಾಲೀಕತ್ವ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why are targeted block edits safer?",
+       "qKn": "ಗುರಿ block ತಿದ್ದುಪಡಿ ಸುರಕ್ಷಿತ ಏಕೆ?",
+       "opts": [
+        "A mistake affects only one block",
+        "They are faster to type",
+        "Blocks cannot be wrong",
+        "They avoid tokens"
+       ],
+       "optsKn": [
+        "ತಪ್ಪು ಒಂದು block ಗೆ ಮಾತ್ರ ಪರಿಣಾಮ",
+        "ಟೈಪ್ ವೇಗ",
+        "blocks ತಪ್ಪಾಗುವುದಿಲ್ಲ",
+        "tokens ತಪ್ಪಿಸುತ್ತವೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why give each block a size limit?",
+       "qKn": "ಪ್ರತಿ block ಗೆ ಗಾತ್ರ ಮಿತಿ ಏಕೆ?",
+       "opts": [
+        "So memory cannot crowd out the task",
+        "To hide content",
+        "Because JSON requires it",
+        "For speed only"
+       ],
+       "optsKn": [
+        "ಮೆಮೊರಿ ಕೆಲಸ ಹೊರದಬ್ಬದಿರಲು",
+        "ವಿಷಯ ಮರೆಮಾಡಲು",
+        "JSON ಗೆ ಅಗತ್ಯ",
+        "ವೇಗಕ್ಕೆ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Where do transient task notes belong?",
+       "qKn": "ತಾತ್ಕಾಲಿಕ ಕೆಲಸ ಟಿಪ್ಪಣಿಗಳು ಎಲ್ಲಿ?",
+       "opts": [
+        "A scratch block cleared often",
+        "The identity block",
+        "Nowhere",
+        "The tokenizer"
+       ],
+       "optsKn": [
+        "ಆಗಾಗ ತೆರವುಗೊಳಿಸುವ scratch block",
+        "ಗುರುತಿನ block",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "tokenizer"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321523",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Memory Blocks and Sleep-Time Compute — Using Idle Time to Consolidate Memory",
+  "titleKn": "Memory Blocks ಮತ್ತು Sleep-Time Compute — ನಿಷ್ಕ್ರಿಯ ಸಮಯದಲ್ಲಿ ಮೆಮೊರಿ ಕ್ರೋಢೀಕರಣ",
+  "desc": "How background agents reorganise memory between user turns so that live responses are faster and better informed.",
+  "descKn": "ಬಳಕೆದಾರರ ನಡುವಿನ ಸಮಯದಲ್ಲಿ ಹಿನ್ನೆಲೆ agents ಮೆಮೊರಿ ಮರುಸಂಘಟಿಸಿ ಜೀವಂತ ಪ್ರತಿಕ್ರಿಯೆ ವೇಗ ಮತ್ತು ಉತ್ತಮ ಮಾಡುತ್ತವೆ.",
+  "objectives": [
+   "Explain the idea of computing during idle time.",
+   "Describe consolidation tasks: summarising, deduplicating and linking.",
+   "Identify risks: background edits colliding with live edits."
+  ],
+  "objectivesKn": [
+   "ನಿಷ್ಕ್ರಿಯ ಸಮಯದಲ್ಲಿ ಗಣನೆ ಎಂಬ ಕಲ್ಪನೆ ವಿವರಿಸಿ.",
+   "ಕ್ರೋಢೀಕರಣ ಕೆಲಸಗಳನ್ನು ವಿವರಿಸಿ.",
+   "ಹಿನ್ನೆಲೆ ತಿದ್ದುಪಡಿ ಜೀವಂತ ತಿದ್ದುಪಡಿಯೊಂದಿಗೆ ಘರ್ಷಿಸುವ ಅಪಾಯ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Memory Blocks and Sleep-Time Compute — Using Idle Time to Consolidate Memory",
+     "textKn": "Memory Blocks and Sleep-Time Compute — Using Idle Time to Consolidate Memory",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Memory Blocks and Sleep-Time Compute",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Work Between Turns",
+     "headingKn": "ಸುತ್ತುಗಳ ನಡುವೆ ಕೆಲಸ",
+     "bodyEn": "Between user messages the system is idle. Sleep-time compute uses that time for a background agent to think about stored information and prepare it, so that the live agent can answer faster later.",
+     "bodyKn": "ಬಳಕೆದಾರರ ಸಂದೇಶಗಳ ನಡುವೆ ವ್ಯವಸ್ಥೆ ನಿಷ್ಕ್ರಿಯ. ಹಿನ್ನೆಲೆ agent ಆ ಸಮಯದಲ್ಲಿ ಸಂಗ್ರಹಿತ ಮಾಹಿತಿ ಬಗ್ಗೆ ಯೋಚಿಸಿ ಸಿದ್ಧಪಡಿಸುತ್ತದೆ; ಜೀವಂತ agent ನಂತರ ವೇಗವಾಗಿ ಉತ್ತರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Consolidation Tasks",
+     "headingKn": "ಕ್ರೋಢೀಕರಣ ಕೆಲಸಗಳು",
+     "bodyEn": "Typical jobs are summarising long histories, merging duplicate facts, resolving contradictions, and pre-computing likely questions or inferences. This moves expensive thinking out of the response path.",
+     "bodyKn": "ಉದ್ದ ಇತಿಹಾಸ ಸಾರಾಂಶ, ನಕಲು ಸತ್ಯ ವಿಲೀನ, ವಿರೋಧ ಪರಿಹಾರ, ಸಂಭಾವ್ಯ ಪ್ರಶ್ನೆ ಮುಂಚಿತ ಗಣನೆ. ದುಬಾರಿ ಚಿಂತನೆ ಪ್ರತಿಕ್ರಿಯೆ ಹಾದಿಯಿಂದ ಹೊರಗೆ ಹೋಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Latency Versus Total Cost",
+     "headingKn": "ವಿಳಂಬ vs ಒಟ್ಟು ವೆಚ್ಚ",
+     "bodyEn": "The user sees lower latency because heavy work happened earlier, but total compute may rise, especially if the precomputed work is never used. Idle-time compute pays off when questions about the same material repeat.",
+     "bodyKn": "ಭಾರೀ ಕೆಲಸ ಮುಂಚೆ ನಡೆದದ್ದರಿಂದ ಬಳಕೆದಾರರಿಗೆ ವಿಳಂಬ ಕಡಿಮೆ, ಆದರೆ ಒಟ್ಟು ಗಣನೆ ಹೆಚ್ಚಬಹುದು. ಒಂದೇ ವಿಷಯದ ಪ್ರಶ್ನೆಗಳು ಪುನರಾವರ್ತನೆಯಾದಾಗ ಲಾಭ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Concurrent Edit Risks",
+     "headingKn": "ಏಕಕಾಲಿಕ ತಿದ್ದುಪಡಿ ಅಪಾಯ",
+     "bodyEn": "A background agent may rewrite a block while the live agent is also editing it. Use versioning, locks or append-only logs with later merge so one edit does not silently erase another.",
+     "bodyKn": "ಹಿನ್ನೆಲೆ agent ಒಂದು block ಮರುಬರೆಯುತ್ತಿರುವಾಗ ಜೀವಂತ agent ಸಹ ತಿದ್ದಬಹುದು. versioning, locks ಅಥವಾ append-only ಲಾಗ್ ಬಳಸಿ, ಒಂದು ತಿದ್ದುಪಡಿ ಇನ್ನೊಂದನ್ನು ಮೌನವಾಗಿ ಅಳಿಸದಂತೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Idle time can be used to consolidate memory.\n• This lowers latency but may raise total compute.\n• Guard against concurrent edits with versions or locks.",
+     "bodyKn": "• ನಿಷ್ಕ್ರಿಯ ಸಮಯ ಮೆಮೊರಿ ಕ್ರೋಢೀಕರಣಕ್ಕೆ.\n• ವಿಳಂಬ ಕಡಿಮೆ, ಒಟ್ಟು ಗಣನೆ ಹೆಚ್ಚಬಹುದು.\n• versions ಅಥವಾ locks ಬಳಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is the main benefit of sleep-time compute?",
+       "qKn": "sleep-time compute ನ ಮುಖ್ಯ ಲಾಭ?",
+       "opts": [
+        "Lower live response latency",
+        "Zero total compute",
+        "No memory needed",
+        "Larger vocabulary"
+       ],
+       "optsKn": [
+        "ಜೀವಂತ ಪ್ರತಿಕ್ರಿಯೆ ವಿಳಂಬ ಕಡಿಮೆ",
+        "ಒಟ್ಟು ಗಣನೆ ಶೂನ್ಯ",
+        "ಮೆಮೊರಿ ಬೇಡ",
+        "ದೊಡ್ಡ vocabulary"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is a downside?",
+       "qKn": "ಒಂದು ಕೊರತೆ?",
+       "opts": [
+        "Total compute may rise if precomputed work goes unused",
+        "It makes answers slower",
+        "It removes accuracy always",
+        "It needs no model"
+       ],
+       "optsKn": [
+        "ಮುಂಚಿತ ಕೆಲಸ ಬಳಕೆಯಾಗದಿದ್ದರೆ ಒಟ್ಟು ಗಣನೆ ಹೆಚ್ಚು",
+        "ಉತ್ತರ ನಿಧಾನ",
+        "ನಿಖರತೆ ತೆಗೆಯುತ್ತದೆ",
+        "ಮಾದರಿ ಬೇಡ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How can concurrent edits be made safe?",
+       "qKn": "ಏಕಕಾಲಿಕ ತಿದ್ದುಪಡಿ ಸುರಕ್ಷಿತ ಹೇಗೆ?",
+       "opts": [
+        "Versions, locks or append-only logs",
+        "Hope for the best",
+        "Delete blocks",
+        "Use bigger fonts"
+       ],
+       "optsKn": [
+        "versions, locks, append-only ಲಾಗ್",
+        "ಆಶಿಸಿ",
+        "blocks ಅಳಿಸಿ",
+        "ದೊಡ್ಡ ಫಾಂಟ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321526",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Hybrid Memory: Mem0 Vector + Graph + KV — Choosing the Right Store",
+  "titleKn": "Hybrid Memory: Mem0 Vector + Graph + KV — ಸರಿಯಾದ ಸಂಗ್ರಹ ಆಯ್ಕೆ",
+  "desc": "What vector, graph and key-value stores each do best, and why real agent memory combines them.",
+  "descKn": "vector, graph, key-value ಸಂಗ್ರಹಗಳು ಪ್ರತಿಯೊಂದು ಏನನ್ನು ಉತ್ತಮವಾಗಿ ಮಾಡುತ್ತವೆ, ನಿಜ ಮೆಮೊರಿ ಅವನ್ನು ಏಕೆ ಸೇರಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Describe what a vector store retrieves and its weaknesses.",
+   "Describe what a graph store captures that vectors do not.",
+   "Explain when an exact key-value lookup is the right tool."
+  ],
+  "objectivesKn": [
+   "vector store ಏನು ಹಿಂಪಡೆಯುತ್ತದೆ ಮತ್ತು ಅದರ ದೌರ್ಬಲ್ಯ ವಿವರಿಸಿ.",
+   "graph store ಏನು ಸೆರೆಹಿಡಿಯುತ್ತದೆ ಎಂದು ವಿವರಿಸಿ.",
+   "ನಿಖರ key-value ಹುಡುಕಾಟ ಯಾವಾಗ ಸರಿ ಎಂದು ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Hybrid Memory: Mem0 Vector + Graph + KV — Choosing the Right Store",
+     "textKn": "Hybrid Memory: Mem0 Vector + Graph + KV — Choosing the Right Store",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Hybrid Memory: Mem0 Vector + Graph + KV",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Vectors: Similar Meaning",
+     "headingKn": "Vectors: ಸಮಾನ ಅರ್ಥ",
+     "bodyEn": "A vector store finds stored text whose meaning is close to the query, even with different wording. It is strong for fuzzy recall but weak at exact facts, counts and relationships.",
+     "bodyKn": "vector store ಪ್ರಶ್ನೆಗೆ ಅರ್ಥದಲ್ಲಿ ಹತ್ತಿರವಿರುವ ಸಂಗ್ರಹಿತ ಪಠ್ಯವನ್ನು ಬೇರೆ ಪದಗಳಲ್ಲಿದ್ದರೂ ಹುಡುಕುತ್ತದೆ. ಅಸ್ಪಷ್ಟ ನೆನಪಿಗೆ ಬಲ; ನಿಖರ ಸತ್ಯ, ಎಣಿಕೆ, ಸಂಬಂಧಗಳಲ್ಲಿ ದುರ್ಬಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Graphs: Entities and Relationships",
+     "headingKn": "Graphs: ಘಟಕಗಳು ಮತ್ತು ಸಂಬಂಧಗಳು",
+     "bodyEn": "A graph stores entities and labelled relations such as person works-at company. It can answer multi-hop questions by following edges, which similarity search alone cannot do reliably.",
+     "bodyKn": "graph ಘಟಕಗಳು ಮತ್ತು ಹೆಸರಿಸಿದ ಸಂಬಂಧಗಳನ್ನು (ವ್ಯಕ್ತಿ ಕೆಲಸ ಮಾಡುತ್ತಾರೆ ಕಂಪನಿ) ಸಂಗ್ರಹಿಸುತ್ತದೆ. edges ಅನುಸರಿಸಿ ಬಹು-ಹಾಪ್ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key-Value: Exact Facts",
+     "headingKn": "Key-Value: ನಿಖರ ಸತ್ಯಗಳು",
+     "bodyEn": "A key-value store returns an exact value for an exact key, such as a user setting or preferred language. It is fast and unambiguous, with no fuzziness to go wrong.",
+     "bodyKn": "key-value store ನಿಖರ key ಗೆ ನಿಖರ ಮೌಲ್ಯ ನೀಡುತ್ತದೆ (ಬಳಕೆದಾರ ಸೆಟ್ಟಿಂಗ್, ಭಾಷೆ). ವೇಗ ಮತ್ತು ಸ್ಪಷ್ಟ; ತಪ್ಪಾಗಲು ಅಸ್ಪಷ್ಟತೆ ಇಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Route Each Question to the Right Store",
+     "headingKn": "ಪ್ರತಿ ಪ್ರಶ್ನೆ ಸರಿಯಾದ ಸಂಗ್ರಹಕ್ಕೆ",
+     "bodyEn": "A hybrid memory writes each new fact to the store that suits it, and at recall time queries several stores and merges the results. The choice of store is part of the design, not an afterthought.",
+     "bodyKn": "ಹೈಬ್ರಿಡ್ ಮೆಮೊರಿ ಪ್ರತಿ ಹೊಸ ಸತ್ಯವನ್ನು ಸೂಕ್ತ ಸಂಗ್ರಹಕ್ಕೆ ಬರೆದು, ಹಿಂಪಡೆಯುವಾಗ ಹಲವು ಸಂಗ್ರಹ ಪ್ರಶ್ನಿಸಿ ಫಲಿತಾಂಶ ಸೇರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Store comparison",
+     "headers": [
+      "Store",
+      "Strong at",
+      "Weak at"
+     ],
+     "rows": [
+      [
+       "Vector",
+       "Fuzzy semantic recall",
+       "Exact values, relations"
+      ],
+      [
+       "Graph",
+       "Relationships, multi-hop",
+       "Loose paraphrase matching"
+      ],
+      [
+       "Key-value",
+       "Exact fast lookup",
+       "Anything not keyed"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Vectors match meaning, graphs follow relations, key-value gives exact values.\n• Real memory combines all three.\n• Choose the store per fact and per question.",
+     "bodyKn": "• Vectors ಅರ್ಥ, graphs ಸಂಬಂಧ, key-value ನಿಖರ ಮೌಲ್ಯ.\n• ನಿಜ ಮೆಮೊರಿ ಮೂರನ್ನೂ ಸೇರಿಸುತ್ತದೆ.\n• ಪ್ರತಿ ಸತ್ಯ, ಪ್ರಶ್ನೆಗೆ ಸಂಗ್ರಹ ಆರಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Which store suits a multi-hop relationship question?",
+       "qKn": "ಬಹು-ಹಾಪ್ ಸಂಬಂಧ ಪ್ರಶ್ನೆಗೆ ಯಾವ ಸಂಗ್ರಹ?",
+       "opts": [
+        "Graph",
+        "Vector only",
+        "Nothing",
+        "A picture"
+       ],
+       "optsKn": [
+        "Graph",
+        "Vector ಮಾತ್ರ",
+        "ಯಾವುದೂ ಅಲ್ಲ",
+        "ಚಿತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is a weakness of a pure vector store?",
+       "qKn": "ಶುದ್ಧ vector store ನ ದೌರ್ಬಲ್ಯ?",
+       "opts": [
+        "Exact facts and relationships",
+        "Paraphrase matching",
+        "Semantic search",
+        "Fuzzy recall"
+       ],
+       "optsKn": [
+        "ನಿಖರ ಸತ್ಯ ಮತ್ತು ಸಂಬಂಧಗಳು",
+        "paraphrase ಹೊಂದಾಣಿಕೆ",
+        "ಅರ್ಥ ಹುಡುಕಾಟ",
+        "ಅಸ್ಪಷ್ಟ ನೆನಪು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When is key-value the right choice?",
+       "qKn": "key-value ಯಾವಾಗ ಸರಿ?",
+       "opts": [
+        "Exact facts like a user setting",
+        "Fuzzy questions",
+        "Relationships",
+        "Never"
+       ],
+       "optsKn": [
+        "ಬಳಕೆದಾರ ಸೆಟ್ಟಿಂಗ್ ನಂತಹ ನಿಖರ ಸತ್ಯ",
+        "ಅಸ್ಪಷ್ಟ ಪ್ರಶ್ನೆ",
+        "ಸಂಬಂಧಗಳು",
+        "ಎಂದಿಗೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321526",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Hybrid Memory: Mem0 Vector + Graph + KV — Extraction, Updates and Evaluation",
+  "titleKn": "Hybrid Memory: Mem0 Vector + Graph + KV — ಹೊರತೆಗೆಯುವಿಕೆ, ನವೀಕರಣ, ಮೌಲ್ಯಮಾಪನ",
+  "desc": "How new facts are extracted from conversation, reconciled with existing memory, and how a hybrid memory is evaluated.",
+  "descKn": "ಸಂಭಾಷಣೆಯಿಂದ ಹೊಸ ಸತ್ಯ ಹೇಗೆ ಹೊರತೆಗೆಯಲಾಗುತ್ತದೆ, ಇರುವ ಮೆಮೊರಿಯೊಂದಿಗೆ ಹೇಗೆ ಹೊಂದಿಸಲಾಗುತ್ತದೆ, ಮೌಲ್ಯಮಾಪನ.",
+  "objectives": [
+   "Describe extracting memorable facts from a conversation.",
+   "Explain add, update, delete and no-op decisions when reconciling.",
+   "Design an evaluation for recall accuracy and staleness."
+  ],
+  "objectivesKn": [
+   "ಸಂಭಾಷಣೆಯಿಂದ ನೆನಪಿಡಬೇಕಾದ ಸತ್ಯ ಹೊರತೆಗೆಯುವುದನ್ನು ವಿವರಿಸಿ.",
+   "ಹೊಂದಾಣಿಕೆ ವೇಳೆ add, update, delete, no-op ನಿರ್ಧಾರ ವಿವರಿಸಿ.",
+   "ನೆನಪು ನಿಖರತೆ ಮತ್ತು ಹಳೆಯದಾಗುವಿಕೆ ಮೌಲ್ಯಮಾಪನ ವಿನ್ಯಾಸಗೊಳಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Hybrid Memory: Mem0 Vector + Graph + KV — Extraction, Updates and Evaluation",
+     "textKn": "Hybrid Memory: Mem0 Vector + Graph + KV — Extraction, Updates and Evaluation",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Hybrid Memory: Mem0 Vector + Graph + KV",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Extract, Do Not Hoard",
+     "headingKn": "ಹೊರತೆಗೆಯಿರಿ, ಕೂಡಿಡಬೇಡಿ",
+     "bodyEn": "Rather than storing every message, an extraction step distils the durable facts and preferences, such as \"prefers Kannada\" or \"works at Acme\". This keeps memory small and searchable.",
+     "bodyKn": "ಪ್ರತಿ ಸಂದೇಶ ಉಳಿಸುವ ಬದಲು extraction ಹಂತ ಶಾಶ್ವತ ಸತ್ಯ ಮತ್ತು ಆದ್ಯತೆಗಳನ್ನು (\"ಕನ್ನಡ ಇಷ್ಟ\", \"Acme ನಲ್ಲಿ ಕೆಲಸ\") ಸಾರವಾಗಿ ಹೊರತೆಗೆಯುತ್ತದೆ. ಮೆಮೊರಿ ಸಣ್ಣ ಮತ್ತು ಹುಡುಕಬಹುದಾದದ್ದಾಗಿರುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Reconcile With What Is Already Known",
+     "headingKn": "ಈಗಾಗಲೇ ತಿಳಿದಿರುವುದರೊಂದಿಗೆ ಹೊಂದಿಸಿ",
+     "bodyEn": "For each candidate fact the system decides: add it, update an existing entry, delete an outdated one, or do nothing because it is a duplicate. Without this step memory fills with contradictions.",
+     "bodyKn": "ಪ್ರತಿ ಅಭ್ಯರ್ಥಿ ಸತ್ಯಕ್ಕೆ: ಸೇರಿಸಿ, ಇರುವುದನ್ನು ನವೀಕರಿಸಿ, ಹಳೆಯದನ್ನು ಅಳಿಸಿ, ಅಥವಾ ನಕಲಾದರೆ ಏನೂ ಮಾಡಬೇಡಿ. ಈ ಹಂತ ಇಲ್ಲದಿದ್ದರೆ ಮೆಮೊರಿ ವಿರೋಧಗಳಿಂದ ತುಂಬುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Privacy and Deletion",
+     "headingKn": "ಗೌಪ್ಯತೆ ಮತ್ತು ಅಳಿಸುವಿಕೆ",
+     "bodyEn": "Persistent memory stores personal information, so it needs user control: viewing, correcting and deleting memories, plus limits on what is stored at all.",
+     "bodyKn": "ಶಾಶ್ವತ ಮೆಮೊರಿ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿ ಸಂಗ್ರಹಿಸುತ್ತದೆ, ಆದ್ದರಿಂದ ಬಳಕೆದಾರ ನಿಯಂತ್ರಣ ಬೇಕು: ನೋಡುವುದು, ತಿದ್ದುವುದು, ಅಳಿಸುವುದು, ಮತ್ತು ಏನು ಸಂಗ್ರಹಿಸಬಹುದು ಎಂಬ ಮಿತಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Evaluate Recall and Staleness",
+     "headingKn": "ನೆನಪು ಮತ್ತು ಹಳೆಯದಾಗುವಿಕೆ ಮೌಲ್ಯಮಾಪನ",
+     "bodyEn": "Build test conversations with known facts, later changes and contradictions, then check that the agent recalls the current value and not the old one. Measure both hit rate and how often stale facts are returned.",
+     "bodyKn": "ತಿಳಿದ ಸತ್ಯಗಳು, ನಂತರದ ಬದಲಾವಣೆ, ವಿರೋಧಗಳಿರುವ ಪರೀಕ್ಷಾ ಸಂಭಾಷಣೆ ನಿರ್ಮಿಸಿ; agent ಪ್ರಸ್ತುತ ಮೌಲ್ಯ ನೆನಪಿಸುತ್ತದೆಯೇ ಎಂದು ಪರಿಶೀಲಿಸಿ. hit rate ಮತ್ತು ಹಳೆಯ ಸತ್ಯ ಹಿಂತಿರುಗುವ ಆವರ್ತನ ಅಳೆಯಿರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Extract durable facts instead of storing raw messages.\n• Reconcile each fact: add, update, delete or ignore.\n• Give users control and test for stale recall.",
+     "bodyKn": "• ಕಚ್ಚಾ ಸಂದೇಶದ ಬದಲು ಶಾಶ್ವತ ಸತ್ಯ ಹೊರತೆಗೆಯಿರಿ.\n• ಪ್ರತಿ ಸತ್ಯ: ಸೇರಿಸಿ, ನವೀಕರಿಸಿ, ಅಳಿಸಿ ಅಥವಾ ನಿರ್ಲಕ್ಷಿಸಿ.\n• ಬಳಕೆದಾರ ನಿಯಂತ್ರಣ, ಹಳೆಯ ನೆನಪು ಪರೀಕ್ಷೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why reconcile new facts with existing memory?",
+       "qKn": "ಹೊಸ ಸತ್ಯಗಳನ್ನು ಇರುವ ಮೆಮೊರಿಯೊಂದಿಗೆ ಏಕೆ ಹೊಂದಿಸಬೇಕು?",
+       "opts": [
+        "To avoid contradictions and duplicates",
+        "To add noise",
+        "To slow down",
+        "To store more messages"
+       ],
+       "optsKn": [
+        "ವಿರೋಧ ಮತ್ತು ನಕಲು ತಪ್ಪಿಸಲು",
+        "ಗದ್ದಲ ಸೇರಿಸಲು",
+        "ನಿಧಾನಗೊಳಿಸಲು",
+        "ಹೆಚ್ಚು ಸಂದೇಶ ಉಳಿಸಲು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What must persistent memory offer users?",
+       "qKn": "ಶಾಶ್ವತ ಮೆಮೊರಿ ಬಳಕೆದಾರರಿಗೆ ಏನು ನೀಡಬೇಕು?",
+       "opts": [
+        "Ways to view, correct and delete stored facts",
+        "Nothing",
+        "Only more storage",
+        "Hidden storage"
+       ],
+       "optsKn": [
+        "ಸಂಗ್ರಹಿತ ಸತ್ಯ ನೋಡುವ, ತಿದ್ದುವ, ಅಳಿಸುವ ಮಾರ್ಗ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಹೆಚ್ಚು ಸಂಗ್ರಹ ಮಾತ್ರ",
+        "ಮರೆಮಾಚಿದ ಸಂಗ್ರಹ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What two things should a memory evaluation measure?",
+       "qKn": "ಮೆಮೊರಿ ಮೌಲ್ಯಮಾಪನ ಅಳೆಯಬೇಕಾದ ಎರಡು ವಿಷಯ?",
+       "opts": [
+        "Hit rate and how often stale facts are returned",
+        "Font size and colour",
+        "Only speed",
+        "Only price"
+       ],
+       "optsKn": [
+        "hit rate ಮತ್ತು ಹಳೆಯ ಸತ್ಯ ಹಿಂತಿರುಗುವ ಆವರ್ತನ",
+        "ಫಾಂಟ್ ಮತ್ತು ಬಣ್ಣ",
+        "ವೇಗ ಮಾತ್ರ",
+        "ಬೆಲೆ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321529",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Skill Libraries and Lifelong Learning: Voyager — Why Agents Should Keep Skills",
+  "titleKn": "Skill Libraries ಮತ್ತು Lifelong Learning: Voyager — ಏಜೆಂಟ್‌ಗಳು ಕೌಶಲ್ಯಗಳನ್ನು ಏಕೆ ಇಡಬೇಕು",
+  "desc": "The idea of storing successful behaviours as reusable, retrievable skills so an agent keeps improving without retraining.",
+  "descKn": "ಯಶಸ್ವಿ ವರ್ತನೆಗಳನ್ನು ಮರುಬಳಕೆ ಮಾಡಬಹುದಾದ ಕೌಶಲ್ಯಗಳಾಗಿ ಸಂಗ್ರಹಿಸಿ ಮರುತರಬೇತಿ ಇಲ್ಲದೆ ಸುಧಾರಿಸುವ ಕಲ್ಪನೆ.",
+  "objectives": [
+   "Explain a skill library as code or procedures stored with descriptions.",
+   "Describe how skills are retrieved and composed for new tasks.",
+   "Explain lifelong learning without changing model weights."
+  ],
+  "objectivesKn": [
+   "skill library ಅನ್ನು ವಿವರಣೆ ಸಹಿತ ಸಂಗ್ರಹಿತ ಕೋಡ್ ಅಥವಾ ವಿಧಾನಗಳೆಂದು ವಿವರಿಸಿ.",
+   "ಹೊಸ ಕೆಲಸಕ್ಕೆ ಕೌಶಲ್ಯ ಹೇಗೆ ಹಿಂಪಡೆಯಲಾಗುತ್ತದೆ ಮತ್ತು ಸಂಯೋಜಿಸಲಾಗುತ್ತದೆ ಎಂದು ವಿವರಿಸಿ.",
+   "ತೂಕ ಬದಲಿಸದೆ ಆಜೀವ ಕಲಿಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Skill Libraries and Lifelong Learning: Voyager — Why Agents Should Keep Skills",
+     "textKn": "Skill Libraries and Lifelong Learning: Voyager — Why Agents Should Keep Skills",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Skill Libraries and Lifelong Learning: Voyager",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Skills as Reusable Code",
+     "headingKn": "ಮರುಬಳಕೆ ಕೋಡ್ ಆಗಿ ಕೌಶಲ್ಯಗಳು",
+     "bodyEn": "When an agent solves a task, the working solution is saved as a named skill with a short description. Because a skill is executable code or a tested procedure, reusing it is reliable and cheap compared with reasoning from scratch.",
+     "bodyKn": "agent ಒಂದು ಕೆಲಸ ಪರಿಹರಿಸಿದಾಗ ಕೆಲಸ ಮಾಡಿದ ಪರಿಹಾರವನ್ನು ಚಿಕ್ಕ ವಿವರಣೆಯೊಂದಿಗೆ ಹೆಸರಿಸಿದ ಕೌಶಲ್ಯವಾಗಿ ಉಳಿಸಲಾಗುತ್ತದೆ. ಅದು ಚಲಾಯಿಸಬಹುದಾದ ಕೋಡ್ ಆದ್ದರಿಂದ ಮರುಬಳಕೆ ವಿಶ್ವಾಸಾರ್ಹ ಮತ್ತು ಅಗ್ಗ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Retrieve and Compose",
+     "headingKn": "ಹಿಂಪಡೆಯಿರಿ ಮತ್ತು ಸಂಯೋಜಿಸಿ",
+     "bodyEn": "For a new task the agent searches the library by description, picks relevant skills and combines them, so complex behaviour is built from simpler tested parts.",
+     "bodyKn": "ಹೊಸ ಕೆಲಸಕ್ಕೆ agent ವಿವರಣೆ ಮೂಲಕ library ಹುಡುಕಿ, ಸಂಬಂಧಿತ ಕೌಶಲ್ಯ ಆರಿಸಿ ಸೇರಿಸುತ್ತದೆ; ಸಂಕೀರ್ಣ ವರ್ತನೆ ಸರಳ ಪರೀಕ್ಷಿತ ಭಾಗಗಳಿಂದ ನಿರ್ಮಾಣ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Learning Without Retraining",
+     "headingKn": "ಮರುತರಬೇತಿ ಇಲ್ಲದೆ ಕಲಿಕೆ",
+     "bodyEn": "The model stays frozen; growth comes from the library. This is lifelong learning through accumulated, inspectable artifacts rather than weight updates.",
+     "bodyKn": "ಮಾದರಿ ಬದಲಾಗುವುದಿಲ್ಲ; ಬೆಳವಣಿಗೆ library ಇಂದ. ತೂಕ ಬದಲಾವಣೆಯಲ್ಲ, ಸಂಗ್ರಹವಾದ ಪರಿಶೀಲಿಸಬಹುದಾದ ವಸ್ತುಗಳ ಮೂಲಕ ಆಜೀವ ಕಲಿಕೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Curriculum Matters",
+     "headingKn": "ಪಠ್ಯಕ್ರಮ ಮುಖ್ಯ",
+     "bodyEn": "Learning easier tasks first produces skills that later tasks can build on. An automatic curriculum that proposes tasks just beyond current ability keeps the library growing usefully.",
+     "bodyKn": "ಸುಲಭ ಕೆಲಸ ಮೊದಲು ಕಲಿತರೆ ನಂತರದ ಕೆಲಸಗಳು ಅವುಗಳ ಮೇಲೆ ನಿರ್ಮಿಸಬಹುದು. ಪ್ರಸ್ತುತ ಸಾಮರ್ಥ್ಯಕ್ಕಿಂತ ಸ್ವಲ್ಪ ಮೀರಿದ ಕೆಲಸ ಸೂಚಿಸುವ ಸ್ವಯಂ ಪಠ್ಯಕ್ರಮ library ಉಪಯುಕ್ತವಾಗಿ ಬೆಳೆಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Save working solutions as named, described skills.\n• Retrieve and compose skills for new tasks.\n• Growth comes from the library, not weight updates.",
+     "bodyKn": "• ಕೆಲಸ ಮಾಡಿದ ಪರಿಹಾರಗಳನ್ನು ಕೌಶಲ್ಯಗಳಾಗಿ ಉಳಿಸಿ.\n• ಹೊಸ ಕೆಲಸಕ್ಕೆ ಹಿಂಪಡೆದು ಸಂಯೋಜಿಸಿ.\n• ಬೆಳವಣಿಗೆ library ಇಂದ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why is reusing a stored skill reliable?",
+       "qKn": "ಸಂಗ್ರಹಿತ ಕೌಶಲ್ಯದ ಮರುಬಳಕೆ ವಿಶ್ವಾಸಾರ್ಹ ಏಕೆ?",
+       "opts": [
+        "It is tested code or procedure",
+        "It is random",
+        "It changes each time",
+        "It has no description"
+       ],
+       "optsKn": [
+        "ಪರೀಕ್ಷಿತ ಕೋಡ್ ಅಥವಾ ವಿಧಾನ",
+        "ಯಾದೃಚ್ಛಿಕ",
+        "ಪ್ರತಿ ಬಾರಿ ಬದಲಾಗುತ್ತದೆ",
+        "ವಿವರಣೆ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "How does the agent learn without retraining?",
+       "qKn": "ಮರುತರಬೇತಿ ಇಲ್ಲದೆ agent ಹೇಗೆ ಕಲಿಯುತ್ತದೆ?",
+       "opts": [
+        "By accumulating skills in a library",
+        "By changing weights",
+        "By deleting skills",
+        "It cannot"
+       ],
+       "optsKn": [
+        "library ನಲ್ಲಿ ಕೌಶಲ್ಯ ಕೂಡಿಸುವ ಮೂಲಕ",
+        "ತೂಕ ಬದಲಿಸಿ",
+        "ಕೌಶಲ್ಯ ಅಳಿಸಿ",
+        "ಸಾಧ್ಯವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why does task order matter?",
+       "qKn": "ಕೆಲಸದ ಕ್ರಮ ಏಕೆ ಮುಖ್ಯ?",
+       "opts": [
+        "Easier skills become building blocks for harder tasks",
+        "It does not",
+        "Harder first always",
+        "Order is random"
+       ],
+       "optsKn": [
+        "ಸುಲಭ ಕೌಶಲ್ಯಗಳು ಕಠಿಣ ಕೆಲಸಗಳ ಆಧಾರ",
+        "ಮುಖ್ಯವಲ್ಲ",
+        "ಯಾವಾಗಲೂ ಕಠಿಣ ಮೊದಲು",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b321529",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Skill Libraries and Lifelong Learning: Voyager — Verification, Growth and Risks",
+  "titleKn": "Skill Libraries ಮತ್ತು Lifelong Learning: Voyager — ಪರಿಶೀಲನೆ, ಬೆಳವಣಿಗೆ, ಅಪಾಯ",
+  "desc": "How to verify a skill before saving it, keep the library healthy as it grows, and avoid dangerous or brittle skills.",
+  "descKn": "ಉಳಿಸುವ ಮೊದಲು ಕೌಶಲ್ಯ ಪರಿಶೀಲಿಸುವುದು, library ಆರೋಗ್ಯಕರವಾಗಿ ಇಡುವುದು, ಅಪಾಯಕಾರಿ ಅಥವಾ ದುರ್ಬಲ ಕೌಶಲ್ಯ ತಪ್ಪಿಸುವುದು.",
+  "objectives": [
+   "Explain why a skill must be verified before it is stored.",
+   "Describe library maintenance: deduplication, versioning and retirement.",
+   "Identify safety risks of executing self-written code."
+  ],
+  "objectivesKn": [
+   "ಸಂಗ್ರಹಿಸುವ ಮೊದಲು ಕೌಶಲ್ಯ ಪರಿಶೀಲಿಸಬೇಕು ಏಕೆ ಎಂದು ವಿವರಿಸಿ.",
+   "library ನಿರ್ವಹಣೆ ವಿವರಿಸಿ.",
+   "ಸ್ವಯಂ ಬರೆದ ಕೋಡ್ ಚಲಾಯಿಸುವ ಸುರಕ್ಷತಾ ಅಪಾಯ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Skill Libraries and Lifelong Learning: Voyager — Verification, Growth and Risks",
+     "textKn": "Skill Libraries and Lifelong Learning: Voyager — Verification, Growth and Risks",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Skill Libraries and Lifelong Learning: Voyager",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Verify Before Saving",
+     "headingKn": "ಉಳಿಸುವ ಮೊದಲು ಪರಿಶೀಲಿಸಿ",
+     "bodyEn": "A skill should be stored only after evidence that it worked, such as the task check passing. Saving unverified code fills the library with plausible but broken skills that later tasks will trust.",
+     "bodyKn": "ಅದು ಕೆಲಸ ಮಾಡಿದೆ ಎಂಬ ಸಾಕ್ಷ್ಯದ ನಂತರ ಮಾತ್ರ ಕೌಶಲ್ಯ ಉಳಿಸಿ. ಪರಿಶೀಲಿಸದ ಕೋಡ್ ಉಳಿಸಿದರೆ library ನಂಬಲರ್ಹವೆನಿಸುವ ಆದರೆ ಮುರಿದ ಕೌಶಲ್ಯಗಳಿಂದ ತುಂಬುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Keep the Library Healthy",
+     "headingKn": "Library ಆರೋಗ್ಯಕರವಾಗಿಡಿ",
+     "bodyEn": "Large libraries develop near-duplicates and outdated skills. Merge duplicates, version changes and retire skills that repeatedly fail, or retrieval will return clutter.",
+     "bodyKn": "ದೊಡ್ಡ libraries ನಲ್ಲಿ ಸುಮಾರು ನಕಲು ಮತ್ತು ಹಳೆಯ ಕೌಶಲ್ಯ ಬೆಳೆಯುತ್ತವೆ. ನಕಲು ವಿಲೀನ, ಬದಲಾವಣೆ ಆವೃತ್ತಿ, ಪುನಃ ವಿಫಲವಾಗುವುದನ್ನು ನಿವೃತ್ತಿಗೊಳಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Retrieval Quality Limits Reuse",
+     "headingKn": "ಹಿಂಪಡೆಯುವಿಕೆ ಗುಣಮಟ್ಟ ಮರುಬಳಕೆ ಮಿತಿಗೊಳಿಸುತ್ತದೆ",
+     "bodyEn": "A perfect skill is useless if it is never found. Clear names and descriptions written for retrieval, not only for humans, decide whether the library is actually used.",
+     "bodyKn": "ಎಂದಿಗೂ ಸಿಗದ ಪರಿಪೂರ್ಣ ಕೌಶಲ್ಯ ಉಪಯೋಗವಿಲ್ಲ. ಹಿಂಪಡೆಯಲು ಬರೆದ ಸ್ಪಷ್ಟ ಹೆಸರು ಮತ್ತು ವಿವರಣೆ library ಬಳಕೆಯಾಗುತ್ತದೆಯೇ ಎಂದು ನಿರ್ಧರಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Executing Self-Written Code Is Risky",
+     "headingKn": "ಸ್ವಯಂ ಬರೆದ ಕೋಡ್ ಚಲಾಯಿಸುವುದು ಅಪಾಯಕಾರಿ",
+     "bodyEn": "Skills are code, so they must run in a sandbox with limited permissions. A saved skill that deletes files or leaks data is a persistent hazard, not a one-time mistake.",
+     "bodyKn": "ಕೌಶಲ್ಯಗಳು ಕೋಡ್, ಆದ್ದರಿಂದ ಸೀಮಿತ ಅನುಮತಿಯ sandbox ನಲ್ಲಿ ಚಲಿಸಬೇಕು. ಫೈಲ್ ಅಳಿಸುವ ಅಥವಾ ಡೇಟಾ ಸೋರಿಸುವ ಉಳಿಸಿದ ಕೌಶಲ್ಯ ಶಾಶ್ವತ ಅಪಾಯ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Store skills only after they are verified.\n• Deduplicate, version and retire skills.\n• Run stored code in a sandbox.",
+     "bodyKn": "• ಪರಿಶೀಲಿಸಿದ ನಂತರ ಮಾತ್ರ ಉಳಿಸಿ.\n• ನಕಲು ವಿಲೀನ, ಆವೃತ್ತಿ, ನಿವೃತ್ತಿ.\n• sandbox ನಲ್ಲಿ ಚಲಾಯಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why verify a skill before saving it?",
+       "qKn": "ಉಳಿಸುವ ಮೊದಲು ಕೌಶಲ್ಯ ಏಕೆ ಪರಿಶೀಲಿಸಬೇಕು?",
+       "opts": [
+        "Broken skills would be trusted by later tasks",
+        "To make it longer",
+        "To hide it",
+        "It is optional"
+       ],
+       "optsKn": [
+        "ಮುರಿದ ಕೌಶಲ್ಯವನ್ನು ನಂತರದ ಕೆಲಸಗಳು ನಂಬುತ್ತವೆ",
+        "ಉದ್ದ ಮಾಡಲು",
+        "ಮರೆಮಾಡಲು",
+        "ಐಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What causes clutter in a large library?",
+       "qKn": "ದೊಡ್ಡ library ಯಲ್ಲಿ ಗೊಂದಲಕ್ಕೆ ಕಾರಣ?",
+       "opts": [
+        "Near-duplicates and outdated skills",
+        "Too few skills",
+        "Short names",
+        "Sandboxes"
+       ],
+       "optsKn": [
+        "ಸುಮಾರು ನಕಲು ಮತ್ತು ಹಳೆಯ ಕೌಶಲ್ಯ",
+        "ಕಡಿಮೆ ಕೌಶಲ್ಯ",
+        "ಚಿಕ್ಕ ಹೆಸರು",
+        "sandboxes"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Where should stored skill code run?",
+       "qKn": "ಸಂಗ್ರಹಿತ ಕೌಶಲ್ಯ ಕೋಡ್ ಎಲ್ಲಿ ಚಲಿಸಬೇಕು?",
+       "opts": [
+        "In a sandbox with limited permissions",
+        "With full system access",
+        "Nowhere",
+        "On the user desktop"
+       ],
+       "optsKn": [
+        "ಸೀಮಿತ ಅನುಮತಿಯ sandbox ನಲ್ಲಿ",
+        "ಪೂರ್ಣ ಸಿಸ್ಟಮ್ ಪ್ರವೇಶದೊಂದಿಗೆ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಬಳಕೆದಾರ ಡೆಸ್ಕ್‌ಟಾಪ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b32152c",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Planning with HTN and Evolutionary Search — Decomposition Versus Search",
+  "titleKn": "HTN ಮತ್ತು Evolutionary Search ನೊಂದಿಗೆ ಯೋಜನೆ — ವಿಭಜನೆ vs ಶೋಧನೆ",
+  "desc": "Two different planning ideas: breaking a goal into subtasks with known methods, and improving candidate solutions by mutation and selection.",
+  "descKn": "ಎರಡು ಬೇರೆ ಯೋಜನಾ ಕಲ್ಪನೆ: ತಿಳಿದ ವಿಧಾನಗಳಿಂದ ಗುರಿಯನ್ನು ಉಪಕಾರ್ಯಗಳಾಗಿ ಒಡೆಯುವುದು, ಮತ್ತು mutation ಹಾಗೂ selection ಮೂಲಕ ಪರಿಹಾರ ಸುಧಾರಿಸುವುದು.",
+  "objectives": [
+   "Explain hierarchical task network planning with methods and primitives.",
+   "Explain evolutionary search: population, fitness, mutation, selection.",
+   "Choose between them based on how much domain knowledge exists."
+  ],
+  "objectivesKn": [
+   "ವಿಧಾನಗಳು ಮತ್ತು ಮೂಲ ಕ್ರಿಯೆಗಳೊಂದಿಗೆ HTN ಯೋಜನೆ ವಿವರಿಸಿ.",
+   "evolutionary search ವಿವರಿಸಿ.",
+   "ಡೊಮೇನ್ ಜ್ಞಾನದ ಆಧಾರದಲ್ಲಿ ಆಯ್ಕೆ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Planning with HTN and Evolutionary Search — Decomposition Versus Search",
+     "textKn": "Planning with HTN and Evolutionary Search — Decomposition Versus Search",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Planning with HTN and Evolutionary Search",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Hierarchical Task Networks",
+     "headingKn": "Hierarchical Task Networks",
+     "bodyEn": "HTN planning starts from a high-level task and repeatedly replaces it with a known method that lists subtasks, until only directly executable primitive actions remain. It works well when experts can write the methods.",
+     "bodyKn": "HTN ಯೋಜನೆ ಉನ್ನತ ಮಟ್ಟದ ಕೆಲಸದಿಂದ ಆರಂಭಿಸಿ, ಉಪಕಾರ್ಯ ಪಟ್ಟಿ ಮಾಡುವ ತಿಳಿದ ವಿಧಾನದಿಂದ ಪದೇ ಪದೇ ಬದಲಿಸಿ, ನೇರ ಕ್ರಿಯೆಗಳು ಮಾತ್ರ ಉಳಿಯುವವರೆಗೆ ಮುಂದುವರಿಯುತ್ತದೆ. ತಜ್ಞರು ವಿಧಾನ ಬರೆಯಬಲ್ಲರೆ ಚೆನ್ನಾಗಿ ಕೆಲಸ ಮಾಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Evolutionary Search",
+     "headingKn": "Evolutionary Search",
+     "bodyEn": "Evolutionary search keeps a population of candidate solutions, scores each with a fitness function, keeps the better ones and creates new candidates by mutating or combining them. It needs no method library, only a way to score.",
+     "bodyKn": "ಅಭ್ಯರ್ಥಿ ಪರಿಹಾರಗಳ ಸಮೂಹ ಇಟ್ಟು, ಪ್ರತಿಯೊಂದಕ್ಕೆ fitness ಅಂಕ ನೀಡಿ, ಉತ್ತಮವಾದವನ್ನು ಉಳಿಸಿ, mutation ಅಥವಾ ಸಂಯೋಜನೆಯಿಂದ ಹೊಸವನ್ನು ರಚಿಸುತ್ತದೆ. ವಿಧಾನ library ಬೇಡ, ಅಂಕ ನೀಡುವ ಮಾರ್ಗ ಮಾತ್ರ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Knowledge Versus Search",
+     "headingKn": "ಜ್ಞಾನ vs ಶೋಧನೆ",
+     "bodyEn": "HTN encodes human knowledge, so it is fast and explainable but limited to what the methods cover. Evolutionary search discovers unexpected solutions but spends many evaluations and gives no guarantee.",
+     "bodyKn": "HTN ಮಾನವ ಜ್ಞಾನ ಒಳಗೊಂಡಿದ್ದು ವೇಗ ಮತ್ತು ವಿವರಿಸಬಹುದಾದದ್ದು, ಆದರೆ ವಿಧಾನಗಳು ಒಳಗೊಂಡಷ್ಟೇ. Evolutionary search ಅನಿರೀಕ್ಷಿತ ಪರಿಹಾರ ಕಂಡುಹಿಡಿಯುತ್ತದೆ ಆದರೆ ಹೆಚ್ಚು ಮೌಲ್ಯಮಾಪನ, ಭರವಸೆ ಇಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Combining Them With Language Models",
+     "headingKn": "ಭಾಷಾ ಮಾದರಿಗಳೊಂದಿಗೆ ಸಂಯೋಜನೆ",
+     "bodyEn": "A language model can propose decompositions like an HTN method, or act as the mutation operator in an evolutionary loop, proposing edits to a candidate. A programmatic scorer keeps both grounded.",
+     "bodyKn": "ಭಾಷಾ ಮಾದರಿ HTN ವಿಧಾನದಂತೆ ವಿಭಜನೆ ಸೂಚಿಸಬಹುದು, ಅಥವಾ evolutionary loop ನಲ್ಲಿ mutation operator ಆಗಿ ಅಭ್ಯರ್ಥಿಗೆ ತಿದ್ದುಪಡಿ ಸೂಚಿಸಬಹುದು. ಪ್ರೋಗ್ರಾಂ ಅಂಕಕ ಎರಡನ್ನೂ ನೆಲಕ್ಕೆ ಇಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "HTN versus evolutionary search",
+     "headers": [
+      "Aspect",
+      "HTN",
+      "Evolutionary"
+     ],
+     "rows": [
+      [
+       "Needs",
+       "Methods written by experts",
+       "A fitness function"
+      ],
+      [
+       "Strength",
+       "Fast, explainable",
+       "Finds unexpected solutions"
+      ],
+      [
+       "Weakness",
+       "Limited to known methods",
+       "Many evaluations, no guarantee"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• HTN decomposes goals with known methods.\n• Evolution improves candidates by scoring and mutation.\n• Language models can play either role; a scorer keeps them grounded.",
+     "bodyKn": "• HTN ತಿಳಿದ ವಿಧಾನಗಳಿಂದ ಗುರಿ ಒಡೆಯುತ್ತದೆ.\n• Evolution ಅಂಕ ಮತ್ತು mutation ಇಂದ ಸುಧಾರಿಸುತ್ತದೆ.\n• ಮಾದರಿ ಎರಡರ ಪಾತ್ರ ವಹಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does HTN planning need?",
+       "qKn": "HTN ಯೋಜನೆಗೆ ಏನು ಬೇಕು?",
+       "opts": [
+        "Known decomposition methods",
+        "A random seed only",
+        "No knowledge at all",
+        "A camera"
+       ],
+       "optsKn": [
+        "ತಿಳಿದ ವಿಭಜನಾ ವಿಧಾನಗಳು",
+        "ಯಾದೃಚ್ಛಿಕ seed ಮಾತ್ರ",
+        "ಯಾವುದೇ ಜ್ಞಾನವಿಲ್ಲ",
+        "ಕ್ಯಾಮೆರಾ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What does evolutionary search need?",
+       "qKn": "evolutionary search ಗೆ ಏನು ಬೇಕು?",
+       "opts": [
+        "A way to score candidates",
+        "A method library",
+        "Perfect knowledge",
+        "A human for every step"
+       ],
+       "optsKn": [
+        "ಅಭ್ಯರ್ಥಿಗಳಿಗೆ ಅಂಕ ನೀಡುವ ಮಾರ್ಗ",
+        "ವಿಧಾನ library",
+        "ಪರಿಪೂರ್ಣ ಜ್ಞಾನ",
+        "ಪ್ರತಿ ಹಂತಕ್ಕೆ ಮಾನವ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Which is a strength of HTN?",
+       "qKn": "HTN ನ ಬಲ ಯಾವುದು?",
+       "opts": [
+        "Fast and explainable plans",
+        "Discovers unexpected solutions",
+        "Needs no methods",
+        "Always optimal"
+       ],
+       "optsKn": [
+        "ವೇಗ ಮತ್ತು ವಿವರಿಸಬಹುದಾದ ಯೋಜನೆ",
+        "ಅನಿರೀಕ್ಷಿತ ಪರಿಹಾರ",
+        "ವಿಧಾನ ಬೇಡ",
+        "ಯಾವಾಗಲೂ ಅತ್ಯುತ್ತಮ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b32152c",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Planning with HTN and Evolutionary Search — Fitness Design, Pitfalls and Hybrids",
+  "titleKn": "HTN ಮತ್ತು Evolutionary Search ನೊಂದಿಗೆ ಯೋಜನೆ — Fitness ವಿನ್ಯಾಸ, ಅಪಾಯ, ಹೈಬ್ರಿಡ್",
+  "desc": "How to design a fitness function that measures what you mean, avoid gaming, and combine decomposition with search.",
+  "descKn": "ನೀವು ಉದ್ದೇಶಿಸಿದ್ದನ್ನು ಅಳೆಯುವ fitness ಹೇಗೆ ವಿನ್ಯಾಸ, ದುರುಪಯೋಗ ತಪ್ಪಿಸುವುದು, ವಿಭಜನೆ ಮತ್ತು ಶೋಧನೆ ಸಂಯೋಜನೆ.",
+  "objectives": [
+   "Write fitness functions that reward the true goal.",
+   "Recognise gaming and premature convergence.",
+   "Combine decomposition with local search for better results."
+  ],
+  "objectivesKn": [
+   "ನಿಜ ಗುರಿಗೆ ಬಹುಮಾನ ನೀಡುವ fitness ಬರೆಯಿರಿ.",
+   "ದುರುಪಯೋಗ ಮತ್ತು ಅಕಾಲಿಕ ಒಮ್ಮತ ಗುರುತಿಸಿ.",
+   "ವಿಭಜನೆ ಮತ್ತು ಸ್ಥಳೀಯ ಶೋಧನೆ ಸಂಯೋಜಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Planning with HTN and Evolutionary Search — Fitness Design, Pitfalls and Hybrids",
+     "textKn": "Planning with HTN and Evolutionary Search — Fitness Design, Pitfalls and Hybrids",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Planning with HTN and Evolutionary Search",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Fitness Is the Specification",
+     "headingKn": "Fitness ಎಂದರೆ ವಿಶೇಷಣ",
+     "bodyEn": "Search optimises exactly what you score, not what you intended. A fitness that misses a requirement will be exploited by candidates that satisfy the score while failing the real goal.",
+     "bodyKn": "ಶೋಧನೆ ನೀವು ಅಂಕ ನೀಡಿದ್ದನ್ನೇ ಸುಧಾರಿಸುತ್ತದೆ, ಉದ್ದೇಶಿಸಿದ್ದನ್ನಲ್ಲ. ಅವಶ್ಯಕತೆ ಬಿಟ್ಟ fitness ಅನ್ನು ಅಂಕ ಪೂರೈಸಿ ನಿಜ ಗುರಿ ವಿಫಲಗೊಳಿಸುವ ಅಭ್ಯರ್ಥಿಗಳು ದುರುಪಯೋಗಿಸುತ್ತಾರೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Premature Convergence",
+     "headingKn": "ಅಕಾಲಿಕ ಒಮ್ಮತ",
+     "bodyEn": "If one good candidate dominates early, the population becomes uniform and stops exploring. Keep diversity by keeping several distinct candidates or occasionally injecting random variation.",
+     "bodyKn": "ಒಂದು ಉತ್ತಮ ಅಭ್ಯರ್ಥಿ ಆರಂಭದಲ್ಲೇ ಪ್ರಾಬಲ್ಯ ಪಡೆದರೆ ಸಮೂಹ ಏಕರೂಪವಾಗಿ ಶೋಧನೆ ನಿಲ್ಲಿಸುತ್ತದೆ. ವಿಭಿನ್ನ ಅಭ್ಯರ್ಥಿಗಳನ್ನು ಉಳಿಸಿ ಅಥವಾ ಯಾದೃಚ್ಛಿಕ ಬದಲಾವಣೆ ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Decompose First, Search Inside",
+     "headingKn": "ಮೊದಲು ವಿಭಜಿಸಿ, ಒಳಗೆ ಹುಡುಕಿ",
+     "bodyEn": "A hybrid uses decomposition to split a large problem into pieces, then applies search to tune each piece. This keeps the search space small while still allowing surprising solutions.",
+     "bodyKn": "ಹೈಬ್ರಿಡ್ ದೊಡ್ಡ ಸಮಸ್ಯೆಯನ್ನು ವಿಭಜನೆಯಿಂದ ಭಾಗಗಳಾಗಿ ಒಡೆದು, ಪ್ರತಿ ಭಾಗವನ್ನು ಶೋಧನೆಯಿಂದ ಹೊಂದಿಸುತ್ತದೆ. ಶೋಧನಾ ಸ್ಥಳ ಸಣ್ಣದಾಗಿರುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Budget and Stopping",
+     "headingKn": "ಬಜೆಟ್ ಮತ್ತು ನಿಲ್ಲಿಸುವುದು",
+     "bodyEn": "Each fitness evaluation may be a model call or a test run, so set a generation limit and stop when improvement stalls. Report the best candidate found and how it was scored.",
+     "bodyKn": "ಪ್ರತಿ ಮೌಲ್ಯಮಾಪನ ಮಾದರಿ ಕರೆ ಅಥವಾ ಪರೀಕ್ಷೆ ಆಗಿರಬಹುದು, ಆದ್ದರಿಂದ ತಲೆಮಾರು ಮಿತಿ ಹಾಕಿ, ಸುಧಾರಣೆ ನಿಂತಾಗ ನಿಲ್ಲಿಸಿ. ಅತ್ಯುತ್ತಮ ಅಭ್ಯರ್ಥಿ ಮತ್ತು ಅಂಕ ಹೇಗೆ ನೀಡಿತು ಎಂದು ವರದಿ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Search optimises what you score: design fitness carefully.\n• Maintain diversity to avoid premature convergence.\n• Hybrids decompose first, then search inside pieces.",
+     "bodyKn": "• ಶೋಧನೆ ನೀವು ಅಂಕ ನೀಡಿದ್ದನ್ನು ಸುಧಾರಿಸುತ್ತದೆ.\n• ವೈವಿಧ್ಯ ಉಳಿಸಿ.\n• ಮೊದಲು ವಿಭಜಿಸಿ, ನಂತರ ಶೋಧಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why can a poor fitness function be dangerous?",
+       "qKn": "ಕಳಪೆ fitness ಅಪಾಯಕಾರಿ ಏಕೆ?",
+       "opts": [
+        "Candidates can exploit it while missing the real goal",
+        "It makes models smaller",
+        "It speeds up training",
+        "It is harmless"
+       ],
+       "optsKn": [
+        "ನಿಜ ಗುರಿ ಬಿಟ್ಟು ಅಭ್ಯರ್ಥಿಗಳು ದುರುಪಯೋಗಿಸಬಹುದು",
+        "ಮಾದರಿ ಚಿಕ್ಕದಾಗುತ್ತದೆ",
+        "ತರಬೇತಿ ವೇಗ",
+        "ಹಾನಿ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is premature convergence?",
+       "qKn": "ಅಕಾಲಿಕ ಒಮ್ಮತ ಎಂದರೇನು?",
+       "opts": [
+        "The population becomes uniform too early and stops exploring",
+        "Search finishes perfectly",
+        "Fitness is ignored",
+        "The model is retrained"
+       ],
+       "optsKn": [
+        "ಸಮೂಹ ಬೇಗ ಏಕರೂಪವಾಗಿ ಶೋಧನೆ ನಿಲ್ಲಿಸುತ್ತದೆ",
+        "ಶೋಧನೆ ಪರಿಪೂರ್ಣ ಮುಗಿಯುತ್ತದೆ",
+        "fitness ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಮಾದರಿ ಮರುತರಬೇತಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why decompose first in a hybrid?",
+       "qKn": "ಹೈಬ್ರಿಡ್‌ನಲ್ಲಿ ಮೊದಲು ಏಕೆ ವಿಭಜಿಸಬೇಕು?",
+       "opts": [
+        "It keeps the search space small",
+        "It removes scoring",
+        "It needs no tests",
+        "It forbids search"
+       ],
+       "optsKn": [
+        "ಶೋಧನಾ ಸ್ಥಳ ಸಣ್ಣದಾಗುತ್ತದೆ",
+        "ಅಂಕ ತೆಗೆಯುತ್ತದೆ",
+        "ಪರೀಕ್ಷೆ ಬೇಡ",
+        "ಶೋಧನೆ ನಿಷೇಧ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b32152f",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Anthropic's Workflow Patterns — Choosing a Pattern for the Task",
+  "titleKn": "Anthropic ಕಾರ್ಯಪ್ರವಾಹ ಮಾದರಿಗಳು — ಕೆಲಸಕ್ಕೆ ಮಾದರಿ ಆರಿಸುವುದು",
+  "desc": "A guide to when to use prompt chaining, routing, parallelization, orchestrator-workers and evaluator-optimizer, and when a simple call is enough.",
+  "descKn": "prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer ಯಾವಾಗ ಬಳಸಬೇಕು, ಸರಳ ಕರೆ ಯಾವಾಗ ಸಾಕು.",
+  "objectives": [
+   "Describe each of the five workflow patterns and its ideal use.",
+   "Explain the difference between a workflow and an agent.",
+   "Apply the principle: use the simplest pattern that works."
+  ],
+  "objectivesKn": [
+   "ಐದು ಕಾರ್ಯಪ್ರವಾಹ ಮಾದರಿ ಮತ್ತು ಆದರ್ಶ ಬಳಕೆ ವಿವರಿಸಿ.",
+   "workflow ಮತ್ತು agent ವ್ಯತ್ಯಾಸ ವಿವರಿಸಿ.",
+   "ಕೆಲಸ ಮಾಡುವ ಅತಿ ಸರಳ ಮಾದರಿ ಬಳಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Anthropic's Workflow Patterns — Choosing a Pattern for the Task",
+     "textKn": "Anthropic's Workflow Patterns — Choosing a Pattern for the Task",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Anthropic's Workflow Patterns",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Workflows Versus Agents",
+     "headingKn": "Workflows vs Agents",
+     "bodyEn": "In a workflow, code decides the path through model calls and tools. In an agent, the model decides the path dynamically. Workflows are predictable and cheaper to test; agents are flexible but harder to control.",
+     "bodyKn": "workflow ನಲ್ಲಿ ಕೋಡ್ ಹಾದಿ ನಿರ್ಧರಿಸುತ್ತದೆ. agent ನಲ್ಲಿ ಮಾದರಿ ಹಾದಿಯನ್ನು ಕ್ರಿಯಾತ್ಮಕವಾಗಿ ನಿರ್ಧರಿಸುತ್ತದೆ. workflows ಊಹಿಸಬಹುದಾದ, ಪರೀಕ್ಷೆ ಅಗ್ಗ; agents ಹೊಂದಿಕೊಳ್ಳುವವು ಆದರೆ ನಿಯಂತ್ರಣ ಕಠಿಣ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Chaining and Routing",
+     "headingKn": "Chaining ಮತ್ತು Routing",
+     "bodyEn": "Prompt chaining splits a task into fixed sequential steps, each using the previous output, with optional checks between them. Routing classifies the input first and sends it to a specialised prompt or model.",
+     "bodyKn": "Prompt chaining ಕೆಲಸವನ್ನು ನಿಗದಿತ ಅನುಕ್ರಮ ಹಂತಗಳಾಗಿ ವಿಭಜಿಸುತ್ತದೆ; ಪ್ರತಿ ಹಂತ ಹಿಂದಿನ ಔಟ್‌ಪುಟ್ ಬಳಸುತ್ತದೆ. Routing ಮೊದಲು ಇನ್‌ಪುಟ್ ವರ್ಗೀಕರಿಸಿ ವಿಶೇಷ prompt ಅಥವಾ ಮಾದರಿಗೆ ಕಳುಹಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Parallelization and Orchestrator-Workers",
+     "headingKn": "Parallelization ಮತ್ತು Orchestrator-Workers",
+     "bodyEn": "Parallelization runs independent subtasks at once, or the same task several times for a vote. Orchestrator-workers lets a central model break down an unpredictable task into subtasks and delegate them to worker calls.",
+     "bodyKn": "Parallelization ಸ್ವತಂತ್ರ ಉಪಕಾರ್ಯಗಳನ್ನು ಒಟ್ಟಿಗೆ ಅಥವಾ ಒಂದೇ ಕೆಲಸ ಹಲವು ಬಾರಿ ಮತದಾನಕ್ಕೆ ಚಲಾಯಿಸುತ್ತದೆ. Orchestrator-workers ಅನಿರೀಕ್ಷಿತ ಕೆಲಸವನ್ನು ಕೇಂದ್ರ ಮಾದರಿ ಉಪಕಾರ್ಯಗಳಾಗಿ ಒಡೆದು workers ಗೆ ವಹಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Evaluator-Optimizer and Simplicity",
+     "headingKn": "Evaluator-Optimizer ಮತ್ತು ಸರಳತೆ",
+     "bodyEn": "Evaluator-optimizer loops a generator with a critic until quality criteria are met. Whatever the pattern, start with the simplest one that works, often a single well-prompted call, and add complexity only when measurements show a need.",
+     "bodyKn": "Evaluator-optimizer ಗುಣಮಟ್ಟ ಮಾನದಂಡ ಪೂರೈಸುವವರೆಗೆ generator ಮತ್ತು ವಿಮರ್ಶಕನ ಲೂಪ್. ಯಾವ ಮಾದರಿಯಾದರೂ ಕೆಲಸ ಮಾಡುವ ಅತಿ ಸರಳವಾದದ್ದರಿಂದ ಆರಂಭಿಸಿ, ಅಳತೆ ಅಗತ್ಯ ತೋರಿಸಿದಾಗ ಮಾತ್ರ ಸಂಕೀರ್ಣತೆ ಸೇರಿಸಿ."
+    }
+   },
+   {
+    "type": "table",
+    "data": {
+     "headingEn": "Five patterns",
+     "headers": [
+      "Pattern",
+      "Use when"
+     ],
+     "rows": [
+      [
+       "Prompt chaining",
+       "Task splits into fixed sequential steps"
+      ],
+      [
+       "Routing",
+       "Distinct input categories need different handling"
+      ],
+      [
+       "Parallelization",
+       "Independent subtasks, or a vote for confidence"
+      ],
+      [
+       "Orchestrator-workers",
+       "Subtasks are not known in advance"
+      ],
+      [
+       "Evaluator-optimizer",
+       "Clear criteria and iteration improves results"
+      ]
+     ]
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Workflows fix the path in code; agents let the model choose.\n• Match the pattern to how predictable the task is.\n• Use the simplest pattern that works.",
+     "bodyKn": "• workflows ಹಾದಿ ಕೋಡ್‌ನಲ್ಲಿ; agents ಮಾದರಿ ಆರಿಸುತ್ತದೆ.\n• ಕೆಲಸದ ಊಹಿಸುವಿಕೆಗೆ ತಕ್ಕ ಮಾದರಿ.\n• ಅತಿ ಸರಳವಾದದ್ದು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is the difference between a workflow and an agent?",
+       "qKn": "workflow ಮತ್ತು agent ವ್ಯತ್ಯಾಸ?",
+       "opts": [
+        "Code sets the path in a workflow; the model does in an agent",
+        "None",
+        "Agents never use models",
+        "Workflows have no steps"
+       ],
+       "optsKn": [
+        "workflow ನಲ್ಲಿ ಕೋಡ್ ಹಾದಿ ನಿರ್ಧರಿಸುತ್ತದೆ; agent ನಲ್ಲಿ ಮಾದರಿ",
+        "ಯಾವುದೂ ಇಲ್ಲ",
+        "agents ಮಾದರಿ ಬಳಸುವುದಿಲ್ಲ",
+        "workflows ಗೆ ಹಂತಗಳಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "When fit orchestrator-workers?",
+       "qKn": "orchestrator-workers ಯಾವಾಗ ಸೂಕ್ತ?",
+       "opts": [
+        "When subtasks are not known in advance",
+        "For one fixed step",
+        "When no model is used",
+        "Never"
+       ],
+       "optsKn": [
+        "ಉಪಕಾರ್ಯಗಳು ಮುಂಚೆ ತಿಳಿಯದಿದ್ದಾಗ",
+        "ಒಂದು ನಿಗದಿತ ಹಂತಕ್ಕೆ",
+        "ಮಾದರಿ ಇಲ್ಲದಾಗ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "What is the guiding principle for choosing a pattern?",
+       "qKn": "ಮಾದರಿ ಆರಿಸುವ ಮಾರ್ಗದರ್ಶಕ ತತ್ವ?",
+       "opts": [
+        "Use the simplest one that works",
+        "Always the most complex",
+        "Always an agent",
+        "Random"
+       ],
+       "optsKn": [
+        "ಕೆಲಸ ಮಾಡುವ ಅತಿ ಸರಳವಾದದ್ದು",
+        "ಯಾವಾಗಲೂ ಅತಿ ಸಂಕೀರ್ಣ",
+        "ಯಾವಾಗಲೂ agent",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6066020ed05b32150b",
+  "moduleId": "6a369d6166020ed05b32152f",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Anthropic's Workflow Patterns — Evaluating, Guardrails and Combining Patterns",
+  "titleKn": "Anthropic ಕಾರ್ಯಪ್ರವಾಹ ಮಾದರಿಗಳು — ಮೌಲ್ಯಮಾಪನ, Guardrails, ಮಾದರಿಗಳ ಸಂಯೋಜನೆ",
+  "desc": "How to measure whether a pattern earns its cost, add guardrails, and compose patterns into larger systems.",
+  "descKn": "ಮಾದರಿ ತನ್ನ ವೆಚ್ಚಕ್ಕೆ ಯೋಗ್ಯವೇ ಹೇಗೆ ಅಳೆಯುವುದು, guardrails ಸೇರಿಸುವುದು, ಮಾದರಿಗಳನ್ನು ಸಂಯೋಜಿಸುವುದು.",
+  "objectives": [
+   "Compare a pattern against a single-call baseline on quality, cost and latency.",
+   "Place guardrails and checks between workflow steps.",
+   "Compose patterns while keeping the system debuggable."
+  ],
+  "objectivesKn": [
+   "ಗುಣಮಟ್ಟ, ವೆಚ್ಚ, ವಿಳಂಬದಲ್ಲಿ ಒಂದು-ಕರೆ ಆಧಾರಕ್ಕೆ ಹೋಲಿಸಿ.",
+   "workflow ಹಂತಗಳ ನಡುವೆ guardrails ಇಡಿ.",
+   "ಮಾದರಿಗಳನ್ನು debug ಮಾಡಬಹುದಾದಂತೆ ಸಂಯೋಜಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Anthropic's Workflow Patterns — Evaluating, Guardrails and Combining Patterns",
+     "textKn": "Anthropic's Workflow Patterns — Evaluating, Guardrails and Combining Patterns",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Anthropic's Workflow Patterns",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Beat the Baseline or Do Not Ship",
+     "headingKn": "ಆಧಾರವನ್ನು ಮೀರಿಸಿ ಅಥವಾ ಬಿಡುಗಡೆ ಮಾಡಬೇಡಿ",
+     "bodyEn": "A multi-step pattern multiplies calls, cost and latency. Measure it against a single well-prompted call on the same test set; if quality does not improve enough to justify the cost, use the simpler design.",
+     "bodyKn": "ಬಹು-ಹಂತ ಮಾದರಿ ಕರೆ, ವೆಚ್ಚ, ವಿಳಂಬ ಗುಣಿಸುತ್ತದೆ. ಅದೇ ಪರೀಕ್ಷಾ ಸೆಟ್‌ನಲ್ಲಿ ಒಂದು ಉತ್ತಮ ಕರೆಗೆ ಹೋಲಿಸಿ; ಗುಣಮಟ್ಟ ವೆಚ್ಚ ಸಮರ್ಥಿಸುವಷ್ಟು ಸುಧಾರಿಸದಿದ್ದರೆ ಸರಳ ವಿನ್ಯಾಸ ಬಳಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Gates Between Steps",
+     "headingKn": "ಹಂತಗಳ ನಡುವೆ Gates",
+     "bodyEn": "In a chain, a programmatic check after a step, such as schema validation or a length limit, stops bad output from feeding the next step. Errors caught early are far cheaper than errors discovered at the end.",
+     "bodyKn": "chain ನಲ್ಲಿ ಹಂತದ ನಂತರ ಪ್ರೋಗ್ರಾಂ ಪರಿಶೀಲನೆ (schema, ಉದ್ದ ಮಿತಿ) ಕೆಟ್ಟ ಔಟ್‌ಪುಟ್ ಮುಂದಿನ ಹಂತಕ್ಕೆ ಹೋಗದಂತೆ ತಡೆಯುತ್ತದೆ. ಬೇಗ ಹಿಡಿದ ದೋಷ ಅಗ್ಗ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Guardrails as a Parallel Check",
+     "headingKn": "ಸಮಾನಾಂತರ ಪರಿಶೀಲನೆಯಾಗಿ Guardrails",
+     "bodyEn": "Safety or policy checks can run in parallel with the main task, so they add little latency, and can block or replace the response if they fire. Keep them separate from the main prompt so they are easier to test.",
+     "bodyKn": "ಸುರಕ್ಷತೆ ಅಥವಾ ನೀತಿ ಪರಿಶೀಲನೆಗಳು ಮುಖ್ಯ ಕೆಲಸದೊಂದಿಗೆ ಸಮಾನಾಂತರವಾಗಿ ಚಲಿಸಿ ವಿಳಂಬ ಕಡಿಮೆ, ಪ್ರತಿಕ್ರಿಯೆ ತಡೆಯಬಹುದು. ಮುಖ್ಯ prompt ನಿಂದ ಬೇರೆ ಇಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Compose, But Keep It Traceable",
+     "headingKn": "ಸಂಯೋಜಿಸಿ, ಆದರೆ Trace ಮಾಡಬಹುದಾದಂತೆ",
+     "bodyEn": "Real systems mix patterns, for example a router that sends hard cases to an orchestrator. Log which pattern and step produced each output so failures can be traced to a single stage.",
+     "bodyKn": "ನಿಜ ವ್ಯವಸ್ಥೆಗಳು ಮಾದರಿಗಳನ್ನು ಬೆರೆಸುತ್ತವೆ, ಉದಾ. ಕಠಿಣ ಪ್ರಕರಣಗಳನ್ನು orchestrator ಗೆ ಕಳುಹಿಸುವ router. ಯಾವ ಮಾದರಿ ಮತ್ತು ಹಂತ ಔಟ್‌ಪುಟ್ ನೀಡಿತು ಎಂದು ದಾಖಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Compare every pattern to a single-call baseline.\n• Put programmatic gates between steps.\n• Run guardrails in parallel and log which stage produced each output.",
+     "bodyKn": "• ಪ್ರತಿ ಮಾದರಿಯನ್ನು ಒಂದು-ಕರೆ ಆಧಾರಕ್ಕೆ ಹೋಲಿಸಿ.\n• ಹಂತಗಳ ನಡುವೆ ಪ್ರೋಗ್ರಾಂ gates.\n• guardrails ಸಮಾನಾಂತರ; ಹಂತ ದಾಖಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What should a multi-step pattern be compared against?",
+       "qKn": "ಬಹು-ಹಂತ ಮಾದರಿಯನ್ನು ಯಾವುದಕ್ಕೆ ಹೋಲಿಸಬೇಕು?",
+       "opts": [
+        "A single well-prompted call on the same tests",
+        "Nothing",
+        "A different task",
+        "A larger context only"
+       ],
+       "optsKn": [
+        "ಅದೇ ಪರೀಕ್ಷೆಗಳಲ್ಲಿ ಒಂದು ಉತ್ತಮ ಕರೆ",
+        "ಯಾವುದೂ ಅಲ್ಲ",
+        "ಬೇರೆ ಕೆಲಸ",
+        "ದೊಡ್ಡ context ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why check output between chain steps?",
+       "qKn": "chain ಹಂತಗಳ ನಡುವೆ ಔಟ್‌ಪುಟ್ ಏಕೆ ಪರಿಶೀಲಿಸಬೇಕು?",
+       "opts": [
+        "Early errors are cheaper than late ones",
+        "To lengthen the chain",
+        "To remove the model",
+        "It is decoration"
+       ],
+       "optsKn": [
+        "ಬೇಗನೆ ಹಿಡಿದ ದೋಷ ಅಗ್ಗ",
+        "chain ಉದ್ದ ಮಾಡಲು",
+        "ಮಾದರಿ ತೆಗೆಯಲು",
+        "ಅಲಂಕಾರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why run guardrails in parallel?",
+       "qKn": "guardrails ಸಮಾನಾಂತರ ಏಕೆ?",
+       "opts": [
+        "They add little latency and can block a response",
+        "They replace the model",
+        "They increase cost by ten",
+        "They are illegal"
+       ],
+       "optsKn": [
+        "ವಿಳಂಬ ಕಡಿಮೆ ಮತ್ತು ಪ್ರತಿಕ್ರಿಯೆ ತಡೆಯಬಹುದು",
+        "ಮಾದರಿ ಬದಲಿಸುತ್ತವೆ",
+        "ವೆಚ್ಚ ಹತ್ತು ಪಟ್ಟು",
+        "ಕಾನೂನುಬಾಹಿರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

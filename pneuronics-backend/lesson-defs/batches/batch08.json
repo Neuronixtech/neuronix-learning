@@ -1,0 +1,2627 @@
+[
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6366020ed05b32159e",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Automated Alignment Research (AAR) — The Idea of Automating Alignment",
+  "titleKn": "ಸ್ವಯಂ Alignment ಸಂಶೋಧನೆ (AAR) — Alignment ಸ್ವಯಂಚಾಲನೆ ಕಲ್ಪನೆ",
+  "desc": "If AI can speed up research, it might also speed up the safety research needed to keep it under control.",
+  "descKn": "AI ಸಂಶೋಧನೆ ವೇಗಗೊಳಿಸಿದರೆ, ಅದನ್ನು ನಿಯಂತ್ರಣದಲ್ಲಿಡಲು ಬೇಕಾದ ಸುರಕ್ಷತಾ ಸಂಶೋಧನೆಯನ್ನೂ ವೇಗಗೊಳಿಸಬಹುದು.",
+  "objectives": [
+   "State the motivation for automated alignment research.",
+   "Name tasks that could be automated."
+  ],
+  "objectivesKn": [
+   "ಸ್ವಯಂ alignment ಸಂಶೋಧನೆ ಪ್ರೇರಣೆ ಹೇಳಿ.",
+   "ಸ್ವಯಂಚಾಲಿತವಾಗಬಹುದಾದ ಕೆಲಸ ಹೆಸರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Automated Alignment Research (AAR) — The Idea of Automating Alignment",
+     "textKn": "Automated Alignment Research (AAR) — The Idea of Automating Alignment",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Automated Alignment Research (Anthropic AAR)",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why Automate",
+     "headingKn": "ಏಕೆ ಸ್ವಯಂಚಾಲನೆ",
+     "bodyEn": "Capabilities may advance faster than human safety researchers can keep up. Using capable models to help with safety work is one way to close that gap.",
+     "bodyKn": "ಸಾಮರ್ಥ್ಯ ಮಾನವ ಸುರಕ್ಷತಾ ಸಂಶೋಧಕರು ಹಿಡಿಯುವುದಕ್ಕಿಂತ ವೇಗವಾಗಿ ಬೆಳೆಯಬಹುದು. ಸುರಕ್ಷತಾ ಕೆಲಸಕ್ಕೆ ಸಮರ್ಥ ಮಾದರಿ ಬಳಸುವುದು ಆ ಅಂತರ ಮುಚ್ಚುವ ಒಂದು ಮಾರ್ಗ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Candidate Tasks",
+     "headingKn": "ಸಂಭಾವ್ಯ ಕೆಲಸಗಳು",
+     "bodyEn": "Running experiments, reading model behaviour at scale, red-teaming, writing evaluations and summarising literature are tasks where assistance is already useful.",
+     "bodyKn": "ಪ್ರಯೋಗ ಚಾಲನೆ, ದೊಡ್ಡ ಪ್ರಮಾಣದಲ್ಲಿ ಮಾದರಿ ವರ್ತನೆ ಓದು, red-teaming, evaluations ಬರೆಯುವುದು, ಸಾಹಿತ್ಯ ಸಾರಾಂಶ ಈಗಾಗಲೇ ಸಹಾಯಕ ಕೆಲಸಗಳು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Safety work must keep pace with capabilities.\n• Experiments, red-teaming and evals are candidate tasks.",
+     "bodyKn": "• ಸುರಕ್ಷತೆ ಸಾಮರ್ಥ್ಯದ ವೇಗಕ್ಕೆ ಹೊಂದಬೇಕು.\n• ಪ್ರಯೋಗ, red-teaming, evals ಸಂಭಾವ್ಯ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why automate alignment research?",
+       "qKn": "alignment ಸಂಶೋಧನೆ ಏಕೆ ಸ್ವಯಂಚಾಲನೆ?",
+       "opts": [
+        "Safety may lag behind capabilities",
+        "To reduce safety work",
+        "For fun",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಸುರಕ್ಷತೆ ಸಾಮರ್ಥ್ಯಕ್ಕಿಂತ ಹಿಂದುಳಿಯಬಹುದು",
+        "ಸುರಕ್ಷತೆ ಕಡಿಮೆ ಮಾಡಲು",
+        "ಮೋಜು",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A candidate task:",
+       "qKn": "ಸಂಭಾವ್ಯ ಕೆಲಸ:",
+       "opts": [
+        "Writing evaluations",
+        "Painting",
+        "Cooking",
+        "None"
+       ],
+       "optsKn": [
+        "evaluations ಬರೆಯುವುದು",
+        "ಚಿತ್ರಕಲೆ",
+        "ಅಡುಗೆ",
+        "ಯಾವುದೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Models can help with:",
+       "qKn": "ಮಾದರಿ ಸಹಾಯ:",
+       "opts": [
+        "Safety experiments at scale",
+        "Nothing",
+        "Only marketing",
+        "Only images"
+       ],
+       "optsKn": [
+        "ದೊಡ್ಡ ಪ್ರಮಾಣದ ಸುರಕ್ಷತಾ ಪ್ರಯೋಗ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಮಾರ್ಕೆಟಿಂಗ್ ಮಾತ್ರ",
+        "ಚಿತ್ರ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6366020ed05b32159e",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Automated Alignment Research (AAR) — Why Verification Is the Hard Part",
+  "titleKn": "ಸ್ವಯಂ Alignment ಸಂಶೋಧನೆ (AAR) — ಪರಿಶೀಲನೆ ಏಕೆ ಕಠಿಣ",
+  "desc": "Alignment results are often hard to check, so automated work risks producing convincing but wrong conclusions.",
+  "descKn": "alignment ಫಲಿತಾಂಶ ಪರಿಶೀಲಿಸಲು ಕಷ್ಟ; ಸ್ವಯಂ ಕೆಲಸ ಮನವರಿಕೆ ಮಾಡುವ ಆದರೆ ತಪ್ಪು ತೀರ್ಮಾನ ನೀಡಬಹುದು.",
+  "objectives": [
+   "Distinguish easy-to-verify from hard-to-verify research.",
+   "Explain the risk of plausible but flawed results."
+  ],
+  "objectivesKn": [
+   "ಸುಲಭ ಮತ್ತು ಕಷ್ಟ ಪರಿಶೀಲನೆ ಸಂಶೋಧನೆ ಬೇರ್ಪಡಿಸಿ.",
+   "ನಂಬಲರ್ಹ ಆದರೆ ದೋಷಪೂರ್ಣ ಫಲಿತಾಂಶ ಅಪಾಯ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Automated Alignment Research (AAR) — Why Verification Is the Hard Part",
+     "textKn": "Automated Alignment Research (AAR) — Why Verification Is the Hard Part",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Automated Alignment Research (Anthropic AAR)",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Checkable Versus Fuzzy",
+     "headingKn": "ಪರಿಶೀಲಿಸಬಹುದಾದ vs ಅಸ್ಪಷ್ಟ",
+     "bodyEn": "Some tasks have clear scores, such as a benchmark metric. Others, such as judging whether a model is truly aligned, have no simple ground truth.",
+     "bodyKn": "ಕೆಲವು ಕೆಲಸಕ್ಕೆ ಬೆಂಚ್‌ಮಾರ್ಕ್ ಮೆಟ್ರಿಕ್‌ನಂತಹ ಸ್ಪಷ್ಟ ಅಂಕವಿದೆ. ಮಾದರಿ ನಿಜವಾಗಿ alignedವೇ ಎಂದು ಅಳೆಯುವಂತಹವಕ್ಕೆ ಸರಳ ಸತ್ಯವಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Plausible but Wrong",
+     "headingKn": "ನಂಬಲರ್ಹ ಆದರೆ ತಪ್ಪು",
+     "bodyEn": "A model can write a persuasive research report with subtle errors. If reviewers cannot check the work, the errors can pass unnoticed.",
+     "bodyKn": "ಮಾದರಿ ಸೂಕ್ಷ್ಮ ದೋಷಗಳ ಮನವೊಲಿಸುವ ಸಂಶೋಧನಾ ವರದಿ ಬರೆಯಬಹುದು. ವಿಮರ್ಶಕರು ಪರಿಶೀಲಿಸಲಾಗದಿದ್ದರೆ ದೋಷ ಗಮನಕ್ಕೆ ಬರದೆ ಹೋಗಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Prefer tasks with clear scores.\n• Persuasive reports can hide errors.",
+     "bodyKn": "• ಸ್ಪಷ್ಟ ಅಂಕದ ಕೆಲಸ ಆದ್ಯತೆ.\n• ಮನವೊಲಿಸುವ ವರದಿ ದೋಷ ಮರೆಮಾಡಬಹುದು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Which is easier to verify?",
+       "qKn": "ಯಾವುದು ಪರಿಶೀಲಿಸಲು ಸುಲಭ?",
+       "opts": [
+        "A benchmark metric improvement",
+        "Whether a model is truly aligned",
+        "A feeling",
+        "A rumour"
+       ],
+       "optsKn": [
+        "ಬೆಂಚ್‌ಮಾರ್ಕ್ ಮೆಟ್ರಿಕ್ ಸುಧಾರಣೆ",
+        "ಮಾದರಿ ನಿಜವಾಗಿ aligned ಎಂದು",
+        "ಭಾವನೆ",
+        "ವದಂತಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A risk of automated research:",
+       "qKn": "ಸ್ವಯಂ ಸಂಶೋಧನೆ ಅಪಾಯ:",
+       "opts": [
+        "Persuasive but flawed conclusions",
+        "Too slow",
+        "No output",
+        "Colour bugs"
+       ],
+       "optsKn": [
+        "ಮನವೊಲಿಸುವ ಆದರೆ ದೋಷಪೂರ್ಣ ತೀರ್ಮಾನ",
+        "ಬಹಳ ನಿಧಾನ",
+        "ಔಟ್‌ಪುಟ್ ಇಲ್ಲ",
+        "ಬಣ್ಣ ದೋಷ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "If reviewers cannot check work:",
+       "qKn": "ವಿಮರ್ಶಕರು ಪರಿಶೀಲಿಸಲಾಗದಿದ್ದರೆ:",
+       "opts": [
+        "Errors may pass unnoticed",
+        "Errors vanish",
+        "Quality rises",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ದೋಷ ಗಮನಕ್ಕೆ ಬಾರದೆ ಹೋಗಬಹುದು",
+        "ದೋಷ ಮಾಯ",
+        "ಗುಣಮಟ್ಟ ಏರುತ್ತದೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6366020ed05b32159e",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Automated Alignment Research (AAR) — Keeping Humans in the Loop",
+  "titleKn": "ಸ್ವಯಂ Alignment ಸಂಶೋಧನೆ (AAR) — ಮಾನವರನ್ನು Loop ನಲ್ಲಿಡುವುದು",
+  "desc": "Automated alignment work needs independent checks, sandboxing and human accountability.",
+  "descKn": "ಸ್ವಯಂ alignment ಕೆಲಸಕ್ಕೆ ಸ್ವತಂತ್ರ ಪರಿಶೀಲನೆ, sandbox, ಮಾನವ ಹೊಣೆಗಾರಿಕೆ ಬೇಕು.",
+  "objectives": [
+   "List safeguards for AI-assisted safety research.",
+   "Explain the conflict-of-interest concern."
+  ],
+  "objectivesKn": [
+   "AI-ಸಹಾಯಿತ ಸುರಕ್ಷತಾ ಸಂಶೋಧನೆ ರಕ್ಷಣೆ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಹಿತಾಸಕ್ತಿ ಸಂಘರ್ಷ ಆತಂಕ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Automated Alignment Research (AAR) — Keeping Humans in the Loop",
+     "textKn": "Automated Alignment Research (AAR) — Keeping Humans in the Loop",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Automated Alignment Research (Anthropic AAR)",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Independent Checks",
+     "headingKn": "ಸ್ವತಂತ್ರ ಪರಿಶೀಲನೆ",
+     "bodyEn": "Have humans or separate models replicate key results and review methods, and preserve raw data so conclusions can be re-examined.",
+     "bodyKn": "ಮಾನವರು ಅಥವಾ ಪ್ರತ್ಯೇಕ ಮಾದರಿಗಳು ಮುಖ್ಯ ಫಲಿತಾಂಶ ಪುನರಾವರ್ತಿಸಿ ವಿಧಾನ ವಿಮರ್ಶಿಸಲಿ; ಕಚ್ಚಾ ಡೇಟಾ ಉಳಿಸಿ ತೀರ್ಮಾನ ಮರುಪರಿಶೀಲಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Conflict of Interest",
+     "headingKn": "ಹಿತಾಸಕ್ತಿ ಸಂಘರ್ಷ",
+     "bodyEn": "A model asked to evaluate its own alignment has an obvious conflict. Use independent evaluators and keep humans accountable for final judgements.",
+     "bodyKn": "ತನ್ನದೇ alignment ಮೌಲ್ಯಮಾಪನ ಮಾಡುವ ಮಾದರಿಗೆ ಸ್ಪಷ್ಟ ಸಂಘರ್ಷವಿದೆ. ಸ್ವತಂತ್ರ ಮೌಲ್ಯಮಾಪಕರು ಬಳಸಿ, ಅಂತಿಮ ತೀರ್ಪಿಗೆ ಮಾನವರು ಹೊಣೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Replicate results independently.\n• Do not let a model grade its own alignment.",
+     "bodyKn": "• ಫಲಿತಾಂಶ ಸ್ವತಂತ್ರವಾಗಿ ಪುನರಾವರ್ತಿಸಿ.\n• ಮಾದರಿ ತನ್ನ alignment ಅಳೆಯಬಾರದು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A safeguard for AI-assisted research:",
+       "qKn": "AI-ಸಹಾಯಿತ ಸಂಶೋಧನೆ ರಕ್ಷಣೆ:",
+       "opts": [
+        "Independent replication",
+        "Deleting data",
+        "Trusting blindly",
+        "Skipping review"
+       ],
+       "optsKn": [
+        "ಸ್ವತಂತ್ರ ಪುನರಾವರ್ತನೆ",
+        "ಡೇಟಾ ಅಳಿಸು",
+        "ಕುರುಡು ನಂಬಿಕೆ",
+        "ವಿಮರ್ಶೆ ಬಿಡು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why is self-evaluation a concern?",
+       "qKn": "ಸ್ವ-ಮೌಲ್ಯಮಾಪನ ಆತಂಕ ಏಕೆ?",
+       "opts": [
+        "Conflict of interest",
+        "It is too cheap",
+        "It is illegal",
+        "It is fast"
+       ],
+       "optsKn": [
+        "ಹಿತಾಸಕ್ತಿ ಸಂಘರ್ಷ",
+        "ಬಹಳ ಅಗ್ಗ",
+        "ಕಾನೂನುಬಾಹಿರ",
+        "ವೇಗ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Who is accountable for final judgements?",
+       "qKn": "ಅಂತಿಮ ತೀರ್ಪಿಗೆ ಯಾರು ಹೊಣೆ?",
+       "opts": [
+        "Humans",
+        "The model alone",
+        "Nobody",
+        "Random"
+       ],
+       "optsKn": [
+        "ಮಾನವರು",
+        "ಮಾದರಿ ಮಾತ್ರ",
+        "ಯಾರೂ ಅಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6366020ed05b3215a1",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Recursive Self-Improvement — What Recursive Self-Improvement Means",
+  "titleKn": "ಪುನರಾವರ್ತಿತ ಸ್ವ-ಸುಧಾರಣೆ — ಪುನರಾವರ್ತಿತ ಸ್ವ-ಸುಧಾರಣೆ ಎಂದರೇನು",
+  "desc": "A system that improves its own ability to improve could, in principle, accelerate its progress.",
+  "descKn": "ತನ್ನ ಸುಧಾರಣಾ ಸಾಮರ್ಥ್ಯವನ್ನೇ ಸುಧಾರಿಸುವ ವ್ಯವಸ್ಥೆ ತತ್ತ್ವದಲ್ಲಿ ತನ್ನ ಪ್ರಗತಿ ವೇಗಗೊಳಿಸಬಹುದು.",
+  "objectives": [
+   "Define recursive self-improvement.",
+   "Separate the concept from what exists today."
+  ],
+  "objectivesKn": [
+   "ಪುನರಾವರ್ತಿತ ಸ್ವ-ಸುಧಾರಣೆ ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ಕಲ್ಪನೆ ಮತ್ತು ಇಂದಿನ ವಾಸ್ತವ ಬೇರ್ಪಡಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Recursive Self-Improvement — What Recursive Self-Improvement Means",
+     "textKn": "Recursive Self-Improvement — What Recursive Self-Improvement Means",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Recursive Self-Improvement: Capability vs Alignment",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Feedback Loop",
+     "headingKn": "ಪ್ರತಿಕ್ರಿಯೆ Loop",
+     "bodyEn": "If better AI helps build even better AI, each step could speed up the next. This is a feedback loop, not just steady progress.",
+     "bodyKn": "ಉತ್ತಮ AI ಇನ್ನೂ ಉತ್ತಮ AI ನಿರ್ಮಿಸಲು ಸಹಾಯ ಮಾಡಿದರೆ ಪ್ರತಿ ಹಂತ ಮುಂದಿನದನ್ನು ವೇಗಗೊಳಿಸಬಹುದು. ಇದು ಸ್ಥಿರ ಪ್ರಗತಿಯಲ್ಲ, ಪ್ರತಿಕ್ರಿಯೆ loop."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Concept Versus Reality",
+     "headingKn": "ಕಲ್ಪನೆ vs ವಾಸ್ತವ",
+     "bodyEn": "Today AI assists parts of AI research such as coding and experiments, but people still steer. Full autonomous improvement is a possibility to plan for, not an established fact.",
+     "bodyKn": "ಇಂದು AI ಕೋಡಿಂಗ್, ಪ್ರಯೋಗದಂತಹ ಭಾಗಗಳಿಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ, ಆದರೆ ಜನರೇ ದಿಕ್ಕು ನೀಡುತ್ತಾರೆ. ಪೂರ್ಣ ಸ್ವಾಯತ್ತ ಸುಧಾರಣೆ ಯೋಜಿಸಬೇಕಾದ ಸಾಧ್ಯತೆ, ಸ್ಥಾಪಿತ ಸತ್ಯವಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• A loop where AI helps build better AI.\n• Today it is partial and human-steered.",
+     "bodyKn": "• AI ಉತ್ತಮ AI ನಿರ್ಮಿಸಲು ಸಹಾಯ ಮಾಡುವ loop.\n• ಇಂದು ಭಾಗಶಃ, ಮಾನವ ನಿರ್ದೇಶಿತ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What is the core idea?",
+       "qKn": "ಮೂಲ ಕಲ್ಪನೆ?",
+       "opts": [
+        "Better AI helping build better AI",
+        "A faster GPU",
+        "A bigger screen",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಉತ್ತಮ AI ಉತ್ತಮ AI ನಿರ್ಮಿಸಲು ಸಹಾಯ",
+        "ವೇಗದ GPU",
+        "ದೊಡ್ಡ ಪರದೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Today, AI research is:",
+       "qKn": "ಇಂದು AI ಸಂಶೋಧನೆ:",
+       "opts": [
+        "Partly assisted, human-steered",
+        "Fully autonomous",
+        "Impossible",
+        "Unchanged"
+       ],
+       "optsKn": [
+        "ಭಾಗಶಃ ಸಹಾಯಿತ, ಮಾನವ ನಿರ್ದೇಶಿತ",
+        "ಪೂರ್ಣ ಸ್ವಾಯತ್ತ",
+        "ಅಸಾಧ್ಯ",
+        "ಬದಲಾಗಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Full autonomous improvement is:",
+       "qKn": "ಪೂರ್ಣ ಸ್ವಾಯತ್ತ ಸುಧಾರಣೆ:",
+       "opts": [
+        "A possibility to plan for",
+        "Established fact",
+        "Illegal",
+        "Solved"
+       ],
+       "optsKn": [
+        "ಯೋಜಿಸಬೇಕಾದ ಸಾಧ್ಯತೆ",
+        "ಸ್ಥಾಪಿತ ಸತ್ಯ",
+        "ಕಾನೂನುಬಾಹಿರ",
+        "ಪರಿಹಾರ ಆಗಿದೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6366020ed05b3215a1",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Recursive Self-Improvement — Bottlenecks and Speed",
+  "titleKn": "ಪುನರಾವರ್ತಿತ ಸ್ವ-ಸುಧಾರಣೆ — ಅಡಚಣೆ ಮತ್ತು ವೇಗ",
+  "desc": "Whether improvement accelerates depends on bottlenecks such as compute, data, experiments and verification.",
+  "descKn": "ಸುಧಾರಣೆ ವೇಗಗೊಳ್ಳುತ್ತದೆಯೇ ಎಂಬುದು ಗಣನೆ, ಡೇಟಾ, ಪ್ರಯೋಗ, ಪರಿಶೀಲನೆಯಂತಹ ಅಡಚಣೆಗಳ ಮೇಲೆ ಅವಲಂಬಿತ.",
+  "objectives": [
+   "List physical and practical bottlenecks.",
+   "Explain why software alone may not run away."
+  ],
+  "objectivesKn": [
+   "ಭೌತಿಕ ಮತ್ತು ಪ್ರಾಯೋಗಿಕ ಅಡಚಣೆ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಸಾಫ್ಟ್‌ವೇರ್ ಮಾತ್ರ ಏಕೆ ಓಡಿಹೋಗದು ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Recursive Self-Improvement — Bottlenecks and Speed",
+     "textKn": "Recursive Self-Improvement — Bottlenecks and Speed",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Recursive Self-Improvement: Capability vs Alignment",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Limits on the Loop",
+     "headingKn": "Loop ಮಿತಿ",
+     "bodyEn": "Training needs compute and data, experiments take time, and results must be validated. Any one of these can slow a loop that looks fast on paper.",
+     "bodyKn": "ತರಬೇತಿಗೆ ಗಣನೆ ಮತ್ತು ಡೇಟಾ ಬೇಕು, ಪ್ರಯೋಗಗಳಿಗೆ ಸಮಯ, ಫಲಿತಾಂಶ ಮೌಲ್ಯೀಕರಿಸಬೇಕು. ಇವುಗಳಲ್ಲಿ ಯಾವುದೇ ಕಾಗದದಲ್ಲಿ ವೇಗವಾಗಿ ಕಾಣುವ loop ನಿಧಾನಗೊಳಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Uncertainty",
+     "headingKn": "ಅನಿಶ್ಚಿತತೆ",
+     "bodyEn": "Experts disagree about how fast or how far self-improvement could go. Good planning prepares for a range of speeds rather than betting on one.",
+     "bodyKn": "ಸ್ವ-ಸುಧಾರಣೆ ಎಷ್ಟು ವೇಗ, ಎಷ್ಟು ದೂರ ಹೋಗಬಹುದು ಎಂಬುದರ ಬಗ್ಗೆ ತಜ್ಞರು ಭಿನ್ನ. ಒಂದರ ಮೇಲೆ ಪಣ ಕಟ್ಟದೆ ಹಲವು ವೇಗಗಳಿಗೆ ತಯಾರಿ ಉತ್ತಮ ಯೋಜನೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Compute, data, experiments and validation limit speed.\n• Plan for a range of possible speeds.",
+     "bodyKn": "• ಗಣನೆ, ಡೇಟಾ, ಪ್ರಯೋಗ, ಮೌಲ್ಯೀಕರಣ ವೇಗ ಮಿತಿಗೊಳಿಸುತ್ತವೆ.\n• ಹಲವು ವೇಗಗಳಿಗೆ ಯೋಜಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A bottleneck is:",
+       "qKn": "ಅಡಚಣೆ:",
+       "opts": [
+        "Compute",
+        "A logo",
+        "A font",
+        "A colour"
+       ],
+       "optsKn": [
+        "ಗಣನೆ",
+        "ಲೋಗೋ",
+        "ಫಾಂಟ್",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Experts about speed:",
+       "qKn": "ವೇಗದ ಬಗ್ಗೆ ತಜ್ಞರು:",
+       "opts": [
+        "Disagree",
+        "All agree",
+        "Are silent",
+        "Are machines"
+       ],
+       "optsKn": [
+        "ಭಿನ್ನ ಅಭಿಪ್ರಾಯ",
+        "ಎಲ್ಲ ಒಪ್ಪುತ್ತಾರೆ",
+        "ಮೌನ",
+        "ಯಂತ್ರಗಳು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Good planning:",
+       "qKn": "ಉತ್ತಮ ಯೋಜನೆ:",
+       "opts": [
+        "Prepares for a range of speeds",
+        "Bets on one speed",
+        "Ignores speed",
+        "Waits"
+       ],
+       "optsKn": [
+        "ಹಲವು ವೇಗಗಳಿಗೆ ತಯಾರಿ",
+        "ಒಂದು ವೇಗದ ಮೇಲೆ ಪಣ",
+        "ವೇಗ ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಕಾಯುವುದು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6366020ed05b3215a1",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Recursive Self-Improvement — Why It Raises Safety Concerns",
+  "titleKn": "ಪುನರಾವರ್ತಿತ ಸ್ವ-ಸುಧಾರಣೆ — ಸುರಕ್ಷತಾ ಆತಂಕ ಏಕೆ",
+  "desc": "Fast self-improvement could outpace oversight, making early safeguards and monitoring important.",
+  "descKn": "ವೇಗದ ಸ್ವ-ಸುಧಾರಣೆ ಮೇಲ್ವಿಚಾರಣೆಯನ್ನು ಮೀರಿಸಬಹುದು; ಆದ್ದರಿಂದ ಮುಂಚಿನ ರಕ್ಷಣೆ ಮತ್ತು ನಿಗಾ ಮುಖ್ಯ.",
+  "objectives": [
+   "Explain how speed can outpace oversight.",
+   "Name early warning and control measures."
+  ],
+  "objectivesKn": [
+   "ವೇಗ ಮೇಲ್ವಿಚಾರಣೆ ಮೀರಿಸುವುದು ಹೇಗೆ ವಿವರಿಸಿ.",
+   "ಮುನ್ನೆಚ್ಚರಿಕೆ ಮತ್ತು ನಿಯಂತ್ರಣ ಕ್ರಮ ಹೆಸರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Recursive Self-Improvement — Why It Raises Safety Concerns",
+     "textKn": "Recursive Self-Improvement — Why It Raises Safety Concerns",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Recursive Self-Improvement: Capability vs Alignment",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Oversight Lag",
+     "headingKn": "ಮೇಲ್ವಿಚಾರಣೆ ಹಿಂದುಳಿಯುವಿಕೆ",
+     "bodyEn": "If a system changes faster than people can evaluate it, each evaluation is out of date by the time it finishes.",
+     "bodyKn": "ಜನರು ಮೌಲ್ಯಮಾಪನ ಮಾಡುವುದಕ್ಕಿಂತ ವೇಗವಾಗಿ ವ್ಯವಸ್ಥೆ ಬದಲಾದರೆ ಪ್ರತಿ ಮೌಲ್ಯಮಾಪನ ಮುಗಿಯುವ ವೇಳೆಗೆ ಹಳೆಯದಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Early Measures",
+     "headingKn": "ಮುಂಚಿನ ಕ್ರಮಗಳು",
+     "bodyEn": "Track AI research capability with evaluations, set thresholds that trigger extra safeguards, and keep the ability to pause. Policies should be agreed before they are needed.",
+     "bodyKn": "evaluations ನಿಂದ AI ಸಂಶೋಧನಾ ಸಾಮರ್ಥ್ಯ ಗಮನಿಸಿ, ಹೆಚ್ಚುವರಿ ರಕ್ಷಣೆ ಪ್ರಚೋದಿಸುವ ಮಿತಿ ನಿಗದಿ ಮಾಡಿ, ನಿಲ್ಲಿಸುವ ಸಾಮರ್ಥ್ಯ ಇಡಿ. ನೀತಿಗಳನ್ನು ಬೇಕಾಗುವ ಮೊದಲೇ ಒಪ್ಪಿಕೊಳ್ಳಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Fast change can outrun evaluation.\n• Set thresholds and keep the ability to pause.",
+     "bodyKn": "• ವೇಗದ ಬದಲಾವಣೆ ಮೌಲ್ಯಮಾಪನ ಮೀರಿಸಬಹುದು.\n• ಮಿತಿ ಮತ್ತು ನಿಲ್ಲಿಸುವ ಸಾಮರ್ಥ್ಯ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "How can speed outpace oversight?",
+       "qKn": "ವೇಗ ಮೇಲ್ವಿಚಾರಣೆ ಹೇಗೆ ಮೀರಿಸುತ್ತದೆ?",
+       "opts": [
+        "Evaluations go stale",
+        "It cannot",
+        "Oversight is faster",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮೌಲ್ಯಮಾಪನ ಹಳೆಯದಾಗುತ್ತದೆ",
+        "ಸಾಧ್ಯವಿಲ್ಲ",
+        "ಮೇಲ್ವಿಚಾರಣೆ ವೇಗ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "An early measure:",
+       "qKn": "ಮುಂಚಿನ ಕ್ರಮ:",
+       "opts": [
+        "Capability thresholds that trigger safeguards",
+        "Removing evals",
+        "Ignoring risk",
+        "Hiding results"
+       ],
+       "optsKn": [
+        "ರಕ್ಷಣೆ ಪ್ರಚೋದಿಸುವ ಸಾಮರ್ಥ್ಯ ಮಿತಿ",
+        "evals ತೆಗೆ",
+        "ಅಪಾಯ ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಫಲಿತಾಂಶ ಮರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Policies should be agreed:",
+       "qKn": "ನೀತಿ ಒಪ್ಪಿಕೊಳ್ಳಬೇಕು:",
+       "opts": [
+        "Before they are needed",
+        "After an incident only",
+        "Never",
+        "Randomly"
+       ],
+       "optsKn": [
+        "ಬೇಕಾಗುವ ಮೊದಲು",
+        "ಘಟನೆ ನಂತರ ಮಾತ್ರ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6366020ed05b3215a4",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Bounded Self-Improvement Designs — Bounding What Can Change",
+  "titleKn": "ಮಿತಿಯುಳ್ಳ ಸ್ವ-ಸುಧಾರಣೆ ವಿನ್ಯಾಸ — ಏನು ಬದಲಾಗಬಹುದು ಮಿತಿಗೊಳಿಸಿ",
+  "desc": "A bounded design lets a system improve only designated parts, with protected components it cannot edit.",
+  "descKn": "ಮಿತಿಯುಳ್ಳ ವಿನ್ಯಾಸ ವ್ಯವಸ್ಥೆ ಗೊತ್ತುಪಡಿಸಿದ ಭಾಗಗಳನ್ನು ಮಾತ್ರ ಸುಧಾರಿಸಲು ಬಿಡುತ್ತದೆ; ತಿದ್ದಲಾಗದ ರಕ್ಷಿತ ಘಟಕಗಳಿವೆ.",
+  "objectives": [
+   "Define an editable surface.",
+   "Identify components that must be immutable."
+  ],
+  "objectivesKn": [
+   "ತಿದ್ದಬಹುದಾದ ಮೇಲ್ಮೈ ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ಬದಲಾಗಬಾರದ ಘಟಕ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Bounded Self-Improvement Designs — Bounding What Can Change",
+     "textKn": "Bounded Self-Improvement Designs — Bounding What Can Change",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Bounded Self-Improvement Designs",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Editable Surface",
+     "headingKn": "ತಿದ್ದಬಹುದಾದ ಮೇಲ್ಮೈ",
+     "bodyEn": "Allow changes to prompts or tools inside a defined area, while the evaluator, safety checks and permissions stay outside what the system can modify.",
+     "bodyKn": "ನಿಗದಿತ ಪ್ರದೇಶದೊಳಗೆ prompts ಅಥವಾ tools ಬದಲಾವಣೆ ಅನುಮತಿಸಿ; evaluator, ಸುರಕ್ಷತಾ ಪರಿಶೀಲನೆ, ಅನುಮತಿಗಳು ವ್ಯವಸ್ಥೆ ಮಾರ್ಪಡಿಸಲಾಗದ ಹೊರಗೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Immutable Core",
+     "headingKn": "ಬದಲಾಗದ ಕೇಂದ್ರ",
+     "bodyEn": "The scoring code and stop mechanisms must be protected. A system that can rewrite its own judge or off switch defeats the purpose of bounds.",
+     "bodyKn": "ಅಂಕ ಕೋಡ್ ಮತ್ತು ನಿಲ್ಲಿಸುವ ವ್ಯವಸ್ಥೆ ರಕ್ಷಿತವಾಗಿರಬೇಕು. ತನ್ನ ನ್ಯಾಯಾಧೀಶ ಅಥವಾ off switch ಮರುಬರೆಯಬಲ್ಲ ವ್ಯವಸ್ಥೆ ಮಿತಿಯ ಉದ್ದೇಶ ಸೋಲಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Define a narrow editable surface.\n• Protect the evaluator and stop mechanism.",
+     "bodyKn": "• ಕಿರಿದಾದ ತಿದ್ದಬಹುದಾದ ಮೇಲ್ಮೈ.\n• evaluator ಮತ್ತು ನಿಲ್ಲಿಸುವ ವ್ಯವಸ್ಥೆ ರಕ್ಷಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What must stay immutable?",
+       "qKn": "ಯಾವುದು ಬದಲಾಗಬಾರದು?",
+       "opts": [
+        "Evaluator and stop mechanism",
+        "Comments",
+        "Font",
+        "Logo"
+       ],
+       "optsKn": [
+        "evaluator ಮತ್ತು ನಿಲ್ಲಿಸುವ ವ್ಯವಸ್ಥೆ",
+        "ಕಾಮೆಂಟ್",
+        "ಫಾಂಟ್",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "An editable surface is:",
+       "qKn": "ತಿದ್ದಬಹುದಾದ ಮೇಲ್ಮೈ:",
+       "opts": [
+        "A defined area that may change",
+        "Everything",
+        "Nothing",
+        "Random"
+       ],
+       "optsKn": [
+        "ಬದಲಾಗಬಹುದಾದ ನಿಗದಿತ ಪ್ರದೇಶ",
+        "ಎಲ್ಲವೂ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why protect the judge?",
+       "qKn": "ನ್ಯಾಯಾಧೀಶ ಏಕೆ ರಕ್ಷಿಸಬೇಕು?",
+       "opts": [
+        "Otherwise scores can be rewritten",
+        "To save disk",
+        "For style",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಇಲ್ಲದಿದ್ದರೆ ಅಂಕ ಮರುಬರೆಯಬಹುದು",
+        "ಡಿಸ್ಕ್",
+        "ಶೈಲಿ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6366020ed05b3215a4",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Bounded Self-Improvement Designs — Gated Promotion of Changes",
+  "titleKn": "ಮಿತಿಯುಳ್ಳ ಸ್ವ-ಸುಧಾರಣೆ ವಿನ್ಯಾಸ — ಬದಲಾವಣೆಗಳ ಗೇಟೆಡ್ ಬಡ್ತಿ",
+  "desc": "Candidate improvements should pass tests, safety evaluations and often human review before being adopted.",
+  "descKn": "ಅಭ್ಯರ್ಥಿ ಸುಧಾರಣೆಗಳು ಅಳವಡಿಕೆಗೆ ಮೊದಲು tests, ಸುರಕ್ಷತಾ ಮೌಲ್ಯಮಾಪನ, ಹೆಚ್ಚಾಗಿ ಮಾನವ ವಿಮರ್ಶೆ ದಾಟಬೇಕು.",
+  "objectives": [
+   "Describe a staged promotion pipeline.",
+   "Explain rollback for adopted changes."
+  ],
+  "objectivesKn": [
+   "ಹಂತ ಹಂತದ ಬಡ್ತಿ ಪೈಪ್‌ಲೈನ್ ವಿವರಿಸಿ.",
+   "ಅಳವಡಿಸಿದ ಬದಲಾವಣೆ rollback ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Bounded Self-Improvement Designs — Gated Promotion of Changes",
+     "textKn": "Bounded Self-Improvement Designs — Gated Promotion of Changes",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Bounded Self-Improvement Designs",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Staged Gates",
+     "headingKn": "ಹಂತ Gates",
+     "bodyEn": "A change moves through sandbox tests, capability and safety evaluations, then human approval. Failing any stage sends it back.",
+     "bodyKn": "ಬದಲಾವಣೆ sandbox tests, ಸಾಮರ್ಥ್ಯ ಮತ್ತು ಸುರಕ್ಷತಾ ಮೌಲ್ಯಮಾಪನ, ನಂತರ ಮಾನವ ಅನುಮೋದನೆ ಮೂಲಕ ಸಾಗುತ್ತದೆ. ಯಾವುದೇ ಹಂತ ವಿಫಲವಾದರೆ ಹಿಂತಿರುಗಿಸಲಾಗುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Rollback",
+     "headingKn": "Rollback",
+     "bodyEn": "Keep the previous version available so any adopted change can be reverted quickly if problems appear later.",
+     "bodyKn": "ಹಿಂದಿನ ಆವೃತ್ತಿ ಲಭ್ಯವಿರಿಸಿ; ನಂತರ ಸಮಸ್ಯೆ ಕಂಡರೆ ಅಳವಡಿಸಿದ ಬದಲಾವಣೆ ಬೇಗ ಹಿಂತೆಗೆಯಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Promote changes through staged gates.\n• Keep rollback available.",
+     "bodyKn": "• ಹಂತ gates ಮೂಲಕ ಬಡ್ತಿ.\n• rollback ಲಭ್ಯ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A failed gate should:",
+       "qKn": "ವಿಫಲ gate:",
+       "opts": [
+        "Send the change back",
+        "Be skipped",
+        "Be deleted",
+        "Auto-approve"
+       ],
+       "optsKn": [
+        "ಬದಲಾವಣೆ ಹಿಂತಿರುಗಿಸು",
+        "ಬಿಡು",
+        "ಅಳಿಸು",
+        "ಸ್ವಯಂ ಅನುಮೋದನೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why keep the old version?",
+       "qKn": "ಹಳೆಯ ಆವೃತ್ತಿ ಏಕೆ?",
+       "opts": [
+        "To roll back quickly",
+        "To waste space",
+        "By accident",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಬೇಗ rollback ಗೆ",
+        "ಜಾಗ ವ್ಯರ್ಥ",
+        "ಆಕಸ್ಮಿಕ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Who approves significant changes?",
+       "qKn": "ಮುಖ್ಯ ಬದಲಾವಣೆ ಯಾರು ಅನುಮೋದಿಸುತ್ತಾರೆ?",
+       "opts": [
+        "Humans",
+        "The candidate itself",
+        "Nobody",
+        "Random"
+       ],
+       "optsKn": [
+        "ಮಾನವರು",
+        "ಅಭ್ಯರ್ಥಿಯೇ",
+        "ಯಾರೂ ಅಲ್ಲ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6366020ed05b3215a4",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Bounded Self-Improvement Designs — Monitoring and Stopping",
+  "titleKn": "ಮಿತಿಯುಳ್ಳ ಸ್ವ-ಸುಧಾರಣೆ ವಿನ್ಯಾಸ — ನಿಗಾ ಮತ್ತು ನಿಲ್ಲಿಸುವುದು",
+  "desc": "Bounded systems need logs, anomaly detection and a reliable way to halt improvement.",
+  "descKn": "ಮಿತಿಯುಳ್ಳ ವ್ಯವಸ್ಥೆಗಳಿಗೆ ಲಾಗ್, ವೈಪರೀತ್ಯ ಪತ್ತೆ, ಸುಧಾರಣೆ ನಿಲ್ಲಿಸುವ ನಂಬಲರ್ಹ ಮಾರ್ಗ ಬೇಕು.",
+  "objectives": [
+   "Log every self-modification.",
+   "Define halt conditions in advance."
+  ],
+  "objectivesKn": [
+   "ಪ್ರತಿ ಸ್ವ-ಮಾರ್ಪಾಡು ದಾಖಲಿಸಿ.",
+   "ನಿಲ್ಲಿಸುವ ಷರತ್ತು ಮೊದಲೇ ವ್ಯಾಖ್ಯಾನಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Bounded Self-Improvement Designs — Monitoring and Stopping",
+     "textKn": "Bounded Self-Improvement Designs — Monitoring and Stopping",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Bounded Self-Improvement Designs",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Full Logging",
+     "headingKn": "ಪೂರ್ಣ ಲಾಗಿಂಗ್",
+     "bodyEn": "Record every proposed and adopted change with its evaluation results, so humans can audit what the system did and why.",
+     "bodyKn": "ಪ್ರತಿ ಪ್ರಸ್ತಾವಿತ ಮತ್ತು ಅಳವಡಿಸಿದ ಬದಲಾವಣೆಯನ್ನು ಮೌಲ್ಯಮಾಪನ ಫಲಿತಾಂಶದೊಂದಿಗೆ ದಾಖಲಿಸಿ; ವ್ಯವಸ್ಥೆ ಏನು, ಏಕೆ ಮಾಡಿತು ಎಂದು ಮಾನವರು ಲೆಕ್ಕಪರಿಶೋಧಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Halt Conditions",
+     "headingKn": "ನಿಲ್ಲಿಸುವ ಷರತ್ತು",
+     "bodyEn": "Decide beforehand what triggers a stop: unexpected behaviour, evaluation drops or attempts to touch protected parts. Test the halt mechanism regularly.",
+     "bodyKn": "ಏನು ನಿಲ್ಲಿಸುವಿಕೆ ಪ್ರಚೋದಿಸುತ್ತದೆ ಮೊದಲೇ ನಿರ್ಧರಿಸಿ: ಅನಿರೀಕ್ಷಿತ ವರ್ತನೆ, ಮೌಲ್ಯಮಾಪನ ಇಳಿಕೆ, ರಕ್ಷಿತ ಭಾಗ ಮುಟ್ಟುವ ಯತ್ನ. ನಿಲ್ಲಿಸುವ ವ್ಯವಸ್ಥೆ ನಿಯಮಿತವಾಗಿ ಪರೀಕ್ಷಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Log all changes with evaluations.\n• Predefine and test halt conditions.",
+     "bodyKn": "• ಮೌಲ್ಯಮಾಪನ ಸಹಿತ ಎಲ್ಲ ಬದಲಾವಣೆ ದಾಖಲು.\n• ನಿಲ್ಲಿಸುವ ಷರತ್ತು ಮೊದಲೇ, ಪರೀಕ್ಷೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why log every change?",
+       "qKn": "ಪ್ರತಿ ಬದಲಾವಣೆ ಏಕೆ ದಾಖಲಿಸಬೇಕು?",
+       "opts": [
+        "So humans can audit",
+        "To hide it",
+        "For style",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಮಾನವರು ಲೆಕ್ಕಪರಿಶೋಧಿಸಲು",
+        "ಮರೆಮಾಡಲು",
+        "ಶೈಲಿ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A halt trigger:",
+       "qKn": "ನಿಲ್ಲಿಸುವ ಪ್ರಚೋದಕ:",
+       "opts": [
+        "An attempt to touch protected parts",
+        "A successful test",
+        "A colour",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ರಕ್ಷಿತ ಭಾಗ ಮುಟ್ಟುವ ಯತ್ನ",
+        "ಯಶಸ್ವಿ test",
+        "ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Halt mechanisms should be:",
+       "qKn": "ನಿಲ್ಲಿಸುವ ವ್ಯವಸ್ಥೆ:",
+       "opts": [
+        "Tested regularly",
+        "Never tested",
+        "Hidden",
+        "Editable by the system"
+       ],
+       "optsKn": [
+        "ನಿಯಮಿತ ಪರೀಕ್ಷೆ",
+        "ಎಂದಿಗೂ ಪರೀಕ್ಷಿಸದ",
+        "ಮರೆ",
+        "ವ್ಯವಸ್ಥೆ ತಿದ್ದಬಹುದು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6366020ed05b3215a7",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Autonomous Coding Agent Landscape — A Range of Autonomy",
+  "titleKn": "ಸ್ವಾಯತ್ತ ಕೋಡಿಂಗ್ Agent ಚಿತ್ರಣ — ಸ್ವಾಯತ್ತತೆಯ ವ್ಯಾಪ್ತಿ",
+  "desc": "Coding tools range from autocomplete to agents that plan, edit, run and iterate on whole tasks.",
+  "descKn": "ಕೋಡಿಂಗ್ ಸಾಧನಗಳು autocomplete ನಿಂದ ಸಂಪೂರ್ಣ ಕೆಲಸ ಯೋಜಿಸಿ, ತಿದ್ದಿ, ಚಲಾಯಿಸಿ, ಪುನರಾವರ್ತಿಸುವ agents ವರೆಗೆ.",
+  "objectives": [
+   "Place tools on an autonomy spectrum.",
+   "Describe how much a human supervises at each level."
+  ],
+  "objectivesKn": [
+   "ಸಾಧನಗಳನ್ನು ಸ್ವಾಯತ್ತತೆ ವ್ಯಾಪ್ತಿಯಲ್ಲಿ ಇರಿಸಿ.",
+   "ಪ್ರತಿ ಮಟ್ಟದಲ್ಲಿ ಮಾನವ ಮೇಲ್ವಿಚಾರಣೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Autonomous Coding Agent Landscape — A Range of Autonomy",
+     "textKn": "Autonomous Coding Agent Landscape — A Range of Autonomy",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Autonomous Coding Agent Landscape (SWE-bench, CodeAct)",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Spectrum",
+     "headingKn": "ವ್ಯಾಪ್ತಿ",
+     "bodyEn": "Autocomplete suggests a line. Chat assistants answer questions. Agents in the terminal or IDE edit many files and run commands. Background agents work on tasks with little live supervision.",
+     "bodyKn": "Autocomplete ಒಂದು ಸಾಲು ಸೂಚಿಸುತ್ತದೆ. chat ಸಹಾಯಕರು ಪ್ರಶ್ನೆಗೆ ಉತ್ತರ. terminal ಅಥವಾ IDE agents ಹಲವು ಫೈಲ್ ತಿದ್ದಿ ಆದೇಶ ಚಲಾಯಿಸುತ್ತವೆ. ಹಿನ್ನೆಲೆ agents ಕಡಿಮೆ ನೇರ ಮೇಲ್ವಿಚಾರಣೆಯಲ್ಲಿ ಕೆಲಸ ಮಾಡುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Supervision Changes",
+     "headingKn": "ಮೇಲ್ವಿಚಾರಣೆ ಬದಲಾಗುತ್ತದೆ",
+     "bodyEn": "As autonomy rises, the human moves from writing each line to setting goals and reviewing results, so review and testing become the main safeguards.",
+     "bodyKn": "ಸ್ವಾಯತ್ತತೆ ಹೆಚ್ಚಿದಂತೆ ಮಾನವ ಪ್ರತಿ ಸಾಲು ಬರೆಯುವುದರಿಂದ ಗುರಿ ನಿಗದಿ ಮತ್ತು ಫಲಿತಾಂಶ ವಿಮರ್ಶೆಗೆ ಸರಿಯುತ್ತಾರೆ; ವಿಮರ್ಶೆ ಮತ್ತು ಪರೀಕ್ಷೆ ಮುಖ್ಯ ರಕ್ಷಣೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Autonomy ranges from autocomplete to background agents.\n• Higher autonomy shifts humans to goals and review.",
+     "bodyKn": "• autocomplete ನಿಂದ ಹಿನ್ನೆಲೆ agents ವರೆಗೆ.\n• ಹೆಚ್ಚು ಸ್ವಾಯತ್ತತೆ = ಗುರಿ ಮತ್ತು ವಿಮರ್ಶೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Least autonomous tool:",
+       "qKn": "ಕಡಿಮೆ ಸ್ವಾಯತ್ತ ಸಾಧನ:",
+       "opts": [
+        "Autocomplete",
+        "Background agent",
+        "Terminal agent",
+        "Autonomous team"
+       ],
+       "optsKn": [
+        "Autocomplete",
+        "ಹಿನ್ನೆಲೆ agent",
+        "terminal agent",
+        "ಸ್ವಾಯತ್ತ ತಂಡ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "As autonomy rises the human mostly:",
+       "qKn": "ಸ್ವಾಯತ್ತತೆ ಹೆಚ್ಚಿದಂತೆ ಮಾನವ ಮುಖ್ಯವಾಗಿ:",
+       "opts": [
+        "Sets goals and reviews",
+        "Writes every line",
+        "Leaves",
+        "Sleeps"
+       ],
+       "optsKn": [
+        "ಗುರಿ ನಿಗದಿ ಮತ್ತು ವಿಮರ್ಶೆ",
+        "ಪ್ರತಿ ಸಾಲು ಬರೆಯುತ್ತಾರೆ",
+        "ಹೋಗುತ್ತಾರೆ",
+        "ನಿದ್ರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Main safeguards at high autonomy:",
+       "qKn": "ಹೆಚ್ಚು ಸ್ವಾಯತ್ತತೆಯಲ್ಲಿ ರಕ್ಷಣೆ:",
+       "opts": [
+        "Review and testing",
+        "Nothing",
+        "Fonts",
+        "Logos"
+       ],
+       "optsKn": [
+        "ವಿಮರ್ಶೆ ಮತ್ತು ಪರೀಕ್ಷೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್",
+        "ಲೋಗೋ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6366020ed05b3215a7",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Autonomous Coding Agent Landscape — How to Compare Agents",
+  "titleKn": "ಸ್ವಾಯತ್ತ ಕೋಡಿಂಗ್ Agent ಚಿತ್ರಣ — Agents ಹೋಲಿಸುವುದು ಹೇಗೆ",
+  "desc": "Compare coding agents on realistic tasks, cost, controls and integration rather than headline benchmarks alone.",
+  "descKn": "coding agents ಅನ್ನು ಕೇವಲ ಮುಖ್ಯ ಬೆಂಚ್‌ಮಾರ್ಕ್‌ಗಳಲ್ಲದೆ ನೈಜ ಕೆಲಸ, ವೆಚ್ಚ, ನಿಯಂತ್ರಣ, ಸಂಯೋಜನೆಯಲ್ಲಿ ಹೋಲಿಸಿ.",
+  "objectives": [
+   "List useful comparison criteria.",
+   "Run your own tasks rather than trusting leaderboards."
+  ],
+  "objectivesKn": [
+   "ಉಪಯುಕ್ತ ಹೋಲಿಕೆ ಮಾನದಂಡ ಪಟ್ಟಿ.",
+   "ಲೀಡರ್‌ಬೋರ್ಡ್ ನಂಬದೆ ನಿಮ್ಮ ಕೆಲಸ ಚಲಾಯಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Autonomous Coding Agent Landscape — How to Compare Agents",
+     "textKn": "Autonomous Coding Agent Landscape — How to Compare Agents",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Autonomous Coding Agent Landscape (SWE-bench, CodeAct)",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Criteria",
+     "headingKn": "ಮಾನದಂಡ",
+     "bodyEn": "Consider task success on your repository, cost per task, permission controls, transparency of actions, integration with your tools and data handling.",
+     "bodyKn": "ನಿಮ್ಮ ರೆಪೊದಲ್ಲಿ ಕೆಲಸ ಯಶಸ್ಸು, ಪ್ರತಿ ಕೆಲಸಕ್ಕೆ ವೆಚ್ಚ, ಅನುಮತಿ ನಿಯಂತ್ರಣ, ಕ್ರಿಯೆ ಪಾರದರ್ಶಕತೆ, ನಿಮ್ಮ ಸಾಧನ ಸಂಯೋಜನೆ, ಡೇಟಾ ನಿರ್ವಹಣೆ ಪರಿಗಣಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Test on Your Own Work",
+     "headingKn": "ನಿಮ್ಮ ಕೆಲಸದಲ್ಲಿ ಪರೀಕ್ಷಿಸಿ",
+     "bodyEn": "Public benchmarks may not resemble your code or may be partly contaminated. A small set of your own tasks is usually a better guide.",
+     "bodyKn": "ಸಾರ್ವಜನಿಕ ಬೆಂಚ್‌ಮಾರ್ಕ್ ನಿಮ್ಮ ಕೋಡ್‌ಗೆ ಹೋಲದಿರಬಹುದು ಅಥವಾ ಭಾಗಶಃ ಕಲುಷಿತವಾಗಿರಬಹುದು. ನಿಮ್ಮದೇ ಕೆಲಸಗಳ ಸಣ್ಣ ಸೆಟ್ ಸಾಮಾನ್ಯವಾಗಿ ಉತ್ತಮ ಮಾರ್ಗದರ್ಶಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Compare success, cost, controls and integration.\n• Prefer your own tasks over leaderboards.",
+     "bodyKn": "• ಯಶಸ್ಸು, ವೆಚ್ಚ, ನಿಯಂತ್ರಣ, ಸಂಯೋಜನೆ.\n• ನಿಮ್ಮ ಕೆಲಸ ಲೀಡರ್‌ಬೋರ್ಡ್‌ಗಿಂತ ಉತ್ತಮ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A useful criterion:",
+       "qKn": "ಉಪಯುಕ್ತ ಮಾನದಂಡ:",
+       "opts": [
+        "Cost per completed task",
+        "Logo colour",
+        "Font",
+        "Company size only"
+       ],
+       "optsKn": [
+        "ಪೂರ್ಣ ಕೆಲಸಕ್ಕೆ ವೆಚ್ಚ",
+        "ಲೋಗೋ ಬಣ್ಣ",
+        "ಫಾಂಟ್",
+        "ಕಂಪನಿ ಗಾತ್ರ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Why not trust leaderboards alone?",
+       "qKn": "ಲೀಡರ್‌ಬೋರ್ಡ್ ಮಾತ್ರ ಏಕೆ ನಂಬಬಾರದು?",
+       "opts": [
+        "They may not resemble your code",
+        "They are illegal",
+        "They are secret",
+        "They are perfect"
+       ],
+       "optsKn": [
+        "ನಿಮ್ಮ ಕೋಡ್‌ಗೆ ಹೋಲದಿರಬಹುದು",
+        "ಕಾನೂನುಬಾಹಿರ",
+        "ರಹಸ್ಯ",
+        "ಪರಿಪೂರ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A better guide is:",
+       "qKn": "ಉತ್ತಮ ಮಾರ್ಗದರ್ಶಿ:",
+       "opts": [
+        "A small set of your own tasks",
+        "A rumour",
+        "Advertising",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ನಿಮ್ಮದೇ ಕೆಲಸಗಳ ಸಣ್ಣ ಸೆಟ್",
+        "ವದಂತಿ",
+        "ಜಾಹೀರಾತು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6366020ed05b3215a7",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Autonomous Coding Agent Landscape — Adopting Agents Safely in a Team",
+  "titleKn": "ಸ್ವಾಯತ್ತ ಕೋಡಿಂಗ್ Agent ಚಿತ್ರಣ — ತಂಡದಲ್ಲಿ Agents ಸುರಕ್ಷಿತ ಅಳವಡಿಕೆ",
+  "desc": "Roll out agents gradually with permissions, review requirements and a way to measure their effect.",
+  "descKn": "ಅನುಮತಿ, ವಿಮರ್ಶೆ ಅಗತ್ಯ, ಪರಿಣಾಮ ಅಳೆಯುವ ಮಾರ್ಗದೊಂದಿಗೆ agents ಕ್ರಮೇಣ ಜಾರಿಗೊಳಿಸಿ.",
+  "objectives": [
+   "Start with low-risk tasks and tight permissions.",
+   "Require human review of merged changes."
+  ],
+  "objectivesKn": [
+   "ಕಡಿಮೆ ಅಪಾಯದ ಕೆಲಸ, ಕಠಿಣ ಅನುಮತಿಯಿಂದ ಆರಂಭ.",
+   "ವಿಲೀನ ಬದಲಾವಣೆಗಳ ಮಾನವ ವಿಮರ್ಶೆ ಕಡ್ಡಾಯ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Autonomous Coding Agent Landscape — Adopting Agents Safely in a Team",
+     "textKn": "Autonomous Coding Agent Landscape — Adopting Agents Safely in a Team",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Autonomous Coding Agent Landscape (SWE-bench, CodeAct)",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Start Narrow",
+     "headingKn": "ಕಿರಿದಾಗಿ ಆರಂಭ",
+     "bodyEn": "Begin with tests, documentation and small bug fixes, with read-mostly permissions, then widen as trust and evidence grow.",
+     "bodyKn": "tests, ದಾಖಲೆ, ಸಣ್ಣ ದೋಷ ಪರಿಹಾರ, ಹೆಚ್ಚಾಗಿ ಓದಲು ಅನುಮತಿಯೊಂದಿಗೆ ಆರಂಭಿಸಿ; ನಂಬಿಕೆ ಮತ್ತು ಸಾಕ್ಷ್ಯ ಬೆಳೆದಂತೆ ವಿಸ್ತರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Review Everything Merged",
+     "headingKn": "ವಿಲೀನವಾದದ್ದೆಲ್ಲ ವಿಮರ್ಶಿಸಿ",
+     "bodyEn": "Agent-written changes should go through the same review and CI as human ones. Track defects that reach production to see whether the process works.",
+     "bodyKn": "agent ಬರೆದ ಬದಲಾವಣೆ ಮಾನವರದ್ದಿನ ಅದೇ ವಿಮರ್ಶೆ ಮತ್ತು CI ಮೂಲಕ ಹೋಗಲಿ. ಪ್ರಕ್ರಿಯೆ ಕೆಲಸ ಮಾಡುತ್ತದೆಯೇ ನೋಡಲು ಉತ್ಪಾದನೆ ತಲುಪುವ ದೋಷ ಗಮನಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Start with low-risk tasks and narrow permissions.\n• Same review and CI as human changes.",
+     "bodyKn": "• ಕಡಿಮೆ ಅಪಾಯ, ಕಿರಿದು ಅನುಮತಿ.\n• ಮಾನವರಂತೆಯೇ ವಿಮರ್ಶೆ ಮತ್ತು CI."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Where to start?",
+       "qKn": "ಎಲ್ಲಿಂದ ಆರಂಭ?",
+       "opts": [
+        "Low-risk tasks like tests and docs",
+        "Production database migrations",
+        "Security keys",
+        "Nothing"
+       ],
+       "optsKn": [
+        "tests, ದಾಖಲೆಯಂತಹ ಕಡಿಮೆ ಅಪಾಯ",
+        "ಉತ್ಪಾದನಾ ಡೇಟಾಬೇಸ್ migrations",
+        "ಭದ್ರತಾ keys",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Agent changes should:",
+       "qKn": "agent ಬದಲಾವಣೆ:",
+       "opts": [
+        "Go through normal review and CI",
+        "Skip review",
+        "Be hidden",
+        "Auto-merge"
+       ],
+       "optsKn": [
+        "ಸಾಮಾನ್ಯ ವಿಮರ್ಶೆ ಮತ್ತು CI",
+        "ವಿಮರ್ಶೆ ಬಿಡು",
+        "ಮರೆ",
+        "ಸ್ವಯಂ ವಿಲೀನ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Track to judge the process:",
+       "qKn": "ಪ್ರಕ್ರಿಯೆ ಅಳೆಯಲು:",
+       "opts": [
+        "Defects reaching production",
+        "Colour",
+        "Fonts",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಉತ್ಪಾದನೆ ತಲುಪುವ ದೋಷ",
+        "ಬಣ್ಣ",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6366020ed05b3215aa",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Claude Code Permission Modes and Auto Mode — Why Permissions Exist",
+  "titleKn": "Claude Code ಅನುಮತಿ ಮೋಡ್‌ಗಳು ಮತ್ತು Auto Mode — ಅನುಮತಿ ಏಕೆ",
+  "desc": "A coding agent can read files, edit code and run commands, so what it may do without asking must be controlled.",
+  "descKn": "coding agent ಫೈಲ್ ಓದಿ, ಕೋಡ್ ತಿದ್ದಿ, ಆದೇಶ ಚಲಾಯಿಸಬಲ್ಲದು; ಕೇಳದೆ ಏನು ಮಾಡಬಹುದು ಎಂಬುದು ನಿಯಂತ್ರಿತವಾಗಿರಬೇಕು.",
+  "objectives": [
+   "Explain the risk of unrestricted agents.",
+   "Distinguish read, edit and execute actions."
+  ],
+  "objectivesKn": [
+   "ನಿರ್ಬಂಧವಿಲ್ಲದ agents ಅಪಾಯ ವಿವರಿಸಿ.",
+   "ಓದು, ತಿದ್ದು, ಚಲಾಯಿಸು ಕ್ರಿಯೆ ಬೇರ್ಪಡಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Claude Code Permission Modes and Auto Mode — Why Permissions Exist",
+     "textKn": "Claude Code Permission Modes and Auto Mode — Why Permissions Exist",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Claude Code Permission Modes and Auto Mode",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Three Kinds of Action",
+     "headingKn": "ಮೂರು ವಿಧದ ಕ್ರಿಯೆ",
+     "bodyEn": "Reading is low risk, editing files can be undone with version control, and running arbitrary commands can affect the whole machine or the network.",
+     "bodyKn": "ಓದುವುದು ಕಡಿಮೆ ಅಪಾಯ, ಫೈಲ್ ತಿದ್ದುವುದನ್ನು ಆವೃತ್ತಿ ನಿಯಂತ್ರಣದಿಂದ ಹಿಂತೆಗೆಯಬಹುದು, ಯಾವುದೇ ಆದೇಶ ಚಲಾಯಿಸುವುದು ಇಡೀ ಯಂತ್ರ ಅಥವಾ ನೆಟ್‌ವರ್ಕ್ ಮೇಲೆ ಪರಿಣಾಮ ಬೀರಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Ask Before Acting",
+     "headingKn": "ಕ್ರಿಯೆ ಮೊದಲು ಕೇಳಿ",
+     "bodyEn": "Permission prompts keep a human in the loop for risky steps. The trade-off is interruption, so modes exist to balance safety and flow.",
+     "bodyKn": "ಅನುಮತಿ prompts ಅಪಾಯಕಾರಿ ಹಂತಗಳಲ್ಲಿ ಮಾನವನನ್ನು loop ನಲ್ಲಿಡುತ್ತವೆ. ಅಡಚಣೆ ವಿನಿಮಯ; ಆದ್ದರಿಂದ ಸುರಕ್ಷತೆ ಮತ್ತು ಹರಿವು ಸಮತೋಲನಕ್ಕೆ ಮೋಡ್‌ಗಳಿವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Read, edit and execute carry different risk.\n• Prompts trade interruption for safety.",
+     "bodyKn": "• ಓದು, ತಿದ್ದು, ಚಲಾಯಿಸು ಬೇರೆ ಅಪಾಯ.\n• prompts ಸುರಕ್ಷತೆಗೆ ಅಡಚಣೆ ವಿನಿಮಯ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Which action is usually lowest risk?",
+       "qKn": "ಸಾಮಾನ್ಯವಾಗಿ ಕಡಿಮೆ ಅಪಾಯ?",
+       "opts": [
+        "Reading files",
+        "Running arbitrary commands",
+        "Deleting data",
+        "Network calls"
+       ],
+       "optsKn": [
+        "ಫೈಲ್ ಓದುವುದು",
+        "ಯಾವುದೇ ಆದೇಶ ಚಲಾಯಿಸು",
+        "ಡೇಟಾ ಅಳಿಸು",
+        "ನೆಟ್‌ವರ್ಕ್ ಕರೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "File edits can be undone with:",
+       "qKn": "ಫೈಲ್ ತಿದ್ದುವಿಕೆ ಹಿಂತೆಗೆಯಲು:",
+       "opts": [
+        "Version control",
+        "Prayer",
+        "Nothing",
+        "Restarting"
+       ],
+       "optsKn": [
+        "ಆವೃತ್ತಿ ನಿಯಂತ್ರಣ",
+        "ಪ್ರಾರ್ಥನೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಮರುಪ್ರಾರಂಭ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The cost of prompts is:",
+       "qKn": "prompts ವೆಚ್ಚ:",
+       "opts": [
+        "Interruption",
+        "Danger",
+        "Speed",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಅಡಚಣೆ",
+        "ಅಪಾಯ",
+        "ವೇಗ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6366020ed05b3215aa",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Claude Code Permission Modes and Auto Mode — The Permission Modes",
+  "titleKn": "Claude Code ಅನುಮತಿ ಮೋಡ್‌ಗಳು ಮತ್ತು Auto Mode — ಅನುಮತಿ ಮೋಡ್‌ಗಳು",
+  "desc": "Modes range from asking about most actions to allowing many actions automatically, with plan-only modes for safe exploration.",
+  "descKn": "ಮೋಡ್‌ಗಳು ಹೆಚ್ಚಿನ ಕ್ರಿಯೆಗೆ ಕೇಳುವುದರಿಂದ ಹಲವು ಕ್ರಿಯೆ ಸ್ವಯಂ ಅನುಮತಿಸುವವರೆಗೆ; ಸುರಕ್ಷಿತ ಅನ್ವೇಷಣೆಗೆ plan-only ಮೋಡ್.",
+  "objectives": [
+   "Describe default, plan and auto-accept style modes.",
+   "Choose a mode to fit the risk of the task."
+  ],
+  "objectivesKn": [
+   "default, plan, auto-accept ಶೈಲಿ ಮೋಡ್ ವಿವರಿಸಿ.",
+   "ಕೆಲಸದ ಅಪಾಯಕ್ಕೆ ತಕ್ಕ ಮೋಡ್ ಆರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Claude Code Permission Modes and Auto Mode — The Permission Modes",
+     "textKn": "Claude Code Permission Modes and Auto Mode — The Permission Modes",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Claude Code Permission Modes and Auto Mode",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Mode Choices",
+     "headingKn": "ಮೋಡ್ ಆಯ್ಕೆಗಳು",
+     "bodyEn": "A default mode asks before edits and commands. A plan mode lets the agent read and propose without changing anything. Auto-accept style modes allow edits without prompting.",
+     "bodyKn": "default ಮೋಡ್ ತಿದ್ದುವಿಕೆ ಮತ್ತು ಆದೇಶ ಮೊದಲು ಕೇಳುತ್ತದೆ. plan ಮೋಡ್ ಏನೂ ಬದಲಿಸದೆ ಓದಿ ಪ್ರಸ್ತಾಪಿಸಲು ಬಿಡುತ್ತದೆ. auto-accept ಶೈಲಿ ಮೋಡ್ ಕೇಳದೆ ತಿದ್ದಲು ಅನುಮತಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Match Mode to Risk",
+     "headingKn": "ಅಪಾಯಕ್ಕೆ ಮೋಡ್ ಹೊಂದಿಸಿ",
+     "bodyEn": "Use plan mode for unfamiliar code, default for normal work and looser modes only in disposable or well-tested environments.",
+     "bodyKn": "ಅಪರಿಚಿತ ಕೋಡ್‌ಗೆ plan ಮೋಡ್, ಸಾಮಾನ್ಯ ಕೆಲಸಕ್ಕೆ default, ಸಡಿಲ ಮೋಡ್ ಬಿಸಾಡಬಹುದಾದ ಅಥವಾ ಚೆನ್ನಾಗಿ ಪರೀಕ್ಷಿತ ಪರಿಸರದಲ್ಲಿ ಮಾತ್ರ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Plan mode proposes without changing.\n• Loosen modes only in safe environments.",
+     "bodyKn": "• plan ಮೋಡ್ ಬದಲಿಸದೆ ಪ್ರಸ್ತಾಪ.\n• ಸಡಿಲ ಮೋಡ್ ಸುರಕ್ಷಿತ ಪರಿಸರದಲ್ಲಿ ಮಾತ್ರ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does plan mode do?",
+       "qKn": "plan ಮೋಡ್ ಏನು ಮಾಡುತ್ತದೆ?",
+       "opts": [
+        "Reads and proposes without changing",
+        "Deletes files",
+        "Runs anything",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಬದಲಿಸದೆ ಓದಿ ಪ್ರಸ್ತಾಪ",
+        "ಫೈಲ್ ಅಳಿಸು",
+        "ಏನಾದರೂ ಚಲಾಯಿಸು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Loose modes suit:",
+       "qKn": "ಸಡಿಲ ಮೋಡ್ ಸೂಕ್ತ:",
+       "opts": [
+        "Disposable, well-tested environments",
+        "Production",
+        "Secrets",
+        "Anywhere"
+       ],
+       "optsKn": [
+        "ಬಿಸಾಡಬಹುದಾದ, ಪರೀಕ್ಷಿತ ಪರಿಸರ",
+        "ಉತ್ಪಾದನೆ",
+        "ರಹಸ್ಯಗಳು",
+        "ಎಲ್ಲಿಯಾದರೂ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Unfamiliar code suits:",
+       "qKn": "ಅಪರಿಚಿತ ಕೋಡ್‌ಗೆ:",
+       "opts": [
+        "Plan mode",
+        "Full auto",
+        "No mode",
+        "Deleting"
+       ],
+       "optsKn": [
+        "plan ಮೋಡ್",
+        "ಪೂರ್ಣ auto",
+        "ಮೋಡ್ ಇಲ್ಲ",
+        "ಅಳಿಸುವುದು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6366020ed05b3215aa",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Claude Code Permission Modes and Auto Mode — Auto Mode and Its Safeguards",
+  "titleKn": "Claude Code ಅನುಮತಿ ಮೋಡ್‌ಗಳು ಮತ್ತು Auto Mode — Auto Mode ಮತ್ತು ರಕ್ಷಣೆಗಳು",
+  "desc": "Auto-style operation reduces prompts, so it relies on rules, classifiers and sandboxes to stay safe.",
+  "descKn": "Auto-ಶೈಲಿಯ ಚಾಲನೆ prompts ಕಡಿಮೆ ಮಾಡುತ್ತದೆ; ಸುರಕ್ಷಿತವಾಗಿರಲು ನಿಯಮ, classifiers, sandboxes ಅವಲಂಬಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Explain why fewer prompts need stronger guardrails.",
+   "Combine allow lists, deny lists and sandboxes."
+  ],
+  "objectivesKn": [
+   "ಕಡಿಮೆ prompts ಗೆ ಬಲವಾದ guardrails ಏಕೆ ವಿವರಿಸಿ.",
+   "allow ಪಟ್ಟಿ, deny ಪಟ್ಟಿ, sandbox ಸಂಯೋಜಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Claude Code Permission Modes and Auto Mode — Auto Mode and Its Safeguards",
+     "textKn": "Claude Code Permission Modes and Auto Mode — Auto Mode and Its Safeguards",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Claude Code Permission Modes and Auto Mode",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Fewer Prompts, More Guardrails",
+     "headingKn": "ಕಡಿಮೆ Prompts, ಹೆಚ್ಚು Guardrails",
+     "bodyEn": "When the human is asked less often, the system must catch dangerous actions itself, using rules, action classifiers and restricted environments.",
+     "bodyKn": "ಮಾನವನನ್ನು ಕಡಿಮೆ ಕೇಳಿದಾಗ ವ್ಯವಸ್ಥೆ ತಾನೇ ಅಪಾಯಕಾರಿ ಕ್ರಿಯೆ ಹಿಡಿಯಬೇಕು: ನಿಯಮ, action classifiers, ನಿರ್ಬಂಧಿತ ಪರಿಸರ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Layered Controls",
+     "headingKn": "ಪದರ ನಿಯಂತ್ರಣ",
+     "bodyEn": "Allow lists permit known-safe commands, deny lists block dangerous ones, and a sandbox limits what any command can reach. No single layer is trusted alone.",
+     "bodyKn": "allow ಪಟ್ಟಿ ತಿಳಿದ ಸುರಕ್ಷಿತ ಆದೇಶ ಅನುಮತಿಸುತ್ತದೆ, deny ಪಟ್ಟಿ ಅಪಾಯಕಾರಿಯವನ್ನು ತಡೆಯುತ್ತದೆ, sandbox ಆದೇಶ ತಲುಪಬಹುದಾದದ್ದು ಮಿತಿಗೊಳಿಸುತ್ತದೆ. ಯಾವ ಪದರವನ್ನೂ ಮಾತ್ರ ನಂಬಲಾಗದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Less prompting means stronger automatic guardrails.\n• Layer allow lists, deny lists and sandboxes.",
+     "bodyKn": "• ಕಡಿಮೆ prompts = ಬಲವಾದ ಸ್ವಯಂ guardrails.\n• allow, deny, sandbox ಪದರ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why stronger guardrails in auto mode?",
+       "qKn": "auto ಮೋಡ್‌ನಲ್ಲಿ ಬಲವಾದ guardrails ಏಕೆ?",
+       "opts": [
+        "Humans are asked less often",
+        "Humans are asked more",
+        "It is required by law only",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಮಾನವರನ್ನು ಕಡಿಮೆ ಕೇಳಲಾಗುತ್ತದೆ",
+        "ಹೆಚ್ಚು ಕೇಳಲಾಗುತ್ತದೆ",
+        "ಕಾನೂನು ಮಾತ್ರ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A deny list:",
+       "qKn": "deny ಪಟ್ಟಿ:",
+       "opts": [
+        "Blocks dangerous commands",
+        "Allows all",
+        "Is decorative",
+        "Deletes logs"
+       ],
+       "optsKn": [
+        "ಅಪಾಯಕಾರಿ ಆದೇಶ ತಡೆ",
+        "ಎಲ್ಲ ಅನುಮತಿ",
+        "ಅಲಂಕಾರ",
+        "ಲಾಗ್ ಅಳಿಸು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Should one layer be trusted alone?",
+       "qKn": "ಒಂದು ಪದರ ಮಾತ್ರ ನಂಬಬಹುದೇ?",
+       "opts": [
+        "No, layer defences",
+        "Yes",
+        "Always",
+        "Sometimes randomly"
+       ],
+       "optsKn": [
+        "ಇಲ್ಲ, ಪದರ ರಕ್ಷಣೆ",
+        "ಹೌದು",
+        "ಯಾವಾಗಲೂ",
+        "ಕೆಲವೊಮ್ಮೆ ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215ad",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Browser Agents and Indirect Prompt Injection — Agents That Use the Web",
+  "titleKn": "Browser Agents ಮತ್ತು ಪರೋಕ್ಷ Prompt Injection — ವೆಬ್ ಬಳಸುವ Agents",
+  "desc": "Browser agents click, type and read pages on a user's behalf, which exposes them to whatever those pages contain.",
+  "descKn": "Browser agents ಬಳಕೆದಾರರ ಪರವಾಗಿ ಕ್ಲಿಕ್, ಟೈಪ್, ಪುಟ ಓದುತ್ತವೆ; ಆ ಪುಟಗಳಲ್ಲಿರುವುದಕ್ಕೆ ಒಡ್ಡಿಕೊಳ್ಳುತ್ತವೆ.",
+  "objectives": [
+   "Describe what a browser agent can do.",
+   "Explain why open web content is untrusted."
+  ],
+  "objectivesKn": [
+   "browser agent ಏನು ಮಾಡಬಲ್ಲದು ವಿವರಿಸಿ.",
+   "ತೆರೆದ ವೆಬ್ ವಿಷಯ ಅಪನಂಬಿಕೆ ಏಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Browser Agents and Indirect Prompt Injection — Agents That Use the Web",
+     "textKn": "Browser Agents and Indirect Prompt Injection — Agents That Use the Web",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Browser Agents and Indirect Prompt Injection",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Capabilities",
+     "headingKn": "ಸಾಮರ್ಥ್ಯಗಳು",
+     "bodyEn": "A browser agent can search, fill forms, read email or documents in open tabs and complete purchases, often with the user's logged-in sessions.",
+     "bodyKn": "browser agent ಹುಡುಕಬಹುದು, ಫಾರ್ಮ್ ತುಂಬಬಹುದು, ತೆರೆದ tabs ನ ಇಮೇಲ್ ಅಥವಾ ದಾಖಲೆ ಓದಬಹುದು, ಖರೀದಿ ಪೂರ್ಣಗೊಳಿಸಬಹುದು, ಆಗಾಗ ಬಳಕೆದಾರರ ಲಾಗಿನ್ ಸೆಷನ್‌ಗಳೊಂದಿಗೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Untrusted Content",
+     "headingKn": "ಅಪನಂಬಿಕೆ ವಿಷಯ",
+     "bodyEn": "Anyone can publish a web page or send an email. The agent reads text written by strangers and must not treat it as instructions from the user.",
+     "bodyKn": "ಯಾರಾದರೂ ವೆಬ್ ಪುಟ ಪ್ರಕಟಿಸಬಹುದು ಅಥವಾ ಇಮೇಲ್ ಕಳುಹಿಸಬಹುದು. agent ಅಪರಿಚಿತರು ಬರೆದ ಪಠ್ಯ ಓದುತ್ತದೆ; ಅದನ್ನು ಬಳಕೆದಾರರ ಸೂಚನೆ ಎಂದು ಪರಿಗಣಿಸಬಾರದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Browser agents act with the user's sessions.\n• Web content is untrusted data.",
+     "bodyKn": "• browser agents ಬಳಕೆದಾರರ ಸೆಷನ್‌ಗಳೊಂದಿಗೆ ಕ್ರಿಯೆ.\n• ವೆಬ್ ವಿಷಯ ಅಪನಂಬಿಕೆ ಡೇಟಾ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A browser agent often has:",
+       "qKn": "browser agent ಸಾಮಾನ್ಯವಾಗಿ ಹೊಂದಿರುವುದು:",
+       "opts": [
+        "The user's logged-in sessions",
+        "No access",
+        "Only images",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಬಳಕೆದಾರರ ಲಾಗಿನ್ ಸೆಷನ್‌ಗಳು",
+        "ಪ್ರವೇಶವಿಲ್ಲ",
+        "ಚಿತ್ರ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Web page text is:",
+       "qKn": "ವೆಬ್ ಪುಟ ಪಠ್ಯ:",
+       "opts": [
+        "Untrusted",
+        "Always trusted",
+        "The user's command",
+        "Encrypted"
+       ],
+       "optsKn": [
+        "ಅಪನಂಬಿಕೆ",
+        "ಯಾವಾಗಲೂ ನಂಬಿಕೆ",
+        "ಬಳಕೆದಾರರ ಆದೇಶ",
+        "ಎನ್‌ಕ್ರಿಪ್ಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Who can publish web text?",
+       "qKn": "ವೆಬ್ ಪಠ್ಯ ಯಾರು ಪ್ರಕಟಿಸಬಹುದು?",
+       "opts": [
+        "Anyone",
+        "Only the user",
+        "Only admins",
+        "Nobody"
+       ],
+       "optsKn": [
+        "ಯಾರಾದರೂ",
+        "ಬಳಕೆದಾರ ಮಾತ್ರ",
+        "admins ಮಾತ್ರ",
+        "ಯಾರೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215ad",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Browser Agents and Indirect Prompt Injection — How Indirect Injection Attacks Work",
+  "titleKn": "Browser Agents ಮತ್ತು ಪರೋಕ್ಷ Prompt Injection — ಪರೋಕ್ಷ Injection ದಾಳಿ ಹೇಗೆ",
+  "desc": "Attackers hide instructions in pages, emails or documents so the agent acts for them instead of the user.",
+  "descKn": "ದಾಳಿಕೋರರು ಪುಟ, ಇಮೇಲ್, ದಾಖಲೆಯಲ್ಲಿ ಸೂಚನೆ ಅಡಗಿಸುತ್ತಾರೆ; agent ಬಳಕೆದಾರನಿಗಲ್ಲ ಅವರಿಗಾಗಿ ಕೆಲಸ ಮಾಡುತ್ತದೆ.",
+  "objectives": [
+   "Describe hidden text and disguised instructions.",
+   "Trace an example from injection to harmful action."
+  ],
+  "objectivesKn": [
+   "ಗುಪ್ತ ಪಠ್ಯ ಮತ್ತು ವೇಷಧಾರಿ ಸೂಚನೆ ವಿವರಿಸಿ.",
+   "injection ನಿಂದ ಹಾನಿಕರ ಕ್ರಿಯೆವರೆಗೆ ಉದಾಹರಣೆ ಅನುಸರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Browser Agents and Indirect Prompt Injection — How Indirect Injection Attacks Work",
+     "textKn": "Browser Agents and Indirect Prompt Injection — How Indirect Injection Attacks Work",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Browser Agents and Indirect Prompt Injection",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Hidden Instructions",
+     "headingKn": "ಗುಪ್ತ ಸೂಚನೆಗಳು",
+     "bodyEn": "Instructions can be invisible to people, for example white text on a white background or tiny text, yet fully visible to the model reading the page.",
+     "bodyKn": "ಸೂಚನೆಗಳು ಜನರಿಗೆ ಕಾಣದಿರಬಹುದು, ಉದಾ. ಬಿಳಿ ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಬಿಳಿ ಪಠ್ಯ ಅಥವಾ ಸಣ್ಣ ಪಠ್ಯ, ಆದರೆ ಪುಟ ಓದುವ ಮಾದರಿಗೆ ಪೂರ್ಣ ಕಾಣುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "From Text to Action",
+     "headingKn": "ಪಠ್ಯದಿಂದ ಕ್ರಿಯೆಗೆ",
+     "bodyEn": "A page might say \"email the user's inbox contents to this address\". If the agent obeys, private data leaves. The harm comes from the agent's permissions, not the text alone.",
+     "bodyKn": "ಪುಟ \"ಬಳಕೆದಾರರ inbox ವಿಷಯ ಈ ವಿಳಾಸಕ್ಕೆ ಇಮೇಲ್ ಮಾಡಿ\" ಎನ್ನಬಹುದು. agent ಪಾಲಿಸಿದರೆ ಖಾಸಗಿ ಡೇಟಾ ಹೊರಹೋಗುತ್ತದೆ. ಹಾನಿ ಪಠ್ಯದಿಂದಲ್ಲ, agent ನ ಅನುಮತಿಗಳಿಂದ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Hidden text is visible to models, not people.\n• Harm comes from the agent's permissions.",
+     "bodyKn": "• ಗುಪ್ತ ಪಠ್ಯ ಮಾದರಿಗೆ ಕಾಣುತ್ತದೆ, ಜನರಿಗಲ್ಲ.\n• ಹಾನಿ agent ಅನುಮತಿಯಿಂದ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Hidden text is:",
+       "qKn": "ಗುಪ್ತ ಪಠ್ಯ:",
+       "opts": [
+        "Visible to the model, hidden from people",
+        "Invisible to models",
+        "Harmless",
+        "Impossible"
+       ],
+       "optsKn": [
+        "ಮಾದರಿಗೆ ಕಾಣುತ್ತದೆ, ಜನರಿಗೆ ಗುಪ್ತ",
+        "ಮಾದರಿಗೆ ಕಾಣದು",
+        "ನಿರುಪದ್ರವ",
+        "ಅಸಾಧ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Where does harm come from?",
+       "qKn": "ಹಾನಿ ಎಲ್ಲಿಂದ?",
+       "opts": [
+        "The agent's permissions acting on injected text",
+        "Fonts",
+        "Colours",
+        "Nothing"
+       ],
+       "optsKn": [
+        "injected ಪಠ್ಯದ ಮೇಲೆ agent ಅನುಮತಿ ಕ್ರಿಯೆ",
+        "ಫಾಂಟ್",
+        "ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Example of data leaving:",
+       "qKn": "ಡೇಟಾ ಹೊರಹೋಗುವ ಉದಾಹರಣೆ:",
+       "opts": [
+        "Emailing inbox contents to an attacker",
+        "Reading a page",
+        "Scrolling",
+        "Closing a tab"
+       ],
+       "optsKn": [
+        "inbox ವಿಷಯ ದಾಳಿಕೋರನಿಗೆ ಇಮೇಲ್",
+        "ಪುಟ ಓದು",
+        "ಸ್ಕ್ರಾಲ್",
+        "tab ಮುಚ್ಚು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215ad",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Browser Agents and Indirect Prompt Injection — Defending Browser Agents",
+  "titleKn": "Browser Agents ಮತ್ತು ಪರೋಕ್ಷ Prompt Injection — Browser Agents ರಕ್ಷಣೆ",
+  "desc": "Reduce risk with confirmation for sensitive actions, limited access, site restrictions and monitoring.",
+  "descKn": "ಸೂಕ್ಷ್ಮ ಕ್ರಿಯೆಗೆ ದೃಢೀಕರಣ, ಸೀಮಿತ ಪ್ರವೇಶ, ಸೈಟ್ ನಿರ್ಬಂಧ, ನಿಗಾದಿಂದ ಅಪಾಯ ಕಡಿಮೆ ಮಾಡಿ.",
+  "objectives": [
+   "Require confirmation for sensitive actions.",
+   "Limit what the agent can access at once."
+  ],
+  "objectivesKn": [
+   "ಸೂಕ್ಷ್ಮ ಕ್ರಿಯೆಗೆ ದೃಢೀಕರಣ ಕಡ್ಡಾಯ.",
+   "ಒಮ್ಮೆಗೆ agent ಪ್ರವೇಶ ಮಿತಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Browser Agents and Indirect Prompt Injection — Defending Browser Agents",
+     "textKn": "Browser Agents and Indirect Prompt Injection — Defending Browser Agents",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Browser Agents and Indirect Prompt Injection",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Confirm Sensitive Actions",
+     "headingKn": "ಸೂಕ್ಷ್ಮ ಕ್ರಿಯೆ ದೃಢೀಕರಿಸಿ",
+     "bodyEn": "Sending messages, purchases and sharing data should pause for explicit human approval, showing exactly what will happen.",
+     "bodyKn": "ಸಂದೇಶ ಕಳುಹಿಸುವುದು, ಖರೀದಿ, ಡೇಟಾ ಹಂಚುವುದು ಸ್ಪಷ್ಟ ಮಾನವ ಅನುಮೋದನೆಗೆ ನಿಲ್ಲಬೇಕು; ಏನಾಗುತ್ತದೆ ಎಂದು ನಿಖರವಾಗಿ ತೋರಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Limit Exposure",
+     "headingKn": "ಒಡ್ಡುವಿಕೆ ಮಿತಿ",
+     "bodyEn": "Use separate browser profiles, avoid mixing sensitive accounts with untrusted browsing, block risky sites and keep logs. Assume some attacks will succeed and limit the damage.",
+     "bodyKn": "ಪ್ರತ್ಯೇಕ browser ಪ್ರೊಫೈಲ್ ಬಳಸಿ, ಸೂಕ್ಷ್ಮ ಖಾತೆಗಳನ್ನು ಅಪನಂಬಿಕೆ ಬ್ರೌಸಿಂಗ್‌ನೊಂದಿಗೆ ಬೆರೆಸಬೇಡಿ, ಅಪಾಯಕಾರಿ ಸೈಟ್ ತಡೆಯಿರಿ, ಲಾಗ್ ಇಡಿ. ಕೆಲವು ದಾಳಿ ಯಶಸ್ವಿಯಾಗುತ್ತವೆ ಎಂದು ಭಾವಿಸಿ ಹಾನಿ ಸೀಮಿತಗೊಳಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Confirm sensitive actions with clear detail.\n• Separate profiles; assume some attacks succeed.",
+     "bodyKn": "• ಸೂಕ್ಷ್ಮ ಕ್ರಿಯೆ ಸ್ಪಷ್ಟ ದೃಢೀಕರಣ.\n• ಪ್ರತ್ಯೇಕ ಪ್ರೊಫೈಲ್; ಹಾನಿ ಸೀಮಿತಗೊಳಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Sensitive actions should:",
+       "qKn": "ಸೂಕ್ಷ್ಮ ಕ್ರಿಯೆ:",
+       "opts": [
+        "Pause for human approval",
+        "Run silently",
+        "Be hidden",
+        "Repeat"
+       ],
+       "optsKn": [
+        "ಮಾನವ ಅನುಮೋದನೆಗೆ ನಿಲ್ಲಬೇಕು",
+        "ಮೌನವಾಗಿ ಚಲಿಸು",
+        "ಮರೆ",
+        "ಪುನರಾವರ್ತನೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Use separate profiles to:",
+       "qKn": "ಪ್ರತ್ಯೇಕ ಪ್ರೊಫೈಲ್ ಏಕೆ?",
+       "opts": [
+        "Limit exposure of sensitive accounts",
+        "Slow the browser",
+        "For colour",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಸೂಕ್ಷ್ಮ ಖಾತೆ ಒಡ್ಡುವಿಕೆ ಮಿತಿ",
+        "browser ನಿಧಾನ",
+        "ಬಣ್ಣ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A sound mindset:",
+       "qKn": "ಸರಿಯಾದ ಮನೋಭಾವ:",
+       "opts": [
+        "Assume some attacks succeed; limit damage",
+        "Assume none succeed",
+        "Ignore risk",
+        "Disable logs"
+       ],
+       "optsKn": [
+        "ಕೆಲವು ದಾಳಿ ಯಶಸ್ವಿ ಎಂದು ಭಾವಿಸಿ, ಹಾನಿ ಸೀಮಿತ",
+        "ಯಾವುದೂ ಯಶಸ್ವಿಯಲ್ಲ",
+        "ಅಪಾಯ ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಲಾಗ್ ನಿಷ್ಕ್ರಿಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215b0",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Durable Execution — Why Agents Need Durability",
+  "titleKn": "Durable Execution — Agents ಗೆ ಬಾಳಿಕೆ ಏಕೆ",
+  "desc": "Long-running agents hit crashes, timeouts and deployments, so their progress must survive interruptions.",
+  "descKn": "ದೀರ್ಘಕಾಲ ಚಲಿಸುವ agents ಕ್ರ್ಯಾಶ್, timeout, deployments ಎದುರಿಸುತ್ತವೆ; ಅವುಗಳ ಪ್ರಗತಿ ಅಡಚಣೆ ಬದುಕಬೇಕು.",
+  "objectives": [
+   "Explain what is lost when a long process crashes.",
+   "Define durable execution."
+  ],
+  "objectivesKn": [
+   "ದೀರ್ಘ ಪ್ರಕ್ರಿಯೆ ಕ್ರ್ಯಾಶ್ ಆದಾಗ ಏನು ಕಳೆಯುತ್ತದೆ ವಿವರಿಸಿ.",
+   "durable execution ವ್ಯಾಖ್ಯಾನಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Durable Execution — Why Agents Need Durability",
+     "textKn": "Durable Execution — Why Agents Need Durability",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Durable Execution for Long-Running Agents",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Crashes Are Normal",
+     "headingKn": "ಕ್ರ್ಯಾಶ್ ಸಾಮಾನ್ಯ",
+     "bodyEn": "Over hours, machines restart, networks fail and deployments happen. An agent that keeps state only in memory loses everything and may repeat costly or unsafe steps.",
+     "bodyKn": "ಗಂಟೆಗಳಲ್ಲಿ ಯಂತ್ರ ಮರುಪ್ರಾರಂಭ, ನೆಟ್‌ವರ್ಕ್ ವೈಫಲ್ಯ, deployments ಆಗುತ್ತವೆ. ಮೆಮೊರಿಯಲ್ಲಿ ಮಾತ್ರ state ಇಡುವ agent ಎಲ್ಲವನ್ನೂ ಕಳೆದು ದುಬಾರಿ ಅಥವಾ ಅಸುರಕ್ಷಿತ ಹಂತ ಪುನರಾವರ್ತಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "What Durable Means",
+     "headingKn": "ಬಾಳಿಕೆ ಎಂದರೇನು",
+     "bodyEn": "Durable execution records each completed step so a restarted process resumes where it stopped instead of starting over.",
+     "bodyKn": "durable execution ಪ್ರತಿ ಪೂರ್ಣಗೊಂಡ ಹಂತ ದಾಖಲಿಸುತ್ತದೆ; ಮರುಪ್ರಾರಂಭಿಸಿದ ಪ್ರಕ್ರಿಯೆ ಮತ್ತೆ ಆರಂಭಿಸದೆ ನಿಂತಲ್ಲಿಂದ ಮುಂದುವರಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Memory-only state is lost on crashes.\n• Durable execution resumes from recorded steps.",
+     "bodyKn": "• ಮೆಮೊರಿ-ಮಾತ್ರ state ಕ್ರ್ಯಾಶ್‌ನಲ್ಲಿ ಕಳೆಯುತ್ತದೆ.\n• ದಾಖಲಿತ ಹಂತದಿಂದ ಮುಂದುವರಿಕೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "What does durable execution do?",
+       "qKn": "durable execution ಏನು ಮಾಡುತ್ತದೆ?",
+       "opts": [
+        "Resumes from recorded steps after failure",
+        "Prevents all failures",
+        "Deletes state",
+        "Slows work"
+       ],
+       "optsKn": [
+        "ವೈಫಲ್ಯದ ನಂತರ ದಾಖಲಿತ ಹಂತದಿಂದ ಮುಂದುವರಿಕೆ",
+        "ಎಲ್ಲ ವೈಫಲ್ಯ ತಡೆ",
+        "state ಅಳಿಸು",
+        "ಕೆಲಸ ನಿಧಾನ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Memory-only state on crash:",
+       "qKn": "ಕ್ರ್ಯಾಶ್‌ನಲ್ಲಿ ಮೆಮೊರಿ-ಮಾತ್ರ state:",
+       "opts": [
+        "Is lost",
+        "Is saved",
+        "Doubles",
+        "Encrypts"
+       ],
+       "optsKn": [
+        "ಕಳೆಯುತ್ತದೆ",
+        "ಉಳಿಯುತ್ತದೆ",
+        "ದ್ವಿಗುಣ",
+        "ಎನ್‌ಕ್ರಿಪ್ಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A risk of restarting from scratch:",
+       "qKn": "ಮೊದಲಿನಿಂದ ಮರುಆರಂಭ ಅಪಾಯ:",
+       "opts": [
+        "Repeating costly or unsafe steps",
+        "Speed",
+        "Lower cost",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ದುಬಾರಿ ಅಥವಾ ಅಸುರಕ್ಷಿತ ಹಂತ ಪುನರಾವರ್ತನೆ",
+        "ವೇಗ",
+        "ಕಡಿಮೆ ವೆಚ್ಚ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215b0",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Durable Execution — Event History and Replay",
+  "titleKn": "Durable Execution — Event ಇತಿಹಾಸ ಮತ್ತು Replay",
+  "desc": "Workflows are made durable by logging events and replaying them to rebuild state after a restart.",
+  "descKn": "events ದಾಖಲಿಸಿ, ಮರುಪ್ರಾರಂಭದ ನಂತರ replay ಮಾಡಿ state ಮರುನಿರ್ಮಿಸುವುದರಿಂದ workflows ಬಾಳಿಕೆ ಪಡೆಯುತ್ತವೆ.",
+  "objectives": [
+   "Describe an append-only event history.",
+   "Explain why workflow code must be deterministic on replay."
+  ],
+  "objectivesKn": [
+   "append-only event ಇತಿಹಾಸ ವಿವರಿಸಿ.",
+   "replay ನಲ್ಲಿ workflow ಕೋಡ್ ನಿರ್ಧಾರಾತ್ಮಕ ಏಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Durable Execution — Event History and Replay",
+     "textKn": "Durable Execution — Event History and Replay",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Durable Execution for Long-Running Agents",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Event History",
+     "headingKn": "Event ಇತಿಹಾಸ",
+     "bodyEn": "Each step and its result is appended to a log. After a restart the system replays the log to recover exactly where the workflow was.",
+     "bodyKn": "ಪ್ರತಿ ಹಂತ ಮತ್ತು ಫಲಿತಾಂಶ ಲಾಗ್‌ಗೆ ಸೇರುತ್ತದೆ. ಮರುಪ್ರಾರಂಭದ ನಂತರ ವ್ಯವಸ್ಥೆ ಲಾಗ್ replay ಮಾಡಿ workflow ನಿಖರವಾಗಿ ಎಲ್ಲಿತ್ತು ಎಂದು ಮರುಪಡೆಯುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Deterministic Replay",
+     "headingKn": "ನಿರ್ಧಾರಾತ್ಮಕ Replay",
+     "bodyEn": "Replay only works if the orchestration code makes the same decisions each time. Non-deterministic work such as model calls and random values must be recorded as results, not recomputed.",
+     "bodyKn": "orchestration ಕೋಡ್ ಪ್ರತಿ ಬಾರಿ ಒಂದೇ ನಿರ್ಧಾರ ಮಾಡಿದರೆ ಮಾತ್ರ replay ಕೆಲಸ ಮಾಡುತ್ತದೆ. ಮಾದರಿ ಕರೆ, ಯಾದೃಚ್ಛಿಕ ಮೌಲ್ಯದಂತಹ ಅನಿರ್ಧಾರಾತ್ಮಕ ಕೆಲಸ ಮರುಗಣನೆ ಮಾಡದೆ ಫಲಿತಾಂಶವಾಗಿ ದಾಖಲಿಸಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Append every step result to a log; replay to recover.\n• Record non-deterministic results instead of recomputing.",
+     "bodyKn": "• ಪ್ರತಿ ಹಂತ ಫಲಿತಾಂಶ ಲಾಗ್‌ಗೆ; replay ಮರುಪಡೆ.\n• ಅನಿರ್ಧಾರಾತ್ಮಕ ಫಲಿತಾಂಶ ದಾಖಲಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "How is state recovered?",
+       "qKn": "state ಹೇಗೆ ಮರುಪಡೆಯಲಾಗುತ್ತದೆ?",
+       "opts": [
+        "By replaying the event log",
+        "By guessing",
+        "By deleting",
+        "By waiting"
+       ],
+       "optsKn": [
+        "event ಲಾಗ್ replay ಮೂಲಕ",
+        "ಊಹೆ",
+        "ಅಳಿಸಿ",
+        "ಕಾಯುವುದು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Model call results in replay should be:",
+       "qKn": "replay ನಲ್ಲಿ ಮಾದರಿ ಕರೆ ಫಲಿತಾಂಶ:",
+       "opts": [
+        "Recorded, not recomputed",
+        "Recomputed each time",
+        "Ignored",
+        "Randomised"
+       ],
+       "optsKn": [
+        "ದಾಖಲಿತ, ಮರುಗಣನೆ ಅಲ್ಲ",
+        "ಪ್ರತಿ ಬಾರಿ ಮರುಗಣನೆ",
+        "ನಿರ್ಲಕ್ಷ್ಯ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The log is:",
+       "qKn": "ಲಾಗ್:",
+       "opts": [
+        "Append-only",
+        "Overwritten",
+        "Random",
+        "Optional"
+       ],
+       "optsKn": [
+        "ಸೇರಿಸುವುದು ಮಾತ್ರ",
+        "ಮೇಲ್ಬರಹ",
+        "ಯಾದೃಚ್ಛಿಕ",
+        "ಐಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6366020ed05b32158c",
+  "moduleId": "6a369d6466020ed05b3215b0",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Durable Execution — Idempotency, Timers and Human Waits",
+  "titleKn": "Durable Execution — Idempotency, Timers, ಮಾನವ ಕಾಯುವಿಕೆ",
+  "desc": "Durable workflows must make side effects safe to retry and handle long waits such as human approval.",
+  "descKn": "durable workflows ಗೆ side effects ಮರುಪ್ರಯತ್ನಕ್ಕೆ ಸುರಕ್ಷಿತ ಮತ್ತು ಮಾನವ ಅನುಮೋದನೆಯಂತಹ ದೀರ್ಘ ಕಾಯುವಿಕೆ ನಿರ್ವಹಣೆ ಬೇಕು.",
+  "objectives": [
+   "Use idempotency keys for side effects.",
+   "Wait for humans or timers without holding resources."
+  ],
+  "objectivesKn": [
+   "side effects ಗೆ idempotency keys ಬಳಸಿ.",
+   "ಸಂಪನ್ಮೂಲ ಹಿಡಿಯದೆ ಮಾನವ ಅಥವಾ timers ಗೆ ಕಾಯಿರಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Durable Execution — Idempotency, Timers and Human Waits",
+     "textKn": "Durable Execution — Idempotency, Timers and Human Waits",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Durable Execution for Long-Running Agents",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Safe Retries",
+     "headingKn": "ಸುರಕ್ಷಿತ ಮರುಪ್ರಯತ್ನ",
+     "bodyEn": "A step may run twice if a crash happens after the effect but before it is recorded. Idempotency keys ensure an email or payment is not duplicated.",
+     "bodyKn": "ಪರಿಣಾಮದ ನಂತರ ಆದರೆ ದಾಖಲಿಸುವ ಮೊದಲು ಕ್ರ್ಯಾಶ್ ಆದರೆ ಹಂತ ಎರಡು ಬಾರಿ ಚಲಿಸಬಹುದು. idempotency keys ಇಮೇಲ್ ಅಥವಾ ಪಾವತಿ ನಕಲಾಗದಂತೆ ಮಾಡುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Waiting Cheaply",
+     "headingKn": "ಅಗ್ಗವಾಗಿ ಕಾಯುವುದು",
+     "bodyEn": "A workflow can sleep for days or wait for a person to approve, because its state is stored. It does not need a running process or a held connection while it waits.",
+     "bodyKn": "workflow state ಸಂಗ್ರಹಿತವಾಗಿರುವುದರಿಂದ ದಿನಗಟ್ಟಲೆ ನಿದ್ರಿಸಬಹುದು ಅಥವಾ ವ್ಯಕ್ತಿ ಅನುಮೋದಿಸುವವರೆಗೆ ಕಾಯಬಹುದು. ಕಾಯುವಾಗ ಚಲಿಸುವ ಪ್ರಕ್ರಿಯೆ ಅಥವಾ ಹಿಡಿದ ಸಂಪರ್ಕ ಬೇಕಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Idempotency keys prevent duplicate side effects.\n• Stored state lets workflows wait cheaply.",
+     "bodyKn": "• idempotency keys ನಕಲು ತಡೆ.\n• ಸಂಗ್ರಹಿತ state ಅಗ್ಗ ಕಾಯುವಿಕೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Why idempotency keys?",
+       "qKn": "idempotency keys ಏಕೆ?",
+       "opts": [
+        "Avoid duplicate side effects on retry",
+        "To slow steps",
+        "For style",
+        "No reason"
+       ],
+       "optsKn": [
+        "ಮರುಪ್ರಯತ್ನದಲ್ಲಿ ನಕಲು ತಪ್ಪಿಸಲು",
+        "ಹಂತ ನಿಧಾನ",
+        "ಶೈಲಿ",
+        "ಕಾರಣವಿಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A workflow waiting for approval needs:",
+       "qKn": "ಅನುಮೋದನೆಗೆ ಕಾಯುವ workflow ಗೆ:",
+       "opts": [
+        "Only stored state",
+        "A held connection",
+        "A running loop",
+        "A GPU"
+       ],
+       "optsKn": [
+        "ಸಂಗ್ರಹಿತ state ಮಾತ್ರ",
+        "ಹಿಡಿದ ಸಂಪರ್ಕ",
+        "ಚಲಿಸುವ loop",
+        "GPU"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A step can run twice when:",
+       "qKn": "ಹಂತ ಎರಡು ಬಾರಿ ಚಲಿಸುವುದು ಯಾವಾಗ?",
+       "opts": [
+        "A crash happens before it is recorded",
+        "Never",
+        "Always",
+        "On weekends"
+       ],
+       "optsKn": [
+        "ದಾಖಲಿಸುವ ಮೊದಲು ಕ್ರ್ಯಾಶ್",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ಯಾವಾಗಲೂ",
+        "ವಾರಾಂತ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]

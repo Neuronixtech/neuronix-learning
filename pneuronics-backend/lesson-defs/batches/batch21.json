@@ -1,0 +1,2627 @@
+[
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216b8",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Fairness Criteria: Group, Individual, Counterfactual — Group Fairness",
+  "titleKn": "ನ್ಯಾಯ ಮಾನದಂಡ: ಗುಂಪು, ವೈಯಕ್ತಿಕ, Counterfactual — ಗುಂಪು ನ್ಯಾಯ",
+  "desc": "Group fairness compares outcomes or error rates across demographic groups.",
+  "descKn": "ಗುಂಪು ನ್ಯಾಯ ಜನಸಂಖ್ಯಾ ಗುಂಪುಗಳ ನಡುವೆ ಫಲಿತಾಂಶ ಅಥವಾ ದೋಷ ದರ ಹೋಲಿಸುತ್ತದೆ.",
+  "objectives": [
+   "Define demographic parity and equalised odds.",
+   "Compute simple group metrics."
+  ],
+  "objectivesKn": [
+   "demographic parity ಮತ್ತು equalised odds ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ಸರಳ ಗುಂಪು ಮೆಟ್ರಿಕ್ಸ್ ಲೆಕ್ಕಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Fairness Criteria: Group, Individual, Counterfactual — Group Fairness",
+     "textKn": "Fairness Criteria: Group, Individual, Counterfactual — Group Fairness",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Fairness Criteria: Group, Individual, Counterfactual",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Demographic Parity",
+     "headingKn": "Demographic Parity",
+     "bodyEn": "Demographic parity asks that the rate of positive decisions, such as loan approvals, be equal across groups regardless of the true outcomes.",
+     "bodyKn": "demographic parity ಸಾಲ ಅನುಮೋದನೆಯಂತಹ ಧನಾತ್ಮಕ ನಿರ್ಧಾರ ದರ ನಿಜ ಫಲಿತಾಂಶ ಏನೇ ಇರಲಿ ಗುಂಪುಗಳ ನಡುವೆ ಸಮನಾಗಿರಬೇಕೆಂದು ಕೇಳುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Equalised Odds",
+     "headingKn": "Equalised Odds",
+     "bodyEn": "Equalised odds asks that true positive and false positive rates be equal across groups, so the model is equally accurate for each group given the real outcome.",
+     "bodyKn": "equalised odds ನಿಜ positive ಮತ್ತು ಸುಳ್ಳು positive ದರ ಗುಂಪುಗಳ ನಡುವೆ ಸಮನಾಗಿರಬೇಕೆಂದು ಕೇಳುತ್ತದೆ; ನಿಜ ಫಲಿತಾಂಶ ಕೊಟ್ಟಾಗ ಮಾದರಿ ಪ್ರತಿ ಗುಂಪಿಗೆ ಸಮಾನ ನಿಖರ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Parity compares positive-decision rates.\n• Equalised odds compares error rates.",
+     "bodyKn": "• parity ಧನಾತ್ಮಕ ನಿರ್ಧಾರ ದರ ಹೋಲಿಕೆ.\n• equalised odds ದೋಷ ದರ ಹೋಲಿಕೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Demographic parity compares:",
+       "qKn": "demographic parity ಹೋಲಿಸುವುದು:",
+       "opts": [
+        "Positive-decision rates across groups",
+        "Fonts",
+        "Speeds",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಗುಂಪುಗಳ ಧನಾತ್ಮಕ ನಿರ್ಧಾರ ದರ",
+        "ಫಾಂಟ್",
+        "ವೇಗ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Equalised odds compares:",
+       "qKn": "equalised odds ಹೋಲಿಸುವುದು:",
+       "opts": [
+        "True and false positive rates",
+        "Colours",
+        "Nothing",
+        "Names"
+       ],
+       "optsKn": [
+        "ನಿಜ ಮತ್ತು ಸುಳ್ಳು positive ದರ",
+        "ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಹೆಸರು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Group fairness looks at:",
+       "qKn": "ಗುಂಪು ನ್ಯಾಯ ನೋಡುವುದು:",
+       "opts": [
+        "Groups",
+        "Only one person",
+        "Nothing",
+        "Devices"
+       ],
+       "optsKn": [
+        "ಗುಂಪುಗಳು",
+        "ಒಬ್ಬ ವ್ಯಕ್ತಿ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಸಾಧನಗಳು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216b8",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Fairness Criteria: Group, Individual, Counterfactual — Individual Fairness",
+  "titleKn": "ನ್ಯಾಯ ಮಾನದಂಡ: ಗುಂಪು, ವೈಯಕ್ತಿಕ, Counterfactual — ವೈಯಕ್ತಿಕ ನ್ಯಾಯ",
+  "desc": "Individual fairness asks that similar individuals receive similar treatment.",
+  "descKn": "ವೈಯಕ್ತಿಕ ನ್ಯಾಯ ಸಮಾನ ವ್ಯಕ್ತಿಗಳಿಗೆ ಸಮಾನ ಉಪಚಾರ ಸಿಗಬೇಕೆಂದು ಕೇಳುತ್ತದೆ.",
+  "objectives": [
+   "State the similar-treatment principle.",
+   "Recognise the difficulty of defining similarity."
+  ],
+  "objectivesKn": [
+   "ಸಮಾನ-ಉಪಚಾರ ತತ್ತ್ವ ಹೇಳಿ.",
+   "ಸಾದೃಶ್ಯ ವ್ಯಾಖ್ಯಾನಿಸುವ ಕಷ್ಟ ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Fairness Criteria: Group, Individual, Counterfactual — Individual Fairness",
+     "textKn": "Fairness Criteria: Group, Individual, Counterfactual — Individual Fairness",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Fairness Criteria: Group, Individual, Counterfactual",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Similar Cases, Similar Outcomes",
+     "headingKn": "ಸಮಾನ ಪ್ರಕರಣ, ಸಮಾನ ಫಲಿತಾಂಶ",
+     "bodyEn": "If two people are alike in every way that matters for the task, the model should treat them alike, whatever groups they belong to.",
+     "bodyKn": "ಇಬ್ಬರು ವ್ಯಕ್ತಿಗಳು ಕೆಲಸಕ್ಕೆ ಮುಖ್ಯವಾದ ಎಲ್ಲ ರೀತಿಯಲ್ಲೂ ಸಮನಾಗಿದ್ದರೆ ಅವರು ಯಾವ ಗುಂಪಿಗೆ ಸೇರಿದರೂ ಮಾದರಿ ಸಮಾನವಾಗಿ ಉಪಚರಿಸಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "What Counts as Similar?",
+     "headingKn": "ಸಮಾನ ಎಂದರೇನು?",
+     "bodyEn": "The hard part is defining a fair similarity measure. That definition encodes judgements about which features matter and needs open discussion.",
+     "bodyKn": "ಕಷ್ಟದ ಭಾಗ ನ್ಯಾಯಯುತ ಸಾದೃಶ್ಯ ಅಳತೆ ವ್ಯಾಖ್ಯಾನಿಸುವುದು. ಆ ವ್ಯಾಖ್ಯಾನ ಯಾವ ವೈಶಿಷ್ಟ್ಯ ಮುಖ್ಯ ಎಂಬ ತೀರ್ಪು ಹೊಂದಿದ್ದು ಮುಕ್ತ ಚರ್ಚೆ ಬೇಕು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Similar individuals, similar treatment.\n• Defining similarity is the hard, value-laden part.",
+     "bodyKn": "• ಸಮಾನ ವ್ಯಕ್ತಿ, ಸಮಾನ ಉಪಚಾರ.\n• ಸಾದೃಶ್ಯ ವ್ಯಾಖ್ಯಾನ ಕಷ್ಟ, ಮೌಲ್ಯಯುತ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Individual fairness says:",
+       "qKn": "ವೈಯಕ್ತಿಕ ನ್ಯಾಯ:",
+       "opts": [
+        "Similar people get similar outcomes",
+        "Everyone gets the same",
+        "Nothing",
+        "Groups matter only"
+       ],
+       "optsKn": [
+        "ಸಮಾನ ಜನರಿಗೆ ಸಮಾನ ಫಲಿತಾಂಶ",
+        "ಎಲ್ಲರಿಗೂ ಒಂದೇ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಗುಂಪು ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The hard part:",
+       "qKn": "ಕಷ್ಟದ ಭಾಗ:",
+       "opts": [
+        "Defining similarity",
+        "Typing",
+        "Nothing",
+        "Colours"
+       ],
+       "optsKn": [
+        "ಸಾದೃಶ್ಯ ವ್ಯಾಖ್ಯಾನ",
+        "ಟೈಪಿಂಗ್",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The definition encodes:",
+       "qKn": "ವ್ಯಾಖ್ಯಾನ ಹೊಂದಿರುವುದು:",
+       "opts": [
+        "Value judgements",
+        "Only maths",
+        "Nothing",
+        "Fonts"
+       ],
+       "optsKn": [
+        "ಮೌಲ್ಯ ತೀರ್ಪು",
+        "ಗಣಿತ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216b8",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Fairness Criteria: Group, Individual, Counterfactual — Counterfactual Fairness and Trade-Offs",
+  "titleKn": "ನ್ಯಾಯ ಮಾನದಂಡ: ಗುಂಪು, ವೈಯಕ್ತಿಕ, Counterfactual — Counterfactual ನ್ಯಾಯ ಮತ್ತು ವಿನಿಮಯ",
+  "desc": "Counterfactual fairness asks whether a decision would change had a protected attribute been different; criteria can conflict.",
+  "descKn": "counterfactual ನ್ಯಾಯ ರಕ್ಷಿತ ಗುಣ ಬೇರೆಯಾಗಿದ್ದರೆ ನಿರ್ಧಾರ ಬದಲಾಗುತ್ತಿತ್ತೇ ಎಂದು ಕೇಳುತ್ತದೆ; ಮಾನದಂಡಗಳು ಸಂಘರ್ಷಿಸಬಹುದು.",
+  "objectives": [
+   "Describe counterfactual testing.",
+   "Explain why not all fairness criteria can hold at once."
+  ],
+  "objectivesKn": [
+   "counterfactual ಪರೀಕ್ಷೆ ವಿವರಿಸಿ.",
+   "ಎಲ್ಲ ನ್ಯಾಯ ಮಾನದಂಡ ಒಮ್ಮೆಲೇ ಹೊಂದದಿರುವುದೇಕೆ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Fairness Criteria: Group, Individual, Counterfactual — Counterfactual Fairness and Trade-Offs",
+     "textKn": "Fairness Criteria: Group, Individual, Counterfactual — Counterfactual Fairness and Trade-Offs",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Fairness Criteria: Group, Individual, Counterfactual",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Change Only the Attribute",
+     "headingKn": "ಗುಣ ಮಾತ್ರ ಬದಲಿಸಿ",
+     "bodyEn": "Swap a name or pronoun in an input and check whether the model output changes in ways it should not. For language models this is a practical test.",
+     "bodyKn": "ಇನ್‌ಪುಟ್‌ನಲ್ಲಿ ಹೆಸರು ಅಥವಾ ಸರ್ವನಾಮ ಬದಲಿಸಿ ಮಾದರಿ ಔಟ್‌ಪುಟ್ ಬದಲಾಗಬಾರದ ರೀತಿ ಬದಲಾಗುತ್ತದೆಯೇ ಪರಿಶೀಲಿಸಿ. ಭಾಷಾ ಮಾದರಿಗಳಿಗೆ ಇದು ಪ್ರಾಯೋಗಿಕ ಪರೀಕ್ಷೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Criteria Can Conflict",
+     "headingKn": "ಮಾನದಂಡಗಳು ಸಂಘರ್ಷಿಸಬಹುದು",
+     "bodyEn": "When base rates differ between groups, mathematical results show that several fairness criteria cannot all be satisfied together. Choosing among them is a values decision.",
+     "bodyKn": "ಗುಂಪುಗಳ ನಡುವೆ base ದರ ಭಿನ್ನವಾದಾಗ ಹಲವು ನ್ಯಾಯ ಮಾನದಂಡ ಒಟ್ಟಿಗೆ ತೃಪ್ತಿಪಡಿಸಲಾಗದು ಎಂದು ಗಣಿತ ಫಲಿತಾಂಶ ತೋರಿಸುತ್ತದೆ. ಅವುಗಳಲ್ಲಿ ಆರಿಸುವುದು ಮೌಲ್ಯ ನಿರ್ಧಾರ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Swap the attribute and check whether outputs change.\n• Criteria can conflict; choosing is a values decision.",
+     "bodyKn": "• ಗುಣ ಬದಲಿಸಿ ಔಟ್‌ಪುಟ್ ಬದಲಾಗುತ್ತದೆಯೇ.\n• ಮಾನದಂಡ ಸಂಘರ್ಷ; ಆಯ್ಕೆ ಮೌಲ್ಯ ನಿರ್ಧಾರ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A counterfactual test swaps:",
+       "qKn": "counterfactual ಪರೀಕ್ಷೆ ಬದಲಿಸುವುದು:",
+       "opts": [
+        "A protected attribute like a name",
+        "The GPU",
+        "The font",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಹೆಸರಿನಂತಹ ರಕ್ಷಿತ ಗುಣ",
+        "GPU",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Different base rates mean:",
+       "qKn": "ಭಿನ್ನ base ದರ ಅರ್ಥ:",
+       "opts": [
+        "Not all criteria can hold together",
+        "All criteria hold",
+        "No fairness exists",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಎಲ್ಲ ಮಾನದಂಡ ಒಟ್ಟಿಗೆ ಹೊಂದದು",
+        "ಎಲ್ಲ ಹೊಂದುತ್ತವೆ",
+        "ನ್ಯಾಯವೇ ಇಲ್ಲ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Choosing among criteria is:",
+       "qKn": "ಮಾನದಂಡಗಳಲ್ಲಿ ಆರಿಸುವುದು:",
+       "opts": [
+        "A values decision",
+        "A purely technical fact",
+        "Random",
+        "Impossible"
+       ],
+       "optsKn": [
+        "ಮೌಲ್ಯ ನಿರ್ಧಾರ",
+        "ಕೇವಲ ತಾಂತ್ರಿಕ ಸತ್ಯ",
+        "ಯಾದೃಚ್ಛಿಕ",
+        "ಅಸಾಧ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216bb",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Differential Privacy for LLMs — The Privacy Risk",
+  "titleKn": "LLM ಗಳಿಗೆ Differential Privacy — ಗೌಪ್ಯತೆ ಅಪಾಯ",
+  "desc": "Language models can memorise and reveal rare training examples, including personal data.",
+  "descKn": "ಭಾಷಾ ಮಾದರಿಗಳು ಅಪರೂಪದ ತರಬೇತಿ ಉದಾಹರಣೆ, ವೈಯಕ್ತಿಕ ಡೇಟಾ ಸೇರಿ, ನೆನಪಿಟ್ಟು ಬಹಿರಂಗಪಡಿಸಬಹುದು.",
+  "objectives": [
+   "Explain memorisation.",
+   "Describe membership inference."
+  ],
+  "objectivesKn": [
+   "memorisation ವಿವರಿಸಿ.",
+   "membership inference ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Differential Privacy for LLMs — The Privacy Risk",
+     "textKn": "Differential Privacy for LLMs — The Privacy Risk",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Differential Privacy for LLMs",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Memorisation",
+     "headingKn": "Memorisation",
+     "bodyEn": "Models can reproduce unusual sequences from training data, such as an email address that appeared a few times. Larger models and repeated data increase the effect.",
+     "bodyKn": "ಕೆಲವೇ ಬಾರಿ ಕಾಣಿಸಿದ ಇಮೇಲ್ ವಿಳಾಸದಂತಹ ಅಸಾಮಾನ್ಯ ಅನುಕ್ರಮಗಳನ್ನು ಮಾದರಿ ತರಬೇತಿ ಡೇಟಾದಿಂದ ಪುನರುತ್ಪಾದಿಸಬಹುದು. ದೊಡ್ಡ ಮಾದರಿ ಮತ್ತು ಪುನರಾವರ್ತಿತ ಡೇಟಾ ಪರಿಣಾಮ ಹೆಚ್ಚಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Membership Inference",
+     "headingKn": "Membership Inference",
+     "bodyEn": "An attacker may try to determine whether a specific person's record was in the training set, which itself can reveal sensitive facts such as a medical condition.",
+     "bodyKn": "ದಾಳಿಕೋರ ನಿರ್ದಿಷ್ಟ ವ್ಯಕ್ತಿಯ ದಾಖಲೆ ತರಬೇತಿ ಸೆಟ್‌ನಲ್ಲಿತ್ತೇ ಎಂದು ನಿರ್ಧರಿಸಲು ಪ್ರಯತ್ನಿಸಬಹುದು; ಅದು ವೈದ್ಯಕೀಯ ಸ್ಥಿತಿಯಂತಹ ಸೂಕ್ಷ್ಮ ಸಂಗತಿ ಬಹಿರಂಗಪಡಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Models can memorise rare training data.\n• Membership itself can be sensitive.",
+     "bodyKn": "• ಮಾದರಿ ಅಪರೂಪದ ತರಬೇತಿ ಡೇಟಾ ನೆನಪಿಡಬಹುದು.\n• ಸದಸ್ಯತ್ವವೇ ಸೂಕ್ಷ್ಮವಾಗಿರಬಹುದು."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Memorisation means:",
+       "qKn": "memorisation ಅರ್ಥ:",
+       "opts": [
+        "Reproducing training sequences",
+        "Forgetting",
+        "Nothing",
+        "Speed"
+       ],
+       "optsKn": [
+        "ತರಬೇತಿ ಅನುಕ್ರಮ ಪುನರುತ್ಪಾದನೆ",
+        "ಮರೆಯುವುದು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ವೇಗ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Membership inference asks:",
+       "qKn": "membership inference ಕೇಳುವುದು:",
+       "opts": [
+        "Was this record in training?",
+        "How fast is it?",
+        "What colour?",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಈ ದಾಖಲೆ ತರಬೇತಿಯಲ್ಲಿತ್ತೇ?",
+        "ಎಷ್ಟು ವೇಗ?",
+        "ಯಾವ ಬಣ್ಣ?",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Repeated data:",
+       "qKn": "ಪುನರಾವರ್ತಿತ ಡೇಟಾ:",
+       "opts": [
+        "Increases memorisation",
+        "Removes it",
+        "Does nothing",
+        "Encrypts it"
+       ],
+       "optsKn": [
+        "memorisation ಹೆಚ್ಚಿಸುತ್ತದೆ",
+        "ತೆಗೆಯುತ್ತದೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಎನ್‌ಕ್ರಿಪ್ಟ್"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216bb",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Differential Privacy for LLMs — Differential Privacy Intuition",
+  "titleKn": "LLM ಗಳಿಗೆ Differential Privacy — Differential Privacy ಸಹಜಜ್ಞಾನ",
+  "desc": "Differential privacy limits how much any single record can influence the output, giving a formal privacy guarantee.",
+  "descKn": "differential privacy ಒಂದು ದಾಖಲೆ ಔಟ್‌ಪುಟ್ ಮೇಲೆ ಎಷ್ಟು ಪ್ರಭಾವ ಬೀರಬಹುದು ಎಂದು ಮಿತಿಗೊಳಿಸಿ ಔಪಚಾರಿಕ ಗೌಪ್ಯತಾ ಖಾತರಿ ನೀಡುತ್ತದೆ.",
+  "objectives": [
+   "State the intuition of the guarantee.",
+   "Explain the privacy budget."
+  ],
+  "objectivesKn": [
+   "ಖಾತರಿಯ ಸಹಜಜ್ಞಾನ ಹೇಳಿ.",
+   "privacy budget ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Differential Privacy for LLMs — Differential Privacy Intuition",
+     "textKn": "Differential Privacy for LLMs — Differential Privacy Intuition",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Differential Privacy for LLMs",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Any One Record Barely Matters",
+     "headingKn": "ಒಂದು ದಾಖಲೆ ಅಷ್ಟೇನೂ ಮುಖ್ಯವಲ್ಲ",
+     "bodyEn": "A differentially private process behaves almost the same whether or not any one person's data is included, so the output reveals little about that person.",
+     "bodyKn": "differentially private ಪ್ರಕ್ರಿಯೆ ಯಾವುದೇ ಒಬ್ಬರ ಡೇಟಾ ಸೇರಿದೆಯೇ ಇಲ್ಲವೇ ಎಂಬುದರಲ್ಲಿ ಬಹುತೇಕ ಒಂದೇ ರೀತಿ ವರ್ತಿಸುತ್ತದೆ; ಆ ವ್ಯಕ್ತಿ ಬಗ್ಗೆ ಔಟ್‌ಪುಟ್ ಕಡಿಮೆ ಬಹಿರಂಗಪಡಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Budget",
+     "headingKn": "ಬಜೆಟ್",
+     "bodyEn": "A parameter, often written epsilon, sets how strong the guarantee is. Smaller values mean stronger privacy but usually lower accuracy.",
+     "bodyKn": "epsilon ಎಂದು ಬರೆಯುವ ಪ್ಯಾರಾಮೀಟರ್ ಖಾತರಿ ಎಷ್ಟು ಬಲವಾಗಿದೆ ನಿಗದಿಪಡಿಸುತ್ತದೆ. ಚಿಕ್ಕ ಮೌಲ್ಯ ಬಲವಾದ ಗೌಪ್ಯತೆ ಆದರೆ ಸಾಮಾನ್ಯವಾಗಿ ಕಡಿಮೆ ನಿಖರತೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Output barely depends on any single record.\n• Smaller epsilon: stronger privacy, lower accuracy.",
+     "bodyKn": "• ಒಂದು ದಾಖಲೆ ಮೇಲೆ ಔಟ್‌ಪುಟ್ ಅಷ್ಟೇನೂ ಅವಲಂಬಿತವಲ್ಲ.\n• ಚಿಕ್ಕ epsilon: ಬಲವಾದ ಗೌಪ್ಯತೆ, ಕಡಿಮೆ ನಿಖರತೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "DP means output barely changes if:",
+       "qKn": "DP ಅರ್ಥ ಔಟ್‌ಪುಟ್ ಬದಲಾಗದು:",
+       "opts": [
+        "One person's data is added or removed",
+        "A font changes",
+        "A GPU changes",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಒಬ್ಬರ ಡೇಟಾ ಸೇರಿಸಿದರೆ ಅಥವಾ ತೆಗೆದರೆ",
+        "ಫಾಂಟ್ ಬದಲಾದರೆ",
+        "GPU ಬದಲಾದರೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Smaller epsilon means:",
+       "qKn": "ಚಿಕ್ಕ epsilon ಅರ್ಥ:",
+       "opts": [
+        "Stronger privacy",
+        "Weaker privacy",
+        "No privacy",
+        "Faster models"
+       ],
+       "optsKn": [
+        "ಬಲವಾದ ಗೌಪ್ಯತೆ",
+        "ದುರ್ಬಲ ಗೌಪ್ಯತೆ",
+        "ಗೌಪ್ಯತೆ ಇಲ್ಲ",
+        "ವೇಗದ ಮಾದರಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "The typical cost:",
+       "qKn": "ಸಾಮಾನ್ಯ ವೆಚ್ಚ:",
+       "opts": [
+        "Lower accuracy",
+        "Nothing",
+        "More privacy loss",
+        "Speed"
+       ],
+       "optsKn": [
+        "ಕಡಿಮೆ ನಿಖರತೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಹೆಚ್ಚು ಗೌಪ್ಯತೆ ನಷ್ಟ",
+        "ವೇಗ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6966020ed05b3216bb",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Differential Privacy for LLMs — DP in Practice for LLMs",
+  "titleKn": "LLM ಗಳಿಗೆ Differential Privacy — LLM ಗಳಿಗೆ DP ಆಚರಣೆ",
+  "desc": "DP-SGD clips and noises gradients during training; it is costly, so it is combined with data hygiene and access controls.",
+  "descKn": "DP-SGD ತರಬೇತಿಯಲ್ಲಿ gradients ಕ್ಲಿಪ್ ಮಾಡಿ ಗದ್ದಲ ಸೇರಿಸುತ್ತದೆ; ದುಬಾರಿ, ಆದ್ದರಿಂದ ಡೇಟಾ ಸ್ವಚ್ಛತೆ ಮತ್ತು ಪ್ರವೇಶ ನಿಯಂತ್ರಣದೊಂದಿಗೆ ಸೇರಿಸಲಾಗುತ್ತದೆ.",
+  "objectives": [
+   "Describe clipping and noise in DP-SGD.",
+   "List complementary privacy measures."
+  ],
+  "objectivesKn": [
+   "DP-SGD ಯಲ್ಲಿ clipping ಮತ್ತು ಗದ್ದಲ ವಿವರಿಸಿ.",
+   "ಪೂರಕ ಗೌಪ್ಯತಾ ಕ್ರಮ ಪಟ್ಟಿ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Differential Privacy for LLMs — DP in Practice for LLMs",
+     "textKn": "Differential Privacy for LLMs — DP in Practice for LLMs",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Differential Privacy for LLMs",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "DP-SGD",
+     "headingKn": "DP-SGD",
+     "bodyEn": "Each example's gradient is clipped to a maximum size and random noise is added before updating the model. This bounds any one example's influence at some cost to quality and compute.",
+     "bodyKn": "ಪ್ರತಿ ಉದಾಹರಣೆಯ gradient ಗರಿಷ್ಠ ಗಾತ್ರಕ್ಕೆ ಕ್ಲಿಪ್ ಆಗಿ ಮಾದರಿ ನವೀಕರಿಸುವ ಮೊದಲು ಯಾದೃಚ್ಛಿಕ ಗದ್ದಲ ಸೇರುತ್ತದೆ. ಯಾವುದೇ ಒಂದು ಉದಾಹರಣೆಯ ಪ್ರಭಾವ ಮಿತಿಗೊಳಿಸುತ್ತದೆ, ಗುಣಮಟ್ಟ ಮತ್ತು ಗಣನೆಗೆ ಸ್ವಲ್ಪ ವೆಚ್ಚದೊಂದಿಗೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Layered Privacy",
+     "headingKn": "ಪದರ ಗೌಪ್ಯತೆ",
+     "bodyEn": "Also deduplicate and scrub training data, limit access to models and logs, test for memorisation and follow data-protection rules. DP is one layer, not the whole answer.",
+     "bodyKn": "ತರಬೇತಿ ಡೇಟಾ ನಕಲು ತೆಗೆದು ಮರೆಮಾಚಿ, ಮಾದರಿ ಮತ್ತು ಲಾಗ್ ಪ್ರವೇಶ ಮಿತಿ ಮಾಡಿ, memorisation ಪರೀಕ್ಷಿಸಿ, ಡೇಟಾ-ರಕ್ಷಣಾ ನಿಯಮ ಪಾಲಿಸಿ. DP ಒಂದು ಪದರ, ಸಂಪೂರ್ಣ ಉತ್ತರವಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• DP-SGD clips gradients and adds noise.\n• Combine with data hygiene, access control and testing.",
+     "bodyKn": "• DP-SGD gradients ಕ್ಲಿಪ್, ಗದ್ದಲ.\n• ಡೇಟಾ ಸ್ವಚ್ಛತೆ, ಪ್ರವೇಶ ನಿಯಂತ್ರಣ, ಪರೀಕ್ಷೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "DP-SGD adds:",
+       "qKn": "DP-SGD ಸೇರಿಸುವುದು:",
+       "opts": [
+        "Noise to clipped gradients",
+        "Colours",
+        "Fonts",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಕ್ಲಿಪ್ ಮಾಡಿದ gradients ಗೆ ಗದ್ದಲ",
+        "ಬಣ್ಣ",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "DP is:",
+       "qKn": "DP:",
+       "opts": [
+        "One layer of privacy protection",
+        "The whole answer",
+        "Free",
+        "Useless"
+       ],
+       "optsKn": [
+        "ಗೌಪ್ಯತೆ ರಕ್ಷಣೆಯ ಒಂದು ಪದರ",
+        "ಸಂಪೂರ್ಣ ಉತ್ತರ",
+        "ಉಚಿತ",
+        "ನಿರುಪಯುಕ್ತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Also:",
+       "qKn": "ಇದನ್ನೂ:",
+       "opts": [
+        "Deduplicate and test for memorisation",
+        "Publish data",
+        "Nothing",
+        "Delete tests"
+       ],
+       "optsKn": [
+        "ನಕಲು ತೆಗೆದು memorisation ಪರೀಕ್ಷಿಸಿ",
+        "ಡೇಟಾ ಪ್ರಕಟಿಸಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "tests ಅಳಿಸಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216be",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Watermarking: SynthID, Stable Signature, C2PA — Why Mark AI Content",
+  "titleKn": "Watermarking: SynthID, Stable Signature, C2PA — AI ವಿಷಯಕ್ಕೆ ಗುರುತು ಏಕೆ",
+  "desc": "Provenance signals help people and platforms tell AI-generated content from human-made content.",
+  "descKn": "ಮೂಲ ಸಂಕೇತಗಳು AI-ರಚಿತ ವಿಷಯ ಮತ್ತು ಮಾನವ-ರಚಿತ ವಿಷಯ ಬೇರ್ಪಡಿಸಲು ಜನರು ಮತ್ತು ವೇದಿಕೆಗಳಿಗೆ ಸಹಾಯ ಮಾಡುತ್ತವೆ.",
+  "objectives": [
+   "State the motivations.",
+   "Distinguish watermarking from metadata."
+  ],
+  "objectivesKn": [
+   "ಪ್ರೇರಣೆ ಹೇಳಿ.",
+   "watermarking ಮತ್ತು ಮೆಟಾಡೇಟಾ ಬೇರ್ಪಡಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Watermarking: SynthID, Stable Signature, C2PA — Why Mark AI Content",
+     "textKn": "Watermarking: SynthID, Stable Signature, C2PA — Why Mark AI Content",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Watermarking: SynthID, Stable Signature, C2PA",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Motivations",
+     "headingKn": "ಪ್ರೇರಣೆಗಳು",
+     "bodyEn": "Marking helps fight misinformation, impersonation and undisclosed AI use, and lets platforms label or filter synthetic media.",
+     "bodyKn": "ಗುರುತು ತಪ್ಪು ಮಾಹಿತಿ, ವೇಷಧಾರಣೆ, ಬಹಿರಂಗಪಡಿಸದ AI ಬಳಕೆ ವಿರುದ್ಧ ಹೋರಾಡಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ, ವೇದಿಕೆಗಳು ಕೃತಕ ಮಾಧ್ಯಮಕ್ಕೆ ಲೇಬಲ್ ಅಥವಾ ಫಿಲ್ಟರ್ ಮಾಡಲು ಬಿಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Two Approaches",
+     "headingKn": "ಎರಡು ವಿಧಾನ",
+     "bodyEn": "Watermarking embeds a signal in the content itself. Provenance metadata attaches a signed record of origin alongside the content. They can be combined.",
+     "bodyKn": "watermarking ವಿಷಯದೊಳಗೇ ಸಂಕೇತ ಸೇರಿಸುತ್ತದೆ. ಮೂಲ ಮೆಟಾಡೇಟಾ ವಿಷಯದ ಜೊತೆ ಸಹಿ ಮಾಡಿದ ಮೂಲ ದಾಖಲೆ ಜೋಡಿಸುತ್ತದೆ. ಎರಡನ್ನೂ ಸೇರಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Marking fights misinformation and undisclosed AI use.\n• Watermarks live in content; metadata travels beside it.",
+     "bodyKn": "• ಗುರುತು ತಪ್ಪು ಮಾಹಿತಿ ಮತ್ತು ಬಹಿರಂಗಪಡಿಸದ AI ವಿರುದ್ಧ.\n• watermark ವಿಷಯದೊಳಗೆ; ಮೆಟಾಡೇಟಾ ಪಕ್ಕದಲ್ಲಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A watermark is embedded:",
+       "qKn": "watermark ಸೇರಿಸಿರುವುದು:",
+       "opts": [
+        "In the content itself",
+        "Only in a file name",
+        "Nowhere",
+        "In a logo"
+       ],
+       "optsKn": [
+        "ವಿಷಯದೊಳಗೇ",
+        "ಫೈಲ್ ಹೆಸರಿನಲ್ಲಿ ಮಾತ್ರ",
+        "ಎಲ್ಲೂ ಇಲ್ಲ",
+        "ಲೋಗೋದಲ್ಲಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Provenance metadata is:",
+       "qKn": "ಮೂಲ ಮೆಟಾಡೇಟಾ:",
+       "opts": [
+        "A signed record attached to the content",
+        "The content itself",
+        "A font",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ವಿಷಯಕ್ಕೆ ಜೋಡಿಸಿದ ಸಹಿ ದಾಖಲೆ",
+        "ವಿಷಯವೇ",
+        "ಫಾಂಟ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A motivation:",
+       "qKn": "ಪ್ರೇರಣೆ:",
+       "opts": [
+        "Fighting impersonation",
+        "Nothing",
+        "Faster models",
+        "Colours"
+       ],
+       "optsKn": [
+        "ವೇಷಧಾರಣೆ ವಿರುದ್ಧ ಹೋರಾಟ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ವೇಗದ ಮಾದರಿ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216be",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Watermarking: SynthID, Stable Signature, C2PA — How Watermarks Work",
+  "titleKn": "Watermarking: SynthID, Stable Signature, C2PA — Watermarks ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತವೆ",
+  "desc": "Text watermarks bias token choices statistically; image watermarks embed imperceptible signals recoverable by a detector.",
+  "descKn": "ಪಠ್ಯ watermarks token ಆಯ್ಕೆಗಳನ್ನು ಸಾಂಖ್ಯಿಕವಾಗಿ ಓರೆ ಮಾಡುತ್ತವೆ; ಚಿತ್ರ watermarks ಪತ್ತೆಕಾರ ಮರುಪಡೆಯಬಹುದಾದ ಗಮನಕ್ಕೆ ಬಾರದ ಸಂಕೇತ ಸೇರಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Describe statistical text watermarking.",
+   "Describe imperceptible image marks."
+  ],
+  "objectivesKn": [
+   "ಸಾಂಖ್ಯಿಕ ಪಠ್ಯ watermarking ವಿವರಿಸಿ.",
+   "ಗಮನಕ್ಕೆ ಬಾರದ ಚಿತ್ರ ಗುರುತು ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Watermarking: SynthID, Stable Signature, C2PA — How Watermarks Work",
+     "textKn": "Watermarking: SynthID, Stable Signature, C2PA — How Watermarks Work",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Watermarking: SynthID, Stable Signature, C2PA",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Text: A Statistical Signal",
+     "headingKn": "ಪಠ್ಯ: ಸಾಂಖ್ಯಿಕ ಸಂಕೇತ",
+     "bodyEn": "During generation the sampler slightly favours a secret, pseudo-random subset of tokens. A detector that knows the key can test whether a text contains more of them than chance.",
+     "bodyKn": "ರಚನೆಯ ಸಮಯದಲ್ಲಿ sampler ರಹಸ್ಯ, ಹುಸಿ-ಯಾದೃಚ್ಛಿಕ tokens ಉಪಸಮೂಹಕ್ಕೆ ಸ್ವಲ್ಪ ಒಲವು ತೋರಿಸುತ್ತದೆ. key ತಿಳಿದ ಪತ್ತೆಕಾರ ಪಠ್ಯದಲ್ಲಿ ಅವು ಅವಕಾಶಕ್ಕಿಂತ ಹೆಚ್ಚಿವೆಯೇ ಪರೀಕ್ಷಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Images: Imperceptible Marks",
+     "headingKn": "ಚಿತ್ರ: ಗಮನಕ್ಕೆ ಬಾರದ ಗುರುತು",
+     "bodyEn": "Image watermarks modify pixels or the generation process so that a detector can recover a signal while people see no change. Methods such as SynthID and Stable Signature work this way.",
+     "bodyKn": "ಚಿತ್ರ watermarks ಪಿಕ್ಸೆಲ್ ಅಥವಾ ರಚನಾ ಪ್ರಕ್ರಿಯೆ ಬದಲಿಸಿ ಜನರಿಗೆ ಬದಲಾವಣೆ ಕಾಣದೆ ಪತ್ತೆಕಾರ ಸಂಕೇತ ಮರುಪಡೆಯುವಂತೆ ಮಾಡುತ್ತವೆ. SynthID ಮತ್ತು Stable Signature ನಂತಹ ವಿಧಾನ ಹೀಗೆ ಕೆಲಸ ಮಾಡುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Text marks bias token sampling with a secret key.\n• Image marks are invisible signals a detector can recover.",
+     "bodyKn": "• ಪಠ್ಯ ಗುರುತು ರಹಸ್ಯ key ನಿಂದ ಮಾದರಿ ಓರೆ.\n• ಚಿತ್ರ ಗುರುತು ಕಾಣದ ಸಂಕೇತ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A text watermark biases:",
+       "qKn": "ಪಠ್ಯ watermark ಓರೆ ಮಾಡುವುದು:",
+       "opts": [
+        "Token sampling",
+        "Fonts",
+        "Screens",
+        "Nothing"
+       ],
+       "optsKn": [
+        "token ಮಾದರಿ ಆಯ್ಕೆ",
+        "ಫಾಂಟ್",
+        "ಪರದೆ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Detection needs:",
+       "qKn": "ಪತ್ತೆಗೆ ಬೇಕು:",
+       "opts": [
+        "The key or detector",
+        "Nothing",
+        "A logo",
+        "A new GPU"
+       ],
+       "optsKn": [
+        "key ಅಥವಾ ಪತ್ತೆಕಾರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲೋಗೋ",
+        "ಹೊಸ GPU"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Image marks are usually:",
+       "qKn": "ಚಿತ್ರ ಗುರುತು ಸಾಮಾನ್ಯವಾಗಿ:",
+       "opts": [
+        "Imperceptible to people",
+        "Visible logos",
+        "Absent",
+        "Sounds"
+       ],
+       "optsKn": [
+        "ಜನರಿಗೆ ಗಮನಕ್ಕೆ ಬಾರದ",
+        "ಕಾಣುವ ಲೋಗೋ",
+        "ಇಲ್ಲ",
+        "ಧ್ವನಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216be",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Watermarking: SynthID, Stable Signature, C2PA — C2PA, Limits and Robustness",
+  "titleKn": "Watermarking: SynthID, Stable Signature, C2PA — C2PA, ಮಿತಿ ಮತ್ತು ದೃಢತೆ",
+  "desc": "C2PA signs provenance metadata; watermarks can be degraded or removed, so no scheme is foolproof.",
+  "descKn": "C2PA ಮೂಲ ಮೆಟಾಡೇಟಾಗೆ ಸಹಿ ಮಾಡುತ್ತದೆ; watermarks ಹಾಳಾಗಬಹುದು ಅಥವಾ ತೆಗೆಯಬಹುದು; ಯಾವ ಯೋಜನೆಯೂ ದೋಷರಹಿತವಲ್ಲ.",
+  "objectives": [
+   "Describe signed content credentials.",
+   "Explain removal and false-positive limits."
+  ],
+  "objectivesKn": [
+   "ಸಹಿ ಮಾಡಿದ content credentials ವಿವರಿಸಿ.",
+   "ತೆಗೆಯುವಿಕೆ ಮತ್ತು ಸುಳ್ಳು-positive ಮಿತಿ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Watermarking: SynthID, Stable Signature, C2PA — C2PA, Limits and Robustness",
+     "textKn": "Watermarking: SynthID, Stable Signature, C2PA — C2PA, Limits and Robustness",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Watermarking: SynthID, Stable Signature, C2PA",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Content Credentials",
+     "headingKn": "Content Credentials",
+     "bodyEn": "C2PA lets tools attach cryptographically signed statements about how content was created and edited. Metadata can be stripped, though, so absence proves nothing.",
+     "bodyKn": "C2PA ವಿಷಯ ಹೇಗೆ ರಚಿಸಲ್ಪಟ್ಟು ತಿದ್ದಲ್ಪಟ್ಟಿತು ಎಂಬ ಕ್ರಿಪ್ಟೋಗ್ರಾಫಿಕ್ ಸಹಿ ಹೇಳಿಕೆ ಜೋಡಿಸಲು ಸಾಧನಗಳಿಗೆ ಬಿಡುತ್ತದೆ. ಮೆಟಾಡೇಟಾ ತೆಗೆಯಬಹುದು, ಆದ್ದರಿಂದ ಅನುಪಸ್ಥಿತಿ ಏನನ್ನೂ ಸಾಬೀತು ಮಾಡದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "No Silver Bullet",
+     "headingKn": "ಮಾಂತ್ರಿಕ ಪರಿಹಾರವಿಲ್ಲ",
+     "bodyEn": "Cropping, paraphrasing or re-encoding can weaken watermarks, detectors have error rates and open-source models may not mark at all. Treat signals as evidence, not proof.",
+     "bodyKn": "ಕ್ರಾಪಿಂಗ್, ಪ್ಯಾರಾಫ್ರೇಸಿಂಗ್ ಅಥವಾ ಮರು-ಎನ್‌ಕೋಡಿಂಗ್ watermarks ದುರ್ಬಲಗೊಳಿಸಬಹುದು, ಪತ್ತೆಕಾರರಿಗೆ ದೋಷ ದರವಿದೆ, ಮುಕ್ತ-ಮೂಲ ಮಾದರಿಗಳು ಗುರುತೇ ಮಾಡದಿರಬಹುದು. ಸಂಕೇತಗಳನ್ನು ಸಾಕ್ಷ್ಯ ಎಂದು ಪರಿಗಣಿಸಿ, ಸಾಬೀತಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Signed credentials record origin but can be stripped.\n• Watermarks are evidence, not proof.",
+     "bodyKn": "• ಸಹಿ ಮಾಡಿದ credentials ಮೂಲ ದಾಖಲಿಸುತ್ತವೆ ಆದರೆ ತೆಗೆಯಬಹುದು.\n• watermark ಸಾಕ್ಷ್ಯ, ಸಾಬೀತಲ್ಲ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Missing C2PA metadata proves:",
+       "qKn": "C2PA ಮೆಟಾಡೇಟಾ ಇಲ್ಲದಿರುವುದು ಸಾಬೀತು ಮಾಡುವುದು:",
+       "opts": [
+        "Nothing",
+        "Content is human-made",
+        "Content is fake",
+        "Content is safe"
+       ],
+       "optsKn": [
+        "ಏನೂ ಇಲ್ಲ",
+        "ಮಾನವ-ರಚಿತ",
+        "ನಕಲಿ",
+        "ಸುರಕ್ಷಿತ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Watermarks can be weakened by:",
+       "qKn": "watermarks ದುರ್ಬಲಗೊಳಿಸುವುದು:",
+       "opts": [
+        "Cropping or paraphrasing",
+        "Nothing",
+        "Fonts",
+        "Colours"
+       ],
+       "optsKn": [
+        "ಕ್ರಾಪಿಂಗ್ ಅಥವಾ ಪ್ಯಾರಾಫ್ರೇಸಿಂಗ್",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Treat signals as:",
+       "qKn": "ಸಂಕೇತಗಳನ್ನು ಪರಿಗಣಿಸಿ:",
+       "opts": [
+        "Evidence, not proof",
+        "Proof",
+        "Nothing",
+        "Ads"
+       ],
+       "optsKn": [
+        "ಸಾಕ್ಷ್ಯ, ಸಾಬೀತಲ್ಲ",
+        "ಸಾಬೀತು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಜಾಹೀರಾತು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216c1",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Regulatory Frameworks: EU, US, UK, Korea — Different Regulatory Philosophies",
+  "titleKn": "ನಿಯಂತ್ರಣ ಚೌಕಟ್ಟುಗಳು: EU, US, UK, Korea — ಬೇರೆ ನಿಯಂತ್ರಣ ತತ್ತ್ವಗಳು",
+  "desc": "Jurisdictions differ in how much they rely on binding law, sector regulators and voluntary commitments.",
+  "descKn": "ಅಧಿಕಾರ ವ್ಯಾಪ್ತಿಗಳು ಬದ್ಧ ಕಾನೂನು, ವಲಯ ನಿಯಂತ್ರಕರು, ಸ್ವಯಂಪ್ರೇರಿತ ಬದ್ಧತೆಗಳನ್ನು ಎಷ್ಟು ಅವಲಂಬಿಸುತ್ತವೆ ಎಂಬುದರಲ್ಲಿ ಭಿನ್ನ.",
+  "objectives": [
+   "Contrast horizontal law and sectoral approaches.",
+   "Recognise that rules change quickly."
+  ],
+  "objectivesKn": [
+   "ಸಮತಲ ಕಾನೂನು ಮತ್ತು ವಲಯ ವಿಧಾನ ಹೋಲಿಸಿ.",
+   "ನಿಯಮಗಳು ವೇಗವಾಗಿ ಬದಲಾಗುತ್ತವೆ ಎಂದು ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Regulatory Frameworks: EU, US, UK, Korea — Different Regulatory Philosophies",
+     "textKn": "Regulatory Frameworks: EU, US, UK, Korea — Different Regulatory Philosophies",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Regulatory Frameworks: EU, US, UK, Korea",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Broad Law Versus Sector Rules",
+     "headingKn": "ವಿಶಾಲ ಕಾನೂನು vs ವಲಯ ನಿಯಮ",
+     "bodyEn": "Some regions pass comprehensive AI legislation with risk tiers. Others rely on existing sector regulators, guidance, standards and voluntary commitments.",
+     "bodyKn": "ಕೆಲವು ಪ್ರದೇಶಗಳು ಅಪಾಯ ಶ್ರೇಣಿಗಳ ಸಮಗ್ರ AI ಕಾನೂನು ಜಾರಿ ಮಾಡುತ್ತವೆ. ಇತರವು ಈಗಿನ ವಲಯ ನಿಯಂತ್ರಕರು, ಮಾರ್ಗದರ್ಶನ, ಮಾನದಂಡ, ಸ್ವಯಂಪ್ರೇರಿತ ಬದ್ಧತೆ ಅವಲಂಬಿಸುತ್ತವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Moving Target",
+     "headingKn": "ಚಲಿಸುವ ಗುರಿ",
+     "bodyEn": "Details, dates and enforcement are still evolving. This is general education, not legal advice; check current official sources and take professional advice for real decisions.",
+     "bodyKn": "ವಿವರ, ದಿನಾಂಕ, ಜಾರಿ ಇನ್ನೂ ವಿಕಸಿಸುತ್ತಿವೆ. ಇದು ಸಾಮಾನ್ಯ ಶಿಕ್ಷಣ, ಕಾನೂನು ಸಲಹೆಯಲ್ಲ; ನಿಜ ನಿರ್ಧಾರಗಳಿಗೆ ಪ್ರಸ್ತುತ ಅಧಿಕೃತ ಮೂಲ ಪರಿಶೀಲಿಸಿ, ವೃತ್ತಿಪರ ಸಲಹೆ ಪಡೆಯಿರಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Some regions use broad AI law; others use sector regulators.\n• Rules change; check official sources.",
+     "bodyKn": "• ಕೆಲವು ವಿಶಾಲ AI ಕಾನೂನು; ಇತರ ವಲಯ ನಿಯಂತ್ರಕ.\n• ನಿಯಮ ಬದಲಾಗುತ್ತವೆ; ಅಧಿಕೃತ ಮೂಲ ನೋಡಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Approaches differ between:",
+       "qKn": "ವಿಧಾನ ಭಿನ್ನ:",
+       "opts": [
+        "Broad law and sector rules",
+        "Fonts and colours",
+        "GPUs and CPUs",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ವಿಶಾಲ ಕಾನೂನು ಮತ್ತು ವಲಯ ನಿಯಮ",
+        "ಫಾಂಟ್ ಮತ್ತು ಬಣ್ಣ",
+        "GPU ಮತ್ತು CPU",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "This lesson is:",
+       "qKn": "ಈ ಪಾಠ:",
+       "opts": [
+        "General education, not legal advice",
+        "Legal advice",
+        "A contract",
+        "A law"
+       ],
+       "optsKn": [
+        "ಸಾಮಾನ್ಯ ಶಿಕ್ಷಣ, ಕಾನೂನು ಸಲಹೆಯಲ್ಲ",
+        "ಕಾನೂನು ಸಲಹೆ",
+        "ಒಪ್ಪಂದ",
+        "ಕಾನೂನು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Check:",
+       "qKn": "ಪರಿಶೀಲಿಸಿ:",
+       "opts": [
+        "Current official sources",
+        "Old blogs",
+        "Rumours",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಪ್ರಸ್ತುತ ಅಧಿಕೃತ ಮೂಲ",
+        "ಹಳೆಯ ಬ್ಲಾಗ್",
+        "ವದಂತಿ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216c1",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Regulatory Frameworks: EU, US, UK, Korea — Risk-Based Regulation and Its Elements",
+  "titleKn": "ನಿಯಂತ್ರಣ ಚೌಕಟ್ಟುಗಳು: EU, US, UK, Korea — ಅಪಾಯ-ಆಧಾರಿತ ನಿಯಂತ್ರಣ ಮತ್ತು ಅಂಶಗಳು",
+  "desc": "Risk-based laws impose stronger obligations on higher-risk uses, such as transparency, documentation and human oversight.",
+  "descKn": "ಅಪಾಯ-ಆಧಾರಿತ ಕಾನೂನುಗಳು ಹೆಚ್ಚು ಅಪಾಯದ ಬಳಕೆಗೆ ಪಾರದರ್ಶಕತೆ, ದಾಖಲೆ, ಮಾನವ ಮೇಲ್ವಿಚಾರಣೆಯಂತಹ ಬಲವಾದ ಬಾಧ್ಯತೆ ವಿಧಿಸುತ್ತವೆ.",
+  "objectives": [
+   "Describe risk tiers.",
+   "List common obligations."
+  ],
+  "objectivesKn": [
+   "ಅಪಾಯ ಶ್ರೇಣಿ ವಿವರಿಸಿ.",
+   "ಸಾಮಾನ್ಯ ಬಾಧ್ಯತೆ ಪಟ್ಟಿ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Regulatory Frameworks: EU, US, UK, Korea — Risk-Based Regulation and Its Elements",
+     "textKn": "Regulatory Frameworks: EU, US, UK, Korea — Risk-Based Regulation and Its Elements",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Regulatory Frameworks: EU, US, UK, Korea",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Tiers of Risk",
+     "headingKn": "ಅಪಾಯ ಶ್ರೇಣಿಗಳು",
+     "bodyEn": "A typical structure bans a few practices, imposes strict requirements on high-risk uses such as hiring or credit, and asks for light transparency on lower-risk systems.",
+     "bodyKn": "ಸಾಮಾನ್ಯ ರಚನೆ ಕೆಲವು ಆಚರಣೆ ನಿಷೇಧಿಸುತ್ತದೆ, ನೇಮಕಾತಿ ಅಥವಾ ಸಾಲದಂತಹ ಹೆಚ್ಚು ಅಪಾಯದ ಬಳಕೆಗೆ ಕಠಿಣ ಅಗತ್ಯ ವಿಧಿಸುತ್ತದೆ, ಕಡಿಮೆ ಅಪಾಯದ ವ್ಯವಸ್ಥೆಗಳಿಗೆ ಹಗುರ ಪಾರದರ್ಶಕತೆ ಕೇಳುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Common Obligations",
+     "headingKn": "ಸಾಮಾನ್ಯ ಬಾಧ್ಯತೆಗಳು",
+     "bodyEn": "Requirements often include risk assessment, data governance, documentation, logging, human oversight, accuracy and security measures, and incident reporting.",
+     "bodyKn": "ಅಗತ್ಯಗಳಲ್ಲಿ ಸಾಮಾನ್ಯವಾಗಿ ಅಪಾಯ ಮೌಲ್ಯಮಾಪನ, ಡೇಟಾ ಆಡಳಿತ, ದಾಖಲೆ, ಲಾಗಿಂಗ್, ಮಾನವ ಮೇಲ್ವಿಚಾರಣೆ, ನಿಖರತೆ ಮತ್ತು ಭದ್ರತಾ ಕ್ರಮ, ಘಟನೆ ವರದಿ ಸೇರಿವೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Higher-risk uses face stricter requirements.\n• Common: assessment, documentation, oversight, reporting.",
+     "bodyKn": "• ಹೆಚ್ಚು ಅಪಾಯದ ಬಳಕೆಗೆ ಕಠಿಣ ಅಗತ್ಯ.\n• ಮೌಲ್ಯಮಾಪನ, ದಾಖಲೆ, ಮೇಲ್ವಿಚಾರಣೆ, ವರದಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Higher-risk uses face:",
+       "qKn": "ಹೆಚ್ಚು ಅಪಾಯದ ಬಳಕೆ ಎದುರಿಸುವುದು:",
+       "opts": [
+        "Stricter requirements",
+        "No rules",
+        "Fewer rules",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಕಠಿಣ ಅಗತ್ಯ",
+        "ನಿಯಮ ಇಲ್ಲ",
+        "ಕಡಿಮೆ ನಿಯಮ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A common obligation:",
+       "qKn": "ಸಾಮಾನ್ಯ ಬಾಧ್ಯತೆ:",
+       "opts": [
+        "Human oversight",
+        "Bigger fonts",
+        "Brighter colours",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮಾನವ ಮೇಲ್ವಿಚಾರಣೆ",
+        "ದೊಡ್ಡ ಫಾಂಟ್",
+        "ಪ್ರಕಾಶಮಾನ ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Lower-risk systems often need:",
+       "qKn": "ಕಡಿಮೆ ಅಪಾಯದ ವ್ಯವಸ್ಥೆಗೆ ಸಾಮಾನ್ಯವಾಗಿ:",
+       "opts": [
+        "Light transparency",
+        "A ban",
+        "Nothing ever",
+        "Heavy audits"
+       ],
+       "optsKn": [
+        "ಹಗುರ ಪಾರದರ್ಶಕತೆ",
+        "ನಿಷೇಧ",
+        "ಎಂದಿಗೂ ಏನೂ ಇಲ್ಲ",
+        "ಭಾರಿ ಲೆಕ್ಕಪರಿಶೋಧನೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216c1",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Regulatory Frameworks: EU, US, UK, Korea — Building Compliance Across Jurisdictions",
+  "titleKn": "ನಿಯಂತ್ರಣ ಚೌಕಟ್ಟುಗಳು: EU, US, UK, Korea — ಅಧಿಕಾರ ವ್ಯಾಪ್ತಿಗಳಲ್ಲಿ ಅನುಸರಣೆ ನಿರ್ಮಾಣ",
+  "desc": "Design to the strictest applicable requirements, keep documentation reusable and monitor legal change.",
+  "descKn": "ಅನ್ವಯಿಸುವ ಕಠಿಣ ಅಗತ್ಯಗಳಿಗೆ ವಿನ್ಯಾಸ ಮಾಡಿ, ದಾಖಲೆ ಮರುಬಳಕೆ ಮಾಡಬಹುದಾದಂತೆ ಇಡಿ, ಕಾನೂನು ಬದಲಾವಣೆ ಗಮನಿಸಿ.",
+  "objectives": [
+   "Map your systems to jurisdictions.",
+   "Reuse controls and documentation."
+  ],
+  "objectivesKn": [
+   "ನಿಮ್ಮ ವ್ಯವಸ್ಥೆಗಳನ್ನು ಅಧಿಕಾರ ವ್ಯಾಪ್ತಿಗೆ ಹೊಂದಿಸಿ.",
+   "ನಿಯಂತ್ರಣ ಮತ್ತು ದಾಖಲೆ ಮರುಬಳಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Regulatory Frameworks: EU, US, UK, Korea — Building Compliance Across Jurisdictions",
+     "textKn": "Regulatory Frameworks: EU, US, UK, Korea — Building Compliance Across Jurisdictions",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Regulatory Frameworks: EU, US, UK, Korea",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Map and Reuse",
+     "headingKn": "ಹೊಂದಿಸಿ ಮತ್ತು ಮರುಬಳಸಿ",
+     "bodyEn": "List where each system is offered and which rules apply. Many obligations overlap, so a common set of controls and documents can serve several jurisdictions.",
+     "bodyKn": "ಪ್ರತಿ ವ್ಯವಸ್ಥೆ ಎಲ್ಲಿ ನೀಡಲಾಗುತ್ತದೆ ಮತ್ತು ಯಾವ ನಿಯಮ ಅನ್ವಯ ಪಟ್ಟಿ ಮಾಡಿ. ಅನೇಕ ಬಾಧ್ಯತೆ ಅತಿಕ್ರಮಿಸುತ್ತವೆ; ಸಾಮಾನ್ಯ ನಿಯಂತ್ರಣ ಮತ್ತು ದಾಖಲೆ ಹಲವು ಅಧಿಕಾರ ವ್ಯಾಪ್ತಿಗಳಿಗೆ ಸೇವೆ ಮಾಡಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Stay Informed",
+     "headingKn": "ಮಾಹಿತಿಯಲ್ಲಿರಿ",
+     "bodyEn": "Assign someone to track legislative and guidance changes, and involve counsel early when launching in a new market or use case.",
+     "bodyKn": "ಶಾಸನ ಮತ್ತು ಮಾರ್ಗದರ್ಶನ ಬದಲಾವಣೆ ಗಮನಿಸಲು ಯಾರನ್ನಾದರೂ ನಿಯೋಜಿಸಿ; ಹೊಸ ಮಾರುಕಟ್ಟೆ ಅಥವಾ ಬಳಕೆ ಪ್ರಕರಣದಲ್ಲಿ ಆರಂಭಿಸುವಾಗ ಬೇಗ ಕಾನೂನು ಸಲಹೆಗಾರರನ್ನು ಒಳಗೊಳ್ಳಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Map systems to markets; reuse common controls.\n• Track changes and involve counsel early.",
+     "bodyKn": "• ವ್ಯವಸ್ಥೆ-ಮಾರುಕಟ್ಟೆ ಹೊಂದಿಸಿ; ಸಾಮಾನ್ಯ ನಿಯಂತ್ರಣ ಮರುಬಳಕೆ.\n• ಬದಲಾವಣೆ ಗಮನಿಸಿ, ಸಲಹೆಗಾರರನ್ನು ಬೇಗ ಒಳಗೊಳ್ಳಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Many obligations:",
+       "qKn": "ಅನೇಕ ಬಾಧ್ಯತೆ:",
+       "opts": [
+        "Overlap across jurisdictions",
+        "Never overlap",
+        "Are identical",
+        "Do not exist"
+       ],
+       "optsKn": [
+        "ವ್ಯಾಪ್ತಿಗಳಲ್ಲಿ ಅತಿಕ್ರಮಿಸುತ್ತವೆ",
+        "ಎಂದಿಗೂ ಅತಿಕ್ರಮಿಸವು",
+        "ಒಂದೇ",
+        "ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Involve counsel:",
+       "qKn": "ಕಾನೂನು ಸಲಹೆಗಾರರನ್ನು ಒಳಗೊಳ್ಳಿ:",
+       "opts": [
+        "Early, when entering a new market",
+        "Never",
+        "After a fine only",
+        "Randomly"
+       ],
+       "optsKn": [
+        "ಬೇಗ, ಹೊಸ ಮಾರುಕಟ್ಟೆ ಪ್ರವೇಶಿಸುವಾಗ",
+        "ಎಂದಿಗೂ ಇಲ್ಲ",
+        "ದಂಡ ನಂತರ ಮಾತ್ರ",
+        "ಯಾದೃಚ್ಛಿಕ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Assign someone to:",
+       "qKn": "ನಿಯೋಜಿಸಿ:",
+       "opts": [
+        "Track legal changes",
+        "Design logos",
+        "Nothing",
+        "Delete docs"
+       ],
+       "optsKn": [
+        "ಕಾನೂನು ಬದಲಾವಣೆ ಗಮನಿಸಲು",
+        "ಲೋಗೋ ವಿನ್ಯಾಸ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ದಾಖಲೆ ಅಳಿಸಲು"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216c4",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "EchoLeak and CVEs for AI — AI Vulnerabilities Are Real Vulnerabilities",
+  "titleKn": "EchoLeak ಮತ್ತು AI ಗಾಗಿ CVEs — AI ದೋಷಗಳು ನಿಜ ದೋಷಗಳು",
+  "desc": "Flaws in AI assistants and agents are tracked and disclosed like other software vulnerabilities.",
+  "descKn": "AI ಸಹಾಯಕರು ಮತ್ತು agents ನ ದೋಷಗಳನ್ನು ಇತರ ಸಾಫ್ಟ್‌ವೇರ್ ದೋಷಗಳಂತೆ ಟ್ರ್ಯಾಕ್ ಮಾಡಿ ಬಹಿರಂಗಪಡಿಸಲಾಗುತ್ತದೆ.",
+  "objectives": [
+   "Explain what a CVE is.",
+   "Recognise that AI systems get CVEs."
+  ],
+  "objectivesKn": [
+   "CVE ಎಂದರೇನು ವಿವರಿಸಿ.",
+   "AI ವ್ಯವಸ್ಥೆಗಳಿಗೂ CVE ಸಿಗುತ್ತದೆ ಎಂದು ಗುರುತಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "EchoLeak and CVEs for AI — AI Vulnerabilities Are Real Vulnerabilities",
+     "textKn": "EchoLeak and CVEs for AI — AI Vulnerabilities Are Real Vulnerabilities",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in EchoLeak and CVEs for AI",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "What a CVE Is",
+     "headingKn": "CVE ಎಂದರೇನು",
+     "bodyEn": "A CVE is a public identifier for a specific vulnerability, letting defenders refer to it, track patches and assess exposure consistently.",
+     "bodyKn": "CVE ನಿರ್ದಿಷ್ಟ ದೋಷಕ್ಕೆ ಸಾರ್ವಜನಿಕ ಗುರುತು; ರಕ್ಷಕರು ಅದನ್ನು ಉಲ್ಲೇಖಿಸಲು, patches ಟ್ರ್ಯಾಕ್ ಮಾಡಲು, ಒಡ್ಡುವಿಕೆ ಸ್ಥಿರವಾಗಿ ಮೌಲ್ಯಮಾಪನ ಮಾಡಲು ಬಿಡುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "AI Products Are Software",
+     "headingKn": "AI ಉತ್ಪನ್ನಗಳು ಸಾಫ್ಟ್‌ವೇರ್",
+     "bodyEn": "Assistants that read email or documents combine models with connectors and tools, and the whole system can have exploitable flaws, not just the model.",
+     "bodyKn": "ಇಮೇಲ್ ಅಥವಾ ದಾಖಲೆ ಓದುವ ಸಹಾಯಕರು ಮಾದರಿಗಳನ್ನು connectors ಮತ್ತು tools ಜೊತೆ ಸೇರಿಸುತ್ತಾರೆ; ಮಾದರಿ ಮಾತ್ರವಲ್ಲ ಇಡೀ ವ್ಯವಸ್ಥೆ ಶೋಷಿಸಬಹುದಾದ ದೋಷ ಹೊಂದಿರಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• CVEs identify specific vulnerabilities.\n• The whole AI system, not only the model, can be vulnerable.",
+     "bodyKn": "• CVE ನಿರ್ದಿಷ್ಟ ದೋಷ ಗುರುತಿಸುತ್ತದೆ.\n• ಮಾದರಿ ಮಾತ್ರವಲ್ಲ, ಇಡೀ ವ್ಯವಸ್ಥೆ ದುರ್ಬಲ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A CVE is:",
+       "qKn": "CVE:",
+       "opts": [
+        "A public vulnerability identifier",
+        "A model",
+        "A GPU",
+        "A font"
+       ],
+       "optsKn": [
+        "ಸಾರ್ವಜನಿಕ ದೋಷ ಗುರುತು",
+        "ಮಾದರಿ",
+        "GPU",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Vulnerable parts include:",
+       "qKn": "ದುರ್ಬಲ ಭಾಗಗಳು:",
+       "opts": [
+        "Connectors and tools",
+        "Only the model",
+        "Nothing",
+        "Colours"
+       ],
+       "optsKn": [
+        "connectors ಮತ್ತು tools",
+        "ಮಾದರಿ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "CVEs help defenders:",
+       "qKn": "CVE ರಕ್ಷಕರಿಗೆ ಸಹಾಯ:",
+       "opts": [
+        "Track patches and exposure",
+        "Hide bugs",
+        "Nothing",
+        "Sell products"
+       ],
+       "optsKn": [
+        "patches ಮತ್ತು ಒಡ್ಡುವಿಕೆ ಟ್ರ್ಯಾಕ್",
+        "ದೋಷ ಮರೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಉತ್ಪನ್ನ ಮಾರಾಟ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216c4",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "EchoLeak and CVEs for AI — The EchoLeak Case in Outline",
+  "titleKn": "EchoLeak ಮತ್ತು AI ಗಾಗಿ CVEs — EchoLeak ಪ್ರಕರಣ ಸಂಕ್ಷಿಪ್ತ",
+  "desc": "EchoLeak was reported as a zero-click flaw in an AI assistant where crafted content could lead to data leaving the user's environment.",
+  "descKn": "EchoLeak AI ಸಹಾಯಕದಲ್ಲಿ zero-click ದೋಷ ಎಂದು ವರದಿಯಾಗಿತ್ತು; ರೂಪಿಸಿದ ವಿಷಯ ಬಳಕೆದಾರ ಪರಿಸರದಿಂದ ಡೇಟಾ ಹೊರಹೋಗಲು ಕಾರಣವಾಗಬಹುದಿತ್ತು.",
+  "objectives": [
+   "Describe the general pattern of such flaws.",
+   "Read incident reports for details rather than rely on summaries."
+  ],
+  "objectivesKn": [
+   "ಇಂತಹ ದೋಷಗಳ ಸಾಮಾನ್ಯ ಮಾದರಿ ವಿವರಿಸಿ.",
+   "ಸಾರಾಂಶದ ಬದಲು ವಿವರಕ್ಕೆ ಘಟನೆ ವರದಿ ಓದಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "EchoLeak and CVEs for AI — The EchoLeak Case in Outline",
+     "textKn": "EchoLeak and CVEs for AI — The EchoLeak Case in Outline",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in EchoLeak and CVEs for AI",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "A Zero-Click Pattern",
+     "headingKn": "Zero-Click ಮಾದರಿ",
+     "bodyEn": "In this class of flaw an attacker sends content, such as an email, that the assistant later processes automatically. Without the user clicking anything, injected instructions can influence what data the assistant reveals.",
+     "bodyKn": "ಈ ವರ್ಗದ ದೋಷದಲ್ಲಿ ದಾಳಿಕೋರ ಇಮೇಲ್‌ನಂತಹ ವಿಷಯ ಕಳುಹಿಸುತ್ತಾನೆ; ಸಹಾಯಕ ಅದನ್ನು ನಂತರ ಸ್ವಯಂ ಸಂಸ್ಕರಿಸುತ್ತದೆ. ಬಳಕೆದಾರ ಏನೂ ಕ್ಲಿಕ್ ಮಾಡದೆ injected ಸೂಚನೆ ಸಹಾಯಕ ಯಾವ ಡೇಟಾ ಬಹಿರಂಗಪಡಿಸುತ್ತದೆ ಎಂಬುದನ್ನು ಪ್ರಭಾವಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Read the Primary Report",
+     "headingKn": "ಮೂಲ ವರದಿ ಓದಿ",
+     "bodyEn": "Consult the original advisory for what was affected, how it was fixed and what was confirmed. Here we use it to illustrate a pattern, not to describe how to attack anyone.",
+     "bodyKn": "ಏನು ಪರಿಣಾಮಕ್ಕೊಳಗಾಯಿತು, ಹೇಗೆ ಸರಿಪಡಿಸಲಾಯಿತು, ಏನು ದೃಢಪಟ್ಟಿತು ಎಂಬುದಕ್ಕೆ ಮೂಲ advisory ನೋಡಿ. ಇಲ್ಲಿ ನಾವು ಇದನ್ನು ಮಾದರಿ ವಿವರಿಸಲು ಬಳಸುತ್ತೇವೆ, ಯಾರನ್ನಾದರೂ ಹೇಗೆ ದಾಳಿ ಮಾಡುವುದು ಎಂದಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Zero-click: content processed automatically can carry injected instructions.\n• Read the primary advisory for facts.",
+     "bodyKn": "• zero-click: ಸ್ವಯಂ ಸಂಸ್ಕರಿಸಿದ ವಿಷಯ injected ಸೂಚನೆ ಹೊತ್ತಿರಬಹುದು.\n• ಸತ್ಯಕ್ಕೆ ಮೂಲ advisory ಓದಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Zero-click means:",
+       "qKn": "zero-click ಅರ್ಥ:",
+       "opts": [
+        "No user click is needed",
+        "Two clicks",
+        "A mouse bug",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಬಳಕೆದಾರ ಕ್ಲಿಕ್ ಬೇಕಿಲ್ಲ",
+        "ಎರಡು ಕ್ಲಿಕ್",
+        "ಮೌಸ್ ದೋಷ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "For facts read:",
+       "qKn": "ಸತ್ಯಕ್ಕೆ ಓದಿ:",
+       "opts": [
+        "The primary advisory",
+        "A rumour",
+        "A meme",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಮೂಲ advisory",
+        "ವದಂತಿ",
+        "ಮೀಮ್",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "We use the case to:",
+       "qKn": "ಪ್ರಕರಣ ಬಳಕೆ:",
+       "opts": [
+        "Illustrate a pattern",
+        "Teach attacks",
+        "Nothing",
+        "Advertise"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ ವಿವರಿಸಲು",
+        "ದಾಳಿ ಕಲಿಸಲು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಜಾಹೀರಾತಿಗೆ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216c4",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "EchoLeak and CVEs for AI — Responsible Disclosure and Patching",
+  "titleKn": "EchoLeak ಮತ್ತು AI ಗಾಗಿ CVEs — ಜವಾಬ್ದಾರಿಯುತ ಬಹಿರಂಗ ಮತ್ತು Patching",
+  "desc": "Report flaws privately to vendors, allow time to fix, then disclose; defenders should patch and reduce exposure.",
+  "descKn": "ದೋಷಗಳನ್ನು ಮಾರಾಟಗಾರರಿಗೆ ಖಾಸಗಿಯಾಗಿ ವರದಿ ಮಾಡಿ, ಸರಿಪಡಿಸಲು ಸಮಯ ನೀಡಿ, ನಂತರ ಬಹಿರಂಗಪಡಿಸಿ; ರಕ್ಷಕರು patch ಮಾಡಿ ಒಡ್ಡುವಿಕೆ ಕಡಿಮೆ ಮಾಡಬೇಕು.",
+  "objectives": [
+   "Follow coordinated disclosure.",
+   "Apply patches and mitigations promptly."
+  ],
+  "objectivesKn": [
+   "ಸಮನ್ವಯ ಬಹಿರಂಗ ಅನುಸರಿಸಿ.",
+   "patches ಮತ್ತು ತಗ್ಗಿಸುವಿಕೆ ಬೇಗ ಅನ್ವಯಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "EchoLeak and CVEs for AI — Responsible Disclosure and Patching",
+     "textKn": "EchoLeak and CVEs for AI — Responsible Disclosure and Patching",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in EchoLeak and CVEs for AI",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Coordinated Disclosure",
+     "headingKn": "ಸಮನ್ವಯ ಬಹಿರಂಗ",
+     "bodyEn": "Researchers privately notify the vendor, agree a timeline, and publish details after a fix is available so users are protected first.",
+     "bodyKn": "ಸಂಶೋಧಕರು ಮಾರಾಟಗಾರರಿಗೆ ಖಾಸಗಿಯಾಗಿ ತಿಳಿಸಿ, ಸಮಯರೇಖೆ ಒಪ್ಪಿ, ಸರಿಪಡಿಕೆ ಲಭ್ಯವಾದ ನಂತರ ವಿವರ ಪ್ರಕಟಿಸುತ್ತಾರೆ; ಬಳಕೆದಾರರು ಮೊದಲು ರಕ್ಷಿತ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Defender Actions",
+     "headingKn": "ರಕ್ಷಕರ ಕ್ರಮ",
+     "bodyEn": "Track advisories for tools you use, apply updates, and reduce risk in the meantime by restricting connectors, limiting data access and requiring confirmations.",
+     "bodyKn": "ನೀವು ಬಳಸುವ ಸಾಧನಗಳ advisories ಗಮನಿಸಿ, ನವೀಕರಣ ಅನ್ವಯಿಸಿ, ಈ ನಡುವೆ connectors ನಿರ್ಬಂಧಿಸಿ, ಡೇಟಾ ಪ್ರವೇಶ ಮಿತಿ ಮಾಡಿ, ದೃಢೀಕರಣ ಕೇಳಿ ಅಪಾಯ ಕಡಿಮೆ ಮಾಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Notify privately, publish after a fix.\n• Track advisories, patch, restrict connectors.",
+     "bodyKn": "• ಖಾಸಗಿಯಾಗಿ ತಿಳಿಸಿ, ಸರಿಪಡಿಕೆ ನಂತರ ಪ್ರಕಟಿಸಿ.\n• advisories ಗಮನಿಸಿ, patch, connectors ನಿರ್ಬಂಧ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Coordinated disclosure means:",
+       "qKn": "ಸಮನ್ವಯ ಬಹಿರಂಗ ಅರ್ಥ:",
+       "opts": [
+        "Notify the vendor first, publish after a fix",
+        "Publish immediately",
+        "Never publish",
+        "Sell the bug"
+       ],
+       "optsKn": [
+        "ಮೊದಲು ಮಾರಾಟಗಾರರಿಗೆ ತಿಳಿಸಿ, ಸರಿಪಡಿಕೆ ನಂತರ ಪ್ರಕಟ",
+        "ತಕ್ಷಣ ಪ್ರಕಟ",
+        "ಎಂದಿಗೂ ಪ್ರಕಟಿಸದಿರಿ",
+        "ದೋಷ ಮಾರಿ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Defenders should:",
+       "qKn": "ರಕ್ಷಕರು:",
+       "opts": [
+        "Apply updates",
+        "Ignore advisories",
+        "Disable logs",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ನವೀಕರಣ ಅನ್ವಯಿಸಿ",
+        "advisories ನಿರ್ಲಕ್ಷಿಸಿ",
+        "ಲಾಗ್ ನಿಷ್ಕ್ರಿಯ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Meanwhile reduce risk by:",
+       "qKn": "ಈ ನಡುವೆ ಅಪಾಯ ಕಡಿಮೆ:",
+       "opts": [
+        "Restricting connectors and data access",
+        "Adding more connectors",
+        "Nothing",
+        "Publishing data"
+       ],
+       "optsKn": [
+        "connectors ಮತ್ತು ಡೇಟಾ ಪ್ರವೇಶ ನಿರ್ಬಂಧ",
+        "ಹೆಚ್ಚು connectors",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಡೇಟಾ ಪ್ರಕಟಿಸಿ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216c7",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Model, System and Dataset Cards — Why Documentation Cards",
+  "titleKn": "Model, System ಮತ್ತು Dataset Cards — ದಾಖಲೆ Cards ಏಕೆ",
+  "desc": "Cards give structured, comparable documentation of what a model, system or dataset is, how it was made and its limits.",
+  "descKn": "cards ಮಾದರಿ, ವ್ಯವಸ್ಥೆ ಅಥವಾ ಡೇಟಾಸೆಟ್ ಏನು, ಹೇಗೆ ರಚಿಸಲಾಯಿತು, ಅದರ ಮಿತಿಗಳ ರಚನಾತ್ಮಕ, ಹೋಲಿಸಬಹುದಾದ ದಾಖಲೆ ನೀಡುತ್ತವೆ.",
+  "objectives": [
+   "Distinguish model, system and dataset cards.",
+   "State who reads them."
+  ],
+  "objectivesKn": [
+   "model, system, dataset cards ಬೇರ್ಪಡಿಸಿ.",
+   "ಯಾರು ಓದುತ್ತಾರೆ ಹೇಳಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Model, System and Dataset Cards — Why Documentation Cards",
+     "textKn": "Model, System and Dataset Cards — Why Documentation Cards",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Model, System and Dataset Cards",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Three Kinds",
+     "headingKn": "ಮೂರು ವಿಧ",
+     "bodyEn": "A model card describes a trained model. A system card covers a deployed product including safeguards. A dataset card documents data origin, composition and use.",
+     "bodyKn": "model card ತರಬೇತಿ ಪಡೆದ ಮಾದರಿ ವಿವರಿಸುತ್ತದೆ. system card ರಕ್ಷಣೆ ಸೇರಿ ನಿಯೋಜಿತ ಉತ್ಪನ್ನ ಒಳಗೊಳ್ಳುತ್ತದೆ. dataset card ಡೇಟಾ ಮೂಲ, ರಚನೆ, ಬಳಕೆ ದಾಖಲಿಸುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Many Audiences",
+     "headingKn": "ಹಲವು ಓದುಗರು",
+     "bodyEn": "Engineers use cards to choose models, auditors to assess risk, regulators to check obligations and affected people to understand what is used on them.",
+     "bodyKn": "ಎಂಜಿನಿಯರ್‌ಗಳು ಮಾದರಿ ಆರಿಸಲು, ಲೆಕ್ಕಪರಿಶೋಧಕರು ಅಪಾಯ ಮೌಲ್ಯಮಾಪನಕ್ಕೆ, ನಿಯಂತ್ರಕರು ಬಾಧ್ಯತೆ ಪರಿಶೀಲನೆಗೆ, ಪ್ರಭಾವಿತ ಜನರು ತಮ್ಮ ಮೇಲೆ ಏನು ಬಳಕೆಯಾಗುತ್ತದೆ ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು cards ಬಳಸುತ್ತಾರೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Model, system and dataset cards cover different things.\n• Engineers, auditors, regulators and the public all read them.",
+     "bodyKn": "• model, system, dataset cards ಬೇರೆ ವಿಷಯ.\n• ಎಂಜಿನಿಯರ್, ಲೆಕ್ಕಪರಿಶೋಧಕ, ನಿಯಂತ್ರಕ, ಸಾರ್ವಜನಿಕ ಓದುತ್ತಾರೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A system card covers:",
+       "qKn": "system card ಒಳಗೊಳ್ಳುವುದು:",
+       "opts": [
+        "The deployed product and safeguards",
+        "Only a dataset",
+        "Nothing",
+        "Fonts"
+       ],
+       "optsKn": [
+        "ನಿಯೋಜಿತ ಉತ್ಪನ್ನ ಮತ್ತು ರಕ್ಷಣೆ",
+        "ಡೇಟಾಸೆಟ್ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "A dataset card documents:",
+       "qKn": "dataset card ದಾಖಲಿಸುವುದು:",
+       "opts": [
+        "Data origin and composition",
+        "GPU speed",
+        "Colours",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಡೇಟಾ ಮೂಲ ಮತ್ತು ರಚನೆ",
+        "GPU ವೇಗ",
+        "ಬಣ್ಣ",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Who reads cards?",
+       "qKn": "cards ಯಾರು ಓದುತ್ತಾರೆ?",
+       "opts": [
+        "Engineers, auditors, regulators, the public",
+        "Nobody",
+        "Only lawyers",
+        "Only bots"
+       ],
+       "optsKn": [
+        "ಎಂಜಿನಿಯರ್, ಲೆಕ್ಕಪರಿಶೋಧಕ, ನಿಯಂತ್ರಕ, ಸಾರ್ವಜನಿಕ",
+        "ಯಾರೂ ಇಲ್ಲ",
+        "ವಕೀಲರು ಮಾತ್ರ",
+        "bots ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216c7",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Model, System and Dataset Cards — What a Good Card Contains",
+  "titleKn": "Model, System ಮತ್ತು Dataset Cards — ಉತ್ತಮ Card ನಲ್ಲಿ ಏನಿರುತ್ತದೆ",
+  "desc": "Good cards state intended use, evaluation results, limitations, risks and update history.",
+  "descKn": "ಉತ್ತಮ cards ಉದ್ದೇಶಿತ ಬಳಕೆ, ಮೌಲ್ಯಮಾಪನ ಫಲಿತಾಂಶ, ಮಿತಿ, ಅಪಾಯ, ನವೀಕರಣ ಇತಿಹಾಸ ತಿಳಿಸುತ್ತವೆ.",
+  "objectives": [
+   "List essential card sections.",
+   "Report limitations candidly."
+  ],
+  "objectivesKn": [
+   "ಅಗತ್ಯ card ವಿಭಾಗ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಮಿತಿಗಳನ್ನು ಪ್ರಾಮಾಣಿಕವಾಗಿ ವರದಿ ಮಾಡಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Model, System and Dataset Cards — What a Good Card Contains",
+     "textKn": "Model, System and Dataset Cards — What a Good Card Contains",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Model, System and Dataset Cards",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Core Sections",
+     "headingKn": "ಮುಖ್ಯ ವಿಭಾಗಗಳು",
+     "bodyEn": "Intended and out-of-scope uses, training data summary, evaluation methods and results including per-group performance, known limitations, safety testing and contact details.",
+     "bodyKn": "ಉದ್ದೇಶಿತ ಮತ್ತು ವ್ಯಾಪ್ತಿ ಹೊರಗಿನ ಬಳಕೆ, ತರಬೇತಿ ಡೇಟಾ ಸಾರಾಂಶ, ಪ್ರತಿ-ಗುಂಪು ಕಾರ್ಯಕ್ಷಮತೆ ಸೇರಿ ಮೌಲ್ಯಮಾಪನ ವಿಧಾನ ಮತ್ತು ಫಲಿತಾಂಶ, ತಿಳಿದ ಮಿತಿ, ಸುರಕ್ಷತಾ ಪರೀಕ್ಷೆ, ಸಂಪರ್ಕ ವಿವರ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Candour About Limits",
+     "headingKn": "ಮಿತಿ ಬಗ್ಗೆ ಪ್ರಾಮಾಣಿಕತೆ",
+     "bodyEn": "A card that lists only strengths is marketing. State where the system fails, what it should not be used for and what was not evaluated.",
+     "bodyKn": "ಬಲ ಮಾತ್ರ ಪಟ್ಟಿ ಮಾಡುವ card ಮಾರ್ಕೆಟಿಂಗ್. ವ್ಯವಸ್ಥೆ ಎಲ್ಲಿ ವಿಫಲ, ಯಾವುದಕ್ಕೆ ಬಳಸಬಾರದು, ಯಾವುದನ್ನು ಮೌಲ್ಯಮಾಪನ ಮಾಡಲಿಲ್ಲ ತಿಳಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Include use, data, evals, limits, safety tests.\n• State failures and what was not evaluated.",
+     "bodyKn": "• ಬಳಕೆ, ಡೇಟಾ, evals, ಮಿತಿ, ಸುರಕ್ಷತಾ ಪರೀಕ್ಷೆ.\n• ವೈಫಲ್ಯ ಮತ್ತು ಮೌಲ್ಯಮಾಪನ ಮಾಡದ್ದು ತಿಳಿಸಿ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A card listing only strengths is:",
+       "qKn": "ಬಲ ಮಾತ್ರ ಪಟ್ಟಿ ಮಾಡುವ card:",
+       "opts": [
+        "Marketing",
+        "Ideal documentation",
+        "Required",
+        "A law"
+       ],
+       "optsKn": [
+        "ಮಾರ್ಕೆಟಿಂಗ್",
+        "ಆದರ್ಶ ದಾಖಲೆ",
+        "ಅಗತ್ಯ",
+        "ಕಾನೂನು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Include:",
+       "qKn": "ಸೇರಿಸಿ:",
+       "opts": [
+        "Out-of-scope uses",
+        "Only slogans",
+        "Nothing",
+        "Only logos"
+       ],
+       "optsKn": [
+        "ವ್ಯಾಪ್ತಿ ಹೊರಗಿನ ಬಳಕೆ",
+        "ಘೋಷವಾಕ್ಯ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಲೋಗೋ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "State also:",
+       "qKn": "ಇದನ್ನೂ ತಿಳಿಸಿ:",
+       "opts": [
+        "What was not evaluated",
+        "Nothing",
+        "Only wins",
+        "Only fonts"
+       ],
+       "optsKn": [
+        "ಮೌಲ್ಯಮಾಪನ ಮಾಡದ್ದು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಗೆಲುವು ಮಾತ್ರ",
+        "ಫಾಂಟ್ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216c7",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Model, System and Dataset Cards — Maintaining Cards",
+  "titleKn": "Model, System ಮತ್ತು Dataset Cards — Cards ನಿರ್ವಹಣೆ",
+  "desc": "Cards must be versioned and updated with the artefact, and generated from real evaluation data where possible.",
+  "descKn": "cards ಗೆ ಆವೃತ್ತಿ ನೀಡಬೇಕು, ವಸ್ತು ಬದಲಾದಂತೆ ನವೀಕರಿಸಬೇಕು, ಸಾಧ್ಯವಾದಲ್ಲಿ ನಿಜ ಮೌಲ್ಯಮಾಪನ ಡೇಟಾದಿಂದ ರಚಿಸಬೇಕು.",
+  "objectives": [
+   "Version cards with releases.",
+   "Automate card generation from eval outputs."
+  ],
+  "objectivesKn": [
+   "ಬಿಡುಗಡೆಯೊಂದಿಗೆ cards ಗೆ ಆವೃತ್ತಿ.",
+   "eval ಔಟ್‌ಪುಟ್‌ನಿಂದ card ರಚನೆ ಸ್ವಯಂಚಾಲನೆ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Model, System and Dataset Cards — Maintaining Cards",
+     "textKn": "Model, System and Dataset Cards — Maintaining Cards",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Model, System and Dataset Cards",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Keep Them Current",
+     "headingKn": "ಪ್ರಸ್ತುತವಾಗಿಡಿ",
+     "bodyEn": "A card describing last year's model misleads. Update it whenever the model, data or safeguards change, and keep old versions for traceability.",
+     "bodyKn": "ಕಳೆದ ವರ್ಷದ ಮಾದರಿ ವಿವರಿಸುವ card ದಾರಿ ತಪ್ಪಿಸುತ್ತದೆ. ಮಾದರಿ, ಡೇಟಾ ಅಥವಾ ರಕ್ಷಣೆ ಬದಲಾದಾಗಲೆಲ್ಲ ನವೀಕರಿಸಿ, ಪತ್ತೆಹಚ್ಚುವಿಕೆಗೆ ಹಳೆಯ ಆವೃತ್ತಿ ಇಡಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Generate From Evidence",
+     "headingKn": "ಸಾಕ್ಷ್ಯದಿಂದ ರಚಿಸಿ",
+     "bodyEn": "Pulling numbers directly from evaluation runs reduces transcription errors and makes the card reproducible, a good fit for CI pipelines.",
+     "bodyKn": "ಸಂಖ್ಯೆಗಳನ್ನು ನೇರವಾಗಿ ಮೌಲ್ಯಮಾಪನ runs ನಿಂದ ಪಡೆದರೆ ನಕಲು ದೋಷ ಕಡಿಮೆ ಮತ್ತು card ಪುನರುತ್ಪಾದನೀಯ; CI ಪೈಪ್‌ಲೈನ್‌ಗೆ ಹೊಂದುತ್ತದೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Update and version cards with every change.\n• Generate numbers from real eval runs.",
+     "bodyKn": "• ಪ್ರತಿ ಬದಲಾವಣೆಗೆ card ನವೀಕರಣ, ಆವೃತ್ತಿ.\n• ನಿಜ eval runs ನಿಂದ ಸಂಖ್ಯೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A stale card:",
+       "qKn": "ಹಳೆಯ card:",
+       "opts": [
+        "Misleads",
+        "Helps",
+        "Is perfect",
+        "Is required"
+       ],
+       "optsKn": [
+        "ದಾರಿ ತಪ್ಪಿಸುತ್ತದೆ",
+        "ಸಹಾಯ ಮಾಡುತ್ತದೆ",
+        "ಪರಿಪೂರ್ಣ",
+        "ಅಗತ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Generate card numbers from:",
+       "qKn": "card ಸಂಖ್ಯೆ ಪಡೆಯಿರಿ:",
+       "opts": [
+        "Real evaluation runs",
+        "Memory",
+        "Guesses",
+        "Slogans"
+       ],
+       "optsKn": [
+        "ನಿಜ ಮೌಲ್ಯಮಾಪನ runs",
+        "ನೆನಪು",
+        "ಊಹೆ",
+        "ಘೋಷವಾಕ್ಯ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Keep old versions for:",
+       "qKn": "ಹಳೆಯ ಆವೃತ್ತಿ ಇಡಿ:",
+       "opts": [
+        "Traceability",
+        "Nothing",
+        "Decoration",
+        "Secrecy"
+       ],
+       "optsKn": [
+        "ಪತ್ತೆಹಚ್ಚುವಿಕೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಅಲಂಕಾರ",
+        "ರಹಸ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216ca",
+  "order": 0,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Data Provenance and Training-Data Governance — Knowing Where Data Comes From",
+  "titleKn": "ಡೇಟಾ ಮೂಲ ಮತ್ತು ತರಬೇತಿ-ಡೇಟಾ ಆಡಳಿತ — ಡೇಟಾ ಎಲ್ಲಿಂದ ಬರುತ್ತದೆ ತಿಳಿಯುವುದು",
+  "desc": "Provenance is the recorded history of data: source, licence, collection method, transformations and consent.",
+  "descKn": "provenance ಡೇಟಾದ ದಾಖಲಿತ ಇತಿಹಾಸ: ಮೂಲ, ಪರವಾನಗಿ, ಸಂಗ್ರಹ ವಿಧಾನ, ರೂಪಾಂತರ, ಒಪ್ಪಿಗೆ.",
+  "objectives": [
+   "List provenance attributes.",
+   "Explain why provenance matters for legality and quality."
+  ],
+  "objectivesKn": [
+   "provenance ಗುಣಗಳ ಪಟ್ಟಿ ಮಾಡಿ.",
+   "ಕಾನೂನುಬದ್ಧತೆ ಮತ್ತು ಗುಣಮಟ್ಟಕ್ಕೆ provenance ಏಕೆ ಮುಖ್ಯ ವಿವರಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Data Provenance and Training-Data Governance — Knowing Where Data Comes From",
+     "textKn": "Data Provenance and Training-Data Governance — Knowing Where Data Comes From",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 1 of 3 in Data Provenance and Training-Data Governance",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 1 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "The Attributes",
+     "headingKn": "ಗುಣಗಳು",
+     "bodyEn": "For each dataset record where it came from, who owns it, what licence or consent covers it, when it was collected and what processing it has undergone.",
+     "bodyKn": "ಪ್ರತಿ ಡೇಟಾಸೆಟ್‌ಗೆ ಎಲ್ಲಿಂದ ಬಂತು, ಯಾರ ಒಡೆತನ, ಯಾವ ಪರವಾನಗಿ ಅಥವಾ ಒಪ್ಪಿಗೆ ಒಳಗೊಳ್ಳುತ್ತದೆ, ಯಾವಾಗ ಸಂಗ್ರಹಿಸಲಾಯಿತು, ಯಾವ ಸಂಸ್ಕರಣೆ ನಡೆದಿದೆ ದಾಖಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Why It Matters",
+     "headingKn": "ಏಕೆ ಮುಖ್ಯ",
+     "bodyEn": "Without provenance you cannot check licences, honour deletion requests, find contaminated benchmarks or trace a problem in the model back to a data source.",
+     "bodyKn": "provenance ಇಲ್ಲದೆ ಪರವಾನಗಿ ಪರಿಶೀಲಿಸಲು, ಅಳಿಸುವ ವಿನಂತಿ ಗೌರವಿಸಲು, ಕಲುಷಿತ ಬೆಂಚ್‌ಮಾರ್ಕ್ ಹುಡುಕಲು ಅಥವಾ ಮಾದರಿಯ ಸಮಸ್ಯೆಯನ್ನು ಡೇಟಾ ಮೂಲಕ್ಕೆ ಹಿಂಬಾಲಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Record source, owner, licence, date and processing.\n• Needed for licences, deletion and debugging.",
+     "bodyKn": "• ಮೂಲ, ಒಡೆಯ, ಪರವಾನಗಿ, ದಿನಾಂಕ, ಸಂಸ್ಕರಣೆ ದಾಖಲು.\n• ಪರವಾನಗಿ, ಅಳಿಸುವಿಕೆ, debugging ಗೆ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "Provenance records:",
+       "qKn": "provenance ದಾಖಲಿಸುವುದು:",
+       "opts": [
+        "Source, licence and processing",
+        "Only fonts",
+        "Nothing",
+        "Only colours"
+       ],
+       "optsKn": [
+        "ಮೂಲ, ಪರವಾನಗಿ, ಸಂಸ್ಕರಣೆ",
+        "ಫಾಂಟ್ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Without it you cannot:",
+       "qKn": "ಇಲ್ಲದೆ ಸಾಧ್ಯವಿಲ್ಲ:",
+       "opts": [
+        "Honour deletion requests reliably",
+        "Type",
+        "Read",
+        "Nothing"
+       ],
+       "optsKn": [
+        "ಅಳಿಸುವ ವಿನಂತಿ ನಂಬಲರ್ಹವಾಗಿ ಗೌರವಿಸಲು",
+        "ಟೈಪ್ ಮಾಡಲು",
+        "ಓದಲು",
+        "ಏನೂ ಇಲ್ಲ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Provenance helps trace:",
+       "qKn": "provenance ಹಿಂಬಾಲಿಸಲು ಸಹಾಯ:",
+       "opts": [
+        "Model problems back to data",
+        "Nothing",
+        "Fonts",
+        "Colours"
+       ],
+       "optsKn": [
+        "ಮಾದರಿ ಸಮಸ್ಯೆ ಡೇಟಾ ವರೆಗೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್",
+        "ಬಣ್ಣ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216ca",
+  "order": 1,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Data Provenance and Training-Data Governance — Governance Practices",
+  "titleKn": "ಡೇಟಾ ಮೂಲ ಮತ್ತು ತರಬೇತಿ-ಡೇಟಾ ಆಡಳಿತ — ಆಡಳಿತ ಆಚರಣೆಗಳು",
+  "desc": "Governance sets policies for what data may be used, who approves it and how it is reviewed and retired.",
+  "descKn": "ಆಡಳಿತ ಯಾವ ಡೇಟಾ ಬಳಸಬಹುದು, ಯಾರು ಅನುಮೋದಿಸುತ್ತಾರೆ, ಹೇಗೆ ವಿಮರ್ಶಿಸಿ ನಿವೃತ್ತಿ ಮಾಡಲಾಗುತ್ತದೆ ಎಂಬ ನೀತಿ ನಿಗದಿ ಮಾಡುತ್ತದೆ.",
+  "objectives": [
+   "Define an approval process for datasets.",
+   "Handle sensitive and personal data."
+  ],
+  "objectivesKn": [
+   "ಡೇಟಾಸೆಟ್‌ಗೆ ಅನುಮೋದನೆ ಪ್ರಕ್ರಿಯೆ ವ್ಯಾಖ್ಯಾನಿಸಿ.",
+   "ಸೂಕ್ಷ್ಮ ಮತ್ತು ವೈಯಕ್ತಿಕ ಡೇಟಾ ನಿರ್ವಹಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Data Provenance and Training-Data Governance — Governance Practices",
+     "textKn": "Data Provenance and Training-Data Governance — Governance Practices",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 2 of 3 in Data Provenance and Training-Data Governance",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 2 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Approval and Review",
+     "headingKn": "ಅನುಮೋದನೆ ಮತ್ತು ವಿಮರ್ಶೆ",
+     "bodyEn": "New data sources go through review for licence, privacy, quality and bias before entering training, with a named owner and a recorded decision.",
+     "bodyKn": "ಹೊಸ ಡೇಟಾ ಮೂಲಗಳು ತರಬೇತಿ ಪ್ರವೇಶಿಸುವ ಮೊದಲು ಪರವಾನಗಿ, ಗೌಪ್ಯತೆ, ಗುಣಮಟ್ಟ, ಪಕ್ಷಪಾತಕ್ಕೆ ವಿಮರ್ಶೆ ಹಾದು ಹೋಗುತ್ತವೆ; ಹೆಸರಿಸಿದ ಮಾಲೀಕ ಮತ್ತು ದಾಖಲಿತ ನಿರ್ಧಾರದೊಂದಿಗೆ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Sensitive Data",
+     "headingKn": "ಸೂಕ್ಷ್ಮ ಡೇಟಾ",
+     "bodyEn": "Personal, health and children's data need special handling, minimisation and often exclusion. Apply retention limits and honour opt-outs and deletion requests.",
+     "bodyKn": "ವೈಯಕ್ತಿಕ, ಆರೋಗ್ಯ, ಮಕ್ಕಳ ಡೇಟಾಗೆ ವಿಶೇಷ ನಿರ್ವಹಣೆ, ಕನಿಷ್ಠೀಕರಣ ಮತ್ತು ಆಗಾಗ ಹೊರಗಿಡುವಿಕೆ ಬೇಕು. ಉಳಿಸುವ ಮಿತಿ ಅನ್ವಯಿಸಿ, opt-outs ಮತ್ತು ಅಳಿಸುವ ವಿನಂತಿ ಗೌರವಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Review new sources with an owner and a record.\n• Minimise sensitive data and honour opt-outs.",
+     "bodyKn": "• ಮಾಲೀಕ ಮತ್ತು ದಾಖಲೆಯೊಂದಿಗೆ ಹೊಸ ಮೂಲ ವಿಮರ್ಶೆ.\n• ಸೂಕ್ಷ್ಮ ಡೇಟಾ ಕನಿಷ್ಠ; opt-outs ಗೌರವ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "New data sources need:",
+       "qKn": "ಹೊಸ ಡೇಟಾ ಮೂಲಗಳಿಗೆ:",
+       "opts": [
+        "Review and an owner",
+        "Nothing",
+        "Secrecy",
+        "Speed only"
+       ],
+       "optsKn": [
+        "ವಿಮರ್ಶೆ ಮತ್ತು ಮಾಲೀಕ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ರಹಸ್ಯ",
+        "ವೇಗ ಮಾತ್ರ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Sensitive data needs:",
+       "qKn": "ಸೂಕ್ಷ್ಮ ಡೇಟಾಗೆ:",
+       "opts": [
+        "Minimisation and special handling",
+        "Public release",
+        "Nothing",
+        "Unlimited retention"
+       ],
+       "optsKn": [
+        "ಕನಿಷ್ಠೀಕರಣ ಮತ್ತು ವಿಶೇಷ ನಿರ್ವಹಣೆ",
+        "ಸಾರ್ವಜನಿಕ ಬಿಡುಗಡೆ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಅನಿಯಮಿತ ಉಳಿಕೆ"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Honour:",
+       "qKn": "ಗೌರವಿಸಿ:",
+       "opts": [
+        "Opt-outs and deletion requests",
+        "Nothing",
+        "Only ads",
+        "Only bots"
+       ],
+       "optsKn": [
+        "opt-outs ಮತ್ತು ಅಳಿಸುವ ವಿನಂತಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಜಾಹೀರಾತು ಮಾತ್ರ",
+        "bots ಮಾತ್ರ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "phaseId": "6a369d6866020ed05b321679",
+  "moduleId": "6a369d6a66020ed05b3216ca",
+  "order": 2,
+  "type": "reading",
+  "duration": 25,
+  "difficulty": "intermediate",
+  "status": "published",
+  "title": "Data Provenance and Training-Data Governance — Auditability and Evidence",
+  "titleKn": "ಡೇಟಾ ಮೂಲ ಮತ್ತು ತರಬೇತಿ-ಡೇಟಾ ಆಡಳಿತ — ಲೆಕ್ಕಪರಿಶೋಧನೆ ಮತ್ತು ಸಾಕ್ಷ್ಯ",
+  "desc": "Keep manifests and lineage so you can show what data trained which model version, and support audits and removal.",
+  "descKn": "ಯಾವ ಡೇಟಾ ಯಾವ ಮಾದರಿ ಆವೃತ್ತಿಗೆ ತರಬೇತಿ ನೀಡಿತು ತೋರಿಸಲು manifests ಮತ್ತು lineage ಇಡಿ; ಲೆಕ್ಕಪರಿಶೋಧನೆ ಮತ್ತು ತೆಗೆಯುವಿಕೆ ಬೆಂಬಲ.",
+  "objectives": [
+   "Build dataset manifests with hashes.",
+   "Link data versions to model versions."
+  ],
+  "objectivesKn": [
+   "hashes ಸಹಿತ ಡೇಟಾಸೆಟ್ manifests ನಿರ್ಮಿಸಿ.",
+   "ಡೇಟಾ ಆವೃತ್ತಿಗಳನ್ನು ಮಾದರಿ ಆವೃತ್ತಿಗಳಿಗೆ ಜೋಡಿಸಿ."
+  ],
+  "blocks": [
+   {
+    "type": "heading",
+    "data": {
+     "textEn": "Data Provenance and Training-Data Governance — Auditability and Evidence",
+     "textKn": "Data Provenance and Training-Data Governance — Auditability and Evidence",
+     "level": "H1"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Lesson Info",
+     "headingKn": "Lesson ಮಾಹಿತಿ",
+     "bodyEn": "• Type: Concept · Time: ~25 minutes · Part 3 of 3 in Data Provenance and Training-Data Governance",
+     "bodyKn": "• Type: Concept · Time: ~25 ನಿಮಿಷಗಳು · Part 3 of 3"
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Manifests and Lineage",
+     "headingKn": "Manifests ಮತ್ತು Lineage",
+     "bodyEn": "Store a manifest listing every source and a hash of each file, and record which manifest version each model was trained on.",
+     "bodyKn": "ಪ್ರತಿ ಮೂಲ ಮತ್ತು ಪ್ರತಿ ಫೈಲ್‌ನ hash ಪಟ್ಟಿ ಮಾಡುವ manifest ಸಂಗ್ರಹಿಸಿ; ಪ್ರತಿ ಮಾದರಿ ಯಾವ manifest ಆವೃತ್ತಿಯ ಮೇಲೆ ತರಬೇತಿ ಪಡೆಯಿತು ದಾಖಲಿಸಿ."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Supporting Removal and Audit",
+     "headingKn": "ತೆಗೆಯುವಿಕೆ ಮತ್ತು ಲೆಕ್ಕಪರಿಶೋಧನೆ ಬೆಂಬಲ",
+     "bodyEn": "With lineage you can identify which models used a removed source and retrain or mitigate, and show auditors evidence of your practices.",
+     "bodyKn": "lineage ಇದ್ದರೆ ತೆಗೆದ ಮೂಲ ಯಾವ ಮಾದರಿಗಳು ಬಳಸಿದವು ಗುರುತಿಸಿ ಮರುತರಬೇತಿ ಅಥವಾ ತಗ್ಗಿಸಬಹುದು, ಲೆಕ್ಕಪರಿಶೋಧಕರಿಗೆ ನಿಮ್ಮ ಆಚರಣೆಯ ಸಾಕ್ಷ್ಯ ತೋರಿಸಬಹುದು."
+    }
+   },
+   {
+    "type": "concept",
+    "data": {
+     "headingEn": "Key Takeaways",
+     "headingKn": "ಮುಖ್ಯ ಅಂಶಗಳು",
+     "bodyEn": "• Manifests with hashes; link data to model versions.\n• Lineage supports removal and audits.",
+     "bodyKn": "• hashes ಸಹಿತ manifests; ಡೇಟಾ-ಮಾದರಿ ಜೋಡಣೆ.\n• lineage ತೆಗೆಯುವಿಕೆ, ಲೆಕ್ಕಪರಿಶೋಧನೆ ಬೆಂಬಲ."
+    }
+   },
+   {
+    "type": "quiz",
+    "data": {
+     "questions": [
+      {
+       "q": "A manifest lists:",
+       "qKn": "manifest ಪಟ್ಟಿ ಮಾಡುವುದು:",
+       "opts": [
+        "Sources and file hashes",
+        "Only colours",
+        "Nothing",
+        "Fonts"
+       ],
+       "optsKn": [
+        "ಮೂಲ ಮತ್ತು ಫೈಲ್ hashes",
+        "ಬಣ್ಣ ಮಾತ್ರ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Lineage lets you find:",
+       "qKn": "lineage ಹುಡುಕಲು ಬಿಡುತ್ತದೆ:",
+       "opts": [
+        "Which models used a source",
+        "Nothing",
+        "Fonts",
+        "Ads"
+       ],
+       "optsKn": [
+        "ಯಾವ ಮಾದರಿಗಳು ಮೂಲ ಬಳಸಿದವು",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಫಾಂಟ್",
+        "ಜಾಹೀರಾತು"
+       ],
+       "correct": 0
+      },
+      {
+       "q": "Record for each model:",
+       "qKn": "ಪ್ರತಿ ಮಾದರಿಗೆ ದಾಖಲಿಸಿ:",
+       "opts": [
+        "The manifest version it used",
+        "Nothing",
+        "A colour",
+        "A joke"
+       ],
+       "optsKn": [
+        "ಬಳಸಿದ manifest ಆವೃತ್ತಿ",
+        "ಏನೂ ಇಲ್ಲ",
+        "ಬಣ್ಣ",
+        "ಹಾಸ್ಯ"
+       ],
+       "correct": 0
+      }
+     ]
+    }
+   }
+  ]
+ }
+]
