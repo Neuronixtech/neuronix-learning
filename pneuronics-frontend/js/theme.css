@@ -198,6 +198,7 @@ html[data-theme="light"] pre.code .nm{ color:#005CC5; }
 html[data-theme="light"] pre.code .st{ color:#032F62; }
 
 /* Diagram SVGs are drawn on a dark canvas; remap their palette to light equivalents in light mode */
+html[data-theme="light"] .bl-diagram{ background:transparent; border-color:#E2E8F0; }
 html[data-theme="light"] .bl-diagram-svg{ background:#F8FAFC; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; }
 html[data-theme="light"] .bl-diagram-svg svg [fill="#0f172a" i]{ fill:#F8FAFC; }
 html[data-theme="light"] .bl-diagram-svg svg [fill="#1e293b" i]{ fill:#EEF2F7; }
