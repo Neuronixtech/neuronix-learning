@@ -1050,6 +1050,25 @@ img,svg{ display:block; max-width:100%; }
       prefill: { name: session.name || '', email: session.email },
       theme: { color: '#F4B740' },
 
+      // Open straight to "Scan QR to pay" (UPI QR) instead of the Cards tab.
+      // Every other method (cards, netbanking, wallets, UPI intent/collect)
+      // still shows below it via the default blocks, so nothing is removed —
+      // QR is just what the customer sees first.
+      config: {
+        display: {
+          blocks: {
+            qr: {
+              name: 'Pay by scanning a QR code',
+              instruments: [
+                { method: 'upi', flows: ['qr'] },
+              ],
+            },
+          },
+          sequence: ['block.qr', 'block.other'],
+          preferences: { show_default_blocks: true },
+        },
+      },
+
       handler: async function(response) {
         // 3. Verify the payment on the backend before enrolling
         enrollBtn.textContent = 'Verifying payment\u2026';
