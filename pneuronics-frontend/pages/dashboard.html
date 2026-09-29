@@ -559,6 +559,16 @@ var _student={}, _curriculum=[], _completedSet=new Set(), _nextLesson=null;
   document.getElementById('statDays').textContent=enrolled?daysLeft:'\u2014';
   document.getElementById('enrollNavLink').style.display=enrolled?'none':'flex';
 
+  // Welcome toast right after payment (pricing.html redirects here with ?welcome=1)
+  if(enrolled && new URLSearchParams(location.search).get('welcome')==='1'){
+    var toast=document.createElement('div');
+    toast.style.cssText='position:fixed;top:80px;left:50%;transform:translateX(-50%);z-index:9999;background:var(--cyan);color:#16233A;font-family:var(--font-mono);font-size:.85rem;padding:.75rem 1.5rem;border-radius:9px;box-shadow:0 4px 24px rgba(0,0,0,.3);white-space:nowrap;';
+    toast.textContent='\ud83c\udf89 Enrollment complete! All lessons are now unlocked.';
+    document.body.appendChild(toast);
+    setTimeout(function(){toast.remove();},5000);
+    history.replaceState(null,'',location.pathname);
+  }
+
   _completedSet=new Set((_student.completedLessons||[]).map(String));
 
   try{var cur=await api.get('/api/curriculum/full');_curriculum=cur.curriculum||[];}catch(e){_curriculum=[];}

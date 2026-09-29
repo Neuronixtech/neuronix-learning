@@ -1064,7 +1064,7 @@ img,svg{ display:block; max-width:100%; }
           setSession(session);
           enrollBtn.textContent = '\u2713 Payment Successful! Redirecting\u2026';
           enrollBtn.style.background = 'var(--cyan)';
-          setTimeout(() => { window.location.href = 'curriculum.html?welcome=1'; }, 1500);
+          setTimeout(() => { window.location.href = 'dashboard.html?welcome=1'; }, 1500);
         } catch (err) {
           alert('Payment verification failed: ' + (err.message || 'Please contact support.'));
           enrollBtn.disabled = false;
