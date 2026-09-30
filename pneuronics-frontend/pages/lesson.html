@@ -1215,7 +1215,7 @@ h3.bl-heading{font-size:1rem;color:var(--gold);}
       // ── Tags ──
       const tagRow = document.getElementById('tagRow');
       let tags = '';
-      if (lesson.phaseId) tags += '<a class="tag phase" id="phaseTag" href="dashboard.html" title="Back to dashboard">Phase</a>';
+      if (lesson.phaseId) tags += '<a class="tag phase" id="phaseTag" href="dashboard.html?tab=curriculum" title="Back to curriculum">Phase</a>';
       if (lesson.moduleId) tags += '<span class="tag module">Module</span>';
       if (lesson.difficulty) tags += '<span class="tag ' + lesson.difficulty + '">' + lesson.difficulty.charAt(0).toUpperCase() + lesson.difficulty.slice(1) + '</span>';
       tagRow.innerHTML = tags;

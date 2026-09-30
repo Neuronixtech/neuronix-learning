@@ -637,6 +637,11 @@ var _student={}, _curriculum=[], _completedSet=new Set(), _nextLesson=null;
   document.getElementById('logoutBtn').addEventListener('click',function(){
     if(confirm('Log out of your account?'))studentLogout();
   });
+
+  // Open directly to a tab via ?tab=curriculum (used by links from other pages).
+  // Runs after _curriculum has loaded so renderRoadmap() has real data to show.
+  var wantedTab=new URLSearchParams(location.search).get('tab');
+  if(wantedTab && document.getElementById('pane-'+wantedTab)) showTab(wantedTab);
 })();
 
 // ── Curriculum Roadmap ───────────────────────────────────────────
