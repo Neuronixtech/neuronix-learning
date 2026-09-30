@@ -67,6 +67,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
 .tag-row{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
 .tag{font-size:.75rem;font-weight:600;padding:.3rem .75rem;border-radius:999px;white-space:nowrap;}
 .tag.phase{background:var(--cyan-soft);color:var(--cyan);}
+a.tag.phase{text-decoration:none;cursor:pointer;transition:filter .15s;}
+a.tag.phase:hover{filter:brightness(1.15);}
 .tag.module{background:var(--surface-2);color:var(--text-dim);border:1px solid var(--line-strong);}
 .tag.beginner{background:var(--green-soft);color:var(--green);border:1px solid rgba(111,209,140,.25);}
 .tag.intermediate{background:var(--gold-soft);color:var(--gold);border:1px solid rgba(244,183,64,.25);}
@@ -1213,7 +1215,7 @@ h3.bl-heading{font-size:1rem;color:var(--gold);}
       // ── Tags ──
       const tagRow = document.getElementById('tagRow');
       let tags = '';
-      if (lesson.phaseId) tags += '<span class="tag phase" id="phaseTag">Phase</span>';
+      if (lesson.phaseId) tags += '<a class="tag phase" id="phaseTag" href="curriculum.html" title="Back to curriculum">Phase</a>';
       if (lesson.moduleId) tags += '<span class="tag module">Module</span>';
       if (lesson.difficulty) tags += '<span class="tag ' + lesson.difficulty + '">' + lesson.difficulty.charAt(0).toUpperCase() + lesson.difficulty.slice(1) + '</span>';
       tagRow.innerHTML = tags;
