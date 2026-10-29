@@ -6,3 +6,5 @@ pneuronics-backend/mlruns
 pneuronics-backend/dump-out.json
 pneuronics-backend/test_model.onnx.data
 .claude/
+__pycache__/
+*.pyc
