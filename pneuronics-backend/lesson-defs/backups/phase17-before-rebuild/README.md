@@ -29,3 +29,5 @@ Raw exports (JSON arrays of lesson documents) taken immediately before each modu
 | 295 | 6a369d6266020ed05b321550 | 3 | Module 295: OpenTelemetry GenAI Semantic Conventions | module_295.json |
 | 296 | 6a369d6266020ed05b321553 | 3 | Module 296: Agent Observability: Langfuse, Phoenix, Opik | module_296.json |
 | 297 | 6a369d6266020ed05b321556 | 3 | Module 297: Multi-Agent Debate and Collaboration | module_297.json |
+
+`stale-practices-273-297.json` holds the 225 practice problems (3 per lesson) that were attached to these lessons before they were replaced by practices written from the rebuilt labs (see `practice-defs/practices-273-297.js`).
