@@ -1,6 +1,6 @@
 module.exports = {
  "phaseId": "6a369d6066020ed05b32150b",
- "moduleId": "6a369d6166020ed05b321550",
+ "moduleId": "6a369d6266020ed05b321550",
  "order": 1,
  "type": "interactive",
  "duration": 60,
