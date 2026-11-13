@@ -147,6 +147,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: What each candidate fails to prove",
+    "headingKn": "ಪ್ರಯೋಗ 1: What each candidate fails to prove",
+    "bodyEn": "What it ran: What each candidate fails to prove. What the lab concluded: only candidates with an empty missing list can answer the question the three assumptions pose; the dashboard is the smallest and proves one of the three",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What each candidate fails to prove. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): only candidates with an empty missing list can answer the question the three assumptions pose; the dashboard is the smallest and proves one of the three"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: what each candidate fails to prove ---\nhard-coded dashboard                 effort= 2d risk=1 score=  4.0 missing=['read_only', 'real_records']\nreplay script on real records        effort= 3d risk=1 score=  5.0 missing=['operator_review']\nreplay with operator review          effort= 6d risk=2 score= 10.0 missing=[]\nlive agent in production             effort= 5d risk=5 score= 15.0 missing=['read_only']\nfull vertical slice with approval    effort=12d risk=2 score= 16.0 missing=[]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Eligibility first, then the score",
+    "headingKn": "ಪ್ರಯೋಗ 2: Eligibility first, then the score",
+    "bodyEn": "What it ran: Eligibility first, then the score. What the lab concluded: the dashboard has the lowest raw score and the gate removed it, along with the replay script and the live agent, leaving two candidates, and the cheaper of those was chosen; ranking first and filtering afterwards would have returned the dashboard",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Eligibility first, then the score. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the dashboard has the lowest raw score and the gate removed it, along with the replay script and the live agent, leaving two candidates, and the cheaper of those was chosen; ranking first and filtering afterwards would have returned the dashboard"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: eligibility first, then the score ---\neligible: ['replay with operator review', 'full vertical slice with approval']\nchosen  : replay with operator review\nlowest score among all candidates: hard-coded dashboard"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Declared coverage is not evidence",
+    "headingKn": "ಪ್ರಯೋಗ 3: Declared coverage is not evidence",
+    "bodyEn": "What it ran: Declared coverage is not evidence. What the lab concluded: a candidate that lists all three proofs and costs three days wins the comparison, because the gate only reads the set it was given; whether the slice really covers the proof is what Part 2 checks by running one",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Declared coverage is not evidence. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a candidate that lists all three proofs and costs three days wins the comparison, because the gate only reads the set it was given; whether the slice really covers the proof is what Part 2 checks by running one"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: declared coverage is not evidence ---\ndeclared candidate eligible: True | score: 5.0\nchosen when it is in the list: replay on real records (declared)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The weights decide between eligible candidates",
+    "headingKn": "ಪ್ರಯೋಗ 4: The weights decide between eligible candidates",
+    "bodyEn": "What it ran: The weights decide between eligible candidates. What the lab concluded: the winner changed only when the effort weight went to zero, and then the two eligible candidates both had risk 2, so the choice fell to the name tie-break (full... sorts before replay...) and not to any real preference; a weight set that leaves a tie is a warning sign, and the numbers 1 and 2 in this lab are arbitrary and were not calibrated against anything",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The weights decide between eligible candidates. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the winner changed only when the effort weight went to zero, and then the two eligible candidates both had risk 2, so the choice fell to the name tie-break (full... sorts before replay...) and not to any real preference; a weight set that leaves a tie is a warning sign, and the numbers 1 and 2 in this lab are arbitrary and were not calibrated against anything"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: the weights decide between eligible candidates ---\nw_effort=1.0 w_risk=2.0: chosen=replay with operator review\nw_effort=1.0 w_risk=0.0: chosen=replay with operator review\nw_effort=0.0 w_risk=1.0: chosen=full vertical slice with approval\nw_effort=1.0 w_risk=5.0: chosen=replay with operator review"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The decision artifact and the empty case",
+    "headingKn": "ಪ್ರಯೋಗ 5: The decision artifact and the empty case",
+    "bodyEn": "What it ran: The decision artifact and the empty case. What the lab concluded: the artifact records why each rejected candidate was rejected, and when nothing is eligible the function returns None instead of the least bad option, which forces a person to widen the options or narrow the proof",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The decision artifact and the empty case. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the artifact records why each rejected candidate was rejected, and when nothing is eligible the function returns None instead of the least bad option, which forces a person to widen the options or narrow the proof"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: the decision artifact and the empty case ---\n{\n \"chosen\": \"replay with operator review\",\n \"rejected\": {\n  \"hard-coded dashboard\": [\n   \"read_only\",\n   \"real_records\"\n  ],\n  \"live agent in production\": [\n   \"read_only\"\n  ],\n  \"replay script on real records\": [\n   \"operator_review\"\n  ]\n },\n…"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -204,6 +287,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Each candidate was checked for missing proof. 2) The gate removed the lowest score. 3) Declared coverage won without evidence. 4) Weights mattered, and one tie fell to the name. 5) No eligible candidate returned None.",
     "bodyKn": "1) ಪ್ರತಿ ಅಭ್ಯರ್ಥಿಯಲ್ಲಿ ಕಾಣೆಯಾದ ಪುರಾವೆ ಪರಿಶೀಲಿಸಲಾಯಿತು. 2) gate ಕಡಿಮೆ ಅಂಕ ತೆಗೆಯಿತು. 3) ಘೋಷಿತ ವ್ಯಾಪ್ತಿ ಸಾಕ್ಷ್ಯವಿಲ್ಲದೆ ಗೆದ್ದಿತು. 4) ತೂಕಗಳು ಮುಖ್ಯ, ಮತ್ತು ಒಂದು tie ಹೆಸರಿಗೆ ಬಿತ್ತು. 5) ಅರ್ಹ ಅಭ್ಯರ್ಥಿ ಇಲ್ಲದಾಗ None ಮರಳಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B sl_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B sl_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B sl_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B sl_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

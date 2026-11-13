@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A replay on eight made-up incident records",
+    "headingKn": "ಪ್ರಯೋಗ 1: A replay on eight made-up incident records",
+    "bodyEn": "What it ran: A replay on eight made-up incident records. What the lab concluded: the replay identified the service from a label for four records and from alert text for two more, and returned none for the disk alert (whose only label names a team) and for the bank-timeouts alert (which contains none of its keywords); the records are invented and eight is far too few to say anything about real incidents",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A replay on eight made-up incident records. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the replay identified the service from a label for four records and from alert text for two more, and returned none for the disk alert (whose only label names a team) and for the bank-timeouts alert (which contains none of its keywords); the records are invented and eight is far too few to say anything about real incidents"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a replay on eight made-up incident records ---\n{'id': 1, 'service': 'payments', 'how': 'label'} truth: payments\n{'id': 2, 'service': 'search', 'how': 'label'} truth: search\n{'id': 3, 'service': 'checkout', 'how': 'keyword'} truth: checkout\n{'id': 4, 'service': 'billing', 'how': 'keyword'} truth: billing\n{'id': 5, 'service': 'auth', 'how': 'label'} truth: auth\n{'id': 6, 'service': None, 'how': 'none'} truth: storage\n{'id': 7, 'service': None, 'how': 'none'} truth: payments\n{'id': 8, 'service': 'search', 'how': 'label'} truth: search\ncorrect: 6/8"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Happy path versus records with missing labels",
+    "headingKn": "ಪ್ರಯೋಗ 2: Happy path versus records with missing labels",
+    "bodyEn": "What it ran: Happy path versus records with missing labels. What the lab concluded: every labelled record was right and only half of the unlabelled ones were, the misses being the disk alert and the bank-timeouts alert; a test that used only labelled records would have reported a perfect score, and the real question is the rate on the records without labels",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Happy path versus records with missing labels. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): every labelled record was right and only half of the unlabelled ones were, the misses being the disk alert and the bank-timeouts alert; a test that used only labelled records would have reported a perfect score, and the real question is the rate on the records without labels"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: happy path versus records with missing labels ---\nlabelled only    4/4 = 1.00\nunlabelled only  2/4 = 0.50\nall              6/8 = 0.75"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A hard-coded demo passes any acceptance rule",
+    "headingKn": "ಪ್ರಯೋಗ 3: A hard-coded demo passes any acceptance rule",
+    "bodyEn": "What it ran: A hard-coded demo passes any acceptance rule. What the lab concluded: accuracy of a rule that returns the answer key is 8/8 by construction; the demo shows an interface and proves nothing about whether the real records contain the information, which is why a candidate that does not read real records fails the eligibility gate",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A hard-coded demo passes any acceptance rule. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): accuracy of a rule that returns the answer key is 8/8 by construction; the demo shows an interface and proves nothing about whether the real records contain the information, which is why a candidate that does not read real records fails the eligibility gate"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: a hard-coded demo passes any acceptance rule ---\nhard-coded demo: 8/8"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A measurable acceptance rule fixed before the run",
+    "headingKn": "ಪ್ರಯೋಗ 4: A measurable acceptance rule fixed before the run",
+    "bodyEn": "What it ran: A measurable acceptance rule fixed before the run. What the lab concluded: the replay scored 6 of 8 = 0.75, below the invented 0.80 threshold, so the slice is not accepted, and the identical code on four records was refused for sample size even though all four were right; the thresholds are this lab's own numbers, and the result is the useful kind: a measured answer that the keyword approach is not enough on its own",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A measurable acceptance rule fixed before the run. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the replay scored 6 of 8 = 0.75, below the invented 0.80 threshold, so the slice is not accepted, and the identical code on four records was refused for sample size even though all four were right; the thresholds are this lab's own numbers, and the result is the useful kind: a measured answer that the keyword approach is not enough on its own"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a measurable acceptance rule fixed before the run ---\nrule: {'min_records': 8, 'min_accuracy': 0.8} | result: 6/8 = 0.750 | not accepted\nsame rule on only 4 records: 4/4 | not accepted (too few records)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The replay must not change what it reads",
+    "headingKn": "ಪ್ರಯೋಗ 5: The replay must not change what it reads",
+    "bodyEn": "What it ran: The replay must not change what it reads. What the lab concluded: comparing a digest of the input before and after is a cheap read-only check, and it catches a replay that writes into its input; it would not catch a write to a database or a network call, which this lab does not model",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The replay must not change what it reads. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): comparing a digest of the input before and after is a cheap read-only check, and it catches a replay that writes into its input; it would not catch a write to a database or a network call, which this lab does not model"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: the replay must not change what it reads ---\ninput digest before: 99549773a7 | after: 99549773a7 | unchanged: True\na replay that tags records as seen changes the digest: True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The replay got 6 of 8. 2) Unlabelled records scored 0.50. 3) A hard-coded demo scored 8/8. 4) The rule rejected 0.75 and four records. 5) A digest check caught a write.",
     "bodyKn": "1) replay 8 ರಲ್ಲಿ 6 ಪಡೆಯಿತು. 2) unlabelled ದಾಖಲೆಗಳು 0.50 ಪಡೆದವು. 3) hard-coded demo 8/8 ಪಡೆಯಿತು. 4) ನಿಯಮ 0.75 ಮತ್ತು ನಾಲ್ಕು ದಾಖಲೆ ತಿರಸ್ಕರಿಸಿತು. 5) digest ಪರಿಶೀಲನೆ ಒಂದು ಬರಹ ಹಿಡಿಯಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B sl_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B sl_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B sl_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B sl_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

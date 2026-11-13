@@ -145,6 +145,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The decision for every outcome is written before the run (thresholds invented)",
+    "headingKn": "ಪ್ರಯೋಗ 1: The decision for every outcome is written before the run (thresholds invented)",
+    "bodyEn": "What it ran: The decision for every outcome is written before the run (thresholds invented). What the lab concluded: five measured outcomes and a safety block each have a named next action, so nobody has to improvise after seeing the number; the thresholds are the lab's own",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The decision for every outcome is written before the run (thresholds invented). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): five measured outcomes and a safety block each have a named next action, so nobody has to improvise after seeing the number; the thresholds are the lab's own"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the decision for every outcome is written before the run (thresholds invented) ---\nrule: {'min_n': 20, 'accept': 0.85, 'reject_below': 0.6}\nsupports                 -> build the next slice\nrejects                  -> revise the approach or stop\nambiguous                -> narrow the question and rerun\ninconclusive_too_small   -> collect more records\nblocked_by_safety        -> redesign as read-only\nstopped_over_budget      -> review the estimate with the owner"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The same accuracy under different conditions",
+    "headingKn": "ಪ್ರಯೋಗ 2: The same accuracy under different conditions",
+    "bodyEn": "What it ran: The same accuracy under different conditions. What the lab concluded: a 0.95 accuracy gave three different outcomes depending on sample size, safety and budget, so accuracy alone never decides; safety is checked first and the sample size before the threshold, which is an ordering choice made in this lab",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The same accuracy under different conditions. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a 0.95 accuracy gave three different outcomes depending on sample size, safety and budget, so accuracy alone never decides; safety is checked first and the sample size before the threshold, which is an ordering choice made in this lab"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely computing: the same accuracy under different conditions ---\nstrong result            acc=0.90 n=40 safe=True  budget=True  -> supports                 then: build the next slice\nweak result              acc=0.50 n=40 safe=True  budget=True  -> rejects                  then: revise the approach or stop\nmiddle result            acc=0.72 n=40 safe=True  budget=True  -> ambiguous                then: narrow the question and rerun\ngood but tiny sample     acc=0.95 n= 8 safe=True  budget=True  -> inconclusive_too_small   then: collect more records\ngood but not read-only   acc=0.95 n=40 safe=False budget=True  -> blocked_by_safety        then: redesign as read-only\ngood but over budget     acc=0.95 n=40 safe=True  budget=False -> stopped_over_budget      then: review the estimate with the owner"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A stop rule ends an experiment that keeps growing",
+    "headingKn": "ಪ್ರಯೋಗ 3: A stop rule ends an experiment that keeps growing",
+    "bodyEn": "What it ran: A stop rule ends an experiment that keeps growing. What the lab concluded: the budget is checked against days used, and an experiment past it stops for review instead of quietly becoming the project; the five-day budget is invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A stop rule ends an experiment that keeps growing. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the budget is checked against days used, and an experiment past it stops for review instead of quietly becoming the project; the five-day budget is invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a stop rule ends an experiment that keeps growing ---\nday 3: within budget of 5 days = True\nday 5: within budget of 5 days = True\nday 6: within budget of 5 days = False\nday 9: within budget of 5 days = False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Slices that touch production need a person",
+    "headingKn": "ಪ್ರಯೋಗ 4: Slices that touch production need a person",
+    "bodyEn": "What it ran: Slices that touch production need a person. What the lab concluded: any slice that reads live production or writes anywhere needs an approval in this lab, which is stricter than a team may want for a read-only shadow run; the rule is a conservative default and the lab did not model who approves",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Slices that touch production need a person. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): any slice that reads live production or writes anywhere needs an approval in this lab, which is stricter than a team may want for a read-only shadow run; the rule is a conservative default and the lab did not model who approves"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: slices that touch production need a person ---\nreplay on a copy                   touches production=False writes=False approval required=False\nshadow run against live reads      touches production=True  writes=False approval required=True\nwrite recommendation to ticket     touches production=False writes=True  approval required=True\nauto-remediate                     touches production=True  writes=True  approval required=True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Uncalibrated scores flip the answer",
+    "headingKn": "ಪ್ರಯೋಗ 5: Uncalibrated scores flip the answer",
+    "bodyEn": "What it ran: Uncalibrated scores flip the answer. What the lab concluded: the same three candidates produce slice A, B or C depending on weights nobody calibrated (at weights 1 and 3, slices B and C tied at 13 and the name order picked B), which is why the eligibility gate comes first and why the weights have to be agreed and recorded before the comparison; these candidates and weights are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Uncalibrated scores flip the answer. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the same three candidates produce slice A, B or C depending on weights nobody calibrated (at weights 1 and 3, slices B and C tied at 13 and the name order picked B), which is why the eligibility gate comes first and why the weights have to be agreed and recorded before the comparison; these candidates and weights are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: uncalibrated scores flip the answer ---\nw_effort= 1 w_risk= 1 -> slice A\nw_effort= 1 w_risk= 3 -> slice B\nw_effort= 3 w_risk= 1 -> slice A\nw_effort= 1 w_risk=10 -> slice C"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -202,6 +285,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Every outcome had an action before the run. 2) 0.95 gave three different outcomes. 3) Over-budget stopped the experiment. 4) Production or writes needed approval. 5) Weights flipped the winner.",
     "bodyKn": "1) ಓಟಕ್ಕೆ ಮುನ್ನ ಪ್ರತಿ ಫಲಿತಾಂಶಕ್ಕೆ ಕ್ರಿಯೆ ಇತ್ತು. 2) 0.95 ಮೂರು ಬೇರೆ ಫಲಿತಾಂಶ ನೀಡಿತು. 3) ಬಜೆಟ್ ಮೀರಿದ್ದು ಪ್ರಯೋಗ ನಿಲ್ಲಿಸಿತು. 4) Production ಅಥವಾ ಬರಹಗಳಿಗೆ ಅನುಮೋದನೆ ಬೇಕಿತ್ತು. 5) ತೂಕಗಳು ವಿಜೇತನನ್ನು ಬದಲಿಸಿದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B sl_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B sl_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B sl_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B sl_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
