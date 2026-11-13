@@ -137,6 +137,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Exception branches attach to a step",
+    "headingKn": "ಪ್ರಯೋಗ 1: Exception branches attach to a step",
+    "bodyEn": "What it ran: Exception branches attach to a step. What the lab concluded: each branch names the step it leaves, the condition that activates it and its evidence, and the normal sequence stays one clean list; the branches are invented for the lab",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Exception branches attach to a step. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each branch names the step it leaves, the condition that activates it and its evidence, and the normal sequence stays one clean list; the branches are invented for the lab"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: exception branches attach to a step ---\nB1 starts after step 3 (check deployment record) when deployment record is missing\nB2 starts after step 4 (identify owner) when service owner is unavailable\nB3 starts after step 6 (obtain approval) when remediation needs the incident commander"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Invalid branches are rejected",
+    "headingKn": "ಪ್ರಯೋಗ 2: Invalid branches are rejected",
+    "bodyEn": "What it ran: Invalid branches are rejected. What the lab concluded: a branch that hangs off a step that does not exist, or that cannot say when it applies or why it is believed, would make the combined workflow impossible to follow",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Invalid branches are rejected. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a branch that hangs off a step that does not exist, or that cannot say when it applies or why it is believed, would make the combined workflow impossible to follow"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: invalid branches are rejected ---\nunknown step   rejected: Branch X1 starts at unknown step 12\nno condition   rejected: Branch X2 has no activating condition\nno evidence    rejected: Branch X3 has no evidence"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Missing information is not a negative finding",
+    "headingKn": "ಪ್ರಯೋಗ 3: Missing information is not a negative finding",
+    "bodyEn": "What it ran: Missing information is not a negative finding. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Missing information is not a negative finding. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: missing information is not a negative finding ---\ndeployment record not exported                 -> missing: not recorded (unknown)\nsearched the log, no deployment in the window  -> negative: checked and nothing was found\ndeployment d-881 at 14:02                      -> found: d-881 at 14:02\nNone and False look alike in a loose check, and the lab keeps them apart: not knowing whether a deployment happened and knowing that none happened lead to different next steps\na falsy test treats them the same: [False, False]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Stakeholders who disagree",
+    "headingKn": "ಪ್ರಯೋಗ 4: Stakeholders who disagree",
+    "bodyEn": "What it ran: Stakeholders who disagree. What the lab concluded: two answers about the owner step were kept side by side with who gave each, instead of being averaged or replaced by the manager's version; the disagreement is itself a finding, since the catalogue may exist and not be used",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Stakeholders who disagree. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): two answers about the owner step were kept side by side with who gave each, instead of being averaged or replaced by the manager's version; the disagreement is itself a finding, since the catalogue may exist and not be used"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: stakeholders who disagree ---\n{'agreed': False, 'variants': {'asks a colleague for the owner': ['engineer A', 'engineer B'], 'looks the owner up in the service catalogue': ['manager']}}\n{'agreed': True, 'variants': {'waits for approval': ['engineer A', 'engineer B']}}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Approval boundaries and the combined check",
+    "headingKn": "ಪ್ರಯೋಗ 5: Approval boundaries and the combined check",
+    "bodyEn": "What it ran: Approval boundaries and the combined check. What the lab concluded: steps 6 and 7 are marked because of the words approval and execute in their names, which is a keyword rule and would miss a step called 'confirm with commander'; the combined check reports every error at once and does not stop at the first",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Approval boundaries and the combined check. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): steps 6 and 7 are marked because of the words approval and execute in their names, which is a keyword rule and would miss a step called 'confirm with commander'; the combined check reports every error at once and does not stop at the first"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: approval boundaries and the combined check ---\nsteps that need approval or act on production: [6, 7]\ncombined report: {'steps': 8, 'branches': 3, 'errors': []}\ncombined with a bad branch: {'steps': 8, 'branches': 4, 'errors': ['Branch X1 starts at unknown step 12']}"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -194,6 +277,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Branches start at named steps with a condition and evidence. 2) Invalid branches were rejected. 3) Missing and negative are different. 4) Disagreement was preserved. 5) Approval steps were marked by keyword.",
     "bodyKn": "1) ಶಾಖೆಗಳು ಷರತ್ತು ಮತ್ತು ಸಾಕ್ಷ್ಯದೊಂದಿಗೆ ಹೆಸರಿಸಿದ ಹಂತಗಳಲ್ಲಿ ಆರಂಭ. 2) ಅಮಾನ್ಯ ಶಾಖೆಗಳು ತಿರಸ್ಕೃತ. 3) ಕಾಣೆಯಾದದ್ದು ಮತ್ತು ಋಣಾತ್ಮಕ ಬೇರೆ. 4) ಭಿನ್ನಾಭಿಪ್ರಾಯ ಉಳಿಸಲಾಯಿತು. 5) ಅನುಮೋದನೆ ಹಂತಗಳು keyword ಮೂಲಕ ಗುರುತಾದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B wd_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B wd_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B wd_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B wd_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

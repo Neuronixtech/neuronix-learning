@@ -152,6 +152,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Ordering rules",
+    "headingKn": "ಪ್ರಯೋಗ 1: Ordering rules",
+    "bodyEn": "What it ran: Ordering rules. What the lab concluded: a gap in the numbering was accepted and reported, while out-of-order, duplicate and empty lists were refused; a gap may mean a step was removed on purpose, so it is surfaced for a person and not rejected",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Ordering rules. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a gap in the numbering was accepted and reported, while out-of-order, duplicate and empty lists were refused; a gap may mean a step was removed on purpose, so it is surfaced for a person and not rejected"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: ordering rules ---\n1,2,3,4        accepted {'ok': True, 'gaps_before': []}\n1,3,4 (gap)    accepted {'ok': True, 'gaps_before': [3]}\n1,3,2          rejected: Steps must be in ascending order\n1,2,2          rejected: Duplicate step IDs\nempty          rejected: Workflow must contain steps"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The direct-evidence ratio and its edge cases",
+    "headingKn": "ಪ್ರಯೋಗ 2: The direct-evidence ratio and its edge cases",
+    "bodyEn": "What it ran: The direct-evidence ratio and its edge cases. What the lab concluded: an empty list returned None and 'unknown' instead of a ratio of zero or a division error, because no evidence is different from evidence that was all indirect",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The direct-evidence ratio and its edge cases. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an empty list returned None and 'unknown' instead of a ratio of zero or a division error, because no evidence is different from evidence that was all indirect"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely computing: the direct-evidence ratio and its edge cases ---\nall direct           ratio=1.0 confidence=high\nhalf direct          ratio=0.5 confidence=medium\none in four          ratio=0.25 confidence=low\nno evidence at all   ratio=None confidence=unknown"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A ratio can hide where the weak steps are",
+    "headingKn": "ಪ್ರಯೋಗ 3: A ratio can hide where the weak steps are",
+    "bodyEn": "What it ran: A ratio can hide where the weak steps are. What the lab concluded: A scored a ratio of 0.8 and B scored 0.5, and both received the same label, medium, even though A has one step that was only assumed and B has four steps that rest on talk alone; the label hid that difference, which is why the list of unconfirmed steps is reported next to it, and the thresholds in confidence() are this lab's own choice",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A ratio can hide where the weak steps are. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): A scored a ratio of 0.8 and B scored 0.5, and both received the same label, medium, even though A has one step that was only assumed and B has four steps that rest on talk alone; the label hid that difference, which is why the list of unconfirmed steps is reported next to it, and the thresholds in confidence() are this lab's own choice"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: a ratio can hide where the weak steps are ---\nworkflow A {'steps': 5, 'direct_ratio': 0.8, 'confidence': 'medium', 'unconfirmed': [5]}\nworkflow B {'steps': 5, 'direct_ratio': 0.5, 'confidence': 'medium', 'unconfirmed': [2, 3, 4, 5]}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: 3b. Genuinely running: reported behaviour is not upgraded",
+    "headingKn": "ಪ್ರಯೋಗ 4: 3b. Genuinely running: reported behaviour is not upgraded",
+    "bodyEn": "What it ran: 3b. Genuinely running: reported behaviour is not upgraded. What the lab concluded: a statement that people always do something stays labelled reported until someone has watched it or read a record of it, so it appears in the unconfirmed list instead of the confirmed one",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: 3b. Genuinely running: reported behaviour is not upgraded. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a statement that people always do something stays labelled reported until someone has watched it or read a record of it, so it appears in the unconfirmed list instead of the confirmed one"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3b. Genuinely running: reported behaviour is not upgraded ---\nclaim: engineers always wait for approval | evidence: ['reported'] | counted as confirmed: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Per-step evidence versus a workflow-level claim",
+    "headingKn": "ಪ್ರಯೋಗ 5: Per-step evidence versus a workflow-level claim",
+    "bodyEn": "What it ran: Per-step evidence versus a workflow-level claim. What the lab concluded: one line of evidence attached to the whole workflow cannot show that step 5 was only assumed; attaching evidence to each step is what makes the weak step visible",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Per-step evidence versus a workflow-level claim. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): one line of evidence attached to the whole workflow cannot show that step 5 was only assumed; attaching evidence to each step is what makes the weak step visible"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: per-step evidence versus a workflow-level claim ---\nworkflow-level claim: {'workflow': 'incident triage', 'evidence': ['direct']} | steps it covers: unknown\nper-step evidence for the same workflow: [(1, ['direct']), (2, ['direct']), (3, ['direct']), (4, ['direct']), (5, ['assumed'])]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The JSON artifact",
+    "headingKn": "ಪ್ರಯೋಗ 6: The JSON artifact",
+    "bodyEn": "What it ran: The JSON artifact. What the lab concluded: the artifact carries the summary next to the steps it was computed from so a reader can recompute it; this lab builds it in memory and does not write outputs/workflow-evidence.json",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The JSON artifact. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the artifact carries the summary next to the steps it was computed from so a reader can recompute it; this lab builds it in memory and does not write outputs/workflow-evidence.json"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: the JSON artifact ---\nartifact keys: ['steps', 'summary', 'workflow'] | bytes: 308 | round trip equal: True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The documented workflow versus the observed one",
+    "headingKn": "ಪ್ರಯೋಗ 1: The documented workflow versus the observed one",
+    "bodyEn": "What it ran: The documented workflow versus the observed one. What the lab concluded: the official procedure has six lines and the observed workflow has seven recorded steps, among them a manual search, a question to a colleague, a copy into chat and a wait for authorization that the procedure never mentions; the lab's steps and sources are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The documented workflow versus the observed one. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the official procedure has six lines and the observed workflow has seven recorded steps, among them a manual search, a question to a colleague, a copy into chat and a wait for authorization that the procedure never mentions; the lab's steps and sources are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the documented workflow versus the observed one ---\ndocumented steps: 6 -> ['Receive the alert', 'Identify the affected service', 'Assign an engineer', 'Investigate the failure', 'Apply the correction', 'Close the incident']\nobserved steps  : 7\n  1. open the alert                                          evidence=['direct']\n  2. search the monitoring dashboard                         evidence=['direct']\n  3. check recent deployments                                evidence=['document']\n  4. ask a colleague which team owns the service             evidence=['reported']\n  5. paste the deployment id into the incident channel       evidence=['direct']\n  6. wait for authorization                                  evidence=['reported']\n  7. apply the correction                                    evidence=['assumed']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: How much of the workflow is directly evidenced",
+    "headingKn": "ಪ್ರಯೋಗ 2: How much of the workflow is directly evidenced",
+    "bodyEn": "What it ran: How much of the workflow is directly evidenced. What the lab concluded: three of seven pieces of evidence were direct observation, and steps 4, 6 and 7 rest only on what someone said or on inference; those are the steps to confirm before anything is built on them",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How much of the workflow is directly evidenced. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): three of seven pieces of evidence were direct observation, and steps 4, 6 and 7 rest only on what someone said or on inference; those are the steps to confirm before anything is built on them"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: how much of the workflow is directly evidenced ---\nevidence by category: {'direct': 3, 'document': 1, 'reported': 2, 'assumed': 1}\ndirect-evidence ratio: 3/7 = 0.43\nsteps resting only on reported or assumed evidence: [4, 6, 7]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Hidden state that no step produces",
+    "headingKn": "ಪ್ರಯೋಗ 3: Hidden state that no step produces",
+    "bodyEn": "What it ran: Hidden state that no step produces. What the lab concluded: the workflow consumes an approval token that none of the recorded steps creates, which is the shape of hidden state: somebody holds it outside the system, and an automation that starts from step 6 would have nothing to hand over",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Hidden state that no step produces. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the workflow consumes an approval token that none of the recorded steps creates, which is the shape of hidden state: somebody holds it outside the system, and an automation that starts from step 6 would have nothing to hand over"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: hidden state that no step produces ---\ninputs with no producer: [(6, 'approval token')]\nwith approval token supplied by a person: []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Handoffs and authority",
+    "headingKn": "ಪ್ರಯೋಗ 4: Handoffs and authority",
+    "bodyEn": "What it ran: Handoffs and authority. What the lab concluded: three handoffs and one authority boundary appear only in the observed list; a workflow summary that leaves them out will describe a process that can be automated end to end when it cannot",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Handoffs and authority. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): three handoffs and one authority boundary appear only in the observed list; a workflow summary that leaves them out will describe a process that can be automated end to end when it cannot"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: handoffs and authority ---\nhandoffs: [(4, 'colleague'), (5, 'incident channel'), (6, 'incident commander')]\nauthority boundaries: [(6, 'incident commander')]\nfriction notes: 5 of 7 steps"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A step without evidence is refused",
+    "headingKn": "ಪ್ರಯೋಗ 5: A step without evidence is refused",
+    "bodyEn": "What it ran: A step without evidence is refused. What the lab concluded: each step has to carry its own evidence from a known category, so an assumed step is visible as assumed instead of being mixed into a clean list",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A step without evidence is refused. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each step has to carry its own evidence from a known category, so an assumed step is visible as assumed instead of being mixed into a clean list"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a step without evidence is refused ---\nno evidence    rejected: Step 8 has no evidence\nbad category   rejected: Step 9 has unknown evidence category: hunch\nzero id        rejected: Step ID must be positive"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Seven observed steps against six documented. 2) Direct ratio 3/7. 3) An approval token had no producer. 4) Three handoffs and one authority boundary. 5) Steps without evidence were rejected.",
     "bodyKn": "1) ಆರು ದಾಖಲಿತದ ವಿರುದ್ಧ ಏಳು ವೀಕ್ಷಿತ ಹಂತ. 2) ನೇರ ಅನುಪಾತ 3/7. 3) approval token ಗೆ ಉತ್ಪಾದಕ ಇರಲಿಲ್ಲ. 4) ಮೂರು ಹಸ್ತಾಂತರ ಮತ್ತು ಒಂದು ಅಧಿಕಾರ ಗಡಿ. 5) ಸಾಕ್ಷ್ಯವಿಲ್ಲದ ಹಂತಗಳು ತಿರಸ್ಕೃತವಾದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B wd_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B wd_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B wd_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B wd_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
