@@ -141,6 +141,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: What each stage allows and what must be true to leave it",
+    "headingKn": "ಪ್ರಯೋಗ 1: What each stage allows and what must be true to leave it",
+    "bodyEn": "What it ran: What each stage allows and what must be true to leave it. What the lab concluded: each stage has an allowed data set, an audience bound and forbidden permissions, and each has exit criteria written before the stage starts; the audience of 25 and the permission lists are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What each stage allows and what must be true to leave it. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each stage has an allowed data set, an audience bound and forbidden permissions, and each has exit criteria written before the stage starts; the audience of 25 and the permission lists are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: what each stage allows and what must be true to leave it ---\nprototype   data=['synthetic'] audience<= 0 forbidden=['prod_read', 'prod_write', 'send_email']\n            exit: ['mechanism works on the synthetic set', 'known failure modes listed']\npilot       data=['real_sample', 'synthetic'] audience<= 25 forbidden=['prod_write']\n            exit: ['outcome metrics met on the pilot cohort', 'no guardrail breach', 'rollback exercised once']\nproduction  data=['production', 'real_sample', 'synthetic'] audience<= None forbidden=[]\n            exit: ['SLOs defined and monitored', 'on-call owner named']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Drift in a system that started as a prototype",
+    "headingKn": "ಪ್ರಯೋಗ 2: Drift in a system that started as a prototype",
+    "bodyEn": "What it ran: Drift in a system that started as a prototype. What the lab concluded: nothing was ever promoted and the system still moved from synthetic data to production writes, one reasonable-looking step at a time; the check compares the claimed stage with what the system really has, so the prototype label stopped being true at week 3",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Drift in a system that started as a prototype. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): nothing was ever promoted and the system still moved from synthetic data to production writes, one reasonable-looking step at a time; the check compares the claimed stage with what the system really has, so the prototype label stopped being true at week 3"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: drift in a system that started as a prototype ---\nweek 1: no drift\nweek 3: [\"data 'real_sample' is not allowed in prototype\", 'audience 3 exceeds 0', 'forbidden permissions: prod_read']\nweek 6: [\"data 'production' is not allowed in prototype\", 'audience 40 exceeds 0', 'forbidden permissions: prod_read, prod_write']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A pilot that outgrows its audience",
+    "headingKn": "ಪ್ರಯೋಗ 3: A pilot that outgrows its audience",
+    "bodyEn": "What it ran: A pilot that outgrows its audience. What the lab concluded: the bound is inclusive at 25 and 26 is drift; a pilot that quietly reaches 300 people is a production launch without the production controls",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A pilot that outgrows its audience. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the bound is inclusive at 25 and 26 is drift; a pilot that quietly reaches 300 people is a production launch without the production controls"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a pilot that outgrows its audience ---\naudience  10: within bounds\naudience  25: within bounds\naudience  26: ['audience 26 exceeds 25']\naudience 300: ['audience 300 exceeds 25']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The pilot modification, a rollback owner who has tested rollback",
+    "headingKn": "ಪ್ರಯೋಗ 4: The pilot modification, a rollback owner who has tested rollback",
+    "bodyEn": "What it ran: The pilot modification, a rollback owner who has tested rollback. What the lab concluded: a named rollback owner is not the same as a tested rollback, and the readiness check asks for both; whether the rollback was tested is a flag here and a team would attach the evidence",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The pilot modification, a rollback owner who has tested rollback. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a named rollback owner is not the same as a tested rollback, and the readiness check asks for both; whether the rollback was tested is a flag here and a team would attach the evidence"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: the pilot modification, a rollback owner who has tested rollback ---\nowner only                 (False, ['rollback_owner', 'rollback_tested'])\nowner and rollback owner   (False, ['rollback_tested'])\nall three                  (True, [])"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The decision artifact",
+    "headingKn": "ಪ್ರಯೋಗ 5: The decision artifact",
+    "bodyEn": "What it ran: The decision artifact. What the lab concluded: the artifact lists the drift found, the readiness result and the exit criteria still to meet; a pilot that has outgrown its audience shows up here even though the owner and rollback are fine, and the lab prints it instead of writing outputs/stage-decisions.json",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The decision artifact. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the artifact lists the drift found, the readiness result and the exit criteria still to meet; a pilot that has outgrown its audience shows up here even though the owner and rollback are fine, and the lab prints it instead of writing outputs/stage-decisions.json"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: the decision artifact ---\n{\"drift\": [\"audience 30 exceeds 25\"], \"exit_criteria\": [\"outcome metrics met on the pilot cohort\", \"no guardrail breach\", \"rollback exercised once\"], \"pilot_ready\": true, \"stage\": \"pilot\"}"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +281,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Each stage has data, audience and permission limits. 2) A prototype drifted to production writes. 3) 26 users exceeded a 25-user pilot. 4) Readiness needs a tested rollback. 5) Drift and readiness are separate findings.",
     "bodyKn": "1) ಪ್ರತಿ ಹಂತಕ್ಕೆ ದತ್ತಾಂಶ, ಪ್ರೇಕ್ಷಕ ಮತ್ತು ಅನುಮತಿ ಮಿತಿಗಳಿವೆ. 2) ಮೂಲಮಾದರಿ production ಬರಹಕ್ಕೆ ಡ್ರಿಫ್ಟ್ ಆಯಿತು. 3) 26 ಬಳಕೆದಾರರು 25-ಬಳಕೆದಾರ ಪೈಲಟ್ ಮೀರಿದರು. 4) ಸಿದ್ಧತೆಗೆ ಪರೀಕ್ಷಿತ rollback ಬೇಕು. 5) ಡ್ರಿಫ್ಟ್ ಮತ್ತು ಸಿದ್ಧತೆ ಬೇರೆ ಶೋಧನೆಗಳು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ps_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ps_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ps_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ps_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

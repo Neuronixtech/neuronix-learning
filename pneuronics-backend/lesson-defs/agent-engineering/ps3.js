@@ -141,6 +141,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Selection and promotion are different questions",
+    "headingKn": "ಪ್ರಯೋಗ 1: Selection and promotion are different questions",
+    "bodyEn": "What it ran: Selection and promotion are different questions. What the lab concluded: a system can pass every technical check and still not be promotable because nobody is on call for it; the five required items are the lab's own list",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Selection and promotion are different questions. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a system can pass every technical check and still not be promotable because nobody is on call for it; the five required items are the lab's own list"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: selection and promotion are different questions ---\nselection answers which stage can produce the evidence; promotion answers whether the evidence for the next stage exists\nall five present and recent : ('promote', [])\neverything but an owner     : ('do not promote', ['on_call_owner: missing'])"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Evidence expires (fixed today = 2026-11-14, window 30 days)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Evidence expires (fixed today = 2026-11-14, window 30 days)",
+    "bodyEn": "What it ran: Evidence expires (fixed today = 2026-11-14, window 30 days). What the lab concluded: a rollback test run 45 days ago was refused as stale and a failed privacy review was refused as failed, and the other three items still counted; the 30-day window is invented, and what counts as stale depends on how fast the system changes",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Evidence expires (fixed today = 2026-11-14, window 30 days). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a rollback test run 45 days ago was refused as stale and a failed privacy review was refused as failed, and the other three items still counted; the 30-day window is invented, and what counts as stale depends on how fast the system changes"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: evidence expires (fixed today = 2026-11-14, window 30 days) ---\n('do not promote', ['rollback_tested: stale (45 days old)', 'privacy_review: failed'])"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A rollback is exercised on a toy deployment",
+    "headingKn": "ಪ್ರಯೋಗ 3: A rollback is exercised on a toy deployment",
+    "bodyEn": "What it ran: A rollback is exercised on a toy deployment. What the lab concluded: the first two rollbacks worked, going from v3 to v2 and then to v1, and the third was refused at v1 because there is nothing earlier to return to; a rollback test records facts like that, which a written rollback plan never exercises, and this model has no database migration, which is where real rollbacks usually break",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A rollback is exercised on a toy deployment. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first two rollbacks worked, going from v3 to v2 and then to v1, and the third was refused at v1 because there is nothing earlier to return to; a rollback test records facts like that, which a written rollback plan never exercises, and this model has no database migration, which is where real rollbacks usually break"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a rollback is exercised on a toy deployment ---\nfresh deployment, rollback possible: False | version v1\nafter v2 and v3: ['v1', 'v2', 'v3'] | rollback: True | now v2 | rollback again: True | now v1 | and again: False | now v1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: An alert rule over invented error rates",
+    "headingKn": "ಪ್ರಯೋಗ 4: An alert rule over invented error rates",
+    "bodyEn": "What it ran: An alert rule over invented error rates. What the lab concluded: one window above the threshold fired at index 2 (a spike), two consecutive fired at 5 and three at 6, while four never fired in this series; the rule shows the trade between noise and delay, and the rates here are invented, not measured",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An alert rule over invented error rates. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): one window above the threshold fired at index 2 (a spike), two consecutive fired at 5 and three at 6, while four never fired in this series; the rule shows the trade between noise and delay, and the rates here are invented, not measured"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: an alert rule over invented error rates ---\nrates: [0.01, 0.02, 0.09, 0.02, 0.11, 0.12, 0.13, 0.02]\nalert after 3 consecutive windows above 0.05 at index: 6\nalert after 2 consecutive windows: 5 | after 1: 2 | after 4: None"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Stage drift versus promotion",
+    "headingKn": "ಪ್ರಯೋಗ 5: Stage drift versus promotion",
+    "bodyEn": "What it ran: Stage drift versus promotion. What the lab concluded: the system acts as production with a production permission while its evidence says it cannot be promoted, and that mismatch is the finding: either remove the permission or finish the evidence; the lab reports it and takes no action",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Stage drift versus promotion. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the system acts as production with a production permission while its evidence says it cannot be promoted, and that mismatch is the finding: either remove the permission or finish the evidence; the lab reports it and takes no action"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: stage drift versus promotion ---\nclaimed stage: pilot | has prod_write: True | promotion decision: do not promote"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +281,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Selection and promotion are separate. 2) Evidence must be fresh and passing. 3) Rollback was run and the third attempt failed. 4) Alert windows trade noise for delay. 5) A system acting as production without evidence was flagged.",
     "bodyKn": "1) ಆಯ್ಕೆ ಮತ್ತು ಬಡ್ತಿ ಬೇರೆ. 2) ಸಾಕ್ಷ್ಯ ತಾಜಾ ಮತ್ತು ಪಾಸ್ ಆಗಿರಬೇಕು. 3) rollback ಓಡಿಸಲಾಯಿತು ಮತ್ತು ಮೂರನೇ ಪ್ರಯತ್ನ ವಿಫಲ. 4) Alert ಕಿಟಕಿಗಳು ಶಬ್ದ ಮತ್ತು ವಿಳಂಬ ವಿನಿಮಯ ಮಾಡುತ್ತವೆ. 5) ಸಾಕ್ಷ್ಯವಿಲ್ಲದೆ production ನಂತೆ ವರ್ತಿಸುವ ವ್ಯವಸ್ಥೆ ಗುರುತಾಯಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ps_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ps_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ps_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ps_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

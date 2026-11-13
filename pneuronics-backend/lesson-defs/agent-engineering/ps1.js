@@ -145,6 +145,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Five factors in, one stage out",
+    "headingKn": "ಪ್ರಯೋಗ 1: Five factors in, one stage out",
+    "bodyEn": "What it ran: Five factors in, one stage out. What the lab concluded: the same engine returned a prototype, a pilot, a production decision and two stays or blocks depending on the unknown, the data, the consequence and who owns it; the contexts are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Five factors in, one stage out. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the same engine returned a prototype, a pilot, a production decision and two stays or blocks depending on the unknown, the data, the consequence and who owns it; the contexts are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: five factors in, one stage out ---\nnew algorithm on synthetic data                      -> prototype  the open question is feasibility and needs neither real users nor real data\nsupport assistant, real tickets, owner and rollback  -> pilot      real conditions are needed, consequence is bounded, owner and rollback exist\nsame, but no rollback                                -> prototype  pilot requirements not met: no rollback\nworks well, operations team ready, owner and rollback -> production the open question is sustained operation and an operations team owns it\nworks well, no operations team                       -> pilot      operations are not ready to own it: stay in the pilot\nwrite access to the production database              -> blocked    real data with high consequence is not allowed in a pilot without an approved design"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A stage is a question, not a polish level",
+    "headingKn": "ಪ್ರಯೋಗ 2: A stage is a question, not a polish level",
+    "bodyEn": "What it ran: A stage is a question, not a polish level. What the lab concluded: a prototype can have impressive code and still be disposable, and a production system can have a plain interface and still need strict ownership; the stage names the question being answered",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A stage is a question, not a polish level. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a prototype can have impressive code and still be disposable, and a production system can have a plain interface and still need strict ownership; the stage names the question being answered"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a stage is a question, not a polish level ---\nprototype   can the mechanism work?\npilot       does it work safely in real conditions?\nproduction  can we operate it reliably over time?"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The smallest sufficient stage",
+    "headingKn": "ಪ್ರಯೋಗ 3: The smallest sufficient stage",
+    "bodyEn": "What it ran: The smallest sufficient stage. What the lab concluded: a team eager to ship might call both 'works well' cases ready for production, and the engine chose production for only one of them; the lab returns the smallest stage that can answer the open question and does not promote on enthusiasm",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The smallest sufficient stage. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a team eager to ship might call both 'works well' cases ready for production, and the engine chose production for only one of them; the lab returns the smallest stage that can answer the open question and does not promote on enthusiasm"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: the smallest sufficient stage ---\nstages chosen: [('new algorithm on synthet', 'prototype'), ('support assistant, real ', 'pilot'), ('same, but no rollback', 'prototype'), ('works well, operations t', 'production'), ('works well, no operation', 'pilot')]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A pilot with a missing requirement falls back",
+    "headingKn": "ಪ್ರಯೋಗ 4: A pilot with a missing requirement falls back",
+    "bodyEn": "What it ran: A pilot with a missing requirement falls back. What the lab concluded: the engine named both missing requirements, an owner and a rollback, and returned prototype, because running it on real conditions without them would expose people to a failure nobody could undo",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A pilot with a missing requirement falls back. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the engine named both missing requirements, an owner and a rollback, and returned prototype, because running it on real conditions without them would expose people to a failure nobody could undo"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a pilot with a missing requirement falls back ---\n('prototype', ['pilot requirements not met: no named owner, no rollback'])"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A high-consequence production write is blocked",
+    "headingKn": "ಪ್ರಯೋಗ 5: A high-consequence production write is blocked",
+    "bodyEn": "What it ran: A high-consequence production write is blocked. What the lab concluded: real data with high consequence returned blocked in this lab instead of a stage, which forces a person to redesign the experiment as read-only or approve it explicitly; the rule is one the lab chose",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A high-consequence production write is blocked. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): real data with high consequence returned blocked in this lab instead of a stage, which forces a person to redesign the experiment as read-only or approve it explicitly; the rule is one the lab chose"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a high-consequence production write is blocked ---\n('blocked', ['real data with high consequence is not allowed in a pilot without an approved design'])"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -202,6 +285,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Five inputs picked a stage. 2) A stage is a question. 3) Only one of two working systems reached production. 4) A pilot fell back for lack of owner and rollback. 5) A high-consequence production write was blocked.",
     "bodyKn": "1) ಐದು ಒಳಹರಿವು ಹಂತ ಆರಿಸಿದವು. 2) ಹಂತ ಒಂದು ಪ್ರಶ್ನೆ. 3) ಕೆಲಸ ಮಾಡುವ ಎರಡು ವ್ಯವಸ್ಥೆಗಳಲ್ಲಿ ಒಂದು ಮಾತ್ರ production ತಲುಪಿತು. 4) ಮಾಲೀಕ ಮತ್ತು rollback ಇಲ್ಲದ ಕಾರಣ ಪೈಲಟ್ ಹಿಂದೆ ಸರಿಯಿತು. 5) ಹೆಚ್ಚಿನ-ಪರಿಣಾಮದ production ಬರಹ ತಡೆಯಲ್ಪಟ್ಟಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ps_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ps_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ps_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ps_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
