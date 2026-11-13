@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Evidence is defined before building",
+    "headingKn": "ಪ್ರಯೋಗ 1: Evidence is defined before building",
+    "bodyEn": "What it ran: Evidence is defined before building. What the lab concluded: the metric, the baseline, the target and the minimum sample size were written down before any implementation existed, so the result cannot be argued into success afterwards; these numbers are invented for the lab",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Evidence is defined before building. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the metric, the baseline, the target and the minimum sample size were written down before any implementation existed, so the result cannot be argued into success afterwards; these numbers are invented for the lab"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: evidence is defined before building ---\nevidence: {'metric': 'minutes to identify the failing service', 'baseline': 12, 'target': 2, 'sample_min': 8}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Tests passing is not the outcome (ILLUSTRATIVE samples, minutes)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Tests passing is not the outcome (ILLUSTRATIVE samples, minutes)",
+    "bodyEn": "What it ran: Tests passing is not the outcome (ILLUSTRATIVE samples, minutes). What the lab concluded: the first build passed every test and the gate still blocked because the median of nine minutes missed the two-minute target, while the second sample met it; the same tests were green both times, so they could not tell the two apart",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Tests passing is not the outcome (ILLUSTRATIVE samples, minutes). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first build passed every test and the gate still blocked because the median of nine minutes missed the two-minute target, while the second sample met it; the same tests were green both times, so they could not tell the two apart"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely computing: tests passing is not the outcome (ILLUSTRATIVE samples, minutes) ---\nassistant built, tests pass    measure={'status': 'not_met', 'n': 9, 'median': 9, 'baseline': 12} gate=('BLOCK', ['outcome target not met'])\nafter fixing metadata labels   measure={'status': 'met', 'n': 9, 'median': 1.9, 'baseline': 12} gate=('PASS', [])"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A missing measurement blocks",
+    "headingKn": "ಪ್ರಯೋಗ 3: A missing measurement blocks",
+    "bodyEn": "What it ran: A missing measurement blocks. What the lab concluded: a gate that treats no data as success would pass a change nobody measured, so too few samples is its own reason to block",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A missing measurement blocks. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a gate that treats no data as success would pass a change nobody measured, so too few samples is its own reason to block"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a missing measurement blocks ---\nthree samples: {'status': 'insufficient_data', 'n': 3} -> ('BLOCK', ['outcome not measured'])"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Constraints and the gate",
+    "headingKn": "ಪ್ರಯೋಗ 4: Constraints and the gate",
+    "bodyEn": "What it ran: Constraints and the gate. What the lab concluded: a speed gain bought by breaking the read-only rule still blocks, because the outcome is one condition among several",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Constraints and the gate. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a speed gain bought by breaking the read-only rule still blocks, because the outcome is one condition among several"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: constraints and the gate ---\noutcome met, constraint violated: ('BLOCK', ['constraint violated'])\noutcome met, tests failing      : ('BLOCK', ['tests failing'])\neverything holds                : ('PASS', [])"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Independent review, approval and target revision",
+    "headingKn": "ಪ್ರಯೋಗ 5: Independent review, approval and target revision",
+    "bodyEn": "What it ran: Independent review, approval and target revision. What the lab concluded: the builder cannot be its own independent reviewer, risky actions need a human, and a target moves only with evidence and an approver; here 'cites the baseline' is a keyword check on the note, which a careless note could satisfy",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Independent review, approval and target revision. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the builder cannot be its own independent reviewer, risky actions need a human, and a target moves only with evidence and an approver; here 'cites the baseline' is a keyword check on the note, which a careless note could satisfy"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: independent review, approval and target revision ---\nbuilder and reviewer the same agent : not independent\nbuilder and reviewer different       : independent\napproval needed for read_logs                 : False\napproval needed for enable_auto_remediation   : True\nrevise target without evidence      : (False, 'a revision needs evidence and an approver')\nloosen target without citing baseline: (False, 'loosening the target must cite the baseline')\nloosen target citing baseline        : (True, 'revision recorded')"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Evidence was fixed before building. 2) Green tests with a nine-minute median still blocked. 3) Too few samples blocked. 4) A constraint violation blocked a met outcome. 5) Targets move only with evidence and an approver.",
     "bodyKn": "1) ಸಾಕ್ಷ್ಯ ನಿರ್ಮಾಣಕ್ಕೆ ಮುನ್ನ ನಿಗದಿಯಾಯಿತು. 2) ಒಂಬತ್ತು-ನಿಮಿಷ median ಇರುವ ಹಸಿರು ಪರೀಕ್ಷೆಗಳು ಇನ್ನೂ ತಡೆದವು. 3) ಕಡಿಮೆ ಮಾದರಿ ತಡೆಯಿತು. 4) ನಿರ್ಬಂಧ ಉಲ್ಲಂಘನೆ ಸಾಧಿಸಿದ ಫಲಿತಾಂಶ ತಡೆಯಿತು. 5) ಗುರಿಗಳು ಸಾಕ್ಷ್ಯ ಮತ್ತು ಅನುಮೋದಕರೊಂದಿಗೆ ಮಾತ್ರ ಚಲಿಸುತ್ತವೆ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B oc_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B oc_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B oc_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B oc_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

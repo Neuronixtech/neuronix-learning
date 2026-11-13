@@ -152,6 +152,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Output versus outcome",
+    "headingKn": "ಪ್ರಯೋಗ 1: Output versus outcome",
+    "bodyEn": "What it ran: Output versus outcome. What the lab concluded: the output names a thing to build and the outcome names a change somebody should see; the word list flagged ai and assistant in the first output and nothing in either outcome, but it also missed the second output because reviewer is not on the list, so the list is a starting point and section 5 shows the same gap again",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Output versus outcome. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the output names a thing to build and the outcome names a change somebody should see; the word list flagged ai and assistant in the first output and nothing in either outcome, but it also missed the second output because reviewer is not on the list, so the list is a starting point and section 5 shows the same gap again"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: output versus outcome ---\noutput : Build an AI incident assistant\noutcome: Identify the failing service and a safe next action within two minutes\n  solution terms in the output : ['ai', 'assistant']\n  solution terms in the outcome: []\noutput : Add an automated code reviewer\noutcome: High-severity defects are found before merge, with evidence, without write permission\n  solution terms in the output : []\n  solution terms in the outcome: []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A complete frame and structural validation",
+    "headingKn": "ಪ್ರಯೋಗ 2: A complete frame and structural validation",
+    "bodyEn": "What it ran: A complete frame and structural validation. What the lab concluded: six fields are required before a frame is accepted, and the two list fields need at least one entry; the check is structural, so it says the fields exist and nothing about whether they are good",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A complete frame and structural validation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): six fields are required before a frame is accepted, and the two list fields need at least one entry; the check is structural, so it says the fields exist and nothing about whether they are good"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a complete frame and structural validation ---\ngood frame errors: []\nincomplete frame errors: ['user is required', 'desired_outcome is required', 'constraints needs at least one entry', 'non_goals needs at least one entry']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Solution leakage with a substring check and a word check",
+    "headingKn": "ಪ್ರಯೋಗ 3: Solution leakage with a substring check and a word check",
+    "bodyEn": "What it ran: Solution leakage with a substring check and a word check. What the lab concluded: the substring check reported ai inside maintain, balanced, email and paraphrase, which are not solutions, while the word-boundary check did not; the second row shows a limit of the word check too, since model there is a legitimate noun and is still flagged, so a flag is a prompt for a person to look and not a verdict",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Solution leakage with a substring check and a word check. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the substring check reported ai inside maintain, balanced, email and paraphrase, which are not solutions, while the word-boundary check did not; the second row shows a limit of the word check too, since model there is a legitimate noun and is still flagged, so a flag is a prompt for a person to look and not a verdict"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: solution leakage with a substring check and a word check ---\nleaky desired_outcome (words): {'desired_outcome': ['ai', 'dashboard'], 'current_behavior': []}\nEngineers maintain a balanced email rotation           substring=['ai'] words=[]\nAnalysts retrain the model of demand each week         substring=['ai', 'model'] words=['model']\nEngineers can paraphrase the failing service quickly   substring=['ai'] words=[]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A technology name that is a real constraint",
+    "headingKn": "ಪ್ರಯೋಗ 4: A technology name that is a real constraint",
+    "bodyEn": "What it ran: A technology name that is a real constraint. What the lab concluded: naming PostgreSQL as a constraint is legitimate because the organisation really is bound to it, and it did not trip the check because only the desired outcome and the current behaviour are scanned; where the technology appears matters more than that it appears",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A technology name that is a real constraint. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): naming PostgreSQL as a constraint is legitimate because the organisation really is bound to it, and it did not trip the check because only the desired outcome and the current behaviour are scanned; where the technology appears matters more than that it appears"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a technology name that is a real constraint ---\nleakage in desired outcome: [] | technology named in constraints: ['must use the existing PostgreSQL database and its audit table']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Wording that hides a solution from the word list",
+    "headingKn": "ಪ್ರಯೋಗ 5: Wording that hides a solution from the word list",
+    "bodyEn": "What it ran: Wording that hides a solution from the word list. What the lab concluded: the first two phrases still describe a thing to build and the list did not flag them, while the third is a real outcome; this is a false negative, and the word list cannot be made complete, so the review step has to ask what change a user would see and not just what words are present",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Wording that hides a solution from the word list. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first two phrases still describe a thing to build and the list did not flag them, while the third is a real outcome; this is a false negative, and the word list cannot be made complete, so the review step has to ask what change a user would see and not just what words are present"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: wording that hides a solution from the word list ---\nEngineers get a smart helper that watches the alerts           flagged=[]\nEngineers get a conversational tool that answers on-call que   flagged=[]\nIdentify the failing service within two minutes                flagged=[]"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -209,6 +292,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The outputs named solutions and the outcomes did not. 2) An empty frame listed four errors. 3) Substring matching flagged innocent words. 4) A technology constraint was allowed. 5) Wording like \"smart helper\" slipped through.",
     "bodyKn": "1) ಔಟ್‌ಪುಟ್‌ಗಳು ಪರಿಹಾರ ಹೆಸರಿಸಿದವು, ಫಲಿತಾಂಶಗಳು ಹೆಸರಿಸಲಿಲ್ಲ. 2) ಖಾಲಿ ಚೌಕಟ್ಟು ನಾಲ್ಕು ದೋಷ ಪಟ್ಟಿ ಮಾಡಿತು. 3) ಉಪಸ್ಟ್ರಿಂಗ್ ಹೊಂದಾಣಿಕೆ ನಿರಪರಾಧಿ ಪದಗಳನ್ನು ಗುರುತಿಸಿತು. 4) ತಂತ್ರಜ್ಞಾನ ನಿರ್ಬಂಧ ಅನುಮತಿಸಲಾಯಿತು. 5) \"smart helper\" ತರಹದ ಪದಗಳು ತಪ್ಪಿಸಿಕೊಂಡವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B oc_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B oc_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B oc_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B oc_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Can the outcome be observed",
+    "headingKn": "ಪ್ರಯೋಗ 1: Can the outcome be observed",
+    "bodyEn": "What it ran: Can the outcome be observed. What the lab concluded: the first two have no number and use vague words, the next two carry a number and a unit, and the last is a real outcome that the check marks as not measurable because it has no number and unit; the check looks at wording and cannot tell whether a count is the right measure, so a human still decides",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Can the outcome be observed. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first two have no number and use vague words, the next two carry a number and a unit, and the last is a real outcome that the check marks as not measurable because it has no number and unit; the check looks at wording and cannot tell whether a count is the right measure, so a human still decides"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: can the outcome be observed ---\nImprove engineering productivity                         {'measurable': False, 'vague_words': ['improve']}\nMake triage faster and easier                            {'measurable': False, 'vague_words': ['faster', 'easier']}\nIdentify the failing service within two minutes          {'measurable': True, 'vague_words': []}\nCut unsuccessful searches by 30 percent                  {'measurable': True, 'vague_words': []}\nPatients find an appointment without calling reception   {'measurable': False, 'vague_words': []}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Constraints as invariants a plan can break",
+    "headingKn": "ಪ್ರಯೋಗ 2: Constraints as invariants a plan can break",
+    "bodyEn": "What it ran: Constraints as invariants a plan can break. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Constraints as invariants a plan can break. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: constraints as invariants a plan can break ---\nviolates 'read-only'       : Restart the failing service automatically\nviolates 'read-only'       : Show the owner and the last deploy\nviolates 'no new database' : Create a new vector database of past incidents\nthree steps were flagged: restart really breaks read-only and the new vector database really breaks no-new-database, but Show the owner and the last deploy is read-only and was flagged because the word deploy is on the …\na step worded differently: []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Non-goals stop scope growing",
+    "headingKn": "ಪ್ರಯೋಗ 3: Non-goals stop scope growing",
+    "bodyEn": "What it ran: Non-goals stop scope growing. What the lab concluded: proposed work that names an excluded item is caught by comparing text against the non-goals, which is why they have to be written as specific phrases and not as 'anything extra'",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Non-goals stop scope growing. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): proposed work that names an excluded item is caught by comparing text against the non-goals, which is why they have to be written as specific phrases and not as 'anything extra'"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: non-goals stop scope growing ---\nAdd historical analytics for alert volume            hits non-goals: ['historical analytics']\nShow the owner of the failing service                hits non-goals: []\nBuild automatic remediation for disk-full alerts     hits non-goals: ['automatic remediation']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Errors reject, warnings inform",
+    "headingKn": "ಪ್ರಯೋಗ 4: Errors reject, warnings inform",
+    "bodyEn": "What it ran: Errors reject, warnings inform. What the lab concluded: a missing required piece is an error and stops the frame, while vague wording is only a warning because a team may have a reason to proceed; separating the two keeps the report useful without making every comment a blocker",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Errors reject, warnings inform. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a missing required piece is an error and stops the frame, while vague wording is only a warning because a team may have a reason to proceed; separating the two keeps the report useful without making every comment a blocker"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: errors reject, warnings inform ---\nclear frame    {'status': 'accepted', 'errors': [], 'warnings': []}\nvague frame    {'status': 'accepted_with_warnings', 'errors': [], 'warnings': ['desired_outcome has no number and unit', 'vague wording: improve']}\nno non-goals   {'status': 'rejected', 'errors': ['non_goals needs at least one entry'], 'warnings': []}\nempty outcome  {'status': 'rejected', 'errors': ['desired_outcome is required'], 'warnings': []}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The artifact round-trips through JSON",
+    "headingKn": "ಪ್ರಯೋಗ 5: The artifact round-trips through JSON",
+    "bodyEn": "What it ran: The artifact round-trips through JSON. What the lab concluded: the artifact keeps the frame and its validation report together so a later planning stage reads the same fields the validator checked; the file here is built in memory and not written to disk",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The artifact round-trips through JSON. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the artifact keeps the frame and its validation report together so a later planning stage reads the same fields the validator checked; the file here is built in memory and not written to disk"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: the artifact round-trips through JSON ---\nlines in artifact: 17 | round trip equal: True | status: accepted"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Number and unit made wording measurable. 2) The constraint rule had one false positive and one miss. 3) Non-goals were caught by phrase. 4) Warnings did not reject. 5) The artifact round-tripped.",
     "bodyKn": "1) ಸಂಖ್ಯೆ ಮತ್ತು ಏಕಮಾನ ಪದಗಳನ್ನು ಅಳೆಯಬಹುದಾಗಿಸಿದವು. 2) ನಿರ್ಬಂಧ ನಿಯಮಕ್ಕೆ ಒಂದು ತಪ್ಪು ಧನಾತ್ಮಕ ಮತ್ತು ಒಂದು ತಪ್ಪಿಸಿಕೊಳ್ಳುವಿಕೆ. 3) Non-goals ಪದಗುಚ್ಛದಿಂದ ಹಿಡಿಯಲ್ಪಟ್ಟವು. 4) ಎಚ್ಚರಿಕೆಗಳು ತಿರಸ್ಕರಿಸಲಿಲ್ಲ. 5) ಕಲಾಕೃತಿ round-trip ಆಯಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B oc_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B oc_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B oc_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B oc_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
