@@ -133,6 +133,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Underspecified, overspecified and balanced wording",
+    "headingKn": "ಪ್ರಯೋಗ 1: Underspecified, overspecified and balanced wording",
+    "bodyEn": "What it ran: Underspecified, overspecified and balanced wording. What the lab concluded: the first has no bound and an aspirational word, the second prescribes structure, names and order and leaves no room, and the third states outcomes, limits and what the agent may choose; the lint is a pattern match on wording and the patterns are the lab's own",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Underspecified, overspecified and balanced wording. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first has no bound and an aspirational word, the second prescribes structure, names and order and leaves no room, and the third states outcomes, limits and what the agent may choose; the lint is a pattern match on wording and the patterns are the lab's own"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: underspecified, overspecified and balanced wording ---\nMake the search system better                                    -> ['no measurable bound or constraint', 'aspirational word']\nCreate exactly four functions, use these variable names, write   -> ['fixed code structure', 'names prescribed', 'step order prescribed', 'no room for judgment']\nReturn relevant articles within two seconds, never expose priv   -> []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The six surfaces and what is missing",
+    "headingKn": "ಪ್ರಯೋಗ 2: The six surfaces and what is missing",
+    "bodyEn": "What it ran: The six surfaces and what is missing. What the lab concluded: a specification with only an outcome leaves five surfaces for the agent to invent, which is the underspecified failure in structured form",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The six surfaces and what is missing. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a specification with only an outcome leaves five surfaces for the agent to invent, which is the underspecified failure in structured form"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: the six surfaces and what is missing ---\nfull spec missing: []\nthin spec missing: ['invariants', 'examples', 'non_goals', 'decisions', 'evidence']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Choosing a decision mode from reversibility and consequence",
+    "headingKn": "ಪ್ರಯೋಗ 3: Choosing a decision mode from reversibility and consequence",
+    "bodyEn": "What it ran: Choosing a decision mode from reversibility and consequence. What the lab concluded: only cheap, reversible, low-consequence choices were delegated; an irreversible choice became locked even at low consequence; the mapping is a conservative rule in this lab and a team would set its own",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Choosing a decision mode from reversibility and consequence. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): only cheap, reversible, low-consequence choices were delegated; an irreversible choice became locked even at low consequence; the mapping is a conservative rule in this lab and a team would set its own"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: choosing a decision mode from reversibility and consequence ---\ninternal data structure    reversible=True  consequence=low    -> delegated\ncache size                 reversible=True  consequence=medium -> bounded\nresponse schema            reversible=True  consequence=high   -> locked\ndelete old records         reversible=False consequence=low    -> locked\nwrite to production        reversible=False consequence=high   -> locked"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Validating the decision table",
+    "headingKn": "ಪ್ರಯೋಗ 4: Validating the decision table",
+    "bodyEn": "What it ran: Validating the decision table. What the lab concluded: a bounded decision with no bounds and an unknown mode were both rejected, since a bound that is not written down cannot be checked",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Validating the decision table. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a bounded decision with no bounds and an unknown mode were both rejected, since a bound that is not written down cannot be checked"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: validating the decision table ---\nvalid: []\nbad : ['cache: bounded decision needs bounds', 'index: unknown mode']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Schema-valid and still unacceptable",
+    "headingKn": "ಪ್ರಯೋಗ 5: Schema-valid and still unacceptable",
+    "bodyEn": "What it ran: Schema-valid and still unacceptable. What the lab concluded: the decision table passed structural validation and still delegated a production write to the agent, which only a risk check against a list of high-risk decisions catches; that list is the lab's own and incomplete by nature",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Schema-valid and still unacceptable. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the decision table passed structural validation and still delegated a production write to the agent, which only a risk check against a list of high-risk decisions catches; that list is the lab's own and incomplete by nature"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: schema-valid and still unacceptable ---\nschema errors: []\nsemantic findings: ['production_write']"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -190,6 +273,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The lint flagged both under- and over-specification. 2) A thin spec missed five surfaces. 3) Irreversible choices were locked. 4) Bounded needs bounds. 5) A valid table delegated a production write.",
     "bodyKn": "1) lint ಕಡಿಮೆ ಮತ್ತು ಹೆಚ್ಚು ವಿಶೇಷಣ ಎರಡನ್ನೂ ಗುರುತಿಸಿತು. 2) ತೆಳು ವಿಶೇಷಣ ಐದು ಮೇಲ್ಮೈ ತಪ್ಪಿಸಿತು. 3) ಹಿಂತಿರುಗಿಸಲಾಗದ ಆಯ್ಕೆಗಳು ಲಾಕ್ ಆದವು. 4) Bounded ಗೆ ಮಿತಿ ಬೇಕು. 5) ಮಾನ್ಯ ಕೋಷ್ಟಕ production ಬರಹ ಡೆಲಿಗೇಟ್ ಮಾಡಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B sp_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B sp_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B sp_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B sp_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

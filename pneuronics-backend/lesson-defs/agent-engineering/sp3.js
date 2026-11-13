@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Authority is enforced on proposed changes",
+    "headingKn": "ಪ್ರಯೋಗ 1: Authority is enforced on proposed changes",
+    "bodyEn": "What it ran: Authority is enforced on proposed changes. What the lab concluded: a delegated choice and an in-range bounded value were allowed, an out-of-range value and a locked decision were refused, and a change to something the specification never named was refused too; the bounds are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Authority is enforced on proposed changes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a delegated choice and an in-range bounded value were allowed, an out-of-range value and a locked decision were refused, and a change to something the specification never named was refused too; the bounds are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: authority is enforced on proposed changes ---\nindex_choice     value=bm25   -> (True, 'delegated')\ncache_ttl_s      value=120    -> (True, 'bounded to 30..600')\ncache_ttl_s      value=5000   -> (False, 'bounded to 30..600')\nresponse_format  value=v2     -> (False, 'locked decision; changes need the owner')\nretry_count      value=3      -> (False, 'decision is not in the specification')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A production write needs a signed, action-bound approval",
+    "headingKn": "ಪ್ರಯೋಗ 2: A production write needs a signed, action-bound approval",
+    "bodyEn": "What it ran: A production write needs a signed, action-bound approval. What the lab concluded: only the record signed for this action and approver counted, and the flag record with no approver or signature was refused; a first version of this check raised a KeyError on that record instead of refusing it, which would have turned a malformed approval into a crash; the key is a constant made up for the lab, and a real one must live where the agent cannot read it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A production write needs a signed, action-bound approval. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): only the record signed for this action and approver counted, and the flag record with no approver or signature was refused; a first version of this check raised a KeyError on that record instead of refusing it, which would have turned a malformed approval into a crash; the key is a constant made up for the lab, and a real one must live where the agent cannot read it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a production write needs a signed, action-bound approval ---\nvalid approval: True\nsame record for another action: False\napprover edited: False\nan agent-set flag: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: An audit trail that shows edits",
+    "headingKn": "ಪ್ರಯೋಗ 3: An audit trail that shows edits",
+    "bodyEn": "What it ran: An audit trail that shows edits. What the lab concluded: each entry hashes the one before it, so an after-the-fact edit breaks the chain from that point; this detects edits to the list and does not stop someone from rewriting every entry and hash together, which needs the hashes held somewhere else",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An audit trail that shows edits. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each entry hashes the one before it, so an after-the-fact edit breaks the chain from that point; this detects edits to the list and does not stop someone from rewriting every entry and hash together, which needs the hashes held somewhere else"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: an audit trail that shows edits ---\nentries: 3 | verifies: True\nafter editing entry 1 in place | verifies: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A verification gate over claims and evidence",
+    "headingKn": "ಪ್ರಯೋಗ 4: A verification gate over claims and evidence",
+    "bodyEn": "What it ran: A verification gate over claims and evidence. What the lab concluded: a claim is blocked when its evidence is of the wrong kind or absent, so a passing run of unrelated tests does not open the gate",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A verification gate over claims and evidence. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a claim is blocked when its evidence is of the wrong kind or absent, so a passing run of unrelated tests does not open the gate"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a verification gate over claims and evidence ---\nmatching evidence: ('PASS', [])\nwrong and missing evidence: ('BLOCK', ['no private data', 'within two seconds'])"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A specification that contradicts itself",
+    "headingKn": "ಪ್ರಯೋಗ 5: A specification that contradicts itself",
+    "bodyEn": "What it ran: A specification that contradicts itself. What the lab concluded: an example that returns an email address contradicts the invariant that forbids private data, and the check reports the pair before anyone builds to it; the rule here knows only one invariant and one field, which is a stand-in for a real consistency check",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A specification that contradicts itself. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an example that returns an email address contradicts the invariant that forbids private data, and the check reports the pair before anyone builds to it; the rule here knows only one invariant and one field, which is a stand-in for a real consistency check"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a specification that contradicts itself ---\nconflict found: [('no private data', {'name': 'support lookup', 'returns_email': True})]\nno conflict   : []"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Locked and out-of-range changes were refused. 2) Only a signed, action-bound approval counted. 3) An edited audit entry broke the chain. 4) Wrong-kind evidence blocked. 5) A contradictory example was found.",
     "bodyKn": "1) ಲಾಕ್ ಮತ್ತು ವ್ಯಾಪ್ತಿ ಮೀರಿದ ಬದಲಾವಣೆ ನಿರಾಕರಿಸಲಾಯಿತು. 2) ಸಹಿ ಮಾಡಿದ, ಕ್ರಿಯೆ-ಬಂಧಿತ ಅನುಮೋದನೆ ಮಾತ್ರ ಪರಿಗಣಿತ. 3) ಸಂಪಾದಿತ ಲೆಕ್ಕಪರಿಶೋಧನೆ ನಮೂದು ಸರಪಳಿ ಮುರಿಯಿತು. 4) ತಪ್ಪು-ರೀತಿಯ ಸಾಕ್ಷ್ಯ ತಡೆಯಿತು. 5) ವಿರೋಧಾತ್ಮಕ ಉದಾಹರಣೆ ಕಂಡುಬಂದಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B sp_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B sp_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B sp_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B sp_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

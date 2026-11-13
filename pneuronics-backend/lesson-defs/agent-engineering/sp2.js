@@ -137,6 +137,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The same examples against three implementations",
+    "headingKn": "ಪ್ರಯೋಗ 1: The same examples against three implementations",
+    "bodyEn": "What it ran: The same examples against three implementations. What the lab concluded: the good version passed every example, the leaky version failed only the forbidden one, and the wrong-shape version, which returns bare titles instead of records, failed five of seven including the normal queries because the checks read the id field and passed only the two that expect no results or a format over no rows; the forbidden example is what catches a version that finds the right articles and exposes an address",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The same examples against three implementations. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the good version passed every example, the leaky version failed only the forbidden one, and the wrong-shape version, which returns bare titles instead of records, failed five of seven including the normal queries because the checks read the id field and passed only the two that expect no results or a format over no rows; the forbidden example is what catches a version that finds the right articles and exposes an address"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the same examples against three implementations ---\ngood         passed 7/7  failed: []\nleaky        passed 6/7  failed: [('forbidden', 'refund')]\nwrong shape  passed 2/7  failed: [('normal', 'refund'), ('normal', 'ship'), ('edge', 'REFUND  '), ('forbidden', 'refund'), ('failure', '<empty>')]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A spec can be valid while the implementation breaks it",
+    "headingKn": "ಪ್ರಯೋಗ 2: A spec can be valid while the implementation breaks it",
+    "bodyEn": "What it ran: A spec can be valid while the implementation breaks it. What the lab concluded: the specification was complete and consistent and the implementation still violated its invariant, so validating the spec says nothing about the code, and the examples are the bridge between the two",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A spec can be valid while the implementation breaks it. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the specification was complete and consistent and the implementation still violated its invariant, so validating the spec says nothing about the code, and the examples are the bridge between the two"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a spec can be valid while the implementation breaks it ---\nspec fields present: ['examples', 'invariants', 'outcome'] | leaky implementation forbidden example passes: [False]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Evidence has to match the claim",
+    "headingKn": "ಪ್ರಯೋಗ 3: Evidence has to match the claim",
+    "bodyEn": "What it ran: Evidence has to match the claim. What the lab concluded: a latency measurement cannot support a privacy claim and passing example tests cannot support a speed claim, so each claim names the kind of evidence it needs; the mapping is a small table of the lab's own",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Evidence has to match the claim. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a latency measurement cannot support a privacy claim and passing example tests cannot support a speed claim, so each claim names the kind of evidence it needs; the mapping is a small table of the lab's own"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: evidence has to match the claim ---\nno private data        backed by forbidden example    -> matches\nno private data        backed by latency measurement  -> does not match (needs forbidden example)\nwithin two seconds     backed by example tests        -> does not match (needs latency measurement)\nresponse format kept   backed by contract test        -> matches"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: An edge case that a happy path would miss",
+    "headingKn": "ಪ್ರಯೋಗ 4: An edge case that a happy path would miss",
+    "bodyEn": "What it ran: An edge case that a happy path would miss. What the lab concluded: the three edge cases each have an expected outcome in the examples, and a version that only handled the normal queries would have failed them",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An edge case that a happy path would miss. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the three edge cases each have an expected outcome in the examples, and a version that only handled the normal queries would have failed them"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: an edge case that a happy path would miss ---\nquery with uppercase and spaces: [1]\nquery with no match: []\nblank query: Query must not be empty"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The executable specification artifact",
+    "headingKn": "ಪ್ರಯೋಗ 5: The executable specification artifact",
+    "bodyEn": "What it ran: The executable specification artifact. What the lab concluded: the artifact holds the examples with their results and the claim-to-evidence table so a reviewer can see what was checked; it is built in memory and the lab does not write outputs/executable-specification.json",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The executable specification artifact. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the artifact holds the examples with their results and the claim-to-evidence table so a reviewer can see what was checked; it is built in memory and the lab does not write outputs/executable-specification.json"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: the executable specification artifact ---\nexamples recorded: 7 | all passed: True | bytes: 573"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -194,6 +277,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The good version passed 7/7. 2) The leaky one failed only the forbidden example. 3) A latency number cannot back a privacy claim. 4) Edge cases had expected outcomes. 5) The artifact held examples and the proof table.",
     "bodyKn": "1) ಒಳ್ಳೆಯ ಆವೃತ್ತಿ 7/7 ಪಾಸ್ ಆಯಿತು. 2) ಸೋರಿಕೆ ಆವೃತ್ತಿ forbidden ಉದಾಹರಣೆ ಮಾತ್ರ ವಿಫಲವಾಯಿತು. 3) latency ಸಂಖ್ಯೆ ಗೌಪ್ಯತೆ ಹೇಳಿಕೆ ಬೆಂಬಲಿಸಲಾಗದು. 4) Edge ಸಂದರ್ಭಗಳಿಗೆ ನಿರೀಕ್ಷಿತ ಫಲಿತಾಂಶ ಇತ್ತು. 5) ಕಲಾಕೃತಿ ಉದಾಹರಣೆಗಳು ಮತ್ತು ಪುರಾವೆ ಕೋಷ್ಟಕ ಹೊಂದಿತ್ತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B sp_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B sp_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B sp_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B sp_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
