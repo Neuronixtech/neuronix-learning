@@ -137,6 +137,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Outcome metrics from twelve invented records",
+    "headingKn": "ಪ್ರಯೋಗ 1: Outcome metrics from twelve invented records",
+    "bodyEn": "What it ran: Outcome metrics from twelve invented records. What the lab concluded: the mean is above the median because a few slow incidents (3.8, 2.9 and 2.4 minutes) pull it up; a target written on the mean and one written on the median would disagree here, so the plan has to say which",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Outcome metrics from twelve invented records. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the mean is above the median because a few slow incidents (3.8, 2.9 and 2.4 minutes) pull it up; a target written on the mean and one written on the median would disagree here, so the plan has to say which"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely computing: outcome metrics from twelve invented records ---\nmedian minutes: 1.55 | mean minutes: 1.79 | accuracy: 10/12 = 0.833"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Uncertainty at n = 12",
+    "headingKn": "ಪ್ರಯೋಗ 2: Uncertainty at n = 12",
+    "bodyEn": "What it ran: Uncertainty at n = 12. What the lab concluded: with twelve records the accuracy interval spans about 0.55 to 0.95 and the median interval runs from 1.15 to 2.2 minutes, so a point value of 0.833 or 1.55 minutes says much less than it appears to; the resampling is seeded so the numbers repeat",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Uncertainty at n = 12. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with twelve records the accuracy interval spans about 0.55 to 0.95 and the median interval runs from 1.15 to 2.2 minutes, so a point value of 0.833 or 1.55 minutes says much less than it appears to; the resampling is seeded so the numbers repeat"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely computing: uncertainty at n = 12 ---\naccuracy 95% Wilson interval: (0.552, 0.953)\nmedian minutes 95% bootstrap interval (2000 resamples, seed 7): (1.15, 2.2)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A decision policy built on the interval",
+    "headingKn": "ಪ್ರಯೋಗ 3: A decision policy built on the interval",
+    "bodyEn": "What it ran: A decision policy built on the interval. What the lab concluded: the interval gives three answers instead of two: at 0.90 the evidence is not enough, at 0.50 it passes, at 0.99 it fails, and the same shape appears for the median; the thresholds are examples",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A decision policy built on the interval. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the interval gives three answers instead of two: at 0.90 the evidence is not enough, at 0.50 it passes, at 0.99 it fails, and the same shape appears for the median; the thresholds are examples"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a decision policy built on the interval ---\naccuracy vs 0.90 : collect more evidence | accuracy vs 0.50: pass | accuracy vs 0.99: fail\nmedian vs 2.0 min: collect more evidence | median vs 3.0 min: pass | median vs 0.5 min: fail"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A counter-metric that exposes a hidden cost",
+    "headingKn": "ಪ್ರಯೋಗ 4: A counter-metric that exposes a hidden cost",
+    "bodyEn": "What it ran: A counter-metric that exposes a hidden cost. What the lab concluded: the assistant is quick to answer and engineers then spend longer checking it, and they spend the most on the answers that were wrong (a median of 6.5 minutes against 2.9); a plan that measured only the time to identify would have hidden that second cost",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A counter-metric that exposes a hidden cost. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the assistant is quick to answer and engineers then spend longer checking it, and they spend the most on the answers that were wrong (a median of 6.5 minutes against 2.9); a plan that measured only the time to identify would have hidden that second cost"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely computing: a counter-metric that exposes a hidden cost ---\nmedian review minutes overall: 3.25 | when the answer was right: 2.9 | when it was wrong: 6.5\ntotal minutes per incident (identify + review), median: 5.15"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Offline replay is not a live pilot",
+    "headingKn": "ಪ್ರಯೋಗ 5: Offline replay is not a live pilot",
+    "bodyEn": "What it ran: Offline replay is not a live pilot. What the lab concluded: the live-week numbers are made up to show the shape of the problem and are not a measurement; an offline pass is evidence about the replayed incidents, and what happens in a pilot is a separate claim that needs its own plan and its own sample",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Offline replay is not a live pilot. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the live-week numbers are made up to show the shape of the problem and are not a measurement; an offline pass is evidence about the replayed incidents, and what happens in a pilot is a separate claim that needs its own plan and its own sample"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: offline replay is not a live pilot ---\noffline dataset: replayed incidents with known answers, n = 12\nnot present in it: concurrent incidents, partial outages, engineers under pressure, new services added after the dataset was taken\nillustrative: accuracy over five invented live weeks (random draws from a seeded generator, not data): [0.66, 0.77, 0.71, 0.79, 0.8]"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -194,6 +277,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Mean and median disagreed. 2) n = 12 gave wide intervals. 3) The interval gave pass, fail or more evidence. 4) Review time exposed a hidden cost. 5) Offline is not a pilot.",
     "bodyKn": "1) Mean ಮತ್ತು median ಒಪ್ಪಲಿಲ್ಲ. 2) n = 12 ಅಗಲ ಅಂತರ ನೀಡಿತು. 3) ಅಂತರ pass, fail ಅಥವಾ ಹೆಚ್ಚು ಸಾಕ್ಷ್ಯ ನೀಡಿತು. 4) Review ಸಮಯ ಗುಪ್ತ ವೆಚ್ಚ ಬಹಿರಂಗಪಡಿಸಿತು. 5) Offline ಎಂದರೆ pilot ಅಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B sm_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B sm_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B sm_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B sm_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

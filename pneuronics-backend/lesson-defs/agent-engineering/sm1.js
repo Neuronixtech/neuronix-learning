@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A Goal-Question-Metric plan (all numbers invented)",
+    "headingKn": "ಪ್ರಯೋಗ 1: A Goal-Question-Metric plan (all numbers invented)",
+    "bodyEn": "What it ran: A Goal-Question-Metric plan (all numbers invented). What the lab concluded: each metric is tied to a question and carries a direction, a threshold and a window, and the plan has an outcome metric, a guardrail and a counter-metric; the human_review_minutes counter-metric is there because a faster answer that takes longer to check is not an improvement",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A Goal-Question-Metric plan (all numbers invented). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each metric is tied to a question and carries a direction, a threshold and a window, and the plan has an outcome metric, a guardrail and a counter-metric; the human_review_minutes counter-metric is there because a faster answer that takes longer to check is not an improvement"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a Goal-Question-Metric plan (all numbers invented) ---\ngoal: reduce time to identify the affected service without more unsafe actions\n  outcome   median_minutes_to_identify   lower  than 2.0   answers: How long does identification take?\n  outcome   service_accuracy             higher than 0.9   answers: Is the identified service correct?\n  guardrail unsafe_action_rate           lower  than 0.0   answers: Does it avoid unsafe actions?\n  counter   human_review_minutes         lower  than 3.0   answers: How long does identification take?\nplan errors: []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: What a plan without structure looks like",
+    "headingKn": "ಪ್ರಯೋಗ 2: What a plan without structure looks like",
+    "bodyEn": "What it ran: What a plan without structure looks like. What the lab concluded: a missing goal, a metric tied to a question the plan never asked, an unknown kind, a bad direction, missing windows, an unanswered question and no guardrail were all reported together instead of stopping at the first",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What a plan without structure looks like. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a missing goal, a metric tied to a question the plan never asked, an unknown kind, a bad direction, missing windows, an unanswered question and no guardrail were all reported together instead of stopping at the first"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: what a plan without structure looks like ---\n - goal is required\n - accuracy: question is not part of the plan\n - accuracy: no measurement window\n - speed: unknown kind vibe\n - speed: direction must be higher or lower\n - speed: no measurement window\n - question without a metric: Is the identified service correct?\n - no guardrail metric"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Direction and inclusive thresholds",
+    "headingKn": "ಪ್ರಯೋಗ 3: Direction and inclusive thresholds",
+    "bodyEn": "What it ran: Direction and inclusive thresholds. What the lab concluded: exactly 0.90 passes a higher-is-better threshold and exactly 2.0 passes a lower-is-better one because the comparison is inclusive; a missing value fails instead of being skipped, since an unmeasured metric is not a passed one",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Direction and inclusive thresholds. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): exactly 0.90 passes a higher-is-better threshold and exactly 2.0 passes a lower-is-better one because the comparison is inclusive; a missing value fails instead of being skipped, since an unmeasured metric is not a passed one"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: direction and inclusive thresholds ---\nservice_accuracy             value=0.9    higher than 0.9 -> pass\nservice_accuracy             value=0.899  higher than 0.9 -> fail\nservice_accuracy             value=None   higher than 0.9 -> fail\nmedian_minutes_to_identify   value=2.0    lower  than 2.0 -> pass\nmedian_minutes_to_identify   value=2.01   lower  than 2.0 -> fail"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Moving the threshold after the result",
+    "headingKn": "ಪ್ರಯೋಗ 4: Moving the threshold after the result",
+    "bodyEn": "What it ran: Moving the threshold after the result. What the lab concluded: lowering the threshold turned 0.82 from a fail into a pass, and the lock changed, which is the signal a reviewer needs; the lock only helps if somebody compares it with the one recorded before the run",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Moving the threshold after the result. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): lowering the threshold turned 0.82 from a fail into a pass, and the lock changed, which is the signal a reviewer needs; the lock only helps if somebody compares it with the one recorded before the run"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: moving the threshold after the result ---\nresult: 0.82 | accuracy threshold 0.90 -> fail | lock aa11b243e1\nthreshold edited to 0.80 -> pass | lock 287f6d6802 | same lock: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Which numbers are not on the plan",
+    "headingKn": "ಪ್ರಯೋಗ 5: Which numbers are not on the plan",
+    "bodyEn": "What it ran: Which numbers are not on the plan. What the lab concluded: a number that answers none of the plan's questions is a vanity number here, and the check is a simple name lookup, so it flags what is absent and cannot judge whether a listed metric is a good one",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Which numbers are not on the plan. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a number that answers none of the plan's questions is a vanity number here, and the check is a simple name lookup, so it flags what is absent and cannot judge whether a listed metric is a good one"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: which numbers are not on the plan ---\ndemo_satisfaction            on the plan: False\nnumber_of_dashboards         on the plan: False\nmedian_minutes_to_identify   on the plan: True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) A plan ties metrics to questions and goals. 2) Eight problems were reported at once. 3) Boundaries are inclusive and missing fails. 4) An edited threshold changed the lock. 5) Off-plan numbers were flagged.",
     "bodyKn": "1) ಯೋಜನೆ ಮಾಪನಗಳನ್ನು ಪ್ರಶ್ನೆ ಮತ್ತು ಗುರಿಗಳಿಗೆ ಜೋಡಿಸುತ್ತದೆ. 2) ಎಂಟು ಸಮಸ್ಯೆಗಳು ಒಮ್ಮೆಲೇ ವರದಿಯಾದವು. 3) ಗಡಿಗಳು ಒಳಗೊಳ್ಳುವವು ಮತ್ತು ಕಾಣೆಯಾದದ್ದು ವಿಫಲ. 4) ಸಂಪಾದಿತ ಮಿತಿ lock ಬದಲಿಸಿತು. 5) ಯೋಜನೆಯ ಹೊರಗಿನ ಸಂಖ್ಯೆಗಳು ಗುರುತಾದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B sm_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B sm_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B sm_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B sm_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

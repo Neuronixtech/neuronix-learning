@@ -137,6 +137,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Three invented candidates against the fixed plan",
+    "headingKn": "ಪ್ರಯೋಗ 1: Three invented candidates against the fixed plan",
+    "bodyEn": "What it ran: Three invented candidates against the fixed plan. What the lab concluded: A passed all three metrics, B passed both outcome metrics and failed the guardrail, and C passed accuracy and the guardrail and missed on time; only A is a pass overall, and the numbers are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Three invented candidates against the fixed plan. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): A passed all three metrics, B passed both outcome metrics and failed the guardrail, and C passed accuracy and the guardrail and missed on time; only A is a pass overall, and the numbers are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: three invented candidates against the fixed plan ---\nA: careful assistant     {'median_minutes_to_identify': 'pass', 'service_accuracy': 'pass', 'unsafe_action_rate': 'pass'} -> pass\nB: fast but unsafe       {'median_minutes_to_identify': 'pass', 'service_accuracy': 'pass', 'unsafe_action_rate': 'fail'} -> fail (guardrail)\nC: slow and accurate     {'median_minutes_to_identify': 'fail', 'service_accuracy': 'pass', 'unsafe_action_rate': 'pass'} -> fail (outcome)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Remove the guardrail and the unsafe candidate wins",
+    "headingKn": "ಪ್ರಯೋಗ 2: Remove the guardrail and the unsafe candidate wins",
+    "bodyEn": "What it ran: Remove the guardrail and the unsafe candidate wins. What the lab concluded: without the guardrail the plan accepts both A and B, and a team that ranks by speed would pick B, the candidate with a 4 percent unsafe-action rate; the guardrail is what keeps a speed target from rewarding risk",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Remove the guardrail and the unsafe candidate wins. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): without the guardrail the plan accepts both A and B, and a team that ranks by speed would pick B, the candidate with a 4 percent unsafe-action rate; the guardrail is what keeps a speed target from rewarding risk"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: remove the guardrail and the unsafe candidate wins ---\nA: careful assistant     pass\nB: fast but unsafe       pass\nC: slow and accurate     fail (outcome)\nfastest first: ['B: fast but unsafe', 'A: careful assistant', 'C: slow and accurate']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Missing values",
+    "headingKn": "ಪ್ರಯೋಗ 3: Missing values",
+    "bodyEn": "What it ran: Missing values. What the lab concluded: a metric that was not measured appears as missing and the decision is to collect more evidence, instead of treating the gap as a pass or silently dropping it from the plan",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Missing values. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a metric that was not measured appears as missing and the decision is to collect more evidence, instead of treating the gap as a pass or silently dropping it from the plan"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: missing values ---\n{'median_minutes_to_identify': 'pass', 'service_accuracy': 'missing', 'unsafe_action_rate': 'missing'} -> collect more evidence"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Boundary values",
+    "headingKn": "ಪ್ರಯೋಗ 4: Boundary values",
+    "bodyEn": "What it ran: Boundary values. What the lab concluded: a value exactly on the threshold passes and a value just beside it fails, which is the behaviour the plan promised; floats near a threshold can still surprise, and the lab does not round",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Boundary values. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a value exactly on the threshold passes and a value just beside it fails, which is the behaviour the plan promised; floats near a threshold can still surprise, and the lab does not round"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: boundary values ---\nservice_accuracy             0.9     -> pass\nservice_accuracy             0.8999  -> fail\nmedian_minutes_to_identify   2.0     -> pass\nmedian_minutes_to_identify   2.0001  -> fail"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A JSON report that carries the plan",
+    "headingKn": "ಪ್ರಯೋಗ 5: A JSON report that carries the plan",
+    "bodyEn": "What it ran: A JSON report that carries the plan. What the lab concluded: the report stores the plan next to the observations, so a reader can see which thresholds the decision used; it is built in memory and the lab does not write outputs/measurement-report.json",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A JSON report that carries the plan. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the report stores the plan next to the observations, so a reader can see which thresholds the decision used; it is built in memory and the lab does not write outputs/measurement-report.json"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a JSON report that carries the plan ---\nreport keys: ['candidate', 'decision', 'observed', 'plan', 'results'] | decision: pass | round trip equal: True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -194,6 +277,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Only A passed. 2) Removing the guardrail let B through. 3) A gap meant collect more evidence. 4) Boundaries were exact. 5) The report carried the plan.",
     "bodyKn": "1) A ಮಾತ್ರ ಪಾಸ್ ಆಯಿತು. 2) guardrail ತೆಗೆದದ್ದು B ಅನ್ನು ದಾಟಲು ಬಿಟ್ಟಿತು. 3) ಅಂತರ ಎಂದರೆ ಹೆಚ್ಚು ಸಾಕ್ಷ್ಯ ಸಂಗ್ರಹಿಸಿ. 4) ಗಡಿಗಳು ನಿಖರ. 5) ವರದಿ ಯೋಜನೆ ಹೊತ್ತಿತ್ತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B sm_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B sm_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B sm_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B sm_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
