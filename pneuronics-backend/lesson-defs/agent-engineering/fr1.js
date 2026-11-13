@@ -147,6 +147,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A symptom is not a cause",
+    "headingKn": "ಪ್ರಯೋಗ 1: A symptom is not a cause",
+    "bodyEn": "What it ran: A symptom is not a cause. What the lab concluded: the correction says what to avoid in one conversation; the cause names the missing control (an executable scope), and the layer says where prevention belongs",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A symptom is not a cause. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the correction says what to avoid in one conversation; the cause names the missing control (an executable scope), and the layer says where prevention belongs"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a symptom is not a cause ---\nsymptom: agent edited README.md | resolved cause: off_scope_edit | earliest layer: scope_policy"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Differently worded corrections reach the same cause",
+    "headingKn": "ಪ್ರಯೋಗ 2: Differently worded corrections reach the same cause",
+    "bodyEn": "What it ran: Differently worded corrections reach the same cause. What the lab concluded: the first two wordings matched a phrase and shared a fingerprint, while the third (\"Don't touch\") matched no phrase and fell to unclassified; a phrase table is only as good as its phrases, and unclassified items go to a human instead of being guessed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Differently worded corrections reach the same cause. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first two wordings matched a phrase and shared a fingerprint, while the third (\"Don't touch\") matched no phrase and fell to unclassified; a phrase table is only as good as its phrases, and unclassified items go to a human instead of being guessed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: differently worded corrections reach the same cause ---\n'Do not modify README.md.'                                     -> off_scope_edit       scope_policy     1ad37322ca49\n'Please do NOT edit   README.md!'                              -> off_scope_edit       scope_policy     1ad37322ca49\n'Don’t touch README.md'                                        -> unclassified         human_decision   fceca978f99d\n'The response is missing a required field: user_id'            -> missing_field        type_or_schema   22b74b1d9e49\n'The result is wrong; the total is off by one'                 -> wrong_result         test             e7df0560d2ea\n'Which behaviour do we want for expired carts?'                -> policy_disagreement  human_decision   f9ef6062ca55"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: What goes into a fingerprint",
+    "headingKn": "ಪ್ರಯೋಗ 3: What goes into a fingerprint",
+    "bodyEn": "What it ran: What goes into a fingerprint. What the lab concluded: the fingerprint covers the cause and the target only; adding a timestamp or hashing the raw wording made equal failures look different, and dropping the target would have merged README.md with LICENSE",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What goes into a fingerprint. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the fingerprint covers the cause and the target only; adding a timestamp or hashing the raw wording made equal failures look different, and dropping the target would have merged README.md with LICENSE"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: what goes into a fingerprint ---\nsame cause and target, different message text : True\nbackslash path and leading slash               : True\ndifferent target (LICENSE)                     : False\ndifferent cause on the same target             : False\ntimestamp included (two runs a second apart)   : False\nhash of the raw message for two wordings       : False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Recurrence counting with and without false merges",
+    "headingKn": "ಪ್ರಯೋಗ 4: Recurrence counting with and without false merges",
+    "bodyEn": "What it ran: Recurrence counting with and without false merges. What the lab concluded: with the target in the fingerprint README.md has 3 recurrences and LICENSE has 1, so a control is justified for README.md and LICENSE is not lumped in; a recurrence count only means something if equal causes are merged and unequal ones are not",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Recurrence counting with and without false merges. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with the target in the fingerprint README.md has 3 recurrences and LICENSE has 1, so a control is justified for README.md and LICENSE is not lumped in; a recurrence count only means something if equal causes are merged and unequal ones are not"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: recurrence counting with and without false merges ---\n1ad37322ca49 off_scope_edit   README.md        recurrence=3\n8a36c5a0ab27 off_scope_edit   LICENSE          recurrence=1\n22b74b1d9e49 missing_field    api/response.py  recurrence=1\nif the target is ignored, off_scope_edit would count 4 events as one problem"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Malformed corrections are rejected before they become records",
+    "headingKn": "ಪ್ರಯೋಗ 5: Malformed corrections are rejected before they become records",
+    "bodyEn": "What it ran: Malformed corrections are rejected before they become records. What the lab concluded: a record without a message or a target cannot be fingerprinted, so the ingest step refuses it instead of storing something that will never match",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Malformed corrections are rejected before they become records. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a record without a message or a target cannot be fingerprinted, so the ingest step refuses it instead of storing something that will never match"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: malformed corrections are rejected before they become records ---\nempty message        rejected: Expected a non-empty message\nmissing target       rejected: Expected a non-empty target\nnon-string symptom   rejected: Expected a non-empty symptom"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -204,6 +287,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The README correction resolved to a scope cause and layer. 2) One wording went unclassified. 3) Timestamps and raw wording broke fingerprints. 4) README.md recurred 3 times and LICENSE once. 5) Malformed records were rejected.",
     "bodyKn": "1) README ತಿದ್ದುಪಡಿ ವ್ಯಾಪ್ತಿ ಕಾರಣ ಮತ್ತು ಪದರಕ್ಕೆ ಪರಿಹಾರವಾಯಿತು. 2) ಒಂದು ಪದಪ್ರಯೋಗ unclassified ಆಯಿತು. 3) Timestamps ಮತ್ತು ಕಚ್ಚಾ ಪದಪ್ರಯೋಗ fingerprints ಮುರಿದವು. 4) README.md 3 ಬಾರಿ ಮತ್ತು LICENSE ಒಮ್ಮೆ ಪುನರಾವರ್ತನೆಯಾದವು. 5) ದೋಷಪೂರ್ಣ ದಾಖಲೆಗಳು ತಿರಸ್ಕೃತವಾದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B fr_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B fr_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B fr_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B fr_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

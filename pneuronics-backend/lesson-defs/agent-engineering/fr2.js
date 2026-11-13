@@ -137,6 +137,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A scope control and a schema control",
+    "headingKn": "ಪ್ರಯೋಗ 1: A scope control and a schema control",
+    "bodyEn": "What it ran: A scope control and a schema control. What the lab concluded: the controls turned two conversational corrections into checks that run on the output, and the third line shows component matching keeping a sibling directory outside the allowed path",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A scope control and a schema control. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the controls turned two conversational corrections into checks that run on the output, and the third line shows component matching keeping a sibling directory outside the allowed path"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a scope control and a schema control ---\nchanged README.md only        : {'ok': False, 'violations': ['README.md']}\nchanged registration file     : {'ok': True, 'violations': []}\napp/registration_old.py       : {'ok': False, 'violations': ['app/registration_old.py']}\nresponse with user_id         : {'ok': True, 'missing': []}\nresponse without user_id      : {'ok': False, 'missing': ['user_id']}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A regression test is run against bad and good code",
+    "headingKn": "ಪ್ರಯೋಗ 2: A regression test is run against bad and good code",
+    "bodyEn": "What it ran: A regression test is run against bad and good code. What the lab concluded: a control counts as verified here because it failed on the code that had the defect and passed on the corrected code; passing alone says nothing about whether it can detect the failure",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A regression test is run against bad and good code. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a control counts as verified here because it failed on the code that had the defect and passed on the corrected code; passing alone says nothing about whether it can detect the failure"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a regression test is run against bad and good code ---\ntest against buggy code exit: 1 | FAILED (failures=1)\ntest against fixed code exit: 0 | OK\nstatus: verified"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Controls that look like protection and are not",
+    "headingKn": "ಪ್ರಯೋಗ 3: Controls that look like protection and are not",
+    "bodyEn": "What it ran: Controls that look like protection and are not. What the lab concluded: the first exited 0 on code that was wrong because it never compared anything; the second was not named test_ so no test ran and the runner exited 5, which is not the exit 1 of a real test failure, so only an exit of 1 counts as the control catching the defect; running a control against the known-bad case is what exposes both",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Controls that look like protection and are not. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first exited 0 on code that was wrong because it never compared anything; the second was not named test_ so no test ran and the runner exited 5, which is not the exit 1 of a real test failure, so only an exit of 1 counts as the control catching the defect; running a control against the known-bad case is what exposes both"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: controls that look like protection and are not ---\ntest with no assertion against buggy code exit : 0 -> unverified\ntest never collected against buggy code exit   : 5 | NO TESTS RAN -> unverified"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Duplicate events are ingested once",
+    "headingKn": "ಪ್ರಯೋಗ 4: Duplicate events are ingested once",
+    "bodyEn": "What it ran: Duplicate events are ingested once. What the lab concluded: without the event id check the same webhook delivered twice would have counted as two recurrences and promoted a control early; a retry is not a new failure",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Duplicate events are ingested once. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): without the event id check the same webhook delivered twice would have counted as two recurrences and promoted a control early; a retry is not a new failure"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: duplicate events are ingested once ---\naccepted: [True, False, True] | stored records: 2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A report is validated when it is read",
+    "headingKn": "ಪ್ರಯೋಗ 5: A report is validated when it is read",
+    "bodyEn": "What it ran: A report is validated when it is read. What the lab concluded: a report that cannot say who owns a control or when it is due for review is rejected on read, so a hand-edited file cannot drop those fields without anyone noticing",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A report is validated when it is read. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a report that cannot say who owns a control or when it is due for review is rejected on read, so a hand-edited file cannot drop those fields without anyone noticing"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a report is validated when it is read ---\ncomplete record        accepted\nrecord without owner   rejected: ValueError: corrections[0] is missing owner\nnot a list             rejected: ValueError: Expected a corrections list\nnot json               rejected: JSONDecodeError: Expecting property name enclosed in double quote"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -194,6 +277,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Scope and schema checks ran on real values. 2) The regression test failed then passed. 3) Two fake controls were unverified. 4) A duplicate event counted once. 5) Reports missing an owner were rejected.",
     "bodyKn": "1) ವ್ಯಾಪ್ತಿ ಮತ್ತು schema ಪರಿಶೀಲನೆಗಳು ನಿಜ ಮೌಲ್ಯಗಳ ಮೇಲೆ ಓಡಿದವು. 2) regression test ವಿಫಲವಾಗಿ ನಂತರ ಪಾಸ್ ಆಯಿತು. 3) ಎರಡು ನಕಲಿ ನಿಯಂತ್ರಣ unverified. 4) ನಕಲು event ಒಮ್ಮೆ ಎಣಿಕೆಯಾಯಿತು. 5) owner ಇಲ್ಲದ ವರದಿಗಳು ತಿರಸ್ಕೃತವಾದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B fr_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B fr_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B fr_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B fr_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

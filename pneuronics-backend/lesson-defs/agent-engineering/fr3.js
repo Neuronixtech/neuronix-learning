@@ -147,6 +147,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Lifecycle transitions are checked",
+    "headingKn": "ಪ್ರಯೋಗ 1: Lifecycle transitions are checked",
+    "bodyEn": "What it ran: Lifecycle transitions are checked. What the lab concluded: a control cannot be activated before it was verified and activation needs evidence attached; the steps are explicit so that a control never becomes active by a comment in a chat",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Lifecycle transitions are checked. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a control cannot be activated before it was verified and activation needs evidence attached; the steps are explicit so that a control never becomes active by a comment in a chat"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: lifecycle transitions are checked ---\n-> active     refused: Illegal transition proposed -> active\n-> verified   ok   history=['proposed', 'verified']\n-> active     ok   history=['proposed', 'verified', 'active']\nproposed -> retired refused: Illegal transition proposed -> retired"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Ownership and review dates",
+    "headingKn": "ಪ್ರಯೋಗ 2: Ownership and review dates",
+    "bodyEn": "What it ran: Ownership and review dates. What the lab concluded: a control with no owner never entered the registry, and the review query found the one whose date had passed; the dates are made up and the lab ran with a fixed 'today' so the answer repeats",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Ownership and review dates. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a control with no owner never entered the registry, and the review query found the one whose date had passed; the dates are made up and the lab ran with a fixed 'today' so the answer repeats"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: ownership and review dates ---\nrejected: control b has no owner\noverdue for review on 2026-11-13: ['c']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Effectiveness on a made-up event log (ILLUSTRATIVE)",
+    "headingKn": "ಪ್ರಯೋಗ 3: Effectiveness on a made-up event log (ILLUSTRATIVE)",
+    "bodyEn": "What it ran: Effectiveness on a made-up event log (ILLUSTRATIVE). What the lab concluded: with the invented log, a control that began on day 20 saw 4 events after it, one on day 30 saw 2 and one on day 45 saw none (nothing had been left to prevent by then); the counts alone do not show the control worked, because the failure may simply have stopped being attempted, so the verification against a known-bad case in Part 2 is the evidence and the recurrence count is only the follow-up",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Effectiveness on a made-up event log (ILLUSTRATIVE). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with the invented log, a control that began on day 20 saw 4 events after it, one on day 30 saw 2 and one on day 45 saw none (nothing had been left to prevent by then); the counts alone do not show the control worked, because the failure may simply have stopped being attempted, so the verification against a known-bad case in Part 2 is the evidence and the recurrence count is only the follow-up"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely computing: effectiveness on a made-up event log (ILLUSTRATIVE) ---\ncontrol starts day 20: events before=6 after=4\ncontrol starts day 30: events before=8 after=2\ncontrol starts day 45: events before=10 after=0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Retirement needs more than silence",
+    "headingKn": "ಪ್ರಯೋಗ 4: Retirement needs more than silence",
+    "bodyEn": "What it ran: Retirement needs more than silence. What the lab concluded: quiet is not enough: a control with no recent failures and nothing else protecting the cause is the control that is preventing them, so retirement needs a replacement and no live recurrence",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Retirement needs more than silence. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): quiet is not enough: a control with no recent failures and nothing else protecting the cause is the control that is preventing them, so retirement needs a replacement and no live recurrence"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: retirement needs more than silence ---\nno events, replacement active    retire=True  []\nno events, no replacement        retire=False ['no replacement protects the same cause']\nevents continue                  retire=False ['failure still occurring']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Rule accumulation and unauthorised edits",
+    "headingKn": "ಪ್ರಯೋಗ 5: Rule accumulation and unauthorised edits",
+    "bodyEn": "What it ran: Rule accumulation and unauthorised edits. What the lab concluded: a control that an agent can quietly widen is not a control, so changes to the rule text carry a signed record bound to the exact new text; the key is a constant made up for this lab",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Rule accumulation and unauthorised edits. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a control that an agent can quietly widen is not a control, so changes to the rule text carry a signed record bound to the exact new text; the key is a constant made up for this lab"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: rule accumulation and unauthorised edits ---\nillustrative: if each of 60 active rules adds 2 seconds to a run, the added time is 120 seconds; every promoted control has a running cost, which is why review and retirement exist\nedit with no approval record: False\nedit signed by an owner       : True\nsame signature, different text: False"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -204,6 +287,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Transitions are checked. 2) No owner means no registry entry. 3) Counts alone are not proof. 4) Quiet needs a replacement before retirement. 5) Control text changes need a signed record.",
     "bodyKn": "1) ಪರಿವರ್ತನೆಗಳು ಪರಿಶೀಲಿತ. 2) owner ಇಲ್ಲದಿದ್ದರೆ ರಿಜಿಸ್ಟ್ರಿ ನಮೂದು ಇಲ್ಲ. 3) ಎಣಿಕೆ ಮಾತ್ರ ಸಾಕ್ಷ್ಯವಲ್ಲ. 4) ನಿವೃತ್ತಿಗೆ ಮೊದಲು ಮೌನಕ್ಕೆ ಬದಲಿ ಬೇಕು. 5) ನಿಯಂತ್ರಣ ಪಠ್ಯ ಬದಲಾವಣೆಗೆ ಸಹಿ ದಾಖಲೆ ಬೇಕು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B fr_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B fr_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B fr_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B fr_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
