@@ -152,6 +152,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A valid plan and the lesson's app/ ownership experiment",
+    "headingKn": "ಪ್ರಯೋಗ 1: A valid plan and the lesson's app/ ownership experiment",
+    "bodyEn": "What it ran: A valid plan and the lesson's app/ ownership experiment. What the lab concluded: owning the directory app/ also covers app/accounts.py, so the plan was refused before any worker started; the contract is checked as a plan, which is the only moment it is cheap to fix",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A valid plan and the lesson's app/ ownership experiment. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): owning the directory app/ also covers app/accounts.py, so the plan was refused before any worker started; the contract is checked as a plan, which is the only moment it is cheap to fix"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a valid plan and the lesson's app/ ownership experiment ---\nplan: {'units': ['api', 'docs', 'review', 'integration'], 'execution_waves': [['api', 'docs'], ['review'], ['integration']], 'status': 'planned'}\ndocs owns app/: Overlapping ownership: api:app/accounts.py and docs:app/"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Component matching versus a text prefix",
+    "headingKn": "ಪ್ರಯೋಗ 2: Component matching versus a text prefix",
+    "bodyEn": "What it ran: Component matching versus a text prefix. What the lab concluded: the owner written as app without a trailing slash made the text prefix claim application/x.py as inside it (second row), while the component comparison did not and gave the same answer for app and app/; the last row shows case: this comparison is case-sensitive, so App/accounts.py and app/ do not overlap here even though they would be the same folder on a case-insensitive filesystem",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Component matching versus a text prefix. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the owner written as app without a trailing slash made the text prefix claim application/x.py as inside it (second row), while the component comparison did not and gave the same answer for app and app/; the last row shows case: this comparison is case-sensitive, so App/accounts.py and app/ do not overlap here even though they would be the same folder on a case-insensitive filesystem"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: component matching versus a text prefix ---\napp/               vs app/accounts.py    component overlap=True  naive startswith=True\napp                vs application/x.py   component overlap=False naive startswith=True\napp/               vs application/x.py   component overlap=False naive startswith=False\napp/api.py         vs app/models.py      component overlap=False naive startswith=False\nApp/accounts.py    vs app/               component overlap=False naive startswith=False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Unsafe paths are rejected before they can own anything",
+    "headingKn": "ಪ್ರಯೋಗ 3: Unsafe paths are rejected before they can own anything",
+    "bodyEn": "What it ran: Unsafe paths are rejected before they can own anything. What the lab concluded: traversal, absolute, drive-letter, empty and root paths were refused while backslashes and dot segments were cleaned; this is lexical only, and symlinks and the real filesystem are not consulted",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Unsafe paths are rejected before they can own anything. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): traversal, absolute, drive-letter, empty and root paths were refused while backslashes and dot segments were cleaned; this is lexical only, and symlinks and the real filesystem are not consulted"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: unsafe paths are rejected before they can own anything ---\n'../secrets.txt'         rejected: Parent traversal is not allowed\n'/etc/passwd'            rejected: Expected a relative path\n'C:\\\\Windows\\\\x'         rejected: Expected a relative path\n''                       rejected: Expected a non-empty path\n'.'                      rejected: Repository root ownership is not allowed\n'app\\\\accounts.py'       -> ('app', 'accounts.py')\n'./app/./accounts.py'    -> ('app', 'accounts.py')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Dependency defects and a blocked graph",
+    "headingKn": "ಪ್ರಯೋಗ 4: Dependency defects and a blocked graph",
+    "bodyEn": "What it ran: Dependency defects and a blocked graph. What the lab concluded: ownership and dependencies are separate checks: two units can own different files and still be unable to run, and the cycle was reported with the names of the units that blocked it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Dependency defects and a blocked graph. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): ownership and dependencies are separate checks: two units can own different files and still be unable to run, and the cycle was reported with the names of the units that blocked it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: dependency defects and a blocked graph ---\nunknown dependency   rejected: a has unknown dependency: zzz\nself dependency      rejected: a depends on itself\nduplicate ids        rejected: Duplicate work-unit IDs\ncycle                rejected: No executable units remain; dependency graph is blocked by: a, b"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: When parallel delegation is slower (ILLUSTRATIVE numbers)",
+    "headingKn": "ಪ್ರಯೋಗ 5: When parallel delegation is slower (ILLUSTRATIVE numbers)",
+    "bodyEn": "What it ran: When parallel delegation is slower (ILLUSTRATIVE numbers). What the lab concluded: the hours are invented to show the shape of the argument: the critical path sets the floor, and once coordination, integration and rework are added the parallel plan can lose to the serial one; the lab measured nothing about real agents",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: When parallel delegation is slower (ILLUSTRATIVE numbers). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the hours are invented to show the shape of the argument: the critical path sets the floor, and once coordination, integration and rework are added the parallel plan can lose to the serial one; the lab measured nothing about real agents"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely computing: when parallel delegation is slower (ILLUSTRATIVE numbers) ---\ntidy split       critical 4h + coordination 1h + integration 2h + rework 0h = 7h vs serial 12h -> faster\nsome conflicts   critical 4h + coordination 1h + integration 2h + rework 3h = 10h vs serial 12h -> faster\nheavy conflicts  critical 4h + coordination 2h + integration 3h + rework 6h = 15h vs serial 12h -> slower"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -209,6 +292,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Docs owning app/ conflicted with api owning app/accounts.py and the plan was refused. 2) A text prefix confused app with application. 3) Unsafe paths were rejected. 4) Four dependency defects were caught. 5) Invented overhead made parallel 15 hours against 12 serial.",
     "bodyKn": "1) docs ಗೆ app/ ಮಾಲೀಕತ್ವ api ಯ app/accounts.py ಜೊತೆ ಸಂಘರ್ಷಿಸಿ ಯೋಜನೆ ತಿರಸ್ಕೃತವಾಯಿತು. 2) ಪಠ್ಯ ಪೂರ್ವಪದ app ಅನ್ನು application ಜೊತೆ ಗೊಂದಲಗೊಳಿಸಿತು. 3) ಅಸುರಕ್ಷಿತ paths ತಿರಸ್ಕೃತವಾದವು. 4) ನಾಲ್ಕು ಅವಲಂಬನೆ ದೋಷ ಹಿಡಿಯಲ್ಪಟ್ಟವು. 5) ಕಲ್ಪಿತ ಹೆಚ್ಚುವರಿ ಸಮಯ ಸಮಾನಾಂತರವನ್ನು 12 ಅನುಕ್ರಮಕ್ಕೆ ವಿರುದ್ಧ 15 ಗಂಟೆ ಮಾಡಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B dg_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B dg_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B dg_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B dg_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

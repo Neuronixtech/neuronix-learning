@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Merging two worker branches in the contract order",
+    "headingKn": "ಪ್ರಯೋಗ 1: Merging two worker branches in the contract order",
+    "bodyEn": "What it ran: Merging two worker branches in the contract order. What the lab concluded: two branches that touched different files merged cleanly in the stated order; a clean merge only says git could combine the text",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Merging two worker branches in the contract order. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): two branches that touched different files merged cleanly in the stated order; a clean merge only says git could combine the text"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: merging two worker branches in the contract order ---\nmerge result: (['worker/api', 'worker/docs'], 'all merged')\nlog: ffdb5ee merge worker/docs | 4bed6d3 merge worker/api | 2fb946e docs add return value | 7fa79f0 api adds username | ca03c82 base config |"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A semantic conflict that git did not report",
+    "headingKn": "ಪ್ರಯೋಗ 2: A semantic conflict that git did not report",
+    "bodyEn": "What it ran: A semantic conflict that git did not report. What the lab concluded: the api branch added a required username parameter and the docs branch still says the endpoint takes only email; git merged both without complaint and only a check that compares the two surfaces found the disagreement",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A semantic conflict that git did not report. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the api branch added a required username parameter and the docs branch still says the endpoint takes only email; git merged both without complaint and only a check that compares the two surfaces found the disagreement"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: a semantic conflict that git did not report ---\ncode requires username: True | docs mention username: False\ncross-unit check passed: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A mechanical conflict stops the merge and leaves a clean tree",
+    "headingKn": "ಪ್ರಯೋಗ 3: A mechanical conflict stops the merge and leaves a clean tree",
+    "bodyEn": "What it ran: A mechanical conflict stops the merge and leaves a clean tree. What the lab concluded: worker a merged, worker b conflicted on the same line and the merge was aborted instead of resolved by guessing; a conflict is a decision point, and the tree is back to a clean state for whoever decides",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A mechanical conflict stops the merge and leaves a clean tree. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): worker a merged, worker b conflicted on the same line and the merge was aborted instead of resolved by guessing; a conflict is a decision point, and the tree is back to a clean state for whoever decides"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a mechanical conflict stops the merge and leaves a clean tree ---\nmerge result: (['worker/a'], 'conflict while merging worker/b; merge aborted')\nworking tree status after the abort: '' | config now: MAX_RETRIES = 5"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The integration gate",
+    "headingKn": "ಪ್ರಯೋಗ 4: The integration gate",
+    "bodyEn": "What it ran: The integration gate. What the lab concluded: a pass needs every check, and automated success does not supply a missing approval, so the second line blocked with only the approval missing",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The integration gate. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a pass needs every check, and automated success does not supply a missing approval, so the second line blocked with only the approval missing"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: the integration gate ---\neverything passes, approval not needed : ('PASS', [])\neverything passes, approval required   : ('BLOCK', ['human approval missing'])\ntests pass but scope failed             : ('BLOCK', ['scope'])\nproof and review failed                 : ('BLOCK', ['proof', 'review'])"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: An approval flag the agent can set, and a signed record it cannot forge",
+    "headingKn": "ಪ್ರಯೋಗ 5: An approval flag the agent can set, and a signed record it cannot forge",
+    "bodyEn": "What it ran: An approval flag the agent can set, and a signed record it cannot forge. What the lab concluded: a plain boolean was set by the code that wanted the permission, while the signed record failed when the action or the approver was changed; the key here is a constant in the lab, and a real key must be held by a service the agent cannot read",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An approval flag the agent can set, and a signed record it cannot forge. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a plain boolean was set by the code that wanted the permission, while the signed record failed when the action or the approver was changed; the key here is a constant in the lab, and a real key must be held by a service the agent cannot read"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: an approval flag the agent can set, and a signed record it cannot forge ---\nflag before: False\nflag after the agent assigns it: True\nsigned record valid for production_write: True\nsame record presented for another action: False\napprover field edited to 'agent'        : False"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Two clean branches merged in the stated order. 2) A semantic disagreement passed git and failed a cross-unit check. 3) A mechanical conflict aborted the merge and left a clean tree. 4) The gate blocked a missing approval. 5) A boolean flag was self-set and a signed record resisted edits.",
     "bodyKn": "1) ಎರಡು ಸ್ವಚ್ಛ branches ಹೇಳಿದ ಕ್ರಮದಲ್ಲಿ ವಿಲೀನವಾದವು. 2) ಅರ್ಥಗತ ಭಿನ್ನಾಭಿಪ್ರಾಯ git ಪಾಸ್ ಮಾಡಿ cross-unit ಪರಿಶೀಲನೆ ವಿಫಲವಾಯಿತು. 3) ಯಾಂತ್ರಿಕ ಸಂಘರ್ಷ ವಿಲೀನ abort ಮಾಡಿ ಸ್ವಚ್ಛ ಮರ ಬಿಟ್ಟಿತು. 4) gate ಕಾಣೆಯಾದ ಅನುಮೋದನೆ ತಡೆಯಿತು. 5) boolean ಧ್ವಜ ಸ್ವಯಂ-ಹೊಂದಿಸಲ್ಪಟ್ಟಿತು ಮತ್ತು ಸಹಿ ದಾಖಲೆ ಸಂಪಾದನೆ ವಿರೋಧಿಸಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B dg_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B dg_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B dg_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B dg_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

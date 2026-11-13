@@ -137,6 +137,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Two worktrees give two physical checkouts",
+    "headingKn": "ಪ್ರಯೋಗ 1: Two worktrees give two physical checkouts",
+    "bodyEn": "What it ran: Two worktrees give two physical checkouts. What the lab concluded: the api worker's edit exists only in its own folder; the other checkouts still hold v1, which is what stops two workers from editing one working directory at once, and nothing in it limits which files each worker may touch",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Two worktrees give two physical checkouts. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the api worker's edit exists only in its own folder; the other checkouts still hold v1, which is what stops two workers from editing one working directory at once, and nothing in it limits which files each worker may touch"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: two worktrees give two physical checkouts ---\nmain checkout app/accounts.py : v1\napi worktree app/accounts.py  : v2 by api worker\ndocs worktree app/accounts.py : v1\nworktrees registered: 3"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A committed-only change list misses uncommitted and new files",
+    "headingKn": "ಪ್ರಯೋಗ 2: A committed-only change list misses uncommitted and new files",
+    "bodyEn": "What it ran: A committed-only change list misses uncommitted and new files. What the lab concluded: the edit to settings.py and the new file were not committed, so the committed-only list passed the audit and the full list rejected two files; the integrator has to look at the whole working tree",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A committed-only change list misses uncommitted and new files. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the edit to settings.py and the new file were not committed, so the committed-only list passed the audit and the full list rejected two files; the integrator has to look at the whole working tree"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: a committed-only change list misses uncommitted and new files ---\ncommitted changes since the base: ['app/accounts.py']\nall changes (committed, uncommitted, untracked): ['app/accounts.py', 'app/extra.py', 'app/settings.py']\naudit of the committed list : {'accepted': True, 'unauthorized': []}\naudit of the full list      : {'accepted': False, 'unauthorized': ['app/extra.py', 'app/settings.py']}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A rename out of an owned path",
+    "headingKn": "ಪ್ರಯೋಗ 3: A rename out of an owned path",
+    "bodyEn": "What it ran: A rename out of an owned path. What the lab concluded: the move out of app/ into docs/ appears under its new name only when renames are detected, and listing both ends showed that the docs worker also removed a file in app/ it does not own",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A rename out of an owned path. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the move out of app/ into docs/ appears under its new name only when renames are detected, and listing both ends showed that the docs worker also removed a file in app/ it does not own"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: a rename out of an owned path ---\ndiff with rename detection  : ['docs/old.py']\ndiff without rename detection: ['app/old.py', 'docs/old.py']\naudit for a docs-only owner : {'accepted': False, 'unauthorized': ['app/old.py']}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Separate worktrees still share the output path they are told to write",
+    "headingKn": "ಪ್ರಯೋಗ 4: Separate worktrees still share the output path they are told to write",
+    "bodyEn": "What it ran: Separate worktrees still share the output path they are told to write. What the lab concluded: the second worker overwrote the first worker's evidence in the shared location and nothing noticed; separate worktrees isolated the source files and not the output path, so every worker needs its own evidence directory",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Separate worktrees still share the output path they are told to write. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the second worker overwrote the first worker's evidence in the shared location and nothing noticed; separate worktrees isolated the source files and not the output path, so every worker needs its own evidence directory"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: separate worktrees still share the output path they are told to write ---\nshared results.json now says: {'worker': 'docs', 'passed': 3}\nper-worker evidence files: ['evidence/api/results.json', 'evidence/docs/results.json'] | both survive: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A shared state file loses a worker's update",
+    "headingKn": "ಪ್ರಯೋಗ 5: A shared state file loses a worker's update",
+    "bodyEn": "What it ran: A shared state file loses a worker's update. What the lab concluded: both workers read the file before either wrote, so the api update was lost when the docs worker wrote its older copy back; a database, a port or a cache shared between worktrees fails the same way, and giving each worker its own state avoids it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A shared state file loses a worker's update. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both workers read the file before either wrote, so the api update was lost when the docs worker wrote its older copy back; a database, a port or a cache shared between worktrees fails the same way, and giving each worker its own state avoids it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a shared state file loses a worker's update ---\nstate after both workers wrote: {'api': 'pending', 'docs': 'done'}"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -194,6 +277,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Worktrees gave separate checkouts. 2) A committed-only list missed two files the full list found. 3) A rename hid the removal from app/ until both ends were listed. 4) A shared results path lost the first worker's evidence. 5) A shared state file lost an update.",
     "bodyKn": "1) Worktrees ಪ್ರತ್ಯೇಕ checkouts ನೀಡಿದವು. 2) commit ಮಾಡಿದ-ಮಾತ್ರ ಪಟ್ಟಿ ಪೂರ್ಣ ಪಟ್ಟಿ ಕಂಡ ಎರಡು ಫೈಲ್ ತಪ್ಪಿಸಿತು. 3) rename app/ ನಿಂದ ತೆಗೆಯುವಿಕೆ ಮರೆಮಾಡಿ ಎರಡೂ ತುದಿ ಪಟ್ಟಿ ಮಾಡುವವರೆಗೆ. 4) ಹಂಚಿಕೆಯ ಫಲಿತಾಂಶ path ಮೊದಲ worker ಸಾಕ್ಷ್ಯ ಕಳೆಯಿತು. 5) ಹಂಚಿಕೆಯ ಸ್ಥಿತಿ ಫೈಲ್ ಒಂದು ನವೀಕರಣ ಕಳೆಯಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B dg_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B dg_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B dg_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B dg_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
