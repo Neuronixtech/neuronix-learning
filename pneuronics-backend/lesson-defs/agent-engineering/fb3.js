@@ -137,6 +137,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A continue, change or stop brief (all numbers invented)",
+    "headingKn": "ಪ್ರಯೋಗ 1: A continue, change or stop brief (all numbers invented)",
+    "bodyEn": "What it ran: A continue, change or stop brief (all numbers invented). What the lab concluded: a guardrail breach stopped the pilot even though everything else was inside limits, and missing all three limits gave stop while missing one or two gave change; this three-way rule and its limits are the lab's own",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A continue, change or stop brief (all numbers invented). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a guardrail breach stopped the pilot even though everything else was inside limits, and missing all three limits gave stop while missing one or two gave change; this three-way rule and its limits are the lab's own"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a continue, change or stop brief (all numbers invented) ---\nall inside limits                      -> ('continue', ['outcome met inside review and cost limits'])\noutcome met, review effort too high    -> ('change', ['human review effort above budget'])\noutcome missed and cost over           -> ('change', ['outcome target not met', 'cost above ceiling'])\neverything missed                      -> ('stop', ['outcome target not met', 'human review effort above budget', 'cost above ceiling'])\nguardrail breached, all else fine      -> ('stop', ['guardrail breached'])"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Did the corrective action work? (ILLUSTRATIVE weekly counts)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Did the corrective action work? (ILLUSTRATIVE weekly counts)",
+    "bodyEn": "What it ran: Did the corrective action work? (ILLUSTRATIVE weekly counts). What the lab concluded: the first fall of about 63 percent (8.50 to 3.17) is large, and the second shows no change in the mean at all (8.50 to 8.50) although its weekly values moved between 7 and 10; six weeks each side with no control group, so even a large fall is a lead and not proof the action caused it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Did the corrective action work? (ILLUSTRATIVE weekly counts). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first fall of about 63 percent (8.50 to 3.17) is large, and the second shows no change in the mean at all (8.50 to 8.50) although its weekly values moved between 7 and 10; six weeks each side with no control group, so even a large fall is a lead and not proof the action caused it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely computing: did the corrective action work? (ILLUSTRATIVE weekly counts) ---\nafter a fix      mean before=8.50 after=3.17 change=-62.7%\nno real change   mean before=8.50 after=8.50 change=0.0%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Keep, revise or retire",
+    "headingKn": "ಪ್ರಯೋಗ 3: Keep, revise or retire",
+    "bodyEn": "What it ran: Keep, revise or retire. What the lab concluded: a control is retired only when something stronger took over and the failure stayed away, quiet alone keeps it, and a control that is still stopping real failures is kept; recurrence despite the control sends it to revision",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Keep, revise or retire. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a control is retired only when something stronger took over and the failure stayed away, quiet alone keeps it, and a control that is still stopping real failures is kept; recurrence despite the control sends it to revision"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: keep, revise or retire ---\nreplaced by stronger control, no recurrence  -> retire\nquiet for 90 days, nothing replaces it       -> keep (no replacement, silence is not proof)\nstill blocking real failures                 -> keep\nrecurring despite the control                -> revise"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A bounded experiment budget",
+    "headingKn": "ಪ್ರಯೋಗ 4: A bounded experiment budget",
+    "bodyEn": "What it ran: A bounded experiment budget. What the lab concluded: both limits have to hold and either one stops the experiment for review; the 15 days and 1000 units are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A bounded experiment budget. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both limits have to hold and either one stops the experiment for review; the 15 days and 1000 units are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a bounded experiment budget ---\ndays 10 cost  800: within a 15-day, 1000-unit budget = True\ndays 15 cost  800: within a 15-day, 1000-unit budget = True\ndays 10 cost 1200: within a 15-day, 1000-unit budget = False\ndays 16 cost 1300: within a 15-day, 1000-unit budget = False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Evidence labels in a brief",
+    "headingKn": "ಪ್ರಯೋಗ 5: Evidence labels in a brief",
+    "bodyEn": "What it ran: Evidence labels in a brief. What the lab concluded: a decision brief that labels each claim as observed, reported, inferred or simulated lets a reader weigh them differently, and only the first of these four supports a statement about what happened in real use",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Evidence labels in a brief. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a decision brief that labels each claim as observed, reported, inferred or simulated lets a reader weigh them differently, and only the first of these four supports a statement about what happened in real use"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: evidence labels in a brief ---\nobservation median triage time fell to 1.9 minutes\nreported    engineers say the tool is trusted\ninference   it should scale to 10x load\nsimulation  the replay passed 8 of 8"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -194,6 +277,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) A guardrail breach stopped a pilot. 2) A 63 percent fall is a lead, not proof. 3) Only replacement plus no recurrence retired a control. 4) Both budget limits must hold. 5) Claims carry evidence labels.",
     "bodyKn": "1) guardrail ಉಲ್ಲಂಘನೆ ಪೈಲಟ್ ನಿಲ್ಲಿಸಿತು. 2) 63 ಶೇಕಡಾ ಇಳಿಕೆ ಸುಳಿವು, ಸಾಬೀತಲ್ಲ. 3) ಬದಲಿ ಮತ್ತು ಮರುಕಳಿಕೆ ಇಲ್ಲದಿರುವುದು ಮಾತ್ರ ನಿಯಂತ್ರಣ ನಿವೃತ್ತಗೊಳಿಸಿತು. 4) ಎರಡೂ ಬಜೆಟ್ ಮಿತಿ ಉಳಿಯಬೇಕು. 5) ಹೇಳಿಕೆಗಳು ಸಾಕ್ಷ್ಯ ಲೇಬಲ್ ಹೊತ್ತಿವೆ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B fb_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B fb_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B fb_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B fb_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

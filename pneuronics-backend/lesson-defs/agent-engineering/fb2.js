@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: An owned action carries an owner, a verification, a review date and a retirement condition",
+    "headingKn": "ಪ್ರಯೋಗ 1: An owned action carries an owner, a verification, a review date and a retirement condition",
+    "bodyEn": "What it ran: An owned action carries an owner, a verification, a review date and a retirement condition. What the lab concluded: an action without an owner, a way to verify it, a review date and a condition for retiring it is a wish; the dates here are invented and the lab fixes today at 2026-11-14",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An owned action carries an owner, a verification, a review date and a retirement condition. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an action without an owner, a way to verify it, a review date and a condition for retiring it is a wish; the dates here are invented and the lab fixes today at 2026-11-14"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: an owned action carries an owner, a verification, a review date and a retirement condition ---\nsignal       S002\nlayer        scope_policy\nowner        platform\nverify       run the scope check against the last 20 agent diffs\nreview_by    2027-01-15\nretire_when  no scope violations for 90 days and the permission boundary replaces it\nvalidation errors: []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Incomplete actions are refused",
+    "headingKn": "ಪ್ರಯೋಗ 2: Incomplete actions are refused",
+    "bodyEn": "What it ran: Incomplete actions are refused. What the lab concluded: each missing or malformed field produced its own error and a past review date was refused, so a backlog cannot fill with actions nobody will ever revisit",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Incomplete actions are refused. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each missing or malformed field produced its own error and a past review date was refused, so a backlog cannot fill with actions nobody will ever revisit"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: incomplete actions are refused ---\nno owner                 ['owner is required']\nno verification          ['verify is required']\nno retirement condition  ['retire_when is required']\nreview date in the past  ['review_by must be in the future']\nbad date                 ['review_by is not a date']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: What kind of evidence can verify what",
+    "headingKn": "ಪ್ರಯೋಗ 3: What kind of evidence can verify what",
+    "bodyEn": "What it ran: What kind of evidence can verify what. What the lab concluded: a simulation can show a code path behaves, and it cannot show that a real user's failure is gone, and a report or an inference is a lead and not a verification; the table is the lab's own policy",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What kind of evidence can verify what. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a simulation can show a code path behaves, and it cannot show that a real user's failure is gone, and a report or an inference is a lead and not a verification; the table is the lab's own policy"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: what kind of evidence can verify what ---\nobservation can verify a real-world failure is fixed: True  | can verify a code-path claim: True\nreported    can verify a real-world failure is fixed: False | can verify a code-path claim: False\ninference   can verify a real-world failure is fixed: False | can verify a code-path claim: False\nsimulation  can verify a real-world failure is fixed: False | can verify a code-path claim: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A review-date ordered backlog",
+    "headingKn": "ಪ್ರಯೋಗ 4: A review-date ordered backlog",
+    "bodyEn": "What it ran: A review-date ordered backlog. What the lab concluded: the backlog sorts by review date so the next control to revisit is at the top; the sort does not weigh priority, which is a separate score from Part 1",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A review-date ordered backlog. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the backlog sorts by review date so the next control to revisit is at the top; the sort does not weigh priority, which is a separate score from Part 1"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a review-date ordered backlog ---\n2026-12-01 S004 sre | due in 17 days\n2027-01-15 S002 platform | due in 62 days\n2027-02-01 S003 api-team | due in 79 days"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The JSON backlog",
+    "headingKn": "ಪ್ರಯೋಗ 5: The JSON backlog",
+    "bodyEn": "What it ran: The JSON backlog. What the lab concluded: the backlog is built in memory and round-trips through JSON, and the lab does not write outputs/feedback-backlog.json",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The JSON backlog. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the backlog is built in memory and round-trips through JSON, and the lab does not write outputs/feedback-backlog.json"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: the JSON backlog ---\nactions: 3 | every action valid: True | bytes: 609"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) A complete action names owner, verification, review date and retirement. 2) Five incomplete forms were refused. 3) Only an observation verifies a real-world fix. 4) The backlog sorted by review date. 5) It was built in memory.",
     "bodyKn": "1) ಸಂಪೂರ್ಣ ಕ್ರಿಯೆ ಮಾಲೀಕ, ಪರಿಶೀಲನೆ, ವಿಮರ್ಶೆ ದಿನಾಂಕ ಮತ್ತು ನಿವೃತ್ತಿ ಹೆಸರಿಸುತ್ತದೆ. 2) ಐದು ಅಪೂರ್ಣ ರೂಪಗಳು ನಿರಾಕರಿಸಲ್ಪಟ್ಟವು. 3) observation ಮಾತ್ರ ನಿಜ-ಜಗತ್ತಿನ ಸರಿಪಡಿಕೆ ಪರಿಶೀಲಿಸುತ್ತದೆ. 4) ಬ್ಯಾಕ್‌ಲಾಗ್ ವಿಮರ್ಶೆ ದಿನಾಂಕದಿಂದ ವಿಂಗಡಣೆ. 5) ಅದನ್ನು ಮೆಮೊರಿಯಲ್ಲಿ ನಿರ್ಮಿಸಲಾಯಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B fb_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B fb_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B fb_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B fb_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

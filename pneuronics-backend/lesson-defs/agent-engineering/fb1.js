@@ -152,6 +152,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Six signals from four sources routed to owning layers (signals invented)",
+    "headingKn": "ಪ್ರಯೋಗ 1: Six signals from four sources routed to owning layers (signals invented)",
+    "bodyEn": "What it ran: Six signals from four sources routed to owning layers (signals invented). What the lab concluded: each signal landed on a layer with a named owner, and the unfamiliar kind tone_complaint went to triage instead of being dropped or guessed; a route table is only as complete as its entries",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Six signals from four sources routed to owning layers (signals invented). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each signal landed on a layer with a named owner, and the unfamiliar kind tone_complaint went to triage instead of being dropped or guessed; a route table is only as complete as its entries"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: six signals from four sources routed to owning layers (signals invented) ---\nS001 user              wrong_answer    -> layer=test_suite        owner=quality\nS002 agent_correction  scope           -> layer=scope_policy      owner=platform\nS003 evaluation        format          -> layer=schema_validator  owner=api-team\nS004 incident          timeout         -> layer=runtime_limits    owner=sre\nS005 user              preference      -> layer=human_decision    owner=product\nS006 user              tone_complaint  -> layer=triage            owner=triage-rota"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Priority = severity x recurrence",
+    "headingKn": "ಪ್ರಯೋಗ 2: Priority = severity x recurrence",
+    "bodyEn": "What it ran: Priority = severity x recurrence. What the lab concluded: the wrong refund answer (4 x 6 = 24) outranked the format failure that happened nine times (2 x 9 = 18) and the single worst incident, a timeout at severity 5 seen twice (10), came fourth; the ranking depends on the scoring rule, and the severities here are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Priority = severity x recurrence. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the wrong refund answer (4 x 6 = 24) outranked the format failure that happened nine times (2 x 9 = 18) and the single worst incident, a timeout at severity 5 seen twice (10), came fourth; the ranking depends on the scoring rule, and the severities here are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely computing: priority = severity x recurrence ---\nS001 sev=4 n=6 priority=24\nS003 sev=2 n=9 priority=18\nS002 sev=3 n=5 priority=15\nS004 sev=5 n=2 priority=10\nS006 sev=2 n=2 priority= 4\nS005 sev=1 n=3 priority= 3"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A timeout classified from a real subprocess",
+    "headingKn": "ಪ್ರಯೋಗ 3: A timeout classified from a real subprocess",
+    "bodyEn": "What it ran: A timeout classified from a real subprocess. What the lab concluded: the hanging command was stopped after one second and reported as a timeout, which is a different signal from a command that ran and failed; the first routes to runtime limits and the second to the test suite, and treating both as 'failed' would send them to the wrong owner",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A timeout classified from a real subprocess. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the hanging command was stopped after one second and reported as a timeout, which is a different signal from a command that ran and failed; the first routes to runtime limits and the second to the test suite, and treating both as 'failed' would send them to the wrong owner"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a timeout classified from a real subprocess ---\nquick command                -> ok\nfailing command              -> failed\nhanging command, limit 1 s   -> timeout"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The timeout signal joins the router",
+    "headingKn": "ಪ್ರಯೋಗ 4: The timeout signal joins the router",
+    "bodyEn": "What it ran: The timeout signal joins the router. What the lab concluded: adding the timeout kind needed one line in each of two tables and no change to the router function, so a new signal kind is cheap to add as long as its owner is named",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The timeout signal joins the router. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): adding the timeout kind needed one line in each of two tables and no change to the router function, so a new signal kind is cheap to add as long as its owner is named"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: the timeout signal joins the router ---\n{'id': 'S007', 'layer': 'runtime_limits', 'owner': 'sre'} | priority: 4"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A signal with no owner for its layer",
+    "headingKn": "ಪ್ರಯೋಗ 5: A signal with no owner for its layer",
+    "bodyEn": "What it ran: A signal with no owner for its layer. What the lab concluded: a layer added without an owner raised a KeyError, which is better than routing to nobody, and it shows why every layer in the table needs an owner entry before a signal can be sent to it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A signal with no owner for its layer. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a layer added without an owner raised a KeyError, which is better than routing to nobody, and it shows why every layer in the table needs an owner entry before a signal can be sent to it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a signal with no owner for its layer ---\nrouting failed with KeyError: 'legal_review'"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -209,6 +292,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Six signals reached named owners. 2) Priority was severity times recurrence. 3) A real hang was classified as timeout. 4) A new kind needed one line per table. 5) A layer without an owner raised.",
     "bodyKn": "1) ಆರು signals ಹೆಸರಿಸಿದ ಮಾಲೀಕರನ್ನು ತಲುಪಿದವು. 2) ಆದ್ಯತೆ ತೀವ್ರತೆ ಗುಣಿಸು ಪುನರಾವರ್ತನೆ. 3) ನಿಜ ಸ್ಥಗಿತ timeout ಎಂದು ವರ್ಗೀಕೃತ. 4) ಹೊಸ ವಿಧಕ್ಕೆ ಪ್ರತಿ ಕೋಷ್ಟಕಕ್ಕೆ ಒಂದು ಸಾಲು ಬೇಕಿತ್ತು. 5) ಮಾಲೀಕರಿಲ್ಲದ ಪದರ ಅಪವಾದ ಎತ್ತಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B fb_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B fb_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B fb_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B fb_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
