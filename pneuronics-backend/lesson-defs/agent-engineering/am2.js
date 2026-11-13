@@ -133,6 +133,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The experiment is fixed before the data (made-up alert counts)",
+    "headingKn": "ಪ್ರಯೋಗ 1: The experiment is fixed before the data (made-up alert counts)",
+    "bodyEn": "What it ran: The experiment is fixed before the data (made-up alert counts). What the lab concluded: the claim, the threshold, the population and the sample minimum were written down and hashed before any alert was looked at, so a changed threshold shows up as a different hash",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The experiment is fixed before the data (made-up alert counts). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the claim, the threshold, the population and the sample minimum were written down and hashed before any alert was looked at, so a changed threshold shows up as a different hash"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the experiment is fixed before the data (made-up alert counts) ---\nexperiment: {'claim': 'at least 90 percent of alerts identify the failing service', 'threshold': 0.9, 'population': 'alerts from the last 30 days', 'min_sample': 50} | lock: cc567785d3"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The same observed rate gives different verdicts at different sample sizes",
+    "headingKn": "ಪ್ರಯೋಗ 2: The same observed rate gives different verdicts at different sample sizes",
+    "bodyEn": "What it ran: The same observed rate gives different verdicts at different sample sizes. What the lab concluded: the same 92 percent was ambiguous at 50, 100 and even 500 alerts because the lower end of the interval stayed under 0.90 (0.893 at 500), and only 475/500 = 95 percent cleared the threshold; 400/500 = 80 percent was the one far enough below for the whole interval to sit under 0.90; a point estimate alone would have said supports for the first four rows",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The same observed rate gives different verdicts at different sample sizes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the same 92 percent was ambiguous at 50, 100 and even 500 alerts because the lower end of the interval stayed under 0.90 (0.893 at 500), and only 475/500 = 95 percent cleared the threshold; 400/500 = 80 percent was the one far enough below for the whole interval to sit under 0.90; a point estimate alone would have said supports for the first four rows"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely computing: the same observed rate gives different verdicts at different sample sizes ---\n  46/50   rate=0.92  95% Wilson interval=(0.812, 0.968)  verdict=ambiguous\n  92/100  rate=0.92  95% Wilson interval=(0.85, 0.959)  verdict=ambiguous\n 460/500  rate=0.92  95% Wilson interval=(0.893, 0.941)  verdict=ambiguous\n 475/500  rate=0.95  95% Wilson interval=(0.927, 0.966)  verdict=supports\n  45/50   rate=0.90  95% Wilson interval=(0.786, 0.957)  verdict=ambiguous\n 400/500  rate=0.80  95% Wilson interval=(0.763, 0.833)  verdict=rejects"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Moving the threshold after the data is detectable",
+    "headingKn": "ಪ್ರಯೋಗ 3: Moving the threshold after the data is detectable",
+    "bodyEn": "What it ran: Moving the threshold after the data is detectable. What the lab concluded: lowering the threshold from 0.90 to 0.80 turned the same 46 of 50 from ambiguous into supports, which is exactly the move the lock exposes; the lab compares hashes and a team would have to check them in review",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Moving the threshold after the data is detectable. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): lowering the threshold from 0.90 to 0.80 turned the same 46 of 50 from ambiguous into supports, which is exactly the move the lock exposes; the lab compares hashes and a team would have to check them in review"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: moving the threshold after the data is detectable ---\noriginal lock: cc567785d3 | lock after edit: 9ad08a2eda | same: False\nverdict at 0.90 for 46/50: ambiguous | at the edited 0.80: supports"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A sample that does not represent the population",
+    "headingKn": "ಪ್ರಯೋಗ 4: A sample that does not represent the population",
+    "bodyEn": "What it ran: A sample that does not represent the population. What the lab concluded: an experiment that only looked at the well-behaved service reported 0.97 while the mixed population was 0.862, so the population definition has to say which alerts count; the numbers are invented for the lab",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A sample that does not represent the population. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an experiment that only looked at the well-behaved service reported 0.97 while the mixed population was 0.862, so the population definition has to say which alerts count; the numbers are invented for the lab"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: a sample that does not represent the population ---\nrate over all alerts (service mix 40 payments, 60 search): 0.862\nrate over a sample drawn only from search: 0.970"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Evidence is appended and never overwritten",
+    "headingKn": "ಪ್ರಯೋಗ 5: Evidence is appended and never overwritten",
+    "bodyEn": "What it ran: Evidence is appended and never overwritten. What the lab concluded: the first result is still in the log with a note saying it was superseded, so a reader can see what was believed at each point; an update in place would have lost the earlier reading",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Evidence is appended and never overwritten. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first result is still in the log with a note saying it was superseded, so a reader can see what was believed at each point; an update in place would have lost the earlier reading"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: evidence is appended and never overwritten ---\n{'exp': 'cc567785d3', 'successes': 46, 'n': 50, 'note': 'first pass'}\n{'exp': 'cc567785d3', 'successes': 460, 'n': 500, 'note': 'full 30 days'}\n{'supersedes': 0, 'note': 'first pass used only the first week'}"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -190,6 +273,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The threshold was locked first. 2) 92 percent was ambiguous up to 500 alerts. 3) A moved threshold changed the lock. 4) A search-only sample misled. 5) Evidence was appended, not overwritten.",
     "bodyKn": "1) ಮಿತಿ ಮೊದಲು ಲಾಕ್ ಆಯಿತು. 2) 92 ಶೇಕಡಾ 500 alerts ವರೆಗೂ ambiguous. 3) ಸರಿಸಿದ ಮಿತಿ lock ಬದಲಿಸಿತು. 4) search-ಮಾತ್ರ ಮಾದರಿ ದಾರಿ ತಪ್ಪಿಸಿತು. 5) ಸಾಕ್ಷ್ಯ ಸೇರಿಸಲಾಯಿತು, ಮೇಲ್ಬರೆಯಲಿಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B am_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B am_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B am_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B am_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

@@ -137,6 +137,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: An evidence verdict updates the map",
+    "headingKn": "ಪ್ರಯೋಗ 1: An evidence verdict updates the map",
+    "bodyEn": "What it ran: An evidence verdict updates the map. What the lab concluded: a supporting result removed A1 from the open list and an ambiguous one only lowered A4's uncertainty from 5 to 4, which left it still open; the verdicts here are scripted, as no experiment was actually run",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An evidence verdict updates the map. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a supporting result removed A1 from the open list and an ambiguous one only lowered A4's uncertainty from 5 to 4, which left it still open; the verdicts here are scripted, as no experiment was actually run"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: an evidence verdict updates the map ---\nriskiest first: [('A1', 60), ('A3', 50), ('A4', 50), ('A2', 32)]\nA1 supported -> supported uncertainty 1 | next: [('A3', 50), ('A4', 50), ('A2', 32)]\nA4 ambiguous -> uncertainty 4 status open | next: [('A3', 50), ('A4', 40), ('A2', 32)]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The verdict and the decision are separate records",
+    "headingKn": "ಪ್ರಯೋಗ 2: The verdict and the decision are separate records",
+    "bodyEn": "What it ran: The verdict and the decision are separate records. What the lab concluded: the evidence says what was observed and the decision says what the team does about it; keeping them apart lets two teams read the same evidence and decide differently without rewriting the evidence",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The verdict and the decision are separate records. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the evidence says what was observed and the decision says what the team does about it; keeping them apart lets two teams read the same evidence and decide differently without rewriting the evidence"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: the verdict and the decision are separate records ---\nverdict=supports  decision=proceed to the next assumption\nverdict=rejects   decision=stop and revise the plan\nverdict=ambiguous decision=gather more evidence or narrow the question"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The cheapest decisive experiment (ILLUSTRATIVE costs in hours)",
+    "headingKn": "ಪ್ರಯೋಗ 3: The cheapest decisive experiment (ILLUSTRATIVE costs in hours)",
+    "bodyEn": "What it ran: The cheapest decisive experiment (ILLUSTRATIVE costs in hours). What the lab concluded: A1 is the riskiest by score at 60, but A3 removes the most risk per hour (12.5 against 11.2 for A1) because it costs two hours, and A4 at 40 hours removes only 1.0 per hour; the picked experiment is therefore not the riskiest assumption, which is a result of the per-hour rule and of the assumption that resolving an item drops its uncertainty to 1, both of which are the lab's own choices",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The cheapest decisive experiment (ILLUSTRATIVE costs in hours). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): A1 is the riskiest by score at 60, but A3 removes the most risk per hour (12.5 against 11.2 for A1) because it costs two hours, and A4 at 40 hours removes only 1.0 per hour; the picked experiment is therefore not the riskiest assumption, which is a result of the per-hour rule and of the assumption that resolving an item drops its uncertainty to 1, both of which are the lab's own choices"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely computing: the cheapest decisive experiment (ILLUSTRATIVE costs in hours) ---\nA1 risk= 60 cost= 4h  risk removed if resolved= 45  per hour=11.2\nA3 risk= 50 cost= 2h  risk removed if resolved= 25  per hour=12.5\nA4 risk= 50 cost=40h  risk removed if resolved= 40  per hour=1.0\nA2 risk= 32 cost=16h  risk removed if resolved= 24  per hour=1.5\nchosen: ('A3', 25, 12.5)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Irreversibility orders risky experiments",
+    "headingKn": "ಪ್ರಯೋಗ 4: Irreversibility orders risky experiments",
+    "bodyEn": "What it ran: Irreversibility orders risky experiments. What the lab concluded: the irreversible step sorted last, after the rollback was validated, but only because the lab sorts by irreversibility alone; dependencies between steps are not modelled here, so a real plan still needs a human to check that the order makes sense",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Irreversibility orders risky experiments. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the irreversible step sorted last, after the rollback was validated, but only because the lab sorts by irreversibility alone; dependencies between steps are not modelled here, so a real plan still needs a human to check that the order makes sense"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: irreversibility orders risky experiments ---\nby irreversibility then name: ['inspect query dependencies', 'test the migration on a copy', 'validate the rollback procedure', 'run the migration in production']\nby the order a team might write them: ['inspect query dependencies', 'test the migration on a copy', 'run the migration in production', 'validate the rollback procedure']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A rejected assumption triggers a re-plan, and the report keeps the history",
+    "headingKn": "ಪ್ರಯೋಗ 5: A rejected assumption triggers a re-plan, and the report keeps the history",
+    "bodyEn": "What it ran: A rejected assumption triggers a re-plan, and the report keeps the history. What the lab concluded: the report holds the current map and the record of what it looked like before each verdict, so the change in A3 can be audited; it is built in memory and not written to a file",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A rejected assumption triggers a re-plan, and the report keeps the history. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the report holds the current map and the record of what it looked like before each verdict, so the change in A3 can be audited; it is built in memory and not written to a file"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a rejected assumption triggers a re-plan, and the report keeps the history ---\nA3 rejected -> status rejected | plan action: stop and revise the plan\nreport keys: ['history', 'map', 'next'] | history entries: 1 | earlier values kept: open"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -194,6 +277,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) A supports verdict closed an assumption and an ambiguous one only lowered uncertainty. 2) Verdict and decision are separate. 3) A3 won on risk per hour. 4) Irreversible steps go last. 5) The report kept earlier states.",
     "bodyKn": "1) supports ತೀರ್ಪು ಊಹೆ ಮುಚ್ಚಿತು ಮತ್ತು ambiguous ಅನಿಶ್ಚಿತತೆ ಮಾತ್ರ ಇಳಿಸಿತು. 2) ತೀರ್ಪು ಮತ್ತು ನಿರ್ಧಾರ ಬೇರೆ. 3) A3 ಪ್ರತಿ ಗಂಟೆ ಅಪಾಯದಲ್ಲಿ ಗೆದ್ದಿತು. 4) ಹಿಂತಿರುಗಿಸಲಾಗದ ಹಂತಗಳು ಕೊನೆಗೆ. 5) ವರದಿ ಹಿಂದಿನ ಸ್ಥಿತಿಗಳನ್ನು ಉಳಿಸಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B am_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B am_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B am_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B am_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

@@ -147,6 +147,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The assumption map and its scores (ratings are invented)",
+    "headingKn": "ಪ್ರಯೋಗ 1: The assumption map and its scores (ratings are invented)",
+    "bodyEn": "What it ran: The assumption map and its scores (ratings are invented). What the lab concluded: each hidden belief became a record with three ratings, and the ratings are the team's own judgement on a 1 to 5 scale, not measurements",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The assumption map and its scores (ratings are invented). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each hidden belief became a record with three ratings, and the ratings are the team's own judgement on a 1 to 5 scale, not measurements"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the assumption map and its scores (ratings are invented) ---\nA1 impact=5 uncertainty=4 irreversibility=3 product= 60 sum=12  At least 90 percent of alerts contain enough fields to ident\nA2 impact=4 uncertainty=4 irreversibility=2 product= 32 sum=10  Engineers will trust and act on the recommendations\nA3 impact=5 uncertainty=2 irreversibility=5 product= 50 sum=12  The assistant can run without write permission to production\nA4 impact=5 uncertainty=5 irreversibility=2 product= 50 sum=12  Recommendations cut triage time to under two minutes\nA5 impact=2 uncertainty=2 irreversibility=1 product=  4 sum= 5  The dashboard framework supports the needed charts"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Ranking by product and by sum",
+    "headingKn": "ಪ್ರಯೋಗ 2: Ranking by product and by sum",
+    "bodyEn": "What it ran: Ranking by product and by sum. What the lab concluded: the rule is a choice the team makes and should state, since the same ratings ranked differently; the lab uses the product so that one low rating pulls a risk down",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Ranking by product and by sum. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the rule is a choice the team makes and should state, since the same ratings ranked differently; the lab uses the product so that one low rating pulls a risk down"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: ranking by product and by sum ---\nby product: ['A1', 'A3', 'A4', 'A2', 'A5']\nby sum    : ['A3', 'A1', 'A4', 'A2', 'A5']\nthe rules disagree about the top item: the product put A1 first with 60 against 50 for A3 and A4, while the sum scored A1, A3 and A4 all at 12 and the tie-break on irreversibility put A3 first; A2 and A5 kept their plac…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Ties are broken by irreversibility",
+    "headingKn": "ಪ್ರಯೋಗ 3: Ties are broken by irreversibility",
+    "bodyEn": "What it ran: Ties are broken by irreversibility. What the lab concluded: three assumptions scored 24 each and the order came from the tie-break, which puts the least reversible one first and then falls back to the id; without a stated tie-break the order would depend on how the list was written",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Ties are broken by irreversibility. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): three assumptions scored 24 each and the order came from the tie-break, which puts the least reversible one first and then falls back to the id; without a stated tie-break the order would depend on how the list was written"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: ties are broken by irreversibility ---\nproducts: {'T1': 24, 'T2': 24, 'T3': 24}\nranked: ['T3', 'T1', 'T2']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Is the claim falsifiable",
+    "headingKn": "ಪ್ರಯೋಗ 4: Is the claim falsifiable",
+    "bodyEn": "What it ran: Is the claim falsifiable. What the lab concluded: a claim with a threshold or a condition can be shown wrong by an observation, and one made of words like intelligent and trust cannot; the check is a keyword heuristic, so a claim like 'works well enough' would also slip through without being flagged",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Is the claim falsifiable. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a claim with a threshold or a condition can be shown wrong by an observation, and one made of words like intelligent and trust cannot; the check is a keyword heuristic, so a claim like 'works well enough' would also slip through without being flagged"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: is the claim falsifiable ---\nThe assistant is intelligent and useful                    {'has_threshold_or_condition': False, 'vague_words': ['useful', 'intelligent']}\nAt least 90 percent of alerts name the failing service     {'has_threshold_or_condition': True, 'vague_words': []}\nEngineers trust the tool                                   {'has_threshold_or_condition': False, 'vague_words': ['trust']}\nThe tool runs without write permission to production       {'has_threshold_or_condition': True, 'vague_words': []}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Invalid ratings are rejected",
+    "headingKn": "ಪ್ರಯೋಗ 5: Invalid ratings are rejected",
+    "bodyEn": "What it ran: Invalid ratings are rejected. What the lab concluded: ratings must be whole numbers from 1 to 5, and a bool was refused explicitly because True would otherwise pass as 1",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Invalid ratings are rejected. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): ratings must be whole numbers from 1 to 5, and a bool was refused explicitly because True would otherwise pass as 1"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: invalid ratings are rejected ---\nrating 0       rejected: X: impact must be an integer from 1 to 5\nrating 6       rejected: X: uncertainty must be an integer from 1 to 5\nfloat rating   rejected: X: irreversibility must be an integer from 1 to 5\nbool rating    rejected: X: impact must be an integer from 1 to 5\nblank claim    rejected: X: claim is required"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -204,6 +287,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Beliefs became records with three ratings. 2) Product and sum disagreed on the top item. 3) Ties were broken by irreversibility. 4) Vague claims were flagged. 5) Bad ratings were rejected.",
     "bodyKn": "1) ನಂಬಿಕೆಗಳು ಮೂರು ರೇಟಿಂಗ್ ಇರುವ ದಾಖಲೆಗಳಾದವು. 2) Product ಮತ್ತು sum ಮೇಲ್ಭಾಗದ ಐಟಂ ಬಗ್ಗೆ ಒಪ್ಪಲಿಲ್ಲ. 3) tie ಗಳನ್ನು irreversibility ಮೂಲಕ ಮುರಿಯಲಾಯಿತು. 4) ಅಸ್ಪಷ್ಟ ಹೇಳಿಕೆಗಳು ಗುರುತಾದವು. 5) ಕೆಟ್ಟ ರೇಟಿಂಗ್‌ಗಳು ತಿರಸ್ಕೃತವಾದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B am_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B am_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B am_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B am_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
