@@ -142,6 +142,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: What can run next depends on verification, not on the schedule",
+    "headingKn": "ಪ್ರಯೋಗ 1: What can run next depends on verification, not on the schedule",
+    "bodyEn": "What it ran: What can run next depends on verification, not on the schedule. What the lab concluded: the wave schedule would have released W-002 and W-003 as soon as W-001 was placed in wave 1, while the execution state released them only once W-001 was verified; a failed prerequisite releases nothing",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What can run next depends on verification, not on the schedule. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the wave schedule would have released W-002 and W-003 as soon as W-001 was placed in wave 1, while the execution state released them only once W-001 was verified; a failed prerequisite releases nothing"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: what can run next depends on verification, not on the schedule ---\nstart: ['W-001']\nW-001 running: []\nW-001 failed : []\nW-001 verified: ['W-002', 'W-003']\nverifying W-002 with no receipt: verified requires a proof receipt"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Resuming after an interruption",
+    "headingKn": "ಪ್ರಯೋಗ 2: Resuming after an interruption",
+    "bodyEn": "What it ran: Resuming after an interruption. What the lab concluded: W-002 was left running with no receipt, so the next session treated it as unfinished and reset it to pending instead of assuming success; the workspace and logs still have to be inspected before it is rerun, because the first attempt may have changed files",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Resuming after an interruption. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): W-002 was left running with no receipt, so the next session treated it as unfinished and reset it to pending instead of assuming success; the workspace and logs still have to be inspected before it is rerun, because the first attempt may have changed files"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: resuming after an interruption ---\nstate on disk after the session ended: {'W-001': 'verified', 'W-002': 'running', 'W-003': 'pending', 'W-004': 'pending'}\ninterrupted items found: ['W-002'] | now ready: ['W-002', 'W-003']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A torn state file versus an atomic replace",
+    "headingKn": "ಪ್ರಯೋಗ 3: A torn state file versus an atomic replace",
+    "bodyEn": "What it ran: A torn state file versus an atomic replace. What the lab concluded: the in-place write left an unreadable file, and writing a temp file first kept the last good state when the simulated crash hit the temp file",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A torn state file versus an atomic replace. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the in-place write left an unreadable file, and writing a temp file first kept the last good state when the simulated crash hit the temp file"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a torn state file versus an atomic replace ---\ntorn write (cut short on purpose): unreadable\ncrash while writing the temp file, state file still parses: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The gate on a real git diff, tests passing and a forbidden file changed",
+    "headingKn": "ಪ್ರಯೋಗ 4: The gate on a real git diff, tests passing and a forbidden file changed",
+    "bodyEn": "What it ran: The gate on a real git diff, tests passing and a forbidden file changed. What the lab concluded: with every test passing the gate still blocked once production.env was in the diff, and it also blocked a missing proof and a proof that ran no tests; the changed-file list came from git and not from the worker",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The gate on a real git diff, tests passing and a forbidden file changed. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with every test passing the gate still blocked once production.env was in the diff, and it also blocked a missing proof and a proof that ran no tests; the changed-file list came from git and not from the worker"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: the gate on a real git diff, tests passing and a forbidden file changed ---\nchanged: ['app/checkout.py'] -> ('PASS', [])\nchanged: ['app/checkout.py', 'production.env'] -> ('BLOCK', ['forbidden change: production.env'])\nno proof            -> ('BLOCK', ['no proof receipt'])\nproof ran zero tests -> ('BLOCK', ['proof ran no tests'])"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Stale proof after a later edit",
+    "headingKn": "ಪ್ರಯೋಗ 5: Stale proof after a later edit",
+    "bodyEn": "What it ran: Stale proof after a later edit. What the lab concluded: a proof that passed on the first version says nothing about the second, so a verified item must record what it was verified against and be reopened when that content changes",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Stale proof after a later edit. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a proof that passed on the first version says nothing about the second, so a verified item must record what it was verified against and be reopened when that content changes"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: stale proof after a later edit ---\nreceipt sha: 3bfc269594 | file now: fb04dcb697 | proof still applies: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Irreversible work before approval (a rule of our own)",
+    "headingKn": "ಪ್ರಯೋಗ 6: Irreversible work before approval (a rule of our own)",
+    "bodyEn": "What it ran: Irreversible work before approval (a rule of our own). What the lab concluded: the structural validator accepts both W-2 and W-4 because both have valid dependencies, and only this extra rule noticed that W-2 can run without an approval step before it; deciding which items are irreversible is a judgement, not something the graph can infer",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Irreversible work before approval (a rule of our own). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the structural validator accepts both W-2 and W-4 because both have valid dependencies, and only this extra rule noticed that W-2 can run without an approval step before it; deciding which items are irreversible is a judgement, not something the graph can infer"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: irreversible work before approval (a rule of our own) ---\nirreversible items with no approval ancestor: ['W-2']"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

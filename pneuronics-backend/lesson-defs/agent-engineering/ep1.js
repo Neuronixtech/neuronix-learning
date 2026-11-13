@@ -147,6 +147,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The lesson's four-item plan becomes three waves",
+    "headingKn": "ಪ್ರಯೋಗ 1: The lesson's four-item plan becomes three waves",
+    "bodyEn": "What it ran: The lesson's four-item plan becomes three waves. What the lab concluded: the contract has no prerequisites, implementation and documentation both wait only for the contract, and integration waits for both; items in the same wave are logically ready together, which says nothing yet about whether they can safely run at the same time",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lesson's four-item plan becomes three waves. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the contract has no prerequisites, implementation and documentation both wait only for the contract, and integration waits for both; items in the same wave are logically ready together, which says nothing yet about whether they can safely run at the same time"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the lesson's four-item plan becomes three waves ---\nWave 1: W-001\nWave 2: W-002, W-003\nWave 3: W-004"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Each structural defect is rejected with its own message",
+    "headingKn": "ಪ್ರಯೋಗ 2: Each structural defect is rejected with its own message",
+    "bodyEn": "What it ran: Each structural defect is rejected with its own message. What the lab concluded: each defect is caught before any edit, and the unknown dependency in particular would otherwise have made an executor wait for a prerequisite that can never finish",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Each structural defect is rejected with its own message. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each defect is caught before any edit, and the unknown dependency in particular would otherwise have made an executor wait for a prerequisite that can never finish"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: each structural defect is rejected with its own message ---\nduplicate id           rejected: Duplicate work item identifier\nblank evidence entry   rejected: A: missing evidence\nno evidence            rejected: A: missing evidence\nno proof               rejected: A: missing proof\nunknown dependency     rejected: A: unknown dependency W-999\nself dependency        rejected: A: depends on itself\nduplicate dependency   rejected: B: duplicate dependency\nempty plan             rejected: Plan cannot be empty"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A cycle is not an ordering problem, it is a missing decision",
+    "headingKn": "ಪ್ರಯೋಗ 3: A cycle is not an ordering problem, it is a missing decision",
+    "bodyEn": "What it ran: A cycle is not an ordering problem, it is a missing decision. What the lab concluded: no item in the cycle could ever start, so the scheduler stopped and named the stuck items instead of choosing a starting point; the repair was a new prerequisite, not deleting an edge",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A cycle is not an ordering problem, it is a missing decision. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): no item in the cycle could ever start, so the scheduler stopped and named the stuck items instead of choosing a starting point; the repair was a new prerequisite, not deleting an edge"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a cycle is not an ordering problem, it is a missing decision ---\ncycle plan: Dependency cycle detected among: A, B, C\nafter extracting a shared decision D: [['D'], ['A'], ['B'], ['C']]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: What waves save, under ILLUSTRATIVE durations",
+    "headingKn": "ಪ್ರಯೋಗ 4: What waves save, under ILLUSTRATIVE durations",
+    "bodyEn": "What it ran: What waves save, under ILLUSTRATIVE durations. What the lab concluded: the durations are invented for this lab; the saving appears only if implementation and documentation really can run in parallel with enough workers and no shared-file conflicts, and the integration step is still bound by the slower of the two",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What waves save, under ILLUSTRATIVE durations. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the durations are invented for this lab; the saving appears only if implementation and documentation really can run in parallel with enough workers and no shared-file conflicts, and the integration step is still bound by the slower of the two"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: what waves save, under ILLUSTRATIVE durations ---\nsequential total: 115 minutes | critical path: 85 minutes | saving: 30 minutes"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Structural validation does not check the evidence is true",
+    "headingKn": "ಪ್ರಯೋಗ 5: Structural validation does not check the evidence is true",
+    "bodyEn": "What it ran: Structural validation does not check the evidence is true. What the lab concluded: a nonempty string such as 'tests exist' and a proof of 'echo done' both pass the validator, because it checks presence and not truth; evidence has to be resolved against the repository and a proof only counts after it is executed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Structural validation does not check the evidence is true. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a nonempty string such as 'tests exist' and a proof of 'echo done' both pass the validator, because it checks presence and not truth; evidence has to be resolved against the repository and a proof only counts after it is executed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: structural validation does not check the evidence is true ---\nplan with vague evidence and an echo proof: accepted | waves: [['W-001']]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The plan as a JSON artifact",
+    "headingKn": "ಪ್ರಯೋಗ 6: The plan as a JSON artifact",
+    "bodyEn": "What it ran: The plan as a JSON artifact. What the lab concluded: the artifact records the plan and the computed order, not that any item was done or any proof passed, so a resumed session still needs a separate execution state",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The plan as a JSON artifact. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the artifact records the plan and the computed order, not that any item was done or any proof passed, so a resumed session still needs a separate execution state"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: the plan as a JSON artifact ---\nround trip equal: True | items: 4 | waves: [['W-001'], ['W-002', 'W-003'], ['W-004']]"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

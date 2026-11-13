@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Evidence receipts for five paths",
+    "headingKn": "ಪ್ರಯೋಗ 1: Evidence receipts for five paths",
+    "bodyEn": "What it ran: Evidence receipts for five paths. What the lab concluded: a real file gave size and a SHA-256 prefix, a missing file and a directory were reported as such, and both paths that climbed above the root were refused; a receipt says the file existed with that content when inspected, and nothing about what the code means",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Evidence receipts for five paths. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a real file gave size and a SHA-256 prefix, a missing file and a directory were reported as such, and both paths that climbed above the root were refused; a receipt says the file existed with that content when inspected, and nothing about what the code means"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: evidence receipts for five paths ---\napp/endpoint.py          {'source': 'app/endpoint.py', 'status': 'found', 'size': 39, 'sha256': 'bac4e08661ce'}\napp/missing.py           {'source': 'app/missing.py', 'status': 'missing'}\napp                      {'source': 'app', 'status': 'directory'}\n../outside.txt           {'source': '../outside.txt', 'status': 'outside_root'}\napp/../../outside.txt    {'source': 'app/../../outside.txt', 'status': 'outside_root'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A receipt goes stale when the file changes",
+    "headingKn": "ಪ್ರಯೋಗ 2: A receipt goes stale when the file changes",
+    "bodyEn": "What it ran: A receipt goes stale when the file changes. What the lab concluded: the hash changed, so an observation recorded against the first version no longer describes the file; evidence should name the content it saw, and a plan built on old receipts needs them refreshed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A receipt goes stale when the file changes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the hash changed, so an observation recorded against the first version no longer describes the file; evidence should name the content it saw, and a plan built on old receipts needs them refreshed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a receipt goes stale when the file changes ---\nbefore: bac4e08661ce | after: 6e91255076bb | same evidence: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Evidence that changes the plan",
+    "headingKn": "ಪ್ರಯೋಗ 3: Evidence that changes the plan",
+    "bodyEn": "What it ran: Evidence that changes the plan. What the lab concluded: the existing helper was found, so the item to build a new utility was replaced by one to extend it; evidence that never changes a decision is decoration, and this is a case where it did",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Evidence that changes the plan. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the existing helper was found, so the item to build a new utility was replaced by one to extend it; evidence that never changes a decision is decoration, and this is a case where it did"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: evidence that changes the plan ---\nplanned: W-002: create a new pagination utility in app/pagination.py\ninspection of app/helpers.py: found | contains paginate: True\nrevised: W-002: extend the existing paginate helper in app/helpers.py"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Proof commands, run for real and recorded",
+    "headingKn": "ಪ್ರಯೋಗ 4: Proof commands, run for real and recorded",
+    "bodyEn": "What it ran: Proof commands, run for real and recorded. What the lab concluded: the passing, failing and hanging commands each produced a different record, and the program that could not start raised before any record existed, so a runner must catch that case too or the item would silently have no proof",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Proof commands, run for real and recorded. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the passing, failing and hanging commands each produced a different record, and the program that could not start raised before any record existed, so a runner must catch that case too or the item would silently have no proof"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: proof commands, run for real and recorded ---\nunittest that passes       exit=0     timed_out=False passed=True  tests_ran=1\ncommand that fails         exit=1     timed_out=False passed=False tests_ran=0\ncommand that hangs         exit=None  timed_out=True  passed=False tests_ran=0\nprogram that cannot start  could not launch: FileNotFoundError"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Exit 0 is not proof the right test ran",
+    "headingKn": "ಪ್ರಯೋಗ 5: Exit 0 is not proof the right test ran",
+    "bodyEn": "What it ran: Exit 0 is not proof the right test ran. What the lab concluded: the echo passed with zero tests run and the misnamed module failed, which is why the gate checks the test count and the command against the planned proof, and why a planned proof is not an executed proof",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Exit 0 is not proof the right test ran. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the echo passed with zero tests run and the misnamed module failed, which is why the gate checks the test count and the command against the planned proof, and why a planned proof is not an executed proof"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: exit 0 is not proof the right test ran ---\necho instead of a test   exit=0 tests_ran=0 passed=True\nwrong module name        exit=1 tests_ran=1 passed=False\nnamed test               exit=0 tests_ran=1 passed=True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Paths outside the root were refused and a directory was not a file. 2) An edit changed the hash and staled the receipt. 3) A found helper replaced a planned new utility. 4) Pass, fail, timeout and cannot-start gave four different outcomes. 5) An echo exited 0 with zero tests run.",
     "bodyKn": "1) ಮೂಲದ ಹೊರಗಿನ paths ನಿರಾಕರಿಸಲ್ಪಟ್ಟವು ಮತ್ತು ಡೈರೆಕ್ಟರಿ ಫೈಲ್ ಆಗಿರಲಿಲ್ಲ. 2) ಸಂಪಾದನೆ hash ಬದಲಿಸಿ ರಸೀದಿ ಹಳೆಯದಾಗಿಸಿತು. 3) ಕಂಡ helper ಯೋಜಿತ ಹೊಸ utility ಬದಲಿಸಿತು. 4) ಪಾಸ್, ವಿಫಲ, timeout ಮತ್ತು ಆರಂಭಿಸಲಾಗದು ನಾಲ್ಕು ಬೇರೆ ಫಲಿತಾಂಶ ನೀಡಿದವು. 5) echo ಶೂನ್ಯ ಪರೀಕ್ಷೆಯೊಂದಿಗೆ 0 ನಲ್ಲಿ ನಿರ್ಗಮಿಸಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ep_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ep_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ep_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ep_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
