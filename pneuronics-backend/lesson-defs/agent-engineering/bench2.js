@@ -137,6 +137,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Classifier on the three sample tasks",
+    "headingKn": "ಪ್ರಯೋಗ 1: Classifier on the three sample tasks",
+    "bodyEn": "What it ran: Classifier on the three sample tasks. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Classifier on the three sample tasks. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Classifier on the three sample tasks ---\ng1: depth 2, modalities ['text'] -> Level 1\ng2: depth 5, modalities ['text'] -> Level 2\ng3: depth 7, modalities ['file', 'image', 'text'] -> Level 3"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The classifier counts operations, not difficulty",
+    "headingKn": "ಪ್ರಯೋಗ 2: The classifier counts operations, not difficulty",
+    "bodyEn": "What it ran: The classifier counts operations, not difficulty. What the lab concluded: padding with no-op steps raised a one-hop question to Level 3, and the modality count alone made a two-operation task Level 3, so the label is a proxy for chain length and modality count, not for how hard the reasoning is",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The classifier counts operations, not difficulty. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): padding with no-op steps raised a one-hop question to Level 3, and the modality count alone made a two-operation task Level 3, so the label is a proxy for chain length and modality count, not for how hard the reasoning is"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: the classifier counts operations, not difficulty ---\none-hop question padded with 6 no-op steps -> Level 3\ntwo operations over audio+image+text           -> Level 3"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: How answer normalisation changes the score",
+    "headingKn": "ಪ್ರಯೋಗ 3: How answer normalisation changes the score",
+    "bodyEn": "What it ran: How answer normalisation changes the score. What the lab concluded: the same six answers score 0, 3 and 5 out of 6 depending on normalisation; the fraction '1/2' still fails",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How answer normalisation changes the score. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the same six answers score 0, 3 and 5 out of 6 depending on normalisation; the fraction '1/2' still fails"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: how answer normalisation changes the score ---\ngold 'Paris'    answer 'paris.'   raw exact=False lowercase/strip=True  +number-aware=True\ngold '12'       answer '12.0'     raw exact=False lowercase/strip=False +number-aware=True\ngold '1,250'    answer '1250'     raw exact=False lowercase/strip=False +number-aware=True\ngold 'New York' answer 'new  york' raw exact=False lowercase/strip=True  +number-aware=True\ngold '0.5'      answer '1/2'      raw exact=False lowercase/strip=False +number-aware=False\ngold 'no'       answer 'No.'      raw exact=False lowercase/strip=True  +number-aware=True\nscore: raw 0/6, lowercase/strip 3/6, number-aware 5/6"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Normalisation that accepts too much",
+    "headingKn": "ಪ್ರಯೋಗ 4: Normalisation that accepts too much",
+    "bodyEn": "What it ran: Normalisation that accepts too much. What the lab concluded: stripping commas accepted '1,999' and '2,023', accepted scientific notation '1e1' for 10, and turned a decimal-comma answer '1,5' into 15 so it matches gold '15' but not '1.5'; each rule needs a justification",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Normalisation that accepts too much. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): stripping commas accepted '1,999' and '2,023', accepted scientific notation '1e1' for 10, and turned a decimal-comma answer '1,5' into 15 so it matches gold '15' but not '1.5'; each rule needs a justification"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: normalisation that accepts too much ---\ngold '1999'  answer '1,999' number-aware match=True\ngold '1.5'   answer '1,5'   number-aware match=False\ngold '2023'  answer '2,023' number-aware match=True\ngold '10'    answer '1e1'   number-aware match=True\ngold 'true'  answer 'True.' number-aware match=True\ngold '15' vs answer '1,5' (a decimal comma) match=True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Tool-chain reliability (per-step success ASSUMED, seed 4, 20000 runs)",
+    "headingKn": "ಪ್ರಯೋಗ 5: Tool-chain reliability (per-step success ASSUMED, seed 4, 20000 runs)",
+    "bodyEn": "What it ran: Tool-chain reliability (per-step success ASSUMED, seed 4, 20000 runs). What the lab concluded: a level-3 style chain of 7 steps at 95 percent per step finishes only about 70 percent of the time, which is arithmetic from the assumed rate and not a measurement of any model",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Tool-chain reliability (per-step success ASSUMED, seed 4, 20000 runs). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a level-3 style chain of 7 steps at 95 percent per step finishes only about 70 percent of the time, which is arithmetic from the assumed rate and not a measurement of any model"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: tool-chain reliability (per-step success ASSUMED, seed 4, 20000 runs) ---\n steps   p=0.99   p=0.95   p=0.90   (simulated; analytic p^n in brackets for p=0.95)\n     2    98.0%    90.3%    80.7%   [90.2%]\n     5    95.2%    77.1%    59.3%   [77.4%]\n     7    93.0%    69.9%    48.1%   [69.8%]\n    12    88.5%    53.7%    28.5%   [54.0%]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Tools available versus tools used",
+    "headingKn": "ಪ್ರಯೋಗ 6: Tools available versus tools used",
+    "bodyEn": "What it ran: Tools available versus tools used. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Tools available versus tools used. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: tools available versus tools used ---\ng1: needs ['extract', 'search'] | missing tools: []\ng2: needs ['calculate', 'extract', 'search'] | missing tools: []\ng3: needs ['calculate', 'extract', 'format', 'open_file', 'parse_table', 'read_chart', 'search'] | missing tools: []\ndistinct tools required per task: {'g1': 2, 'g2': 3, 'g3': 7} | mean 4\nowning every tool says nothing about choosing them in the right order; the benchmark measures the chain, so ordering errors need their own check\na plan with the right tools in the wrong order matches the reference chain: False"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

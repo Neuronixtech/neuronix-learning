@@ -147,6 +147,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A straight swarm path and a swarm that ends at the entry agent",
+    "headingKn": "ಪ್ರಯೋಗ 1: A straight swarm path and a swarm that ends at the entry agent",
+    "bodyEn": "What it ran: A straight swarm path and a swarm that ends at the entry agent. What the lab concluded: the entry agent is only the first peer, not a permanent supervisor; ownership moves with each handoff and the last agent answers",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A straight swarm path and a swarm that ends at the entry agent. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the entry agent is only the first peer, not a permanent supervisor; ownership moves with each handoff and the last agent answers"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely checking: a straight swarm path and a swarm that ends at the entry agent ---\ntask: I was charged twice and need a refund\n   1. user       task      I was charged twice and need a refund\n   2. triage     run       hop 1\n   3. triage     handoff   -> billing\n   4. billing    run       hop 2\n   5. billing    final     billing resolved: I was charged twice and\n  -> billing resolved: I was charged twice and\ntask: The checkout shows an error\n   1. user       task      The checkout shows an error\n   2. triage     run       hop 1\n   3. triage     handoff   -> support\n   4. support    run       hop 2\n   5. support    final     support resolved: The checkout shows an er\n  -> support resolved: The checkout shows an er\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A bouncing handoff between two peers",
+    "headingKn": "ಪ್ರಯೋಗ 2: A bouncing handoff between two peers",
+    "bodyEn": "What it ran: A bouncing handoff between two peers. What the lab concluded: billing hands this task to support because of the word 'error', and support hands it straight back because of the word 'refund'; each agent is locally sensible and together they never finish, so only the hop limit stopped it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A bouncing handoff between two peers. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): billing hands this task to support because of the word 'error', and support hands it straight back because of the word 'refund'; each agent is locally sensible and together they never finish, so only the hop limit stopped it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: a bouncing handoff between two peers ---\n   1. user       task      My refund request had an error\n   2. triage     run       hop 1\n   3. triage     handoff   -> billing\n   4. billing    run       hop 2\n   5. billing    handoff   -> support\n   6. support    run       hop 3\n   7. support    handoff   -> billing\n   8. billing    run       hop 4\n   9. billing    handoff   -> support\n  10. support    run       hop 5\n  11. support    handoff   -> billing\n  12. billing    run       hop 6\n  13. billing    handoff   -> support\n  14. runtime    HOP LIMIT 6 hops used\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The hop limit versus cycle detection on the bouncing task",
+    "headingKn": "ಪ್ರಯೋಗ 3: The hop limit versus cycle detection on the bouncing task",
+    "bodyEn": "What it ran: The hop limit versus cycle detection on the bouncing task. What the lab concluded: a larger hop limit burns more agent runs before stopping; cycle detection stops at the first repeat but a task that legitimately revisits an agent would also be cut off, so the limit is a bound and the detector is a heuristic",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The hop limit versus cycle detection on the bouncing task. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a larger hop limit burns more agent runs before stopping; cycle detection stops at the first repeat but a task that legitimately revisits an agent would also be cut off, so the limit is a bound and the detector is a heuristic"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: the hop limit versus cycle detection on the bouncing task ---\nhop limit 4 only             agent runs= 4 result=stopped: hop limit\nhop limit 20 only            agent runs=20 result=stopped: hop limit\ncycle detection, limit 20    agent runs= 4 result=stopped: cycle detected"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Coordination edges as peers are added",
+    "headingKn": "ಪ್ರಯೋಗ 4: Coordination edges as peers are added",
+    "bodyEn": "What it ran: Coordination edges as peers are added. What the lab concluded: an unrestricted peer graph can reach N(N-1)/2 possible handoff edges, which is the O(N^2) worry; a real swarm limits each agent to a few peers, so the count depends on the peer registry you write",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Coordination edges as peers are added. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an unrestricted peer graph can reach N(N-1)/2 possible handoff edges, which is the O(N^2) worry; a real swarm limits each agent to a few peers, so the count depends on the peer registry you write"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: coordination edges as peers are added ---\n agents  hub edges (N)   full mesh edges N(N-1)/2   chain edges (N-1)\n      3              3                          3                   2\n      5              5                         10                   4\n     10             10                         45                   9\n     30             30                        435                  29\n    100            100                       4950                  99"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: An agent naming a peer that does not exist",
+    "headingKn": "ಪ್ರಯೋಗ 5: An agent naming a peer that does not exist",
+    "bodyEn": "What it ran: An agent naming a peer that does not exist. What the lab concluded: without a registry check the runtime would raise a KeyError; here the unknown peer is refused and recorded, which is what a peer registry is for",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An agent naming a peer that does not exist. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): without a registry check the runtime would raise a KeyError; here the unknown peer is refused and recorded, which is what a peer registry is for"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: an agent naming a peer that does not exist ---\n   1. user       task      anything\n   2. triage     run       hop 1\n   3. triage     BAD PEER  legal\n  -> stopped: unknown peer"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Model calls and hops against the supervisor design on four tasks",
+    "headingKn": "ಪ್ರಯೋಗ 6: Model calls and hops against the supervisor design on four tasks",
+    "bodyEn": "What it ran: Model calls and hops against the supervisor design on four tasks. What the lab concluded: on the three tasks that finished, the swarm used 1 to 2 agent runs where the supervisor design used 1 model call plus a worker, and it removes the central routing step; counting runs and calls is not the same unit, so this is not a cost comparison, and on the bouncing task the swarm used its whole hop budget (6), so a short good case does not bound the worst case",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Model calls and hops against the supervisor design on four tasks. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): on the three tasks that finished, the swarm used 1 to 2 agent runs where the supervisor design used 1 model call plus a worker, and it removes the central routing step; counting runs and calls is not the same unit, so this is not a cost comparison, and on the bouncing task the swarm used its whole hop budget (6), so a short good case does not bound the worst case"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely measuring: model calls and hops against the supervisor design on four tasks ---\ntask                                      supervisor calls  swarm agent runs swarm result\nI was charged twice and need a refund                    1                 2 billing resolved: I was charged twice and\nThe checkout shows an error                              1                 2 support resolved: The checkout shows an er\nTell me about plans                                      1                 1 triage answered: Tell me about plans\nMy refund request had an error                           1                 6 stopped: hop limit"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

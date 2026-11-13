@@ -117,6 +117,134 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The core-memory snapshot (what the model would receive)",
+    "headingKn": "ಪ್ರಯೋಗ 1: The core-memory snapshot (what the model would receive)",
+    "bodyEn": "What it ran: The core-memory snapshot (what the model would receive). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The core-memory snapshot (what the model would receive). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The core-memory snapshot (what the model would receive) ---\n[HUMAN]\nRole: ML engineer.\nPrefers Python examples.\n[PERSONA]\nYou are a precise technical instructor.\n[PROJECT]\nProject: Atlas.\nLanguage: Python.\nDatabase: SQLite.\n[TASK]\nImplement persistent agent memory.\nhuman    size= 43/240 remaining=197 utilization=0.18 version=1\npersona  size= 39/220 remaining=181 utilization=0.18 version=1\nproject  size= 51/320 remaining=269 utilization=0.16 version=1\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Append versus replace on a changed fact",
+    "headingKn": "ಪ್ರಯೋಗ 2: Append versus replace on a changed fact",
+    "bodyEn": "What it ran: Append versus replace on a changed fact. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Append versus replace on a changed fact. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Append versus replace on a changed fact ---\nappend  -> Project: Atlas. | Language: Python. | Database: SQLite. | Database: PostgreSQL.\nreplace -> Project: Atlas. | Language: Python. | Database: PostgreSQL.\nappend leaves 2 Database lines (a contradiction); replace leaves 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The invariant len(value) <= limit, enforced",
+    "headingKn": "ಪ್ರಯೋಗ 3: The invariant len(value) <= limit, enforced",
+    "bodyEn": "What it ran: The invariant len(value) <= limit, enforced. What the lab concluded: human version after the failed writes: 1 (unchanged: a failed write leaves state and version alone)",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The invariant len(value) <= limit, enforced. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): human version after the failed writes: 1 (unchanged: a failed write leaves state and version alone)"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. The invariant len(value) <= limit, enforced ---\ncreate duplicate label 'human'               -> ValueError: Block already exists: human\ncreate with value longer than limit          -> ValueError: Initial value exceeds limit for tiny\nread unknown block 'missing'                 -> KeyError: Unknown block: missing\nreplace text that is not there               -> ValueError: Text not found in block project\nappend 300 chars to human (limit 240)        -> ValueError: Append would exceed limit for human\nreplace growing project past its limit       -> ValueError: Replacement exceeds limit for project"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Memory pressure: watching a block fill",
+    "headingKn": "ಪ್ರಯೋಗ 4: Memory pressure: watching a block fill",
+    "bodyEn": "What it ran: Memory pressure: watching a block fill. What the lab concluded: append 'Likes architecture diagrams.'     size=175/240 utilization=0.73 near_limit(0.80)=False version=6",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Memory pressure: watching a block fill. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): append 'Likes architecture diagrams.'     size=175/240 utilization=0.73 near_limit(0.80)=False version=6"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Memory pressure: watching a block fill ---\nappend 'Learning agent systems.'          size= 67/240 utilization=0.28 near_limit(0.80)=False version=2\nappend 'Prefers runnable code.'           size= 90/240 utilization=0.38 near_limit(0.80)=False version=3\nappend 'Prefers concise explanations.'    size=120/240 utilization=0.50 near_limit(0.80)=False version=4\nappend 'Wants concept breakdowns.'        size=146/240 utilization=0.61 near_limit(0.80)=False version=5"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Summarizing frees capacity, and the store does not write the summary itself",
+    "headingKn": "ಪ್ರಯೋಗ 5: Summarizing frees capacity, and the store does not write the summary itself",
+    "bodyEn": "What it ran: Summarizing frees capacity, and the store does not write the summary itself. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Summarizing frees capacity, and the store does not write the summary itself. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Summarizing frees capacity, and the store does not write the summary itself ---\nutilization 0.73 -> 0.40, version -> 7\nthe caller supplied the summary text; the store only validated its size and applied it"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Edge case: the newline separator costs one character",
+    "headingKn": "ಪ್ರಯೋಗ 6: Edge case: the newline separator costs one character",
+    "bodyEn": "What it ran: Edge case: the newline separator costs one character. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Edge case: the newline separator costs one character. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Edge case: the newline separator costs one character ---\nremaining: 10\nappend exactly 'remaining' (10) characters   -> ValueError: Append would exceed limit for edge\nappend remaining - 1 (9) characters          -> ok"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Genuinely checking what 'limit' measures",
+    "headingKn": "ಪ್ರಯೋಗ 7: Genuinely checking what 'limit' measures",
+    "bodyEn": "What it ran: Genuinely checking what 'limit' measures. What the lab concluded: the limit counts Python characters, so it is a proxy: the same character budget costs very different token amounts per script",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely checking what 'limit' measures. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the limit counts Python characters, so it is a proxy: the same character budget costs very different token amounts per script"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking what 'limit' measures ---\nEnglish  characters= 41 utf-8 bytes= 41 words=5\nKannada  characters= 60 utf-8 bytes=170 words=5"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Why core memory is expensive (arithmetic)",
+    "headingKn": "ಪ್ರಯೋಗ 8: Why core memory is expensive (arithmetic)",
+    "bodyEn": "What it ran: Why core memory is expensive (arithmetic). What the lab concluded: the same fact stored once in an archive and fetched on 20 of those calls: 1,000 tokens (50-token record)",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Why core memory is expensive (arithmetic). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the same fact stored once in an archive and fetched on 20 of those calls: 1,000 tokens (50-token record)"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Why core memory is expensive (arithmetic) ---\na 2000-token block sent on 1000 calls = 2,000,000 tokens processed"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

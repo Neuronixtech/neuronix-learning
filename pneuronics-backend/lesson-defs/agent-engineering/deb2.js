@@ -141,6 +141,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Critique operations per round (counted from the neighbour lists)",
+    "headingKn": "ಪ್ರಯೋಗ 1: Critique operations per round (counted from the neighbour lists)",
+    "bodyEn": "What it ran: Critique operations per round (counted from the neighbour lists). What the lab concluded: full mesh grows with the square of the group size, hub-and-spoke and ring grow linearly; each operation stands for one agent reading one peer's answer, so it is a proxy for tokens",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Critique operations per round (counted from the neighbour lists). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): full mesh grows with the square of the group size, hub-and-spoke and ring grow linearly; each operation stands for one agent reading one peer's answer, so it is a proxy for tokens"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Critique operations per round (counted from the neighbour lists) ---\n agents  full mesh  hub-and-spoke   ring   (n*(n-1), 2*(n-1) and 2n)\n      3          6              4      6\n      5         20              8     10\n      8         56             14     16\n     12        132             22     24\n     20        380             38     40"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The lesson's three-agent example under each topology",
+    "headingKn": "ಪ್ರಯೋಗ 2: The lesson's three-agent example under each topology",
+    "bodyEn": "What it ran: The lesson's three-agent example under each topology. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lesson's three-agent example under each topology. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. The lesson's three-agent example under each topology ---\nfull  final=C converged=True rounds=1 ops=6 history=[['C', 'W', 'C'], ['C', 'C', 'C']]\nhub   final=C converged=True rounds=1 ops=4 history=[['C', 'W', 'C'], ['C', 'C', 'C']]\nring  final=C converged=True rounds=1 ops=6 history=[['C', 'W', 'C'], ['C', 'C', 'C']]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Does in-place updating make the result depend on agent order (300 random 5-agent ring con…",
+    "headingKn": "ಪ್ರಯೋಗ 3: Does in-place updating make the result depend on agent order (300 random 5-agent ring con…",
+    "bodyEn": "What it ran: Does in-place updating make the result depend on agent order (300 random 5-agent ring configurations, seed 5). What the lab concluded: a round-start snapshot (compute everything, then commit) made the outcome independent of visiting order in every configuration, and in-place updating did not; for debates that should be reproducible, read from the snapshot",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Does in-place updating make the result depend on agent order (300 random 5-agent ring configurations, seed 5). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a round-start snapshot (compute everything, then commit) made the outcome independent of visiting order in every configuration, and in-place updating did not; for debates that should be reproducible, read from the snapshot"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: does in-place updating make the result depend on agent order (300 random 5-agent ring configurations, seed 5) ---\nconfigurations whose final state depended on the visiting order: with round-start snapshot 0 of 300, with in-place updates 78 of 300\none in-place example: start ['C', 'X', 'W', 'C', 'X'] -> different final states [(('C', 'X', 'W', 'C', 'C'), False), (('X', 'X', 'W', 'C', 'X'), False)]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The hub is a single point of failure (5 agents, 25 percent wrong each, seed 7, 10000 ques…",
+    "headingKn": "ಪ್ರಯೋಗ 4: The hub is a single point of failure (5 agents, 25 percent wrong each, seed 7, 10000 ques…",
+    "bodyEn": "What it ran: The hub is a single point of failure (5 agents, 25 percent wrong each, seed 7, 10000 questions). What the lab concluded: hub-and-spoke used about half the critique operations of the full mesh (12.5 against 25.3) and ended correct 92.8 percent of the time against 91.4 for the full mesh and 92.2 for the ring (a debate that ends in a tie counts as no answer, so it is not credited), but reached agreement less often (81.4 against 91.1 percent for the full mesh); when the hub started wrong, the group ended wrong on 25.4 percent of those questions",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The hub is a single point of failure (5 agents, 25 percent wrong each, seed 7, 10000 questions). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): hub-and-spoke used about half the critique operations of the full mesh (12.5 against 25.3) and ended correct 92.8 percent of the time against 91.4 for the full mesh and 92.2 for the ring (a debate that ends in a tie counts as no answer, so it is not credited), but reached agreement less often (81.4 against 91.1 percent for the full mesh); when the hub started wrong, the group ended wrong on 25.4 percent of those questions"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: the hub is a single point of failure (5 agents, 25 percent wrong each, seed 7, 10000 questions) ---\n topology  final correct  converged  rounds (mean)  ops (mean)\n     full          91.4%      91.1%           1.27        25.3\n      hub          92.8%      81.4%           1.56        12.5\n     ring          92.2%      76.7%           1.74        17.4\nwhen the hub's own first answer was wrong (2477 questions), the hub topology ended wrong on 25.4% of them"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Rounds needed and early stopping (full mesh, 5 agents, seed 9)",
+    "headingKn": "ಪ್ರಯೋಗ 5: Rounds needed and early stopping (full mesh, 5 agents, seed 9)",
+    "bodyEn": "What it ran: Rounds needed and early stopping (full mesh, 5 agents, seed 9). What the lab concluded: every debate either agreed after the first round (91.3 percent) or never agreed within the limit (8.7 percent), with nothing in between, because a stuck split such as 2-2-1 does not change under this rule; stopping on agreement saves later rounds and the round limit is what ends the stuck ones",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Rounds needed and early stopping (full mesh, 5 agents, seed 9). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): every debate either agreed after the first round (91.3 percent) or never agreed within the limit (8.7 percent), with nothing in between, because a stuck split such as 2-2-1 does not change under this rule; stopping on agreement saves later rounds and the round limit is what ends the stuck ones"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: rounds needed and early stopping (full mesh, 5 agents, seed 9) ---\nstopped after 1 round(s), converged=True :  91.3%\nstopped after 6 round(s), converged=False:   8.7%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A hub that disagrees with a clear majority",
+    "headingKn": "ಪ್ರಯೋಗ 6: A hub that disagrees with a clear majority",
+    "bodyEn": "What it ran: A hub that disagrees with a clear majority. What the lab concluded: in the full mesh the hub is outvoted in one round; in the hub topology the spokes copy the hub, then the hub copies the spokes, and the group swaps between two states every round without converging; the reported final answer was right only because 4 rounds is an even number of swaps",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A hub that disagrees with a clear majority. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): in the full mesh the hub is outvoted in one round; in the hub topology the spokes copy the hub, then the hub copies the spokes, and the group swaps between two states every round without converging; the reported final answer was right only because 4 rounds is an even number of swaps"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: a hub that disagrees with a clear majority ---\nfull  final=C converged=True rounds=1 history=[['W', 'C', 'C', 'C', 'C'], ['C', 'C', 'C', 'C', 'C']]\nhub   final=C converged=False rounds=4 history=[['W', 'C', 'C', 'C', 'C'], ['C', 'W', 'W', 'W', 'W'], ['W', 'C', 'C', 'C', 'C'], ['C', 'W', 'W', 'W', 'W'], ['W', 'C', 'C', 'C', 'C']]"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

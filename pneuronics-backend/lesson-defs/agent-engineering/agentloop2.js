@@ -137,6 +137,134 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The loop exactly as the lesson writes it (prints only the Thought)",
+    "headingKn": "ಪ್ರಯೋಗ 1: The loop exactly as the lesson writes it (prints only the Thought)",
+    "bodyEn": "What it ran: The loop exactly as the lesson writes it (prints only the Thought). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The loop exactly as the lesson writes it (prints only the Thought). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The loop exactly as the lesson writes it (prints only the Thought) ---\nThought: I need the stored price.\nThought: The stored price is 125; now I can calculate price * 1.18.\nThought: I have enough evidence to answer.\nFinal: The final price is 147.5."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The same run with Action and Observation printed (verbose=True)",
+    "headingKn": "ಪ್ರಯೋಗ 2: The same run with Action and Observation printed (verbose=True)",
+    "bodyEn": "What it ran: The same run with Action and Observation printed (verbose=True). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The same run with Action and Observation printed (verbose=True). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. The same run with Action and Observation printed (verbose=True) ---\nThought: I need the stored price.\nAction: kv_store.get({'key': 'price'})\nObservation: 125\nThought: The stored price is 125; now I can calculate price * 1.18.\nAction: calculator({'left': '125', 'op': '*', 'right': 1.18})\nObservation: 147.5\nThought: I have enough evidence to answer.\nFinal: The final price is 147.5."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The trace",
+    "headingKn": "ಪ್ರಯೋಗ 3: The trace",
+    "bodyEn": "What it ran: The trace. What the lab concluded: {'turn': 3, 'thought': 'I have enough evidence to answer.', 'action': 'finish', 'observation': 'The final price is 147.5.'}",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The trace. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): {'turn': 3, 'thought': 'I have enough evidence to answer.', 'action': 'finish', 'observation': 'The final price is 147.5.'}"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. The trace ---\n{'turn': 1, 'thought': 'I need the stored price.', 'action': 'kv_store.get', 'arguments': {'key': 'price'}, 'observation': '125'}\n{'turn': 2, 'thought': 'The stored price is 125; now I can calculate price * 1.18.', 'action': 'calculator', 'arguments': {'left': '125', 'op': '*', 'right': 1.18}, 'observation': '147.5'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Causal proof: observation 1 is the left argument of action 2",
+    "headingKn": "ಪ್ರಯೋಗ 4: Causal proof: observation 1 is the left argument of action 2",
+    "bodyEn": "What it ran: Causal proof: observation 1 is the left argument of action 2. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Causal proof: observation 1 is the left argument of action 2. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Causal proof: observation 1 is the left argument of action 2 ---\nobservation 1        : '125'\naction 2 left arg    : '125'\nequal                : True\nobservation 2 in final: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The growing message buffer after the run",
+    "headingKn": "ಪ್ರಯೋಗ 5: The growing message buffer after the run",
+    "bodyEn": "What it ran: The growing message buffer after the run. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The growing message buffer after the run. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. The growing message buffer after the run ---\n1. user  -             Read the stored price and calculate price * 1.18.\n2. tool  kv_store.get  125\n3. tool  calculator    147.5"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Turn budget: max_turns=2 (needs 3)",
+    "headingKn": "ಪ್ರಯೋಗ 6: Turn budget: max_turns=2 (needs 3)",
+    "bodyEn": "What it ran: Turn budget: max_turns=2 (needs 3). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Turn budget: max_turns=2 (needs 3). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Turn budget: max_turns=2 (needs 3) ---\nThought: I need the stored price.\nThought: The stored price is 125; now I can calculate price * 1.18.\nFinal: STOPPED: maximum turn budget reached before the task finished.\ntrace length: 2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Turn budget: max_turns=3 (exactly enough)",
+    "headingKn": "ಪ್ರಯೋಗ 7: Turn budget: max_turns=3 (exactly enough)",
+    "bodyEn": "What it ran: Turn budget: max_turns=3 (exactly enough). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Turn budget: max_turns=3 (exactly enough). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Turn budget: max_turns=3 (exactly enough) ---\nThought: I need the stored price.\nThought: The stored price is 125; now I can calculate price * 1.18.\nThought: I have enough evidence to answer.\nFinal: The final price is 147.5."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: A missing key, with the lesson's ToyLLM (no error handling)",
+    "headingKn": "ಪ್ರಯೋಗ 8: A missing key, with the lesson's ToyLLM (no error handling)",
+    "bodyEn": "What it ran: A missing key, with the lesson's ToyLLM (no error handling). What the lab concluded: Final: The final price is ERROR: could not convert string to float: \"ERROR: key 'missing_price' not found\".",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A missing key, with the lesson's ToyLLM (no error handling). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): Final: The final price is ERROR: could not convert string to float: \"ERROR: key 'missing_price' not found\"."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. A missing key, with the lesson's ToyLLM (no error handling) ---\nThought: I need the stored price.\nAction: kv_store.get({'key': 'missing_price'})\nObservation: ERROR: key 'missing_price' not found\nThought: The stored price is ERROR: key 'missing_price' not found; now I can calculate price * 1.18.\nAction: calculator({'left': \"ERROR: key 'missing_price' not found\", 'op': '*', 'right': 1.18})\nObservation: ERROR: could not convert string to float: \"ERROR: key 'missing_price' not found\"\nThought: I have enough evidence to answer."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

@@ -137,6 +137,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The lesson's run: three subagents, parent sees summaries only",
+    "headingKn": "ಪ್ರಯೋಗ 1: The lesson's run: three subagents, parent sees summaries only",
+    "bodyEn": "What it ran: The lesson's run: three subagents, parent sees summaries only. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lesson's run: three subagents, parent sees summaries only. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The lesson's run: three subagents, parent sees summaries only ---\nauth-researcher      private context   9320 chars | auth-researcher: 1204 words, first line 'Authentication uses signed tok'\nbilling-researcher   private context   4625 chars | billing-researcher: 604 words, first line 'Billing computes invoices nigh'\nsearch-researcher    private context  10122 chars | search-researcher: 1505 words, first line 'Search builds an inverted inde'\nsessions: ['demo:subagent:auth-researcher', 'demo:subagent:billing-researcher', 'demo:subagent:search-researcher']\nparent session messages: 0 | aggregated summaries length: 220 chars"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Context isolation saves the parent how much",
+    "headingKn": "ಪ್ರಯೋಗ 2: Context isolation saves the parent how much",
+    "bodyEn": "What it ran: Context isolation saves the parent how much. What the lab concluded: the saving is real only because the subagent's summary is short; a summary that copies the file would give none",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Context isolation saves the parent how much. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the saving is real only because the subagent's summary is short; a summary that copies the file would give none"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: context isolation saves the parent how much ---\nif the parent had read all three files itself: 24,067 chars in its context; with isolation it receives 220 (0.9%)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Sequential versus parallel fan-out (0.3s of simulated model latency each)",
+    "headingKn": "ಪ್ರಯೋಗ 3: Sequential versus parallel fan-out (0.3s of simulated model latency each)",
+    "bodyEn": "What it ran: Sequential versus parallel fan-out (0.3s of simulated model latency each). What the lab concluded: wall time tracks the number of waves (3, 2, 1) times the latency; the simulated latency is time.sleep, which releases the GIL; this does not measure CPU-bound workers",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Sequential versus parallel fan-out (0.3s of simulated model latency each). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): wall time tracks the number of waves (3, 2, 1) times the latency; the simulated latency is time.sleep, which releases the GIL; this does not measure CPU-bound workers"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: sequential versus parallel fan-out (0.3s of simulated model latency each) ---\nmax_workers=1: wall time 0.90s\nmax_workers=2: wall time 0.60s\nmax_workers=3: wall time 0.31s"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Completion order versus input order",
+    "headingKn": "ಪ್ರಯೋಗ 4: Completion order versus input order",
+    "bodyEn": "What it ran: Completion order versus input order. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Completion order versus input order. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: completion order versus input order ---\n12 runs of as_completed produced 5 distinct result orders:\n   ('auth', 'billing', 'search')\n   ('auth', 'search', 'billing')\n   ('billing', 'auth', 'search')\n   ('billing', 'search', 'auth')\n   ('search', 'auth', 'billing')\nrun_robust order: ['auth', 'billing', 'search'] (always the input order)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: One failing worker",
+    "headingKn": "ಪ್ರಯೋಗ 5: One failing worker",
+    "bodyEn": "What it ran: One failing worker. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: One failing worker. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: one failing worker ---\npasted aggregation raised: billing-researcher could not analyse agent_demo/billing.txt\nchild sessions created: 3 of 3 | the exception reached the caller and the other two summaries were never returned\n  robust: ok | auth-researcher: 1204 words, first line 'Authentication uses signed tok'\n  robust: error | RuntimeError: billing-researcher could not analyse agent_demo/billing.txt\n  robust: ok | search-researcher: 1505 words, first line 'Search builds an inverted inde'"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A timeout does not stop the worker",
+    "headingKn": "ಪ್ರಯೋಗ 6: A timeout does not stop the worker",
+    "bodyEn": "What it ran: A timeout does not stop the worker. What the lab concluded: the with-block held the harness for the full 0.6s, so the 0.2s timeout bounded the result, not the wall time",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A timeout does not stop the worker. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the with-block held the harness for the full 0.6s, so the 0.2s timeout bounded the result, not the wall time"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely measuring: a timeout does not stop the worker ---\nstatuses: ['timeout', 'ok'] | returned to the caller after 0.60s\nslow worker finished anyway: ['slow-researcher'] (the executor's exit waited for it; a thread cannot be cancelled once it is running)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: File read inside the child is not rate-limited",
+    "headingKn": "ಪ್ರಯೋಗ 7: File read inside the child is not rate-limited",
+    "bodyEn": "What it ran: File read inside the child is not rate-limited. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: File read inside the child is not rate-limited. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking: file read inside the child is not rate-limited ---\npeak concurrent read_file calls with 3 workers: 3\nthe registry has no per-tool concurrency limit; the pool size is the only brake"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

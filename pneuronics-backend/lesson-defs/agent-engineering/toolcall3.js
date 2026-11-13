@@ -108,6 +108,134 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Parallel calls with different delays: completion order versus request order",
+    "headingKn": "ಪ್ರಯೋಗ 1: Parallel calls with different delays: completion order versus request order",
+    "bodyEn": "What it ran: Parallel calls with different delays: completion order versus request order. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Parallel calls with different delays: completion order versus request order. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Parallel calls with different delays: completion order versus request order ---\nrequest order   : ['call_001', 'call_002', 'call_003'] (all the same tool name: 'lookup')\ncompletion order: ['call_002', 'call_003', 'call_001']\nrestored order  : ['call_001', 'call_002', 'call_003']\nmapping         : {'call_002': 'result for B', 'call_003': 'result for C', 'call_001': 'result for A'}\nwall time 0.30s against 0.50s sequential"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Duplicate correlation ids are rejected",
+    "headingKn": "ಪ್ರಯೋಗ 2: Duplicate correlation ids are rejected",
+    "bodyEn": "What it ran: Duplicate correlation ids are rejected. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Duplicate correlation ids are rejected. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Duplicate correlation ids are rejected ---\nValueError: duplicate tool_use_id: call_001"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Routing and abstention (lexical stand-in for a semantic router)",
+    "headingKn": "ಪ್ರಯೋಗ 3: Routing and abstention (lexical stand-in for a semantic router)",
+    "bodyEn": "What it ran: Routing and abstention (lexical stand-in for a semantic router). What the lab concluded: 'Delete customer 101' routes to the read-only query_db because 'customer' matches: the verb is not considered",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Routing and abstention (lexical stand-in for a semantic router). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): 'Delete customer 101' routes to the read-only query_db because 'customer' matches: the verb is not considered"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Routing and abstention (lexical stand-in for a semantic router) ---\nSearch public factual information about France   -> search_web   score=0.667\nUse arithmetic to calculate a numeric result     -> search_web   score=0.429\nRead an internal customer record                 -> query_db     score=1.0\nWrite a poem about rain                          -> search_web   score=0.2\nmultiply 15 and 20                               -> NO_TOOL      score=0.0\nDelete customer 101                              -> query_db     score=0.333\n'multiply 15 and 20' has no word in common with the calculator description, so a lexical router abstains where a semantic one would route"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A dynamic agent: the second call exists only because of the first observation",
+    "headingKn": "ಪ್ರಯೋಗ 4: A dynamic agent: the second call exists only because of the first observation",
+    "bodyEn": "What it ran: A dynamic agent: the second call exists only because of the first observation. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A dynamic agent: the second call exists only because of the first observation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. A dynamic agent: the second call exists only because of the first observation ---\ncustomer 103: goal completed\n     query_db(103) -> ok\n     run_python('875.5 * 0.10') -> 87.55000000000001\n     ten_percent: 87.55000000000001 | completed: True\ncustomer 102: account is not open; no calculation needed\n     query_db(102) -> ok\n     ten_percent: None | completed: True\ncustomer 999: customer not found; no balance invented\n     query_db(999) -> ok\n     ten_percent: None | completed: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: State-based evaluation: the call succeeded, did the world change?",
+    "headingKn": "ಪ್ರಯೋಗ 5: State-based evaluation: the call succeeded, did the world change?",
+    "bodyEn": "What it ran: State-based evaluation: the call succeeded, did the world change?. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: State-based evaluation: the call succeeded, did the world change?. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. State-based evaluation: the call succeeded, did the world change? ---\ntool result ok: True | postcondition task_exists: True\nwrong title    -> tool result ok: True | postcondition for the REQUESTED title: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A timed-out call whose work still happened",
+    "headingKn": "ಪ್ರಯೋಗ 6: A timed-out call whose work still happened",
+    "bodyEn": "What it ran: A timed-out call whose work still happened. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A timed-out call whose work still happened. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. A timed-out call whose work still happened ---\nobservation: timeout | tool exceeded timeout of 0.1 seconds\nimmediately after, task exists: False\n0.5s later, task exists: True | a blind retry would now create a duplicate"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Is create_task thread-safe? 4000 parallel calls, 16 workers",
+    "headingKn": "ಪ್ರಯೋಗ 7: Is create_task thread-safe? 4000 parallel calls, 16 workers",
+    "bodyEn": "What it ran: Is create_task thread-safe? 4000 parallel calls, 16 workers. What the lab concluded: read-modify-write on a shared counter is a race by construction; whether this run showed it depends on the interpreter's scheduling",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Is create_task thread-safe? 4000 parallel calls, 16 workers. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): read-modify-write on a shared counter is a race by construction; whether this run showed it depends on the interpreter's scheduling"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Is create_task thread-safe? 4000 parallel calls, 16 workers ---\ncalls: 4000 | distinct ids returned: 4000 | tasks stored: 4000 | last NEXT_TASK_ID: 4001"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Per-step reliability compounds (independence assumed: NOT a benchmark)",
+    "headingKn": "ಪ್ರಯೋಗ 8: Per-step reliability compounds (independence assumed: NOT a benchmark)",
+    "bodyEn": "What it ran: Per-step reliability compounds (independence assumed: NOT a benchmark). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Per-step reliability compounds (independence assumed: NOT a benchmark). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Per-step reliability compounds (independence assumed: NOT a benchmark) ---\nper-step 0.98 x 10 steps = 0.817\nper-step 0.98 x 20 steps = 0.668\nper-step 0.98 x 40 steps = 0.446\nper-step 0.99 x 40 steps = 0.669"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

@@ -117,6 +117,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The Self-Reflector turns a failure into a direction",
+    "headingKn": "ಪ್ರಯೋಗ 1: The Self-Reflector turns a failure into a direction",
+    "bodyEn": "What it ran: The Self-Reflector turns a failure into a direction. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The Self-Reflector turns a failure into a direction. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The Self-Reflector turns a failure into a direction ---\ntotal 12 vs target 24 -> Previous total 12 was too low for target 24; increase the values.\ntotal 23 vs target 24 -> Previous total 23 was too low for target 24; increase the values.\ntotal 30 vs target 24 -> Previous total 30 was too high for target 24; decrease the values.\ntotal 24 vs target 24 -> The candidate already satisfies the target."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Reflexion with the history-aware Actor",
+    "headingKn": "ಪ್ರಯೋಗ 2: Reflexion with the history-aware Actor",
+    "bodyEn": "What it ran: Reflexion with the history-aware Actor. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Reflexion with the history-aware Actor. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Reflexion with the history-aware Actor ---\nTrial 1: memory=0 candidate=[4, 4, 4] total=12 passed=False\nTrial 2: memory=1 candidate=[7, 8, 8] total=23 passed=False\nTrial 3: memory=2 candidate=[8, 8, 8] total=24 passed=True\nsolved: [8, 8, 8]\nmemory at the end:\n  - Previous total 12 was too low for target 24; increase the values.\n  - Previous total 23 was too low for target 24; increase the values."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The no-reflection baseline: same Actor, same Evaluator, same 3 trials",
+    "headingKn": "ಪ್ರಯೋಗ 3: The no-reflection baseline: same Actor, same Evaluator, same 3 trials",
+    "bodyEn": "What it ran: The no-reflection baseline: same Actor, same Evaluator, same 3 trials. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The no-reflection baseline: same Actor, same Evaluator, same 3 trials. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. The no-reflection baseline: same Actor, same Evaluator, same 3 trials ---\nTrial 1: candidate=[4, 4, 4] total=12 passed=False\nTrial 2: candidate=[4, 4, 4] total=12 passed=False\nTrial 3: candidate=[4, 4, 4] total=12 passed=False\nsolved: None"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Comparison",
+    "headingKn": "ಪ್ರಯೋಗ 4: Comparison",
+    "bodyEn": "What it ran: Comparison. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Comparison. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Comparison ---\ntrial Reflexion total   Baseline total\n1     12 FAIL           12 FAIL\n2     23 FAIL           12 FAIL\n3     24 PASS           12 FAIL"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Part 1's Actor inside the same loop (reads only the latest reflection), 6 trials",
+    "headingKn": "ಪ್ರಯೋಗ 5: Part 1's Actor inside the same loop (reads only the latest reflection), 6 trials",
+    "bodyEn": "What it ran: Part 1's Actor inside the same loop (reads only the latest reflection), 6 trials. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Part 1's Actor inside the same loop (reads only the latest reflection), 6 trials. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Part 1's Actor inside the same loop (reads only the latest reflection), 6 trials ---\nTrial 1: memory=0 candidate=[4, 4, 4] total=12 passed=False\nTrial 2: memory=1 candidate=[7, 8, 8] total=23 passed=False\nTrial 3: memory=2 candidate=[7, 8, 8] total=23 passed=False\nTrial 4: memory=3 candidate=[7, 8, 8] total=23 passed=False\nTrial 5: memory=3 candidate=[7, 8, 8] total=23 passed=False\nTrial 6: memory=3 candidate=[7, 8, 8] total=23 passed=False\nsolved: None"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Memory capacity changes behaviour (history-aware Actor, 6 trials)",
+    "headingKn": "ಪ್ರಯೋಗ 6: Memory capacity changes behaviour (history-aware Actor, 6 trials)",
+    "bodyEn": "What it ran: Memory capacity changes behaviour (history-aware Actor, 6 trials). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Memory capacity changes behaviour (history-aware Actor, 6 trials). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Memory capacity changes behaviour (history-aware Actor, 6 trials) ---\ncapacity=1: totals [12, 23, 23, 23, 23, 23] -> NOT solved\ncapacity=2: totals [12, 23, 24] -> solved at trial 3\ncapacity=3: totals [12, 23, 24] -> solved at trial 3"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Recall() returns a copy",
+    "headingKn": "ಪ್ರಯೋಗ 7: Recall() returns a copy",
+    "bodyEn": "What it ran: Recall() returns a copy. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Recall() returns a copy. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. recall() returns a copy ---\ncaller cleared its copy; memory still holds: ['a lesson']"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

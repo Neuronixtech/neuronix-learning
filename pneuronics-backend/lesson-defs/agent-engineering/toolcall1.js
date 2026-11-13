@@ -135,6 +135,134 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Toolformer's filter: keep a call only if its result lowers the loss",
+    "headingKn": "ಪ್ರಯೋಗ 1: Toolformer's filter: keep a call only if its result lowers the loss",
+    "bodyEn": "What it ran: Toolformer's filter: keep a call only if its result lowers the loss. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Toolformer's filter: keep a call only if its result lowers the loss. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Toolformer's filter: keep a call only if its result lowers the loss ---\nsqrt(144) example          L_without=3.2 L_with=0.4 delta=+2.80 -> KEEP\nunneeded calculator call   L_without=0.15 L_with=0.16 delta=-0.01 -> DISCARD"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Registry behaviour",
+    "headingKn": "ಪ್ರಯೋಗ 2: Registry behaviour",
+    "bodyEn": "What it ran: Registry behaviour. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Registry behaviour. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Registry behaviour ---\nget('search_web') -> Tool\nget('does_not_exist') -> None\nduplicate registration -> ValueError: tool already registered: search_web"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: What the model sees (schemas()) and what it must not",
+    "headingKn": "ಪ್ರಯೋಗ 3: What the model sees (schemas()) and what it must not",
+    "bodyEn": "What it ran: What the model sees (schemas()) and what it must not. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What the model sees (schemas()) and what it must not. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. What the model sees (schemas()) and what it must not ---\n[\n {\n  \"name\": \"search_web\",\n  \"description\": \"Search a local factual index for public factual information. Use this when the request asks for facts rather than arithmetic or internal records.\",\n  \"input_schema\": {\n   \"type\": \"object\",\n   \"properties\": {\n    \"query\": {\n     \"type\": \"string\"\n    }\n   },\n   \"required\": [\n    \"query\"\n   ]\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Executing model output directly: the failure Part 2 prevents",
+    "headingKn": "ಪ್ರಯೋಗ 4: Executing model output directly: the failure Part 2 prevents",
+    "bodyEn": "What it ran: Executing model output directly: the failure Part 2 prevents. What the lab concluded: {}                           -> TypeError: search_web() missing 1 required positional argument: 'query'",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Executing model output directly: the failure Part 2 prevents. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): {}                           -> TypeError: search_web() missing 1 required positional argument: 'query'"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Executing model output directly: the failure Part 2 prevents ---\n{'query': 'capital of France'} -> {'found': True, 'query': 'capital of France', 'answer': 'Paris is the capital of France.'}\n{'query': 12345}             -> AttributeError: 'int' object has no attribute 'strip'"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Python type hints are not enforced at call time",
+    "headingKn": "ಪ್ರಯೋಗ 5: Python type hints are not enforced at call time",
+    "bodyEn": "What it ran: Python type hints are not enforced at call time. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Python type hints are not enforced at call time. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Python type hints are not enforced at call time ---\nquery_db(customer_id='banana', status=99) -> {'customer_id': 'banana', 'status': 99}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Description quality drives lexical routing",
+    "headingKn": "ಪ್ರಯೋಗ 6: Description quality drives lexical routing",
+    "bodyEn": "What it ran: Description quality drives lexical routing. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Description quality drives lexical routing. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Description quality drives lexical routing ---\nquery: search public facts about France\n   vague descriptions: {'tool_a': 0.0, 'tool_b': 0.0, 'helper': 0.0}\n   good descriptions : {'search_web': 0.6, 'run_python': 0.0, 'query_db': 0.0}\nquery: calculate a numeric result\n   vague descriptions: {'tool_a': 0.0, 'tool_b': 0.0, 'helper': 0.0}\n   good descriptions : {'search_web': 0.0, 'run_python': 0.25, 'query_db': 0.0}\nquery: read internal customer records\n   vague descriptions: {'tool_a': 0.0, 'tool_b': 0.0, 'helper': 0.0}\n   good descriptions : {'search_web': 0.0, 'run_python': 0.0, 'query_db': 1.0}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Reliability arithmetic (independence assumed: NOT a benchmark)",
+    "headingKn": "ಪ್ರಯೋಗ 7: Reliability arithmetic (independence assumed: NOT a benchmark)",
+    "bodyEn": "What it ran: Reliability arithmetic (independence assumed: NOT a benchmark). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Reliability arithmetic (independence assumed: NOT a benchmark). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Reliability arithmetic (independence assumed: NOT a benchmark) ---\nroute x arguments x execution x interpretation = 0.98 x 0.96 x 0.99 x 0.97 = 0.903\nper-step 0.98 over 10 steps -> 0.817\nper-step 0.98 over 20 steps -> 0.668\nper-step 0.98 over 30 steps -> 0.545\nper-step 0.98 over 40 steps -> 0.446\nper-step 0.99 over 40 steps -> 0.669"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: BFCL V4 weights quoted in the lesson",
+    "headingKn": "ಪ್ರಯೋಗ 8: BFCL V4 weights quoted in the lesson",
+    "bodyEn": "What it ran: BFCL V4 weights quoted in the lesson. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: BFCL V4 weights quoted in the lesson. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. BFCL V4 weights quoted in the lesson ---\nAgentic        40%  ####################\nMulti-Turn     30%  ###############\nLive           10%  #####\nNon-Live       10%  #####\nHallucination  10%  #####\nsum: 100"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

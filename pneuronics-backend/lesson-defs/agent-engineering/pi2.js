@@ -147,6 +147,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Four scenarios through the full validator",
+    "headingKn": "ಪ್ರಯೋಗ 1: Four scenarios through the full validator",
+    "bodyEn": "What it ran: Four scenarios through the full validator. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Four scenarios through the full validator. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Four scenarios through the full validator ---\nnormal                       -> ALLOW\ninjected, nested in a dict   -> REFUSE ['injection-shaped text in arguments']\nunauthorized tool            -> REFUSE ['tool not bound to this task']\ndomain escape                -> REFUSE ['domain not allowed']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Intent binding is not the same as a global allowlist",
+    "headingKn": "ಪ್ರಯೋಗ 2: Intent binding is not the same as a global allowlist",
+    "bodyEn": "What it ran: Intent binding is not the same as a global allowlist. What the lab concluded: the task binding narrows the global tool list per request, and the origin check stops content from using a tool the user did bind; the origin label is only as trustworthy as the code that sets it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Intent binding is not the same as a global allowlist. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the task binding narrows the global tool list per request, and the origin check stops content from using a tool the user did bind; the origin label is only as trustworthy as the code that sets it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: intent binding is not the same as a global allowlist ---\nsend_email allowed globally but not bound to this task: ['tool not bound to this task']\nsame call under an intent that binds send_email: []\nsame call triggered by page-7 even under that intent: [\"sensitive tool requested by non-user source 'page-7'\"]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Schema validation of missing and unexpected arguments",
+    "headingKn": "ಪ್ರಯೋಗ 3: Schema validation of missing and unexpected arguments",
+    "bodyEn": "What it ran: Schema validation of missing and unexpected arguments. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Schema validation of missing and unexpected arguments. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: schema validation of missing and unexpected arguments ---\ncomplete           -> ok\nmissing body       -> [\"missing ['body']\"]\nextra bcc          -> [\"unexpected ['bcc']\"]\noptional subject   -> ok\nan unexpected field such as bcc is refused instead of being silently passed to the tool"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Recursive scanning, including dictionary keys",
+    "headingKn": "ಪ್ರಯೋಗ 4: Recursive scanning, including dictionary keys",
+    "bodyEn": "What it ran: Recursive scanning, including dictionary keys. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Recursive scanning, including dictionary keys. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: recursive scanning, including dictionary keys ---\ntop-level string       flat scan flagged=True  recursive scan flagged=True\nnested dict            flat scan flagged=False recursive scan flagged=True\ninside a list          flat scan flagged=False recursive scan flagged=True\nin a dictionary key    flat scan flagged=False recursive scan flagged=True\ndeep mix               flat scan flagged=False recursive scan flagged=True\nclean                  flat scan flagged=False recursive scan flagged=False\nthe recursive scanner finds text at any depth and in keys; text split across two fields would still pass\nsplit across two fields: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Three domain checks against ten URLs (allowlist: example.com, docs.example.com)",
+    "headingKn": "ಪ್ರಯೋಗ 5: Three domain checks against ten URLs (allowlist: example.com, docs.example.com)",
+    "bodyEn": "What it ran: Three domain checks against ten URLs (allowlist: example.com, docs.example.com). What the lab concluded: substring and suffix checks let lookalike hosts through; parsing the hostname and comparing it exactly handled all ten here, but it also rejects legitimate subdomains that are not listed, which is the price of a strict allowlist",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Three domain checks against ten URLs (allowlist: example.com, docs.example.com). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): substring and suffix checks let lookalike hosts through; parsing the hostname and comparing it exactly handled all ten here, but it also rejects legitimate subdomains that are not listed, which is the price of a strict allowlist"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: three domain checks against ten URLs (allowlist: example.com, docs.example.com) ---\nsubstring            mistakes: 6 of 10 ['https://EXAMPLE.com/x', 'https://example.com.evil.test/x', 'https://evil.test/example.com', 'https://example.com@evil.test/x', 'https://notexample.com/x', 'ftp://example.com/x']\nsuffix               mistakes: 3 of 10 ['https://example.com./x', 'https://notexample.com/x', 'ftp://example.com/x']\nexact host + scheme  mistakes: 0 of 10 []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Audit events record every decision, allowed or not",
+    "headingKn": "ಪ್ರಯೋಗ 6: Audit events record every decision, allowed or not",
+    "bodyEn": "What it ran: Audit events record every decision, allowed or not. What the lab concluded: 7 events recorded; each carries the origin and the reasons, so a refusal can be reviewed later without re-running anything",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Audit events record every decision, allowed or not. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): 7 events recorded; each carries the origin and the reasons, so a refusal can be reviewed later without re-running anything"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: audit events record every decision, allowed or not ---\n{'tool': 'write_file', 'origin': 'page-7', 'ok': False, 'reasons': ['tool not bound to this task']}\n{'tool': 'open_url', 'origin': 'page-7', 'ok': False, 'reasons': ['domain not allowed']}\n{'tool': 'send_email', 'origin': 'user', 'ok': False, 'reasons': ['tool not bound to this task']}\n{'tool': 'send_email', 'origin': 'user', 'ok': True, 'reasons': []}\n{'tool': 'send_email', 'origin': 'page-7', 'ok': False, 'reasons': [\"sensitive tool requested by non-user source 'page-7'\"]}"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

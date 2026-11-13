@@ -147,6 +147,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Queue jobs with real threads (2 workers, 3 attempts)",
+    "headingKn": "ಪ್ರಯೋಗ 1: Queue jobs with real threads (2 workers, 3 attempts)",
+    "bodyEn": "What it ran: Queue jobs with real threads (2 workers, 3 attempts). What the lab concluded: the flaky job succeeded on attempt 3 after two failures, and the poison job stopped at the attempt limit and went to the DLQ instead of retrying forever or vanishing",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Queue jobs with real threads (2 workers, 3 attempts). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the flaky job succeeded on attempt 3 after two failures, and the poison job stopped at the attempt limit and went to the DLQ instead of retrying forever or vanishing"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: queue jobs with real threads (2 workers, 3 attempts) ---\nok-1      submit w0:complete@1\nflaky-1   submit w0:fail@1 w0:fail@2 w0:complete@3\npoison-1  submit w1:fail@1 w1:fail@2 w1:fail@3 dead_letter\nok-2      submit w0:complete@1\ncompleted=['flaky-1', 'ok-1', 'ok-2'] dead-lettered=['poison-1']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Retry limit against a transient failure",
+    "headingKn": "ಪ್ರಯೋಗ 2: Retry limit against a transient failure",
+    "bodyEn": "What it ran: Retry limit against a transient failure. What the lab concluded: a limit of 2 is too low for a job that needs three attempts, so a retry limit has to be chosen against how long transient failures actually last",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Retry limit against a transient failure. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a limit of 2 is too low for a job that needs three attempts, so a retry limit has to be chosen against how long transient failures actually last"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: retry limit against a transient failure ---\nmax_attempts=1: completed=[] dead-lettered=['flaky-x']\nmax_attempts=2: completed=[] dead-lettered=['flaky-x']\nmax_attempts=3: completed=['flaky-x'] dead-lettered=[]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Redelivery duplicates a side effect unless the job is idempotent",
+    "headingKn": "ಪ್ರಯೋಗ 3: Redelivery duplicates a side effect unless the job is idempotent",
+    "bodyEn": "What it ran: Redelivery duplicates a side effect unless the job is idempotent. What the lab concluded: queues deliver at least once, so the same job can arrive twice; remembering a job id before acting kept the effect at one",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Redelivery duplicates a side effect unless the job is idempotent. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): queues deliver at least once, so the same job can arrive twice; remembering a job id before acting kept the effect at one"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: redelivery duplicates a side effect unless the job is idempotent ---\nidempotent=False side effects for pay-1: 2\nidempotent=True  side effects for pay-1: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: An event runtime, duplicates and fast acknowledgement",
+    "headingKn": "ಪ್ರಯೋಗ 4: An event runtime, duplicates and fast acknowledgement",
+    "bodyEn": "What it ran: An event runtime, duplicates and fast acknowledgement. What the lab concluded: acknowledgement took 0.19 ms because the handler enqueued the job instead of running a 5-step agent inline",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An event runtime, duplicates and fast acknowledgement. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): acknowledgement took 0.19 ms because the handler enqueued the job instead of running a 5-step agent inline"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: an event runtime, duplicates and fast acknowledgement ---\ndedupe=False publish results handled/handled; review jobs created: 2\ndedupe=True  publish results handled/ignored; review jobs created: 1\nwithout deduplication a repeated webhook launched two reviews; the handler only submitted a job and returned, which is what lets it acknowledge quickly"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Backlog when arrivals outpace workers (real threads, 10 ms jobs, time until the queue is …",
+    "headingKn": "ಪ್ರಯೋಗ 5: Backlog when arrivals outpace workers (real threads, 10 ms jobs, time until the queue is …",
+    "bodyEn": "What it ran: Backlog when arrivals outpace workers (real threads, 10 ms jobs, time until the queue is drained). What the lab concluded: queue depth exposes backpressure but does not remove it: the same 40 jobs drained in the time shown for 1 worker and for 4 (more workers drained them sooner, though sleeping threads and Python scheduling mean the speed-up is a measurement of this run, not a law), and a depth that keeps rising is the signal to add capacity or shed load",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Backlog when arrivals outpace workers (real threads, 10 ms jobs, time until the queue is drained). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): queue depth exposes backpressure but does not remove it: the same 40 jobs drained in the time shown for 1 worker and for 4 (more workers drained them sooner, though sleeping threads and Python scheduling mean the speed-up is a measurement of this run, not a law), and a depth that keeps rising is the signal to add capacity or shed load"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: backlog when arrivals outpace workers (real threads, 10 ms jobs, time until the queue is drained) ---\nworkers=1: depth at start 40, drained in 425 ms\nworkers=4: depth at start 40, drained in 109 ms"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -204,6 +287,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) A flaky job completed on attempt 3 and a poison job was dead-lettered. 2) A limit of 2 dead-lettered a job needing 3 attempts. 3) Redelivery gave 2 effects without idempotency, 1 with. 4) A duplicate event created 2 reviews without deduplication, 1 with. 5) Enqueue-and-ack took 0.44 ms. 6) 40 jobs drained in 425 ms (1 worker) versus 109 ms (4 workers) in one run.",
     "bodyKn": "1) Flaky job ಪ್ರಯತ್ನ 3 ರಲ್ಲಿ ಪೂರ್ಣಗೊಂಡು poison job dead-letter ಆಯಿತು. 2) 2 ಮಿತಿ 3 ಪ್ರಯತ್ನ ಬೇಕಾದ job ಅನ್ನು dead-letter ಮಾಡಿತು. 3) ಮರುವಿತರಣೆ idempotency ಇಲ್ಲದೆ 2 ಪರಿಣಾಮ, ಅದರೊಂದಿಗೆ 1 ನೀಡಿತು. 4) ನಕಲು event ನಿವಾರಣೆ ಇಲ್ಲದೆ 2 reviews, ಅದರೊಂದಿಗೆ 1 ರಚಿಸಿತು. 5) Enqueue-ಮತ್ತು-ack 0.44 ms ತೆಗೆದುಕೊಂಡಿತು. 6) 40 jobs ಒಂದು ಓಟದಲ್ಲಿ 425 ms (1 worker) ವಿರುದ್ಧ 109 ms (4 workers) ನಲ್ಲಿ ಮುಗಿದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B rt_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B rt_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B rt_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B rt_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

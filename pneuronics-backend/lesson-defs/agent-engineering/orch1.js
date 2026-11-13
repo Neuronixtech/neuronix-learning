@@ -147,6 +147,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: One execution trace per request type",
+    "headingKn": "ಪ್ರಯೋಗ 1: One execution trace per request type",
+    "bodyEn": "What it ran: One execution trace per request type. What the lab concluded: each line of the trace names which actor decided or acted; the supervisor routes and the worker does the work, and an unknown label ends with an escalation instead of a guess",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: One execution trace per request type. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each line of the trace names which actor decided or acted; the supervisor routes and the worker does the work, and an unknown label ends with an escalation instead of a guess"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. One execution trace per request type ---\ntask: I was charged twice and want a refund\n   1. user         task       I was charged twice and want a refund\n   2. supervisor   route      refund\n   3. refund_worker result     refund case opened for: I was charged twice and want a\n   4. supervisor   answer     refund case opened for: I was charged twice and want a\n  -> refund case opened for: I was charged twice and want a\ntask: The app shows a stack trace on login\n   1. user         task       The app shows a stack trace on login\n   2. supervisor   route      bug\n   3. bug_worker   result     bug ticket filed for: The app shows a stack trace on\n   4. supervisor   answer     bug ticket filed for: The app shows a stack trace on\n  -> bug ticket filed for: The app shows a stack trace on\ntask: What is the price to upgrade to the team plan\n   1. user         task       What is the price to upgrade to the team plan\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The scripted router on 14 hand-written tasks",
+    "headingKn": "ಪ್ರಯೋಗ 2: The scripted router on 14 hand-written tasks",
+    "bodyEn": "What it ran: The scripted router on 14 hand-written tasks. What the lab concluded: a task with two intents is routed by whichever rule comes first, and tasks that use words the rules do not list fall to unknown; the routing quality is the quality of the classifier, and the 14 tasks are ours, so this shows the failure shape, not a rate",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The scripted router on 14 hand-written tasks. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a task with two intents is routed by whichever rule comes first, and tasks that use words the rules do not list fall to unknown; the routing quality is the quality of the classifier, and the 14 tasks are ours, so this shows the failure shape, not a rate"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: the scripted router on 14 hand-written tasks ---\nI need a refund for order 5                    want=refund   got=refund   ok\nPlease give me my money back                   want=refund   got=refund   ok\nI was charged twice                            want=refund   got=refund   ok\nThe app crashes on start                       want=bug      got=bug      ok\nError 500 when I save                          want=bug      got=bug      ok\nHere is a stack trace from production          want=bug      got=bug      ok\nHow much is the pro plan price                 want=sales    got=sales    ok\nI want a quote for 50 seats                    want=sales    got=sales    ok\nCan I upgrade my plan                          want=sales    got=sales    ok\nMy refund request caused an error in the app   want=refund   got=refund   ok\nThe upgrade button crashes the page            want=bug      got=bug      ok\nCancel my subscription                         want=refund   got=unknown  WRONG\nIt is broken                                   want=bug      got=unknown  WRONG\nHello                                          want=unknown  got=unknown  ok\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The supervisor is a single point of failure, a worker is not",
+    "headingKn": "ಪ್ರಯೋಗ 3: The supervisor is a single point of failure, a worker is not",
+    "bodyEn": "What it ran: The supervisor is a single point of failure, a worker is not. What the lab concluded: when the supervisor fails every request fails; when one worker is missing only its own requests escalate, which is the control-versus-dependency trade of centralisation",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The supervisor is a single point of failure, a worker is not. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): when the supervisor fails every request fails; when one worker is missing only its own requests escalate, which is the control-versus-dependency trade of centralisation"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: the supervisor is a single point of failure, a worker is not ---\nhealthy                -> ['refund case opened for', 'bug ticket filed for: ', 'sales lead created for']\nsupervisor down        -> ['no result', 'no result', 'no result']\nrefund worker missing  -> ['escalated to a human', 'bug ticket filed for: ', 'sales lead created for']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Supervisor model calls and coordination edges as workers are added",
+    "headingKn": "ಪ್ರಯೋಗ 4: Supervisor model calls and coordination edges as workers are added",
+    "bodyEn": "What it ran: Supervisor model calls and coordination edges as workers are added. What the lab concluded: the hub has one edge per worker, so the edge count grows linearly, but a routing prompt that lists every worker grows with the roster too; this is why very large rosters need a second level (Part 3)",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Supervisor model calls and coordination edges as workers are added. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the hub has one edge per worker, so the edge count grows linearly, but a routing prompt that lists every worker grows with the roster too; this is why very large rosters need a second level (Part 3)"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: supervisor model calls and coordination edges as workers are added ---\n workers  edges (hub)   routing prompt words (assumed 60 per worker)\n       3            3                                            220\n      10           10                                            640\n      30           30                                           1840\n     100          100                                           6040"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Model calls per request in this design",
+    "headingKn": "ಪ್ರಯೋಗ 5: Model calls per request in this design",
+    "bodyEn": "What it ran: Model calls per request in this design. What the lab concluded: a supervisor that also asks a model to summarise each worker result would add one more call per request; counting calls per pattern is how the four patterns are compared in Part 3",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Model calls per request in this design. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a supervisor that also asks a model to summarise each worker result would add one more call per request; counting calls per pattern is how the four patterns are compared in Part 3"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: model calls per request in this design ---\n6 requests -> 6 classifier calls (one per request), workers made 0 model calls because they are plain functions"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -204,6 +287,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The trace named who decided each step. 2) The router got 12 of 14 right; two failures used unlisted words. 3) Mixed-intent tasks depended on rule order. 4) With the supervisor down all 3 requests failed; with one worker missing only its own escalated. 5) Hub edges grow linearly but the routing prompt grew from 220 to 6,040 words (assumed 60 per entry). 6) Six requests used six classifier calls.",
     "bodyKn": "1) Trace ಪ್ರತಿ ಹಂತ ಯಾರು ನಿರ್ಧರಿಸಿದರು ಎಂದು ಹೆಸರಿಸಿತು. 2) Router 14 ರಲ್ಲಿ 12 ಸರಿ; ಎರಡು ವೈಫಲ್ಯ ಪಟ್ಟಿ ಮಾಡದ ಪದಗಳನ್ನು ಬಳಸಿದವು. 3) ಮಿಶ್ರ-ಉದ್ದೇಶ ಕಾರ್ಯಗಳು ನಿಯಮ ಕ್ರಮದ ಮೇಲೆ ಅವಲಂಬಿತ. 4) Supervisor ನಿಂತಾಗ 3 ವಿನಂತಿಗಳೂ ವಿಫಲ; ಒಂದು worker ಕಾಣೆಯಾದಾಗ ಅದರದ್ದು ಮಾತ್ರ ಎಸ್ಕಲೇಟ್. 5) Hub edges ರೇಖೀಯವಾಗಿ ಬೆಳೆಯುತ್ತವೆ ಆದರೆ routing prompt 220 ರಿಂದ 6,040 ಪದಗಳಿಗೆ ಬೆಳೆಯಿತು (ಪ್ರತಿ ನಮೂದಿಗೆ 60 ಊಹೆ). 6) ಆರು ವಿನಂತಿಗಳು ಆರು ವರ್ಗೀಕಾರಕ ಕರೆಗಳನ್ನು ಬಳಸಿದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B orch_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B orch_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B orch_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B orch_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

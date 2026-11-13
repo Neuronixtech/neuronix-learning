@@ -147,6 +147,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: One run of the research agent, as a tree",
+    "headingKn": "ಪ್ರಯೋಗ 1: One run of the research agent, as a tree",
+    "bodyEn": "What it ran: One run of the research agent, as a tree. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: One run of the research agent, as a tree. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. One run of the research agent, as a tree ---\ninvoke_agent researcher [INTERNAL] id=d15c79bb 0.089 ms agent.name=researcher operation.name=invoke_agent\n  chat gpt-4o [CLIENT] id=a8a4fbbc 0.012 ms operation.name=chat provider.name=openai request.model=gpt-4o response.model=gpt-4o-2024-08-06\n  execute_tool search [INTERNAL] id=1648e080 0.017 ms data_source.id=kb-main operation.name=execute_tool tool.name=search\n  execute_tool fetch [INTERNAL] id=01344650 0.004 ms data_source.id=kb-main operation.name=execute_tool tool.name=fetch\n  chat gpt-4o [CLIENT] id=29f6ff3c 0.005 ms operation.name=chat provider.name=openai request.model=gpt-4o response.model=gpt-4o-2024-08-06\nspans: 5 | stack after the run: 0 (must be 0)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Missing gen_ai.provider.name (10 percent of model calls, seed 3, 400 runs)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Missing gen_ai.provider.name (10 percent of model calls, seed 3, 400 runs)",
+    "bodyEn": "What it ran: Missing gen_ai.provider.name (10 percent of model calls, seed 3, 400 runs). What the lab concluded: a dashboard grouped by gen_ai.provider.name puts those calls in a group nobody can attribute to a provider",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Missing gen_ai.provider.name (10 percent of model calls, seed 3, 400 runs). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a dashboard grouped by gen_ai.provider.name puts those calls in a group nobody can attribute to a provider"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: missing gen_ai.provider.name (10 percent of model calls, seed 3, 400 runs) ---\nchat spans grouped by provider: {'openai': 720, '(missing)': 80}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Request model versus response model",
+    "headingKn": "ಪ್ರಯೋಗ 3: Request model versus response model",
+    "bodyEn": "What it ran: Request model versus response model. What the lab concluded: grouping by the requested alias hides which model version served the call; the resolved name is what changes when a provider re-points an alias",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Request model versus response model. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): grouping by the requested alias hides which model version served the call; the resolved name is what changes when a provider re-points an alias"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: request model versus response model ---\n(request, response) pairs seen: {('gpt-4o', 'gpt-4o-2024-08-06'): 800}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A shared stack under 8 concurrent agents (real threads)",
+    "headingKn": "ಪ್ರಯೋಗ 4: A shared stack under 8 concurrent agents (real threads)",
+    "bodyEn": "What it ran: A shared stack under 8 concurrent agents (real threads). What the lab concluded: a single shared stack mixes the callers' hierarchies as soon as two requests overlap; a per-context current span keeps each tree separate",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A shared stack under 8 concurrent agents (real threads). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a single shared stack mixes the callers' hierarchies as soon as two requests overlap; a per-context current span keeps each tree separate"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: a shared stack under 8 concurrent agents (real threads) ---\nshared stack: 400 spans | agent spans wrongly nested under another agent's span: 199 of 200 | stack left with 0 entries\nContextVar tracer: 400 spans | agent spans nested wrongly: 0 | chat spans without an agent parent: 0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: An exception when the pop is not in a finally block",
+    "headingKn": "ಪ್ರಯೋಗ 5: An exception when the pop is not in a finally block",
+    "bodyEn": "What it ran: An exception when the pop is not in a finally block. What the lab concluded: without finally the failed spans stay on the stack and every later span becomes their descendant",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An exception when the pop is not in a finally block. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): without finally the failed spans stay on the stack and every later span becomes their descendant"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: an exception when the pop is not in a finally block ---\nNoFinallyTracer  stack left: 2 | the next, unrelated agent span has parent: YES (wrong)\nTracer           stack left: 0 | the next, unrelated agent span has parent: none"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The 1,000+ line proof: 175 research-agent runs, every span printed",
+    "headingKn": "ಪ್ರಯೋಗ 6: The 1,000+ line proof: 175 research-agent runs, every span printed",
+    "bodyEn": "What it ran: The 1,000+ line proof: 175 research-agent runs, every span printed. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The 1,000+ line proof: 175 research-agent runs, every span printed. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. The 1,000+ line proof: 175 research-agent runs, every span printed ---\nRUN 001 question='explain otel spans' spans=6\ninvoke_agent researcher [INTERNAL] id=22a09b29 0.047 ms agent.name=researcher operation.name=invoke_agent\n  chat gpt-4o [CLIENT] id=2800181d 0.004 ms operation.name=chat provider.name=openai request.model=gpt-4o response.model=gpt-4o-2024-08-06\n  execute_tool search [INTERNAL] id=9a6a4415 0.013 ms data_source.id=kb-main operation.name=execute_tool tool.name=search\n  execute_tool fetch [INTERNAL] id=fb614e8c 0.003 ms data_source.id=kb-main operation.name=execute_tool tool.name=fetch\n  execute_tool fetch [INTERNAL] id=1e433e30 0.003 ms data_source.id=kb-main operation.name=execute_tool tool.name=fetch\n  chat gpt-4o [CLIENT] id=d8413c8b 0.003 ms operation.name=chat provider.name=openai request.model=gpt-4o response.model=gpt-4o-2024-08-06\nRUN 002 question='what is a data source' spans=6\ninvoke_agent researcher [INTERNAL] id=885fee87 0.040 ms agent.name=researcher operation.name=invoke_agent\n  chat gpt-4o [CLIENT] id=d5f2d2ca 0.003 ms operation.name=chat provider.name=openai request.model=gpt-4o response.model=gpt-4o-2024-08-06\n  execute_tool search [INTERNAL] id=9c399bee 0.010 ms data_source.id=kb-main operation.name=execute_tool tool.name=search\n  execute_tool fetch [INTERNAL] id=87838ef4 0.003 ms data_source.id=kb-main operation.name=execute_tool tool.name=fetch\n  execute_tool fetch [INTERNAL] id=1bf03dfb 0.003 ms data_source.id=kb-main operation.name=execute_tool tool.name=fetch\n  chat gpt-4o [CLIENT] id=f5c83b89 0.004 ms operation.name=chat provider.name=openai request.model=gpt-4o response.model=gpt-4o-2024-08-06\n…"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

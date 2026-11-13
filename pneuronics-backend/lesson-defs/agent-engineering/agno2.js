@@ -137,6 +137,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Schema at the tool boundary",
+    "headingKn": "ಪ್ರಯೋಗ 1: Schema at the tool boundary",
+    "bodyEn": "What it ran: Schema at the tool boundary. What the lab concluded: None                                           SchemaError: input: expected object, got NoneType",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Schema at the tool boundary. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): None                                           SchemaError: input: expected object, got NoneType"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Schema at the tool boundary ---\nvalid                                          30°C, humid\nmissing city                                   SchemaError: city: required\nnumber instead of string                       SchemaError: city: expected string, got int\nunknown city                                   SchemaError: city: 'Pune' not one of ['bengaluru', 'delhi', 'mumbai']\nempty string                                   SchemaError: city: shorter than 1\nextra field                                    SchemaError: input: unexpected fields ['units']\nnot an object                                  SchemaError: input: expected object, got str"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A type hint is not a boundary",
+    "headingKn": "ಪ್ರಯೋಗ 2: A type hint is not a boundary",
+    "bodyEn": "What it ran: A type hint is not a boundary. What the lab concluded: a model often emits numbers as strings; strict validation rejects '3', while coercing would hide how often the model got the type wrong",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A type hint is not a boundary. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a model often emits numbers as strings; strict validation rejects '3', while coercing would hide how often the model got the type wrong"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: a type hint is not a boundary ---\nget_weather(123) with only a hint              AttributeError: 'int' object has no attribute 'lower'\nsame value through the schema                  SchemaError: city: expected string, got int\nthe hint did not stop 123; it failed inside the function with an AttributeError that names no field, while the schema named 'city' and the expected type\nisinstance(True, int) is True - the schema checks bool first, otherwise True would pass as an integer:\n  n=3      -> accepted\n  n=True   -> rejected (n: expected int, got bool)\n  n='3'    -> rejected (n: expected int, got str)\n  n=3.0    -> rejected (n: expected int, got float)\n  n=0      -> rejected (n: 0 outside [1, 5])\n  n=6      -> rejected (n: 6 outside [1, 5])"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Workflow: same input, same path (1000 runs)",
+    "headingKn": "ಪ್ರಯೋಗ 3: Workflow: same input, same path (1000 runs)",
+    "bodyEn": "What it ran: Workflow: same input, same path (1000 runs). What the lab concluded: the workflow's single path is a property of the code; the agent's spread is an assumption standing in for model variability",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Workflow: same input, same path (1000 runs). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the workflow's single path is a property of the code; the agent's spread is an assumption standing in for model variability"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Workflow: same input, same path (1000 runs) ---\ndistinct step paths: 1 | distinct outputs: 1 | {'Delhi: 29°C, clear'}\nbad input stops at the schema: city: 'Pune' not one of ['bengaluru', 'delhi', 'mumbai']\nan agent whose choice is random (probabilities ASSUMED, seed 11, not measured from a real model):\n   795  tool:get_weather\n   123  answer-without-tool\n    49  tool:get_weather -> tool:get_weather\n    33  clarify"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Model routing modes (simulated providers, seed 5)",
+    "headingKn": "ಪ್ರಯೋಗ 4: Model routing modes (simulated providers, seed 5)",
+    "bodyEn": "What it ran: Model routing modes (simulated providers, seed 5). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Model routing modes (simulated providers, seed 5). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Model routing modes (simulated providers, seed 5) ---\nprimary    large=6 small=0 relative cost=60\ncost       large=3 small=3 relative cost=33\ncapability large=2 small=4 relative cost=24\ncapability routing used the large model for 'design' and 'prove' by keyword; the long summarise request went to large under length-based cost routing even though it is easy\nrouting decides which model answers; it does not make any model more capable"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Fallback routing (assumed 30 percent primary failure rate, seed 9)",
+    "headingKn": "ಪ್ರಯೋಗ 5: Fallback routing (assumed 30 percent primary failure rate, seed 9)",
+    "bodyEn": "What it ran: Fallback routing (assumed 30 percent primary failure rate, seed 9). What the lab concluded: with independent 30 percent failures the success rate rises from 70 to about 90 percent (0.7 + 0.3 x 0.7 = 91 percent expected), at the price of some answers coming from the weaker model; real provider outages are correlated, so treat this as the best case",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Fallback routing (assumed 30 percent primary failure rate, seed 9). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with independent 30 percent failures the success rate rises from 70 to about 90 percent (0.7 + 0.3 x 0.7 = 91 percent expected), at the price of some answers coming from the weaker model; real provider outages are correlated, so treat this as the best case"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: fallback routing (assumed 30 percent primary failure rate, seed 9) ---\nprimary   success 70.0% | provider calls 5000 | answered by the weaker model 0\nfallback  success 90.3% | provider calls 6534 | answered by the weaker model 1051"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Composite storage and the observability store",
+    "headingKn": "ಪ್ರಯೋಗ 6: Composite storage and the observability store",
+    "bodyEn": "What it ran: Composite storage and the observability store. What the lab concluded: append-only trace rows are cheap: 200000 rows in 0.06s, while sessions stay tiny: that asymmetry is the argument for separate stores",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Composite storage and the observability store. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): append-only trace rows are cheap: 200000 rows in 0.06s, while sessions stay tiny: that asymmetry is the argument for separate stores"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: composite storage and the observability store ---\nisolate_traces=False trace store down -> request failed: trace store unavailable | session saved: False\nisolate_traces=True  trace store down -> request completed | session saved: True\nwhen the trace write came first and was not isolated, an outage in the observability store lost the user's session update"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

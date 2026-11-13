@@ -194,6 +194,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The plan for the France question",
+    "headingKn": "ಪ್ರಯೋಗ 1: The plan for the France question",
+    "bodyEn": "What it ran: The plan for the France question. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The plan for the France question. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The plan for the France question ---\nQUESTION: What is the population of the capital of France, rounded to millions?\nE1: capital_of({'country': 'France'}) depends_on=[]\nE2: population_of({'city': '#E1'}) depends_on=['E1']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The planner knows structure, not values",
+    "headingKn": "ಪ್ರಯೋಗ 2: The planner knows structure, not values",
+    "bodyEn": "What it ran: The planner knows structure, not values. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The planner knows structure, not values. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. The planner knows structure, not values ---\nmentions Paris: False | mentions 2148000: False\nE2 argument is a reference: #E1 | depends on: ['E1']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A parallel plan: dependency levels",
+    "headingKn": "ಪ್ರಯೋಗ 3: A parallel plan: dependency levels",
+    "bodyEn": "What it ran: A parallel plan: dependency levels. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A parallel plan: dependency levels. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. A parallel plan: dependency levels ---\nE1: capital_of({'country': 'France'}) depends_on=[]\nE2: capital_of({'country': 'Germany'}) depends_on=[]\nE3: population_of({'city': '#E1'}) depends_on=['E1']\nE4: population_of({'city': '#E2'}) depends_on=['E2']\nlevels: [['E1', 'E2'], ['E3', 'E4']]\nsequential steps: 4 | dependency levels: 2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The plan contract",
+    "headingKn": "ಪ್ರಯೋಗ 4: The plan contract",
+    "bodyEn": "What it ran: The plan contract. What the lab concluded: two-node cycle       -> ['no progress possible: cycle or missing dependency among E1, E2']",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The plan contract. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): two-node cycle       -> ['no progress possible: cycle or missing dependency among E1, E2']"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. The plan contract ---\nvalid France plan    -> OK\nduplicate ids        -> ['duplicate evidence ids']\nunknown tool         -> ['E1: unknown tool delete_database']\nmissing dependency   -> ['E1: missing dependency E99']\nself dependency      -> ['E1: depends on itself']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Cost model (arithmetic on stated assumptions, NOT a measurement)",
+    "headingKn": "ಪ್ರಯೋಗ 5: Cost model (arithmetic on stated assumptions, NOT a measurement)",
+    "bodyEn": "What it ran: Cost model (arithmetic on stated assumptions, NOT a measurement). What the lab concluded: ReAct grows as n^2, the plan-first figure grows as n. Caching, tool-result size and replanning change real numbers.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Cost model (arithmetic on stated assumptions, NOT a measurement). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): ReAct grows as n^2, the plan-first figure grows as n. Caching, tool-result size and replanning change real numbers."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Cost model (arithmetic on stated assumptions, NOT a measurement) ---\nassume each ReAct step adds k = 300 tokens and the next call re-reads all earlier steps\n steps n    ReAct re-read tokens k*n(n+1)/2     plan-first: plan + solve (2 calls of ~n*k)\n       3                               1800                                           1800\n      10                              16500                                           6000\n      20                              63000                                          12000\n      40                             246000                                          24000"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

@@ -108,6 +108,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Evaluator-optimizer: FAIL changes the next candidate",
+    "headingKn": "ಪ್ರಯೋಗ 1: Evaluator-optimizer: FAIL changes the next candidate",
+    "bodyEn": "What it ran: Evaluator-optimizer: FAIL changes the next candidate. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Evaluator-optimizer: FAIL changes the next candidate. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Evaluator-optimizer: FAIL changes the next candidate ---\n[iteration 1] candidate='Initial answer for Explain why workflows are useful' verdict='FAIL: add evidence'\n[iteration 2] candidate='Improved answer with evidence' verdict='PASS'\nfinal: Improved answer with evidence | model calls: 3"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The budget ran out, what comes back?",
+    "headingKn": "ಪ್ರಯೋಗ 2: The budget ran out, what comes back?",
+    "bodyEn": "What it ran: The budget ran out, what comes back?. What the lab concluded: returned: 'A revised answer' | the caller gets a string and no signal that every evaluation failed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The budget ran out, what comes back?. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): returned: 'A revised answer' | the caller gets a string and no signal that every evaluation failed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: the budget ran out, what comes back? ---\n[iteration 1] candidate='Initial answer for Explain routing' verdict='FAIL: still missing something'\n[iteration 2] candidate='A revised answer' verdict='FAIL: still missing something'"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The returned candidate was never evaluated",
+    "headingKn": "ಪ್ರಯೋಗ 3: The returned candidate was never evaluated",
+    "bodyEn": "What it ran: The returned candidate was never evaluated. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The returned candidate was never evaluated. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: the returned candidate was never evaluated ---\n[iteration 1] candidate='Initial answer for Explain routing' verdict='FAIL: still missing something'\nmax_iter=1, evaluations printed above: 1; returned: 'A revised answer'\nthe loop evaluates, fails, improves, and exits: the improved text is returned unchecked"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The evaluator can read the answer from the task",
+    "headingKn": "ಪ್ರಯೋಗ 4: The evaluator can read the answer from the task",
+    "bodyEn": "What it ran: The evaluator can read the answer from the task. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The evaluator can read the answer from the task. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: the evaluator can read the answer from the task ---\n[iteration 1] candidate='Initial answer for Explain why workflows need evidence' verdict='PASS'\na bad first answer passed on iteration 1 because the TASK contains the word 'evidence'"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Exact-string verdicts are fragile",
+    "headingKn": "ಪ್ರಯೋಗ 5: Exact-string verdicts are fragile",
+    "bodyEn": "What it ran: Exact-string verdicts are fragile. What the lab concluded:   'FAIL: add evidence'               -> {'passed': False, 'feedback': 'FAIL: add evidence'}",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Exact-string verdicts are fragile. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ):   'FAIL: add evidence'               -> {'passed': False, 'feedback': 'FAIL: add evidence'}"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: exact-string verdicts are fragile ---\n[iteration 1] candidate='Initial answer for Explain routing' verdict='PASS.'\n[iteration 2] candidate='Improved answer with evidence' verdict='PASS.'\n[iteration 3] candidate='Improved answer with evidence' verdict='PASS.'\nthe model said PASS. with a full stop, so equality never matched and all 3 iterations ran, 6 model calls\n  'PASS'                             -> {'passed': True, 'feedback': ''}\n  'PASS.'                            -> {'passed': True, 'feedback': ''}\n  'pass - all criteria satisfied'    -> {'passed': True, 'feedback': ''}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: All five patterns, with measured model calls",
+    "headingKn": "ಪ್ರಯೋಗ 6: All five patterns, with measured model calls",
+    "bodyEn": "What it ran: All five patterns, with measured model calls. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: All five patterns, with measured model calls. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. All five patterns, with measured model calls ---\nchain result    : Improved answer with evidence\nroute           : billing -> Billing specialist handles: I was charged twice and need a refund.\nvote            : ['NO', 'YES', 'YES'] -> YES\norchestrator    : ['researcher', 'coder']\nprompt chaining          model calls: 3\nrouting                  model calls: 1\nparallel voting (3)      model calls: 3\norchestrator-workers     model calls: 1\nevaluator-optimizer      model calls: 3\na single direct call costs 1; every pattern adds calls in exchange for structure"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: The decision tree as code",
+    "headingKn": "ಪ್ರಯೋಗ 7: The decision tree as code",
+    "bodyEn": "What it ran: The decision tree as code. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The decision tree as code. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. The decision tree as code ---\nsummarise one paragraph                  -> direct call\ntranslate, proofread, format             -> prompt chaining\nbilling, technical or sales request      -> routing\nsecurity + performance + style review    -> parallelization\ncompany research, specialists vary       -> orchestrator-workers\nwrite until the rubric passes            -> evaluator-optimizer\ninvestigate a production incident        -> agent\nvalidate an email field? plain code, no model at all"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

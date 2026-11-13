@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The three scenarios of the lesson",
+    "headingKn": "ಪ್ರಯೋಗ 1: The three scenarios of the lesson",
+    "bodyEn": "What it ran: The three scenarios of the lesson. What the lab concluded: the agent's own statement never appears as an input: the gate saw only records, the scope, the diff and the rule results, so a claim of 'done' could not change any verdict above",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The three scenarios of the lesson. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the agent's own statement never appears as an input: the gate saw only records, the scope, the diff and the rule results, so a claim of 'done' could not change any verdict above"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the three scenarios of the lesson ---\nclean pass                         passed=True  findings=[]\nacceptance never run               passed=False findings=[('ACCEPTANCE_NOT_RUN', 'block')]\nunauthorised file touched          passed=False findings=[('SCOPE_VIOLATION', 'block')]\nacceptance command failed          passed=False findings=[('ACCEPTANCE_FAILED', 'block')]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A warning passes under normal policy and blocks in strict mode",
+    "headingKn": "ಪ್ರಯೋಗ 2: A warning passes under normal policy and blocks in strict mode",
+    "bodyEn": "What it ran: A warning passes under normal policy and blocks in strict mode. What the lab concluded: the same evidence gave different verdicts under two policies, which is correct: the policy is an explicit input, and strict mode is how a team promotes warnings to blockers without editing the rules",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A warning passes under normal policy and blocks in strict mode. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the same evidence gave different verdicts under two policies, which is correct: the policy is an explicit input, and strict mode is how a team promotes warnings to blockers without editing the rules"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a warning passes under normal policy and blocks in strict mode ---\nnormal policy                      passed=True  findings=[('RULE_DOCS', 'warn')]\nstrict policy                      passed=False findings=[('RULE_DOCS', 'block')]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The verdict cannot contradict its findings",
+    "headingKn": "ಪ್ರಯೋಗ 3: The verdict cannot contradict its findings",
+    "bodyEn": "What it ran: The verdict cannot contradict its findings. What the lab concluded: passed is computed from the findings and never stored separately, so a report that says passed with a blocking finding, or failed with none, cannot be produced by this function",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The verdict cannot contradict its findings. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): passed is computed from the findings and never stored separately, so a report that says passed with a blocking finding, or failed with none, cannot be produced by this function"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: the verdict cannot contradict its findings ---\npassed equals 'no block finding' for every case: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Determinism over shuffled and repeated input",
+    "headingKn": "ಪ್ರಯೋಗ 4: Determinism over shuffled and repeated input",
+    "bodyEn": "What it ran: Determinism over shuffled and repeated input. What the lab concluded: findings are sorted by code and message before the report is built, so the order of the evidence does not change the report; identical inputs and policy give byte-identical JSON, which makes the report diffable and cacheable",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Determinism over shuffled and repeated input. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): findings are sorted by code and message before the report is built, so the order of the evidence does not change the report; identical inputs and policy give byte-identical JSON, which makes the report diffable and cacheable"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: determinism over shuffled and repeated input ---\ndistinct reports from 200 shuffles of the same evidence: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Determinism is not correctness",
+    "headingKn": "ಪ್ರಯೋಗ 5: Determinism is not correctness",
+    "bodyEn": "What it ran: Determinism is not correctness. What the lab concluded: the gate returned the same pass every time for a task that was told not to touch authentication, because the scope it was handed allowed it; a deterministic gate faithfully applies whatever policy it receives, so the policy needs its own review",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Determinism is not correctness. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the gate returned the same pass every time for a task that was told not to touch authentication, because the scope it was handed allowed it; a deterministic gate faithfully applies whatever policy it receives, so the policy needs its own review"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: determinism is not correctness ---\na scope contract that allows auth  passed=True  findings=[]"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Three failure scenarios each gave one blocking finding. 2) A warn rule passed normally and blocked in strict mode. 3) The verdict is derived from the findings. 4) 200 shuffles gave one report. 5) A permissive scope gave a pass for an authentication edit.",
     "bodyKn": "1) ಮೂರು ವೈಫಲ್ಯ ಸನ್ನಿವೇಶಗಳು ಪ್ರತಿಯೊಂದೂ ಒಂದು ತಡೆಯುವ finding ನೀಡಿದವು. 2) warn ನಿಯಮ ಸಾಮಾನ್ಯವಾಗಿ ಪಾಸ್ ಆಗಿ strict ನಲ್ಲಿ ತಡೆಯಿತು. 3) ತೀರ್ಪು findings ಯಿಂದ ಪಡೆಯಲ್ಪಟ್ಟಿದೆ. 4) 200 ಕಲಸುವಿಕೆಗಳು ಒಂದು ವರದಿ ನೀಡಿದವು. 5) ಉದಾರ ವ್ಯಾಪ್ತಿ authentication ಸಂಪಾದನೆಗೆ ಪಾಸ್ ನೀಡಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B vg_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B vg_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B vg_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B vg_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

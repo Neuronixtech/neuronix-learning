@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Touched files come from git, not from the agent's list",
+    "headingKn": "ಪ್ರಯೋಗ 1: Touched files come from git, not from the agent's list",
+    "bodyEn": "What it ran: Touched files come from git, not from the agent's list. What the lab concluded: the agent list omitted the deploy script it edited and git's diff did not; the new test file was found because the check also asks for files git does not track yet, which git diff alone would miss",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Touched files come from git, not from the agent's list. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the agent list omitted the deploy script it edited and git's diff did not; the new test file was found because the check also asks for files git does not track yet, which git diff alone would miss"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: touched files come from git, not from the agent's list ---\nagent said it touched: ['src/auth/login.py', 'tests/test_login.py']\ngit says it touched  : ['release/deploy.sh', 'src/auth/login.py', 'tests/test_login.py']\nverdict from the agent list: ALLOW | verdict from git: ('BLOCK', ['release/deploy.sh'])"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A rename out of an allowed directory",
+    "headingKn": "ಪ್ರಯೋಗ 2: A rename out of an allowed directory",
+    "bodyEn": "What it ran: A rename out of an allowed directory. What the lab concluded: with rename detection src/auth/old.py is missing from the list and only release/old.py appears; with --no-renames both ends of the move are listed, so the checker should use that form because the removal from the allowed directory is part of the change",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A rename out of an allowed directory. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with rename detection src/auth/old.py is missing from the list and only release/old.py appears; with --no-renames both ends of the move are listed, so the checker should use that form because the removal from the allowed directory is part of the change"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: a rename out of an allowed directory ---\nwith rename detection   : ['release/old.py', 'src/auth/login.py', 'tests/test_login.py']\nwithout rename detection: ['release/old.py', 'src/auth/login.py', 'src/auth/old.py', 'tests/test_login.py']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The agent edits the contract itself",
+    "headingKn": "ಪ್ರಯೋಗ 3: The agent edits the contract itself",
+    "bodyEn": "What it ran: The agent edits the contract itself. What the lab concluded: the widened contract that also allowed its own file gave ALLOW for a forbidden deploy-script edit, while the start contract blocked it and showed the contract edit as a violation; a contract read from the working tree lets the agent widen its own permissions; the contract has to be loaded from the baseline commit or from a location the agent cannot write, and a changed contract hash is itself a finding",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The agent edits the contract itself. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the widened contract that also allowed its own file gave ALLOW for a forbidden deploy-script edit, while the start contract blocked it and showed the contract edit as a violation; a contract read from the working tree lets the agent widen its own permissions; the contract has to be loaded from the baseline commit or from a location the agent cannot write, and a changed contract hash is itself a finding"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: the agent edits the contract itself ---\nchanged files include the contract: True\nverdict against the widened contract on disk: ALLOW\nverdict against the contract loaded at task start: ('BLOCK', ['release/deploy.sh', 'scope_contract.json'])\ncontract hash still equals the start hash: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Rollback keeps the work that existed before the task",
+    "headingKn": "ಪ್ರಯೋಗ 4: Rollback keeps the work that existed before the task",
+    "bodyEn": "What it ran: Rollback keeps the work that existed before the task. What the lab concluded: the hard reset destroyed the human's uncommitted edit, which is why rollback is scoped to the task's own files; the other hard resets in this lab are fine only because it owns the temporary repository",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Rollback keeps the work that existed before the task. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the hard reset destroyed the human's uncommitted edit, which is why rollback is scoped to the task's own files; the other hard resets in this lab are fine only because it owns the temporary repository"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: rollback keeps the work that existed before the task ---\nstatus after the targeted rollback: [' M docs/guide.md']\nhuman edit preserved: True | login.py restored to: v1\nthe targeted rollback restored only the files the task changed\nafter git reset --hard instead, docs/guide.md reads: 'guide' | human edit preserved: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The report is a file the next session can read",
+    "headingKn": "ಪ್ರಯೋಗ 5: The report is a file the next session can read",
+    "bodyEn": "What it ran: The report is a file the next session can read. What the lab concluded: the report names the baseline commit, the contract hash, every file and each violation with its class, so a later session or a reviewer can see why the task was blocked without rerunning anything; it does not undo the change, and the base commit and hash are shortened for display",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The report is a file the next session can read. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the report names the baseline commit, the contract hash, every file and each violation with its class, so a later session or a reviewer can see why the task was blocked without rerunning anything; it does not undo the change, and the base commit and hash are shortened for display"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: the report is a file the next session can read ---\n{\n  \"base_commit\": \"8525360666\",\n  \"contract_sha256\": \"493f66089140\",\n  \"files\": [\n    \"release/deploy.sh\"\n  ],\n  \"verdict\": \"BLOCK\",\n  \"violations\": [\n    {\n      \"file\": \"release/deploy.sh\",\n      \"class\": \"forbidden\"\n    }\n  ]\n}"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The agent list gave ALLOW and git gave BLOCK. 2) A move out of src/auth/ showed only its new path unless renames were turned off. 3) A widened contract on disk allowed the forbidden edit while the start contract blocked it. 4) A scoped rollback kept the human edit and a hard reset destroyed it. 5) The report recorded base commit, contract hash, files and classes.",
     "bodyKn": "1) agent ಪಟ್ಟಿ ALLOW ಮತ್ತು git BLOCK ನೀಡಿತು. 2) src/auth/ ಯಿಂದ ಸರಿಸುವಿಕೆ renames ಆರಿಸದ ಹೊರತು ಹೊಸ path ಮಾತ್ರ ತೋರಿಸಿತು. 3) ಡಿಸ್ಕ್‌ನ ವಿಸ್ತರಿತ ಒಪ್ಪಂದ ನಿಷೇಧಿತ ಸಂಪಾದನೆ ಅನುಮತಿಸಿತು ಆದರೆ ಆರಂಭ ಒಪ್ಪಂದ ತಡೆಯಿತು. 4) ವ್ಯಾಪ್ತಿಗೊಳಿಸಿದ rollback ಮಾನವ ಸಂಪಾದನೆ ಉಳಿಸಿತು ಮತ್ತು hard reset ನಾಶ ಮಾಡಿತು. 5) ವರದಿ base commit, ಒಪ್ಪಂದ hash, ಫೈಲ್‌ಗಳು ಮತ್ತು ವರ್ಗಗಳನ್ನು ದಾಖಲಿಸಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B sc_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B sc_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B sc_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B sc_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

@@ -137,6 +137,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: One scripted question, three debaters",
+    "headingKn": "ಪ್ರಯೋಗ 1: One scripted question, three debaters",
+    "bodyEn": "What it ran: One scripted question, three debaters. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: One scripted question, three debaters. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. One scripted question, three debaters ---\nquestion: What is 17 + 26? | correct: C\nround 0: ['C', 'W', 'C']\nround 1: ['C', 'C', 'C']\nvote of initial answers: C | debate final: C"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Majority vote under independent errors (error rate per agent ASSUMED, seed 1, 20000 quest…",
+    "headingKn": "ಪ್ರಯೋಗ 2: Majority vote under independent errors (error rate per agent ASSUMED, seed 1, 20000 quest…",
+    "bodyEn": "What it ran: Majority vote under independent errors (error rate per agent ASSUMED, seed 1, 20000 questions). What the lab concluded: with independent errors voting helps when each agent is right more often than not; at 40 percent error with several agents wrong answers also split three ways, which lets the correct answer win a little more often than counting only 'more than half correct' would predict",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Majority vote under independent errors (error rate per agent ASSUMED, seed 1, 20000 questions). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with independent errors voting helps when each agent is right more often than not; at 40 percent error with several agents wrong answers also split three ways, which lets the correct answer win a little more often than counting only 'more than half correct' would predict"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: majority vote under independent errors (error rate per agent ASSUMED, seed 1, 20000 questions) ---\n agents error rate  single agent  majority vote\n      1        20%         79.5%          79.5%\n      1        40%         60.3%          60.3%\n      3        20%         80.0%          90.0%\n      3        40%         60.1%          65.2%\n      5        20%         79.8%          95.3%\n      5        40%         59.9%          73.7%\n      9        20%         80.0%          99.5%\n      9        40%         59.6%          89.0%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Independent errors versus errors that share a cause (5 agents, similar average error, see…",
+    "headingKn": "ಪ್ರಯೋಗ 3: Independent errors versus errors that share a cause (5 agents, similar average error, see…",
+    "bodyEn": "What it ran: Independent errors versus errors that share a cause (5 agents, similar average error, seed 2). What the lab concluded: both setups make a single agent about 69 percent right, but when mistakes cluster on the same hard questions the majority gains far less and a sizeable share of questions end with all five agreeing on a wrong answer; independence of errors, not the number of agents, is what voting needs",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Independent errors versus errors that share a cause (5 agents, similar average error, seed 2). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both setups make a single agent about 69 percent right, but when mistakes cluster on the same hard questions the majority gains far less and a sizeable share of questions end with all five agreeing on a wrong answer; independence of errors, not the number of agents, is what voting needs"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: independent errors versus errors that share a cause (5 agents, similar average error, seed 2) ---\nerror structure                               one agent  majority of 5  unanimous and wrong\nindependent, 31% wrong each                       69.2%          85.5%                 0.0%\nshared cause (30% hard questions, 80% wrong)      68.7%          71.1%                 6.0%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Debate versus voting (threshold rule, 3 rounds, 5 agents, error 30 percent, seed 3)",
+    "headingKn": "ಪ್ರಯೋಗ 4: Debate versus voting (threshold rule, 3 rounds, 5 agents, error 30 percent, seed 3)",
+    "bodyEn": "What it ran: Debate versus voting (threshold rule, 3 rounds, 5 agents, error 30 percent, seed 3). What the lab concluded: with this update rule the debate final matched the initial vote exactly and never turned a correct majority into a wrong one; what it added was agreement (86.5 to 89.8 percent converged), and some of that agreement is on a wrong answer, 2.45 and 6.75 percent of questions",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Debate versus voting (threshold rule, 3 rounds, 5 agents, error 30 percent, seed 3). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with this update rule the debate final matched the initial vote exactly and never turned a correct majority into a wrong one; what it added was agreement (86.5 to 89.8 percent converged), and some of that agreement is on a wrong answer, 2.45 and 6.75 percent of questions"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: debate versus voting (threshold rule, 3 rounds, 5 agents, error 30 percent, seed 3) ---\n trap share  initial vote  debate final  converged  converged and wrong  correct -> wrong\n        0.0         87.0%         87.0%      86.5%                2.45%             0.00%\n        0.7         84.8%         84.8%      89.8%                6.75%             0.00%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Confidence-weighted updating when confidence is or is not informative (seed 4)",
+    "headingKn": "ಪ್ರಯೋಗ 5: Confidence-weighted updating when confidence is or is not informative (seed 4)",
+    "bodyEn": "What it ran: Confidence-weighted updating when confidence is or is not informative (seed 4). What the lab concluded: weighting by confidence helped a lot when confidence tracked correctness (71.4 to 91.5 percent, by construction of our assumption) and hurt when it did not (71.7 down to 64.8 percent), because the weights then break ties at random",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Confidence-weighted updating when confidence is or is not informative (seed 4). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): weighting by confidence helped a lot when confidence tracked correctness (71.4 to 91.5 percent, by construction of our assumption) and hurt when it did not (71.7 down to 64.8 percent), because the weights then break ties at random"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: confidence-weighted updating when confidence is or is not informative (seed 4) ---\n      confidence  unweighted final  weighted final\n     informative             71.4%           91.5%\n   uninformative             71.7%           64.8%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Ties and even group sizes",
+    "headingKn": "ಪ್ರಯೋಗ 6: Ties and even group sizes",
+    "bodyEn": "What it ran: Ties and even group sizes. What the lab concluded: a tie has no winner, and with a synchronous update two agents can swap answers forever instead of converging",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Ties and even group sizes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a tie has no winner, and with a synchronous update two agents can swap answers forever instead of converging"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: ties and even group sizes ---\n2 agents ['C', 'W']: plurality = None\n4 agents ['C', 'C', 'W', 'W']: plurality = None\n4 agents ['C', 'C', 'W', 'X']: plurality = C\n6 agents ['C', 'C', 'C', 'W', 'W', 'W']: plurality = None\ntwo agents who disagree, switching to the other's answer each round: [['C', 'W'], ['W', 'C'], ['C', 'W'], ['W', 'C'], ['C', 'W']]"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

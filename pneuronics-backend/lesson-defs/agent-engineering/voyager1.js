@@ -155,6 +155,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A skill is metadata plus code",
+    "headingKn": "ಪ್ರಯೋಗ 1: A skill is metadata plus code",
+    "bodyEn": "What it ran: A skill is metadata plus code. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A skill is metadata plus code. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. A skill is metadata plus code ---\ncollect_wood v1 tags=['resource', 'wood'] deps=[]\n             description: Collect wood logs for crafting\nmake_sticks  v1 tags=['crafting', 'wood'] deps=['collect_wood']\n             description: Turn collected wood into crafting sticks\nmine_iron    v1 tags=['iron', 'mining', 'resource'] deps=[]\n             description: Mine iron ore for advanced tools"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Running skills against a state dictionary",
+    "headingKn": "ಪ್ರಯೋಗ 2: Running skills against a state dictionary",
+    "bodyEn": "What it ran: Running skills against a state dictionary. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Running skills against a state dictionary. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Running skills against a state dictionary ---\nafter collect_wood -> {'wood': 4, 'sticks': 0, 'iron_ore': 0}\nafter make_sticks  -> {'wood': 3, 'sticks': 4, 'iron_ore': 0}\nafter mine_iron    -> {'wood': 3, 'sticks': 4, 'iron_ore': 3}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Dataclass defaults are per instance",
+    "headingKn": "ಪ್ರಯೋಗ 3: Dataclass defaults are per instance",
+    "bodyEn": "What it ran: Dataclass defaults are per instance. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Dataclass defaults are per instance. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Dataclass defaults are per instance ---\na.tags: {'only-a'} | b.tags: set() | a.deps: ['x'] | b.deps: []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The contract: function name must equal skill name",
+    "headingKn": "ಪ್ರಯೋಗ 4: The contract: function name must equal skill name",
+    "bodyEn": "What it ran: The contract: function name must equal skill name. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The contract: function name must equal skill name. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. The contract: function name must equal skill name ---\nrejected: Skill collect_logs did not define a function named collect_logs"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Genuinely checking what empty __builtins__ does",
+    "headingKn": "ಪ್ರಯೋಗ 5: Genuinely checking what empty __builtins__ does",
+    "bodyEn": "What it ran: Genuinely checking what empty __builtins__ does. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely checking what empty __builtins__ does. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking what empty __builtins__ does ---\nskill using len() fails: name 'len' is not defined\nfully empty builtins -> NameError: name 'RuntimeError' is not defined\nRuntimeError allowed  -> RuntimeError: need 3 iron ingots\nskill using print() fails: name 'print' is not defined"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Genuinely checking whether that is a sandbox",
+    "headingKn": "ಪ್ರಯೋಗ 6: Genuinely checking whether that is a sandbox",
+    "bodyEn": "What it ran: Genuinely checking whether that is a sandbox. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely checking whether that is a sandbox. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking whether that is a sandbox ---\nwith builtins emptied, the skill still reached 265 classes through attribute access alone\nso exec with {'__builtins__': {}} limits convenience, it does not isolate untrusted code"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

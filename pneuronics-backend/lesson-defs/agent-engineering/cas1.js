@@ -137,6 +137,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The lesson's demo: write, read and list through the registry",
+    "headingKn": "ಪ್ರಯೋಗ 1: The lesson's demo: write, read and list through the registry",
+    "bodyEn": "What it ran: The lesson's demo: write, read and list through the registry. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lesson's demo: write, read and list through the registry. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The lesson's demo: write, read and list through the registry ---\n['list_dir', 'read_file', 'write_file']\nWrote 20 characters to agent_demo\\test.txt\nHarness as a library\n['test.txt']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Registry invariants",
+    "headingKn": "ಪ್ರಯೋಗ 2: Registry invariants",
+    "bodyEn": "What it ran: Registry invariants. What the lab concluded: every failure surfaces as a raw Python exception; the registry has no result envelope with ok/error",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Registry invariants. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): every failure surfaces as a raw Python exception; the registry has no result envelope with ok/error"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Registry invariants ---\nregister a duplicate name: ValueError: Tool already registered: read_file\nexecute an unknown tool: KeyError: 'Unknown tool: delete_file'\nwrong argument name: TypeError: read_file() got an unexpected keyword argument 'filename'\nmissing file: FileNotFoundError: [Errno 2] No such file or directory: 'agent_demo\\\\missing.txt'"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Write_file and the directory boundary",
+    "headingKn": "ಪ್ರಯೋಗ 3: Write_file and the directory boundary",
+    "bodyEn": "What it ran: Write_file and the directory boundary. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Write_file and the directory boundary. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: write_file and the directory boundary ---\nwrite ../outside.txt: Wrote 7 characters to agent_demo\\..\\outside.txt\nfile now exists outside agent_demo: True | content: ESCAPED\nwrite an absolute path: Wrote 3 characters to C:\\Users\\samee\\AppData\\Local\\Temp\\cas1_wtzyoyol\\absolute.txt\nabsolute path written: True\nsandboxed ../outside.txt: PermissionError: path escapes sandbox: ../outside.txt\nsandboxed absolute path: PermissionError: path escapes sandbox: C:\\Users\\samee\\AppData\\Local\\Temp\\cas1_wtzyoyol\\absolute.txt\nsandboxed normal path: Wrote 2 characters\noutside files exist after sandboxed attempts: False False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Reading files that are large or not text",
+    "headingKn": "ಪ್ರಯೋಗ 4: Reading files that are large or not text",
+    "bodyEn": "What it ran: Reading files that are large or not text. What the lab concluded: read a binary file: UnicodeDecodeError: 'utf-8' codec can't decode byte 0x80 in position 128: invalid start byte",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Reading files that are large or not text. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): read a binary file: UnicodeDecodeError: 'utf-8' codec can't decode byte 0x80 in position 128: invalid start byte"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: reading files that are large or not text ---\nread_file returned 3,800,000 characters (~800,000 words) in one result; there is no size cap"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The success message counts characters, not bytes",
+    "headingKn": "ಪ್ರಯೋಗ 5: The success message counts characters, not bytes",
+    "bodyEn": "What it ran: The success message counts characters, not bytes. What the lab concluded: 'characters' is not the size on disk; a quota or budget keyed to the message would be wrong for non-ASCII text",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The success message counts characters, not bytes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): 'characters' is not the size on disk; a quota or budget keyed to the message would be wrong for non-ASCII text"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: the success message counts characters, not bytes ---\nASCII    Wrote 5 characters             bytes on disk: 5\nKannada  Wrote 7 characters             bytes on disk: 21\nemoji    Wrote 4 characters             bytes on disk: 7"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Write_file overwrites silently",
+    "headingKn": "ಪ್ರಯೋಗ 6: Write_file overwrites silently",
+    "bodyEn": "What it ran: Write_file overwrites silently. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Write_file overwrites silently. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: write_file overwrites silently ---\nplan.txt now: 'v2' | v1 is gone, no warning was returned"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Where a post-tool hook does and does not run",
+    "headingKn": "ಪ್ರಯೋಗ 7: Where a post-tool hook does and does not run",
+    "bodyEn": "What it ran: Where a post-tool hook does and does not run. What the lab concluded: pre_tool_use fired for the failing call but post_tool_use did not: an audit that depends on post would not record failures",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Where a post-tool hook does and does not run. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): pre_tool_use fired for the failing call but post_tool_use did not: an audit that depends on post would not record failures"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking: where a post-tool hook does and does not run ---\nfailing call: FileNotFoundError: [Errno 2] No such file or directory: 'agent_demo\\\\missing.txt'\nevents: [('pre_tool_use', 'list_dir'), ('post_tool_use', 'list_dir'), ('pre_tool_use', 'read_file')]"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

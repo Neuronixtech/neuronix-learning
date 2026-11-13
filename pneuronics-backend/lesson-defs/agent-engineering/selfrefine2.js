@@ -145,6 +145,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Self-Refine only: the structural checks accept a false claim",
+    "headingKn": "ಪ್ರಯೋಗ 1: Self-Refine only: the structural checks accept a false claim",
+    "bodyEn": "What it ran: Self-Refine only: the structural checks accept a false claim. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Self-Refine only: the structural checks accept a false claim. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Self-Refine only: the structural checks accept a false claim ---\n- Python was created by Guido van Rossum.\n- Python was first released in 1991.\n- Python was originally created by Microsoft.\nstructural feedback: none -> the loop would stop here"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The external verifier disagrees",
+    "headingKn": "ಪ್ರಯೋಗ 2: The external verifier disagrees",
+    "bodyEn": "What it ran: The external verifier disagrees. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The external verifier disagrees. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. The external verifier disagrees ---\npassed: False\nissues: ['Bullet 3 contains a known false claim: Python was originally created by Microsoft.']\nevidence: ['Verifier evidence for bullet 3: Python was created by Guido van Rossum.']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The CRITIC loop",
+    "headingKn": "ಪ್ರಯೋಗ 3: The CRITIC loop",
+    "bodyEn": "What it ran: The CRITIC loop. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The CRITIC loop. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. The CRITIC loop ---\nITERATION 0: self=ok external=['Bullet 3 contains a known false claim: Python was originally created by Microsoft.']\nITERATION 1: self=ok external=passed\nSTOP: self-feedback found no issues and external verification passed.\n- Python was created by Guido van Rossum.\n- Python was first released in 1991.\n- Python supports multiple programming paradigms.\nverified: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Evidence is not a repair: replacing a bullet with the evidence duplicates it",
+    "headingKn": "ಪ್ರಯೋಗ 4: Evidence is not a repair: replacing a bullet with the evidence duplicates it",
+    "bodyEn": "What it ran: Evidence is not a repair: replacing a bullet with the evidence duplicates it. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Evidence is not a repair: replacing a bullet with the evidence duplicates it. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Evidence is not a repair: replacing a bullet with the evidence duplicates it ---\nITERATION 0: self=ok external=['Bullet 3 contains a known false claim: Python was originally created by Microsoft.']\nITERATION 1: self=ok external=passed\nSTOP: self-feedback found no issues and external verification passed.\n- Python was created by Guido van Rossum.\n- Python was first released in 1991.\n- Python was created by Guido van Rossum.\nbullets 1 and 3 identical: True | loop accepted it: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Coverage: a false claim the verifier does not know",
+    "headingKn": "ಪ್ರಯೋಗ 5: Coverage: a false claim the verifier does not know",
+    "bodyEn": "What it ran: Coverage: a false claim the verifier does not know. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Coverage: a false claim the verifier does not know. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Coverage: a false claim the verifier does not know ---\nITERATION 0: self=ok external=passed\nSTOP: self-feedback found no issues and external verification passed.\nverified: True - 1985 is wrong (it was 1991) but is not in the verifier's table"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Three-state verification: unavailable is not the same as passed",
+    "headingKn": "ಪ್ರಯೋಗ 6: Three-state verification: unavailable is not the same as passed",
+    "bodyEn": "What it ran: Three-state verification: unavailable is not the same as passed. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Three-state verification: unavailable is not the same as passed. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Three-state verification: unavailable is not the same as passed ---\nverifier online=True  status=fail    notes=['Bullet 3 contains a known false claim: Python was originally created by Microsoft.']\n   'not failed' reading would accept: False | strict reading accepts: False\nverifier online=False status=unknown notes=['verifier unavailable (timeout)']\n   'not failed' reading would accept: True | strict reading accepts: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Deterministic verifiers beat asking a model",
+    "headingKn": "ಪ್ರಯೋಗ 7: Deterministic verifiers beat asking a model",
+    "bodyEn": "What it ran: Deterministic verifiers beat asking a model. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Deterministic verifiers beat asking a model. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Deterministic verifiers beat asking a model ---\njson '{\"name\": \"Alex\", \"age\": 25}'    -> (True, 'valid JSON')\njson '{\"name\": \"Alex\", \"age\": 25,}'   -> (False, 'Illegal trailing comma before end of object: line 1 column 27 (char 26)')\n17 * 24 = 418        computed 408 -> WRONG\n19 * 37 = 713        computed 703 -> WRONG\n4387 * 91 = 399217   computed 399217 -> OK\nexpression with a call is refused: expression not allowed"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A state machine rejects shortcuts",
+    "headingKn": "ಪ್ರಯೋಗ 1: A state machine rejects shortcuts",
+    "bodyEn": "What it ran: A state machine rejects shortcuts. What the lab concluded: a caller that assigns the status field directly reached handed_off with no validation: the rule only protects callers that use move()",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A state machine rejects shortcuts. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a caller that assigns the status field directly reached handed_off with no validation: the rule only protects callers that use move()"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely checking: a state machine rejects shortcuts ---\nlegal path: [('pending', 'in_progress'), ('in_progress', 'verified'), ('verified', 'handed_off')]\npending -> handed_off: invalid transition pending -> handed_off"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: String allowlist versus resolved-path check on a real directory",
+    "headingKn": "ಪ್ರಯೋಗ 2: String allowlist versus resolved-path check on a real directory",
+    "bodyEn": "What it ran: String allowlist versus resolved-path check on a real directory. What the lab concluded: the same file spelled with .. was wrongly refused by the string check and recognised by the resolved check, and the traversal out of the workspace was refused by both; the symlink case could not run on this machine (creating a symlink raised OSError), so symlink handling is untested in this output; and a check followed by a later write is still open to a race, so enforcement belongs at the write itself",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: String allowlist versus resolved-path check on a real directory. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the same file spelled with .. was wrongly refused by the string check and recognised by the resolved check, and the traversal out of the workspace was refused by both; the symlink case could not run on this machine (creating a symlink raised OSError), so symlink handling is untested in this output; and a check followed by a later write is still open to a race, so enforcement belongs at the write itself"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: string allowlist versus resolved-path check on a real directory ---\nallowed file                       string check=True  resolved check=(True, 'resolved path src/app.py')\nsame file spelled with ..          string check=False resolved check=(True, 'resolved path src/app.py')\ntraversal out of the workspace     string check=False resolved check=(False, 'escapes the workspace')\nnot on the list                    string check=False resolved check=(False, 'resolved path settings.py')\nsymlink test skipped on this system: OSError"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Acceptance evidence is a claim unless it comes from a trusted source",
+    "headingKn": "ಪ್ರಯೋಗ 3: Acceptance evidence is a claim unless it comes from a trusted source",
+    "bodyEn": "What it ran: Acceptance evidence is a claim unless it comes from a trusted source. What the lab concluded: the booleans are identical in the first two cases; only the provenance differs, and a verifier that reads only the booleans cannot tell them apart",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Acceptance evidence is a claim unless it comes from a trusted source. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the booleans are identical in the first two cases; only the provenance differs, and a verifier that reads only the booleans cannot tell them apart"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: acceptance evidence is a claim unless it comes from a trusted source ---\ntrusted runner: {'passed': True, 'missing': [], 'failed': [], 'untrusted': []}\nsame booleans written by the agent: {'passed': False, 'missing': [], 'failed': [], 'untrusted': ['source']}\nreview missing: {'passed': False, 'missing': ['review_approved'], 'failed': [], 'untrusted': []}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Bounded retries, error classes and idempotent side effects",
+    "headingKn": "ಪ್ರಯೋಗ 4: Bounded retries, error classes and idempotent side effects",
+    "bodyEn": "What it ran: Bounded retries, error classes and idempotent side effects. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Bounded retries, error classes and idempotent side effects. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: bounded retries, error classes and idempotent side effects ---\nattempt 1 of 3, retryable=True  -> retry as attempt 2\nattempt 3 of 3, retryable=True  -> stop: attempts exhausted\nattempt 1 of 3, retryable=False -> stop: not retryable\nfirst delivery: sent | retried delivery with the same key: duplicate suppressed | messages actually sent: 1\nthe same retry with no key would have sent 2 messages"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Two workers saving the same task from the same revision (real threads)",
+    "headingKn": "ಪ್ರಯೋಗ 5: Two workers saving the same task from the same revision (real threads)",
+    "bodyEn": "What it ran: Two workers saving the same task from the same revision (real threads). What the lab concluded: one worker's update was refused because its revision was stale, so the other worker's result was not silently overwritten; which worker wins is decided by timing, and the loser has to reload and reconcile",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Two workers saving the same task from the same revision (real threads). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): one worker's update was refused because its revision was stale, so the other worker's result was not silently overwritten; which worker wins is decided by timing, and the loser has to reload and reconcile"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: two workers saving the same task from the same revision (real threads) ---\ntwo unguarded writes (simulated, no revision check): both 'succeeded', history length 2\nwith a revision check: {'A': 'rejected: stale write: expected revision 1, found 2', 'B': 'saved'} | final revision 2"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The state machine refused a shortcut but a direct field write bypassed it. 2) Resolved-path checks handled .. and traversal; symlinks were untested here. 3) Identical booleans passed or failed by source. 4) A key kept a retried notification at 1 message instead of 2. 5) A revision check rejected the stale writer.",
     "bodyKn": "1) ಸ್ಥಿತಿ ಯಂತ್ರ ಶಾರ್ಟ್‌ಕಟ್ ತಿರಸ್ಕರಿಸಿತು ಆದರೆ ನೇರ ಕ್ಷೇತ್ರ ಬರಹ ಅದನ್ನು ಬೈಪಾಸ್ ಮಾಡಿತು. 2) ಪರಿಹರಿಸಿದ-path ಪರಿಶೀಲನೆ .. ಮತ್ತು traversal ನಿಭಾಯಿಸಿತು; symlinks ಇಲ್ಲಿ ಪರೀಕ್ಷಿಸಲ್ಪಟ್ಟಿಲ್ಲ. 3) ಒಂದೇ booleans ಮೂಲದಿಂದ ಪಾಸ್ ಅಥವಾ ವಿಫಲವಾದವು. 4) Key ಮರುಪ್ರಯತ್ನಿಸಿದ ಅಧಿಸೂಚನೆಯನ್ನು 2 ಬದಲು 1 ಸಂದೇಶದಲ್ಲಿ ಇಟ್ಟಿತು. 5) Revision ಪರಿಶೀಲನೆ ಹಳೆಯ ಬರಹಗಾರನನ್ನು ತಿರಸ್ಕರಿಸಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B wb_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B wb_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B wb_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B wb_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

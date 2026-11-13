@@ -146,6 +146,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Sending is not handling",
+    "headingKn": "ಪ್ರಯೋಗ 1: Sending is not handling",
+    "bodyEn": "What it ran: Sending is not handling. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Sending is not handling. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Sending is not handling ---\nafter three sends, before run(): count = 0 | queued: 3\ncounter: 1\ncounter: 2\ncounter: 3\nafter run(): count = 3"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The message envelope: routing metadata plus a body",
+    "headingKn": "ಪ್ರಯೋಗ 2: The message envelope: routing metadata plus a body",
+    "bodyEn": "What it ran: The message envelope: routing metadata plus a body. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The message envelope: routing metadata plus a body. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. The message envelope: routing metadata plus a body ---\necho received: Hello actor!"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Registry rules",
+    "headingKn": "ಪ್ರಯೋಗ 3: Registry rules",
+    "bodyEn": "What it ran: Registry rules. What the lab concluded: a message to an unknown recipient was silently dropped by this first runtime; Part 2 fixes that",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Registry rules. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a message to an unknown recipient was silently dropped by this first runtime; Part 2 fixes that"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Registry rules ---\nduplicate id -> actor already registered: echo"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Frozen protects the fields, not what they point to",
+    "headingKn": "ಪ್ರಯೋಗ 4: Frozen protects the fields, not what they point to",
+    "bodyEn": "What it ran: Frozen protects the fields, not what they point to. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Frozen protects the fields, not what they point to. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: frozen protects the fields, not what they point to ---\nassigning m.topic -> FrozenInstanceError\nrecipient saw: ['a', 'INJECTED AFTER SEND'] | the sender changed the body after sending\nuse tuples or copy.deepcopy(body) when sending, or immutable payload dataclasses"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Two actors can keep a run alive forever",
+    "headingKn": "ಪ್ರಯೋಗ 5: Two actors can keep a run alive forever",
+    "bodyEn": "What it ran: Two actors can keep a run alive forever. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Two actors can keep a run alive forever. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: two actors can keep a run alive forever ---\nRuntimeError: message budget of 50 exhausted, 1 still queued\nan event loop needs a message budget or a termination rule, like any agent loop"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Ordering: one FIFO queue",
+    "headingKn": "ಪ್ರಯೋಗ 6: Ordering: one FIFO queue",
+    "bodyEn": "What it ran: Ordering: one FIFO queue. What the lab concluded: a real distributed transport weakens this: retries, partitions and parallel workers all reorder",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Ordering: one FIFO queue. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a real distributed transport weakens this: retries, partitions and parallel workers all reorder"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Ordering: one FIFO queue ---\ndelivery order: [0, 1, 2, 3, 4]"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

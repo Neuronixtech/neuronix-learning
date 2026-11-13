@@ -137,6 +137,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Three capture designs on the same request (the prompt contains the canary SECRET-4821)",
+    "headingKn": "ಪ್ರಯೋಗ 1: Three capture designs on the same request (the prompt contains the canary SECRET-4821)",
+    "bodyEn": "What it ran: Three capture designs on the same request (the prompt contains the canary SECRET-4821). What the lab concluded: only the inline design puts the secret into the telemetry pipeline; the store design moves it to a place with its own access control, but it still exists",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Three capture designs on the same request (the prompt contains the canary SECRET-4821). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): only the inline design puts the secret into the telemetry pipeline; the store design moves it to a place with its own access control, but it still exists"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Three capture designs on the same request (the prompt contains the canary SECRET-4821) ---\ncapture off (default)            canary in the trace: False | canary in the store: False | reference ids on spans: 0\ninline capture on spans          canary in the trace: True  | canary in the store: False | reference ids on spans: 0\nexternal store + reference ids   canary in the trace: False | canary in the store: True  | reference ids on spans: 4"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Can a reference id be guessed",
+    "headingKn": "ಪ್ರಯೋಗ 2: Can a reference id be guessed",
+    "bodyEn": "What it ran: Can a reference id be guessed. What the lab concluded: a reference id is a pointer, not a permission; unguessable ids help but the store needs authorisation, and the span only ever carries the pointer",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Can a reference id be guessed. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a reference id is a pointer, not a permission; unguessable ids help but the store needs authorisation, and the span only ever carries the pointer"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: can a reference id be guessed ---\nsequential     ids, store with no access control: 40 of 50 guesses returned private content\nrandom 128-bit ids, store with no access control: 0 of 50 guesses returned private content\nsequential ids with a token check: refused without the token"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Retention and erasure",
+    "headingKn": "ಪ್ರಯೋಗ 3: Retention and erasure",
+    "bodyEn": "What it ran: Retention and erasure. What the lab concluded: after erasing ref-7c77e630..., the span still carries the id and reading it returns None; the trace keeps a dangling pointer, which is the intended result of deleting",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Retention and erasure. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): after erasing ref-7c77e630..., the span still carries the id and reading it returns None; the trace keeps a dangling pointer, which is the intended result of deleting"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: retention and erasure ---\nafter 300 runs the store holds 1200 items; nothing removes them unless a policy does\nafter evict_older_than(10 ms): 0 items"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Errors, status and what the message leaks",
+    "headingKn": "ಪ್ರಯೋಗ 4: Errors, status and what the message leaks",
+    "bodyEn": "What it ran: Errors, status and what the message leaks. What the lab concluded: the span status and the exception type are enough to find the failure; copying the exception message put the user's query, secret included, into the trace; the exception was re-raised either way",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Errors, status and what the message leaks. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the span status and the exception type are enough to find the failure; copying the exception message put the user's query, secret included, into the trace; the exception was re-raised either way"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: errors, status and what the message leaks ---\nrecord str(exception)=False | RuntimeError reached the caller | spans with ERROR: ['invoke_agent researcher', 'execute_tool search'] | canary in the trace: False\nrecord str(exception)=True  | RuntimeError reached the caller | spans with ERROR: ['invoke_agent researcher', 'execute_tool search'] | canary in the trace: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The stability opt-in is read from the environment",
+    "headingKn": "ಪ್ರಯೋಗ 5: The stability opt-in is read from the environment",
+    "bodyEn": "What it ran: The stability opt-in is read from the environment. What the lab concluded: the variable only reports a choice; nothing in this lab changes attribute names, because the lab has no instrumentation library to switch",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The stability opt-in is read from the environment. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the variable only reports a choice; nothing in this lab changes attribute names, because the lab has no instrumentation library to switch"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: the stability opt-in is read from the environment ---\nchild process with variable unset                                        reads: not-set\nchild process with variable set to gen_ai_latest_experimental            reads: gen_ai_latest_experimental\nthis process was started with: gen_ai_latest_experimental"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The 1,200+ line proof: 240 runs with errors, status and reference ids",
+    "headingKn": "ಪ್ರಯೋಗ 6: The 1,200+ line proof: 240 runs with errors, status and reference ids",
+    "bodyEn": "What it ran: The 1,200+ line proof: 240 runs with errors, status and reference ids. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The 1,200+ line proof: 240 runs with errors, status and reference ids. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. The 1,200+ line proof: 240 runs with errors, status and reference ids ---\nRUN 001 result=ok spans=4\ninvoke_agent researcher [INTERNAL] status=OK id=e75945f9 agent.name=researcher operation.name=invoke_agent\n  chat gpt-4o [CLIENT] status=OK id=1820bf14 input.ref=ref-d49a55cde1ea4816b348643448ff6d35 operation.name=chat output.ref=ref-d50a1c5faeca4bacbe7daa576ad18e75 provider.name=openai request.model=gpt-4o response.model=gp…\n  execute_tool search [INTERNAL] status=OK id=adf6effa operation.name=execute_tool tool.name=search\n  chat gpt-4o [CLIENT] status=OK id=ce0b3fb6 input.ref=ref-96828028cf6d4d229201e742294f5a41 operation.name=chat output.ref=ref-547373a6b70d4c4bac803775f6b9c1aa provider.name=openai request.model=gpt-4o response.model=gp…\nRUN 002 result=ok spans=4\ninvoke_agent researcher [INTERNAL] status=OK id=0ddf8962 agent.name=researcher operation.name=invoke_agent\n  chat gpt-4o [CLIENT] status=OK id=894faae1 input.ref=ref-f1a258cd33684657b60e3fce6c97d56b operation.name=chat output.ref=ref-e9d935feb4f5422e9d291d58a612f2b0 provider.name=openai request.model=gpt-4o response.model=gp…\n  execute_tool search [INTERNAL] status=OK id=9a880545 operation.name=execute_tool tool.name=search\n  chat gpt-4o [CLIENT] status=OK id=a415d391 input.ref=ref-fc12a0e1d9b04dec85a0d6682e520740 operation.name=chat output.ref=ref-2d2bef72314b4489a3441e22dd820819 provider.name=openai request.model=gpt-4o response.model=gp…\nRUN 003 result=ok spans=4\ninvoke_agent researcher [INTERNAL] status=OK id=11e3102b agent.name=researcher operation.name=invoke_agent\n  chat gpt-4o [CLIENT] status=OK id=526b7476 input.ref=ref-d855f89873a04c229c0468d9a9525411 operation.name=chat output.ref=ref-fc102a43512f4753a8f4c3ab2579bfc5 provider.name=openai request.model=gpt-4o response.model=gp…\n  execute_tool search [INTERNAL] status=OK id=cb38bc11 operation.name=execute_tool tool.name=search\n…"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

@@ -147,6 +147,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Loading and validating contracts, including broken ones",
+    "headingKn": "ಪ್ರಯೋಗ 1: Loading and validating contracts, including broken ones",
+    "bodyEn": "What it ran: Loading and validating contracts, including broken ones. What the lab concluded: every broken contract was rejected before any path was checked, with a message naming the field; a checker that loads a bad contract and carries on is checking against a contract nobody wrote",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Loading and validating contracts, including broken ones. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): every broken contract was rejected before any path was checked, with a message naming the field; a checker that loads a bad contract and carries on is checking against a contract nobody wrote"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: loading and validating contracts, including broken ones ---\nvalid                      accepted\nmissing rollback_plan      rejected: missing fields: rollback_plan\nallowed_files not a list   rejected: allowed_files must be a list of strings\nempty allowed_files        rejected: allowed_files is empty: nothing could ever be in scope\nblank goal                 rejected: goal must be a non-empty string\nnumber inside a list       rejected: forbidden_files must be a list of strings\nmalformed JSON             rejected: cannot read contract: JSONDecodeError"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Classifying paths, forbidden wins over allowed",
+    "headingKn": "ಪ್ರಯೋಗ 2: Classifying paths, forbidden wins over allowed",
+    "bodyEn": "What it ran: Classifying paths, forbidden wins over allowed. What the lab concluded: src/database/driver.py matches both the allowed src/** and the forbidden src/database/**, and was classified forbidden because forbidden patterns are checked first; the opposite order would have let the broad allowance override the prohibition",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Classifying paths, forbidden wins over allowed. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): src/database/driver.py matches both the allowed src/** and the forbidden src/database/**, and was classified forbidden because forbidden patterns are checked first; the opposite order would have let the broad allowance override the prohibition"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: classifying paths, forbidden wins over allowed ---\nsrc/auth/login.py          -> allowed\nsrc/database/driver.py     -> forbidden\ntests/test_login.py        -> off_scope\ndocs/guide.md              -> off_scope\nrelease/deploy.sh          -> off_scope"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: What fnmatch globs actually match on this Python",
+    "headingKn": "ಪ್ರಯೋಗ 3: What fnmatch globs actually match on this Python",
+    "bodyEn": "What it ran: What fnmatch globs actually match on this Python. What the lab concluded: in fnmatch a single * also crosses slashes, so src/*.py matched src/auth/login.py, a file in a subdirectory, and src/auth/*.py matched src/auth/deep/x.py, which is not what the same patterns mean in a shell; it is case-sensitive under fnmatchcase and it matches dotfiles; a contract has to state which glob dialect it uses and the checker has to be tested against it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What fnmatch globs actually match on this Python. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): in fnmatch a single * also crosses slashes, so src/*.py matched src/auth/login.py, a file in a subdirectory, and src/auth/*.py matched src/auth/deep/x.py, which is not what the same patterns mean in a shell; it is case-sensitive under fnmatchcase and it matches dotfiles; a contract has to state which glob dialect it uses and the checker has to be tested against it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: what fnmatch globs actually match on this Python ---\nfnmatchcase('src/auth/login.py'         , 'src/*.py'              ) = True\nfnmatchcase('src/auth/login.py'         , 'src/auth/*.py'         ) = True\nfnmatchcase('src/auth/deep/x.py'        , 'src/auth/*.py'         ) = True\nfnmatchcase('tests/test_login.py'       , 'tests/test_login*.py'  ) = True\nfnmatchcase('tests/test_login_extra.py' , 'tests/test_login*.py'  ) = True\nfnmatchcase('SRC/auth/login.py'         , 'src/auth/*.py'         ) = False\nfnmatchcase('.env'                      , '*'                     ) = True\nfnmatchcase('a/b/.env'                  , 'a/*'                   ) = True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The recursive-pattern helper versus plain fnmatch",
+    "headingKn": "ಪ್ರಯೋಗ 4: The recursive-pattern helper versus plain fnmatch",
+    "bodyEn": "What it ran: The recursive-pattern helper versus plain fnmatch. What the lab concluded: the /** helper matches the directory prefix and does not match the lookalike src/author.py, but src/**/login.py went to plain fnmatch and also matched, so each pattern shape has its own behaviour and each needs its own test",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The recursive-pattern helper versus plain fnmatch. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the /** helper matches the directory prefix and does not match the lookalike src/author.py, but src/**/login.py went to plain fnmatch and also matched, so each pattern shape has its own behaviour and each needs its own test"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: the recursive-pattern helper versus plain fnmatch ---\nmatches('src/auth/login.py'   , 'src/auth/**'     ) = True | plain fnmatch = True\nmatches('src/auth/deep/x.py'  , 'src/auth/**'     ) = True | plain fnmatch = True\nmatches('src/author.py'       , 'src/auth/**'     ) = False | plain fnmatch = False\nmatches('src/auth'            , 'src/auth/**'     ) = False | plain fnmatch = False\nmatches('src/auth/login.py'   , 'src/**/login.py' ) = True | plain fnmatch = True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Path tricks the glob alone does not stop",
+    "headingKn": "ಪ್ರಯೋಗ 5: Path tricks the glob alone does not stop",
+    "bodyEn": "What it ran: Path tricks the glob alone does not stop. What the lab concluded: a traversal path starting with an allowed prefix was classified allowed by the text match although it resolves into release/; safe_path rejects any .. segment and cleans ./ and doubled slashes before matching, but symlinks have to be resolved against the real filesystem, which a text comparison cannot do",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Path tricks the glob alone does not stop. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a traversal path starting with an allowed prefix was classified allowed by the text match although it resolves into release/; safe_path rejects any .. segment and cleans ./ and doubled slashes before matching, but symlinks have to be resolved against the real filesystem, which a text comparison cannot do"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: path tricks the glob alone does not stop ---\n'src/auth/../../release/deploy.sh'       text match -> allowed   | safe_path -> None\n'src\\\\auth\\\\login.py'                    text match -> allowed   | safe_path -> 'src/auth/login.py'\n'./src/auth/login.py'                    text match -> off_scope | safe_path -> 'src/auth/login.py'\n'src//auth/login.py'                     text match -> off_scope | safe_path -> 'src/auth/login.py'"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -204,6 +287,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Six broken contracts were rejected and one valid contract accepted. 2) Forbidden won over allowed for src/database/driver.py. 3) fnmatch * crossed slashes and was case-sensitive. 4) The /** helper rejected src/author.py. 5) A traversal path passed the text match and was rejected by safe_path.",
     "bodyKn": "1) ಆರು ಮುರಿದ ಒಪ್ಪಂದಗಳು ತಿರಸ್ಕೃತ, ಒಂದು ಮಾನ್ಯ ಸ್ವೀಕೃತ. 2) src/database/driver.py ಗೆ forbidden allowed ಅನ್ನು ಮೀರಿಸಿತು. 3) fnmatch * ಸ್ಲ್ಯಾಶ್ ದಾಟಿ ದೊಡ್ಡಕ್ಷರ-ಸೂಕ್ಷ್ಮವಾಗಿತ್ತು. 4) /** helper src/author.py ತಿರಸ್ಕರಿಸಿತು. 5) traversal path ಪಠ್ಯ ಹೊಂದಾಣಿಕೆ ಪಾಸ್ ಮಾಡಿ safe_path ನಿಂದ ತಿರಸ್ಕೃತವಾಯಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B sc_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B sc_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B sc_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B sc_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

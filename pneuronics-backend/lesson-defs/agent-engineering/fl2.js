@@ -142,6 +142,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Head and tail truncation, and what falls in the middle",
+    "headingKn": "ಪ್ರಯೋಗ 1: Head and tail truncation, and what falls in the middle",
+    "bodyEn": "What it ran: Head and tail truncation, and what falls in the middle. What the lab concluded: the output is deterministic and bounded, and the one line that mattered, buried in the middle, was dropped; head and tail help because tools usually print the summary last, but they cannot know which line is important",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Head and tail truncation, and what falls in the middle. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the output is deterministic and bounded, and the one line that mattered, buried in the middle, was dropped; head and tail help because tools usually print the summary last, but they cannot know which line is important"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: head and tail truncation, and what falls in the middle ---\nLine 1 | Line 2 | Line 3 | Line 4 | Line 5 | ...truncated 90 lines... | Line 96 | Line 97 | Line 98 | Line 99 | Line 100\nsame input twice gives identical output: True\nline 50 survives truncation: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Line limits against one enormous line",
+    "headingKn": "ಪ್ರಯೋಗ 2: Line limits against one enormous line",
+    "bodyEn": "What it ran: Line limits against one enormous line. What the lab concluded: a line-based limit kept all 5,000,000 characters because it counted one line; the limit has to be in bytes as well as lines",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Line limits against one enormous line. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a line-based limit kept all 5,000,000 characters because it counted one line; the limit has to be in bytes as well as lines"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: line limits against one enormous line ---\nlines: 1 | characters kept by truncate_lines: 5000000"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Peak memory, capture then truncate versus bounded streaming",
+    "headingKn": "ಪ್ರಯೋಗ 3: Peak memory, capture then truncate versus bounded streaming",
+    "bodyEn": "What it ran: Peak memory, capture then truncate versus bounded streaming. What the lab concluded: truncating after capture limited what was stored but not what was held while the output arrived, whereas the bounded reader kept memory near its limits; these are Python-allocation peaks from tracemalloc, not operating-system memory",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Peak memory, capture then truncate versus bounded streaming. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): truncating after capture limited what was stored but not what was held while the output arrived, whereas the bounded reader kept memory near its limits; these are Python-allocation peaks from tracemalloc, not operating-system memory"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: peak memory, capture then truncate versus bounded streaming ---\nchild printed 20,200,000 bytes\nsubprocess.run capture then truncate: peak traced 60.9 MB, kept 1,028 characters\nbounded streaming capture           : peak traced 0.16 MB, kept 4,032 characters, stdout fully drained: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Redaction patterns on sample text with made-up secrets",
+    "headingKn": "ಪ್ರಯೋಗ 4: Redaction patterns on sample text with made-up secrets",
+    "bodyEn": "What it ran: Redaction patterns on sample text with made-up secrets. What the lab concluded: the known shapes were replaced, including a different capitalisation and spaces around the equals sign",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Redaction patterns on sample text with made-up secrets. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the known shapes were replaced, including a different capitalisation and spaces around the equals sign"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: redaction patterns on sample text with made-up secrets ---\nAuthorization: Bearer [REDACTED] | password=[REDACTED] | api_key=[REDACTED] | password=[REDACTED]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Secrets the patterns do not know about",
+    "headingKn": "ಪ್ರಯೋಗ 5: Secrets the patterns do not know about",
+    "bodyEn": "What it ran: Secrets the patterns do not know about. What the lab concluded: every one of these passed through untouched, because redaction by pattern only removes shapes someone listed; it is a layer, to be combined with keeping secrets out of command lines and with restricted access to the log",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Secrets the patterns do not know about. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): every one of these passed through untouched, because redaction by pattern only removes shapes someone listed; it is a layer, to be combined with keeping secrets out of command lines and with restricted access to the log"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: secrets the patterns do not know about ---\n{\"password\": \"json-secret\"}                    -> unchanged\ntoken: ghp_exampletoken123                     -> unchanged\nsecret=abc                                     -> unchanged\nhttps://user:pw@example.com/path               -> unchanged\nAuthorization: Basic dXNlcjpwdw==              -> unchanged"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Redact before writing, not when reading",
+    "headingKn": "ಪ್ರಯೋಗ 6: Redact before writing, not when reading",
+    "bodyEn": "What it ran: Redact before writing, not when reading. What the lab concluded: the actual command list passed to the process is the original, so redaction changes only what is stored; redacting when the log is read would have left the secret on disk",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Redact before writing, not when reading. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the actual command list passed to the process is the original, so redaction changes only what is stored; redacting when the log is read would have left the secret on disk"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: redact before writing, not when reading ---\nraw file contains hunter2: True | redacted-on-write file contains hunter2: False\nredacted command stored: ['deploy', '--password=[REDACTED]']"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

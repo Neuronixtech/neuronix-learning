@@ -142,6 +142,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: One audio frame through the pipeline",
+    "headingKn": "ಪ್ರಯೋಗ 1: One audio frame through the pipeline",
+    "bodyEn": "What it ran: One audio frame through the pipeline. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: One audio frame through the pipeline. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. One audio frame through the pipeline ---\nkinds of frames leaving the pipeline: ['tts_audio', 'tts_audio', 'tts_audio'] ... total 12\nwords sent by the transport: ['A', 'voice', 'agent', 'processes', 'speech', 'through', 'VAD,', 'STT,', 'an', 'LLM,', 'and', 'TTS.']\none input frame became 12 output frames; frames fan out at the TTS stage, one per word"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The toy VAD treats silence as speech",
+    "headingKn": "ಪ್ರಯೋಗ 2: The toy VAD treats silence as speech",
+    "bodyEn": "What it ran: The toy VAD treats silence as speech. What the lab concluded: STT here returns a fixed sentence whatever it is given, so the toy cannot show that it was fed nothing; a real STT would hallucinate or return empty text",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The toy VAD treats silence as speech. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): STT here returns a fixed sentence whatever it is given, so the toy cannot show that it was fed nothing; a real STT would hallucinate or return empty text"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: the toy VAD treats silence as speech ---\na frame of pure silence (level 0.0) reached STT: True | transcript produced from silence"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Toy VAD versus an energy VAD on synthetic audio (levels ASSUMED, seed 14, 300 clips)",
+    "headingKn": "ಪ್ರಯೋಗ 3: Toy VAD versus an energy VAD on synthetic audio (levels ASSUMED, seed 14, 300 clips)",
+    "bodyEn": "What it ran: Toy VAD versus an energy VAD on synthetic audio (levels ASSUMED, seed 14, 300 clips). What the lab concluded: the toy keeps every speech frame and passes every silent one; the energy VAD without hangover dropped frames from dips inside words, and a hangover of 3 frames recovered most of them (clipped frames 2782 to 159) at the price of passing 18 percent of silent frames, which are the tails kept open after each segment",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Toy VAD versus an energy VAD on synthetic audio (levels ASSUMED, seed 14, 300 clips). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the toy keeps every speech frame and passes every silent one; the energy VAD without hangover dropped frames from dips inside words, and a hangover of 3 frames recovered most of them (clipped frames 2782 to 159) at the price of passing 18 percent of silent frames, which are the tails kept open after each segment"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: toy VAD versus an energy VAD on synthetic audio (levels ASSUMED, seed 14, 300 clips) ---\ndetector                    speech frames kept  silence passed as speech  words clipped (mid-speech gaps)\ntoy (always speech)                     100.0%                    100.0%                                0\nenergy, no hangover                      83.2%                      0.0%                             2782\nenergy, hangover 3                       99.0%                     18.0%                              159"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Threshold trade-off (same synthetic clips, hangover 3)",
+    "headingKn": "ಪ್ರಯೋಗ 4: Threshold trade-off (same synthetic clips, hangover 3)",
+    "bodyEn": "What it ran: Threshold trade-off (same synthetic clips, hangover 3). What the lab concluded: a low threshold keeps nearly all speech but lets background noise through; a high one is quiet but cuts speech. The levels are assumed, so the shape matters and not the numbers",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Threshold trade-off (same synthetic clips, hangover 3). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a low threshold keeps nearly all speech but lets background noise through; a high one is quiet but cuts speech. The levels are assumed, so the shape matters and not the numbers"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: threshold trade-off (same synthetic clips, hangover 3) ---\n threshold  speech kept  silence passed\n       0.1        99.8%           79.8%\n       0.2        99.1%           18.4%\n       0.3        99.0%           18.0%\n       0.4        98.3%           17.3%\n       0.5        95.4%           15.7%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Frames dropped without an error",
+    "headingKn": "ಪ್ರಯೋಗ 5: Frames dropped without an error",
+    "bodyEn": "What it ran: Frames dropped without an error. What the lab concluded: a processor that returns [] makes a frame vanish; a pipeline needs a trace or a dead-frame counter to notice",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Frames dropped without an error. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a processor that returns [] makes a frame vanish; a pipeline needs a trace or a dead-frame counter to notice"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: frames dropped without an error ---\nblank transcript -> frames out: 0 | exceptions: none | the user hears nothing and no log line says why"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The pipeline's own per-frame overhead (real timing)",
+    "headingKn": "ಪ್ರಯೋಗ 6: The pipeline's own per-frame overhead (real timing)",
+    "bodyEn": "What it ran: The pipeline's own per-frame overhead (real timing). What the lab concluded: plumbing costs microseconds, so a voice pipeline's latency comes from the models and the network, not from the frame passing",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The pipeline's own per-frame overhead (real timing). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): plumbing costs microseconds, so a voice pipeline's latency comes from the models and the network, not from the frame passing"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely measuring: the pipeline's own per-frame overhead (real timing) ---\nfive processors, one utterance: median 6.8 us, p99 24.9 us"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

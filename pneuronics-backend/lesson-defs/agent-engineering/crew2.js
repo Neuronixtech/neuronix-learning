@@ -137,6 +137,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The @tool decorator turns a function into a described object",
+    "headingKn": "ಪ್ರಯೋಗ 1: The @tool decorator turns a function into a described object",
+    "bodyEn": "What it ran: The @tool decorator turns a function into a described object. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The @tool decorator turns a function into a described object. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The @tool decorator turns a function into a described object ---\n'search': description='Search a deterministic local knowledge base.'\n'calculator': description=\"Add two integers written like '2 + 3'.\"\n'word_count': description=''\nsearch(agent engineering) -> Memory, tools and flows.\ncalculator('2 + 3') -> 5"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A tool with no docstring has nothing for a model to read",
+    "headingKn": "ಪ್ರಯೋಗ 2: A tool with no docstring has nothing for a model to read",
+    "bodyEn": "What it ran: A tool with no docstring has nothing for a model to read. What the lab concluded: an empty description can never earn a positive score, so a description-driven chooser cannot select it on merit",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A tool with no docstring has nothing for a model to read. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an empty description can never earn a positive score, so a description-driven chooser cannot select it on merit"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: a tool with no docstring has nothing for a model to read ---\nrequest 'search the knowledge base for crew'       -> picked 'search'; scores {'search': 2, 'calculator': 0, 'word_count': 0}\nrequest 'add two integers'                         -> picked 'calculator'; scores {'search': 0, 'calculator': 3, 'word_count': 0}\nrequest 'count the words in this text'             -> picked 'word_count'; scores {'search': 0, 'calculator': 0, 'word_count': 0}\nthe word-count request scores 0 for every tool, so 'word_count' was chosen only by the sort tie-break, not by evidence"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Tool access is per agent",
+    "headingKn": "ಪ್ರಯೋಗ 3: Tool access is per agent",
+    "bodyEn": "What it ran: Tool access is per agent. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Tool access is per agent. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Tool access is per agent ---\nresearcher uses search: A container of agents and tasks.\nPermissionError: Researcher has no tool 'calculator'; it has ['search']\nTypeError: search() got an unexpected keyword argument 'wrong_argument'\ntool body error surfaces as: ValueError - not enough values to unpack (expected 2, got 1)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Structured output rejects what expected_output would accept",
+    "headingKn": "ಪ್ರಯೋಗ 4: Structured output rejects what expected_output would accept",
+    "bodyEn": "What it ran: Structured output rejects what expected_output would accept. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Structured output rejects what expected_output would accept. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: structured output rejects what expected_output would accept ---\ngood -> ResearchResult(topic='agents', findings=('a', 'b', 'c'))\ntwo findings   -> ValueError: expected exactly 3 findings, got 2\nprose          -> ValueError: expected exactly 3 findings, got 0\nfour findings  -> ValueError: expected exactly 3 findings, got 4\nthe typed result is frozen: FrozenInstanceError\nnote: 3 findings of nonsense still pass; a typed shape checks structure, not truth\nnonsense passes: ('?', '?', '?')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Layers of memory",
+    "headingKn": "ಪ್ರಯೋಗ 5: Layers of memory",
+    "bodyEn": "What it ran: Layers of memory. What the lab concluded: retrieve('what is a Process'): [(2, 'Process decides the execution strategy of a crew'), (1, 'Flows give deterministic control of a pipeline')]",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Layers of memory. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): retrieve('what is a Process'): [(2, 'Process decides the execution strategy of a crew'), (1, 'Flows give deterministic control of a pipeline')]"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Layers of memory ---\nshort: ['user asked about CrewAI'] | entities: {'CrewAI': ['a framework for role-based agents']}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Word-overlap retrieval and its failure modes",
+    "headingKn": "ಪ್ರಯೋಗ 6: Word-overlap retrieval and its failure modes",
+    "bodyEn": "What it ran: Word-overlap retrieval and its failure modes. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Word-overlap retrieval and its failure modes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: word-overlap retrieval and its failure modes ---\nquery: what is the plan for the launch\nraw words        : [(3, 'the deadline for the release is Friday')]\nstop-words dropped: [(0, 'the team decided to ship on Friday')]\nparaphrase 'when do we release' -> [(1, 'the deadline for the release is Friday'), (0, 'the team decided to ship on Friday')]\nzero-overlap top-k still returns items unless min_score is set: [(0, 'the team decided to ship on Friday'), (0, 'the deadline for the release is Friday')]\nwith min_score=1: []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Memory across two kickoffs",
+    "headingKn": "ಪ್ರಯೋಗ 7: Memory across two kickoffs",
+    "bodyEn": "What it ran: Memory across two kickoffs. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Memory across two kickoffs. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking: memory across two kickoffs ---\nuse_memory=False: second-run context has prior knowledge = False; long-term items = 2\nuse_memory=True: second-run context has prior knowledge = True; long-term items = 2\ntwo contradicting facts both come back: ['pricing: the plan costs 10 dollars', 'pricing: the plan now costs 20 dollars']\nretrieval returns what matches, not what is currently true"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The workbench's own unittest suite (real subprocess)",
+    "headingKn": "ಪ್ರಯೋಗ 1: The workbench's own unittest suite (real subprocess)",
+    "bodyEn": "What it ran: The workbench's own unittest suite (real subprocess). What the lab concluded: the suite covers the allowlist, traversal, an unknown tool, wrong argument types and the verifier on three file states; it does not cover symlinks, concurrency or crash recovery",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The workbench's own unittest suite (real subprocess). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the suite covers the allowlist, traversal, an unknown tool, wrong argument types and the verifier on three file states; it does not cover symlinks, concurrency or crash recovery"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the workbench's own unittest suite (real subprocess) ---\nexit code 0, 8 tests passed, last line: OK"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A mutation the suite must catch (the containment check removed)",
+    "headingKn": "ಪ್ರಯೋಗ 2: A mutation the suite must catch (the containment check removed)",
+    "bodyEn": "What it ran: A mutation the suite must catch (the containment check removed). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A mutation the suite must catch (the containment check removed). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: a mutation the suite must catch (the containment check removed) ---\nexit code 1, 7 tests passed, last line: FAILED (failures=1)\nfailing tests: ['FAIL: test_traversal (test_wb.T.test_traversal)']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A second mutation, the verifier that always says done",
+    "headingKn": "ಪ್ರಯೋಗ 3: A second mutation, the verifier that always says done",
+    "bodyEn": "What it ran: A second mutation, the verifier that always says done. What the lab concluded: deliberately breaking each control and watching a test fail is the evidence that the tests can detect the defect; a suite that passes both the original and the mutant would be proving nothing",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A second mutation, the verifier that always says done. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): deliberately breaking each control and watching a test fail is the evidence that the tests can detect the defect; a suite that passes both the original and the mutant would be proving nothing"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: a second mutation, the verifier that always says done ---\nexit code 1, 7 tests passed, last line: FAILED (failures=1)\nfailing tests: ['FAIL: test_verify_fails_without_goal (test_wb.T.test_verify_fails_without_goal)']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Two tasks end to end through a model-style request and an independent verifier",
+    "headingKn": "ಪ್ರಯೋಗ 4: Two tasks end to end through a model-style request and an independent verifier",
+    "bodyEn": "What it ran: Two tasks end to end through a model-style request and an independent verifier. What the lab concluded: TASK-002 wrote a file without error and stayed in_progress because the verifier checked the content against its own criteria, not the fact that the write succeeded",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Two tasks end to end through a model-style request and an independent verifier. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): TASK-002 wrote a file without error and stayed in_progress because the verifier checked the content against its own criteria, not the fact that the write succeeded"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: two tasks end to end through a model-style request and an independent verifier ---\nTASK-001: write returned fine, verifier says True (ok) -> status done\nTASK-002: write returned fine, verifier says False (missing ['Verification']) -> status in_progress"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Requests a model might produce that the dispatcher must refuse",
+    "headingKn": "ಪ್ರಯೋಗ 5: Requests a model might produce that the dispatcher must refuse",
+    "bodyEn": "What it ran: Requests a model might produce that the dispatcher must refuse. What the lab concluded: the model proposes and the dispatcher decides: unknown tools, wrong types, escaping paths and non-dictionary requests are all refused before anything is written; this dispatcher has no approval step, rate limit or audit log",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Requests a model might produce that the dispatcher must refuse. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the model proposes and the dispatcher decides: unknown tools, wrong types, escaping paths and non-dictionary requests are all refused before anything is written; this dispatcher has no approval step, rate limit or audit log"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: requests a model might produce that the dispatcher must refuse ---\n{'tool': 'write_file', 'path': 'notes.txt', 'content': 'ok'}     -> {'written': 'notes.txt'}\n{'tool': 'write_file', 'path': '../outside.txt', 'content': 'x   -> refused: escapes\n{'tool': 'shell', 'cmd': 'rm -rf /'}                             -> refused: unsupported tool\n{'tool': 'write_file', 'path': ['notes.txt'], 'content': 'x'}    -> refused: bad arguments\nwrite notes.txt please                                           -> refused: unsupported tool\nNone                                                             -> refused: unsupported tool"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The suite ran 8 tests and passed. 2) Removing the containment check made test_traversal fail. 3) A verifier that always says done made test_verify_fails_without_goal fail. 4) TASK-002 stayed in_progress because its criteria were not met. 5) Unknown tools, wrong types and escaping paths were refused.",
     "bodyKn": "1) Suite 8 ಪರೀಕ್ಷೆಗಳನ್ನು ಓಡಿಸಿ ಪಾಸ್ ಆಯಿತು. 2) ಒಳಗೊಳ್ಳುವ ಪರಿಶೀಲನೆ ತೆಗೆದದ್ದು test_traversal ವಿಫಲಗೊಳಿಸಿತು. 3) ಯಾವಾಗಲೂ done ಎನ್ನುವ verifier test_verify_fails_without_goal ವಿಫಲಗೊಳಿಸಿತು. 4) ಮಾನದಂಡ ಪೂರೈಸದ್ದರಿಂದ TASK-002 in_progress ಆಗಿ ಉಳಿಯಿತು. 5) ಅಜ್ಞಾತ tools, ತಪ್ಪು ಪ್ರಕಾರಗಳು ಮತ್ತು ಹೊರಹೋಗುವ paths ತಿರಸ್ಕರಿಸಲ್ಪಟ್ಟವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B mw_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B mw_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B mw_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B mw_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

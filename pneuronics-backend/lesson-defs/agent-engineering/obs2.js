@@ -137,6 +137,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The evaluators on the lesson's cases",
+    "headingKn": "ಪ್ರಯೋಗ 1: The evaluators on the lesson's cases",
+    "bodyEn": "What it ran: The evaluators on the lesson's cases. What the lab concluded: guardrail: EvalResult(name='guardrail', score=0.0, passed=False, reason='blocked term: password') | EvalResult(name='guardrail', score=1.0, passed=True, reason='no blocked term')",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The evaluators on the lesson's cases. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): guardrail: EvalResult(name='guardrail', score=0.0, passed=False, reason='blocked term: password') | EvalResult(name='guardrail', score=1.0, passed=True, reason='no blocked term')"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The evaluators on the lesson's cases ---\nmatching answer      EvalResult(name='groundedness', score=1.0, passed=True, reason='5 of 5 answer terms appear in the evidence')\ndelivered claim      EvalResult(name='groundedness', score=0.4, passed=False, reason='2 of 5 answer terms appear in the evidence')\nunsupported answer   EvalResult(name='groundedness', score=0.0, passed=False, reason='0 of 4 answer terms appear in the evidence')\nrelevance, right passage: EvalResult(name='retrieval_relevance', score=0.75, passed=True, reason='3 of 4 question terms found')\nrelevance, wrong passage: EvalResult(name='retrieval_relevance', score=0.0, passed=False, reason='0 of 4 question terms found')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Lexical relevance on 12 hand-written question and passage pairs",
+    "headingKn": "ಪ್ರಯೋಗ 2: Lexical relevance on 12 hand-written question and passage pairs",
+    "bodyEn": "What it ran: Lexical relevance on 12 hand-written question and passage pairs. What the lab concluded: recall was poor at every setting: at most 2 of the 6 right passages were kept, because the right passages it missed share few words with the question (for example 'package' / 'shipment' and 'reset' / 'change'); the only wrong passage let through was at threshold 0.2 with stop words counted. The pairs were written by us, so the numbers are a demonstration",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Lexical relevance on 12 hand-written question and passage pairs. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): recall was poor at every setting: at most 2 of the 6 right passages were kept, because the right passages it missed share few words with the question (for example 'package' / 'shipment' and 'reset' / 'change'); the only wrong passage let through was at threshold 0.2 with stop words counted. The pairs were written by us, so the numbers are a demonstration"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: lexical relevance on 12 hand-written question and passage pairs ---\nrule                               threshold  right passages kept  wrong passages kept\nall words                               0.20              2/6              1/6\nall words                               0.34              1/6              0/6\nall words                               0.50              1/6              0/6\nall words                               0.75              1/6              0/6\nstop words removed                      0.20              2/6              0/6\nstop words removed                      0.34              1/6              0/6\nstop words removed                      0.50              1/6              0/6\nstop words removed                      0.75              1/6              0/6"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Where the groundedness overlap is fooled",
+    "headingKn": "ಪ್ರಯೋಗ 3: Where the groundedness overlap is fooled",
+    "bodyEn": "What it ran: Where the groundedness overlap is fooled. What the lab concluded: the contradiction 'not in transit' failed only because 'not' is a word the evidence lacks; when the evidence itself contains 'not' (not delivered) the opposite claim scored 1.00 and passed, and scrambled words passed too: overlap measures shared words, not agreement",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Where the groundedness overlap is fooled. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the contradiction 'not in transit' failed only because 'not' is a word the evidence lacks; when the evidence itself contains 'not' (not delivered) the opposite claim scored 1.00 and passed, and scrambled words passed too: overlap measures shared words, not agreement"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: where the groundedness overlap is fooled ---\nevidence 'The order is not delivered.' vs answer 'The order is delivered.' -> score 1.00 passed=True\nThe order is in transit.                             faithful                     score 1.00 passed=True\nThe order is not in transit.                         contradicts the evidence     score 0.83 passed=False\nThe order is in transit and will be free of charge.  adds an unsupported claim    score 0.45 passed=False\nThe in transit order is.                             scrambled words              score 1.00 passed=True\nIn transit.                                          tiny but faithful            score 1.00 passed=True\nThe order is delivered.                              wrong status                 score 0.75 passed=False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A noisy judge flipping the verdict (noise ASSUMED, seed 17, 2000 judgments each)",
+    "headingKn": "ಪ್ರಯೋಗ 4: A noisy judge flipping the verdict (noise ASSUMED, seed 17, 2000 judgments each)",
+    "bodyEn": "What it ran: A noisy judge flipping the verdict (noise ASSUMED, seed 17, 2000 judgments each). What the lab concluded: with no noise the judge passed the wrong-status answer 100 percent of the time: its overlap score of 0.75 clears the 0.7 pass mark, so the rubric, not the noise, was the problem. Noise then made verdicts inconsistent in both directions (faithful answers failing, wrong ones passing less often); the noise levels are assumptions",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A noisy judge flipping the verdict (noise ASSUMED, seed 17, 2000 judgments each). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with no noise the judge passed the wrong-status answer 100 percent of the time: its overlap score of 0.75 clears the 0.7 pass mark, so the rubric, not the noise, was the problem. Noise then made verdicts inconsistent in both directions (faithful answers failing, wrong ones passing less often); the noise levels are assumptions"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: a noisy judge flipping the verdict (noise ASSUMED, seed 17, 2000 judgments each) ---\n noise sd   faithful answer passes   wrong answer passes\n      0.0                   100.0%                100.0%\n      0.1                    99.9%                 67.2%\n      0.2                    93.0%                 59.0%\n      0.3                    84.4%                 56.5%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A low-confidence band instead of a single threshold",
+    "headingKn": "ಪ್ರಯೋಗ 5: A low-confidence band instead of a single threshold",
+    "bodyEn": "What it ran: A low-confidence band instead of a single threshold. What the lab concluded: score distributions are ASSUMED; abstaining on the middle band raises accuracy on what is decided and costs a share of decisions that go to review",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A low-confidence band instead of a single threshold. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): score distributions are ASSUMED; abstaining on the middle band raises accuracy on what is decided and costs a share of decisions that go to review"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: a low-confidence band instead of a single threshold ---\nsingle threshold 0.7: 82.3% of verdicts correct on all 10000 | band (pass at 0.75+, fail at 0.45-, else send to a human): 95.1% correct on the 67.9% it decided"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The keyword guardrail",
+    "headingKn": "ಪ್ರಯೋಗ 6: The keyword guardrail",
+    "bodyEn": "What it ran: The keyword guardrail. What the lab concluded: the guardrail is an evaluation with teeth: it can block, so its misses (spacing, symbols, synonyms) are safety gaps and not just a lower score",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The keyword guardrail. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the guardrail is an evaluation with teeth: it can block, so its misses (spacing, symbols, synonyms) are safety gaps and not just a lower score"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: the keyword guardrail ---\nmy password is hunter2                   passed=False\nmy p@ssword is hunter2                   passed=True\nmy pass word is hunter2                  passed=True\ncredit-card 4111                         passed=True\nMy Credit Card is 4111                   passed=False\nSSN 123-45-6789                          passed=False\nsocial security number 123-45-6789       passed=True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

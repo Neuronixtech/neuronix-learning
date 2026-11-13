@@ -147,6 +147,134 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The four demo traces",
+    "headingKn": "ಪ್ರಯೋಗ 1: The four demo traces",
+    "bodyEn": "What it ran: The four demo traces. What the lab concluded: one trace can carry several labels: T003 is both a hallucinated action and a success hallucination, T004 a cascade and a success hallucination",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The four demo traces. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): one trace can carry several labels: T003 is both a hallucinated action and a success hallucination, T004 a cascade and a success hallucination"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The four demo traces ---\nT001: none\nT002: ['scope_creep']\n    [0] scope_creep: cancel_order exists but is not allowed for this task\nT003: ['hallucinated_action', 'success_hallucination']\n    [0] hallucinated_action: reserve_product is not a known tool\n    [2] success_hallucination: completion claim after a failed tool result\nT004: ['possible_cascade', 'success_hallucination']\n    [6] success_hallucination: completion claim after a failed tool result\n    [2] possible_cascade: 2 tool call(s) after the first failure"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Recovery looks like a cascade and a success hallucination",
+    "headingKn": "ಪ್ರಯೋಗ 2: Recovery looks like a cascade and a success hallucination",
+    "bodyEn": "What it ran: Recovery looks like a cascade and a success hallucination. What the lab concluded: the agent failed, retried, verified and then told the truth, yet both rules fired: they compare the order of events and do not understand recovery",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Recovery looks like a cascade and a success hallucination. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the agent failed, retried, verified and then told the truth, yet both rules fired: they compare the order of events and do not understand recovery"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: recovery looks like a cascade and a success hallucination ---\nR1: ['possible_cascade', 'success_hallucination']\n    [6] success_hallucination: completion claim after a failed tool result\n    [2] possible_cascade: 2 tool call(s) after the first failure"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The completion-claim rule against phrasing (hand-written replies after a failed call)",
+    "headingKn": "ಪ್ರಯೋಗ 3: The completion-claim rule against phrasing (hand-written replies after a failed call)",
+    "bodyEn": "What it ran: The completion-claim rule against phrasing (hand-written replies after a failed call). What the lab concluded: the keyword list misses claims phrased another way ('All set', 'is ready', 'exists now', 'Finished') and flags honest replies that contain a keyword plus a negation ('not successfully', 'nothing was completed'); the 10 replies are written by us, so this shows the failure shape, not a rate",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The completion-claim rule against phrasing (hand-written replies after a failed call). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the keyword list misses claims phrased another way ('All set', 'is ready', 'exists now', 'Finished') and flags honest replies that contain a keyword plus a negation ('not successfully', 'nothing was completed'); the 10 replies are written by us, so this shows the failure shape, not a rate"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: the completion-claim rule against phrasing (hand-written replies after a failed call) ---\nThe file was successfully created.                 false claim=True  flagged=True  ok\nDone.                                              false claim=True  flagged=True  ok\nFinished. Everything is in place.                  false claim=True  flagged=False WRONG\nAll set, your report is ready.                     false claim=True  flagged=False WRONG\nI could not create the file.                       false claim=False flagged=False ok\nThe file was not successfully created.             false claim=False flagged=True  WRONG\nCreation failed, so nothing was completed.         false claim=False flagged=True  WRONG\nSorry, the file has not been created yet.          false claim=False flagged=True  WRONG\nThe report exists now.                             false claim=True  flagged=False WRONG\nTask complete.                                     false claim=True  flagged=False WRONG\ncaught 2 of 6 false claims, and wrongly flagged 3 of 4 honest replies"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Tool names, identifiers and what 'known' means",
+    "headingKn": "ಪ್ರಯೋಗ 4: Tool names, identifiers and what 'known' means",
+    "bodyEn": "What it ran: Tool names, identifiers and what 'known' means. What the lab concluded: 'Get_Order' and 'get_order ' (trailing space) were reported as hallucinated actions although the model meant a real tool; the third call used a fabricated order id and nothing flagged it: structural checks cannot see an ungrounded argument",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Tool names, identifiers and what 'known' means. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): 'Get_Order' and 'get_order ' (trailing space) were reported as hallucinated actions although the model meant a real tool; the third call used a fabricated order id and nothing flagged it: structural checks cannot see an ungrounded argument"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: tool names, identifiers and what 'known' means ---\nN: ['hallucinated_action']\n    [0] hallucinated_action: Get_Order is not a known tool\n    [1] hallucinated_action: get_order  is not a known tool"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: How the failure test treats unusual statuses",
+    "headingKn": "ಪ್ರಯೋಗ 5: How the failure test treats unusual statuses",
+    "bodyEn": "What it ran: How the failure test treats unusual statuses. What the lab concluded: either signal is enough to count a result as failed: a 200 that says success=False failed, and so did a 400 that says success=True (the status won); a result with neither signal is never a failure, so a tool that returns nothing useful passes silently",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How the failure test treats unusual statuses. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): either signal is enough to count a result as failed: a 200 that says success=False failed, and so did a 400 that says success=True (the status won); a result with neither signal is never a failure, so a tool that returns nothing useful passes silently"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: how the failure test treats unusual statuses ---\nstatus=200   success=None  -> counted as failed: False\nstatus=204   success=None  -> counted as failed: False\nstatus=302   success=None  -> counted as failed: False\nstatus=400   success=None  -> counted as failed: True\nstatus=500   success=None  -> counted as failed: True\nstatus=200   success=False -> counted as failed: True\nstatus=None  success=None  -> counted as failed: False\nstatus=400   success=True  -> counted as failed: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Per-step reliability over long chains (arithmetic and a seeded simulation, seed 5)",
+    "headingKn": "ಪ್ರಯೋಗ 6: Per-step reliability over long chains (arithmetic and a seeded simulation, seed 5)",
+    "bodyEn": "What it ran: Per-step reliability over long chains (arithmetic and a seeded simulation, seed 5). What the lab concluded: cascade amplification: with 3 downstream operations per level, depth 4 can touch up to 81 operations (b^d)",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Per-step reliability over long chains (arithmetic and a seeded simulation, seed 5). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): cascade amplification: with 3 downstream operations per level, depth 4 can touch up to 81 operations (b^d)"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely measuring: per-step reliability over long chains (arithmetic and a seeded simulation, seed 5) ---\n steps      p^n  simulated\np=0.99 n=  1   99.0%      99.0%\np=0.99 n= 10   90.4%      90.5%\np=0.99 n= 50   60.5%      60.3%\np=0.95 n= 10   59.9%      59.5%\n0.99 per step gives 90.4 percent at 10 steps and 60.5 percent at 50, matching the lesson; this assumes independent steps. If an error makes later steps more likely to fail the whole chain still needs every step right, b…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: A verification gate stops a cascade (T004 replayed)",
+    "headingKn": "ಪ್ರಯೋಗ 7: A verification gate stops a cascade (T004 replayed)",
+    "bodyEn": "What it ran: A verification gate stops a cascade (T004 replayed). What the lab concluded: with the gate the agent never reaches upload_file or notify_user, so the user-facing notification about a report that does not exist is never sent",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A verification gate stops a cascade (T004 replayed). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with the gate the agent never reaches upload_file or notify_user, so the user-facing notification about a report that does not exist is never sent"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely measuring: a verification gate stops a cascade (T004 replayed) ---\nT004 without a gate    tool calls made: 3 ['create_file', 'upload_file', 'notify_user']\nT001 healthy           tool calls made: 1 ['get_order']\nT004 with a gate after each result: tool calls made: 1 ['create_file'] | stopped at the gate"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: A baseline needs enough traces (failure rate ASSUMED at 3 percent, seed 9)",
+    "headingKn": "ಪ್ರಯೋಗ 8: A baseline needs enough traces (failure rate ASSUMED at 3 percent, seed 9)",
+    "bodyEn": "What it ran: A baseline needs enough traces (failure rate ASSUMED at 3 percent, seed 9). What the lab concluded: with 50 traces a day a 3 percent failure rate wanders between about 0 and 8 percent by chance alone, so an alert on 'drift' needs either more traces or a statistical test, not a fixed threshold",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A baseline needs enough traces (failure rate ASSUMED at 3 percent, seed 9). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with 50 traces a day a 3 percent failure rate wanders between about 0 and 8 percent by chance alone, so an alert on 'drift' needs either more traces or a statistical test, not a fixed threshold"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Genuinely checking: a baseline needs enough traces (failure rate ASSUMED at 3 percent, seed 9) ---\n   50 traces per day: the observed rate ranged from 0.0% to 8.0% across 95 percent of days with no real change\n  500 traces per day: the observed rate ranged from 1.6% to 4.6% across 95 percent of days with no real change\n 5000 traces per day: the observed rate ranged from 2.5% to 3.5% across 95 percent of days with no real change"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

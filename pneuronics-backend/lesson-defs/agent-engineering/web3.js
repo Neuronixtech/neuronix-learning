@@ -142,6 +142,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Success is not the whole story: two correct trajectories",
+    "headingKn": "ಪ್ರಯೋಗ 1: Success is not the whole story: two correct trajectories",
+    "bodyEn": "What it ran: Success is not the whole story: two correct trajectories. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Success is not the whole story: two correct trajectories. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Success is not the whole story: two correct trajectories ---\ndirect  success=True steps=2\ndetour  success=True steps=5\nboth reach dark mode; the second takes 5 steps for a 2-step job (ratio 2.5)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The ratio depends on which gold path is chosen",
+    "headingKn": "ಪ್ರಯೋಗ 2: The ratio depends on which gold path is chosen",
+    "bodyEn": "What it ran: The ratio depends on which gold path is chosen. What the lab concluded: if a benchmark picks a long reference path, a wasteful agent can score a ratio of 1.0; the gold trajectory is part of the metric",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The ratio depends on which gold path is chosen. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): if a benchmark picks a long reference path, a wasteful agent can score a ratio of 1.0; the gold trajectory is part of the metric"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: the ratio depends on which gold path is chosen ---\ngold = 2-click path: expert ratio 1.00, detour ratio 2.50\ngold = 5-click path: expert ratio 0.40, detour ratio 1.00"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The ratio on failed runs",
+    "headingKn": "ಪ್ರಯೋಗ 3: The ratio on failed runs",
+    "bodyEn": "What it ran: The ratio on failed runs. What the lab concluded: an agent that quits early has the best-looking ratio, so efficiency is only reported on successful runs, and success rate must sit beside it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The ratio on failed runs. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an agent that quits early has the best-looking ratio, so efficiency is only reported on successful runs, and success rate must sit beside it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: the ratio on failed runs ---\nagent stops after one step without setting dark mode: success False | ratio 0.5 (looks efficient: 0.50)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Four profiles (assumed behaviour, seed 12, 2000 runs each)",
+    "headingKn": "ಪ್ರಯೋಗ 4: Four profiles (assumed behaviour, seed 12, 2000 runs each)",
+    "bodyEn": "What it ran: Four profiles (assumed behaviour, seed 12, 2000 runs each). What the lab concluded: grounding-weak lost about 2 percent of runs and used 2.31 steps when it succeeded; knowledge-weak lost none but used 2.98 on average because half its runs took a 2-step detour; the two inefficiencies have different causes and different costs",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Four profiles (assumed behaviour, seed 12, 2000 runs each). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): grounding-weak lost about 2 percent of runs and used 2.31 steps when it succeeded; knowledge-weak lost none but used 2.98 on average because half its runs took a 2-step detour; the two inefficiencies have different causes and different costs"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: four profiles (assumed behaviour, seed 12, 2000 runs each) ---\nprofile           success   mean steps (successes)   mean ratio vs gold=2\nexpert             100.0%                     2.00                   1.00\ndetour             100.0%                     5.00                   2.50\ngrounding-weak      97.9%                     2.31                   1.16\nknowledge-weak     100.0%                     2.98                   1.49"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Step budget versus success for a click-noisy agent",
+    "headingKn": "ಪ್ರಯೋಗ 5: Step budget versus success for a click-noisy agent",
+    "bodyEn": "What it ran: Step budget versus success for a click-noisy agent. What the lab concluded: a tight budget turns click noise into failure; a loose budget turns it into extra steps. Success stops at 97.8 to 98.1 percent (sigma 14) and 83.4 percent (sigma 25) even with 12 steps, because a noisy click can land on a different element and navigate away, which this scripted agent never recovers from; the small dip from 98.1 to 97.8 is sampling noise, each cell used its own random stream",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Step budget versus success for a click-noisy agent. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a tight budget turns click noise into failure; a loose budget turns it into extra steps. Success stops at 97.8 to 98.1 percent (sigma 14) and 83.4 percent (sigma 25) even with 12 steps, because a noisy click can land on a different element and navigate away, which this scripted agent never recovers from; the small dip from 98.1 to 97.8 is sampling noise, each cell used its own random stream"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: step budget versus success for a click-noisy agent ---\n noise sigma    budget=2   budget=3   budget=4   budget=6  budget=12\n           6       99.9%     100.0%     100.0%     100.0%     100.0%\n          14       73.8%      92.7%      96.5%      98.1%      97.8%\n          25       34.9%      58.2%      70.6%      80.8%      83.4%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Wasted steps by cause for one noisy trajectory",
+    "headingKn": "ಪ್ರಯೋಗ 6: Wasted steps by cause for one noisy trajectory",
+    "bodyEn": "What it ran: Wasted steps by cause for one noisy trajectory. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Wasted steps by cause for one noisy trajectory. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: wasted steps by cause for one noisy trajectory ---\nscreen=settings   click=(  71,  31) -> None\nscreen=settings   click=( 117,   3) -> None\nscreen=settings   click=(  96,   4) -> None\nscreen=settings   click=( 128,  65) -> Appearance\nscreen=appearance click=( 294,  97) -> Dark\n5 steps, 2 useful, 3 spent on misses; success True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Combined report",
+    "headingKn": "ಪ್ರಯೋಗ 7: Combined report",
+    "bodyEn": "What it ran: Combined report. What the lab concluded: a report with only the success column would rank 'detour' with 'expert'; adding steps separates them",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Combined report. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a report with only the success column would rank 'detour' with 'expert'; adding steps separates them"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Combined report ---\nprofile           success   mean steps (successes)\nexpert             100.0%                     2.00\ndetour             100.0%                     5.00\ngrounding-weak      97.9%                     2.31\nknowledge-weak     100.0%                     2.98"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

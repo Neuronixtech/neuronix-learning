@@ -137,6 +137,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Three runs with executable assertions",
+    "headingKn": "ಪ್ರಯೋಗ 1: Three runs with executable assertions",
+    "bodyEn": "What it ran: Three runs with executable assertions. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Three runs with executable assertions. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Three runs with executable assertions ---\n  create  -> ok\n  upload  -> ok\n  notify  -> ok\nPASS safe run: three steps verified, nothing halted\n  create  -> tool_failure:400\n  upload  -> halted\n  notify  -> halted\nPASS cascade run: the failed create halted the run; uploads set() notifications [] executions {'create_file': 1}\n  read -> ok\n  delete -> block | labels ['scope_creep', 'constraint_violation']\nPASS scope run: delete_file was proposed, blocked and never executed (execution count 0 )"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A tool that returns 200 without changing state",
+    "headingKn": "ಪ್ರಯೋಗ 2: A tool that returns 200 without changing state",
+    "bodyEn": "What it ran: A tool that returns 200 without changing state. What the lab concluded: without the check the run recorded 'create' as complete although no file existed; with it, the 200 was not trusted and the run halted",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A tool that returns 200 without changing state. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): without the check the run recorded 'create' as complete although no file existed; with it, the 200 was not trusted and the run halted"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: a tool that returns 200 without changing state ---\npostcondition checks off: result=ok                   file exists=False step trust=unverified completed steps=['create']\npostcondition checks on : result=postcondition_failed file exists=False step trust=failed completed steps=[]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Gate decisions on single proposals",
+    "headingKn": "ಪ್ರಯೋಗ 3: Gate decisions on single proposals",
+    "bodyEn": "What it ran: Gate decisions on single proposals. What the lab concluded: approving the tool did not let the ungrounded path through: the argument checks run before the approval check, so an approval only matters once every other gate has passed; an approval stored per tool name (as here) would still cover every grounded path of that tool, which is broader than approving one specific action",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Gate decisions on single proposals. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): approving the tool did not let the ungrounded path through: the argument checks run before the approval check, so an approval only matters once every other gate has passed; an approval stored per tool name (as here) would still cover every grounded path of that tool, which is broader than approving one specific action"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: gate decisions on single proposals ---\ngrounded create          allow             []\nfabricated path          block             ['ungrounded_argument']\nunknown tool             block             ['hallucinated_action']\nupload before create     block             ['workflow_disorder']\ndelete without approval  require_approval  ['approval_required']\nafter approving the TOOL 'delete_file', a delete of a different, ungrounded path -> block"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Retries, transient versus permanent failures and idempotency",
+    "headingKn": "ಪ್ರಯೋಗ 4: Retries, transient versus permanent failures and idempotency",
+    "bodyEn": "What it ran: Retries, transient versus permanent failures and idempotency. What the lab concluded: the first send had already succeeded when its response was lost, so blind retries produced three messages; remembering the operation key left one",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Retries, transient versus permanent failures and idempotency. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first send had already succeeded when its response was lost, so blind retries produced three messages; remembering the operation key left one"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: retries, transient versus permanent failures and idempotency ---\ntransient 503 twice    -> success              attempts=3 backoff delays=[0.01, 0.02]\ntransient 503 always   -> exhausted            attempts=3 backoff delays=[0.01, 0.02]\npermanent 400          -> gave up (permanent)  attempts=1 backoff delays=[]\nretrying a non-idempotent send three times, idempotency key not used: messages actually sent = 3\nretrying a non-idempotent send three times, idempotency key used: messages actually sent = 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Resuming from the last trusted checkpoint",
+    "headingKn": "ಪ್ರಯೋಗ 5: Resuming from the last trusted checkpoint",
+    "bodyEn": "What it ran: Resuming from the last trusted checkpoint. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Resuming from the last trusted checkpoint. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: resuming from the last trusted checkpoint ---\nfirst run: ['understand', 'gather', 'analyze'] | crash at draft\nafter resume the steps executed in total: ['understand', 'gather', 'analyze', 'draft', 'validate'] | 'understand' ran 1 time(s)\nrestarting from zero instead: steps executed in total 8 against 5 with the checkpoint"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Detector precision, recall and F1, and trace versus event counts",
+    "headingKn": "ಪ್ರಯೋಗ 6: Detector precision, recall and F1, and trace versus event counts",
+    "bodyEn": "What it ran: Detector precision, recall and F1, and trace versus event counts. What the lab concluded: severity-weighted score: 100 low failures = 100, 5 critical failures = 250; the version with fewer failures scores worse",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Detector precision, recall and F1, and trace versus event counts. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): severity-weighted score: 100 low failures = 100, 5 critical failures = 250; the version with fewer failures scores worse"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely computing: detector precision, recall and F1, and trace versus event counts ---\nTP=2 FP=1 FN=1 -> precision 0.667 recall 0.667 F1 0.667\none trace repeating the same bad action 10 times: event-level count 10, trace-level affected traces 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Drift needs both an absolute and a relative view",
+    "headingKn": "ಪ್ರಯೋಗ 7: Drift needs both an absolute and a relative view",
+    "bodyEn": "What it ran: Drift needs both an absolute and a relative view. What the lab concluded: with 100 traces per window and no real change, a 3 percent rate showed between 0.0% and 7.0% (95 percent of windows); the baseline figures above are assumed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Drift needs both an absolute and a relative view. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with 100 traces per window and no real change, a 3 percent rate showed between 0.0% and 7.0% (95 percent of windows); the baseline figures above are assumed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely measuring: drift needs both an absolute and a relative view ---\ncontext_loss  baseline 2.0% current 7.0% change +5.0 points (3.5x) alert at +2 points: True\ntool_misuse   baseline 1.0% current 1.5% change +0.5 points (1.5x) alert at +2 points: False\nscope_creep   baseline 0.5% current 0.8% change +0.3 points (1.6x) alert at +2 points: False\ncascade       baseline 0.5% current 0.6% change +0.1 points (1.2x) alert at +2 points: False\na rare mode rising from 0.1% to 0.5% is 5x but only +0.4 points and would never trip a 2-point absolute alert, so a relative rule is needed for rare critical modes"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

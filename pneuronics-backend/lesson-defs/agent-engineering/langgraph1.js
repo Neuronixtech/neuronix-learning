@@ -151,6 +151,113 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Same graph, different state, different path",
+    "headingKn": "ಪ್ರಯೋಗ 1: Same graph, different state, different path",
+    "bodyEn": "What it ran: Same graph, different state, different path. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Same graph, different state, different path. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Same graph, different state, different path ---\n'I was charged twice and need a refund.'   path=['classify', 'refund'] step=2\n   output: Refund request prepared and awaiting approval.\n'The app shows an error on startup.'       path=['classify', 'bug'] step=2\n   output: Bug report prepared for the engineering queue.\n'Do you have a team plan?'                 path=['classify', 'sales'] step=2\n   output: Sales inquiry prepared for follow-up."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The runner works on a copy of the caller's state",
+    "headingKn": "ಪ್ರಯೋಗ 2: The runner works on a copy of the caller's state",
+    "bodyEn": "What it ran: The runner works on a copy of the caller's state. What the lab concluded: initial state after the run: {'messages': ['I need a refund'], 'step': 0, 'route': '', 'output': '', 'human_approval': False}",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The runner works on a copy of the caller's state. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): initial state after the run: {'messages': ['I need a refund'], 'step': 0, 'route': '', 'output': '', 'human_approval': False}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Dict.update replaces, it does not accumulate",
+    "headingKn": "ಪ್ರಯೋಗ 3: Dict.update replaces, it does not accumulate",
+    "bodyEn": "What it ran: Dict.update replaces, it does not accumulate. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Dict.update replaces, it does not accumulate. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: dict.update replaces, it does not accumulate ---\nbefore: ['User: hello'] | update: ['Agent: hi']\nafter state.update(): ['Agent: hi'] (the user's message is gone)\nan append reducer is needed to get: ['User: hello', 'Agent: hi']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: TypedDict is a contract for tools, not for the runtime",
+    "headingKn": "ಪ್ರಯೋಗ 4: TypedDict is a contract for tools, not for the runtime",
+    "bodyEn": "What it ran: TypedDict is a contract for tools, not for the runtime. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: TypedDict is a contract for tools, not for the runtime. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: TypedDict is a contract for tools, not for the runtime ---\na node returned a misspelled key 'routing': {'route': '', 'routing': 'refund'}\nno error was raised: 'route' stayed empty and a stray key appeared"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: An unknown route fails loudly",
+    "headingKn": "ಪ್ರಯೋಗ 5: An unknown route fails loudly",
+    "bodyEn": "What it ran: An unknown route fails loudly. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An unknown route fails loudly. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: an unknown route fails loudly ---\nValueError: Unknown route 'payments' from node 'classify'"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A random node makes replay unreliable",
+    "headingKn": "ಪ್ರಯೋಗ 6: A random node makes replay unreliable",
+    "bodyEn": "What it ran: A random node makes replay unreliable. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A random node makes replay unreliable. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: a random node makes replay unreliable ---\n8 runs of the same node on the same state: ['refund', 'refund', 'bug', 'refund', 'refund', 'refund', 'bug', 'bug']\na resumed workflow would not take the same branch; capture the choice in state instead"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Cycles need a budget",
+    "headingKn": "ಪ್ರಯೋಗ 7: Cycles need a budget",
+    "bodyEn": "What it ran: Cycles need a budget. What the lab concluded: with a grader that passes at step 3: ['generate', 'grade', 'generate', 'grade', 'generate', 'grade'] | step 3",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Cycles need a budget. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with a grader that passes at step 3: ['generate', 'grade', 'generate', 'grade', 'generate', 'grade'] | step 3"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Cycles need a budget ---\nRuntimeError: step budget of 10 exceeded at node 'generate'"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

@@ -117,6 +117,149 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: CASE 1: healthy code",
+    "headingKn": "ಪ್ರಯೋಗ 1: CASE 1: healthy code",
+    "bodyEn": "What it ran: CASE 1: healthy code. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: CASE 1: healthy code. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- CASE 1: healthy code ---\n[send] main -> reviewer topic=review_request\n[deliver] reviewer <- main topic=review_request\n[reviewer] review=1 findings=[]\n[send] reviewer -> checklist topic=checklist_request\n[deliver] checklist <- reviewer topic=checklist_request\n[checklist] check=1\n[send] checklist -> reviewer topic=checklist_result\n[deliver] reviewer <- checklist topic=checklist_result\n[reviewer] consensus=APPROVED review_id=r-1 combined_findings=[]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: CASE 2: problematic code",
+    "headingKn": "ಪ್ರಯೋಗ 2: CASE 2: problematic code",
+    "bodyEn": "What it ran: CASE 2: problematic code. What the lab concluded: [reviewer] consensus=CHANGES_REQUESTED review_id=r-2 combined_findings=['avoid eval()', 'avoid bare except', 'no explicit return found']",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: CASE 2: problematic code. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): [reviewer] consensus=CHANGES_REQUESTED review_id=r-2 combined_findings=['avoid eval()', 'avoid bare except', 'no explicit return found']"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- CASE 2: problematic code ---\n[send] main -> reviewer topic=review_request\n[deliver] reviewer <- main topic=review_request\n[reviewer] review=2 findings=['avoid eval()', 'avoid bare except']\n[send] reviewer -> checklist topic=checklist_request\n[deliver] checklist <- reviewer topic=checklist_request\n[checklist] check=2\n[send] checklist -> reviewer topic=checklist_result\n[deliver] reviewer <- checklist topic=checklist_result"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: CASE 3: simulated actor failure",
+    "headingKn": "ಪ್ರಯೋಗ 3: CASE 3: simulated actor failure",
+    "bodyEn": "What it ran: CASE 3: simulated actor failure. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: CASE 3: simulated actor failure. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- CASE 3: simulated actor failure ---\n[send] main -> reviewer topic=review_request\n[deliver] reviewer <- main topic=review_request\n[reviewer] review=3 findings=[]\n[send] reviewer -> checklist topic=checklist_request\n[deliver] checklist <- reviewer topic=checklist_request\n[checklist] check=3\n[failure] actor=checklist topic=checklist_request error=simulated checklist failure"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: CASE 4: runtime still alive",
+    "headingKn": "ಪ್ರಯೋಗ 4: CASE 4: runtime still alive",
+    "bodyEn": "What it ran: CASE 4: runtime still alive. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: CASE 4: runtime still alive. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- CASE 4: runtime still alive ---\n[send] main -> reviewer topic=review_request\n[deliver] reviewer <- main topic=review_request\n[reviewer] review=4 findings=[]\n[send] reviewer -> checklist topic=checklist_request\n[deliver] checklist <- reviewer topic=checklist_request\n[checklist] check=4\n[send] checklist -> reviewer topic=checklist_result\n[deliver] reviewer <- checklist topic=checklist_result\n[reviewer] consensus=APPROVED review_id=r-4 combined_findings=[]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: CASE 5: dead letter",
+    "headingKn": "ಪ್ರಯೋಗ 5: CASE 5: dead letter",
+    "bodyEn": "What it ran: CASE 5: dead letter. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: CASE 5: dead letter. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- CASE 5: dead letter ---\n[send] main -> missing-agent topic=ping\n[deliver] missing-agent <- main topic=ping\n[dead-letter] recipient=missing-agent topic=ping"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Final state",
+    "headingKn": "ಪ್ರಯೋಗ 6: Final state",
+    "bodyEn": "What it ran: Final state. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Final state. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- Final state ---\nreviewer.review_count=4 checklist.check_count=4\nreviewer.status=COMPLETE final_verdict=APPROVED\nruntime.failures=1 runtime.dead_letters=1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Typed payloads reject a malformed message",
+    "headingKn": "ಪ್ರಯೋಗ 7: Typed payloads reject a malformed message",
+    "bodyEn": "What it ran: Typed payloads reject a malformed message. What the lab concluded: failure recorded: [{'actor': 'reviewer', 'topic': 'review_request', 'error': 'review_request requires ReviewRequest'}]",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Typed payloads reject a malformed message. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): failure recorded: [{'actor': 'reviewer', 'topic': 'review_request', 'error': 'review_request requires ReviewRequest'}]"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- Genuinely checking: typed payloads reject a malformed message ---\n[send] main -> reviewer topic=review_request\n[deliver] reviewer <- main topic=review_request\n[failure] actor=reviewer topic=review_request error=review_request requires ReviewRequest"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Two reviews in flight share one state slot",
+    "headingKn": "ಪ್ರಯೋಗ 8: Two reviews in flight share one state slot",
+    "bodyEn": "What it ran: Two reviews in flight share one state slot. What the lab concluded: A is code the reviewer alone can flag (eval with a return); its correct verdict is CHANGES_REQUESTED",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Two reviews in flight share one state slot. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): A is code the reviewer alone can flag (eval with a return); its correct verdict is CHANGES_REQUESTED"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- Genuinely checking: two reviews in flight share one state slot ---\n[send] main -> reviewer topic=review_request\n[send] main -> reviewer topic=review_request\n[deliver] reviewer <- main topic=review_request\n[reviewer] review=1 findings=['avoid eval()']\n[send] reviewer -> checklist topic=checklist_request\n[deliver] reviewer <- main topic=review_request\n[reviewer] review=2 findings=[]\n[send] reviewer -> checklist topic=checklist_request\n[deliver] checklist <- reviewer topic=checklist_request\n[checklist] check=1\n[send] checklist -> reviewer topic=checklist_result\n[deliver] checklist <- reviewer topic=checklist_request\n[checklist] check=2\n[send] checklist -> reviewer topic=checklist_result\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 9: The fix: state keyed by review_id",
+    "headingKn": "ಪ್ರಯೋಗ 9: The fix: state keyed by review_id",
+    "bodyEn": "What it ran: The fix: state keyed by review_id. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The fix: state keyed by review_id. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- The fix: state keyed by review_id ---\n[send] main -> reviewer topic=review_request\n[send] main -> reviewer topic=review_request\n[deliver] reviewer <- main topic=review_request\n[send] reviewer -> checklist topic=checklist_request\n[deliver] reviewer <- main topic=review_request\n[send] reviewer -> checklist topic=checklist_request\n[deliver] checklist <- reviewer topic=checklist_request\n[checklist] check=1\n[send] checklist -> reviewer topic=checklist_result\n[deliver] checklist <- reviewer topic=checklist_request\n[checklist] check=2\n[send] checklist -> reviewer topic=checklist_result\n[deliver] reviewer <- checklist topic=checklist_result\n[deliver] reviewer <- checklist topic=checklist_result\n…"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

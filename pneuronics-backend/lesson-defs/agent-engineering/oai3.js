@@ -137,6 +137,134 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Four scenarios with a session and a trace",
+    "headingKn": "ಪ್ರಯೋಗ 1: Four scenarios with a session and a trace",
+    "bodyEn": "What it ran: Four scenarios with a session and a trace. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Four scenarios with a session and a trace. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Four scenarios with a session and a trace ---\n'I was charged twice.' -> Billing agent: I'll investigate the billing issue.\n  spans: ['agent_run[ok]', 'guardrail.input[ok]', 'agent.triage_agent[ok]', 'handoff[ok]', 'agent.billing_agent[ok]', 'guardrail.output[ok]']\n'The application crashes on startup.' -> Support agent: I'll troubleshoot the technical issue.\n  spans: ['agent_run[ok]', 'guardrail.input[ok]', 'agent.triage_agent[ok]', 'handoff[ok]', 'agent.support_agent[ok]', 'guardrail.output[ok]']\n'I want a refund.' -> Refund approved for $120.00\n  spans: ['agent_run[ok]', 'guardrail.input[ok]', 'agent.triage_agent[ok]', 'handoff[ok]', 'agent.billing_agent[ok]', 'tool.issue_refund[ok]']\npassword input -> InputGuardrailTripwireTriggered: Sensitive input detected: password\n  spans: ['agent_run[error]', 'guardrail.input[error]']\nsession history after three successful runs: 6 messages"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A session stores history but routing ignores it unless you pass it in",
+    "headingKn": "ಪ್ರಯೋಗ 2: A session stores history but routing ignores it unless you pass it in",
+    "bodyEn": "What it ran: A session stores history but routing ignores it unless you pass it in. What the lab concluded: with the pasted design the session is written but never read by the routing step, so the follow-up is unroutable",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A session stores history but routing ignores it unless you pass it in. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with the pasted design the session is written but never read by the routing step, so the follow-up is unroutable"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: a session stores history but routing ignores it unless you pass it in ---\nuse_history=False: second turn -> I can help route your request.\nuse_history=True: second turn -> Billing agent: I'll investigate the billing issue."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Rejected input and the session (pasted ordering vs validate-first)",
+    "headingKn": "ಪ್ರಯೋಗ 3: Rejected input and the session (pasted ordering vs validate-first)",
+    "bodyEn": "What it ran: Rejected input and the session (pasted ordering vs validate-first). What the lab concluded: the pasted order stores the secret in session history even though the guardrail rejected it; the audit event keeps the length, not the text",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Rejected input and the session (pasted ordering vs validate-first). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the pasted order stores the secret in session history even though the guardrail rejected it; the audit event keeps the length, not the text"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: rejected input and the session (pasted ordering vs validate-first) ---\nvalidate_before_store=False: session contains ['My password is abc123.'] | audit=[{'event': 'input_rejected', 'reason': 'Sensitive input detected: password', 'length': 22}]\nvalidate_before_store=True: session contains [] | audit=[{'event': 'input_rejected', 'reason': 'Sensitive input detected: password', 'length': 22}]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Span attributes and sensitive data",
+    "headingKn": "ಪ್ರಯೋಗ 4: Span attributes and sensitive data",
+    "bodyEn": "What it ran: Span attributes and sensitive data. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Span attributes and sensitive data. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: span attributes and sensitive data ---\nroot span attributes: {'starting_agent': 'triage_agent', 'input_length': 22}\nonly input_length and the starting agent were recorded, not the text"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: 8-character span ids from uuid4",
+    "headingKn": "ಪ್ರಯೋಗ 5: 8-character span ids from uuid4",
+    "bodyEn": "What it ran: 8-character span ids from uuid4. What the lab concluded: short ids are fine for a single small run but collide at scale; a tree built from parent_id would then link the wrong spans",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: 8-character span ids from uuid4. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): short ids are fine for a single small run but collide at scale; a tree built from parent_id would then link the wrong spans"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: 8-character span ids from uuid4 ---\n200000 ids generated, collisions found: 3 (birthday estimate about 4.7)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A failing trace processor",
+    "headingKn": "ಪ್ರಯೋಗ 6: A failing trace processor",
+    "bodyEn": "What it ran: A failing trace processor. What the lab concluded: an exporter outage turned a successful run into an error until processor exceptions were isolated",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A failing trace processor. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an exporter outage turned a successful run into an error until processor exceptions were isolated"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: a failing trace processor ---\nsafe_processors=False: run failed with RuntimeError: exporter down\nsafe_processors=True:  Billing agent: I'll investigate the billing issue."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Hop cycle in the trace",
+    "headingKn": "ಪ್ರಯೋಗ 7: Hop cycle in the trace",
+    "bodyEn": "What it ran: Hop cycle in the trace. What the lab concluded: trace: ['agent_run[error]', 'guardrail.input[ok]', 'agent.ping_agent[ok]', 'handoff[ok]', 'agent.pong_agent[ok]', 'handoff[ok]', 'agent.ping_agent[ok]', 'handoff[ok]', 'agent.pong_agent[ok]', 'handoff[error]']",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Hop cycle in the trace. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): trace: ['agent_run[error]', 'guardrail.input[ok]', 'agent.ping_agent[ok]', 'handoff[ok]', 'agent.pong_agent[ok]', 'handoff[ok]', 'agent.ping_agent[ok]', 'handoff[ok]', 'agent.pong_agent[ok]', 'handoff[error]']"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Hop cycle in the trace ---\nRuntimeError: Maximum handoff count exceeded"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Session growth",
+    "headingKn": "ಪ್ರಯೋಗ 8: Session growth",
+    "bodyEn": "What it ran: Session growth. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Session growth. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Genuinely measuring: session growth ---\nafter   1 turns:   2 messages,   11 words if all were sent to the model each time\nafter  10 turns:  20 messages,  110 words if all were sent to the model each time\nafter 100 turns: 200 messages, 1100 words if all were sent to the model each time\nhistory grows linearly; only a selected slice should be sent per call"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

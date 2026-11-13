@@ -108,6 +108,143 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The seven tests from the lesson (hardened registry)",
+    "headingKn": "ಪ್ರಯೋಗ 1: The seven tests from the lesson (hardened registry)",
+    "bodyEn": "What it ran: The seven tests from the lesson (hardened registry). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The seven tests from the lesson (hardened registry). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The seven tests from the lesson (hardened registry) ---\nPASS  1 successful retrieval\nPASS  2 missing key is an ERROR observation\nPASS  3 calculator\nPASS  4 unknown tool\nPASS  5 invalid arguments\n     (test 6 run:) Thought: I need the stored price.\nPASS  6 budget exhaustion\nPASS  7 state mutation\npassed: 7 of 7"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Test 5 against the lesson's own ToolRegistry",
+    "headingKn": "ಪ್ರಯೋಗ 2: Test 5 against the lesson's own ToolRegistry",
+    "bodyEn": "What it ran: Test 5 against the lesson's own ToolRegistry. What the lab concluded: test 5 FAILS with an uncaught TypeError: kv_get() got an unexpected keyword argument 'wrong_argument'",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Test 5 against the lesson's own ToolRegistry. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): test 5 FAILS with an uncaught TypeError: kv_get() got an unexpected keyword argument 'wrong_argument'"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Run_proof on the successful run",
+    "headingKn": "ಪ್ರಯೋಗ 3: Run_proof on the successful run",
+    "bodyEn": "What it ran: Run_proof on the successful run. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Run_proof on the successful run. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. run_proof on the successful run ---\nThought: I need the stored price.\nThought: The stored price is 125; now I can calculate price * 1.18.\nThought: I have enough evidence to answer.\nFinal: The final price is 147.5.\nPROOF PASSED: observations causally influenced later actions."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Error path with the guarded decision maker",
+    "headingKn": "ಪ್ರಯೋಗ 4: Error path with the guarded decision maker",
+    "bodyEn": "What it ran: Error path with the guarded decision maker. What the lab concluded: Final: Unable to calculate the final price because lookup failed: ERROR: key 'missing_price' not found",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Error path with the guarded decision maker. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): Final: Unable to calculate the final price because lookup failed: ERROR: key 'missing_price' not found"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Error path with the guarded decision maker ---\nThought: I need the stored price.\nAction: kv_store.get({'key': 'missing_price'})\nObservation: ERROR: key 'missing_price' not found\nThought: The price lookup failed, so I should not invent a price."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A model asks for a tool that does not exist",
+    "headingKn": "ಪ್ರಯೋಗ 5: A model asks for a tool that does not exist",
+    "bodyEn": "What it ran: A model asks for a tool that does not exist. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A model asks for a tool that does not exist. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. A model asks for a tool that does not exist ---\nThought: I will ask the weather tool.\nAction: weather.lookup({'city': 'Bengaluru'})\nObservation: ERROR: unknown tool: weather.lookup\nThought: That tool is not available.\nFinal: I cannot do that: ERROR: unknown tool: weather.lookup"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A runaway loop is cut off by the turn budget",
+    "headingKn": "ಪ್ರಯೋಗ 6: A runaway loop is cut off by the turn budget",
+    "bodyEn": "What it ran: A runaway loop is cut off by the turn budget. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A runaway loop is cut off by the turn budget. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. A runaway loop is cut off by the turn budget ---\nAgentResult(status='budget_exhausted', answer=None, turns=8)\ntool calls made: 8"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Status as data: finished vs budget_exhausted",
+    "headingKn": "ಪ್ರಯೋಗ 7: Status as data: finished vs budget_exhausted",
+    "bodyEn": "What it ran: Status as data: finished vs budget_exhausted. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Status as data: finished vs budget_exhausted. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Status as data: finished vs budget_exhausted ---\nok : AgentResult(status='finished', answer='The final price is 147.5.', turns=3)\ncut: AgentResult(status='budget_exhausted', answer=None, turns=2)\nsame type: True | distinguishable without string matching: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Wall-clock budget",
+    "headingKn": "ಪ್ರಯೋಗ 8: Wall-clock budget",
+    "bodyEn": "What it ran: Wall-clock budget. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Wall-clock budget. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Wall-clock budget ---\nAgentResult(status='time_exhausted', answer=None, turns=3)\nturns completed before the time budget fired: 3 (max_turns was 50)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 9: Part 2's lesson claim, re-checked",
+    "headingKn": "ಪ್ರಯೋಗ 9: Part 2's lesson claim, re-checked",
+    "bodyEn": "What it ran: Part 2's lesson claim, re-checked. What the lab concluded: unguarded Final: The final price is ERROR: could not convert string to float: \"ERROR: key 'missing_price' not found\".",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Part 2's lesson claim, re-checked. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): unguarded Final: The final price is ERROR: could not convert string to float: \"ERROR: key 'missing_price' not found\"."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 9. Part 2's lesson claim, re-checked ---\nThought: I need the stored price.\nThought: The stored price is ERROR: key 'missing_price' not found; now I can calculate price * 1.18.\nThought: I have enough evidence to answer."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

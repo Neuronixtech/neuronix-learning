@@ -147,6 +147,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Three scripted questions through full mesh and hub-and-spoke",
+    "headingKn": "ಪ್ರಯೋಗ 1: Three scripted questions through full mesh and hub-and-spoke",
+    "bodyEn": "What it ran: Three scripted questions through full mesh and hub-and-spoke. What the lab concluded: on the boundary question two of three agents started wrong with the same answer, so both topologies moved the right agent toward it (correct-to-wrong 1 each); the full mesh left the three-way split on the sequence question unresolved (no answer, so it scores as wrong) and ended with accuracy 1/3. The hub's 3/3 should not be read as better: its sequence answer is right because the hub agent happened to be the right one and the spokes copied it, and its boundary answer is the plurality of a state that was still swapping every round",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Three scripted questions through full mesh and hub-and-spoke. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): on the boundary question two of three agents started wrong with the same answer, so both topologies moved the right agent toward it (correct-to-wrong 1 each); the full mesh left the three-way split on the sequence question unresolved (no answer, so it scores as wrong) and ended with accuracy 1/3. The hub's 3/3 should not be read as better: its sequence answer is right because the hub agent happened to be the right one and the spokes copied it, and its boundary answer is the plurality of a state that was still swapping every round"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Three scripted questions through full mesh and hub-and-spoke ---\nquestion initial answers        initial vote | full mesh final     conv  ops | hub final           conv  ops\narith    ['43', '43', '42']               43 | ['43', '43', '43']  True    6 | ['43', '43', '43']  True    4 |\nbound    ['yes', 'no', 'no']              no | ['no', 'no', 'no']  True    6 | ['no', 'yes', 'yes'] False   12 |\nseq      ['30', '28', '32']             None | ['30', '28', '32'] False   18 | ['30', '30', '30']  True    4 |\nfull : accuracy 1/3, converged 2/3, critique operations 30, correct-to-wrong agent changes 1\nhub  : accuracy 3/3, converged 2/3, critique operations 20, correct-to-wrong agent changes 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Converged does not mean correct (the scripted boundary question)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Converged does not mean correct (the scripted boundary question)",
+    "bodyEn": "What it ran: Converged does not mean correct (the scripted boundary question). What the lab concluded: all three agents now agree, and they agree on the wrong answer: a convergence rate can look good while accuracy falls",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Converged does not mean correct (the scripted boundary question). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): all three agents now agree, and they agree on the wrong answer: a convergence rate can look good while accuracy falls"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: converged does not mean correct (the scripted boundary question) ---\ninitial ['yes', 'no', 'no'] -> final ['no', 'no', 'no'] | converged=True | correct=False | transitions: TransitionStats(wrong_to_correct=0, correct_to_wrong=1, unchanged_correct=0, unchanged_wrong=2)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A larger simulated benchmark (3000 questions, 5 agents, assumed error structure, seed 10)",
+    "headingKn": "ಪ್ರಯೋಗ 3: A larger simulated benchmark (3000 questions, 5 agents, assumed error structure, seed 10)",
+    "bodyEn": "What it ran: A larger simulated benchmark (3000 questions, 5 agents, assumed error structure, seed 10). What the lab concluded: model calls count the initial answers plus one per critique operation, an assumed unit of cost. Under this assumed error structure (25 percent hard questions where agents share a trap) the full mesh moved 1,343 agent answers from wrong to right and 535 from right to wrong, yet its accuracy (76.8 percent) equalled the plain majority vote's, at 26.8 calls instead of 5.0. Escalating to debate only when the first answers split kept that accuracy at 18.2 calls. The hub debate scored 71.5 percent, exactly the single agent's, because the spokes copy the hub so the group answer is essentially the hub's",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A larger simulated benchmark (3000 questions, 5 agents, assumed error structure, seed 10). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): model calls count the initial answers plus one per critique operation, an assumed unit of cost. Under this assumed error structure (25 percent hard questions where agents share a trap) the full mesh moved 1,343 agent answers from wrong to right and 535 from right to wrong, yet its accuracy (76.8 percent) equalled the plain majority vote's, at 26.8 calls instead of 5.0. Escalating to debate only when the first answers split kept that accuracy at 18.2 calls. The hub debate scored 71.5 percent, exactly the single agent's, because the spokes copy the hub so the group answer is essentially the hub's"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: a larger simulated benchmark (3000 questions, 5 agents, assumed error structure, seed 10) ---\nprotocol                  accuracy  model calls / question  converged   agent changes right->wrong  wrong->right\nsingle agent                 71.5%                     1.0          -                            -             -\nmajority vote                76.8%                     5.0          -                            -             -\nfull mesh debate             76.8%                    26.8      95.4%                          535          1343\nhub debate                   71.5%                    15.4      85.0%                         1730          1744\nvote, debate if split        76.8%                    18.2          -                            -             -"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Prompt homogenisation (how much the agents' mistakes overlap), 5 agents, seed 11",
+    "headingKn": "ಪ್ರಯೋಗ 4: Prompt homogenisation (how much the agents' mistakes overlap), 5 agents, seed 11",
+    "bodyEn": "What it ran: Prompt homogenisation (how much the agents' mistakes overlap), 5 agents, seed 11. What the lab concluded: debate matched the plain vote exactly at every setting (83.8, 85.6 and 82.0 percent), because this update rule only spreads the initial plurality; accuracy for both moved within about 3.6 points across settings without a clean trend, so these runs do not show homogenisation hurting steadily. What they show is that debate cannot add information that no agent had",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Prompt homogenisation (how much the agents' mistakes overlap), 5 agents, seed 11. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): debate matched the plain vote exactly at every setting (83.8, 85.6 and 82.0 percent), because this update rule only spreads the initial plurality; accuracy for both moved within about 3.6 points across settings without a clean trend, so these runs do not show homogenisation hurting steadily. What they show is that debate cannot add information that no agent had"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: prompt homogenisation (how much the agents' mistakes overlap), 5 agents, seed 11 ---\nwrong agents pick the same trap   majority vote  full mesh debate\n                             0.0          83.8%             83.8%\n                             0.5          85.6%             85.6%\n                             0.9          82.0%             82.0%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: What to do with a debate that does not converge (stuck rate and fallbacks, seed 12)",
+    "headingKn": "ಪ್ರಯೋಗ 5: What to do with a debate that does not converge (stuck rate and fallbacks, seed 12)",
+    "bodyEn": "What it ran: What to do with a debate that does not converge (stuck rate and fallbacks, seed 12). What the lab concluded: unresolved debates are a real share of traffic and need an explicit rule; returning nothing is safe but unhelpful, and the judge row rests on an assumed judge accuracy, not a measured one",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What to do with a debate that does not converge (stuck rate and fallbacks, seed 12). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): unresolved debates are a real share of traffic and need an explicit rule; returning nothing is safe but unhelpful, and the judge row rests on an assumed judge accuracy, not a measured one"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: what to do with a debate that does not converge (stuck rate and fallbacks, seed 12) ---\ndebates that had not converged after 3 rounds (ring): 735 of 3000 (24.5%)\n  fallback 'return nothing': correct on 0 of the 735 unresolved debates (0.0%)\n  fallback 'most common answer': correct on 284 of the 735 unresolved debates (38.6%)\n  fallback 'judge (80 percent right between the top two, ASSUMED)': correct on 400 of the 735 unresolved debates (54.4%)"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -204,6 +287,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Convergence on the scripted boundary question was agreement on a wrong answer. 2) Hub-and-spoke scored 3 of 3 on three scripted questions for reasons of position and parity, not quality. 3) Full-mesh debate equalled a 5-agent vote (76.8 percent) at 26.8 calls against 5.0. 4) Voting first and debating only on a split kept 76.8 percent at 18.2 calls. 5) 24.5 percent of ring debates had not converged after 3 rounds. 6) Fallback choice changed accuracy on those from 0 to 38.6 to 54.4 percent under stated assumptions.",
     "bodyKn": "1) ಸ್ಕ್ರಿಪ್ಟ್ ಗಡಿ ಪ್ರಶ್ನೆಯಲ್ಲಿ ಒಮ್ಮತ ತಪ್ಪು ಉತ್ತರದ ಮೇಲಿನ ಒಪ್ಪಿಗೆ. 2) ಮೂರು ಸ್ಕ್ರಿಪ್ಟ್ ಪ್ರಶ್ನೆಗಳಲ್ಲಿ hub-and-spoke 3 ರಲ್ಲಿ 3 ಪಡೆದದ್ದು ಸ್ಥಾನ ಮತ್ತು ಸಮತೆಯ ಕಾರಣಗಳಿಂದ, ಗುಣಮಟ್ಟದಿಂದ ಅಲ್ಲ. 3) Full-mesh ಚರ್ಚೆ 5-agent ಮತಕ್ಕೆ (76.8 ಶೇಕಡಾ) 5.0 ವಿರುದ್ಧ 26.8 ಕರೆಗಳಲ್ಲಿ ಸಮ. 4) ಮೊದಲು ಮತ ಹಾಕಿ ವಿಭಜನೆಯಲ್ಲಿ ಮಾತ್ರ ಚರ್ಚಿಸಿದ್ದು 18.2 ಕರೆಗಳಲ್ಲಿ 76.8 ಶೇಕಡಾ ಉಳಿಸಿತು. 5) ring ಚರ್ಚೆಗಳ 24.5 ಶೇಕಡಾ 3 ಸುತ್ತುಗಳ ನಂತರ ಒಮ್ಮತಕ್ಕೆ ಬಂದಿರಲಿಲ್ಲ. 6) ಹೇಳಿದ ಊಹೆಗಳಲ್ಲಿ fallback ಆಯ್ಕೆ ಅವುಗಳ ಮೇಲಿನ ನಿಖರತೆಯನ್ನು 0 ರಿಂದ 38.6 ರಿಂದ 54.4 ಶೇಕಡಾಕ್ಕೆ ಬದಲಿಸಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B deb_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B deb_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B deb_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B deb_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

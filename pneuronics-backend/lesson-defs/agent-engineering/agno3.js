@@ -137,6 +137,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Complete trace of the three-request program on a durable store",
+    "headingKn": "ಪ್ರಯೋಗ 1: Complete trace of the three-request program on a durable store",
+    "bodyEn": "What it ran: Complete trace of the three-request program on a durable store. What the lab concluded: request ids are per request, session ids per conversation: three req-N values, one 'user-1'",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Complete trace of the three-request program on a durable store. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): request ids are per request, session ids per conversation: three req-N values, one 'user-1'"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Complete trace of the three-request program on a durable store ---\n'Hello'                              -> Hello! I can help with weather.\n'What is the weather in Bengaluru?'  -> The weather in Bengaluru is 24°C, cloudy.\n'And the weather in Mumbai?'         -> The weather in Mumbai is 30°C, humid.\n  req-1 load_session   session=user-1 messages=0\n  req-1 agent.run      agent=1\n  req-1 save_session   messages=2 attempt=1\n  req-2 load_session   session=user-1 messages=2\n  req-2 agent.run      agent=2\n  req-2 save_session   messages=4 attempt=1\n  req-3 load_session   session=user-1 messages=4\n  req-3 agent.run      agent=3\n  req-3 save_session   messages=6 attempt=1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Horizontal scaling with in-memory stores",
+    "headingKn": "ಪ್ರಯೋಗ 2: Horizontal scaling with in-memory stores",
+    "bodyEn": "What it ran: Horizontal scaling with in-memory stores. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Horizontal scaling with in-memory stores. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: horizontal scaling with in-memory stores ---\nserver A history: 2 messages | server B history for the same session: 0\na load balancer that sends turn 2 to B loses turn 1 unless sessions are sticky or the store is shared\nwith a shared store, a second server sees turn 1 and the session now has 4 messages"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Lost updates across two servers (real threads, 50 ms model)",
+    "headingKn": "ಪ್ರಯೋಗ 3: Lost updates across two servers (real threads, 50 ms model)",
+    "bodyEn": "What it ran: Lost updates across two servers (real threads, 50 ms model). What the lab concluded: without a check both requests reported success while one turn vanished; with a check the loser is told, and a retry re-reads and recovers",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Lost updates across two servers (real threads, 50 ms model). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): without a check both requests reported success while one turn vanished; with a check the loser is told, and a retry re-reads and recovers"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: lost updates across two servers (real threads, 50 ms model) ---\nno version check         trials with a silently lost turn: 12/12 | request outcomes: {'ok': 24, 'gave up': 0}\nversion check, 0 retries trials with a silently lost turn:  0/12 | request outcomes: {'ok': 12, 'gave up': 12}\nversion check, 3 retries trials with a silently lost turn:  0/12 | request outcomes: {'ok': 24, 'gave up': 0}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Failure analysis: induce each failure and inspect the session",
+    "headingKn": "ಪ್ರಯೋಗ 4: Failure analysis: induce each failure and inspect the session",
+    "bodyEn": "What it ran: Failure analysis: induce each failure and inspect the session. What the lab concluded: failures before the save left the stored session unchanged, but the user got a raw exception in those cases; the empty and 1 MB messages were accepted and stored, and a None session id was not rejected: it was written as an orphan row that no later request can load",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Failure analysis: induce each failure and inspect the session. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): failures before the save left the stored session unchanged, but the user got a raw exception in those cases; the empty and 1 MB messages were accepted and stored, and a None session id was not rejected: it was written as an orphan row that no later request can load"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Failure analysis: induce each failure and inspect the session ---\ncase                           user sees                                    messages before -> after\ninput: empty message           Hello! I can help with weather.              2 -> 4\ninput: 1 MB message            Which city?                                  4 -> 6\nmodel: provider timeout        TimeoutError: provider timed out             6 -> 6\ntool: city without data        KeyError: 'chennai'                          6 -> 6\npersistence: save fails        OperationalError: disk I/O error             6 -> 6\nruntime: session id is None    Hello! I can help with weather.              6 -> 6\nrows saved under a NULL session id: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: An observability failure inside the request path",
+    "headingKn": "ಪ್ರಯೋಗ 5: An observability failure inside the request path",
+    "bodyEn": "What it ran: An observability failure inside the request path. What the lab concluded: the first span call failed before the reply was returned, so a collector outage became a request failure",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An observability failure inside the request path. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first span call failed before the reply was returned, so a collector outage became a request failure"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: an observability failure inside the request path ---\ntelemetry crash surfaced to the request: collector down | stored messages still 6"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: History copied by every load grows with the conversation",
+    "headingKn": "ಪ್ರಯೋಗ 6: History copied by every load grows with the conversation",
+    "bodyEn": "What it ran: History copied by every load grows with the conversation. What the lab concluded: the agent is cheap to create but the history it receives is not constant; long sessions need a window or a summary",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: History copied by every load grows with the conversation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the agent is cheap to create but the history it receives is not constant; long sessions need a window or a summary"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely measuring: history copied by every load grows with the conversation ---\nafter   10 turns (   20 messages): one load() takes    0.5 us (best of 7 batches)\nafter  100 turns (  200 messages): one load() takes    0.8 us (best of 7 batches)\nafter 1000 turns ( 2000 messages): one load() takes    5.9 us (best of 7 batches)\nafter 5000 turns (10000 messages): one load() takes   49.8 us (best of 7 batches)"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

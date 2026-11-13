@@ -137,6 +137,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Three scripted pipelines on separate copies of one fixture",
+    "headingKn": "ಪ್ರಯೋಗ 1: Three scripted pipelines on separate copies of one fixture",
+    "bodyEn": "What it ran: Three scripted pipelines on separate copies of one fixture. What the lab concluded: the prompt-only script fixed the code correctly (the probe passed) but ran no tests, edited the protected README and left no handoff; the workbench script passed every check; the third script shipped an off-by-one bug whose own weak tests passed and was caught only by the independent probe",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Three scripted pipelines on separate copies of one fixture. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the prompt-only script fixed the code correctly (the probe passed) but ran no tests, edited the protected README and left no handoff; the workbench script passed every check; the third script shipped an off-by-one bug whose own weak tests passed and was caught only by the independent probe"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: three scripted pipelines on separate copies of one fixture ---\nprompt_only            own tests exit=None  ran=0 acceptance probe=True  outside scope=['README.md'] gate=BLOCK review=5/20\nworkbench              own tests exit=0     ran=3 acceptance probe=True  outside scope=[] gate=ALLOW review=20/20\nworkbench_weak_tests   own tests exit=0     ran=2 acceptance probe=False outside scope=[] gate=BLOCK review=15/20"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Acceptance and tests are different facts",
+    "headingKn": "ಪ್ರಯೋಗ 2: Acceptance and tests are different facts",
+    "bodyEn": "What it ran: Acceptance and tests are different facts. What the lab concluded: the prompt-only script has tests_actually_run False and acceptance_met True and the weak-test script has the reverse, so neither fact can stand in for the other, and a gate needs both",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Acceptance and tests are different facts. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the prompt-only script has tests_actually_run False and acceptance_met True and the weak-test script has the reverse, so neither fact can stand in for the other, and a gate needs both"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: acceptance and tests are different facts ---\nprompt_only            tests_actually_run=False acceptance_met=True\nworkbench              tests_actually_run=True  acceptance_met=True\nworkbench_weak_tests   tests_actually_run=True  acceptance_met=False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The scope audit and bytecode caches",
+    "headingKn": "ಪ್ರಯೋಗ 3: The scope audit and bytecode caches",
+    "bodyEn": "What it ran: The scope audit and bytecode caches. What the lab concluded: an audit that hashes every file would have flagged these as scope violations; the lab excludes __pycache__ and runs with -B, and a real audit needs an explicit ignore list for generated files",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The scope audit and bytecode caches. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an audit that hashes every file would have flagged these as scope violations; the lab excludes __pycache__ and runs with -B, and a real audit needs an explicit ignore list for generated files"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: the scope audit and bytecode caches ---\nfiles created just by running the tests without -B: ['__pycache__/app.cpython-314.pyc', '__pycache__/test_app.cpython-314.pyc']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The baseline is what makes the audit work",
+    "headingKn": "ಪ್ರಯೋಗ 4: The baseline is what makes the audit work",
+    "bodyEn": "What it ran: The baseline is what makes the audit work. What the lab concluded: a listing of the final directory alone shows ['README.md', 'app.py', 'release.sh', 'test_app.py'] and cannot say which of them the task changed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The baseline is what makes the audit work. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a listing of the final directory alone shows ['README.md', 'app.py', 'release.sh', 'test_app.py'] and cannot say which of them the task changed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: the baseline is what makes the audit work ---\nchanges found by comparing with the baseline hashes: ['release.sh']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Comparison.json",
+    "headingKn": "ಪ್ರಯೋಗ 5: Comparison.json",
+    "bodyEn": "What it ran: Comparison.json. What the lab concluded: the file records scripted: true on purpose; three hand-written scripts cannot show that a workbench improves a real agent, only that the checks distinguish these three behaviours",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Comparison.json. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the file records scripted: true on purpose; three hand-written scripts cannot show that a workbench improves a real agent, only that the checks distinguish these three behaviours"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely writing: comparison.json ---\n{\n  \"scripted\": true,\n  \"results\": [\n    {\n      \"pipeline\": \"prompt_only\",\n      \"tests_actually_run\": false,\n      \"acceptance_met\": true,\n      \"gate\": \"BLOCK\",\n      \"review\": 5\n    },\n    {\n      \"pipeline\": \"workbench\",\n      \"tests_actually_run\": true,\n      \"acceptance_met\": true,\n…"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -194,6 +277,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) prompt_only scored 5 of 20 and was blocked. 2) workbench scored 20 of 20 and was allowed. 3) The weak-tests script passed its own tests and failed the probe. 4) Running tests without -B created files a hash audit would flag. 5) The scripted results prove nothing about real agents.",
     "bodyKn": "1) prompt_only 20 ರಲ್ಲಿ 5 ಪಡೆದು ತಡೆಯಲ್ಪಟ್ಟಿತು. 2) workbench 20 ರಲ್ಲಿ 20 ಪಡೆದು ಅನುಮತಿಸಲ್ಪಟ್ಟಿತು. 3) ದುರ್ಬಲ-ಪರೀಕ್ಷೆ ಸ್ಕ್ರಿಪ್ಟ್ ತನ್ನ ಪರೀಕ್ಷೆ ಪಾಸ್ ಮಾಡಿ probe ವಿಫಲವಾಯಿತು. 4) -B ಇಲ್ಲದೆ ಪರೀಕ್ಷೆ ಓಡಿಸಿದ್ದು hash ಲೆಕ್ಕಪರಿಶೋಧನೆ ಗುರುತಿಸುವ ಫೈಲ್ ಸೃಷ್ಟಿಸಿತು. 5) ಸ್ಕ್ರಿಪ್ಟ್ ಫಲಿತಾಂಶಗಳು ನಿಜ agents ಬಗ್ಗೆ ಏನನ್ನೂ ಸಾಬೀತುಪಡಿಸುವುದಿಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B rw_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B rw_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B rw_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B rw_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

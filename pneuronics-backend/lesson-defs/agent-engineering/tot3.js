@@ -143,6 +143,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Search-space arithmetic (K = breadth, D = depth)",
+    "headingKn": "ಪ್ರಯೋಗ 1: Search-space arithmetic (K = breadth, D = depth)",
+    "bodyEn": "What it ran: Search-space arithmetic (K = breadth, D = depth). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Search-space arithmetic (K = breadth, D = depth). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Search-space arithmetic (K = breadth, D = depth) ---\n  K   D     leaves K^D   nodes 1+K+..+K^D\n  3   3             27                 40\n  3   4             81                121\n  3   5            243                364\n  3  10         59,049             88,573\n  5  10      9,765,625         12,207,031"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: ToT beam search versus the toy LATS on the same problem (start 5)",
+    "headingKn": "ಪ್ರಯೋಗ 2: ToT beam search versus the toy LATS on the same problem (start 5)",
+    "bodyEn": "What it ran: ToT beam search versus the toy LATS on the same problem (start 5). What the lab concluded: both reach 24 on this instance; ToT returned (((5 * 2) * 2) + 4) | LATS first rollout hit at iteration 1",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: ToT beam search versus the toy LATS on the same problem (start 5). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both reach 24 on this instance; ToT returned (((5 * 2) * 2) + 4) | LATS first rollout hit at iteration 1"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. ToT beam search versus the toy LATS on the same problem (start 5) ---\n               generated  evaluations  rollouts  reflections\nToT beam=2            15           16         0            0\nLATS 8 iter           27           59         8            8"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The strategy router from the lesson",
+    "headingKn": "ಪ್ರಯೋಗ 3: The strategy router from the lesson",
+    "bodyEn": "What it ran: The strategy router from the lesson. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The strategy router from the lesson. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. The strategy router from the lesson ---\ndifficulty=easy    verifier=False priority=low   -> direct\ndifficulty=medium  verifier=False priority=low   -> react\ndifficulty=hard    verifier=False priority=high  -> tot\ndifficulty=hard    verifier=True  priority=high  -> lats\ndifficulty=hard    verifier=True  priority=low   -> react\ndifficulty=medium  verifier=True  priority=high  -> react"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Adaptive escalation on starts 1..30: greedy first, search only on failure",
+    "headingKn": "ಪ್ರಯೋಗ 4: Adaptive escalation on starts 1..30: greedy first, search only on failure",
+    "bodyEn": "What it ran: Adaptive escalation on starts 1..30: greedy first, search only on failure. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Adaptive escalation on starts 1..30: greedy first, search only on failure. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Adaptive escalation on starts 1..30: greedy first, search only on failure ---\nsolved by the cheap greedy attempt: 21/30\nrescued by escalating to beam 3:    3/30\nunsolved even at beam 3:            6/30\nthoughts generated: always beam 3 = 621, escalate on failure = 543"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Evaluator noise (deterministic) and ToT beam 2, starts 1..30",
+    "headingKn": "ಪ್ರಯೋಗ 5: Evaluator noise (deterministic) and ToT beam 2, starts 1..30",
+    "bodyEn": "What it ran: Evaluator noise (deterministic) and ToT beam 2, starts 1..30. What the lab concluded: scores here are about 0.05 to 1.0, so noise of 0.06 or more is the same size as the signal for most states",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Evaluator noise (deterministic) and ToT beam 2, starts 1..30. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): scores here are about 0.05 to 1.0, so noise of 0.06 or more is the same size as the signal for most states"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Evaluator noise (deterministic) and ToT beam 2, starts 1..30 ---\n noise amplitude   solved\n             0.0    23/30\n            0.01    22/30\n            0.03    20/30\n            0.06    21/30\n            0.12    19/30"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Cost-adjusted utility: Quality - lambda * Cost (ILLUSTRATIVE numbers, not measurements)",
+    "headingKn": "ಪ್ರಯೋಗ 6: Cost-adjusted utility: Quality - lambda * Cost (ILLUSTRATIVE numbers, not measurements)",
+    "bodyEn": "What it ran: Cost-adjusted utility: Quality - lambda * Cost (ILLUSTRATIVE numbers, not measurements). What the lab concluded: one MCTS iteration at 1500 tokens x 50 iterations = 75000 tokens before environment context",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Cost-adjusted utility: Quality - lambda * Cost (ILLUSTRATIVE numbers, not measurements). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): one MCTS iteration at 1500 tokens x 50 iterations = 75000 tokens before environment context"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Cost-adjusted utility: Quality - lambda * Cost (ILLUSTRATIVE numbers, not measurements) ---\nmethod A: quality 0.90, cost 1;  method B: quality 0.91, cost 100\nlambda=0.0     U(A)=0.9000  U(B)=0.9100  -> prefer B\nlambda=0.0001  U(A)=0.8999  U(B)=0.9000  -> prefer B\nlambda=0.001   U(A)=0.8990  U(B)=0.8100  -> prefer A\nlambda=0.01    U(A)=0.8900  U(B)=-0.0900  -> prefer A"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

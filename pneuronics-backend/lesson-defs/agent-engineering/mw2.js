@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Validating tasks from an external file",
+    "headingKn": "ಪ್ರಯೋಗ 1: Validating tasks from an external file",
+    "bodyEn": "What it ran: Validating tasks from an external file. What the lab concluded: shape and path-syntax errors are caught before any file is touched; this validates the task data and does not prove the filesystem is safe, and uniqueness of ids is not checked here",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Validating tasks from an external file. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): shape and path-syntax errors are caught before any file is touched; this validates the task data and does not prove the filesystem is safe, and uniqueness of ids is not checked here"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely checking: validating tasks from an external file ---\nvalid           -> no problems\nmalformed       -> ['goal must be a non-empty string', \"status 'complete' is not one of ['blocked', 'done', 'failed', 'in_progress', 'todo']\", 'allowed_files must be a non-empty list of strings', 'acceptance_criteria ar…\nescaping paths  -> ['allowed_files contains an absolute or parent-relative path']\nnot an object   -> ['task must be an object']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A truncated state file, plain versus atomic writes",
+    "headingKn": "ಪ್ರಯೋಗ 2: A truncated state file, plain versus atomic writes",
+    "bodyEn": "What it ran: A truncated state file, plain versus atomic writes. What the lab concluded: the loader reports missing and corrupt separately and does not treat either as an empty state; resetting a corrupt file to defaults would erase the only record of unfinished work",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A truncated state file, plain versus atomic writes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the loader reports missing and corrupt separately and does not treat either as an empty state; resetting a corrupt file to defaults would erase the only record of unfinished work"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: a truncated state file, plain versus atomic writes ---\nafter an interrupted plain overwrite: (None, 'corrupt')\nafter an interrupted atomic write: ({'active_task_id': 'TASK-001'}, None)\nmissing file: (None, 'missing')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The state file and the board disagree after a crash between two writes",
+    "headingKn": "ಪ್ರಯೋಗ 3: The state file and the board disagree after a crash between two writes",
+    "bodyEn": "What it ran: The state file and the board disagree after a crash between two writes. What the lab concluded: each file is valid on its own and the pair is inconsistent: per-file atomic writes do not make a two-file update atomic",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The state file and the board disagree after a crash between two writes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each file is valid on its own and the pair is inconsistent: per-file atomic writes do not make a two-file update atomic"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: the state file and the board disagree after a crash between two writes ---\nstate says active=TASK-001, board says status=todo"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Recovery decisions from the saved records and the actual note",
+    "headingKn": "ಪ್ರಯೋಗ 4: Recovery decisions from the saved records and the actual note",
+    "bodyEn": "What it ran: Recovery decisions from the saved records and the actual note. What the lab concluded: the same saved status (in_progress) led to different actions depending on what was actually in the file, which is why recovery inspects the environment instead of trusting the record",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Recovery decisions from the saved records and the actual note. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the same saved status (in_progress) led to different actions depending on what was actually in the file, which is why recovery inspects the environment instead of trusting the record"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: recovery decisions from the saved records and the actual note ---\nno active task               -> no active task: select the next one\ntask missing from the board  -> active task is not on the board: quarantine the stale state and record the inconsistency\nnothing written yet          -> no change made yet: resume the task\nchange already applied       -> required change already present: run the acceptance checks and record the verified result\nboard already done           -> board says done: clear the active id\nunexpected content           -> partial or unexpected content: repair with an idempotent update"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A status field that bypasses the lifecycle",
+    "headingKn": "ಪ್ರಯೋಗ 5: A status field that bypasses the lifecycle",
+    "bodyEn": "What it ran: A status field that bypasses the lifecycle. What the lab concluded: a finished task does not silently return to in_progress, and a task cannot jump from todo to done without passing through work; a reopen would need its own explicit operation",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A status field that bypasses the lifecycle. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a finished task does not silently return to in_progress, and a task cannot jump from todo to done without passing through work; a reopen would need its own explicit operation"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: a status field that bypasses the lifecycle ---\ntodo         -> in_progress  allowed\ndone         -> in_progress  refused\ntodo         -> done         refused\nfailed       -> in_progress  allowed"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Validation listed every problem in a malformed task. 2) A plain overwrite cut halfway was corrupt; an atomic write was not. 3) A crash between two writes left active=TASK-001 and todo on the board. 4) One saved status produced five different recovery actions. 5) done to in_progress and todo to done were refused.",
     "bodyKn": "1) ಮಾನ್ಯತೆ ತಪ್ಪಾದ ಕಾರ್ಯದ ಪ್ರತಿ ಸಮಸ್ಯೆ ಪಟ್ಟಿ ಮಾಡಿತು. 2) ಅರ್ಧಕ್ಕೆ ಕತ್ತರಿಸಿದ ಸರಳ ಮೇಲ್ಬರಹ ಹಾಳಾಗಿತ್ತು; atomic ಬರಹ ಆಗಿರಲಿಲ್ಲ. 3) ಎರಡು ಬರಹಗಳ ನಡುವಿನ ಕ್ರ್ಯಾಶ್ active=TASK-001 ಮತ್ತು board ನಲ್ಲಿ todo ಬಿಟ್ಟಿತು. 4) ಒಂದು ಉಳಿಸಿದ ಸ್ಥಿತಿ ಐದು ವಿಭಿನ್ನ ಚೇತರಿಕೆ ಕ್ರಿಯೆಗಳನ್ನು ನೀಡಿತು. 5) done ರಿಂದ in_progress ಮತ್ತು todo ರಿಂದ done ತಿರಸ್ಕರಿಸಲ್ಪಟ್ಟವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B mw_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B mw_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B mw_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B mw_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

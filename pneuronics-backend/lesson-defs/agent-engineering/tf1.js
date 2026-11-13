@@ -152,6 +152,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The example frame and the four required breakages",
+    "headingKn": "ಪ್ರಯೋಗ 1: The example frame and the four required breakages",
+    "bodyEn": "What it ran: The example frame and the four required breakages. What the lab concluded: each breakage produced its own specific message and nothing else, so the four failures are distinguishable and a generic 'invalid task' is never needed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The example frame and the four required breakages. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each breakage produced its own specific message and nothing else, so the four failures are distinguishable and a generic 'invalid task' is never needed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the example frame and the four required breakages ---\nvalid frame errors: []\nremove the goal            -> ['Goal is required.']\nremove a fact receipt      -> ['Repository fact 1 has no evidence receipt.']\noverlap the paths          -> [\"Allowed and forbidden paths overlap: 'src/accounts' vs 'src/accounts/service.py'.\"]\nremove acceptance command  -> ['At least one acceptance command is required.']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Errors are collected, not stopped at the first",
+    "headingKn": "ಪ್ರಯೋಗ 2: Errors are collected, not stopped at the first",
+    "bodyEn": "What it ran: Errors are collected, not stopped at the first. What the lab concluded: a whitespace-only goal, a blank command and a missing allowed path were all reported together, which lets the author fix several problems in one pass; the tests should assert the specific message rather than the whole list for this reason",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Errors are collected, not stopped at the first. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a whitespace-only goal, a blank command and a missing allowed path were all reported together, which lets the author fix several problems in one pass; the tests should assert the specific message rather than the whole list for this reason"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: errors are collected, not stopped at the first ---\n3 errors in one run: ['Goal is required.', 'At least one allowed path is required.', 'At least one acceptance command is required.']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Directory-aware coverage versus a naive prefix test",
+    "headingKn": "ಪ್ರಯೋಗ 3: Directory-aware coverage versus a naive prefix test",
+    "bodyEn": "What it ran: Directory-aware coverage versus a naive prefix test. What the lab concluded: the naive startswith test said src/accounts covers src/accounts_old, which is a different directory, while the directory-aware test did not; and the last row is False in this direction, which is why the validator checks coverage both ways",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Directory-aware coverage versus a naive prefix test. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the naive startswith test said src/accounts covers src/accounts_old, which is a different directory, while the directory-aware test did not; and the last row is False in this direction, which is why the validator checks coverage both ways"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: directory-aware coverage versus a naive prefix test ---\nsrc/accounts               covers src/accounts/service.py        directory-aware=True  naive startswith=True\nsrc/accounts               covers src/accounts_old/service.py    directory-aware=False naive startswith=True\nsrc/accounts               covers src/accounts                   directory-aware=True  naive startswith=True\nsrc/accounts/service.py    covers src/accounts                   directory-aware=False naive startswith=False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Lexical path normalisation",
+    "headingKn": "ಪ್ರಯೋಗ 4: Lexical path normalisation",
+    "bodyEn": "What it ran: Lexical path normalisation. What the lab concluded: trailing slashes, dot segments, backslashes and padding all collapsed to one form, and absolute or parent-traversal paths were rejected; an empty string and a single dot normalised to an empty path, which the validator reports separately; this is lexical only and says nothing about symlinks or the real filesystem",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Lexical path normalisation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): trailing slashes, dot segments, backslashes and padding all collapsed to one form, and absolute or parent-traversal paths were rejected; an empty string and a single dot normalised to an empty path, which the validator reports separately; this is lexical only and says nothing about symlinks or the real filesystem"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: lexical path normalisation ---\n'src/accounts/'        -> 'src/accounts'\n'src/./accounts'       -> 'src/accounts'\n'src\\\\accounts'        -> 'src/accounts'\n'  src/accounts  '     -> 'src/accounts'\n'/etc/config'          rejected: absolute paths are not allowed\n'../secrets'           rejected: parent traversal is not allowed\n'src/../secrets'       rejected: parent traversal is not allowed\n''                     -> ''\n'.'                    -> ''"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: What the nonempty checks do not catch",
+    "headingKn": "ಪ್ರಯೋಗ 5: What the nonempty checks do not catch",
+    "bodyEn": "What it ran: What the nonempty checks do not catch. What the lab concluded: all three passed: a blank entry beside one real command is tolerated, an echo is accepted as an acceptance command, a vague goal is accepted and an evidence receipt with no file or line is accepted; the validator checks that things exist, and judging whether they are good still needs review",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What the nonempty checks do not catch. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): all three passed: a blank entry beside one real command is tolerated, an echo is accepted as an acceptance command, a vague goal is accepted and an evidence receipt with no file or line is accepted; the validator checks that things exist, and judging whether they are good still needs review"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: what the nonempty checks do not catch ---\nacceptance commands ['', 'echo all tests passed']: []\ngoal 'Improve everything': []\nevidence 'somewhere in the tests': []"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -209,6 +292,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Each of four breakages gave its own message. 2) Errors were collected in one run. 3) A naive prefix test confused src/accounts_old with src/accounts. 4) Paths normalised and traversal was rejected. 5) Weak goals, echo commands and vague receipts still passed.",
     "bodyKn": "1) ನಾಲ್ಕು ಮುರಿತಗಳಲ್ಲಿ ಪ್ರತಿಯೊಂದೂ ತನ್ನದೇ ಸಂದೇಶ ನೀಡಿತು. 2) ದೋಷಗಳು ಒಂದೇ ಓಟದಲ್ಲಿ ಸಂಗ್ರಹವಾದವು. 3) ಸರಳ ಪೂರ್ವಪದ ಪರೀಕ್ಷೆ src/accounts_old ಅನ್ನು src/accounts ಜೊತೆ ಗೊಂದಲಗೊಳಿಸಿತು. 4) paths ಸಾಮಾನ್ಯೀಕರಣಗೊಂಡು traversal ತಿರಸ್ಕೃತವಾಯಿತು. 5) ದುರ್ಬಲ ಗುರಿಗಳು, echo ಆದೇಶಗಳು ಮತ್ತು ಅಸ್ಪಷ್ಟ ರಸೀದಿಗಳು ಇನ್ನೂ ಪಾಸ್ ಆದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B tf_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B tf_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B tf_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B tf_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

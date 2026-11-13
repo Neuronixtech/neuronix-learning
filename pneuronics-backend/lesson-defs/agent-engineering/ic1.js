@@ -147,6 +147,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Parse the rule file and check two runs",
+    "headingKn": "ಪ್ರಯೋಗ 1: Parse the rule file and check two runs",
+    "bodyEn": "What it ran: Parse the rule file and check two runs. What the lab concluded: the violating run failed a block rule (protected file) and a warn rule (assumption without asking); the block failure stops release and the warning is recorded without stopping it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Parse the rule file and check two runs. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the violating run failed a block rule (protected file) and a warn rule (assumption without asking); the block failure stops release and the warning is recorded without stopping it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: parse the rule file and check two runs ---\nparsed 5 rules: [('startup-before-edit', 'startup', 'block'), ('no-protected-file-writes', 'forbidden', 'block'), ('tests-before-completion', 'definition-of-done', 'block'), ('ask-before-assuming', 'uncertainty', 'warn'…\nclean run: startup-before-edit=pass, no-protected-file-writes=pass, tests-before-completion=pass, ask-before-assuming=pass, approval-before-production-write=pass | release allowed: True\nviolating run: startup-before-edit=pass, no-protected-file-writes=fail, tests-before-completion=pass, ask-before-assuming=fail, approval-before-production-write=pass | release allowed: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The parser refuses a broken rule file",
+    "headingKn": "ಪ್ರಯೋಗ 2: The parser refuses a broken rule file",
+    "bodyEn": "What it ran: The parser refuses a broken rule file. What the lab concluded: a rule file that quietly loses a rule would weaken the system, so each malformed entry stops the load; the parser does not check that the named checker exists, which evaluate() reports as an error at run time",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The parser refuses a broken rule file. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a rule file that quietly loses a rule would weaken the system, so each malformed entry stops the load; the parser does not check that the named checker exists, which evaluate() reports as an error at run time"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: the parser refuses a broken rule file ---\nunknown category     -> refused: startup-before-edit: unknown category 'hope'\nmissing check field  -> refused: startup-before-edit: missing fields ['check']\nduplicate slug       -> refused: duplicate slug startup-before-edit\nbad severity         -> refused: ask-before-assuming: unknown severity 'loud'"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Missing evidence is not a pass",
+    "headingKn": "ಪ್ರಯೋಗ 3: Missing evidence is not a pass",
+    "bodyEn": "What it ran: Missing evidence is not a pass. What the lab concluded: tests_ran alone, with no exit code, failed rather than passing, and an empty record returned unknown; treating absent evidence as success would let an agent comply by saying nothing",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Missing evidence is not a pass. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): tests_ran alone, with no exit code, failed rather than passing, and an empty record returned unknown; treating absent evidence as success would let an agent comply by saying nothing"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: missing evidence is not a pass ---\nno test record at all              -> [('startup-before-edit', ('unknown', 'evidence missing')), ('tests-before-completion', ('unknown', 'evidence missing'))]\ntests_ran true but no exit code    -> [('startup-before-edit', ('unknown', 'evidence missing')), ('tests-before-completion', ('fail', 'evidence violates the rule'))]\nno startup timestamps              -> [('startup-before-edit', ('unknown', 'evidence missing')), ('tests-before-completion', ('unknown', 'evidence missing'))]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A score is not the gate",
+    "headingKn": "ಪ್ರಯೋಗ 4: A score is not the gate",
+    "bodyEn": "What it ran: A score is not the gate. What the lab concluded: a 90 percent compliance score still blocks release because one block-severity rule failed; the summary number and the policy decision answer different questions",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A score is not the gate. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a 90 percent compliance score still blocks release because one block-severity rule failed; the summary number and the policy decision answer different questions"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: a score is not the gate ---\n9 of 10 rules pass, score 90%, release allowed: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: An unknown checker is an error, not a skipped rule",
+    "headingKn": "ಪ್ರಯೋಗ 5: An unknown checker is an error, not a skipped rule",
+    "bodyEn": "What it ran: An unknown checker is an error, not a skipped rule. What the lab concluded: a typo in a checker name would otherwise remove a mandatory control without any visible failure",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An unknown checker is an error, not a skipped rule. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a typo in a checker name would otherwise remove a mandatory control without any visible failure"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: an unknown checker is an error, not a skipped rule ---\nghost rule -> ('error', 'unknown checker does_not_exist') | release allowed: False"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -204,6 +287,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Five rules parsed and a violating run was blocked by one block-severity failure. 2) Four malformed rule files were refused. 3) Missing evidence gave unknown. 4) A 90 percent score still blocked release. 5) A mistyped checker name produced error and blocked.",
     "bodyKn": "1) ಐದು ನಿಯಮಗಳು ಪಾರ್ಸ್ ಆದವು ಮತ್ತು ಉಲ್ಲಂಘನೆ ಓಟ ಒಂದು block-ತೀವ್ರತೆಯ ವೈಫಲ್ಯದಿಂದ ತಡೆಯಲ್ಪಟ್ಟಿತು. 2) ನಾಲ್ಕು ತಪ್ಪಾದ ನಿಯಮ ಫೈಲ್‌ಗಳು ತಿರಸ್ಕರಿಸಲ್ಪಟ್ಟವು. 3) ಕಾಣೆಯಾದ ಸಾಕ್ಷ್ಯ unknown ನೀಡಿತು. 4) 90 ಶೇಕಡಾ ಅಂಕ ಇನ್ನೂ release ತಡೆಯಿತು. 5) ತಪ್ಪಾಗಿ ಟೈಪ್ ಮಾಡಿದ checker ಹೆಸರು error ನೀಡಿ ತಡೆಯಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ic_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ic_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ic_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ic_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

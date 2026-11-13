@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The rendered artifact and an audit of its sections",
+    "headingKn": "ಪ್ರಯೋಗ 1: The rendered artifact and an audit of its sections",
+    "bodyEn": "What it ran: The rendered artifact and an audit of its sections. What the lab concluded: a renderer can drop a section even when the data validated, so the audit checks the Markdown and not only the frame",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The rendered artifact and an audit of its sections. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a renderer can drop a section even when the data validated, so the audit checks the Markdown and not only the frame"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the rendered artifact and an audit of its sections ---\n# Task Frame\n## Goal\nReject duplicate registration.\n## Repository Facts\n- **Claim:** The duplicate test expects HTTP 409.\n  - **Evidence:** `tests/test_accounts.py:44`\n## Allowed Paths\n- src/accounts\n## Forbidden Paths\n- migrations\n## Acceptance Commands\n- `python3 -m unittest tests.test_accounts -v`\n## Unknowns\n- discoverable: Does storage prevent concurrent duplicates?\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Validate before write, through a real subprocess",
+    "headingKn": "ಪ್ರಯೋಗ 2: Validate before write, through a real subprocess",
+    "bodyEn": "What it ran: Validate before write, through a real subprocess. What the lab concluded: the rejected frame exited 1 and wrote no file, the accepted one exited 0 and wrote the artifact; the exit code lets automation stop on a bad frame, and it says only that the structure passed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Validate before write, through a real subprocess. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the rejected frame exited 1 and wrote no file, the accepted one exited 0 and wrote the artifact; the exit code lets automation stop on a bad frame, and it says only that the structure passed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: validate before write, through a real subprocess ---\ninvalid goal: exit 1 | printed ['Task frame rejected:', '- Goal is required.'] | artifact exists: False\nvalid frame  : exit 0 | printed Task frame validated. | artifact exists: True\nno command   : exit 1 | printed ['Task frame rejected:', '- At least one acceptance command is required.']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: User text can add headings to the artifact",
+    "headingKn": "ಪ್ರಯೋಗ 3: User text can add headings to the artifact",
+    "bodyEn": "What it ran: User text can add headings to the artifact. What the lab concluded: a goal containing a newline and '## Allowed Paths' produced a second Allowed Paths heading with a made-up entry, which a reader or a later agent could take for the real boundary; collapsing the goal to one line and dropping # kept the six headings, at the cost of altering the author's text",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: User text can add headings to the artifact. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a goal containing a newline and '## Allowed Paths' produced a second Allowed Paths heading with a made-up entry, which a reader or a later agent could take for the real boundary; collapsing the goal to one line and dropping # kept the six headings, at the cost of altering the author's text"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely finding: user text can add headings to the artifact ---\nheadings with an injected goal: ['## Goal', '## Allowed Paths', '## Repository Facts', '## Allowed Paths', '## Forbidden Paths', '## Acceptance Commands', '## Unknowns']\nAllowed Paths headings: 2 | the real allowed path list is still: ['src/accounts']\nheadings after collapsing whitespace and removing #: ['## Goal', '## Repository Facts', '## Allowed Paths', '## Forbidden Paths', '## Acceptance Commands', '## Unknowns']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A missing section is visible to the audit",
+    "headingKn": "ಪ್ರಯೋಗ 4: A missing section is visible to the audit",
+    "bodyEn": "What it ran: A missing section is visible to the audit. What the lab concluded: a rename in the renderer changed the artifact without any data error, and only a check of the generated file noticed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A missing section is visible to the audit. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a rename in the renderer changed the artifact without any data error, and only a check of the generated file noticed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a missing section is visible to the audit ---\nheadings after a careless rename: ['## Goal', '## Repository Facts', '## Allowed Paths', '## Forbidden', '## Acceptance Commands', '## Unknowns']\naudit passes: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The receipt is only text",
+    "headingKn": "ಪ್ರಯೋಗ 5: The receipt is only text",
+    "bodyEn": "What it ran: The receipt is only text. What the lab concluded: three of four receipts have the right shape and only the last is rejected by shape, though two of the three point at lines or files that do not exist in this lab; a shape check cannot tell a real receipt from a made-up one, which needs the repository to be read",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The receipt is only text. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): three of four receipts have the right shape and only the last is rejected by shape, though two of the three point at lines or files that do not exist in this lab; a shape check cannot tell a real receipt from a made-up one, which needs the repository to be read"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: the receipt is only text ---\ntests/test_accounts.py:44      has the file:line shape: True\ntests/test_accounts.py:99999   has the file:line shape: True\nno/such/file.py:1              has the file:line shape: True\nsomewhere                      has the file:line shape: False"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The rendered file had six headings in order. 2) A rejected frame exited 1 and wrote no file. 3) A multi-line goal added a second Allowed Paths heading. 4) A renamed heading was caught only by auditing the file. 5) Three of four receipts passed a shape check and two were not real.",
     "bodyKn": "1) ರೂಪಿಸಿದ ಫೈಲ್ ಕ್ರಮದಲ್ಲಿ ಆರು ಶೀರ್ಷಿಕೆ ಹೊಂದಿತ್ತು. 2) ತಿರಸ್ಕೃತ frame 1 ನೊಂದಿಗೆ ನಿರ್ಗಮಿಸಿ ಫೈಲ್ ಬರೆಯಲಿಲ್ಲ. 3) ಬಹು-ಸಾಲು ಗುರಿ ಎರಡನೇ Allowed Paths ಶೀರ್ಷಿಕೆ ಸೇರಿಸಿತು. 4) ಮರುಹೆಸರಿಸಿದ ಶೀರ್ಷಿಕೆ ಫೈಲ್ ಲೆಕ್ಕಪರಿಶೋಧನೆಯಿಂದ ಮಾತ್ರ ಹಿಡಿಯಲ್ಪಟ್ಟಿತು. 5) ನಾಲ್ಕು ರಸೀದಿಗಳಲ್ಲಿ ಮೂರು ಆಕಾರ ಪರಿಶೀಲನೆ ಪಾಸ್ ಮಾಡಿದವು ಮತ್ತು ಎರಡು ನಿಜವಾಗಿರಲಿಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B tf_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B tf_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B tf_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B tf_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

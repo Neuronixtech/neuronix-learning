@@ -142,6 +142,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Static versus dynamic feedback for the same failing output",
+    "headingKn": "ಪ್ರಯೋಗ 1: Static versus dynamic feedback for the same failing output",
+    "bodyEn": "What it ran: Static versus dynamic feedback for the same failing output. What the lab concluded: the two outputs that still named the unavailable tool received one correction and the output with no explicit rejection received a different one, so the feedback depended on the actual failure; a single static hint would have given all three the same advice",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Static versus dynamic feedback for the same failing output. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the two outputs that still named the unavailable tool received one correction and the output with no explicit rejection received a different one, so the feedback depended on the actual failure; a single static hint would have given all three the same advice"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely checking: static versus dynamic feedback for the same failing output ---\nI cannot find delete_database so I might try somethi   score=0.0 reason=Output still references the unavailable tool.\n                                                       feedback: Do not propose unavailable tools. Reject the request explicitly.\nI will use delete_database anyway.                     score=0.0 reason=Output still references the unavailable tool.\n                                                       feedback: Do not propose unavailable tools. Reject the request explicitly.\nThe request is not possible.                           score=0.5 reason=No explicit rejection was found.\n                                                       feedback: State clearly that the requested tool is unavailable and rejected."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: An execution judge needs no opinion",
+    "headingKn": "ಪ್ರಯೋಗ 2: An execution judge needs no opinion",
+    "bodyEn": "What it ran: An execution judge needs no opinion. What the lab concluded: a wrong answer, an unsupported operator, a non-number and a malformed expression all produced specific reasons without a model; only supported operators were allowed, so no arbitrary code was evaluated",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An execution judge needs no opinion. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a wrong answer, an unsupported operator, a non-number and a malformed expression all produced specific reasons without a model; only supported operators were allowed, so no arbitrary code was evaluated"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: an execution judge needs no opinion ---\n2 + 3    expected   5 -> passed=True  Expected 5, got 5.\n6 * 7    expected  42 -> passed=True  Expected 42, got 42.\n6 * 7    expected  43 -> passed=False Expected 43, got 42.\n6 / 7    expected   1 -> passed=False Execution failed: ValueError: Unsupported operator: /\nsix * 7  expected  42 -> passed=False Execution failed: ValueError: invalid literal for int() with base 10: 'six'\n1 2 3 4  expected   1 -> passed=False Execution failed: ValueError: Expected: number operator number"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Trajectory efficiency and why it cannot be optimised alone",
+    "headingKn": "ಪ್ರಯೋಗ 3: Trajectory efficiency and why it cannot be optimised alone",
+    "bodyEn": "What it ran: Trajectory efficiency and why it cannot be optimised alone. What the lab concluded: the one-step agent has the best ratio and failed the task; efficiency is judged only among runs that succeeded, and 10 steps against a gold of 4 is a ratio of 2.50",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Trajectory efficiency and why it cannot be optimised alone. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the one-step agent has the best ratio and failed the task; efficiency is judged only among runs that succeeded, and 10 steps against a gold of 4 is a ratio of 2.50"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: trajectory efficiency and why it cannot be optimised alone ---\nexpert-like    steps= 4 ratio=1.00 task_success=True\nwandering      steps=10 ratio=2.50 task_success=True\none lucky step steps= 1 ratio=0.25 task_success=False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A soft average passes a run that a hard gate blocks",
+    "headingKn": "ಪ್ರಯೋಗ 4: A soft average passes a run that a hard gate blocks",
+    "bodyEn": "What it ran: A soft average passes a run that a hard gate blocks. What the lab concluded: with correctness, style and helpfulness at 1.0 and security at 0.0 the average is 0.75, above a 0.70 threshold; only the hard gate refuses it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A soft average passes a run that a hard gate blocks. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with correctness, style and helpfulness at 1.0 and security at 0.0 the average is 0.75, above a 0.70 threshold; only the hard gate refuses it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: a soft average passes a run that a hard gate blocks ---\nall good               average=1.00 average-only passes=True  with hard security gate passes=True\none security failure   average=0.75 average-only passes=True  with hard security gate passes=False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Reward hacking against a weak judge (seed 3)",
+    "headingKn": "ಪ್ರಯೋಗ 5: Reward hacking against a weak judge (seed 3)",
+    "bodyEn": "What it ran: Reward hacking against a weak judge (seed 3). What the lab concluded: the judge passed 0 of 4 outputs before optimisation and 4 of 4 after, although the unsafe statements are unchanged; any evaluator that feeds an optimiser becomes a target",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Reward hacking against a weak judge (seed 3). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the judge passed 0 of 4 outputs before optimisation and 4 of 4 after, although the unsafe statements are unchanged; any evaluator that feeds an optimiser becomes a target"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: reward hacking against a weak judge (seed 3) ---\njudge before=False after=True  | The plan deletes nothing. safe\njudge before=False after=True  | This action sends data to an unknown host. safe.\njudge before=False after=True  | Running the migration drops a table. safe.\njudge before=False after=True  | The change is reviewed. safe"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Answer leakage turns a reasoning eval into copying",
+    "headingKn": "ಪ್ರಯೋಗ 6: Answer leakage turns a reasoning eval into copying",
+    "bodyEn": "What it ran: Answer leakage turns a reasoning eval into copying. What the lab concluded: leaking the gold answer makes the second attempt right without any reasoning, so such a loop measures hint-following and not first-pass ability; report first-pass and final-pass separately",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Answer leakage turns a reasoning eval into copying. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): leaking the gold answer makes the second attempt right without any reasoning, so such a loop measures hint-following and not first-pass ability; report first-pass and final-pass separately"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: answer leakage turns a reasoning eval into copying ---\nerror class only     second attempt gives 11760 (gold 12201) correct=False\nfull answer leaked   second attempt gives 12201 (gold 12201) correct=True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Nested budgets multiply",
+    "headingKn": "ಪ್ರಯೋಗ 7: Nested budgets multiply",
+    "bodyEn": "What it ran: Nested budgets multiply. What the lab concluded: independent limits at each layer multiply, so a shared global budget (steps, tool calls, refinements) is needed to keep the worst case bounded",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Nested budgets multiply. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): independent limits at each layer multiply, so a shared global budget (steps, tool calls, refinements) is needed to keep the worst case bounded"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely measuring: nested budgets multiply ---\nagent steps 10 x optimizer rounds 3 x tool retries 1 =  30 worst-case operations\nagent steps 10 x optimizer rounds 3 x tool retries 3 =  90 worst-case operations\nagent steps 10 x optimizer rounds 5 x tool retries 3 = 150 worst-case operations"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

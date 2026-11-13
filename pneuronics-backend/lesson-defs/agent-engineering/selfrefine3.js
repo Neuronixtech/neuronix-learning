@@ -128,6 +128,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The default run, with every evaluator reported separately",
+    "headingKn": "ಪ್ರಯೋಗ 1: The default run, with every evaluator reported separately",
+    "bodyEn": "What it ran: The default run, with every evaluator reported separately. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The default run, with every evaluator reported separately. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The default run, with every evaluator reported separately ---\nITERATION 0\n  structure: PASS\n  external_facts: FAIL  [ERROR] factuality\n  quality: PASS  [WARNING] style\nITERATION 1\n  structure: PASS\n  external_facts: PASS\n  quality: PASS  [WARNING] style\n  output_guardrail: PASS\nfinal output:\n- Python was created by Guido van Rossum.\n- Python was first released in 1991.\n- Python supports multiple programming paradigms.\nwarnings on the accepted output: [('style', \"Every bullet starts with the word 'Python'.\")]\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Stagnation: an optimizer that returns the same candidate",
+    "headingKn": "ಪ್ರಯೋಗ 2: Stagnation: an optimizer that returns the same candidate",
+    "bodyEn": "What it ran: Stagnation: an optimizer that returns the same candidate. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Stagnation: an optimizer that returns the same candidate. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Stagnation: an optimizer that returns the same candidate ---\noptimizer returns the input        success=False stop_reason=stagnation     iterations=1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Oscillation A -> B -> A is caught by comparing against all history",
+    "headingKn": "ಪ್ರಯೋಗ 3: Oscillation A -> B -> A is caught by comparing against all history",
+    "bodyEn": "What it ran: Oscillation A -> B -> A is caught by comparing against all history. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Oscillation A -> B -> A is caught by comparing against all history. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Oscillation A -> B -> A is caught by comparing against all history ---\nA -> B -> A optimizer              success=False stop_reason=stagnation     iterations=2\ncandidates tried: [3, 4] bullets each"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Budget exhausted: every revision is different but still wrong",
+    "headingKn": "ಪ್ರಯೋಗ 4: Budget exhausted: every revision is different but still wrong",
+    "bodyEn": "What it ran: Budget exhausted: every revision is different but still wrong. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Budget exhausted: every revision is different but still wrong. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Budget exhausted: every revision is different but still wrong ---\nchurning optimizer                 success=False stop_reason=max_iterations iterations=4\nlast output still has the false claim: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: UNKNOWN is not PASS: the fact verifier is unavailable",
+    "headingKn": "ಪ್ರಯೋಗ 5: UNKNOWN is not PASS: the fact verifier is unavailable",
+    "bodyEn": "What it ran: UNKNOWN is not PASS: the fact verifier is unavailable. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: UNKNOWN is not PASS: the fact verifier is unavailable. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. UNKNOWN is not PASS: the fact verifier is unavailable ---\nITERATION 0\n  structure: PASS\n  external_facts: UNKNOWN\n  quality: PASS  [WARNING] style\nITERATION 1\n  structure: PASS\n  external_facts: UNKNOWN\n  quality: PASS  [WARNING] style\nverifier outage                    success=False stop_reason=stagnation     iterations=2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Defense in depth: the suite omits the fact verifier, the guardrail catches the claim",
+    "headingKn": "ಪ್ರಯೋಗ 6: Defense in depth: the suite omits the fact verifier, the guardrail catches the claim",
+    "bodyEn": "What it ran: Defense in depth: the suite omits the fact verifier, the guardrail catches the claim. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Defense in depth: the suite omits the fact verifier, the guardrail catches the claim. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Defense in depth: the suite omits the fact verifier, the guardrail catches the claim ---\nITERATION 0\n  structure: PASS\n  quality: PASS  [WARNING] style\n  output_guardrail: FAIL  [ERROR] factuality\nITERATION 1\n  structure: PASS\n  quality: PASS  [WARNING] style\n  output_guardrail: PASS\nmisconfigured suite                success=True  stop_reason=verified       iterations=2\nfinal output:\n- Python was created by Guido van Rossum.\n- Python was first released in 1991.\n- Python supports multiple programming paradigms."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Runs side by side",
+    "headingKn": "ಪ್ರಯೋಗ 7: Runs side by side",
+    "bodyEn": "What it ran: Runs side by side. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Runs side by side. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Runs side by side ---\ndefault                            success=True  stop_reason=verified       iterations=2\nstagnating optimizer               success=False stop_reason=stagnation     iterations=1\nchurning optimizer                 success=False stop_reason=max_iterations iterations=4\nverifier outage                    success=False stop_reason=stagnation     iterations=2\nevery run terminates; only 'verified' means the task was accomplished"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

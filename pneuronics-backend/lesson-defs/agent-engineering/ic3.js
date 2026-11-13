@@ -147,6 +147,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A deterministic lock and a stale-cache check",
+    "headingKn": "ಪ್ರಯೋಗ 1: A deterministic lock and a stale-cache check",
+    "bodyEn": "What it ran: A deterministic lock and a stale-cache check. What the lab concluded: with a stale lock the runtime would keep enforcing b-rule as block after the reviewed source weakened it to warn; CI fails the build when the hash of the Markdown differs from the one in the lock",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A deterministic lock and a stale-cache check. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with a stale lock the runtime would keep enforcing b-rule as block after the reviewed source weakened it to warn; CI fails the build when the hash of the Markdown differs from the one in the lock"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely checking: a deterministic lock and a stale-cache check ---\nlock keys: ['rules', 'source_sha256'] | rules: ['a-rule', 'b-rule'] | same input twice gives the same lock: True\nsource edited, lock regenerated: True | source edited but the old lock kept: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Router reachability within two hops and a size budget (real files)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Router reachability within two hops and a size budget (real files)",
+    "bodyEn": "What it ran: Router reachability within two hops and a size budget (real files). What the lab concluded: deeper.md is three hops away and so is not reachable by the rule; a broken link would show as unreachable and should fail the startup check; the 50-line budget is a design choice, not a measured threshold",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Router reachability within two hops and a size budget (real files). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): deeper.md is three hops away and so is not reachable by the rule; a broken link would show as unreachable and should fail the startup check; the 50-line budget is a design choice, not a measured threshold"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: router reachability within two hops and a size budget (real files) ---\nagent-rules.md   reachable within 2 hops: (True, 1)\ntesting.md       reachable within 2 hops: (True, 1)\ndeep.md          reachable within 2 hops: (True, 2)\ndeeper.md        reachable within 2 hops: (False, None)\nmissing.md       reachable within 2 hops: (False, None)\nrouter length 75 lines against a budget of 50: over budget"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Rule expiry and low-use review (simulated today = 2026-10-05)",
+    "headingKn": "ಪ್ರಯೋಗ 3: Rule expiry and low-use review (simulated today = 2026-10-05)",
+    "bodyEn": "What it ran: Rule expiry and low-use review (simulated today = 2026-10-05). What the lab concluded: a-rule had no violations for 75 days and b-rule's date has passed; both are queued for review, and the safe default for an expired safety rule is to keep enforcing it until a person decides, not to drop it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Rule expiry and low-use review (simulated today = 2026-10-05). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a-rule had no violations for 75 days and b-rule's date has passed; both are queued for review, and the safe default for an expired safety rule is to keep enforcing it until a person decides, not to drop it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: rule expiry and low-use review (simulated today = 2026-10-05) ---\n[('a-rule', 'zero violations for 60+ days: still useful?'), ('b-rule', 'expired: review, do not silently drop')]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The gate as a real exit code, with and without a scoped override",
+    "headingKn": "ಪ್ರಯೋಗ 4: The gate as a real exit code, with and without a scoped override",
+    "bodyEn": "What it ran: The gate as a real exit code, with and without a scoped override. What the lab concluded: exit code 1 stops the pipeline and 0 lets it continue; an override only counted when its rule, task and revision all matched, so one approval did not become a blanket exception; the override record still has to be signed by trusted infrastructure, which this demo does not do",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The gate as a real exit code, with and without a scoped override. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): exit code 1 stops the pipeline and 0 lets it continue; an override only counted when its rule, task and revision all matched, so one approval did not become a blanket exception; the override record still has to be signed by trusted infrastructure, which this demo does not do"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: the gate as a real exit code, with and without a scoped override ---\nno override                                exit code 1 {\"blocked\": [\"protected-writes\"]}\noverride for this rule, task and revision  exit code 0 {\"blocked\": []}\noverride for another revision              exit code 1 {\"blocked\": [\"protected-writes\"]}\noverride for another rule                  exit code 1 {\"blocked\": [\"protected-writes\"]}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A checker that is never exercised",
+    "headingKn": "ಪ್ರಯೋಗ 5: A checker that is never exercised",
+    "bodyEn": "What it ran: A checker that is never exercised. What the lab concluded: a test set with only the passing example cannot tell the real checker from one that always returns True, so every rule needs a failing case and a missing-evidence case",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A checker that is never exercised. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a test set with only the passing example cannot tell the real checker from one that always returns True, so every rule needs a failing case and a missing-evidence case"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: a checker that is never exercised ---\npositive, negative and missing-evidence cases: [True, True, True]\na checker that always passes agrees with the positive case only: [True, False, False]"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -204,6 +287,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) A stale lock was detected by a hash mismatch. 2) deeper.md was three hops away and unreachable; a 75-line router exceeded a 50-line budget. 3) Two rules were queued for review. 4) Exit codes were 1, 0, 1, 1 for no override, a matching override and two mismatched ones. 5) An always-true checker agreed only with the passing case.",
     "bodyKn": "1) ಹಳೆಯ lock hash ಹೊಂದಾಣಿಕೆಯಿಲ್ಲದೆ ಪತ್ತೆಯಾಯಿತು. 2) deeper.md ಮೂರು hops ದೂರ ಮತ್ತು ತಲುಪಲಾಗದ್ದು; 75-ಸಾಲಿನ router 50-ಸಾಲಿನ ಬಜೆಟ್ ಮೀರಿತು. 3) ಎರಡು ನಿಯಮಗಳು ಪರಿಶೀಲನೆಗೆ ಸರದಿಯಲ್ಲಿ ಇಡಲ್ಪಟ್ಟವು. 4) override ಇಲ್ಲದ, ಹೊಂದುವ override ಮತ್ತು ಎರಡು ಹೊಂದದ ಪ್ರಕರಣಗಳಿಗೆ exit codes 1, 0, 1, 1. 5) ಯಾವಾಗಲೂ-true checker ಪಾಸ್ ಪ್ರಕರಣಕ್ಕೆ ಮಾತ್ರ ಒಪ್ಪಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ic_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ic_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ic_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ic_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

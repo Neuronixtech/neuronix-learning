@@ -137,6 +137,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Change budget against the last-known-good commit (real git)",
+    "headingKn": "ಪ್ರಯೋಗ 1: Change budget against the last-known-good commit (real git)",
+    "bodyEn": "What it ran: Change budget against the last-known-good commit (real git). What the lab concluded: the budget counted untracked files as well; it is a coarse scope control, a single sensitive file can matter more than fifty documents, and exceeding it means a human decides, not that the baseline moves automatically",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Change budget against the last-known-good commit (real git). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the budget counted untracked files as well; it is a coarse scope control, a single sensitive file can matter more than fifty documents, and exceeding it means a human decides, not that the baseline moves automatically"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: change budget against the last-known-good commit (real git) ---\nclean tree: ('pass', 0)\none modified file: ('pass', 1)\none modified plus four untracked files, budget 3: ('fail', 5)\nchanged paths: ['new0.txt', 'new1.txt', 'new2.txt', 'new3.txt', 'src/app.py']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Committed changes versus a clean working tree",
+    "headingKn": "ಪ್ರಯೋಗ 2: Committed changes versus a clean working tree",
+    "bodyEn": "What it ran: Committed changes versus a clean working tree. What the lab concluded: a clean working tree does not mean nothing changed: the agent could have committed everything, so the comparison is against the recorded baseline commit and not against the current index",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Committed changes versus a clean working tree. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a clean working tree does not mean nothing changed: the agent could have committed everything, so the comparison is against the recorded baseline commit and not against the current index"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: committed changes versus a clean working tree ---\ngit status --porcelain after committing: ''\nbudget check still sees the committed changes: ('fail', 5)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The dependency cache and what invalidates it",
+    "headingKn": "ಪ್ರಯೋಗ 3: The dependency cache and what invalidates it",
+    "bodyEn": "What it ran: The dependency cache and what invalidates it. What the lab concluded: a time-to-live alone would have trusted the cache after the manifest changed; the cache is valid only while it is recent and the manifest and runtime it was computed for are unchanged",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The dependency cache and what invalidates it. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a time-to-live alone would have trusted the cache after the manifest changed; the cache is valid only while it is recent and the manifest and runtime it was computed for are unchanged"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: the dependency cache and what invalidates it ---\nfresh cache: (True, 'fresh and inputs unchanged')\n23 days later: (False, 'expired')\nmanifest edited ten minutes after the check: (False, 'manifest changed')\na different Python version: (False, 'runtime changed')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A launcher that only starts the agent when the initializer exits zero",
+    "headingKn": "ಪ್ರಯೋಗ 4: A launcher that only starts the agent when the initializer exits zero",
+    "bodyEn": "What it ran: A launcher that only starts the agent when the initializer exits zero. What the lab concluded: the gate is the exit code in the launcher; a message printed to the console does not stop anything by itself",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A launcher that only starts the agent when the initializer exits zero. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the gate is the exit code in the launcher; a message printed to the console does not stop anything by itself"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a launcher that only starts the agent when the initializer exits zero ---\nhealthy initializer  initializer printed 'init ok'                                exit 0 | agent started: True\nblocked initializer  initializer printed 'init BLOCKED: tests command missing'    exit 1 | agent started: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Initialization changes nothing",
+    "headingKn": "ಪ್ರಯೋಗ 5: Initialization changes nothing",
+    "bodyEn": "What it ran: Initialization changes nothing. What the lab concluded: a read-only initializer can be rerun safely; one that installed packages or rewrote state would have changed this answer, and the lesson keeps installation outside the probes",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Initialization changes nothing. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a read-only initializer can be rerun safely; one that installed packages or rewrote state would have changed this answer, and the lesson keeps installation outside the probes"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: initialization changes nothing ---\nrepository files unchanged by two initialization-style runs: True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -194,6 +277,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The budget counted untracked files and failed at 5 against 3. 2) A committed change left git status empty and still failed. 3) A cache was invalidated by expiry, a manifest edit and a runtime change. 4) The launcher started the agent only after exit 0. 5) Read-only initialization left the repository files identical.",
     "bodyKn": "1) ಬಜೆಟ್ ಟ್ರ್ಯಾಕ್ ಮಾಡದ ಫೈಲ್‌ಗಳನ್ನು ಎಣಿಸಿ 3 ವಿರುದ್ಧ 5 ರಲ್ಲಿ ವಿಫಲವಾಯಿತು. 2) commit ಮಾಡಿದ ಬದಲಾವಣೆ git status ಖಾಲಿ ಬಿಟ್ಟು ಇನ್ನೂ ವಿಫಲವಾಯಿತು. 3) ಕ್ಯಾಶ್ ಮುಕ್ತಾಯ, manifest ಸಂಪಾದನೆ ಮತ್ತು runtime ಬದಲಾವಣೆಯಿಂದ ಅಮಾನ್ಯವಾಯಿತು. 4) ಲಾಂಚರ್ exit 0 ನಂತರ ಮಾತ್ರ agent ಆರಂಭಿಸಿತು. 5) ಓದಲು-ಮಾತ್ರ ಆರಂಭ repository ಫೈಲ್‌ಗಳನ್ನು ಒಂದೇ ಬಿಟ್ಟಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B in_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B in_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B in_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B in_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

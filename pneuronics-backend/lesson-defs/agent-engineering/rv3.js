@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: What 'frozen' protects",
+    "headingKn": "ಪ್ರಯೋಗ 1: What 'frozen' protects",
+    "bodyEn": "What it ran: What 'frozen' protects. What the lab concluded: a frozen dataclass stops attribute assignment and not changes to the dict it holds, so a reviewer given such an object can still rewrite the evidence it is judging",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What 'frozen' protects. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a frozen dataclass stops attribute assignment and not changes to the dict it holds, so a reviewer given such an object can still rewrite the evidence it is judging"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely checking: what 'frozen' protects ---\nassigning a field: FrozenInstanceError\nreplacing the state dict: FrozenInstanceError\nmutating the dict inside the frozen object: allowed, state is now {'solves_requested_problem': True}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A reviewer that edits what it reviews",
+    "headingKn": "ಪ್ರಯೋಗ 2: A reviewer that edits what it reviews",
+    "bodyEn": "What it ran: A reviewer that edits what it reviews. What the lab concluded: the edit reached the builder's evidence when the reviewer was handed the original and stayed in the copy otherwise; a prompt telling the reviewer not to edit files is not a boundary, an isolated copy with a recorded hash is",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A reviewer that edits what it reviews. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the edit reached the builder's evidence when the reviewer was handed the original and stayed in the copy otherwise; a prompt telling the reviewer not to edit files is not a boundary, an isolated copy with a recorded hash is"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a reviewer that edits what it reviews ---\nevidence hash before: 852947b3d4c6 | after the review: 636a5b5c4882 | changed: True\nsame reviewer on a deep copy: original hash unchanged: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A file-based evidence bundle and a tamper check",
+    "headingKn": "ಪ್ರಯೋಗ 3: A file-based evidence bundle and a tamper check",
+    "bodyEn": "What it ran: A file-based evidence bundle and a tamper check. What the lab concluded: recording the hash at the start and comparing at the end detects a change but cannot say who made it or prevent it; preventing it needs permissions the reviewer does not have, which a local script cannot supply",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A file-based evidence bundle and a tamper check. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): recording the hash at the start and comparing at the end detects a change but cannot say who made it or prevent it; preventing it needs permissions the reviewer does not have, which a local script cannot supply"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a file-based evidence bundle and a tamper check ---\nhash recorded when the review starts: cf8820747e97\nhash when the review ends: b1a38b8afe13 | evidence changed during the review: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The same scores under two rubric versions",
+    "headingKn": "ಪ್ರಯೋಗ 4: The same scores under two rubric versions",
+    "bodyEn": "What it ran: The same scores under two rubric versions. What the lab concluded: the same scores were pass under version 1.0 and soft_fail under 1.1 for a total of 7, and a total of 5 moved from soft_fail to hard_fail; a report without a rubric version cannot be compared with one from before the change, and the zero rule gave hard_fail in both",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The same scores under two rubric versions. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the same scores were pass under version 1.0 and soft_fail under 1.1 for a total of 7, and a total of 5 moved from soft_fail to hard_fail; a report without a rubric version cannot be compared with one from before the change, and the zero rule gave hard_fail in both"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: the same scores under two rubric versions ---\n7 with no zero   {'1.0': 'pass', '1.1': 'soft_fail'}\n6 with no zero   {'1.0': 'soft_fail', '1.1': 'soft_fail'}\n5 with no zero   {'1.0': 'soft_fail', '1.1': 'hard_fail'}\n9 with a zero    {'1.0': 'hard_fail', '1.1': 'hard_fail'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A report with traceability fields",
+    "headingKn": "ಪ್ರಯೋಗ 5: A report with traceability fields",
+    "bodyEn": "What it ran: A report with traceability fields. What the lab concluded: the version fields and input hash let a later session tell whether two reviews used the same rubric and the same evidence; the reviewer version here is a label we made up",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A report with traceability fields. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the version fields and input hash let a later session tell whether two reviews used the same rubric and the same evidence; the reviewer version here is a label we made up"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a report with traceability fields ---\n{\n  \"rubric_version\": \"1.1\",\n  \"reviewer_version\": \"stub-1\",\n  \"input_hash\": \"002fed74fed5\",\n  \"total\": 7,\n  \"verdict\": \"soft_fail\"\n}\nthe same evidence hashes to the same value on every run: True | a changed field changes it: True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) A frozen dataclass allowed a change inside its dict. 2) A nosy reviewer altered the original evidence and not a deep copy. 3) A hash comparison detected a file change during review. 4) A total of 7 passed under rubric 1.0 and soft-failed under 1.1. 5) The report carries versions and an input hash.",
     "bodyKn": "1) frozen dataclass ತನ್ನ dict ಒಳಗಿನ ಬದಲಾವಣೆ ಅನುಮತಿಸಿತು. 2) ಕುತೂಹಲಿ reviewer ಮೂಲ ಸಾಕ್ಷ್ಯ ಬದಲಿಸಿತು, deep copy ಅಲ್ಲ. 3) hash ಹೋಲಿಕೆ review ಸಮಯದ ಫೈಲ್ ಬದಲಾವಣೆ ಪತ್ತೆಹಚ್ಚಿತು. 4) ಒಟ್ಟು 7 rubric 1.0 ನಲ್ಲಿ ಪಾಸ್ ಆಗಿ 1.1 ನಲ್ಲಿ soft-fail ಆಯಿತು. 5) ವರದಿ ಆವೃತ್ತಿಗಳು ಮತ್ತು input hash ಹೊಂದಿದೆ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B rv_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B rv_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B rv_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B rv_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

@@ -137,6 +137,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The sequential toy cannot interrupt anything",
+    "headingKn": "ಪ್ರಯೋಗ 1: The sequential toy cannot interrupt anything",
+    "bodyEn": "What it ran: The sequential toy cannot interrupt anything. What the lab concluded: the cancel arrived after all 22 words, so the mechanism exists but nothing was actually cut off",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The sequential toy cannot interrupt anything. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the cancel arrived after all 22 words, so the mechanism exists but nothing was actually cut off"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely checking: the sequential toy cannot interrupt anything ---\nuser interrupts at 0.2s; the toy delivers the cancel after the run: words spoken 22/22, the speech took 0.89s"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Concurrent cancellation (real threads, 0.04 s per word)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Concurrent cancellation (real threads, 0.04 s per word)",
+    "bodyEn": "What it ran: Concurrent cancellation (real threads, 0.04 s per word). What the lab concluded: cancelling from another thread stopped the speech at the point of the interruption, within about one word",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Concurrent cancellation (real threads, 0.04 s per word). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): cancelling from another thread stopped the speech at the point of the interruption, within about one word"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: concurrent cancellation (real threads, 0.04 s per word) ---\n interrupt at  words spoken   of\n        0.00s             1   22\n        0.10s             3   22\n        0.20s             5   22\n        0.40s            10   22"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Cancellation latency against chunk size (mean of 8 runs each)",
+    "headingKn": "ಪ್ರಯೋಗ 3: Cancellation latency against chunk size (mean of 8 runs each)",
+    "bodyEn": "What it ran: Cancellation latency against chunk size (mean of 8 runs each). What the lab concluded: a cancel flag is only checked between chunks, so audio keeps coming for up to one chunk; larger chunks are cheaper to synthesise but cut off later",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Cancellation latency against chunk size (mean of 8 runs each). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a cancel flag is only checked between chunks, so audio keeps coming for up to one chunk; larger chunks are cheaper to synthesise but cut off later"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: cancellation latency against chunk size (mean of 8 runs each) ---\n words per chunk   mean lag after cancel (ms)   worst lag (ms)\n               1                           18               35\n               3                           58              116\n               6                           94              190"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Audio already buffered in the transport",
+    "headingKn": "ಪ್ರಯೋಗ 4: Audio already buffered in the transport",
+    "bodyEn": "What it ran: Audio already buffered in the transport. What the lab concluded: without flushing, the user kept hearing words that were already queued; the larger the buffer, the longer the voice talks over the interruption",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Audio already buffered in the transport. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): without flushing, the user kept hearing words that were already queued; the larger the buffer, the longer the voice talks over the interruption"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: audio already buffered in the transport ---\n buffer  flush on cancel  words played after cancel\n      1            False                          3\n      1             True                          1\n      5            False                          7\n      5             True                          1\n     10            False                         12\n     10             True                          1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Does the cancel reach the LLM",
+    "headingKn": "ಪ್ರಯೋಗ 5: Does the cancel reach the LLM",
+    "bodyEn": "What it ran: Does the cancel reach the LLM. What the lab concluded: cancelling only the speech left the LLM generating a reply nobody would hear; the cancel has to travel up the pipeline as well as stop the speaker",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Does the cancel reach the LLM. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): cancelling only the speech left the LLM generating a reply nobody would hear; the cancel has to travel up the pipeline as well as stop the speaker"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: does the cancel reach the LLM ---\ncancel propagated upstream to the LLM: False | tokens at cancel 11 | tokens generated in total 60 | wasted 49\ncancel propagated upstream to the LLM: True  | tokens at cancel 11 | tokens generated in total 12 | wasted 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: False and missed interruptions (energy levels ASSUMED, seed 31, 5000 events each)",
+    "headingKn": "ಪ್ರಯೋಗ 6: False and missed interruptions (energy levels ASSUMED, seed 31, 5000 events each)",
+    "bodyEn": "What it ran: False and missed interruptions (energy levels ASSUMED, seed 31, 5000 events each). What the lab concluded: a sensitive threshold makes the agent stop for a cough, and a strict one makes the user shout to be heard; the two curves are assumptions chosen to show the trade-off, not measurements",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: False and missed interruptions (energy levels ASSUMED, seed 31, 5000 events each). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a sensitive threshold makes the agent stop for a cough, and a strict one makes the user shout to be heard; the two curves are assumptions chosen to show the trade-off, not measurements"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely measuring: false and missed interruptions (energy levels ASSUMED, seed 31, 5000 events each) ---\n threshold  real interruptions caught   noises mistaken for one\n       0.2                      98.8%                     65.9%\n       0.3                      95.2%                     34.5%\n       0.4                      84.0%                      9.9%\n       0.5                      63.4%                      1.7%\n       0.6                      36.7%                      0.1%"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

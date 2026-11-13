@@ -137,6 +137,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: First run, second run and state preserved across runs",
+    "headingKn": "ಪ್ರಯೋಗ 1: First run, second run and state preserved across runs",
+    "bodyEn": "What it ran: First run, second run and state preserved across runs. What the lab concluded: creating only missing files is what lets a restart resume; the unconditional version silently erased the blocker",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: First run, second run and state preserved across runs. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): creating only missing files is what lets a restart resume; the unconditional version silently erased the blocker"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: first run, second run and state preserved across runs ---\nfirst run diff:\n--- before\n+++ after\n@@ -1 +1,2 @@\n Project notes\n+Completed: Create a project note\nboard status: done | state: None Select the next eligible task\nsecond run: no eligible task\ninitialize() with an existing state file leaves it alone: ['keep me']\nan initialize() that always writes the state file reset it: []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The path allowlist",
+    "headingKn": "ಪ್ರಯೋಗ 2: The path allowlist",
+    "bodyEn": "What it ran: The path allowlist. What the lab concluded: a filename can be on the task's own list and still resolve outside the workbench, so the allowlist check and the containment check are separate; the symlink and race cases are not covered by this check",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The path allowlist. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a filename can be on the task's own list and still resolve outside the workbench, so the allowlist check and the containment check are separate; the symlink and race cases are not covered by this check"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: the path allowlist ---\nnotes.txt      -> notes.txt\nsecret.txt     -> refused: not allowed for this task\n../escape.txt  -> refused: escapes the workbench\n/etc/passwd    -> refused: escapes the workbench\n.              -> refused: escapes the workbench"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A crash after the write duplicates the line on resume",
+    "headingKn": "ಪ್ರಯೋಗ 3: A crash after the write duplicates the line on resume",
+    "bodyEn": "What it ran: A crash after the write duplicates the line on resume. What the lab concluded: the state still said in_progress after the crash, so the resume appended the same line again; checking whether the line already exists makes the update safe to repeat, but only because this task's update is naturally deduplicable",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A crash after the write duplicates the line on resume. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the state still said in_progress after the crash, so the resume appended the same line again; checking whether the line already exists makes the update safe to repeat, but only because this task's update is naturally deduplicable"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: a crash after the write duplicates the line on resume ---\nidempotent=False first run: process died after the write and before the status was saved\nidempotent=False after the resumed run notes.txt has 2 'Completed' line(s); task status done\nidempotent=True  first run: process died after the write and before the status was saved\nidempotent=True  after the resumed run notes.txt has 1 'Completed' line(s); task status done"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Acceptance checks decide done, not the write",
+    "headingKn": "ಪ್ರಯೋಗ 4: Acceptance checks decide done, not the write",
+    "bodyEn": "What it ran: Acceptance checks decide done, not the write. What the lab concluded: a successful write does not prove the criteria hold; the verifier reads the file back, and it only checks the two criteria this demo hard-codes",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Acceptance checks decide done, not the write. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a successful write does not prove the criteria hold; the verifier reads the file back, and it only checks the two criteria this demo hard-codes"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: acceptance checks decide done, not the write ---\nnote without the goal -> ['the goal is missing from the note']\nnote with the goal   -> no failures\nmissing note         -> ['the note does not exist']"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -194,6 +262,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Create-only initialisation kept a saved blocker; an always-write version erased it. 2) Names on the task list could still escape the workbench and were refused. 3) A crash after the write produced 2 lines unless the update checked first (1 line). 4) Acceptance failed for a missing goal and a missing file.",
     "bodyKn": "1) Create-only ಆರಂಭ ಉಳಿಸಿದ ಅಡೆತಡೆ ಉಳಿಸಿತು; ಯಾವಾಗಲೂ-ಬರೆಯುವ ಆವೃತ್ತಿ ಅದನ್ನು ಅಳಿಸಿತು. 2) ಕಾರ್ಯ ಪಟ್ಟಿಯ ಹೆಸರುಗಳು ಇನ್ನೂ workbench ಹೊರಹೋಗಬಹುದಿತ್ತು ಮತ್ತು ತಿರಸ್ಕರಿಸಲ್ಪಟ್ಟವು. 3) ಬರಹದ ನಂತರದ ಕ್ರ್ಯಾಶ್ ನವೀಕರಣ ಮೊದಲು ಪರಿಶೀಲಿಸದಿದ್ದರೆ 2 ಸಾಲು (ಪರಿಶೀಲಿಸಿದರೆ 1) ನೀಡಿತು. 4) ಕಾಣೆಯಾದ ಗುರಿ ಮತ್ತು ಕಾಣೆಯಾದ ಫೈಲ್‌ಗೆ ಸ್ವೀಕಾರ ವಿಫಲವಾಯಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B mw_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B mw_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B mw_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B mw_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. First run, second run and state preserved across runs\n2. The path allowlist\n3. A crash after the write duplicates the line on resume\n4. Acceptance checks decide done, not the write",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. First run, second run and state preserved across runs\n2. The path allowlist\n3. A crash after the write duplicates the line on resume\n4. Acceptance checks decide done, not the write"
    }
   },
   {

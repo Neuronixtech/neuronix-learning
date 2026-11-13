@@ -137,6 +137,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The sum of stage latencies (stage medians and spreads ASSUMED, seed 77, 20000 turns)",
+    "headingKn": "ಪ್ರಯೋಗ 1: The sum of stage latencies (stage medians and spreads ASSUMED, seed 77, 20000 turns)",
+    "bodyEn": "What it ran: The sum of stage latencies (stage medians and spreads ASSUMED, seed 77, 20000 turns). What the lab concluded: stage delays rarely all hit their worst case on the same turn, so summing p95s overstates the p95 of the whole; it also hides that the sum is the wrong model when stages overlap",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The sum of stage latencies (stage medians and spreads ASSUMED, seed 77, 20000 turns). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): stage delays rarely all hit their worst case on the same turn, so summing p95s overstates the p95 of the whole; it also hides that the sum is the wrong model when stages overlap"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: the sum of stage latencies (stage medians and spreads ASSUMED, seed 77, 20000 turns) ---\nstage                median      p95\nvad+endpoint            200      301\nstt final               150      266\nllm first token         350      736\ntts first audio         150      269\nnetwork                  80      155\nsum of the five         971     1387   (ms)\nadding the five p95 values gives 1726 ms, but the p95 of the per-turn totals is 1387 ms"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Streaming versus waiting for each stage to finish (extra waits ASSUMED)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Streaming versus waiting for each stage to finish (extra waits ASSUMED)",
+    "bodyEn": "What it ran: Streaming versus waiting for each stage to finish (extra waits ASSUMED). What the lab concluded: the ranking follows from the assumed numbers; the point is that time to first audio, not total time, is what the caller feels, and streaming changes which stage's delay counts",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Streaming versus waiting for each stage to finish (extra waits ASSUMED). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the ranking follows from the assumed numbers; the point is that time to first audio, not total time, is what the caller feels, and streaming changes which stage's delay counts"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: streaming versus waiting for each stage to finish (extra waits ASSUMED) ---\nbatch per stage  time to first audio: median  1725 ms | p95  2315 ms | share over 1000 ms 100.0%\nstreaming        time to first audio: median   967 ms | p95  1385 ms | share over 1000 ms 43.1%\ndirect audio model time to first audio: median   599 ms | p95   896 ms | share over 1000 ms 2.0%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Fixed silence timeout versus cut-offs (pauses and jitter ASSUMED)",
+    "headingKn": "ಪ್ರಯೋಗ 3: Fixed silence timeout versus cut-offs (pauses and jitter ASSUMED)",
+    "bodyEn": "What it ran: Fixed silence timeout versus cut-offs (pauses and jitter ASSUMED). What the lab concluded: a short timeout feels quick but interrupts people who pause to think; a long one is polite and makes every reply wait. A single timeout pays the full wait even for 'Yes.'",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Fixed silence timeout versus cut-offs (pauses and jitter ASSUMED). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a short timeout feels quick but interrupts people who pause to think; a long one is polite and makes every reply wait. A single timeout pays the full wait even for 'Yes.'"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: fixed silence timeout versus cut-offs (pauses and jitter ASSUMED) ---\n  timeout   utterances cut off mid-thought   delay added to every turn\n     0.3s                           100.0%                       300ms\n     0.5s                           100.0%                       500ms\n     0.7s                            88.6%                       700ms\n     0.9s                            48.5%                       900ms\n     1.2s                            10.4%                      1200ms\n     1.5s                             0.0%                      1500ms"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A simple semantic completeness rule on eight hand-written utterances",
+    "headingKn": "ಪ್ರಯೋಗ 4: A simple semantic completeness rule on eight hand-written utterances",
+    "bodyEn": "What it ran: A simple semantic completeness rule on eight hand-written utterances. What the lab concluded: the rule is a handful of trailing words and punctuation and was written while looking at these eight, so 8/8 proves little; 'My order number is 4815', 'I think it's the second' and 'Uh, let me see' are unfinished but end in no marker, and it calls all three finished. Real turn detection needs a model of meaning",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A simple semantic completeness rule on eight hand-written utterances. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the rule is a handful of trailing words and punctuation and was written while looking at these eight, so 8/8 proves little; 'My order number is 4815', 'I think it's the second' and 'Uh, let me see' are unfinished but end in no marker, and it calls all three finished. Real turn detection needs a model of meaning"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: a simple semantic completeness rule on eight hand-written utterances ---\nWhat's the weather in Bengaluru today?             predicted done=True  truth done=True  ok\nI would like to book a table for, um,              predicted done=False truth done=False ok\nMy order number is 4 8 1 5 and                     predicted done=False truth done=False ok\nYes.                                               predicted done=True  truth done=True  ok\nCan you tell me about the refund policy for        predicted done=False truth done=False ok\nPlease cancel my subscription.                     predicted done=True  truth done=True  ok\nSo the problem started when I updated the app an   predicted done=False truth done=False ok\nNo thanks, that's all.                             predicted done=True  truth done=True  ok\n8/8 correct\n  extra check: \"I'd like a table for four.\"         predicted done=True\n  extra check: \"Thanks, that's it!\"                 predicted done=True\n  extra check: 'My order number is 4815'            predicted done=True\n  extra check: \"I think it's the second\"            predicted done=True\n  extra check: 'Uh, let me see'                     predicted done=True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Fixed timeouts versus a semantic rule plus timeouts (13 hand-labelled utterances, pauses …",
+    "headingKn": "ಪ್ರಯೋಗ 5: Fixed timeouts versus a semantic rule plus timeouts (13 hand-labelled utterances, pauses …",
+    "bodyEn": "What it ran: Fixed timeouts versus a semantic rule plus timeouts (13 hand-labelled utterances, pauses ASSUMED at 0.9 s). What the lab concluded: the rule waits briefly for sentences that look finished and long for ones that look unfinished, so its mean wait (473 ms) came out below even the fixed 0.5 s (500 ms) while cutting off 3 of the 7 unfinished utterances instead of 7 of 7; the fixed 1.2 s cut none but made every turn wait 1,200 ms. The 3 it cut off are the unfinished ones it called finished. The utterances are hand-labelled by us and the rule was written while looking at the first eight, so this is a demonstration, not an accuracy result",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Fixed timeouts versus a semantic rule plus timeouts (13 hand-labelled utterances, pauses ASSUMED at 0.9 s). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the rule waits briefly for sentences that look finished and long for ones that look unfinished, so its mean wait (473 ms) came out below even the fixed 0.5 s (500 ms) while cutting off 3 of the 7 unfinished utterances instead of 7 of 7; the fixed 1.2 s cut none but made every turn wait 1,200 ms. The 3 it cut off are the unfinished ones it called finished. The utterances are hand-labelled by us and the rule was written while looking at the first eight, so this is a demonstration, not an accuracy result"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: fixed timeouts versus a semantic rule plus timeouts (13 hand-labelled utterances, pauses ASSUMED at 0.9 s) ---\npolicy                                cut off mid-thought   mean wait before replying\nfixed 0.5 s                                      7/7                      500 ms\nfixed 1.2 s                                      0/7                     1200 ms\nsemantic rule: 0.15 s if done, else 1.2 s             3/7                      473 ms"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -194,6 +277,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The sum of five p95s (1,726 ms) overstated the p95 of totals (1,387 ms). 2) Under assumed numbers, streaming cut the median time to first audio from 1,725 to 967 ms. 3) A 0.5 s timeout cut off every unfinished utterance; 1.5 s cut none but added 1,500 ms to every turn. 4) A keyword rule scored 8 of 8 on examples it was written for and failed on unfinished sentences without markers. 5) The hybrid cut 3 of 7 at a mean wait of 473 ms. 6) All of this rests on assumed numbers.",
     "bodyKn": "1) ಐದು p95 ಗಳ ಮೊತ್ತ (1,726 ms) ಒಟ್ಟು ಮೊತ್ತಗಳ p95 (1,387 ms) ಅನ್ನು ಉತ್ಪ್ರೇಕ್ಷಿಸಿತು. 2) ಊಹಿಸಿದ ಸಂಖ್ಯೆಗಳಲ್ಲಿ streaming ಮೊದಲ ಆಡಿಯೋ ಮಧ್ಯಮ ಸಮಯವನ್ನು 1,725 ರಿಂದ 967 ms ಗೆ ಇಳಿಸಿತು. 3) 0.5 s timeout ಪ್ರತಿ ಅಪೂರ್ಣ ಮಾತನ್ನು ಕತ್ತರಿಸಿತು; 1.5 s ಯಾವುದನ್ನೂ ಕತ್ತರಿಸಲಿಲ್ಲ ಆದರೆ ಪ್ರತಿ ತಿರುವಿಗೆ 1,500 ms ಸೇರಿಸಿತು. 4) ಕೀವರ್ಡ್ ನಿಯಮ ತಾನು ಬರೆಯಲ್ಪಟ್ಟ ಉದಾಹರಣೆಗಳಲ್ಲಿ 8 ರಲ್ಲಿ 8 ಪಡೆದು ಗುರುತಿಲ್ಲದ ಅಪೂರ್ಣ ವಾಕ್ಯಗಳಲ್ಲಿ ವಿಫಲವಾಯಿತು. 5) Hybrid ಸರಾಸರಿ ಕಾಯುವಿಕೆ 473 ms ನೊಂದಿಗೆ 7 ರಲ್ಲಿ 3 ಕತ್ತರಿಸಿತು. 6) ಇದೆಲ್ಲವೂ ಊಹಿಸಿದ ಸಂಖ್ಯೆಗಳ ಮೇಲೆ ನಿಂತಿದೆ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B vo_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B vo_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B vo_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B vo_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

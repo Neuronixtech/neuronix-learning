@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A handoff records which repository state it describes",
+    "headingKn": "ಪ್ರಯೋಗ 1: A handoff records which repository state it describes",
+    "bodyEn": "What it ran: A handoff records which repository state it describes. What the lab concluded: a dirty working tree after the handoff did not change the branch or commit, so this check alone did not notice it; recording the dirty flag and the changed-file hashes would be needed to catch that",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A handoff records which repository state it describes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a dirty working tree after the handoff did not change the branch or commit, so this check alone did not notice it; recording the dirty flag and the changed-file hashes would be needed to catch that"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a handoff records which repository state it describes ---\nrecorded identity: {'branch': 'feature-pay', 'commit': 'e7c3b67346', 'dirty': False}\nsame state: (True, 'handoff matches the repository')\nuncommitted edit afterwards, identity says dirty: True | still current by branch and commit: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Another commit and a branch switch make the handoff stale",
+    "headingKn": "ಪ್ರಯೋಗ 2: Another commit and a branch switch make the handoff stale",
+    "bodyEn": "What it ran: Another commit and a branch switch make the handoff stale. What the lab concluded: both cases were caught by comparing the recorded branch and commit with the repository, so a fresh session can refuse to continue and ask for a new handoff instead of acting on advice about code that has moved",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Another commit and a branch switch make the handoff stale. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both cases were caught by comparing the recorded branch and commit with the repository, so a fresh session can refuse to continue and ask for a new handoff instead of acting on advice about code that has moved"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: another commit and a branch switch make the handoff stale ---\nafter a teammate's commit: (False, 'e7c3b67346 is no longer HEAD (5b4de1bfd5)')\non another branch: (False, 'branch changed from feature-pay to other-task')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Atomic publication versus a torn write",
+    "headingKn": "ಪ್ರಯೋಗ 3: Atomic publication versus a torn write",
+    "bodyEn": "What it ran: Atomic publication versus a torn write. What the lab concluded: writing straight over the published file lost the old handoff and left a broken one, while writing a temp file and then os.replace left the previous complete handoff in place when the crash, simulated here by cutting the write short, happened during the write; the replace itself is atomic on the same volume, and a leftover temp file has to be cleaned up",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Atomic publication versus a torn write. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): writing straight over the published file lost the old handoff and left a broken one, while writing a temp file and then os.replace left the previous complete handoff in place when the crash, simulated here by cutting the write short, happened during the write; the replace itself is atomic on the same volume, and a leftover temp file has to be cleaned up"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: atomic publication versus a torn write ---\nafter a torn write: unreadable, the previous complete handoff is gone too\ncrash while writing the temp file, published file still reads: {'v': 1, 'next_action': 'old but complete'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Two agents publish on the same branch",
+    "headingKn": "ಪ್ರಯೋಗ 4: Two agents publish on the same branch",
+    "bodyEn": "What it ran: Two agents publish on the same branch. What the lab concluded: the second publisher's stale view was refused, and after re-reading it superseded A explicitly, so A's handoff is archived and not silently overwritten; this lab's check and write are separate steps, so two truly simultaneous publishers could still race, and a real implementation needs an atomic create or a lock",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Two agents publish on the same branch. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the second publisher's stale view was refused, and after re-reading it superseded A explicitly, so A's handoff is archived and not silently overwritten; this lab's check and write are separate steps, so two truly simultaneous publishers could still race, and a real implementation needs an atomic create or a lock"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: two agents publish on the same branch ---\nagent A publishes first: (True, 'published h-A')\nagent B had read 'no active handoff' and publishes: (False, 'active handoff is h-A, not None')\nagent B re-reads, then publishes on top of A: (True, 'published h-B')\npointer now: {'active': 'h-B', 'superseded': ['h-A']}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Approval boundaries in next_action",
+    "headingKn": "ಪ್ರಯೋಗ 5: Approval boundaries in next_action",
+    "bodyEn": "What it ran: Approval boundaries in next_action. What the lab concluded: a simple keyword list flagged the two risky actions and passed the safe one, but it would miss any wording not on the list; it is a safety net of our own devising, and the real boundary is that the resuming agent may not execute these actions without an approval it can verify",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Approval boundaries in next_action. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a simple keyword list flagged the two risky actions and passed the safe one, but it would miss any wording not on the list; it is a safety net of our own devising, and the real boundary is that the resuming agent may not execute these actions without an approval it can verify"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: approval boundaries in next_action ---\nRun the payment test.                         needs human approval by keyword list: False []\nDeploy to production and run migrations.      needs human approval by keyword list: True ['deploy', 'production', 'migrat']\nDelete the old branch.                        needs human approval by keyword list: True ['delete']"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) A teammate commit and a branch switch were both detected. 2) A dirty tree alone was not. 3) Writing in place destroyed the old handoff and temp-plus-replace kept it. 4) A stale publisher was refused and then superseded explicitly. 5) Keywords flagged two risky actions and are only a safety net.",
     "bodyKn": "1) ಸಹೋದ್ಯೋಗಿ commit ಮತ್ತು branch ಬದಲಾವಣೆ ಎರಡೂ ಪತ್ತೆಯಾದವು. 2) ಕೇವಲ ಕೊಳಕು ಮರ ಪತ್ತೆಯಾಗಲಿಲ್ಲ. 3) ಸ್ಥಳದಲ್ಲೇ ಬರಹ ಹಳೆಯ ಹಸ್ತಾಂತರ ನಾಶಮಾಡಿ temp-ಜೊತೆ-ಬದಲಿ ಅದನ್ನು ಉಳಿಸಿತು. 4) ಹಳೆಯ ಪ್ರಕಾಶಕ ನಿರಾಕರಿಸಲ್ಪಟ್ಟು ನಂತರ ಸ್ಪಷ್ಟವಾಗಿ supersede ಆಯಿತು. 5) Keywords ಎರಡು ಅಪಾಯಕಾರಿ ಕ್ರಿಯೆ ಗುರುತಿಸಿದವು ಮತ್ತು ಕೇವಲ ಸುರಕ್ಷತಾ ಬಲೆ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ms_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ms_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ms_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ms_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

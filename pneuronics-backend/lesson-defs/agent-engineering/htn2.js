@@ -117,6 +117,113 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Without a fallback the planner fails at the gap",
+    "headingKn": "ಪ್ರಯೋಗ 1: Without a fallback the planner fails at the gap",
+    "bodyEn": "What it ran: Without a fallback the planner fails at the gap. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Without a fallback the planner fails at the gap. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Without a fallback the planner fails at the gap ---\nCOMPOUND ('deliver_package', 'P1')\nTRY METHOD standard_delivery -> [('prepare_package', 'P1'), ('transport_package', 'P1'), ('handover_package', 'P1')]\n  COMPOUND ('prepare_package', 'P1')\n  TRY METHOD standard_preparation -> [('pickup_package', 'P1'), ('load_package', 'P1')]\n    PRIMITIVE ('pickup_package', 'P1')\n      -> executed\n    PRIMITIVE ('load_package', 'P1')\n      -> executed\n    COMPOUND ('transport_package', 'P1')\nresult: None"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The ChatHTN-style hybrid: candidates are validated symbolically",
+    "headingKn": "ಪ್ರಯೋಗ 2: The ChatHTN-style hybrid: candidates are validated symbolically",
+    "bodyEn": "What it ran: The ChatHTN-style hybrid: candidates are validated symbolically. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The ChatHTN-style hybrid: candidates are validated symbolically. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. The ChatHTN-style hybrid: candidates are validated symbolically ---\nCOMPOUND ('deliver_package', 'P1')\nTRY METHOD standard_delivery -> [('prepare_package', 'P1'), ('transport_package', 'P1'), ('handover_package', 'P1')]\n  COMPOUND ('prepare_package', 'P1')\n  TRY METHOD standard_preparation -> [('pickup_package', 'P1'), ('load_package', 'P1')]\n    PRIMITIVE ('pickup_package', 'P1')\n      -> executed\n    PRIMITIVE ('load_package', 'P1')\n      -> executed\n    COMPOUND ('transport_package', 'P1')\n    LLM FALLBACK for ('transport_package', 'P1')\n[LLM fallback call #1] task=('transport_package', 'P1')\n   - driver:available\n   - package:P1:loaded\n   - truck:warehouse\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The plan contains no LLM step",
+    "headingKn": "ಪ್ರಯೋಗ 3: The plan contains no LLM step",
+    "bodyEn": "What it ran: The plan contains no LLM step. What the lab concluded: operators used: ['drive_to_customer', 'handover_package', 'load_package', 'pickup_package'] | all in OPERATORS: True",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The plan contains no LLM step. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): operators used: ['drive_to_customer', 'handover_package', 'load_package', 'pickup_package'] | all in OPERATORS: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Arity validation matters",
+    "headingKn": "ಪ್ರಯೋಗ 4: Arity validation matters",
+    "bodyEn": "What it ran: Arity validation matters. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Arity validation matters. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: arity validation matters ---\nname-only validation       -> crashed with ValueError: not enough values to unpack (expected 2, got 1)\nname + arity validation    -> planning failed cleanly (None)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Backtracking across known methods",
+    "headingKn": "ಪ್ರಯೋಗ 5: Backtracking across known methods",
+    "bodyEn": "What it ran: Backtracking across known methods. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Backtracking across known methods. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Backtracking across known methods ---\ntwo methods for transport: first fails its preconditions, second succeeds -> ['pickup_package', 'load_package', 'drive_to_customer', 'handover_package']\nno LLM was needed, search nodes visited: 9"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Methods that decompose into each other",
+    "headingKn": "ಪ್ರಯೋಗ 6: Methods that decompose into each other",
+    "bodyEn": "What it ran: Methods that decompose into each other. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Methods that decompose into each other. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: methods that decompose into each other ---\nno depth limit  -> RecursionError after 996 search nodes (no domain-level error message)\ndepth limit 25  -> result None after 27 search nodes"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Learning a method from a validated fallback (cache)",
+    "headingKn": "ಪ್ರಯೋಗ 7: Learning a method from a validated fallback (cache)",
+    "bodyEn": "What it ran: Learning a method from a validated fallback (cache). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Learning a method from a validated fallback (cache). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Learning a method from a validated fallback (cache) ---\nwith the learned method: plan ['pickup_package', 'load_package', 'drive_to_customer', 'handover_package'] | LLM calls: 0\nsame method without a driver (condition fails): result None | LLM calls: 3\nan unconditional cached method would have tried to drive without a driver"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

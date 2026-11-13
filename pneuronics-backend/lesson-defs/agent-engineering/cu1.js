@@ -137,6 +137,98 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Hit testing and the loop on a clean page",
+    "headingKn": "ಪ್ರಯೋಗ 1: Hit testing and the loop on a clean page",
+    "bodyEn": "What it ran: Hit testing and the loop on a clean page. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Hit testing and the loop on a clean page. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Hit testing and the loop on a clean page ---\nclick  (300,120)                -> search_box\ntype   (None,None) laptop stand   -> search_box\nclick  (680,120)                -> search_button\ntyped: {'search_box': 'laptop stand'} | clicked: ['search_box', 'search_button']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Boundaries and overlap",
+    "headingKn": "ಪ್ರಯೋಗ 2: Boundaries and overlap",
+    "bodyEn": "What it ran: Boundaries and overlap. What the lab concluded: two resolvers disagree on an overlap; if a safety check and the executor use different ones, the check approves a click the executor does somewhere else",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Boundaries and overlap. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): two resolvers disagree on an overlap; if a safety check and the executor use different ones, the check approves a click the executor does somewhere else"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: boundaries and overlap ---\npoint (200, 100) in search_box: True\npoint (600, 140) in search_box: True\npoint (601, 140) in search_box: False\npoint (199, 120) in search_box: False\npixel (150,130) overlaps both: first-match says page_link | topmost says cookie_banner"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Coordinates versus semantic targets when the layout shifts",
+    "headingKn": "ಪ್ರಯೋಗ 3: Coordinates versus semantic targets when the layout shifts",
+    "bodyEn": "What it ran: Coordinates versus semantic targets when the layout shifts. What the lab concluded: a coordinate plan survived shifts smaller than the button is tall (40 px) and fell to 68.8 percent at +/-30 and 27.2 percent at +/-80; resolving the name against the current screen stayed at 100 percent",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Coordinates versus semantic targets when the layout shifts. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a coordinate plan survived shifts smaller than the button is tall (40 px) and fell to 68.8 percent at +/-30 and 27.2 percent at +/-80; resolving the name against the current screen stayed at 100 percent"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: coordinates versus semantic targets when the layout shifts ---\nvertical layout shift up to +/- 0px: coordinate plan 100.0% | re-resolved by name 100.0%\nvertical layout shift up to +/-10px: coordinate plan 100.0% | re-resolved by name 100.0%\nvertical layout shift up to +/-30px: coordinate plan  68.8% | re-resolved by name 100.0%\nvertical layout shift up to +/-80px: coordinate plan  27.2% | re-resolved by name 100.0%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Acting before the page has loaded",
+    "headingKn": "ಪ್ರಯೋಗ 4: Acting before the page has loaded",
+    "bodyEn": "What it ran: Acting before the page has loaded. What the lab concluded: without a wait or verify step the first click was silently lost and the loop would carry on as if it worked",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Acting before the page has loaded. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): without a wait or verify step the first click was silently lost and the loop would carry on as if it worked"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: acting before the page has loaded ---\nclick on the search button coordinates while loading -> None\nsame click after the page appears -> search_button"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Whose instructions does the model follow",
+    "headingKn": "ಪ್ರಯೋಗ 5: Whose instructions does the model follow",
+    "bodyEn": "What it ran: Whose instructions does the model follow. What the lab concluded: the page text reached the obedient model as if it were the user; both models are scripted stand-ins, so this shows the failure shape, not how often a real model does it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Whose instructions does the model follow. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the page text reached the obedient model as if it were the user; both models are scripted stand-ins, so this shows the failure shape, not how often a real model does it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: whose instructions does the model follow ---\nobedient model   proposed click on purchase_button  purchases made: 1\ngoal-only model  proposed click on search_button    purchases made: 0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The loop without a safety layer over 1000 mixed pages (assumed 20 percent hostile)",
+    "headingKn": "ಪ್ರಯೋಗ 6: The loop without a safety layer over 1000 mixed pages (assumed 20 percent hostile)",
+    "bodyEn": "What it ran: The loop without a safety layer over 1000 mixed pages (assumed 20 percent hostile). What the lab concluded: unwanted purchases with an obedient model and no checks: 211 of 1000 pages (the 20 percent hostile share is an assumption)",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The loop without a safety layer over 1000 mixed pages (assumed 20 percent hostile). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): unwanted purchases with an obedient model and no checks: 211 of 1000 pages (the 20 percent hostile share is an assumption)"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

@@ -161,6 +161,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The lesson's trace (breadth 3, beam 2, start 5, target 24)",
+    "headingKn": "ಪ್ರಯೋಗ 1: The lesson's trace (breadth 3, beam 2, start 5, target 24)",
+    "bodyEn": "What it ran: The lesson's trace (breadth 3, beam 2, start 5, target 24). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lesson's trace (breadth 3, beam 2, start 5, target 24). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The lesson's trace (breadth 3, beam 2, start 5, target 24) ---\n=== DEPTH 1 ===\nExpanding parent: 5 => 5 [score=0.050]\n  candidate: (5 + 4) => 9 [score=0.062]\n  candidate: (5 * 2) => 10 [score=0.067]\n  candidate: (5 - 1) => 4 [score=0.048]\nRanked candidates:\n  1. (5 * 2) => 10 [score=0.067]\n  2. (5 + 4) => 9 [score=0.062]\n  3. (5 - 1) => 4 [score=0.048]\nBeam keeps:\n  (5 * 2) => 10 [score=0.067]\n  (5 + 4) => 9 [score=0.062]\nPruned:\n  (5 - 1) => 4 [score=0.048]\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Beam width: 1 (greedy), 2, 3 and unpruned",
+    "headingKn": "ಪ್ರಯೋಗ 2: Beam width: 1 (greedy), 2, 3 and unpruned",
+    "bodyEn": "What it ran: Beam width: 1 (greedy), 2, 3 and unpruned. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Beam width: 1 (greedy), 2, 3 and unpruned. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Beam width: 1 (greedy), 2, 3 and unpruned ---\n  beam  found  explored  expression\n     1   True         9  (((5 * 2) * 2) + 4)\n     2   True        15  (((5 * 2) * 2) + 4)\n     3   True        21  (((5 * 2) * 2) + 4)\n     9   True        39  (((5 * 2) * 2) + 4)\n    27   True        39  (((5 * 2) * 2) + 4)\nfull tree through depth 3 would generate 3 + 9 + 27 = 39 thoughts"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Sweep: every start value 1..30, depth 4",
+    "headingKn": "ಪ್ರಯೋಗ 3: Sweep: every start value 1..30, depth 4",
+    "bodyEn": "What it ran: Sweep: every start value 1..30, depth 4. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Sweep: every start value 1..30, depth 4. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Sweep: every start value 1..30, depth 4 ---\n  beam  solved  avg explored\n     1   21/30           9.4\n     2   23/30          15.4\n     3   24/30          20.7\n     5   24/30          27.1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A bad evaluator: score = value / 100 (prefers bigger numbers)",
+    "headingKn": "ಪ್ರಯೋಗ 4: A bad evaluator: score = value / 100 (prefers bigger numbers)",
+    "bodyEn": "What it ran: A bad evaluator: score = value / 100 (prefers bigger numbers). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A bad evaluator: score = value / 100 (prefers bigger numbers). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. A bad evaluator: score = value / 100 (prefers bigger numbers) ---\nbeam 1: found=False explored=12 expression=-\nbeam 2: found=False explored=21 expression=-\nbeam 3: found=False explored=30 expression=-\nwith the distance evaluator, beam 2 finds: (((5 * 2) * 2) + 4)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Where the beam throws away the winner",
+    "headingKn": "ಪ್ರಯೋಗ 5: Where the beam throws away the winner",
+    "bodyEn": "What it ran: Where the beam throws away the winner. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Where the beam throws away the winner. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Where the beam throws away the winner ---\nstart 3, beam 1: found=False explored=12 expression=-\nstart 3, beam 2: found=True explored=15 expression=(((3 * 2) * 2) * 2)\nscores of the depth-1 children of 3 (value -> score):\n  (3 + 4) => 7  score=0.0556\n  (3 * 2) => 6  score=0.0526\n  (3 - 1) => 2  score=0.0435"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

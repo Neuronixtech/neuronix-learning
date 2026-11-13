@@ -156,6 +156,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Prompt chaining: output N becomes input N+1",
+    "headingKn": "ಪ್ರಯೋಗ 1: Prompt chaining: output N becomes input N+1",
+    "bodyEn": "What it ran: Prompt chaining: output N becomes input N+1. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Prompt chaining: output N becomes input N+1. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Prompt chaining: output N becomes input N+1 ---\ninput     : Explain workflow architecture\nCreate an outline.        -> 1. Definition 2. Example 3. Conclusion\nDraft the explanation.    -> Draft built from the outline.\nImprove the explanation.  -> Improved answer with evidence\nmodel calls: 3 (fixed by the code: one per step)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A gate between steps is plain code, not a second model",
+    "headingKn": "ಪ್ರಯೋಗ 2: A gate between steps is plain code, not a second model",
+    "bodyEn": "What it ran: A gate between steps is plain code, not a second model. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A gate between steps is plain code, not a second model. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. A gate between steps is plain code, not a second model ---\n1. Definition 2. Example 3. Conclusion\ngate stopped the chain: Outline too short"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Routing: the model picks a branch, Python owns the branches",
+    "headingKn": "ಪ್ರಯೋಗ 3: Routing: the model picks a branch, Python owns the branches",
+    "bodyEn": "What it ran: Routing: the model picks a branch, Python owns the branches. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Routing: the model picks a branch, Python owns the branches. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Routing: the model picks a branch, Python owns the branches ---\nbilling    -> Billing specialist handles: I was charged twice and need a refund.\ntechnical  -> Technical specialist handles: The application crashes on startup.\ngeneral    -> General support handles: Do you offer enterprise pricing?"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Model output is untrusted input to the router",
+    "headingKn": "ಪ್ರಯೋಗ 4: Model output is untrusted input to the router",
+    "bodyEn": "What it ran: Model output is untrusted input to the router. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Model output is untrusted input to the router. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: model output is untrusted input to the router ---\nmodel said 'billing'    -> handler used: Billing\nmodel said 'Billing.'   -> handler used: General\nmodel said 'billing\\n'  -> handler used: Billing\nmodel said 'payments'   -> handler used: General\nmodel said 'BILLING'    -> handler used: Billing\nwith strip and an allowlist, 'Billing.' -> billing | 'payments' -> general"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Keyword stand-ins can be hijacked by their own input",
+    "headingKn": "ಪ್ರಯೋಗ 5: Keyword stand-ins can be hijacked by their own input",
+    "bodyEn": "What it ran: Keyword stand-ins can be hijacked by their own input. What the lab concluded: the scripted model reacts to words in the prompt, so scripted traces prove control flow, not language understanding",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Keyword stand-ins can be hijacked by their own input. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the scripted model reacts to words in the prompt, so scripted traces prove control flow, not language understanding"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: keyword stand-ins can be hijacked by their own input ---\n'Please classify my feelings, I am charged up about the launch' -> 'billing'\n'How do I evaluate a vote count?'                              -> 'YES'"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Workflow versus agent: who owns the graph",
+    "headingKn": "ಪ್ರಯೋಗ 6: Workflow versus agent: who owns the graph",
+    "bodyEn": "What it ran: Workflow versus agent: who owns the graph. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Workflow versus agent: who owns the graph. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Workflow versus agent: who owns the graph ---\nprompt_chain   engineer: fixed list of steps\nroute          engineer: fixed dictionary of branches, model picks one key\nagent loop     model: chooses the next action after every observation\ntool use alone does not make a system an agent: search -> LLM is still a fixed sequence"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

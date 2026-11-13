@@ -147,6 +147,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The resuming session validates what it loads",
+    "headingKn": "ಪ್ರಯೋಗ 1: The resuming session validates what it loads",
+    "bodyEn": "What it ran: The resuming session validates what it loads. What the lab concluded: the consumer refuses a file it cannot parse and says why, instead of starting work from a half-read packet",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The resuming session validates what it loads. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the consumer refuses a file it cannot parse and says why, instead of starting work from a half-read packet"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the resuming session validates what it loads ---\nvalid handoff: errors [] | pointer errors []\nmalformed JSON: ['cannot read handoff: JSONDecodeError']\nwrong top-level shape: ['handoff is not an object']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Missing and mistyped fields",
+    "headingKn": "ಪ್ರಯೋಗ 2: Missing and mistyped fields",
+    "bodyEn": "What it ran: Missing and mistyped fields. What the lab concluded: list('python -m unittest') in Python splits the string into characters: 18 items; a consumer that iterated a string commands_run would have replayed each letter as a command, which is why the type is checked and not just the presence",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Missing and mistyped fields. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): list('python -m unittest') in Python splits the string into characters: 18 items; a consumer that iterated a string commands_run would have replayed each letter as a command, which is why the type is checked and not just the presence"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: missing and mistyped fields ---\nmissing open_risks         ['missing open_risks']\ncommands_run is a string   ['commands_run should be list, got str']\nnext_action is blank       ['next_action is blank']\nnext_action is None        ['next_action should be str, got NoneType']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Pointers that no longer resolve",
+    "headingKn": "ಪ್ರಯೋಗ 3: Pointers that no longer resolve",
+    "bodyEn": "What it ran: Pointers that no longer resolve. What the lab concluded: the packet was valid JSON with every field and still pointed at a report and a file that were not there, so schema validity is not the same as the handoff being usable; the resuming session has to check that its evidence exists",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Pointers that no longer resolve. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the packet was valid JSON with every field and still pointed at a report and a file that were not there, so schema validity is not the same as the handoff being usable; the resuming session has to check that its evidence exists"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: pointers that no longer resolve ---\nschema errors: []\npointer error: verdict_pointer target is missing: gone/verdict.json\npointer error: changed file not found: src/deleted.py"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Markdown that drifts from the JSON",
+    "headingKn": "ಪ್ರಯೋಗ 4: Markdown that drifts from the JSON",
+    "bodyEn": "What it ran: Markdown that drifts from the JSON. What the lab concluded: a hand-edited Markdown file and the JSON now disagree and nothing in the pipeline noticed until the comparison was run; the JSON is the source the agent reads, so the Markdown should be regenerated and never edited, and a check that regenerates and compares finds drift",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Markdown that drifts from the JSON. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a hand-edited Markdown file and the JSON now disagree and nothing in the pipeline noticed until the comparison was run; the JSON is the source the agent reads, so the Markdown should be regenerated and never edited, and a check that regenerates and compares finds drift"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: Markdown that drifts from the JSON ---\nregenerated Markdown equals the shipped Markdown: True\nafter the Markdown next_action is edited (simulated by a string replacement): False\nnext_action in the JSON still says: Run python -m unittest."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A resuming session never trusts the summary alone",
+    "headingKn": "ಪ್ರಯೋಗ 5: A resuming session never trusts the summary alone",
+    "bodyEn": "What it ran: A resuming session never trusts the summary alone. What the lab concluded: the summary and the report it points to contradicted each other, and only reading the pointer revealed that; the packet is a pointer to evidence and the evidence outranks the prose",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A resuming session never trusts the summary alone. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the summary and the report it points to contradicted each other, and only reading the pointer revealed that; the packet is a pointer to evidence and the evidence outranks the prose"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: a resuming session never trusts the summary alone ---\nsummary says: All tests pass and the task is complete.\nverdict file says: {'approved': False, 'passed': False}\nsummary claims completion: True | verdict agrees: False"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -204,6 +287,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Truncated and wrong-shaped files were refused. 2) A string commands_run was caught by a type check. 3) A schema-valid packet had two dangling pointers. 4) An edited Markdown no longer matched the JSON. 5) A summary claiming completion contradicted its verdict file.",
     "bodyKn": "1) ಮೊಟಕುಗೊಂಡ ಮತ್ತು ತಪ್ಪು ಆಕಾರದ ಫೈಲ್‌ಗಳು ನಿರಾಕರಿಸಲ್ಪಟ್ಟವು. 2) string commands_run ಅನ್ನು ಪ್ರಕಾರ ಪರೀಕ್ಷೆ ಹಿಡಿಯಿತು. 3) ಸ್ಕೀಮಾ-ಮಾನ್ಯ ಪ್ಯಾಕೆಟ್ ಎರಡು ನೇತಾಡುವ ಸೂಚಕ ಹೊಂದಿತ್ತು. 4) ಸಂಪಾದಿಸಿದ Markdown ಇನ್ನು JSON ಗೆ ಹೊಂದಲಿಲ್ಲ. 5) ಪೂರ್ಣತೆ ಹೇಳುವ summary ತನ್ನ verdict ಫೈಲ್‌ಗೆ ವಿರೋಧವಾಗಿತ್ತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ms_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ms_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ms_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ms_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

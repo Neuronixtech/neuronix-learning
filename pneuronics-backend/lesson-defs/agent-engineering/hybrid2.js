@@ -149,6 +149,149 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: One add(), three representations, one memory id",
+    "headingKn": "ಪ್ರಯೋಗ 1: One add(), three representations, one memory id",
+    "bodyEn": "What it ran: One add(), three representations, one memory id. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: One add(), three representations, one memory id. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. One add(), three representations, one memory id ---\nvector records: 1 | kv entries: 1 | graph edges: 1\nsame id in all three: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Updating a single-valued fact: three temporal behaviours",
+    "headingKn": "ಪ್ರಯೋಗ 2: Updating a single-valued fact: three temporal behaviours",
+    "bodyEn": "What it ran: Updating a single-valued fact: three temporal behaviours. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Updating a single-valued fact: three temporal behaviours. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Updating a single-valued fact: three temporal behaviours ---\nvector (both kept): ['Akshay prefers Python.', \"Akshay's primary language is now Rust.\"]\nkv (current only) : Rust\ngraph             : Akshay -[primary_language]-> Python (invalid)\ngraph             : Akshay -[primary_language]-> Rust (valid)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Multi-valued relations do not conflict",
+    "headingKn": "ಪ್ರಯೋಗ 3: Multi-valued relations do not conflict",
+    "bodyEn": "What it ran: Multi-valued relations do not conflict. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Multi-valued relations do not conflict. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Multi-valued relations do not conflict ---\nAlice -[works_on]-> ProjectA (valid)\nAlice -[works_on]-> ProjectB (valid)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Duplicate edges, confidence floor and edge cap",
+    "headingKn": "ಪ್ರಯೋಗ 4: Duplicate edges, confidence floor and edge cap",
+    "bodyEn": "What it ran: Duplicate edges, confidence floor and edge cap. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Duplicate edges, confidence floor and edge cap. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Duplicate edges, confidence floor and edge cap ---\ncandidates 4, edges added: ['Alice -[works_on]-> Phoenix (valid)', 'Phoenix -[billing_entity]-> BillingCorp (valid)'] | rejected: 2\nsame edge added twice -> added: 0 | total edges: 2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Validation happens before any write",
+    "headingKn": "ಪ್ರಯೋಗ 5: Validation happens before any write",
+    "bodyEn": "What it ran: Validation happens before any write. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Validation happens before any write. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Validation happens before any write ---\n{'scope': 'session', 'session_id': None}   -> ValueError: session scope requires session_id\n{'scope': 'galaxy'}                        -> ValueError: Unsupported scope: galaxy\n{'scope': 'user', 'fact_type': ' '}        -> ValueError: fact_type cannot be empty\nrecords after the failed adds: 0 0 0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Namespaces: sessions, agents and users never collide",
+    "headingKn": "ಪ್ರಯೋಗ 6: Namespaces: sessions, agents and users never collide",
+    "bodyEn": "What it ran: Namespaces: sessions, agents and users never collide. What the lab concluded: two users, same entity name 'Alice': ['Alice -[lives_in]-> Bengaluru (valid)', 'Alice -[lives_in]-> London (valid)']",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Namespaces: sessions, agents and users never collide. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): two users, same entity name 'Alice': ['Alice -[lives_in]-> Bengaluru (valid)', 'Alice -[lives_in]-> London (valid)']"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Namespaces: sessions, agents and users never collide ---\nsession A: staging | session B: production\nagent research: Mem0 paper | agent coding: main.py"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: The deterministic extractor and its limits",
+    "headingKn": "ಪ್ರಯೋಗ 7: The deterministic extractor and its limits",
+    "bodyEn": "What it ran: The deterministic extractor and its limits. What the lab concluded: 'Alice works on Phoenix and Orion.'                      -> [('Alice', 'works_on', 'Phoenix and Orion')]",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The deterministic extractor and its limits. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): 'Alice works on Phoenix and Orion.'                      -> [('Alice', 'works_on', 'Phoenix and Orion')]"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. The deterministic extractor and its limits ---\n'Alice works on Phoenix.'                                -> [('Alice', 'works_on', 'Phoenix')]\n'Phoenix is billed by BillingCorp.'                      -> [('Phoenix', 'billing_entity', 'BillingCorp')]\n'Akshay lives in Mysuru.'                                -> [('Akshay', 'lives_in', 'Mysuru')]\n'Alice is currently contributing to Project Phoenix.'    -> []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Temporal queries with explicit timestamps",
+    "headingKn": "ಪ್ರಯೋಗ 8: Temporal queries with explicit timestamps",
+    "bodyEn": "What it ran: Temporal queries with explicit timestamps. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Temporal queries with explicit timestamps. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Temporal queries with explicit timestamps ---\nvalid on 2026-02-01: nothing\nvalid on 2026-06-01: ['Alice -[lives_in]-> Bengaluru']\nvalid on 2026-10-01: ['Alice -[lives_in]-> Mysuru']\ncurrent edges (valid flag): ['Mysuru']\nall edges incl. history   : ['Bengaluru', 'Mysuru']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 9: Invalidation relies on a hand-written list of single-valued relations",
+    "headingKn": "ಪ್ರಯೋಗ 9: Invalidation relies on a hand-written list of single-valued relations",
+    "bodyEn": "What it ran: Invalidation relies on a hand-written list of single-valued relations. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Invalidation relies on a hand-written list of single-valued relations. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 9. Genuinely checking: invalidation relies on a hand-written list of single-valued relations ---\nrelation 'resides_in' is not in the list: ['Alice -[resides_in]-> Bengaluru (valid)', 'Alice -[resides_in]-> Mysuru (valid)']\nthe graph now holds two valid homes for Alice, while kv says: Mysuru"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

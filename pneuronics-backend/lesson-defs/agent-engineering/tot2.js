@@ -117,6 +117,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The lesson's worked UCT numbers, recomputed",
+    "headingKn": "ಪ್ರಯೋಗ 1: The lesson's worked UCT numbers, recomputed",
+    "bodyEn": "What it ran: The lesson's worked UCT numbers, recomputed. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lesson's worked UCT numbers, recomputed. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The lesson's worked UCT numbers, recomputed ---\nchild A  Q=0.70 visits=10 -> UCT 1.650  (lesson: ~1.651)\nchild B  Q=0.80 visits=80 -> UCT 1.136  (lesson: ~1.136)\nunvisited child          -> UCT inf\npure exploitation would pick B; UCT picks A"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Eight MCTS iterations from start 5",
+    "headingKn": "ಪ್ರಯೋಗ 2: Eight MCTS iterations from start 5",
+    "bodyEn": "What it ran: Eight MCTS iterations from start 5. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Eight MCTS iterations from start 5. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Eight MCTS iterations from start 5 ---\nITERATION 1\n  SELECT      (5 + 4) (value 9, visits 0, Q 0.000, depth 1)\n  EXPAND      13, 18, 8\n  SIMULATE    from ((5 + 4) + 4) => 24  reward 1.000\n  REFLECT     Success: the rollout reached the target exactly.\n  ROOT CHILDREN  9: N=1 Q=1.000 | 10: N=0 Q=0.000 | 4: N=0 Q=0.000\nITERATION 2\n  SELECT      (5 * 2) (value 10, visits 0, Q 0.000, depth 1)\n  EXPAND      14, 20, 9\n  SIMULATE    from ((5 * 2) + 4) => 26  reward 0.333\n  REFLECT     Failure: the rollout overshot the target. Future rollouts should avoid aggressive multiplication near 24.\n  ROOT CHILDREN  9: N=1 Q=1.000 | 10: N=1 Q=0.333 | 4: N=0 Q=0.000\nITERATION 3\n  SELECT      (5 - 1) (value 4, visits 0, Q 0.000, depth 1)\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Final root statistics",
+    "headingKn": "ಪ್ರಯೋಗ 3: Final root statistics",
+    "bodyEn": "What it ran: Final root statistics. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Final root statistics. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Final root statistics ---\n(5 + 4)  value=9   visits=3 total_reward=3.000 Q=1.000\n(5 - 1)  value=4   visits=3 total_reward=2.250 Q=0.750\n(5 * 2)  value=10  visits=2 total_reward=1.333 Q=0.667\nroot visits: 8 = sum of child visits: 8\nmost-visited root action: (5 + 4)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Exploration constant c (start 5, 8 iterations)",
+    "headingKn": "ಪ್ರಯೋಗ 4: Exploration constant c (start 5, 8 iterations)",
+    "bodyEn": "What it ran: Exploration constant c (start 5, 8 iterations). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Exploration constant c (start 5, 8 iterations). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Exploration constant c (start 5, 8 iterations) ---\n    c  root-child visits (9, 10, 4)   first hit of 24\n  0.0  [5, 1, 2]                      1\n  0.5  [4, 1, 3]                      1\n  1.4  [3, 2, 3]                      1\n  3.0  [3, 2, 3]                      1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Start 3, where greedy beam search failed in the previous lesson part",
+    "headingKn": "ಪ್ರಯೋಗ 5: Start 3, where greedy beam search failed in the previous lesson part",
+    "bodyEn": "What it ran: Start 3, where greedy beam search failed in the previous lesson part. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Start 3, where greedy beam search failed in the previous lesson part. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Start 3, where greedy beam search failed in the previous lesson part ---\nroot children (value: visits, Q): [(7, 3, 0.667), (6, 4, 0.667), (2, 5, 1.0)]\nfirst iteration that reached 24: 2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Rollouts still use the distance policy, but the REWARD is value/100",
+    "headingKn": "ಪ್ರಯೋಗ 6: Rollouts still use the distance policy, but the REWARD is value/100",
+    "bodyEn": "What it ran: Rollouts still use the distance policy, but the REWARD is value/100. What the lab concluded: a rollout that hits 24 earns only 0.24 under the bad reward, while a rollout that overshoots to 40 earns 0.40",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Rollouts still use the distance policy, but the REWARD is value/100. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a rollout that hits 24 earns only 0.24 under the bad reward, while a rollout that overshoots to 40 earns 0.40"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Rollouts still use the distance policy, but the REWARD is value/100 ---\nroot children (value: visits, Q): [(9, 4, 0.24), (10, 4, 0.247), (4, 4, 0.247)]\nrollouts that reached exactly 24: 1 (first iteration)\nwith the distance reward:         [(9, 5, 0.814), (10, 4, 0.597), (4, 3, 0.75)]"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

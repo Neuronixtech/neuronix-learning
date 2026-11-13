@@ -142,6 +142,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The baseline has the defect, the fixed version does not",
+    "headingKn": "ಪ್ರಯೋಗ 1: The baseline has the defect, the fixed version does not",
+    "bodyEn": "What it ran: The baseline has the defect, the fixed version does not. What the lab concluded: the task starts failing for a real reason and ends passing both the pipeline's own tests and a probe that lives outside the repository; the probe is a separate interpreter run so it does not depend on the tests it is checking",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The baseline has the defect, the fixed version does not. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the task starts failing for a real reason and ends passing both the pipeline's own tests and a probe that lives outside the repository; the probe is a separate interpreter run so it does not depend on the tests it is checking"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the baseline has the defect, the fixed version does not ---\nbaseline against the five tests: exit 1 | FAILED (failures=2, errors=1)\nbaseline against the independent probe: 1\nfixed against the five tests: exit 0 | OK\nfixed against the independent probe: 0 {'short is 422': True, 'error type': True, 'eight is 201': True, 'seven is 422': True}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Which tests catch which defects (mutants of the handler)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Which tests catch which defects (mutants of the handler)",
+    "bodyEn": "What it ran: Which tests catch which defects (mutants of the handler). What the lab concluded: with only the valid and short-password tests, the <= 8 mutant was still caught because the valid test uses an exactly-eight-character password, while the < 7 mutant and the no-type-check mutant survived; only the seven-character boundary test and the non-string test caught those, so positive, negative and boundary tests each catch different defects",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Which tests catch which defects (mutants of the handler). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with only the valid and short-password tests, the <= 8 mutant was still caught because the valid test uses an exactly-eight-character password, while the < 7 mutant and the no-type-check mutant survived; only the seven-character boundary test and the non-string test caught those, so positive, negative and boundary tests each catch different defects"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: which tests catch which defects (mutants of the handler) ---\noff by one (<= 8)    full suite exit 1 (caught) | valid+short tests only exit 1 (caught)\noff by one (< 7)     full suite exit 1 (caught) | valid+short tests only exit 0 (SURVIVED)\nno type check        full suite exit 1 (caught) | valid+short tests only exit 0 (SURVIVED)\nwrong code           full suite exit 1 (caught) | valid+short tests only exit 1 (caught)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Tests that never ran",
+    "headingKn": "ಪ್ರಯೋಗ 3: Tests that never ran",
+    "bodyEn": "What it ran: Tests that never ran. What the lab concluded: neither of these exited 0 on this Python (an empty module exits 5 with NO TESTS RAN and a wrong name exits 1), so the exit code protected the gate here; the test count is still worth recording because other runners and versions may treat an empty suite differently, which this lab did not test",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Tests that never ran. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): neither of these exited 0 on this Python (an empty module exits 5 with NO TESTS RAN and a wrong name exits 1), so the exit code protected the gate here; the test count is still worth recording because other runners and versions may treat an empty suite differently, which this lab did not test"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: tests that never ran ---\nempty test module: exit 5 | NO TESTS RAN\nwrong module name: exit 1 | FAILED (errors=1)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The type check before the length check",
+    "headingKn": "ಪ್ರಯೋಗ 4: The type check before the length check",
+    "bodyEn": "What it ran: The type check before the length check. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The type check before the length check. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: the type check before the length check ---\nNone               len() raises TypeError: object of type 'NoneType' has no len()\ninteger 12345678   len() raises TypeError: object of type 'int' has no len()\nlist of 8          len() works and returns 8: a length-only check would have accepted it\nthe fixed handler rejects each without crashing; the list of eight characters shows why the type check comes first, because its length passes a length check even though it is not a string\nstatus for a list password: 422"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +267,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The baseline failed and the fix passed tests and probe. 2) The < 7 and no-type-check mutants survived a reduced suite. 3) The <= 8 mutant was caught by the valid test. 4) An empty suite exited 5, a misnamed module 1. 5) A list of eight characters passes a length check.",
     "bodyKn": "1) baseline ವಿಫಲವಾಗಿ ಸರಿಪಡಿಕೆ ಪರೀಕ್ಷೆ ಮತ್ತು probe ಪಾಸ್ ಮಾಡಿತು. 2) < 7 ಮತ್ತು type-ಪರಿಶೀಲನೆ-ಇಲ್ಲದ mutants ಕಡಿಮೆ ಸೂಟ್ ಉಳಿದುಕೊಂಡವು. 3) <= 8 mutant ಅನ್ನು ಮಾನ್ಯ ಪರೀಕ್ಷೆ ಹಿಡಿಯಿತು. 4) ಖಾಲಿ ಸೂಟ್ 5, ತಪ್ಪು ಹೆಸರಿನ ಮಾಡ್ಯೂಲ್ 1 ರಲ್ಲಿ ನಿರ್ಗಮಿಸಿತು. 5) ಎಂಟು ಅಕ್ಷರಗಳ ಪಟ್ಟಿ ಉದ್ದ ಪರಿಶೀಲನೆ ಪಾಸ್ ಮಾಡುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B rw_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B rw_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B rw_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B rw_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. The baseline has the defect, the fixed version does not\n2. Which tests catch which defects (mutants of the handler)\n3. Tests that never ran\n4. The type check before the length check",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. The baseline has the defect, the fixed version does not\n2. Which tests catch which defects (mutants of the handler)\n3. Tests that never ran\n4. The type check before the length check"
    }
   },
   {

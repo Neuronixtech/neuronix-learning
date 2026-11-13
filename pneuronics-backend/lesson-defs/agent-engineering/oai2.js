@@ -137,6 +137,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The four scenarios from the lesson",
+    "headingKn": "ಪ್ರಯೋಗ 1: The four scenarios from the lesson",
+    "bodyEn": "What it ran: The four scenarios from the lesson. What the lab concluded: 'My password is abc123 and billing is broken.': InputGuardrailTripwireTriggered: Sensitive input detected: password",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The four scenarios from the lesson. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): 'My password is abc123 and billing is broken.': InputGuardrailTripwireTriggered: Sensitive input detected: password"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The four scenarios from the lesson ---\n'I was charged twice.'                        : Billing agent: I'll investigate the billing issue. | entered ['triage_agent', 'billing_agent']\n'The application crashes on startup.'         : Support agent: I'll troubleshoot the technical issue. | entered ['triage_agent', 'support_agent']\n'I want a refund.'                            : Refund approved for $120.00 | entered ['triage_agent', 'billing_agent']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Genuinely checking the refund tool guardrail",
+    "headingKn": "ಪ್ರಯೋಗ 2: Genuinely checking the refund tool guardrail",
+    "bodyEn": "What it ran: Genuinely checking the refund tool guardrail. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely checking the refund tool guardrail. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking the refund tool guardrail ---\namount=120    : Refund approved for $120.00\namount=5000   : ToolGuardrailTripwireTriggered: Automatic refunds cannot exceed $500\namount=0      : ToolGuardrailTripwireTriggered: Refund amount must be positive\namount=-5     : ToolGuardrailTripwireTriggered: Refund amount must be positive\namount=500    : Refund approved for $500.00\namount=500.01 : ToolGuardrailTripwireTriggered: Automatic refunds cannot exceed $500\nrefund function was executed for amounts: [120, 500]\n5000 never reached issue_refund; the boundary 500 is allowed and 500.01 is blocked"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Genuinely checking values the policy did not anticipate",
+    "headingKn": "ಪ್ರಯೋಗ 3: Genuinely checking values the policy did not anticipate",
+    "bodyEn": "What it ran: Genuinely checking values the policy did not anticipate. What the lab concluded: NaN fails both comparisons (nan <= 0 and nan > 500 are False) so it is approved; the string raised TypeError inside the guardrail instead of tripping it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely checking values the policy did not anticipate. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): NaN fails both comparisons (nan <= 0 and nan > 500 are False) so it is approved; the string raised TypeError inside the guardrail instead of tripping it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking values the policy did not anticipate ---\namount=nan            : Refund approved for $nan\namount=True           : Refund approved for $1.00\namount='120' (string) : TypeError: '<=' not supported between instances of 'str' and 'int'\namount=inf            : ToolGuardrailTripwireTriggered: Automatic refunds cannot exceed $500\nfunction ran for: [nan, True]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Genuinely checking the keyword input guardrail",
+    "headingKn": "ಪ್ರಯೋಗ 4: Genuinely checking the keyword input guardrail",
+    "bodyEn": "What it ran: Genuinely checking the keyword input guardrail. What the lab concluded: case changes are caught; leetspeak, spacing, abbreviations and punctuation variants all pass",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely checking the keyword input guardrail. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): case changes are caught; leetspeak, spacing, abbreviations and punctuation variants all pass"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking the keyword input guardrail ---\n'my password is hunter2'           tripped=True\n'my PASSWORD is hunter2'           tripped=True\n'my p4ssword is hunter2'           tripped=False\n'my pass word is hunter2'          tripped=False\n'my pwd is hunter2'                tripped=False\n'here is my api-key: sk-123'       tripped=False\n'here is my API key: sk-123'       tripped=True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Genuinely checking where each guardrail actually runs",
+    "headingKn": "ಪ್ರಯೋಗ 5: Genuinely checking where each guardrail actually runs",
+    "bodyEn": "What it ran: Genuinely checking where each guardrail actually runs. What the lab concluded: the output guardrail never saw it: the tool path returns the result directly, bypassing the final-output check",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely checking where each guardrail actually runs. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the output guardrail never saw it: the tool path returns the result directly, bypassing the final-output check"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking where each guardrail actually runs ---\nspecialist's own input guardrail after a handoff: Billing agent: I'll investigate the billing issue.\nit never fired: input guardrails run once, on the starting agent, before the loop\ntool result containing 'customer password': customer password: hunter2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Genuinely measuring blocking versus parallel guardrails (real threads, seconds)",
+    "headingKn": "ಪ್ರಯೋಗ 6: Genuinely measuring blocking versus parallel guardrails (real threads, seconds)",
+    "bodyEn": "What it ran: Genuinely measuring blocking versus parallel guardrails (real threads, seconds). What the lab concluded: allowed request: parallel saves about the guardrail time; rejected request: both return at ~0.2s but parallel had already started the model",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely measuring blocking versus parallel guardrails (real threads, seconds). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): allowed request: parallel saves about the guardrail time; rejected request: both return at ~0.2s but parallel had already started the model"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely measuring blocking versus parallel guardrails (real threads, seconds) ---\nguardrail takes 0.2s, 'model' takes 0.6s\nmode       request   wall time  model started   model work discarded\nblocking   allowed       0.81s           True                   0.0s\nblocking   rejected      0.20s          False                   0.0s\nparallel   allowed       0.60s           True                   0.0s\nparallel   rejected      0.20s           True                   0.6s"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

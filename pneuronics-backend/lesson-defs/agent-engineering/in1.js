@@ -147,6 +147,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: All five probes on this machine with satisfiable requirements",
+    "headingKn": "ಪ್ರಯೋಗ 1: All five probes on this machine with satisfiable requirements",
+    "bodyEn": "What it ran: All five probes on this machine with satisfiable requirements. What the lab concluded: the details name what was found and never print the value of the environment variable; a pass here says the check ran against this machine today and nothing about the application",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: All five probes on this machine with satisfiable requirements. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the details name what was found and never print the value of the environment variable; a pass here says the check ran against this machine today and nothing about the application"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: all five probes on this machine with satisfiable requirements ---\nPASS  python_version   Python 3.14\nPASS  dependencies     all discoverable\nPASS  test_command     resolved C:\\Python314\\python.EXE\nPASS  environment      required variables present\nPASS  state_freshness  0.00 h old\nhealthy: True | failures: 0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The same probes with requirements this machine cannot meet",
+    "headingKn": "ಪ್ರಯೋಗ 2: The same probes with requirements this machine cannot meet",
+    "bodyEn": "What it ran: The same probes with requirements this machine cannot meet. What the lab concluded: all five failed independently and the report collected every failure instead of stopping at the first, so one run lists all five things to fix",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The same probes with requirements this machine cannot meet. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): all five failed independently and the report collected every failure instead of stopping at the first, so one run lists all five things to fix"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: the same probes with requirements this machine cannot meet ---\nFAIL  python_version   Python 3.14 < required 9.0\nFAIL  dependencies     Missing: no_such_package_xyz\nFAIL  test_command     not found on PATH: no-such-test-runner\nFAIL  environment      Missing: LAB_MISSING_VARIABLE\nFAIL  state_freshness  state file not found: gone.json\nhealthy: False | failures: 5"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The report and the exit code through a real subprocess",
+    "headingKn": "ಪ್ರಯೋಗ 3: The report and the exit code through a real subprocess",
+    "bodyEn": "What it ran: The report and the exit code through a real subprocess. What the lab concluded: a printed BLOCKED with exit code 0 would let the agent launch anyway; the launcher acts on the exit code, so the code has to be non-zero when a blocking probe fails",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The report and the exit code through a real subprocess. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a printed BLOCKED with exit code 0 would let the agent launch anyway; the launcher acts on the exit code, so the code has to be non-zero when a blocking probe fails"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: the report and the exit code through a real subprocess ---\nhealthy report  printed RESULT: HEALTHY  exit code 0\nblocked report  printed RESULT: BLOCKED  exit code 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: State freshness at the edges (modification times set with os.utime)",
+    "headingKn": "ಪ್ರಯೋಗ 4: State freshness at the edges (modification times set with os.utime)",
+    "bodyEn": "What it ran: State freshness at the edges (modification times set with os.utime). What the lab concluded: freshness only reads the modification time, so a file that was just written but is corrupt still passes; a content check is a separate probe",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: State freshness at the edges (modification times set with os.utime). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): freshness only reads the modification time, so a file that was just written but is corrupt still passes; a content check is a separate probe"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: state freshness at the edges (modification times set with os.utime) ---\nfresh (1 h old)  {'name': 'state_freshness', 'status': 'pass', 'detail': '1.00 h old'}\nold (30 h old)   {'name': 'state_freshness', 'status': 'fail', 'detail': '30.0 h old, limit 24'}\nfuture (+2 h)    {'name': 'state_freshness', 'status': 'fail', 'detail': 'modification time is in the future'}\nfresh file with broken content: {'name': 'state_freshness', 'status': 'pass', 'detail': '0.00 h old'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Idempotency, the report differs only in volatile fields",
+    "headingKn": "ಪ್ರಯೋಗ 5: Idempotency, the report differs only in volatile fields",
+    "bodyEn": "What it ran: Idempotency, the report differs only in volatile fields. What the lab concluded: only the timestamp differs between two runs; the checks themselves read state and change nothing, which is what makes initialization safe to repeat",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Idempotency, the report differs only in volatile fields. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): only the timestamp differs between two runs; the checks themselves read state and change nothing, which is what makes initialization safe to repeat"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: idempotency, the report differs only in volatile fields ---\n{'healthy': True, 'failure_count': True, 'probes': True, 'generated_at': False}"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -204,6 +287,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Five probes passed on this machine and none printed a secret. 2) Five impossible requirements gave five failures in one run. 3) Exit codes were 0 and 1. 4) Freshness passed at 1 h, failed at 30 h and for a future timestamp, and passed a corrupt fresh file. 5) Two runs differed only in the timestamp.",
     "bodyKn": "1) ಈ ಯಂತ್ರದಲ್ಲಿ ಐದು probes ಪಾಸ್ ಆದವು ಮತ್ತು ಯಾವುದೂ ರಹಸ್ಯ ಮುದ್ರಿಸಲಿಲ್ಲ. 2) ಐದು ಅಸಾಧ್ಯ ಅವಶ್ಯಕತೆಗಳು ಒಂದೇ ಓಟದಲ್ಲಿ ಐದು ವೈಫಲ್ಯ ನೀಡಿದವು. 3) Exit codes 0 ಮತ್ತು 1 ಆಗಿದ್ದವು. 4) ತಾಜಾತನ 1 h ನಲ್ಲಿ ಪಾಸ್, 30 h ನಲ್ಲಿ ಮತ್ತು ಭವಿಷ್ಯದ ಸಮಯಮುದ್ರೆಗೆ ವಿಫಲ, ಮತ್ತು ಹಾಳಾದ ತಾಜಾ ಫೈಲ್ ಪಾಸ್ ಮಾಡಿತು. 5) ಎರಡು ಓಟಗಳು ಸಮಯಮುದ್ರೆಯಲ್ಲಿ ಮಾತ್ರ ಭಿನ್ನವಾದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B in_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B in_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B in_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B in_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

@@ -146,6 +146,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Operators transform state: S' = (S - Del) + Add",
+    "headingKn": "ಪ್ರಯೋಗ 1: Operators transform state: S' = (S - Del) + Add",
+    "bodyEn": "What it ran: Operators transform state: S' = (S - Del) + Add. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Operators transform state: S' = (S - Del) + Add. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Operators transform state: S' = (S - Del) + Add ---\nINITIAL STATE\n  - driver:available\n  - package:P1:warehouse\n  - truck:warehouse\n  - worker:warehouse\nCan execute pickup? True\nAFTER PICKUP\n  - driver:available\n  - package:P1:picked\n  - truck:warehouse\n  - worker:warehouse\nAFTER LOAD\n  - driver:available\n  - package:P1:loaded\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Preconditions reject illegal orderings",
+    "headingKn": "ಪ್ರಯೋಗ 2: Preconditions reject illegal orderings",
+    "bodyEn": "What it ran: Preconditions reject illegal orderings. What the lab concluded: execute() raises: Operator 'drive_to_customer' cannot execute for task ('drive_to_customer', 'P1')",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Preconditions reject illegal orderings. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): execute() raises: Operator 'drive_to_customer' cannot execute for task ('drive_to_customer', 'P1')"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Preconditions reject illegal orderings ---\ndrive_to_customer  at the initial state -> applicable: False\nhandover_package   at the initial state -> applicable: False\nload_package       at the initial state -> applicable: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Checking proposed sequences mechanically",
+    "headingKn": "ಪ್ರಯೋಗ 3: Checking proposed sequences mechanically",
+    "bodyEn": "What it ran: Checking proposed sequences mechanically. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Checking proposed sequences mechanically. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Checking proposed sequences mechanically ---\nfluent, correct order      -> valid, final state has delivered: True\ndrive first                -> rejected at step 1: drive_to_customer preconditions not met\npickup, drive, load, hand  -> rejected at step 2: drive_to_customer preconditions not met"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Why copying state matters during search",
+    "headingKn": "ಪ್ರಯೋಗ 4: Why copying state matters during search",
+    "bodyEn": "What it ran: Why copying state matters during search. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Why copying state matters during search. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Why copying state matters during search ---\noperator copied: shared state still has package at warehouse: True\nin-place operator: the caller's state was changed too: True\nafter that, a second branch cannot try pickup again: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Soundness is only as good as the schema",
+    "headingKn": "ಪ್ರಯೋಗ 5: Soundness is only as good as the schema",
+    "bodyEn": "What it ran: Soundness is only as good as the schema. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Soundness is only as good as the schema. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: soundness is only as good as the schema ---\nwrong schema (always True) allows payment without approval: True\ncorrect schema blocks it                                  : True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The hierarchy so far, and the deliberate gap",
+    "headingKn": "ಪ್ರಯೋಗ 6: The hierarchy so far, and the deliberate gap",
+    "bodyEn": "What it ran: The hierarchy so far, and the deliberate gap. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The hierarchy so far, and the deliberate gap. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. The hierarchy so far, and the deliberate gap ---\ndeliver_package    compound, has method\nprepare_package    compound, has method\ntransport_package  UNKNOWN: no operator and no method\npickup_package     primitive"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

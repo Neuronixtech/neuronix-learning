@@ -137,6 +137,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Sequential crew: Researcher -> Writer -> Editor",
+    "headingKn": "ಪ್ರಯೋಗ 1: Sequential crew: Researcher -> Writer -> Editor",
+    "bodyEn": "What it ran: Sequential crew: Researcher -> Writer -> Editor. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Sequential crew: Researcher -> Writer -> Editor. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Sequential crew: Researcher -> Writer -> Editor ---\nResearcher: 'Finding 1: Agents increasingly use explicit workflows.\\nFinding 2: Memory is externalized from model context.\\nFinding 3: Production systems emphasize observability.'\nWriter: 'Draft: Agents increasingly use explicit workflows.'\nEditor: 'Edited: Agents increasingly use explicit workflows.'\nfinal: Edited: Agents increasingly use explicit workflows."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The prompt an agent actually receives",
+    "headingKn": "ಪ್ರಯೋಗ 2: The prompt an agent actually receives",
+    "bodyEn": "What it ran: The prompt an agent actually receives. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The prompt an agent actually receives. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. The prompt an agent actually receives ---\nROLE:\nWriter\nGOAL:\nWrite a short brief\nBACKSTORY:\nA concise technical writer.\nTASK:\nWrite a one-sentence brief.\nCONTEXT:\nFinding 1: x"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Only the LAST output is threaded forward",
+    "headingKn": "ಪ್ರಯೋಗ 3: Only the LAST output is threaded forward",
+    "bodyEn": "What it ran: Only the LAST output is threaded forward. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Only the LAST output is threaded forward. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: only the LAST output is threaded forward ---\nfindings written by the Researcher: 3\n  after Researcher: findings still visible = 3; characters = 163\n  after Writer: findings still visible = 0; characters = 50\n  after Editor: findings still visible = 0; characters = 51\nthe Editor never saw Findings 2 and 3; nothing in the crew raised an error"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: What the hierarchical manager costs",
+    "headingKn": "ಪ್ರಯೋಗ 4: What the hierarchical manager costs",
+    "bodyEn": "What it ran: What the hierarchical manager costs. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What the hierarchical manager costs. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely counting: what the hierarchical manager costs ---\nsequential  : {'agent': 3, 'manager': 0} total model calls = 3\nhierarchical: {'agent': 3, 'manager': 4} total model calls = 7\nmanager trace: ['manager->Researcher', 'manager->Writer', 'manager->Editor', 'manager->done']\nsame final text: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A manager that reads wording instead of state loops",
+    "headingKn": "ಪ್ರಯೋಗ 5: A manager that reads wording instead of state loops",
+    "bodyEn": "What it ran: A manager that reads wording instead of state loops. What the lab concluded: the tracking manager (explicit completed list) finished in 4 decisions; routing needs state, not wording",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A manager that reads wording instead of state loops. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the tracking manager (explicit completed list) finished in 4 decisions; routing needs state, not wording"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: a manager that reads wording instead of state loops ---\nRuntimeError: manager never said done within 8 steps; trace tail: ['manager->Writer', 'manager->Researcher', 'manager->Writer']\neach agent's output replaces the context, so after the Writer the word 'Finding' is gone and the manager re-hires the Researcher"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Backstory is paid on every call",
+    "headingKn": "ಪ್ರಯೋಗ 6: Backstory is paid on every call",
+    "bodyEn": "What it ran: Backstory is paid on every call. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Backstory is paid on every call. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely measuring: backstory is paid on every call ---\nbackstory of    5 words -> prompt of    19 words, x3 calls = 57 words\nbackstory of  200 words -> prompt of   214 words, x3 calls = 642 words\nbackstory of 2000 words -> prompt of  2014 words, x3 calls = 6042 words"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Expected_output is a description, not a check",
+    "headingKn": "ಪ್ರಯೋಗ 7: Expected_output is a description, not a check",
+    "bodyEn": "What it ran: Expected_output is a description, not a check. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Expected_output is a description, not a check. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking: expected_output is a description, not a check ---\ntask contract says: exactly three findings | produced: 3 | execution raised nothing\na weaker agent produced 2 findings and the Task still returned normally\nenforcement has to be code you write (Part 2 adds a typed result)"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

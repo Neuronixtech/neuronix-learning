@@ -137,6 +137,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A v1 file is migrated once and the migration is repeatable",
+    "headingKn": "ಪ್ರಯೋಗ 1: A v1 file is migrated once and the migration is repeatable",
+    "bodyEn": "What it ran: A v1 file is migrated once and the migration is repeatable. What the lab concluded: a version-aware loader runs only the migration the file needs; repeating the rename blindly would have corrupted an already-migrated file",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A v1 file is migrated once and the migration is repeatable. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a version-aware loader runs only the migration the file needs; repeating the rename blindly would have corrupted an already-migrated file"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a v1 file is migrated once and the migration is repeatable ---\nmigrated 1 -> 2 -> 2 [{'description': 'fixture format unclear', 'status': 'open'}]\nsecond load: already current | identical to the first result: True\noriginal preserved as a backup with version 1 and blockers ['fixture format unclear']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: An unsupported version is refused",
+    "headingKn": "ಪ್ರಯೋಗ 2: An unsupported version is refused",
+    "bodyEn": "What it ran: An unsupported version is refused. What the lab concluded: a program that guessed at a newer or malformed version could misread fields silently; refusing stops it and points at the missing migration",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An unsupported version is refused. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a program that guessed at a newer or malformed version could misread fields silently; refusing stops it and points at the missing migration"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: an unsupported version is refused ---\nversion 3     -> unsupported schema_version 3: refusing to guess\nversion '1'   -> unsupported schema_version '1': refusing to guess\nversion None  -> unsupported schema_version None: refusing to guess"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A migration that does not validate its input or its output",
+    "headingKn": "ಪ್ರಯೋಗ 3: A migration that does not validate its input or its output",
+    "bodyEn": "What it ran: A migration that does not validate its input or its output. What the lab concluded: the input was a string where a list belongs, iterating it produced one 'blocker' per character, and the garbage was written over the original; a migration must validate the old document before transforming it and the new document before writing it, and keep the backup taken in section 1 until the result is verified",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A migration that does not validate its input or its output. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the input was a string where a list belongs, iterating it produced one 'blocker' per character, and the garbage was written over the original; a migration must validate the old document before transforming it and the new document before writing it, and keep the backup taken in section 1 until the result is verified"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: a migration that does not validate its input or its output ---\nno exception: migrated 1 -> 2 -> blockers now has 10 entries, first three: [{'description': 'n', 'status': 'open'}, {'description': 'o', 'status': 'open'}, {'description': 't', 'status': 'open'}]\nfile on disk changed by the migration: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Two writers update the same file, with and without a revision check (real threads)",
+    "headingKn": "ಪ್ರಯೋಗ 4: Two writers update the same file, with and without a revision check (real threads)",
+    "bodyEn": "What it ran: Two writers update the same file, with and without a revision check (real threads). What the lab concluded: without the check both writers reported success but one of the two changes is missing from the final file (whichever wrote first was overwritten from a stale copy); with the check the later writer was told to reload, and which writer loses depends on timing",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Two writers update the same file, with and without a revision check (real threads). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): without the check both writers reported success but one of the two changes is missing from the final file (whichever wrote first was overwritten from a stale copy); with the check the later writer was told to reload, and which writer loses depends on timing"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: two writers update the same file, with and without a revision check (real threads) ---\nrevision check=False outcomes {'A': 'saved', 'B': 'saved'} final file: blockers=['fixture unclear'] next_action='start'\nrevision check=True  outcomes {'A': 'saved', 'B': 'rejected (stale)'} final file: blockers=['fixture unclear'] next_action='start'"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Snapshot plus event log recovery",
+    "headingKn": "ಪ್ರಯೋಗ 5: Snapshot plus event log recovery",
+    "bodyEn": "What it ran: Snapshot plus event log recovery. What the lab concluded: replaying only events newer than the snapshot rebuilt the state and the half-written last record was ignored; deciding whether a torn record means a lost operation still needs a policy, and the event order and replay rules here are our own",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Snapshot plus event log recovery. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): replaying only events newer than the snapshot rebuilt the state and the half-written last record was ignored; deciding whether a torn record means a lost operation still needs a policy, and the event order and replay rules here are our own"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: snapshot plus event log recovery ---\napplied events [3, 4], skipped already-included events [2], ignored torn trailing records 1\nrecovered state: {'blockers': ['fixture unclear'], 'next_action': 'inspect fixture', 'seq': 4}"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -194,6 +277,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) A v1 file migrated once and a second load did nothing. 2) Versions 3, \"1\" and None were refused. 3) A malformed input produced 10 garbage blockers and overwrote the original. 4) Two unchecked writers lost one change; a revision check rejected the stale one. 5) Replay applied events 3 and 4, skipped 2 and ignored a torn record.",
     "bodyKn": "1) v1 ಫೈಲ್ ಒಮ್ಮೆ migrate ಆಯಿತು ಮತ್ತು ಎರಡನೇ ಲೋಡ್ ಏನೂ ಮಾಡಲಿಲ್ಲ. 2) ಆವೃತ್ತಿಗಳು 3, \"1\" ಮತ್ತು None ತಿರಸ್ಕರಿಸಲ್ಪಟ್ಟವು. 3) ತಪ್ಪಾದ ಇನ್‌ಪುಟ್ 10 ಕಸ blockers ಉತ್ಪಾದಿಸಿ ಮೂಲದ ಮೇಲೆ ಬರೆಯಿತು. 4) ಪರಿಶೀಲನೆ ಇಲ್ಲದ ಎರಡು writers ಒಂದು ಬದಲಾವಣೆ ಕಳೆದುಕೊಂಡವು; revision ಪರಿಶೀಲನೆ ಹಳೆಯದನ್ನು ತಿರಸ್ಕರಿಸಿತು. 5) ಮರುಪ್ರಸಾರ ಈವೆಂಟ್‌ಗಳು 3 ಮತ್ತು 4 ಅನ್ವಯಿಸಿ, 2 ಬಿಟ್ಟು ಹರಿದ ದಾಖಲೆ ನಿರ್ಲಕ್ಷಿಸಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B rm_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B rm_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B rm_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B rm_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

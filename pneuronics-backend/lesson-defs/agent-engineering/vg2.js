@@ -137,6 +137,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Values Python treats as 0 and what a type check does with them",
+    "headingKn": "ಪ್ರಯೋಗ 1: Values Python treats as 0 and what a type check does with them",
+    "bodyEn": "What it ran: Values Python treats as 0 and what a type check does with them. What the lab concluded: False == 0 and isinstance(False, int) are both true in Python, so a validator that only checks isinstance accepts a boolean as an exit code, and a loose comparison accepts 0.0 as success; the strict test type(v) is int rejects all of them except a real integer",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Values Python treats as 0 and what a type check does with them. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): False == 0 and isinstance(False, int) are both true in Python, so a validator that only checks isinstance accepts a boolean as an exit code, and a loose comparison accepts 0.0 as success; the strict test type(v) is int rejects all of them except a real integer"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely checking: values Python treats as 0 and what a type check does with them ---\nint 0       == 0: True  | isinstance int: True  | strict type is int: True\nbool False  == 0: True  | isinstance int: True  | strict type is int: False\nstr '0'     == 0: False | isinstance int: False | strict type is int: False\nfloat 0.0   == 0: True  | isinstance int: False | strict type is int: False\nNone        == 0: False | isinstance int: False | strict type is int: False\nbool True   == 0: False | isinstance int: True  | strict type is int: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Malformed records fail closed",
+    "headingKn": "ಪ್ರಯೋಗ 2: Malformed records fail closed",
+    "bodyEn": "What it ran: Malformed records fail closed. What the lab concluded: every malformed record produced an invalid-evidence finding and, because it was excluded from the valid set, an acceptance-not-run finding as well; the gate did not guess what the writer meant",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Malformed records fail closed. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): every malformed record produced an invalid-evidence finding and, because it was excluded from the valid set, an acceptance-not-run finding as well; the gate did not guess what the writer meant"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: malformed records fail closed ---\nvalid                passed=True  []\nexit_code is False   passed=False [('EVIDENCE_INVALID', 0, 'exit_code must be an int, got bool'), ('ACCEPTANCE_NOT_RUN', None, 'python -m unittest')]\nexit_code is '0'     passed=False [('EVIDENCE_INVALID', 0, 'exit_code must be an int, got str'), ('ACCEPTANCE_NOT_RUN', None, 'python -m unittest')]\nexit_code is None    passed=False [('EVIDENCE_INVALID', 0, 'exit_code must be an int, got NoneType'), ('ACCEPTANCE_NOT_RUN', None, 'python -m unittest')]\nmissing revision     passed=False [('EVIDENCE_INVALID', 0, 'missing revision'), ('ACCEPTANCE_NOT_RUN', None, 'python -m unittest')]\nnot an object        passed=False [('EVIDENCE_INVALID', 0, 'record is not an object'), ('ACCEPTANCE_NOT_RUN', None, 'python -m unittest')]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Identity and revision",
+    "headingKn": "ಪ್ರಯೋಗ 3: Identity and revision",
+    "bodyEn": "What it ran: Identity and revision. What the lab concluded: a pass for another task or an older revision was not accepted as proof; this gate also reports every stale record as invalid evidence, so a stale record next to a valid final pass still blocked (the 'old failure then new pass' line), which is strict but noisy, and a gate that filters by revision first would pass; with two records for the final revision the last one decided; each of these is a policy choice that has to be written down",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Identity and revision. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a pass for another task or an older revision was not accepted as proof; this gate also reports every stale record as invalid evidence, so a stale record next to a valid final pass still blocked (the 'old failure then new pass' line), which is strict but noisy, and a gate that filters by revision first would pass; with two records for the final revision the last one decided; each of these is a policy choice that has to be written down"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: identity and revision ---\nevidence for another task      : False\npass recorded on an older revision: False\nold pass then new failure       : (False, [('EVIDENCE_INVALID', 0, 'record is for another revision'), ('ACCEPTANCE_FAILED', None, '1')])\nold failure then new pass       : False\nsame revision, fail then pass    : True | same revision, pass then fail: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: How exactly the command must match",
+    "headingKn": "ಪ್ರಯೋಗ 4: How exactly the command must match",
+    "bodyEn": "What it ran: How exactly the command must match. What the lab concluded: a harmless double space failed the exact match, and normalising whitespace fixed that without accepting a command with extra flags; whether -v counts is a policy decision, because flags may change what is run",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How exactly the command must match. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a harmless double space failed the exact match, and normalising whitespace fixed that without accepting a command with extra flags; whether -v counts is a policy decision, because flags may change what is run"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: how exactly the command must match ---\nexact            exact match -> True  | whitespace-normalised -> True\ndouble space     exact match -> False | whitespace-normalised -> True\ntrailing space   exact match -> False | whitespace-normalised -> True\ndifferent flags  exact match -> False | whitespace-normalised -> False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The command-line exit codes through a real subprocess",
+    "headingKn": "ಪ್ರಯೋಗ 5: The command-line exit codes through a real subprocess",
+    "bodyEn": "What it ran: The command-line exit codes through a real subprocess. What the lab concluded: NaN check for reference: True - numeric evidence such as coverage needs the same strictness, which the next part applies",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The command-line exit codes through a real subprocess. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): NaN check for reference: True - numeric evidence such as coverage needs the same strictness, which the next part applies"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: the command-line exit codes through a real subprocess ---\ngood evidence     printed PASS               exit code 0\nfailing evidence  printed BLOCK              exit code 1\ncorrupt file      printed evidence unreadable exit code 2\nwrong shape       printed evidence unreadable exit code 2\n0 means verified, 1 means verified and blocked, and 2 means the evidence could not be read; keeping 2 separate lets a CI job tell 'the work is not done' from 'the gate could not decide', and both stop the pipeline"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -194,6 +277,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) A boolean passes an isinstance int check; type(v) is int does not. 2) Every malformed record blocked. 3) Records for another task or older revision were not accepted, and stale records blocked noisily. 4) Whitespace changed an exact command match. 5) Exit codes were 0, 1 and 2.",
     "bodyKn": "1) Boolean isinstance int ಪರಿಶೀಲನೆ ಪಾಸ್ ಮಾಡುತ್ತದೆ; type(v) is int ಮಾಡುವುದಿಲ್ಲ. 2) ಪ್ರತಿ ದೋಷಪೂರ್ಣ ದಾಖಲೆ ತಡೆಯಿತು. 3) ಬೇರೆ ಕಾರ್ಯ ಅಥವಾ ಹಳೆಯ revision ದಾಖಲೆಗಳು ಸ್ವೀಕರಿಸಲ್ಪಡಲಿಲ್ಲ, ಮತ್ತು ಹಳೆಯ ದಾಖಲೆಗಳು ಗದ್ದಲದಿಂದ ತಡೆದವು. 4) ಖಾಲಿಸ್ಥಳ ನಿಖರ ಆದೇಶ ಹೊಂದಾಣಿಕೆ ಬದಲಿಸಿತು. 5) Exit codes 0, 1 ಮತ್ತು 2 ಆಗಿದ್ದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B vg_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B vg_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B vg_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B vg_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

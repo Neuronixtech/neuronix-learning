@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The reported touched files against the real git diff",
+    "headingKn": "ಪ್ರಯೋಗ 1: The reported touched files against the real git diff",
+    "bodyEn": "What it ran: The reported touched files against the real git diff. What the lab concluded: both kinds of mismatch are findings: an unreported change is a hidden edit and a reported file that never changed is a claim with nothing behind it; the scope report is a derived assessment, and the diff is the evidence it must agree with",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The reported touched files against the real git diff. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both kinds of mismatch are findings: an unreported change is a hidden edit and a reported file that never changed is a claim with nothing behind it; the scope report is a derived assessment, and the diff is the evidence it must agree with"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the reported touched files against the real git diff ---\nchanged in git but not reported: ['src/auth.py']\nreported but not changed in git: ['tests/test_pay.py']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Coverage regression with numeric validation",
+    "headingKn": "ಪ್ರಯೋಗ 2: Coverage regression with numeric validation",
+    "bodyEn": "What it ran: Coverage regression with numeric validation. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Coverage regression with numeric validation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: coverage regression with numeric validation ---\n85 to 85     ('pass', 'within tolerance')\n85 to 84.5   ('pass', 'within tolerance')\n85 to 83     ('block', 'coverage fell 2.0 points')\n85 to NaN    ('block', 'current coverage is not a number from 0 to 100')\n85 to True   ('block', 'current coverage is not a number from 0 to 100')\n85 to '90'   ('block', 'current coverage is not a number from 0 to 100')\n85 to 120    ('block', 'current coverage is not a number from 0 to 100')\na drop within the tolerance passed and a larger one blocked; NaN fails every comparison, so without the explicit check a NaN coverage would not have looked like a drop at all, and booleans and strings are rejected like …\nwhat a bare comparison says for NaN: False False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Signed overrides",
+    "headingKn": "ಪ್ರಯೋಗ 3: Signed overrides",
+    "bodyEn": "What it ran: Signed overrides. What the lab concluded: a correctly signed, in-date override for the right finding was accepted, and editing the expiry broke the signature; policy also refuses to override a scope violation even when validly signed; the key here is a made-up constant in the lab, and a real key must be held outside the agent's reach",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Signed overrides. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a correctly signed, in-date override for the right finding was accepted, and editing the expiry broke the signature; policy also refuses to override a scope violation even when validly signed; the key here is a made-up constant in the lab, and a real key must be held outside the agent's reach"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: signed overrides ---\nvalid override: (True, 'override accepted')\nother task    : (False, 'override is for another task or finding')\nexpired       : (False, 'override expired')\nexpiry edited : (False, 'signature does not match')\nscope finding : (False, 'this finding cannot be overridden')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Testing the gate itself by mutation",
+    "headingKn": "ಪ್ರಯೋಗ 4: Testing the gate itself by mutation",
+    "bodyEn": "What it ran: Testing the gate itself by mutation. What the lab concluded: each of four deliberate breakages made at least one test fail, so these four tests are enough to notice them; this is four hand-made mutants of a two-line function, not a measure of coverage, and the missing-evidence and malformed-evidence paths would need their own tests",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Testing the gate itself by mutation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each of four deliberate breakages made at least one test fail, so these four tests are enough to notice them; this is four hand-made mutants of a two-line function, not a measure of coverage, and the missing-evidence and malformed-evidence paths would need their own tests"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: testing the gate itself by mutation ---\ntests against the real gate: [True, True, True, True]\nblock becomes warn   tests: [True, False, False, True] -> caught\nany becomes all      tests: [False, True, True, False] -> caught\nnot removed          tests: [False, False, False, False] -> caught\nalways true          tests: [True, True, False, False] -> caught"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A weak test suite lets a mutant survive",
+    "headingKn": "ಪ್ರಯೋಗ 5: A weak test suite lets a mutant survive",
+    "bodyEn": "What it ran: A weak test suite lets a mutant survive. What the lab concluded: with only the two passing scenarios, one of the four mutants (always true) survived and the other three were still caught because they also changed a passing outcome; a gate that always allows is only caught by a case that should block, which is the case the gate exists for",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A weak test suite lets a mutant survive. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with only the two passing scenarios, one of the four mutants (always true) survived and the other three were still caught because they also changed a passing outcome; a gate that always allows is only caught by a case that should block, which is the case the gate exists for"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: a weak test suite lets a mutant survive ---\nblock becomes warn   survives a suite that only has the pass cases: False\nany becomes all      survives a suite that only has the pass cases: False\nnot removed          survives a suite that only has the pass cases: False\nalways true          survives a suite that only has the pass cases: True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Git found a changed file the report omitted and a reported file that never changed. 2) A 2-point coverage drop blocked and NaN was rejected. 3) Overrides were refused for another task, after expiry, with an edited expiry and for a scope violation. 4) Four mutants were caught by four tests. 5) A suite with only passing cases missed the always-true mutant.",
     "bodyKn": "1) git ವರದಿ ಬಿಟ್ಟ ಬದಲಾದ ಫೈಲ್ ಮತ್ತು ಎಂದೂ ಬದಲಾಗದ ವರದಿ ಮಾಡಿದ ಫೈಲ್ ಕಂಡುಹಿಡಿಯಿತು. 2) 2-ಪಾಯಿಂಟ್ coverage ಇಳಿಕೆ ತಡೆಯಿತು ಮತ್ತು NaN ತಿರಸ್ಕೃತವಾಯಿತು. 3) overrides ಬೇರೆ ಕಾರ್ಯಕ್ಕೆ, ಮುಕ್ತಾಯದ ನಂತರ, ಸಂಪಾದಿಸಿದ ಮುಕ್ತಾಯದೊಂದಿಗೆ ಮತ್ತು scope violation ಗೆ ತಿರಸ್ಕೃತವಾದವು. 4) ನಾಲ್ಕು mutants ಅನ್ನು ನಾಲ್ಕು ಪರೀಕ್ಷೆಗಳು ಹಿಡಿದವು. 5) ಕೇವಲ ಪಾಸ್ ಪ್ರಕರಣಗಳ ಸೂಟ್ always-true mutant ತಪ್ಪಿಸಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B vg_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B vg_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B vg_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B vg_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

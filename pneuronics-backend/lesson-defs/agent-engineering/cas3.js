@@ -137,6 +137,149 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The lesson's session store demo",
+    "headingKn": "ಪ್ರಯೋಗ 1: The lesson's session store demo",
+    "bodyEn": "What it ran: The lesson's session store demo. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lesson's session store demo. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The lesson's session store demo ---\n[{'role': 'user', 'content': 'hello'}]\n['parent:subagent:a', 'parent:subagent:b']\n['parent', 'parent:subagent:a', 'parent:subagent:b']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Hierarchical ids are strings, so names can collide",
+    "headingKn": "ಪ್ರಯೋಗ 2: Hierarchical ids are strings, so names can collide",
+    "bodyEn": "What it ran: Hierarchical ids are strings, so names can collide. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Hierarchical ids are strings, so names can collide. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: hierarchical ids are strings, so names can collide ---\nsubkeys of p: ['p:subagent:x', 'p:subagent:x:subagent:y', 'p:subagent:z:subagent:q']\nlist_subkeys cannot tell a grandchild from a child whose name contains ':subagent:'\nafter delete('p:subagent:x'): ['p', 'p:subagent:z:subagent:q']\ndeleting a child also deleted its grandchild (prefix match), and the literal name ambiguity was never rejected\ndelete('job') leaves unrelated 'job2' and its child: ['job2', 'job2:subagent:a']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The lock protects append, not a check-then-act sequence",
+    "headingKn": "ಪ್ರಯೋಗ 3: The lock protects append, not a check-then-act sequence",
+    "bodyEn": "What it ran: The lock protects append, not a check-then-act sequence. What the lab concluded: every append succeeded either way (no lost messages), but numbering computed from load() raced without a wider lock",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lock protects append, not a check-then-act sequence. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): every append succeeded either way (no lost messages), but numbering computed from load() raced without a wider lock"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: the lock protects append, not a check-then-act sequence ---\nextra gate around next-number: False | messages 2400 | distinct numbers 1970 | duplicates 430\nextra gate around next-number: True  | messages 2400 | distinct numbers 2400 | duplicates 0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Hooks: order, blocking and the audit trail",
+    "headingKn": "ಪ್ರಯೋಗ 4: Hooks: order, blocking and the audit trail",
+    "bodyEn": "What it ran: Hooks: order, blocking and the audit trail. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Hooks: order, blocking and the audit trail. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Hooks: order, blocking and the audit trail ---\nwrite allowed file: Wrote 2 characters to notes.txt\nwrite protected/secret.txt: PermissionError: Write blocked\nhook calls in order: [('pre-A', 'write_file'), ('pre-B', 'write_file'), ('post', 'write_file'), ('pre-A', 'write_file')]\npre-B never ran for the blocked call (the first raising hook stops the chain) and no post event exists for it\nunknown event name: ValueError: Unknown hook event: pre_tool_usee"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The blocking hook compares strings, not files",
+    "headingKn": "ಪ್ರಯೋಗ 5: The blocking hook compares strings, not files",
+    "bodyEn": "What it ran: The blocking hook compares strings, not files. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The blocking hook compares strings, not files. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: the blocking hook compares strings, not files ---\nexact spelling   string hook   blocked\nexact spelling   resolved hook blocked\nwith ..          string hook   WRITTEN\nwith ..          resolved hook blocked\nwith ./          string hook   WRITTEN\nwith ./          resolved hook blocked\nabsolute path    string hook   WRITTEN\nabsolute path    resolved hook blocked\nupper-case dir   string hook   WRITTEN\nupper-case dir   resolved hook blocked\non this case-insensitive Windows filesystem 'PROTECTED/secret.txt' is the same file; the resolved hook caught it because resolve() normalises the path\nthe string hook only blocked the one exact spelling"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A hook that crashes",
+    "headingKn": "ಪ್ರಯೋಗ 6: A hook that crashes",
+    "bodyEn": "What it ran: A hook that crashes. What the lab concluded: a buggy logging hook stops every tool call when hooks fail closed; failing open keeps the agent running but must still re-raise real policy denials",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A hook that crashes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a buggy logging hook stops every tool call when hooks fail closed; failing open keeps the agent running but must still re-raise real policy denials"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: a hook that crashes ---\nfail_open=False: list_dir: ZeroDivisionError: division by zero\n   recorded hook errors: []\nfail_open=True: list_dir: ['notes.txt', 'protected']\n   recorded hook errors: ['pre_tool_use: ZeroDivisionError: division by zero']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Does the trace reach worker threads",
+    "headingKn": "ಪ್ರಯೋಗ 7: Does the trace reach worker threads",
+    "bodyEn": "What it ran: Does the trace reach worker threads. What the lab concluded: a ContextVar set in the parent is invisible in a pool thread unless the context is copied; the lesson avoids this by passing TraceContext as an argument",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Does the trace reach worker threads. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a ContextVar set in the parent is invisible in a pool thread unless the context is copied; the lesson avoids this by passing TraceContext as an argument"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking: does the trace reach worker threads ---\nplain submit   sees trace: None\ncopy_context   sees trace: 32b68f3e"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: The 8-character trace label",
+    "headingKn": "ಪ್ರಯೋಗ 8: The 8-character trace label",
+    "bodyEn": "What it ran: The 8-character trace label. What the lab concluded: the full trace_id is 32 hex characters and is unique; only the shortened label can repeat, so search logs by the full id",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The 8-character trace label. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the full trace_id is 32 hex characters and is unique; only the shortened label can repeat, so search logs by the full id"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Genuinely measuring: the 8-character trace label ---\n200000 traces, child labels that repeated: 4 (birthday estimate about 4.7)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 9: Whole program: hooks + traced subagents + session store",
+    "headingKn": "ಪ್ರಯೋಗ 9: Whole program: hooks + traced subagents + session store",
+    "bodyEn": "What it ran: Whole program: hooks + traced subagents + session store. What the lab concluded: the three PreToolUse lines carry an agent field but no trace id, so correlating them with the trace needs the thread or the call order",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Whole program: hooks + traced subagents + session store. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the three PreToolUse lines carry an agent field but no trace id, so correlating them with the trace needs the thread or the call order"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 9. Whole program: hooks + traced subagents + session store ---\n[SessionStart] session=demo trace=c7ed363f\n[PreToolUse] agent=auth-researcher tool=read_file\n[PreToolUse] agent=billing-researcher tool=read_file\n[PreToolUse] agent=search-researcher tool=read_file\n[PostToolUse] agent=auth-researcher tool=read_file\n[PostToolUse] agent=billing-researcher tool=read_file\n[PostToolUse] agent=search-researcher tool=read_file\n[SessionEnd] session=demo summaries=3\n['c7ed363f:auth-researcher read 611 chars', 'c7ed363f:billing-researcher read 764 chars', 'c7ed363f:search-researcher read 713 chars']\nsession keys: ['demo:subagent:auth-researcher', 'demo:subagent:billing-researcher', 'demo:subagent:search-researcher']"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

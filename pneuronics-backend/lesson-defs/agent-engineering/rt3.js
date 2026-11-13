@@ -142,6 +142,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Overlap policy when a run (8 s) is longer than the interval (5 s), 30 simulated seconds",
+    "headingKn": "ಪ್ರಯೋಗ 1: Overlap policy when a run (8 s) is longer than the interval (5 s), 30 simulated seconds",
+    "bodyEn": "What it ran: Overlap policy when a run (8 s) is longer than the interval (5 s), 30 simulated seconds. What the lab concluded: allow starts a second run while the first is still running, skip drops the occurrence, queue defers it until the first finishes; none of them is right for every job, and for jobs that write shared state 'allow' risks the double writes described in the lesson",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Overlap policy when a run (8 s) is longer than the interval (5 s), 30 simulated seconds. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): allow starts a second run while the first is still running, skip drops the occurrence, queue defers it until the first finishes; none of them is right for every job, and for jobs that write shared state 'allow' risks the double writes described in the lesson"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: overlap policy when a run (8 s) is longer than the interval (5 s), 30 simulated seconds ---\noverlap=allow started 6 runs, skipped 0, left queued 0, start times [0, 5, 10, 15, 20, 25]\noverlap=skip  started 3 runs, skipped 3, left queued 0, start times [0, 10, 20]\noverlap=queue started 4 runs, skipped 0, left queued 2, start times [0, 8, 16, 24]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Misfire after the scheduler was down (every 60 s, down from t=100 to t=700 = 600 s, overl…",
+    "headingKn": "ಪ್ರಯೋಗ 2: Misfire after the scheduler was down (every 60 s, down from t=100 to t=700 = 600 s, overl…",
+    "bodyEn": "What it ran: Misfire after the scheduler was down (every 60 s, down from t=100 to t=700 = 600 s, overlap allowed). What the lab concluded: run_all replayed every missed occurrence in one second after the restart (a load spike), run_once ran only the latest, skip dropped them all; the lesson's example of 8 hours down at one run a minute is 480 missed runs, and the interaction between the misfire and overlap policies changes what actually happens",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Misfire after the scheduler was down (every 60 s, down from t=100 to t=700 = 600 s, overlap allowed). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): run_all replayed every missed occurrence in one second after the restart (a load spike), run_once ran only the latest, skip dropped them all; the lesson's example of 8 hours down at one run a minute is 480 missed runs, and the interaction between the misfire and overlap policies changes what actually happens"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: misfire after the scheduler was down (every 60 s, down from t=100 to t=700 = 600 s, overlap allowed) ---\nmisfire=skip     total runs  3, runs started late:  0, largest schedule lag   0 s, runs started at t=700: 0\nmisfire=run_once total runs  4, runs started late:  1, largest schedule lag  40 s, runs started at t=700: 1\nmisfire=run_all  total runs 13, runs started late: 10, largest schedule lag 580 s, runs started at t=700: 10\nwith overlap=skip and misfire=run_all the same outage produced 4 runs and 9 skipped occurrences: the overlap policy silently collapsed the catch-up burst"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A deterministic execution key suppresses a duplicate fire after a restart",
+    "headingKn": "ಪ್ರಯೋಗ 3: A deterministic execution key suppresses a duplicate fire after a restart",
+    "bodyEn": "What it ran: A deterministic execution key suppresses a duplicate fire after a restart. What the lab concluded: schedule id plus scheduled time identifies one occurrence, so a record of finished keys makes a re-fire harmless; the key store must survive the restart for this to work",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A deterministic execution key suppresses a duplicate fire after a restart. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): schedule id plus scheduled time identifies one occurrence, so a record of finished keys makes a re-fire harmless; the key store must survive the restart for this to work"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: a deterministic execution key suppresses a duplicate fire after a restart ---\nfirst scheduler process ran 3 occurrences; a restarted process with the recorded keys ran 0 more\nwithout the recorded keys the restarted process ran 3 occurrences again (duplicates)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Cron as a queue producer versus running the work inline",
+    "headingKn": "ಪ್ರಯೋಗ 4: Cron as a queue producer versus running the work inline",
+    "bodyEn": "What it ran: Cron as a queue producer versus running the work inline. What the lab concluded: the figures are simple arithmetic on an assumed 200 one-second reports; the point is the separation of when work starts from how it is executed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Cron as a queue producer versus running the work inline. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the figures are simple arithmetic on an assumed 200 one-second reports; the point is the separation of when work starts from how it is executed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: cron as a queue producer versus running the work inline ---\ninline: the scheduler thread is busy for 200 simulated seconds and one crash loses track of which of 200 reports finished\nas a producer: the scheduler is busy for about 1 second to enqueue 200 jobs; workers retry or dead-letter each job separately"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Correlation ids connect cron, queue, worker and agent steps",
+    "headingKn": "ಪ್ರಯೋಗ 5: Correlation ids connect cron, queue, worker and agent steps",
+    "bodyEn": "What it ran: Correlation ids connect cron, queue, worker and agent steps. What the lab concluded: 6 records share one trace id; filtering on it reconstructs the path and separates a late scheduler (schedule_lag_s=4) from a slow agent",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Correlation ids connect cron, queue, worker and agent steps. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): 6 records share one trace id; filtering on it reconstructs the path and separates a late scheduler (schedule_lag_s=4) from a slow agent"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: correlation ids connect cron, queue, worker and agent steps ---\ntrace=trace:nightly:2026-10-05T02:00 component=cron   action=trigger   {'schedule_lag_s': 4}\ntrace=trace:nightly:2026-10-05T02:00 component=queue  action=submit    {'depth': 14}\ntrace=trace:nightly:2026-10-05T02:00 component=worker action=start     {'wait_s': 6}\ntrace=trace:nightly:2026-10-05T02:00 component=agent  action=step      {'n': 1}\ntrace=trace:nightly:2026-10-05T02:00 component=agent  action=step      {'n': 2}\ntrace=trace:nightly:2026-10-05T02:00 component=worker action=complete  {}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The runtime-selection heuristic on six requirements",
+    "headingKn": "ಪ್ರಯೋಗ 6: The runtime-selection heuristic on six requirements",
+    "bodyEn": "What it ran: The runtime-selection heuristic on six requirements. What the lab concluded: the heuristic returns composable shapes (for example event + queue + durable), which mirrors the lesson's composition matrix; it is a design aid we wrote, not a rule, and real choices also weigh cost and team experience",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The runtime-selection heuristic on six requirements. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the heuristic returns composable shapes (for example event + queue + durable), which mirrors the lesson's composition matrix; it is a design aid we wrote, not a rule, and real choices also weigh cost and team experience"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: the runtime-selection heuristic on six requirements ---\nchat answer in 3 s       -> ['request-response']\nchat with live typing    -> ['streaming']\n30-minute research       -> ['queue', 'durable']\nPR opened review         -> ['event', 'queue', 'durable']\nnightly evaluation       -> ['cron', 'queue', 'durable']\nhourly memory tidy       -> ['cron', 'queue']"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

@@ -218,6 +218,134 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Registered capabilities",
+    "headingKn": "ಪ್ರಯೋಗ 1: Registered capabilities",
+    "bodyEn": "What it ran: Registered capabilities. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Registered capabilities. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Registered capabilities ---\n  calculator\n  kv_store.get\n  kv_store.set"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The three tools, called through the registry",
+    "headingKn": "ಪ್ರಯೋಗ 2: The three tools, called through the registry",
+    "bodyEn": "What it ran: The three tools, called through the registry. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The three tools, called through the registry. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. The three tools, called through the registry ---\nkv_store.get(price)        -> '125'\ncalculator(125 * 1.18)     -> 147.5\ncalculator(10 / 0)         -> 'ERROR: division by zero'\ncalculator(2 ^ 3)          -> 'ERROR: unsupported operator: ^'\nkv_store.get(missing)      -> \"ERROR: key 'missing' not found\""
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A state-changing tool",
+    "headingKn": "ಪ್ರಯೋಗ 3: A state-changing tool",
+    "bodyEn": "What it ran: A state-changing tool. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A state-changing tool. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. A state-changing tool ---\nbefore: testing\nstored project_status=complete\nafter : complete"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Unknown tool becomes an observation, not a crash",
+    "headingKn": "ಪ್ರಯೋಗ 4: Unknown tool becomes an observation, not a crash",
+    "bodyEn": "What it ran: Unknown tool becomes an observation, not a crash. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Unknown tool becomes an observation, not a crash. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Unknown tool becomes an observation, not a crash ---\nERROR: unknown tool: database.destroy_everything"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The lesson's ToolRegistry.call() with wrong argument names",
+    "headingKn": "ಪ್ರಯೋಗ 5: The lesson's ToolRegistry.call() with wrong argument names",
+    "bodyEn": "What it ran: The lesson's ToolRegistry.call() with wrong argument names. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lesson's ToolRegistry.call() with wrong argument names. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. The lesson's ToolRegistry.call() with wrong argument names ---\nUNCAUGHT TypeError: kv_get() got an unexpected keyword argument 'wrong_argument'"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Hardened registry: the same bad call",
+    "headingKn": "ಪ್ರಯೋಗ 6: Hardened registry: the same bad call",
+    "bodyEn": "What it ran: Hardened registry: the same bad call. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Hardened registry: the same bad call. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Hardened registry: the same bad call ---\nERROR: invalid arguments for kv_store.get: kv_get() got an unexpected keyword argument 'wrong_argument'\nERROR: could not convert string to float: 'abc'"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Observation formatter",
+    "headingKn": "ಪ್ರಯೋಗ 7: Observation formatter",
+    "bodyEn": "What it ran: Observation formatter. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Observation formatter. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Observation formatter ---\ncalculator returned: 147.5\nkv_store.get returned: 125"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: A growing message buffer",
+    "headingKn": "ಪ್ರಯೋಗ 8: A growing message buffer",
+    "bodyEn": "What it ran: A growing message buffer. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A growing message buffer. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. A growing message buffer ---\n1. user  -             Read the stored price and calculate price * 1.18.\n2. tool  kv_store.get  125\n3. tool  calculator    147.5\nlength: 3"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

@@ -171,6 +171,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The tokenizer and the estimate",
+    "headingKn": "ಪ್ರಯೋಗ 1: The tokenizer and the estimate",
+    "bodyEn": "What it ran: The tokenizer and the estimate. What the lab concluded: 'The deadline is October 20.'              tokens(words)=['the', 'deadline', 'is', 'october', '20'] estimate=6",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The tokenizer and the estimate. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): 'The deadline is October 20.'              tokens(words)=['the', 'deadline', 'is', 'october', '20'] estimate=6"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The tokenizer and the estimate ---\n'Alice owns the evaluation pipeline.'      tokens(words)=['alice', 'owns', 'the', 'evaluation', 'pipeline'] estimate=6\n'Hello'                                    tokens(words)=['hello'] estimate=1\n''                                         tokens(words)=[] estimate=1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Why a bigger window only postpones overflow (arithmetic)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Why a bigger window only postpones overflow (arithmetic)",
+    "bodyEn": "What it ran: Why a bigger window only postpones overflow (arithmetic). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Why a bigger window only postpones overflow (arithmetic). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Why a bigger window only postpones overflow (arithmetic) ---\n1200 tokens/turn x 14 turns = 16,800 tokens = 51% of a 32,768-token budget\n  14 turns ->   16,800 tokens; over budget: False\n  27 turns ->   32,400 tokens; over budget: False\n  28 turns ->   33,600 tokens; over budget: True\n 100 turns ->  120,000 tokens; over budget: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Rendering: structured memory becomes prompt text",
+    "headingKn": "ಪ್ರಯೋಗ 3: Rendering: structured memory becomes prompt text",
+    "bodyEn": "What it ran: Rendering: structured memory becomes prompt text. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Rendering: structured memory becomes prompt text. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Rendering: structured memory becomes prompt text ---\n[CORE:project] The active project is Orion.\n[CORE:preferences] The user prefers concise technical explanations.\nUSER: What are we building?\napproximate tokens: 26"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Compaction under a tiny budget (max_tokens=50)",
+    "headingKn": "ಪ್ರಯೋಗ 4: Compaction under a tiny budget (max_tokens=50)",
+    "bodyEn": "What it ran: Compaction under a tiny budget (max_tokens=50). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Compaction under a tiny budget (max_tokens=50). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Compaction under a tiny budget (max_tokens=50) ---\n   after add: tokens=18 messages=1\n   after add: tokens=28 messages=2\n   after add: tokens=36 messages=3\n   after add: tokens=46 messages=4\n[COMPACT] evicted user message: We need to prepare the prototype.\n   after add: tokens=45 messages=4\nrendered context now:\n[CORE:project] The active project is Orion.\nASSISTANT: I will help organize the prototype work.\nUSER: First we need traction testing.\nASSISTANT: Traction testing is now the active task.\nUSER: Alice owns the evaluation pipeline.\ncore survived: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Eviction is not forgetting only if something archived it",
+    "headingKn": "ಪ್ರಯೋಗ 5: Eviction is not forgetting only if something archived it",
+    "bodyEn": "What it ran: Eviction is not forgetting only if something archived it. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Eviction is not forgetting only if something archived it. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Eviction is not forgetting only if something archived it ---\nevicted from the working context: ['We need to prepare the prototype.']\nis that exact message still in main.messages? False\nnothing else stored it, so it is gone"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Edge case: pinned core memory larger than the budget",
+    "headingKn": "ಪ್ರಯೋಗ 6: Edge case: pinned core memory larger than the budget",
+    "bodyEn": "What it ran: Edge case: pinned core memory larger than the budget. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Edge case: pinned core memory larger than the budget. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Edge case: pinned core memory larger than the budget ---\n[COMPACT] evicted user message: hello there\ncore tokens: 41 | budget: 20 | total now: 45\nmessages left: 1 (compaction stops at one message, still over budget)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Genuinely checking the estimator on Kannada text",
+    "headingKn": "ಪ್ರಯೋಗ 7: Genuinely checking the estimator on Kannada text",
+    "bodyEn": "What it ran: Genuinely checking the estimator on Kannada text. What the lab concluded: the Kannada run behaves exactly like empty messages: only the 'USER' label is counted, so the message content is invisible to the budget",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely checking the estimator on Kannada text. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the Kannada run behaves exactly like empty messages: only the 'USER' label is counted, so the message content is invisible to the budget"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking the estimator on Kannada text ---\nEnglish : 6 tokens ['alice', 'owns', 'the', 'evaluation', 'pipeline']\nKannada : 1 token  []\nEnglish    first eviction after 13 messages (budget 100)\nKannada    first eviction after 78 messages (budget 100)\nempty text first eviction after 78 messages (budget 100)"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

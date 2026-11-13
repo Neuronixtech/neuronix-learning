@@ -137,6 +137,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Traces and sessions from a few runs",
+    "headingKn": "ಪ್ರಯೋಗ 1: Traces and sessions from a few runs",
+    "bodyEn": "What it ran: Traces and sessions from a few runs. What the lab concluded: a session groups traces and a trace groups spans; a session is not always one conversation, only whatever id the application chooses",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Traces and sessions from a few runs. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a session groups traces and a trace groups spans; a session is not always one conversation, only whatever id the application chooses"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Traces and sessions from a few runs ---\nspans: 9 | trace 69f9fe55a904 has 3 spans\nsession sess-1 -> {'69f9fe55a904': 3, 'b456702d5266': 3}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Spans that lose their session or parent",
+    "headingKn": "ಪ್ರಯೋಗ 2: Spans that lose their session or parent",
+    "bodyEn": "What it ran: Spans that lose their session or parent. What the lab concluded: a run whose spans lost the session id vanished from the session view with no error, and a span without its parent id looks like a second root in its own trace",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Spans that lose their session or parent. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a run whose spans lost the session id vanished from the session view with no error, and a span without its parent id looks like a second root in its own trace"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: spans that lose their session or parent ---\nruns started: 3 | traces the session query can see: 2 | spans in the collector: 9\nspans with no parent (roots): 4 of which expected 3 | spans whose parent is missing: 0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A double-delivered batch (at-least-once export) with and without dedupe",
+    "headingKn": "ಪ್ರಯೋಗ 3: A double-delivered batch (at-least-once export) with and without dedupe",
+    "bodyEn": "What it ran: A double-delivered batch (at-least-once export) with and without dedupe. What the lab concluded: a retry that delivers the same batch twice doubled every count until the collector rejected repeated span ids",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A double-delivered batch (at-least-once export) with and without dedupe. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a retry that delivers the same batch twice doubled every count until the collector rejected repeated span ids"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: a double-delivered batch (at-least-once export) with and without dedupe ---\ndedupe by span_id=False spans stored  600 | total tokens reported  20000 (true value 10000)\ndedupe by span_id=True  spans stored  300 | total tokens reported  10000 (true value 10000)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Counting tokens by words versus by characters (hand-written samples)",
+    "headingKn": "ಪ್ರಯೋಗ 4: Counting tokens by words versus by characters (hand-written samples)",
+    "bodyEn": "What it ran: Counting tokens by words versus by characters (hand-written samples). What the lab concluded: the two crude estimates agree on 3 of 6 samples, differ by about 1.4 times on the sentence and by 7 times on the URL; neither knows the model's tokenizer, so token counts for cost have to come from the provider's usage field",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Counting tokens by words versus by characters (hand-written samples). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the two crude estimates agree on 3 of 6 samples, differ by about 1.4 times on the sentence and by 7 times on the URL; neither knows the model's tokenizer, so token counts for cost have to come from the provider's usage field"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: counting tokens by words versus by characters (hand-written samples) ---\ntext                                                      words  chars/4\nWhere is order 52?                                            4        4\nYour order is in transit and should arrive tomorrow.          9       13\nUnterminated https://example.com/a/very/long/path?x=1&        2       14\nnaïve café résumé                                             3        4\nಆರ್ಡರ್ 52 ಎಲ್ಲಿದೆ?                                            3        4\ndef f(x): return x**2 + 1                                     6        6"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Mean versus percentiles for latency (latencies ASSUMED, seed 6, 5000 runs)",
+    "headingKn": "ಪ್ರಯೋಗ 5: Mean versus percentiles for latency (latencies ASSUMED, seed 6, 5000 runs)",
+    "bodyEn": "What it ran: Mean versus percentiles for latency (latencies ASSUMED, seed 6, 5000 runs). What the lab concluded: the outliers moved the mean and left the median almost where it was; the p99 shows them most clearly",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Mean versus percentiles for latency (latencies ASSUMED, seed 6, 5000 runs). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the outliers moved the mean and left the median almost where it was; the p99 shows them most clearly"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: mean versus percentiles for latency (latencies ASSUMED, seed 6, 5000 runs) ---\nmean 578 ms | median 408 ms | p95 1028 ms | p99 6596 ms | max 8984 ms\nwithout the 100 outliers (2 percent, assumed): mean 458 ms | median 404 ms | p99 1254 ms"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Head sampling and rare failures (assumed 1 percent failure rate, seed 9)",
+    "headingKn": "ಪ್ರಯೋಗ 6: Head sampling and rare failures (assumed 1 percent failure rate, seed 9)",
+    "bodyEn": "What it ran: Head sampling and rare failures (assumed 1 percent failure rate, seed 9). What the lab concluded: even keeping everything, only 87.7 percent of windows contain a failure at all (1 - 0.99^200 = 86.6 percent expected); at 10 percent sampling only 18.6 percent of windows kept one, so failures and slow runs usually need to be kept by rule, not by chance",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Head sampling and rare failures (assumed 1 percent failure rate, seed 9). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): even keeping everything, only 87.7 percent of windows contain a failure at all (1 - 0.99^200 = 86.6 percent expected); at 10 percent sampling only 18.6 percent of windows kept one, so failures and slow runs usually need to be kept by rule, not by chance"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely measuring: head sampling and rare failures (assumed 1 percent failure rate, seed 9) ---\nsample  100% of traces: in 200-run windows, at least one failed trace was kept in 87.7% of windows\nsample   25% of traces: in 200-run windows, at least one failed trace was kept in 38.8% of windows\nsample   10% of traces: in 200-run windows, at least one failed trace was kept in 18.6% of windows\nsample    1% of traces: in 200-run windows, at least one failed trace was kept in 2.1% of windows"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Finding one trace by scanning versus an index",
+    "headingKn": "ಪ್ರಯೋಗ 7: Finding one trace by scanning versus an index",
+    "bodyEn": "What it ran: Finding one trace by scanning versus an index. What the lab concluded: a scan grows with the number of stored spans; an index keyed by trace id stays flat, which is why trace stores index on trace id",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Finding one trace by scanning versus an index. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a scan grows with the number of stored spans; an index keyed by trace id stays flat, which is why trace stores index on trace id"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely measuring: finding one trace by scanning versus an index ---\n   3000 spans: list scan    0.105 ms | dict index  0.0016 ms\n  30000 spans: list scan    2.486 ms | dict index  0.0032 ms\n 120000 spans: list scan    9.699 ms | dict index  0.0040 ms"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

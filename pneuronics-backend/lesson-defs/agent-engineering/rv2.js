@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The sequential test passes and hides the defect",
+    "headingKn": "ಪ್ರಯೋಗ 1: The sequential test passes and hides the defect",
+    "bodyEn": "What it ran: The sequential test passes and hides the defect. What the lab concluded: both versions pass the only test the builder wrote, so a verification gate that ran it would report success for the unsafe one; the test never asked the question the task was about",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The sequential test passes and hides the defect. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both versions pass the only test the builder wrote, so a verification gate that ran it would report success for the unsafe one; the test never asked the question the task was about"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the sequential test passes and hides the defect ---\nsequential test, unsafe implementation: True\nsequential test, locked implementation: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A concurrent probe on the same two implementations",
+    "headingKn": "ಪ್ರಯೋಗ 2: A concurrent probe on the same two implementations",
+    "bodyEn": "What it ran: A concurrent probe on the same two implementations. What the lab concluded: the unsafe version charged the same key several times because the check and the insert are separate steps with a delay between them (the delay was added to force the overlap, so the number of duplicates is an artefact of the lab), and the locked version charged once",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A concurrent probe on the same two implementations. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the unsafe version charged the same key several times because the check and the insert are separate steps with a delay between them (the delay was added to force the overlap, so the number of duplicates is an artefact of the lab), and the locked version charged once"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a concurrent probe on the same two implementations ---\nunsafe  charges created by 4 simultaneous requests with one key: 4\nlocked  charges created by 4 simultaneous requests with one key: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A reviewer that reads flags versus one that runs the probe",
+    "headingKn": "ಪ್ರಯೋಗ 3: A reviewer that reads flags versus one that runs the probe",
+    "bodyEn": "What it ran: A reviewer that reads flags versus one that runs the probe. What the lab concluded: the flag-reading reviewer gave full marks because it read the builder's own claim, which is the failure the separation of builder and marker is meant to prevent; the reviewer that ran an independent probe scored the same code 0, and a reviewer is only independent if its evidence is",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A reviewer that reads flags versus one that runs the probe. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the flag-reading reviewer gave full marks because it read the builder's own claim, which is the failure the separation of builder and marker is meant to prevent; the reviewer that ran an independent probe scored the same code 0, and a reviewer is only independent if its evidence is"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely comparing: a reviewer that reads flags versus one that runs the probe ---\nbuilder reports it solved the problem; the unsafe code was submitted\nflag-reading reviewer problem_fit    : 2\nprobe-running reviewer problem_fit   : 0\nprobe-running reviewer on locked code: 2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The probe is a sample, not a proof",
+    "headingKn": "ಪ್ರಯೋಗ 4: The probe is a sample, not a proof",
+    "bodyEn": "What it ran: The probe is a sample, not a proof. What the lab concluded: with the delay forced into the code, every run exposed the race; this lab did not measure a race without the forced delay, but a probe can only show that an overlap happened in the runs tried, so a failing probe demonstrates a defect and a passing probe does not demonstrate its absence, which is one reason the human approval step remains",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The probe is a sample, not a proof. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with the delay forced into the code, every run exposed the race; this lab did not measure a race without the forced delay, but a probe can only show that an overlap happened in the runs tried, so a failing probe demonstrates a defect and a passing probe does not demonstrate its absence, which is one reason the human approval step remains"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: the probe is a sample, not a proof ---\nduplicates seen over 5 runs with 2 workers on the unsafe code: [2, 2, 2, 2, 2]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A rubric policy that punishes a correct simple task",
+    "headingKn": "ಪ್ರಯೋಗ 5: A rubric policy that punishes a correct simple task",
+    "bodyEn": "What it ran: A rubric policy that punishes a correct simple task. What the lab concluded: the simple rule 'empty assumptions scores 0' hard-fails a correct one-line change because a zero forces hard_fail; asking whether the task has material assumptions first avoids that, and still scores a payment task with unstated assumptions 0",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A rubric policy that punishes a correct simple task. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the simple rule 'empty assumptions scores 0' hard-fails a correct one-line change because a zero forces hard_fail; asking whether the task has material assumptions first avoids that, and still scores a payment task with unstated assumptions 0"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: a rubric policy that punishes a correct simple task ---\nsimple task, no material assumptions, none listed -> lesson policy: 0 | refined policy: 2\npayment task with a material assumption, none listed -> lesson policy: 0 | refined policy: 0"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) A sequential test passed for racy and locked code alike. 2) Four threads created 4 charges in the unsafe version. 3) The flag reviewer scored 2 and the probe reviewer 0. 4) The probe showed 2 charges in all five runs with two workers. 5) The empty-assumptions policy hard-failed a simple task.",
     "bodyKn": "1) ಅನುಕ್ರಮ ಪರೀಕ್ಷೆ racy ಮತ್ತು lock ಇರುವ ಕೋಡ್‌ಗೆ ಸಮಾನವಾಗಿ ಪಾಸ್ ಆಯಿತು. 2) ನಾಲ್ಕು threads ಅಸುರಕ್ಷಿತ ಆವೃತ್ತಿಯಲ್ಲಿ 4 ಶುಲ್ಕ ಸೃಷ್ಟಿಸಿದವು. 3) flag reviewer 2 ಮತ್ತು probe reviewer 0 ನೀಡಿದವು. 4) ಎರಡು workers ನೊಂದಿಗೆ ಎಲ್ಲಾ ಐದು ಓಟಗಳಲ್ಲಿ probe 2 ಶುಲ್ಕ ತೋರಿಸಿತು. 5) ಖಾಲಿ-ಊಹೆ ನೀತಿ ಸರಳ ಕಾರ್ಯವನ್ನು hard-fail ಮಾಡಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B rv_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B rv_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B rv_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B rv_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

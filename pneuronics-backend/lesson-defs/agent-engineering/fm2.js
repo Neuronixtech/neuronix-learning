@@ -147,6 +147,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The seven synthetic traces: expected labels against detected labels",
+    "headingKn": "ಪ್ರಯೋಗ 1: The seven synthetic traces: expected labels against detected labels",
+    "bodyEn": "What it ran: The seven synthetic traces: expected labels against detected labels. What the lab concluded: CASCADE-001 is a genuine mismatch: the success-claim detector did not fire, because notify_user returned 200 after the failures and the simple recovery rule counts any later success as recovery (section 6 shows the fix). On traces we wrote ourselves, even this small set exposed a flaw; the rest of the lab looks for inputs the rules were not written for",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The seven synthetic traces: expected labels against detected labels. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): CASCADE-001 is a genuine mismatch: the success-claim detector did not fire, because notify_user returned 200 after the failures and the simple recovery rule counts any later success as recovery (section 6 shows the fix). On traces we wrote ourselves, even this small set exposed a flaw; the rest of the lab looks for inputs the rules were not written for"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The seven synthetic traces: expected labels against detected labels ---\ntrace            expected                                 detected\nNORMAL-001       []                                       []                                       ok\nMISUSE-001       ['tool_misuse']                          ['tool_misuse']                          ok\nCONTEXT-001      ['context_loss', 'scope_creep']          ['context_loss', 'scope_creep']          ok\nREDUNDANCY-001   ['redundancy']                           ['redundancy']                           ok\nDISORDER-001     ['disorder']                             ['disorder']                             ok\nOMISSION-001     ['omission']                             ['omission']                             ok\nCASCADE-001      ['cascading_error', 'success_hallucination'] ['cascading_error']                      MISMATCH\nprecision 1.00 recall 0.88 f1 0.93 on the 7 traces"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Grounding by equality rejects a correctly derived value",
+    "headingKn": "ಪ್ರಯೋಗ 2: Grounding by equality rejects a correctly derived value",
+    "bodyEn": "What it ran: Grounding by equality rejects a correctly derived value. What the lab concluded: equality is a false positive on derived values and silent when nobody wrote a rule for the argument; provenance (where a value came from) is what separates 50 from 5000",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Grounding by equality rejects a correctly derived value. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): equality is a false positive on derived values and silent when nobody wrote a rule for the argument; provenance (where a value came from) is what separates 50 from 5000"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: grounding by equality rejects a correctly derived value ---\nrequest 'refund half of the $100 charge', agent sends amount=50.0 -> [('tool_misuse', 'argument amount is not grounded')]\na grounded set that also lists 50.0 still catches amount=5000.0 -> ['argument amount is not grounded']\nthe same fabricated id with no grounding rule defined -> []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Retry versus redundancy",
+    "headingKn": "ಪ್ರಯೋಗ 3: Retry versus redundancy",
+    "bodyEn": "What it ran: Retry versus redundancy. What the lab concluded: the retry flag is whatever the agent or orchestrator wrote: the third case is a duplicate send that the rule excuses because it never checks that the earlier attempt actually failed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Retry versus redundancy. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the retry flag is whatever the agent or orchestrator wrote: the third case is a duplicate send that the rule excuses because it never checks that the earlier attempt actually failed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: retry versus redundancy ---\nidentical repeat, no retry flag                  -> ['redundancy']\nidentical repeat after a timeout, retry flagged  -> none\nretry flag on a call that follows a SUCCESS      -> none\nsame tool, different recipients                  -> none"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A list of required steps cannot express steps that may run in either order",
+    "headingKn": "ಪ್ರಯೋಗ 4: A list of required steps cannot express steps that may run in either order",
+    "bodyEn": "What it ran: A list of required steps cannot express steps that may run in either order. What the lab concluded: omission detection trusts the step label the agent or planner attached; it cannot tell that nothing was validated",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A list of required steps cannot express steps that may run in either order. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): omission detection trusts the step label the agent or planner attached; it cannot tell that nothing was validated"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: a list of required steps cannot express steps that may run in either order ---\nvalidate_b before validate_a (both are required before combine, order between them is free) -> ['validate_b ran before validate_a']\na flat list turned a legal concurrent order into 'disorder'; a partial order (A before C, B before C) is the right model\nan agent that labels a no-op as step 'validate' -> no omission reported"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Temporal order versus the dependency graph for cascades",
+    "headingKn": "ಪ್ರಯೋಗ 5: Temporal order versus the dependency graph for cascades",
+    "bodyEn": "What it ran: Temporal order versus the dependency graph for cascades. What the lab concluded: the dependency rule ignores unrelated cleanup, but it is only as good as the 'consumes' annotations, so a missing edge hides a real cascade",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Temporal order versus the dependency graph for cascades. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the dependency rule ignores unrelated cleanup, but it is only as good as the 'consumes' annotations, so a missing edge hides a real cascade"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: temporal order versus the dependency graph for cascades ---\nlater unrelated call (consumes nothing)        Part 1 rule (any later call): True  | dependency rule: False\nlater call consuming the failed result         Part 1 rule (any later call): True  | dependency rule: True\nsame dependency but 'consumes' not recorded    Part 1 rule (any later call): True  | dependency rule: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Which success counts as recovery",
+    "headingKn": "ಪ್ರಯೋಗ 6: Which success counts as recovery",
+    "bodyEn": "What it ran: Which success counts as recovery. What the lab concluded: an unrelated success (get_weather, or notify_user in CASCADE-001) cleared the claim under the simple rule; matching the recovery to the failed tool caught it, and still only checks tool names, not that the file exists",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Which success counts as recovery. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an unrelated success (get_weather, or notify_user in CASCADE-001) cleared the claim under the simple rule; matching the recovery to the failed tool caught it, and still only checks tool names, not that the file exists"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: which success counts as recovery ---\nmatched recovery=False: no false claim reported\nmatched recovery=True : ['success_hallucination']\na genuine retry of the same tool: correctly not flagged\nCASCADE-001 with matched recovery: ['cascading_error', 'success_hallucination']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Failure distribution and drift on seeded simulated traffic (mix ASSUMED)",
+    "headingKn": "ಪ್ರಯೋಗ 7: Failure distribution and drift on seeded simulated traffic (mix ASSUMED)",
+    "bodyEn": "What it ran: Failure distribution and drift on seeded simulated traffic (mix ASSUMED). What the lab concluded: the total failure rate moved from about 4 to about 8 percent, but the table shows it is context loss that quadrupled while the others stayed put; the traffic mix is assumed, the comparison method is the point",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Failure distribution and drift on seeded simulated traffic (mix ASSUMED). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the total failure rate moved from about 4 to about 8 percent, but the table shows it is context loss that quadrupled while the others stayed put; the traffic mix is assumed, the comparison method is the point"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely measuring: failure distribution and drift on seeded simulated traffic (mix ASSUMED) ---\nmode                baseline   current  abs change  relative\ncontext_loss           1.32%     4.99%      +3.67p      3.8x\ntool_misuse            2.02%     1.97%      -0.05p      1.0x\nscope_creep            0.37%     0.37%      +0.00p      1.0x\ncascading_error        0.60%     0.65%      +0.05p      1.1x"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

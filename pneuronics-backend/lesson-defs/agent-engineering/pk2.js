@@ -147,6 +147,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: First install, repeat install, and a missing target",
+    "headingKn": "ಪ್ರಯೋಗ 1: First install, repeat install, and a missing target",
+    "bodyEn": "What it ran: First install, repeat install, and a missing target. What the lab concluded: the repeated runs reported 'already installed' and left every file byte-identical, which is what makes the installer safe to rerun from automation; a target that does not exist is an error and nothing is created",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: First install, repeat install, and a missing target. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the repeated runs reported 'already installed' and left every file byte-identical, which is what makes the installer safe to rerun from automation; a target that does not exist is an error and nothing is created"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: first install, repeat install, and a missing target ---\nfirst run  : ('installed', 'version 1.2.0')\nsecond run : ('skipped', 'already installed (1.2.0), nothing changed')\nthird run  : ('skipped', 'already installed (1.2.0), nothing changed')\nfiles unchanged after the repeats: True | files: ['.workbench-version', 'AGENTS.md', 'VERSION', 'schemas/state.schema.json', 'scripts/verify_agent.py']\nmissing target: ('error', 'target does not exist: nope')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The customised file and --force",
+    "headingKn": "ಪ್ರಯೋಗ 2: The customised file and --force",
+    "bodyEn": "What it ran: The customised file and --force. What the lab concluded: the team's customisation was protected by the default and destroyed by --force, with no backup made; the flag is an explicit decision to overwrite, and a safer installer would copy the old file aside first",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The customised file and --force. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the team's customisation was protected by the default and destroyed by --force, with no backup made; the flag is an explicit decision to overwrite, and a safer installer would copy the old file aside first"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: the customised file and --force ---\nwithout --force: skipped | custom rule kept: True\nwith --force   : installed | custom rule kept: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A repository that already has its own AGENTS.md",
+    "headingKn": "ಪ್ರಯೋಗ 3: A repository that already has its own AGENTS.md",
+    "bodyEn": "What it ran: A repository that already has its own AGENTS.md. What the lab concluded: the installer saw no version lock, so it treated the repository as fresh and overwrote a file it did not create; the lock only identifies earlier installs of the pack, so a conflict check against pre-existing files is a separate rule that a lock-only check does not provide",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A repository that already has its own AGENTS.md. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the installer saw no version lock, so it treated the repository as fresh and overwrote a file it did not create; the lock only identifies earlier installs of the pack, so a conflict check against pre-existing files is a separate rule that a lock-only check does not provide"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a repository that already has its own AGENTS.md ---\ninstaller: installed | existing file now reads: # Rules"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A crash halfway through",
+    "headingKn": "ಪ್ರಯೋಗ 4: A crash halfway through",
+    "bodyEn": "What it ran: A crash halfway through. What the lab concluded: the naive copy left a repository with some pack files and no lock, which the next run would treat as a fresh install, while the staged install wrote nothing to the target before the crash; the copy from staging into the target is itself not atomic, so a crash during that last step could still leave a partial result",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A crash halfway through. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the naive copy left a repository with some pack files and no lock, which the next run would treat as a fresh install, while the staged install wrote nothing to the target before the crash; the copy from staging into the target is itself not atomic, so a crash during that last step could still leave a partial result"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: a crash halfway through ---\nnaive copy after a crash : files ['AGENTS.md', 'schemas/state.schema.json'] | version lock present: False\nstaged install after one : ('failed', 'simulated crash') | files: []\nleftover staging directories next to the repos: []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The installed verify script works from the target",
+    "headingKn": "ಪ್ರಯೋಗ 5: The installed verify script works from the target",
+    "bodyEn": "What it ran: The installed verify script works from the target. What the lab concluded: the installed script ran from its new location and the lock records which pack version produced this layout, so a later upgrade can tell where the repository stands",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The installed verify script works from the target. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the installed script ran from its new location and the lock records which pack version produced this layout, so a later upgrade can tell where the repository stands"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: the installed verify script works from the target ---\ninstalled script exit 0 printed ok\nlock file says: 1.2.0"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -204,6 +287,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Repeat runs changed nothing. 2) The default kept a customised file and --force destroyed it. 3) A foreign AGENTS.md was overwritten because no lock existed. 4) A naive copy left a half install, a staged one left nothing. 5) The installed script ran and the lock recorded the version.",
     "bodyKn": "1) ಪುನರಾವರ್ತಿತ ಓಟಗಳು ಏನನ್ನೂ ಬದಲಿಸಲಿಲ್ಲ. 2) ಡೀಫಾಲ್ಟ್ ಕಸ್ಟಮೈಸ್ ಮಾಡಿದ ಫೈಲ್ ಉಳಿಸಿತು ಮತ್ತು --force ನಾಶಮಾಡಿತು. 3) lock ಇಲ್ಲದ್ದರಿಂದ ಅನ್ಯ AGENTS.md ಮೇಲ್ಬರೆಯಲ್ಪಟ್ಟಿತು. 4) ಸರಳ ನಕಲು ಅರ್ಧ ಸ್ಥಾಪನೆ ಬಿಟ್ಟಿತು, staged ಒಂದು ಏನನ್ನೂ ಬಿಡಲಿಲ್ಲ. 5) ಸ್ಥಾಪಿತ ಸ್ಕ್ರಿಪ್ಟ್ ಓಡಿತು ಮತ್ತು lock ಆವೃತ್ತಿ ದಾಖಲಿಸಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B pk_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B pk_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B pk_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B pk_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

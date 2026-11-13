@@ -137,6 +137,113 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The lesson's three requests, one session",
+    "headingKn": "ಪ್ರಯೋಗ 1: The lesson's three requests, one session",
+    "bodyEn": "What it ran: The lesson's three requests, one session. What the lab concluded: three requests used three different Agent objects; the conversation lived only in the store",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lesson's three requests, one session. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): three requests used three different Agent objects; the conversation lived only in the store"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The lesson's three requests, one session ---\nagent #1: 'Hello'                              -> Hello! I can help with weather. | stored messages: 2\nagent #2: 'What is the weather in Bengaluru?'  -> The weather in Bengaluru is 24°C, cloudy. | stored messages: 4\nagent #3: 'And the weather in Mumbai?'         -> The weather in Mumbai is 30°C, humid. | stored messages: 6"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: How long does creating a fresh agent take",
+    "headingKn": "ಪ್ರಯೋಗ 2: How long does creating a fresh agent take",
+    "bodyEn": "What it ran: How long does creating a fresh agent take. What the lab concluded: creation costs about a microsecond because this Agent is a tiny dataclass; it is a large share of a request only when the model call is also nearly free, and negligible beside any real latency",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How long does creating a fresh agent take. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): creation costs about a microsecond because this Agent is a tiny dataclass; it is a large share of a request only when the model call is also nearly free, and negligible beside any real latency"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: how long does creating a fresh agent take ---\nagent creation over 20000 requests: median 1.10 us, p99 9.60 us\nmodel latency     0 ms: creation is 37.2727% of the request (4.1 us of 0.01 ms)\nmodel latency    50 ms: creation is 0.0024% of the request (1.2 us of 50.57 ms)\nmodel latency   500 ms: creation is 0.0022% of the request (11.2 us of 500.73 ms)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: History is passed in, but does the model use it",
+    "headingKn": "ಪ್ರಯೋಗ 3: History is passed in, but does the model use it",
+    "bodyEn": "What it ran: History is passed in, but does the model use it. What the lab concluded: history reached generate() both times, but the keyword model never reads it: injection of state is not use of state",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: History is passed in, but does the model use it. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): history reached generate() both times, but the keyword model never reads it: injection of state is not use of state"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: history is passed in, but does the model use it ---\nfollow-up 'And the weather there tomorrow?' -> Which city?\nfollow-up 'What about Mumbai?'              -> Hello! I can help with weather."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Inputs the keyword model and the tool do not expect",
+    "headingKn": "ಪ್ರಯೋಗ 4: Inputs the keyword model and the tool do not expect",
+    "bodyEn": "What it ran: Inputs the keyword model and the tool do not expect. What the lab concluded: Chennai is a known city for routing but missing in the weather data, so the tool raised KeyError and nothing was saved; 'weather-proof' triggered the weather path; only the first city was answered",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Inputs the keyword model and the tool do not expect. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): Chennai is a known city for routing but missing in the weather data, so the tool raised KeyError and nothing was saved; 'weather-proof' triggered the weather path; only the first city was answered"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: inputs the keyword model and the tool do not expect ---\n'Weather in Chennai?'                -> KeyError: 'chennai' | session saved: False\n'weather in Pune'                    -> Which city?\n'Is it weather-proof?'               -> Which city?\n'weather in Bengaluru and Mumbai'    -> The weather in Bengaluru is 24°C, cloudy.\n'WEATHER IN DELHI'                   -> The weather in Delhi is 29°C, clear."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A failure mid-request and the session",
+    "headingKn": "ಪ್ರಯೋಗ 5: A failure mid-request and the session",
+    "bodyEn": "What it ran: A failure mid-request and the session. What the lab concluded: messages before: 2 | after the failed request: 2 | the user's failed message was not recorded",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A failure mid-request and the session. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): messages before: 2 | after the failed request: 2 | the user's failed message was not recorded"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Two concurrent requests on one session (real threads)",
+    "headingKn": "ಪ್ರಯೋಗ 6: Two concurrent requests on one session (real threads)",
+    "bodyEn": "What it ran: Two concurrent requests on one session (real threads). What the lab concluded: load, run, then save is not atomic: with a slow model both requests loaded the same history and the later save replaced the earlier one; the fast model did not race on this run, which proves nothing about other timings",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Two concurrent requests on one session (real threads). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): load, run, then save is not atomic: with a slow model both requests loaded the same history and the later save replaced the earlier one; the fast model did not race on this run, which proves nothing about other timings"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely measuring: two concurrent requests on one session (real threads) ---\nfast model       : 0 of 40 trials ended with fewer than 4 messages (a turn was overwritten)\nslow model 50 ms : 40 of 40 trials ended with fewer than 4 messages (a turn was overwritten)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Store isolation",
+    "headingKn": "ಪ್ರಯೋಗ 7: Store isolation",
+    "bodyEn": "What it ran: Store isolation. What the lab concluded: load/save copy lists so callers cannot corrupt the store, but a store held in process memory is private to that process",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Store isolation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): load/save copy lists so callers cannot corrupt the store, but a store held in process memory is private to that process"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking: store isolation ---\nafter mutating a loaded list, the store still has 1 message\na second runtime with its own store sees: []"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

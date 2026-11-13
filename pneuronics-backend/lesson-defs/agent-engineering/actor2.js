@@ -117,6 +117,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A crashing actor does not stop the runtime",
+    "headingKn": "ಪ್ರಯೋಗ 1: A crashing actor does not stop the runtime",
+    "bodyEn": "What it ran: A crashing actor does not stop the runtime. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A crashing actor does not stop the runtime. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. A crashing actor does not stop the runtime ---\n[send] main -> broken topic=test\n[send] main -> echo topic=say\n[deliver] broken <- main topic=test\n[failure] actor=broken topic=test error=simulated actor crash\n[deliver] echo <- main topic=say\necho received: Still alive!\nfailures: [{'actor': 'broken', 'topic': 'test', 'error': 'simulated actor crash'}]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Dead letters are kept, not lost",
+    "headingKn": "ಪ್ರಯೋಗ 2: Dead letters are kept, not lost",
+    "bodyEn": "What it ran: Dead letters are kept, not lost. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Dead letters are kept, not lost. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Dead letters are kept, not lost ---\n[send] main -> missing-agent topic=ping\n[deliver] missing-agent <- main topic=ping\n[dead-letter] recipient=missing-agent topic=ping\ndead letters stored: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Isolation is not recovery",
+    "headingKn": "ಪ್ರಯೋಗ 3: Isolation is not recovery",
+    "bodyEn": "What it ran: Isolation is not recovery. What the lab concluded: the runtime survived, and the workflow is stuck waiting for a result that will never arrive",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Isolation is not recovery. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the runtime survived, and the workflow is stuck waiting for a result that will never arrive"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: isolation is not recovery ---\n[send] main -> reviewer topic=review_request\n[deliver] reviewer <- main topic=review_request\n[send] reviewer -> checklist topic=checklist_request\n[deliver] checklist <- reviewer topic=checklist_request\n[failure] actor=checklist topic=checklist_request error=simulated checklist failure\nreviewer.status after the checklist crashed: WAITING_FOR_CHECKLIST | verdict: None"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A failure notification lets the sender react",
+    "headingKn": "ಪ್ರಯೋಗ 4: A failure notification lets the sender react",
+    "bodyEn": "What it ran: A failure notification lets the sender react. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A failure notification lets the sender react. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. A failure notification lets the sender react ---\n[send] main -> reviewer topic=review_request\n[deliver] reviewer <- main topic=review_request\n[send] reviewer -> checklist topic=checklist_request\n[deliver] checklist <- reviewer topic=checklist_request\n[failure] actor=checklist topic=checklist_request error=simulated checklist failure\n[deliver] reviewer <- runtime topic=actor_failed\nreviewer.status: FAILED | verdict: UNKNOWN (checklist failed)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Retries and duplicate processing",
+    "headingKn": "ಪ್ರಯೋಗ 5: Retries and duplicate processing",
+    "bodyEn": "What it ran: Retries and duplicate processing. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Retries and duplicate processing. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: retries and duplicate processing ---\n[send] main -> flaky topic=t\n[deliver] flaky <- main topic=t\n[failure] actor=flaky topic=t error=transient\n[retry] attempt 2 of 3\n[deliver] flaky <- main topic=t\n[failure] actor=flaky topic=t error=transient\n[retry] attempt 3 of 3\n[deliver] flaky <- main topic=t\nflaky succeeded on call 3\n[deliver] charge <- main topic=charge\n[deliver] charge <- main topic=charge\nsame message delivered twice, idempotent=False: charges applied = 2\n[deliver] charge <- main topic=charge\n[deliver] charge <- main topic=charge\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: What 'except Exception' does not catch",
+    "headingKn": "ಪ್ರಯೋಗ 6: What 'except Exception' does not catch",
+    "bodyEn": "What it ran: What 'except Exception' does not catch. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What 'except Exception' does not catch. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: what 'except Exception' does not catch ---\n[send] main -> q topic=t\n[send] main -> echo topic=say\n[deliver] q <- main topic=t\nSystemExit escaped the runtime: actor called exit | messages still queued: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Independent actors overlap, one actor serialises",
+    "headingKn": "ಪ್ರಯೋಗ 7: Independent actors overlap, one actor serialises",
+    "bodyEn": "What it ran: Independent actors overlap, one actor serialises. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Independent actors overlap, one actor serialises. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely measuring: independent actors overlap, one actor serialises ---\n6 handler calls of 0.2 s: one thread 1.21s | one thread per actor mailbox 0.60s\neach actor still handled its own messages in order: [0, 1, 2] [0, 1, 2]"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

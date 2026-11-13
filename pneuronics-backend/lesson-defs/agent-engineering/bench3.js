@@ -137,6 +137,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: An interactive environment: errors become observations",
+    "headingKn": "ಪ್ರಯೋಗ 1: An interactive environment: errors become observations",
+    "bodyEn": "What it ran: An interactive environment: errors become observations. What the lab concluded: shell errors came back as text the agent can read; two of six steps were errors and the task still succeeded",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An interactive environment: errors become observations. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): shell errors came back as text the agent can read; two of six steps were errors and the task still succeeded"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. An interactive environment: errors become observations ---\n$ ls                         -> notes.txt\n$ cat report.txt             -> cat: report.txt: No such file\n$ write report.txt done      -> ok\n$ cat report.txt             -> done\n$ rm missing.txt             -> rm: missing.txt: No such file\n$ grep done notes.txt        -> grep: command not found\ntask success: True | steps used: 6"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Step success versus task success",
+    "headingKn": "ಪ್ರಯೋಗ 2: Step success versus task success",
+    "bodyEn": "What it ran: Step success versus task success. What the lab concluded: the last run wrote the right file and then deleted it: the final state fails the terminal check even though the first step was correct; terminal success reads only the end state, and step counts say nothing about it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Step success versus task success. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the last run wrote the right file and then deleted it: the final state fails the terminal check even though the first step was correct; terminal success reads only the end state, and step counts say nothing about it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: step success versus task success ---\ndirect                   steps=1 success=True\ndetour                   steps=4 success=True\ndeleted its own result   steps=3 success=False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Step accuracy compounds (per-step accuracy ASSUMED, seed 1, 20000 episodes)",
+    "headingKn": "ಪ್ರಯೋಗ 3: Step accuracy compounds (per-step accuracy ASSUMED, seed 1, 20000 episodes)",
+    "bodyEn": "What it ran: Step accuracy compounds (per-step accuracy ASSUMED, seed 1, 20000 episodes). What the lab concluded: if half of the wrong steps could be noticed and recovered (assumed), 30-step success rises to 46.9%",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Step accuracy compounds (per-step accuracy ASSUMED, seed 1, 20000 episodes). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): if half of the wrong steps could be noticed and recovered (assumed), 30-step success rises to 46.9%"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: step accuracy compounds (per-step accuracy ASSUMED, seed 1, 20000 episodes) ---\n horizon  step acc  step success  task success     p^n\n       3       99%         99.0%         97.0%   97.0%\n       3       95%         94.8%         85.0%   85.7%\n       3       90%         89.8%         72.3%   72.9%\n      10       99%         99.0%         90.4%   90.4%\n      10       95%         95.0%         59.7%   59.9%\n      10       90%         89.9%         34.4%   34.9%\n      30       99%         99.0%         74.6%   74.0%\n      30       95%         95.0%         21.4%   21.5%\n      30       90%         90.0%          4.1%    4.2%\n95 percent step accuracy gives about 60 percent success at 10 steps and about 21 percent at 30; the agent looked 95 percent reliable and failed most long tasks"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A benchmark score under contamination (assumed 40 percent real skill, 500 tasks)",
+    "headingKn": "ಪ್ರಯೋಗ 4: A benchmark score under contamination (assumed 40 percent real skill, 500 tasks)",
+    "bodyEn": "What it ran: A benchmark score under contamination (assumed 40 percent real skill, 500 tasks). What the lab concluded: with 60 percent memorised the reported score rose from 39.4 to 73.8 percent while the unseen-task column stayed between 36 and 43 percent (sampling noise at 500 tasks); the gap between the columns is how contamination shows up, and it needs a held-out set",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A benchmark score under contamination (assumed 40 percent real skill, 500 tasks). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with 60 percent memorised the reported score rose from 39.4 to 73.8 percent while the unseen-task column stayed between 36 and 43 percent (sampling noise at 500 tasks); the gap between the columns is how contamination shows up, and it needs a held-out set"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: a benchmark score under contamination (assumed 40 percent real skill, 500 tasks) ---\n memorised  reported score  score on unseen tasks\n        0%           39.4%                  36.8%\n       10%           45.0%                  36.2%\n       30%           59.2%                  42.3%\n       60%           73.8%                  42.5%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Weak tests inflate a coding score",
+    "headingKn": "ಪ್ರಯೋಗ 5: Weak tests inflate a coding score",
+    "bodyEn": "What it ran: Weak tests inflate a coding score. What the lab concluded: two of the three accepted patches under the weak suite were wrong; the stronger suite accepted only the correct one",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Weak tests inflate a coding score. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): two of the three accepted patches under the weak suite were wrong; the stronger suite accepted only the correct one"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: weak tests inflate a coding score ---\nweak (3 tests)    resolved: 3/4 -> ['correct', 'hard-coded', 'int-only']\nstrong (8 tests)  resolved: 1/4 -> ['correct']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A combined report: success alone is not enough",
+    "headingKn": "ಪ್ರಯೋಗ 6: A combined report: success alone is not enough",
+    "bodyEn": "What it ran: A combined report: success alone is not enough. What the lab concluded: costs are invented relative units; the ranking by success and the ranking by cost per success differ, so a leaderboard column hides the choice",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A combined report: success alone is not enough. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): costs are invented relative units; the ranking by success and the ranking by cost per success differ, so a leaderboard column hides the choice"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. A combined report: success alone is not enough ---\nagent             success  cost/task  cost per success\nagent A             73.8%       1.00              1.35\nagent B             86.3%       2.40              2.78\nagent C (cheap)     35.3%       0.25              0.71"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

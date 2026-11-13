@@ -137,6 +137,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The two gates",
+    "headingKn": "ಪ್ರಯೋಗ 1: The two gates",
+    "bodyEn": "What it ran: The two gates. What the lab concluded: buggy fails FAIL_TO_PASS (it reproduces the bug) and passes PASS_TO_PASS; the fix passes both",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The two gates. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): buggy fails FAIL_TO_PASS (it reproduces the bug) and passes PASS_TO_PASS; the fix passes both"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The two gates ---\nbuggy : {'resolved': False, 'f2p': '0/1', 'p2p': '2/2'}\nfixed : {'resolved': True, 'f2p': '1/1', 'p2p': '2/2'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Candidates that satisfy the gates in the wrong way (3 visible tests)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Candidates that satisfy the gates in the wrong way (3 visible tests)",
+    "bodyEn": "What it ran: Candidates that satisfy the gates in the wrong way (3 visible tests). What the lab concluded: 'hard-coded test input' resolved the task without fixing the bug, and 'int-only cast' resolved it while breaking floats and strings",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Candidates that satisfy the gates in the wrong way (3 visible tests). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): 'hard-coded test input' resolved the task without fixing the bug, and 'int-only cast' resolved it while breaking floats and strings"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: candidates that satisfy the gates in the wrong way (3 visible tests) ---\ncorrect patch          {'resolved': True, 'f2p': '1/1', 'p2p': '2/2'}\nno-op                  {'resolved': False, 'f2p': '0/1', 'p2p': '2/2'}\nhard-coded test input  {'resolved': True, 'f2p': '1/1', 'p2p': '2/2'}\nalways returns 5       {'resolved': False, 'f2p': '0/1', 'p2p': '1/2'}\nint-only cast          {'resolved': True, 'f2p': '1/1', 'p2p': '2/2'}\ncrashes                {'resolved': False, 'f2p': '0/1', 'p2p': '0/2'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The same candidates against a stronger PASS_TO_PASS suite",
+    "headingKn": "ಪ್ರಯೋಗ 3: The same candidates against a stronger PASS_TO_PASS suite",
+    "bodyEn": "What it ran: The same candidates against a stronger PASS_TO_PASS suite. What the lab concluded: adding 5 regression tests rejected both: the int-only patch broke the float and string cases, and the hard-coded patch still contained the original bug for (-2,-5) and for strings, which the new tests exercised; a hard-coded fix survives only while the suite never touches the same defect again",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The same candidates against a stronger PASS_TO_PASS suite. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): adding 5 regression tests rejected both: the int-only patch broke the float and string cases, and the hard-coded patch still contained the original bug for (-2,-5) and for strings, which the new tests exercised; a hard-coded fix survives only while the suite never touches the same defect again"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: the same candidates against a stronger PASS_TO_PASS suite ---\ncorrect patch          {'resolved': True, 'f2p': '1/1', 'p2p': '7/7'}\nno-op                  {'resolved': False, 'f2p': '0/1', 'p2p': '5/7'}\nhard-coded test input  {'resolved': False, 'f2p': '1/1', 'p2p': '5/7'}\nalways returns 5       {'resolved': False, 'f2p': '0/1', 'p2p': '1/7'}\nint-only cast          {'resolved': False, 'f2p': '1/1', 'p2p': '5/7'}\ncrashes                {'resolved': False, 'f2p': '0/1', 'p2p': '0/7'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: How strong is each test suite (mutation score)",
+    "headingKn": "ಪ್ರಯೋಗ 4: How strong is each test suite (mutation score)",
+    "bodyEn": "What it ran: How strong is each test suite (mutation score). What the lab concluded: a resolved patch means 'passed these tests', and the suite's mutation score says how much that is worth",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How strong is each test suite (mutation score). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a resolved patch means 'passed these tests', and the suite's mutation score says how much that is worth"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: how strong is each test suite (mutation score) ---\n3 tests (original)   mutants rejected 5/6 | survived: ['int() cast']\n8 tests (stronger)   mutants rejected 6/6 | survived: []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Text comparison with a human patch versus execution",
+    "headingKn": "ಪ್ರಯೋಗ 5: Text comparison with a human patch versus execution",
+    "bodyEn": "What it ran: Text comparison with a human patch versus execution. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Text comparison with a human patch versus execution. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: text comparison with a human patch versus execution ---\nsource strings equal: False | behaviour on the tests: True\nwhitespace-only variant equal to human text: False\nstring matching rejects a correct patch; execution accepts it"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A flaky candidate (passes ~80 percent per call)",
+    "headingKn": "ಪ್ರಯೋಗ 6: A flaky candidate (passes ~80 percent per call)",
+    "bodyEn": "What it ran: A flaky candidate (passes ~80 percent per call). What the lab concluded: the expected rate is 0.8^2 = 64 percent, not 0.8^3, because the (4, 0) test passes whichever branch runs; a single run is not a verdict, so evaluators rerun or require determinism",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A flaky candidate (passes ~80 percent per call). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the expected rate is 0.8^2 = 64 percent, not 0.8^3, because the (4, 0) test passes whichever branch runs; a single run is not a verdict, so evaluators rerun or require determinism"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely measuring: a flaky candidate (passes ~80 percent per call) ---\nresolved in 644 of 1000 evaluations (64.4 percent)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: A patch that never returns",
+    "headingKn": "ಪ್ರಯೋಗ 7: A patch that never returns",
+    "bodyEn": "What it ran: A patch that never returns. What the lab concluded: without a timeout the evaluator itself would hang; a child process lets it kill the candidate",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A patch that never returns. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): without a timeout the evaluator itself would hang; a child process lets it kill the candidate"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking: a patch that never returns ---\nspin(): {'resolved': False, 'detail': 'killed after 1.0s timeout'}"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

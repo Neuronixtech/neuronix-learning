@@ -147,6 +147,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: One valid state and nine invalid ones",
+    "headingKn": "ಪ್ರಯೋಗ 1: One valid state and nine invalid ones",
+    "bodyEn": "What it ran: One valid state and nine invalid ones. What the lab concluded: every invalid document was refused with the field path of the problem; True was rejected as a schema_version because bool is a subclass of int in Python and the validator excludes it on purpose",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: One valid state and nine invalid ones. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): every invalid document was refused with the field path of the problem; True was rejected as a schema_version because bool is a subclass of int in Python and the validator excludes it on purpose"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely checking: one valid state and nine invalid ones ---\nvalid: no errors\ntouched_files is null        -> ['$.touched_files: expected array, got NoneType']\ntouched_files missing        -> ['$: missing touched_files']\nschema_version is a string   -> ['$.schema_version: expected integer, got str']\nschema_version is True       -> ['$.schema_version: expected integer, got bool']\ntask id T-01                 -> [\"$.active_task_id: 'T-01' does not match ^T-\\\\d{3,}$\"]\ntask id TASK-125             -> [\"$.active_task_id: 'TASK-125' does not match ^T-\\\\d{3,}$\"]\ntask id with trailing text   -> [\"$.active_task_id: 'T-014 extra' does not match ^T-\\\\d{3,}$\"]\narray holds an integer       -> ['$.touched_files[1]: expected string, got int']\nstate is a list              -> ['$: expected object, got list']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The pattern anchors",
+    "headingKn": "ಪ್ರಯೋಗ 2: The pattern anchors",
+    "bodyEn": "What it ran: The pattern anchors. What the lab concluded: without ^ and $ the pattern accepted 'xT-001y' and 'T-014 extra' because JSON Schema patterns are searches; the format check also says nothing about whether the task exists",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The pattern anchors. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): without ^ and $ the pattern accepted 'xT-001y' and 'T-014 extra' because JSON Schema patterns are searches; the format check also says nothing about whether the task exists"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: the pattern anchors ---\nunanchored (search)    {'T-001': True, 'T-1000': True, 'T-01': False, 'T-ABC': False, 'TASK-125': False, 'xT-001y': True, 'T-014 extra': True}\nanchored               {'T-001': True, 'T-1000': True, 'T-01': False, 'T-ABC': False, 'TASK-125': False, 'xT-001y': False, 'T-014 extra': False}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The task board schema, including enums and nested paths",
+    "headingKn": "ಪ್ರಯೋಗ 3: The task board schema, including enums and nested paths",
+    "bodyEn": "What it ran: The task board schema, including enums and nested paths. What the lab concluded: three problems across two of the three tasks were each reported with their own path (tasks[1].id, tasks[1].status and the missing title in tasks[2]), and the valid first task produced no error; a controlled vocabulary of statuses turns 'finished' versus 'completed' into a refusal instead of a silent mismatch",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The task board schema, including enums and nested paths. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): three problems across two of the three tasks were each reported with their own path (tasks[1].id, tasks[1].status and the missing title in tasks[2]), and the valid first task produced no error; a controlled vocabulary of statuses turns 'finished' versus 'completed' into a refusal instead of a silent mismatch"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: the task board schema, including enums and nested paths ---\n  $.tasks[1].id: 'T-2' does not match ^T-\\d{3,}$\n  $.tasks[1].status: 'finished' not in ['pending', 'in_progress', 'blocked', 'completed']\n  $.tasks[2]: missing title"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: What a schema does not check",
+    "headingKn": "ಪ್ರಯೋಗ 4: What a schema does not check",
+    "bodyEn": "What it ran: What a schema does not check. What the lab concluded: all three passed the structural check: uniqueness, referential integrity and unknown fields need either more schema keywords (this validator implements five) or application checks; passing a schema is not the same as being a consistent state",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What a schema does not check. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): all three passed the structural check: uniqueness, referential integrity and unknown fields need either more schema keywords (this validator implements five) or application checks; passing a schema is not the same as being a consistent state"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: what a schema does not check ---\nduplicate task ids: no errors\nactive task id that is not on the board: no errors\nunknown extra field: no errors"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Valid JSON is not valid state",
+    "headingKn": "ಪ್ರಯೋಗ 5: Valid JSON is not valid state",
+    "bodyEn": "What it ran: Valid JSON is not valid state. What the lab concluded: the last document satisfies the schema although next_action is empty; a type check cannot say that an empty string is a useless next action, which is a separate rule",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Valid JSON is not valid state. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the last document satisfies the schema although next_action is empty; a type check cannot say that an empty string is a useless next action, which is a separate rule"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: valid JSON is not valid state ---\n{\"schema_version\": 1}                                          parses=True schema errors=5\n[1, 2, 3]                                                      parses=True schema errors=1\n{\"schema_version\": 1, \"active_task_id\": \"T-014\", \"touched_fi   parses=True schema errors=0"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -204,6 +287,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) All 9 invalid states were refused with paths and True was refused as an integer. 2) An unanchored pattern accepted \"T-014 extra\". 3) A nested board error was located by path. 4) Duplicates, ghost references and unknown fields passed. 5) An empty next_action passed.",
     "bodyKn": "1) ಎಲ್ಲಾ 9 ಅಮಾನ್ಯ ಸ್ಥಿತಿಗಳು path ಜೊತೆ ತಿರಸ್ಕರಿಸಲ್ಪಟ್ಟವು ಮತ್ತು True ಅನ್ನು integer ಎಂದು ತಿರಸ್ಕರಿಸಲಾಯಿತು. 2) Unanchored ಮಾದರಿ \"T-014 extra\" ಸ್ವೀಕರಿಸಿತು. 3) ನೆಸ್ಟೆಡ್ board ದೋಷ path ಮೂಲಕ ಪತ್ತೆಯಾಯಿತು. 4) ನಕಲುಗಳು, ಭೂತ ಉಲ್ಲೇಖಗಳು ಮತ್ತು ಅಜ್ಞಾತ ಕ್ಷೇತ್ರಗಳು ಪಾಸ್ ಆದವು. 5) ಖಾಲಿ next_action ಪಾಸ್ ಆಯಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B rm_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B rm_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B rm_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B rm_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

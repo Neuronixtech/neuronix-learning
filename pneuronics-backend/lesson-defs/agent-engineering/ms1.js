@@ -157,6 +157,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Generating the seven-field handoff",
+    "headingKn": "ಪ್ರಯೋಗ 1: Generating the seven-field handoff",
+    "bodyEn": "What it ran: Generating the seven-field handoff. What the lab concluded: every field of the packet came from the snapshot of artifacts, not from a conversation; the next session can read next_action first and start work",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Generating the seven-field handoff. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): every field of the packet came from the snapshot of artifacts, not from a conversation; the next session can read next_action first and start work"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: generating the seven-field handoff ---\nfields present: ['summary', 'changed_files', 'commands_run', 'failed_attempts', 'open_risks', 'next_action', 'verdict_pointer'] | all seven: True\nnext_action: Run python -m unittest tests.test_payment_retry and inspect the timeout assertion.\ncommands_run kept: ['cmd1', 'cmd3', 'cmd4', 'cmd5']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Trimming the feedback list",
+    "headingKn": "ಪ್ರಯೋಗ 2: Trimming the feedback list",
+    "bodyEn": "What it ran: Trimming the feedback list. What the lab concluded: records[-0:] is records[0:], so the naive slice with keep_last=0 kept all six records instead of none; the guarded version returns an empty list, which is why the zero case has to be tested and not assumed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Trimming the feedback list. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): records[-0:] is records[0:], so the naive slice with keep_last=0 kept all six records instead of none; the guarded version returns an empty list, which is why the zero case has to be tested and not assumed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: trimming the feedback list ---\nkeep_last=3: naive slice keeps 3 records | guarded version keeps 3\nkeep_last=1: naive slice keeps 1 records | guarded version keeps 1\nkeep_last=0: naive slice keeps 6 records | guarded version keeps 0\nkeep_last=-1: keep_last must not be negative"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Trimming can drop the failure the next session needs",
+    "headingKn": "ಪ್ರಯೋಗ 3: Trimming can drop the failure the next session needs",
+    "bodyEn": "What it ran: Trimming can drop the failure the next session needs. What the lab concluded: the only failing command, cmd1, was older than the last three records and disappeared from a plain tail trim, so a handoff built that way would not mention it; keeping every failure plus the recent tail preserved it at the cost of a longer list",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Trimming can drop the failure the next session needs. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the only failing command, cmd1, was older than the last three records and disappeared from a plain tail trim, so a handoff built that way would not mention it; keeping every failure plus the recent tail preserved it at the cost of a longer list"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: trimming can drop the failure the next session needs ---\nlast three records only: [('cmd3', 0), ('cmd4', 0), ('cmd5', 0)]\nfailure present in the trimmed list: False\nfailures plus last three: [('cmd1', 1), ('cmd3', 0), ('cmd4', 0), ('cmd5', 0)]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Rejected handoffs",
+    "headingKn": "ಪ್ರಯೋಗ 4: Rejected handoffs",
+    "bodyEn": "What it ran: Rejected handoffs. What the lab concluded: a handoff with no usable next action or with unresolved cleanup blockers is refused before any file is written, because a packet that cannot tell the next session what to do is worse than none",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Rejected handoffs. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a handoff with no usable next action or with unresolved cleanup blockers is refused before any file is written, because a packet that cannot tell the next session what to do is worse than none"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: rejected handoffs ---\nblank next_action      rejected: next_action is missing or blank\nmissing next_action    rejected: next_action is missing or blank\nnext_action is a list  rejected: next_action is missing or blank\ncleanup blocker        rejected: cleanup blockers: tests directory left in a temp state"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A next_action can be non-empty and useless",
+    "headingKn": "ಪ್ರಯೋಗ 5: A next_action can be non-empty and useless",
+    "bodyEn": "What it ran: A next_action can be non-empty and useless. What the lab concluded: both were accepted because the generator only checks that text exists; the keyword test here is a crude heuristic of our own that separates these two examples and would miss many cases, so specificity needs a reviewer or a stricter schema",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A next_action can be non-empty and useless. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both were accepted because the generator only checks that text exists; the keyword test here is a crude heuristic of our own that separates these two examples and would miss many cases, so specificity needs a reviewer or a stricter schema"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: a next_action can be non-empty and useless ---\nContinue work.                                     accepted, concrete by a simple keyword heuristic: False\nRun python -m unittest tests.test_payment_retry    accepted, concrete by a simple keyword heuristic: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Markdown and JSON written side by side",
+    "headingKn": "ಪ್ರಯೋಗ 6: Markdown and JSON written side by side",
+    "bodyEn": "What it ran: Markdown and JSON written side by side. What the lab concluded: the JSON file is for the next agent and the Markdown for a human, both generated from the same dictionary so they cannot drift apart at creation time",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Markdown and JSON written side by side. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the JSON file is for the next agent and the Markdown for a human, both generated from the same dictionary so they cannot drift apart at creation time"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: Markdown and JSON written side by side ---\njson round trip equal: True | markdown headings: ['## summary', '## changed_files', '## commands_run', '## failed_attempts', '## open_risks', '## next_action', '## verdict_pointer']"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

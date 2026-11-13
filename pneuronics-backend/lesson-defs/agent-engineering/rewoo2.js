@@ -128,6 +128,134 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Executing the France plan",
+    "headingKn": "ಪ್ರಯೋಗ 1: Executing the France plan",
+    "bodyEn": "What it ran: Executing the France plan. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Executing the France plan. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Executing the France plan ---\nrounds: [['E1'], ['E2']]\nE1: Paris\nE2: 2148000"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: E1 versus #E1",
+    "headingKn": "ಪ್ರಯೋಗ 2: E1 versus #E1",
+    "bodyEn": "What it ran: E1 versus #E1. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: E1 versus #E1. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. E1 versus #E1 ---\nevidence['E1'] is a WorkerResult: WorkerResult(ok=True, value='Paris', error=None)\nresolve_value('#E1')        -> 'Paris'\nresolve_value('USD')        -> 'USD'\nresolve_value(42)           -> 42\nresolve_arguments           -> {'city': 'Paris', 'unit': 'millions'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A literal string that starts with '#'",
+    "headingKn": "ಪ್ರಯೋಗ 3: A literal string that starts with '#'",
+    "bodyEn": "What it ran: A literal string that starts with '#'. What the lab concluded: a literal '#hashtag' is indistinguishable from a reference, so the reference syntax must be reserved",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A literal string that starts with '#'. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a literal '#hashtag' is indistinguishable from a reference, so the reference syntax must be reserved"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. A literal string that starts with '#' ---\nKeyError: 'Missing evidence: hashtag'"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Failure propagation: capital_of('Atlantis')",
+    "headingKn": "ಪ್ರಯೋಗ 4: Failure propagation: capital_of('Atlantis')",
+    "bodyEn": "What it ran: Failure propagation: capital_of('Atlantis'). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Failure propagation: capital_of('Atlantis'). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Failure propagation: capital_of('Atlantis') ---\nE1: ERROR: No capital data for Atlantis\nE2: ERROR: Dependency E1 failed: No capital data for Atlantis"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Failure localization in a diamond-shaped plan",
+    "headingKn": "ಪ್ರಯೋಗ 5: Failure localization in a diamond-shaped plan",
+    "bodyEn": "What it ran: Failure localization in a diamond-shaped plan. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Failure localization in a diamond-shaped plan. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Failure localization in a diamond-shaped plan ---\nlevels: [['E1', 'E5'], ['E2', 'E3'], ['E4']]\nE1: Paris\nE2: 2148000\nE3: ERROR: No capital data for Atlantis\nE4: ERROR: Dependency E3 failed: No capital data for Atlantis\nE5: Rome"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Plans that cannot make progress",
+    "headingKn": "ಪ್ರಯೋಗ 6: Plans that cannot make progress",
+    "bodyEn": "What it ran: Plans that cannot make progress. What the lab concluded: missing dependency  -> RuntimeError: Plan cannot make progress. Possible cycle or missing dependency.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Plans that cannot make progress. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): missing dependency  -> RuntimeError: Plan cannot make progress. Possible cycle or missing dependency."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Plans that cannot make progress ---\ncycle               -> RuntimeError: Plan cannot make progress. Possible cycle or missing dependency."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Completion order is not plan order",
+    "headingKn": "ಪ್ರಯೋಗ 7: Completion order is not plan order",
+    "bodyEn": "What it ran: Completion order is not plan order. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Completion order is not plan order. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Completion order is not plan order ---\nplan order      : ['E1', 'E2', 'E3']\ncompletion order: ['E2', 'E3', 'E1']\nevidence by id  : {'E1': 'Paris', 'E2': 'Berlin', 'E3': 'Rome'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Timing: the France+Germany plan, 0.2 s per tool call (varies by machine)",
+    "headingKn": "ಪ್ರಯೋಗ 8: Timing: the France+Germany plan, 0.2 s per tool call (varies by machine)",
+    "bodyEn": "What it ran: Timing: the France+Germany plan, 0.2 s per tool call (varies by machine). What the lab concluded: 4 calls x 0.2 s = 0.8 s sequential; 2 dependency levels x 0.2 s = 0.4 s when each level runs in parallel",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Timing: the France+Germany plan, 0.2 s per tool call (varies by machine). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): 4 calls x 0.2 s = 0.8 s sequential; 2 dependency levels x 0.2 s = 0.4 s when each level runs in parallel"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Timing: the France+Germany plan, 0.2 s per tool call (varies by machine) ---\nmax_workers=1 (sequential): 0.80 s, rounds [['E1', 'E2'], ['E3', 'E4']]\nmax_workers=4 (parallel) : 0.40 s, rounds [['E1', 'E2'], ['E3', 'E4']]"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

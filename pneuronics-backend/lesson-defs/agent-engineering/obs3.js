@@ -142,6 +142,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Four runs, evaluated and categorised",
+    "headingKn": "ಪ್ರಯೋಗ 1: Four runs, evaluated and categorised",
+    "bodyEn": "What it ran: Four runs, evaluated and categorised. What the lab concluded: category counts: {'pass': 1, 'generation_grounding_failure': 1, 'retrieval_failure': 1, 'guardrail_trip': 1} | pass rate: 1/4",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Four runs, evaluated and categorised. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): category counts: {'pass': 1, 'generation_grounding_failure': 1, 'retrieval_failure': 1, 'guardrail_trip': 1} | pass rate: 1/4"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Four runs, evaluated and categorised ---\nrun-1 v1 passed=True  category=pass                         retrieval_relevance=0.75 groundedness=1.00 guardrail=1.00\nrun-2 v1 passed=False category=generation_grounding_failure retrieval_relevance=0.75 groundedness=0.40 guardrail=1.00\nrun-3 v2 passed=False category=retrieval_failure            retrieval_relevance=0.00 groundedness=0.00 guardrail=1.00\nrun-4 v2 passed=False category=guardrail_trip               retrieval_relevance=0.75 groundedness=0.62 guardrail=0.00"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The failure category depends on the order the checks are consulted",
+    "headingKn": "ಪ್ರಯೋಗ 2: The failure category depends on the order the checks are consulted",
+    "bodyEn": "What it ran: The failure category depends on the order the checks are consulted. What the lab concluded: one run with three failing checks lands in whichever category is looked at first, so the dashboard's category counts are partly a function of that ordering; the root cause (usually retrieval first) has to be a deliberate rule",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The failure category depends on the order the checks are consulted. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): one run with three failing checks lands in whichever category is looked at first, so the dashboard's category counts are partly a function of that ordering; the root cause (usually retrieval first) has to be a deliberate rule"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: the failure category depends on the order the checks are consulted ---\norder guardrail > retrieval > groundedn      -> guardrail_trip\norder retrieval > groundedn > guardrail      -> retrieval_failure\norder groundedn > retrieval > guardrail      -> generation_grounding_failure"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: How much a pass rate from a few runs tells you (95 percent Wilson interval)",
+    "headingKn": "ಪ್ರಯೋಗ 3: How much a pass rate from a few runs tells you (95 percent Wilson interval)",
+    "bodyEn": "What it ran: How much a pass rate from a few runs tells you (95 percent Wilson interval). What the lab concluded: a 25 percent pass rate from the lesson's 4 runs is compatible with anything from about 5 to 70 percent; the dashboard needs counts beside every rate",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How much a pass rate from a few runs tells you (95 percent Wilson interval). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a 25 percent pass rate from the lesson's 4 runs is compatible with anything from about 5 to 70 percent; the dashboard needs counts beside every rate"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: how much a pass rate from a few runs tells you (95 percent Wilson interval) ---\n  runs  passed  pass rate             interval\n     4       1        25%            5% to 70%\n    20       5        25%           11% to 47%\n   100      25        25%           18% to 34%\n   400     100        25%           21% to 29%\n  4000    1000        25%           24% to 26%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: An evaluation joined to the wrong trace",
+    "headingKn": "ಪ್ರಯೋಗ 4: An evaluation joined to the wrong trace",
+    "bodyEn": "What it ran: An evaluation joined to the wrong trace. What the lab concluded: counts by category are identical in both, so an aggregate dashboard cannot detect the mistake; only opening one trace and comparing it with its evaluation can",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An evaluation joined to the wrong trace. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): counts by category are identical in both, so an aggregate dashboard cannot detect the mistake; only opening one trace and comparing it with its evaluation can"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: an evaluation joined to the wrong trace ---\ncorrect join   : [('run-1', 'pass'), ('run-2', 'generation_grounding_failure'), ('run-3', 'retrieval_failure'), ('run-4', 'guardrail_trip')]\noff-by-one join: [('run-2', 'pass'), ('run-3', 'generation_grounding_failure'), ('run-4', 'retrieval_failure'), ('run-1', 'guardrail_trip')]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Prompt-version comparison from small samples (pass probabilities ASSUMED, seed 12)",
+    "headingKn": "ಪ್ರಯೋಗ 5: Prompt-version comparison from small samples (pass probabilities ASSUMED, seed 12)",
+    "bodyEn": "What it ran: Prompt-version comparison from small samples (pass probabilities ASSUMED, seed 12). What the lab concluded: with 5 runs per version, a 20-point gap between two identical prompts is common; a dashboard showing v2 'better' on a handful of runs can be noise",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Prompt-version comparison from small samples (pass probabilities ASSUMED, seed 12). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with 5 runs per version, a 20-point gap between two identical prompts is common; a dashboard showing v2 'better' on a handful of runs can be noise"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: prompt-version comparison from small samples (pass probabilities ASSUMED, seed 12) ---\nboth versions have the same true pass rate of 70 percent\n   5 runs per version: a 20-point difference or more appeared in 52.0% of comparisons by chance\n  20 runs per version: a 20-point difference or more appeared in 15.7% of comparisons by chance\n 100 runs per version: a 20-point difference or more appeared in 0.4% of comparisons by chance"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A 400-run dashboard (failure mix ASSUMED, seed 33)",
+    "headingKn": "ಪ್ರಯೋಗ 6: A 400-run dashboard (failure mix ASSUMED, seed 33)",
+    "bodyEn": "What it ran: A 400-run dashboard (failure mix ASSUMED, seed 33). What the lab concluded: the mix is what we assumed, and the scripted evaluators return what their rules say; the table shows the aggregation, not how a real agent behaves",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A 400-run dashboard (failure mix ASSUMED, seed 33). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the mix is what we assumed, and the scripted evaluators return what their rules say; the table shows the aggregation, not how a real agent behaves"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely measuring: a 400-run dashboard (failure mix ASSUMED, seed 33) ---\ncategory                          runs   share\npass                               241   60.2%\ngeneration_grounding_failure        68   17.0%\nretrieval_failure                   64   16.0%\nguardrail_trip                      27    6.8%\nprompt v1: 200 runs, pass 61.0% (95% interval 54% to 67%), mean tokens 100\nprompt v2: 200 runs, pass 59.5% (95% interval 53% to 66%), mean tokens 100\nsessions: 100 with 4 to 4 runs each | spans collected: 400"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

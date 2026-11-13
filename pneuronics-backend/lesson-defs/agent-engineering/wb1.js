@@ -157,6 +157,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A prompt-only agent that edits the code and an extra file",
+    "headingKn": "ಪ್ರಯೋಗ 1: A prompt-only agent that edits the code and an extra file",
+    "bodyEn": "What it ran: A prompt-only agent that edits the code and an extra file. What the lab concluded: the agent said it was finished, ran nothing, and changed scripts/release.sh as well as app.py; the tests pass when somebody runs them, which is exactly why a claim and evidence are different things",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A prompt-only agent that edits the code and an extra file. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the agent said it was finished, ran nothing, and changed scripts/release.sh as well as app.py; the tests pass when somebody runs them, which is exactly why a claim and evidence are different things"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a prompt-only agent that edits the code and an extra file ---\nclaimed complete: True | tests run: None | changed files: ['app.py', 'scripts/release.sh']\nthe same repository checked afterwards: {'command': 'python -m unittest -v test_app', 'exit_code': 0, 'ran': 3, 'stderr_tail': 'OK'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The guided run on a fresh copy of the same repository",
+    "headingKn": "ಪ್ರಯೋಗ 2: The guided run on a fresh copy of the same repository",
+    "bodyEn": "What it ran: The guided run on a fresh copy of the same repository. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The guided run on a fresh copy of the same repository. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: the guided run on a fresh copy of the same repository ---\nstate: {'task': 'signup-validation', 'status': 'verified', 'next_action': 'request review'}\nfeedback: {'command': 'python -m unittest -v test_app', 'exit_code': 0, 'ran': 3, 'stderr_tail': 'OK'}\nchanged: ['app.py'] | outside scope: []\nhandoff next_action: request review"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The guided run when the implementation is wrong (accepts 6-character passwords)",
+    "headingKn": "ಪ್ರಯೋಗ 3: The guided run when the implementation is wrong (accepts 6-character passwords)",
+    "bodyEn": "What it ran: The guided run when the implementation is wrong (accepts 6-character passwords). What the lab concluded: the boundary test (seven characters) caught the off-by-one that a happy-path test would have missed; the prompt-only run reported success without ever looking",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The guided run when the implementation is wrong (accepts 6-character passwords). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the boundary test (seven characters) caught the off-by-one that a happy-path test would have missed; the prompt-only run reported success without ever looking"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: the guided run when the implementation is wrong (accepts 6-character passwords) ---\nclaimed complete: False | state: blocked | exit code: 1 | tail: FAILED (failures=1)\nfailed attempts recorded in the handoff: 1\nprompt-only on the same wrong implementation: claimed complete = True | evidence = None"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A test file that exists is not a test that ran",
+    "headingKn": "ಪ್ರಯೋಗ 4: A test file that exists is not a test that ran",
+    "bodyEn": "What it ran: A test file that exists is not a test that ran. What the lab concluded: 0 tests executed and this Python reports exit code 5 (NO TESTS RAN); older Python versions exit 0 for an empty suite, so a gate must not depend on the interpreter version and should require both a zero exit and a minimum number of tests that actually ran",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A test file that exists is not a test that ran. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): 0 tests executed and this Python reports exit code 5 (NO TESTS RAN); older Python versions exit 0 for an empty suite, so a gate must not depend on the interpreter version and should require both a zero exit and a minimum number of tests that actually ran"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: a test file that exists is not a test that ran ---\nempty suite: {'command': 'python -m unittest -v test_app', 'exit_code': 5, 'ran': 0, 'stderr_tail': 'NO TESTS RAN'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Which of seven surfaces would have caught each failure in sections 1 to 4",
+    "headingKn": "ಪ್ರಯೋಗ 5: Which of seven surfaces would have caught each failure in sections 1 to 4",
+    "bodyEn": "What it ran: Which of seven surfaces would have caught each failure in sections 1 to 4. What the lab concluded: failures that look like model weakness are often a missing surface; the remedy depends on which surface is missing, not on a smarter model",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Which of seven surfaces would have caught each failure in sections 1 to 4. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): failures that look like model weakness are often a missing surface; the remedy depends on which surface is missing, not on a smarter model"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: which of seven surfaces would have caught each failure in sections 1 to 4 ---\nclaimed success with no tests run              -> feedback, verification\nunrelated file changed (scripts/release.sh)    -> scope\noff-by-one in the validator                    -> verification (boundary test)\nzero tests executed                            -> verification\nagent forgets what remains after a restart     -> state, handoff\nagent grades its own work                      -> review\nrules not applied                              -> instructions"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -214,6 +297,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The prompt-only run claimed completion, ran nothing and changed 2 files. 2) The guided run changed 1 file, ran 3 tests and wrote a next action. 3) A wrong implementation was blocked with exit code 1 and 1 recorded failure. 4) An empty suite ran 0 tests and returned exit code 5 on this Python. 5) Each failure maps to a missing surface.",
     "bodyKn": "1) prompt-only ಓಟ ಪೂರ್ಣಗೊಂಡಿದೆ ಎಂದು ಹೇಳಿ, ಏನನ್ನೂ ಓಡಿಸದೆ 2 ಫೈಲ್ ಬದಲಿಸಿತು. 2) ಮಾರ್ಗದರ್ಶಿತ ಓಟ 1 ಫೈಲ್ ಬದಲಿಸಿ, 3 ಪರೀಕ್ಷೆ ಓಡಿಸಿ ಮುಂದಿನ ಕ್ರಿಯೆ ಬರೆಯಿತು. 3) ತಪ್ಪು ಅನುಷ್ಠಾನ exit code 1 ಮತ್ತು 1 ದಾಖಲಿತ ವೈಫಲ್ಯದೊಂದಿಗೆ ತಡೆಯಲ್ಪಟ್ಟಿತು. 4) ಖಾಲಿ suite 0 ಪರೀಕ್ಷೆ ಓಡಿಸಿ ಈ Python ನಲ್ಲಿ exit code 5 ಮರಳಿಸಿತು. 5) ಪ್ರತಿ ವೈಫಲ್ಯ ಕಾಣೆಯಾದ ಮೇಲ್ಮೈಗೆ ನಕ್ಷೆಯಾಗುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B wb_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B wb_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B wb_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B wb_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

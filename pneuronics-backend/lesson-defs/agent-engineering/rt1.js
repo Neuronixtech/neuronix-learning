@@ -137,6 +137,83 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Request-response blocks for the whole run",
+    "headingKn": "ಪ್ರಯೋಗ 1: Request-response blocks for the whole run",
+    "bodyEn": "What it ran: Request-response blocks for the whole run. What the lab concluded: steps=5 total latency=102 ms (5 steps of about 20 ms); the caller saw nothing until all five finished",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Request-response blocks for the whole run. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): steps=5 total latency=102 ms (5 steps of about 20 ms); the caller saw nothing until all five finished"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Streaming shows progress, and first-chunk latency differs from total latency",
+    "headingKn": "ಪ್ರಯೋಗ 2: Streaming shows progress, and first-chunk latency differs from total latency",
+    "bodyEn": "What it ran: Streaming shows progress, and first-chunk latency differs from total latency. What the lab concluded: a client that disconnected after chunk 1 stopped the generator at 2 chunks; nothing was saved, so the work done so far is lost unless the loop also checkpoints",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Streaming shows progress, and first-chunk latency differs from total latency. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a client that disconnected after chunk 1 stopped the generator at 2 chunks; nothing was saved, so the work done so far is lost unless the loop also checkpoints"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: streaming shows progress, and first-chunk latency differs from total latency ---\n  chunk 0 at    20 ms: done: understand task\n  chunk 1 at    41 ms: done: gather context\n  chunk 2 at    61 ms: done: analyze evidence\n  chunk 3 at    83 ms: done: compose answer\n  chunk 4 at   103 ms: done: validate answer\nfirst chunk after 20 ms, last chunk after 103 ms: the user waits for a fifth of the time before seeing anything, but the total work is unchanged"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Durable execution resumes at the failed step",
+    "headingKn": "ಪ್ರಯೋಗ 3: Durable execution resumes at the failed step",
+    "bodyEn": "What it ran: Durable execution resumes at the failed step. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Durable execution resumes at the failed step. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: durable execution resumes at the failed step ---\nfirst worker: worker crashed at step 2 | checkpoint on disk: {\"next\": 2}\nreplacement worker executed: ['analyze evidence', 'compose answer', 'validate answer']\nsteps repeated by the replacement worker: []\nwith no checkpoint the replacement worker re-ran 5 steps instead of 3"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A torn checkpoint write, plain versus atomic",
+    "headingKn": "ಪ್ರಯೋಗ 4: A torn checkpoint write, plain versus atomic",
+    "bodyEn": "What it ran: A torn checkpoint write, plain versus atomic. What the lab concluded: writing to a temp file and replacing it keeps the last good checkpoint readable; this protects one file, and it does not make the checkpoint and any external side effect atomic together",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A torn checkpoint write, plain versus atomic. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): writing to a temp file and replacing it keeps the last good checkpoint readable; this protects one file, and it does not make the checkpoint and any external side effect atomic together"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: a torn checkpoint write, plain versus atomic ---\ncrash during an in-place overwrite -> checkpoint CORRUPT; crash while writing the temp file of an atomic write -> checkpoint readable ({\"next\": 2})"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A retried step that already had a side effect",
+    "headingKn": "ಪ್ರಯೋಗ 5: A retried step that already had a side effect",
+    "bodyEn": "What it ran: A retried step that already had a side effect. What the lab concluded: the checkpoint recorded 'draft' only, so the resume repeated the send; durable execution makes steps resumable, not exactly-once, so side-effecting steps need an idempotency key",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A retried step that already had a side effect. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the checkpoint recorded 'draft' only, so the resume repeated the send; durable execution makes steps resumable, not exactly-once, so side-effecting steps need an idempotency key"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: a retried step that already had a side effect ---\nemails actually sent: 2"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -194,6 +271,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Request-response made the caller wait the full 102 ms. 2) Streaming showed output at 20 ms of 103 ms. 3) A disconnect lost unsaved work. 4) A checkpoint resumed 3 of 5 steps instead of re-running 5. 5) An in-place overwrite cut halfway was corrupt; an atomic write was not. 6) Resume repeated an email, so side effects need idempotency.",
     "bodyKn": "1) Request-response ಕರೆದವರನ್ನು ಪೂರ್ಣ 102 ms ಕಾಯಿಸಿತು. 2) Streaming 103 ms ರಲ್ಲಿ 20 ms ಗೆ ಔಟ್‌ಪುಟ್ ತೋರಿಸಿತು. 3) ಸಂಪರ್ಕ ಕಡಿತ ಉಳಿಸದ ಕೆಲಸ ಕಳೆಯಿತು. 4) Checkpoint 5 ಪುನಃ ಓಡಿಸುವ ಬದಲು 3 ಹಂತ ಮುಂದುವರಿಸಿತು. 5) ಅರ್ಧಕ್ಕೆ ಕತ್ತರಿಸಿದ ಇದ್ದ-ಜಾಗದ ಬರಹ ಹಾಳಾಗಿತ್ತು; atomic ಬರಹ ಆಗಿರಲಿಲ್ಲ. 6) ಮುಂದುವರಿಕೆ ಇಮೇಲ್ ಪುನರಾವರ್ತಿಸಿತು, ಆದ್ದರಿಂದ ಪಾರ್ಶ್ವ ಪರಿಣಾಮಗಳಿಗೆ idempotency ಬೇಕು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B rt_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B rt_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B rt_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B rt_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

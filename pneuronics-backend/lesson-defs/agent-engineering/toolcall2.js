@@ -117,6 +117,134 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The six calls: success, coercion, validation failure, unknown tool, execution failure",
+    "headingKn": "ಪ್ರಯೋಗ 1: The six calls: success, coercion, validation failure, unknown tool, execution failure",
+    "bodyEn": "What it ran: The six calls: success, coercion, validation failure, unknown tool, execution failure. What the lab concluded: call_003 passed the string '101'; the executor received: query_db with customer_id coerced to an int",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The six calls: success, coercion, validation failure, unknown tool, execution failure. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): call_003 passed the string '101'; the executor received: query_db with customer_id coerced to an int"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The six calls: success, coercion, validation failure, unknown tool, execution failure ---\n{\"ok\": true, \"output\": {\"answer\": \"Paris is the capital of France.\", \"found\": true, \"query\": \"capital of France\"}, \"tool\": \"search_web\", \"tool_use_id\": \"call_001\"}\n{\"ok\": true, \"output\": {\"expression\": \"125 * 48\", \"result\": 6000}, \"tool\": \"run_python\", \"tool_use_id\": \"call_002\"}\n{\"ok\": true, \"output\": {\"customer\": {\"balance\": 1250.0, \"name\": \"Asha\", \"status\": \"open\"}, \"customer_id\": 101, \"found\": true}, \"tool\": \"query_db\", \"tool_use_id\": \"call_003\"}\n{\"error\": {\"message\": \"field 'customer_id': expected integer, got 'banana'\", \"type\": \"validation_error\"}, \"ok\": false, \"tool\": \"query_db\", \"tool_use_id\": \"call_004\"}\n{\"error\": {\"message\": \"tool is not registered: send_email\", \"type\": \"unknown_tool\"}, \"ok\": false, \"tool\": \"send_email\", \"tool_use_id\": \"call_005\"}\n{\"error\": {\"message\": \"division by zero\", \"type\": \"execution_error\"}, \"ok\": false, \"tool\": \"run_python\", \"tool_use_id\": \"call_006\"}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Narrow coercion: what is repaired and what is rejected",
+    "headingKn": "ಪ್ರಯೋಗ 2: Narrow coercion: what is repaired and what is rejected",
+    "bodyEn": "What it ran: Narrow coercion: what is repaired and what is rejected. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Narrow coercion: what is repaired and what is rejected. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Narrow coercion: what is repaired and what is rejected ---\ninteger  '42'      -> 42\ninteger  'banana'  -> REJECTED: expected integer, got 'banana'\ninteger  True      -> REJECTED: boolean is not accepted as integer\ninteger  '3.5'     -> REJECTED: expected integer, got '3.5'\ninteger  3.0       -> REJECTED: expected integer, got 3.0\nnumber   '5.2'     -> 5.2\nnumber   'five'    -> REJECTED: expected number, got 'five'\nboolean  'true'    -> True\nboolean  'yes'     -> REJECTED: expected boolean, got 'yes'\nstring   123       -> REJECTED: expected string, got int"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Order matters: coerce first, then check the enum",
+    "headingKn": "ಪ್ರಯೋಗ 3: Order matters: coerce first, then check the enum",
+    "bodyEn": "What it ran: Order matters: coerce first, then check the enum. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Order matters: coerce first, then check the enum. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Order matters: coerce first, then check the enum ---\n'2' against enum [1,2,3] without coercion: False\nafter coercion: 2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Structured errors a model can act on",
+    "headingKn": "ಪ್ರಯೋಗ 4: Structured errors a model can act on",
+    "bodyEn": "What it ran: Structured errors a model can act on. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Structured errors a model can act on. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Structured errors a model can act on ---\n{'status': 'open'}                         -> missing required field: customer_id\n{'customer_id': 101, 'status': 'pending'}  -> field 'status': value 'pending' must be one of: 'open', 'closed'\n{'customer_id': 101, 'admin': True}        -> unexpected field(s): admin\nnot an object                              -> tool arguments must be an object"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The restricted calculator",
+    "headingKn": "ಪ್ರಯೋಗ 5: The restricted calculator",
+    "bodyEn": "What it ran: The restricted calculator. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The restricted calculator. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. The restricted calculator ---\n'12 * (5 + 3)'                           -> 96\n'-5 + 7'                                 -> 2\n'2 ** 10'                                -> 1024\n\"__import__('os').system('echo hi')\"     -> refused: expression node not allowed: Call\n\"'a' * 3\"                                -> refused: only numeric constants are allowed\n'True + 1'                               -> refused: only numeric constants are allowed"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The allow-list includes **, and that is a resource problem",
+    "headingKn": "ಪ್ರಯೋಗ 6: The allow-list includes **, and that is a resource problem",
+    "bodyEn": "What it ran: The allow-list includes **, and that is a resource problem. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The allow-list includes **, and that is a resource problem. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. The allow-list includes **, and that is a resource problem ---\n9**9**5: computed in 0.002s, 187,181 bits\n9**9**6: computed in 0.079s, 1,684,629 bits\ntool call succeeded (ok = True ) but json.dumps failed: Exceeds the limit (4300 digits) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit\n9**9**8 would need about 86 s of CPU on the machine used for this lesson; it was not run"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: A timeout stops waiting, it does not stop the work",
+    "headingKn": "ಪ್ರಯೋಗ 7: A timeout stops waiting, it does not stop the work",
+    "bodyEn": "What it ran: A timeout stops waiting, it does not stop the work. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A timeout stops waiting, it does not stop the work. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. A timeout stops waiting, it does not stop the work ---\n{\"error\": {\"message\": \"tool exceeded timeout of 0.1 seconds\", \"type\": \"timeout\"}, \"ok\": false, \"tool\": \"slow\", \"tool_use_id\": \"t_1\"}\nreturned after 0.10s with a timeout error; the 0.6s of work had not finished: []\n0.7s later, the abandoned work has now finished: ['finished']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: An unexpected argument type reaches the executor only if validation is skipped",
+    "headingKn": "ಪ್ರಯೋಗ 8: An unexpected argument type reaches the executor only if validation is skipped",
+    "bodyEn": "What it ran: An unexpected argument type reaches the executor only if validation is skipped. What the lab concluded: {\"error\": {\"message\": \"field 'query': expected string, got int\", \"type\": \"validation_error\"}, \"ok\": false, \"tool\": \"search_web\", \"tool_use_id\": \"v_1\"}",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An unexpected argument type reaches the executor only if validation is skipped. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): {\"error\": {\"message\": \"field 'query': expected string, got int\", \"type\": \"validation_error\"}, \"ok\": false, \"tool\": \"search_web\", \"tool_use_id\": \"v_1\"}"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. An unexpected argument type reaches the executor only if validation is skipped ---\ndirect call  -> AttributeError"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

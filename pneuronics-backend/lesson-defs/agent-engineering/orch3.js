@@ -142,6 +142,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Flat versus hierarchical routing on 16 hand-written tasks",
+    "headingKn": "ಪ್ರಯೋಗ 1: Flat versus hierarchical routing on 16 hand-written tasks",
+    "bodyEn": "What it ran: Flat versus hierarchical routing on 16 hand-written tasks. What the lab concluded: both designs routed all 16 as intended, including the four vague tasks, which escalated correctly because they were written to avoid the listed words; the hierarchy used 29 routing calls against 16 because it spends a second call whenever the root finds a department (12 clear tasks plus 'Billing is confusing'), which is the latency cost of a layer",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Flat versus hierarchical routing on 16 hand-written tasks. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both designs routed all 16 as intended, including the four vague tasks, which escalated correctly because they were written to avoid the listed words; the hierarchy used 29 routing calls against 16 because it spends a second call whenever the root finds a department (12 clear tasks plus 'Billing is confusing'), which is the latency cost of a layer"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely checking: flat versus hierarchical routing on 16 hand-written tasks ---\nI was charged twice                  want=refund    flat=refund    hier=refund    path=root>billing_lead>refund\nPlease send my receipt               want=invoice   flat=invoice   hier=invoice   path=root>billing_lead>invoice\nThe app has an error on login        want=bug       flat=bug       hier=bug       path=root>tech_lead>bug\nThe service is down                  want=outage    flat=outage    hier=outage    path=root>tech_lead>outage\nI want a quote for 20 seats          want=quote     flat=quote     hier=quote     path=root>sales_lead>quote\nCan I upgrade my plan                want=upgrade   flat=upgrade   hier=upgrade   path=root>sales_lead>upgrade\nRefund me for last month             want=refund    flat=refund    hier=refund    path=root>billing_lead>refund\nInvoice 55 is wrong                  want=invoice   flat=invoice   hier=invoice   path=root>billing_lead>invoice\nCheckout crash on submit             want=bug       flat=bug       hier=bug       path=root>tech_lead>bug\nOutage in region two                 want=outage    flat=outage    hier=outage    path=root>tech_lead>outage\nWhat is the price                    want=quote     flat=quote     hier=quote     path=root>sales_lead>quote\nMore seats please                    want=upgrade   flat=upgrade   hier=upgrade   path=root>sales_lead>upgrade\nCancel everything                    want=escalate  flat=escalate  hier=escalate  path=root>escalate\nHello there                          want=escalate  flat=escalate  hier=escalate  path=root>escalate\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Routing prompt size per supervisor (assumed 60 words per listed specialist or department)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Routing prompt size per supervisor (assumed 60 words per listed specialist or department)",
+    "bodyEn": "What it ran: Routing prompt size per supervisor (assumed 60 words per listed specialist or department). What the lab concluded: splitting a large roster into departments keeps each supervisor's prompt smaller than one flat list, at the price of one more call per request; the word counts use an assumed 60 words per entry",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Routing prompt size per supervisor (assumed 60 words per listed specialist or department). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): splitting a large roster into departments keeps each supervisor's prompt smaller than one flat list, at the price of one more call per request; the word counts use an assumed 60 words per entry"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: routing prompt size per supervisor (assumed 60 words per listed specialist or department) ---\n specialists  flat prompt words         root prompt words  each department prompt words\n           6                400                       220                           160\n          24               1480                       220                           520\n         100               6040                       280                          1540\n         400              24040                      1000                          1540"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A fake hierarchy",
+    "headingKn": "ಪ್ರಯೋಗ 3: A fake hierarchy",
+    "bodyEn": "What it ran: A fake hierarchy. What the lab concluded: the department layer made no local decision, spent an extra call on every routed task and misrouted 6 task(s) that the real department supervisor routes correctly",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A fake hierarchy. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the department layer made no local decision, spent an extra call on every routed task and misrouted 6 task(s) that the real department supervisor routes correctly"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: a fake hierarchy ---\nPlease send my receipt               want=invoice   fake hierarchy sent it to refund\nThe service is down                  want=outage    fake hierarchy sent it to bug\nCan I upgrade my plan                want=upgrade   fake hierarchy sent it to quote\nInvoice 55 is wrong                  want=invoice   fake hierarchy sent it to refund\nOutage in region two                 want=outage    fake hierarchy sent it to bug\nMore seats please                    want=upgrade   fake hierarchy sent it to quote"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Debate accuracy and cost (assumed per-agent accuracy 0.70, 4 labels, seed 11, 20,000 ques…",
+    "headingKn": "ಪ್ರಯೋಗ 4: Debate accuracy and cost (assumed per-agent accuracy 0.70, 4 labels, seed 11, 20,000 ques…",
+    "bodyEn": "What it ran: Debate accuracy and cost (assumed per-agent accuracy 0.70, 4 labels, seed 11, 20,000 questions). What the lab concluded: with independent errors a vote beats one agent, and it costs several times the calls (proposers, one critique each, a judge); in this simulation the critique calls never change a vote, so all of the accuracy gain comes from voting and the critique only adds cost; early exit saved calls (4.96 against 7.00 at three proposers) but at five proposers it also lowered accuracy (93.3 against 95.2); the 0.70 accuracy is assumed and real agents' errors are often correlated, which is where the gain would shrink",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Debate accuracy and cost (assumed per-agent accuracy 0.70, 4 labels, seed 11, 20,000 questions). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with independent errors a vote beats one agent, and it costs several times the calls (proposers, one critique each, a judge); in this simulation the critique calls never change a vote, so all of the accuracy gain comes from voting and the critique only adds cost; early exit saved calls (4.96 against 7.00 at three proposers) but at five proposers it also lowered accuracy (93.3 against 95.2); the 0.70 accuracy is assumed and real agents' errors are often correlated, which is where the gain would shrink"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: debate accuracy and cost (assumed per-agent accuracy 0.70, 4 labels, seed 11, 20,000 questions) ---\nsingle agent correct:  70.3% with 1 call\ndebate with 3 proposers, early exit False: correct  90.9%, mean calls  7.00\ndebate with 3 proposers, early exit True : correct  91.3%, mean calls  4.96\ndebate with 5 proposers, early exit False: correct  95.2%, mean calls 11.00\ndebate with 5 proposers, early exit True : correct  93.3%, mean calls  6.91"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: All four patterns on the same 12 clear tasks (calls counted, debate accuracy simulated)",
+    "headingKn": "ಪ್ರಯೋಗ 5: All four patterns on the same 12 clear tasks (calls counted, debate accuracy simulated)",
+    "bodyEn": "What it ran: All four patterns on the same 12 clear tasks (calls counted, debate accuracy simulated). What the lab concluded: the units differ (model calls versus agent runs), so this is a rough shape of cost and not a benchmark; debate costs the most, and its accuracy on 12 tasks is too small a sample to compare with the others",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: All four patterns on the same 12 clear tasks (calls counted, debate accuracy simulated). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the units differ (model calls versus agent runs), so this is a rough shape of cost and not a benchmark; debate costs the most, and its accuracy on 12 tasks is too small a sample to compare with the others"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: all four patterns on the same 12 clear tasks (calls counted, debate accuracy simulated) ---\npattern            calls or runs for 12 tasks\nsupervisor                                 12\nswarm            12 to 24 (assumed 1-2 per task)\nhierarchical                               24\ndebate (3)                                 84  (accuracy 11/12 in this one seeded run)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Composing patterns",
+    "headingKn": "ಪ್ರಯೋಗ 6: Composing patterns",
+    "bodyEn": "What it ran: Composing patterns. What the lab concluded: patterns can be nested: route cheaply first and spend the extra debate calls only where a wrong answer is expensive",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Composing patterns. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): patterns can be nested: route cheaply first and spend the extra debate calls only where a wrong answer is expensive"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: composing patterns ---\nhierarchy routes to refund in 2 calls; a debate then double-checks the high-stakes answer (refund) in 7 calls: total 9 calls"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

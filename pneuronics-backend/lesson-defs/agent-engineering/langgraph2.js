@@ -117,6 +117,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: First run: the gate stops execution",
+    "headingKn": "ಪ್ರಯೋಗ 1: First run: the gate stops execution",
+    "bodyEn": "What it ran: First run: the gate stops execution. What the lab concluded: messages in the checkpoint: ['I was charged twice and need a refund.', 'Agent: Refund request prepared.']",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: First run: the gate stops execution. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): messages in the checkpoint: ['I was charged twice and need a refund.', 'Agent: Refund request prepared.']"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. First run: the gate stops execution ---\n[execute] node=classify\n[checkpoint 1] completed=classify next=refund\n[execute] node=refund\n[checkpoint 2] completed=refund next=human_gate\n[execute] node=human_gate\n[stopped] node=human_gate reason=Human approval required\nWorkflow paused: Human approval required\ncheckpoint: {\"next_node\": \"human_gate\", \"last_completed_node\": \"refund\", \"checkpoint_number\": 2}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A human changes the durable state, then the graph resumes",
+    "headingKn": "ಪ್ರಯೋಗ 2: A human changes the durable state, then the graph resumes",
+    "bodyEn": "What it ran: A human changes the durable state, then the graph resumes. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A human changes the durable state, then the graph resumes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. A human changes the durable state, then the graph resumes ---\n[resume] checkpoint=2 last_completed=refund next=human_gate\n[execute] node=human_gate\n[checkpoint 3] completed=human_gate next=send\n[execute] node=send\n[checkpoint 4] completed=send next=None\nnodes executed during resume: ['human_gate', 'send'] (classify and refund did not run again)\nfinal output: Refund request prepared and awaiting approval. Approved and sent.\nfinal messages: ['I was charged twice and need a refund.', 'Agent: Refund request prepared.', 'Human approval received.', 'Final response sent.']\nfinal step: 4"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A failed node leaves the previous checkpoint alone",
+    "headingKn": "ಪ್ರಯೋಗ 3: A failed node leaves the previous checkpoint alone",
+    "bodyEn": "What it ran: A failed node leaves the previous checkpoint alone. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A failed node leaves the previous checkpoint alone. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: a failed node leaves the previous checkpoint alone ---\n[execute] node=classify\n[checkpoint 1] completed=classify next=refund\n[execute] node=refund\n[checkpoint 2] completed=refund next=human_gate\n[execute] node=human_gate\n[stopped] node=human_gate reason=Human approval required\n[resume] checkpoint=2 last_completed=refund next=human_gate\n[execute] node=human_gate\n[stopped] node=human_gate reason=Human approval required\ncheckpoint number before and after a second failed attempt: 2 2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Reducers change what merging means",
+    "headingKn": "ಪ್ರಯೋಗ 4: Reducers change what merging means",
+    "bodyEn": "What it ran: Reducers change what merging means. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Reducers change what merging means. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: reducers change what merging means ---\nappend reducer : ['User: hello', 'Agent: hi']\nreplace reducer: ['Agent: hi']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Serialization can fail after the node already ran",
+    "headingKn": "ಪ್ರಯೋಗ 5: Serialization can fail after the node already ran",
+    "bodyEn": "What it ran: Serialization can fail after the node already ran. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Serialization can fail after the node already ran. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: serialization can fail after the node already ran ---\n[execute] node=stamp\nTypeError at save time: Object of type datetime is not JSON serializable\nnode executions: 1 | checkpoint exists: False\nthe node ran and its effect happened, yet no checkpoint was written"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The in-memory 'checkpointer' is not durable",
+    "headingKn": "ಪ್ರಯೋಗ 6: The in-memory 'checkpointer' is not durable",
+    "bodyEn": "What it ran: The in-memory 'checkpointer' is not durable. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The in-memory 'checkpointer' is not durable. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: the in-memory 'checkpointer' is not durable ---\na new object looking for 'support-001': None\nserialising to JSON is not persistence; the data must live outside the process"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: State must be data, not live resources",
+    "headingKn": "ಪ್ರಯೋಗ 7: State must be data, not live resources",
+    "bodyEn": "What it ran: State must be data, not live resources. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: State must be data, not live resources. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. State must be data, not live resources ---\nstring       serialisable\nset          NOT serialisable\nfunction     NOT serialisable\nfile handle  NOT serialisable"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

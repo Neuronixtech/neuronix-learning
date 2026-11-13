@@ -119,6 +119,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The complete pipeline",
+    "headingKn": "ಪ್ರಯೋಗ 1: The complete pipeline",
+    "bodyEn": "What it ran: The complete pipeline. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The complete pipeline. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The complete pipeline ---\nQUESTION: What is the population of the capital of France, rounded to millions?\n=== PLAN ===\nE1: capital_of({'country': 'France'}) depends_on=[]\nE2: population_of({'city': '#E1'}) depends_on=['E1']\n=== EVIDENCE ===\nE1: Paris\nE2: 2148000\n=== FINAL ANSWER ===\nThe capital of France is Paris, with a population of approximately 2 million."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Solver degradation: evidence missing, failed, partial",
+    "headingKn": "ಪ್ರಯೋಗ 2: Solver degradation: evidence missing, failed, partial",
+    "bodyEn": "What it ran: Solver degradation: evidence missing, failed, partial. What the lab concluded: E2 failed  : The capital is Paris, but I could not determine its population: Population service unavailable",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Solver degradation: evidence missing, failed, partial. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): E2 failed  : The capital is Paris, but I could not determine its population: Population service unavailable"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Solver degradation: evidence missing, failed, partial ---\nE1 missing : I could not determine the capital because capital evidence is missing.\nE1 failed  : I could not determine the capital: Capital service unavailable"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A bad capital from the data source ('Atlantis')",
+    "headingKn": "ಪ್ರಯೋಗ 3: A bad capital from the data source ('Atlantis')",
+    "bodyEn": "What it ran: A bad capital from the data source ('Atlantis'). What the lab concluded: answer: The capital is Atlantis, but I could not determine its population: No population data for Atlantis",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A bad capital from the data source ('Atlantis'). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): answer: The capital is Atlantis, but I could not determine its population: No population data for Atlantis"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. A bad capital from the data source ('Atlantis') ---\nE1: Atlantis\nE2: ERROR: No population data for Atlantis"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Event-driven replanning recovers",
+    "headingKn": "ಪ್ರಯೋಗ 4: Event-driven replanning recovers",
+    "bodyEn": "What it ran: Event-driven replanning recovers. What the lab concluded: after replan, fixed Solver: The capital of France is Paris, with a population of approximately 2 million.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Event-driven replanning recovers. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): after replan, fixed Solver: The capital of France is Paris, with a population of approximately 2 million."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Event-driven replanning recovers ---\nfirst attempt: The capital is Atlantis, but I could not determine its population: No population data for Atlantis\nreplanner added nodes: ['E3:verify_capital', 'E4:population_of']\nE1: Atlantis\nE2: ERROR: No population data for Atlantis\nE3: Paris\nE4: 2148000\nafter replan, NaiveSolver: The capital of France is Atlantis, with a population of approximately 2 million."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The lesson's validate_plan against a cyclic plan",
+    "headingKn": "ಪ್ರಯೋಗ 5: The lesson's validate_plan against a cyclic plan",
+    "bodyEn": "What it ran: The lesson's validate_plan against a cyclic plan. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lesson's validate_plan against a cyclic plan. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. The lesson's validate_plan against a cyclic plan ---\npasted validate_plan: ACCEPTED the cyclic plan\nwith cycle check    : ['no progress possible: cycle or missing dependency among E1, E2']\nexecutor at runtime : Plan cannot make progress. Possible cycle or missing dependency."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A parallel comparison through the same pipeline",
+    "headingKn": "ಪ್ರಯೋಗ 6: A parallel comparison through the same pipeline",
+    "bodyEn": "What it ran: A parallel comparison through the same pipeline. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A parallel comparison through the same pipeline. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. A parallel comparison through the same pipeline ---\nQUESTION: Compare the populations of the capitals of France and Germany.\n=== PLAN ===\nE1: capital_of({'country': 'France'}) depends_on=[]\nE2: capital_of({'country': 'Germany'}) depends_on=[]\nE3: population_of({'city': '#E1'}) depends_on=['E1']\nE4: population_of({'city': '#E2'}) depends_on=['E2']\n=== EVIDENCE ===\nE1: Paris\nE2: Berlin\nE3: 2148000\nE4: 3755000\n=== FINAL ANSWER ===\nBerlin has the larger population (3,755,000 vs 2,148,000 for Paris)."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Retry versus replan",
+    "headingKn": "ಪ್ರಯೋಗ 7: Retry versus replan",
+    "bodyEn": "What it ran: Retry versus replan. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Retry versus replan. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Retry versus replan ---\nflaky tool with bounded retry -> 2148000 after 3 attempts\na non-transient error is not retried; it is a replanning signal: 'unknown city'"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

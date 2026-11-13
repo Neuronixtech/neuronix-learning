@@ -137,6 +137,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: One suite report (seeded stand-in agent, assumed pass probabilities)",
+    "headingKn": "ಪ್ರಯೋಗ 1: One suite report (seeded stand-in agent, assumed pass probabilities)",
+    "bodyEn": "What it ran: One suite report (seeded stand-in agent, assumed pass probabilities). What the lab concluded: first-pass success, repair rate and mean attempts come from the same results as the pass rate; two systems with the same final pass rate can differ a lot on these",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: One suite report (seeded stand-in agent, assumed pass probabilities). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): first-pass success, repair rate and mean attempts come from the same results as the pass rate; two systems with the same final pass rate can differ a lot on these"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely computing: one suite report (seeded stand-in agent, assumed pass probabilities) ---\nReport(total=80, passed=78, pass_rate=0.975, first_pass_rate=0.8125, repair_rate=0.8666666666666667, mean_attempts=1.2125)\n{'reasoning': 0.975, 'tool_use': 0.95, 'security': 1.0, 'memory': 1.0}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Gate decisions for a good candidate, a security regression and a critical failure",
+    "headingKn": "ಪ್ರಯೋಗ 2: Gate decisions for a good candidate, a security regression and a critical failure",
+    "bodyEn": "What it ran: Gate decisions for a good candidate, a security regression and a critical failure. What the lab concluded: a candidate can have an overall rate that looks fine and still be blocked by the security gate and by its critical failures; averages are a summary, the gate is the decision",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Gate decisions for a good candidate, a security regression and a critical failure. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a candidate can have an overall rate that looks fine and still be blocked by the security gate and by its critical failures; averages are a summary, the gate is the decision"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: gate decisions for a good candidate, a security regression and a critical failure ---\ngood candidate       overall 97.5%  gate=PASS []\nsecurity regressed   overall 92.5%  gate=FAIL ['regressed beyond tolerance against the baseline', \"critical failures: ['security-3', 'security-4', 'security-5', 'security-6', 'security-7', 'security-8']\", 'security rate…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: An empty or incomplete suite must not look like success",
+    "headingKn": "ಪ್ರಯೋಗ 3: An empty or incomplete suite must not look like success",
+    "bodyEn": "What it ran: An empty or incomplete suite must not look like success. What the lab concluded: each of these has no failing case, so a gate that only looks at failures would pass them; ERROR is a separate status that blocks because the evidence itself cannot be trusted",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An empty or incomplete suite must not look like success. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each of these has no failing case, so a gate that only looks at failures would pass them; ERROR is a separate status that blocks because the evidence itself cannot be trusted"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: an empty or incomplete suite must not look like success ---\nempty suite: ('ERROR', ['no evaluation cases were loaded'])\nsecurity cases missing: ('ERROR', ['missing category security'])\nsecurity collapsed to 1 case: ('ERROR', ['category security has too few cases'])"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The gate as a real process exit code",
+    "headingKn": "ಪ್ರಯೋಗ 4: The gate as a real process exit code",
+    "bodyEn": "What it ran: The gate as a real process exit code. What the lab concluded: 0 means pass, 1 means the candidate failed policy and 2 means the evidence could not be used; CI acts on the exit code, so printing FAIL and exiting 0 would have let a bad build through",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The gate as a real process exit code. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): 0 means pass, 1 means the candidate failed policy and 2 means the evidence could not be used; CI acts on the exit code, so printing FAIL and exiting 0 would have let a bad build through"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: the gate as a real process exit code ---\ngood   printed {\"reasons\": [], \"status\": \"PASS\"} exit code 0\nempty  printed {\"reasons\": [\"no evaluation cases were loaded\"], \"status\": \"ERROR\"} exit code 2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Paired comparison of two candidates on the same 100 cases (assumed pass probabilities, se…",
+    "headingKn": "ಪ್ರಯೋಗ 5: Paired comparison of two candidates on the same 100 cases (assumed pass probabilities, se…",
+    "bodyEn": "What it ran: Paired comparison of two candidates on the same 100 cases (assumed pass probabilities, seed 4). What the lab concluded: the paired table shows where the two candidates disagree, which two success percentages hide; with 100 cases the difference between rates still has noticeable uncertainty, and prompt-only wins are reported where they occur",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Paired comparison of two candidates on the same 100 cases (assumed pass probabilities, seed 4). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the paired table shows where the two candidates disagree, which two success percentages hide; with 100 cases the difference between rates still has noticeable uncertainty, and prompt-only wins are reported where they occur"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: paired comparison of two candidates on the same 100 cases (assumed pass probabilities, seed 4) ---\nboth pass 52, only prompt-only passes 8, only workbench passes 33, neither 7; rates 60% and 85%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Noise in a pass rate from a small suite (true rate ASSUMED at 0.92, seed 6)",
+    "headingKn": "ಪ್ರಯೋಗ 6: Noise in a pass rate from a small suite (true rate ASSUMED at 0.92, seed 6)",
+    "bodyEn": "What it ran: Noise in a pass rate from a small suite (true rate ASSUMED at 0.92, seed 6). What the lab concluded: a 20-case suite can swing by more than the 1-point regression tolerance with nothing changing, so a tight tolerance needs either many cases or repeated runs",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Noise in a pass rate from a small suite (true rate ASSUMED at 0.92, seed 6). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a 20-case suite can swing by more than the 1-point regression tolerance with nothing changing, so a tight tolerance needs either many cases or repeated runs"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely measuring: noise in a pass rate from a small suite (true rate ASSUMED at 0.92, seed 6) ---\n   20 cases: observed pass rate ranged from 80.0% to 100.0% across 95 percent of reruns with no real change\n  100 cases: observed pass rate ranged from 86.0% to 97.0% across 95 percent of reruns with no real change\n 1000 cases: observed pass rate ranged from 90.2% to 93.7% across 95 percent of reruns with no real change"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Failure injection into the gate itself",
+    "headingKn": "ಪ್ರಯೋಗ 7: Failure injection into the gate itself",
+    "bodyEn": "What it ran: Failure injection into the gate itself. What the lab concluded: the defective gate behaves correctly whenever a case fails and only goes wrong when evidence is empty or missing, so ordinary failing-case tests would never find it; injecting the empty and missing-category inputs is how the defect is found",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Failure injection into the gate itself. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the defective gate behaves correctly whenever a case fails and only goes wrong when evidence is empty or missing, so ordinary failing-case tests would never find it; injecting the empty and missing-category inputs is how the defect is found"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking: failure injection into the gate itself ---\nbroken gate on an empty suite: PASS | real gate: ERROR\nbroken gate on a suite with only passing normal cases and no security category: PASS | real gate: ERROR"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

@@ -137,6 +137,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The lesson's hierarchy as data",
+    "headingKn": "ಪ್ರಯೋಗ 1: The lesson's hierarchy as data",
+    "bodyEn": "What it ran: The lesson's hierarchy as data. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lesson's hierarchy as data. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The lesson's hierarchy as data ---\ninvoke_agent researcher [INTERNAL] id=e2ceebc1\n  chat gpt-4o [CLIENT] id=dde51c61\n  execute_tool search [INTERNAL] id=b510246c\nroots: 1 | orphans: 0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A flat list of spans without parent ids says nothing about structure",
+    "headingKn": "ಪ್ರಯೋಗ 2: A flat list of spans without parent ids says nothing about structure",
+    "bodyEn": "What it ran: A flat list of spans without parent ids says nothing about structure. What the lab concluded: a child whose parent was never exported -> roots: 1 | orphans: 1 (its parent id is deadbeef)",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A flat list of spans without parent ids says nothing about structure. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a child whose parent was never exported -> roots: 1 | orphans: 1 (its parent id is deadbeef)"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: a flat list of spans without parent ids says nothing about structure ---\nthree spans with no parent ids -> roots: 3 | orphans: 0\nevery span became its own root: the tree exists only if parent_id was recorded when the span started"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A Span accepts values it should not",
+    "headingKn": "ಪ್ರಯೋಗ 3: A Span accepts values it should not",
+    "bodyEn": "What it ran: A Span accepts values it should not. What the lab concluded: nothing in the dataclass stops invalid kinds, double finishing or edits after the span has ended",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A Span accepts values it should not. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): nothing in the dataclass stops invalid kinds, double finishing or edits after the span has ended"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: a Span accepts values it should not ---\nkind='BANANA' accepted: True\nfinish() twice moved the end time by 10.3 ms (the span silently grew)\nattributes changed after finish: {'gen_ai.request.model': 'late-edit'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Span-id collisions at 8 hex characters",
+    "headingKn": "ಪ್ರಯೋಗ 4: Span-id collisions at 8 hex characters",
+    "bodyEn": "What it ran: Span-id collisions at 8 hex characters. What the lab concluded: a clash attaches the child to whichever span was indexed last, with no error, so the tree is silently wrong",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Span-id collisions at 8 hex characters. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a clash attaches the child to whichever span was indexed last, with no error, so the tree is silently wrong"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: span-id collisions at 8 hex characters ---\n   10000 ids: 0 repeated (birthday estimate 0.0)\n  100000 ids: 0 repeated (birthday estimate 1.2)\n  400000 ids: 21 repeated (birthday estimate 18.6)\nOpenTelemetry span ids are 64 bits (16 hex characters); at 8 characters a busy service would link unrelated spans\ntwo parents share id aaaa1111; the child's parent list: first has 0 child, second has 1 -> it was attached to the second"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Wall clock versus monotonic clock for durations",
+    "headingKn": "ಪ್ರಯೋಗ 5: Wall clock versus monotonic clock for durations",
+    "bodyEn": "What it ran: Wall clock versus monotonic clock for durations. What the lab concluded: the wall-clock step is simulated by subtracting 2 s, not by changing the system clock, so it shows what such a step would do to a duration",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Wall clock versus monotonic clock for durations. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the wall-clock step is simulated by subtracting 2 s, not by changing the system clock, so it shows what such a step would do to a duration"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: wall clock versus monotonic clock for durations ---\nif the wall clock is stepped back 2 s mid-span, time.time() reports a duration of -2000 ms\nperf_counter() measured 20.4 ms and cannot go backwards"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Span-name cardinality",
+    "headingKn": "ಪ್ರಯೋಗ 6: Span-name cardinality",
+    "bodyEn": "What it ran: Span-name cardinality. What the lab concluded: names are what dashboards group by; per-user names made 1,618 groups from 2,000 requests, so put variable values in attributes",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Span-name cardinality. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): names are what dashboards group by; per-user names made 1,618 groups from 2,000 requests, so put variable values in attributes"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely measuring: span-name cardinality ---\n2000 requests, name includes the user id: 1618 distinct span names | name is the agent name and the user is an attribute: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Local versus remote agent kind",
+    "headingKn": "ಪ್ರಯೋಗ 7: Local versus remote agent kind",
+    "bodyEn": "What it ran: Local versus remote agent kind. What the lab concluded: kind is not decoration; backends use it to separate network calls from in-process work, so it has to follow where the work runs",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Local versus remote agent kind. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): kind is not decoration; backends use it to separate network calls from in-process work, so it has to follow where the work runs"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking: local versus remote agent kind ---\nlocal agent in-process -> INTERNAL; remote agent service over the network -> CLIENT\nif 3 of 10 remote calls are recorded as INTERNAL, a 'client call' dashboard sees 70% of them"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

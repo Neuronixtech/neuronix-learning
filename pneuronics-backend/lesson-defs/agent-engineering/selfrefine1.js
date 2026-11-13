@@ -117,6 +117,134 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The loop as the lesson builds it",
+    "headingKn": "ಪ್ರಯೋಗ 1: The loop as the lesson builds it",
+    "bodyEn": "What it ran: The loop as the lesson builds it. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The loop as the lesson builds it. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The loop as the lesson builds it ---\nTASK: Write exactly 3 short bullet points about Python. Each bullet must be under 60 characters.\nITERATION 0: bullets=4 critique=['Expected exactly 3 bullets; found 4.']\nITERATION 1: bullets=3 critique=none\nSTOP: the feedback stage found no remaining issues.\nFINAL OUTPUT:\n- Python was created by Guido van Rossum.\n- Python was first released in 1991.\n- Python is widely used for automation."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: History as context for the refiner",
+    "headingKn": "ಪ್ರಯೋಗ 2: History as context for the refiner",
+    "bodyEn": "What it ran: History as context for the refiner. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: History as context for the refiner. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. History as context for the refiner ---\nIteration 0\nOutput:\n- Python was created by Guido van Rossum.\n- Python was first released in 1991.\n- Python is widely used for automation.\n- Python emphasizes readable code.\nCritique:\n- Expected exactly 3 bullets; found 4.\nIteration 1\nOutput:\n- Python was created by Guido van Rossum.\n- Python was first released in 1991.\n- Python is widely used for automation.\nCritique:\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The boundary: under 60 means 59 passes, 60 fails",
+    "headingKn": "ಪ್ರಯೋಗ 3: The boundary: under 60 means 59 passes, 60 fails",
+    "bodyEn": "What it ran: The boundary: under 60 means 59 passes, 60 fails. What the lab concluded: bullet of 61 characters -> ['Bullet 1 must be under 60 characters.', 'Bullet 2 must be under 60 characters.', 'Bullet 3 must be under 60 characters.']",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The boundary: under 60 means 59 passes, 60 fails. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): bullet of 61 characters -> ['Bullet 1 must be under 60 characters.', 'Bullet 2 must be under 60 characters.', 'Bullet 3 must be under 60 characters.']"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. The boundary: under 60 means 59 passes, 60 fails ---\nbullet of 58 characters -> accepted\nbullet of 59 characters -> accepted\nbullet of 60 characters -> ['Bullet 1 must be under 60 characters.', 'Bullet 2 must be under 60 characters.', 'Bullet 3 must be under 60 characters.']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: What the toy refiner does to a long bullet",
+    "headingKn": "ಪ್ರಯೋಗ 4: What the toy refiner does to a long bullet",
+    "bodyEn": "What it ran: What the toy refiner does to a long bullet. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What the toy refiner does to a long bullet. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. What the toy refiner does to a long bullet ---\ncritique before: ['Bullet 1 must be under 60 characters.', 'Bullet 2 must be under 60 characters.']\n- Python was created by Guido van Rossum in the Netherla...\n- Python is widely used in data science and machine lear...\n- Python emphasizes readable code.\ncritique after : none\nlengths: [59, 59, 34] - the constraint is met, but the text is cut mid-sentence"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A stubborn refiner: termination is not success",
+    "headingKn": "ಪ್ರಯೋಗ 5: A stubborn refiner: termination is not success",
+    "bodyEn": "What it ran: A stubborn refiner: termination is not success. What the lab concluded: the loop returns (output, history) with no success flag; the last critique was: ['Expected exactly 3 bullets; found 4.']",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A stubborn refiner: termination is not success. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the loop returns (output, history) with no success flag; the last critique was: ['Expected exactly 3 bullets; found 4.']"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. A stubborn refiner: termination is not success ---\nITERATION 0: bullets=4 critique=['Expected exactly 3 bullets; found 4.']\nITERATION 1: bullets=4 critique=['Expected exactly 3 bullets; found 4.']\nITERATION 2: bullets=4 critique=['Expected exactly 3 bullets; found 4.']\nITERATION 3: bullets=4 critique=['Expected exactly 3 bullets; found 4.']\nMaximum refinement iterations reached.\nreturned output still has 4 bullets"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Anti-pattern: regenerate instead of refine",
+    "headingKn": "ಪ್ರಯೋಗ 6: Anti-pattern: regenerate instead of refine",
+    "bodyEn": "What it ran: Anti-pattern: regenerate instead of refine. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Anti-pattern: regenerate instead of refine. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Anti-pattern: regenerate instead of refine ---\nregenerate 0: bullets=4 (the critique was thrown away)\nregenerate 1: bullets=4 (the critique was thrown away)\nregenerate 2: bullets=4 (the critique was thrown away)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Cost model (arithmetic on stated assumptions, NOT a measurement)",
+    "headingKn": "ಪ್ರಯೋಗ 7: Cost model (arithmetic on stated assumptions, NOT a measurement)",
+    "bodyEn": "What it ran: Cost model (arithmetic on stated assumptions, NOT a measurement). What the lab concluded: history growth if each attempt is 800 tokens and each critique 200: [1000, 2000, 3000, 4000] tokens after iterations 1..4",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Cost model (arithmetic on stated assumptions, NOT a measurement). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): history growth if each attempt is 800 tokens and each critique 200: [1000, 2000, 3000, 4000] tokens after iterations 1..4"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Cost model (arithmetic on stated assumptions, NOT a measurement) ---\nassume generate = feedback = refine = 1 unit\nn=0 refinement rounds: cost ~ Cg + n*(Cf+Cr) = 1.0 units (+ one feedback to confirm the last output)\nn=1 refinement rounds: cost ~ Cg + n*(Cf+Cr) = 3.0 units (+ one feedback to confirm the last output)\nn=2 refinement rounds: cost ~ Cg + n*(Cf+Cr) = 5.0 units (+ one feedback to confirm the last output)\nn=4 refinement rounds: cost ~ Cg + n*(Cf+Cr) = 9.0 units (+ one feedback to confirm the last output)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: A constructed scenario: what history is for (4 bullets, one too long)",
+    "headingKn": "ಪ್ರಯೋಗ 8: A constructed scenario: what history is for (4 bullets, one too long)",
+    "bodyEn": "What it ran: A constructed scenario: what history is for (4 bullets, one too long). What the lab concluded: our regular refine() accepts history but never reads it, so only this constructed pair shows what history buys",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A constructed scenario: what history is for (4 bullets, one too long). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): our regular refine() accepts history but never reads it, so only this constructed pair shows what history buys"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. A constructed scenario: what history is for (4 bullets, one too long) ---\nforgetful refiner:\n  iteration 0: bullets=4 critique=['Expected exactly 3 bullets; found 4.', 'Bullet 2 must be under 60 characters.']\n  iteration 1: bullets=3 critique=['Bullet 2 must be under 60 characters.']\n  iteration 2: bullets=4 critique=['Expected exactly 3 bullets; found 4.']\n  iteration 3: bullets=3 critique=none\n  ended clean: True\nhistory-aware refiner:\n  iteration 0: bullets=4 critique=['Expected exactly 3 bullets; found 4.', 'Bullet 2 must be under 60 characters.']\n  iteration 1: bullets=3 critique=none\n  ended clean: True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

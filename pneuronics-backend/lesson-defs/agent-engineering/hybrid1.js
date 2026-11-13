@@ -159,6 +159,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Three query shapes, one memory",
+    "headingKn": "ಪ್ರಯೋಗ 1: Three query shapes, one memory",
+    "bodyEn": "What it ran: Three query shapes, one memory. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Three query shapes, one memory. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Three query shapes, one memory ---\nvector 'preferred programming language'   -> []\nvector 'Akshay agent engineering'         -> [('Akshay prefers Python for agent engineering.', 0.5)]\nkv     preference/language               -> Python\ngraph  entity='Akshay'                   -> [('Akshay', 'prefers', 'Python')]\ngraph  entity='Python' (incoming edge)   -> [('Akshay', 'prefers', 'Python')]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Jaccard worked example from the lesson",
+    "headingKn": "ಪ್ರಯೋಗ 2: Jaccard worked example from the lesson",
+    "bodyEn": "What it ran: Jaccard worked example from the lesson. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Jaccard worked example from the lesson. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Jaccard worked example from the lesson ---\nA tokens: ['drift', 'embedding', 'quality', 'reduces', 'retrieval']\nQ tokens: ['drift', 'embedding', 'problems', 'retrieval']\nintersection: ['drift', 'embedding', 'retrieval'] | union size: 6\nsimilarity: 0.5"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Where token overlap fails and why embeddings exist",
+    "headingKn": "ಪ್ರಯೋಗ 3: Where token overlap fails and why embeddings exist",
+    "bodyEn": "What it ran: Where token overlap fails and why embeddings exist. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Where token overlap fails and why embeddings exist. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Where token overlap fails and why embeddings exist ---\n'preferred programming language'                 -> no hit\n'which tongue does Akshay like coding in'        -> [0.083]\n'ಅಕ್ಷಯ್ ಯಾವ ಭಾಷೆ ಇಷ್ಟಪಡುತ್ತಾರೆ'                  -> no hit"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Scope and ownership are enforced before ranking",
+    "headingKn": "ಪ್ರಯೋಗ 4: Scope and ownership are enforced before ranking",
+    "bodyEn": "What it ran: Scope and ownership are enforced before ranking. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Scope and ownership are enforced before ranking. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Scope and ownership are enforced before ranking ---\nuser_001 / user scope  'Bob prefers Rust' -> ['Akshay prefers Python for agent engineering.']\nuser_002 / user scope  'Bob prefers Rust' -> ['Bob prefers Rust.']\nsession A  'session use'                   -> ['For this session use staging.']\nsession B  'session use'                   -> ['For this session use production.']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Scope is part of identity",
+    "headingKn": "ಪ್ರಯೋಗ 5: Scope is part of identity",
+    "bodyEn": "What it ran: Scope is part of identity. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Scope is part of identity. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking the KV key: scope is part of identity ---\nsession A: staging\nsession B: production\nentries stored: 2 (two, because session_id is in the key)\nlookup with different casing 'Environment': None"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Importance is clamped",
+    "headingKn": "ಪ್ರಯೋಗ 6: Importance is clamped",
+    "bodyEn": "What it ran: Importance is clamped. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Importance is clamped. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Importance is clamped ---\nimportance=8     -> stored 1.0\nimportance=-2    -> stored 0.0\nimportance=0.5   -> stored 0.5"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Why the highest similarity is not enough (arithmetic)",
+    "headingKn": "ಪ್ರಯೋಗ 7: Why the highest similarity is not enough (arithmetic)",
+    "bodyEn": "What it ran: Why the highest similarity is not enough (arithmetic). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Why the highest similarity is not enough (arithmetic). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Why the highest similarity is not enough (arithmetic) ---\nA casual mention     R=0.9 I=0.3 T=0.9 -> 0.720\nB primary language   R=0.84 I=0.95 T=0.7 -> 0.845\nA has the higher relevance, B has the higher weighted score"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

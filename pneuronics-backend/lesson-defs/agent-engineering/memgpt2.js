@@ -147,6 +147,134 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Page out: three facts into the archive (ids are random per run)",
+    "headingKn": "ಪ್ರಯೋಗ 1: Page out: three facts into the archive (ids are random per run)",
+    "bodyEn": "What it ran: Page out: three facts into the archive (ids are random per run). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Page out: three facts into the archive (ids are random per run). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Page out: three facts into the archive (ids are random per run) ---\nStored archival memory e1527a53.\nStored archival memory 86cdca68.\nStored archival memory 4f5da50d."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Search scoring, shown term by term for 'evaluation pipeline owner'",
+    "headingKn": "ಪ್ರಯೋಗ 2: Search scoring, shown term by term for 'evaluation pipeline owner'",
+    "bodyEn": "What it ran: Search scoring, shown term by term for 'evaluation pipeline owner'. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Search scoring, shown term by term for 'evaluation pipeline owner'. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Search scoring, shown term by term for 'evaluation pipeline owner' ---\nscore=3 overlap=['evaluation', 'pipeline'] tag_bonus=['evaluation'] :: Alice owns the evaluation pipeline.\nscore=0 overlap=[] tag_bonus=[] :: The Orion prototype deadline is October 20.\nscore=0 overlap=[] tag_bonus=[] :: The baseline benchmark scored 82 percent."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Page in: the search tool returns text with provenance",
+    "headingKn": "ಪ್ರಯೋಗ 3: Page in: the search tool returns text with provenance",
+    "bodyEn": "What it ran: Page in: the search tool returns text with provenance. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Page in: the search tool returns text with provenance. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Page in: the search tool returns text with provenance ---\n[e1527a53] Alice owns the evaluation pipeline. (source=session-001:1)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Where lexical search fails",
+    "headingKn": "ಪ್ರಯೋಗ 4: Where lexical search fails",
+    "bodyEn": "What it ran: Where lexical search fails. What the lab concluded: query 'of the'                             -> ['[e1527a53] Alice owns the evaluation pipeline. (source=session-001:1)', '[86cdca68] The Orion prototype deadline is October 20. (source=session-001:2)', '[4f5da50d] The baseline benchmark scored 82 percent. (source=session-001:3)']",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Where lexical search fails. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): query 'of the'                             -> ['[e1527a53] Alice owns the evaluation pipeline. (source=session-001:1)', '[86cdca68] The Orion prototype deadline is October 20. (source=session-001:2)', '[4f5da50d] The baseline benchmark scored 82 percent. (source=session-001:3)']"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Where lexical search fails ---\nquery 'Who handles model testing?'         -> No archival memories found.\nquery 'who is responsible for QA'          -> ['[86cdca68] The Orion prototype deadline is October 20. (source=session-001:2)']\nquery 'ಮೌಲ್ಯಮಾಪನ ಪೈಪ್\\u200cಲೈನ್ ಯಾರದು?'    -> No archival memories found.\nquery 'the'                                -> ['[e1527a53] Alice owns the evaluation pipeline. (source=session-001:1)', '[86cdca68] The Orion prototype deadline is October 20. (source=session-001:2)', '[4f5da50d] The ba…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Core memory: append and replace",
+    "headingKn": "ಪ್ರಯೋಗ 5: Core memory: append and replace",
+    "bodyEn": "What it ran: Core memory: append and replace. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Core memory: append and replace. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Core memory: append and replace ---\nAppended to core memory section 'project'.\nAppended to core memory section 'project'.\n[CORE:project] The active project is Orion.\nThe prototype deadline is October 20.\nUpdated core memory section 'project'.\n[CORE:project] The active project is Orion.\nThe prototype deadline is October 28.\nText to replace was not found in 'project'.\nCore section 'missing' does not exist."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Conversation_search sees only what is still in the window",
+    "headingKn": "ಪ್ರಯೋಗ 6: Conversation_search sees only what is still in the window",
+    "bodyEn": "What it ran: Conversation_search sees only what is still in the window. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Conversation_search sees only what is still in the window. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. conversation_search sees only what is still in the window ---\nturn=0 role=user text=We need wheel slip logging.\nturn=1 role=assistant text=I'll include wheel slip logging.\na term that was never said: No matching conversation messages found."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: The interrupt: question, miss, search, splice, answer",
+    "headingKn": "ಪ್ರಯೋಗ 7: The interrupt: question, miss, search, splice, answer",
+    "bodyEn": "What it ran: The interrupt: question, miss, search, splice, answer. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The interrupt: question, miss, search, splice, answer. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. The interrupt: question, miss, search, splice, answer ---\nUSER: Who owns the evaluation pipeline?\nconversation_search for the answer: turn=2 role=user text=Who owns the evaluation pipeline?\n   (it finds only the question itself, which contains the same words; it is not an answer)\n[INTERRUPT] archival_memory_search\n[TOOL RESULT] [e1527a53] Alice owns the evaluation pipeline. (source=session-001:1)\nmain context after the page-in:\n[CORE:project] The active project is Orion.\nThe prototype deadline is October 28.\nUSER: We need wheel slip logging.\nASSISTANT: I'll include wheel slip logging.\nUSER: Who owns the evaluation pipeline?\nTOOL: [e1527a53] Alice owns the evaluation pipeline. (source=session-001:1)\nASSISTANT: Alice owns the evaluation pipeline."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Retrieval without context integration changes nothing",
+    "headingKn": "ಪ್ರಯೋಗ 8: Retrieval without context integration changes nothing",
+    "bodyEn": "What it ran: Retrieval without context integration changes nothing. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Retrieval without context integration changes nothing. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Retrieval without context integration changes nothing ---\nruntime holds the answer: True | the model-visible context contains it: False"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

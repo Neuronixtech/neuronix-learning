@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Four real commands and what the record says about each",
+    "headingKn": "ಪ್ರಯೋಗ 1: Four real commands and what the record says about each",
+    "bodyEn": "What it ran: Four real commands and what the record says about each. What the lab concluded: four different outcomes gave four distinguishable records: a launch failure has no exit code at all, a timeout has none either, and a failing command has one; collapsing them into a single 'failed' hides whether the command ran",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Four real commands and what the record says about each. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): four different outcomes gave four distinguishable records: a launch failure has no exit code at all, a timeout has none either, and a failing command has one; collapsing them into a single 'failed' hides whether the command ran"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: four real commands and what the record says about each ---\npasses           succeeded          exit_code=0     timed_out=False infra=None               duration=54 ms\nfails            failed (exit 2)    exit_code=2     timed_out=False infra=None               duration=53 ms\ntimes out        timed out          exit_code=None  timed_out=True  infra=None               duration=1521 ms\nmissing program  could not launch   exit_code=None  timed_out=False infra=FileNotFoundError  duration=6 ms"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The JSONL file is machine-readable",
+    "headingKn": "ಪ್ರಯೋಗ 2: The JSONL file is machine-readable",
+    "bodyEn": "What it ran: The JSONL file is machine-readable. What the lab concluded: one JSON object per line means a later session can append, tail or grep the file without loading all of it, and a crash can damage at most the last line",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The JSONL file is machine-readable. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): one JSON object per line means a later session can append, tail or grep the file without loading all of it, and a crash can damage at most the last line"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: the JSONL file is machine-readable ---\nlines in file: 4 | every line parses: True | commands: ['python.exe', 'python.exe', 'python.exe', 'no-such-program-xyz']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: What a test command reports when no tests exist",
+    "headingKn": "ಪ್ರಯೋಗ 3: What a test command reports when no tests exist",
+    "bodyEn": "What it ran: What a test command reports when no tests exist. What the lab concluded: in normal mode the missing directory made discover import a different package named tests from this machine's site-packages and produce 576,562 characters of errors, which is specific to this machine but shows why output must be bounded; in isolated mode a missing directory exited 1, an empty suite exited 5 with NO TESTS RAN on this Python, and only a real test gave exit 0, so a gate should read the exit code and the test count together",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What a test command reports when no tests exist. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): in normal mode the missing directory made discover import a different package named tests from this machine's site-packages and produce 576,562 characters of errors, which is specific to this machine but shows why output must be bounded; in isolated mode a missing directory exited 1, an empty suite exited 5 with NO TESTS RAN on this Python, and only a real test gave exit 0, so a gate should read the exit code and the test count together"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: what a test command reports when no tests exist ---\nno tests directory, normal mode: failed (exit 1) | stderr characters: 576562 | mentions site-packages: True\nno tests directory, isolated mode (-I): failed (exit 1) | ImportError: Start directory is not importable: 'tests'\nempty tests directory, isolated: failed (exit 5) | NO TESTS RAN\none passing test, isolated: succeeded | OK"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A claim with no record behind it",
+    "headingKn": "ಪ್ರಯೋಗ 4: A claim with no record behind it",
+    "bodyEn": "What it ran: A claim with no record behind it. What the lab concluded: a claim that tests passed is supportable only if a record for that command exists with exit code 0; here none exists, so the claim is unsupported, and the correct next action is to run the command, not to continue",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A claim with no record behind it. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a claim that tests passed is supportable only if a record for that command exists with exit code 0; here none exists, so the claim is unsupported, and the correct next action is to run the command, not to continue"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a claim with no record behind it ---\nagent claim: All tests passed. Task complete.\nrecords for a test command in the log: 0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The duration field",
+    "headingKn": "ಪ್ರಯೋಗ 5: The duration field",
+    "bodyEn": "What it ran: The duration field. What the lab concluded: duration includes interpreter start-up, so it is a rough health signal and not a benchmark; a command that suddenly takes ten times longer is worth a look even when it passes",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The duration field. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): duration includes interpreter start-up, so it is a rough health signal and not a benchmark; a command that suddenly takes ten times longer is worth a look even when it passes"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: the duration field ---\ntrivial command 53 ms | half-second sleep 588 ms | difference 535 ms"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Pass, fail, timeout and launch failure gave four distinguishable records. 2) The JSONL file parsed line by line. 3) A missing test directory produced 576,562 characters of errors in normal mode on this machine. 4) An empty suite exited 5 and a real test exited 0. 5) A claim with no record behind it is unsupported.",
     "bodyKn": "1) ಪಾಸ್, ವೈಫಲ್ಯ, timeout ಮತ್ತು ಆರಂಭ ವೈಫಲ್ಯ ನಾಲ್ಕು ಬೇರ್ಪಡಿಸಬಹುದಾದ ದಾಖಲೆಗಳನ್ನು ನೀಡಿದವು. 2) JSONL ಫೈಲ್ ಸಾಲು ಸಾಲಾಗಿ parse ಆಯಿತು. 3) ಕಾಣೆಯಾದ ಪರೀಕ್ಷಾ ಡೈರೆಕ್ಟರಿ ಈ ಯಂತ್ರದಲ್ಲಿ ಸಾಮಾನ್ಯ ಕ್ರಮದಲ್ಲಿ 576,562 ಅಕ್ಷರ ದೋಷ ಉತ್ಪಾದಿಸಿತು. 4) ಖಾಲಿ ಸೂಟ್ 5 ನೊಂದಿಗೆ ಮತ್ತು ನಿಜ ಪರೀಕ್ಷೆ 0 ನೊಂದಿಗೆ ನಿರ್ಗಮಿಸಿತು. 5) ದಾಖಲೆ ಇಲ್ಲದ ಹೇಳಿಕೆ ಬೆಂಬಲರಹಿತ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B fl_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B fl_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B fl_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B fl_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

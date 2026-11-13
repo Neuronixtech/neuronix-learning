@@ -137,6 +137,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Dark mode through two clicks",
+    "headingKn": "ಪ್ರಯೋಗ 1: Dark mode through two clicks",
+    "bodyEn": "What it ran: Dark mode through two clicks. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Dark mode through two clicks. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Dark mode through two clicks ---\nclick (100,60) -> clicked Appearance\nclick (260,110) -> clicked Dark\ndark mode: True | screen: appearance"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The Rect boundary",
+    "headingKn": "ಪ್ರಯೋಗ 2: The Rect boundary",
+    "bodyEn": "What it ran: The Rect boundary. What the lab concluded: pixel (50, 25) lies on the shared edge of A and B -> resolved to A (first in dictionary order wins, nothing records that B was equally valid)",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The Rect boundary. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): pixel (50, 25) lies on the shared edge of A and B -> resolved to A (first in dictionary order wins, nothing records that B was equally valid)"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: the Rect boundary ---\npoint (20, 40) inside Rect(x1=20, y1=40, x2=180, y2=80): True\npoint (180, 80) inside Rect(x1=20, y1=40, x2=180, y2=80): True\npoint (181, 80) inside Rect(x1=20, y1=40, x2=180, y2=80): False\npoint (19, 40) inside Rect(x1=20, y1=40, x2=180, y2=80): False\npoint (100, 81) inside Rect(x1=20, y1=40, x2=180, y2=80): False\nRect.contains is inclusive on all four sides, so neighbouring elements that share an edge both contain that edge pixel"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Screen-specific elements and stale screenshots",
+    "headingKn": "ಪ್ರಯೋಗ 3: Screen-specific elements and stale screenshots",
+    "bodyEn": "What it ran: Screen-specific elements and stale screenshots. What the lab concluded: the same coordinates mean different things on different screens, so an action planned from an old screenshot misfires",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Screen-specific elements and stale screenshots. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the same coordinates mean different things on different screens, so an action planned from an old screenshot misfires"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: screen-specific elements and stale screenshots ---\nclick Dark's coordinates (260,110) while still on 'settings' -> nothing there | theme: light\nclick the Appearance coordinates (100,60) again, now on 'appearance' -> nothing there"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Screenshot scale mismatch",
+    "headingKn": "ಪ್ರಯೋಗ 4: Screenshot scale mismatch",
+    "bodyEn": "What it ran: Screenshot scale mismatch. What the lab concluded: a model that returns pixel coordinates for a screenshot that was resized before sending misses unless the coordinates are converted back",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Screenshot scale mismatch. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a model that returns pixel coordinates for a screenshot that was resized before sending misses unless the coordinates are converted back"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: screenshot scale mismatch ---\nagent sees one resolution, display is x1.0: intended element hit 5/5\nagent sees one resolution, display is x0.75: intended element hit 1/5\nagent sees one resolution, display is x0.5: intended element hit 0/5\nagent sees one resolution, display is x2.0: intended element hit 0/5"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Grounding hit rate versus click noise and element size (Gaussian noise ASSUMED, seed 8)",
+    "headingKn": "ಪ್ರಯೋಗ 5: Grounding hit rate versus click noise and element size (Gaussian noise ASSUMED, seed 8)",
+    "bodyEn": "What it ran: Grounding hit rate versus click noise and element size (Gaussian noise ASSUMED, seed 8). What the lab concluded: at sigma 20 the wide button is still hit 69.7 percent of the time and the small icon 21.8 percent; grounding accuracy depends on target size as well as on the model",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Grounding hit rate versus click noise and element size (Gaussian noise ASSUMED, seed 8). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): at sigma 20 the wide button is still hit 69.7 percent of the time and the small icon 21.8 percent; grounding accuracy depends on target size as well as on the model"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: grounding hit rate versus click noise and element size (Gaussian noise ASSUMED, seed 8) ---\nelement           sigma=2    sigma=5   sigma=10   sigma=20\nlarge 160x40       100.0%     100.0%      96.1%      69.7%\nmedium 80x24       100.0%      98.7%      79.1%      45.4%\nsmall 24x24        100.0%      97.5%      62.1%      21.8%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Separating grounding errors from operational-knowledge errors",
+    "headingKn": "ಪ್ರಯೋಗ 6: Separating grounding errors from operational-knowledge errors",
+    "bodyEn": "What it ran: Separating grounding errors from operational-knowledge errors. What the lab concluded: the first rule called the wrong-operation click a grounding miss because it landed on empty space; asking whether the wanted element exists on that screen fixed it. Both are heuristics on a log, not ground truth: the real intent of the agent is never observed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Separating grounding errors from operational-knowledge errors. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first rule called the wrong-operation click a grounding miss because it landed on empty space; asking whether the wanted element exists on that screen fixed it. Both are heuristics on a log, not ground truth: the real intent of the agent is never observed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Separating grounding errors from operational-knowledge errors ---\nknows the plan, slightly off         -> first rule: ['grounding miss'] | with screen check: ['grounding miss']\nknows the plan, hits neighbour       -> first rule: ['grounding slip (hit a neighbour)'] | with screen check: ['grounding slip (hit a neighbour)']\nwrong operation (Dark on settings)   -> first rule: ['grounding miss'] | with screen check: ['knowledge error (wanted element is not on this screen)']\na click on a real element that is not the one needed on this screen -> ['knowledge error (target not on this screen)']"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

@@ -137,6 +137,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: One task, one trajectory, checked against state",
+    "headingKn": "ಪ್ರಯೋಗ 1: One task, one trajectory, checked against state",
+    "bodyEn": "What it ran: One task, one trajectory, checked against state. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: One task, one trajectory, checked against state. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. One task, one trajectory, checked against state ---\nsearch       wireless mouse  -> results: p1:Wireless Mouse A:$24.99, p2:Wireless Mouse B:$19.99, p4:Wireless Mouse C:$29.5\nopen         p2              -> opened Wireless Mouse B\nadd_to_cart  p2              -> cart: ['p2']\ncheckout     None            -> order placed: ['p2']\nsuccess: True | steps: 4 | cheapest wireless mouse is p2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The same text 'success' claim versus the state check",
+    "headingKn": "ಪ್ರಯೋಗ 2: The same text 'success' claim versus the state check",
+    "bodyEn": "What it ran: The same text 'success' claim versus the state check. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The same text 'success' claim versus the state check. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: the same text 'success' claim versus the state check ---\nagent stopped after opening p2; whatever it says, the state check returns False | orders: []\nan agent's claim is not evidence; the environment's state is"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A goal_check that accepts more than the goal",
+    "headingKn": "ಪ್ರಯೋಗ 3: A goal_check that accepts more than the goal",
+    "bodyEn": "What it ran: A goal_check that accepts more than the goal. What the lab concluded: the loose check passed a cart holding a keyboard and a wired mouse; the strict check also rejected a duplicate, which may or may not be what the task meant",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A goal_check that accepts more than the goal. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the loose check passed a cart holding a keyboard and a wired mouse; the strict check also rejected a duplicate, which may or may not be what the task meant"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: a goal_check that accepts more than the goal ---\ncart: ['p5', 'p2', 'p3'] | 'in cart' check: True | exact-cart check: False\nduplicate add: cart ['p2', 'p2'] | in-cart: True | exact: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Side effects the final check does not see",
+    "headingKn": "ಪ್ರಯೋಗ 4: Side effects the final check does not see",
+    "bodyEn": "What it ran: Side effects the final check does not see. What the lab concluded: double checkout after a good run -> last observation: error: cart is empty | orders: [['p2']]",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Side effects the final check does not see. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): double checkout after a good run -> last observation: error: cart is empty | orders: [['p2']]"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: side effects the final check does not see ---\norders: [['p5']] | cart: ['p2'] | 'cheapest in cart' passes: True\nthe agent bought a keyboard along the way; a cart-only goal_check passes because it never looks at orders"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Reset() and reproducibility",
+    "headingKn": "ಪ್ರಯೋಗ 5: Reset() and reproducibility",
+    "bodyEn": "What it ran: Reset() and reproducibility. What the lab concluded: without reset, run 2 onward saw run 1's orders, so an identical correct agent failed four times in a row",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Reset() and reproducibility. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): without reset, run 2 onward saw run 1's orders, so an identical correct agent failed four times in a row"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: reset() and reproducibility ---\nreset between runs=True  -> successes [True, True, True, True, True] | orders left: 1\nreset between runs=False -> successes [True, False, False, False, False] | orders left: 5"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Action budget and invalid actions",
+    "headingKn": "ಪ್ರಯೋಗ 6: Action budget and invalid actions",
+    "bodyEn": "What it ran: Action budget and invalid actions. What the lab concluded: invalid actions came back as observations and the run continued; an agent that cannot read them just burns steps",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Action budget and invalid actions. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): invalid actions came back as observations and the run continued; an agent that cannot read them just burns steps"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely measuring: action budget and invalid actions ---\nagent that only searches: steps used 15 success False (stopped by the budget, not by itself)\nopen       p99    -> error: no product p99\nclick      buy    -> error: unknown action click\ncheckout   None   -> error: cart is empty"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: A 10-step task under an assumed per-step reliability (seed 6, 20000 runs)",
+    "headingKn": "ಪ್ರಯೋಗ 7: A 10-step task under an assumed per-step reliability (seed 6, 20000 runs)",
+    "bodyEn": "What it ran: A 10-step task under an assumed per-step reliability (seed 6, 20000 runs). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A 10-step task under an assumed per-step reliability (seed 6, 20000 runs). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely measuring: a 10-step task under an assumed per-step reliability (seed 6, 20000 runs) ---\nper-step success 99%: 90.2% of 10-step shopping tasks complete (arithmetic 90.4%)\nper-step success 95%: 59.8% of 10-step shopping tasks complete (arithmetic 59.9%)\nper-step success 90%: 34.8% of 10-step shopping tasks complete (arithmetic 34.9%)\nthe rates are assumptions; the point is that a 10-step flow needs every step to land"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

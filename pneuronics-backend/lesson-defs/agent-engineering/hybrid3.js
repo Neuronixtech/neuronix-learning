@@ -117,6 +117,164 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Recency: exponential half-life, with explicit timestamps",
+    "headingKn": "ಪ್ರಯೋಗ 1: Recency: exponential half-life, with explicit timestamps",
+    "bodyEn": "What it ran: Recency: exponential half-life, with explicit timestamps. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Recency: exponential half-life, with explicit timestamps. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Recency: exponential half-life, with explicit timestamps ---\nage   0 days, half-life 7 days -> recency 1.0000\nage   7 days, half-life 7 days -> recency 0.5000\nage  14 days, half-life 7 days -> recency 0.2500\nage  21 days, half-life 7 days -> recency 0.1250\nage  70 days, half-life 7 days -> recency 0.0010"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Fusion weights are normalized",
+    "headingKn": "ಪ್ರಯೋಗ 2: Fusion weights are normalized",
+    "bodyEn": "What it ran: Fusion weights are normalized. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Fusion weights are normalized. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Fusion weights are normalized ---\nweights 5:3:2 -> 0.50, 0.30, 0.20\nR=0.80 I=0.90 T=0.70 with 0.5/0.3/0.2 -> 0.810"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Query 1: semantic (vector only)",
+    "headingKn": "ಪ್ರಯೋಗ 3: Query 1: semantic (vector only)",
+    "bodyEn": "What it ran: Query 1: semantic (vector only). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Query 1: semantic (vector only). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Query 1: semantic (vector only) ---\nembedding drift and retrieval\n  1. score=0.572 rel=0.294 imp=0.750 rec=1.000 sources=vector\n     We discussed embedding drift and how retrieval quality can degrade as memory grows."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Query 2: exact fact, all three stores agree on one memory",
+    "headingKn": "ಪ್ರಯೋಗ 4: Query 2: exact fact, all three stores agree on one memory",
+    "bodyEn": "What it ran: Query 2: exact fact, all three stores agree on one memory. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Query 2: exact fact, all three stores agree on one memory. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Query 2: exact fact, all three stores agree on one memory ---\nlanguage preference\n  1. score=0.985 rel=1.000 imp=0.950 rec=1.000 sources=graph,kv,vector\n     Akshay prefers Python for agent engineering.\n  total results: 1 | the same memory arrived from 3 stores and was returned once"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Query 3: relationship (graph), BillingCorp",
+    "headingKn": "ಪ್ರಯೋಗ 5: Query 3: relationship (graph), BillingCorp",
+    "bodyEn": "What it ran: Query 3: relationship (graph), BillingCorp. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Query 3: relationship (graph), BillingCorp. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Query 3: relationship (graph), BillingCorp ---\nwhich projects connect to BillingCorp\n  1. score=0.920 rel=0.900 imp=0.900 rec=1.000 sources=graph,vector\n     Orion is billed by BillingCorp.\n  2. score=0.920 rel=0.900 imp=0.900 rec=1.000 sources=graph,vector\n     Phoenix is billed by BillingCorp."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Query 4: ownership, user_001 asks about Bob",
+    "headingKn": "ಪ್ರಯೋಗ 6: Query 4: ownership, user_001 asks about Bob",
+    "bodyEn": "What it ran: Query 4: ownership, user_001 asks about Bob. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Query 4: ownership, user_001 asks about Bob. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Query 4: ownership, user_001 asks about Bob ---\nBob prefers Rust, asked by user_001\n  1. score=0.547 rel=0.125 imp=0.950 rec=1.000 sources=vector\n     Akshay prefers Python for agent engineering.\n  texts from user_002 in the results: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Does an invalidated fact still surface?",
+    "headingKn": "ಪ್ರಯೋಗ 7: Does an invalidated fact still surface?",
+    "bodyEn": "What it ran: Does an invalidated fact still surface?. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Does an invalidated fact still surface?. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking: does an invalidated fact still surface? ---\n  Akshay -[lives_in]-> Bengaluru (invalid)\n  Akshay -[lives_in]-> Mysuru (valid)\n  kv current city: Mysuru\nwith kv and graph hints\n  1. score=0.970 rel=1.000 imp=0.900 rec=1.000 sources=graph,kv,vector\n     Akshay lives in Mysuru.\n  2. score=0.526 rel=0.143 imp=0.850 rec=1.000 sources=vector\n     Akshay lives in Bengaluru.\nvector only, no hints\n  1. score=0.541 rel=0.143 imp=0.900 rec=1.000 sources=vector\n     Akshay lives in Mysuru.\n  2. score=0.526 rel=0.143 imp=0.850 rec=1.000 sources=vector\n     Akshay lives in Bengaluru."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Weights flip the ranking of the same two memories",
+    "headingKn": "ಪ್ರಯೋಗ 8: Weights flip the ranking of the same two memories",
+    "bodyEn": "What it ran: Weights flip the ranking of the same two memories. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Weights flip the ranking of the same two memories. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Weights flip the ranking of the same two memories ---\nrelevance-heavy 0.8/0.1/0.1    A=0.830 B=0.785 -> winner A\nimportance-heavy 0.2/0.7/0.1   A=0.440 B=0.905 -> winner B"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 9: Retrieval refreshes recency",
+    "headingKn": "ಪ್ರಯೋಗ 9: Retrieval refreshes recency",
+    "bodyEn": "What it ran: Retrieval refreshes recency. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Retrieval refreshes recency. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 9. Genuinely checking: retrieval refreshes recency ---\nfirst search : recency 0.0026 (60 days old, half-life 7 days)\nsecond search: recency 1.0000 (the first search refreshed last_accessed_at)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 10: Genuinely checking the vector path on paraphrase and Kannada",
+    "headingKn": "ಪ್ರಯೋಗ 10: Genuinely checking the vector path on paraphrase and Kannada",
+    "bodyEn": "What it ran: Genuinely checking the vector path on paraphrase and Kannada. What the lab concluded: same Kannada query plus a KV hint ->  ['Akshay prefers Python for agen'] (the exact path still works)",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely checking the vector path on paraphrase and Kannada. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): same Kannada query plus a KV hint ->  ['Akshay prefers Python for agen'] (the exact path still works)"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 10. Genuinely checking the vector path on paraphrase and Kannada ---\n'what coding tongue does he like'        -> no results\n'ಅಕ್ಷಯ್ ಯಾವ ಭಾಷೆ ಬಳಸುತ್ತಾರೆ'             -> no results"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

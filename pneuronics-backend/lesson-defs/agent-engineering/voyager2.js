@@ -107,6 +107,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Registering the primitives",
+    "headingKn": "ಪ್ರಯೋಗ 1: Registering the primitives",
+    "bodyEn": "What it ran: Registering the primitives. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Registering the primitives. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Registering the primitives ---\n[library] registered collect_wood v1\n[library] registered make_sticks v1\n[library] registered mine_iron v1\n=== Skill Library ===\ncollect_wood v1 | deps=[-] | tags=[resource, wood]\nmake_sticks v1 | deps=[collect_wood] | tags=[crafting, wood]\nmine_iron v1 | deps=[-] | tags=[iron, mining, resource]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Name collisions are refused, semantic duplicates are merged",
+    "headingKn": "ಪ್ರಯೋಗ 2: Name collisions are refused, semantic duplicates are merged",
+    "bodyEn": "What it ran: Name collisions are refused, semantic duplicates are merged. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Name collisions are refused, semantic duplicates are merged. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Name collisions are refused, semantic duplicates are merged ---\nsame name  -> Skill already registered: collect_wood\n[library] duplicate candidate gather_wood -> collect_wood\nidentical description returned: collect_wood | library size: 3\nsimilarity of 'harvest timber' to collect_wood: 0.0\n[library] registered harvest_wood v1\nlibrary size now: 4 (a true duplicate with different words slipped through)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Genuinely checking the dedupe threshold for a false merge",
+    "headingKn": "ಪ್ರಯೋಗ 3: Genuinely checking the dedupe threshold for a false merge",
+    "bodyEn": "What it ran: Genuinely checking the dedupe threshold for a false merge. What the lab concluded: second skill was returned as: mine_iron_safely -> two different capabilities collapsed into one",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely checking the dedupe threshold for a false merge. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): second skill was returned as: mine_iron_safely -> two different capabilities collapsed into one"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking the dedupe threshold for a false merge ---\n'Mine iron ore safely using a pickaxe' vs 'Mine diamond ore safely using a pickaxe'\nsimilarity: 0.75 | threshold 0.75 -> merged\n[library] registered mine_iron_safely v1\n[library] duplicate candidate mine_diamond_safely -> mine_iron_safely"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Retrieval: search surface is name + description + tags",
+    "headingKn": "ಪ್ರಯೋಗ 4: Retrieval: search surface is name + description + tags",
+    "bodyEn": "What it ran: Retrieval: search surface is name + description + tags. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Retrieval: search surface is name + description + tags. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Retrieval: search surface is name + description + tags ---\n[library] registered craft_iron_pickaxe v1\n'mine iron for advanced tools'     -> [(0.625, 'mine_iron'), (0.1, 'collect_wood'), (0.077, 'craft_iron_pickaxe')]\n'need wood for crafting'           -> [(0.429, 'collect_wood'), (0.222, 'make_sticks'), (0.111, 'harvest_wood')]\n'build a shelter by the lake'      -> no match\nwith required_tags={'mining'}: [(0.25, 'mine_iron')]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Composition: dependencies first, shared ones once",
+    "headingKn": "ಪ್ರಯೋಗ 5: Composition: dependencies first, shared ones once",
+    "bodyEn": "What it ran: Composition: dependencies first, shared ones once. What the lab concluded: build_base -> ['cut_wood', 'make_wall', 'make_roof', 'build_base'] (cut_wood appears once)",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Composition: dependencies first, shared ones once. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): build_base -> ['cut_wood', 'make_wall', 'make_roof', 'build_base'] (cut_wood appears once)"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Composition: dependencies first, shared ones once ---\ncraft_iron_pickaxe -> ['collect_wood', 'make_sticks', 'mine_iron', 'craft_iron_pickaxe']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Composition errors are explicit",
+    "headingKn": "ಪ್ರಯೋಗ 6: Composition errors are explicit",
+    "bodyEn": "What it ran: Composition errors are explicit. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Composition errors are explicit. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Composition errors are explicit ---\nmissing dependency -> Missing skill dependency: cut_stone\ncycle              -> Dependency cycle detected at skill_a"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: A valid plan is not a working plan",
+    "headingKn": "ಪ್ರಯೋಗ 7: A valid plan is not a working plan",
+    "bodyEn": "What it ran: A valid plan is not a working plan. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A valid plan is not a working plan. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking: a valid plan is not a working plan ---\nplan: ['collect_wood', 'make_sticks', 'mine_iron', 'craft_iron_pickaxe']\noutputs the plan provides: ['iron_ore', 'sticks', 'wood']\ninputs craft_iron_pickaxe reads: ['sticks', 'iron_ingots']\ninputs nobody produces: ['iron_ingots']\ncompose() checked structure only, the missing iron_ingots producer is invisible to it"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

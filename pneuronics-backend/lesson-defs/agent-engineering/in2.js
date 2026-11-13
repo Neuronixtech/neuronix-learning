@@ -142,6 +142,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Import names versus installer package names",
+    "headingKn": "ಪ್ರಯೋಗ 1: Import names versus installer package names",
+    "bodyEn": "What it ran: Import names versus installer package names. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Import names versus installer package names. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely checking: import names versus installer package names ---\nfind_spec('json'            ) discoverable=True\nfind_spec('yaml'            ) discoverable=True\nfind_spec('PyYAML'          ) discoverable=False\nfind_spec('os.path'         ) discoverable=True\nfind_spec('no_pkg.sub'      ) raised ModuleNotFoundError: No module named 'no_pkg'\nfind_spec('email.mime.text' ) discoverable=True\nfind_spec(''                ) discoverable=False\na dependency list written with installer names (PyYAML) fails a probe that expects import names (yaml); a dotted name whose parent is missing raises ModuleNotFoundError instead of returning None, while an empty name sim…\nwhether yaml is installed depends on this machine and is not a property of the lesson"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Discoverable is not importable",
+    "headingKn": "ಪ್ರಯೋಗ 2: Discoverable is not importable",
+    "bodyEn": "What it ran: Discoverable is not importable. What the lab concluded: find_spec located the broken module because it only looks for the file; the import smoke test caught the failure, at the price of running that module's top-level code during startup, so it should be limited to trusted dependencies",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Discoverable is not importable. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): find_spec located the broken module because it only looks for the file; the import smoke test caught the failure, at the price of running that module's top-level code during startup, so it should be limited to trusted dependencies"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: discoverable is not importable ---\nfine_dep     find_spec found it: True | import: imports\nbroken_dep   find_spec found it: True | import: import failed: ModuleNotFoundError"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A command that resolves but does not launch",
+    "headingKn": "ಪ್ರಯೋಗ 3: A command that resolves but does not launch",
+    "bodyEn": "What it ran: A command that resolves but does not launch. What the lab concluded: resolving a command only proves a file with that name is on PATH; running --version is a second, stronger level, and running the real tests is a third, which belongs to verification and not to startup",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A command that resolves but does not launch. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): resolving a command only proves a file with that name is on PATH; running --version is a second, stronger level, and running the real tests is a third, which belongs to verification and not to startup"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: a command that resolves but does not launch ---\nwhich found it: True\nlaunching it with --version exited with 3"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Environment variables that are set but useless",
+    "headingKn": "ಪ್ರಯೋಗ 4: Environment variables that are set but useless",
+    "bodyEn": "What it ran: Environment variables that are set but useless. What the lab concluded: a whitespace-only value passed the truthiness check although it is useless; presence is not validity, and a format or live check would be a separate, bounded probe that must not print the value",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Environment variables that are set but useless. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a whitespace-only value passed the truthiness check although it is useless; presence is not validity, and a format or live check would be a separate, bounded probe that must not print the value"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: environment variables that are set but useless ---\nunset                  flagged as missing by a truthiness check: True\nempty string           flagged as missing by a truthiness check: True\nwhitespace only        flagged as missing by a truthiness check: False\na real-looking value   flagged as missing by a truthiness check: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A probe that crashes",
+    "headingKn": "ಪ್ರಯೋಗ 5: A probe that crashes",
+    "bodyEn": "What it ran: A probe that crashes. What the lab concluded: the wrapper turns a crash and a malformed result into a failing record and keeps going, so the report is still written; it records only the exception type, not its message, which could contain paths or secrets",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A probe that crashes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the wrapper turns a crash and a malformed result into a failing record and keeps going, so the report is still written; it records only the exception type, not its message, which could contain paths or secrets"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: a probe that crashes ---\nunsafe orchestrator: ZeroDivisionError aborted the whole run, no report was produced\n  {'name': 'ok', 'status': 'pass', 'detail': 'fine'}\n  {'name': 'crashes', 'status': 'fail', 'detail': 'probe error: ZeroDivisionError'}\n  {'name': 'malformed', 'status': 'fail', 'detail': 'probe error: ValueError'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The working-directory trap",
+    "headingKn": "ಪ್ರಯೋಗ 6: The working-directory trap",
+    "bodyEn": "What it ran: The working-directory trap. What the lab concluded: a script that builds paths from the current directory trusts wherever it was launched from; checking a repository marker such as README.md (or locating the root from the script's own path) turns a wrong-directory mistake into a clear failure",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The working-directory trap. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a script that builds paths from the current directory trusts wherever it was launched from; checking a repository marker such as README.md (or locating the root from the script's own path) turns a wrong-directory mistake into a clear failure"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: the working-directory trap ---\ncwd inside the temp directory contains README.md: False\nafter creating one, the same check says: True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

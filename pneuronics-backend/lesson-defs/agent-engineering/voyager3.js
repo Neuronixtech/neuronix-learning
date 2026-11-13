@@ -117,6 +117,149 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Attempt 1: compose and execute",
+    "headingKn": "ಪ್ರಯೋಗ 1: Attempt 1: compose and execute",
+    "bodyEn": "What it ran: Attempt 1: compose and execute. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Attempt 1: compose and execute. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Attempt 1: compose and execute ---\nplan: ['collect_wood v1', 'make_sticks v1', 'mine_iron v1', 'craft_iron_pickaxe v1']\n[execute] collect_wood v1\n[execute] make_sticks v1\n[execute] mine_iron v1\n[execute] craft_iron_pickaxe v1\nsuccess: False\nerror  : RuntimeError: need 3 iron ingots; mining produced ore, not ingots\nstate  : {'wood': 3, 'sticks': 4, 'iron_ore': 3, 'iron_ingots': 0, 'iron_pickaxe': 0}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Diagnose the failure as a capability gap",
+    "headingKn": "ಪ್ರಯೋಗ 2: Diagnose the failure as a capability gap",
+    "bodyEn": "What it ran: Diagnose the failure as a capability gap. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Diagnose the failure as a capability gap. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Diagnose the failure as a capability gap ---\ncurriculum before: Learn to smelt iron ore\ncapability gap detected: smelt_iron\n[library] registered smelt_iron v1\ncurriculum after : Explore a harder task using existing skills"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Refine the parent, recompose, execute attempt 2",
+    "headingKn": "ಪ್ರಯೋಗ 3: Refine the parent, recompose, execute attempt 2",
+    "bodyEn": "What it ran: Refine the parent, recompose, execute attempt 2. What the lab concluded: success: True | state: {'wood': 3, 'sticks': 2, 'iron_ore': 0, 'iron_ingots': 0, 'iron_pickaxe': 1}",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Refine the parent, recompose, execute attempt 2. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): success: True | state: {'wood': 3, 'sticks': 2, 'iron_ore': 0, 'iron_ingots': 0, 'iron_pickaxe': 1}"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Refine the parent, recompose, execute attempt 2 ---\n[library] refined craft_iron_pickaxe: v1 -> v2\nplan: ['collect_wood v1', 'make_sticks v1', 'mine_iron v1', 'smelt_iron v1', 'craft_iron_pickaxe v2']\n[execute] collect_wood v1\n[execute] make_sticks v1\n[execute] mine_iron v1\n[execute] smelt_iron v1\n[execute] craft_iron_pickaxe v2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Verification is separate from execution",
+    "headingKn": "ಪ್ರಯೋಗ 4: Verification is separate from execution",
+    "bodyEn": "What it ran: Verification is separate from execution. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Verification is separate from execution. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Verification is separate from execution ---\nverify: (True, 'Iron pickaxe exists and resource state is valid')\nreused 4 of 5 skills in the plan -> reuse rate 80%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Runtime success without the preconditions",
+    "headingKn": "ಪ್ರಯೋಗ 5: Runtime success without the preconditions",
+    "bodyEn": "What it ran: Runtime success without the preconditions. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Runtime success without the preconditions. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: runtime success without the preconditions ---\n[library] registered collect_wood v1\n[library] registered make_sticks v1\n[library] registered mine_iron v1\n[library] registered craft_iron_pickaxe v1\n[execute] collect_wood v1\n[execute] make_sticks v1\n[execute] mine_iron v1\n[execute] craft_iron_pickaxe v1\nsuccess: True | state: {'wood': 3, 'sticks': 2, 'iron_ore': 3, 'iron_ingots': -3, 'iron_pickaxe': 1}\nverify with only the goal check : True\nverify with the invariant check : (False, 'Invalid negative resource: iron_ingots')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: What refine() kept",
+    "headingKn": "ಪ್ರಯೋಗ 6: What refine() kept",
+    "bodyEn": "What it ran: What refine() kept. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What refine() kept. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: what refine() kept ---\nversions held for craft_iron_pickaxe: [2] (v1 is gone, there is no history to roll back to)\nv2 code identical to v1 code: True (the fix was in the graph, not the code)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: The diagnosis is a string match",
+    "headingKn": "ಪ್ರಯೋಗ 7: The diagnosis is a string match",
+    "bodyEn": "What it ran: The diagnosis is a string match. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The diagnosis is a string match. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking: the diagnosis is a string match ---\n'RuntimeError: need 3 iron ingots; mining produced ore, not ingots'    -> smelt_iron\n'RuntimeError: need 3 iron ingot(s), got ore'                          -> None\n'RuntimeError: out of iron'                                            -> None"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: What the fully empty namespace does to the feedback",
+    "headingKn": "ಪ್ರಯೋಗ 8: What the fully empty namespace does to the feedback",
+    "bodyEn": "What it ran: What the fully empty namespace does to the feedback. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What the fully empty namespace does to the feedback. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Genuinely checking: what the fully empty namespace does to the feedback ---\nfully empty builtins -> NameError: name 'RuntimeError' is not defined\ndiagnosis from that message: None (the useful message never appeared)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 9: Skill code that needs other builtins",
+    "headingKn": "ಪ್ರಯೋಗ 9: Skill code that needs other builtins",
+    "bodyEn": "What it ran: Skill code that needs other builtins. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Skill code that needs other builtins. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 9. Genuinely checking: skill code that needs other builtins ---\n[library] registered count_wood v1\n[execute] count_wood v1\nsuccess: False | NameError: name 'sum' is not defined"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

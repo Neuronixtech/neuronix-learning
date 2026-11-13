@@ -147,6 +147,128 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The evaluator ranks candidates exactly and repeatably",
+    "headingKn": "ಪ್ರಯೋಗ 1: The evaluator ranks candidates exactly and repeatably",
+    "bodyEn": "What it ran: The evaluator ranks candidates exactly and repeatably. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The evaluator ranks candidates exactly and repeatably. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The evaluator ranks candidates exactly and repeatably ---\n   1*x + 0 -> fitness -21\n   2*x + 0 -> fitness -21\n   2*x + 2 -> fitness -7\n   2*x + 3 -> fitness 0\n -5*x + 10 -> fitness -91\nsame candidate, evaluated twice: -7 -7"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The evolutionary loop, seed 42",
+    "headingKn": "ಪ್ರಯೋಗ 2: The evolutionary loop, seed 42",
+    "bodyEn": "What it ran: The evolutionary loop, seed 42. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The evolutionary loop, seed 42. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. The evolutionary loop, seed 42 ---\nGeneration 01 | best =    1*x + 1 | fitness =  -16\nGeneration 02 | best =    2*x + 2 | fitness =   -7\nGeneration 03 | best =    2*x + 3 | fitness =    0\nBest candidate: 2*x + 3 | fitness: 0 | generations used: 3\nverification:\n  x=-3 predicted= -3 target= -3\n  x=-2 predicted= -1 target= -1\n  x=-1 predicted=  1 target=  1\n  x= 0 predicted=  3 target=  3\n  x= 1 predicted=  5 target=  5\n  x= 2 predicted=  7 target=  7\n  x= 3 predicted=  9 target=  9"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Is the same seed reproducible, and do other seeds differ?",
+    "headingKn": "ಪ್ರಯೋಗ 3: Is the same seed reproducible, and do other seeds differ?",
+    "bodyEn": "What it ran: Is the same seed reproducible, and do other seeds differ?. What the lab concluded: seeds 0..9, generations to solve: {0: 4, 1: 4, 2: 3, 3: 3, 4: 4, 5: 3, 6: 4, 7: 4, 8: 3, 9: 4}",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Is the same seed reproducible, and do other seeds differ?. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): seeds 0..9, generations to solve: {0: 4, 1: 4, 2: 3, 3: 3, 4: 4, 5: 3, 6: 4, 7: 4, 8: 3, 9: 4}"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: is the same seed reproducible, and do other seeds differ? ---\nseed 42 twice, generations to solve: [3, 3]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: An evaluator that only looks at x = 0",
+    "headingKn": "ಪ್ರಯೋಗ 4: An evaluator that only looks at x = 0",
+    "bodyEn": "What it ran: An evaluator that only looks at x = 0. What the lab concluded: search with the weak evaluator stops at 1*x + 3 (fitness 0); full-evaluator fitness of that answer: -12",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An evaluator that only looks at x = 0. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): search with the weak evaluator stops at 1*x + 3 (fitness 0); full-evaluator fitness of that answer: -12"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: an evaluator that only looks at x = 0 ---\n   2*x + 3 weak fitness   0 | full fitness 0\n 999*x + 3 weak fitness   0 | full fitness -11964\n  -7*x + 3 weak fitness   0 | full fitness -108"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A mutation space that cannot reach the answer",
+    "headingKn": "ಪ್ರಯೋಗ 5: A mutation space that cannot reach the answer",
+    "bodyEn": "What it ran: A mutation space that cannot reach the answer. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A mutation space that cannot reach the answer. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: a mutation space that cannot reach the answer ---\nmutating only b for 200 generations -> 1*x + 3 fitness -12 (the target needs a = 2)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Selection pressure and elitism, 30 seeds each",
+    "headingKn": "ಪ್ರಯೋಗ 6: Selection pressure and elitism, 30 seeds each",
+    "bodyEn": "What it ran: Selection pressure and elitism, 30 seeds each. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Selection pressure and elitism, 30 seeds each. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: selection pressure and elitism, 30 seeds each ---\nelite_count= 1: solved within 30 generations 30/30, mean generations when solved 3.1\nelite_count= 5: solved within 30 generations 30/30, mean generations when solved 3.5\nelite_count=10: solved within 30 generations 30/30, mean generations when solved 5.1\nelite_count=19: solved within 30 generations 10/30, mean generations when solved 20.1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: What happens without elitism",
+    "headingKn": "ಪ್ರಯೋಗ 7: What happens without elitism",
+    "bodyEn": "What it ran: What happens without elitism. What the lab concluded: best fitness per generation, perfect candidate present at the start, no elites kept: [0, -12, -7, -13, -13, -12, -13, -13]",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What happens without elitism. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): best fitness per generation, perfect candidate present at the start, no elites kept: [0, -12, -7, -13, -13, -12, -13, -13]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Caching works because candidates are immutable and hashable",
+    "headingKn": "ಪ್ರಯೋಗ 8: Caching works because candidates are immutable and hashable",
+    "bodyEn": "What it ran: Caching works because candidates are immutable and hashable. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Caching works because candidates are immutable and hashable. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Caching works because candidates are immutable and hashable ---\n200 candidates evaluated with 8 real evaluator calls (8 distinct)"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

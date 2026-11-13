@@ -147,6 +147,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A clean working tree is not proof that nothing changed",
+    "headingKn": "ಪ್ರಯೋಗ 1: A clean working tree is not proof that nothing changed",
+    "bodyEn": "What it ran: A clean working tree is not proof that nothing changed. What the lab concluded: the tree is clean and two files changed, and only the recorded baseline commit exposes it; the verifier needs the baseline stored in task state before the agent starts",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A clean working tree is not proof that nothing changed. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the tree is clean and two files changed, and only the recorded baseline commit exposes it; the verifier needs the baseline stored in task state before the agent starts"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a clean working tree is not proof that nothing changed ---\ngit status --porcelain: ''\nchanged since the baseline commit: ['README.md', 'app.py']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A disposable worktree isolates the task",
+    "headingKn": "ಪ್ರಯೋಗ 2: A disposable worktree isolates the task",
+    "bodyEn": "What it ran: A disposable worktree isolates the task. What the lab concluded: the edit stayed in the worktree and the main checkout was untouched, and removing the worktree left the branch behind, which has to be cleaned up separately",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A disposable worktree isolates the task. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the edit stayed in the worktree and the main checkout was untouched, and removing the worktree left the branch behind, which has to be cleaned up separately"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a disposable worktree isolates the task ---\nmain checkout app.py: v2 | worktree app.py: worktree edit\nworktrees: 2\nafter removal: 1 worktree | the branch task-signup still exists: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Validating paths taken from a contract",
+    "headingKn": "ಪ್ರಯೋಗ 3: Validating paths taken from a contract",
+    "bodyEn": "What it ran: Validating paths taken from a contract. What the lab concluded: traversal, absolute and drive-letter paths were rejected and harmless variants were cleaned; even so, a path check is text only, and the filesystem boundary (symlinks, mounts) needs a resolved-path check against the repository root",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Validating paths taken from a contract. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): traversal, absolute and drive-letter paths were rejected and harmless variants were cleaned; even so, a path check is text only, and the filesystem boundary (symlinks, mounts) needs a resolved-path check against the repository root"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: validating paths taken from a contract ---\n'src/app.py'           -> 'src/app.py'\n'./src/app.py'         -> 'src/app.py'\n'src//app.py'          -> 'src/app.py'\n'../etc/passwd'        rejected: path must not contain ..\n'/etc/passwd'          rejected: path must be relative\n'C:\\\\Windows\\\\x'       rejected: path must be relative\n'src\\\\..\\\\..\\\\x'       rejected: path must not contain ..\n''                     rejected: path must be a non-empty string\n'a\\x00b'               rejected: path must be a non-empty string"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A command runner that takes an argument list",
+    "headingKn": "ಪ್ರಯೋಗ 4: A command runner that takes an argument list",
+    "bodyEn": "What it ran: A command runner that takes an argument list. What the lab concluded: a string command, an empty list and a program outside the allowlist were refused before anything ran, and with shell=False the arguments are never interpreted by a shell; the allowlist here is two program names of our choosing",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A command runner that takes an argument list. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a string command, an empty list and a program outside the allowlist were refused before anything ran, and with shell=False the arguments are never interpreted by a shell; the allowlist here is two program names of our choosing"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a command runner that takes an argument list ---\npython -c ok: {'exit': 0, 'timed_out': False}\nsleeping command with a 1 s timeout: {'exit': None, 'timed_out': True}\n['rm', '-rf', 'x']     rejected: program not allowed: rm\n'python -c pass'       rejected: argv must be a non-empty list of strings\n[]                     rejected: argv must be a non-empty list of strings"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The verifier needs evidence",
+    "headingKn": "ಪ್ರಯೋಗ 5: The verifier needs evidence",
+    "bodyEn": "What it ran: The verifier needs evidence. What the lab concluded: each missing or failing piece of evidence blocked the task, so 'complete' is a verdict computed from the record, never a statement",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The verifier needs evidence. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each missing or failing piece of evidence blocked the task, so 'complete' is a verdict computed from the record, never a statement"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: the verifier needs evidence ---\nno evidence: ('BLOCK', ['missing evidence: baseline_commit', 'missing evidence: acceptance_exit', 'missing evidence: tests_run', 'missing evidence: changed'])\ntests passed but README changed: ('BLOCK', ['outside scope: README.md'])\nexit 0 with zero tests: ('BLOCK', ['acceptance did not pass with at least one test'])\ncomplete evidence: ('ALLOW', [])"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: How many trials does a comparison need?",
+    "headingKn": "ಪ್ರಯೋಗ 6: How many trials does a comparison need?",
+    "bodyEn": "What it ran: How many trials does a comparison need?. What the lab concluded: with 5 trials per arm the same assumed truth gave measured improvements from 0.0 to 0.8 across five repeated experiments, 20 trials gave 0.05 to 0.5, and 200 trials per arm gave 0.19 to 0.27, near the 0.24 the assumed rates imply; this is a statement about sample size under invented rates and says nothing about any real agent or workbench",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How many trials does a comparison need?. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with 5 trials per arm the same assumed truth gave measured improvements from 0.0 to 0.8 across five repeated experiments, 20 trials gave 0.05 to 0.5, and 200 trials per arm gave 0.19 to 0.27, near the 0.24 the assumed rates imply; this is a statement about sample size under invented rates and says nothing about any real agent or workbench"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely simulating with ASSUMED rates: how many trials does a comparison need? ---\nassumed, not measured: a bad edit happens in 30% of runs, and the workbench catches 80% of bad edits\n   5 trials per arm, 5 repeated experiments, measured improvement (prompt-only failure rate minus workbench): [0.2, 0.2, 0.4, 0.0, 0.8]\n  20 trials per arm, 5 repeated experiments, measured improvement (prompt-only failure rate minus workbench): [0.05, 0.35, 0.2, 0.3, 0.5]\n 200 trials per arm, 5 repeated experiments, measured improvement (prompt-only failure rate minus workbench): [0.19, 0.27, 0.24, 0.21, 0.24]"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

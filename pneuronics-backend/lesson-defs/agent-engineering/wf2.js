@@ -107,6 +107,128 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Voting: independent runs, then aggregation",
+    "headingKn": "ಪ್ರಯೋಗ 1: Voting: independent runs, then aggregation",
+    "bodyEn": "What it ran: Voting: independent runs, then aggregation. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Voting: independent runs, then aggregation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Voting: independent runs, then aggregation ---\nvotes : ['YES', 'YES', 'NO']\nwinner: YES | counts: {'YES': 2, 'NO': 1}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The scripted vote and threads",
+    "headingKn": "ಪ್ರಯೋಗ 2: The scripted vote and threads",
+    "bodyEn": "What it ran: The scripted vote and threads. What the lab concluded: pool.map returns results in submission order, but WHICH thread got which scripted answer depends on scheduling",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The scripted vote and threads. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): pool.map returns results in submission order, but WHICH thread got which scripted answer depends on scheduling"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: the scripted vote and threads ---\ndistinct vote orderings over 2000 runs: {('YES', 'YES', 'NO'): 2000}\nwinners: {'YES': 2000} | model calls per run: {3: 2000}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Ties need a policy",
+    "headingKn": "ಪ್ರಯೋಗ 3: Ties need a policy",
+    "bodyEn": "What it ran: Ties need a policy. What the lab concluded: with a tie the winner is whichever answer appeared first, an accident of ordering, not a decision",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Ties need a policy. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with a tie the winner is whichever answer appeared first, an accident of ordering, not a decision"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: ties need a policy ---\n['YES', 'YES', 'NO'] -> most_common winner: YES\n['YES', 'NO', 'YES', 'NO'] -> most_common winner: YES\n['NO', 'YES', 'NO', 'YES'] -> most_common winner: NO"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Sectioning and measured latency",
+    "headingKn": "ಪ್ರಯೋಗ 4: Sectioning and measured latency",
+    "bodyEn": "What it ran: Sectioning and measured latency. What the lab concluded: wall-clock fell towards the slowest worker; total work, and total model cost, did not fall",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Sectioning and measured latency. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): wall-clock fell towards the slowest worker; total work, and total model cost, did not fall"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Sectioning and measured latency ---\nresults: {'security': 'security done', 'performance': 'performance done', 'style': 'style done'}\nsequential: 0.90s | parallel: 0.30s | speed-up x3.0 (3 workers, 0.3 s each)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: One failing worker",
+    "headingKn": "ಪ್ರಯೋಗ 5: One failing worker",
+    "bodyEn": "What it ran: One failing worker. What the lab concluded: best-effort policy: {'security': 'security done', 'performance': 'FAILED: RuntimeError: performance analyzer timed out', 'style': 'style done'}",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: One failing worker. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): best-effort policy: {'security': 'security done', 'performance': 'FAILED: RuntimeError: performance analyzer timed out', 'style': 'style done'}"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: one failing worker ---\nstrict policy: whole fan-out failed -> performance analyzer timed out (the two good results were discarded)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Orchestrator-workers: the task picks the workers",
+    "headingKn": "ಪ್ರಯೋಗ 6: Orchestrator-workers: the task picks the workers",
+    "bodyEn": "What it ran: Orchestrator-workers: the task picks the workers. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Orchestrator-workers: the task picks the workers. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Orchestrator-workers: the task picks the workers ---\n'Research workflow patterns and write code'    -> ['researcher', 'coder']\n'Write code for a calculator'                  -> ['coder']\n'Research electric vehicle batteries'          -> ['researcher']\n'Explain this concept'                         -> ['generalist']\nresults: {'researcher': 'Research findings for Research workflow patterns and write code', 'coder': 'Code implementation for Research workflow patterns and write code'}\nsynthesis: Response to: Synthesize worker results for task: Rese"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Keyword worker selection",
+    "headingKn": "ಪ್ರಯೋಗ 7: Keyword worker selection",
+    "bodyEn": "What it ran: Keyword worker selection. What the lab concluded: model proposed ['researcher', 'delete_production_database'] -> rejected: not in the worker registry",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Keyword worker selection. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): model proposed ['researcher', 'delete_production_database'] -> rejected: not in the worker registry"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking: keyword worker selection ---\n'Explain unicode normalization'              -> ['coder']\n'Describe the barcode format'                -> ['coder']\n\"Summarise the researcher's biography\"       -> ['researcher']\nsubstring matching sent unrelated tasks to the coder and researcher; an allowlist of structured model output is safer\nmodel proposed ['researcher', 'coder'] -> accepted"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Orchestrated workers can themselves run in parallel",
+    "headingKn": "ಪ್ರಯೋಗ 8: Orchestrated workers can themselves run in parallel",
+    "bodyEn": "What it ran: Orchestrated workers can themselves run in parallel. What the lab concluded: ['researcher', 'coder'] in parallel: 0.30s (independent) -- but a coder that needs the researcher's output must stay sequential",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Orchestrated workers can themselves run in parallel. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): ['researcher', 'coder'] in parallel: 0.30s (independent) -- but a coder that needs the researcher's output must stay sequential"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

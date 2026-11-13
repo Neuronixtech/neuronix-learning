@@ -137,6 +137,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Load, update, commit, then a fresh manager reloads from disk",
+    "headingKn": "ಪ್ರಯೋಗ 1: Load, update, commit, then a fresh manager reloads from disk",
+    "bodyEn": "What it ran: Load, update, commit, then a fresh manager reloads from disk. What the lab concluded: the update was not durable until commit(); a new manager reading the file is the evidence that it survived, where checking the old object would prove nothing",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Load, update, commit, then a fresh manager reloads from disk. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the update was not durable until commit(); a new manager reading the file is the evidence that it survived, where checking the old object would prove nothing"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: load, update, commit, then a fresh manager reloads from disk ---\nin memory before commit, file on disk still says: T-014\nfresh manager sees: T-015 ['src/scheduler.py', 'tests/test_scheduler.py'] | Run the scheduler tests"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A rejected update leaves the accepted state unchanged",
+    "headingKn": "ಪ್ರಯೋಗ 2: A rejected update leaves the accepted state unchanged",
+    "bodyEn": "What it ran: A rejected update leaves the accepted state unchanged. What the lab concluded: the careless version raised the same error and still left invalid data in memory, where the next read would trip over it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A rejected update leaves the accepted state unchanged. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the careless version raised the same error and still left invalid data in memory, where the next read would trip over it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: a rejected update leaves the accepted state unchanged ---\n{'touched_files': None}          -> rejected: $.touched_files: expected array, got NoneType\n{'active_task_id': 'T-01'}       -> rejected: $.active_task_id: 'T-01' does not match ^T-\\d{3,}$\n{'schema_version': '2'}          -> rejected: $.schema_version: expected integer, got str\nstate unchanged after three rejections: True\na manager that mutates before validating: state unchanged = False | touched_files is now None"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Returned state must be a copy",
+    "headingKn": "ಪ್ರಯೋಗ 3: Returned state must be a copy",
+    "bodyEn": "What it ran: Returned state must be a copy. What the lab concluded: handing out the internal dictionary let a caller bypass update() and validation without calling any method; deep copies stop that, and a read-only view would be stronger",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Returned state must be a copy. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): handing out the internal dictionary let a caller bypass update() and validation without calling any method; deep copies stop that, and a read-only view would be stronger"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: returned state must be a copy ---\ncopy_out=True  caller set touched_files to None; manager's own state still valid = True\ncopy_out=False caller set touched_files to None; manager's own state still valid = False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Corrupt, missing and cross-file problems",
+    "headingKn": "ಪ್ರಯೋಗ 4: Corrupt, missing and cross-file problems",
+    "bodyEn": "What it ran: Corrupt, missing and cross-file problems. What the lab concluded: each document passed its own schema and the pair was still inconsistent (duplicate ids, an active task that is not on the board); the load refuses a corrupt file instead of resetting it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Corrupt, missing and cross-file problems. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each document passed its own schema and the pair was still inconsistent (duplicate ids, an active task that is not on the board); the load refuses a corrupt file instead of resetting it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: corrupt, missing and cross-file problems ---\nbad.json   -> ValueError: corrupt JSON in bad.json\nnope.json  -> FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\samee\\\\AppData\\\\Local\\\\Temp\\\\tmp1gotmh1y\\\\nope.json'\nboard schema errors: none | cross-file problems: ['duplicate task ids on the board', 'active task T-099 is not on the board']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Commit refuses to write an invalid state",
+    "headingKn": "ಪ್ರಯೋಗ 5: Commit refuses to write an invalid state",
+    "bodyEn": "What it ran: Commit refuses to write an invalid state. What the lab concluded: revalidating at commit is a second guard for state changed by some other path; it does not replace encapsulation",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Commit refuses to write an invalid state. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): revalidating at commit is a second guard for state changed by some other path; it does not replace encapsulation"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: commit refuses to write an invalid state ---\ncommit refused: $.touched_files: expected array, got NoneType\nfile on disk unchanged by the refused commit: True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -194,6 +277,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The disk still said T-014 until commit; a fresh manager then read T-015. 2) Three invalid updates left state unchanged; a mutate-first manager did not. 3) Handing out the internal dict let a caller invalidate state. 4) Corrupt and missing files raised distinct errors and duplicate ids passed the schema. 5) Commit refused invalid data.",
     "bodyKn": "1) commit ವರೆಗೆ ಡಿಸ್ಕ್ ಇನ್ನೂ T-014 ಎಂದಿತು; ಹೊಸ manager ನಂತರ T-015 ಓದಿತು. 2) ಮೂರು ಅಮಾನ್ಯ ನವೀಕರಣಗಳು ಸ್ಥಿತಿ ಬದಲಾಗದೆ ಬಿಟ್ಟವು; ಮೊದಲು-ಬದಲಿಸುವ manager ಬಿಡಲಿಲ್ಲ. 3) ಆಂತರಿಕ dict ನೀಡಿದ್ದು ಕರೆದವರಿಗೆ ಸ್ಥಿತಿ ಅಮಾನ್ಯಗೊಳಿಸಲು ಬಿಟ್ಟಿತು. 4) ಹಾಳಾದ ಮತ್ತು ಕಾಣೆಯಾದ ಫೈಲ್‌ಗಳು ಬೇರೆ ದೋಷ ಎತ್ತಿದವು ಮತ್ತು ನಕಲು ids schema ಪಾಸ್ ಮಾಡಿದವು. 5) Commit ಅಮಾನ್ಯ ಡೇಟಾ ತಿರಸ್ಕರಿಸಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B rm_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B rm_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B rm_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B rm_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

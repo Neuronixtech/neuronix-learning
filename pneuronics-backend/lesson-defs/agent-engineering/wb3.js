@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: An audit of a complete workbench, a missing scope file and a corrupt state file",
+    "headingKn": "ಪ್ರಯೋಗ 1: An audit of a complete workbench, a missing scope file and a corrupt state file",
+    "bodyEn": "What it ran: An audit of a complete workbench, a missing scope file and a corrupt state file. What the lab concluded: a missing handoff template only warns, while a missing scope file and a corrupt state file block; severity follows the consequence of the missing control, and the model cannot override a BLOCK by agreeing to take the risk",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An audit of a complete workbench, a missing scope file and a corrupt state file. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a missing handoff template only warns, while a missing scope file and a corrupt state file block; severity follows the consequence of the missing control, and the model cannot override a BLOCK by agreeing to take the risk"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: an audit of a complete workbench, a missing scope file and a corrupt state file ---\ncomplete                   may_start=True  non-pass findings: []\nscope file missing         may_start=False non-pass findings: [('scope', 'BLOCK', 'missing')]\nstate file corrupt         may_start=False non-pass findings: [('state', 'BLOCK', 'present but invalid JSON')]\nhandoff template missing   may_start=True  non-pass findings: [('handoff', 'WARN', 'missing')]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Presence is not enforcement",
+    "headingKn": "ಪ್ರಯೋಗ 2: Presence is not enforcement",
+    "bodyEn": "What it ran: Presence is not enforcement. What the lab concluded: the scope file and its contents were identical in both cases; only the code path differed, so the audit has three levels and only the third (try a forbidden write) tests the boundary; note that this audit probes its own GuardedWriter, so that PASS shows the probe works and not that the agent's real tools are guarded; a real probe must go through the same write path the agent uses",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Presence is not enforcement. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the scope file and its contents were identical in both cases; only the code path differed, so the audit has three levels and only the third (try a forbidden write) tests the boundary; note that this audit probes its own GuardedWriter, so that PASS shows the probe works and not that the agent's real tools are guarded; a real probe must go through the same write path the agent uses"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: presence is not enforcement ---\nscope file present, valid JSON, guarded writer in place -> ('scope', 'PASS', 'ENFORCEMENT: a write outside scope was blocked')\nsame scope file, but writes go through an unguarded writer: release.sh exists = True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Evidence from an earlier revision",
+    "headingKn": "ಪ್ರಯೋಗ 3: Evidence from an earlier revision",
+    "bodyEn": "What it ran: Evidence from an earlier revision. What the lab concluded: a successful test run says nothing about code that changed afterwards, so evidence records carry the revision and the verifier compares it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Evidence from an earlier revision. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a successful test run says nothing about code that changed afterwards, so evidence records carry the revision and the verifier compares it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: evidence from an earlier revision ---\ntests passed at abc123, code now at abc123: evidence is for the current revision\ntests passed at abc123, code now at def456: STALE: evidence is for abc123, code is at def456"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Handoff validation",
+    "headingKn": "ಪ್ರಯೋಗ 4: Handoff validation",
+    "bodyEn": "What it ran: Handoff validation. What the lab concluded: the last case passes the check although it tells the next session nothing; a validator can require presence, and specificity still needs review",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Handoff validation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the last case passes the check although it tells the next session nothing; a validator can require presence, and specificity still needs review"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: handoff validation ---\ncomplete handoff: {'valid': True, 'missing': []}\nblank next_action: {'valid': False, 'missing': []}\nmissing fields: {'valid': False, 'missing': ['changed_files', 'commands_run', 'failed_attempts', 'next_action', 'open_risks', 'verdict_pointer']}\nweak but non-empty next_action 'Continue': {'valid': True, 'missing': []}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Mutation test of the audit itself",
+    "headingKn": "ಪ್ರಯೋಗ 5: Mutation test of the audit itself",
+    "bodyEn": "What it ran: Mutation test of the audit itself. What the lab concluded: a checker that only lists what exists reports success when controls are absent; removing a file on purpose and expecting BLOCK is how the checker is tested",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Mutation test of the audit itself. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a checker that only lists what exists reports success when controls are absent; removing a file on purpose and expecting BLOCK is how the checker is tested"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: mutation test of the audit itself ---\nbroken audit may_start: True | real audit may_start: False\ncorrupt state file, broken audit may_start: True | real audit may_start: False"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Missing scope or a corrupt state blocked the start; a missing handoff template only warned. 2) A guarded writer blocked a forbidden write and an unguarded one did not. 3) Evidence from abc123 was stale at def456. 4) A blank next action failed and \"Continue\" passed. 5) A broken audit returned may_start True where the real one returned False.",
     "bodyKn": "1) ಕಾಣೆಯಾದ scope ಅಥವಾ ಹಾಳಾದ ಸ್ಥಿತಿ ಆರಂಭ ತಡೆಯಿತು; ಕಾಣೆಯಾದ handoff ಟೆಂಪ್ಲೇಟ್ ಕೇವಲ ಎಚ್ಚರಿಸಿತು. 2) ಕಾವಲು ಬರಹಗಾರ ನಿಷೇಧಿತ ಬರಹ ತಡೆಯಿತು, ಕಾವಲಿಲ್ಲದದ್ದು ತಡೆಯಲಿಲ್ಲ. 3) abc123 ನ ಸಾಕ್ಷ್ಯ def456 ರಲ್ಲಿ ಹಳೆಯದಾಗಿತ್ತು. 4) ಖಾಲಿ next action ವಿಫಲವಾಯಿತು ಮತ್ತು \"Continue\" ಪಾಸ್ ಆಯಿತು. 5) ಮುರಿದ audit ನಿಜವಾದದ್ದು False ಮರಳಿಸಿದಲ್ಲಿ may_start True ಮರಳಿಸಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B wb_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B wb_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B wb_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B wb_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

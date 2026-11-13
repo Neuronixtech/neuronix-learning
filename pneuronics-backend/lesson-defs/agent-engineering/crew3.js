@@ -137,6 +137,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A Flow: decorators attach metadata, the runner reads it",
+    "headingKn": "ಪ್ರಯೋಗ 1: A Flow: decorators attach metadata, the runner reads it",
+    "bodyEn": "What it ran: A Flow: decorators attach metadata, the runner reads it. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A Flow: decorators attach metadata, the runner reads it. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. A Flow: decorators attach metadata, the runner reads it ---\nresearch is_start: True | write listens to: researched\nresearch -> emits 'researched'\nwrite -> emits 'drafted'\nedit -> emits 'edited'\nfinal: edited | Edited version: Draft based on: Research completed for agent engineering"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A Crew inside a Flow",
+    "headingKn": "ಪ್ರಯೋಗ 2: A Crew inside a Flow",
+    "bodyEn": "What it ran: A Crew inside a Flow. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A Crew inside a Flow. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. A Crew inside a Flow ---\nsteps: ['gather', 'crew_step', 'publish']\nfinal: PUBLISHED: Edited: Agents increasingly use explicit workflows."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A misspelled event name ends the flow silently",
+    "headingKn": "ಪ್ರಯೋಗ 3: A misspelled event name ends the flow silently",
+    "bodyEn": "What it ran: A misspelled event name ends the flow silently. What the lab concluded: no exception: 'write' never ran and the caller got a perfectly normal-looking return value",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A misspelled event name ends the flow silently. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): no exception: 'write' never ran and the caller got a perfectly normal-looking return value"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: a misspelled event name ends the flow silently ---\ntrace: [('research', 'researched')] | returned event: 'researched' | unhandled: ['researched']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Two listeners, and a cycle",
+    "headingKn": "ಪ್ರಯೋಗ 4: Two listeners, and a cycle",
+    "bodyEn": "What it ran: Two listeners, and a cycle. What the lab concluded: RuntimeError: flow exceeded 10 steps; trace tail: [('c', 'ping'), ('b', 'pong'), ('c', 'ping')]",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Two listeners, and a cycle. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): RuntimeError: flow exceeded 10 steps; trace tail: [('c', 'ping'), ('b', 'pong'), ('c', 'ping')]"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: two listeners, and a cycle ---\nValueError: event 'go' has 2 listeners: ['b', 'c']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The complete system: tool + crew + typed result + assertions",
+    "headingKn": "ಪ್ರಯೋಗ 5: The complete system: tool + crew + typed result + assertions",
+    "bodyEn": "What it ran: The complete system: tool + crew + typed result + assertions. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The complete system: tool + crew + typed result + assertions. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. The complete system: tool + crew + typed result + assertions ---\ntyped handoff: ResearchResult(topic='agent engineering', findings=('Memory, tools and flows', 'Flows give control', 'Crews give roles'))\ntwo identical runs give identical text: True\nall assertions passed"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Free-routing crew vs Flow, 200 seeds with a simulated 15% mis-route",
+    "headingKn": "ಪ್ರಯೋಗ 6: Free-routing crew vs Flow, 200 seeds with a simulated 15% mis-route",
+    "bodyEn": "What it ran: Free-routing crew vs Flow, 200 seeds with a simulated 15% mis-route. What the lab concluded: the 15% is an assumption, so the exact counts are illustrative; the structural point is that a decision per step is a failure point per step",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Free-routing crew vs Flow, 200 seeds with a simulated 15% mis-route. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the 15% is an assumption, so the exact counts are illustrative; the structural point is that a decision per step is a failure point per step"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely measuring: free-routing crew vs Flow, 200 seeds with a simulated 15% mis-route ---\nnoisy manager outcomes: {'intended order': 144, 'finished, but a role was skipped or reordered': 56} | distinct traces: 14\nFlow over 200 runs: distinct final outputs = 1\nnone of the 200 crew runs raised an error, so the wrong-order runs are invisible unless you inspect the trace"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The two demonstration runs",
+    "headingKn": "ಪ್ರಯೋಗ 1: The two demonstration runs",
+    "bodyEn": "What it ran: The two demonstration runs. What the lab concluded: both runs recorded the acceptance command as passed, and the second was still blocked: tests passing did not outweigh a forbidden file, a warning over a budget of 0 and a missing approval",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The two demonstration runs. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both runs recorded the acceptance command as passed, and the second was still blocked: tests passing did not outweigh a forbidden file, a warning over a budget of 0 and a missing approval"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the two demonstration runs ---\ncompliant_run {'verdict': 'ALLOW', 'errors': 0, 'warnings': 0, 'scope': True, 'acceptance': True, 'approvals': True, 'time': True}\nscope_creep_run {'verdict': 'BLOCK', 'errors': 1, 'warnings': 1, 'scope': False, 'acceptance': True, 'approvals': False, 'time': True}\n   violation: docs/login-guide.md | Outside allowed file patterns | warning\n   violation: release/deploy.sh | Explicitly forbidden file | error"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Acceptance evidence, a claim versus an execution",
+    "headingKn": "ಪ್ರಯೋಗ 2: Acceptance evidence, a claim versus an execution",
+    "bodyEn": "What it ran: Acceptance evidence, a claim versus an execution. What the lab concluded: the failing test file made the real exit code non-zero, yet the self-reported list still said it passed and the first gate allowed the work; evidence has to come from the harness that ran the command, not from the agent's own summary",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Acceptance evidence, a claim versus an execution. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the failing test file made the real exit code non-zero, yet the self-reported list still said it passed and the first gate allowed the work; evidence has to come from the harness that ran the command, not from the agent's own summary"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: acceptance evidence, a claim versus an execution ---\ngate trusting the agent's list: ALLOW\nexecuted 'python -m unittest tests.test_login': exit 1\ngate using executed results: BLOCK"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Approvals compared as plain strings",
+    "headingKn": "ಪ್ರಯೋಗ 3: Approvals compared as plain strings",
+    "bodyEn": "What it ran: Approvals compared as plain strings. What the lab concluded: the same intent written with capitals or a trailing space was rejected, which is safe but brittle, and the last case shows the check has no idea who approved: it only compares text, so an agent that writes its own approval string passes; real approvals need an identity and a record outside the agent's control",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Approvals compared as plain strings. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the same intent written with capitals or a trailing space was rejected, which is safe but brittle, and the last case shows the check has no idea who approved: it only compares text, so an agent that writes its own approval string passes; real approvals need an identity and a record outside the agent's control"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: approvals compared as plain strings ---\nexact text                         {'passed': True, 'missing': []}\ndifferent capitals                 {'passed': False, 'missing': ['production deployment']}\ntrailing space                     {'passed': False, 'missing': ['production deployment']}\napproved by nobody in particular   {'passed': True, 'missing': []}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A time budget checked after the fact versus enforced",
+    "headingKn": "ಪ್ರಯೋಗ 4: A time budget checked after the fact versus enforced",
+    "bodyEn": "What it ran: A time budget checked after the fact versus enforced. What the lab concluded: the post-run check can only report that the budget was exceeded after the time was spent, while a timeout in the runner stopped the command at its limit; budgets belong in the runtime, with the report as the audit record",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A time budget checked after the fact versus enforced. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the post-run check can only report that the budget was exceeded after the time was spent, while a timeout in the runner stopped the command at its limit; budgets belong in the runtime, with the report as the audit record"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a time budget checked after the fact versus enforced ---\npost-run check, 45 minutes against a 30 minute budget: {'passed': False, 'elapsed': 45}\nenforced budget of 1 s on a 30 s command: killed at the timeout after 1.0 s"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The gate truth table",
+    "headingKn": "ಪ್ರಯೋಗ 5: The gate truth table",
+    "bodyEn": "What it ran: The gate truth table. What the lab concluded: exactly one of the sixteen combinations allows the work, so adding another check can only block more, never allow more; that is also why a missing check silently widens the gate",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The gate truth table. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): exactly one of the sixteen combinations allows the work, so adding another check can only block more, never allow more; that is also why a missing check silently widens the gate"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: the gate truth table ---\ncombinations of scope/acceptance/approvals/time: 16 | ALLOW: 1 | BLOCK: 15"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The compliant run was ALLOW and the scope-creep run BLOCK with one error and one warning. 2) A claimed test pass gave ALLOW while the real run exited 1. 3) Capitals or a trailing space broke an approval and a bare string passed with no identity. 4) A timeout killed a command at 1.0 s where a post-run check only reported. 5) One of sixteen combinations allows.",
     "bodyKn": "1) ಅನುಸರಿಸುವ ಓಟ ALLOW ಮತ್ತು ವ್ಯಾಪ್ತಿ-ಮೀರುವ ಓಟ ಒಂದು ದೋಷ ಹಾಗೂ ಒಂದು ಎಚ್ಚರಿಕೆಯೊಂದಿಗೆ BLOCK. 2) ಹೇಳಿದ ಪರೀಕ್ಷಾ ಪಾಸ್ ALLOW ನೀಡಿತು ಆದರೆ ನಿಜ ಓಟ 1 ನೊಂದಿಗೆ ನಿರ್ಗಮಿಸಿತು. 3) ದೊಡ್ಡಕ್ಷರ ಅಥವಾ ಕೊನೆಯ ಖಾಲಿಸ್ಥಳ ಅನುಮೋದನೆ ಮುರಿದವು ಮತ್ತು ಬರೀ ಸ್ಟ್ರಿಂಗ್ ಗುರುತಿಲ್ಲದೆ ಪಾಸ್ ಆಯಿತು. 4) timeout ಆದೇಶವನ್ನು 1.0 s ನಲ್ಲಿ ಕೊಂದಿತು, ಆದರೆ post-run ಪರಿಶೀಲನೆ ವರದಿ ಮಾತ್ರ ಮಾಡಿತು. 5) ಹದಿನಾರರಲ್ಲಿ ಒಂದು ಸಂಯೋಜನೆ ಅನುಮತಿಸುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B sc_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B sc_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B sc_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B sc_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

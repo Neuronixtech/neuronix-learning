@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Comparing versions as strings",
+    "headingKn": "ಪ್ರಯೋಗ 1: Comparing versions as strings",
+    "bodyEn": "What it ran: Comparing versions as strings. What the lab concluded: as strings, '1.9.0' < '1.10.0' is False, so an installer that compared version strings would call 1.9.0 newer than 1.10.0 and skip a genuine upgrade; comparing tuples of integers gives the right answer, and malformed versions are refused instead of guessed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Comparing versions as strings. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): as strings, '1.9.0' < '1.10.0' is False, so an installer that compared version strings would call 1.9.0 newer than 1.10.0 and skip a genuine upgrade; comparing tuples of integers gives the right answer, and malformed versions are refused instead of guessed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: comparing versions as strings ---\n1.9.0 < 1.10.0: as strings False | as number tuples True\n1.2.0 < 1.10.0: as strings False | as number tuples True\n2.0.0 < 10.0.0: as strings False | as number tuples True\nparse('1.2') rejected: expected three numbers: '1.2'\nparse('1.2.x') rejected: not a numeric version: '1.2.x'\nparse('v1.2.0') rejected: not a numeric version: 'v1.2.0'\nparse('') rejected: not a numeric version: ''"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A dry-run upgrade plan that respects customisation",
+    "headingKn": "ಪ್ರಯೋಗ 2: A dry-run upgrade plan that respects customisation",
+    "bodyEn": "What it ran: A dry-run upgrade plan that respects customisation. What the lab concluded: the customised AGENTS.md was kept and listed for manual merge, the unchanged verify script was updated, the new template was added and the schema the new version no longer ships was proposed for removal because it was unmodified; this needs the digests recorded at install time, which a bare version lock does not store",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A dry-run upgrade plan that respects customisation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the customised AGENTS.md was kept and listed for manual merge, the unchanged verify script was updated, the new template was added and the schema the new version no longer ships was proposed for removal because it was unmodified; this needs the digests recorded at install time, which a bare version lock does not store"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a dry-run upgrade plan that respects customisation ---\nadd              ['docs/handoff.md']\nupdate           ['scripts/verify_agent.py']\nkeep_customised  ['AGENTS.md']\nremove           ['schemas/state.json']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Uninstall removes only what the pack installed",
+    "headingKn": "ಪ್ರಯೋಗ 3: Uninstall removes only what the pack installed",
+    "bodyEn": "What it ran: Uninstall removes only what the pack installed. What the lab concluded: removing by a recorded list left the project's state and source files alone; a rule such as 'delete the schemas, scripts and docs folders' would have hit any project file placed there, so uninstall needs the same manifest the install used",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Uninstall removes only what the pack installed. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): removing by a recorded list left the project's state and source files alone; a rule such as 'delete the schemas, scripts and docs folders' would have hit any project file placed there, so uninstall needs the same manifest the install used"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: uninstall removes only what the pack installed ---\nleft after removing the recorded pack files: ['agent_state.json', 'src/app.py']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Are zip archives of the same files byte-identical?",
+    "headingKn": "ಪ್ರಯೋಗ 4: Are zip archives of the same files byte-identical?",
+    "bodyEn": "What it ran: Are zip archives of the same files byte-identical?. What the lab concluded: with entry timestamps pinned the same files gave the same archive bytes, and with the current time the archive differed even though no file changed; a pack that is published should be built with pinned timestamps so its digest identifies its contents",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Are zip archives of the same files byte-identical?. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with entry timestamps pinned the same files gave the same archive bytes, and with the current time the archive differed even though no file changed; a pack that is published should be built with pinned timestamps so its digest identifies its contents"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: are zip archives of the same files byte-identical? ---\nfixed timestamps, built twice: True\ncurrent timestamp versus fixed: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: An end-to-end smoke test in a git repository",
+    "headingKn": "ಪ್ರಯೋಗ 5: An end-to-end smoke test in a git repository",
+    "bodyEn": "What it ran: An end-to-end smoke test in a git repository. What the lab concluded: the install showed up in the repository as new files that can be reviewed and committed like any change, and the installed script ran; a smoke test like this checks that a freshly installed pack works in a repository it has never seen",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An end-to-end smoke test in a git repository. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the install showed up in the repository as new files that can be reviewed and committed like any change, and the installed script ran; a smoke test like this checks that a freshly installed pack works in a repository it has never seen"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: an end-to-end smoke test in a git repository ---\nuntracked after install: ['.workbench-version', 'AGENTS.md', 'docs/handoff.md', 'scripts/verify_agent.py']\ninstalled verify script: 0 verify v2\ncommitted; clean tree: True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) String comparison put 1.9.0 after 1.10.0. 2) The dry run kept a customised file and proposed an unmodified removal. 3) Removing by manifest left project files. 4) Pinned timestamps gave identical archives. 5) The installed script ran in a fresh git repository.",
     "bodyKn": "1) ಸ್ಟ್ರಿಂಗ್ ಹೋಲಿಕೆ 1.9.0 ಅನ್ನು 1.10.0 ನಂತರ ಇಟ್ಟಿತು. 2) dry run ಕಸ್ಟಮೈಸ್ ಮಾಡಿದ ಫೈಲ್ ಉಳಿಸಿ ಮಾರ್ಪಡಿಸದ ತೆಗೆಯುವಿಕೆ ಸೂಚಿಸಿತು. 3) manifest ಮೂಲಕ ತೆಗೆದಾಗ ಪ್ರಾಜೆಕ್ಟ್ ಫೈಲ್‌ಗಳು ಉಳಿದವು. 4) ಸ್ಥಿರ timestamps ಒಂದೇ archives ನೀಡಿದವು. 5) ಸ್ಥಾಪಿತ ಸ್ಕ್ರಿಪ್ಟ್ ಹೊಸ git repository ಯಲ್ಲಿ ಓಡಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B pk_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B pk_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B pk_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B pk_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

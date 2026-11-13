@@ -137,6 +137,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Triage routes to a specialist through a tool-like handoff",
+    "headingKn": "ಪ್ರಯೋಗ 1: Triage routes to a specialist through a tool-like handoff",
+    "bodyEn": "What it ran: Triage routes to a specialist through a tool-like handoff. What the lab concluded: 'Hello there'                              path=['triage_agent'] | I can help route your request.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Triage routes to a specialist through a tool-like handoff. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): 'Hello there'                              path=['triage_agent'] | I can help route your request."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Triage routes to a specialist through a tool-like handoff ---\n'I was charged twice.'                     path=['triage_agent', 'billing_agent'] | Billing agent: I'll help investigate the billing issue.\n'The application crashes on startup.'      path=['triage_agent', 'support_agent'] | Support agent: I'll help troubleshoot the technical issue."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Handoffs are named tools",
+    "headingKn": "ಪ್ರಯೋಗ 2: Handoffs are named tools",
+    "bodyEn": "What it ran: Handoffs are named tools. What the lab concluded: billing_agent has no handoffs, so resolving one -> Unknown handoff: transfer_to_support_agent",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Handoffs are named tools. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): billing_agent has no handoffs, so resolving one -> Unknown handoff: transfer_to_support_agent"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Handoffs are named tools ---\n['transfer_to_billing_agent', 'transfer_to_support_agent']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Keyword routing on mixed and indirect requests",
+    "headingKn": "ಪ್ರಯೋಗ 3: Keyword routing on mixed and indirect requests",
+    "bodyEn": "What it ran: Keyword routing on mixed and indirect requests. What the lab concluded: 'Do you offer a crash course for new users?' -> support_agent (a plain substring match on 'crash' treats a sales question as a technical fault)",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Keyword routing on mixed and indirect requests. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): 'Do you offer a crash course for new users?' -> support_agent (a plain substring match on 'crash' treats a sales question as a technical fault)"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: keyword routing on mixed and indirect requests ---\n'I was charged twice and the app also crashes'   -> billing_agent\n'I was double billed last month'                 -> triage_agent\n'My card was declined at checkout'               -> triage_agent\n'Do you offer a crash course on invoices?'       -> billing_agent\n'The refund button is broken'                    -> billing_agent\n'Can you help me with my subscription?'          -> triage_agent\nmixed requests go to whichever keyword list is checked first; paraphrases ('double billed', 'declined', 'subscription') fall through unrouted, and 'crash course on invoices' went to billing only because that list is che…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A handoff carries only what the runner passes",
+    "headingKn": "ಪ್ರಯೋಗ 4: A handoff carries only what the runner passes",
+    "bodyEn": "What it ran: A handoff carries only what the runner passes. What the lab concluded: the second turn is routed on its own text only; the earlier billing context was not carried, so triage could not route it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A handoff carries only what the runner passes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the second turn is routed on its own text only; the earlier billing context was not carried, so triage could not route it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: a handoff carries only what the runner passes ---\nturn 1: Billing agent: I'll help investigate the billing issue. ['triage_agent', 'billing_agent']\nturn 2: I can help route your request. ['triage_agent']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A handoff cycle needs a hop limit",
+    "headingKn": "ಪ್ರಯೋಗ 5: A handoff cycle needs a hop limit",
+    "bodyEn": "What it ran: A handoff cycle needs a hop limit. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A handoff cycle needs a hop limit. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: a handoff cycle needs a hop limit ---\nRuntimeError: Maximum handoff count exceeded | path: ['ping_agent', 'pong_agent', 'ping_agent', 'pong_agent', 'ping_agent']\nwith no hop limit: test harness stopped an unbounded loop after 5000 handoffs"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Tool call versus handoff: who is active afterwards",
+    "headingKn": "ಪ್ರಯೋಗ 6: Tool call versus handoff: who is active afterwards",
+    "bodyEn": "What it ran: Tool call versus handoff: who is active afterwards. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Tool call versus handoff: who is active afterwards. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Tool call versus handoff: who is active afterwards ---\nbefore tool call, active agent: billing_agent | result: invoice A-1: paid | active after tool: billing_agent\nbefore handoff, active agent: triage_agent | active after handoff: billing_agent"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

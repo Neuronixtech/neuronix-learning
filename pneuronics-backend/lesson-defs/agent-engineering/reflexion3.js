@@ -108,6 +108,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The complete experiment at target 24",
+    "headingKn": "ಪ್ರಯೋಗ 1: The complete experiment at target 24",
+    "bodyEn": "What it ran: The complete experiment at target 24. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The complete experiment at target 24. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The complete experiment at target 24 ---\nReflexion: [12, 23, 24] -> PASS\nBaseline : [12, 12, 12] -> FAIL"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Does the learned correction generalise? targets 25 and 26",
+    "headingKn": "ಪ್ರಯೋಗ 2: Does the learned correction generalise? targets 25 and 26",
+    "bodyEn": "What it ran: Does the learned correction generalise? targets 25 and 26. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Does the learned correction generalise? targets 25 and 26. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Does the learned correction generalise? targets 25 and 26 ---\ntarget 25: totals [12, 23, 25] values [9, 8, 8] -> PASS\ntarget 26: totals [12, 23, 26] values [10, 8, 8] -> PASS"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Sweep: every target from 3 to 60",
+    "headingKn": "ಪ್ರಯೋಗ 3: Sweep: every target from 3 to 60",
+    "bodyEn": "What it ran: Sweep: every target from 3 to 60. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Sweep: every target from 3 to 60. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Sweep: every target from 3 to 60 ---\nmax_trials=3: solved 58 of 58; unsolved targets: []\nmax_trials=5: solved 58 of 58; unsolved targets: []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Targets below 12 start on the 'too high' branch: target 10",
+    "headingKn": "ಪ್ರಯೋಗ 4: Targets below 12 start on the 'too high' branch: target 10",
+    "bodyEn": "What it ran: Targets below 12 start on the 'too high' branch: target 10. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Targets below 12 start on the 'too high' branch: target 10. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Targets below 12 start on the 'too high' branch: target 10 ---\ntrial 1: values=[4, 4, 4] total=12 passed=False\ntrial 2: values=[3, 3, 4] total=10 passed=True\nsolved: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A systematically wrong evaluator (accepts target+1)",
+    "headingKn": "ಪ್ರಯೋಗ 5: A systematically wrong evaluator (accepts target+1)",
+    "bodyEn": "What it ran: A systematically wrong evaluator (accepts target+1). What the lab concluded: memory: ['Previous total 12 was too low for target 24; increase the values.', 'The candidate already satisfies the target.', 'Previous total 12 was too low for target 24; increase the values.']",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A systematically wrong evaluator (accepts target+1). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): memory: ['Previous total 12 was too low for target 24; increase the values.', 'The candidate already satisfies the target.', 'Previous total 12 was too low for target 24; increase the values.']"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. A systematically wrong evaluator (accepts target+1) ---\ntrial 1: values=[4, 4, 4] total=12 evaluator says passed=False\ntrial 2: values=[7, 8, 8] total=23 evaluator says passed=False\ntrial 3: values=[8, 8, 8] total=24 evaluator says passed=False\ntrial 4: values=[4, 4, 4] total=12 evaluator says passed=False\ntrial 5: values=[8, 8, 8] total=24 evaluator says passed=False\ntrial 6: values=[4, 4, 4] total=12 evaluator says passed=False\nagent returned: None\ntrials where the candidate really summed to 24: [3, 5] - every one was rejected"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: TTL memory: lessons expire",
+    "headingKn": "ಪ್ರಯೋಗ 6: TTL memory: lessons expire",
+    "bodyEn": "What it ran: TTL memory: lessons expire. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: TTL memory: lessons expire. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. TTL memory: lessons expire ---\nt= 60: recall -> ['lesson A (t=0)', 'lesson B (t=50)']\nt=120: recall -> ['lesson B (t=50)']\nt=200: recall -> []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: A richer evaluation object",
+    "headingKn": "ಪ್ರಯೋಗ 7: A richer evaluation object",
+    "bodyEn": "What it ran: A richer evaluation object. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A richer evaluation object. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. A richer evaluation object ---\ntotal 12: Evaluation(passed=False, score=0.5, error=12)\n           Total 12 was too low by 12 (score 0.5); change the values by about that much.\ntotal 23: Evaluation(passed=False, score=0.958, error=1)\n           Total 23 was too low by 1 (score 0.958); change the values by about that much.\ntotal 24: Evaluation(passed=True, score=1.0, error=0)\n           The candidate already satisfies the target.\ntotal 30: Evaluation(passed=False, score=0.75, error=-6)\n           Total 30 was too high by 6 (score 0.75); change the values by about that much."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

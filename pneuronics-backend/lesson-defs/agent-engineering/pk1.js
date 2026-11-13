@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The pack layout and its manifest",
+    "headingKn": "ಪ್ರಯೋಗ 1: The pack layout and its manifest",
+    "bodyEn": "What it ran: The pack layout and its manifest. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The pack layout and its manifest. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the pack layout and its manifest ---\nfiles: ['AGENTS.md', 'README.md', 'VERSION', 'bin/install.py', 'docs/handoff.md', 'schemas/agent_state.schema.json', 'scripts/verify_agent.py']\nmanifest version: 1.2.0 | files listed: 7 | verify on a fresh pack: []\na manifest of digests turns 'the pack looks right' into something a script can check"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The verifier finds each kind of damage",
+    "headingKn": "ಪ್ರಯೋಗ 2: The verifier finds each kind of damage",
+    "bodyEn": "What it ran: The verifier finds each kind of damage. What the lab concluded: an edit, a deletion, a stray file and a version bump were each reported by name; a changed VERSION is reported twice because its digest and the version string both disagree with the manifest",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The verifier finds each kind of damage. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an edit, a deletion, a stray file and a version bump were each reported by name; a changed VERSION is reported twice because its digest and the version string both disagree with the manifest"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: the verifier finds each kind of damage ---\nedited rule file: ['modified: AGENTS.md']\ndeleted file    : ['missing: docs/handoff.md']\nextra file      : ['unexpected: notes.txt']\nversion bumped without rebuilding the manifest: ['modified: VERSION', 'VERSION says 1.3.0, manifest says 1.2.0']\nrestored: []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Infrastructure versus work",
+    "headingKn": "ಪ್ರಯೋಗ 3: Infrastructure versus work",
+    "bodyEn": "What it ran: Infrastructure versus work. What the lab concluded: the pack holds reusable capability, and files that record one project's work do not belong in it; the manifest check reported them as unexpected, which is how a pack stays free of project state",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Infrastructure versus work. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the pack holds reusable capability, and files that record one project's work do not belong in it; the manifest check reported them as unexpected, which is how a pack stays free of project state"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: infrastructure versus work ---\nwork files in the clean pack: []\nafter someone runs a task inside the pack directory: ['agent_state.json', 'scripts/feedback_record.jsonl']\nverify_pack: ['unexpected: agent_state.json', 'unexpected: scripts/feedback_record.jsonl']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The state schema as a contract",
+    "headingKn": "ಪ್ರಯೋಗ 4: The state schema as a contract",
+    "bodyEn": "What it ran: The state schema as a contract. What the lab concluded: every bad state was refused with a reason, including True as an integer, which Python would otherwise accept; this is a tiny validator written for the lab, not a full JSON Schema implementation, and it checks only required, type, enum and minimum",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The state schema as a contract. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): every bad state was refused with a reason, including True as an integer, which Python would otherwise accept; this is a tiny validator written for the lab, not a full JSON Schema implementation, and it checks only required, type, enum and minimum"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: the state schema as a contract ---\nvalid                  []\nmissing status         ['missing status']\nbad status             [\"status must be one of ['todo', 'doing', 'done', 'blocked']\"]\nattempts is a string   ['attempts must be integer']\nattempts is True       ['attempts must be integer']\nnegative attempts      ['attempts must be at least 0']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The same pack built twice",
+    "headingKn": "ಪ್ರಯೋಗ 5: The same pack built twice",
+    "bodyEn": "What it ran: The same pack built twice. What the lab concluded: because the pack is built from fixed text, two builds have identical digests, which is what lets a repository record 'installed pack 1.2.0' and trust it to mean one specific set of files",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The same pack built twice. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): because the pack is built from fixed text, two builds have identical digests, which is what lets a repository record 'installed pack 1.2.0' and trust it to mean one specific set of files"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: the same pack built twice ---\nmanifest of two separate builds identical: True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The manifest verified a clean pack. 2) Edit, deletion, stray file and version drift were each named. 3) Work files in the pack were reported as unexpected. 4) The schema refused True as an integer. 5) Two builds produced identical digests.",
     "bodyKn": "1) manifest ಸ್ವಚ್ಛ ಪ್ಯಾಕ್ ಪರಿಶೀಲಿಸಿತು. 2) ಸಂಪಾದನೆ, ಅಳಿಸುವಿಕೆ, ಅನಗತ್ಯ ಫೈಲ್ ಮತ್ತು ಆವೃತ್ತಿ ಚಲನೆ ಪ್ರತಿಯೊಂದೂ ಹೆಸರಿಸಲ್ಪಟ್ಟವು. 3) ಪ್ಯಾಕ್‌ನಲ್ಲಿನ work ಫೈಲ್‌ಗಳು unexpected ಎಂದು ವರದಿಯಾದವು. 4) schema True ಅನ್ನು ಪೂರ್ಣಾಂಕವಾಗಿ ನಿರಾಕರಿಸಿತು. 5) ಎರಡು ನಿರ್ಮಾಣಗಳು ಒಂದೇ digests ನೀಡಿದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B pk_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B pk_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B pk_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B pk_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

@@ -117,6 +117,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The Part 1 snapshot",
+    "headingKn": "ಪ್ರಯೋಗ 1: The Part 1 snapshot",
+    "bodyEn": "What it ran: The Part 1 snapshot. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The Part 1 snapshot. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. The Part 1 snapshot ---\nCandidate: [4, 4, 4]\nTotal: 12\nPassed: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Blind retry: three attempts, no memory",
+    "headingKn": "ಪ್ರಯೋಗ 2: Blind retry: three attempts, no memory",
+    "bodyEn": "What it ran: Blind retry: three attempts, no memory. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Blind retry: three attempts, no memory. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Blind retry: three attempts, no memory ---\nTrial 1: [4, 4, 4] total=12 passed=False\nTrial 2: [4, 4, 4] total=12 passed=False\nTrial 3: [4, 4, 4] total=12 passed=False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The three evaluator types",
+    "headingKn": "ಪ್ರಯೋಗ 3: The three evaluator types",
+    "bodyEn": "What it ran: The three evaluator types. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The three evaluator types. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. The three evaluator types ---\nscalar     : add(a, b) = a - b     -> FAIL\nscalar     : add(a, b) = a + b     -> PASS\nheuristic  : same call x5          -> STUCK\nheuristic  : calls differ          -> ok\ngenerator  : Python was created by Microsoft.\nself-eval  : approved (it shares the generator's belief)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Operational failure versus strategy failure",
+    "headingKn": "ಪ್ರಯೋಗ 4: Operational failure versus strategy failure",
+    "bodyEn": "What it ran: Operational failure versus strategy failure. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Operational failure versus strategy failure. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Operational failure versus strategy failure ---\nHTTP 503 Service Unavailable       -> operational retry (backoff)\nconnection timeout                 -> operational retry (backoff)\nno such column: customer_name      -> reflect (strategy failure)\nwrong total: 23 != 24              -> reflect (strategy failure)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: What unbounded reflection memory costs (word counts, not tokens)",
+    "headingKn": "ಪ್ರಯೋಗ 5: What unbounded reflection memory costs (word counts, not tokens)",
+    "bodyEn": "What it ran: What unbounded reflection memory costs (word counts, not tokens). What the lab concluded: each trial adds the same ~12 words, so the prompt grows linearly and old lessons never expire",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What unbounded reflection memory costs (word counts, not tokens). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each trial adds the same ~12 words, so the prompt grows linearly and old lessons never expire"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. What unbounded reflection memory costs (word counts, not tokens) ---\nafter   1 reflections the prompt carries    12 words of reflections\nafter  10 reflections the prompt carries   120 words of reflections\nafter  50 reflections the prompt carries   600 words of reflections\nafter 100 reflections the prompt carries  1200 words of reflections\nafter 200 reflections the prompt carries  2400 words of reflections"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

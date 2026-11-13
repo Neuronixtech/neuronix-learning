@@ -147,6 +147,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A clean change and a wrong-problem change",
+    "headingKn": "ಪ್ರಯೋಗ 1: A clean change and a wrong-problem change",
+    "bodyEn": "What it ran: A clean change and a wrong-problem change. What the lab concluded: the wrong-problem change had a passing verification gate and still failed review: its total was 7 of 10, but a zero in problem fit forces hard_fail, so the high total could not outvote the one dimension that matters most",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A clean change and a wrong-problem change. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the wrong-problem change had a passing verification gate and still failed review: its total was 7 of 10, but a zero in problem fit forces hard_fail, so the high total could not outvote the one dimension that matters most"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a clean change and a wrong-problem change ---\nclean          gate passed=True  total=10/10 verdict=pass\n    {'problem_fit': 2, 'scope_discipline': 2, 'assumptions': 2, 'verification_quality': 2, 'handoff_readiness': 2}\nwrong problem  gate passed=True  total=7/10 verdict=hard_fail\n    {'problem_fit': 0, 'scope_discipline': 2, 'assumptions': 2, 'verification_quality': 1, 'handoff_readiness': 2}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The hard-fail rule against the total",
+    "headingKn": "ಪ್ರಯೋಗ 2: The hard-fail rule against the total",
+    "bodyEn": "What it ran: The hard-fail rule against the total. What the lab concluded: a single zero gave hard_fail with a total of 8, and a total of 5 with no zeros was a soft_fail, so the verdict depends on both the sum and the minimum",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The hard-fail rule against the total. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a single zero gave hard_fail with a total of 8, and a total of 5 with no zeros was a soft_fail, so the verdict depends on both the sum and the minimum"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: the hard-fail rule against the total ---\nall twos                         : (10, 'pass')\nproblem_fit zero, others two     : (8, 'hard_fail')\neverything one (total 5)         : (5, 'soft_fail')\ntwo dimensions zero, others one  : (3, 'hard_fail')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: All 243 possible score combinations",
+    "headingKn": "ಪ್ರಯೋಗ 3: All 243 possible score combinations",
+    "bodyEn": "What it ran: All 243 possible score combinations. What the lab concluded: pass needs every dimension at 1 or 2 and a total of at least 7; only 26 of 243 combinations pass, and 211 are hard fails, so most of the score space is a rejection",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: All 243 possible score combinations. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): pass needs every dimension at 1 or 2 and a total of at least 7; only 26 of 243 combinations pass, and 211 are hard fails, so most of the score space is a rejection"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: all 243 possible score combinations ---\n{'hard_fail': 211, 'soft_fail': 6, 'pass': 26} | total combinations: 243"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Bad scores are rejected, booleans included",
+    "headingKn": "ಪ್ರಯೋಗ 4: Bad scores are rejected, booleans included",
+    "bodyEn": "What it ran: Bad scores are rejected, booleans included. What the lab concluded: True is an int in Python and would have counted as 1, so the type is checked exactly; a verdict engine that accepted it could turn a boolean flag into a rubric score by accident",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Bad scores are rejected, booleans included. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): True is an int in Python and would have counted as 1, so the type is checked exactly; a verdict engine that accepted it could turn a boolean flag into a rubric score by accident"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: bad scores are rejected, booleans included ---\nTrue instead of 1    rejected: problem_fit must be an int from 0 to 2\nscore 3              rejected: problem_fit must be an int from 0 to 2\nscore 1.0            rejected: problem_fit must be an int from 0 to 2\nmissing dimension    rejected: missing dimension handoff_readiness"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The report is serialisable evidence",
+    "headingKn": "ಪ್ರಯೋಗ 5: The report is serialisable evidence",
+    "bodyEn": "What it ran: The report is serialisable evidence. What the lab concluded: the report keeps the score and the finding side by side, so a builder can act on 'The original problem remains unsolved.' and a later session can see why the change was rejected; these findings are fixed strings chosen by the stub, not an analysis of any code",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The report is serialisable evidence. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the report keeps the score and the finding side by side, so a builder can act on 'The original problem remains unsolved.' and a later session can see why the change was rejected; these findings are fixed strings chosen by the stub, not an analysis of any code"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: the report is serialisable evidence ---\nround trip equal: True | keys: ['dimensions', 'total', 'verdict'] | problem_fit: {'score': 0, 'finding': 'The original problem remains unsolved.'}"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -204,6 +287,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The wrong-problem change had a passing gate and still hard-failed. 2) One zero forced hard_fail at a total of 8. 3) 26 of 243 combinations pass. 4) A boolean is rejected as a score. 5) The report keeps scores and findings together.",
     "bodyKn": "1) ತಪ್ಪು-ಸಮಸ್ಯೆ ಬದಲಾವಣೆಗೆ gate ಪಾಸ್ ಆಗಿದ್ದರೂ hard-fail ಆಯಿತು. 2) ಒಂದು ಸೊನ್ನೆ 8 ಒಟ್ಟಿನಲ್ಲಿ hard_fail ಬಲವಂತಗೊಳಿಸಿತು. 3) 243 ರಲ್ಲಿ 26 ಸಂಯೋಜನೆ ಪಾಸ್. 4) boolean ಅಂಕವಾಗಿ ತಿರಸ್ಕೃತ. 5) ವರದಿ ಅಂಕ ಮತ್ತು findings ಒಟ್ಟಿಗೆ ಇಡುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B rv_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B rv_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B rv_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B rv_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

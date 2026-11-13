@@ -117,6 +117,134 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Recall: automatic, ordered, searchable by substring",
+    "headingKn": "ಪ್ರಯೋಗ 1: Recall: automatic, ordered, searchable by substring",
+    "bodyEn": "What it ran: Recall: automatic, ordered, searchable by substring. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Recall: automatic, ordered, searchable by substring. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Recall: automatic, ordered, searchable by substring ---\nrecent(2): [('assistant', 'Noted.'), ('user', 'We migrated Atlas to PostgreSQL.')]\nsearch('postgresql'): ['We migrated Atlas to PostgreSQL.']\nsearch('PostgreSQL') with different case works because the query and content are lowercased\nsearch('Postgres'): ['We migrated Atlas to PostgreSQL.'] (a prefix is still a substring, so it matches)\nsearch('database engine'): [] (a paraphrase shares no substring, so nothing is found)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Archival: invalidate instead of delete",
+    "headingKn": "ಪ್ರಯೋಗ 2: Archival: invalidate instead of delete",
+    "bodyEn": "What it ran: Archival: invalidate instead of delete. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Archival: invalidate instead of delete. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Archival: invalidate instead of delete ---\nbefore: search('sqlite') -> ['Atlas database is SQLite.']\nafter : search('sqlite') -> [] | records stored: 1\ninvalidate unknown id -> KeyError: Unknown archival record: no-such-id"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Turns 1 and 2: the primary agent leaves a raw, inconsistent state",
+    "headingKn": "ಪ್ರಯೋಗ 3: Turns 1 and 2: the primary agent leaves a raw, inconsistent state",
+    "bodyEn": "What it ran: Turns 1 and 2: the primary agent leaves a raw, inconsistent state. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Turns 1 and 2: the primary agent leaves a raw, inconsistent state. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Turns 1 and 2: the primary agent leaves a raw, inconsistent state ---\nAssistant: Understood. I recorded that preference.\nAssistant: Understood. I recorded the PostgreSQL migration.\n   human v2 size=177/220 utilization=0.80\n   project v2: Project: Atlas. | Language: Python. | Database: SQLite. | Recent update: PostgreSQL migration reported.\n    ACTIVE   Atlas database is SQLite."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The sleep pass",
+    "headingKn": "ಪ್ರಯೋಗ 4: The sleep pass",
+    "bodyEn": "What it ran: The sleep pass. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The sleep pass. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. The sleep pass ---\n   sleep: started consolidation\n   sleep: learned Atlas database is PostgreSQL.\n   sleep: replaced stale SQLite project fact with PostgreSQL\n   sleep: removed redundant migration note\n   sleep: invalidated stale SQLite archival fact\n   sleep: archived current PostgreSQL fact\n   sleep: summarized near-limit human block\n   sleep: consolidation complete\n   project v4: Project: Atlas. | Language: Python. | Database: PostgreSQL.\n    INACTIVE Atlas database is SQLite.\n    ACTIVE   Atlas database is PostgreSQL.\n   human v3 size=130/220 utilization=0.59\n   recall entries kept: 4"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Idempotence: running the pass a second time",
+    "headingKn": "ಪ್ರಯೋಗ 5: Idempotence: running the pass a second time",
+    "bodyEn": "What it ran: Idempotence: running the pass a second time. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Idempotence: running the pass a second time. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Idempotence: running the pass a second time ---\n   sleep: started consolidation\n   sleep: learned Atlas database is PostgreSQL.\n   sleep: consolidation complete\nmemory identical after the second pass: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Genuinely checking what the summary kept",
+    "headingKn": "ಪ್ರಯೋಗ 6: Genuinely checking what the summary kept",
+    "bodyEn": "What it ran: Genuinely checking what the summary kept. What the lab concluded: the summary text is hard-coded in _summarize_human, so it cannot know which facts the block really held",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely checking what the summary kept. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the summary text is hard-coded in _summarize_human, so it cannot know which facts the block really held"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking what the summary kept ---\n   kept    Role: ML engineer.\n   kept    Prefers Python examples.\n   kept    Learning agent systems.\n   kept    Prefers runnable code.\n   kept    Prefers concise explanations.\n   LOST    Wants concept breakdowns.\n   kept    Prefers architecture diagrams."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Genuinely checking the keyword extractor",
+    "headingKn": "ಪ್ರಯೋಗ 7: Genuinely checking the keyword extractor",
+    "bodyEn": "What it ran: Genuinely checking the keyword extractor. What the lab concluded:    'Should we have migrated Atlas to PostgreSQL?'       -> learned: ['Atlas database is PostgreSQL.']",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely checking the keyword extractor. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ):    'Should we have migrated Atlas to PostgreSQL?'       -> learned: ['Atlas database is PostgreSQL.']"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking the keyword extractor ---\n   'We migrated Atlas from SQLite to PostgreSQL.'       -> learned: ['Atlas database is PostgreSQL.']\n   'We have NOT migrated Atlas to PostgreSQL.'          -> learned: ['Atlas database is PostgreSQL.']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Genuinely checking intent routing in the primary agent",
+    "headingKn": "ಪ್ರಯೋಗ 8: Genuinely checking intent routing in the primary agent",
+    "bodyEn": "What it ran: Genuinely checking intent routing in the primary agent. What the lab concluded: a question that merely mentions PostgreSQL was logged as a migration, because routing is by keyword",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely checking intent routing in the primary agent. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a question that merely mentions PostgreSQL was logged as a migration, because routing is by keyword"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Genuinely checking intent routing in the primary agent ---\n   'Which database does Atlas use?'         -> 'Atlas currently uses SQLite.'; project now: 'Database: SQLite.'\n   'We migrated Atlas to PostgreSQL.'       -> 'Understood. I recorded the PostgreSQL migration.'; project now: 'Recent update: PostgreSQL migration reported.'\n   'Is Atlas still on SQLite, or PostgreSQL?' -> 'Understood. I recorded the PostgreSQL migration.'; project now: 'Recent update: PostgreSQL migration reported.'"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

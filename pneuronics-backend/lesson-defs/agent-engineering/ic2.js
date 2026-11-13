@@ -142,6 +142,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Protected-path matching against nine spellings of a changed path",
+    "headingKn": "ಪ್ರಯೋಗ 1: Protected-path matching against nine spellings of a changed path",
+    "bodyEn": "What it ran: Protected-path matching against nine spellings of a changed path. What the lab concluded: the naive set intersection only caught the exact string; normalising separators, '.' and '..' and case flagged every spelling of the release script and everything under the deploy directory; the bare name 'deploy' was flagged as well because normalising strips the trailing slash, so a file that happens to be named deploy would be a false positive, and a case-insensitive match would be wrong on a case-sensitive filesystem",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Protected-path matching against nine spellings of a changed path. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the naive set intersection only caught the exact string; normalising separators, '.' and '..' and case flagged every spelling of the release script and everything under the deploy directory; the bare name 'deploy' was flagged as well because normalising strips the trailing slash, so a file that happens to be named deploy would be a false positive, and a case-insensitive match would be wrong on a case-sensitive filesystem"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely checking: protected-path matching against nine spellings of a changed path ---\ndeploy/release.py            naive says clean=False normalised says clean=False\n./deploy/release.py          naive says clean=True  normalised says clean=False\ndeploy//release.py           naive says clean=True  normalised says clean=False\ndeploy\\release.py            naive says clean=True  normalised says clean=False\nDEPLOY/release.py            naive says clean=True  normalised says clean=False\nsrc/../deploy/release.py     naive says clean=True  normalised says clean=False\ndeploy/other.py              naive says clean=True  normalised says clean=False\ndeploy                       naive says clean=True  normalised says clean=False\nsrc/app.py                   naive says clean=True  normalised says clean=True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Tests that ran, but before the final edit",
+    "headingKn": "ಪ್ರಯೋಗ 2: Tests that ran, but before the final edit",
+    "bodyEn": "What it ran: Tests that ran, but before the final edit. What the lab concluded: a green run from before the last edit satisfied the naive rule; tying the evidence to the revision refused it, and the revision label itself must come from a trusted runner",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Tests that ran, but before the final edit. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a green run from before the last edit satisfied the naive rule; tying the evidence to the revision refused it, and the revision label itself must come from a trusted runner"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely checking: tests that ran, but before the final edit ---\nfresh   naive passes=True  revision-aware passes=True\nstale   naive passes=True  revision-aware passes=False\nfailed  naive passes=False revision-aware passes=False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Approval chronology and target binding",
+    "headingKn": "ಪ್ರಯೋಗ 3: Approval chronology and target binding",
+    "bodyEn": "What it ran: Approval chronology and target binding. What the lab concluded: the naive rule accepted approval that came late and approval for another target; the bound rule needs the right target recorded before the action, and the approval record must come from a trusted source, not from the agent's own notes",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Approval chronology and target binding. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the naive rule accepted approval that came late and approval for another target; the bound rule needs the right target recorded before the action, and the approval record must come from a trusted source, not from the agent's own notes"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: approval chronology and target binding ---\napproved before, right target  naive passes=True  bound passes=True\napproved after the action      naive passes=True  bound passes=False\napproved a different target    naive passes=True  bound passes=False\nno approval                    naive passes=False bound passes=False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Uncertainty detection by exact string versus normalised text",
+    "headingKn": "ಪ್ರಯೋಗ 4: Uncertainty detection by exact string versus normalised text",
+    "bodyEn": "What it ran: Uncertainty detection by exact string versus normalised text. What the lab concluded: the exact comparison missed a case-and-punctuation variant; both missed a paraphrased assumption, so detecting assumptions made without asking needs more than string matching and this rule is only a hint",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Uncertainty detection by exact string versus normalised text. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the exact comparison missed a case-and-punctuation variant; both missed a paraphrased assumption, so detecting assumptions made without asking needs more than string matching and this rule is only a hint"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: uncertainty detection by exact string versus normalised text ---\nquestion ['Which production region?']     assumption ['Which production region?']       exact passes=False normalised passes=False\nquestion ['Which production region?']     assumption ['which production region']        exact passes=True  normalised passes=False\nquestion ['Which production region?']     assumption ['The region is probably eu-west.'] exact passes=True  normalised passes=True\nquestion []                               assumption ['anything']                       exact passes=True  normalised passes=True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Severity from a trusted file versus the agent's own report",
+    "headingKn": "ಪ್ರಯೋಗ 5: Severity from a trusted file versus the agent's own report",
+    "bodyEn": "What it ran: Severity from a trusted file versus the agent's own report. What the lab concluded: the failing result is identical in both calls; only the severity source changed, so severities must be read from reviewed policy and never from the run being judged",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Severity from a trusted file versus the agent's own report. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the failing result is identical in both calls; only the severity source changed, so severities must be read from reviewed policy and never from the run being judged"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely checking: severity from a trusted file versus the agent's own report ---\ntrusted severities -> release allowed: False\nseverity downgraded to info by the agent's report -> release allowed: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A high score hiding a block failure",
+    "headingKn": "ಪ್ರಯೋಗ 6: A high score hiding a block failure",
+    "bodyEn": "What it ran: A high score hiding a block failure. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A high score hiding a block failure. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: a high score hiding a block failure ---\nall pass         score 100% gate allowed True\none block fails  score 90% gate allowed False\nthe same 90 percent score can be a pass or a block depending on which rule failed"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

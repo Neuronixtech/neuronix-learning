@@ -117,6 +117,143 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: First run with SQLite, paused at the human gate",
+    "headingKn": "ಪ್ರಯೋಗ 1: First run with SQLite, paused at the human gate",
+    "bodyEn": "What it ran: First run with SQLite, paused at the human gate. What the lab concluded: {\"schema_version\": 1, \"last_completed_node\": \"refund\", \"next_node\": \"human_gate\", \"checkpoint_number\": 2}",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: First run with SQLite, paused at the human gate. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): {\"schema_version\": 1, \"last_completed_node\": \"refund\", \"next_node\": \"human_gate\", \"checkpoint_number\": 2}"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. First run with SQLite, paused at the human gate ---\n[execute] node=classify\n[checkpoint 1] completed=classify next=refund\n[execute] node=refund\n[checkpoint 2] completed=refund next=human_gate\n[execute] node=human_gate\n[stopped] node=human_gate reason=Human approval required\nWorkflow paused: Human approval required\ndatabase file on disk: True | size > 0: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Human approval, then resume through a brand-new checkpointer and graph",
+    "headingKn": "ಪ್ರಯೋಗ 2: Human approval, then resume through a brand-new checkpointer and graph",
+    "bodyEn": "What it ran: Human approval, then resume through a brand-new checkpointer and graph. What the lab concluded: final: {\"step\": 4, \"output\": \"Refund request prepared and awaiting approval. Approved and sent.\", \"approved\": true}",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Human approval, then resume through a brand-new checkpointer and graph. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): final: {\"step\": 4, \"output\": \"Refund request prepared and awaiting approval. Approved and sent.\", \"approved\": true}"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Human approval, then resume through a brand-new checkpointer and graph ---\n[resume] checkpoint=2 last_completed=refund next=human_gate\n[execute] node=human_gate\n[checkpoint 3] completed=human_gate next=send\n[execute] node=send\n[checkpoint 4] completed=send next=None\nnodes run by the new graph: ['human_gate', 'send']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A real crash in another OS process, then resume",
+    "headingKn": "ಪ್ರಯೋಗ 3: A real crash in another OS process, then resume",
+    "bodyEn": "What it ran: A real crash in another OS process, then resume. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A real crash in another OS process, then resume. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely checking: a real crash in another OS process, then resume ---\nchild process exit code: 3 (os._exit, no cleanup, no exception handling)\ncheckpoint written by the dead process: {\"last_completed_node\": \"human_gate\", \"next_node\": \"send\", \"checkpoint_number\": 3}\nemails sent so far: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Resuming repeats the node whose effect already happened",
+    "headingKn": "ಪ್ರಯೋಗ 4: Resuming repeats the node whose effect already happened",
+    "bodyEn": "What it ran: Resuming repeats the node whose effect already happened. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Resuming repeats the node whose effect already happened. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely checking: resuming repeats the node whose effect already happened ---\n[resume] checkpoint=3 last_completed=human_gate next=send\n[execute] node=send\n[checkpoint 4] completed=send next=None\nnodes run on resume: ['send']\nemails sent in total: 2 (the customer got the email twice)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Idempotency key makes the replay safe",
+    "headingKn": "ಪ್ರಯೋಗ 5: Idempotency key makes the replay safe",
+    "bodyEn": "What it ran: Idempotency key makes the replay safe. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Idempotency key makes the replay safe. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Idempotency key makes the replay safe ---\ntwo replays of the same operation added 1 email"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A checkpoint from another schema version",
+    "headingKn": "ಪ್ರಯೋಗ 6: A checkpoint from another schema version",
+    "bodyEn": "What it ran: A checkpoint from another schema version. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A checkpoint from another schema version. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely checking: a checkpoint from another schema version ---\nrefused: checkpoint schema 2 != supported 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Does the 'with sqlite3.connect()' pattern close the connection?",
+    "headingKn": "ಪ್ರಯೋಗ 7: Does the 'with sqlite3.connect()' pattern close the connection?",
+    "bodyEn": "What it ran: Does the 'with sqlite3.connect()' pattern close the connection?. What the lab concluded: the sqlite3 context manager commits or rolls back; it does not close. contextlib.closing does.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Does the 'with sqlite3.connect()' pattern close the connection?. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the sqlite3 context manager commits or rolls back; it does not close. contextlib.closing does."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely checking: does the 'with sqlite3.connect()' pattern close the connection? ---\nResourceWarnings raised by the context-manager-only pattern: ['unclosed database in <sqlite3.Connection object at 0x0000025']\ncould the database file be deleted straight afterwards: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Supervisor topology as state-based routing",
+    "headingKn": "ಪ್ರಯೋಗ 8: Supervisor topology as state-based routing",
+    "bodyEn": "What it ran: Supervisor topology as state-based routing. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Supervisor topology as state-based routing. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Supervisor topology as state-based routing ---\n[execute] node=supervisor\n[checkpoint 1] completed=supervisor next=coding\n[execute] node=coding\n[checkpoint 2] completed=coding next=None\n'write code for a parser'      -> ['supervisor', 'coding']\n[execute] node=supervisor\n[checkpoint 1] completed=supervisor next=research\n[execute] node=research\n[checkpoint 2] completed=research next=None\n'find papers on memory'        -> ['supervisor', 'research']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 9: Swarm handoffs need a termination rule",
+    "headingKn": "ಪ್ರಯೋಗ 9: Swarm handoffs need a termination rule",
+    "bodyEn": "What it ran: Swarm handoffs need a termination rule. What the lab concluded: two agents handing off with no termination rule: 12 hops before the external limit stopped it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Swarm handoffs need a termination rule. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): two agents handing off with no termination rule: 12 hops before the external limit stopped it"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

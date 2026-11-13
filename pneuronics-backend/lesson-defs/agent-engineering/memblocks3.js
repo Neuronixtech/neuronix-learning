@@ -98,6 +98,209 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Initial state",
+    "headingKn": "ಪ್ರಯೋಗ 1: Initial state",
+    "bodyEn": "What it ran: Initial state. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Initial state. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Initial state ---\n[HUMAN] version=1 size=146/220\nRole: ML engineer.\nPrefers Python examples.\nLearning agent systems.\nPrefers runnable code.\nPrefers concise explanations.\nWants concept breakdowns.\n[PERSONA] version=1 size=39/220\nYou are a precise technical instructor.\n[PROJECT] version=1 size=51/320\nProject: Atlas.\nLanguage: Python.\nDatabase: SQLite.\n[TASK] version=1 size=34/260\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Turn 1",
+    "headingKn": "ಪ್ರಯೋಗ 2: Turn 1",
+    "bodyEn": "What it ran: Turn 1. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Turn 1. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Turn 1 ---\n[2026-10-29T23:22:13] primary: received user turn\n[2026-10-29T23:22:13] primary: logged both turns\n[2026-10-29T23:22:13] primary: response ready\nAssistant: Understood. I recorded that preference."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Turn 2",
+    "headingKn": "ಪ್ರಯೋಗ 3: Turn 2",
+    "bodyEn": "What it ran: Turn 2. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Turn 2. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Turn 2 ---\n[2026-10-29T23:22:13] primary: received user turn\n[2026-10-29T23:22:13] primary: logged both turns\n[2026-10-29T23:22:13] primary: response ready\nAssistant: Understood. I recorded the PostgreSQL migration."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Before sleep (the raw state)",
+    "headingKn": "ಪ್ರಯೋಗ 4: Before sleep (the raw state)",
+    "bodyEn": "What it ran: Before sleep (the raw state). What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Before sleep (the raw state). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Before sleep (the raw state) ---\n[HUMAN] version=2 size=177/220\nRole: ML engineer.\nPrefers Python examples.\nLearning agent systems.\nPrefers runnable code.\nPrefers concise explanations.\nWants concept breakdowns.\nPrefers architecture diagrams.\n[PERSONA] version=1 size=39/220\nYou are a precise technical instructor.\n[PROJECT] version=2 size=97/320\nProject: Atlas.\nLanguage: Python.\nDatabase: SQLite.\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Sleep pass",
+    "headingKn": "ಪ್ರಯೋಗ 5: Sleep pass",
+    "bodyEn": "What it ran: Sleep pass. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Sleep pass. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Sleep pass ---\n[2026-10-29T23:22:13] sleep: started consolidation\n[2026-10-29T23:22:13] sleep: learned Atlas database is PostgreSQL.\n[2026-10-29T23:22:13] sleep: replaced stale SQLite project fact with PostgreSQL\n[2026-10-29T23:22:13] sleep: removed redundant migration note\n[2026-10-29T23:22:13] sleep: invalidated stale SQLite archival fact\n[2026-10-29T23:22:13] sleep: archived current PostgreSQL fact\n[2026-10-29T23:22:13] sleep: summarized near-limit human block\n[2026-10-29T23:22:13] sleep: consolidation complete"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: After sleep",
+    "headingKn": "ಪ್ರಯೋಗ 6: After sleep",
+    "bodyEn": "What it ran: After sleep. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: After sleep. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. After sleep ---\n[HUMAN] version=3 size=130/220\nRole: ML engineer.\nPreferences: Python, concise explanations, architecture diagrams, runnable examples.\nGoal: learn agent systems.\n[PERSONA] version=1 size=39/220\nYou are a precise technical instructor.\n[PROJECT] version=4 size=55/320\nProject: Atlas.\nLanguage: Python.\nDatabase: PostgreSQL.\n[TASK] version=1 size=34/260\nImplement persistent agent memory.\nINACTIVE: Atlas database is SQLite.\nACTIVE:   Atlas database is PostgreSQL."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Turn 3",
+    "headingKn": "ಪ್ರಯೋಗ 7: Turn 3",
+    "bodyEn": "What it ran: Turn 3. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Turn 3. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Turn 3 ---\n[2026-10-29T23:22:13] primary: received user turn\n[2026-10-29T23:22:13] primary: logged both turns\n[2026-10-29T23:22:13] primary: response ready\nAssistant: Atlas currently uses PostgreSQL."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Proof checks",
+    "headingKn": "ಪ್ರಯೋಗ 8: Proof checks",
+    "bodyEn": "What it ran: Proof checks. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Proof checks. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Proof checks ---\n[2026-10-29T23:22:13] primary: received user turn\n[2026-10-29T23:22:13] primary: logged both turns\n[2026-10-29T23:22:13] primary: response ready\n[2026-10-29T23:22:13] primary: received user turn\n[2026-10-29T23:22:13] primary: logged both turns\n[2026-10-29T23:22:13] primary: response ready\n[2026-10-29T23:22:13] primary: received user turn\n[2026-10-29T23:22:13] primary: logged both turns\n[2026-10-29T23:22:13] primary: response ready\ncontrol run, same turns, NO sleep pass, Turn 3 answer: 'Atlas currently uses SQLite.'\nwith the sleep pass, Turn 3 answer                   : 'Atlas currently uses PostgreSQL.'\nprimary response logged before sleep started: True (the trace shows 'response ready' before any 'sleep:' line)\nhuman block versions: 1 -> 2 (primary append) -> 3 (sleep summary): True\nrecall still holds the evidence: True\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 9: Genuinely checking a looser Turn-3 test",
+    "headingKn": "ಪ್ರಯೋಗ 9: Genuinely checking a looser Turn-3 test",
+    "bodyEn": "What it ran: Genuinely checking a looser Turn-3 test. What the lab concluded: strict test  ('Database: PostgreSQL.' in project): False -> only a real consolidation makes this true",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely checking a looser Turn-3 test. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): strict test  ('Database: PostgreSQL.' in project): False -> only a real consolidation makes this true"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 9. Genuinely checking a looser Turn-3 test ---\n[2026-10-29T23:22:13] primary: received user turn\n[2026-10-29T23:22:13] primary: logged both turns\n[2026-10-29T23:22:13] primary: response ready\nproject before sleep: Project: Atlas. | Language: Python. | Database: SQLite. | Recent update: PostgreSQL migration reported.\nloose test   ('PostgreSQL' in project): True -> would answer PostgreSQL with no sleep pass at all"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 10: Genuinely measuring the critical path",
+    "headingKn": "ಪ್ರಯೋಗ 10: Genuinely measuring the critical path",
+    "bodyEn": "What it ran: Genuinely measuring the critical path. What the lab concluded: if consolidation had been synchronous, the user would have waited about 403 ms instead of 0.06 ms",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely measuring the critical path. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): if consolidation had been synchronous, the user would have waited about 403 ms instead of 0.06 ms"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 10. Genuinely measuring the critical path ---\nprimary answered in 0.06 ms while the sleep pass was still running: 'Atlas currently uses SQLite.'\nthe sleep pass took 402 ms in the background (0.4 s artificial delay)\nafter the pass finished the same question gives: 'Atlas currently uses PostgreSQL.'"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 11: Genuinely reproducing a lost update, then preventing it",
+    "headingKn": "ಪ್ರಯೋಗ 11: Genuinely reproducing a lost update, then preventing it",
+    "bodyEn": "What it ran: Genuinely reproducing a lost update, then preventing it. What the lab concluded: after re-reading and retrying: Project: Atlas. | Language: Python 3.12. | Database: PostgreSQL.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely reproducing a lost update, then preventing it. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): after re-reading and retrying: Project: Atlas. | Language: Python 3.12. | Database: PostgreSQL."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 11. Genuinely reproducing a lost update, then preventing it ---\nsleep agent wrote: Database: PostgreSQL. (v2)\nprimary then wrote back its stale copy: Project: Atlas. | Language: Python 3.12. | Database: SQLite.\nthe PostgreSQL update is gone; nothing raised an error\nwith a version check the stale write is refused: project is at v2, write was based on v1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 12: A mutation log makes silent drift visible",
+    "headingKn": "ಪ್ರಯೋಗ 12: A mutation log makes silent drift visible",
+    "bodyEn": "What it ran: A mutation log makes silent drift visible. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A mutation log makes silent drift visible. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 12. A mutation log makes silent drift visible ---\nactor=sleep-agent block=project reason='recall confirms the PostgreSQL migration'\n  - Database: SQLite.\n  + Database: PostgreSQL."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 13: Genuinely checking provenance in the consolidator",
+    "headingKn": "ಪ್ರಯೋಗ 13: Genuinely checking provenance in the consolidator",
+    "bodyEn": "What it ran: Genuinely checking provenance in the consolidator. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Genuinely checking provenance in the consolidator. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 13. Genuinely checking provenance in the consolidator ---\nrecall entry labelled role='user' but really page text -> learned: ['Atlas database is PostgreSQL.']\nwith a source field, only the user message counts : ['Atlas database is PostgreSQL.']\nthe web page alone teaches nothing                : []"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

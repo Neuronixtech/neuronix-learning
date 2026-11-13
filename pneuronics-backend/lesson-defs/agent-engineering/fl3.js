@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Rotation bounds the log",
+    "headingKn": "ಪ್ರಯೋಗ 1: Rotation bounds the log",
+    "bodyEn": "What it ran: Rotation bounds the log. What the lab concluded: the newest records stayed in the live file and the oldest were dropped when the backups ran out, so storage is bounded; the dropped records are gone for good, and anything that must be kept longer needs separate retention",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Rotation bounds the log. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the newest records stayed in the live file and the oldest were dropped when the backups ran out, so storage is bounded; the dropped records are gone for good, and anything that must be kept longer needs separate retention"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: rotation bounds the log ---\nfiles: ['feedback_record.jsonl', 'feedback_record.jsonl.1', 'feedback_record.jsonl.2', 'feedback_record.jsonl.3']\nrecords per file: {'feedback_record.jsonl': 4, 'feedback_record.jsonl.1': 4, 'feedback_record.jsonl.2': 4, 'feedback_record.jsonl.3': 4} | total kept: 16 of 20 written"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A partial last line and the reader",
+    "headingKn": "ಪ್ರಯೋಗ 2: A partial last line and the reader",
+    "bodyEn": "What it ran: A partial last line and the reader. What the lab concluded: a crash in the middle of an append left a broken last line; the reader kept every complete record in the live file and reported one damaged line instead of failing on the whole file",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A partial last line and the reader. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a crash in the middle of an append left a broken last line; the reader kept every complete record in the live file and reported one damaged line instead of failing on the whole file"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a partial last line and the reader ---\nreadable records: 4 | damaged lines skipped and counted: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Command_id and parent_command_id rebuild a retry history",
+    "headingKn": "ಪ್ರಯೋಗ 3: Command_id and parent_command_id rebuild a retry history",
+    "bodyEn": "What it ran: Command_id and parent_command_id rebuild a retry history. What the lab concluded: following parents from the last attempt recovered the two failures and the success in order, without mixing in an unrelated command, which is what a reviewer needs to see that the pass came after two failures",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Command_id and parent_command_id rebuild a retry history. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): following parents from the last attempt recovered the two failures and the success in order, without mixing in an unrelated command, which is what a reviewer needs to see that the pass came after two failures"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: command_id and parent_command_id rebuild a retry history ---\nattempt exit codes: [1, 1, 0]\nchain for the last attempt: [0, 1, 2] of 4 records; the unrelated command is not in it: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The gate over records, including missing and stale evidence",
+    "headingKn": "ಪ್ರಯೋಗ 4: The gate over records, including missing and stale evidence",
+    "bodyEn": "What it ran: The gate over records, including missing and stale evidence. What the lab concluded: the gate refused a missing record, accepted a fresh zero exit and refused the same record once the code had changed after it ran; a command that passed before the last edit says nothing about the code now (this lab relabelled the record to keep the gate simple, which a real runner must not do)",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The gate over records, including missing and stale evidence. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the gate refused a missing record, accepted a fresh zero exit and refused the same record once the code had changed after it ran; a command that passed before the last edit says nothing about the code now (this lab relabelled the record to keep the gate simple, which a real runner must not do)"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: the gate over records, including missing and stale evidence ---\nno record yet: ('BLOCK', 'no record for the required command')\nrecord from -I run labelled with the required command: ('ALLOW', 'fresh record with exit code 0')\nsame record after a later edit: ('BLOCK', 'the record is older than the latest edit')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A scripted failure and repair on real code",
+    "headingKn": "ಪ್ರಯೋಗ 5: A scripted failure and repair on real code",
+    "bodyEn": "What it ran: A scripted failure and repair on real code. What the lab concluded: the correct one-character edit still failed with the old assertion value when the test was rerun immediately, which is consistent with stale cached bytecode (the edit kept the file size and landed in the same second; the cause was not inspected directly), and it passed once __pycache__ was removed; on this machine, in three repeated runs, this happened every time; the evidence was real but stale, so a feedback runner should disable or clear bytecode caches when it verifies a change; the stand-in applied one fixed edit, so this shows loop mechanics and not that a real model could find the fix",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A scripted failure and repair on real code. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the correct one-character edit still failed with the old assertion value when the test was rerun immediately, which is consistent with stale cached bytecode (the edit kept the file size and landed in the same second; the cause was not inspected directly), and it passed once __pycache__ was removed; on this machine, in three repeated runs, this happened every time; the evidence was real but stale, so a feedback runner should disable or clear bytecode caches when it verifies a change; the stand-in applied one fixed edit, so this shows loop mechanics and not that a real model could find the fix"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a scripted failure and repair on real code ---\nfirst run: exit 1 | evidence: ['AssertionError: 220.0 != 180']\nafter the scripted fix: exit 0 | evidence: none | parent is the first run: True\nafter deleting __pycache__: exit 0 | chain: [1, 0, 0]"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Rotation kept 16 of 20 records in four files. 2) A torn last line was skipped and counted. 3) Parent ids rebuilt the exit-code sequence 1, 1, 0 without the unrelated command. 4) The gate blocked missing and stale records. 5) A correct fix failed on immediate rerun and passed after clearing __pycache__.",
     "bodyKn": "1) Rotation ನಾಲ್ಕು ಫೈಲ್‌ಗಳಲ್ಲಿ 20 ರಲ್ಲಿ 16 ದಾಖಲೆ ಉಳಿಸಿತು. 2) ಹರಿದ ಕೊನೆಯ ಸಾಲು ಬಿಟ್ಟು ಎಣಿಸಲ್ಪಟ್ಟಿತು. 3) Parent ids ಸಂಬಂಧವಿಲ್ಲದ ಆದೇಶವಿಲ್ಲದೆ exit-code ಅನುಕ್ರಮ 1, 1, 0 ಮರುನಿರ್ಮಿಸಿದವು. 4) gate ಕಾಣೆಯಾದ ಮತ್ತು ಹಳೆಯ ದಾಖಲೆಗಳನ್ನು ತಡೆಯಿತು. 5) ಸರಿಯಾದ ಸರಿಪಡಿಕೆ ತಕ್ಷಣದ ಮರುಓಟದಲ್ಲಿ ವಿಫಲವಾಗಿ __pycache__ ತೆರವಿನ ನಂತರ ಪಾಸ್ ಆಯಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B fl_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B fl_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B fl_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B fl_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

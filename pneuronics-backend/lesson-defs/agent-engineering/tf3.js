@@ -142,6 +142,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Resolving evidence receipts in the repository",
+    "headingKn": "ಪ್ರಯೋಗ 1: Resolving evidence receipts in the repository",
+    "bodyEn": "What it ran: Resolving evidence receipts in the repository. What the lab concluded: a receipt that looked fine in shape was caught when its line did not exist, when the file was missing and when the line did not contain what the claim says; only the first is actually supported, and even that shows the line says something, not that the claim is wholly true",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Resolving evidence receipts in the repository. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a receipt that looked fine in shape was caught when its line did not exist, when the file was missing and when the line did not contain what the claim says; only the first is actually supported, and even that shows the line says something, not that the claim is wholly true"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: resolving evidence receipts in the repository ---\nreal line, supports claim  src/accounts/normalization.py:2      -> supported\nreal line, wrong claim     src/accounts/normalization.py:2      -> line exists but does not support the claim\nline past the end          src/accounts/normalization.py:99     -> line 99 beyond end of file (2 lines)\nfile missing               src/accounts/nope.py:1               -> file not found\nno line number             tests/test_accounts.py               -> malformed receipt"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The four kinds of unknown and what each requires",
+    "headingKn": "ಪ್ರಯೋಗ 2: The four kinds of unknown and what each requires",
+    "bodyEn": "What it ran: The four kinds of unknown and what each requires. What the lab concluded: only the human unknown stops dependent work; the discoverable one is a task for the agent and the deferred one leaves the scope alone, which is the difference between an unresolved question and a blocker",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The four kinds of unknown and what each requires. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): only the human unknown stops dependent work; the discoverable one is a task for the agent and the deferred one leaves the scope alone, which is the difference between an unresolved question and a blocker"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: the four kinds of unknown and what each requires ---\ninvestigate                                      <- Does the database already enforce uniqueness?\ndecide within delegated authority and record it  <- What should the private helper be called?\nstop and ask                                     <- May the duplicate response change for existing clients?\nrecord as a non-goal                             <- Should the registration subsystem be refactored?\ndependent work blocked until a human answers: ['May the duplicate response change for existing clients?']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A scope audit of the real diff",
+    "headingKn": "ಪ್ರಯೋಗ 3: A scope audit of the real diff",
+    "bodyEn": "What it ran: A scope audit of the real diff. What the lab concluded: the unique-index migration the agent thought cleanest was flagged as forbidden and the README as outside the allowed paths, though the tests might all pass; this is the moment the agent should stop and ask for the scope to be extended, not edit quietly",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A scope audit of the real diff. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the unique-index migration the agent thought cleanest was flagged as forbidden and the README as outside the allowed paths, though the tests might all pass; this is the moment the agent should stop and ask for the scope to be extended, not edit quietly"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a scope audit of the real diff ---\nonly an allowed file changed: []\nchanged files: ['README.md', 'migrations/002_unique_email.sql', 'src/accounts/service.py']\naudit: [('README.md', 'outside allowed paths'), ('migrations/002_unique_email.sql', 'forbidden')]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Did the acceptance command actually run a test?",
+    "headingKn": "ಪ್ರಯೋಗ 4: Did the acceptance command actually run a test?",
+    "bodyEn": "What it ran: Did the acceptance command actually run a test?. What the lab concluded: the echo exited 0 and printed that tests passed while running none, and the missing module exited non-zero; an acceptance command is evidence only when the number of tests run is checked along with the exit code, and when the test named actually covers the claim",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Did the acceptance command actually run a test?. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the echo exited 0 and printed that tests passed while running none, and the missing module exited non-zero; an acceptance command is evidence only when the number of tests run is checked along with the exit code, and when the test named actually covers the claim"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: did the acceptance command actually run a test? ---\nnamed module that exists           exit=0 tests ran=1\nnamed module that does not exist   exit=1 tests ran=1\necho instead of a test             exit=0 tests ran=0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A test that passes without covering the requirement",
+    "headingKn": "ಪ್ರಯೋಗ 5: A test that passes without covering the requirement",
+    "bodyEn": "What it ran: A test that passes without covering the requirement. What the lab concluded: the only test passes and tests nothing about registration, so a green run here would be a statement about a different behaviour; whether a test supports the claim has to be read from its assertions",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A test that passes without covering the requirement. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the only test passes and tests nothing about registration, so a green run here would be a statement about a different behaviour; whether a test supports the claim has to be read from its assertions"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: a test that passes without covering the requirement ---\ntest_duplicate asserts 409 == 409: True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -199,6 +282,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) One of five receipts was actually supported. 2) Only the human unknown blocked work. 3) The diff audit flagged a forbidden migration and an out-of-scope README. 4) An echo exited 0 with zero tests run. 5) The only test covered nothing about registration.",
     "bodyKn": "1) ಐದು ರಸೀದಿಗಳಲ್ಲಿ ಒಂದು ಮಾತ್ರ ನಿಜವಾಗಿ ಬೆಂಬಲಿತ. 2) human ಅಜ್ಞಾತ ಮಾತ್ರ ಕೆಲಸ ತಡೆಯಿತು. 3) diff ಲೆಕ್ಕಪರಿಶೋಧನೆ ನಿಷೇಧಿತ migration ಮತ್ತು ವ್ಯಾಪ್ತಿಯ ಹೊರಗಿನ README ಗುರುತಿಸಿತು. 4) echo ಶೂನ್ಯ ಪರೀಕ್ಷೆಯೊಂದಿಗೆ 0 ನಲ್ಲಿ ನಿರ್ಗಮಿಸಿತು. 5) ಏಕೈಕ ಪರೀಕ್ಷೆ ನೋಂದಣಿ ಬಗ್ಗೆ ಏನನ್ನೂ ಒಳಗೊಳ್ಳಲಿಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B tf_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B tf_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B tf_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B tf_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
