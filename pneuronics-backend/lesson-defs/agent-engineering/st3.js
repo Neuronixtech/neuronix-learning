@@ -141,6 +141,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: What outcome rewards reward (20000 chains of 4 steps, per-step 0.8)",
+    "headingKn": "ಪ್ರಯೋಗ 1: What outcome rewards reward (20000 chains of 4 steps, per-step 0.8)",
+    "bodyEn": "What it ran: What outcome rewards reward (20000 chains of 4 steps, per-step 0.8). What the lab concluded: an outcome-only reward treats a chain with wrong steps and a lucky right answer exactly like a clean chain, so a notable share of rewarded chains reasoned badly; the 0.8 per-step rate and 20 percent luck are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What outcome rewards reward (20000 chains of 4 steps, per-step 0.8). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an outcome-only reward treats a chain with wrong steps and a lucky right answer exactly like a clean chain, so a notable share of rewarded chains reasoned badly; the 0.8 per-step rate and 20 percent luck are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: what outcome rewards reward (20000 chains of 4 steps, per-step 0.8) ---\nanswer right: 0.526 | all steps right: 0.405\nof the chains an outcome reward scores 1.0, the share with at least one wrong step: 0.230"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Filtering by outcome against filtering by process",
+    "headingKn": "ಪ್ರಯೋಗ 2: Filtering by outcome against filtering by process",
+    "bodyEn": "What it ran: Filtering by outcome against filtering by process. What the lab concluded: requiring every step to be checked removes the lucky chains and keeps fewer examples, which is the trade of process supervision: cleaner data at the price of needing a per-step checker, and here the checker is perfect because the lab knows the truth",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Filtering by outcome against filtering by process. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): requiring every step to be checked removes the lucky chains and keeps fewer examples, which is the trade of process supervision: cleaner data at the price of needing a per-step checker, and here the checker is perfect because the lab knows the truth"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: filtering by outcome against filtering by process ---\noutcome filter keeps 10530 chains; fraction fully correct 0.770\nprocess filter keeps 8104 chains; fraction fully correct 1.000"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: An imperfect step checker",
+    "headingKn": "ಪ್ರಯೋಗ 3: An imperfect step checker",
+    "bodyEn": "What it ran: An imperfect step checker. What the lab concluded: as the checker misses more wrong steps, bad chains slip into the training set again; a process checker is only as good as its coverage, and the miss rates are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An imperfect step checker. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): as the checker misses more wrong steps, bad chains slip into the training set again; a process checker is only as good as its coverage, and the miss rates are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: an imperfect step checker ---\nchecker misses 0.0 of wrong steps: kept 3199 | fully correct share 1.000\nchecker misses 0.1 of wrong steps: kept 3546 | fully correct share 0.902\nchecker misses 0.3 of wrong steps: kept 4318 | fully correct share 0.741"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A memorizer and an algorithm, tested in and out of distribution",
+    "headingKn": "ಪ್ರಯೋಗ 4: A memorizer and an algorithm, tested in and out of distribution",
+    "bodyEn": "What it ran: A memorizer and an algorithm, tested in and out of distribution. What the lab concluded: both look perfect on training-style inputs, and only the one that learned the procedure survives inputs it has not seen; a test set drawn from the training distribution cannot tell them apart, and the memorizer is a plain lookup table used as a stand-in",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A memorizer and an algorithm, tested in and out of distribution. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both look perfect on training-style inputs, and only the one that learned the procedure survives inputs it has not seen; a test set drawn from the training distribution cannot tell them apart, and the memorizer is a plain lookup table used as a stand-in"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a memorizer and an algorithm, tested in and out of distribution ---\nmemorizer  in-distribution 1.00 | unseen two-digit 0.00 | four-digit 0.00\nalgorithm  in-distribution 1.00 | unseen two-digit 1.00 | four-digit 1.00"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A thinking gate that thinks only when a position looks hard",
+    "headingKn": "ಪ್ರಯೋಗ 5: A thinking gate that thinks only when a position looks hard",
+    "bodyEn": "What it ran: A thinking gate that thinks only when a position looks hard. What the lab concluded: thinking only where difficulty exceeds 0.5 recovers about 76 percent of the accuracy gain of always thinking (0.556 to 0.870 against 0.970) for about half the tokens, because thinking only helps where the position is hard; the difficulty scores and the accuracy curve are invented, and a real model has to learn when to think",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A thinking gate that thinks only when a position looks hard. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): thinking only where difficulty exceeds 0.5 recovers about 76 percent of the accuracy gain of always thinking (0.556 to 0.870 against 0.970) for about half the tokens, because thinking only helps where the position is hard; the difficulty scores and the accuracy curve are invented, and a real model has to learn when to think"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: a thinking gate that thinks only when a position looks hard ---\nnever think                 accuracy 0.556 | thinking tokens per position   0.0\nalways think                accuracy 0.970 | thinking tokens per position  50.0\nthink if difficulty > 0.5   accuracy 0.870 | thinking tokens per position  24.7\nthink if difficulty > 0.8   accuracy 0.707 | thinking tokens per position  10.1"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +281,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) 23.0 percent of rewarded chains had a wrong step. 2) The process filter was fully correct but smaller. 3) A checker missing 30 percent let the clean share fall to 0.741. 4) The memorizer failed all unseen sums. 5) Thinking above 0.5 difficulty recovered about 76 percent of the gain at about half the tokens.",
     "bodyKn": "1) ಬಹುಮಾನ ಪಡೆದ ಸರಪಳಿಗಳಲ್ಲಿ 23.0 ಶೇಕಡಾ ತಪ್ಪು ಹಂತ ಹೊಂದಿದ್ದವು. 2) Process ಶೋಧಕ ಪೂರ್ಣ ಸರಿ ಆದರೆ ಚಿಕ್ಕದು. 3) 30 ಶೇಕಡಾ ತಪ್ಪಿಸಿದ ಪರಿಶೀಲಕ ಶುದ್ಧ ಪಾಲು 0.741 ಕ್ಕೆ ಇಳಿಯಲು ಬಿಟ್ಟಿತು. 4) memorizer ಎಲ್ಲಾ ಕಾಣದ ಮೊತ್ತಗಳಲ್ಲಿ ವಿಫಲವಾಯಿತು. 5) ಕಷ್ಟ 0.5 ಮೇಲೆ ಯೋಚಿಸುವುದು ಸುಮಾರು ಅರ್ಧ tokens ನಲ್ಲಿ ಸುಮಾರು 76 ಶೇಕಡಾ ಲಾಭ ಮರಳಿಸಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B st_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B st_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B st_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B st_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

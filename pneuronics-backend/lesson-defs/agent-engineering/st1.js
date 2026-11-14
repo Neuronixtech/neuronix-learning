@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: What the answer filter keeps in round 0 (200 problems per tier)",
+    "headingKn": "ಪ್ರಯೋಗ 1: What the answer filter keeps in round 0 (200 problems per tier)",
+    "bodyEn": "What it ran: What the answer filter keeps in round 0 (200 problems per tier). What the lab concluded: the filter keeps every rationale whose final answer is right, including wrong-path rationales that landed on the right answer by luck, so the kept set is a little contaminated and the hard tier gives the least training data; competence values are invented starting points",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What the answer filter keeps in round 0 (200 problems per tier). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the filter keeps every rationale whose final answer is right, including wrong-path rationales that landed on the right answer by luck, so the kept set is a little contaminated and the hard tier gives the least training data; competence values are invented starting points"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: what the answer filter keeps in round 0 (200 problems per tier) ---\neasy   competence 0.90: kept 188 of 200 | genuine 178 | shortcut  10\nmedium competence 0.50: kept 135 of 200 | genuine 110 | shortcut  25\nhard   competence 0.15: kept  83 of 200 | genuine  25 | shortcut  58"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Five STaR rounds without and with rationalization (seed 3)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Five STaR rounds without and with rationalization (seed 3)",
+    "bodyEn": "What it ran: Five STaR rounds without and with rationalization (seed 3). What the lab concluded: each round trains only on kept rationales, so the easy tier saturates first and the hard tier moves slowly; adding hint-based rationalization gives the hard tier extra training examples from problems the model got wrong, and the numbers come from invented update rules",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Five STaR rounds without and with rationalization (seed 3). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each round trains only on kept rationales, so the easy tier saturates first and the hard tier moves slowly; adding hint-based rationalization gives the hard tier extra training examples from problems the model got wrong, and the numbers come from invented update rules"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: five STaR rounds without and with rationalization (seed 3) ---\nrationalization = False\n  round 1: accuracy easy 0.96 medium 0.79 hard 0.50\n  round 2: accuracy easy 0.99 medium 0.87 hard 0.58\n  round 3: accuracy easy 0.99 medium 0.93 hard 0.61\n  round 4: accuracy easy 1.00 medium 0.96 hard 0.72\n  round 5: accuracy easy 0.99 medium 0.99 hard 0.82\nrationalization = True\n  round 1: accuracy easy 0.96 medium 0.80 hard 0.61\n  round 2: accuracy easy 0.99 medium 0.89 hard 0.77\n  round 3: accuracy easy 1.00 medium 0.96 hard 0.90\n  round 4: accuracy easy 1.00 medium 0.98 hard 0.96\n  round 5: accuracy easy 0.99 medium 0.99 hard 0.97"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Ten seeds, hard-tier accuracy after five rounds",
+    "headingKn": "ಪ್ರಯೋಗ 3: Ten seeds, hard-tier accuracy after five rounds",
+    "bodyEn": "What it ran: Ten seeds, hard-tier accuracy after five rounds. What the lab concluded: both settings were run on the same ten seeds; the difference comes straight from the update rule and the assumed 60 percent hint success, so it shows how rationalization could help and is not evidence about any real STaR run",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Ten seeds, hard-tier accuracy after five rounds. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both settings were run on the same ten seeds; the difference comes straight from the update rule and the assumed 60 percent hint success, so it shows how rationalization could help and is not evidence about any real STaR run"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: ten seeds, hard-tier accuracy after five rounds ---\nrationalization = False: mean hard competence 0.749 | min 0.712 | max 0.781\nrationalization = True: mean hard competence 0.960 | min 0.952 | max 0.968"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The shortcut fraction of the kept data by tier",
+    "headingKn": "ಪ್ರಯೋಗ 4: The shortcut fraction of the kept data by tier",
+    "bodyEn": "What it ran: The shortcut fraction of the kept data by tier. What the lab concluded: the weaker the model is on a tier, the larger the share of its kept rationales that reached the right answer by a wrong path, because those are the only kept examples; an answer-only filter therefore gets less trustworthy exactly where the model is weakest",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The shortcut fraction of the kept data by tier. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the weaker the model is on a tier, the larger the share of its kept rationales that reached the right answer by a wrong path, because those are the only kept examples; an answer-only filter therefore gets less trustworthy exactly where the model is weakest"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: the shortcut fraction of the kept data by tier ---\neasy   kept 4689 of 5000 | shortcut share of kept: 0.036\nmedium kept 3338 of 5000 | shortcut share of kept: 0.250\nhard   kept 2221 of 5000 | shortcut share of kept: 0.656"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The filter kept 83 of 200 hard problems in round 0. 2) Easy saturated first. 3) Rationalization lifted hard accuracy to 0.97. 4) Over ten seeds the means were 0.749 and 0.960. 5) 65.6 percent of kept hard rationales were shortcuts.",
     "bodyKn": "1) ಶೋಧಕ ಸುತ್ತು 0 ರಲ್ಲಿ 200 ಕಠಿಣ ಸಮಸ್ಯೆಗಳಲ್ಲಿ 83 ಇಟ್ಟಿತು. 2) ಸುಲಭ ಮೊದಲು ಸ್ಯಾಚುರೇಟ್ ಆಯಿತು. 3) Rationalization ಕಠಿಣ ನಿಖರತೆಯನ್ನು 0.97 ಕ್ಕೆ ಏರಿಸಿತು. 4) ಹತ್ತು seeds ಮೇಲೆ ಸರಾಸರಿ 0.749 ಮತ್ತು 0.960. 5) ಇಟ್ಟ ಕಠಿಣ ತರ್ಕಗಳಲ್ಲಿ 65.6 ಶೇಕಡಾ ಶಾರ್ಟ್‌ಕಟ್."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B st_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B st_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B st_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B st_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. What the answer filter keeps in round 0 (200 problems per tier)\n2. Five STaR rounds without and with rationalization (seed 3)\n3. Ten seeds, hard-tier accuracy after five rounds\n4. The shortcut fraction of the kept data by tier",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. What the answer filter keeps in round 0 (200 problems per tier)\n2. Five STaR rounds without and with rationalization (seed 3)\n3. Ten seeds, hard-tier accuracy after five rounds\n4. The shortcut fraction of the kept data by tier"
    }
   },
   {

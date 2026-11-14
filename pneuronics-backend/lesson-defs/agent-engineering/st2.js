@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Random pick, majority vote and a perfect checker against the formula (p = 0.3)",
+    "headingKn": "ಪ್ರಯೋಗ 1: Random pick, majority vote and a perfect checker against the formula (p = 0.3)",
+    "bodyEn": "What it ran: Random pick, majority vote and a perfect checker against the formula (p = 0.3). What the lab concluded: a perfect checker matches 1 - (1 - p)^N, random choice never improves on p, and majority vote helps here only because wrong answers are spread over seven values while the right one is a single value; if wrong answers agreed with each other majority vote would fail",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Random pick, majority vote and a perfect checker against the formula (p = 0.3). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a perfect checker matches 1 - (1 - p)^N, random choice never improves on p, and majority vote helps here only because wrong answers are spread over seven values while the right one is a single value; if wrong answers agreed with each other majority vote would fail"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: random pick, majority vote and a perfect checker against the formula (p = 0.3) ---\nN= 1: formula 0.300 | perfect verifier 0.303 | majority 0.300 | random 0.300\nN= 4: formula 0.760 | perfect verifier 0.761 | majority 0.405 | random 0.300\nN=16: formula 0.997 | perfect verifier 0.996 | majority 0.695 | random 0.304"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Verifier errors cap the gain (p = 0.3, N = 16)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Verifier errors cap the gain (p = 0.3, N = 16)",
+    "bodyEn": "What it ran: Verifier errors cap the gain (p = 0.3, N = 16). What the lab concluded: success falls as the false-positive rate rises and equals the base rate 0.300 when the verifier accepts right and wrong answers equally often, so a weak verifier can make extra samples worthless; the rates are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Verifier errors cap the gain (p = 0.3, N = 16). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): success falls as the false-positive rate rises and equals the base rate 0.300 when the verifier accepts right and wrong answers equally often, so a weak verifier can make extra samples worthless; the rates are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: verifier errors cap the gain (p = 0.3, N = 16) ---\nverifier true-positive 1.0, false-positive 0.0: success 0.997\nverifier true-positive 0.9, false-positive 0.1: success 0.794\nverifier true-positive 0.9, false-positive 0.3: success 0.563\nverifier true-positive 0.7, false-positive 0.3: success 0.497\nverifier true-positive 0.5, false-positive 0.5: success 0.297"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: When failures are correlated, more samples help less (N = 16)",
+    "headingKn": "ಪ್ರಯೋಗ 3: When failures are correlated, more samples help less (N = 16)",
+    "bodyEn": "What it ran: When failures are correlated, more samples help less (N = 16). What the lab concluded: a perfect verifier cannot select an answer that was never sampled, so the gain is bounded by how often the right answer appears at all; the 0.02 and 0.58 split is invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: When failures are correlated, more samples help less (N = 16). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a perfect verifier cannot select an answer that was never sampled, so the gain is bounded by how often the right answer appears at all; the 0.02 and 0.58 split is invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: when failures are correlated, more samples help less (N = 16) ---\naverage p is 0.30 but half the problems are hard (0.02) and half easy (0.58): perfect-verifier success 0.640 against the independent formula 0.997"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Training a verifier on both correct and incorrect samples",
+    "headingKn": "ಪ್ರಯೋಗ 4: Training a verifier on both correct and incorrect samples",
+    "bodyEn": "What it ran: Training a verifier on both correct and incorrect samples. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Training a verifier on both correct and incorrect samples. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: training a verifier on both correct and incorrect samples ---\nthreshold 1.4 chosen on training data | held-out accuracy 0.750 | true-positive 0.343 | false-positive 0.080\nthe scripted scores overlap, so the threshold that maximises accuracy on this 30 percent correct mix rejects most right answers (low true-positive rate) in order to keep false positives low; V-STaR trains a verifier on …\nbest-of-16 with those measured rates: 0.623"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) A perfect verifier matched 1-(1-p)^N. 2) Random choice stayed at 0.3. 3) Majority vote reached 0.695 at N 16. 4) Verifier false positives cut 0.997 to 0.563 or less. 5) Correlated failures capped a perfect verifier at 0.640.",
     "bodyKn": "1) ಪರಿಪೂರ್ಣ ಪರಿಶೀಲಕ 1-(1-p)^N ಗೆ ಹೊಂದಿತು. 2) Random ಆಯ್ಕೆ 0.3 ರಲ್ಲಿ ಉಳಿಯಿತು. 3) ಬಹುಮತ ಮತ N 16 ರಲ್ಲಿ 0.695 ತಲುಪಿತು. 4) ಪರಿಶೀಲಕ false positives 0.997 ಅನ್ನು 0.563 ಅಥವಾ ಕಡಿಮೆಗೆ ಇಳಿಸಿದವು. 5) ಸಹಸಂಬಂಧಿತ ವೈಫಲ್ಯಗಳು ಪರಿಪೂರ್ಣ ಪರಿಶೀಲಕವನ್ನು 0.640 ಕ್ಕೆ ಮಿತಿಗೊಳಿಸಿದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B st_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B st_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B st_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B st_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. Random pick, majority vote and a perfect checker against the formula (p = 0.3)\n2. Verifier errors cap the gain (p = 0.3, N = 16)\n3. When failures are correlated, more samples help less (N = 16)\n4. Training a verifier on both correct and incorrect samples",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. Random pick, majority vote and a perfect checker against the formula (p = 0.3)\n2. Verifier errors cap the gain (p = 0.3, N = 16)\n3. When failures are correlated, more samples help less (N = 16)\n4. Training a verifier on both correct and incorrect samples"
    }
   },
   {
