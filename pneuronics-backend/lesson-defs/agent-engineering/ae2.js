@@ -137,6 +137,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Three mutation operators, 200 generations, seeds 1 to 10",
+    "headingKn": "ಪ್ರಯೋಗ 1: Three mutation operators, 200 generations, seeds 1 to 10",
+    "bodyEn": "What it ran: Three mutation operators, 200 generations, seeds 1 to 10. What the lab concluded: the table shows which operator reached the exact target most often with this budget on these ten seeds; the operators were run with the same loop and the same seeds, and with ten runs a gap of one or two is within what a different set of seeds could change",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Three mutation operators, 200 generations, seeds 1 to 10. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the table shows which operator reached the exact target most often with this budget on these ten seeds; the operators were run with the same loop and the same seeds, and with ten runs a gap of one or two is within what a different set of seeds could change"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: three mutation operators, 200 generations, seeds 1 to 10 ---\nsmall (+-1)    exact in 10/10 | median final MSE 0.0 | worst 0.0\nlarge (+-3/5)  exact in 0/10 | median final MSE 89.0 | worst 89.0\nreset (-6..6)  exact in 10/10 | median final MSE 0.0 | worst 0.0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Tournament pressure, formula against simulation",
+    "headingKn": "ಪ್ರಯೋಗ 2: Tournament pressure, formula against simulation",
+    "bodyEn": "What it ran: Tournament pressure, formula against simulation. What the lab concluded: the chance that a tournament contains at least one top-20 percent member is 1 - 0.8^k, which is 0.488 at k = 3, and the simulated column agrees to about two decimal places; a larger tournament raises that chance and so raises selection pressure",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Tournament pressure, formula against simulation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the chance that a tournament contains at least one top-20 percent member is 1 - 0.8^k, which is 0.488 at k = 3, and the simulated column agrees to about two decimal places; a larger tournament raises that chance and so raises selection pressure"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely computing: tournament pressure, formula against simulation ---\ntournament size  1: formula 0.200 | simulated 0.194\ntournament size  3: formula 0.488 | simulated 0.488\ntournament size  5: formula 0.672 | simulated 0.670\ntournament size 10: formula 0.893 | simulated 0.895"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: One population against four islands (same total budget of mutations)",
+    "headingKn": "ಪ್ರಯೋಗ 3: One population against four islands (same total budget of mutations)",
+    "bodyEn": "What it ran: One population against four islands (same total budget of mutations). What the lab concluded: both setups made 400 mutations in total per run and the table reports what each reached; the lab's islands are small lists of four programs with ring migration every ten generations, and this is a toy comparison on a problem easy enough that diversity may not matter",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: One population against four islands (same total budget of mutations). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both setups made 400 mutations in total per run and the table reports what each reached; the lab's islands are small lists of four programs with ring migration every ten generations, and this is a toy comparison on a problem easy enough that diversity may not matter"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: one population against four islands (same total budget of mutations) ---\n1 island(s) x 400 generations: exact in 10/10 | median final MSE 0.0 | worst 0.0\n4 island(s) x 100 generations: exact in 10/10 | median final MSE 0.0 | worst 0.0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The overfitting example from the lesson",
+    "headingKn": "ಪ್ರಯೋಗ 4: The overfitting example from the lesson",
+    "bodyEn": "What it ran: The overfitting example from the lesson. What the lab concluded: the held-out squared errors are 3600, 3600 and 57600, so the mean is 21600; part 2 of the lesson printed 6240.0 for this and part 3 corrected it, and the run agrees with the correction",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The overfitting example from the lesson. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the held-out squared errors are 3600, 3600 and 57600, so the mean is 21600; part 2 of the lesson printed 6240.0 for this and part 3 corrected it, and the run agrees with the correction"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely computing: the overfitting example from the lesson ---\ntraining MSE on 0, 1, 2: 0.0 | held-out MSE on -1, 3, 4: 21600.0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A cubic search with only three training points",
+    "headingKn": "ಪ್ರಯೋಗ 5: A cubic search with only three training points",
+    "bodyEn": "What it ran: A cubic search with only three training points. What the lab concluded: with three training points many cubics fit exactly, and the count above is how many of the runs that fit the training points still disagreed with the target elsewhere; this is overfitting of the evaluator's inputs and not a bug in the search",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A cubic search with only three training points. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with three training points many cubics fit exactly, and the count above is how many of the runs that fit the training points still disagreed with the target elsewhere; this is overfitting of the evaluator's inputs and not a bug in the search"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: a cubic search with only three training points ---\n20 seeds: training error reached 0 in 1; of those, held-out error stayed above 0 in 0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A speed-only evaluator rewards doing nothing",
+    "headingKn": "ಪ್ರಯೋಗ 6: A speed-only evaluator rewards doing nothing",
+    "bodyEn": "What it ran: A speed-only evaluator rewards doing nothing. What the lab concluded: a score that only measures time prefers the empty answer, and putting a correctness check in front of the timing rejects it; the timings themselves are single measurements on this machine and are not stable enough to quote",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A speed-only evaluator rewards doing nothing. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a score that only measures time prefers the empty answer, and putting a correctness check in front of the timing rejects it; the timings themselves are single measurements on this machine and are not stable enough to quote"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: a speed-only evaluator rewards doing nothing ---\nempty answer faster than correct answer: True\ncorrectness gate: correct passes = True | empty passes = False"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

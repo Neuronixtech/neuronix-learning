@@ -133,6 +133,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A SQLite program database with lineage and duplicate detection",
+    "headingKn": "ಪ್ರಯೋಗ 1: A SQLite program database with lineage and duplicate detection",
+    "bodyEn": "What it ran: A SQLite program database with lineage and duplicate detection. What the lab concluded: every stored program has a content-hash id, a parent and a generation, and the same source text was refused the second time it appeared; the lineage is the chain of parents that led to the current best",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A SQLite program database with lineage and duplicate detection. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): every stored program has a content-hash id, a parent and a generation, and the same source text was refused the second time it appeared; the lineage is the chain of parents that led to the current best"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a SQLite program database with lineage and duplicate detection ---\nrows: 22 | duplicates refused: 38 | best: 1*x*x + 3*x + 2 | MSE: 0.0\n  lineage 0 0*x*x + 1*x + 0 score 2710.0\n  lineage 1 0*x*x + 1*x + 1 score 2633.6666666666665\n  lineage 2 0*x*x + 1*x + 2 score 2559.3333333333335\n  lineage 7 0*x*x + 3*x + 2 score 2412.6666666666665\n  lineage 24 1*x*x + 3*x + 2 score 0.0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A staged evaluator separates invalid, incorrect and passing",
+    "headingKn": "ಪ್ರಯೋಗ 2: A staged evaluator separates invalid, incorrect and passing",
+    "bodyEn": "What it ran: A staged evaluator separates invalid, incorrect and passing. What the lab concluded: a candidate outside the allowed coefficient range never reaches scoring, a wrong one gets its error and the exact one passes; keeping the stages apart tells you why a candidate was rejected",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A staged evaluator separates invalid, incorrect and passing. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a candidate outside the allowed coefficient range never reaches scoring, a wrong one gets its error and the exact one passes; keeping the stages apart tells you why a candidate was rejected"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a staged evaluator separates invalid, incorrect and passing ---\n1000*x*x + 1*x + 0           -> ('INVALID', None)\n0*x*x + 1*x + 0              -> ('INCORRECT', 2710.0)\n1*x*x + 3*x + 2              -> ('PASS', 0.0)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A search budget with stagnation stopping",
+    "headingKn": "ಪ್ರಯೋಗ 3: A search budget with stagnation stopping",
+    "bodyEn": "What it ran: A search budget with stagnation stopping. What the lab concluded: the counts above are how often each stop reason occurred; a short stagnation window ended runs before the target was found, and a longer one let more of them finish, so the window is a choice with a cost, and the seeds and limits are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A search budget with stagnation stopping. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the counts above are how often each stop reason occurred; a short stagnation window ended runs before the target was found, and a longer one let more of them finish, so the window is a choice with a cost, and the seeds and limits are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a search budget with stagnation stopping ---\nseed 1: stopped after  15 evaluations because of 'stagnation', best MSE 2487.0\nseed 2: stopped after  12 evaluations because of 'target reached', best MSE 0.0\nseed 3: stopped after  11 evaluations because of 'target reached', best MSE 0.0\nseed 4: stopped after  14 evaluations because of 'stagnation', best MSE 146.66666666666666\nover 20 seeds with a stagnation window of 6: {'stagnation': 8, 'target reached': 12}\nover the same 20 seeds with a window of 40: {'target reached': 20}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Parallel versus sequential evaluation of tiny jobs",
+    "headingKn": "ಪ್ರಯೋಗ 4: Parallel versus sequential evaluation of tiny jobs",
+    "bodyEn": "What it ran: Parallel versus sequential evaluation of tiny jobs. What the lab concluded: each evaluation is a few microseconds of arithmetic, so starting processes and sending objects between them costs more than the work; parallelism pays when each evaluation takes long enough to dwarf that overhead, and the timings are single runs that were not repeated",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Parallel versus sequential evaluation of tiny jobs. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each evaluation is a few microseconds of arithmetic, so starting processes and sending objects between them costs more than the work; parallelism pays when each evaluation takes long enough to dwarf that overhead, and the timings are single runs that were not repeated"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: parallel versus sequential evaluation of tiny jobs ---\nsame results from both: True | parallel slower than sequential on this machine: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A child process is not a sandbox",
+    "headingKn": "ಪ್ರಯೋಗ 5: A child process is not a sandbox",
+    "bodyEn": "What it ran: A child process is not a sandbox. What the lab concluded: isolated mode and a timeout stop a runaway loop and do nothing about file access, because the child runs with the same operating-system permissions as its parent; real isolation has to be enforced outside Python with a container or a virtual machine, and this lab only shows the gap",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A child process is not a sandbox. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): isolated mode and a timeout stop a runaway loop and do nothing about file access, because the child runs with the same operating-system permissions as its parent; real isolation has to be enforced outside Python with a container or a virtual machine, and this lab only shows the gap"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a child process is not a sandbox ---\nchild with -I and a timeout read the file it was never given: made-up-secret-value\nan infinite loop was stopped by the timeout after 1 second"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A deployment gate and an evidence report",
+    "headingKn": "ಪ್ರಯೋಗ 6: A deployment gate and an evidence report",
+    "bodyEn": "What it ran: A deployment gate and an evidence report. What the lab concluded: a candidate with a perfect score was still not approved because a human approval was missing, and in this lab approval is a boolean field, which a real system must replace with an authenticated decision the candidate cannot set; the report is printed and not written to a file",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A deployment gate and an evidence report. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a candidate with a perfect score was still not approved because a human approval was missing, and in this lab approval is a boolean field, which a real system must replace with an authenticated decision the candidate cannot set; the report is printed and not written to a file"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: a deployment gate and an evidence report ---\n{'approved': False, 'failed_checks': ['human_approval']}\n{\"candidate\": \"78068e56b7b6\", \"gate\": {\"approved\": false, \"failed_checks\": [\"human_approval\"]}, \"held_out_mse\": 0.0, \"training_mse\": 0.0}"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

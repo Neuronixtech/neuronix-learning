@@ -141,6 +141,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The target, the seed program and the evaluator",
+    "headingKn": "ಪ್ರಯೋಗ 1: The target, the seed program and the evaluator",
+    "bodyEn": "What it ran: The target, the seed program and the evaluator. What the lab concluded: the seed program x has a mean squared error of 26.8, x*x + x has 12.0 and the exact target has 0.0; the evaluator is deterministic, so the same program on the same points always gets the same score",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The target, the seed program and the evaluator. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the seed program x has a mean squared error of 26.8, x*x + x has 12.0 and the exact target has 0.0; the evaluator is deterministic, so the same program on the same points always gets the same score"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the target, the seed program and the evaluator ---\n0*x*x + 1*x + 0        MSE on -2..2 = 26.8\n1*x*x + 1*x + 0        MSE on -2..2 = 12.0\n1*x*x + 3*x + 2        MSE on -2..2 = 0.0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: One search, 200 generations, seed 42, archive parents",
+    "headingKn": "ಪ್ರಯೋಗ 2: One search, 200 generations, seed 42, archive parents",
+    "bodyEn": "What it ran: One search, 200 generations, seed 42, archive parents. What the lab concluded: a single seeded run shows what the loop does and says little about how often it works, which is why the next two sections repeat it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: One search, 200 generations, seed 42, archive parents. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a single seeded run shows what the loop does and says little about how often it works, which is why the next two sections repeat it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: one search, 200 generations, seed 42, archive parents ---\nbest: 1*x*x + 3*x + 2 | training MSE: 0.0 | held-out MSE: 0.0 | archive cells: 7 | generation of first exact match: 34"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Ten seeds, 200 generations, two parent-selection rules",
+    "headingKn": "ಪ್ರಯೋಗ 3: Ten seeds, 200 generations, two parent-selection rules",
+    "bodyEn": "What it ran: Ten seeds, 200 generations, two parent-selection rules. What the lab concluded: both rules were run on the same ten seeds with the same budget and the counts above are what they produced; ten seeds is a small sample, so a difference of one or two runs is not evidence that one rule is better",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Ten seeds, 200 generations, two parent-selection rules. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both rules were run on the same ten seeds with the same budget and the counts above are what they produced; ten seeds is a small sample, so a difference of one or two runs is not evidence that one rule is better"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: ten seeds, 200 generations, two parent-selection rules ---\narchive      exact in 9/10 runs | median training MSE 0.0 | worst training MSE 1.0 | median generation of first hit 60 | mean archive cells 5.8\nglobal best  exact in 9/10 runs | median training MSE 0.0 | worst training MSE 78.0 | median generation of first hit 24 | mean archive cells 4.7"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: More generations",
+    "headingKn": "ಪ್ರಯೋಗ 4: More generations",
+    "bodyEn": "What it ran: More generations. What the lab concluded: more generations gave the search more chances and the table shows how many runs reached the exact target at each budget; a run that has stopped improving is not proof the target is out of reach, only that these mutations have not found it yet",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: More generations. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): more generations gave the search more chances and the table shows how many runs reached the exact target at each budget; a run that has stopped improving is not proof the target is out of reach, only that these mutations have not found it yet"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: more generations ---\ngenerations=  50 exact in 4/10 | median training MSE 4.0 | median held-out MSE 4.0\ngenerations= 200 exact in 9/10 | median training MSE 0.0 | median held-out MSE 0.0\ngenerations=1000 exact in 10/10 | median training MSE 0.0 | median held-out MSE 0.0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: What the archive keeps",
+    "headingKn": "ಪ್ರಯೋಗ 5: What the archive keeps",
+    "bodyEn": "What it ran: What the archive keeps. What the lab concluded: each occupied cell holds the lowest-error program found for that degree and number of nonzero terms, so structurally different programs survive even when one of them is much better overall",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What the archive keeps. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each occupied cell holds the lowest-error program found for that degree and number of nonzero terms, so structurally different programs survive even when one of them is much better overall"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: what the archive keeps ---\ncell (degree, nonzero) = (1, 1)  elite 0*x*x + 3*x + 0      MSE     222.0\ncell (degree, nonzero) = (1, 2)  elite 0*x*x + 3*x + 7      MSE     103.0\ncell (degree, nonzero) = (2, 1)  elite 1*x*x + 0*x + 0      MSE      94.0\ncell (degree, nonzero) = (2, 2)  elite 1*x*x + 3*x + 0      MSE       4.0\ncell (degree, nonzero) = (2, 3)  elite 1*x*x + 3*x + 2      MSE       0.0"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +281,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The evaluator is deterministic. 2) One seed found the target at generation 34. 3) Both rules reached it in 9 of 10 runs. 4) Budget decided how many runs finished. 5) The archive kept five different elites.",
     "bodyKn": "1) ಮೌಲ್ಯಮಾಪಕ ನಿರ್ಣಾಯಕ. 2) ಒಂದು seed ಜನರೇಶನ್ 34 ರಲ್ಲಿ ಗುರಿ ಕಂಡುಹಿಡಿಯಿತು. 3) ಎರಡೂ ನಿಯಮ 10 ರಲ್ಲಿ 9 ಓಟಗಳಲ್ಲಿ ತಲುಪಿದವು. 4) ಬಜೆಟ್ ಎಷ್ಟು ಓಟ ಮುಗಿದವು ನಿರ್ಧರಿಸಿತು. 5) ಆರ್ಕೈವ್ ಐದು ಬೇರೆ elites ಇಟ್ಟಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ae_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ae_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ae_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ae_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

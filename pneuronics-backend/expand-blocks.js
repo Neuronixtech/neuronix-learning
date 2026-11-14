@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const DIR = path.join(__dirname, 'lesson-defs/agent-engineering');
-const PHASE = '6a369d6066020ed05b32150b';
+const PHASE = process.env.PHASE_ID || '6a369d6066020ed05b32150b';
 const args = process.argv.slice(2);
 const APPLY = args.includes('--apply');
 const MIN = args.includes('--min') ? Number(args[args.indexOf('--min') + 1]) : 30;
@@ -124,7 +124,7 @@ function knCheck(def) {
   const mongoose = require('mongoose');
   const { Lesson } = require('./models/Curriculum');
   await mongoose.connect(process.env.MONGODB_URI);
-  const bdir = path.join(__dirname, 'lesson-defs/backups/phase17-before-expand');
+  const bdir = path.join(__dirname, 'lesson-defs/backups/' + (process.env.PHASE_ID ? 'phase18' : 'phase17') + '-before-expand');
   fs.mkdirSync(bdir, { recursive: true });
   const stamp = new Date().toISOString().slice(0, 10);
   const existing = await Lesson.find({ moduleId: { $in: [...new Set(changed.map((c) => c.nd.moduleId))] } }).lean();
@@ -138,6 +138,6 @@ function knCheck(def) {
     ex.builderEn = json; ex.builderKn = json;
     await ex.save(); updated++;
   }
-  console.log({ filesWritten: changed.length, databaseUpdated: updated, backup: `lesson-defs/backups/phase17-before-expand/lessons-${stamp}-${changed.length}.json` });
+  console.log({ filesWritten: changed.length, databaseUpdated: updated, backupDir: bdir });
   await mongoose.disconnect();
 })().catch((e) => { console.error(e); process.exit(1); });
