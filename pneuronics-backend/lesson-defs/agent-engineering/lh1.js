@@ -141,6 +141,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Success probability against task length for a 4-hour horizon",
+    "headingKn": "ಪ್ರಯೋಗ 1: Success probability against task length for a 4-hour horizon",
+    "bodyEn": "What it ran: Success probability against task length for a 4-hour horizon. What the lab concluded: with a horizon of 4 hours the model gives 0.5 at exactly 4 hours by construction, 0.941 at 15 minutes and 0.111 at 32 hours; the horizon is the length where success is 50 percent, and says nothing about 99 percent reliability, and the horizon value here is invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Success probability against task length for a 4-hour horizon. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with a horizon of 4 hours the model gives 0.5 at exactly 4 hours by construction, 0.941 at 15 minutes and 0.111 at 32 hours; the horizon is the length where success is 50 percent, and says nothing about 99 percent reliability, and the horizon value here is invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely computing: success probability against task length for a 4-hour horizon ---\ntask length   0.25 h  P(success) = 0.941\ntask length   1.00 h  P(success) = 0.800\ntask length   2.00 h  P(success) = 0.667\ntask length   4.00 h  P(success) = 0.500\ntask length   8.00 h  P(success) = 0.333\ntask length  16.00 h  P(success) = 0.200\ntask length  32.00 h  P(success) = 0.111"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Steepness k changes how fast reliability falls",
+    "headingKn": "ಪ್ರಯೋಗ 2: Steepness k changes how fast reliability falls",
+    "bodyEn": "What it ran: Steepness k changes how fast reliability falls. What the lab concluded: a larger k makes the drop around the horizon sharper, so two agents with the same 50 percent horizon can differ a lot at one quarter or four times that length, and k was chosen by hand for this lab",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Steepness k changes how fast reliability falls. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a larger k makes the drop around the horizon sharper, so two agents with the same 50 percent horizon can differ a lot at one quarter or four times that length, and k was chosen by hand for this lab"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely computing: steepness k changes how fast reliability falls ---\nk = 0.5: P at 1 h, 4 h, 16 h = ['0.667', '0.500', '0.333']\nk = 1.0: P at 1 h, 4 h, 16 h = ['0.800', '0.500', '0.200']\nk = 2.0: P at 1 h, 4 h, 16 h = ['0.941', '0.500', '0.059']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Compounding per-step reliability",
+    "headingKn": "ಪ್ರಯೋಗ 3: Compounding per-step reliability",
+    "bodyEn": "What it ran: Compounding per-step reliability. What the lab concluded: the simulated rate lands within sampling noise of the formula, which checks that the independence assumption in the formula matches what the simulation does; real steps are not independent and this proves nothing about a real agent",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Compounding per-step reliability. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the simulated rate lands within sampling noise of the formula, which checks that the independence assumption in the formula matches what the simulation does; real steps are not independent and this proves nothing about a real agent"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely computing and simulating: compounding per-step reliability ---\nper-step success 0.99,  10 steps: formula 0.9044\nper-step success 0.99,  50 steps: formula 0.6050\nper-step success 0.99, 100 steps: formula 0.3660\nper-step success 0.95,  10 steps: formula 0.5987\nper-step success 0.95,  50 steps: formula 0.0769\nper-step success 0.95, 100 steps: formula 0.0059\na step that works 99 percent of the time gives only 36.6 percent over 100 steps, and 95 percent per step gives 0.6 percent over 100 steps, so long tasks need very high per-step reliability or a way to recover from a fai…\nseeded Monte Carlo, 20000 trials, p=0.99, 100 steps: 0.3624 against formula 0.3660"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: How many steps before success drops under 50 percent",
+    "headingKn": "ಪ್ರಯೋಗ 4: How many steps before success drops under 50 percent",
+    "bodyEn": "What it ran: How many steps before success drops under 50 percent. What the lab concluded: at 99.9 percent per step the chain falls under 50 percent at 693 steps, at 99 percent at 69 and at 95 percent at 14, which is the same idea as a horizon expressed in steps instead of hours",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How many steps before success drops under 50 percent. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): at 99.9 percent per step the chain falls under 50 percent at 693 steps, at 99 percent at 69 and at 95 percent at 14, which is the same idea as a horizon expressed in steps instead of hours"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely computing: how many steps before success drops under 50 percent ---\nper-step 0.999: first step count with chain success <= 0.5 is 693\nper-step 0.99: first step count with chain success <= 0.5 is 69\nper-step 0.95: first step count with chain success <= 0.5 is 14"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A doubling-time projection of the horizon",
+    "headingKn": "ಪ್ರಯೋಗ 5: A doubling-time projection of the horizon",
+    "bodyEn": "What it ran: A doubling-time projection of the horizon. What the lab concluded: that figure follows from log2(40) times 7 and shows how sensitive a forecast is to the assumed doubling time, since a different assumed doubling time gives a very different answer",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A doubling-time projection of the horizon. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): that figure follows from log2(40) times 7 and shows how sensitive a forecast is to the assumed doubling time, since a different assumed doubling time gives a very different answer"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely computing: a doubling-time projection of the horizon ---\nassumed doubling every 7 months, starting from a 4 hour horizon (an assumption, not a forecast):\n  month  0: horizon    4.0 h\n  month  7: horizon    8.0 h\n  month 14: horizon   16.0 h\n  month 21: horizon   32.0 h\n  month 28: horizon   64.0 h\nthe projection is just exponential growth applied to an assumed starting value and doubling time; the lesson's own 14 to 28 to 56 hour example is treated as cited arithmetic and the doubling time here is invented\nmonths needed to go from 4 h to 160 h at one doubling per 7 months: 37.3"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +281,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The horizon gave 0.5 at its own length by construction. 2) Steepness changed the drop at 4 times the horizon. 3) 0.99 per step gave 0.366 over 100 steps. 4) The simulation matched the formula. 5) The projection depends on an assumed doubling time.",
     "bodyKn": "1) Horizon ತನ್ನ ಉದ್ದದಲ್ಲಿ ರಚನೆಯಿಂದಲೇ 0.5 ನೀಡಿತು. 2) ಏರಿಕೆ horizon ನ 4 ಪಟ್ಟಿನಲ್ಲಿ ಇಳಿಕೆ ಬದಲಿಸಿತು. 3) ಪ್ರತಿ ಹಂತಕ್ಕೆ 0.99 100 ಹಂತಗಳಲ್ಲಿ 0.366 ನೀಡಿತು. 4) ಸಿಮ್ಯುಲೇಶನ್ ಸೂತ್ರಕ್ಕೆ ಹೊಂದಿತು. 5) ಪ್ರಕ್ಷೇಪಣೆ ಕಲ್ಪಿತ doubling time ಮೇಲೆ ಅವಲಂಬಿತ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B lh_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B lh_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B lh_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B lh_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

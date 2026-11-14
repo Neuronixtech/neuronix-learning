@@ -141,6 +141,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A crash at step 5 and recovery from a checkpoint",
+    "headingKn": "ಪ್ರಯೋಗ 1: A crash at step 5 and recovery from a checkpoint",
+    "bodyEn": "What it ran: A crash at step 5 and recovery from a checkpoint. What the lab concluded: the second run resumed at step 5 instead of step 0, so no step ran twice; this works here because every step is a pure append, and a step with an outside effect would also need an idempotency key",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A crash at step 5 and recovery from a checkpoint. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the second run resumed at step 5 instead of step 0, so no step ran twice; this works here because every step is a pure append, and a step with an outside effect would also need an idempotency key"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a crash at step 5 and recovery from a checkpoint ---\nfirst run: crashed | steps executed: [0, 1, 2, 3, 4] | checkpoint next: 5\nsecond run: finished | steps executed: [5, 6, 7] | done: 8\nsteps executed across both runs: [0, 1, 2, 3, 4, 5, 6, 7] | any step run twice: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The same crash without a checkpoint",
+    "headingKn": "ಪ್ರಯೋಗ 2: The same crash without a checkpoint",
+    "bodyEn": "What it ran: The same crash without a checkpoint. What the lab concluded: without a saved position the second run began at step 0, so five steps ran twice and the total was 13 instead of 8",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The same crash without a checkpoint. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): without a saved position the second run began at step 0, so five steps ran twice and the total was 13 instead of 8"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: the same crash without a checkpoint ---\nsteps executed across both runs: [0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 5, 6, 7] | total: 13"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A step budget stops a loop",
+    "headingKn": "ಪ್ರಯೋಗ 3: A step budget stops a loop",
+    "bodyEn": "What it ran: A step budget stops a loop. What the lab concluded: a hard cap on steps ends the run even though the task is not finished, and the checkpoint records how far it got so a human can decide whether to continue",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A step budget stops a loop. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a hard cap on steps ends the run even though the task is not finished, and the checkpoint records how far it got so a human can decide whether to continue"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a step budget stops a loop ---\nstopped because of: step budget | steps taken: 10 | next: 10"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Memory compaction",
+    "headingKn": "ಪ್ರಯೋಗ 4: Memory compaction",
+    "bodyEn": "What it ran: Memory compaction. What the lab concluded: the 22 old entries became one summary record and the 8 recent ones stayed in full; the summary keeps only the count and the first and last entry, so detail in the middle is gone, and anything recovery needs must live in an exact log instead",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Memory compaction. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the 22 old entries became one summary record and the 8 recent ones stayed in full; the summary keeps only the count and the first and last entry, so detail in the middle is gone, and anything recovery needs must live in an exact log instead"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely computing: memory compaction ---\nbefore: 30 entries | after: 9 entries | folded: 22\nfirst entry after compaction: {'summary_of': 22, 'first': {'step': 0, 'note': 'observation 0'}, 'last': {'step': 21, 'note': 'observation 21'}}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A trajectory monitor",
+    "headingKn": "ಪ್ರಯೋಗ 5: A trajectory monitor",
+    "bodyEn": "What it ran: A trajectory monitor. What the lab concluded: the monitor flags three identical steps in a row and any run longer than twelve steps and says nothing about a trajectory that is wrong but varied, so it is a cheap tripwire and not a correctness check",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A trajectory monitor. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the monitor flags three identical steps in a row and any run longer than twelve steps and says nothing about a trajectory that is wrong but varied, so it is a cheap tripwire and not a correctness check"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a trajectory monitor ---\nnormal       -> None\nrepeat loop  -> repeat of ('edit', 'a') 3 times at step 4\ntoo long     -> step count 15 exceeds limit 12"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +281,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The checkpoint resumed at step 5. 2) Without it 13 steps ran instead of 8. 3) The budget stopped at 10 steps. 4) Compaction cut 30 entries to 9 and lost detail. 5) The monitor caught a three-step repeat and a 15-step run.",
     "bodyKn": "1) Checkpoint ಹಂತ 5 ರಲ್ಲಿ ಮುಂದುವರಿಸಿತು. 2) ಅದಿಲ್ಲದೆ 8 ಬದಲು 13 ಹಂತ ಓಡಿದವು. 3) ಬಜೆಟ್ 10 ಹಂತಗಳಲ್ಲಿ ನಿಲ್ಲಿಸಿತು. 4) ಸಂಕ್ಷೇಪಣ 30 ನಮೂದುಗಳನ್ನು 9 ಕ್ಕೆ ಇಳಿಸಿ ವಿವರ ಕಳೆದುಕೊಂಡಿತು. 5) ಮಾನಿಟರ್ ಮೂರು-ಹಂತ ಪುನರಾವರ್ತನೆ ಮತ್ತು 15-ಹಂತ ಓಟ ಹಿಡಿಯಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B lh_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B lh_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B lh_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B lh_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

@@ -141,6 +141,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Size of a branching tree of attempts",
+    "headingKn": "ಪ್ರಯೋಗ 1: Size of a branching tree of attempts",
+    "bodyEn": "What it ran: Size of a branching tree of attempts. What the lab concluded: branching 3 at depth 2 gives 13 nodes and 9 leaves, matching the hand count, and the totals grow fast enough that exploring every branch is its own cost problem",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Size of a branching tree of attempts. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): branching 3 at depth 2 gives 13 nodes and 9 leaves, matching the hand count, and the totals grow fast enough that exploring every branch is its own cost problem"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely computing: size of a branching tree of attempts ---\nbranching 2, depth 2: 7 nodes in total, 4 leaves\nbranching 3, depth 2: 13 nodes in total, 9 leaves\nbranching 3, depth 3: 40 nodes in total, 27 leaves\nbranching 5, depth 4: 781 nodes in total, 625 leaves"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Restart from scratch against checkpoints, 60 steps at 97 percent per step",
+    "headingKn": "ಪ್ರಯೋಗ 2: Restart from scratch against checkpoints, 60 steps at 97 percent per step",
+    "bodyEn": "What it ran: Restart from scratch against checkpoints, 60 steps at 97 percent per step. What the lab concluded: with the same per-step reliability, checkpoints finished far more tasks and spent fewer executed steps in total, because a failure only repeats at most ten steps; the probabilities are invented and the two runs share a seed but not a random stream, so treat the gap as indicative",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Restart from scratch against checkpoints, 60 steps at 97 percent per step. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with the same per-step reliability, checkpoints finished far more tasks and spent fewer executed steps in total, because a failure only repeats at most ten steps; the probabilities are invented and the two runs share a seed but not a random stream, so treat the gap as indicative"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: restart from scratch against checkpoints, 60 steps at 97 percent per step ---\nrestart (5 attempts):          success 0.596 | mean steps executed 101.3\ncheckpoint every 10 (5 retries each): success 0.992 | mean steps executed 70.6"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Checkpoint spacing",
+    "headingKn": "ಪ್ರಯೋಗ 3: Checkpoint spacing",
+    "bodyEn": "What it ran: Checkpoint spacing. What the lab concluded: very sparse checkpoints behave like restarting, and very dense ones save more work but, in a real system, each checkpoint costs time and storage that this lab does not charge for",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Checkpoint spacing. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): very sparse checkpoints behave like restarting, and very dense ones save more work but, in a real system, each checkpoint costs time and storage that this lab does not charge for"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: checkpoint spacing ---\ncheckpoint every  2 steps: success 1.000 | mean steps executed 62.9\ncheckpoint every  5 steps: success 1.000 | mean steps executed 65.9\ncheckpoint every 10 steps: success 0.993 | mean steps executed 71.2\ncheckpoint every 20 steps: success 0.942 | mean steps executed 80.7\ncheckpoint every 60 steps: success 0.573 | mean steps executed 100.0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Best-of-N retries",
+    "headingKn": "ಪ್ರಯೋಗ 4: Best-of-N retries",
+    "bodyEn": "What it ran: Best-of-N retries. What the lab concluded: trying several times helps a lot when the tries are independent and a checker can tell which one worked; if the checker is wrong or the failures are correlated, the formula overstates the benefit",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Best-of-N retries. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): trying several times helps a lot when the tries are independent and a checker can tell which one worked; if the checker is wrong or the failures are correlated, the formula overstates the benefit"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely computing and simulating: best-of-N retries ---\nsingle-try success 0.3, 1 tries: formula 0.300 | simulated 0.298\nsingle-try success 0.3, 3 tries: formula 0.657 | simulated 0.654\nsingle-try success 0.3, 5 tries: formula 0.832 | simulated 0.836\nsingle-try success 0.6, 1 tries: formula 0.600 | simulated 0.596\nsingle-try success 0.6, 3 tries: formula 0.936 | simulated 0.934\nsingle-try success 0.6, 5 tries: formula 0.990 | simulated 0.989"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Correlated failures break the independence assumption",
+    "headingKn": "ಪ್ರಯೋಗ 5: Correlated failures break the independence assumption",
+    "bodyEn": "What it ran: Correlated failures break the independence assumption. What the lab concluded: both setups average 50 percent per try, yet four tries succeed far less often when the failures are concentrated on the hard tasks, so retries cannot rescue tasks the agent systematically cannot do; the 5 and 95 percent split is invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Correlated failures break the independence assumption. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both setups average 50 percent per try, yet four tries succeed far less often when the failures are concentrated on the hard tasks, so retries cannot rescue tasks the agent systematically cannot do; the 5 and 95 percent split is invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: correlated failures break the independence assumption ---\nindependent tries at 0.5 each, 4 tries: 0.936\nsame average (0.5) but half the tasks are hard (5 percent) and half easy (95 percent), 4 tries: 0.592"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +281,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Tree size grows as b to the power d. 2) Checkpoints finished 0.992 against 0.596. 3) Sparse checkpoints behave like restarts. 4) Best-of-N matched its formula. 5) Correlation cut four tries from 0.936 to 0.592.",
     "bodyKn": "1) ಮರದ ಗಾತ್ರ b ನ d ಘಾತದಂತೆ ಬೆಳೆಯುತ್ತದೆ. 2) Checkpoints 0.596 ವಿರುದ್ಧ 0.992 ಮುಗಿಸಿದವು. 3) ವಿರಳ checkpoints ಮರುಪ್ರಾರಂಭದಂತೆ ವರ್ತಿಸುತ್ತವೆ. 4) Best-of-N ಸೂತ್ರಕ್ಕೆ ಹೊಂದಿತು. 5) ಸಹಸಂಬಂಧ ನಾಲ್ಕು ಪ್ರಯತ್ನಗಳನ್ನು 0.936 ರಿಂದ 0.592 ಗೆ ಇಳಿಸಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B lh_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B lh_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B lh_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B lh_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
