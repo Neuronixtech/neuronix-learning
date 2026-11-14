@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A naive evaluator against four candidates",
+    "headingKn": "ಪ್ರಯೋಗ 1: A naive evaluator against four candidates",
+    "bodyEn": "What it ran: A naive evaluator against four candidates. What the lab concluded: the honest agent scores 1.000 and the weak one 0.000, but the equal-claiming cheater scores 1.000 because it returns an object that claims to equal anything, and the tampering cheater also scores 1.000 because it empties the shared test list during the evaluator's warm-up call, so the average runs over no tests and defaults to 1.0; the evaluator trusted both the candidate's return values and the shared state",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A naive evaluator against four candidates. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the honest agent scores 1.000 and the weak one 0.000, but the equal-claiming cheater scores 1.000 because it returns an object that claims to equal anything, and the tampering cheater also scores 1.000 because it empties the shared test list during the evaluator's warm-up call, so the average runs over no tests and defaults to 1.0; the evaluator trusted both the candidate's return values and the shared state"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a naive evaluator against four candidates ---\nhonest        naive score 1.000\nweak          naive score 0.000\nequal_cheat   naive score 1.000\ntamper_cheat  naive score 1.000"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The same candidates behind an evaluator firewall",
+    "headingKn": "ಪ್ರಯೋಗ 2: The same candidates behind an evaluator firewall",
+    "bodyEn": "What it ran: The same candidates behind an evaluator firewall. What the lab concluded: the firewall keeps its own immutable copy of the tests, accepts only plain integers and also scores held-out cases, so the honest agent still gets 1.000 and the weak agent and both cheaters get 0.000; the cheating code is the same, it simply has nothing to tamper with",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The same candidates behind an evaluator firewall. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the firewall keeps its own immutable copy of the tests, accepts only plain integers and also scores held-out cases, so the honest agent still gets 1.000 and the weak agent and both cheaters get 0.000; the cheating code is the same, it simply has nothing to tamper with"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: the same candidates behind an evaluator firewall ---\nhonest        train 1.000 | held-out 1.000 | tests run 11\nweak          train 0.000 | held-out 0.000 | tests run 11\nequal_cheat   train 0.000 | held-out 0.000 | tests run 11\ntamper_cheat  train 0.000 | held-out 0.000 | tests run 11"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: HMAC-signed evidence and a verifier",
+    "headingKn": "ಪ್ರಯೋಗ 3: HMAC-signed evidence and a verifier",
+    "bodyEn": "What it ran: HMAC-signed evidence and a verifier. What the lab concluded: a tag is bound to the exact record contents under a key the candidate never sees, so changing the candidate, the scores or the key breaks verification; this lab key lives in the same process, so it only illustrates the check, and a real system keeps the key in a separate service",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: HMAC-signed evidence and a verifier. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a tag is bound to the exact record contents under a key the candidate never sees, so changing the candidate, the scores or the key breaks verification; this lab key lives in the same process, so it only illustrates the check, and a real system keeps the key in a separate service"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: HMAC-signed evidence and a verifier ---\ngenuine record verifies: True\nrecord moved to another candidate verifies: False\nweak record with inflated scores and the original tag verifies: False\ntag made with a guessed key verifies: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A verification gate over several checks",
+    "headingKn": "ಪ್ರಯೋಗ 4: A verification gate over several checks",
+    "bodyEn": "What it ran: A verification gate over several checks. What the lab concluded: a candidate passes only when every named check passes, the failing checks are listed by name, and human approval is a boolean here that a real system must replace with an authenticated decision the candidate cannot set",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A verification gate over several checks. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a candidate passes only when every named check passes, the failing checks are listed by name, and human approval is a boolean here that a real system must replace with an authenticated decision the candidate cannot set"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a verification gate over several checks ---\nhonest, all evidence present, no human approval -> ['human_approved']\nhonest, all evidence present, human approved    -> approved\ntamper cheater, human approved                  -> ['train_perfect', 'held_perfect']"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Naive scored three of four candidates 1.000. 2) The firewall left only honest at 1.000. 3) Three tamper attempts all failed to verify. 4) The gate named missing human approval. 5) The lab key lives in the same process, so it only illustrates the check.",
     "bodyKn": "1) Naive ನಾಲ್ಕರಲ್ಲಿ ಮೂರು ಅಭ್ಯರ್ಥಿಗಳಿಗೆ 1.000 ನೀಡಿತು. 2) Firewall honest ಅನ್ನು ಮಾತ್ರ 1.000 ನಲ್ಲಿ ಬಿಟ್ಟಿತು. 3) ಮೂರು tamper ಪ್ರಯತ್ನಗಳು ಪರಿಶೀಲನೆ ವಿಫಲವಾದವು. 4) Gate ಕಾಣೆಯಾದ ಮಾನವ ಅನುಮೋದನೆ ಹೆಸರಿಸಿತು. 5) ಲ್ಯಾಬ್ ಕೀ ಅದೇ ಪ್ರಕ್ರಿಯೆಯಲ್ಲಿದೆ, ಆದ್ದರಿಂದ ಅದು ಪರಿಶೀಲನೆಯನ್ನು ವಿವರಿಸಲು ಮಾತ್ರ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B da_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B da_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B da_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B da_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. A naive evaluator against four candidates\n2. The same candidates behind an evaluator firewall\n3. HMAC-signed evidence and a verifier\n4. A verification gate over several checks",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. A naive evaluator against four candidates\n2. The same candidates behind an evaluator firewall\n3. HMAC-signed evidence and a verifier\n4. A verification gate over several checks"
    }
   },
   {

@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Agents as operator sequences and the benchmark score",
+    "headingKn": "ಪ್ರಯೋಗ 1: Agents as operator sequences and the benchmark score",
+    "bodyEn": "What it ran: Agents as operator sequences and the benchmark score. What the lab concluded: the seed agent a1 solves only one of eleven training inputs, the pair t3 then a5 computes 3x+5 exactly, and every agent except the exact one scores 0.000 on the held-out inputs 20 to 29, including the seed agent whose single training hit is a coincidence at one input; the target function is invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Agents as operator sequences and the benchmark score. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the seed agent a1 solves only one of eleven training inputs, the pair t3 then a5 computes 3x+5 exactly, and every agent except the exact one scores 0.000 on the held-out inputs 20 to 29, including the seed agent whose single training hit is a coincidence at one input; the target function is invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: agents as operator sequences and the benchmark score ---\na1         train score 0.091 | held-out score 0.000\nt3         train score 0.000 | held-out score 0.000\nt3+a5      train score 1.000 | held-out score 1.000\nd2+a5      train score 0.091 | held-out score 0.000"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Greedy against archive parent selection, 10 seeds, 150 generations",
+    "headingKn": "ಪ್ರಯೋಗ 2: Greedy against archive parent selection, 10 seeds, 150 generations",
+    "bodyEn": "What it ran: Greedy against archive parent selection, 10 seeds, 150 generations. What the lab concluded: greedy keeps only strict improvements so its lineage can never dip, while the archive keeps every new agent and parents are drawn by score and by how few children they have; greedy found the target in none of the ten runs because the score is 0.000 almost everywhere, so a strictly better child almost never appears and the archive stays at one agent, while the archive mode found it in most runs by wandering through agents that scored no better than the seed; the result belongs to this flat toy score landscape and is not a general ranking",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Greedy against archive parent selection, 10 seeds, 150 generations. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): greedy keeps only strict improvements so its lineage can never dip, while the archive keeps every new agent and parents are drawn by score and by how few children they have; greedy found the target in none of the ten runs because the score is 0.000 almost everywhere, so a strictly better child almost never appears and the archive stays at one agent, while the archive mode found it in most runs by wandering through agents that scored no better than the seed; the result belongs to this flat toy score landscape and is not a general ranking"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: greedy against archive parent selection, 10 seeds, 150 generations ---\ngreedy  : exact in 0/10 | median generation of first hit None | median archive size 1.0 | winners whose lineage dipped 0\narchive : exact in 9/10 | median generation of first hit 86 | median archive size 96.5 | winners whose lineage dipped 8"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A stepping stone in one archive run (seed 3, archive mode)",
+    "headingKn": "ಪ್ರಯೋಗ 3: A stepping stone in one archive run (seed 3, archive mode)",
+    "bodyEn": "What it ran: A stepping stone in one archive run (seed 3, archive mode). What the lab concluded: the printed chain is the ancestry of the best agent found in that run; if a score falls and rises again along it, a lower-scoring agent was a stepping stone, which a greedy search would have discarded",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A stepping stone in one archive run (seed 3, archive mode). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the printed chain is the ancestry of the best agent found in that run; if a score falls and rises again along it, a lower-scoring agent was a stepping stone, which a greedy search would have discarded"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a stepping stone in one archive run (seed 3, archive mode) ---\nbest: s1+s1+t3+a5+a1+a5 | score 1.0 | first exact at generation 105\n  gen   0 a1                     score 0.091\n  gen   8 a1+t3                  score 0.000\n  gen  11 a5+a1+t3               score 0.000\n  gen  16 a5+a1+a5               score 0.091\n  gen  28 d2+a5+a1+a5            score 0.000\n  gen  31 s1+a5+a1+a5            score 0.000\n  gen  40 t3+a5+a1+a5            score 0.000\n  gen  74 s1+t3+a5+a1+a5         score 0.000\n  gen 105 s1+s1+t3+a5+a1+a5      score 1.000"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: How often a winning lineage passes through a worse agent",
+    "headingKn": "ಪ್ರಯೋಗ 4: How often a winning lineage passes through a worse agent",
+    "bodyEn": "What it ran: How often a winning lineage passes through a worse agent. What the lab concluded: the fraction is specific to this toy mutation operator, benchmark and parent rule, and the lab does not claim it carries over to real self-modifying agents",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How often a winning lineage passes through a worse agent. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the fraction is specific to this toy mutation operator, benchmark and parent rule, and the lab does not claim it carries over to real self-modifying agents"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: how often a winning lineage passes through a worse agent ---\nover 40 seeds 26 runs reached exact; 23 of those winning lineages contained at least one step where the child scored below its parent"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Only t3+a5 solved the target. 2) Greedy found it in 0 of 10 runs. 3) The archive found it in 9 of 10. 4) Seed 3 needed 105 generations through six zero-score steps. 5) 23 of 26 winning lineages dipped, a result tied to this toy.",
     "bodyKn": "1) t3+a5 ಮಾತ್ರ ಗುರಿ ಪರಿಹರಿಸಿತು. 2) Greedy 10 ರಲ್ಲಿ 0 ಓಟಗಳಲ್ಲಿ ಕಂಡುಹಿಡಿಯಿತು. 3) ಆರ್ಕೈವ್ 10 ರಲ್ಲಿ 9 ರಲ್ಲಿ ಕಂಡುಹಿಡಿಯಿತು. 4) Seed 3 ಗೆ ಆರು ಶೂನ್ಯ-ಅಂಕ ಹಂತಗಳ ಮೂಲಕ 105 ಜನರೇಶನ್ ಬೇಕಾಯಿತು. 5) 26 ವಿಜೇತ ವಂಶಾವಳಿಗಳಲ್ಲಿ 23 ಇಳಿದವು, ಈ ಆಟಿಕೆಗೆ ಸೀಮಿತ ಫಲಿತಾಂಶ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B da_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B da_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B da_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B da_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. Agents as operator sequences and the benchmark score\n2. Greedy against archive parent selection, 10 seeds, 150 generations\n3. A stepping stone in one archive run (seed 3, archive mode)\n4. How often a winning lineage passes through a worse agent",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. Agents as operator sequences and the benchmark score\n2. Greedy against archive parent selection, 10 seeds, 150 generations\n3. A stepping stone in one archive run (seed 3, archive mode)\n4. How often a winning lineage passes through a worse agent"
    }
   },
   {

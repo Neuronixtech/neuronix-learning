@@ -141,6 +141,59 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: What each search crowns best (seeds 1 to 20, 150 generations, 5 percent cheat mutations)",
+    "headingKn": "ಪ್ರಯೋಗ 1: What each search crowns best (seeds 1 to 20, 150 generations, 5 percent cheat mutations)",
+    "bodyEn": "What it ran: What each search crowns best (seeds 1 to 20, 150 generations, 5 percent cheat mutations). What the lab concluded: a cheater exists in the archive under either evaluator, because the mutation produces it at the same rate, but only the naive evaluator can crown it, and the crowned agent's true held-out score shows the cost; the max function breaks ties by preferring non-cheaters, which makes the naive result look slightly better than a tie broken at random",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What each search crowns best (seeds 1 to 20, 150 generations, 5 percent cheat mutations). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a cheater exists in the archive under either evaluator, because the mutation produces it at the same rate, but only the naive evaluator can crown it, and the crowned agent's true held-out score shows the cost; the max function breaks ties by preferring non-cheaters, which makes the naive result look slightly better than a tie broken at random"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: what each search crowns best (seeds 1 to 20, 150 generations, 5 percent cheat mutations) ---\nnaive evaluator    : cheater crowned best in 11/20 | cheater present in archive in 20/20 | mean true held-out score of the crowned agent 0.450\nfirewall evaluator : cheater crowned best in 0/20 | cheater present in archive in 20/20 | mean true held-out score of the crowned agent 0.600"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Cheat rate against the naive evaluator",
+    "headingKn": "ಪ್ರಯೋಗ 2: Cheat rate against the naive evaluator",
+    "bodyEn": "What it ran: Cheat rate against the naive evaluator. What the lab concluded: a cheater was crowned in 0 of 20 runs at rate 0, 6 at one percent and 11 at five percent, but only 8 at twenty percent; the lab does not explain the dip at twenty percent and with twenty seeds some of it may be noise, and the rates are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Cheat rate against the naive evaluator. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a cheater was crowned in 0 of 20 runs at rate 0, 6 at one percent and 11 at five percent, but only 8 at twenty percent; the lab does not explain the dip at twenty percent and with twenty seeds some of it may be noise, and the rates are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: cheat rate against the naive evaluator ---\ncheat mutation rate 0.00: cheater crowned in 0/20\ncheat mutation rate 0.01: cheater crowned in 6/20\ncheat mutation rate 0.05: cheater crowned in 11/20\ncheat mutation rate 0.20: cheater crowned in 8/20"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Archive parents drawn from cheater lineages",
+    "headingKn": "ಪ್ರಯೋಗ 3: Archive parents drawn from cheater lineages",
+    "bodyEn": "What it ran: Archive parents drawn from cheater lineages. What the lab concluded: under the naive evaluator a cheater has the top score, so parent selection keeps drawing it, and under the firewall it scores 0.0 and is rarely chosen; a cheating entry that attracts children spends search budget and can pass its trick down",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Archive parents drawn from cheater lineages. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): under the naive evaluator a cheater has the top score, so parent selection keeps drawing it, and under the firewall it scores 0.0 and is rarely chosen; a cheating entry that attracts children spends search budget and can pass its trick down"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: archive parents drawn from cheater lineages ---\nnaive evaluator    : mean number of children drawn from the cheater entry 12.65\nfirewall evaluator : mean number of children drawn from the cheater entry 2.95"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +251,50 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The cheater was crowned in 11 of 20 naive runs and 0 firewall runs. 2) The crowned naive agent averaged 0.450 true held-out. 3) The cheater appeared in the archive in every run either way. 4) The naive search drew 12.65 children from it against 2.95. 5) The rate sweep was not monotone.",
     "bodyKn": "1) ಮೋಸಗಾರ 20 naive ಓಟಗಳಲ್ಲಿ 11 ರಲ್ಲಿ ಮತ್ತು firewall ಓಟಗಳಲ್ಲಿ 0 ರಲ್ಲಿ ಕಿರೀಟ ಧರಿಸಿದ. 2) ಕಿರೀಟ ಪಡೆದ naive agent ಸರಾಸರಿ 0.450 ನಿಜ held-out ಪಡೆಯಿತು. 3) ಎರಡೂ ರೀತಿ ಪ್ರತಿ ಓಟದಲ್ಲೂ ಮೋಸಗಾರ ಆರ್ಕೈವ್‌ನಲ್ಲಿ ಕಾಣಿಸಿಕೊಂಡ. 4) naive ಹುಡುಕಾಟ ಅದರಿಂದ 2.95 ಬದಲು 12.65 ಮಕ್ಕಳನ್ನು ಎಳೆಯಿತು. 5) ದರ ಸ್ವೀಪ್ ಏಕಮುಖವಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B da_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B da_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B da_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B da_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. What each search crowns best (seeds 1 to 20, 150 generations, 5 percent cheat mutations)\n2. Cheat rate against the naive evaluator\n3. Archive parents drawn from cheater lineages",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. What each search crowns best (seeds 1 to 20, 150 generations, 5 percent cheat mutations)\n2. Cheat rate against the naive evaluator\n3. Archive parents drawn from cheater lineages"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Change one thing",
+    "headingKn": "ಒಂದನ್ನು ಬದಲಿಸಿ",
+    "bodyEn": "Pick one constant, threshold or input in the code shown above, change it, and predict which experiment will change before you rerun. If an experiment you did not expect changes, you have found a coupling worth understanding.",
+    "bodyKn": "ಮೇಲೆ ತೋರಿಸಿದ ಕೋಡ್‌ನಲ್ಲಿ ಒಂದು ಸ್ಥಿರಾಂಕ, ಮಿತಿ ಅಥವಾ ಇನ್‌ಪುಟ್ ಆಯ್ದು ಬದಲಿಸಿ, ಮರುಓಡಿಸುವ ಮುನ್ನ ಯಾವ ಪ್ರಯೋಗ ಬದಲಾಗುತ್ತದೆ ಎಂದು ಊಹಿಸಿ. ನೀವು ನಿರೀಕ್ಷಿಸದ ಪ್ರಯೋಗ ಬದಲಾದರೆ, ಅರ್ಥಮಾಡಿಕೊಳ್ಳಬೇಕಾದ ಸಂಬಂಧವನ್ನು ನೀವು ಕಂಡುಕೊಂಡಿದ್ದೀರಿ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Where your numbers may differ",
+    "headingKn": "ನಿಮ್ಮ ಸಂಖ್ಯೆಗಳು ಎಲ್ಲಿ ಭಿನ್ನವಾಗಬಹುದು",
+    "bodyEn": "Timings, temporary paths, hashes and commit ids differ between runs and machines. Counts, verdicts and error messages should match unless your Python version or operating system differs from the one named in Lesson Info.",
+    "bodyKn": "ಸಮಯಗಳು, ತಾತ್ಕಾಲಿಕ paths, hashes ಮತ್ತು commit ids ಓಟಗಳ ಮತ್ತು ಯಂತ್ರಗಳ ನಡುವೆ ಭಿನ್ನವಾಗುತ್ತವೆ. ಎಣಿಕೆಗಳು, ತೀರ್ಪುಗಳು ಮತ್ತು ದೋಷ ಸಂದೇಶಗಳು ನಿಮ್ಮ Python ಆವೃತ್ತಿ ಅಥವಾ ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್ Lesson Info ನಲ್ಲಿ ಹೆಸರಿಸಿದ್ದಕ್ಕಿಂತ ಭಿನ್ನವಾಗಿಲ್ಲದಿದ್ದರೆ ಹೊಂದಬೇಕು."
    }
   },
   {
