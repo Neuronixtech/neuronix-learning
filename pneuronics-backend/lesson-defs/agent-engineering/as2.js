@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Novelty threshold against errors (400 ideas, 60 corpus entries, seed 1)",
+    "headingKn": "ಪ್ರಯೋಗ 1: Novelty threshold against errors (400 ideas, 60 corpus entries, seed 1)",
+    "bodyEn": "What it ran: Novelty threshold against errors (400 ideas, 60 corpus entries, seed 1). What the lab concluded: a low threshold of 0.2 labels 201 fresh ideas as duplicates (essentially all of them) while a high threshold of 0.7 lets 80 near-copies through, and in this run only 0.4 and 0.5 missed no near-copies at the price of 26 false duplicates; a keyword overlap check also cannot see a reworded copy, and these ideas are random word sets",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Novelty threshold against errors (400 ideas, 60 corpus entries, seed 1). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a low threshold of 0.2 labels 201 fresh ideas as duplicates (essentially all of them) while a high threshold of 0.7 lets 80 near-copies through, and in this run only 0.4 and 0.5 missed no near-copies at the price of 26 false duplicates; a keyword overlap check also cannot see a reworded copy, and these ideas are random word sets"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: novelty threshold against errors (400 ideas, 60 corpus entries, seed 1) ---\nsimilarity threshold 0.2: near-copies called novel   0 | fresh ideas called duplicates 201\nsimilarity threshold 0.3: near-copies called novel   0 | fresh ideas called duplicates 176\nsimilarity threshold 0.4: near-copies called novel   0 | fresh ideas called duplicates  26\nsimilarity threshold 0.5: near-copies called novel   0 | fresh ideas called duplicates  26\nsimilarity threshold 0.7: near-copies called novel  80 | fresh ideas called duplicates   2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Retry budgets for a coding step (success 0.58 per try, 20000 trials)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Retry budgets for a coding step (success 0.58 per try, 20000 trials)",
+    "bodyEn": "What it ran: Retry budgets for a coding step (success 0.58 per try, 20000 trials). What the lab concluded: each extra try adds less than the one before, and the mean tries used stays close to 1.7 even for a large budget because most runs succeed early; the budget mainly bounds the worst case, and 0.58 is an assumed rate",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Retry budgets for a coding step (success 0.58 per try, 20000 trials). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each extra try adds less than the one before, and the mean tries used stays close to 1.7 even for a large budget because most runs succeed early; the budget mainly bounds the worst case, and 0.58 is an assumed rate"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: retry budgets for a coding step (success 0.58 per try, 20000 trials) ---\nbudget 1: success 0.5806 | formula 0.5800 | mean tries used 1.00\nbudget 2: success 0.8220 | formula 0.8236 | mean tries used 1.42\nbudget 3: success 0.9254 | formula 0.9259 | mean tries used 1.61\nbudget 5: success 0.9866 | formula 0.9869 | mean tries used 1.71\nbudget 8: success 0.9992 | formula 0.9990 | mean tries used 1.71"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: When retries hit the cap, where does the cost go?",
+    "headingKn": "ಪ್ರಯೋಗ 3: When retries hit the cap, where does the cost go?",
+    "bodyEn": "What it ran: When retries hit the cap, where does the cost go?. What the lab concluded: with a weak step about a third of runs exhaust the budget and the cost is spent for no result, so a retry budget needs a rule for what happens next, such as stopping the run and recording why",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: When retries hit the cap, where does the cost go?. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with a weak step about a third of runs exhaust the budget and the cost is spent for no result, so a retry budget needs a rule for what happens next, such as stopping the run and recording why"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: when retries hit the cap, where does the cost go? ---\nsuccess rate 0.30, budget 3: 0.345 of runs exhausted the budget and spent 3 tries each; 2.19 tries on average"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A reviewer that weighs polish",
+    "headingKn": "ಪ್ರಯೋಗ 4: A reviewer that weighs polish",
+    "bodyEn": "What it ran: A reviewer that weighs polish. What the lab concluded: as the reviewer weighs polish more, weak papers with good presentation get accepted and solid plain ones get rejected, which is the masking effect the lesson warns about; the content and polish scores are independent uniform numbers and the 0.5 acceptance cutoff is invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A reviewer that weighs polish. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): as the reviewer weighs polish more, weak papers with good presentation get accepted and solid plain ones get rejected, which is the masking effect the lesson warns about; the content and polish scores are independent uniform numbers and the 0.5 acceptance cutoff is invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: a reviewer that weighs polish ---\npolish weight 0.0: weak-but-polished accepted 0.000 | solid-but-plain accepted 1.000\npolish weight 0.3: weak-but-polished accepted 0.002 | solid-but-plain accepted 0.997\npolish weight 0.6: weak-but-polished accepted 0.864 | solid-but-plain accepted 0.157"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Threshold 0.2 flagged 201 fresh ideas as duplicates. 2) Threshold 0.7 let 80 near-copies through. 3) Budgets matched 1-0.42^b. 4) A weak step exhausted the budget in 34.5 percent of runs. 5) Polish weight 0.6 accepted 86.4 percent of weak polished papers.",
     "bodyKn": "1) ಮಿತಿ 0.2 201 ಹೊಸ ಕಲ್ಪನೆಗಳನ್ನು ನಕಲು ಎಂದು ಗುರುತಿಸಿತು. 2) ಮಿತಿ 0.7 80 ಹತ್ತಿರದ-ನಕಲುಗಳನ್ನು ಹಾದುಹೋಗಲು ಬಿಟ್ಟಿತು. 3) ಬಜೆಟ್‌ಗಳು 1-0.42^b ಗೆ ಹೊಂದಿದವು. 4) ದುರ್ಬಲ ಹಂತ 34.5 ಶೇಕಡಾ ಓಟಗಳಲ್ಲಿ ಬಜೆಟ್ ಖಾಲಿ ಮಾಡಿತು. 5) polish ತೂಕ 0.6 ದುರ್ಬಲ ಹೊಳಪಿನ ಪೇಪರ್‌ಗಳಲ್ಲಿ 86.4 ಶೇಕಡಾ ಸ್ವೀಕರಿಸಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B as_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B as_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B as_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B as_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. Novelty threshold against errors (400 ideas, 60 corpus entries, seed 1)\n2. Retry budgets for a coding step (success 0.58 per try, 20000 trials)\n3. When retries hit the cap, where does the cost go?\n4. A reviewer that weighs polish",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. Novelty threshold against errors (400 ideas, 60 corpus entries, seed 1)\n2. Retry budgets for a coding step (success 0.58 per try, 20000 trials)\n3. When retries hit the cap, where does the cost go?\n4. A reviewer that weighs polish"
    }
   },
   {

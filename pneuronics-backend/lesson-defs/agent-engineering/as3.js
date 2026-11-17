@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A numbers-against-log gate (2000 papers, 6 results each)",
+    "headingKn": "ಪ್ರಯೋಗ 1: A numbers-against-log gate (2000 papers, 6 results each)",
+    "bodyEn": "What it ran: A numbers-against-log gate (2000 papers, 6 results each). What the lab concluded: the gate flags every paper in which a reported number differs from the log by more than the tolerance and misses none here, because each number is compared directly; it says nothing about whether the logged experiment itself was valid, and the fabrication rates are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A numbers-against-log gate (2000 papers, 6 results each). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the gate flags every paper in which a reported number differs from the log by more than the tolerance and misses none here, because each number is compared directly; it says nothing about whether the logged experiment itself was valid, and the fabrication rates are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: a numbers-against-log gate (2000 papers, 6 results each) ---\nfabrication rate 0.00 per number: papers with a changed number    0 | flagged    0 | missed 0\nfabrication rate 0.05 per number: papers with a changed number  520 | flagged  520 | missed 0\nfabrication rate 0.20 per number: papers with a changed number 1455 | flagged 1455 | missed 0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: What a tolerance hides",
+    "headingKn": "ಪ್ರಯೋಗ 2: What a tolerance hides",
+    "bodyEn": "What it ran: What a tolerance hides. What the lab concluded: a tolerance of 0.002 lets rounding differences through and blocks anything larger, so the tolerance is itself a policy choice and a bigger one would let small inflations pass",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What a tolerance hides. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a tolerance of 0.002 lets rounding differences through and blocks anything larger, so the tolerance is itself a policy choice and a bigger one would let small inflations pass"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: what a tolerance hides ---\nreported 0.700 against logged 0.700 -> flagged: False\nreported 0.701 against logged 0.700 -> flagged: False\nreported 0.703 against logged 0.700 -> flagged: True\nreported 0.750 against logged 0.700 -> flagged: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Reviewer ensembles with noise and shared bias (20000 papers, quality 0 to 1)",
+    "headingKn": "ಪ್ರಯೋಗ 3: Reviewer ensembles with noise and shared bias (20000 papers, quality 0 to 1)",
+    "bodyEn": "What it ran: Reviewer ensembles with noise and shared bias (20000 papers, quality 0 to 1). What the lab concluded: five independent noisy reviewers beat one, and a shared bias that all reviewers have in common lowers the agreement again no matter how many reviewers vote, because averaging cancels independent noise and cannot cancel a bias they share; the noise and bias values are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Reviewer ensembles with noise and shared bias (20000 papers, quality 0 to 1). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): five independent noisy reviewers beat one, and a shared bias that all reviewers have in common lowers the agreement again no matter how many reviewers vote, because averaging cancels independent noise and cannot cancel a bias they share; the noise and bias values are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: reviewer ensembles with noise and shared bias (20000 papers, quality 0 to 1) ---\n1 reviewer(s), shared bias 0.0: agrees with the quality cutoff 0.811\n5 reviewer(s), shared bias 0.0: agrees with the quality cutoff 0.896\n5 reviewer(s), shared bias 0.1: agrees with the quality cutoff 0.867"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A full gated run with a retry budget",
+    "headingKn": "ಪ್ರಯೋಗ 4: A full gated run with a retry budget",
+    "bodyEn": "What it ran: A full gated run with a retry budget. What the lab concluded: each run may rewrite a blocked paper up to three times, so runs end as published with every number matching the log or as blocked after the budget; nothing was published with a mismatched number, which is what the gate guarantees and not a statement about whether the science is good",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A full gated run with a retry budget. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each run may rewrite a blocked paper up to three times, so runs end as published with every number matching the log or as blocked after the budget; nothing was published with a mismatched number, which is what the gate guarantees and not a statement about whether the science is good"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a full gated run with a retry budget ---\n{'published': 1795, 'blocked_after_budget': 205}"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The gate flagged all 520 and 1455 changed papers. 2) Tolerance 0.002 passed 0.701 and blocked 0.703. 3) Five reviewers reached 0.896 against 0.811 for one. 4) A shared bias dropped that to 0.867. 5) 1795 of 2000 runs published, 205 blocked.",
     "bodyKn": "1) gate ಎಲ್ಲಾ 520 ಮತ್ತು 1455 ಬದಲಾದ ಪೇಪರ್‌ಗಳನ್ನು ಗುರುತಿಸಿತು. 2) ಸಹನೆ 0.002 0.701 ಹಾದುಹೋಗಿಸಿ 0.703 ನಿರ್ಬಂಧಿಸಿತು. 3) ಐದು ವಿಮರ್ಶಕರು ಒಬ್ಬರ 0.811 ವಿರುದ್ಧ 0.896 ತಲುಪಿದರು. 4) ಹಂಚಿದ bias ಅದನ್ನು 0.867 ಗೆ ಇಳಿಸಿತು. 5) 2000 ರಲ್ಲಿ 1795 ಪ್ರಕಟವಾದವು, 205 ನಿರ್ಬಂಧಿತ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B as_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B as_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B as_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B as_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. A numbers-against-log gate (2000 papers, 6 results each)\n2. What a tolerance hides\n3. Reviewer ensembles with noise and shared bias (20000 papers, quality 0 to 1)\n4. A full gated run with a retry budget",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. A numbers-against-log gate (2000 papers, 6 results each)\n2. What a tolerance hides\n3. Reviewer ensembles with noise and shared bias (20000 papers, quality 0 to 1)\n4. A full gated run with a retry budget"
    }
   },
   {

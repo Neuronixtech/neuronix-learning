@@ -145,6 +145,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Guarded transitions",
+    "headingKn": "ಪ್ರಯೋಗ 1: Guarded transitions",
+    "bodyEn": "What it ran: Guarded transitions. What the lab concluded: only the next stage in the list is a legal move, so a run cannot skip the novelty check or jump from code straight to a written paper; the stage list is a simplification of the real system",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Guarded transitions. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): only the next stage in the list is a legal move, so a run cannot skip the novelty check or jump from code straight to a written paper; the stage list is a simplification of the real system"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: guarded transitions ---\nidea -> novelty\nrefused: illegal transition code -> write\nrefused: illegal transition review -> idea"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: End-to-end success of 20000 linear pipelines (seed 1)",
+    "headingKn": "ಪ್ರಯೋಗ 2: End-to-end success of 20000 linear pipelines (seed 1)",
+    "bodyEn": "What it ran: End-to-end success of 20000 linear pipelines (seed 1). What the lab concluded: the simulated success rate matches the product of the six invented stage rates, and the novelty and coding stages kill the most runs, 5737 and 5576; coding has the lowest success rate but fewer runs reach it, which is why novelty ends up with the larger count, and a run that fails early never gets the chance to fail later",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: End-to-end success of 20000 linear pipelines (seed 1). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the simulated success rate matches the product of the six invented stage rates, and the novelty and coding stages kill the most runs, 5737 and 5576; coding has the lowest success rate but fewer runs reach it, which is why novelty ends up with the larger count, and a run that fails early never gets the chance to fail later"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: end-to-end success of 20000 linear pipelines (seed 1) ---\nsimulated success 0.2047 | product of stage rates 0.2083\nruns that died at each stage: {'idea': 1019, 'novelty': 5737, 'code': 5576, 'experiment': 1556, 'write': 609, 'review': 1408}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: How the coding success rate moves the end-to-end rate",
+    "headingKn": "ಪ್ರಯೋಗ 3: How the coding success rate moves the end-to-end rate",
+    "bodyEn": "What it ran: How the coding success rate moves the end-to-end rate. What the lab concluded: end-to-end success scales directly with the weakest stage, so a 42 percent coding failure rate, which is the figure the lesson cites and the lab only uses as an assumed 0.58 success rate, cuts the whole pipeline by that same factor",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How the coding success rate moves the end-to-end rate. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): end-to-end success scales directly with the weakest stage, so a 42 percent coding failure rate, which is the figure the lesson cites and the lab only uses as an assumed 0.58 success rate, cuts the whole pipeline by that same factor"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: how the coding success rate moves the end-to-end rate ---\ncode success 0.30: end-to-end 0.1085\ncode success 0.58: end-to-end 0.2098\ncode success 0.80: end-to-end 0.2863\ncode success 0.95: end-to-end 0.3366"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A tree of attempts against one path",
+    "headingKn": "ಪ್ರಯೋಗ 4: A tree of attempts against one path",
+    "bodyEn": "What it ran: A tree of attempts against one path. What the lab concluded: trying several independent branches lifts the chance that code and experiments both work, and the simulation matches 1 - (1 - p)^b; this assumes the branches fail independently and that a checker can tell which branch worked, and it multiplies compute by the branch count",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A tree of attempts against one path. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): trying several independent branches lifts the chance that code and experiments both work, and the simulation matches 1 - (1 - p)^b; this assumes the branches fail independently and that a checker can tell which branch worked, and it multiplies compute by the branch count"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: a tree of attempts against one path ---\n1 branches: chance at least one passes code and experiment 0.4646 | formula 0.4640\n2 branches: chance at least one passes code and experiment 0.7123 | formula 0.7127\n3 branches: chance at least one passes code and experiment 0.8498 | formula 0.8460\n5 branches: chance at least one passes code and experiment 0.9524 | formula 0.9558\n8 branches: chance at least one passes code and experiment 0.9929 | formula 0.9932"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -202,6 +270,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Skipping a stage was refused. 2) Simulation 0.2047 matched the product 0.2083. 3) Novelty and code killed the most runs. 4) Raising code success from 0.30 to 0.95 moved the end-to-end rate from 0.1085 to 0.3366. 5) Eight branches reached 0.9929 under independence.",
     "bodyKn": "1) ಹಂತ ಬಿಡುವುದನ್ನು ನಿರಾಕರಿಸಲಾಯಿತು. 2) ಸಿಮ್ಯುಲೇಶನ್ 0.2047 ಗುಣಲಬ್ಧ 0.2083 ಗೆ ಹೊಂದಿತು. 3) novelty ಮತ್ತು code ಹೆಚ್ಚು ಓಟಗಳನ್ನು ಕೊಂದವು. 4) ಕೋಡ್ ಯಶಸ್ಸು 0.30 ರಿಂದ 0.95 ಗೆ ಏರಿದಾಗ ಅಂತ್ಯದಿಂದ-ಅಂತ್ಯದ ದರ 0.1085 ರಿಂದ 0.3366 ಗೆ ಹೋಯಿತು. 5) ಎಂಟು ಶಾಖೆಗಳು ಸ್ವಾತಂತ್ರ್ಯದಲ್ಲಿ 0.9929 ತಲುಪಿದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B as_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B as_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B as_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B as_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. Guarded transitions\n2. End-to-end success of 20000 linear pipelines (seed 1)\n3. How the coding success rate moves the end-to-end rate\n4. A tree of attempts against one path",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. Guarded transitions\n2. End-to-end success of 20000 linear pipelines (seed 1)\n3. How the coding success rate moves the end-to-end rate\n4. A tree of attempts against one path"
    }
   },
   {
