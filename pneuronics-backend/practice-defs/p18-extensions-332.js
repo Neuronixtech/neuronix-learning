@@ -1,0 +1,6 @@
+// Hand-written third practice problem for each rebuilt Phase 18 lesson in module 332, keyed "module.lessonIndex": [English, Kannada].
+module.exports = {
+  '332.0': [`add two more labelled texts, one protective and one paraphrased, rerun the confusion matrix for both matchers and report which rates changed.`, `ಎರಡು ಇನ್ನಷ್ಟು ಲೇಬಲ್ ಮಾಡಿದ ಪಠ್ಯ ಸೇರಿಸಿ, ಒಂದು ರಕ್ಷಣಾತ್ಮಕ ಮತ್ತು ಒಂದು ಪರ್ಯಾಯ ಪದಗಳದು, ಎರಡೂ ಹೊಂದಾಣಿಕೆಗಳಿಗೆ confusion matrix ಮತ್ತೆ ಓಡಿಸಿ ಮತ್ತು ಯಾವ ದರಗಳು ಬದಲಾದವು ವರದಿ ಮಾಡಿ.`],
+  '332.1': [`add three more entries to the confusable map, a Cyrillic look-alike for o, e and c, and add one new variant to CORPUS that uses them, then report the missed count before and after.`, `confusable ನಕ್ಷೆಗೆ ಇನ್ನೂ ಮೂರು ನಮೂದು ಸೇರಿಸಿ, o, e ಮತ್ತು c ಗೆ Cyrillic ಹೋಲಿಕೆ ಅಕ್ಷರಗಳು, ಮತ್ತು ಅವನ್ನು ಬಳಸುವ ಒಂದು ಹೊಸ ರೂಪಾಂತರ CORPUS ಗೆ ಸೇರಿಸಿ, ನಂತರ ಮೊದಲು ಮತ್ತು ನಂತರದ ತಪ್ಪಿದ ಎಣಿಕೆ ವರದಿ ಮಾಡಿ.`],
+  '332.2': [`make the session escalation threshold a parameter, run the denial sequence with thresholds 2, 3 and 5, and report after how many denials a permitted read is refused in each case.`, `ಸೆಶನ್ ಉಲ್ಬಣ ಮಿತಿಯನ್ನು ನಿಯತಾಂಕವಾಗಿ ಮಾಡಿ, ಮಿತಿ 2, 3 ಮತ್ತು 5 ರೊಂದಿಗೆ ನಿರಾಕರಣೆ ಅನುಕ್ರಮ ಓಡಿಸಿ, ಮತ್ತು ಪ್ರತಿ ಪ್ರಕರಣದಲ್ಲಿ ಎಷ್ಟು ನಿರಾಕರಣೆಗಳ ನಂತರ ಅನುಮತಿಸಿದ ಓದು ನಿರಾಕರಿಸಲ್ಪಡುತ್ತದೆ ವರದಿ ಮಾಡಿ.`],
+};
