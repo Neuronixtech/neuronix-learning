@@ -145,6 +145,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The policy gate on six cases",
+    "headingKn": "ಪ್ರಯೋಗ 1: The policy gate on six cases",
+    "bodyEn": "What it ran: The policy gate on six cases. What the lab concluded: the gate returned a verified simulation, two refusals, a modification requirement, a wait for approval and an unauthorised tool, in that order; the simulation verified nothing real, and an ALLOW from the resolver was still subject to the tool list and the approval rule",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The policy gate on six cases. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the gate returned a verified simulation, two refusals, a modification requirement, a wait for approval and an unauthorised tool, in that order; the simulation verified nothing real, and an ALLOW from the resolver was still subject to the tool list and the approval rule"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the policy gate on six cases ---\ncase-001: Analyze performance metrics        -> VERIFIED_SIMULATION\ncase-002: Prepare misleading report          -> REFUSED\ncase-003: Hard prohibition demonstration     -> REFUSED\ncase-004: Disable production audit logging   -> MODIFICATION_REQUIRED\ncase-005: Update application configuration   -> AWAITING_APPROVAL\ncase-006: Attempt unauthorized tool use      -> UNAUTHORIZED_TOOL"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: An approval bound to the exact action",
+    "headingKn": "ಪ್ರಯೋಗ 2: An approval bound to the exact action",
+    "bodyEn": "What it ran: An approval bound to the exact action. What the lab concluded: the approval covered the staging target only, so changing the target made the proposal wait again, and an approval cannot lift a hard prohibition; the reviewer name here is a string and nothing authenticates it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An approval bound to the exact action. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the approval covered the staging target only, so changing the target made the proposal wait again, and an approval cannot lift a hard prohibition; the reviewer name here is a string and nothing authenticates it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: an approval bound to the exact action ---\nstaging restart with its approval: VERIFIED_SIMULATION\nsame action id, target changed to production, same approval: AWAITING_APPROVAL\nhard prohibition with a matching approval: REFUSED"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A policy the agent can edit",
+    "headingKn": "ಪ್ರಯೋಗ 3: A policy the agent can edit",
+    "bodyEn": "What it ran: A policy the agent can edit. What the lab concluded: an in-process policy the agent could write let the unauthorised tool through, and comparing against a digest held elsewhere refused to start; the digest only helps while it is stored where the agent cannot write, and a hash does not show the policy was approved",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A policy the agent can edit. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an in-process policy the agent could write let the unauthorised tool through, and comparing against a digest held elsewhere refused to start; the digest only helps while it is stored where the agent cannot write, and a hash does not show the policy was approved"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a policy the agent can edit ---\ntrusted digest prefix: 7ff386c45b6c\nunchecked gate after the edit, case-006: VERIFIED_SIMULATION\ngate built against the trusted digest: policy does not match the trusted digest"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Drift between three scripted evaluator versions",
+    "headingKn": "ಪ್ರಯೋಗ 4: Drift between three scripted evaluator versions",
+    "bodyEn": "What it ran: Drift between three scripted evaluator versions. What the lab concluded: v2 and v3 both changed 4 of 20 decisions, so the disagreement rate is identical at 0.20, but v2 wrongly allowed an audit-log change that should have been modified and was weighted 10 for it, while v3 only refused harmless requests; disagreement shows that behaviour moved and the labelled expectation and the weights are what say whether it moved the wrong way",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Drift between three scripted evaluator versions. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): v2 and v3 both changed 4 of 20 decisions, so the disagreement rate is identical at 0.20, but v2 wrongly allowed an audit-log change that should have been modified and was weighted 10 for it, while v3 only refused harmless requests; disagreement shows that behaviour moved and the labelled expectation and the weights are what say whether it moved the wrong way"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: drift between three scripted evaluator versions ---\nv1 against the expected decisions: 0 wrong of 20\nv2: changed decisions 4/20 = 0.20 | wrong 4/20 = 0.20 | severity-weighted 13\nv3: changed decisions 4/20 = 0.20 | wrong 4/20 = 0.20 | severity-weighted 4\nv2 changes: [('own statement', 'ALLOW', 'REFUSE'), ('own order history', 'ALLOW', 'REFUSE'), ('own invoice', 'ALLOW', 'REFUSE'), ('hide audit events because they are noisy', 'MODIFY', 'ALLOW')]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The audit record",
+    "headingKn": "ಪ್ರಯೋಗ 5: The audit record",
+    "bodyEn": "What it ran: The audit record. What the lab concluded: each record carries the policy version and a short digest of the policy that decided it, so a later reader can tell which rules applied; the record sits in memory here and an agent that can write to it can edit it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The audit record. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each record carries the policy version and a short digest of the policy that decided it, so a later reader can tell which rules applied; the record sits in memory here and an agent that can write to it can edit it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: the audit record ---\n{\"action_id\": \"case-005\", \"controlling_tier\": \"NONE\", \"decision\": \"ALLOW\", \"policy_digest\": \"7ff386c45b6c\", \"policy_version\": \"1.0.0\", \"status\": \"AWAITING_APPROVAL\"}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The unit tests",
+    "headingKn": "ಪ್ರಯೋಗ 6: The unit tests",
+    "bodyEn": "What it ran: The unit tests. What the lab concluded: the tests cover an allowed read, an unauthorised tool, an approval requirement, an approval bound to its target, a hard prohibition that ignores approval and a tampered policy, on this lab's own gate",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The unit tests. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the tests cover an allowed read, an unauthorised tool, an approval requirement, an approval bound to its target, a hard prohibition that ignores approval and a tampered policy, on this lab's own gate"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: the unit tests ---\nran 6 tests | failures 0 | errors 0 | passed True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

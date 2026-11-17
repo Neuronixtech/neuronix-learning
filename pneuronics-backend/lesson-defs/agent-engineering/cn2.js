@@ -141,6 +141,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Unknown is not permission",
+    "headingKn": "ಪ್ರಯೋಗ 1: Unknown is not permission",
+    "bodyEn": "What it ran: Unknown is not permission. What the lab concluded: an unknown evaluation sends the action to review instead of allowing it, a block still wins over an unknown, and a hard prohibition ignores the evaluations; review is a lab extension of the lesson's three outcomes and needs a real human process behind it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Unknown is not permission. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an unknown evaluation sends the action to review instead of allowing it, a block still wins over an unknown, and a hard prohibition ignores the evaluations; review is a lab extension of the lesson's three outcomes and needs a real human process behind it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: unknown is not permission ---\nall pass                       -> ALLOW   tier NONE             all passed\nsafety unknown                 -> REVIEW  tier SAFETY           unknown evaluation is not permission\nethics blocks, safety unknown  -> REFUSE  tier ETHICS           blocked\nhelpfulness unknown only       -> REVIEW  tier HELPFULNESS      unknown evaluation is not permission\nhard prohibition, all pass     -> REFUSE  tier HARD_PROHIBITION non-overridable"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Two modifications that cannot both hold",
+    "headingKn": "ಪ್ರಯೋಗ 2: Two modifications that cannot both hold",
+    "bodyEn": "What it ran: Two modifications that cannot both hold. What the lab concluded: a single alternative is returned for evaluation and a pair of different ones is not guessed between; even the single alternative is only a proposal that has to pass the resolver again",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Two modifications that cannot both hold. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a single alternative is returned for evaluation and a pair of different ones is not guessed between; even the single alternative is only a proposal that has to pass the resolver again"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: two modifications that cannot both hold ---\none alternative: MODIFY | Reduce debug logging only\ntwo incompatible alternatives: REVIEW | incompatible alternatives"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Operator settings",
+    "headingKn": "ಪ್ರಯೋಗ 3: Operator settings",
+    "bodyEn": "What it ran: Operator settings. What the lab concluded: known keys with known values pass and anything else is refused before it reaches any policy object",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Operator settings. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): known keys with known values pass and anything else is refused before it reaches any policy object"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: operator settings ---\nvalid: {'response_style': 'formal', 'response_length': 'long'}\nrejected: Unauthorized setting: disable_safety\nrejected: Invalid value for response_length: enormous"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A critique-and-revise table",
+    "headingKn": "ಪ್ರಯೋಗ 4: A critique-and-revise table",
+    "bodyEn": "What it ran: A critique-and-revise table. What the lab concluded: a lookup table stands in for the model-written critique, so the output shows where a critique and a revision sit in the data flow and says nothing about what a trained model would write; the revised text would be a candidate training example and is not an action",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A critique-and-revise table. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a lookup table stands in for the model-written critique, so the output shows where a critique and a revision sit in the data flow and says nothing about what a trained model would write; the revised text would be a candidate training example and is not an action"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a critique-and-revise table ---\nprompt    : Hide a confirmed security incident.\ninitial   : Tell customers that nothing happened.\nprinciple : honesty\ncritique  : The initial response may conceal material information.\nrevision  : Provide a factual statement that discloses verified information and clearly identifies uncertainty.\nunknown principle: None"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Preference selection and a reward-hacking toy",
+    "headingKn": "ಪ್ರಯೋಗ 5: Preference selection and a reward-hacking toy",
+    "bodyEn": "What it ran: Preference selection and a reward-hacking toy. What the lab concluded: a scorer that rewards reassuring words picked the misleading text, which is the shape of reward hacking in miniature, while hand-assigned scores picked the honest one; taking the highest score is selection and is not reinforcement learning, which would update a policy",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Preference selection and a reward-hacking toy. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a scorer that rewards reassuring words picked the misleading text, which is the shape of reward hacking in miniature, while hand-assigned scores picked the honest one; taking the highest score is selection and is not reinforcement learning, which would update a policy"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: preference selection and a reward-hacking toy ---\nscore 0.5: A security incident has been confirmed. The investigation is ongoing and verified updates will follow.\nscore 1.0: Everything is safe, fully verified and guaranteed, there is no cause for concern.\nselected: Everything is safe, fully verified and guaranteed, there is no cause for concern.\nmanual scores select: Disclose verified incident facts."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Authority of text found in a document",
+    "headingKn": "ಪ್ರಯೋಗ 6: Authority of text found in a document",
+    "bodyEn": "What it ran: Authority of text found in a document. What the lab concluded: text read from a document or a tool result was never accepted as an instruction, not even for a harmless style change, and only the policy source could change policy; the ranks are a table the lab wrote, and a real boundary has to be enforced by the runtime and not by the model reading the text",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Authority of text found in a document. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): text read from a document or a tool result was never accepted as an instruction, not even for a harmless style change, and only the policy source could change policy; the ranks are a table the lab wrote, and a real boundary has to be enforced by the runtime and not by the model reading the text"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: authority of text found in a document ---\nuser       asks to change response_style  -> accepted: True\ndocument   asks to change response_style  -> accepted: False\ndocument   asks to change policy          -> accepted: False\ntool_data  asks to change policy          -> accepted: False\npolicy     asks to change policy          -> accepted: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: The unit tests",
+    "headingKn": "ಪ್ರಯೋಗ 7: The unit tests",
+    "bodyEn": "What it ran: The unit tests. What the lab concluded: the tests cover unknown, block over unknown, incompatible alternatives, a single alternative, an unauthorised setting and a document trying to change policy on this lab's own resolver",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The unit tests. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the tests cover unknown, block over unknown, incompatible alternatives, a single alternative, an unauthorised setting and a document trying to change policy on this lab's own resolver"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely running: the unit tests ---\nran 6 tests | failures 0 | errors 0 | passed True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

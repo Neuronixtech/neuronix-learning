@@ -141,6 +141,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Enumerated rules against a labelled set",
+    "headingKn": "ಪ್ರಯೋಗ 1: Enumerated rules against a labelled set",
+    "bodyEn": "What it ran: Enumerated rules against a labelled set. What the lab concluded: the exact blocklist let four of five unsafe actions through because it only knows three spellings, the blanket delete rule caught one and also refused two harmless cleanups, and the principle rule got every row right only because its attributes were filled in by the author who knew the answers, so it shows the shape of the approach and not an accuracy",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Enumerated rules against a labelled set. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the exact blocklist let four of five unsafe actions through because it only knows three spellings, the blanket delete rule caught one and also refused two harmless cleanups, and the principle rule got every row right only because its attributes were filled in by the author who knew the answers, so it shows the shape of the approach and not an accuracy"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: enumerated rules against a labelled set ---\nexact blocklist          unsafe allowed 4 of 5 | acceptable refused 0 of 5\n                         missed: ['remove_all_backup_snapshots', 'disable_audit_logs_for_speed', 'expose_api_key', 'export_signing_key']\nblanket 'delete' rule    unsafe allowed 4 of 5 | acceptable refused 2 of 5\n                         missed: ['remove_all_backup_snapshots', 'disable_audit_logs_for_speed', 'expose_api_key', 'export_signing_key']\n                         wrongly refused: ['delete_obsolete_temp_file', 'delete_test_artifact_from_this_run']\nprinciple on attributes  unsafe allowed 0 of 5 | acceptable refused 0 of 5"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The four-tier resolver",
+    "headingKn": "ಪ್ರಯೋಗ 2: The four-tier resolver",
+    "bodyEn": "What it ran: The four-tier resolver. What the lab concluded: a hard prohibition refuses even when all four tiers pass, the highest-priority block names the refusal, a modify decision returns an alternative that still has to be evaluated and authorised before anything runs, and an incomplete evaluation set is an error and not an approval; the resolver only combines evaluations it is given",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The four-tier resolver. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a hard prohibition refuses even when all four tiers pass, the highest-priority block names the refusal, a modify decision returns an alternative that still has to be evaluated and authorised before anything runs, and an incomplete evaluation set is an error and not an approval; the resolver only combines evaluations it is given"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: the four-tier resolver ---\nExplain Python dictionaries: ALLOW | controlling tier NONE | reason: All four evaluations passed\nCreate a misleading report: REFUSE | controlling tier ETHICS | reason: ETHICS evaluation: BLOCK\nProhibited action: REFUSE | controlling tier HARD_PROHIBITION | reason: Non-overridable prohibition\nReduce production logging: MODIFY | controlling tier SAFETY | reason: SAFETY evaluation: MODIFY | alternative: Reduce debug logging while preserving required audit records\nsafety and ethics both block, helpfulness passes: REFUSE controlled by SAFETY\nonly three evaluations supplied: Exactly one evaluation per tier is required"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: An operator allowlist against a dictionary merge",
+    "headingKn": "ಪ್ರಯೋಗ 3: An operator allowlist against a dictionary merge",
+    "bodyEn": "What it ran: An operator allowlist against a dictionary merge. What the lab concluded: the allowlist accepted two known settings, refused an unknown key and an unknown value, and the naive merge let the operator switch safety_checks off; the allowlist protects the settings it lists and nothing else in the process",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An operator allowlist against a dictionary merge. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the allowlist accepted two known settings, refused an unknown key and an unknown value, and the naive merge let the operator switch safety_checks off; the allowlist protects the settings it lists and nothing else in the process"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: an operator allowlist against a dictionary merge ---\nvalid: {'response_style': 'formal', 'response_length': 'long'}\nrejected: Unauthorized setting: disable_safety\nrejected: Invalid value for response_style: sarcastic\nnaive config.update with an operator dictionary: {'safety_checks': False, 'response_style': 'detailed'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A category label is not a security boundary",
+    "headingKn": "ಪ್ರಯೋಗ 4: A category label is not a security boundary",
+    "bodyEn": "What it ran: A category label is not a security boundary. What the lab concluded: the declared category let an action through that the trusted tag map refuses, so a label supplied by the requester cannot be the only check; the tag names here are abstract placeholders, and deciding the tags in a real system is itself the hard problem",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A category label is not a security boundary. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the declared category let an action through that the trusted tag map refuses, so a label supplied by the requester cannot be the only check; the tag names here are abstract placeholders, and deciding the tags in a real system is itself the hard problem"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a category label is not a security boundary ---\nresolved on the declared label: ALLOW\nresolved after the trusted tag map re-derives the category: REFUSE | prohibited_cbrn_assistance"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The unit tests",
+    "headingKn": "ಪ್ರಯೋಗ 5: The unit tests",
+    "bodyEn": "What it ran: The unit tests. What the lab concluded: the tests cover an allow, an ethics block, a hard prohibition, safety outranking ethics, a modify with its alternative and a missing evaluation, and they check this resolver on supplied evaluations only, not whether a real model would classify an action correctly",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The unit tests. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the tests cover an allow, an ethics block, a hard prohibition, safety outranking ethics, a modify with its alternative and a missing evaluation, and they check this resolver on supplied evaluations only, not whether a real model would classify an action correctly"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: the unit tests ---\nran 6 tests | failures 0 | errors 0 | passed True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +281,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) An exact blocklist missed 4 of 5 unsafe actions. 2) A blanket rule refused 2 harmless ones. 3) A hard prohibition refused with every tier passing. 4) A naive merge disabled a safety setting. 5) A declared label was not enough.",
     "bodyKn": "1) ನಿಖರ blocklist 5 ಅಸುರಕ್ಷಿತದಲ್ಲಿ 4 ತಪ್ಪಿಸಿತು. 2) ಸಾರ್ವತ್ರಿಕ ನಿಯಮ 2 ಹಾನಿರಹಿತ ನಿರಾಕರಿಸಿತು. 3) ಕಠಿಣ ನಿಷೇಧ ಪ್ರತಿ ಹಂತ ಪಾಸ್ ಆದರೂ ನಿರಾಕರಿಸಿತು. 4) ನೈವ್ ವಿಲೀನ ಸುರಕ್ಷತಾ ಸೆಟ್ಟಿಂಗ್ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿತು. 5) ಘೋಷಿತ ಲೇಬಲ್ ಸಾಕಾಗಲಿಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B cn_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B cn_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B cn_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B cn_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
