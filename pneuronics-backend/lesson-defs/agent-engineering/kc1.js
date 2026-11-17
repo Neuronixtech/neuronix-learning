@@ -141,6 +141,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A kill switch read at the moment of each action",
+    "headingKn": "ಪ್ರಯೋಗ 1: A kill switch read at the moment of each action",
+    "bodyEn": "What it ran: A kill switch read at the moment of each action. What the lab concluded: the switch holds a reference to the state and reads it on every call, so a change made by the operator takes effect on the next action; it was read once per action here, and a copy taken at startup would have ignored the change; the dictionary lives in this process, so nothing stops code in the same process from editing it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A kill switch read at the moment of each action. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the switch holds a reference to the state and reads it on every call, so a change made by the operator takes effect on the next action; it was read once per action here, and a copy taken at startup would have ignored the change; the dictionary lives in this process, so nothing stops code in the same process from editing it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a kill switch read at the moment of each action ---\n{'allowed': True, 'action': 'lookup_order', 'reason': 'Kill switch permits evaluation'}\n{'allowed': False, 'action': 'delete_order', 'reason': 'External kill switch disabled'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Five identical calls against the breaker",
+    "headingKn": "ಪ್ರಯೋಗ 2: Five identical calls against the breaker",
+    "bodyEn": "What it ran: Five identical calls against the breaker. What the lab concluded: the first four attempts are allowed with the count rising to four, the fifth is refused and opens the breaker, and the sixth is refused because the breaker is already open; the check is made before the tool would run, so the fifth call never executes",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Five identical calls against the breaker. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first four attempts are allowed with the count rising to four, the fifth is refused and opens the breaker, and the sixth is refused because the breaker is already open; the check is made before the tool would run, so the fifth call never executes"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: five identical calls against the breaker ---\nattempt 1: count 1 | state CLOSED | allowed True | ok\nattempt 2: count 2 | state CLOSED | allowed True | ok\nattempt 3: count 3 | state CLOSED | allowed True | ok\nattempt 4: count 4 | state CLOSED | allowed True | ok\nattempt 5: count 5 | state OPEN   | allowed False | Threshold reached\nattempt 6: count 5 | state OPEN   | allowed False | Circuit already open"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Argument order and different arguments",
+    "headingKn": "ಪ್ರಯೋಗ 3: Argument order and different arguments",
+    "bodyEn": "What it ran: Argument order and different arguments. What the lab concluded: sorting the keys makes the first three calls count as one repeated action and open the breaker at three, while calls on different records each restart the count at one, which avoids a false alarm on a legitimate batch; a tool-name-only breaker would have opened on the batch",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Argument order and different arguments. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): sorting the keys makes the first three calls count as one repeated action and open the breaker at three, while calls on different records each restart the count at one, which avoids a false alarm on a legitimate batch; a tool-name-only breaker would have opened on the batch"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: argument order and different arguments ---\nsame arguments in different key order -> [1, 2, 3]\ndifferent record ids in a row -> [1, 1, 1]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A canary read through a gateway function",
+    "headingKn": "ಪ್ರಯೋಗ 4: A canary read through a gateway function",
+    "bodyEn": "What it ran: A canary read through a gateway function. What the lab concluded: the canary read is refused and an alert with severity HIGH is recorded while the ordinary read passes; the monitor matches exact path strings, so a path spelled differently or reached through a shell command would not trigger it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A canary read through a gateway function. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the canary read is refused and an alert with severity HIGH is recorded while the ordinary read passes; the monitor matches exact path strings, so a path spelled differently or reached through a shell command would not trigger it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a canary read through a gateway function ---\nnormal read: {'allowed': True, 'alert': None}\ncanary read: {'allowed': False, 'alert': {'event': 'CANARY_ACCESS', 'resource': 'workspace/.decoy/internal_token.txt', 'severity': 'HIGH'}}\nalerts recorded: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A repeated call that is not a loop",
+    "headingKn": "ಪ್ರಯೋಗ 5: A repeated call that is not a loop",
+    "bodyEn": "What it ran: A repeated call that is not a loop. What the lab concluded: a breaker on repetition cannot tell a harmless polling loop from a destructive one, so the fifth lookup is refused even though lookups are harmless, and the threshold and the set of tools it applies to are policy choices",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A repeated call that is not a loop. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a breaker on repetition cannot tell a harmless polling loop from a destructive one, so the fifth lookup is refused even though lookups are harmless, and the threshold and the set of tools it applies to are policy choices"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a repeated call that is not a loop ---\nfive identical successful lookups: [True, True, True, True, False]"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +281,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The switch was read on every action. 2) The breaker refused the fifth identical call before it ran. 3) Key order did not change the signature. 4) The canary read raised one alert. 5) Five lookups also tripped the breaker.",
     "bodyKn": "1) switch ಪ್ರತಿ ಕ್ರಿಯೆಯಲ್ಲಿ ಓದಲ್ಪಟ್ಟಿತು. 2) breaker ಐದನೇ ಒಂದೇ ಕರೆಯನ್ನು ಅದು ಓಡುವ ಮೊದಲು ನಿರಾಕರಿಸಿತು. 3) key ಕ್ರಮ ಸಹಿ ಬದಲಿಸಲಿಲ್ಲ. 4) canary ಓದು ಒಂದು ಎಚ್ಚರಿಕೆ ಎತ್ತಿತು. 5) ಐದು lookup ಗಳೂ breaker ಅನ್ನು ಉರಿಸಿದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B kc_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B kc_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B kc_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B kc_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The ten-step trajectory through the corrected gateway",
+    "headingKn": "ಪ್ರಯೋಗ 1: The ten-step trajectory through the corrected gateway",
+    "bodyEn": "What it ran: The ten-step trajectory through the corrected gateway. What the lab concluded: six actions executed, the fifth repeated delete was blocked by the breaker, the decoy read was blocked with an alert and the email after the operator action was blocked by the kill switch, which matches the lesson expected trace; the first four deletes ran, so a repetition breaker limits a loop but does not undo what it already did",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The ten-step trajectory through the corrected gateway. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): six actions executed, the fifth repeated delete was blocked by the breaker, the decoy read was blocked with an alert and the email after the operator action was blocked by the kill switch, which matches the lesson expected trace; the first four deletes ran, so a repetition breaker limits a loop but does not undo what it already did"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the ten-step trajectory through the corrected gateway ---\n1. lookup_order: EXECUTED [GATEWAY]\n2. update_ticket: EXECUTED [GATEWAY]\n3. delete_record: EXECUTED [GATEWAY]\n4. delete_record: EXECUTED [GATEWAY]\n5. delete_record: EXECUTED [GATEWAY]\n6. delete_record: EXECUTED [GATEWAY]\n7. delete_record: BLOCKED [CIRCUIT_BREAKER]\n8. read_file: BLOCKED [CANARY]\noperator disables the agent\nsend_email: {'tool': 'send_email', 'status': 'BLOCKED', 'detector': 'KILL_SWITCH', 'reason': 'Agent disabled by operator'}\nexecuted 6 | canary alerts 1 | breaker OPEN | kill switch enabled False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The eager gateway bug",
+    "headingKn": "ಪ್ರಯೋಗ 2: The eager gateway bug",
+    "bodyEn": "What it ran: The eager gateway bug. What the lab concluded: when the agent is already disabled the eager version still updates the breaker, whose last-seen request and count are changed (count 1 after the final request against 0), and records a canary alert, because every detector runs before any decision is read, while the sequential version stops at the kill switch and leaves both untouched; the lesson flagged this mistake and the lab measures its effect",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The eager gateway bug. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): when the agent is already disabled the eager version still updates the breaker, whose last-seen request and count are changed (count 1 after the final request against 0), and records a canary alert, because every detector runs before any decision is read, while the sequential version stops at the kill switch and leaves both untouched; the lesson flagged this mistake and the lab measures its effect"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: the eager gateway bug ---\neager: breaker count 1, canary alerts 1 | sequential: breaker count 0, canary alerts 0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Half-open recovery",
+    "headingKn": "ಪ್ರಯೋಗ 3: Half-open recovery",
+    "bodyEn": "What it ran: Half-open recovery. What the lab concluded: the state moves closed, open, half-open and closed again after a successful probe; the lab has no cool-down timer and does not limit concurrent probes, and for a destructive tool a probe could itself do harm",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Half-open recovery. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the state moves closed, open, half-open and closed again after a successful probe; the lab has no cool-down timer and does not limit concurrent probes, and for a destructive tool a probe could itself do harm"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: half-open recovery ---\nthree identical requests: [True, True, False] | state OPEN\nafter enter_half_open: HALF_OPEN\nprobe of a different request: True | state CLOSED"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The seven unit tests",
+    "headingKn": "ಪ್ರಯೋಗ 4: The seven unit tests",
+    "bodyEn": "What it ran: The seven unit tests. What the lab concluded: the tests check a legitimate action, the fifth-call block, the canary alert, the kill switch, the hard policy and the two no-side-effect-after-shutdown properties; they test this teaching gateway and say nothing about the repository original",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The seven unit tests. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the tests check a legitimate action, the fifth-call block, the canary alert, the kill switch, the hard policy and the two no-side-effect-after-shutdown properties; they test this teaching gateway and say nothing about the repository original"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: the seven unit tests ---\nran 7 tests | failures 0 | errors 0 | passed True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Six actions executed and three were blocked by three different detectors. 2) The eager gateway changed breaker and canary state after shutdown. 3) The sequential gateway changed nothing. 4) Half-open allowed a probe and closed. 5) Seven tests passed.",
     "bodyKn": "1) ಆರು ಕ್ರಿಯೆಗಳು ಕಾರ್ಯಗತವಾದವು ಮತ್ತು ಮೂರು ಮೂರು ಬೇರೆ ಪತ್ತೆಕಾರಕಗಳಿಂದ ನಿರ್ಬಂಧಿಸಲ್ಪಟ್ಟವು. 2) eager gateway ನಿಲುಗಡೆಯ ನಂತರ breaker ಮತ್ತು canary ಸ್ಥಿತಿ ಬದಲಿಸಿತು. 3) ಕ್ರಮಬದ್ಧ gateway ಏನನ್ನೂ ಬದಲಿಸಲಿಲ್ಲ. 4) Half-open probe ಅನುಮತಿಸಿ ಮುಚ್ಚಿತು. 5) ಏಳು ಪರೀಕ್ಷೆಗಳು ಪಾಸ್ ಆದವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B kc_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B kc_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B kc_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B kc_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. The ten-step trajectory through the corrected gateway\n2. The eager gateway bug\n3. Half-open recovery\n4. The seven unit tests",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. The ten-step trajectory through the corrected gateway\n2. The eager gateway bug\n3. Half-open recovery\n4. The seven unit tests"
    }
   },
   {

@@ -141,6 +141,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A control-store outage on requests 4 to 6 of 10",
+    "headingKn": "ಪ್ರಯೋಗ 1: A control-store outage on requests 4 to 6 of 10",
+    "bodyEn": "What it ran: A control-store outage on requests 4 to 6 of 10. What the lab concluded: fail open keeps working through the outage, including the case where the operator had already switched the agent off, while fail closed refuses requests 4 to 6; the safer default for consequential actions is fail closed, and the price is lost availability during the outage",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A control-store outage on requests 4 to 6 of 10. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): fail open keeps working through the outage, including the case where the operator had already switched the agent off, while fail closed refuses requests 4 to 6; the safer default for consequential actions is fail closed, and the price is lost availability during the outage"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a control-store outage on requests 4 to 6 of 10 ---\nfail open  : actions executed [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nfail closed: actions executed [1, 2, 3, 7, 8, 9, 10]\noperator has disabled the agent and the store is unreachable -> fail open allows | fail closed denies"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A slow rate drift against a sudden jump (calls per minute)",
+    "headingKn": "ಪ್ರಯೋಗ 2: A slow rate drift against a sudden jump (calls per minute)",
+    "bodyEn": "What it ran: A slow rate drift against a sudden jump (calls per minute). What the lab concluded: on the slow climb the adaptive EWMA baseline keeps following the rate and never alerts, CUSUM measured against a fixed reference accumulates the excess and alerts at minute 8, and the fixed hard limit of 20 alerts only at minute 15; on the sudden jump all three detectors alert at minute 5, the first minute at 40; the series and thresholds are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A slow rate drift against a sudden jump (calls per minute). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): on the slow climb the adaptive EWMA baseline keeps following the rate and never alerts, CUSUM measured against a fixed reference accumulates the excess and alerts at minute 8, and the fixed hard limit of 20 alerts only at minute 15; on the sudden jump all three detectors alert at minute 5, the first minute at 40; the series and thresholds are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a slow rate drift against a sudden jump (calls per minute) ---\nslow drift: [10, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 19, 20, 20, 21, 22]\nminute of first alert -> {'ewma': None, 'cusum': 8, 'hard': 15}\nsudden jump: [10, 10, 10, 10, 40, 40]\nminute of first alert -> {'ewma': 5, 'cusum': 5, 'hard': 5}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A shared counter without and with a lock (8 threads x 2000)",
+    "headingKn": "ಪ್ರಯೋಗ 3: A shared counter without and with a lock (8 threads x 2000)",
+    "bodyEn": "What it ran: A shared counter without and with a lock (8 threads x 2000). What the lab concluded: read, add one, write back is not atomic, so threads overwrite each other and increments are lost when the threads interleave, and a lock makes every increment count; the deliberate sleep(0) between the read and the write forces a thread switch and so exaggerates the loss, and a real unsynchronised counter would usually lose far fewer; a breaker counter shared by several workers has the same problem, and across machines the lock has to be a database transaction or an atomic increment in a shared store; the exact number lost varies from run to run",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A shared counter without and with a lock (8 threads x 2000). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): read, add one, write back is not atomic, so threads overwrite each other and increments are lost when the threads interleave, and a lock makes every increment count; the deliberate sleep(0) between the read and the write forces a thread switch and so exaggerates the loss, and a real unsynchronised counter would usually lose far fewer; a breaker counter shared by several workers has the same problem, and across machines the lock has to be a database transaction or an atomic increment in a shared store; the exact number lost varies from run to run"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: a shared counter without and with a lock (8 threads x 2000) ---\nwithout a lock: counted 2205 of 16000 | lost 13795\nwith a lock:    counted 16000 of 16000 | lost 0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A constitutional policy the agent cannot edit at run time",
+    "headingKn": "ಪ್ರಯೋಗ 4: A constitutional policy the agent cannot edit at run time",
+    "bodyEn": "What it ran: A constitutional policy the agent cannot edit at run time. What the lab concluded: a frozenset cannot be changed in place, but the attribute can be replaced by any code in the process, so the last line shows the policy allowing a forbidden tool after one assignment; real enforcement must sit in a separate component with its own credentials",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A constitutional policy the agent cannot edit at run time. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a frozenset cannot be changed in place, but the attribute can be replaced by any code in the process, so the last line shows the policy allowing a forbidden tool after one assignment; real enforcement must sit in a separate component with its own credentials"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a constitutional policy the agent cannot edit at run time ---\n(False, 'Forbidden recipient')\n(True, 'Allowed')\n(False, 'Forbidden tool')\nadding to the frozen set: AttributeError\nrebinding the attribute is still possible in the same process: (True, 'Allowed')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Incident states and a recovery token the agent does not hold",
+    "headingKn": "ಪ್ರಯೋಗ 5: Incident states and a recovery token the agent does not hold",
+    "bodyEn": "What it ran: Incident states and a recovery token the agent does not hold. What the lab concluded: recovery from review is only reachable with the token, and an attempt without it leaves the state at under review; the token here is a string in the same object, which a real system replaces with an authenticated operator decision that the agent cannot forge",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Incident states and a recovery token the agent does not hold. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): recovery from review is only reachable with the token, and an attempt without it leaves the state at under review; the token here is a string in the same object, which a real system replaces with an authenticated operator decision that the agent cannot forge"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: incident states and a recovery token the agent does not hold ---\nadvance -> SUSPICIOUS\nadvance -> QUARANTINED\nadvance -> UNDER_REVIEW\nagent tries a guessed token: UNDER_REVIEW\noperator with the token: RECOVERY_APPROVED"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +281,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Fail open ran all 10 requests through the outage. 2) EWMA missed the slow climb that CUSUM caught at minute 8. 3) All three caught the jump at minute 5. 4) An unlocked counter lost most increments. 5) A recovery token gated the return to normal.",
     "bodyKn": "1) fail open ಸ್ಥಗಿತದ ಮೂಲಕ ಎಲ್ಲಾ 10 ವಿನಂತಿ ಓಡಿಸಿತು. 2) CUSUM ನಿಮಿಷ 8 ರಲ್ಲಿ ಹಿಡಿದ ನಿಧಾನ ಏರಿಕೆಯನ್ನು EWMA ತಪ್ಪಿಸಿತು. 3) ಮೂರೂ ಜಿಗಿತವನ್ನು ನಿಮಿಷ 5 ರಲ್ಲಿ ಹಿಡಿದವು. 4) ಲಾಕ್ ಇಲ್ಲದ ಕೌಂಟರ್ ಹೆಚ್ಚಿನ ಏರಿಕೆಗಳನ್ನು ಕಳೆದುಕೊಂಡಿತು. 5) ಚೇತರಿಕೆ token ಸಾಮಾನ್ಯಕ್ಕೆ ಮರಳುವುದನ್ನು ನಿಯಂತ್ರಿಸಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B kc_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B kc_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B kc_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B kc_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
