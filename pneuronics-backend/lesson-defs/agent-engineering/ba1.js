@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A naive agent against four channels",
+    "headingKn": "ಪ್ರಯೋಗ 1: A naive agent against four channels",
+    "bodyEn": "What it ran: A naive agent against four channels. What the lab concluded: the naive agent treats any line shaped like an instruction as its own task, wherever the line came from, so the visible text, the hidden text and the URL fragment all work, and the poisoned page keeps working in later sessions through memory; the page text and the pattern are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A naive agent against four channels. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the naive agent treats any line shaped like an instruction as its own task, wherever the line came from, so the visible text, the hidden text and the URL fragment all work, and the poisoned page keeps working in later sessions through memory; the page text and the pattern are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a naive agent against four channels ---\nvisible text    : leaked 1 -> [('cookie', 'evil.example')]\nhidden text     : leaked 1 -> [('cookie', 'evil.example')]\nurl fragment    : leaked 1 -> [('cookie', 'evil.example')]\npoisoned memory : leaked during the visit 1 | leaked in the next session from memory 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: An agent that skips hidden text and the fragment",
+    "headingKn": "ಪ್ರಯೋಗ 2: An agent that skips hidden text and the fragment",
+    "bodyEn": "What it ran: An agent that skips hidden text and the fragment. What the lab concluded: ignoring the hidden and fragment channels stops two of the four, and the instruction placed in visible text, together with its stored copy, still works; removing channels narrows the attack surface and does not remove the root cause, which is that content is read as commands",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An agent that skips hidden text and the fragment. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): ignoring the hidden and fragment channels stops two of the four, and the instruction placed in visible text, together with its stored copy, still works; removing channels narrows the attack surface and does not remove the root cause, which is that content is read as commands"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: an agent that skips hidden text and the fragment ---\nvisible text    : leaked 1\nhidden text     : leaked 0\nurl fragment    : leaked 0\npoisoned memory : leaked 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: How long one poisoned visit keeps working",
+    "headingKn": "ಪ್ರಯೋಗ 3: How long one poisoned visit keeps working",
+    "bodyEn": "What it ran: How long one poisoned visit keeps working. What the lab concluded: because the page text was saved verbatim to memory, every later session replayed the instruction, so a single bad page visit becomes a standing problem; the lab memory is a list and has no expiry",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How long one poisoned visit keeps working. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): because the page text was saved verbatim to memory, every later session replayed the instruction, so a single bad page visit becomes a standing problem; the lab memory is a list and has no expiry"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: how long one poisoned visit keeps working ---\none poisoned visit, then 10 later sessions: attack succeeded in 10 of 10"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A benign page and the agent's allowed action",
+    "headingKn": "ಪ್ರಯೋಗ 4: A benign page and the agent's allowed action",
+    "bodyEn": "What it ran: A benign page and the agent's allowed action. What the lab concluded: a line shaped like an instruction that names an allowed domain looks identical to the attack apart from the destination, which is why the destination and the source of the instruction both matter, and the next two parts add checks on each",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A benign page and the agent's allowed action. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a line shaped like an instruction that names an allowed domain looks identical to the attack apart from the destination, which is why the destination and the source of the instruction both matter, and the next two parts add checks on each"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a benign page and the agent's allowed action ---\nsent: [('report', 'bob.example')] | leaked outside the allowed domain: 0"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Three live channels leaked a cookie. 2) Memory replayed the attack in the next session. 3) Skipping two channels stopped two of four. 4) One poisoned visit worked in 10 of 10 later sessions. 5) The benign case looked identical apart from the destination.",
     "bodyKn": "1) ಮೂರು ಲೈವ್ ಮಾರ್ಗಗಳು cookie ಸೋರಿಸಿದವು. 2) ಮೆಮೊರಿ ಮುಂದಿನ ಸೆಷನ್‌ನಲ್ಲಿ ದಾಳಿ ಮರುಪ್ರದರ್ಶಿಸಿತು. 3) ಎರಡು ಮಾರ್ಗ ಬಿಡುವುದು ನಾಲ್ಕರಲ್ಲಿ ಎರಡನ್ನು ನಿಲ್ಲಿಸಿತು. 4) ಒಂದು ವಿಷಪೂರಿತ ಭೇಟಿ ನಂತರದ 10 ರಲ್ಲಿ 10 ಸೆಷನ್‌ಗಳಲ್ಲಿ ಕೆಲಸ ಮಾಡಿತು. 5) ಸಾಮಾನ್ಯ ಪ್ರಕರಣ ಗಮ್ಯಸ್ಥಾನ ಬಿಟ್ಟು ಒಂದೇ ರೀತಿ ಕಾಣುತ್ತಿತ್ತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ba_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ba_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ba_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ba_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. A naive agent against four channels\n2. An agent that skips hidden text and the fragment\n3. How long one poisoned visit keeps working\n4. A benign page and the agent's allowed action",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. A naive agent against four channels\n2. An agent that skips hidden text and the fragment\n3. How long one poisoned visit keeps working\n4. A benign page and the agent's allowed action"
    }
   },
   {

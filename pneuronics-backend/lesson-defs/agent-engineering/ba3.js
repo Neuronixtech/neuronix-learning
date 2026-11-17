@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: 400 attacks and 200 legitimate tasks under each combination",
+    "headingKn": "ಪ್ರಯೋಗ 1: 400 attacks and 200 legitimate tasks under each combination",
+    "bodyEn": "What it ran: 400 attacks and 200 legitimate tasks under each combination. What the lab concluded: each defense removes a different slice of the attacks, the sanitizer alone leaves the disguised ones and the memory replays, the allowlist leaves the attacks aimed at an allowed domain, and source tracking blocks every sensitive action that came from page content; the price is paid in legitimate tasks, which confirmation of every sensitive action also holds back",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: 400 attacks and 200 legitimate tasks under each combination. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each defense removes a different slice of the attacks, the sanitizer alone leaves the disguised ones and the memory replays, the allowlist leaves the attacks aimed at an allowed domain, and source tracking blocks every sensitive action that came from page content; the price is paid in legitimate tasks, which confirmation of every sensitive action also holds back"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: 400 attacks and 200 legitimate tasks under each combination ---\ndefenses                  attacks executed  legit tasks executed\nno defenses                  400/400  1.000       200/200  1.000\nsanitizer only               240/400  0.600       200/200  1.000\nallowlist only               154/400  0.385       200/200  1.000\nsource tracking only           0/400  0.000       200/200  1.000\nconfirm sensitive only         0/400  0.000        73/200  0.365\nallowlist + source             0/400  0.000       200/200  1.000\nall four                       0/400  0.000        73/200  0.365"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The attacks that survive the allowlist alone",
+    "headingKn": "ಪ್ರಯೋಗ 2: The attacks that survive the allowlist alone",
+    "bodyEn": "What it ran: The attacks that survive the allowlist alone. What the lab concluded: these attacks send data to docs.example, a domain on the allowlist, so a destination check cannot tell them from legitimate use, and what separates them is that the instruction came from page content, which is exactly what source tracking records",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The attacks that survive the allowlist alone. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): these attacks send data to docs.example, a domain on the allowlist, so a destination check cannot tell them from legitimate use, and what separates them is that the instruction came from page content, which is exactly what source tracking records"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: the attacks that survive the allowlist alone ---\nsurvivors: 154 | all aimed at an allowed domain: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Attacks that survive the sanitizer alone, by channel and disguise",
+    "headingKn": "ಪ್ರಯೋಗ 3: Attacks that survive the sanitizer alone, by channel and disguise",
+    "bodyEn": "What it ran: Attacks that survive the sanitizer alone, by channel and disguise. What the lab concluded: every memory replay survives because the sanitizer in this lab only inspects the page being read, and in the other channels only the disguised attacks survive, which matches the pattern-list limit measured in part 2; the 50 percent disguise rate is invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Attacks that survive the sanitizer alone, by channel and disguise. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): every memory replay survives because the sanitizer in this lab only inspects the page being read, and in the other channels only the disguised attacks survive, which matches the pattern-list limit measured in part 2; the 50 percent disguise rate is invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: attacks that survive the sanitizer alone, by channel and disguise ---\nvisible  :  45 survive | disguised among them  45\nhidden   :  53 survive | disguised among them  53\nfragment :  49 survive | disguised among them  49\nmemory   :  93 survive | disguised among them  44"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Layering by false blocks on legitimate work",
+    "headingKn": "ಪ್ರಯೋಗ 4: Layering by false blocks on legitimate work",
+    "bodyEn": "What it ran: Layering by false blocks on legitimate work. What the lab concluded: source tracking blocks no legitimate task here because the legitimate tasks come from the user, which is the situation the design relies on; confirmation holds back 127 of 200 of them (63.5 percent), because sensitive reports are the commonest legitimate action in the generated mix, so it protects well and costs the user a prompt each time",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Layering by false blocks on legitimate work. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): source tracking blocks no legitimate task here because the legitimate tasks come from the user, which is the situation the design relies on; confirmation holds back 127 of 200 of them (63.5 percent), because sensitive reports are the commonest legitimate action in the generated mix, so it protects well and costs the user a prompt each time"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: layering by false blocks on legitimate work ---\nsanitizer only           blocks   0 of 200 legitimate tasks\nallowlist only           blocks   0 of 200 legitimate tasks\nsource tracking only     blocks   0 of 200 legitimate tasks\nconfirm sensitive only   blocks 127 of 200 legitimate tasks\nallowlist + source       blocks   0 of 200 legitimate tasks\nall four                 blocks 127 of 200 legitimate tasks"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The sanitizer alone left 240 of 400 attacks. 2) The allowlist alone left 154. 3) Source tracking alone left 0 and blocked no legitimate task. 4) Confirmation also left 0 but blocked 127 of 200 legitimate tasks. 5) The workloads are scripted and invented.",
     "bodyKn": "1) ಸ್ಯಾನಿಟೈಸರ್ ಮಾತ್ರ 400 ರಲ್ಲಿ 240 ದಾಳಿ ಬಿಟ್ಟಿತು. 2) allowlist ಮಾತ್ರ 154 ಬಿಟ್ಟಿತು. 3) ಮೂಲ ಟ್ರ್ಯಾಕಿಂಗ್ ಮಾತ್ರ 0 ಬಿಟ್ಟು ಯಾವ ಕಾನೂನುಬದ್ಧ ಕಾರ್ಯ ನಿರ್ಬಂಧಿಸಲಿಲ್ಲ. 4) ದೃಢೀಕರಣವೂ 0 ಬಿಟ್ಟು ಆದರೆ 200 ಕಾನೂನುಬದ್ಧ ಕಾರ್ಯಗಳಲ್ಲಿ 127 ನಿರ್ಬಂಧಿಸಿತು. 5) ಕೆಲಸಭಾರಗಳು ಸ್ಕ್ರಿಪ್ಟ್ ಮಾಡಿದ ಮತ್ತು ಕಲ್ಪಿತ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ba_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ba_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ba_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ba_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. 400 attacks and 200 legitimate tasks under each combination\n2. The attacks that survive the allowlist alone\n3. Attacks that survive the sanitizer alone, by channel and disguise\n4. Layering by false blocks on legitimate work",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. 400 attacks and 200 legitimate tasks under each combination\n2. The attacks that survive the allowlist alone\n3. Attacks that survive the sanitizer alone, by channel and disguise\n4. Layering by false blocks on legitimate work"
    }
   },
   {

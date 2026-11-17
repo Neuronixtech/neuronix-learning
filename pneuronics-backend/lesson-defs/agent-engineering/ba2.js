@@ -141,6 +141,59 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Six variants of one attack, with and without the sanitizer",
+    "headingKn": "ಪ್ರಯೋಗ 1: Six variants of one attack, with and without the sanitizer",
+    "bodyEn": "What it ran: Six variants of one attack, with and without the sanitizer. What the lab concluded: the sanitizer removes the three variants it was written for, namely plain, hidden and fragment text, and the zero-width split, the lower-case form and the paraphrase all get through because the agent normalises the text after the sanitizer has already looked at it; the variants and the sanitizer are both invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Six variants of one attack, with and without the sanitizer. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the sanitizer removes the three variants it was written for, namely plain, hidden and fragment text, and the zero-width split, the lower-case form and the paraphrase all get through because the agent normalises the text after the sanitizer has already looked at it; the variants and the sanitizer are both invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: six variants of one attack, with and without the sanitizer ---\nplain visible    : works without sanitizer True  | works after sanitizer False\nhidden text      : works without sanitizer True  | works after sanitizer False\nurl fragment     : works without sanitizer True  | works after sanitizer False\nzero-width split : works without sanitizer True  | works after sanitizer True\nlower case       : works without sanitizer True  | works after sanitizer True\nparaphrase       : works without sanitizer True  | works after sanitizer True\nvariants that still work after sanitizing: 3 of 6"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: What the sanitizer does to harmless pages",
+    "headingKn": "ಪ್ರಯೋಗ 2: What the sanitizer does to harmless pages",
+    "bodyEn": "What it ran: What the sanitizer does to harmless pages. What the lab concluded: a rule that deletes any sentence containing the capitalised word also deletes ordinary content, here two of four harmless pages lose a sentence, so a stricter pattern raises the damage to normal pages and a looser one lets more attacks through",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What the sanitizer does to harmless pages. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a rule that deletes any sentence containing the capitalised word also deletes ordinary content, here two of four harmless pages lose a sentence, so a stricter pattern raises the damage to normal pages and a looser one lets more attacks through"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: what the sanitizer does to harmless pages ---\nRead the INSTRUCTION manual before assembling the shelf -> changed True\nStep 3. Follow the INSTRUCTION card in the box.         -> changed True\nOur support team gives clear instruction. Contact us an -> changed False\nPrice list. Shipping is free.                           -> changed False\nbenign pages altered: 2 of 4"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A second sanitizer that normalises first",
+    "headingKn": "ಪ್ರಯೋಗ 3: A second sanitizer that normalises first",
+    "bodyEn": "What it ran: A second sanitizer that normalises first. What the lab concluded: normalising first closes the three bypasses, which shows the sanitizer can be improved, and the last line is there because the lab agent also cannot parse the new phrasing, so it says nothing about a real model that would understand it; the point is that a pattern list always lags the attacker and any rewording needs a new pattern",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A second sanitizer that normalises first. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): normalising first closes the three bypasses, which shows the sanitizer can be improved, and the last line is there because the lab agent also cannot parse the new phrasing, so it says nothing about a real model that would understand it; the point is that a pattern list always lags the attacker and any rewording needs a new pattern"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a second sanitizer that normalises first ---\nvariants that still work after the normalising sanitizer: 0 of 6\na rephrasing the agent patterns do not know, 'works' means the lab agent obeys it: False"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +251,50 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The sanitizer stopped three variants and missed three. 2) It altered 2 of 4 harmless pages. 3) Normalising first stopped all six. 4) The agent normalises after the sanitizer looks. 5) The unseen phrasing result reflects the lab agent, not safety.",
     "bodyKn": "1) ಸ್ಯಾನಿಟೈಸರ್ ಮೂರು ರೂಪಾಂತರ ನಿಲ್ಲಿಸಿ ಮೂರು ತಪ್ಪಿಸಿತು. 2) ಅದು 4 ಹಾನಿರಹಿತ ಪುಟಗಳಲ್ಲಿ 2 ಬದಲಿಸಿತು. 3) ಮೊದಲು ಸಾಮಾನ್ಯೀಕರಿಸುವುದು ಎಲ್ಲಾ ಆರು ನಿಲ್ಲಿಸಿತು. 4) ಸ್ಯಾನಿಟೈಸರ್ ನೋಡಿದ ನಂತರ agent ಸಾಮಾನ್ಯೀಕರಿಸುತ್ತದೆ. 5) ಕಾಣದ ಪದಬಳಕೆ ಫಲಿತಾಂಶ ಲ್ಯಾಬ್ agent ಅನ್ನು ಪ್ರತಿಬಿಂಬಿಸುತ್ತದೆ, ಸುರಕ್ಷತೆಯನ್ನಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ba_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ba_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ba_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ba_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. Six variants of one attack, with and without the sanitizer\n2. What the sanitizer does to harmless pages\n3. A second sanitizer that normalises first",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. Six variants of one attack, with and without the sanitizer\n2. What the sanitizer does to harmless pages\n3. A second sanitizer that normalises first"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Change one thing",
+    "headingKn": "ಒಂದನ್ನು ಬದಲಿಸಿ",
+    "bodyEn": "Pick one constant, threshold or input in the code shown above, change it, and predict which experiment will change before you rerun. If an experiment you did not expect changes, you have found a coupling worth understanding.",
+    "bodyKn": "ಮೇಲೆ ತೋರಿಸಿದ ಕೋಡ್‌ನಲ್ಲಿ ಒಂದು ಸ್ಥಿರಾಂಕ, ಮಿತಿ ಅಥವಾ ಇನ್‌ಪುಟ್ ಆಯ್ದು ಬದಲಿಸಿ, ಮರುಓಡಿಸುವ ಮುನ್ನ ಯಾವ ಪ್ರಯೋಗ ಬದಲಾಗುತ್ತದೆ ಎಂದು ಊಹಿಸಿ. ನೀವು ನಿರೀಕ್ಷಿಸದ ಪ್ರಯೋಗ ಬದಲಾದರೆ, ಅರ್ಥಮಾಡಿಕೊಳ್ಳಬೇಕಾದ ಸಂಬಂಧವನ್ನು ನೀವು ಕಂಡುಕೊಂಡಿದ್ದೀರಿ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Where your numbers may differ",
+    "headingKn": "ನಿಮ್ಮ ಸಂಖ್ಯೆಗಳು ಎಲ್ಲಿ ಭಿನ್ನವಾಗಬಹುದು",
+    "bodyEn": "Timings, temporary paths, hashes and commit ids differ between runs and machines. Counts, verdicts and error messages should match unless your Python version or operating system differs from the one named in Lesson Info.",
+    "bodyKn": "ಸಮಯಗಳು, ತಾತ್ಕಾಲಿಕ paths, hashes ಮತ್ತು commit ids ಓಟಗಳ ಮತ್ತು ಯಂತ್ರಗಳ ನಡುವೆ ಭಿನ್ನವಾಗುತ್ತವೆ. ಎಣಿಕೆಗಳು, ತೀರ್ಪುಗಳು ಮತ್ತು ದೋಷ ಸಂದೇಶಗಳು ನಿಮ್ಮ Python ಆವೃತ್ತಿ ಅಥವಾ ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್ Lesson Info ನಲ್ಲಿ ಹೆಸರಿಸಿದ್ದಕ್ಕಿಂತ ಭಿನ್ನವಾಗಿಲ್ಲದಿದ್ದರೆ ಹೊಂದಬೇಕು."
    }
   },
   {
