@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Building and verifying a hash chain",
+    "headingKn": "ಪ್ರಯೋಗ 1: Building and verifying a hash chain",
+    "bodyEn": "What it ran: Building and verifying a hash chain. What the lab concluded: each entry stores the hash of the one before it, so changing any earlier entry changes every later hash; the entries are invented text",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Building and verifying a hash chain. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each entry stores the hash of the one before it, so changing any earlier entry changes every later hash; the entries are invented text"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: building and verifying a hash chain ---\nentries: 3 | chain verifies: (True, None)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Tamper and truncation",
+    "headingKn": "ಪ್ರಯೋಗ 2: Tamper and truncation",
+    "bodyEn": "What it ran: Tamper and truncation. What the lab concluded: a plain edit is caught at the edited entry, an edit that recomputes its own hash is caught at the next entry, and silently removing the newest entries passes unless the latest hash was recorded somewhere the writer cannot change; the chain proves consistency and not honesty",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Tamper and truncation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a plain edit is caught at the edited entry, an edit that recomputes its own hash is caught at the next entry, and silently removing the newest entries passes unless the latest hash was recorded somewhere the writer cannot change; the chain proves consistency and not honesty"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: tamper and truncation ---\nedit entry 1 body -> (False, 1)\nedit entry 1 and recompute only its own hash -> (False, 2)\ndrop the last entry, no external head -> (True, None)\ndrop the last entry, compare with the saved head -> (False, 'head mismatch')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A role-based authorization policy",
+    "headingKn": "ಪ್ರಯೋಗ 3: A role-based authorization policy",
+    "bodyEn": "What it ran: A role-based authorization policy. What the lab concluded: an unknown role gets an empty permission set, so it is denied by default, and a proposer cannot approve its own work because review is a separate action; the policy is a dictionary inside the same program, which the agent could edit if it shared the process",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A role-based authorization policy. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an unknown role gets an empty permission set, so it is denied by default, and a proposer cannot approve its own work because review is a separate action; the policy is a dictionary inside the same program, which the agent could edit if it shared the process"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a role-based authorization policy ---\nproposer  post_hypothesis  -> allow\nproposer  post_review      -> deny\nreviewer  post_evidence    -> deny\nreviewer  post_review      -> allow\nintern    post_hypothesis  -> deny\nadmin     close_thread     -> allow"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Provenance of findings",
+    "headingKn": "ಪ್ರಯೋಗ 4: Provenance of findings",
+    "bodyEn": "What it ran: Provenance of findings. What the lab concluded: a finding counts as supported only when it points to earlier evidence entries, so a claim with no references or one that cites only a hypothesis is flagged; this checks the structure of the trail and not whether the evidence is true",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Provenance of findings. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a finding counts as supported only when it points to earlier evidence entries, so a claim with no references or one that cites only a hypothesis is flagged; this checks the structure of the trail and not whether the evidence is true"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: provenance of findings ---\nsupported            provenance ok: True\nno refs              provenance ok: False\ncites a hypothesis   provenance ok: False"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) A plain edit was caught at its own index. 2) A self-rehashed edit was caught one entry later. 3) Truncation needed an external head. 4) Unknown roles were denied. 5) Provenance checks structure, not truth.",
     "bodyKn": "1) ಸಾದಾ ಸಂಪಾದನೆ ತನ್ನ ಸೂಚ್ಯಂಕದಲ್ಲಿ ಹಿಡಿಯಲ್ಪಟ್ಟಿತು. 2) ಸ್ವಯಂ-ಮರುಹ್ಯಾಶ್ ಸಂಪಾದನೆ ಒಂದು ನಮೂದು ನಂತರ ಹಿಡಿಯಲ್ಪಟ್ಟಿತು. 3) ಕತ್ತರಿಸುವಿಕೆಗೆ ಬಾಹ್ಯ head ಬೇಕಾಯಿತು. 4) ಅಪರಿಚಿತ ಪಾತ್ರಗಳು ನಿರಾಕರಿಸಲ್ಪಟ್ಟವು. 5) Provenance ರಚನೆ ಪರಿಶೀಲಿಸುತ್ತದೆ, ಸತ್ಯವಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ar_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ar_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ar_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ar_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. Building and verifying a hash chain\n2. Tamper and truncation\n3. A role-based authorization policy\n4. Provenance of findings",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. Building and verifying a hash chain\n2. Tamper and truncation\n3. A role-based authorization policy\n4. Provenance of findings"
    }
   },
   {

@@ -141,6 +141,59 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Random label noise against systematic error, same weak accuracy (200 training points, see…",
+    "headingKn": "ಪ್ರಯೋಗ 1: Random label noise against systematic error, same weak accuracy (200 training points, see…",
+    "bodyEn": "What it ran: Random label noise against systematic error, same weak accuracy (200 training points, seeds 1 to 30). What the lab concluded: both weak labelers are right about 80 percent of the time, yet the student recovers almost all of the gap when the errors are random and none of it when they are concentrated in one band, because fitting to labels averages out random noise and copies a systematic mistake; the toy student and uniform data are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Random label noise against systematic error, same weak accuracy (200 training points, seeds 1 to 30). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both weak labelers are right about 80 percent of the time, yet the student recovers almost all of the gap when the errors are random and none of it when they are concentrated in one band, because fitting to labels averages out random noise and copies a systematic mistake; the toy student and uniform data are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: random label noise against systematic error, same weak accuracy (200 training points, seeds 1 to 30) ---\nrandom flips 20 percent   : weak labeler accuracy 0.800 | student accuracy 0.990 | ceiling (true labels) 0.995 | PGR 0.97\nsystematic band error     : weak labeler accuracy 0.802 | student accuracy 0.805 | ceiling (true labels) 0.995 | PGR 0.02"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: How much random noise the student tolerates (200 points, 30 seeds)",
+    "headingKn": "ಪ್ರಯೋಗ 2: How much random noise the student tolerates (200 points, 30 seeds)",
+    "bodyEn": "What it ran: How much random noise the student tolerates (200 points, 30 seeds). What the lab concluded: accuracy stays high at moderate noise and slips as the flip rate approaches 0.5, where the labels carry no information and the worst of 30 runs is 0.500; the mean of 0.703 at 0.5 is above a coin flip only because a threshold placed anywhere on the 0 to 1 range is still right for much of the range, and averaging only works while the noise is smaller than the signal",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How much random noise the student tolerates (200 points, 30 seeds). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): accuracy stays high at moderate noise and slips as the flip rate approaches 0.5, where the labels carry no information and the worst of 30 runs is 0.500; the mean of 0.703 at 0.5 is above a coin flip only because a threshold placed anywhere on the 0 to 1 range is still right for much of the range, and averaging only works while the noise is smaller than the signal"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: how much random noise the student tolerates (200 points, 30 seeds) ---\nflip rate 0.10: mean student accuracy 0.995 | worst of 30 0.987\nflip rate 0.30: mean student accuracy 0.974 | worst of 30 0.864\nflip rate 0.45: mean student accuracy 0.802 | worst of 30 0.500\nflip rate 0.50: mean student accuracy 0.703 | worst of 30 0.500"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: More training points against noise (flip 0.3, 30 seeds)",
+    "headingKn": "ಪ್ರಯೋಗ 3: More training points against noise (flip 0.3, 30 seeds)",
+    "bodyEn": "What it ran: More training points against noise (flip 0.3, 30 seeds). What the lab concluded: more weakly labeled data helps a student that is averaging out random noise, and the same extra data would not help against the systematic band error from section 1, since every extra point repeats the same mistake",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: More training points against noise (flip 0.3, 30 seeds). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): more weakly labeled data helps a student that is averaging out random noise, and the same extra data would not help against the systematic band error from section 1, since every extra point repeats the same mistake"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: more training points against noise (flip 0.3, 30 seeds) ---\n  20 points: mean student accuracy 0.843\n  50 points: mean student accuracy 0.895\n 200 points: mean student accuracy 0.975\n 800 points: mean student accuracy 0.991"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +251,50 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Random errors gave a PGR of 0.97. 2) Systematic errors gave 0.02. 3) At flip 0.45 the mean fell to 0.802. 4) More points lifted accuracy at flip 0.3 from 0.843 to 0.991. 5) The toy student is a fitted threshold, not a model.",
     "bodyKn": "1) ಯಾದೃಚ್ಛಿಕ ದೋಷಗಳು 0.97 PGR ನೀಡಿದವು. 2) ವ್ಯವಸ್ಥಿತ ದೋಷಗಳು 0.02 ನೀಡಿದವು. 3) flip 0.45 ರಲ್ಲಿ ಸರಾಸರಿ 0.802 ಕ್ಕೆ ಇಳಿಯಿತು. 4) ಹೆಚ್ಚು ಬಿಂದುಗಳು flip 0.3 ರಲ್ಲಿ ನಿಖರತೆಯನ್ನು 0.843 ರಿಂದ 0.991 ಗೆ ಏರಿಸಿದವು. 5) ಆಟಿಕೆ ವಿದ್ಯಾರ್ಥಿ ಹೊಂದಿಸಿದ ಮಿತಿ, ಮಾದರಿ ಅಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ar_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ar_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ar_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ar_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. Random label noise against systematic error, same weak accuracy (200 training points, seeds 1 to 30)\n2. How much random noise the student tolerates (200 points, 30 seeds)\n3. More training points against noise (flip 0.3, 30 seeds)",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. Random label noise against systematic error, same weak accuracy (200 training points, seeds 1 to 30)\n2. How much random noise the student tolerates (200 points, 30 seeds)\n3. More training points against noise (flip 0.3, 30 seeds)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Change one thing",
+    "headingKn": "ಒಂದನ್ನು ಬದಲಿಸಿ",
+    "bodyEn": "Pick one constant, threshold or input in the code shown above, change it, and predict which experiment will change before you rerun. If an experiment you did not expect changes, you have found a coupling worth understanding.",
+    "bodyKn": "ಮೇಲೆ ತೋರಿಸಿದ ಕೋಡ್‌ನಲ್ಲಿ ಒಂದು ಸ್ಥಿರಾಂಕ, ಮಿತಿ ಅಥವಾ ಇನ್‌ಪುಟ್ ಆಯ್ದು ಬದಲಿಸಿ, ಮರುಓಡಿಸುವ ಮುನ್ನ ಯಾವ ಪ್ರಯೋಗ ಬದಲಾಗುತ್ತದೆ ಎಂದು ಊಹಿಸಿ. ನೀವು ನಿರೀಕ್ಷಿಸದ ಪ್ರಯೋಗ ಬದಲಾದರೆ, ಅರ್ಥಮಾಡಿಕೊಳ್ಳಬೇಕಾದ ಸಂಬಂಧವನ್ನು ನೀವು ಕಂಡುಕೊಂಡಿದ್ದೀರಿ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Where your numbers may differ",
+    "headingKn": "ನಿಮ್ಮ ಸಂಖ್ಯೆಗಳು ಎಲ್ಲಿ ಭಿನ್ನವಾಗಬಹುದು",
+    "bodyEn": "Timings, temporary paths, hashes and commit ids differ between runs and machines. Counts, verdicts and error messages should match unless your Python version or operating system differs from the one named in Lesson Info.",
+    "bodyKn": "ಸಮಯಗಳು, ತಾತ್ಕಾಲಿಕ paths, hashes ಮತ್ತು commit ids ಓಟಗಳ ಮತ್ತು ಯಂತ್ರಗಳ ನಡುವೆ ಭಿನ್ನವಾಗುತ್ತವೆ. ಎಣಿಕೆಗಳು, ತೀರ್ಪುಗಳು ಮತ್ತು ದೋಷ ಸಂದೇಶಗಳು ನಿಮ್ಮ Python ಆವೃತ್ತಿ ಅಥವಾ ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್ Lesson Info ನಲ್ಲಿ ಹೆಸರಿಸಿದ್ದಕ್ಕಿಂತ ಭಿನ್ನವಾಗಿಲ್ಲದಿದ್ದರೆ ಹೊಂದಬೇಕು."
    }
   },
   {

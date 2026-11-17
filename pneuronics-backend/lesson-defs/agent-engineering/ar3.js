@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: How far bad roots spread (200 findings, up to 3 parents, 40 graphs)",
+    "headingKn": "ಪ್ರಯೋಗ 1: How far bad roots spread (200 findings, up to 3 parents, 40 graphs)",
+    "bodyEn": "What it ran: How far bad roots spread (200 findings, up to 3 parents, 40 graphs). What the lab concluded: a handful of bad early findings contaminates a large share of everything built later, because each new finding depends on several earlier ones and one tainted parent is enough; the random graph is an invented stand-in for a research literature",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How far bad roots spread (200 findings, up to 3 parents, 40 graphs). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a handful of bad early findings contaminates a large share of everything built later, because each new finding depends on several earlier ones and one tainted parent is enough; the random graph is an invented stand-in for a research literature"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: how far bad roots spread (200 findings, up to 3 parents, 40 graphs) ---\n1 bad finding(s) among the first 20: mean share of all 200 findings contaminated 0.568 | worst graph 1.000\n3 bad finding(s) among the first 20: mean share of all 200 findings contaminated 0.823 | worst graph 1.000\n5 bad finding(s) among the first 20: mean share of all 200 findings contaminated 0.942 | worst graph 1.000"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Where the bad finding sits matters (1 bad root, 40 graphs)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Where the bad finding sits matters (1 bad root, 40 graphs)",
+    "bodyEn": "What it ran: Where the bad finding sits matters (1 bad root, 40 graphs). What the lab concluded: an early error has more later findings that can depend on it, which is why verifying foundations is worth more than verifying the latest result; with only one bad root the numbers are averages over forty random graphs",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Where the bad finding sits matters (1 bad root, 40 graphs). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an early error has more later findings that can depend on it, which is why verifying foundations is worth more than verifying the latest result; with only one bad root the numbers are averages over forty random graphs"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: where the bad finding sits matters (1 bad root, 40 graphs) ---\nvery early (index 0-10): mean contaminated share 0.774\nmiddle     (index 90-100): mean contaminated share 0.025\nlate       (index 180-190): mean contaminated share 0.006"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Independent re-checks before building on a finding (3 bad roots, 40 graphs)",
+    "headingKn": "ಪ್ರಯೋಗ 3: Independent re-checks before building on a finding (3 bad roots, 40 graphs)",
+    "bodyEn": "What it ran: Independent re-checks before building on a finding (3 bad roots, 40 graphs). What the lab concluded: an independent check that catches a bad finding before others build on it cuts contamination sharply, and removing a bad finding also removes the work that would have rested on it; the catch probability is an invented number and assumes the re-check is independent of the original mistake",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Independent re-checks before building on a finding (3 bad roots, 40 graphs). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an independent check that catches a bad finding before others build on it cuts contamination sharply, and removing a bad finding also removes the work that would have rested on it; the catch probability is an invented number and assumes the re-check is independent of the original mistake"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: independent re-checks before building on a finding (3 bad roots, 40 graphs) ---\ncatch probability 0.0: contaminated share 0.823 | findings removed 0.0\ncatch probability 0.3: contaminated share 0.323 | findings removed 28.7\ncatch probability 0.6: contaminated share 0.057 | findings removed 17.9\ncatch probability 0.9: contaminated share 0.002 | findings removed 4.1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Reviewer panels with a shared blind spot (20000 bad findings)",
+    "headingKn": "ಪ್ರಯೋಗ 4: Reviewer panels with a shared blind spot (20000 bad findings)",
+    "bodyEn": "What it ran: Reviewer panels with a shared blind spot (20000 bad findings). What the lab concluded: adding reviewers raises the catch rate toward the ceiling set by the shared blind spot and no further, because errors that every reviewer shares cannot be voted away; the blind-spot share and per-reviewer catch rate are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Reviewer panels with a shared blind spot (20000 bad findings). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): adding reviewers raises the catch rate toward the ceiling set by the shared blind spot and no further, because errors that every reviewer shares cannot be voted away; the blind-spot share and per-reviewer catch rate are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: reviewer panels with a shared blind spot (20000 bad findings) ---\n 1 reviewer(s), shared blind spot 0.0: bad findings caught 0.702\n 5 reviewer(s), shared blind spot 0.0: bad findings caught 0.836\n 5 reviewer(s), shared blind spot 0.2: bad findings caught 0.664\n15 reviewer(s), shared blind spot 0.2: bad findings caught 0.766"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) One bad root contaminated a mean 0.568 of findings. 2) An early root mattered far more than a late one. 3) A 0.9 catch rate cut contamination to 0.002. 4) A shared blind spot capped the panel. 5) The graph and rates are invented.",
     "bodyKn": "1) ಒಂದು ಕೆಟ್ಟ ಬೇರು ಸರಾಸರಿ 0.568 ಸಂಶೋಧನೆಗಳನ್ನು ಕಲುಷಿತಗೊಳಿಸಿತು. 2) ಆರಂಭಿಕ ಬೇರು ತಡವಾದದ್ದಕ್ಕಿಂತ ಬಹಳ ಮುಖ್ಯ. 3) 0.9 ಹಿಡಿಯುವ ದರ ಕಲುಷಿತವನ್ನು 0.002 ಗೆ ಇಳಿಸಿತು. 4) ಹಂಚಿದ blind spot ಪ್ಯಾನೆಲ್ ಅನ್ನು ಮಿತಿಗೊಳಿಸಿತು. 5) ಗ್ರಾಫ್ ಮತ್ತು ದರಗಳು ಕಲ್ಪಿತ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ar_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ar_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ar_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ar_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. How far bad roots spread (200 findings, up to 3 parents, 40 graphs)\n2. Where the bad finding sits matters (1 bad root, 40 graphs)\n3. Independent re-checks before building on a finding (3 bad roots, 40 graphs)\n4. Reviewer panels with a shared blind spot (20000 bad findings)",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. How far bad roots spread (200 findings, up to 3 parents, 40 graphs)\n2. Where the bad finding sits matters (1 bad root, 40 graphs)\n3. Independent re-checks before building on a finding (3 bad roots, 40 graphs)\n4. Reviewer panels with a shared blind spot (20000 bad findings)"
    }
   },
   {
