@@ -1,0 +1,6 @@
+// Hand-written third practice problem for each rebuilt module-363 lesson, keyed "module.lessonIndex": [English, Kannada].
+module.exports = {
+  '363.0': [`change the reserved price to 5,40,000 and the on-demand full-use price to 15,00,000, recompute the break-even utilisation and the cheapest option at 30 and 40 percent, and report both.`, `ಮೀಸಲು ಬೆಲೆಯನ್ನು 5,40,000 ಮತ್ತು ಆನ್-ಡಿಮ್ಯಾಂಡ್ ಪೂರ್ಣ-ಬಳಕೆ ಬೆಲೆಯನ್ನು 15,00,000 ಗೆ ಬದಲಿಸಿ, ಸಮಭಾರ ಬಳಕೆ ಮತ್ತು 30 ಹಾಗೂ 40 ಶೇಕಡಾದಲ್ಲಿ ಅಗ್ಗದ ಆಯ್ಕೆ ಮರುಲೆಕ್ಕ ಹಾಕಿ ಮತ್ತು ಎರಡನ್ನೂ ವರದಿ ಮಾಡಿ.`],
+  '363.1': [`add a third provider to the gateway with its own capability set, make it the second fallback, and show one request that falls through two providers before it is served.`, `gateway ಗೆ ತನ್ನದೇ ಸಾಮರ್ಥ್ಯ ಸೆಟ್ ಇರುವ ಮೂರನೇ ಪೂರೈಕೆದಾರ ಸೇರಿಸಿ, ಅದನ್ನು ಎರಡನೇ fallback ಮಾಡಿ, ಮತ್ತು ಸೇವೆ ಪಡೆಯುವ ಮೊದಲು ಎರಡು ಪೂರೈಕೆದಾರರ ಮೂಲಕ ಬೀಳುವ ಒಂದು ವಿನಂತಿ ತೋರಿಸಿ.`],
+  '363.2': [`extend redact so that it also replaces a 12-digit national identifier pattern of your choice, add two test strings, and report one case your pattern still misses.`, `ನಿಮ್ಮ ಆಯ್ಕೆಯ 12-ಅಂಕಿ ರಾಷ್ಟ್ರೀಯ ಗುರುತು ಮಾದರಿಯನ್ನೂ redact ಬದಲಿಸುವಂತೆ ವಿಸ್ತರಿಸಿ, ಎರಡು ಪರೀಕ್ಷಾ ಸ್ಟ್ರಿಂಗ್ ಸೇರಿಸಿ, ಮತ್ತು ನಿಮ್ಮ ಮಾದರಿ ಇನ್ನೂ ತಪ್ಪಿಸುವ ಒಂದು ಪ್ರಕರಣ ವರದಿ ಮಾಡಿ.`],
+};
