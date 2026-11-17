@@ -141,6 +141,134 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Two letters that look alike",
+    "headingKn": "ಪ್ರಯೋಗ 1: Two letters that look alike",
+    "bodyEn": "What it ran: Two letters that look alike. What the lab concluded: the Latin and the Cyrillic letter have different code points and neither case folding nor NFKC makes them equal, which is deliberate because they belong to different writing systems",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Two letters that look alike. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the Latin and the Cyrillic letter have different code points and neither case folding nor NFKC makes them equal, which is deliberate because they belong to different writing systems"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: two letters that look alike ---\n'a' 0x61 LATIN SMALL LETTER A\n'а' 0x430 CYRILLIC SMALL LETTER A\nequal after casefold: False | equal after NFKC: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The naive detector on five variants of one phrase",
+    "headingKn": "ಪ್ರಯೋಗ 2: The naive detector on five variants of one phrase",
+    "bodyEn": "What it ran: The naive detector on five variants of one phrase. What the lab concluded: case folding handled the uppercase variant, while the inserted symbols, the look-alike letter and the paraphrase all got through, which gives a toy bypass rate of 3 of 5; this is a property of a substring test on five hand-made inputs and is not a measurement of Llama Guard or any other model",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The naive detector on five variants of one phrase. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): case folding handled the uppercase variant, while the inserted symbols, the look-alike letter and the paraphrase all got through, which gives a toy bypass rate of 3 of 5; this is a property of a substring test on five hand-made inputs and is not a measurement of Llama Guard or any other model"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: the naive detector on five variants of one phrase ---\nraw phrase        detected=True  'restricted operation'\nuppercase         detected=True  'RESTRICTED OPERATION'\nsymbol insertion  detected=False 'r🔹e🔹s🔹t🔹r🔹i🔹c🔹t🔹e🔹d operation'\nhomoglyph         detected=False 'restrіcted operation'\nparaphrase        detected=False 'Carry out the action that policy prohibits'\nbypass rate: 3 of 5 = 60% | missed: ['symbol insertion', 'homoglyph', 'paraphrase']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: What each normalisation step recovers",
+    "headingKn": "ಪ್ರಯೋಗ 3: What each normalisation step recovers",
+    "bodyEn": "What it ran: What each normalisation step recovers. What the lab concluded: dropping non-letters recovered the inserted symbols, the confusable map recovered the look-alike letter and the paraphrase was never recovered by any of them, leaving 1 of 5; each step fixes one family of variation, and the confusable table here has six entries, which is nowhere near the full set of look-alike characters",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What each normalisation step recovers. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): dropping non-letters recovered the inserted symbols, the confusable map recovered the look-alike letter and the paraphrase was never recovered by any of them, leaving 1 of 5; each step fixes one family of variation, and the confusable table here has six entries, which is nowhere near the full set of look-alike characters"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: what each normalisation step recovers ---\nNFKC and case folding        missed 3 of 5: ['symbol insertion', 'homoglyph', 'paraphrase']\nplus dropping non-letters    missed 2 of 5: ['homoglyph', 'paraphrase']\nplus a confusable map        missed 1 of 5: ['paraphrase']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The cost of aggressive cleaning and a script-mixing check",
+    "headingKn": "ಪ್ರಯೋಗ 4: The cost of aggressive cleaning and a script-mixing check",
+    "bodyEn": "What it ran: The cost of aggressive cleaning and a script-mixing check. What the lab concluded: cleaning rewrote two letters of the Russian word into Latin look-alikes, left the French text as it was and made the hyphenated spelling match the phrase, so it is a tool for building a matching key and not for rewriting what users see; a check for letters from two scripts in one word flagged the look-alike variant and left the single-script Russian word alone, but a person who legitimately mixes scripts would be flagged too",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The cost of aggressive cleaning and a script-mixing check. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): cleaning rewrote two letters of the Russian word into Latin look-alikes, left the French text as it was and made the hyphenated spelling match the phrase, so it is a tool for building a matching key and not for rewriting what users see; a check for letters from two scripts in one word flagged the look-alike variant and left the single-script Russian word alone, but a person who legitimately mixes scripts would be flagged too"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: the cost of aggressive cleaning and a script-mixing check ---\n'привет'                                                                    cleaned: 'пpивeт'\n'café au lait'                                                              cleaned: 'café au lait'\n'r-e-s-t-r-i-c-t-e-d operation is spelled in hyphens in this sentence'      cleaned: 'restricted operation is spelled in hyphens in this sentence'\nmixed-script words in the homoglyph variant: ['restrіcted'] | in a Russian word: [] | in an ordinary English sentence: []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: An input guard and an output guard",
+    "headingKn": "ಪ್ರಯೋಗ 5: An input guard and an output guard",
+    "bodyEn": "What it ran: An input guard and an output guard. What the lab concluded: the request passed and the generated text was stopped on the way out, which is the reason to check both sides of the model; a phrase match is a weak stand-in for a secret scanner and cannot find a credential it has no phrase for",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An input guard and an output guard. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the request passed and the generated text was stopped on the way out, which is the reason to check both sides of the model; a phrase match is a weak stand-in for a secret scanner and cannot find a credential it has no phrase for"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: an input guard and an output guard ---\ninput: allow | generated text: The summary mentions the customer secret | output: block"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The lesson's worked metrics",
+    "headingKn": "ಪ್ರಯೋಗ 6: The lesson's worked metrics",
+    "bodyEn": "What it ran: The lesson's worked metrics. What the lab concluded: with 80 true positives, 90 true negatives, 10 false positives and 20 false negatives the accuracy is 0.85, precision 0.8889, recall 0.8, FPR 0.1, FNR 0.2 and F1 0.8421, and an attack success rate is only meaningful once the lab says what counts as success",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lesson's worked metrics. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with 80 true positives, 90 true negatives, 10 false positives and 20 false negatives the accuracy is 0.85, precision 0.8889, recall 0.8, FPR 0.1, FNR 0.2 and F1 0.8421, and an attack success rate is only meaningful once the lab says what counts as success"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely computing: the lesson's worked metrics ---\n{'accuracy': 0.85, 'precision': 0.8889, 'recall': 0.8, 'fpr': 0.1, 'fnr': 0.2, 'f1': 0.8421}\nattack success rate for 25 bypasses in 100 attempts: 25%"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: A classifier that obeys instructions in its input",
+    "headingKn": "ಪ್ರಯೋಗ 7: A classifier that obeys instructions in its input",
+    "bodyEn": "What it ran: A classifier that obeys instructions in its input. What the lab concluded: the scripted classifier that read an instruction inside the text it was classifying returned safe, and treating the input only as data returned unsafe; this is a scripted stand-in for the failure shape, and whether a real guard model can be steered this way has to be tested on that model",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A classifier that obeys instructions in its input. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the scripted classifier that read an instruction inside the text it was classifying returned safe, and treating the input only as data returned unsafe; this is a scripted stand-in for the failure shape, and whether a real guard model can be steered this way has to be tested on that model"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely running: a classifier that obeys instructions in its input ---\ninstruction-following stand-in, no trust boundary: safe\nsame stand-in with the input treated as data: unsafe"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Regression tests that document a known weakness",
+    "headingKn": "ಪ್ರಯೋಗ 8: Regression tests that document a known weakness",
+    "bodyEn": "What it ran: Regression tests that document a known weakness. What the lab concluded: the homoglyph test passes precisely because the naive detector misses it, so it records a failure and does not show safety, which is why it is labelled a known weakness and should flip to an expected failure once detection improves",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Regression tests that document a known weakness. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the homoglyph test passes precisely because the naive detector misses it, so it records a failure and does not show safety, which is why it is labelled a known weakness and should flip to an expected failure once detection improves"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Genuinely running: regression tests that document a known weakness ---\nPASS  ordinary request is safe\nPASS  phrase is detected\nPASS  uppercase is detected\nPASS  KNOWN WEAKNESS homoglyph is missed by the naive detector\nPASS  KNOWN WEAKNESS recovered by the confusable map"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

@@ -141,6 +141,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Nine guarded steps",
+    "headingKn": "ಪ್ರಯೋಗ 1: Nine guarded steps",
+    "bodyEn": "What it ran: Nine guarded steps. What the lab concluded: the ordinary request passed, the sandbox request was blocked, the owner could read her order and could not read another user's, the refund waited for approval and was committed once, and the repeat returned the stored result without a second commit; the reviewer is a string the caller passes and nothing authenticates it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Nine guarded steps. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the ordinary request passed, the sandbox request was blocked, the owner could read her order and could not read another user's, the refund waited for approval and was committed once, and the repeat returned the stored result without a second commit; the reviewer is a string the caller passes and nothing authenticates it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: nine guarded steps ---\n1 Your request passed the input check. No business action was executed.\n2 Request blocked by safety policy.\n3 Order ORDER-100 status: shipped\n4 Order unavailable.\n5 proposal created: True | status: pending\n6 {'error': 'approval_required'}\n7 approved by reviewer-01\n8 {'status': 'committed', 'order_id': 'ORDER-100'} | 9 repeat gives the same stored result: True | commits recorded: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A classifier that fails",
+    "headingKn": "ಪ್ರಯೋಗ 2: A classifier that fails",
+    "bodyEn": "What it ran: A classifier that fails. What the lab concluded: fail closed sent the request to review and fail open let it through unchecked; which one is right depends on the action, and for anything with side effects an error must not quietly become permission",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A classifier that fails. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): fail closed sent the request to review and fail open let it through unchecked; which one is right depends on the action, and for anything with side effects an error must not quietly become permission"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a classifier that fails ---\nfail closed: Request sent for review.\nfail open:   Your request passed the input check. No business action was executed."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Repeated denials escalate the session",
+    "headingKn": "ಪ್ರಯೋಗ 3: Repeated denials escalate the session",
+    "bodyEn": "What it ran: Repeated denials escalate the session. What the lab concluded: the third denied attempt escalated the session and after that even the permitted read was refused; three is an arbitrary number chosen for the demonstration and a real threshold has to come from threat modelling and from how legitimate users behave",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Repeated denials escalate the session. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the third denied attempt escalated the session and after that even the permitted read was refused; three is an arbitrary number chosen for the demonstration and a real threshold has to come from threat modelling and from how legitimate users behave"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: repeated denials escalate the session ---\nattempt 1: permission denied | blocked attempts: 1 | escalated: False\nattempt 2: permission denied | blocked attempts: 2 | escalated: False\nattempt 3: permission denied | blocked attempts: 3 | escalated: True\nattempt 4: permission denied | blocked attempts: 3 | escalated: True\nread order now: Permission denied."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: An identity derived only from the content",
+    "headingKn": "ಪ್ರಯೋಗ 4: An identity derived only from the content",
+    "bodyEn": "What it ran: An identity derived only from the content. What the lab concluded: two genuinely separate identical requests collapsed into one proposal, which is right for a retry and wrong for two deliberate refunds, so a real system needs an operation id supplied by the caller and enforced where the commit happens",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An identity derived only from the content. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): two genuinely separate identical requests collapsed into one proposal, which is right for a retry and wrong for two deliberate refunds, so a real system needs an operation id supplied by the caller and enforced where the commit happens"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: an identity derived only from the content ---\ntwo separate refund requests for the same order, ids: bb4e01e4f2a7 bb4e01e4f2a7 | proposals stored: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A dialog rail on a confirmation",
+    "headingKn": "ಪ್ರಯೋಗ 5: A dialog rail on a confirmation",
+    "bodyEn": "What it ran: A dialog rail on a confirmation. What the lab concluded: the rail refused to say confirmed until the booking was marked verified, so the user's claim that it had already been checked changes nothing; this is a hand-written state check and not NeMo Guardrails or Colang, which were not run",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A dialog rail on a confirmation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the rail refused to say confirmed until the booking was marked verified, so the user's claim that it had already been checked changes nothing; this is a hand-written state check and not NeMo Guardrails or Colang, which were not run"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a dialog rail on a confirmation ---\nbefore verification: I cannot confirm yet: the booking has not been verified.\nafter verification:  Your appointment is confirmed."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Output checked after an allowed input",
+    "headingKn": "ಪ್ರಯೋಗ 6: Output checked after an allowed input",
+    "bodyEn": "What it ran: Output checked after an allowed input. What the lab concluded: the input passed and the generated text was stopped, which shows two checkpoints on one request; the keyword match would miss any secret written without the phrase",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Output checked after an allowed input. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the input passed and the generated text was stopped, which shows two checkpoints on one request; the keyword match would miss any secret written without the phrase"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: output checked after an allowed input ---\ninput: allow | output: block"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: The unit tests",
+    "headingKn": "ಪ್ರಯೋಗ 7: The unit tests",
+    "bodyEn": "What it ran: The unit tests. What the lab concluded: the tests cover a safe input, a blocked input, another user's order, a commit before approval, a repeated commit and a classifier error on this lab's own agent, and they prove nothing about a real attacker",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The unit tests. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the tests cover a safe input, a blocked input, another user's order, a commit before approval, a repeated commit and a classifier error on this lab's own agent, and they prove nothing about a real attacker"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely running: the unit tests ---\nran 6 tests | failures 0 | errors 0 | passed True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

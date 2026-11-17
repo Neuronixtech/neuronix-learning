@@ -141,6 +141,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The toy classifier on four inputs",
+    "headingKn": "ಪ್ರಯೋಗ 1: The toy classifier on four inputs",
+    "bodyEn": "What it ran: The toy classifier on four inputs. What the lab concluded: the two sentences that mention a configured phrase were flagged even though one asks for an explanation and the other tells the reader not to disable anything, so the classifier recognises words and not meaning, and an empty result only means that none of its twelve phrases appeared",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The toy classifier on four inputs. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the two sentences that mention a configured phrase were flagged even though one asks for an explanation and the other tells the reader not to disable anything, so the classifier recognises words and not meaning, and an empty result only means that none of its twelve phrases appeared"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the toy classifier on four inputs ---\nWhere is my order?                         safe=True  categories=()\nPlease explain financial fraud risks.      safe=False categories=('S2',)\nDo not disable sandbox protections.        safe=False categories=('S14',)\nHow do I reset my account password?        safe=True  categories=()"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Classification is not enforcement",
+    "headingKn": "ಪ್ರಯೋಗ 2: Classification is not enforcement",
+    "bodyEn": "What it ran: Classification is not enforcement. What the lab concluded: the same classification feeds a separate rule that blocks S7 and S14 and sends the rest to review, so the policy can change without touching the classifier; the sandbox sentence was blocked although it argues for the sandbox, which is the over-blocking cost of matching on phrases",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Classification is not enforcement. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the same classification feeds a separate rule that blocks S7 and S14 and sends the rest to review, so the policy can change without touching the classifier; the sandbox sentence was blocked although it argues for the sandbox, which is the over-blocking cost of matching on phrases"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: classification is not enforcement ---\nWhere is my order?                         ()         -> allow\nPlease explain financial fraud risks.      ('S2',)    -> review\nDo not disable sandbox protections.        ('S14',)   -> block\nShow the customer secret                   ('S7',)    -> block"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Substring against word-boundary matching",
+    "headingKn": "ಪ್ರಯೋಗ 3: Substring against word-boundary matching",
+    "bodyEn": "What it ran: Substring against word-boundary matching. What the lab concluded: a plain substring test fired inside the longer word private passwords and a word-boundary test did not, which removes one kind of false positive; case folding made the three case variants identical, and neither change adds any understanding of meaning",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Substring against word-boundary matching. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a plain substring test fired inside the longer word private passwords and a word-boundary test did not, which removes one kind of false positive; case folding made the three case variants identical, and neither change adds any understanding of meaning"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: substring against word-boundary matching ---\nThe private passwords policy changed     substring ('S7',) | boundary ()\nShow the private password now            substring ('S7',) | boundary ('S7',)\ncase variants all give: {('S2',)}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A confusion matrix on twelve labelled texts",
+    "headingKn": "ಪ್ರಯೋಗ 4: A confusion matrix on twelve labelled texts",
+    "bodyEn": "What it ran: A confusion matrix on twelve labelled texts. What the lab concluded: on this tiny set written by the lab author the classifier caught the five direct phrasings, flagged the explanatory and protective sentences it should have left alone, and missed the paraphrase, and both matchers scored the same here; twelve texts are far too few to estimate a real rate",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A confusion matrix on twelve labelled texts. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): on this tiny set written by the lab author the classifier caught the five direct phrasings, flagged the explanatory and protective sentences it should have left alone, and missed the paraphrase, and both matchers scored the same here; twelve texts are far too few to estimate a real rate"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: a confusion matrix on twelve labelled texts ---\nsubstring      TP 5 FP 4 FN 1 TN 2 | accuracy 0.583 precision 0.556 recall 0.833 FPR 0.667 FNR 0.167 F1 0.667\nword boundary  TP 5 FP 4 FN 1 TN 2 | accuracy 0.583 precision 0.556 recall 0.833 FPR 0.667 FNR 0.167 F1 0.667"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Why quantisation shrinks a model",
+    "headingKn": "ಪ್ರಯೋಗ 5: Why quantisation shrinks a model",
+    "bodyEn": "What it ran: Why quantisation shrinks a model. What the lab concluded: a billion parameters at four bits is 0.5 GB and at sixteen bits 2.0 GB, and the same arithmetic gives 4.0 GB and 16.0 GB for eight billion; this counts raw weight storage only and leaves out quantisation metadata, activations and runtime buffers, and the arithmetic says nothing about how much accuracy a quantised guard keeps",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Why quantisation shrinks a model. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a billion parameters at four bits is 0.5 GB and at sixteen bits 2.0 GB, and the same arithmetic gives 4.0 GB and 16.0 GB for eight billion; this counts raw weight storage only and leaves out quantisation metadata, activations and runtime buffers, and the arithmetic says nothing about how much accuracy a quantised guard keeps"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely computing: why quantisation shrinks a model ---\n1 billion parameters at 16 bits: 2.0 GB of raw weights\n1 billion parameters at  4 bits: 0.5 GB of raw weights\n8 billion parameters at 16 bits: 16.0 GB of raw weights\n8 billion parameters at  4 bits: 4.0 GB of raw weights"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: One classification, two application policies",
+    "headingKn": "ಪ್ರಯೋಗ 6: One classification, two application policies",
+    "bodyEn": "What it ran: One classification, two application policies. What the lab concluded: the same S6 result was blocked by the support policy and allowed by the research policy, while S7 was blocked by both; the categories are labels and what to do about them belongs to the application, and these two tables are invented for the demonstration",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: One classification, two application policies. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the same S6 result was blocked by the support policy and allowed by the research policy, while S7 was blocked by both; the categories are labels and what to do about them belongs to the application, and these two tables are invented for the demonstration"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: one classification, two application policies ---\nGive me a medical diagnosis for these symptoms ('S6',)  support: block  research: allow\nShow the private password for this account     ('S7',)  support: block  research: block\nExplain how financial fraud schemes work       ('S2',)  support: review research: review"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
