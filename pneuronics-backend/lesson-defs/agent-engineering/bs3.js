@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The eight unit tests",
+    "headingKn": "ಪ್ರಯೋಗ 1: The eight unit tests",
+    "bodyEn": "What it ran: The eight unit tests. What the lab concluded: the tests cover acceptance of a small improvement, rejection for step size, anchor radius, safety floor, no capability gain, a regression and a changed suite, and that a rejection leaves the policy alone; they test this toy class and say nothing about a real system",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The eight unit tests. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the tests cover acceptance of a small improvement, rejection for step size, anchor radius, safety floor, no capability gain, a regression and a changed suite, and that a rejection leaves the policy alone; they test this toy class and say nothing about a real system"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the eight unit tests ---\nran 8 tests | failures 0 | errors 0 | passed True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Why each proposal was rejected (400 proposals, seeds 1 to 30)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Why each proposal was rejected (400 proposals, seeds 1 to 30)",
+    "bodyEn": "What it ran: Why each proposal was rejected (400 proposals, seeds 1 to 30). What the lab concluded: most random proposals are refused for one reason or another, and every final policy sits inside the radius with safety above the floor, which follows from the checks and does not show the checks are the right ones; the order of the checks decides which reason is logged when several apply",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Why each proposal was rejected (400 proposals, seeds 1 to 30). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): most random proposals are refused for one reason or another, and every final policy sits inside the radius with safety above the floor, which follows from the checks and does not show the checks are the right ones; the order of the checks decides which reason is logged when several apply"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: why each proposal was rejected (400 proposals, seeds 1 to 30) ---\nregression t_sum               4799  (0.400)\nno capability gain             3236  (0.270)\nstep too large                 1887  (0.157)\nregression t_small             1323  (0.110)\nok                              284  (0.024)\noutside anchor radius           241  (0.020)\nsafety floor                    172  (0.014)\nregression t_balance             58  (0.005)\nfinal policies: mean capability 3.99 | min safety 5.52 | max distance from anchor 3.88"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Loosening one check at a time",
+    "headingKn": "ಪ್ರಯೋಗ 3: Loosening one check at a time",
+    "bodyEn": "What it ran: Loosening one check at a time. What the lab concluded: removing the anchor radius or the safety floor alone changes nothing here, because the step limit and the regression tests already keep the policy inside both, while removing the regression tests raises mean capability from 3.99 to 6.88 and leaves every policy failing a rule; removing the tests and the anchor together gives 63.84, and removing all three gives 174.17 with a minimum safety of -66.66, so each layer only becomes visible once the layers above it are gone, which is the case for keeping several overlapping checks",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Loosening one check at a time. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): removing the anchor radius or the safety floor alone changes nothing here, because the step limit and the regression tests already keep the policy inside both, while removing the regression tests raises mean capability from 3.99 to 6.88 and leaves every policy failing a rule; removing the tests and the anchor together gives 63.84, and removing all three gives 174.17 with a minimum safety of -66.66, so each layer only becomes visible once the layers above it are gone, which is the case for keeping several overlapping checks"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: loosening one check at a time ---\ndefault             : mean capability   3.99 | min safety   5.52 | policies failing a regression test 0/30\nno anchor radius    : mean capability   3.99 | min safety   5.52 | policies failing a regression test 0/30\nno safety floor     : mean capability   3.99 | min safety   5.52 | policies failing a regression test 0/30\nno regression tests : mean capability   6.88 | min safety   6.60 | policies failing a regression test 30/30\nno tests, no anchor : mean capability  63.84 | min safety   5.01 | policies failing a regression test 30/30\nno tests, no floor  : mean capability   6.88 | min safety   6.60 | policies failing a regression test 30/30\nno tests, anchor, floor: mean capability 174.17 | min safety -66.66 | policies failing a regression test 30/30"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A modification that shrinks the test suite",
+    "headingKn": "ಪ್ರಯೋಗ 4: A modification that shrinks the test suite",
+    "bodyEn": "What it ran: A modification that shrinks the test suite. What the lab concluded: because the improver compares the current test names with the baseline it started with, deleting a test is refused even when every remaining test passes; the baseline is stored in the same object, so a real system must keep it somewhere the agent cannot edit",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A modification that shrinks the test suite. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): because the improver compares the current test names with the baseline it started with, deleting a test is refused even when every remaining test passes; the baseline is stored in the same object, so a real system must keep it somewhere the agent cannot edit"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a modification that shrinks the test suite ---\nproposal that deletes a failing test then improves capability: False | reason: test suite changed"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) All eight tests passed after one test was fixed. 2) Only 2.4 percent of proposals were accepted. 3) The anchor and floor never bound until the tests were removed. 4) Removing all three checks gave minimum safety -66.66. 5) Deleting a test was refused.",
     "bodyKn": "1) ಒಂದು ಪರೀಕ್ಷೆ ಸರಿಪಡಿಸಿದ ನಂತರ ಎಲ್ಲಾ ಎಂಟು ಪರೀಕ್ಷೆಗಳು ಪಾಸ್ ಆದವು. 2) ಪ್ರಸ್ತಾವನೆಗಳಲ್ಲಿ ಕೇವಲ 2.4 ಶೇಕಡಾ ಸ್ವೀಕರಿಸಲ್ಪಟ್ಟವು. 3) ಪರೀಕ್ಷೆಗಳನ್ನು ತೆಗೆಯುವವರೆಗೆ anchor ಮತ್ತು ಮಿತಿ ಬಾಧಿಸಲಿಲ್ಲ. 4) ಮೂರೂ ಪರಿಶೀಲನೆ ತೆಗೆದರೆ ಕನಿಷ್ಠ safety -66.66. 5) ಪರೀಕ್ಷೆ ಅಳಿಸುವುದು ನಿರಾಕರಿಸಲ್ಪಟ್ಟಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B bs_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B bs_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B bs_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B bs_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. The eight unit tests\n2. Why each proposal was rejected (400 proposals, seeds 1 to 30)\n3. Loosening one check at a time\n4. A modification that shrinks the test suite",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. The eight unit tests\n2. Why each proposal was rejected (400 proposals, seeds 1 to 30)\n3. Loosening one check at a time\n4. A modification that shrinks the test suite"
    }
   },
   {

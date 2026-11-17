@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: An unchecked policy against one with invariants (200 steps, seeds 1 to 30)",
+    "headingKn": "ಪ್ರಯೋಗ 1: An unchecked policy against one with invariants (200 steps, seeds 1 to 30)",
+    "bodyEn": "What it ran: An unchecked policy against one with invariants (200 steps, seeds 1 to 30). What the lab concluded: with the rules checked before each modification is accepted the final policy stays inside them in every run, and without them the steady upward push carries most runs past the limits; the proposer, the push and the limits are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An unchecked policy against one with invariants (200 steps, seeds 1 to 30). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with the rules checked before each modification is accepted the final policy stays inside them in every run, and without them the steady upward push carries most runs past the limits; the proposer, the push and the limits are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: an unchecked policy against one with invariants (200 steps, seeds 1 to 30) ---\nno invariants   : final policy broke a rule in 30/30 runs | mean accepted 200 | mean rejected by invariants 0 | mean largest parameter 5.83\nwith invariants : final policy broke a rule in 0/30 runs | mean accepted 129 | mean rejected by invariants 71 | mean largest parameter 0.88"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Distance from the anchor over time (no anchor, seeds 1 to 30)",
+    "headingKn": "ಪ್ರಯೋಗ 2: Distance from the anchor over time (no anchor, seeds 1 to 30)",
+    "bodyEn": "What it ran: Distance from the anchor over time (no anchor, seeds 1 to 30). What the lab concluded: without an anchor the distance from the starting policy grows with the number of modifications, because the push accumulates and the noise random-walks; a policy that has changed a little each time can end up far from where it began",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Distance from the anchor over time (no anchor, seeds 1 to 30). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): without an anchor the distance from the starting policy grows with the number of modifications, because the push accumulates and the noise random-walks; a policy that has changed a little each time can end up far from where it began"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: distance from the anchor over time (no anchor, seeds 1 to 30) ---\nafter  20 steps: mean distance from the starting policy 1.25 | max 2.09\nafter 100 steps: mean distance from the starting policy 4.71 | max 6.30\nafter 400 steps: mean distance from the starting policy 16.69 | max 19.81"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: An anchor radius (400 steps, invariants on, seeds 1 to 30)",
+    "headingKn": "ಪ್ರಯೋಗ 3: An anchor radius (400 steps, invariants on, seeds 1 to 30)",
+    "bodyEn": "What it ran: An anchor radius (400 steps, invariants on, seeds 1 to 30). What the lab concluded: radii of 3.0 and above change nothing because the invariants already keep the policy within about 1.3 of the start, while a radius of 0.5 holds the final distance to 0.43 and rejects 176.4 modifications per run, yet the policy still accepts 217.9 modifications because it can move back and forth inside the radius; the choice of radius trades safety against room to improve",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An anchor radius (400 steps, invariants on, seeds 1 to 30). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): radii of 3.0 and above change nothing because the invariants already keep the policy within about 1.3 of the start, while a radius of 0.5 holds the final distance to 0.43 and rejects 176.4 modifications per run, yet the policy still accepts 217.9 modifications because it can move back and forth inside the radius; the choice of radius trades safety against room to improve"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: an anchor radius (400 steps, invariants on, seeds 1 to 30) ---\nradius None: mean final distance 1.32 | mean modifications accepted  248.8 | rejected by the anchor    0.0\nradius 3.0 : mean final distance 1.32 | mean modifications accepted  248.8 | rejected by the anchor    0.0\nradius 1.5 : mean final distance 1.26 | mean modifications accepted  250.6 | rejected by the anchor    4.7\nradius 0.5 : mean final distance 0.43 | mean modifications accepted  217.9 | rejected by the anchor  176.4"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: What the invariants reject, one example",
+    "headingKn": "ಪ್ರಯೋಗ 4: What the invariants reject, one example",
+    "bodyEn": "What it ran: What the invariants reject, one example. What the lab concluded: candidates that push any parameter over 1.0, the sum over 2.5 or a single step over 0.3 are refused outright and the policy stays where it was; the rules are examples and say nothing about which rules a real system needs",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What the invariants reject, one example. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): candidates that push any parameter over 1.0, the sum over 2.5 or a single step over 0.3 are refused outright and the policy stays where it was; the rules are examples and say nothing about which rules a real system needs"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: what the invariants reject, one example ---\ncandidate [1.02, 1.1, 0.63, 0.22] | max 1.10 | sum 2.97 | accepted: False\ncandidate [0.96, 1.03, 0.76, 0.29] | max 1.03 | sum 3.04 | accepted: False\ncandidate [1.15, 1.07, 0.69, 0.27] | max 1.15 | sum 3.19 | accepted: False\ncandidate [0.88, 1.14, 0.7, 0.3] | max 1.14 | sum 3.02 | accepted: False"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Without invariants 30 of 30 runs broke a rule. 2) With them 0 did. 3) Unchecked drift reached 16.69 after 400 steps. 4) Radius 0.5 held the distance to 0.43. 5) Radius 3.0 added nothing here.",
     "bodyKn": "1) invariants ಇಲ್ಲದೆ 30 ರಲ್ಲಿ 30 ಓಟಗಳು ನಿಯಮ ಮುರಿದವು. 2) ಅವುಗಳೊಂದಿಗೆ 0. 3) ಪರಿಶೀಲಿಸದ drift 400 ಹಂತ ನಂತರ 16.69 ತಲುಪಿತು. 4) ತ್ರಿಜ್ಯ 0.5 ದೂರವನ್ನು 0.43 ಕ್ಕೆ ಹಿಡಿಯಿತು. 5) ತ್ರಿಜ್ಯ 3.0 ಇಲ್ಲಿ ಏನೂ ಸೇರಿಸಲಿಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B bs_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B bs_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B bs_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B bs_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. An unchecked policy against one with invariants (200 steps, seeds 1 to 30)\n2. Distance from the anchor over time (no anchor, seeds 1 to 30)\n3. An anchor radius (400 steps, invariants on, seeds 1 to 30)\n4. What the invariants reject, one example",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. An unchecked policy against one with invariants (200 steps, seeds 1 to 30)\n2. Distance from the anchor over time (no anchor, seeds 1 to 30)\n3. An anchor radius (400 steps, invariants on, seeds 1 to 30)\n4. What the invariants reject, one example"
    }
   },
   {

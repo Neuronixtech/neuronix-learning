@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Three acceptance rules (300 proposals, seeds 1 to 30, start capability 0.0 and safety 5.0)",
+    "headingKn": "ಪ್ರಯೋಗ 1: Three acceptance rules (300 proposals, seeds 1 to 30, start capability 0.0 and safety 5.0)",
+    "bodyEn": "What it ran: Three acceptance rules (300 proposals, seeds 1 to 30, start capability 0.0 and safety 5.0). What the lab concluded: accepting any capability gain buys the most capability and lets safety fall furthest, the weighted sum is in between and can trade a large safety loss for a large capability gain, and requiring that safety never drops keeps safety at or above its start while accepting fewer modifications; the tradeoff built into the proposals is invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Three acceptance rules (300 proposals, seeds 1 to 30, start capability 0.0 and safety 5.0). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): accepting any capability gain buys the most capability and lets safety fall furthest, the weighted sum is in between and can trade a large safety loss for a large capability gain, and requiring that safety never drops keeps safety at or above its start while accepting fewer modifications; the tradeoff built into the proposals is invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: three acceptance rules (300 proposals, seeds 1 to 30, start capability 0.0 and safety 5.0) ---\ncapability only                       : mean capability   212.5 | mean safety   -76.4 | worst safety   -97.5 | mean modifications accepted 207.8\nweighted sum (0.5/0.5)                : mean capability   165.4 | mean safety    14.6 | worst safety    -3.8 | mean modifications accepted 187.9\ncapability gain, safety may not drop  : mean capability    52.2 | mean safety    41.6 | worst safety    31.0 | mean modifications accepted  67.7"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The weight in a weighted sum",
+    "headingKn": "ಪ್ರಯೋಗ 2: The weight in a weighted sum",
+    "bodyEn": "What it ran: The weight in a weighted sum. What the lab concluded: shifting the weight moves the outcome along the tradeoff, and a weighted sum has no point at which it refuses a modification outright, so any safety loss can be bought back with enough capability; the weights are not derived from anything",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The weight in a weighted sum. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): shifting the weight moves the outcome along the tradeoff, and a weighted sum has no point at which it refuses a modification outright, so any safety loss can be bought back with enough capability; the weights are not derived from anything"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: the weight in a weighted sum ---\nweight on capability 0.2: mean capability    49.6 | mean safety    80.1\nweight on capability 0.5: mean capability   165.4 | mean safety    14.6\nweight on capability 0.8: mean capability   209.9 | mean safety   -56.6"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A floor that allows small drops",
+    "headingKn": "ಪ್ರಯೋಗ 3: A floor that allows small drops",
+    "bodyEn": "What it ran: A floor that allows small drops. What the lab concluded: letting each step lose a little safety compounds over many steps, so a per-step tolerance that looks small can add up to a large total loss; an absolute floor on the safety score is a different rule and is tried next",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A floor that allows small drops. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): letting each step lose a little safety compounds over many steps, so a per-step tolerance that looks small can add up to a large total loss; an absolute floor on the safety score is a different rule and is tried next"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: a floor that allows small drops ---\nlargest allowed single-step safety drop 0.0: mean capability    52.2 | mean final safety    41.6\nlargest allowed single-step safety drop 0.2: mean capability    68.1 | mean final safety    39.9\nlargest allowed single-step safety drop 0.5: mean capability    97.9 | mean final safety    29.1\nlargest allowed single-step safety drop 1.0: mean capability   134.2 | mean final safety     3.1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: An absolute safety floor of 4.0",
+    "headingKn": "ಪ್ರಯೋಗ 4: An absolute safety floor of 4.0",
+    "bodyEn": "What it ran: An absolute safety floor of 4.0. What the lab concluded: with an absolute floor the loop can still spend safety above the floor but cannot cross it, so final safety is bounded below by construction; the floor value is invented and picking it for a real system is a hard judgment",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An absolute safety floor of 4.0. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with an absolute floor the loop can still spend safety above the floor but cannot cross it, so final safety is bounded below by construction; the floor value is invented and picking it for a real system is a hard judgment"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: an absolute safety floor of 4.0 ---\nper-step drop up to 1.0 but safety never below 4.0: mean capability   127.3 | min final safety 4.15 | mean accepted 142.4"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Capability-only acceptance ended with mean safety -76.4. 2) The weighted sum left a worst safety of -3.8. 3) The no-drop rule held worst safety at 31.0. 4) A drop of 1.0 per step compounded to mean safety 3.1. 5) An absolute floor held minimum safety at 4.15.",
     "bodyKn": "1) capability-ಮಾತ್ರ ಸ್ವೀಕಾರ ಸರಾಸರಿ safety -76.4 ನಲ್ಲಿ ಕೊನೆಗೊಂಡಿತು. 2) ತೂಕದ ಮೊತ್ತ ಕೆಟ್ಟ safety -3.8 ಬಿಟ್ಟಿತು. 3) ಇಳಿಕೆ-ಇಲ್ಲದ ನಿಯಮ ಕೆಟ್ಟ safety ಅನ್ನು 31.0 ರಲ್ಲಿ ಹಿಡಿಯಿತು. 4) ಪ್ರತಿ ಹಂತಕ್ಕೆ 1.0 ಇಳಿಕೆ ಸಂಯೋಜಿತವಾಗಿ ಸರಾಸರಿ safety 3.1 ಆಯಿತು. 5) ಸಂಪೂರ್ಣ ಮಿತಿ ಕನಿಷ್ಠ safety ಅನ್ನು 4.15 ರಲ್ಲಿ ಹಿಡಿಯಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B bs_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B bs_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B bs_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B bs_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. Three acceptance rules (300 proposals, seeds 1 to 30, start capability 0.0 and safety 5.0)\n2. The weight in a weighted sum\n3. A floor that allows small drops\n4. An absolute safety floor of 4.0",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. Three acceptance rules (300 proposals, seeds 1 to 30, start capability 0.0 and safety 5.0)\n2. The weight in a weighted sum\n3. A floor that allows small drops\n4. An absolute safety floor of 4.0"
    }
   },
   {
