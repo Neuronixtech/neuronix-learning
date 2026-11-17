@@ -1,0 +1,6 @@
+// Hand-written third practice problem for each rebuilt Phase 18 lesson in module 334, keyed "module.lessonIndex": [English, Kannada].
+module.exports = {
+  '334.0': [`add an alias table with three explicit aliases such as ai research automation, then show that those aliases resolve while an unlisted phrase still exits with code 1.`, `ai research automation ನಂತಹ ಮೂರು ಸ್ಪಷ್ಟ aliases ಇರುವ alias ಟೇಬಲ್ ಸೇರಿಸಿ, ನಂತರ ಆ aliases ಪರಿಹಾರವಾಗುತ್ತವೆ ಮತ್ತು ಪಟ್ಟಿ ಮಾಡದ ಪದಗುಚ್ಛ ಇನ್ನೂ ಕೋಡ್ 1 ರಲ್ಲಿ ನಿರ್ಗಮಿಸುತ್ತದೆ ಎಂದು ತೋರಿಸಿ.`],
+  '334.1': [`extend the chance simulation to a gap threshold of 0.10 and 0.30, report the false-alarm share for two identical models at 25 and 100 tasks per side, and say which threshold you would choose and why.`, `ಅವಕಾಶ ಸಿಮ್ಯುಲೇಶನ್ ಅನ್ನು 0.10 ಮತ್ತು 0.30 ಅಂತರ ಮಿತಿಗೆ ವಿಸ್ತರಿಸಿ, ಪ್ರತಿ ಬದಿಗೆ 25 ಮತ್ತು 100 ಕಾರ್ಯಗಳಲ್ಲಿ ಒಂದೇ ರೀತಿಯ ಎರಡು ಮಾದರಿಗಳ ತಪ್ಪು-ಎಚ್ಚರಿಕೆ ಪಾಲು ವರದಿ ಮಾಡಿ, ಮತ್ತು ನೀವು ಯಾವ ಮಿತಿ ಆರಿಸುತ್ತೀರಿ ಹಾಗೂ ಏಕೆ ಹೇಳಿ.`],
+  '334.2': [`add a symlink to an allowed file inside a temporary directory, test whether is_allowed_resolved is fooled, and report what a check using Path.resolve would do differently.`, `temporary ಡೈರೆಕ್ಟರಿಯೊಳಗೆ ಅನುಮತಿಸಿದ ಫೈಲ್‌ಗೆ symlink ಸೇರಿಸಿ, is_allowed_resolved ಮೋಸಹೋಗುತ್ತದೆಯೇ ಪರೀಕ್ಷಿಸಿ, ಮತ್ತು Path.resolve ಬಳಸುವ ಪರಿಶೀಲನೆ ಹೇಗೆ ಬೇರೆ ಮಾಡುತ್ತದೆ ವರದಿ ಮಾಡಿ.`],
+};
