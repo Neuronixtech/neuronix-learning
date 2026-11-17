@@ -145,6 +145,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: An allowed-files check against several spellings",
+    "headingKn": "ಪ್ರಯೋಗ 1: An allowed-files check against several spellings",
+    "bodyEn": "What it ran: An allowed-files check against several spellings. What the lab concluded: both checks allowed the real file and denied the monitoring file, the doubled slash and the leading dot were normalised to the allowed name, a path that climbs out and back to the allowed file was denied by the string check and allowed once the path was resolved, and the upper-case spelling was denied by both; this is a string comparison and says nothing about symlinks or file permissions, which were not tested",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An allowed-files check against several spellings. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both checks allowed the real file and denied the monitoring file, the doubled slash and the leading dot were normalised to the allowed name, a path that climbs out and back to the allowed file was denied by the string check and allowed once the path was resolved, and the upper-case spelling was denied by both; this is a string comparison and says nothing about symlinks or file permissions, which were not tested"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: an allowed-files check against several spellings ---\npath                               lesson check  resolved check\nsrc/application.py                 ALLOW         ALLOW\nconfig/monitoring.yaml             DENY          DENY\nsrc//application.py                ALLOW         ALLOW\n./src/application.py               ALLOW         ALLOW\nsrc/../config/monitoring.yaml      DENY          DENY\nsrc/../src/application.py          DENY          ALLOW\n/etc/passwd                        DENY          DENY\nSRC/application.py                 DENY          DENY"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: An attempt on a file outside the scope",
+    "headingKn": "ಪ್ರಯೋಗ 2: An attempt on a file outside the scope",
+    "bodyEn": "What it ran: An attempt on a file outside the scope. What the lab concluded: the in-scope edit was allowed and the monitoring file was denied with a record and an escalation step; the denial does not prove deceptive behaviour, since the agent may have misunderstood the task, and the event is only worth anything if the agent cannot edit the place that stores it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An attempt on a file outside the scope. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the in-scope edit was allowed and the monitoring file was denied with a record and an escalation step; the denial does not prove deceptive behaviour, since the agent may have misunderstood the task, and the event is only worth anything if the agent cannot edit the place that stores it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: an attempt on a file outside the scope ---\nsrc/application.py -> ALLOW\nconfig/monitoring.yaml -> DENY\n{\"action\": \"preserve evidence and escalate for review\", \"decision\": \"DENY\", \"path\": \"config/monitoring.yaml\"}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Capturing evidence from three commands",
+    "headingKn": "ಪ್ರಯೋಗ 3: Capturing evidence from three commands",
+    "bodyEn": "What it ran: Capturing evidence from three commands. What the lab concluded: the successful run, the failing run and the run that exceeded its timeout all produced a record with their own exit status, and the failing one kept its exit code 3 and its partial output instead of being reported as a success; a clean exit code alone does not show that the program's decisions were right",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Capturing evidence from three commands. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the successful run, the failing run and the run that exceeded its timeout all produced a record with their own exit status, and the failing one kept its exit code 3 and its partial output instead of being reported as a success; a clean exit code alone does not show that the program's decisions were right"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: capturing evidence from three commands ---\nprints and exits 0   exit_code=0     timed_out=False stdout='ok'       sha256=dc51b8c96c2d\nexits with code 3    exit_code=3     timed_out=False stdout='partial'  sha256=95aebb28195b\nruns too long        exit_code=None  timed_out=True  stdout=''         sha256=None"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A source record counts as verified only with a hash and a verifier",
+    "headingKn": "ಪ್ರಯೋಗ 4: A source record counts as verified only with a hash and a verifier",
+    "bodyEn": "What it ran: A source record counts as verified only with a hash and a verifier. What the lab concluded: only the record with both a named verifier and a matching hash counted as verified, and the document that changed after review no longer did; a matching hash shows the bytes are the ones reviewed and does not show the reviewer read them correctly",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A source record counts as verified only with a hash and a verifier. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): only the record with both a named verifier and a matching hash counted as verified, and the document that changed after review no longer did; a matching hash shows the bytes are the ones reviewed and does not show the reviewer read them correctly"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a source record counts as verified only with a hash and a verifier ---\nhash matches and a verifier is named: True\nhash matches, nobody named: False\nverifier named, document has changed since: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The unit tests",
+    "headingKn": "ಪ್ರಯೋಗ 5: The unit tests",
+    "bodyEn": "What it ran: The unit tests. What the lab concluded: the tests cover an allowed path, a denied path, a traversal spelling, the roundabout spelling of an allowed file, an exit code that is kept and a timeout that is recorded, on this lab's own functions",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The unit tests. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the tests cover an allowed path, a denied path, a traversal spelling, the roundabout spelling of an allowed file, an exit code that is kept and a timeout that is recorded, on this lab's own functions"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: the unit tests ---\nran 6 tests | failures 0 | errors 0 | passed True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -202,6 +285,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The roundabout spelling of an allowed file was denied by one check and allowed by the other. 2) A denied edit was recorded and escalated, not called deception. 3) Exit code 3 and a timeout were kept as such. 4) A source needed a verifier and a matching hash. 5) None of this tests symlinks.",
     "bodyKn": "1) ಅನುಮತಿಸಿದ ಫೈಲ್‌ನ ಸುತ್ತುಬಳಸಿ ಕಾಗುಣಿತ ಒಂದು ಪರಿಶೀಲನೆಯಿಂದ ನಿರಾಕರಿಸಲ್ಪಟ್ಟು ಇನ್ನೊಂದರಿಂದ ಅನುಮತಿಸಲ್ಪಟ್ಟಿತು. 2) ನಿರಾಕರಿಸಿದ ಸಂಪಾದನೆ ದಾಖಲಿಸಿ ಉಲ್ಬಣಗೊಳಿಸಲಾಯಿತು, ವಂಚನೆ ಎನ್ನಲಿಲ್ಲ. 3) ನಿರ್ಗಮನ ಕೋಡ್ 3 ಮತ್ತು ಸಮಯ ಮೀರುವಿಕೆ ಹಾಗೆಯೇ ಉಳಿದವು. 4) ಮೂಲಕ್ಕೆ ಪರಿಶೀಲಕ ಮತ್ತು ಹೊಂದುವ hash ಬೇಕಿತ್ತು. 5) ಇದರಲ್ಲಿ ಯಾವುದೂ symlinks ಪರೀಕ್ಷಿಸುವುದಿಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B pf_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B pf_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B pf_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B pf_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

@@ -141,6 +141,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The command line",
+    "headingKn": "ಪ್ರಯೋಗ 1: The command line",
+    "bodyEn": "What it ran: The command line. What the lab concluded: the input was normalised to long_range_autonomy, each framework kept its own classification and trigger word, and the last two lines say that no threshold was assessed and nothing was authorised; the three classifications are the lesson's description and have not been checked against the source documents",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The command line. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the input was normalised to long_range_autonomy, each framework kept its own classification and trigger word, and the last two lines say that no threshold was assessed and nothing was authorised; the three classifications are the lesson's description and have not been checked against the source documents"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the command line ---\n--list exit 0\nai_rd_automation\nai_self_improvement\nautonomous_replication\ncyber_uplift\nlong_range_autonomy\nsandbagging\nundermining_safeguards\n--capability 'Long Range Autonomy' exit 0\nCapability: long_range_autonomy\nDescription: Sustained goal-directed activity across extended tasks.\nOPENAI\n  Classification: Research Category\n  Trigger: no_category_automatic_trigger\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: JSON output and the full set",
+    "headingKn": "ಪ್ರಯೋಗ 2: JSON output and the full set",
+    "bodyEn": "What it ran: JSON output and the full set. What the lab concluded: the JSON carries the same boundary fields and the full set holds 7 capabilities and 21 entries, and sources_verified is false in every report because no cell has been compared with the original text",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: JSON output and the full set. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the JSON carries the same boundary fields and the full set holds 7 capabilities and 21 entries, and sources_verified is false in every report because no cell has been compared with the original text"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: JSON output and the full set ---\nexit 0 | keys: ['capability', 'deployment_authorized', 'description', 'disclaimer', 'frameworks', 'sources_verified', 'threshold_crossed'] | threshold_crossed: None | sources_verified: False\n--all exit 0 | capabilities: 7 | entries: 21"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Errors and argument conflicts",
+    "headingKn": "ಪ್ರಯೋಗ 3: Errors and argument conflicts",
+    "bodyEn": "What it ran: Errors and argument conflicts. What the lab concluded: an unknown capability exited 1 and listed the supported names, the phrase AI research automation was not guessed into ai_rd_automation because there is no alias table, and conflicting or missing arguments exited 2 with a usage error; an unknown input is never turned into a low-risk answer",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Errors and argument conflicts. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an unknown capability exited 1 and listed the supported names, the phrase AI research automation was not guessed into ai_rd_automation because there is no alias table, and conflicting or missing arguments exited 2 with a usage error; an unknown input is never turned into a low-risk answer"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: errors and argument conflicts ---\n['--capability', 'robotics']               exit 1: error: Unknown capability: robotics. Supported: ai_rd_automation, ai_self_improvement, autonomous_replication, cyber_uplift, long_range_autonomy, sandbagging, undermini…\n['--capability', 'AI research automation'] exit 1: error: Unknown capability: AI research automation. Supported: ai_rd_automation, ai_self_improvement, autonomous_replication, cyber_uplift, long_range_autonomy, sandbagg…\n['--all', '--capability', 'sandbagging']   exit 2: framework_compare: error: argument --capability: not allowed with argument --all\n[]                                         exit 2: framework_compare: error: one of the arguments --list --all --capability is required"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Structural validation",
+    "headingKn": "ಪ್ರಯೋಗ 4: Structural validation",
+    "bodyEn": "What it ran: Structural validation. What the lab concluded: the complete table passed and the table with one framework removed failed by name; passing this check shows the table is well formed and says nothing about whether any entry is right",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Structural validation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the complete table passed and the table with one framework removed failed by name; passing this check shows the table is well formed and says nothing about whether any entry is right"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: structural validation ---\ncomplete table: True\none framework removed: ValueError: Incomplete framework mapping: sandbagging"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: How many cells assert nothing",
+    "headingKn": "ಪ್ರಯೋಗ 5: How many cells assert nothing",
+    "bodyEn": "What it ran: How many cells assert nothing. What the lab concluded: of the 21 cells, 7 say not_determined instead of asserting a classification, 5 are threshold dependent, 5 need a policy review and 4 say research category with no automatic trigger; leaving a cell undetermined is how the table avoids inventing an obligation it cannot source",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How many cells assert nothing. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): of the 21 cells, 7 say not_determined instead of asserting a classification, 5 are threshold dependent, 5 need a policy review and 4 say research category with no automatic trigger; leaving a cell undetermined is how the table avoids inventing an obligation it cannot source"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely counting: how many cells assert nothing ---\n{'no_category_automatic_trigger': 4, 'threshold_dependent': 5, 'requires_policy_review': 5, 'not_determined': 7}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The twelve unit tests",
+    "headingKn": "ಪ್ರಯೋಗ 6: The twelve unit tests",
+    "bodyEn": "What it ran: The twelve unit tests. What the lab concluded: the tests cover normalisation, the three-framework structure, the unknown-input error, the two boundary fields, the entry count, validation and its failure, JSON, text output and the separate self-improvement category on this lab's table, and they test the software and say nothing about the policies",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The twelve unit tests. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the tests cover normalisation, the three-framework structure, the unknown-input error, the two boundary fields, the entry count, validation and its failure, JSON, text output and the separate self-improvement category on this lab's table, and they test the software and say nothing about the policies"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: the twelve unit tests ---\nran 12 tests | failures 0 | errors 0 | passed True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

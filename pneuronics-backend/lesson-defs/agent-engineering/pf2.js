@@ -141,6 +141,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Metrics for two fictional evaluation records",
+    "headingKn": "ಪ್ರಯೋಗ 1: Metrics for two fictional evaluation records",
+    "bodyEn": "What it ran: Metrics for two fictional evaluation records. What the lab concluded: the two records give 78 and 80 percent success, 25 and 15 percent intervention and 120 and 150 dollars per task, and the threshold status stays undetermined in both because these numbers say nothing about task representativeness, a human baseline or the exact criterion",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Metrics for two fictional evaluation records. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the two records give 78 and 80 percent success, 25 and 15 percent intervention and 120 and 150 dollars per task, and the threshold status stays undetermined in both because these numbers say nothing about task representativeness, a human baseline or the exact criterion"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: metrics for two fictional evaluation records ---\nresearch-agent-demo  success 78% | intervention 25.0% | cost per task $120 | verified False | threshold undetermined\nResearchAgent-X      success 80% | intervention 15.0% | cost per task $150 | verified False | threshold undetermined"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Invalid records are refused",
+    "headingKn": "ಪ್ರಯೋಗ 2: Invalid records are refused",
+    "bodyEn": "What it ran: Invalid records are refused. What the lab concluded: a zero task count, more successes than tasks, more interventions than tasks and a negative cost were each refused before any rate was computed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Invalid records are refused. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a zero task count, more successes than tasks, more interventions than tasks and a negative cost were each refused before any rate was computed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: invalid records are refused ---\nValueError: Task count must be positive\nValueError: Invalid successful task count\nValueError: Invalid intervention count\nValueError: Cost cannot be negative"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The performance-gap detector",
+    "headingKn": "ಪ್ರಯೋಗ 3: The performance-gap detector",
+    "bodyEn": "What it ran: The performance-gap detector. What the lab concluded: gaps of 0.37 and 0.40 recommended an investigation and a gap of 0.03 or a negative gap did not, and sandbagging_proven was false in every row; a large gap is a reason to look for differences in prompts, tools or tasks as well as for strategic underperformance",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The performance-gap detector. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): gaps of 0.37 and 0.40 recommended an investigation and a gap of 0.03 or a negative gap did not, and sandbagging_proven was false in every row; a large gap is a reason to look for differences in prompts, tools or tasks as well as for strategic underperformance"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: the performance-gap detector ---\nnormal 0.88 evaluation 0.51 -> {'performance_gap': 0.37, 'investigation_recommended': True, 'sandbagging_proven': False}\nnormal 0.85 evaluation 0.45 -> {'performance_gap': 0.4, 'investigation_recommended': True, 'sandbagging_proven': False}\nnormal 0.85 evaluation 0.82 -> {'performance_gap': 0.03, 'investigation_recommended': False, 'sandbagging_proven': False}\nnormal 0.60 evaluation 0.65 -> {'performance_gap': -0.05, 'investigation_recommended': False, 'sandbagging_proven': False}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: How often chance alone gives a gap of 0.20",
+    "headingKn": "ಪ್ರಯೋಗ 4: How often chance alone gives a gap of 0.20",
+    "bodyEn": "What it ran: How often chance alone gives a gap of 0.20. What the lab concluded: with ten tasks per side two identical models at 0.85 showed a gap of 0.20 or more in 0.115 of 10000 trials, 0.023 at 25 tasks, 0.002 at 50 and none from 100, while a model that really dropped to 0.45 showed it in 0.856 of trials at ten tasks and in 0.986 at 50; the investigation threshold of 0.20 is the lab's own number, and these probabilities are written by the author",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How often chance alone gives a gap of 0.20. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with ten tasks per side two identical models at 0.85 showed a gap of 0.20 or more in 0.115 of 10000 trials, 0.023 at 25 tasks, 0.002 at 50 and none from 100, while a model that really dropped to 0.45 showed it in 0.856 of trials at ten tasks and in 0.986 at 50; the investigation threshold of 0.20 is the lab's own number, and these probabilities are written by the author"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: how often chance alone gives a gap of 0.20 ---\ntasks per side   both at 0.85    0.85 against 0.45\n            10          0.115                0.856\n            25          0.023                0.942\n            50          0.002                0.986\n           100          0.000                0.999\n           400          0.000                1.000"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Measured below the line, actually above it",
+    "headingKn": "ಪ್ರಯೋಗ 5: Measured below the line, actually above it",
+    "bodyEn": "What it ran: Measured below the line, actually above it. What the lab concluded: a measurement below the threshold would be read as below, while the real capability is above it, which is the inequality the lesson writes as measured below threshold and actual at or above it; nothing in one score reveals which situation applies, and the numbers here are chosen to show the shape of the problem",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Measured below the line, actually above it. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a measurement below the threshold would be read as below, while the real capability is above it, which is the inequality the lesson writes as measured below threshold and actual at or above it; nothing in one score reveals which situation applies, and the numbers here are chosen to show the shape of the problem"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: measured below the line, actually above it ---\nthreshold 0.6 | actual capability 0.82 | measured under evaluation 0.45 | below the line on the measurement: True | above it in fact: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A policy version diff",
+    "headingKn": "ಪ್ರಯೋಗ 6: A policy version diff",
+    "bodyEn": "What it ran: A policy version diff. What the lab concluded: a label change and a newly added capability both show up as differences, and a diff of labels would miss a changed threshold definition under an unchanged label; the entries are hypothetical and do not claim that any real capability changed category",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A policy version diff. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a label change and a newly added capability both show up as differences, and a diff of labels would miss a changed threshold definition under an unchanged label; the entries are hypothetical and do not claim that any real capability changed category"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: a policy version diff ---\n{'capability': 'capability_x', 'old': 'Research', 'new': 'Tracked'}\n{'capability': 'capability_z', 'old': None, 'new': 'Research'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: A readiness check with four conditions",
+    "headingKn": "ಪ್ರಯೋಗ 7: A readiness check with four conditions",
+    "bodyEn": "What it ran: A readiness check with four conditions. What the lab concluded: a table whose source has not been verified failed the check by name, and when all four conditions held the result was true, which only confirms four application booleans and is not a compliance finding with any framework",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A readiness check with four conditions. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a table whose source has not been verified failed the check by name, and when all four conditions held the result was true, which only confirms four application booleans and is not a compliance finding with any framework"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely running: a readiness check with four conditions ---\n{'all_checks_satisfied': False, 'failing': ['source_verified']}\n{'all_checks_satisfied': True, 'failing': []}"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
