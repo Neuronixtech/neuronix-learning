@@ -141,6 +141,134 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The synthetic dataset",
+    "headingKn": "ಪ್ರಯೋಗ 1: The synthetic dataset",
+    "bodyEn": "What it ran: The synthetic dataset. What the lab concluded: the 500 tasks are spread over three decades with success falling from the shortest decade to the longest, and the generating coefficients are a=4 and b=-1, so the true 50 percent horizon is e to the 4, 54.6 minutes",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The synthetic dataset. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the 500 tasks are spread over three decades with success falling from the shortest decade to the longest, and the generating coefficients are a=4 and b=-1, so the true 50 percent horizon is e to the 4, 54.6 minutes"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the synthetic dataset ---\ntasks 500 | successes 277 | shortest 1.00 min | longest 999.4 min\n     1-10   minutes: 161 tasks, success rate 0.91\n    10-100  minutes: 164 tasks, success rate 0.62\n   100-1000 minutes: 175 tasks, success rate 0.16"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Gradient descent",
+    "headingKn": "ಪ್ರಯೋಗ 2: Gradient descent",
+    "bodyEn": "What it ran: Gradient descent. What the lab concluded: batch gradient descent on the centred durations converged by its gradient-norm test and gave coefficients and horizons near the generating ones but not equal to them, which is expected because the outcomes are random draws and 500 tasks leave real sampling error",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Gradient descent. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): batch gradient descent on the centred durations converged by its gradient-norm test and gave coefficients and horizons near the generating ones but not equal to them, which is expected because the outcomes are random draws and 500 tasks leave real sampling error"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: gradient descent ---\n{'a': 4.0688, 'b': -1.0264, 'iterations': 215, 'converged': True, 'grad_norm': 0.0}\nH90 6.19 | H50 52.67 | H10 447.92 minutes | truth 6.07, 54.60, 491.38"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Regularised Newton and agreement between the two",
+    "headingKn": "ಪ್ರಯೋಗ 3: Regularised Newton and agreement between the two",
+    "bodyEn": "What it ran: Regularised Newton and agreement between the two. What the lab concluded: the Newton fit with a tiny ridge penalty reached the same coefficients in 7 iterations where gradient descent needed 215, and the two horizons agree to three decimals; the penalty makes the fit a regularised one rather than exactly the unpenalised maximum likelihood",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Regularised Newton and agreement between the two. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the Newton fit with a tiny ridge penalty reached the same coefficients in 7 iterations where gradient descent needed 215, and the two horizons agree to three decimals; the penalty makes the fit a regularised one rather than exactly the unpenalised maximum likelihood"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: regularised Newton and agreement between the two ---\n{'a': 4.0688, 'b': -1.0264, 'iterations': 7, 'converged': True}\nH50 gradient descent 52.666 | Newton 52.666 | iterations 215 against 7"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Fit quality and calibration",
+    "headingKn": "ಪ್ರಯೋಗ 4: Fit quality and calibration",
+    "bodyEn": "What it ran: Fit quality and calibration. What the lab concluded: the fitted curve has a lower log-likelihood loss on this sample than the true curve, which is what fitting to a sample does, the Brier score beats the constant-rate baseline, and the calibration bins show predicted and observed rates close together; calibration, discrimination and the horizon itself are different properties",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Fit quality and calibration. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the fitted curve has a lower log-likelihood loss on this sample than the true curve, which is what fitting to a sample does, the Brier score beats the constant-rate baseline, and the calibration bins show predicted and observed rates close together; calibration, discrimination and the horizon itself are different properties"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: fit quality and calibration ---\nmean negative log-likelihood: fitted 0.4189 | true coefficients 0.4191\nBrier score: fitted 0.1337 | true coefficients 0.1337 | constant rate 0.55: 0.2471\n predicted bin  tasks  mean predicted  observed\n   0.0-0.2        120           0.105     0.100\n   0.2-0.4         82           0.301     0.329\n   0.4-0.6         51           0.513     0.471\n   0.6-0.8         72           0.713     0.750\n   0.8-1.0        175           0.927     0.914"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A percentile bootstrap of the 50 percent horizon",
+    "headingKn": "ಪ್ರಯೋಗ 5: A percentile bootstrap of the 50 percent horizon",
+    "bodyEn": "What it ran: A percentile bootstrap of the 50 percent horizon. What the lab concluded: the 200 resamples gave an interval that is the uncertainty of the estimate under the independence assumption and does not say that 95 percent of tasks fall inside it, and a real evaluation with repeated attempts on the same task would have to resample whole tasks",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A percentile bootstrap of the 50 percent horizon. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the 200 resamples gave an interval that is the uncertainty of the estimate under the independence assumption and does not say that 95 percent of tasks fall inside it, and a real evaluation with repeated attempts on the same task would have to resample whole tasks"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: a percentile bootstrap of the 50 percent horizon ---\nestimate 52.67 | 95% interval [42.31, 66.82] | failed resamples 0 of 200 | contains the true 54.60: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Data that cannot identify a slope",
+    "headingKn": "ಪ್ರಯೋಗ 6: Data that cannot identify a slope",
+    "bodyEn": "What it ran: Data that cannot identify a slope. What the lab concluded: with every task a success the slope is zero and no horizon exists, and with perfectly separated outcomes the slope was -284.6 at the tiny penalty and -16.8 at the larger one while the 50 percent horizon stayed near the boundary at 30.5 and 30.3 minutes, but the 90 and 10 percent horizons moved from 30.3 and 30.7 to 26.6 and 34.5, so only the point where outcomes flip is identified and the shape around it is set by the penalty; a fit needs both outcomes across the range and a convergence check before any horizon is quoted",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Data that cannot identify a slope. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with every task a success the slope is zero and no horizon exists, and with perfectly separated outcomes the slope was -284.6 at the tiny penalty and -16.8 at the larger one while the 50 percent horizon stayed near the boundary at 30.5 and 30.3 minutes, but the 90 and 10 percent horizons moved from 30.3 and 30.7 to 26.6 and 34.5, so only the point where outcomes flip is identified and the shape around it is set by the penalty; a fit needs both outcomes across the range and a convergence check before any horizon is quoted"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: data that cannot identify a slope ---\nevery task succeeds                ridge 1e-06: slope     0.000 converged True  H90    nan H50    nan H10    nan\nevery task succeeds                ridge 0.01: slope     0.000 converged True  H90    nan H50    nan H10    nan\nshort tasks pass, long tasks fail  ridge 1e-06: slope  -284.571 converged True  H90   30.3 H50   30.5 H10   30.7\nshort tasks pass, long tasks fail  ridge 0.01: slope   -16.776 converged True  H90   26.6 H50   30.3 H10   34.5"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Extrapolation beyond the observed tasks",
+    "headingKn": "ಪ್ರಯೋಗ 7: Extrapolation beyond the observed tasks",
+    "bodyEn": "What it ran: Extrapolation beyond the observed tasks. What the lab concluded: fitted only on tasks of up to twenty minutes the curve still returns a 50 percent horizon, but it lies outside the tasks that were observed and differs from the full-data value, so the number is an extrapolation and should be reported as one",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Extrapolation beyond the observed tasks. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): fitted only on tasks of up to twenty minutes the curve still returns a 50 percent horizon, but it lies outside the tasks that were observed and differs from the full-data value, so the number is an extrapolation and should be reported as one"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely running: extrapolation beyond the observed tasks ---\ntasks up to 20 minutes: 206 | longest 19.5 min | fitted H50 275.1 min | inside the observed range: False\nfull data H50: 52.7 min"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Input validation",
+    "headingKn": "ಪ್ರಯೋಗ 8: Input validation",
+    "bodyEn": "What it ran: Input validation. What the lab concluded: a zero duration, a NaN duration, a success value of 2, a boolean success and an empty dataset were each refused before any fitting",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Input validation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a zero duration, a NaN duration, a success value of 2, a boolean success and an empty dataset were each refused before any fitting"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Genuinely running: input validation ---\nValueError: Duration must be positive and finite\nValueError: Duration must be positive and finite\nValueError: Success must be 0 or 1\nValueError: Success must be 0 or 1\nValueError: Empty dataset"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

@@ -141,6 +141,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The sigmoid and its stable form",
+    "headingKn": "ಪ್ರಯೋಗ 1: The sigmoid and its stable form",
+    "bodyEn": "What it ran: The sigmoid and its stable form. What the lab concluded: the values run from 0.018 up to 0.982 with 0.5 at zero, the stable form returned 0.0 and 1.0 at the extremes, and the naive form raised OverflowError for a large negative input; the stable branch matters because a fit can wander into extreme scores",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The sigmoid and its stable form. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the values run from 0.018 up to 0.982 with 0.5 at zero, the stable form returned 0.0 and 1.0 at the extremes, and the naive form raised OverflowError for a large negative input; the stable branch matters because a fit can wander into extreme scores"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the sigmoid and its stable form ---\nsigmoid(-4) = 0.018\nsigmoid(-2) = 0.119\nsigmoid( 0) = 0.500\nsigmoid( 2) = 0.881\nsigmoid( 4) = 0.982\nsigmoid(-1000) = 0.0 | sigmoid(1000) = 1.0\nnaive 1/(1+exp(-z)) at z=-1000: OverflowError - math range error"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Why durations live on a log scale",
+    "headingKn": "ಪ್ರಯೋಗ 2: Why durations live on a log scale",
+    "bodyEn": "What it ran: Why durations live on a log scale. What the lab concluded: every tenfold step adds the same 2.3026 on the log scale, and sampling uniformly in minutes put under one percent of the tasks below ten minutes while sampling uniformly in log minutes put about a third there, which is why the lab samples on the log scale; real benchmark tasks need not be spread this way",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Why durations live on a log scale. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): every tenfold step adds the same 2.3026 on the log scale, and sampling uniformly in minutes put under one percent of the tasks below ten minutes while sampling uniformly in log minutes put about a third there, which is why the lab samples on the log scale; real benchmark tasks need not be spread this way"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: why durations live on a log scale ---\nln(1) = 0.0000\nln(10) = 2.3026\nln(100) = 4.6052\nln(1000) = 6.9078\ndifferences between neighbours: [2.3026, 2.3026, 2.3026]\nshare of 100000 tasks shorter than 10 minutes: uniform in minutes 0.009 | uniform in log minutes 0.333"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Success probability for a=4, b=-1",
+    "headingKn": "ಪ್ರಯೋಗ 3: Success probability for a=4, b=-1",
+    "bodyEn": "What it ran: Success probability for a=4, b=-1. What the lab concluded: the probability falls from 0.8452 at ten minutes to 0.4764 at an hour and 0.1021 at eight hours for these chosen coefficients, which differs in the last digit from the 0.8454 printed in the lesson text, it decreases over the whole list because the slope is negative, and non-positive or non-finite durations are refused because the logarithm is undefined; real tasks of the same length can differ widely in difficulty",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Success probability for a=4, b=-1. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the probability falls from 0.8452 at ten minutes to 0.4764 at an hour and 0.1021 at eight hours for these chosen coefficients, which differs in the last digit from the 0.8454 printed in the lesson text, it decreases over the whole list because the slope is negative, and non-positive or non-finite durations are refused because the logarithm is undefined; real tasks of the same length can differ widely in difficulty"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: success probability for a=4, b=-1 ---\nexpert minutes   10: P(success) = 0.8452\nexpert minutes   60: P(success) = 0.4764\nexpert minutes  480: P(success) = 0.1021\nlesson text lists 0.8454 for ten minutes | computed to four places: 0.8452\nstrictly decreasing over [1, 5, 10, 30, 60, 120, 480] : True\nduration 0: ValueError: Expert completion time must be positive and finite.\nduration -5: ValueError: Expert completion time must be positive and finite.\nduration nan: ValueError: Expert completion time must be positive and finite."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The three horizons",
+    "headingKn": "ಪ್ರಯೋಗ 4: The three horizons",
+    "bodyEn": "What it ran: The three horizons. What the lab concluded: for a=4 and b=-1 the horizons are 6.07, 54.60 and 491.38 minutes (the exact 90 percent value is 6.0665 and the lesson text prints 6.0653, a small slip in the text), the 50 percent horizon equals e to the power of minus a over b in every row, a shallower slope pushes both ends far apart, and raising the intercept moves the whole curve to longer tasks; the 90 percent horizon is the shorter, more demanding one and the 10 percent horizon is not a conservative limit",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The three horizons. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): for a=4 and b=-1 the horizons are 6.07, 54.60 and 491.38 minutes (the exact 90 percent value is 6.0665 and the lesson text prints 6.0653, a small slip in the text), the 50 percent horizon equals e to the power of minus a over b in every row, a shallower slope pushes both ends far apart, and raising the intercept moves the whole curve to longer tasks; the 90 percent horizon is the shorter, more demanding one and the 10 percent horizon is not a conservative limit"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: the three horizons ---\na=4.0 b=-1.0: H90      6.07 | H50     54.60 | H10     491.38 minutes | e^(-a/b) =     54.60 | ordered H90<H50<H10: True\na=4.0 b=-0.5: H90     36.80 | H50   2980.96 | H10  241457.60 minutes | e^(-a/b) =   2980.96 | ordered H90<H50<H10: True\na=5.0 b=-1.0: H90     16.49 | H50    148.41 | H10    1335.72 minutes | e^(-a/b) =    148.41 | ordered H90<H50<H10: True\nH90 for a=4, b=-1 to four places: 6.0665 | e^4 / 9 = 6.0665 | lesson text lists 6.0653"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A round trip and the error cases",
+    "headingKn": "ಪ್ರಯೋಗ 5: A round trip and the error cases",
+    "bodyEn": "What it ran: A round trip and the error cases. What the lab concluded: feeding each horizon back into the probability function returned the probability it came from, so the two formulas are inverses, and a probability outside the open interval or a slope that is not negative is refused",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A round trip and the error cases. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): feeding each horizon back into the probability function returned the probability it came from, so the two formulas are inverses, and a probability outside the open interval or a slope that is not negative is refused"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a round trip and the error cases ---\np=0.1: horizon 491.383 minutes -> probability back 0.100000\np=0.5: horizon 54.598 minutes -> probability back 0.500000\np=0.9: horizon 6.066 minutes -> probability back 0.900000\nhorizon(4, -1, 1.5): ValueError: Probability must be between 0 and 1.\nhorizon(4, 1.0, 0.5): ValueError: Expected a negative duration slope.\nhorizon(4, 0.0, 0.5): ValueError: Expected a negative duration slope."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Doubling-time arithmetic",
+    "headingKn": "ಪ್ರಯೋಗ 6: Doubling-time arithmetic",
+    "bodyEn": "What it ran: Doubling-time arithmetic. What the lab concluded: with a doubling time of seven months a year gives a factor of about 3.3 and with 130.8 days about 6.9, so the choice of fitting period changes the projection by a factor of two within a year; both doubling times are cited from the lesson and are not measured here, and extrapolating far beyond observed data is not a forecast",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Doubling-time arithmetic. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with a doubling time of seven months a year gives a factor of about 3.3 and with 130.8 days about 6.9, so the choice of fitting period changes the projection by a factor of two within a year; both doubling times are cited from the lesson and are not measured here, and extrapolating far beyond observed data is not a forecast"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely computing: doubling-time arithmetic ---\n2 hours doubling every 4 months after 8 months: 8.0 hours\ndoubling time about seven months: 1.71 doublings a year = a factor of 3.28\ndoubling time 130.8 days        : 2.79 doublings a year = a factor of 6.93"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

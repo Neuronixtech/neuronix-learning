@@ -141,6 +141,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Turning failures into successes",
+    "headingKn": "ಪ್ರಯೋಗ 1: Turning failures into successes",
+    "bodyEn": "What it ran: Turning failures into successes. What the lab concluded: a flip probability of zero left the horizons unchanged, and turning 15 percent of failures into successes moved the 50 percent horizon from 52.7 to 77.6 minutes, a factor of 1.47, and made the slope shallower, while 30 percent gave a factor of 2.98; the inflated success curve is not exactly logistic, so the fitted curve tracks it at 10 and 100 minutes and understates it at 500 minutes (0.155 against 0.234), and relabelling outcomes after the fact is not a legitimate way to measure anything",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Turning failures into successes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a flip probability of zero left the horizons unchanged, and turning 15 percent of failures into successes moved the 50 percent horizon from 52.7 to 77.6 minutes, a factor of 1.47, and made the slope shallower, while 30 percent gave a factor of 2.98; the inflated success curve is not exactly logistic, so the fitted curve tracks it at 10 and 100 minutes and understates it at 500 minutes (0.155 against 0.234), and relabelling outcomes after the fact is not a legitimate way to measure anything"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: turning failures into successes ---\n flip probability  successes    slope      H90       H50       H10  H50 ratio\n              0.0        277   -1.026     6.19     52.67     447.9       1.00\n             0.05        286   -0.945     5.92     60.57     620.2       1.15\n             0.15        302   -0.911     6.95     77.55     865.0       1.47\n              0.3        341   -0.751     8.43    156.94    2921.5       2.98\n minutes   true p  inflated truth q+(1-q)p  logistic fitted to inflated\n      10    0.845                    0.868                        0.866\n     100    0.353                    0.450                        0.442\n     500    0.098                    0.234                        0.155"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Pooling two domains with different curves",
+    "headingKn": "ಪ್ರಯೋಗ 2: Pooling two domains with different curves",
+    "bodyEn": "What it ran: Pooling two domains with different curves. What the lab concluded: the pooled fit gave a 50 percent horizon of 47.0 minutes, between the two domain values but about a third of the software value of 140.4 and 2.6 times the cyber value of 18.1, and a slope shallower than either domain slope, so an aggregate horizon says little about a team that uses the agent for software tasks only; this is why a report should say what task mix it was fitted on",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Pooling two domains with different curves. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the pooled fit gave a 50 percent horizon of 47.0 minutes, between the two domain values but about a third of the software value of 140.4 and 2.6 times the cyber value of 18.1, and a slope shallower than either domain slope, so an aggregate horizon says little about a team that uses the agent for software tasks only; this is why a report should say what task mix it was fitted on"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: pooling two domains with different curves ---\nsoftware only (true H50 148.4)   H50   140.4 min | slope -1.010\ncyber only (true H50 20.1)       H50    18.1 min | slope -1.325\npooled 500 tasks                 H50    47.0 min | slope -0.938"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A deployment gate that fails closed",
+    "headingKn": "ಪ್ರಯೋಗ 3: A deployment gate that fails closed",
+    "bodyEn": "What it ran: A deployment gate that fails closed. What the lab concluded: the two-minute task was allowed, the forty-five-minute task and the production change went to review, the out-of-scope request and every missing or failed piece of evidence were blocked, and a request with no stated duration was sent to review instead of being assumed short; a horizon is one input and scope and authorisation are separate",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A deployment gate that fails closed. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the two-minute task was allowed, the forty-five-minute task and the production change went to review, the out-of-scope request and every missing or failed piece of evidence were blocked, and a request with no stated duration was sent to review instead of being assumed short; a horizon is one input and scope and authorisation are separate"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a deployment gate that fails closed ---\n2-minute in-scope read       -> ('ALLOW', 'in scope, evaluated and within the 90 percent horizon')\n45-minute in-scope task      -> ('REVIEW', 'task is longer than the 90 percent horizon')\nproduction deploy            -> ('REVIEW', 'sensitive data or production change needs a human')\nread an unrelated secret     -> ('BLOCK', 'outside the approved scope')\nno duration given            -> ('REVIEW', 'task is longer than the 90 percent horizon')\nmissing report -> ('BLOCK', 'no valid evaluation report')\nfit not valid  -> ('BLOCK', 'no valid evaluation report')\ninternal evaluation not passed -> ('BLOCK', 'internal evaluation has not passed')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Monitor detection rates on a constructed event log",
+    "headingKn": "ಪ್ರಯೋಗ 4: Monitor detection rates on a constructed event log",
+    "bodyEn": "What it ran: Monitor detection rates on a constructed event log. What the lab concluded: the path-prefix rule caught every access under secrets but missed an alias of the same credential in another folder and flagged a harmless test fixture, giving a detection rate of 0.625, a false positive rate of 0.1875 and a precision of 0.455; the log is constructed with known counts, and a monitor that sees only some evidence sources has a coverage limit that these rates hide",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Monitor detection rates on a constructed event log. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the path-prefix rule caught every access under secrets but missed an alias of the same credential in another folder and flagged a harmless test fixture, giving a detection rate of 0.625, a false positive rate of 0.1875 and a precision of 0.455; the log is constructed with known counts, and a monitor that sees only some evidence sources has a coverage limit that these rates hide"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely computing: monitor detection rates on a constructed event log ---\nevents 200 | violations 40 | TP 25 FP 30 FN 15 TN 130\ntrue positive rate 0.625 | false positive rate 0.1875 | precision 0.455"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Comparing two model versions by exposure",
+    "headingKn": "ಪ್ರಯೋಗ 5: Comparing two model versions by exposure",
+    "bodyEn": "What it ran: Comparing two model versions by exposure. What the lab concluded: model B has four times the raw count and a lower rate per hundred tasks, because it was run on five times as many tasks, and neither number says anything about severity; with one and four events the difference between the rates could easily be chance",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Comparing two model versions by exposure. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): model B has four times the raw count and a lower rate per hundred tasks, because it was run on five times as many tasks, and neither number says anything about severity; with one and four events the difference between the rates could easily be chance"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely computing: comparing two model versions by exposure ---\nmodel A: 1 unauthorised attempts in 40 tasks = 2.5 per 100 | model B: 4 in 200 = 2.0 per 100"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Evidence digest",
+    "headingKn": "ಪ್ರಯೋಗ 6: Evidence digest",
+    "bodyEn": "What it ran: Evidence digest. What the lab concluded: flipping a single outcome among 50 records changed the digest, so a digest stored by someone other than the author would reveal a later edit; a digest kept beside the data by the same writer would be rewritten along with it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Evidence digest. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): flipping a single outcome among 50 records changed the digest, so a digest stored by someone other than the author would reveal a later edit; a digest kept beside the data by the same writer would be rewritten along with it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: evidence digest ---\ndigest before: e79299619c49 | after flipping one outcome: b0f6da0145e1 | equal: False"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
