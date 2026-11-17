@@ -137,6 +137,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The lesson example with the audit control missing",
+    "headingKn": "ಪ್ರಯೋಗ 1: The lesson example with the audit control missing",
+    "bodyEn": "What it ran: The lesson example with the audit control missing. What the lab concluded: the description flagged AI races and organisational risks, the three required controls were the union of both lists with the shared external audit counted once, and the missing audit blocked the gate; the lesson's status was written by hand and this one comes from running the code",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lesson example with the audit control missing. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the description flagged AI races and organisational risks, the three required controls were the union of both lists with the shared external audit counted once, and the missing audit blocked the gate; the lesson's status was written by hand and this one comes from running the code"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the lesson example with the audit control missing ---\n{\n \"status\": \"BLOCKED_MISSING_CONTROLS\",\n \"flagged\": [\n  \"ai_races\",\n  \"organizational_risks\"\n ],\n \"required\": [\n  \"external_audit\",\n  \"human_approval\",\n  \"incident_response\"\n ],\n \"missing\": [\n  \"external_audit\"\n ]\n…"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: How the status moves",
+    "headingKn": "ಪ್ರಯೋಗ 2: How the status moves",
+    "bodyEn": "What it ran: How the status moves. What the lab concluded: the status moved from awaiting approval to satisfied only when every control record and the approval were present, and an approval did not make up for a missing control; GOVERNANCE_CHECKS_SATISFIED is deliberately not called safe",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How the status moves. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the status moved from awaiting approval to satisfied only when every control record and the approval were present, and an approval did not make up for a missing control; GOVERNANCE_CHECKS_SATISFIED is deliberately not called safe"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: how the status moves ---\nall three controls, no approval: AWAITING_HUMAN_APPROVAL\nall three controls, approved:    GOVERNANCE_CHECKS_SATISFIED\none control missing, approved:   BLOCKED_MISSING_CONTROLS"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A record that is well formed but made up",
+    "headingKn": "ಪ್ರಯೋಗ 3: A record that is well formed but made up",
+    "bodyEn": "What it ran: A record that is well formed but made up. What the lab concluded: records pointing at evidence-999 and reviewer-07 passed the structural check, failed once the evidence and the reviewer had to exist, and a reviewer who wrote the evidence was refused; an evidence store and a roster in the same process are still only simulated and a real one is authenticated and kept elsewhere",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A record that is well formed but made up. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): records pointing at evidence-999 and reviewer-07 passed the structural check, failed once the evidence and the reviewer had to exist, and a reviewer who wrote the evidence was refused; an evidence store and a roster in the same process are still only simulated and a real one is authenticated and kept elsewhere"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a record that is well formed but made up ---\nstructural check: GOVERNANCE_CHECKS_SATISFIED\nbacked by an evidence store and a roster: BLOCKED_MISSING_CONTROLS\ngenuine records, same backed check: GOVERNANCE_CHECKS_SATISFIED\nthe reviewer wrote the evidence: BLOCKED_MISSING_CONTROLS"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: An approval is bound to one exact deployment",
+    "headingKn": "ಪ್ರಯೋಗ 4: An approval is bound to one exact deployment",
+    "bodyEn": "What it ran: An approval is bound to one exact deployment. What the lab concluded: every change to the deployment, its identity, the clock or the approver invalidated the approval, which prevents a team from approving one thing and shipping another; the clock is a number the lab chooses and the names are strings",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An approval is bound to one exact deployment. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): every change to the deployment, its identity, the clock or the approver invalidated the approval, which prevents a team from approving one thing and shipping another; the clock is a number the lab chooses and the names are strings"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: an approval is bound to one exact deployment ---\nas approved: (True, 'valid')\ndescription edited afterwards: (False, 'deployment changed after approval')\nanother deployment id: (False, 'approval is for another deployment')\nat the expiry time: (False, 'approval expired')\napprover is the requester: (False, 'requester approved their own deployment')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: No indicator is not a pass",
+    "headingKn": "ಪ್ರಯೋಗ 5: No indicator is not a pass",
+    "bodyEn": "What it ran: No indicator is not a pass. What the lab concluded: a description with no indicator went to manual review even with an approval attached, because nothing matched does not mean nothing applies",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: No indicator is not a pass. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a description with no indicator went to manual review even with an approval attached, because nothing matched does not mean nothing applies"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: no indicator is not a pass ---\n{'status': 'MANUAL_REVIEW_REQUIRED', 'flagged': [], 'required': [], 'missing': []}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Every combination of three conditions",
+    "headingKn": "ಪ್ರಯೋಗ 6: Every combination of three conditions",
+    "bodyEn": "What it ran: Every combination of three conditions. What the lab concluded: of the eight combinations of indicator, controls and approval only one reached GOVERNANCE_CHECKS_SATISFIED, four went to manual review, two were blocked for missing controls and one waited for approval; the counts follow from the status order the lab chose and are a design check and not a measurement",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Every combination of three conditions. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): of the eight combinations of indicator, controls and approval only one reached GOVERNANCE_CHECKS_SATISFIED, four went to manual review, two were blocked for missing controls and one waited for approval; the counts follow from the status order the lab chose and are a design check and not a measurement"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely counting: every combination of three conditions ---\n{'GOVERNANCE_CHECKS_SATISFIED': 1, 'AWAITING_HUMAN_APPROVAL': 1, 'BLOCKED_MISSING_CONTROLS': 2, 'MANUAL_REVIEW_REQUIRED': 4}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: The thirteen unit tests",
+    "headingKn": "ಪ್ರಯೋಗ 7: The thirteen unit tests",
+    "bodyEn": "What it ran: The thirteen unit tests. What the lab concluded: the tests cover classification, the union of required controls, the structural check and its failures, a block despite approval, a wait for approval, satisfaction, manual review, a changed deployment, a wrong id, self-approval and expiry, on this lab's own gate",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The thirteen unit tests. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the tests cover classification, the union of required controls, the structural check and its failures, a block despite approval, a wait for approval, satisfaction, manual review, a changed deployment, a wrong id, self-approval and expiry, on this lab's own gate"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely running: the thirteen unit tests ---\nran 13 tests | failures 0 | errors 0 | passed True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

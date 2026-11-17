@@ -145,6 +145,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Each control test against a correct and a broken version",
+    "headingKn": "ಪ್ರಯೋಗ 1: Each control test against a correct and a broken version",
+    "bodyEn": "What it ran: Each control test against a correct and a broken version. What the lab concluded: five of the six tests passed on the correct control and failed on the broken one, and the weak rollback test that only counts keys passed on both, so it would have reported the rollback as working when it restored reversed values; a passing test only means something if the same test fails on a version that is wrong",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Each control test against a correct and a broken version. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): five of the six tests passed on the correct control and failed on the broken one, and the weak rollback test that only counts keys passed on both, so it would have reported the rollback as working when it restored reversed values; a passing test only means something if the same test fails on a version that is wrong"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: each control test against a correct and a broken version ---\ncontrol           test                                                 correct  broken  verdict\napproval_gate     refuses an approval for another target               True     False   catches the bug\nfile_scope        refuses a look-alike folder and the monitoring file  True     False   catches the bug\nkill_switch       stops at step 4 of 10 and runs all 10 without a stop True     False   catches the bug\nrollback          state hash equals the hash before the change         True     False   catches the bug\nrollback          state has the same number of keys                    True     True    MISSES the bug\ncredential_scope  denies a resource outside the token scopes           True     False   catches the bug\ntests that pass on the correct control and fail on the broken one: 5 of 6"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Which claims have a test at all",
+    "headingKn": "ಪ್ರಯೋಗ 2: Which claims have a test at all",
+    "bodyEn": "What it ran: Which claims have a test at all. What the lab concluded: five of seven claims have a test behind them and two have none, and a claim with no test is not necessarily false but nothing here shows that it is true; the two untested claims are the ones about people and process rather than code",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Which claims have a test at all. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): five of seven claims have a test behind them and two have none, and a claim with no test is not necessarily false but nothing here shows that it is true; the two untested claims are the ones about people and process rather than code"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: which claims have a test at all ---\nAgent cannot deploy without approval       -> tested by approval_gate\nAgent respects file boundaries             -> tested by file_scope\nAgent can be stopped                       -> tested by kill_switch\nFailed operations can be recovered         -> tested by rollback\nCredential access is scoped                -> tested by credential_scope\nIncidents are investigated and closed      -> NO TEST, unsubstantiated\nSafety findings are resolved               -> NO TEST, unsubstantiated\nclaims with a test: 5 of 7"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The weak and the strong rollback test side by side",
+    "headingKn": "ಪ್ರಯೋಗ 3: The weak and the strong rollback test side by side",
+    "bodyEn": "What it ran: The weak and the strong rollback test side by side. What the lab concluded: the broken rollback restored every value reversed, the hash comparison saw the difference and the key count did not; comparing the whole restored state to what it was before is the check that matters",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The weak and the strong rollback test side by side. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the broken rollback restored every value reversed, the hash comparison saw the difference and the key count did not; comparing the whole restored state to what it was before is the check that matters"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: the weak and the strong rollback test side by side ---\nstrong, hash comparison    correct True  broken False\nweak, key count            correct True  broken True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: An evidence ladder that cannot be skipped",
+    "headingKn": "ಪ್ರಯೋಗ 4: An evidence ladder that cannot be skipped",
+    "bodyEn": "What it ran: An evidence ladder that cannot be skipped. What the lab concluded: a finding moved up one step at a time to a verified remediation, a jump from a documented finding to a verified remediation and a step backwards were both refused; these labels are the lesson's proposed workflow and not official CAIS evidence levels",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An evidence ladder that cannot be skipped. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a finding moved up one step at a time to a verified remediation, a jump from a documented finding to a verified remediation and a step backwards were both refused; these labels are the lesson's proposed workflow and not official CAIS evidence levels"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: an evidence ladder that cannot be skipped ---\n-> DOCUMENTED_FINDING\n-> REPRODUCED_FINDING\n-> REMEDIATED_FINDING\n-> VERIFIED_REMEDIATION\nrefused: cannot move from DOCUMENTED_FINDING to VERIFIED_REMEDIATION\nrefused: cannot move from REMEDIATED_FINDING to REPRODUCED_FINDING"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Incident triage and who decides reportability",
+    "headingKn": "ಪ್ರಯೋಗ 5: Incident triage and who decides reportability",
+    "bodyEn": "What it ran: Incident triage and who decides reportability. What the lab concluded: severity came from the incident facts and legal reportability stayed as needs legal review until a person supplied it, because whether an incident is reportable depends on the statute's definitions and on who is covered, which a function like this cannot know and the lab does not claim to know",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Incident triage and who decides reportability. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): severity came from the incident facts and legal reportability stayed as needs legal review until a person supplied it, because whether an incident is reportable depends on the statute's definitions and on who is covered, which a function like this cannot know and the lab does not claim to know"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: incident triage and who decides reportability ---\n{'unauthorised_action': True, 'real_data': True} -> {'severity': 'HIGH', 'legally_reportable': 'NEEDS_LEGAL_REVIEW'}\n{'unauthorised_action': True, 'real_data': False} -> {'severity': 'MEDIUM', 'legally_reportable': 'NEEDS_LEGAL_REVIEW'}\n{'unauthorised_action': False} -> {'severity': 'LOW', 'legally_reportable': 'NEEDS_LEGAL_REVIEW'}\nwith a person's assessment: {'severity': 'HIGH', 'legally_reportable': False}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A structured question instead of free text",
+    "headingKn": "ಪ್ರಯೋಗ 6: A structured question instead of free text",
+    "bodyEn": "What it ran: A structured question instead of free text. What the lab concluded: an explicit false produced a finding and an explicit true produced none, and a record with the field left out also produced none, so a missing answer is silently treated as fine and the rule has to be extended to treat absence as unknown; the field is also only a claim until evidence is attached",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A structured question instead of free text. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an explicit false produced a finding and an explicit true produced none, and a record with the field left out also produced none, so a missing answer is silently treated as fine and the rule has to be extended to treat absence as unknown; the field is also only a claim until evidence is attached"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: a structured question instead of free text ---\n{'category': 'organizational_risks', 'finding': 'External audit not completed', 'review_required': True}\nNone\nNone"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

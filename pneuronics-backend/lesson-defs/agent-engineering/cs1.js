@@ -141,6 +141,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Four example deployments",
+    "headingKn": "ಪ್ರಯೋಗ 1: Four example deployments",
+    "bodyEn": "What it ran: Four example deployments. What the lab concluded: the first description matched two categories, the second one, the third a rogue-AI phrase and the fourth all four, so the taxonomy is multi-label; a match means a phrase appeared and says nothing about whether the described situation is real, observed or severe",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Four example deployments. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first description matched two categories, the second one, the third a rogue-AI phrase and the fourth all four, so the taxonomy is multi-label; a match means a phrase appeared and says nothing about whether the described situation is real, observed or severe"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: four example deployments ---\nCompetitive pressure caused a rushed deployment with an incomplete security review.\n   ai_races               matched ['competitive pressure', 'rushed deployment']\n   organizational_risks   matched ['incomplete security review']\nThe deployment faces attacker misuse attempts involving unauthorized disclosure.\n   malicious_use          matched ['attacker misuse', 'unauthorized disclosure']\nThe autonomous research agent attempted to bypass human approval.\n   rogue_ais              matched ['bypass human approval']\nCompetitive pressure caused a rushed deployment with a missing audit. The platform faces attacker misuse, and the agent may bypass human approval.\n   malicious_use          matched ['attacker misuse']\n   ai_races               matched ['competitive pressure', 'rushed deployment']\n   organizational_risks   matched ['missing audit']\n   rogue_ais              matched ['bypass human approval']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A report and what it leaves out",
+    "headingKn": "ಪ್ರಯೋಗ 2: A report and what it leaves out",
+    "bodyEn": "What it ran: A report and what it leaves out. What the lab concluded: the report is always marked as needing human review with a pending status and carries its own four limitations, and the mitigation lists are recommendations that say nothing about whether any control exists",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A report and what it leaves out. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the report is always marked as needing human review with a pending status and carries its own four limitations, and the mitigation lists are recommendations that say nothing about whether any control exists"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a report and what it leaves out ---\n{\n \"deployment_name\": \"Autonomous Enterprise Agent\",\n \"classification_method\": \"Rule-based phrase matching\",\n \"human_review_required\": true,\n \"review_status\": \"pending\"\n}\nlimitations: ['Keyword matches are not proof of risk.', 'Unmatched categories may still be relevant.', 'Controls have not been independently verified.', 'The report does not authorize deployment.']\nmitigation lists for ['ai_races', 'organizational_risks']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: False positives and false negatives",
+    "headingKn": "ಪ್ರಯೋಗ 3: False positives and false negatives",
+    "bodyEn": "What it ran: False positives and false negatives. What the lab concluded: the resolved audit issue was flagged as a missing audit, which is a false positive on a closed finding, the sentence about management removing independent testing matched nothing although it describes both schedule pressure and an organisational failure, and a phrase-level matcher cannot see negation, time or evidence quality; an empty result is not a clean bill",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: False positives and false negatives. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the resolved audit issue was flagged as a missing audit, which is a false positive on a closed finding, the sentence about management removing independent testing matched nothing although it describes both schedule pressure and an organisational failure, and a phrase-level matcher cannot see negation, time or evidence quality; an empty result is not a clean bill"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: false positives and false negatives ---\n['organizational_risks']               The missing audit issue has been fully resolved.\n[]                                     The team completed an independent audit and closed every finding.\n[]                                     There is competition for the same market, but all safety gates are scheduled and protected.\n[]                                     Management removed independent testing to meet an aggressive release schedule."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Precision and recall on twelve labelled descriptions",
+    "headingKn": "ಪ್ರಯೋಗ 4: Precision and recall on twelve labelled descriptions",
+    "bodyEn": "What it ran: Precision and recall on twelve labelled descriptions. What the lab concluded: the phrase matcher found 10 of the 13 labelled category assignments with 1 false positive and 3 misses, giving precision 0.909 and recall 0.769, while the broad plain keywords found 9 with 3 false positives and 4 misses, giving 0.750 and 0.692, so on this set the plain version was worse on both; twelve descriptions written by the lab author are far too few to estimate a real rate, and recall matters more than precision when a missed concern never reaches a reviewer",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Precision and recall on twelve labelled descriptions. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the phrase matcher found 10 of the 13 labelled category assignments with 1 false positive and 3 misses, giving precision 0.909 and recall 0.769, while the broad plain keywords found 9 with 3 false positives and 4 misses, giving 0.750 and 0.692, so on this set the plain version was worse on both; twelve descriptions written by the lab author are far too few to estimate a real rate, and recall matters more than precision when a missed concern never reaches a reviewer"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: precision and recall on twelve labelled descriptions ---\nphrase matcher  TP 10 FP  1 FN  3 | precision 0.909 | recall 0.769\nplain keywords  TP  9 FP  3 FN  4 | precision 0.750 | recall 0.692"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The unit tests",
+    "headingKn": "ಪ್ರಯೋಗ 5: The unit tests",
+    "bodyEn": "What it ran: The unit tests. What the lab concluded: the tests cover normalisation, phrase and boundary matching, multi-label output, an empty result that is still pending review, input validation and copied mitigation lists, on this lab's own matcher; they do not show that the indicators are right",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The unit tests. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the tests cover normalisation, phrase and boundary matching, multi-label output, an empty result that is still pending review, input validation and copied mitigation lists, on this lab's own matcher; they do not show that the indicators are right"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: the unit tests ---\nran 9 tests | failures 0 | errors 0 | passed True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +281,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) One description matched all four categories. 2) Every report was pending human review. 3) A resolved issue was flagged. 4) A rewording of schedule pressure matched nothing. 5) The phrase matcher scored precision 0.909 and recall 0.769 on twelve texts.",
     "bodyKn": "1) ಒಂದು ವಿವರಣೆ ನಾಲ್ಕೂ ವರ್ಗ ಹೊಂದಿತು. 2) ಪ್ರತಿ ವರದಿ ಮಾನವ ವಿಮರ್ಶೆಗೆ ಬಾಕಿ ಇತ್ತು. 3) ಪರಿಹರಿಸಿದ ವಿಷಯ ಗುರುತಿಸಲ್ಪಟ್ಟಿತು. 4) ವೇಳಾಪಟ್ಟಿ ಒತ್ತಡದ ಮರುಪದ ಬಳಕೆ ಏನನ್ನೂ ಹೊಂದಲಿಲ್ಲ. 5) ಪದಗುಚ್ಛ ಹೊಂದಾಣಿಕೆ ಹನ್ನೆರಡು ಪಠ್ಯಗಳಲ್ಲಿ precision 0.909 ಮತ್ತು recall 0.769 ಪಡೆಯಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B cs_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B cs_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B cs_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B cs_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
