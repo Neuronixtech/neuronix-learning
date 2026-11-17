@@ -149,6 +149,149 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A unique constraint on the operation identity",
+    "headingKn": "ಪ್ರಯೋಗ 1: A unique constraint on the operation identity",
+    "bodyEn": "What it ran: A unique constraint on the operation identity. What the lab concluded: the database refuses a second row for the same thread and operation, a repeat returns the stored proposal and a changed payload under the same identity raises a conflict instead of becoming a new authorised action",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A unique constraint on the operation identity. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the database refuses a second row for the same thread and operation, a repeat returns the stored proposal and a changed payload under the same identity raises a conflict instead of becoming a new authorised action"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a unique constraint on the operation identity ---\nfirst created: True | repeat created: False | same id: True\nchanged amount under the same identity: operation identity reused with a different action"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Approval expiry on a simulated clock",
+    "headingKn": "ಪ್ರಯೋಗ 2: Approval expiry on a simulated clock",
+    "bodyEn": "What it ran: Approval expiry on a simulated clock. What the lab concluded: an approval is valid only before its expiry time, a claim made before it succeeded and a claim made at the expiry moment was refused, and the check and the claim happen in one transaction so the clock cannot change between them; the clock is a number chosen by the lab",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Approval expiry on a simulated clock. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an approval is valid only before its expiry time, a claim made before it succeeded and a claim made at the expiry moment was refused, and the check and the claim happen in one transaction so the clock cannot change between them; the clock is a number chosen by the lab"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: approval expiry on a simulated clock ---\nclaim at clock 999 with expiry 1000: (True, 'claimed') | stored status: COMMITTING\nclaim at clock 1000 on a second proposal approved with expiry 1000: (False, 'approval expired')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Eight workers claim one approved proposal",
+    "headingKn": "ಪ್ರಯೋಗ 3: Eight workers claim one approved proposal",
+    "bodyEn": "What it ran: Eight workers claim one approved proposal. What the lab concluded: the conditional update lets exactly one worker claim the proposal, while the version that checks the status and then writes without a condition lets several workers pass the check before any of them writes, so each would run the payment; the unsafe count varies from run to run and the deliberate 10 ms pause between the check and the write exaggerates it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Eight workers claim one approved proposal. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the conditional update lets exactly one worker claim the proposal, while the version that checks the status and then writes without a condition lets several workers pass the check before any of them writes, so each would run the payment; the unsafe count varies from run to run and the deliberate 10 ms pause between the check and the write exaggerates it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: eight workers claim one approved proposal ---\natomic claim: workers that believe they own the proposal = 1\nread-then-write claim: workers that believe they own the proposal = 8"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A resource that changed after approval",
+    "headingKn": "ಪ್ರಯೋಗ 4: A resource that changed after approval",
+    "bodyEn": "What it ran: A resource that changed after approval. What the lab concluded: the proposal records the version of the order the reviewer saw, so a later change makes the trusted claim refuse and a new proposal and review are needed; this is the guard against approving one state and executing in another",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A resource that changed after approval. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the proposal records the version of the order the reviewer saw, so a later change makes the trusted claim refuse and a new proposal and review are needed; this is the guard against approving one state and executing in another"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a resource that changed after approval ---\nclaim when the order is still at version 7: claimed\nclaim when the order has moved to version 8: (False, 'resource changed since approval')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A kill switch checked at claim time",
+    "headingKn": "ಪ್ರಯೋಗ 5: A kill switch checked at claim time",
+    "bodyEn": "What it ran: A kill switch checked at claim time. What the lab concluded: an earlier approval does not override an emergency stop, because the claim reads the switch inside the same transaction, and once the operator turns it off the same approval can be used; the switch is a row in the same database here, and a real one lives where the agent cannot write",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A kill switch checked at claim time. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an earlier approval does not override an emergency stop, because the claim reads the switch inside the same transaction, and once the operator turns it off the same approval can be used; the switch is a row in the same database here, and a real one lives where the agent cannot write"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a kill switch checked at claim time ---\napproved proposal with the kill switch on: (False, 'kill switch active')\nafter the switch is turned off: (True, 'claimed')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The outbox with at-least-once delivery",
+    "headingKn": "ಪ್ರಯೋಗ 6: The outbox with at-least-once delivery",
+    "bodyEn": "What it ran: The outbox with at-least-once delivery. What the lab concluded: the outbox row is unique per event, so enqueueing the same event twice leaves one row, and when a dispatcher delivers every event twice an idempotent provider makes five effects while a provider that ignores the key makes ten; at-least-once delivery is safe only when the receiver deduplicates",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The outbox with at-least-once delivery. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the outbox row is unique per event, so enqueueing the same event twice leaves one row, and when a dispatcher delivers every event twice an idempotent provider makes five effects while a provider that ignores the key makes ten; at-least-once delivery is safe only when the receiver deduplicates"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: the outbox with at-least-once delivery ---\noutbox rows after enqueueing evt-0 twice: 5\nidempotent provider: every event delivered twice, effects = 5 for 5 logical operations\nprovider without idempotency: every event delivered twice, effects = 10 for 5 logical operations"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: A hash-chained audit log",
+    "headingKn": "ಪ್ರಯೋಗ 7: A hash-chained audit log",
+    "bodyEn": "What it ran: A hash-chained audit log. What the lab concluded: an edited entry is caught at the entry that was changed, and removing the newest entries is invisible unless the latest hash was stored somewhere the writer cannot change; the chain shows consistency, not honesty, and anyone who controls the whole log can rewrite it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A hash-chained audit log. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an edited entry is caught at the entry that was changed, and removing the newest entries is invisible unless the latest hash was stored somewhere the writer cannot change; the chain shows consistency, not honesty, and anyone who controls the whole log can rewrite it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely running: a hash-chained audit log ---\nintact chain: (True, None)\nedit an actor in entry 1: (False, 1)\ndrop the last entry, no anchor: (True, None) | with the saved anchor: (False, 'anchor mismatch')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: Dual approval",
+    "headingKn": "ಪ್ರಯೋಗ 8: Dual approval",
+    "bodyEn": "What it ran: Dual approval. What the lab concluded: counting distinct reviewers stops one person from satisfying a two-person rule, and the lab does not check roles or authentication, which a real rule must",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Dual approval. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): counting distinct reviewers stops one person from satisfying a two-person rule, and the lab does not check roles or authentication, which a real rule must"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Genuinely running: dual approval ---\none reviewer approving twice: False\ntwo distinct reviewers: True\none approves and one rejects: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 9: Verification has more than two outcomes",
+    "headingKn": "ಪ್ರಯೋಗ 9: Verification has more than two outcomes",
+    "bodyEn": "What it ran: Verification has more than two outcomes. What the lab concluded: collapsing these into a single true or false would treat an unreachable provider like a failed refund, and a mismatch like a success; unknown has to lead to reconciliation and not to completion",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Verification has more than two outcomes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): collapsing these into a single true or false would treat an unreachable provider like a failed refund, and a mismatch like a success; unknown has to lead to reconciliation and not to completion"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 9. Genuinely computing: verification has more than two outcomes ---\neffect matches        -> VERIFIED_SUCCESS\neffect differs        -> MISMATCH\nno effect found       -> VERIFIED_FAILURE\nprovider unreachable  -> UNKNOWN"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

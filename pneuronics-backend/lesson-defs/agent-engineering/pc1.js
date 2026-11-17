@@ -145,6 +145,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Canonical JSON makes equal actions identical",
+    "headingKn": "ಪ್ರಯೋಗ 1: Canonical JSON makes equal actions identical",
+    "bodyEn": "What it ran: Canonical JSON makes equal actions identical. What the lab concluded: sorting keys and fixing separators gives one text for one logical action, and a SHA-256 of that text is a 64-character fingerprint; a digest identifies content and does not by itself prove that anyone approved it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Canonical JSON makes equal actions identical. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): sorting keys and fixing separators gives one text for one logical action, and a SHA-256 of that text is a 64-character fingerprint; a digest identifies content and does not by itself prove that anyone approved it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: canonical JSON makes equal actions identical ---\n{\"amount\":100,\"currency\":\"USD\",\"type\":\"refund\"}\nsame text for reordered dictionaries: True | digest length: 64"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Idempotency keys",
+    "headingKn": "ಪ್ರಯೋಗ 2: Idempotency keys",
+    "bodyEn": "What it ran: Idempotency keys. What the lab concluded: a repeat of the same operation maps to one key and a changed amount maps to another, so approving 100 cannot authorise 200; the thread-plus-action variant from the lesson text merges two deliberate identical refunds into one, which is why the lab adds an explicit operation id",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Idempotency keys. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a repeat of the same operation maps to one key and a changed amount maps to another, so approving 100 cannot authorise 200; the thread-plus-action variant from the lesson text merges two deliberate identical refunds into one, which is why the lab adds an explicit operation id"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: idempotency keys ---\nsame operation: True | different operation id: False | different amount: False\nthread plus action only, two legitimate identical refunds get the same key: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Reusing an operation identity with a changed payload",
+    "headingKn": "ಪ್ರಯೋಗ 3: Reusing an operation identity with a changed payload",
+    "bodyEn": "What it ran: Reusing an operation identity with a changed payload. What the lab concluded: hashing alone would have treated the changed amount as a new operation with a new key, while the registry notices that the identity was already used for a different action and refuses it, which is the stronger design the lesson recommends",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Reusing an operation identity with a changed payload. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): hashing alone would have treated the changed amount as a new operation with a new key, while the registry notices that the identity was already used for a different action and refuses it, which is the stronger design the lesson recommends"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: reusing an operation identity with a changed payload ---\nsame payload again: accepted\nchanged amount under the same id: refused -> operation refund-001 was first registered with a different action"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The state machine, every ordered pair of states",
+    "headingKn": "ಪ್ರಯೋಗ 4: The state machine, every ordered pair of states",
+    "bodyEn": "What it ran: The state machine, every ordered pair of states. What the lab concluded: only a small fraction of the possible moves is legal, nothing can jump from pending review to committing, and the three terminal states have no exits; RECONCILIATION_REQUIRED is a separate state so an unknown outcome is never recorded as a plain failure",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The state machine, every ordered pair of states. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): only a small fraction of the possible moves is legal, nothing can jump from pending review to committing, and the three terminal states have no exits; RECONCILIATION_REQUIRED is a separate state so an unknown outcome is never recorded as a plain failure"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely computing: the state machine, every ordered pair of states ---\nlegal transitions: 10 of 56 ordered pairs\n  PENDING_REVIEW -> APPROVED\n  PENDING_REVIEW -> REJECTED\n  APPROVED -> COMMITTING\n  COMMITTING -> VERIFYING\n  COMMITTING -> RECONCILIATION_REQUIRED\n  COMMITTING -> FAILED\n  VERIFYING -> VERIFIED\n  VERIFYING -> FAILED\n  RECONCILIATION_REQUIRED -> VERIFYING\n  RECONCILIATION_REQUIRED -> FAILED\nPENDING_REVIEW -> COMMITTING legal: False | REJECTED -> APPROVED legal: False | terminal states with a way out: []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Checklist validation",
+    "headingKn": "ಪ್ರಯೋಗ 5: Checklist validation",
+    "bodyEn": "What it ran: Checklist validation. What the lab concluded: only an explicit True counts, so a missing key, a False and the string yes are all refused; a complete checklist forces the reviewer to answer each question and does not prove the review was thoughtful",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Checklist validation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): only an explicit True counts, so a missing key, a False and the string yes are all refused; a complete checklist forces the reviewer to answer each question and does not prove the review was thoughtful"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: checklist validation ---\ncomplete     -> missing []\none missing  -> missing ['rollback_checked']\none false    -> missing ['rollback_checked']\nstring yes   -> missing ['resource_checked']\nempty        -> missing ['resource_checked', 'blast_radius_checked', 'rollback_checked']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A durable JSON store and idempotent proposal creation",
+    "headingKn": "ಪ್ರಯೋಗ 6: A durable JSON store and idempotent proposal creation",
+    "bodyEn": "What it ran: A durable JSON store and idempotent proposal creation. What the lab concluded: the proposal is stored before anyone reviews it and survives a reload, the second identical call returns the stored record instead of creating another, and the write goes through a temporary file and os.replace; this store has no locking, so two processes could still overwrite each other",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A durable JSON store and idempotent proposal creation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the proposal is stored before anyone reviews it and survives a reload, the second identical call returns the stored record instead of creating another, and the write goes through a temporary file and os.replace; this store has no locking, so two processes could still overwrite each other"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: a durable JSON store and idempotent proposal creation ---\nfirst call created: True | second call created: False | same record: True\nrecords on disk after reloading from a fresh read: 1 | status: PENDING_REVIEW | temp files left: []"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

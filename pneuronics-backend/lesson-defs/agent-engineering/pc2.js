@@ -141,6 +141,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Scenario 1, a clean approval",
+    "headingKn": "ಪ್ರಯೋಗ 1: Scenario 1, a clean approval",
+    "bodyEn": "What it ran: Scenario 1, a clean approval. What the lab concluded: the proposal is saved while pending, a reviewer with a complete checklist approves it and the executor takes it through committing and verifying to verified, with each step recorded as an event",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Scenario 1, a clean approval. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the proposal is saved while pending, a reviewer with a complete checklist approves it and the executor takes it through committing and verifying to verified, with each step recorded as an event"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: scenario 1, a clean approval ---\nproposal created with status PENDING_REVIEW | stored before review: True\nFinal status: VERIFIED | path: APPROVED -> COMMITTING -> VERIFYING -> VERIFIED"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Scenario 2, a lost response after the refund was made",
+    "headingKn": "ಪ್ರಯೋಗ 2: Scenario 2, a lost response after the refund was made",
+    "bodyEn": "What it ran: Scenario 2, a lost response after the refund was made. What the lab concluded: the provider recorded the refund before the response was lost, so the executor marked reconciliation required instead of retrying, then found the existing record and verified it; the ledger holds two refunds in total for the two logical operations so far and no refund was made twice",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Scenario 2, a lost response after the refund was made. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the provider recorded the refund before the response was lost, so the executor marked reconciliation required instead of retrying, then found the existing record and verified it; the ledger holds two refunds in total for the two logical operations so far and no refund was made twice"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: scenario 2, a lost response after the refund was made ---\nSame proposal: True\nAfter lost response: RECONCILIATION_REQUIRED | refunds in the ledger: 2\nAfter reconciliation: VERIFIED | refunds in the ledger: 2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Scenario 3, an incomplete checklist",
+    "headingKn": "ಪ್ರಯೋಗ 3: Scenario 3, an incomplete checklist",
+    "bodyEn": "What it ran: Scenario 3, an incomplete checklist. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Scenario 3, an incomplete checklist. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: scenario 3, an incomplete checklist ---\nApproval blocked: Missing acknowledgements: blast_radius_checked, rollback_checked\nstatus after the blocked attempt: PENDING_REVIEW\nAfter proper review: VERIFIED\nthe incomplete checklist named the two missing acknowledgements and left the proposal pending, and after a complete checklist the same proposal went through to verified; the lesson printed the same sequence but its text…\nFINAL COUNTS | proposals: 3 | refund effects: 3"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A lost request that never reached the provider",
+    "headingKn": "ಪ್ರಯೋಗ 4: A lost request that never reached the provider",
+    "bodyEn": "What it ran: A lost request that never reached the provider. What the lab concluded: when reconciliation finds no effect the proposal stays in reconciliation required until a retry is chosen on purpose, and the retry reuses the original key so exactly one refund exists afterwards; the lab simulates only the case where the provider has an immediately consistent ledger",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A lost request that never reached the provider. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): when reconciliation finds no effect the proposal stays in reconciliation required until a retry is chosen on purpose, and the retry reuses the original key so exactly one refund exists afterwards; the lab simulates only the case where the provider has an immediately consistent ledger"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a lost request that never reached the provider ---\nafter the lost request: RECONCILIATION_REQUIRED | after reconcile finds nothing: RECONCILIATION_REQUIRED | refunds in the ledger: 0\nafter a deliberate retry with the same key: VERIFIED | refunds in the ledger: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A provider result that does not match the approval",
+    "headingKn": "ಪ್ರಯೋಗ 5: A provider result that does not match the approval",
+    "bodyEn": "What it ran: A provider result that does not match the approval. What the lab concluded: the provider recorded 501 for an approved 500, and the verifier compared the recorded values with the approved action and ended in failed instead of verified, which is why success is checked against the authoritative record and not against the response",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A provider result that does not match the approval. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the provider recorded 501 for an approved 500, and the verifier compared the recorded values with the approved action and ended in failed instead of verified, which is why success is checked against the authoritative record and not against the response"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a provider result that does not match the approval ---\nstatus: FAILED | provider amount: 501 | approved amount: 500"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The eight unit tests",
+    "headingKn": "ಪ್ರಯೋಗ 6: The eight unit tests",
+    "bodyEn": "What it ran: The eight unit tests. What the lab concluded: the tests cover committing a pending or rejected proposal, an unknown reviewer, an action modified after approval, a duplicate proposal, a repeated commit of a verified proposal, an unknown proposal and an illegal transition",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The eight unit tests. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the tests cover committing a pending or rejected proposal, an unknown reviewer, an action modified after approval, a duplicate proposal, a repeated commit of a verified proposal, an unknown proposal and an illegal transition"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: the eight unit tests ---\nran 8 tests | failures 0 | errors 0 | passed True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
