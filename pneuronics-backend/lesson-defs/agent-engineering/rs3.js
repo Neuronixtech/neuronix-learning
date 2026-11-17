@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Evaluator noise, false passes and false blocks (threshold 0.5)",
+    "headingKn": "ಪ್ರಯೋಗ 1: Evaluator noise, false passes and false blocks (threshold 0.5)",
+    "bodyEn": "What it ran: Evaluator noise, false passes and false blocks (threshold 0.5). What the lab concluded: with more evaluator noise a system just past the threshold slips through more often and a safe one is blocked more often, so noise forces a choice about which error to tolerate; the noise levels and the shape of the true ratio are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Evaluator noise, false passes and false blocks (threshold 0.5). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with more evaluator noise a system just past the threshold slips through more often and a safe one is blocked more often, so noise forces a choice about which error to tolerate; the noise levels and the shape of the true ratio are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: evaluator noise, false passes and false blocks (threshold 0.5) ---\ntrue ratio first falls under 0.5 at generation 11\nnoise sd 0.02: system just under the line passes 0.001 | system comfortably above is wrongly blocked 0.000\nnoise sd 0.10: system just under the line passes 0.263 | system comfortably above is wrongly blocked 0.222\nnoise sd 0.20: system just under the line passes 0.384 | system comfortably above is wrongly blocked 0.350"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A system that games the evaluator (noise sd 0.05, check every generation)",
+    "headingKn": "ಪ್ರಯೋಗ 2: A system that games the evaluator (noise sd 0.05, check every generation)",
+    "bodyEn": "What it ran: A system that games the evaluator (noise sd 0.05, check every generation). What the lab concluded: when the measured ratio is lifted by a term that grows with each generation, the gate stops firing even though the true ratio keeps falling, so a gate that reads only the metric the system can influence stops measuring what it was meant to measure",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A system that games the evaluator (noise sd 0.05, check every generation). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): when the measured ratio is lifted by a term that grows with each generation, the gate stops firing even though the true ratio keeps falling, so a gate that reads only the metric the system can influence stops measuring what it was meant to measure"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: a system that games the evaluator (noise sd 0.05, check every generation) ---\ngaming term 0.00 per generation: halted in 1.000 of runs | median halt generation 10\ngaming term 0.01 per generation: halted in 1.000 of runs | median halt generation 14\ngaming term 0.03 per generation: halted in 0.000 of runs | median halt generation None"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: An independent held-out evaluator that cannot be gamed",
+    "headingKn": "ಪ್ರಯೋಗ 3: An independent held-out evaluator that cannot be gamed",
+    "bodyEn": "What it ran: An independent held-out evaluator that cannot be gamed. What the lab concluded: a second evaluator whose reading the system cannot influence keeps halting the loop at the same rate as in the honest case, which shows the value of separating the measured quantity from the optimised one; the independence is an assumption built into the lab",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An independent held-out evaluator that cannot be gamed. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a second evaluator whose reading the system cannot influence keeps halting the loop at the same rate as in the honest case, which shows the value of separating the measured quantity from the optimised one; the independence is an assumption built into the lab"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: an independent held-out evaluator that cannot be gamed ---\ngaming 0.00: gate on the gamed evaluator halts 1.000 | gate on an independent evaluator halts 1.000\ngaming 0.03: gate on the gamed evaluator halts 0.000 | gate on an independent evaluator halts 1.000"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: How often the gate looks",
+    "headingKn": "ಪ್ರಯೋಗ 4: How often the gate looks",
+    "bodyEn": "What it ran: How often the gate looks. What the lab concluded: checking less often lets the loop run further past the threshold before anyone looks, so the true ratio at the halt falls the longer the interval; with these growth rates each extra generation lowers the ratio by a fixed percentage",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How often the gate looks. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): checking less often lets the loop run further past the threshold before anyone looks, so the true ratio at the halt falls the longer the interval; with these growth rates each extra generation lowers the ratio by a fixed percentage"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: how often the gate looks ---\ncheck every  1 generation(s): median halt generation 11 | mean true ratio at the halt 0.484\ncheck every  3 generation(s): median halt generation 12 | mean true ratio at the halt 0.440\ncheck every  5 generation(s): median halt generation 15 | mean true ratio at the halt 0.420\ncheck every 10 generation(s): median halt generation 20 | mean true ratio at the halt 0.369"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) At sd 0.20 a bad system passed 38.4 percent of the time. 2) Gaming 0.03 stopped the gate from ever firing. 3) An independent evaluator halted all runs. 4) Checking every 10 generations let the ratio reach 0.369. 5) All values are invented.",
     "bodyKn": "1) sd 0.20 ರಲ್ಲಿ ಕೆಟ್ಟ ವ್ಯವಸ್ಥೆ 38.4 ಶೇಕಡಾ ಸಮಯ ಪಾಸ್ ಆಯಿತು. 2) Gaming 0.03 gate ಎಂದಿಗೂ ಉರಿಯದಂತೆ ಮಾಡಿತು. 3) ಸ್ವತಂತ್ರ ಮೌಲ್ಯಮಾಪಕ ಎಲ್ಲಾ ಓಟಗಳನ್ನು ನಿಲ್ಲಿಸಿತು. 4) ಪ್ರತಿ 10 ಜನರೇಶನ್ ಪರಿಶೀಲನೆ ಅನುಪಾತ 0.369 ತಲುಪಲು ಬಿಟ್ಟಿತು. 5) ಎಲ್ಲಾ ಮೌಲ್ಯಗಳು ಕಲ್ಪಿತ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B rs_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B rs_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B rs_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B rs_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. Evaluator noise, false passes and false blocks (threshold 0.5)\n2. A system that games the evaluator (noise sd 0.05, check every generation)\n3. An independent held-out evaluator that cannot be gamed\n4. How often the gate looks",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. Evaluator noise, false passes and false blocks (threshold 0.5)\n2. A system that games the evaluator (noise sd 0.05, check every generation)\n3. An independent held-out evaluator that cannot be gamed\n4. How often the gate looks"
    }
   },
   {

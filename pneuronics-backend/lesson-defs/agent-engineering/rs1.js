@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Capability C = 100 * 1.2^n and alignment A = 100 * 1.05^n",
+    "headingKn": "ಪ್ರಯೋಗ 1: Capability C = 100 * 1.2^n and alignment A = 100 * 1.05^n",
+    "bodyEn": "What it ran: Capability C = 100 * 1.2^n and alignment A = 100 * 1.05^n. What the lab concluded: both start at 100, so the gap is zero at generation 0 and the ratio rises steadily because the capability rate is higher; at generation 20 capability is about 3834 and alignment about 265, a ratio near 14.5, and the rates are the lesson's illustrative numbers",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Capability C = 100 * 1.2^n and alignment A = 100 * 1.05^n. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both start at 100, so the gap is zero at generation 0 and the ratio rises steadily because the capability rate is higher; at generation 20 capability is about 3834 and alignment about 265, a ratio near 14.5, and the rates are the lesson's illustrative numbers"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely computing: capability C = 100 * 1.2^n and alignment A = 100 * 1.05^n ---\ngen   capability  alignment   gap    ratio C/A\n  0       100.0      100.0       0.0    1.00\n  5       248.8      127.6     121.2    1.95\n 10       619.2      162.9     456.3    3.80\n 15      1540.7      207.9    1332.8    7.41\n 20      3833.8      265.3    3568.4   14.45\n 30     23737.6      432.2   23305.4   54.92"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Generations until the ratio crosses a threshold",
+    "headingKn": "ಪ್ರಯೋಗ 2: Generations until the ratio crosses a threshold",
+    "bodyEn": "What it ran: Generations until the ratio crosses a threshold. What the lab concluded: the loop and the closed form n = ln(threshold) / ln(1.2 / 1.05) agree, and a ratio of 2 arrives within a handful of generations while a ratio of 100 takes a few dozen; ratio thresholds are chosen for illustration and no value is a known safe limit",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Generations until the ratio crosses a threshold. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the loop and the closed form n = ln(threshold) / ln(1.2 / 1.05) agree, and a ratio of 2 arrives within a handful of generations while a ratio of 100 takes a few dozen; ratio thresholds are chosen for illustration and no value is a known safe limit"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely computing: generations until the ratio crosses a threshold ---\nratio >=   2 first at generation  6 | closed form  6\nratio >=   5 first at generation 13 | closed form 13\nratio >=  10 first at generation 18 | closed form 18\nratio >= 100 first at generation 35 | closed form 35"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: How fast alignment must grow to keep a constant ratio",
+    "headingKn": "ಪ್ರಯೋಗ 3: How fast alignment must grow to keep a constant ratio",
+    "bodyEn": "What it ran: How fast alignment must grow to keep a constant ratio. What the lab concluded: the ratio stays fixed only when the two growth rates are equal, and at any lower alignment rate the gap widens exponentially; matching the rate once is not enough, it has to be sustained every generation",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How fast alignment must grow to keep a constant ratio. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the ratio stays fixed only when the two growth rates are equal, and at any lower alignment rate the gap widens exponentially; matching the rate once is not enough, it has to be sustained every generation"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely computing: how fast alignment must grow to keep a constant ratio ---\ncapability growth 0.05 per generation: alignment must grow at least 0.05 per generation to hold the ratio at 1.0\ncapability growth 0.10 per generation: alignment must grow at least 0.10 per generation to hold the ratio at 1.0\ncapability growth 0.20 per generation: alignment must grow at least 0.20 per generation to hold the ratio at 1.0\nalignment growth 0.05: ratio at generation 20 = 14.45\nalignment growth 0.10: ratio at generation 20 = 5.70\nalignment growth 0.15: ratio at generation 20 = 2.34\nalignment growth 0.20: ratio at generation 20 = 1.00"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Noisy growth rates (200 runs per row, seed 1, 20 generations)",
+    "headingKn": "ಪ್ರಯೋಗ 4: Noisy growth rates (200 runs per row, seed 1, 20 generations)",
+    "bodyEn": "What it ran: Noisy growth rates (200 runs per row, seed 1, 20 generations). What the lab concluded: noise spreads the outcome widely but the 15 percentage point gap in mean growth dominates, so almost every run still ends far from parity; the noise model is Gaussian with an invented spread",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Noisy growth rates (200 runs per row, seed 1, 20 generations). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): noise spreads the outcome widely but the 15 percentage point gap in mean growth dominates, so almost every run still ends far from parity; the noise model is Gaussian with an invented spread"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: noisy growth rates (200 runs per row, seed 1, 20 generations) ---\nnoise sd 0.00: mean ratio  14.45 | min  14.45 | max   14.45 | runs with ratio under 5: 0\nnoise sd 0.05: mean ratio  15.11 | min   6.67 | max   46.96 | runs with ratio under 5: 0\nnoise sd 0.10: mean ratio  16.77 | min   2.26 | max  146.89 | runs with ratio under 5: 5"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) At generation 20 the ratio was 14.45. 2) A ratio of 2 arrived at generation 6 and 100 at generation 35. 3) Alignment growth of 0.20 was needed for ratio 1.00. 4) Noise did not rescue the ratio. 5) The rates are the lesson illustration, not measurements.",
     "bodyKn": "1) ಜನರೇಶನ್ 20 ರಲ್ಲಿ ಅನುಪಾತ 14.45. 2) ಅನುಪಾತ 2 ಜನರೇಶನ್ 6 ರಲ್ಲಿ ಮತ್ತು 100 ಜನರೇಶನ್ 35 ರಲ್ಲಿ ಬಂತು. 3) ಅನುಪಾತ 1.00 ಗೆ alignment ಬೆಳವಣಿಗೆ 0.20 ಬೇಕಾಯಿತು. 4) noise ಅನುಪಾತವನ್ನು ಉಳಿಸಲಿಲ್ಲ. 5) ದರಗಳು lesson ವಿವರಣೆ, ಅಳತೆಗಳಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B rs_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B rs_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B rs_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B rs_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. Capability C = 100 * 1.2^n and alignment A = 100 * 1.05^n\n2. Generations until the ratio crosses a threshold\n3. How fast alignment must grow to keep a constant ratio\n4. Noisy growth rates (200 runs per row, seed 1, 20 generations)",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. Capability C = 100 * 1.2^n and alignment A = 100 * 1.05^n\n2. Generations until the ratio crosses a threshold\n3. How fast alignment must grow to keep a constant ratio\n4. Noisy growth rates (200 runs per row, seed 1, 20 generations)"
    }
   },
   {

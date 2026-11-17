@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: No gate, different effort splits (20 generations)",
+    "headingKn": "ಪ್ರಯೋಗ 1: No gate, different effort splits (20 generations)",
+    "bodyEn": "What it ran: No gate, different effort splits (20 generations). What the lab concluded: with all effort on capability alignment never moves, and the ratio falls only as fast as capability rises; with half the effort each, both grow the same amount per generation from the same start, so the ratio stays at 1.00; the growth formula is a modelling choice",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: No gate, different effort splits (20 generations). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with all effort on capability alignment never moves, and the ratio falls only as fast as capability rises; with half the effort each, both grow the same amount per generation from the same start, so the ratio stays at 1.00; the growth formula is a modelling choice"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: no gate, different effort splits (20 generations) ---\nalignment share f=0.00: capability   3833.8 | alignment    100.0 | alignment/capability  0.03\nalignment share f=0.25: capability   1636.7 | alignment    265.3 | alignment/capability  0.16\nalignment share f=0.50: capability    672.7 | alignment    672.7 | alignment/capability  1.00\nalignment share f=0.75: capability    265.3 | alignment   1636.7 | alignment/capability  6.17"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A gate with threshold 0.5 on alignment/capability",
+    "headingKn": "ಪ್ರಯೋಗ 2: A gate with threshold 0.5 on alignment/capability",
+    "bodyEn": "What it ran: A gate with threshold 0.5 on alignment/capability. What the lab concluded: a loop that puts nothing into alignment is halted after a few generations, a loop with a small share is halted later and a loop that keeps the ratio from falling below the threshold runs to the limit; the gate stops the loop but does not by itself repair the ratio",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A gate with threshold 0.5 on alignment/capability. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a loop that puts nothing into alignment is halted after a few generations, a loop with a small share is halted later and a loop that keeps the ratio from falling below the threshold runs to the limit; the gate stops the loop but does not by itself repair the ratio"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a gate with threshold 0.5 on alignment/capability ---\nf=0.00: halted after  4 generations | capability    207.4 | alignment/capability  0.48\nf=0.25: halted after  8 generations | capability    305.9 | alignment/capability  0.48\nf=0.40: halted after 20 generations | capability    964.6 | alignment/capability  0.48\nf=0.50: ran all generations after 40 generations | capability   4525.9 | alignment/capability  1.00"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: The cost in capability of keeping the ratio at 1",
+    "headingKn": "ಪ್ರಯೋಗ 3: The cost in capability of keeping the ratio at 1",
+    "bodyEn": "What it ran: The cost in capability of keeping the ratio at 1. What the lab concluded: moving effort to alignment slows capability growth, which is the price of holding the ratio, and with these rules half the effort cuts final capability to 17.5 percent of the all-capability run and a quarter of the effort to 42.7 percent; a real tradeoff would not be this clean",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The cost in capability of keeping the ratio at 1. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): moving effort to alignment slows capability growth, which is the price of holding the ratio, and with these rules half the effort cuts final capability to 17.5 percent of the all-capability run and a quarter of the effort to 42.7 percent; a real tradeoff would not be this clean"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely computing: the cost in capability of keeping the ratio at 1 ---\nf=0.00: capability after 20 generations   3833.8 (1.000 of the all-capability run)\nf=0.25: capability after 20 generations   1636.7 (0.427 of the all-capability run)\nf=0.50: capability after 20 generations    672.7 (0.175 of the all-capability run)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: How a slower alignment rate changes the needed split (threshold 0.5, 40 generations)",
+    "headingKn": "ಪ್ರಯೋಗ 4: How a slower alignment rate changes the needed split (threshold 0.5, 40 generations)",
+    "bodyEn": "What it ran: How a slower alignment rate changes the needed split (threshold 0.5, 40 generations). What the lab concluded: when alignment research is harder, meaning it gives less growth per unit of effort, the loop needs a larger share of effort on alignment or it halts, and the slowest rate needed 0.75 of the effort against 0.5 for the fastest; the grid has steps of 0.05 and the growth rules are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How a slower alignment rate changes the needed split (threshold 0.5, 40 generations). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): when alignment research is harder, meaning it gives less growth per unit of effort, the loop needs a larger share of effort on alignment or it halts, and the slowest rate needed 0.75 of the effort against 0.5 for the fastest; the grid has steps of 0.05 and the growth rules are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: how a slower alignment rate changes the needed split (threshold 0.5, 40 generations) ---\nalignment growth available 0.20: smallest tried f that avoids the halt 0.5\nalignment growth available 0.10: smallest tried f that avoids the halt 0.65\nalignment growth available 0.05: smallest tried f that avoids the halt 0.75"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) f 0.50 held the ratio at 1.00. 2) A gate halted f 0.00 after 4 generations. 3) Half the effort left 17.5 percent of the capability. 4) Harder alignment research needed a split of 0.75. 5) The growth rules are invented.",
     "bodyKn": "1) f 0.50 ಅನುಪಾತವನ್ನು 1.00 ರಲ್ಲಿ ಹಿಡಿಯಿತು. 2) gate f 0.00 ಅನ್ನು 4 ಜನರೇಶನ್ ನಂತರ ನಿಲ್ಲಿಸಿತು. 3) ಅರ್ಧ ಪ್ರಯತ್ನ 17.5 ಶೇಕಡಾ capability ಬಿಟ್ಟಿತು. 4) ಕಠಿಣ alignment ಸಂಶೋಧನೆಗೆ 0.75 ವಿಭಜನೆ ಬೇಕಾಯಿತು. 5) ಬೆಳವಣಿಗೆ ನಿಯಮಗಳು ಕಲ್ಪಿತ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B rs_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B rs_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B rs_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B rs_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. No gate, different effort splits (20 generations)\n2. A gate with threshold 0.5 on alignment/capability\n3. The cost in capability of keeping the ratio at 1\n4. How a slower alignment rate changes the needed split (threshold 0.5, 40 generations)",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. No gate, different effort splits (20 generations)\n2. A gate with threshold 0.5 on alignment/capability\n3. The cost in capability of keeping the ratio at 1\n4. How a slower alignment rate changes the needed split (threshold 0.5, 40 generations)"
    }
   },
   {
