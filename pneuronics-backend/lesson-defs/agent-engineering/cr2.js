@@ -137,6 +137,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The four scenarios",
+    "headingKn": "ಪ್ರಯೋಗ 1: The four scenarios",
+    "bodyEn": "What it ran: The four scenarios. What the lab concluded: the clean run committed with inventory 90, the crash run ended exactly like it with one operation, the wrong expectation aborted with inventory 100 and no operation, and the forced verification failure rolled back to 100; the verification failure is a test injection and not a real mismatch",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The four scenarios. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the clean run committed with inventory 90, the crash run ended exactly like it with one operation, the wrong expectation aborted with inventory 100 and no operation, and the forced verification failure rolled back to 100; the verification failure is a test injection and not a real mismatch"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the four scenarios ---\nScenario: clean\n  Result: COMMITTED | Inventory: 90 | operations: 1\n  History: [(0, 'APPROVED'), (1, 'IN_FLIGHT'), (2, 'VERIFYING'), (3, 'COMMITTED')]\nScenario: crash (worker crashed after the side effect, then a fresh engine resumed)\n  Result: COMMITTED | Inventory: 90 | operations: 1\n  History: [(0, 'APPROVED'), (1, 'IN_FLIGHT'), (2, 'VERIFYING'), (3, 'COMMITTED')]\nScenario: precondition\n  Result: ABORTED | Inventory: 100 | operations: 0\n  History: [(0, 'APPROVED'), (1, 'IN_FLIGHT'), (2, 'ABORTED')]\nScenario: verify_failure\n  Result: ROLLED_BACK | Inventory: 100 | operations: 1\n  History: [(0, 'APPROVED'), (1, 'IN_FLIGHT'), (2, 'VERIFYING'), (3, 'ROLLBACK_PENDING'), (4, 'ROLLED_BACK')]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The same crash without a ledger",
+    "headingKn": "ಪ್ರಯೋಗ 2: The same crash without a ledger",
+    "bodyEn": "What it ran: The same crash without a ledger. What the lab concluded: the naive engine reads IN_FLIGHT as not done and subtracts a second time, which gives 80 instead of 90 and still reports COMMITTED because its verification always says yes; the ledger and the real verification are what prevent this",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The same crash without a ledger. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the naive engine reads IN_FLIGHT as not done and subtracts a second time, which gives 80 instead of 90 and still reports COMMITTED because its verification always says yes; the ledger and the real verification are what prevent this"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: the same crash without a ledger ---\nnaive result: COMMITTED | inventory: 80 | the approved target was 90"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Crash at every boundary",
+    "headingKn": "ಪ್ರಯೋಗ 3: Crash at every boundary",
+    "bodyEn": "What it ran: Crash at every boundary. What the lab concluded: every crash point recovered to a terminal state with exactly one operation, inventory 90 on the normal path and 100 after a rollback; the first version of this lab escalated at after_rollback because a rollback that had already restored the stock was not recognised on resume, and treating an operation already marked ROLLED_BACK as done fixed it; the lab injects crashes between steps and never inside a SQLite transaction, which SQLite itself makes atomic",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Crash at every boundary. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): every crash point recovered to a terminal state with exactly one operation, inventory 90 on the normal path and 100 after a rollback; the first version of this lab escalated at after_rollback because a rollback that had already restored the stock was not recognised on resume, and treating an operation already marked ROLLED_BACK as done fixed it; the lab injects crashes between steps and never inside a SQLite transaction, which SQLite itself makes atomic"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: crash at every boundary ---\ncrash point              path               final        inventory operations\nafter_in_flight          normal             COMMITTED           90          1\nafter_apply              normal             COMMITTED           90          1\nafter_verifying          normal             COMMITTED           90          1\nafter_in_flight          verify fails       ROLLED_BACK        100          1\nafter_apply              verify fails       ROLLED_BACK        100          1\nafter_verifying          verify fails       ROLLED_BACK        100          1\nafter_rollback_pending   verify fails       ROLLED_BACK        100          1\nafter_rollback           verify fails       ROLLED_BACK        100          1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Same key, different parameters",
+    "headingKn": "ಪ್ರಯೋಗ 4: Same key, different parameters",
+    "bodyEn": "What it ran: Same key, different parameters. What the lab concluded: a repeat is answered from the ledger without touching inventory and a changed parameter is refused, so one key cannot be reused to authorise a different change",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Same key, different parameters. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a repeat is answered from the ledger without touching inventory and a changed parameter is refused, so one key cannot be reused to authorise a different change"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: same key, different parameters ---\nfirst call: APPLIED | repeat: ALREADY_APPLIED\nchanged target under the same key: same idempotency key, different parameters\ninventory: 90 | operations: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Conditional rollback when another workflow got there first",
+    "headingKn": "ಪ್ರಯೋಗ 5: Conditional rollback when another workflow got there first",
+    "bodyEn": "What it ran: Conditional rollback when another workflow got there first. What the lab concluded: another workflow moved inventory from 90 to 85 before the rollback ran, the conditional update matched no row, the workflow escalated and the 85 was left alone; a blind restore to 100 would have erased that change",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Conditional rollback when another workflow got there first. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): another workflow moved inventory from 90 to 85 before the rollback ran, the conditional update matched no row, the workflow escalated and the 85 was left alone; a blind restore to 100 would have erased that change"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: conditional rollback when another workflow got there first ---\nresult: ESCALATED | inventory: 85 | history: ['APPROVED', 'IN_FLIGHT', 'VERIFYING', 'ROLLBACK_PENDING', 'ESCALATED']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The unit tests",
+    "headingKn": "ಪ್ರಯೋಗ 6: The unit tests",
+    "bodyEn": "What it ran: The unit tests. What the lab concluded: the tests cover a clean run, a repeated run, a crash and resume, a failed precondition, a rollback and an illegal transition on this lab's own engine, and they are not the lesson's original tests",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The unit tests. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the tests cover a clean run, a repeated run, a crash and resume, a failed precondition, a rollback and an illegal transition on this lab's own engine, and they are not the lesson's original tests"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: the unit tests ---\nran 6 tests | failures 0 | errors 0 | passed True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

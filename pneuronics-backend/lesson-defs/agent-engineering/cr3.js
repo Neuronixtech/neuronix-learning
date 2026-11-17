@@ -149,6 +149,119 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Split-brain with and without fencing at the target",
+    "headingKn": "ಪ್ರಯೋಗ 1: Split-brain with and without fencing at the target",
+    "bodyEn": "What it ran: Split-brain with and without fencing at the target. What the lab concluded: both workers believed they owned the workflow after the pause, and only the target that compared tokens atomically kept B's value; a check inside the worker could not help, because the stale worker is exactly the one whose view is out of date",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Split-brain with and without fencing at the target. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both workers believed they owned the workflow after the pause, and only the target that compared tokens atomically kept B's value; a check inside the worker could not help, because the stale worker is exactly the one whose view is out of date"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: split-brain with and without fencing at the target ---\nno fencing at the target   A token 1, B token 2 | A's late write accepted: True | final value: from-A\nfenced at the target       A token 1, B token 2 | A's late write accepted: False | final value: from-B"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Eight threads racing for one lease",
+    "headingKn": "ಪ್ರಯೋಗ 2: Eight threads racing for one lease",
+    "bodyEn": "What it ran: Eight threads racing for one lease. What the lab concluded: one immediate transaction per acquire let exactly one thread take the lease and refused the other seven, and a lease only says who may try, so the fencing check at the target is still needed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Eight threads racing for one lease. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): one immediate transaction per acquire let exactly one thread take the lease and refused the other seven, and a lease only says who may try, so the fencing check at the target is still needed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: eight threads racing for one lease ---\ntokens handed out: [1] | refused: 7"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: A SAGA with durable step state",
+    "headingKn": "ಪ್ರಯೋಗ 3: A SAGA with durable step state",
+    "bodyEn": "What it ran: A SAGA with durable step state. What the lab concluded: shipping failed, so the payment was compensated before the inventory, in reverse order, and each step's status is a row in the database rather than a list in memory; the refund here is a recorded row, and a real refund does not undo fees or notifications",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A SAGA with durable step state. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): shipping failed, so the payment was compensated before the inventory, in reverse order, and each step's status is a row in the database rather than a list in memory; the refund here is a recorded row, and a real refund does not undo fees or notifications"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: a SAGA with durable step state ---\n  execute inventory\n  execute payment\n  forward failure at shipping: Shipping provider unavailable\n  compensate payment\n  compensate inventory\nresult: COMPENSATED | steps: [('inventory', 'EXECUTED', 'COMPENSATED'), ('payment', 'EXECUTED', 'COMPENSATED'), ('shipping', 'FAILED', 'NOT_STARTED')]\neffects: {'reserve': 1, 'charge': 1, 'release': 1, 'refund': 1}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A crash during compensation",
+    "headingKn": "ಪ್ರಯೋಗ 4: A crash during compensation",
+    "bodyEn": "What it ran: A crash during compensation. What the lab concluded: the refund was applied, the worker crashed before writing that down and the resumed run repeated it, which a stable key made harmless and a fresh random key turned into a second refund; the lab's provider is a table that ignores a repeated key, and a real provider has to offer that guarantee",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A crash during compensation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the refund was applied, the worker crashed before writing that down and the resumed run repeated it, which a stable key made harmless and a fresh random key turned into a second refund; the lab's provider is a table that ignores a repeated key, and a real provider has to offer that guarantee"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a crash during compensation ---\nstable compensation key  refunds recorded: 1 | releases: 1\nrandom key per retry     refunds recorded: 2 | releases: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Failure injection across the forward path",
+    "headingKn": "ಪ್ರಯೋಗ 5: Failure injection across the forward path",
+    "bodyEn": "What it ran: Failure injection across the forward path. What the lab concluded: resuming from the checkpoint never repeats the effect when the provider keeps a ledger of keys, and a provider without one made 2 effects at both crash points that fall after the effect and before the checkpoint moved to VERIFYING, including the point after the record was written, because the resumed run still saw IN_FLIGHT; crashes before the effect or after VERIFYING were harmless, and the checkpoint here is a dictionary that survives the simulated crash",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Failure injection across the forward path. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): resuming from the checkpoint never repeats the effect when the provider keeps a ledger of keys, and a provider without one made 2 effects at both crash points that fall after the effect and before the checkpoint moved to VERIFYING, including the point after the record was written, because the resumed run still saw IN_FLIGHT; crashes before the effect or after VERIFYING were harmless, and the checkpoint here is a dictionary that survives the simulated crash"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: failure injection across the forward path ---\ncrash point           idempotent provider    provider without keys\nbefore_in_flight   COMMITTED, 1 effect(s)   COMMITTED, 1 effect(s)\nafter_in_flight    COMMITTED, 1 effect(s)   COMMITTED, 1 effect(s)\nafter_effect       COMMITTED, 1 effect(s)   COMMITTED, 2 effect(s)\nafter_record       COMMITTED, 1 effect(s)   COMMITTED, 2 effect(s)\nafter_verifying    COMMITTED, 1 effect(s)   COMMITTED, 1 effect(s)\nafter_commit       COMMITTED, 1 effect(s)   COMMITTED, 1 effect(s)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Validating a stored history",
+    "headingKn": "ಪ್ರಯೋಗ 6: Validating a stored history",
+    "bodyEn": "What it ran: Validating a stored history. What the lab concluded: a checkpoint table can be checked against the allowed transitions after the fact, and the first illegal jump is named; this finds an impossible sequence and cannot prove that a legal-looking one really happened",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Validating a stored history. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a checkpoint table can be checked against the allowed transitions after the fact, and the first illegal jump is named; this finds an impossible sequence and cannot prove that a legal-looking one really happened"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: validating a stored history ---\ngood history: None\ntampered history: ('APPROVED', 'COMMITTED')"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: A hash-chained audit record with fencing tokens",
+    "headingKn": "ಪ್ರಯೋಗ 7: A hash-chained audit record with fencing tokens",
+    "bodyEn": "What it ran: A hash-chained audit record with fencing tokens. What the lab concluded: an edit is found at the entry that changed and a dropped tail is found only against a head stored elsewhere; a hash chain shows consistency and not honesty",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A hash-chained audit record with fencing tokens. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an edit is found at the entry that changed and a dropped tail is found only against a head stored elsewhere; a hash chain shows consistency and not honesty"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely running: a hash-chained audit record with fencing tokens ---\nintact: (True, None)\nfencing token edited in entry 3: (False, 2)\nlast entry dropped, no anchor: (True, None) | with the saved head: (False, 'anchor mismatch')"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

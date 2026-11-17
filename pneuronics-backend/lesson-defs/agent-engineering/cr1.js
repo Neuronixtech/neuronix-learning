@@ -145,6 +145,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The in-memory state machine",
+    "headingKn": "ಪ್ರಯೋಗ 1: The in-memory state machine",
+    "bodyEn": "What it ran: The in-memory state machine. What the lab concluded: the table lets the happy path through in four steps and refuses a jump straight to COMMITTED; the object lives only in memory, so a process exit loses it, and COMMITTED here only means the transition was legal, not that anything outside was verified",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The in-memory state machine. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the table lets the happy path through in four steps and refuses a jump straight to COMMITTED; the object lives only in memory, so a process exit loses it, and COMMITTED here only means the transition was legal, not that anything outside was verified"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the in-memory state machine ---\nfinal: COMMITTED | version: 4\nPROPOSED -> COMMITTED refused: PROPOSED -> COMMITTED\nlegal moves: 8 of 56 ordered pairs"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Durable checkpoints in one transaction",
+    "headingKn": "ಪ್ರಯೋಗ 2: Durable checkpoints in one transaction",
+    "bodyEn": "What it ran: Durable checkpoints in one transaction. What the lab concluded: the state and the history live in one transaction, so a reopened file shows the full path, a stale writer is refused by the version condition and a crash between the two statements leaves neither changed; the lab has one process, so real lock contention is not tested here",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Durable checkpoints in one transaction. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the state and the history live in one transaction, so a reopened file shows the full path, a stale writer is refused by the version condition and a crash between the two statements leaves neither changed; the lab has one process, so real lock contention is not tested here"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: durable checkpoints in one transaction ---\nafter reopening the file: ('COMMITTED', 4) | history: ['PROPOSED', 'APPROVED', 'IN_FLIGHT', 'VERIFYING', 'COMMITTED']\nsecond writer holding the old version refused: expected version 0\nafter a crash between the two writes: ('APPROVED', 1) | history rows: 2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Leases and fencing tokens on a simulated clock",
+    "headingKn": "ಪ್ರಯೋಗ 3: Leases and fencing tokens on a simulated clock",
+    "bodyEn": "What it ran: Leases and fencing tokens on a simulated clock. What the lab concluded: each takeover gets a larger token, an expired owner cannot renew, and release does not reset the counter, so an old token can never become valid again; ownership of the lease is not permission to run the action",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Leases and fencing tokens on a simulated clock. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each takeover gets a larger token, an expired owner cannot renew, and release does not reset the counter, so an old token can never become valid again; ownership of the lease is not permission to run the action"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: leases and fencing tokens on a simulated clock ---\nA at 0: 1 | B at 10 (A still holds it): None | B at 31 (expired): 2\nA renews with token 1 after losing the lease: False | B renews with token 2: True\nafter B releases, C acquires at 33 with token: 3"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A fenced resource",
+    "headingKn": "ಪ್ರಯೋಗ 4: A fenced resource",
+    "bodyEn": "What it ran: A fenced resource. What the lab concluded: the resource itself compares tokens, so the stale worker is refused even though it still believes it owns the lease; this object is in memory and one process, while a real resource has to enforce the comparison atomically and durably",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A fenced resource. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the resource itself compares tokens, so the stale worker is refused even though it still believes it owns the lease; this object is in memory and one process, while a real resource has to enforce the comparison atomically and durably"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a fenced resource ---\nwrite with token 41 after 42: Stale fencing token\nvalue: 200"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: A file-hash precondition and its race",
+    "headingKn": "ಪ್ರಯೋಗ 5: A file-hash precondition and its race",
+    "bodyEn": "What it ran: A file-hash precondition and its race. What the lab concluded: a hash checked well before the write does not stop another process from changing the file in between, and re-checking at the boundary catches a change made before it; a change in the few instructions between the re-hash and the replace still gets through, which is why a real system needs a version enforced by the resource itself",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A file-hash precondition and its race. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a hash checked well before the write does not stop another process from changing the file in between, and re-checking at the boundary catches a change made before it; a change in the few instructions between the re-hash and the replace still gets through, which is why a real system needs a version enforced by the resource itself"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: a file-hash precondition and its race ---\nprecondition matches before any change: True\ncheck then write with another change in between ends as: MAX_RETRIES=5 (the 10 was overwritten)\nre-hash at the write boundary, change made just before it: written = False | file: MAX_RETRIES=10"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Reconcile first, then decide",
+    "headingKn": "ಪ್ರಯೋಗ 6: Reconcile first, then decide",
+    "bodyEn": "What it ran: Reconcile first, then decide. What the lab concluded: the checkpoint says IN_FLIGHT in all four cases, and only the lookup of the key tells them apart; a missing record means no effect only if the provider is immediately consistent, which this dictionary is by construction",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Reconcile first, then decide. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the checkpoint says IN_FLIGHT in all four cases, and only the lookup of the key tells them apart; a missing record means no effect only if the provider is immediately consistent, which this dictionary is by construction"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: reconcile first, then decide ---\neffect exists and matches          -> VERIFY_EXISTING_RESULT\neffect exists, amount differs      -> ESCALATE_INCONSISTENCY\nno effect, preconditions hold      -> RETRY_WITH_SAME_IDEMPOTENCY_KEY\nno effect, preconditions failed    -> ABORT_WITHOUT_EXECUTION"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
