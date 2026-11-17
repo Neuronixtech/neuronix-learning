@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "METR Time Horizons (Part 1 of 3) — The Logistic Horizon",
- "titleKn": "METR ಸಮಯ Horizons (ಭಾಗ 1 / 3) — Logistic Horizon",
+ "title": "METR Time Horizons and External Capability Evaluation (Part 1 of 3) — The Logistic Horizon",
+ "titleKn": "METR ಸಮಯ Horizons ಮತ್ತು ಬಾಹ್ಯ ಸಾಮರ್ಥ್ಯ ಮೌಲ್ಯಮಾಪನ (ಭಾಗ 1 / 3) — Logistic Horizon",
  "desc": "Build the logistic success model and its 10, 50 and 90 percent horizons and check them by round trip.",
  "descKn": "logistic ಯಶಸ್ಸು ಮಾದರಿ ಮತ್ತು ಅದರ 10, 50 ಮತ್ತು 90 ಶೇಕಡಾ horizons ನಿರ್ಮಿಸಿ ಸುತ್ತು-ಪ್ರಯಾಣದಿಂದ ಪರಿಶೀಲಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "METR Time Horizons (Part 1 of 3)",
-    "textKn": "METR ಸಮಯ Horizons (ಭಾಗ 1 / 3)",
+    "textEn": "METR Time Horizons and External Capability Evaluation (Part 1 of 3)",
+    "textKn": "METR ಸಮಯ Horizons ಮತ್ತು ಬಾಹ್ಯ ಸಾಮರ್ಥ್ಯ ಮೌಲ್ಯಮಾಪನ (ಭಾಗ 1 / 3)",
     "level": "H1"
    }
   },

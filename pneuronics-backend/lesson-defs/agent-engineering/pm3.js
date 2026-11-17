@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "Permission Modes and Auto Mode (Part 3 of 3) — Hard Policy and Trajectory Monitoring",
- "titleKn": "ಅನುಮತಿ ಮೋಡ್‌ಗಳು ಮತ್ತು Auto ಮೋಡ್ (ಭಾಗ 3 / 3) — ಕಠಿಣ ನೀತಿ ಮತ್ತು Trajectory ಮೇಲ್ವಿಚಾರಣೆ",
+ "title": "Claude Code Permission Modes and Auto Mode (Part 3 of 3) — Hard Policy and Trajectory Monitoring",
+ "titleKn": "Claude Code ಅನುಮತಿ ಮೋಡ್‌ಗಳು ಮತ್ತು Auto ಮೋಡ್ (ಭಾಗ 3 / 3) — ಕಠಿಣ ನೀತಿ ಮತ್ತು Trajectory ಮೇಲ್ವಿಚಾರಣೆ",
  "desc": "Add a hard policy under the modes and a monitor for dangerous sequences, and measure their limits.",
  "descKn": "ಮೋಡ್‌ಗಳ ಕೆಳಗೆ ಕಠಿಣ ನೀತಿ ಮತ್ತು ಅಪಾಯಕಾರಿ ಅನುಕ್ರಮಗಳಿಗೆ ಮಾನಿಟರ್ ಸೇರಿಸಿ ಮತ್ತು ಅವುಗಳ ಮಿತಿ ಅಳೆಯಿರಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "Permission Modes and Auto Mode (Part 3 of 3)",
-    "textKn": "ಅನುಮತಿ ಮೋಡ್‌ಗಳು ಮತ್ತು Auto ಮೋಡ್ (ಭಾಗ 3 / 3)",
+    "textEn": "Claude Code Permission Modes and Auto Mode (Part 3 of 3)",
+    "textKn": "Claude Code ಅನುಮತಿ ಮೋಡ್‌ಗಳು ಮತ್ತು Auto ಮೋಡ್ (ಭಾಗ 3 / 3)",
     "level": "H1"
    }
   },

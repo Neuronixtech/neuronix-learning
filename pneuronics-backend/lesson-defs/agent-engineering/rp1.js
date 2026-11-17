@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "Anthropic RSP v3.0 (Part 1 of 3) — Thresholds and Validation",
- "titleKn": "Anthropic RSP v3.0 (ಭಾಗ 1 / 3) — ಮಿತಿಗಳು ಮತ್ತು ಮೌಲ್ಯೀಕರಣ",
+ "title": "Anthropic Responsible Scaling Policy v3.0 (Part 1 of 3) — Thresholds and Validation",
+ "titleKn": "Anthropic Responsible Scaling Policy v3.0 (ಭಾಗ 1 / 3) — ಮಿತಿಗಳು ಮತ್ತು ಮೌಲ್ಯೀಕರಣ",
  "desc": "Build a three-state threshold evaluator, validate its inputs and test the boundary.",
  "descKn": "ಮೂರು-ಸ್ಥಿತಿ ಮಿತಿ ಮೌಲ್ಯಮಾಪಕ ನಿರ್ಮಿಸಿ, ಅದರ ಇನ್‌ಪುಟ್ ಮೌಲ್ಯೀಕರಿಸಿ ಮತ್ತು ಗಡಿ ಪರೀಕ್ಷಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "Anthropic RSP v3.0 (Part 1 of 3)",
-    "textKn": "Anthropic RSP v3.0 (ಭಾಗ 1 / 3)",
+    "textEn": "Anthropic Responsible Scaling Policy v3.0 (Part 1 of 3)",
+    "textKn": "Anthropic Responsible Scaling Policy v3.0 (ಭಾಗ 1 / 3)",
     "level": "H1"
    }
   },

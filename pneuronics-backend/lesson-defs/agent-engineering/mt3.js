@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "METR Time Horizons (Part 3 of 3) — From Horizon to Decision",
- "titleKn": "METR ಸಮಯ Horizons (ಭಾಗ 3 / 3) — Horizon ನಿಂದ ನಿರ್ಧಾರಕ್ಕೆ",
+ "title": "METR Time Horizons and External Capability Evaluation (Part 3 of 3) — From Horizon to Decision",
+ "titleKn": "METR ಸಮಯ Horizons ಮತ್ತು ಬಾಹ್ಯ ಸಾಮರ್ಥ್ಯ ಮೌಲ್ಯಮಾಪನ (ಭಾಗ 3 / 3) — Horizon ನಿಂದ ನಿರ್ಧಾರಕ್ಕೆ",
  "desc": "Measure outcome inflation and domain pooling, then build a fail-closed gate and score a monitor.",
  "descKn": "ಫಲಿತಾಂಶ ಉಬ್ಬಿಸುವಿಕೆ ಮತ್ತು ಕ್ಷೇತ್ರ ಕೂಡಿಸುವಿಕೆ ಅಳೆದು, ನಂತರ fail-closed gate ನಿರ್ಮಿಸಿ ಮತ್ತು ಮಾನಿಟರ್ ಅಂಕಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "METR Time Horizons (Part 3 of 3)",
-    "textKn": "METR ಸಮಯ Horizons (ಭಾಗ 3 / 3)",
+    "textEn": "METR Time Horizons and External Capability Evaluation (Part 3 of 3)",
+    "textKn": "METR ಸಮಯ Horizons ಮತ್ತು ಬಾಹ್ಯ ಸಾಮರ್ಥ್ಯ ಮೌಲ್ಯಮಾಪನ (ಭಾಗ 3 / 3)",
     "level": "H1"
    }
   },

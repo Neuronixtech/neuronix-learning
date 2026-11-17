@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "Autonomous Coding Agent Landscape (Part 2 of 3) — Scope Contracts and the Sandbox Gap",
- "titleKn": "ಸ್ವಾಯತ್ತ ಕೋಡಿಂಗ್ Agent ಭೂದೃಶ್ಯ (ಭಾಗ 2 / 3) — Scope ಒಪ್ಪಂದಗಳು ಮತ್ತು Sandbox ಅಂತರ",
+ "title": "Autonomous Coding Agent Landscape (SWE-bench, CodeAct) (Part 2 of 3) — Scope Contracts and the Sandbox Gap",
+ "titleKn": "ಸ್ವಾಯತ್ತ ಕೋಡಿಂಗ್ Agent ಭೂದೃಶ್ಯ (SWE-bench, CodeAct) (ಭಾಗ 2 / 3) — Scope ಒಪ್ಪಂದಗಳು ಮತ್ತು Sandbox ಅಂತರ",
  "desc": "Enforce a scope contract on generated code and see why it is not a sandbox.",
  "descKn": "ರಚಿತ ಕೋಡ್ ಮೇಲೆ scope ಒಪ್ಪಂದ ಜಾರಿಗೊಳಿಸಿ ಮತ್ತು ಅದು sandbox ಏಕೆ ಅಲ್ಲ ನೋಡಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "Autonomous Coding Agent Landscape (Part 2 of 3)",
-    "textKn": "ಸ್ವಾಯತ್ತ ಕೋಡಿಂಗ್ Agent ಭೂದೃಶ್ಯ (ಭಾಗ 2 / 3)",
+    "textEn": "Autonomous Coding Agent Landscape (SWE-bench, CodeAct) (Part 2 of 3)",
+    "textKn": "ಸ್ವಾಯತ್ತ ಕೋಡಿಂಗ್ Agent ಭೂದೃಶ್ಯ (SWE-bench, CodeAct) (ಭಾಗ 2 / 3)",
     "level": "H1"
    }
   },

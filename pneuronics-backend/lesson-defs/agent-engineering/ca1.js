@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "Autonomous Coding Agent Landscape (Part 1 of 3) — JSON Calls Against Code-as-Action",
- "titleKn": "ಸ್ವಾಯತ್ತ ಕೋಡಿಂಗ್ Agent ಭೂದೃಶ್ಯ (ಭಾಗ 1 / 3) — JSON ಕರೆಗಳು ವಿರುದ್ಧ Code-as-Action",
+ "title": "Autonomous Coding Agent Landscape (SWE-bench, CodeAct) (Part 1 of 3) — JSON Calls Against Code-as-Action",
+ "titleKn": "ಸ್ವಾಯತ್ತ ಕೋಡಿಂಗ್ Agent ಭೂದೃಶ್ಯ (SWE-bench, CodeAct) (ಭಾಗ 1 / 3) — JSON ಕರೆಗಳು ವಿರುದ್ಧ Code-as-Action",
  "desc": "Count turns and operations for a JSON tool scaffold and a code-as-action scaffold on four tasks.",
  "descKn": "ನಾಲ್ಕು ಕಾರ್ಯಗಳಲ್ಲಿ JSON tool scaffold ಮತ್ತು code-as-action scaffold ಗೆ ಟರ್ನ್ ಮತ್ತು ಕಾರ್ಯಾಚರಣೆ ಎಣಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "Autonomous Coding Agent Landscape (Part 1 of 3)",
-    "textKn": "ಸ್ವಾಯತ್ತ ಕೋಡಿಂಗ್ Agent ಭೂದೃಶ್ಯ (ಭಾಗ 1 / 3)",
+    "textEn": "Autonomous Coding Agent Landscape (SWE-bench, CodeAct) (Part 1 of 3)",
+    "textKn": "ಸ್ವಾಯತ್ತ ಕೋಡಿಂಗ್ Agent ಭೂದೃಶ್ಯ (SWE-bench, CodeAct) (ಭಾಗ 1 / 3)",
     "level": "H1"
    }
   },

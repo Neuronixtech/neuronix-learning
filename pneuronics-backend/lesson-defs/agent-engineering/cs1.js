@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "CAIS, CAISI and Societal-Scale Risk (Part 1 of 3) — The Four-Risk Screen",
- "titleKn": "CAIS, CAISI ಮತ್ತು ಸಮಾಜ-ಮಟ್ಟದ ಅಪಾಯ (ಭಾಗ 1 / 3) — ನಾಲ್ಕು-ಅಪಾಯ ಸ್ಕ್ರೀನ್",
+ "title": "CAIS, CAISI, and Societal-Scale Risk (Part 1 of 3) — The Four-Risk Screen",
+ "titleKn": "CAIS, CAISI, ಮತ್ತು ಸಮಾಜ-ಮಟ್ಟದ ಅಪಾಯ (ಭಾಗ 1 / 3) — ನಾಲ್ಕು-ಅಪಾಯ ಸ್ಕ್ರೀನ್",
  "desc": "Build a multi-label four-risk screening tool and measure its false positives, misses, precision and recall.",
  "descKn": "ಬಹು-ಲೇಬಲ್ ನಾಲ್ಕು-ಅಪಾಯ ಸ್ಕ್ರೀನಿಂಗ್ ಸಾಧನ ನಿರ್ಮಿಸಿ ಮತ್ತು ಅದರ ತಪ್ಪು ಧನಾತ್ಮಕ, ತಪ್ಪಿಸುವಿಕೆ, precision ಮತ್ತು recall ಅಳೆಯಿರಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "CAIS, CAISI and Societal-Scale Risk (Part 1 of 3)",
-    "textKn": "CAIS, CAISI ಮತ್ತು ಸಮಾಜ-ಮಟ್ಟದ ಅಪಾಯ (ಭಾಗ 1 / 3)",
+    "textEn": "CAIS, CAISI, and Societal-Scale Risk (Part 1 of 3)",
+    "textKn": "CAIS, CAISI, ಮತ್ತು ಸಮಾಜ-ಮಟ್ಟದ ಅಪಾಯ (ಭಾಗ 1 / 3)",
     "level": "H1"
    }
   },

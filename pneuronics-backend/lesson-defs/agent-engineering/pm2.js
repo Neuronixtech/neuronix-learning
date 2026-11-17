@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "Permission Modes and Auto Mode (Part 2 of 3) — A Two-Stage Classifier",
- "titleKn": "ಅನುಮತಿ ಮೋಡ್‌ಗಳು ಮತ್ತು Auto ಮೋಡ್ (ಭಾಗ 2 / 3) — ಎರಡು-ಹಂತದ ವರ್ಗೀಕಾರಕ",
+ "title": "Claude Code Permission Modes and Auto Mode (Part 2 of 3) — A Two-Stage Classifier",
+ "titleKn": "Claude Code ಅನುಮತಿ ಮೋಡ್‌ಗಳು ಮತ್ತು Auto ಮೋಡ್ (ಭಾಗ 2 / 3) — ಎರಡು-ಹಂತದ ವರ್ಗೀಕಾರಕ",
  "desc": "Build a two-stage command classifier and measure what disguised commands do to its recall.",
  "descKn": "ಎರಡು-ಹಂತದ ಕಮಾಂಡ್ ವರ್ಗೀಕಾರಕ ನಿರ್ಮಿಸಿ ಮತ್ತು ಮರೆಮಾಚಿದ ಕಮಾಂಡ್‌ಗಳು ಅದರ recall ಗೆ ಏನು ಮಾಡುತ್ತವೆ ಅಳೆಯಿರಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "Permission Modes and Auto Mode (Part 2 of 3)",
-    "textKn": "ಅನುಮತಿ ಮೋಡ್‌ಗಳು ಮತ್ತು Auto ಮೋಡ್ (ಭಾಗ 2 / 3)",
+    "textEn": "Claude Code Permission Modes and Auto Mode (Part 2 of 3)",
+    "textKn": "Claude Code ಅನುಮತಿ ಮೋಡ್‌ಗಳು ಮತ್ತು Auto ಮೋಡ್ (ಭಾಗ 2 / 3)",
     "level": "H1"
    }
   },

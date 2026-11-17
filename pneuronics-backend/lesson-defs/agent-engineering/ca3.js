@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "Autonomous Coding Agent Landscape (Part 3 of 3) — Reading Benchmark Numbers",
- "titleKn": "ಸ್ವಾಯತ್ತ ಕೋಡಿಂಗ್ Agent ಭೂದೃಶ್ಯ (ಭಾಗ 3 / 3) — Benchmark ಸಂಖ್ಯೆಗಳನ್ನು ಓದುವುದು",
+ "title": "Autonomous Coding Agent Landscape (SWE-bench, CodeAct) (Part 3 of 3) — Reading Benchmark Numbers",
+ "titleKn": "ಸ್ವಾಯತ್ತ ಕೋಡಿಂಗ್ Agent ಭೂದೃಶ್ಯ (SWE-bench, CodeAct) (ಭಾಗ 3 / 3) — Benchmark ಸಂಖ್ಯೆಗಳನ್ನು ಓದುವುದು",
  "desc": "Compute workload-weighted scores, confidence intervals and the effect of memorized benchmark tasks.",
  "descKn": "ಕೆಲಸಭಾರ-ತೂಕದ ಅಂಕ, ವಿಶ್ವಾಸ ಅಂತರ ಮತ್ತು ನೆನಪಿಟ್ಟ benchmark ಕಾರ್ಯಗಳ ಪರಿಣಾಮ ಲೆಕ್ಕ ಹಾಕಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "Autonomous Coding Agent Landscape (Part 3 of 3)",
-    "textKn": "ಸ್ವಾಯತ್ತ ಕೋಡಿಂಗ್ Agent ಭೂದೃಶ್ಯ (ಭಾಗ 3 / 3)",
+    "textEn": "Autonomous Coding Agent Landscape (SWE-bench, CodeAct) (Part 3 of 3)",
+    "textKn": "ಸ್ವಾಯತ್ತ ಕೋಡಿಂಗ್ Agent ಭೂದೃಶ್ಯ (SWE-bench, CodeAct) (ಭಾಗ 3 / 3)",
     "level": "H1"
    }
   },

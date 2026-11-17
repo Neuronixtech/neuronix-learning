@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "Automated Alignment Research (Part 3 of 3) — Contamination and Blind Spots",
- "titleKn": "ಸ್ವಯಂಚಾಲಿತ Alignment ಸಂಶೋಧನೆ (ಭಾಗ 3 / 3) — ಕಲುಷಿತ ಮತ್ತು Blind Spots",
+ "title": "Automated Alignment Research (Anthropic AAR) (Part 3 of 3) — Contamination and Blind Spots",
+ "titleKn": "ಸ್ವಯಂಚಾಲಿತ Alignment ಸಂಶೋಧನೆ (Anthropic AAR) (ಭಾಗ 3 / 3) — ಕಲುಷಿತ ಮತ್ತು Blind Spots",
  "desc": "Measure how errors spread through dependent research and what re-checks and reviewer panels can and cannot catch.",
  "descKn": "ಅವಲಂಬಿತ ಸಂಶೋಧನೆಯಲ್ಲಿ ದೋಷಗಳು ಹೇಗೆ ಹರಡುತ್ತವೆ ಮತ್ತು ಮರು-ಪರಿಶೀಲನೆ ಹಾಗೂ ವಿಮರ್ಶಕ ಪ್ಯಾನೆಲ್‌ಗಳು ಏನನ್ನು ಹಿಡಿಯಬಲ್ಲವು ಮತ್ತು ಹಿಡಿಯಲಾರವು ಅಳೆಯಿರಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "Automated Alignment Research (Part 3 of 3)",
-    "textKn": "ಸ್ವಯಂಚಾಲಿತ Alignment ಸಂಶೋಧನೆ (ಭಾಗ 3 / 3)",
+    "textEn": "Automated Alignment Research (Anthropic AAR) (Part 3 of 3)",
+    "textKn": "ಸ್ವಯಂಚಾಲಿತ Alignment ಸಂಶೋಧನೆ (Anthropic AAR) (ಭಾಗ 3 / 3)",
     "level": "H1"
    }
   },

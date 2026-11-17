@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "Automated Alignment Research (Part 2 of 3) — Journals, Policy and Provenance",
- "titleKn": "ಸ್ವಯಂಚಾಲಿತ Alignment ಸಂಶೋಧನೆ (ಭಾಗ 2 / 3) — ಜರ್ನಲ್‌ಗಳು, ನೀತಿ ಮತ್ತು Provenance",
+ "title": "Automated Alignment Research (Anthropic AAR) (Part 2 of 3) — Journals, Policy and Provenance",
+ "titleKn": "ಸ್ವಯಂಚಾಲಿತ Alignment ಸಂಶೋಧನೆ (Anthropic AAR) (ಭಾಗ 2 / 3) — ಜರ್ನಲ್‌ಗಳು, ನೀತಿ ಮತ್ತು Provenance",
  "desc": "Build a hash-chained research journal, attack it, add a role policy and check provenance.",
  "descKn": "ಹ್ಯಾಶ್-ಸರಪಳಿ ಸಂಶೋಧನಾ ಜರ್ನಲ್ ನಿರ್ಮಿಸಿ, ಅದರ ಮೇಲೆ ದಾಳಿ ಮಾಡಿ, ಪಾತ್ರ ನೀತಿ ಸೇರಿಸಿ ಮತ್ತು provenance ಪರಿಶೀಲಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "Automated Alignment Research (Part 2 of 3)",
-    "textKn": "ಸ್ವಯಂಚಾಲಿತ Alignment ಸಂಶೋಧನೆ (ಭಾಗ 2 / 3)",
+    "textEn": "Automated Alignment Research (Anthropic AAR) (Part 2 of 3)",
+    "textKn": "ಸ್ವಯಂಚಾಲಿತ Alignment ಸಂಶೋಧನೆ (Anthropic AAR) (ಭಾಗ 2 / 3)",
     "level": "H1"
    }
   },

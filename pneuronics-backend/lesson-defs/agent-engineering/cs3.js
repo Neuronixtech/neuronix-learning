@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "CAIS, CAISI and Societal-Scale Risk (Part 3 of 3) — Claims, Controls and Evidence",
- "titleKn": "CAIS, CAISI ಮತ್ತು ಸಮಾಜ-ಮಟ್ಟದ ಅಪಾಯ (ಭಾಗ 3 / 3) — ಹೇಳಿಕೆಗಳು, ನಿಯಂತ್ರಣಗಳು ಮತ್ತು ಸಾಕ್ಷ್ಯ",
+ "title": "CAIS, CAISI, and Societal-Scale Risk (Part 3 of 3) — Claims, Controls and Evidence",
+ "titleKn": "CAIS, CAISI, ಮತ್ತು ಸಮಾಜ-ಮಟ್ಟದ ಅಪಾಯ (ಭಾಗ 3 / 3) — ಹೇಳಿಕೆಗಳು, ನಿಯಂತ್ರಣಗಳು ಮತ್ತು ಸಾಕ್ಷ್ಯ",
  "desc": "Test each control against a broken version, find the untested claims and keep legal reportability with a person.",
  "descKn": "ಪ್ರತಿ ನಿಯಂತ್ರಣವನ್ನು ಮುರಿದ ಆವೃತ್ತಿಯ ವಿರುದ್ಧ ಪರೀಕ್ಷಿಸಿ, ಪರೀಕ್ಷಿಸದ ಹೇಳಿಕೆಗಳನ್ನು ಹುಡುಕಿ ಮತ್ತು ಕಾನೂನು ವರದಿಯನ್ನು ವ್ಯಕ್ತಿಯ ಬಳಿ ಇಡಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "CAIS, CAISI and Societal-Scale Risk (Part 3 of 3)",
-    "textKn": "CAIS, CAISI ಮತ್ತು ಸಮಾಜ-ಮಟ್ಟದ ಅಪಾಯ (ಭಾಗ 3 / 3)",
+    "textEn": "CAIS, CAISI, and Societal-Scale Risk (Part 3 of 3)",
+    "textKn": "CAIS, CAISI, ಮತ್ತು ಸಮಾಜ-ಮಟ್ಟದ ಅಪಾಯ (ಭಾಗ 3 / 3)",
     "level": "H1"
    }
   },

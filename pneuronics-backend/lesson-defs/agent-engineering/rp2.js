@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "Anthropic RSP v3.0 (Part 2 of 3) — The Decision Chain",
- "titleKn": "Anthropic RSP v3.0 (ಭಾಗ 2 / 3) — ನಿರ್ಧಾರ ಸರಪಳಿ",
+ "title": "Anthropic Responsible Scaling Policy v3.0 (Part 2 of 3) — The Decision Chain",
+ "titleKn": "Anthropic Responsible Scaling Policy v3.0 (ಭಾಗ 2 / 3) — ನಿರ್ಧಾರ ಸರಪಳಿ",
  "desc": "Turn a threshold into a four-outcome decision, count all 48 combinations and compare a hard stop with a safety-case rule.",
  "descKn": "ಮಿತಿಯನ್ನು ನಾಲ್ಕು-ಫಲಿತಾಂಶ ನಿರ್ಧಾರವಾಗಿ ಬದಲಿಸಿ, ಎಲ್ಲಾ 48 ಸಂಯೋಜನೆ ಎಣಿಸಿ ಮತ್ತು ಹಾರ್ಡ್ ಸ್ಟಾಪ್ ಅನ್ನು ಸುರಕ್ಷತೆ-case ನಿಯಮದೊಂದಿಗೆ ಹೋಲಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "Anthropic RSP v3.0 (Part 2 of 3)",
-    "textKn": "Anthropic RSP v3.0 (ಭಾಗ 2 / 3)",
+    "textEn": "Anthropic Responsible Scaling Policy v3.0 (Part 2 of 3)",
+    "textKn": "Anthropic Responsible Scaling Policy v3.0 (ಭಾಗ 2 / 3)",
     "level": "H1"
    }
   },

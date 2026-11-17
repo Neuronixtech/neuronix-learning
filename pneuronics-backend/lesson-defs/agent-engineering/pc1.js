@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "HITL: Propose-Then-Commit (Part 1 of 3) — Digests, Keys and States",
- "titleKn": "HITL: Propose-Then-Commit (ಭಾಗ 1 / 3) — Digest, Key ಮತ್ತು ಸ್ಥಿತಿಗಳು",
+ "title": "Human-in-the-Loop: Propose-Then-Commit (Part 1 of 3) — Digests, Keys and States",
+ "titleKn": "Human-in-the-Loop: Propose-Then-Commit (ಭಾಗ 1 / 3) — Digest, Key ಮತ್ತು ಸ್ಥಿತಿಗಳು",
  "desc": "Build digests, idempotency keys, a conflict registry, a checked state machine and a proposal store.",
  "descKn": "digest, idempotency key, conflict registry, ಪರಿಶೀಲಿಸಿದ ಸ್ಥಿತಿ ಯಂತ್ರ ಮತ್ತು proposal ಸಂಗ್ರಹ ನಿರ್ಮಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "HITL: Propose-Then-Commit (Part 1 of 3)",
-    "textKn": "HITL: Propose-Then-Commit (ಭಾಗ 1 / 3)",
+    "textEn": "Human-in-the-Loop: Propose-Then-Commit (Part 1 of 3)",
+    "textKn": "Human-in-the-Loop: Propose-Then-Commit (ಭಾಗ 1 / 3)",
     "level": "H1"
    }
   },

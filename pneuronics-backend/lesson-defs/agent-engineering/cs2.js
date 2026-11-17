@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "CAIS, CAISI and Societal-Scale Risk (Part 2 of 3) — The Governance Gate",
- "titleKn": "CAIS, CAISI ಮತ್ತು ಸಮಾಜ-ಮಟ್ಟದ ಅಪಾಯ (ಭಾಗ 2 / 3) — ಆಡಳಿತ Gate",
+ "title": "CAIS, CAISI, and Societal-Scale Risk (Part 2 of 3) — The Governance Gate",
+ "titleKn": "CAIS, CAISI, ಮತ್ತು ಸಮಾಜ-ಮಟ್ಟದ ಅಪಾಯ (ಭಾಗ 2 / 3) — ಆಡಳಿತ Gate",
  "desc": "Map risk labels to controls, demand evidence for each control and bind approval to one deployment.",
  "descKn": "ಅಪಾಯ ಲೇಬಲ್‌ಗಳನ್ನು ನಿಯಂತ್ರಣಗಳಿಗೆ ನಕ್ಷೆ ಮಾಡಿ, ಪ್ರತಿ ನಿಯಂತ್ರಣಕ್ಕೆ ಸಾಕ್ಷ್ಯ ಬೇಡಿ ಮತ್ತು ಅನುಮೋದನೆಯನ್ನು ಒಂದು ನಿಯೋಜನೆಗೆ ಬಂಧಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "CAIS, CAISI and Societal-Scale Risk (Part 2 of 3)",
-    "textKn": "CAIS, CAISI ಮತ್ತು ಸಮಾಜ-ಮಟ್ಟದ ಅಪಾಯ (ಭಾಗ 2 / 3)",
+    "textEn": "CAIS, CAISI, and Societal-Scale Risk (Part 2 of 3)",
+    "textKn": "CAIS, CAISI, ಮತ್ತು ಸಮಾಜ-ಮಟ್ಟದ ಅಪಾಯ (ಭಾಗ 2 / 3)",
     "level": "H1"
    }
   },

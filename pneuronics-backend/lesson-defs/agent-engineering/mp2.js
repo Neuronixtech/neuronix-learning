@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "Managed LLM Platforms (Part 2 of 3) — The Two-Provider Gateway",
- "titleKn": "ನಿರ್ವಹಿತ LLM ವೇದಿಕೆಗಳು (ಭಾಗ 2 / 3) — ಎರಡು-ಪೂರೈಕೆದಾರ Gateway",
+ "title": "Managed LLM Platforms — Bedrock, Vertex AI, Azure OpenAI (Part 2 of 3) — The Two-Provider Gateway",
+ "titleKn": "ನಿರ್ವಹಿತ LLM ವೇದಿಕೆಗಳು — Bedrock, Vertex AI, Azure OpenAI (ಭಾಗ 2 / 3) — ಎರಡು-ಪೂರೈಕೆದಾರ Gateway",
  "desc": "Build and exercise a gateway with eligibility checks, retries, a breaker, a deadline and idempotent side effects.",
  "descKn": "ಅರ್ಹತೆ ಪರಿಶೀಲನೆ, ಮರುಪ್ರಯತ್ನ, breaker, ಗಡುವು ಮತ್ತು idempotent ಅಡ್ಡ ಪರಿಣಾಮಗಳಿರುವ gateway ನಿರ್ಮಿಸಿ ಪರೀಕ್ಷಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "Managed LLM Platforms (Part 2 of 3)",
-    "textKn": "ನಿರ್ವಹಿತ LLM ವೇದಿಕೆಗಳು (ಭಾಗ 2 / 3)",
+    "textEn": "Managed LLM Platforms — Bedrock, Vertex AI, Azure OpenAI (Part 2 of 3)",
+    "textKn": "ನಿರ್ವಹಿತ LLM ವೇದಿಕೆಗಳು — Bedrock, Vertex AI, Azure OpenAI (ಭಾಗ 2 / 3)",
     "level": "H1"
    }
   },

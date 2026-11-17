@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "OpenAI Preparedness and DeepMind FSF (Part 3 of 3) — Scope, Evidence and Sources",
- "titleKn": "OpenAI Preparedness ಮತ್ತು DeepMind FSF (ಭಾಗ 3 / 3) — ವ್ಯಾಪ್ತಿ, ಸಾಕ್ಷ್ಯ ಮತ್ತು ಮೂಲಗಳು",
+ "title": "OpenAI Preparedness Framework and DeepMind Frontier Safety Framework (Part 3 of 3) — Scope, Evidence and Sources",
+ "titleKn": "OpenAI Preparedness Framework ಮತ್ತು DeepMind Frontier Safety Framework (ಭಾಗ 3 / 3) — ವ್ಯಾಪ್ತಿ, ಸಾಕ್ಷ್ಯ ಮತ್ತು ಮೂಲಗಳು",
  "desc": "Check file scope against tricky spellings, capture run evidence honestly and verify a source with a hash.",
  "descKn": "ಕಷ್ಟಕರ ಕಾಗುಣಿತಗಳ ವಿರುದ್ಧ ಫೈಲ್ ವ್ಯಾಪ್ತಿ ಪರಿಶೀಲಿಸಿ, ಓಟ ಸಾಕ್ಷ್ಯವನ್ನು ಪ್ರಾಮಾಣಿಕವಾಗಿ ಸೆರೆಹಿಡಿಯಿರಿ ಮತ್ತು ಮೂಲವನ್ನು hash ನೊಂದಿಗೆ ಪರಿಶೀಲಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "OpenAI Preparedness and DeepMind FSF (Part 3 of 3)",
-    "textKn": "OpenAI Preparedness ಮತ್ತು DeepMind FSF (ಭಾಗ 3 / 3)",
+    "textEn": "OpenAI Preparedness Framework and DeepMind Frontier Safety Framework (Part 3 of 3)",
+    "textKn": "OpenAI Preparedness Framework ಮತ್ತು DeepMind Frontier Safety Framework (ಭಾಗ 3 / 3)",
     "level": "H1"
    }
   },

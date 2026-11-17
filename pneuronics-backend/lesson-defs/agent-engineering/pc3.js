@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "HITL: Propose-Then-Commit (Part 3 of 3) — Production Controls",
- "titleKn": "HITL: Propose-Then-Commit (ಭಾಗ 3 / 3) — ಉತ್ಪಾದನಾ ನಿಯಂತ್ರಣಗಳು",
+ "title": "Human-in-the-Loop: Propose-Then-Commit (Part 3 of 3) — Production Controls",
+ "titleKn": "Human-in-the-Loop: Propose-Then-Commit (ಭಾಗ 3 / 3) — ಉತ್ಪಾದನಾ ನಿಯಂತ್ರಣಗಳು",
  "desc": "Test an atomic claim with expiry, version and kill switch, an outbox, a hash-chained audit log and dual approval.",
  "descKn": "expiry, ಆವೃತ್ತಿ ಮತ್ತು kill switch ಇರುವ ಪರಮಾಣು claim, outbox, hash-ಸರಪಳಿ ಲೆಕ್ಕಪರಿಶೋಧನೆ ಮತ್ತು ಎರಡು-ವ್ಯಕ್ತಿ ಅನುಮೋದನೆ ಪರೀಕ್ಷಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "HITL: Propose-Then-Commit (Part 3 of 3)",
-    "textKn": "HITL: Propose-Then-Commit (ಭಾಗ 3 / 3)",
+    "textEn": "Human-in-the-Loop: Propose-Then-Commit (Part 3 of 3)",
+    "textKn": "Human-in-the-Loop: Propose-Then-Commit (ಭಾಗ 3 / 3)",
     "level": "H1"
    }
   },

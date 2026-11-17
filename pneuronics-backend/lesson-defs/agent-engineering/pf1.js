@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "OpenAI Preparedness and DeepMind FSF (Part 1 of 3) — The Comparison Tool",
- "titleKn": "OpenAI Preparedness ಮತ್ತು DeepMind FSF (ಭಾಗ 1 / 3) — ಹೋಲಿಕೆ ಸಾಧನ",
+ "title": "OpenAI Preparedness Framework and DeepMind Frontier Safety Framework (Part 1 of 3) — The Comparison Tool",
+ "titleKn": "OpenAI Preparedness Framework ಮತ್ತು DeepMind Frontier Safety Framework (ಭಾಗ 1 / 3) — ಹೋಲಿಕೆ ಸಾಧನ",
  "desc": "Build a three-framework decision table with a controlled vocabulary, a command line and honest not-determined cells.",
  "descKn": "ನಿಯಂತ್ರಿತ ಶಬ್ದಕೋಶ, ಕಮಾಂಡ್ ಲೈನ್ ಮತ್ತು ಪ್ರಾಮಾಣಿಕ ನಿರ್ಧರಿಸದ ಕೋಶಗಳಿರುವ ಮೂರು-ಚೌಕಟ್ಟು ನಿರ್ಧಾರ ಟೇಬಲ್ ನಿರ್ಮಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "OpenAI Preparedness and DeepMind FSF (Part 1 of 3)",
-    "textKn": "OpenAI Preparedness ಮತ್ತು DeepMind FSF (ಭಾಗ 1 / 3)",
+    "textEn": "OpenAI Preparedness Framework and DeepMind Frontier Safety Framework (Part 1 of 3)",
+    "textKn": "OpenAI Preparedness Framework ಮತ್ತು DeepMind Frontier Safety Framework (ಭಾಗ 1 / 3)",
     "level": "H1"
    }
   },

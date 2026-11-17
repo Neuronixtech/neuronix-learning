@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "Automated Alignment Research (Part 1 of 3) — Weak-to-Strong Supervision",
- "titleKn": "ಸ್ವಯಂಚಾಲಿತ Alignment ಸಂಶೋಧನೆ (ಭಾಗ 1 / 3) — Weak-to-Strong ಮೇಲ್ವಿಚಾರಣೆ",
+ "title": "Automated Alignment Research (Anthropic AAR) (Part 1 of 3) — Weak-to-Strong Supervision",
+ "titleKn": "ಸ್ವಯಂಚಾಲಿತ Alignment ಸಂಶೋಧನೆ (Anthropic AAR) (ಭಾಗ 1 / 3) — Weak-to-Strong ಮೇಲ್ವಿಚಾರಣೆ",
  "desc": "Train a toy student on weak labels and see when it outgrows its teacher and when it copies the teacher mistakes.",
  "descKn": "ಆಟಿಕೆ ವಿದ್ಯಾರ್ಥಿಯನ್ನು ದುರ್ಬಲ ಲೇಬಲ್‌ಗಳ ಮೇಲೆ ತರಬೇತಿ ನೀಡಿ ಅದು ಯಾವಾಗ ಶಿಕ್ಷಕನನ್ನು ಮೀರಿಸುತ್ತದೆ ಮತ್ತು ಯಾವಾಗ ಶಿಕ್ಷಕನ ತಪ್ಪುಗಳನ್ನು ನಕಲಿಸುತ್ತದೆ ನೋಡಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "Automated Alignment Research (Part 1 of 3)",
-    "textKn": "ಸ್ವಯಂಚಾಲಿತ Alignment ಸಂಶೋಧನೆ (ಭಾಗ 1 / 3)",
+    "textEn": "Automated Alignment Research (Anthropic AAR) (Part 1 of 3)",
+    "textKn": "ಸ್ವಯಂಚಾಲಿತ Alignment ಸಂಶೋಧನೆ (Anthropic AAR) (ಭಾಗ 1 / 3)",
     "level": "H1"
    }
   },

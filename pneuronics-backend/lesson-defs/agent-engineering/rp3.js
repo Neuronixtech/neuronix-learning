@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "Anthropic RSP v3.0 (Part 3 of 3) — Intervals, Digests and Bound Reviews",
- "titleKn": "Anthropic RSP v3.0 (ಭಾಗ 3 / 3) — ಅಂತರಗಳು, Digests ಮತ್ತು ಬಂಧಿತ ವಿಮರ್ಶೆಗಳು",
+ "title": "Anthropic Responsible Scaling Policy v3.0 (Part 3 of 3) — Intervals, Digests and Bound Reviews",
+ "titleKn": "Anthropic Responsible Scaling Policy v3.0 (ಭಾಗ 3 / 3) — ಅಂತರಗಳು, Digests ಮತ್ತು ಬಂಧಿತ ವಿಮರ್ಶೆಗಳು",
  "desc": "Read a threshold from intervals, hash evidence and bind a review to a version, an activity and the evidence.",
  "descKn": "ಅಂತರಗಳಿಂದ ಮಿತಿ ಓದಿ, ಸಾಕ್ಷ್ಯ hash ಮಾಡಿ ಮತ್ತು ವಿಮರ್ಶೆಯನ್ನು ಆವೃತ್ತಿ, ಚಟುವಟಿಕೆ ಮತ್ತು ಸಾಕ್ಷ್ಯಕ್ಕೆ ಬಂಧಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "Anthropic RSP v3.0 (Part 3 of 3)",
-    "textKn": "Anthropic RSP v3.0 (ಭಾಗ 3 / 3)",
+    "textEn": "Anthropic Responsible Scaling Policy v3.0 (Part 3 of 3)",
+    "textKn": "Anthropic Responsible Scaling Policy v3.0 (ಭಾಗ 3 / 3)",
     "level": "H1"
    }
   },

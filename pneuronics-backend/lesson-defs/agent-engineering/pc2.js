@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "HITL: Propose-Then-Commit (Part 2 of 3) — The Full Workflow",
- "titleKn": "HITL: Propose-Then-Commit (ಭಾಗ 2 / 3) — ಪೂರ್ಣ ಕಾರ್ಯಪ್ರವಾಹ",
+ "title": "Human-in-the-Loop: Propose-Then-Commit (Part 2 of 3) — The Full Workflow",
+ "titleKn": "Human-in-the-Loop: Propose-Then-Commit (ಭಾಗ 2 / 3) — ಪೂರ್ಣ ಕಾರ್ಯಪ್ರವಾಹ",
  "desc": "Run the full propose, review, commit and verify workflow through a lost response and a wrong amount.",
  "descKn": "ಪೂರ್ಣ propose, ವಿಮರ್ಶೆ, commit ಮತ್ತು ಪರಿಶೀಲನೆ ಕಾರ್ಯಪ್ರವಾಹವನ್ನು ಕಳೆದ ಪ್ರತಿಕ್ರಿಯೆ ಮತ್ತು ತಪ್ಪು ಮೊತ್ತದ ಮೂಲಕ ಓಡಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "HITL: Propose-Then-Commit (Part 2 of 3)",
-    "textKn": "HITL: Propose-Then-Commit (ಭಾಗ 2 / 3)",
+    "textEn": "Human-in-the-Loop: Propose-Then-Commit (Part 2 of 3)",
+    "textKn": "Human-in-the-Loop: Propose-Then-Commit (ಭಾಗ 2 / 3)",
     "level": "H1"
    }
   },

@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "From Chatbots to Long-Horizon Agents (Part 1 of 3) — Horizons and Compounding Reliability",
- "titleKn": "Chatbots ನಿಂದ ದೀರ್ಘ-ಅವಧಿ Agents ಗೆ (ಭಾಗ 1 / 3) — Horizon ಮತ್ತು ಸಂಯೋಜಿತ ವಿಶ್ವಾಸಾರ್ಹತೆ",
+ "title": "From Chatbots to Long-Horizon Agents (METR) (Part 1 of 3) — Horizons and Compounding Reliability",
+ "titleKn": "Chatbots ನಿಂದ ದೀರ್ಘ-ಅವಧಿ Agents ಗೆ (METR) (ಭಾಗ 1 / 3) — Horizon ಮತ್ತು ಸಂಯೋಜಿತ ವಿಶ್ವಾಸಾರ್ಹತೆ",
  "desc": "Compute a task-length horizon, see per-step reliability compound and check the formula against a simulation.",
  "descKn": "ಕಾರ್ಯ-ಉದ್ದದ horizon ಲೆಕ್ಕ ಹಾಕಿ, ಹಂತ-ಹಂತದ ವಿಶ್ವಾಸಾರ್ಹತೆ ಸಂಯೋಜಿತವಾಗುವುದನ್ನು ನೋಡಿ ಮತ್ತು ಸೂತ್ರವನ್ನು ಸಿಮ್ಯುಲೇಶನ್ ವಿರುದ್ಧ ಪರಿಶೀಲಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "From Chatbots to Long-Horizon Agents (Part 1 of 3)",
-    "textKn": "Chatbots ನಿಂದ ದೀರ್ಘ-ಅವಧಿ Agents ಗೆ (ಭಾಗ 1 / 3)",
+    "textEn": "From Chatbots to Long-Horizon Agents (METR) (Part 1 of 3)",
+    "textKn": "Chatbots ನಿಂದ ದೀರ್ಘ-ಅವಧಿ Agents ಗೆ (METR) (ಭಾಗ 1 / 3)",
     "level": "H1"
    }
   },

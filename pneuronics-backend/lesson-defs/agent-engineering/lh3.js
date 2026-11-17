@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "From Chatbots to Long-Horizon Agents (Part 3 of 3) — A Bounded, Recoverable Loop",
- "titleKn": "Chatbots ನಿಂದ ದೀರ್ಘ-ಅವಧಿ Agents ಗೆ (ಭಾಗ 3 / 3) — ಮಿತಿಯುಳ್ಳ, ಚೇತರಿಸಬಹುದಾದ ಲೂಪ್",
+ "title": "From Chatbots to Long-Horizon Agents (METR) (Part 3 of 3) — A Bounded, Recoverable Loop",
+ "titleKn": "Chatbots ನಿಂದ ದೀರ್ಘ-ಅವಧಿ Agents ಗೆ (METR) (ಭಾಗ 3 / 3) — ಮಿತಿಯುಳ್ಳ, ಚೇತರಿಸಬಹುದಾದ ಲೂಪ್",
  "desc": "Run an agent loop that checkpoints, caps its steps, compacts memory and is watched by a monitor.",
  "descKn": "checkpoint ಮಾಡುವ, ಹಂತ ಮಿತಿಗೊಳಿಸುವ, ಮೆಮೊರಿ ಸಂಕ್ಷೇಪಿಸುವ ಮತ್ತು ಮಾನಿಟರ್‌ನಿಂದ ಗಮನಿಸಲ್ಪಡುವ agent ಲೂಪ್ ಓಡಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "From Chatbots to Long-Horizon Agents (Part 3 of 3)",
-    "textKn": "Chatbots ನಿಂದ ದೀರ್ಘ-ಅವಧಿ Agents ಗೆ (ಭಾಗ 3 / 3)",
+    "textEn": "From Chatbots to Long-Horizon Agents (METR) (Part 3 of 3)",
+    "textKn": "Chatbots ನಿಂದ ದೀರ್ಘ-ಅವಧಿ Agents ಗೆ (METR) (ಭಾಗ 3 / 3)",
     "level": "H1"
    }
   },

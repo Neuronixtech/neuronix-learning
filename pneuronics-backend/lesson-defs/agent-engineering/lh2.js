@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "From Chatbots to Long-Horizon Agents (Part 2 of 3) — Trees, Checkpoints and Retries",
- "titleKn": "Chatbots ನಿಂದ ದೀರ್ಘ-ಅವಧಿ Agents ಗೆ (ಭಾಗ 2 / 3) — ಮರಗಳು, Checkpoints ಮತ್ತು ಮರುಪ್ರಯತ್ನಗಳು",
+ "title": "From Chatbots to Long-Horizon Agents (METR) (Part 2 of 3) — Trees, Checkpoints and Retries",
+ "titleKn": "Chatbots ನಿಂದ ದೀರ್ಘ-ಅವಧಿ Agents ಗೆ (METR) (ಭಾಗ 2 / 3) — ಮರಗಳು, Checkpoints ಮತ್ತು ಮರುಪ್ರಯತ್ನಗಳು",
  "desc": "Measure restarts, checkpoints and retries on a long task and see when retries stop helping.",
  "descKn": "ದೀರ್ಘ ಕಾರ್ಯದಲ್ಲಿ ಮರುಪ್ರಾರಂಭ, checkpoints ಮತ್ತು ಮರುಪ್ರಯತ್ನ ಅಳೆಯಿರಿ ಮತ್ತು ಮರುಪ್ರಯತ್ನ ಯಾವಾಗ ಸಹಾಯ ಮಾಡುವುದಿಲ್ಲ ನೋಡಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "From Chatbots to Long-Horizon Agents (Part 2 of 3)",
-    "textKn": "Chatbots ನಿಂದ ದೀರ್ಘ-ಅವಧಿ Agents ಗೆ (ಭಾಗ 2 / 3)",
+    "textEn": "From Chatbots to Long-Horizon Agents (METR) (Part 2 of 3)",
+    "textKn": "Chatbots ನಿಂದ ದೀರ್ಘ-ಅವಧಿ Agents ಗೆ (METR) (ಭಾಗ 2 / 3)",
     "level": "H1"
    }
   },

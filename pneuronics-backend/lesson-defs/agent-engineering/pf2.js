@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "OpenAI Preparedness and DeepMind FSF (Part 2 of 3) — Evidence, Gaps and Chance",
- "titleKn": "OpenAI Preparedness ಮತ್ತು DeepMind FSF (ಭಾಗ 2 / 3) — ಸಾಕ್ಷ್ಯ, ಅಂತರಗಳು ಮತ್ತು ಅವಕಾಶ",
+ "title": "OpenAI Preparedness Framework and DeepMind Frontier Safety Framework (Part 2 of 3) — Evidence, Gaps and Chance",
+ "titleKn": "OpenAI Preparedness Framework ಮತ್ತು DeepMind Frontier Safety Framework (ಭಾಗ 2 / 3) — ಸಾಕ್ಷ್ಯ, ಅಂತರಗಳು ಮತ್ತು ಅವಕಾಶ",
  "desc": "Compute evaluation metrics, detect a performance gap and measure how often chance alone produces one.",
  "descKn": "ಮೌಲ್ಯಮಾಪನ ಮಾಪನ ಲೆಕ್ಕ ಹಾಕಿ, ಕಾರ್ಯಕ್ಷಮತೆ ಅಂತರ ಪತ್ತೆ ಮಾಡಿ ಮತ್ತು ಕೇವಲ ಅವಕಾಶ ಅದನ್ನು ಎಷ್ಟು ಬಾರಿ ಉಂಟುಮಾಡುತ್ತದೆ ಅಳೆಯಿರಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "OpenAI Preparedness and DeepMind FSF (Part 2 of 3)",
-    "textKn": "OpenAI Preparedness ಮತ್ತು DeepMind FSF (ಭಾಗ 2 / 3)",
+    "textEn": "OpenAI Preparedness Framework and DeepMind Frontier Safety Framework (Part 2 of 3)",
+    "textKn": "OpenAI Preparedness Framework ಮತ್ತು DeepMind Frontier Safety Framework (ಭಾಗ 2 / 3)",
     "level": "H1"
    }
   },

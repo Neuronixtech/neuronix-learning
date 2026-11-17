@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "Managed LLM Platforms (Part 1 of 3) — Latency, Queues and Break-Even",
- "titleKn": "ನಿರ್ವಹಿತ LLM ವೇದಿಕೆಗಳು (ಭಾಗ 1 / 3) — ವಿಳಂಬ, ಸರದಿಗಳು ಮತ್ತು ಸಮಭಾರ",
+ "title": "Managed LLM Platforms — Bedrock, Vertex AI, Azure OpenAI (Part 1 of 3) — Latency, Queues and Break-Even",
+ "titleKn": "ನಿರ್ವಹಿತ LLM ವೇದಿಕೆಗಳು — Bedrock, Vertex AI, Azure OpenAI (ಭಾಗ 1 / 3) — ವಿಳಂಬ, ಸರದಿಗಳು ಮತ್ತು ಸಮಭಾರ",
  "desc": "Compute request latency, percentiles, queueing delay and the break-even of a capacity reservation.",
  "descKn": "ವಿನಂತಿ ವಿಳಂಬ, ಶತಮಾನಾಂಶ, ಸರದಿ ವಿಳಂಬ ಮತ್ತು ಸಾಮರ್ಥ್ಯ ಮೀಸಲಿನ ಸಮಭಾರ ಲೆಕ್ಕ ಹಾಕಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "Managed LLM Platforms (Part 1 of 3)",
-    "textKn": "ನಿರ್ವಹಿತ LLM ವೇದಿಕೆಗಳು (ಭಾಗ 1 / 3)",
+    "textEn": "Managed LLM Platforms — Bedrock, Vertex AI, Azure OpenAI (Part 1 of 3)",
+    "textKn": "ನಿರ್ವಹಿತ LLM ವೇದಿಕೆಗಳು — Bedrock, Vertex AI, Azure OpenAI (ಭಾಗ 1 / 3)",
     "level": "H1"
    }
   },

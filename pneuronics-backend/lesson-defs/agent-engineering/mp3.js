@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "Managed LLM Platforms (Part 3 of 3) — Observe, Attribute, Evaluate",
- "titleKn": "ನಿರ್ವಹಿತ LLM ವೇದಿಕೆಗಳು (ಭಾಗ 3 / 3) — ಗಮನಿಸಿ, ಹಂಚಿ, ಮೌಲ್ಯಮಾಪನ ಮಾಡಿ",
+ "title": "Managed LLM Platforms — Bedrock, Vertex AI, Azure OpenAI (Part 3 of 3) — Observe, Attribute, Evaluate",
+ "titleKn": "ನಿರ್ವಹಿತ LLM ವೇದಿಕೆಗಳು — Bedrock, Vertex AI, Azure OpenAI (ಭಾಗ 3 / 3) — ಗಮನಿಸಿ, ಹಂಚಿ, ಮೌಲ್ಯಮಾಪನ ಮಾಡಿ",
  "desc": "Build percentile tables and request-level attribution, redact logs and judge a fallback with intervals.",
  "descKn": "ಶತಮಾನಾಂಶ ಕೋಷ್ಟಕ ಮತ್ತು ವಿನಂತಿ-ಮಟ್ಟದ ಹಂಚಿಕೆ ನಿರ್ಮಿಸಿ, ಲಾಗ್ ಮರೆಮಾಚಿ ಮತ್ತು fallback ಅನ್ನು ಅಂತರಗಳಿಂದ ಮೌಲ್ಯಮಾಪನ ಮಾಡಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "Managed LLM Platforms (Part 3 of 3)",
-    "textKn": "ನಿರ್ವಹಿತ LLM ವೇದಿಕೆಗಳು (ಭಾಗ 3 / 3)",
+    "textEn": "Managed LLM Platforms — Bedrock, Vertex AI, Azure OpenAI (Part 3 of 3)",
+    "textKn": "ನಿರ್ವಹಿತ LLM ವೇದಿಕೆಗಳು — Bedrock, Vertex AI, Azure OpenAI (ಭಾಗ 3 / 3)",
     "level": "H1"
    }
   },

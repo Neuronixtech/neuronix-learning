@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "METR Time Horizons (Part 2 of 3) — Fitting and Checking",
- "titleKn": "METR ಸಮಯ Horizons (ಭಾಗ 2 / 3) — ಹೊಂದಿಸುವಿಕೆ ಮತ್ತು ಪರಿಶೀಲನೆ",
+ "title": "METR Time Horizons and External Capability Evaluation (Part 2 of 3) — Fitting and Checking",
+ "titleKn": "METR ಸಮಯ Horizons ಮತ್ತು ಬಾಹ್ಯ ಸಾಮರ್ಥ್ಯ ಮೌಲ್ಯಮಾಪನ (ಭಾಗ 2 / 3) — ಹೊಂದಿಸುವಿಕೆ ಮತ್ತು ಪರಿಶೀಲನೆ",
  "desc": "Fit the curve two ways, check calibration, bootstrap the horizon and see degenerate and extrapolated cases.",
  "descKn": "ವಕ್ರರೇಖೆಯನ್ನು ಎರಡು ರೀತಿ ಹೊಂದಿಸಿ, ಮಾಪನಾಂಕ ಪರಿಶೀಲಿಸಿ, horizon bootstrap ಮಾಡಿ ಮತ್ತು ಅವನತಿ ಹಾಗೂ ಪ್ರಕ್ಷೇಪಿತ ಪ್ರಕರಣ ನೋಡಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "METR Time Horizons (Part 2 of 3)",
-    "textKn": "METR ಸಮಯ Horizons (ಭಾಗ 2 / 3)",
+    "textEn": "METR Time Horizons and External Capability Evaluation (Part 2 of 3)",
+    "textKn": "METR ಸಮಯ Horizons ಮತ್ತು ಬಾಹ್ಯ ಸಾಮರ್ಥ್ಯ ಮೌಲ್ಯಮಾಪನ (ಭಾಗ 2 / 3)",
     "level": "H1"
    }
   },

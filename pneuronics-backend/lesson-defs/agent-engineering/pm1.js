@@ -6,8 +6,8 @@ module.exports = {
  "duration": 60,
  "difficulty": "intermediate",
  "status": "published",
- "title": "Permission Modes and Auto Mode (Part 1 of 3) — Modes as a Table",
- "titleKn": "ಅನುಮತಿ ಮೋಡ್‌ಗಳು ಮತ್ತು Auto ಮೋಡ್ (ಭಾಗ 1 / 3) — ಮೋಡ್‌ಗಳು ಕೋಷ್ಟಕವಾಗಿ",
+ "title": "Claude Code Permission Modes and Auto Mode (Part 1 of 3) — Modes as a Table",
+ "titleKn": "Claude Code ಅನುಮತಿ ಮೋಡ್‌ಗಳು ಮತ್ತು Auto ಮೋಡ್ (ಭಾಗ 1 / 3) — ಮೋಡ್‌ಗಳು ಕೋಷ್ಟಕವಾಗಿ",
  "desc": "Model permission modes as an allow, ask or deny table and count the prompts and unattended risk.",
  "descKn": "ಅನುಮತಿ ಮೋಡ್‌ಗಳನ್ನು allow, ask ಅಥವಾ deny ಕೋಷ್ಟಕವಾಗಿ ಮಾದರಿ ಮಾಡಿ prompts ಮತ್ತು ಮೇಲ್ವಿಚಾರಣೆ ಇಲ್ಲದ ಅಪಾಯ ಎಣಿಸಿ.",
  "objectives": [
@@ -28,8 +28,8 @@ module.exports = {
   {
    "type": "heading",
    "data": {
-    "textEn": "Permission Modes and Auto Mode (Part 1 of 3)",
-    "textKn": "ಅನುಮತಿ ಮೋಡ್‌ಗಳು ಮತ್ತು Auto ಮೋಡ್ (ಭಾಗ 1 / 3)",
+    "textEn": "Claude Code Permission Modes and Auto Mode (Part 1 of 3)",
+    "textKn": "Claude Code ಅನುಮತಿ ಮೋಡ್‌ಗಳು ಮತ್ತು Auto ಮೋಡ್ (ಭಾಗ 1 / 3)",
     "level": "H1"
    }
   },
