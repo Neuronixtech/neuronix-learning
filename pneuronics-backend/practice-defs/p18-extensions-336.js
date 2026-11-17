@@ -1,0 +1,6 @@
+// Hand-written third practice problem for each rebuilt Phase 18 lesson in module 336, keyed "module.lessonIndex": [English, Kannada].
+module.exports = {
+  '336.0': [`add a negation guard so that an indicator preceded by resolved, closed or fixed within five words is not flagged, then rerun the twelve labelled descriptions and report which false positive disappears and whether recall changes.`, `ಐದು ಪದಗಳ ಒಳಗೆ resolved, closed ಅಥವಾ fixed ಮೊದಲು ಬಂದ ಸೂಚಕವನ್ನು ಗುರುತಿಸದಂತೆ ನಿರಾಕರಣೆ ಕಾವಲು ಸೇರಿಸಿ, ನಂತರ ಹನ್ನೆರಡು ಲೇಬಲ್ ಮಾಡಿದ ವಿವರಣೆ ಮತ್ತೆ ಓಡಿಸಿ ಮತ್ತು ಯಾವ ತಪ್ಪು ಧನಾತ್ಮಕ ಮಾಯವಾಗುತ್ತದೆ ಹಾಗೂ recall ಬದಲಾಗುತ್ತದೆಯೇ ವರದಿ ಮಾಡಿ.`],
+  '336.1': [`add a fifth approval condition, a maximum of 3 reviewers per deployment per day, to validate_approval, then show one request within the limit and one over it.`, `validate_approval ಗೆ ಐದನೇ ಅನುಮೋದನೆ ಷರತ್ತು, ಪ್ರತಿ ನಿಯೋಜನೆಗೆ ದಿನಕ್ಕೆ ಗರಿಷ್ಠ 3 ವಿಮರ್ಶಕರು, ಸೇರಿಸಿ, ನಂತರ ಮಿತಿಯೊಳಗಿನ ಒಂದು ಮತ್ತು ಮೀರಿದ ಒಂದು ವಿನಂತಿ ತೋರಿಸಿ.`],
+  '336.2': [`write a stronger test for the file scope control than the one given, add a third broken variant that allows paths ending in application.py, and show that the new test catches it.`, `ನೀಡಿರುವುದಕ್ಕಿಂತ ಬಲವಾದ file scope ಪರೀಕ್ಷೆ ಬರೆಯಿರಿ, application.py ನಲ್ಲಿ ಕೊನೆಗೊಳ್ಳುವ path ಅನುಮತಿಸುವ ಮೂರನೇ ಮುರಿದ ಆವೃತ್ತಿ ಸೇರಿಸಿ, ಮತ್ತು ಹೊಸ ಪರೀಕ್ಷೆ ಅದನ್ನು ಹಿಡಿಯುತ್ತದೆ ಎಂದು ತೋರಿಸಿ.`],
+};
