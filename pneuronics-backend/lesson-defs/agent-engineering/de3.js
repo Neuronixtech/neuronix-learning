@@ -141,6 +141,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: An approval that survives a restart and is bound to its release",
+    "headingKn": "ಪ್ರಯೋಗ 1: An approval that survives a restart and is bound to its release",
+    "bodyEn": "What it ran: An approval that survives a restart and is bound to its release. What the lab concluded: the waiting state and the decision are stored in a file, so a brand-new store object after a restart still sees the approval, and the earlier analysis and test activities were replayed from history rather than run again; the approval id contains the release id, so an approval for another release does not authorise this one",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An approval that survives a restart and is bound to its release. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the waiting state and the decision are stored in a file, so a brand-new store object after a restart still sees the approval, and the earlier analysis and test activities were replayed from history rather than run again; the approval id contains the release id, so an approval for another release does not authorise this one"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: an approval that survives a restart and is bound to its release ---\nfirst run: {'status': 'waiting_for_approval'}\nrun before any decision: {'status': 'waiting_for_approval'}\nafter approval, new store object: {'status': 'completed'}\nactivity bodies run: {'analyze_release': 1, 'run_release_tests': 1, 'deploy_release': 1}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A rejection stops the protected action",
+    "headingKn": "ಪ್ರಯೋಗ 2: A rejection stops the protected action",
+    "bodyEn": "What it ran: A rejection stops the protected action. What the lab concluded: This experiment prints data only; read the lines in the output below.",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A rejection stops the protected action. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): This experiment prints data only; read the lines in the output below."
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a rejection stops the protected action ---\n{'status': 'cancelled'} | deploy ran: False\na rejected request returns cancelled and the deployment activity never runs"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Durable timers and a simulated clock",
+    "headingKn": "ಪ್ರಯೋಗ 3: Durable timers and a simulated clock",
+    "bodyEn": "What it ran: Durable timers and a simulated clock. What the lab concluded: the wake-up times are stored, so a restarted scheduler that reloads the file fires each timer once when the simulated clock reaches it, and a plain sleep would have lost the remaining delay on a crash; the clock here is a number the lab chooses",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Durable timers and a simulated clock. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the wake-up times are stored, so a restarted scheduler that reloads the file fires each timer once when the simulated clock reaches it, and a plain sleep would have lost the remaining delay on a crash; the clock here is a number the lab chooses"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: durable timers and a simulated clock ---\nclock      0: timers due []\nclock    599: timers due []\nclock    600: timers due ['retry_001']\nclock  86400: timers due ['expire_approval']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A budget that a restart cannot reset",
+    "headingKn": "ಪ್ರಯೋಗ 4: A budget that a restart cannot reset",
+    "bodyEn": "What it ran: A budget that a restart cannot reset. What the lab concluded: each call creates a new budget object from the file, standing in for a restarted worker, and the fourth call hits the limit and trips the kill switch while the fifth is refused because the switch is stored; an in-memory counter would have started again at zero each time",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A budget that a restart cannot reset. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each call creates a new budget object from the file, standing in for a restarted worker, and the fourth call hits the limit and trips the kill switch while the fifth is refused because the switch is stored; an in-memory counter would have started again at zero each time"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a budget that a restart cannot reset ---\n['ok', 'ok', 'ok', 'LLM call budget exceeded', 'kill switch active']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Memory consolidation next to the authoritative log",
+    "headingKn": "ಪ್ರಯೋಗ 5: Memory consolidation next to the authoritative log",
+    "bodyEn": "What it ran: Memory consolidation next to the authoritative log. What the lab concluded: folding on every overflow, which is how the lesson class is written, turns 24 events into 16 one-event summaries, while folding in a batch of 16 gives the single summary of 16 older events that the lesson diagram describes; either way the summary keeps only a count and the first and last event and the detail survives only in the log, so recovery must read the log and never the summary, and this grouping does not compress events into prose",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Memory consolidation next to the authoritative log. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): folding on every overflow, which is how the lesson class is written, turns 24 events into 16 one-event summaries, while folding in a batch of 16 gives the single summary of 16 older events that the lesson diagram describes; either way the summary keeps only a count and the first and last event and the detail survives only in the log, so recovery must read the log and never the summary, and this grouping does not compress events into prose"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: memory consolidation next to the authoritative log ---\nconsolidate every  1 overflow(s): authoritative log 24 | recent kept in full 8 | summaries 16 | events in the first summary 1\nconsolidate every 16 overflow(s): authoritative log 24 | recent kept in full 8 | summaries 1 | events in the first summary 16"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: The five unit tests",
+    "headingKn": "ಪ್ರಯೋಗ 6: The five unit tests",
+    "bodyEn": "What it ran: The five unit tests. What the lab concluded: the tests cover approval persistence, duplicate requests, budget persistence with the kill switch, timers that are not due early and an approval that must match its release; they test this sketch and not a production engine",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The five unit tests. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the tests cover approval persistence, duplicate requests, budget persistence with the kill switch, timers that are not due early and an approval that must match its release; they test this sketch and not a production engine"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: the five unit tests ---\nran 5 tests | failures 0 | errors 0 | passed True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

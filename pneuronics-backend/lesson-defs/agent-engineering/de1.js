@@ -141,6 +141,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Crash after the second activity, then recover",
+    "headingKn": "ಪ್ರಯೋಗ 1: Crash after the second activity, then recover",
+    "bodyEn": "What it ran: Crash after the second activity, then recover. What the lab concluded: the recovery run replayed collect_data and analyze_data from the log and executed only generate_report, so every body ran exactly once and the log holds six events, a started and a completed record for each of three activities",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Crash after the second activity, then recover. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the recovery run replayed collect_data and analyze_data from the log and executed only generate_report, so every body ran exactly once and the log holds six events, a started and a completed record for each of three activities"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: crash after the second activity, then recover ---\nfirst run: Simulated workflow crash | activity bodies run so far: {'collect_data': 1, 'analyze_data': 1}\nevents on disk after the crash: 4\nrecovery result: {'report': 'Final value: 20'}\nactivity bodies run in total: {'collect_data': 1, 'analyze_data': 1, 'generate_report': 1} | events on disk: 6"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The same crash without durability",
+    "headingKn": "ಪ್ರಯೋಗ 2: The same crash without durability",
+    "bodyEn": "What it ran: The same crash without durability. What the lab concluded: without a stored history the second run starts from the top, so the first two activities run twice and the total is five bodies against three; for an LLM call or a payment each avoided repeat is real cost",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The same crash without durability. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): without a stored history the second run starts from the top, so the first two activities run twice and the total is five bodies against three; for an LLM call or a payment each avoided repeat is real cost"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: the same crash without durability ---\nnaive retry counters: {'collect_data': 2, 'analyze_data': 2, 'generate_report': 1} | total bodies run: 5 | durable total: 3"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Input drift is rejected",
+    "headingKn": "ಪ್ರಯೋಗ 3: Input drift is rejected",
+    "bodyEn": "What it ran: Input drift is rejected. What the lab concluded: the fingerprint of the arguments is stored with the first call, so a changed argument raises instead of silently returning the old answer; the fingerprint covers only the serialised arguments and not the function source or any model version",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Input drift is rejected. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the fingerprint of the arguments is stored with the first call, so a changed argument raises instead of silently returning the old answer; the fingerprint covers only the serialised arguments and not the function source or any model version"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: input drift is rejected ---\nsecond call with different input: Activity input mismatch: analyze\nreplay with the same input returns the stored result: 20"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A failing activity records its attempts",
+    "headingKn": "ಪ್ರಯೋಗ 4: A failing activity records its attempts",
+    "bodyEn": "What it ran: A failing activity records its attempts. What the lab concluded: the first run left started and failed records, the second run counted attempt 2 and completed, and there is no retry limit in this engine, which a production runner must add",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A failing activity records its attempts. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first run left started and failed records, the second run counted attempt 2 and completed, and there is no retry limit in this engine, which a production runner must add"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a failing activity records its attempts ---\nrun 1: raised temporary failure\nrun 2: ok\nstatuses and attempts: [('started', 1), ('failed', 1), ('started', 2), ('completed', 2)]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Two threads share one log",
+    "headingKn": "ಪ್ರಯೋಗ 5: Two threads share one log",
+    "bodyEn": "What it ran: Two threads share one log. What the lab concluded: each thread_id has its own history, so thread_b did not replay thread_a results and the repeat run of thread_a replayed everything; 12 events are two threads of six each",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Two threads share one log. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each thread_id has its own history, so thread_b did not replay thread_a results and the repeat run of thread_a replayed everything; 12 events are two threads of six each"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: two threads share one log ---\nthread_a bodies: {'collect_data': 1, 'analyze_data': 1, 'generate_report': 1} | thread_b bodies: {'collect_data': 1, 'analyze_data': 1, 'generate_report': 1} | events: 12"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +281,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Recovery ran each body once and left 6 events. 2) Naive retry ran 5 bodies against 3. 3) A changed input raised a mismatch. 4) A failure then success recorded attempts 1 and 2. 5) Threads kept separate histories.",
     "bodyKn": "1) ಚೇತರಿಕೆ ಪ್ರತಿ ದೇಹ ಒಮ್ಮೆ ಓಡಿಸಿ 6 events ಬಿಟ್ಟಿತು. 2) naive ಮರುಪ್ರಯತ್ನ 3 ವಿರುದ್ಧ 5 ದೇಹ ಓಡಿಸಿತು. 3) ಬದಲಾದ ಇನ್‌ಪುಟ್ mismatch ಎತ್ತಿತು. 4) ವೈಫಲ್ಯದ ನಂತರ ಯಶಸ್ಸು ಪ್ರಯತ್ನ 1 ಮತ್ತು 2 ದಾಖಲಿಸಿತು. 5) Threads ಪ್ರತ್ಯೇಕ ಇತಿಹಾಸ ಇಟ್ಟವು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B de_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B de_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B de_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B de_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

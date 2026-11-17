@@ -141,6 +141,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Where the crash lands decides what happens",
+    "headingKn": "ಪ್ರಯೋಗ 1: Where the crash lands decides what happens",
+    "bodyEn": "What it ran: Where the crash lands decides what happens. What the lab concluded: a crash before the call and no crash both end with one charge, but a crash after the service charged and before the completion record leaves the history saying started, so the retry charges again and the customer pays twice; replay alone cannot know the first charge happened",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Where the crash lands decides what happens. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a crash before the call and no crash both end with one charge, but a crash after the service charged and before the completion record leaves the history saying started, so the retry charges again and the customer pays twice; replay alone cannot know the first charge happened"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: where the crash lands decides what happens ---\ncrash point None         without a key: charges made 1 | final status completed\ncrash point before_call  without a key: charges made 1 | final status completed\ncrash point after_call   without a key: charges made 2 | final status completed"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The same crash with an idempotency key",
+    "headingKn": "ಪ್ರಯೋಗ 2: The same crash with an idempotency key",
+    "bodyEn": "What it ran: The same crash with an idempotency key. What the lab concluded: the service remembers the key order_123_payment and returns the first result for the repeat request, so every case ends with one charge; the guarantee comes from the service honouring the key, and this mock keeps its memory in a dict that would not survive a restart",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The same crash with an idempotency key. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the service remembers the key order_123_payment and returns the first result for the repeat request, so every case ends with one charge; the guarantee comes from the service honouring the key, and this mock keeps its memory in a dict that would not survive a restart"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: the same crash with an idempotency key ---\ncrash point None         with a key:    charges made 1 | final status completed\ncrash point before_call  with a key:    charges made 1 | final status completed\ncrash point after_call   with a key:    charges made 1 | final status completed"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Reconciliation instead of blind retry",
+    "headingKn": "ಪ್ರಯೋಗ 3: Reconciliation instead of blind retry",
+    "bodyEn": "What it ran: Reconciliation instead of blind retry. What the lab concluded: asking the service what happened to the keyed request lets the workflow record the real outcome and avoid a second request, and this only works because the lab service supports lookup by key",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Reconciliation instead of blind retry. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): asking the service what happened to the keyed request lets the workflow record the real outcome and avoid a second request, and this only works because the lab service supports lookup by key"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: reconciliation instead of blind retry ---\nhistory says: started | ask the service by key: {'customer': 'customer_001', 'amount': 100, 'status': 'charged', 'charge_no': 1}\nafter reconciliation the record says: completed | charges made: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Exponential backoff, d_n = min(dmax, d0 * 2^n)",
+    "headingKn": "ಪ್ರಯೋಗ 4: Exponential backoff, d_n = min(dmax, d0 * 2^n)",
+    "bodyEn": "What it ran: Exponential backoff, d_n = min(dmax, d0 * 2^n). What the lab concluded: the delay doubles from 2 seconds until it reaches the 60 second cap, so the schedule is 2, 4, 8, 16, 32, 60, 60, 60; real systems add random jitter so many workers do not retry together, which this schedule leaves out",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Exponential backoff, d_n = min(dmax, d0 * 2^n). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the delay doubles from 2 seconds until it reaches the 60 second cap, so the schedule is 2, 4, 8, 16, 32, 60, 60, 60; real systems add random jitter so many workers do not retry together, which this schedule leaves out"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely computing: exponential backoff, d_n = min(dmax, d0 * 2^n) ---\ndelays for 8 retries with d0 = 2 s and dmax = 60 s: [2.0, 4.0, 8.0, 16.0, 32.0, 60.0, 60.0, 60.0]"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Bounded retries and error kinds",
+    "headingKn": "ಪ್ರಯೋಗ 5: Bounded retries and error kinds",
+    "bodyEn": "What it ran: Bounded retries and error kinds. What the lab concluded: a transient failure is retried until it succeeds within the budget, a step that keeps failing stops when the budget runs out instead of looping forever, and a non-retryable error such as an invalid input stops at once without waiting; the waited figure is simulated seconds and no real sleep happens",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Bounded retries and error kinds. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a transient failure is retried until it succeeds within the budget, a step that keeps failing stops when the budget runs out instead of looping forever, and a non-retryable error such as an invalid input stops at once without waiting; the waited figure is simulated seconds and no real sleep happens"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: bounded retries and error kinds ---\nfails 2 time(s), budget 5, retryable     -> {'outcome': 'succeeded', 'attempts': 3, 'waited': 6.0}\nfails 5 time(s), budget 3, retryable     -> {'outcome': 'gave up after budget', 'attempts': 3, 'waited': 6.0}\nfails 1 time(s), budget 5, non_retryable -> {'outcome': 'stopped: non-retryable error', 'attempts': 1, 'waited': 0}"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +281,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) A crash after the call and before the record caused 2 charges. 2) The key made it 1 in every case. 3) Reconciliation recorded the real outcome. 4) Backoff capped at 60 seconds. 5) A non-retryable error stopped with no wait.",
     "bodyKn": "1) ಕರೆಯ ನಂತರ ಮತ್ತು ದಾಖಲೆಗೆ ಮೊದಲಿನ crash 2 ಶುಲ್ಕ ಉಂಟುಮಾಡಿತು. 2) ಕೀ ಪ್ರತಿ ಪ್ರಕರಣದಲ್ಲಿ 1 ಮಾಡಿತು. 3) ಸಮನ್ವಯ ನಿಜ ಫಲಿತಾಂಶ ದಾಖಲಿಸಿತು. 4) Backoff 60 ಸೆಕೆಂಡ್‌ನಲ್ಲಿ ಮಿತಿಗೊಂಡಿತು. 5) ಮರುಪ್ರಯತ್ನಿಸಲಾಗದ ದೋಷ ಕಾಯದೆ ನಿಂತಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B de_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B de_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B de_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B de_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {
