@@ -1,0 +1,6 @@
+// Hand-written third practice problem for each rebuilt Phase 18 lesson in module 331, keyed "module.lessonIndex": [English, Kannada].
+module.exports = {
+  '331.0': [`add three more labelled actions to LABELLED, two unsafe and one acceptable, rerun the three rule styles and report how the exact blocklist, the blanket rule and the principle rule change.`, `LABELLED ಗೆ ಇನ್ನೂ ಮೂರು ಲೇಬಲ್ ಮಾಡಿದ ಕ್ರಿಯೆ ಸೇರಿಸಿ, ಎರಡು ಅಸುರಕ್ಷಿತ ಮತ್ತು ಒಂದು ಸ್ವೀಕಾರಾರ್ಹ, ಮೂರು ನಿಯಮ ಶೈಲಿ ಮತ್ತೆ ಓಡಿಸಿ ಮತ್ತು ನಿಖರ blocklist, ಸಾರ್ವತ್ರಿಕ ನಿಯಮ ಹಾಗೂ ತತ್ವ ನಿಯಮ ಹೇಗೆ ಬದಲಾಗುತ್ತವೆ ವರದಿ ಮಾಡಿ.`],
+  '331.1': [`add a rule that two UNKNOWN evaluations on different tiers also give REVIEW with both tiers named, and show one case with one unknown and one with two.`, `ಬೇರೆ ಹಂತಗಳ ಎರಡು UNKNOWN ಮೌಲ್ಯಮಾಪನಗಳೂ ಎರಡೂ ಹಂತ ಹೆಸರಿಸಿ REVIEW ನೀಡುವ ನಿಯಮ ಸೇರಿಸಿ, ಮತ್ತು ಒಂದು ಅಜ್ಞಾತ ಹಾಗೂ ಎರಡು ಅಜ್ಞಾತ ಇರುವ ಒಂದೊಂದು ಪ್ರಕರಣ ತೋರಿಸಿ.`],
+  '331.2': [`add a fourth scripted evaluator version v4 that is correct on all 20 cases except one wrongly allowed misleading report, and report its disagreement rate, error rate and severity-weighted count next to v2 and v3.`, `20 ಪ್ರಕರಣಗಳಲ್ಲಿ ಒಂದು ತಪ್ಪಾಗಿ ಅನುಮತಿಸಿದ ದಾರಿತಪ್ಪಿಸುವ ವರದಿ ಹೊರತುಪಡಿಸಿ ಎಲ್ಲದರಲ್ಲಿ ಸರಿಯಿರುವ ನಾಲ್ಕನೇ ಸ್ಕ್ರಿಪ್ಟ್ ಮೌಲ್ಯಮಾಪಕ ಆವೃತ್ತಿ v4 ಸೇರಿಸಿ, ಮತ್ತು ಅದರ ಭಿನ್ನಾಭಿಪ್ರಾಯ ದರ, ದೋಷ ದರ ಮತ್ತು ತೀವ್ರತೆ-ತೂಕದ ಎಣಿಕೆಯನ್ನು v2 ಮತ್ತು v3 ಪಕ್ಕದಲ್ಲಿ ವರದಿ ಮಾಡಿ.`],
+};
