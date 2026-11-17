@@ -141,6 +141,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The lesson sequence of reservations, settlement and the kill switch",
+    "headingKn": "ಪ್ರಯೋಗ 1: The lesson sequence of reservations, settlement and the kill switch",
+    "bodyEn": "What it ran: The lesson sequence of reservations, settlement and the kill switch. What the lab concluded: outstanding reservations count against the budget, so the 5.00 request was refused while 6.00 was still reserved and accepted once the settlement released 2.00, and after the stop the remaining 1.00 could not be used; the figures match the lesson example",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lesson sequence of reservations, settlement and the kill switch. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): outstanding reservations count against the budget, so the 5.00 request was refused while 6.00 was still reserved and accepted once the settlement released 2.00, and after the stop the remaining 1.00 could not be used; the figures match the lesson example"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the lesson sequence of reservations, settlement and the kill switch ---\nreserve A 6.00: reserved\nreserve B 5.00 denied: budget exhausted\nsettle A at 4.00: settled\nreserve B 5.00 after settlement: reserved\nledger: {'limit': Decimal('10'), 'committed': Decimal('4'), 'reserved': Decimal('5'), 'available': Decimal('1'), 'stopped': False}\nreserve C denied: kill switch active"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Idempotent retries and a reused action id",
+    "headingKn": "ಪ್ರಯೋಗ 2: Idempotent retries and a reused action id",
+    "bodyEn": "What it ran: Idempotent retries and a reused action id. What the lab concluded: a retried reservation does not reserve twice and an id reused with different parameters is refused, which protects the local ledger; it does not make the outside provider call idempotent",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Idempotent retries and a reused action id. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a retried reservation does not reserve twice and an id reused with different parameters is refused, which protects the local ledger; it does not make the outside provider call idempotent"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: idempotent retries and a reused action id ---\nfirst call: reserved | retry of the same call: already reserved\nreserved total after both: 2\nsame id with a different amount: action id reused with different parameters"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Restart safety",
+    "headingKn": "ಪ್ರಯೋಗ 3: Restart safety",
+    "bodyEn": "What it ran: Restart safety. What the lab concluded: a worker restart creates a new object but reads the same file, so the six dollars already spent still count and the budget is not reset to ten",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Restart safety. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a worker restart creates a new object but reads the same file, so the six dollars already spent still count and the budget is not reset to ten"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: restart safety ---\nnew governor object on the same file: budget exhausted | ledger: {'limit': Decimal('10'), 'committed': Decimal('6'), 'reserved': Decimal('0'), 'available': Decimal('4'), 'stopped': False}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: An actual cost above the reservation",
+    "headingKn": "ಪ್ರಯೋಗ 4: An actual cost above the reservation",
+    "bodyEn": "What it ran: An actual cost above the reservation. What the lab concluded: the lab marks an overrun as uncertain and keeps the reserved amount counted, which is conservative; a real system must record the actual liability, flag the discrepancy and stop further spending, because it cannot refuse a charge the provider has already made",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An actual cost above the reservation. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the lab marks an overrun as uncertain and keeps the reserved amount counted, which is conservative; a real system must record the actual liability, flag the discrepancy and stop further spending, because it cannot refuse a charge the provider has already made"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: an actual cost above the reservation ---\nsettle at 4.00 against a 3.00 reservation: uncertain | ledger: {'limit': Decimal('10'), 'committed': Decimal('0'), 'reserved': Decimal('3'), 'available': Decimal('7'), 'stopped': False}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Concurrent reservations from threads",
+    "headingKn": "ಪ್ರಯೋಗ 5: Concurrent reservations from threads",
+    "bodyEn": "What it ran: Concurrent reservations from threads. What the lab concluded: exactly three reservations fit and the rest were refused, because each one checked the balance and wrote inside a write transaction that SQLite serialises; this shows one database file on one machine and says nothing about a distributed deployment",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Concurrent reservations from threads. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): exactly three reservations fit and the rest were refused, because each one checked the balance and wrote inside a write transaction that SQLite serialises; this shows one database file on one machine and says nothing about a distributed deployment"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: concurrent reservations from threads ---\n12 threads asked for 3.00 each from a 10.00 budget: reserved 3, denied 9 | reserved total 9 | within the limit: True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +281,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Outstanding reservations blocked a 5.00 request until A settled. 2) A retried reservation did not double up. 3) A restart kept the 6.00 spent. 4) An overrun was held as uncertain. 5) Twelve threads reserved 9.00 of 10.00 and no more.",
     "bodyKn": "1) A ಇತ್ಯರ್ಥವಾಗುವವರೆಗೆ ಬಾಕಿ ಕಾಯ್ದಿರಿಸುವಿಕೆಗಳು 5.00 ವಿನಂತಿ ತಡೆದವು. 2) ಮರುಪ್ರಯತ್ನಿಸಿದ ಕಾಯ್ದಿರಿಸುವಿಕೆ ದ್ವಿಗುಣವಾಗಲಿಲ್ಲ. 3) ಮರುಪ್ರಾರಂಭ ಖರ್ಚಾದ 6.00 ಉಳಿಸಿತು. 4) ಮೀರುವಿಕೆ uncertain ಆಗಿ ಹಿಡಿಯಲ್ಪಟ್ಟಿತು. 5) ಹನ್ನೆರಡು threads 10.00 ರಲ್ಲಿ 9.00 ಕಾಯ್ದಿರಿಸಿ ಹೆಚ್ಚಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B cg_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B cg_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B cg_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B cg_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The lesson scenario, tool cap of 5 on order tracking",
+    "headingKn": "ಪ್ರಯೋಗ 1: The lesson scenario, tool cap of 5 on order tracking",
+    "bodyEn": "What it ran: The lesson scenario, tool cap of 5 on order tracking. What the lab concluded: two normal actions and five polls were authorised and the eighth action, a sixth poll, was denied by the tool cap, which also tripped the kill switch; each action cost 6.01425, so seven cost 42.09975, matching the corrected figures from the lesson and not the first printed ones",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lesson scenario, tool cap of 5 on order tracking. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): two normal actions and five polls were authorised and the eighth action, a sixth poll, was denied by the tool cap, which also tripped the kill switch; each action cost 6.01425, so seven cost 42.09975, matching the corrected figures from the lesson and not the first printed ones"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the lesson scenario, tool cap of 5 on order tracking ---\n01 ALLOW normal_work        AUTHORIZED\n02 ALLOW normal_work        AUTHORIZED\n03 ALLOW poll_order_status  AUTHORIZED\n04 ALLOW poll_order_status  AUTHORIZED\n05 ALLOW poll_order_status  AUTHORIZED\n06 ALLOW poll_order_status  AUTHORIZED\n07 ALLOW poll_order_status  AUTHORIZED\n08 DENY  poll_order_status  TOOL_CALL_CAP\nturns 7 | tokens 84000 | task cost 42.09975 | stopped True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A higher tool cap lets the velocity limit fire instead",
+    "headingKn": "ಪ್ರಯೋಗ 2: A higher tool cap lets the velocity limit fire instead",
+    "bodyEn": "What it ran: A higher tool cap lets the velocity limit fire instead. What the lab concluded: with a cap of 50 the first limit to fire is the ten-minute velocity limit of 50 dollars, because eight actions fit in the window at 48.11 and the ninth would make 54.12, which is the second layer catching what the first would have allowed",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A higher tool cap lets the velocity limit fire instead. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with a cap of 50 the first limit to fire is the ten-minute velocity limit of 50 dollars, because eight actions fit in the window at 48.11 and the ninth would make 54.12, which is the second layer catching what the first would have allowed"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: a higher tool cap lets the velocity limit fire instead ---\nstopped after 8 authorised actions at t=480 seconds because of VELOCITY_LIMIT | spent in the window 48.11400"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Monthly-only policy against layered policies over ten polls",
+    "headingKn": "ಪ್ರಯೋಗ 3: Monthly-only policy against layered policies over ten polls",
+    "bodyEn": "What it ran: Monthly-only policy against layered policies over ten polls. What the lab concluded: the monthly cap of 3000 never fires within a dozen actions, so the loop would run until it did, while the layered policy stopped at 42.10 dollars; one limit sized for a month cannot catch a loop that burns money in minutes",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Monthly-only policy against layered policies over ten polls. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the monthly cap of 3000 never fires within a dozen actions, so the loop would run until it did, while the layered policy stopped at 42.10 dollars; one limit sized for a month cannot catch a loop that burns money in minutes"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: monthly-only policy against layered policies over ten polls ---\nmonthly-only: 12 actions allowed, 72.17100 spent, stopped False\nlayered:      7 actions allowed, 42.09975 spent, stopped True, reason TOOL_CALL_CAP"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Approval for an expensive action does not override other limits",
+    "headingKn": "ಪ್ರಯೋಗ 4: Approval for an expensive action does not override other limits",
+    "bodyEn": "What it ran: Approval for an expensive action does not override other limits. What the lab concluded: an expensive action is paused for approval first, approval turns it into an authorised action only when every hard limit still passes, and when the remaining task budget is too small it is denied even with approval; in the lab approval is a boolean argument and a real system must check an authenticated record",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Approval for an expensive action does not override other limits. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an expensive action is paused for approval first, approval turns it into an authorised action only when every hard limit still passes, and when the remaining task budget is too small it is denied even with approval; in the lab approval is a boolean argument and a real system must check an authenticated record"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: approval for an expensive action does not override other limits ---\nwithout approval: HUMAN_APPROVAL_REQUIRED | with approval: AUTHORIZED\nwith approval but only 20 left in the task budget: TASK_DOLLAR_BUDGET"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The tool cap stopped the loop at 42.09975 dollars. 2) A cap of 50 let the velocity limit fire at 8 actions. 3) Monthly-only allowed 72.171 dollars and no stop. 4) Approval turned a pause into a go. 5) Approval did not beat the task budget.",
     "bodyKn": "1) tool ಮಿತಿ ಲೂಪ್ ಅನ್ನು 42.09975 ಡಾಲರ್‌ನಲ್ಲಿ ನಿಲ್ಲಿಸಿತು. 2) ಮಿತಿ 50 ವೇಗ ಮಿತಿ 8 ಕ್ರಿಯೆಗಳಲ್ಲಿ ಉರಿಯಲು ಬಿಟ್ಟಿತು. 3) ಮಾಸಿಕ-ಮಾತ್ರ 72.171 ಡಾಲರ್ ಅನುಮತಿಸಿ ನಿಲ್ಲಿಸಲಿಲ್ಲ. 4) ಅನುಮೋದನೆ ವಿರಾಮವನ್ನು ಮುಂದುವರಿಕೆಯಾಗಿ ಬದಲಿಸಿತು. 5) ಅನುಮೋದನೆ ಕಾರ್ಯ ಬಜೆಟ್ ಅನ್ನು ಮೀರಿಸಲಿಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B cg_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B cg_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B cg_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B cg_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. The lesson scenario, tool cap of 5 on order tracking\n2. A higher tool cap lets the velocity limit fire instead\n3. Monthly-only policy against layered policies over ten polls\n4. Approval for an expensive action does not override other limits",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. The lesson scenario, tool cap of 5 on order tracking\n2. A higher tool cap lets the velocity limit fire instead\n3. Monthly-only policy against layered policies over ten polls\n4. Approval for an expensive action does not override other limits"
    }
   },
   {

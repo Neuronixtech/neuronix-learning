@@ -141,6 +141,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: One request, then ten thousand of them",
+    "headingKn": "ಪ್ರಯೋಗ 1: One request, then ten thousand of them",
+    "bodyEn": "What it ran: One request, then ten thousand of them. What the lab concluded: the lesson example gives 0.02 for input and 0.016 for output, 0.036 in all, and ten thousand of them reach 360 dollars, so a cheap request becomes an expensive loop; the prices are illustrative",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: One request, then ten thousand of them. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the lesson example gives 0.02 for input and 0.016 for output, 0.036 in all, and ten thousand of them reach 360 dollars, so a cheap request becomes an expensive loop; the prices are illustrative"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely computing: one request, then ten thousand of them ---\none request costs 0.036 USD | 10000 such requests cost 360.000 USD"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The lesson simulator action cost, and the figure its expected output printed",
+    "headingKn": "ಪ್ರಯೋಗ 2: The lesson simulator action cost, and the figure its expected output printed",
+    "bodyEn": "What it ran: The lesson simulator action cost, and the figure its expected output printed. What the lab concluded: the lesson first printed 6.0183 per action and 42.1270 in total, then corrected itself to 6.01425 and 42.09975; running the arithmetic gives the corrected exact figures, so the first expected output was a hand-written mistake and the code was right; the correction says four places should read 6.0143, which is true for round-half-up, while Python's default rounding for Decimal is half-even and prints 6.0142, so the printed digit depends on the rounding rule; the lab pricing is the lesson example, not a real price list",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The lesson simulator action cost, and the figure its expected output printed. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the lesson first printed 6.0183 per action and 42.1270 in total, then corrected itself to 6.01425 and 42.09975; running the arithmetic gives the corrected exact figures, so the first expected output was a hand-written mistake and the code was right; the correction says four places should read 6.0143, which is true for round-half-up, while Python's default rounding for Decimal is half-even and prints 6.0142, so the printed digit depends on the rounding rule; the lab pricing is the lesson example, not a real price list"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely computing: the lesson simulator action cost, and the figure its expected output printed ---\nmodel cost: 0.01425 | action cost with a 6.00 tool charge: 6.01425 | seven actions: 42.09975\nrounded to four places with Python default half-even: 6.0142 and 42.0998 | rounded half-up: 6.0143 and 42.0998"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Token budget and tool call cap",
+    "headingKn": "ಪ್ರಯೋಗ 3: Token budget and tool call cap",
+    "bodyEn": "What it ran: Token budget and tool call cap. What the lab concluded: the second token request is refused because it would pass the limit, the fourth and fifth tool calls are refused at a cap of three, and an unknown tool is refused by default, which is the fail-closed choice",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Token budget and tool call cap. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the second token request is refused because it would pass the limit, the fourth and fifth tool calls are refused at a cap of three, and an unknown tool is refused by default, which is the fail-closed choice"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: token budget and tool call cap ---\nconsume 92000: True | consume 12000: False | used: 92000\norder_tracking attempts: ['ALLOW', 'ALLOW', 'ALLOW', 'DENY', 'DENY'] | unknown tool: DENY"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A ten-minute velocity limit of 50 dollars",
+    "headingKn": "ಪ್ರಯೋಗ 4: A ten-minute velocity limit of 50 dollars",
+    "bodyEn": "What it ran: A ten-minute velocity limit of 50 dollars. What the lab concluded: spend was 12, 26 and 44 dollars inside the window and the fourth request of 10 would make 54, so it was denied before it was spent; this is prevention, and checking the total after spending would only be monitoring",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A ten-minute velocity limit of 50 dollars. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): spend was 12, 26 and 44 dollars inside the window and the fourth request of 10 would make 54, so it was denied before it was spent; this is prevention, and checking the total after spending would only be monitoring"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a ten-minute velocity limit of 50 dollars ---\n0 12 ALLOW\n120 14 ALLOW\n240 18 ALLOW\n360 10 DENY"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Context growth is quadratic, T = n*b + d*n*(n-1)/2",
+    "headingKn": "ಪ್ರಯೋಗ 5: Context growth is quadratic, T = n*b + d*n*(n-1)/2",
+    "bodyEn": "What it ran: Context growth is quadratic, T = n*b + d*n*(n-1)/2. What the lab concluded: with a 2000 token base and 1000 tokens added per turn, the total input tokens grow with the square of the number of turns, which is why a long agent gets expensive without any single bad request",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Context growth is quadratic, T = n*b + d*n*(n-1)/2. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with a 2000 token base and 1000 tokens added per turn, the total input tokens grow with the square of the number of turns, which is why a long agent gets expensive without any single bad request"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely computing: context growth is quadratic, T = n*b + d*n*(n-1)/2 ---\n 10 turns: loop     65000 | formula     65000 | equal True\n 50 turns: loop   1325000 | formula   1325000 | equal True\n100 turns: loop   5150000 | formula   5150000 | equal True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Model routing",
+    "headingKn": "ಪ್ರಯೋಗ 6: Model routing",
+    "bodyEn": "What it ran: Model routing. What the lab concluded: the routed mix costs 17.60 against 80 and saves 78 percent, but the per-request costs are the lesson hypothetical figures and the calculation ignores any retries the cheaper model would need",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Model routing. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the routed mix costs 17.60 against 80 and saves 78 percent, but the per-request costs are the lesson hypothetical figures and the calculation ignores any retries the cheaper model would need"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely computing: model routing ---\nall premium: 80.00 | 800 small and 200 premium: 17.600 | saving: 62.400 | 78%"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
