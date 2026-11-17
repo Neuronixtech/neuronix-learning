@@ -1,0 +1,6 @@
+// Hand-written third practice problem for each rebuilt Phase 18 lesson in module 330, keyed "module.lessonIndex": [English, Kannada].
+module.exports = {
+  '330.0': [`add a worker_id column to the history table, write it in the same transaction as the state, and show the history of a workflow advanced by two different workers.`, `ಇತಿಹಾಸ ಟೇಬಲ್‌ಗೆ worker_id ಕಾಲಮ್ ಸೇರಿಸಿ, ಅದನ್ನು ಸ್ಥಿತಿಯ ಅದೇ ವಹಿವಾಟಿನಲ್ಲಿ ಬರೆಯಿರಿ, ಮತ್ತು ಇಬ್ಬರು ಬೇರೆ workers ಮುಂದುವರಿಸಿದ workflow ನ ಇತಿಹಾಸ ತೋರಿಸಿ.`],
+  '330.1': [`add a second product to the engine, make one workflow adjust both in a single transaction, and show that a failed precondition on the second product leaves the first unchanged.`, `engine ಗೆ ಎರಡನೇ ಉತ್ಪನ್ನ ಸೇರಿಸಿ, ಒಂದು workflow ಎರಡನ್ನೂ ಒಂದೇ ವಹಿವಾಟಿನಲ್ಲಿ ಹೊಂದಿಸುವಂತೆ ಮಾಡಿ, ಮತ್ತು ಎರಡನೇ ಉತ್ಪನ್ನದ ಪೂರ್ವಷರತ್ತು ವಿಫಲವಾದರೆ ಮೊದಲನೆಯದು ಬದಲಾಗದೆ ಉಳಿಯುತ್ತದೆ ಎಂದು ತೋರಿಸಿ.`],
+  '330.2': [`make the shipping step succeed and add a notification step with no compensation, then show that the SAGA ends COMMITTED, no compensation ran and every step status is EXECUTED.`, `shipping ಹಂತ ಯಶಸ್ವಿಯಾಗುವಂತೆ ಮಾಡಿ, ಪರಿಹಾರ ಇಲ್ಲದ ಅಧಿಸೂಚನೆ ಹಂತ ಸೇರಿಸಿ, ನಂತರ SAGA COMMITTED ಆಗಿ ಮುಗಿಯುತ್ತದೆ, ಯಾವ ಪರಿಹಾರವೂ ಓಡಲಿಲ್ಲ ಮತ್ತು ಪ್ರತಿ ಹಂತ ಸ್ಥಿತಿ EXECUTED ಎಂದು ತೋರಿಸಿ.`],
+};
