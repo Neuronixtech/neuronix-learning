@@ -149,6 +149,134 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A policy configuration digest",
+    "headingKn": "ಪ್ರಯೋಗ 1: A policy configuration digest",
+    "bodyEn": "What it ran: A policy configuration digest. What the lab concluded: reordering keys changed nothing and a threshold changed by one hundredth gave a different digest, so a decision record can name the exact configuration it used; a digest shows change and not approval",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A policy configuration digest. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): reordering keys changed nothing and a threshold changed by one hundredth gave a different digest, so a decision record can name the exact configuration it used; a digest shows change and not approval"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a policy configuration digest ---\ndigest prefix: 31b177ff1521 | same after reordering keys: True | after changing one threshold by 0.01: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Reading a threshold from intervals",
+    "headingKn": "ಪ್ರಯೋಗ 2: Reading a threshold from intervals",
+    "bodyEn": "What it ran: Reading a threshold from intervals. What the lab concluded: an estimate of 0.79 against a threshold of 0.80 is uncertain when its interval runs from 0.72 to 0.85, and for a cost ratio the comparison runs the other way; the intervals here are supplied numbers and the evaluator cannot tell whether they were computed well",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Reading a threshold from intervals. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an estimate of 0.79 against a threshold of 0.80 is uncertain when its interval runs from 0.72 to 0.85, and for a cost ratio the comparison runs the other way; the intervals here are supplied numbers and the evaluator cannot tell whether they were computed well"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: reading a threshold from intervals ---\nsuccess rate 0.9 [0.85, 0.94] against 0.80 -> SATISFIED\nsuccess rate 0.6 [0.52, 0.68] against 0.80 -> NOT_SATISFIED\nsuccess rate 0.79 [0.72, 0.85] against 0.80 -> UNCERTAIN\ncost ratio 0.9 [0.7, 1.1] against 1.0 -> UNCERTAIN | 0.6 [0.5, 0.8] -> SATISFIED"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Combining metrics",
+    "headingKn": "ಪ್ರಯೋಗ 3: Combining metrics",
+    "bodyEn": "What it ran: Combining metrics. What the lab concluded: an uncertain metric kept the result at insufficient evidence instead of letting a point estimate decide it, and one clearly failed metric was enough for BELOW even with another uncertain; this combination rule is the lab's own choice",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Combining metrics. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an uncertain metric kept the result at insufficient evidence instead of letting a point estimate decide it, and one clearly failed metric was enough for BELOW even with another uncertain; this combination rule is the lab's own choice"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: combining metrics ---\nall satisfied                          -> CROSSED\none uncertain                          -> INSUFFICIENT_EVIDENCE\none not satisfied and one uncertain    -> BELOW"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A percentile bootstrap of 79 successes in 100 tasks",
+    "headingKn": "ಪ್ರಯೋಗ 4: A percentile bootstrap of 79 successes in 100 tasks",
+    "bodyEn": "What it ran: A percentile bootstrap of 79 successes in 100 tasks. What the lab concluded: the bootstrap interval around 0.79 contains 0.80, so a point estimate just below the line is not evidence of being below it; the outcomes are synthetic, the 400 resamples treat tasks as independent, and repeated attempts on one task would need resampling by task",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A percentile bootstrap of 79 successes in 100 tasks. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the bootstrap interval around 0.79 contains 0.80, so a point estimate just below the line is not evidence of being below it; the outcomes are synthetic, the 400 resamples treat tasks as independent, and repeated attempts on one task would need resampling by task"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: a percentile bootstrap of 79 successes in 100 tasks ---\nobserved rate 0.79 | 95% percentile bootstrap interval [0.710, 0.860] | contains 0.80: True\nstatus against 0.80: UNCERTAIN"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Evidence file integrity",
+    "headingKn": "ಪ್ರಯೋಗ 5: Evidence file integrity",
+    "bodyEn": "What it ran: Evidence file integrity. What the lab concluded: the edited file no longer matched the digest stored beforehand, and a digest kept next to the file by the same writer would have been rewritten along with it, so it has to be stored somewhere the evidence author cannot change",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Evidence file integrity. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the edited file no longer matched the digest stored beforehand, and a digest kept next to the file by the same writer would have been rewritten along with it, so it has to be stored somewhere the evidence author cannot change"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: evidence file integrity ---\nunchanged file matches the trusted digest: True\nafter editing 0.9 to 0.99: False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A review is bound to a model, a version, an activity and the evidence",
+    "headingKn": "ಪ್ರಯೋಗ 6: A review is bound to a model, a version, an activity and the evidence",
+    "bodyEn": "What it ran: A review is bound to a model, a version, an activity and the evidence. What the lab concluded: an approval for one model version and one activity authorised only that, a changed evidence digest or the author acting as reviewer broke it, and a pending review authorised nothing; the reviewer id is a string and nothing authenticates it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A review is bound to a model, a version, an activity and the evidence. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an approval for one model version and one activity authorised only that, a changed evidence digest or the author acting as reviewer broke it, and a pending review authorised nothing; the reviewer id is a string and nothing authenticates it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: a review is bound to a model, a version, an activity and the evidence ---\nmatching request: AUTHORISED\nversion 1.1 requested: AUTHORIZATION_MISMATCH\npublic deployment requested: AUTHORIZATION_MISMATCH\nevidence changed since review: EVIDENCE_INTEGRITY_FAILURE\nreviewer is the evidence author: REVIEW_CONFLICT\nreview still pending: PENDING_REVIEW"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: Requirements differ by activity",
+    "headingKn": "ಪ್ರಯೋಗ 7: Requirements differ by activity",
+    "bodyEn": "What it ran: Requirements differ by activity. What the lab concluded: internal evaluation needs no human approval in this table while training and both deployments do, so permission to evaluate is not permission to deploy; the table is the lab's invention and not a statement of Anthropic's requirements",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Requirements differ by activity. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): internal evaluation needs no human approval in this table while training and both deployments do, so permission to evaluate is not permission to deploy; the table is the lab's invention and not a statement of Anthropic's requirements"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely running: requirements differ by activity ---\nTRAINING               human approval: True  security review: True\nINTERNAL_EVALUATION    human approval: False security review: True\nRESTRICTED_DEPLOYMENT  human approval: True  security review: True\nPUBLIC_DEPLOYMENT      human approval: True  security review: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: An audit chain, a roadmap check and a doubling projection",
+    "headingKn": "ಪ್ರಯೋಗ 8: An audit chain, a roadmap check and a doubling projection",
+    "bodyEn": "What it ran: An audit chain, a roadmap check and a doubling projection. What the lab concluded: an edited event was found at its own sequence number, a milestone marked completed with no verification reference was flagged, and the projection gives 8 hours after 8 months only if a made-up doubling time held, which is arithmetic and not a forecast",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An audit chain, a roadmap check and a doubling projection. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an edited event was found at its own sequence number, a milestone marked completed with no verification reference was flagged, and the projection gives 8 hours after 8 months only if a made-up doubling time held, which is arithmetic and not a forecast"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Genuinely running: an audit chain, a roadmap check and a doubling projection ---\nintact chain: (True, None)\nafter editing the second event: (False, 2)\ncompleted milestone without a verification reference needs review: True\n2 hours doubling every 4 months, after 8 months: 8.0 hours | after 6 months: 5.66 hours"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

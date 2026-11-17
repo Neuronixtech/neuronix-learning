@@ -145,6 +145,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The demonstration model through the engine",
+    "headingKn": "ಪ್ರಯೋಗ 1: The demonstration model through the engine",
+    "bodyEn": "What it ran: The demonstration model through the engine. What the lab concluded: a model that meets all four illustrative criteria with a complete case, a verified mandatory mitigation, an approved review and passing other gates was approved by the engine, and the report says in its first lines that it is a simulation and not an official engine; the approval is the engine's arithmetic and not a safety finding",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The demonstration model through the engine. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a model that meets all four illustrative criteria with a complete case, a verified mandatory mitigation, an approved review and passing other gates was approved by the engine, and the report says in its first lines that it is a simulation and not an official engine; the approval is the engine's arithmetic and not a safety finding"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the demonstration model through the engine ---\n{\n \"policy\": {\n  \"name\": \"RSP-inspired educational simulation\",\n  \"reference_version\": \"3.0\",\n  \"official_anthropic_engine\": false\n },\n \"threshold\": \"CROSSED\",\n \"deployment\": {\n  \"decision\": \"APPROVED\",\n  \"reason\": \"all modelled gates passed\"\n }\n}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: One change at a time from that approved state",
+    "headingKn": "ಪ್ರಯೋಗ 2: One change at a time from that approved state",
+    "bodyEn": "What it ran: One change at a time from that approved state. What the lab concluded: each failed condition gave its own state and its own reason, a model that was below the threshold with no case and no review was still approved because nothing else was failing, which is exactly why the other-gates check cannot be skipped",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: One change at a time from that approved state. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each failed condition gave its own state and its own reason, a model that was below the threshold with no case and no review was still approved because nothing else was failing, which is exactly why the other-gates check cannot be skipped"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: one change at a time from that approved state ---\nnothing changed                    -> APPROVED         all modelled gates passed\nother gate fails                   -> BLOCKED          another safety gate failed\nevidence insufficient              -> PENDING_EVIDENCE threshold evidence is insufficient\nmandatory mitigation unverified    -> BLOCKED          a mandatory mitigation is not verified\ncase incomplete                    -> PENDING_EVIDENCE affirmative case incomplete\nreview not approved                -> PENDING_REVIEW   review not approved\nthreshold below                    -> APPROVED         all modelled gates passed"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: All 48 combinations",
+    "headingKn": "ಪ್ರಯೋಗ 3: All 48 combinations",
+    "bodyEn": "What it ran: All 48 combinations. What the lab concluded: of the 48 combinations of threshold status, case, review, other gates and mitigation state the engine approved 5 and the remaining 43 went to blocked (32), pending evidence (10) or pending review (1); no combination with an insufficient threshold status was approved",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: All 48 combinations. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): of the 48 combinations of threshold status, case, review, other gates and mitigation state the engine approved 5 and the remaining 43 went to blocked (32), pending evidence (10) or pending review (1); no combination with an insufficient threshold status was approved"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely computing: all 48 combinations ---\n{'APPROVED': 5, 'BLOCKED': 32, 'PENDING_REVIEW': 1, 'PENDING_EVIDENCE': 10} | total: 48"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A hard stop against a safety-case rule",
+    "headingKn": "ಪ್ರಯೋಗ 4: A hard stop against a safety-case rule",
+    "bodyEn": "What it ran: A hard stop against a safety-case rule. What the lab concluded: the two rules agree except where the threshold is crossed and the condition is not met: one returns PAUSE and the other returns REVIEW_REQUIRED, which is the difference between a rule that stops an activity and a rule that asks for a review; neither function is Anthropic's historical or current policy text",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A hard stop against a safety-case rule. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the two rules agree except where the threshold is crossed and the condition is not met: one returns PAUSE and the other returns REVIEW_REQUIRED, which is the difference between a rule that stops an activity and a rule that asks for a review; neither function is Anthropic's historical or current policy text"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a hard stop against a safety-case rule ---\ncrossed  verified/approved  hard stop  safety case\nTrue     True               CONTINUE   CONTINUE\nTrue     False              PAUSE      REVIEW_REQUIRED\nFalse    True               CONTINUE   CONTINUE\nFalse    False              CONTINUE   CONTINUE"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: The eleven unit tests",
+    "headingKn": "ಪ್ರಯೋಗ 5: The eleven unit tests",
+    "bodyEn": "What it ran: The eleven unit tests. What the lab concluded: the tests cover an approval, a below-threshold approval, a failed other gate, insufficient evidence, an incomplete case, a missing review, an unverified mandatory mitigation, an unverified recommendation, NaN, the boundary and a boolean, on this lab's own engine; they do not check whether the thresholds are scientifically valid",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The eleven unit tests. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the tests cover an approval, a below-threshold approval, a failed other gate, insufficient evidence, an incomplete case, a missing review, an unverified mandatory mitigation, an unverified recommendation, NaN, the boundary and a boolean, on this lab's own engine; they do not check whether the thresholds are scientifically valid"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: the eleven unit tests ---\nran 11 tests | failures 0 | errors 0 | passed True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -202,6 +285,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The demonstration model was approved by the engine arithmetic only. 2) Each failed condition gave its own state. 3) 5 of 48 combinations were approved. 4) No insufficient-evidence combination was approved. 5) PAUSE and REVIEW_REQUIRED differ only when a crossed threshold meets an unmet condition.",
     "bodyKn": "1) ಪ್ರದರ್ಶನ ಮಾದರಿ engine ಅಂಕಗಣಿತದಿಂದ ಮಾತ್ರ ಅನುಮೋದಿತವಾಯಿತು. 2) ಪ್ರತಿ ವಿಫಲ ಷರತ್ತು ತನ್ನದೇ ಸ್ಥಿತಿ ನೀಡಿತು. 3) 48 ರಲ್ಲಿ 5 ಸಂಯೋಜನೆಗಳು ಅನುಮೋದಿತವಾದವು. 4) ಯಾವ ಅಸಾಕಷ್ಟು-ಸಾಕ್ಷ್ಯ ಸಂಯೋಜನೆಯೂ ಅನುಮೋದಿತವಾಗಲಿಲ್ಲ. 5) ದಾಟಿದ ಮಿತಿ ಪೂರೈಸದ ಷರತ್ತನ್ನು ಎದುರಿಸಿದಾಗ ಮಾತ್ರ PAUSE ಮತ್ತು REVIEW_REQUIRED ಭಿನ್ನ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B rp_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B rp_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B rp_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B rp_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

@@ -141,6 +141,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Why NaN must not become BELOW",
+    "headingKn": "ಪ್ರಯೋಗ 1: Why NaN must not become BELOW",
+    "bodyEn": "What it ran: Why NaN must not become BELOW. What the lab concluded: both comparisons with NaN are False, so an evaluator that reads a failed comparison as below reports BELOW for a measurement that is not a number, while the validating one reports insufficient evidence",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Why NaN must not become BELOW. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): both comparisons with NaN are False, so an evaluator that reads a failed comparison as below reports BELOW for a measurement that is not a number, while the validating one reports insufficient evidence"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: why NaN must not become BELOW ---\nnan >= 0.8: False | nan < 0.8: False | isnan: True\nno validation: BELOW | with validation: INSUFFICIENT_EVIDENCE"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: What counts as a valid fraction",
+    "headingKn": "ಪ್ರಯೋಗ 2: What counts as a valid fraction",
+    "bodyEn": "What it ran: What counts as a valid fraction. What the lab concluded: True is refused although Python treats it as the integer 1, and a string, None, NaN and out-of-range numbers are all refused, so each of them leads to insufficient evidence and none to a threshold verdict",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What counts as a valid fraction. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): True is refused although Python treats it as the integer 1, and a string, None, NaN and out-of-range numbers are all refused, so each of them leads to insufficient evidence and none to a threshold verdict"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: what counts as a valid fraction ---\n0.75     -> True\n1.0      -> True\n-0.1     -> False\n1.2      -> False\nNone     -> False\nnan      -> False\nTrue     -> False\n'0.8'    -> False"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Two clear measurement sets and three without valid evidence",
+    "headingKn": "ಪ್ರಯೋಗ 3: Two clear measurement sets and three without valid evidence",
+    "bodyEn": "What it ran: Two clear measurement sets and three without valid evidence. What the lab concluded: the first set failed all four illustrative criteria, the second met all four, and the three with a NaN, a missing value and a rate of 140 percent were all insufficient evidence; a missing cost ratio is not evidence that the model is expensive",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Two clear measurement sets and three without valid evidence. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first set failed all four illustrative criteria, the second met all four, and the three with a NaN, a missing value and a rate of 140 percent were all insufficient evidence; a missing cost ratio is not evidence that the model is expensive"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: two clear measurement sets and three without valid evidence ---\nA below                  -> BELOW\nB crossed                -> CROSSED\nC success rate is NaN    -> INSUFFICIENT_EVIDENCE\nD cost ratio missing     -> INSUFFICIENT_EVIDENCE\nE success rate 1.40      -> INSUFFICIENT_EVIDENCE"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: The boundary and one failing criterion at a time",
+    "headingKn": "ಪ್ರಯೋಗ 4: The boundary and one failing criterion at a time",
+    "bodyEn": "What it ran: The boundary and one failing criterion at a time. What the lab concluded: a model sitting exactly on all four thresholds is crossed with >= and below with >, so the comparison operator is part of the policy, and each single missed criterion is enough to give BELOW because the four conditions are joined with and; BELOW is only meaningful if the measurements themselves were sound",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The boundary and one failing criterion at a time. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a model sitting exactly on all four thresholds is crossed with >= and below with >, so the comparison operator is part of the policy, and each single missed criterion is enough to give BELOW because the four conditions are joined with and; BELOW is only meaningful if the measurements themselves were sound"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: the boundary and one failing criterion at a time ---\nexactly on every threshold: >= gives CROSSED | > gives BELOW\ntask fraction 0.499    -> BELOW\nsuccess rate 0.799     -> BELOW\ncost ratio 1.001       -> BELOW\nautonomy 0.749         -> BELOW"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Affirmative-case sections",
+    "headingKn": "ಪ್ರಯೋಗ 5: Affirmative-case sections",
+    "bodyEn": "What it ran: Affirmative-case sections. What the lab concluded: the check named the two empty sections, and a document that says everything is safe in every section passes it, which is why completeness of sections is not the quality of the argument",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Affirmative-case sections. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the check named the two empty sections, and a document that says everything is safe in every section passes it, which is why completeness of sections is not the quality of the argument"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely running: affirmative-case sections ---\nmissing: ['verification_evidence', 'review_decision']\nfiller text passes: []"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: Tier and mandatory are separate fields",
+    "headingKn": "ಪ್ರಯೋಗ 6: Tier and mandatory are separate fields",
+    "bodyEn": "What it ran: Tier and mandatory are separate fields. What the lab concluded: a recommendation that nobody adopted did not block, and an industry recommendation that the organisation made mandatory and has not verified did, so deriving required from tier would have got the third item wrong",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Tier and mandatory are separate fields. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a recommendation that nobody adopted did not block, and an industry recommendation that the organisation made mandatory and has not verified did, so deriving required from tier would have got the third item wrong"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: tier and mandatory are separate fields ---\nblocking: ['ADOPTED_SECURITY_STANDARD']"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
