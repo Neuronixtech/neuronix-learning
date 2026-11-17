@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The same two agents under three task mixes",
+    "headingKn": "ಪ್ರಯೋಗ 1: The same two agents under three task mixes",
+    "bodyEn": "What it ran: The same two agents under three task mixes. What the lab concluded: the ranking of the two agents flips when the mix of tasks changes, because A is stronger on bugfixes, tests and refactors and B on features; a single headline score hides which mix it was measured on, and the per-category rates and mixes are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The same two agents under three task mixes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the ranking of the two agents flips when the mix of tasks changes, because A is stronger on bugfixes, tests and refactors and B on features; a single headline score hides which mix it was measured on, and the per-category rates and mixes are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely computing: the same two agents under three task mixes ---\nmostly bugfixes : agent A 0.770 | agent B 0.600 | leader A\nbalanced        : agent A 0.700 | agent B 0.600 | leader A\nmostly features : agent A 0.550 | agent B 0.620 | leader B"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: A workload-weighted score from your own mix",
+    "headingKn": "ಪ್ರಯೋಗ 2: A workload-weighted score from your own mix",
+    "bodyEn": "What it ran: A workload-weighted score from your own mix. What the lab concluded: weighting each category by how often your own team does that kind of work gives the number that predicts your experience, and the source lesson quotes its own workload-weighted figure which is cited and not reproduced here",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A workload-weighted score from your own mix. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): weighting each category by how often your own team does that kind of work gives the number that predicts your experience, and the source lesson quotes its own workload-weighted figure which is cited and not reproduced here"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely computing: a workload-weighted score from your own mix ---\nmix {'bugfix': 0.45, 'feature': 0.2, 'refactor': 0.15, 'test': 0.2}: agent A 0.725 | agent B 0.603"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Wilson 95 percent intervals for a small benchmark",
+    "headingKn": "ಪ್ರಯೋಗ 3: Wilson 95 percent intervals for a small benchmark",
+    "bodyEn": "What it ran: Wilson 95 percent intervals for a small benchmark. What the lab concluded: a benchmark of 50 tasks leaves an interval about 0.25 wide at a 70 percent solve rate, so two agents a few points apart on such a benchmark are not distinguishable; the solve counts are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Wilson 95 percent intervals for a small benchmark. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a benchmark of 50 tasks leaves an interval about 0.25 wide at a 70 percent solve rate, so two agents a few points apart on such a benchmark are not distinguishable; the solve counts are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely computing: Wilson 95 percent intervals for a small benchmark ---\n35/50 solved (0.70): interval 0.562 to 0.809 | width 0.246\n70/100 solved (0.70): interval 0.604 to 0.781 | width 0.177\n350/500 solved (0.70): interval 0.658 to 0.739 | width 0.080"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Memorized tasks inflate a score (benchmark of 100, seed 1)",
+    "headingKn": "ಪ್ರಯೋಗ 4: Memorized tasks inflate a score (benchmark of 100, seed 1)",
+    "bodyEn": "What it ran: Memorized tasks inflate a score (benchmark of 100, seed 1). What the lab concluded: when part of the benchmark appeared in the training data the measured score rises even though the underlying skill on fresh tasks is unchanged at 0.55, which is why a score on a public benchmark needs a contamination check; the 0.97 and 0.55 rates are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Memorized tasks inflate a score (benchmark of 100, seed 1). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): when part of the benchmark appeared in the training data the measured score rises even though the underlying skill on fresh tasks is unchanged at 0.55, which is why a score on a public benchmark needs a contamination check; the 0.97 and 0.55 rates are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: memorized tasks inflate a score (benchmark of 100, seed 1) ---\n 0 of 100 tasks seen in training: mean measured score 0.550\n10 of 100 tasks seen in training: mean measured score 0.591\n30 of 100 tasks seen in training: mean measured score 0.676"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The ranking flipped between mixes. 2) A custom mix gave 0.725 and 0.603. 3) A 50-task benchmark had a 0.246 wide interval. 4) 30 memorized tasks lifted 0.550 to 0.676. 5) All rates are invented, not published.",
     "bodyKn": "1) ಶ್ರೇಣಿ ಮಿಶ್ರಣಗಳ ನಡುವೆ ಬದಲಾಯಿತು. 2) ಕಸ್ಟಮ್ ಮಿಶ್ರಣ 0.725 ಮತ್ತು 0.603 ನೀಡಿತು. 3) 50-ಕಾರ್ಯ benchmark ಗೆ 0.246 ಅಗಲದ ಅಂತರ. 4) 30 ನೆನಪಿಟ್ಟ ಕಾರ್ಯಗಳು 0.550 ಅನ್ನು 0.676 ಗೆ ಏರಿಸಿದವು. 5) ಎಲ್ಲಾ ದರಗಳು ಕಲ್ಪಿತ, ಪ್ರಕಟಿತವಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ca_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ca_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ca_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ca_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. The same two agents under three task mixes\n2. A workload-weighted score from your own mix\n3. Wilson 95 percent intervals for a small benchmark\n4. Memorized tasks inflate a score (benchmark of 100, seed 1)",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. The same two agents under three task mixes\n2. A workload-weighted score from your own mix\n3. Wilson 95 percent intervals for a small benchmark\n4. Memorized tasks inflate a score (benchmark of 100, seed 1)"
    }
   },
   {

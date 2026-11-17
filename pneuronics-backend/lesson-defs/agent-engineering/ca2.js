@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Four snippets under one contract",
+    "headingKn": "ಪ್ರಯೋಗ 1: Four snippets under one contract",
+    "bodyEn": "What it ran: Four snippets under one contract. What the lab concluded: the in-scope snippet completes, the secret read, the source write and the runaway loop are each stopped at the first operation that breaks the contract, and the file system is untouched by the denied operations; the contract is a prefix list and an operation count, which is simpler than a real policy",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Four snippets under one contract. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the in-scope snippet completes, the secret read, the source write and the runaway loop are each stopped at the first operation that breaks the contract, and the file system is untouched by the denied operations; the contract is a prefix list and an operation count, which is simpler than a real policy"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: four snippets under one contract ---\nin scope       -> completed | operations used 3 | denied []\nreads secrets  -> stopped: read denied: secrets/key.txt | operations used 2 | denied ['read secrets/key.txt']\nwrites source  -> stopped: write denied: src/app.py | operations used 1 | denied ['write src/app.py']\nop loop        -> stopped: operation budget exceeded | operations used 11 | denied ['op budget']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: What a stopped snippet leaves behind",
+    "headingKn": "ಪ್ರಯೋಗ 2: What a stopped snippet leaves behind",
+    "bodyEn": "What it ran: What a stopped snippet leaves behind. What the lab concluded: the first write happened before the denied read, so a contract that stops a snippet midway does not undo what ran earlier; scope contracts bound future operations and do not roll back past ones",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What a stopped snippet leaves behind. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first write happened before the denied read, so a contract that stops a snippet midway does not undo what ran earlier; scope contracts bound future operations and do not roll back past ones"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: what a stopped snippet leaves behind ---\nreport after the run: 'partial' | denied: ['read secrets/key.txt']"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Restricting builtins is not a sandbox",
+    "headingKn": "ಪ್ರಯೋಗ 3: Restricting builtins is not a sandbox",
+    "bodyEn": "What it ran: Restricting builtins is not a sandbox. What the lab concluded: with no import and no open in the namespace the snippet can still walk from a tuple to every loaded class, which is the first step of well-known escapes, so removing builtins narrows what a snippet does by accident and does not contain a hostile one; the lab only counts the reachable classes and does not use them",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Restricting builtins is not a sandbox. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with no import and no open in the namespace the snippet can still walk from a tuple to every loaded class, which is the first step of well-known escapes, so removing builtins narrows what a snippet does by accident and does not contain a hostile one; the lab only counts the reachable classes and does not use them"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: restricting builtins is not a sandbox ---\na snippet with only len available still reached the interpreter's class list; classes reachable: True"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A guarded environment is only as strong as the process around it",
+    "headingKn": "ಪ್ರಯೋಗ 4: A guarded environment is only as strong as the process around it",
+    "bodyEn": "What it ran: A guarded environment is only as strong as the process around it. What the lab concluded: because the contract lives in an ordinary Python object, anything that shares the process can edit it, so real enforcement has to sit in a separate process or container with its own permissions",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A guarded environment is only as strong as the process around it. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): because the contract lives in an ordinary Python object, anything that shares the process can edit it, so real enforcement has to sit in a separate process or container with its own permissions"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a guarded environment is only as strong as the process around it ---\na caller that can reach the environment object can widen the contract: True"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The in-scope snippet completed in 3 operations. 2) The secret read was stopped at its second operation. 3) A stopped snippet left a partial report. 4) Restricted builtins still reached interpreter classes. 5) An in-process contract was widened from inside.",
     "bodyKn": "1) scope ಒಳಗಿನ ತುಣುಕು 3 ಕಾರ್ಯಾಚರಣೆಗಳಲ್ಲಿ ಪೂರ್ಣವಾಯಿತು. 2) ರಹಸ್ಯ ಓದು ಅದರ ಎರಡನೇ ಕಾರ್ಯಾಚರಣೆಯಲ್ಲಿ ನಿಲ್ಲಿಸಲ್ಪಟ್ಟಿತು. 3) ನಿಂತ ತುಣುಕು ಭಾಗಶಃ ವರದಿ ಬಿಟ್ಟಿತು. 4) ನಿರ್ಬಂಧಿತ builtins ಇನ್ನೂ ಇಂಟರ್ಪ್ರಿಟರ್ ವರ್ಗಗಳನ್ನು ತಲುಪಿದವು. 5) ಪ್ರಕ್ರಿಯೆಯೊಳಗಿನ ಒಪ್ಪಂದ ಒಳಗಿನಿಂದ ವಿಸ್ತರಿಸಲ್ಪಟ್ಟಿತು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ca_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ca_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ca_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ca_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. Four snippets under one contract\n2. What a stopped snippet leaves behind\n3. Restricting builtins is not a sandbox\n4. A guarded environment is only as strong as the process around it",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. Four snippets under one contract\n2. What a stopped snippet leaves behind\n3. Restricting builtins is not a sandbox\n4. A guarded environment is only as strong as the process around it"
    }
   },
   {

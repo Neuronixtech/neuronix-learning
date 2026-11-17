@@ -141,6 +141,59 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The JSON tool-call scaffold with a limit of 5 turns per task",
+    "headingKn": "ಪ್ರಯೋಗ 1: The JSON tool-call scaffold with a limit of 5 turns per task",
+    "bodyEn": "What it ran: The JSON tool-call scaffold with a limit of 5 turns per task. What the lab concluded: each tool call costs a turn, so the rename task, which needs six calls, runs into the limit of 5 and is reported as unsolved even though its plan was correct, while the three tasks that need exactly five calls just fit; the turn limit of 5 and the tasks are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The JSON tool-call scaffold with a limit of 5 turns per task. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each tool call costs a turn, so the rename task, which needs six calls, runs into the limit of 5 and is reported as unsolved even though its plan was correct, while the three tasks that need exactly five calls just fit; the turn limit of 5 and the tasks are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the JSON tool-call scaffold with a limit of 5 turns per task ---\ncount_lines  solved True  | turns 5 | operations 5\nfind_todo    solved True  | turns 5 | operations 5\nrename_six   solved False | turns 5 | operations 5\nconcat_four  solved True  | turns 5 | operations 5\nJSON scaffold: 3/4 solved | 20 turns | 20 operations"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The code-as-action scaffold, one program per task",
+    "headingKn": "ಪ್ರಯೋಗ 2: The code-as-action scaffold, one program per task",
+    "bodyEn": "What it ran: The code-as-action scaffold, one program per task. What the lab concluded: one program can loop over many files, so every task finishes in a single turn; the operation counts match the JSON scaffold for three tasks and are lower for find_todo, where the program stops reading at the first match, so the saving is mainly in turns; the scripted programs were written by hand for these four tasks",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The code-as-action scaffold, one program per task. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): one program can loop over many files, so every task finishes in a single turn; the operation counts match the JSON scaffold for three tasks and are lower for find_todo, where the program stops reading at the first match, so the saving is mainly in turns; the scripted programs were written by hand for these four tasks"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: the code-as-action scaffold, one program per task ---\ncount_lines  solved True  | turns 1 | operations 5\nfind_todo    solved True  | turns 1 | operations 1\nrename_six   solved True  | turns 1 | operations 6\nconcat_four  solved True  | turns 1 | operations 5\ncode-as-action scaffold: 4/4 solved | 4 turns | 17 operations"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: How the turn limit changes the JSON result",
+    "headingKn": "ಪ್ರಯೋಗ 3: How the turn limit changes the JSON result",
+    "bodyEn": "What it ran: How the turn limit changes the JSON result. What the lab concluded: the JSON scaffold solves all four once the limit is large enough, so the gap between the two scaffolds on this toy is a budget effect and not a capability difference; a real comparison would also have to count tokens per turn and errors in the generated code",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How the turn limit changes the JSON result. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the JSON scaffold solves all four once the limit is large enough, so the gap between the two scaffolds on this toy is a budget effect and not a capability difference; a real comparison would also have to count tokens per turn and errors in the generated code"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: how the turn limit changes the JSON result ---\nlimit  3: solved 0/4 | turns used 12\nlimit  5: solved 3/4 | turns used 20\nlimit  6: solved 4/4 | turns used 21\nlimit 10: solved 4/4 | turns used 21"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +251,50 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) JSON solved 3 of 4 at a limit of 5. 2) Code-as-action solved 4 of 4 in 4 turns. 3) The code scaffold used 17 operations, the JSON one 20 on the unfinished run. 4) A limit of 6 closed the gap. 5) The lesson 2-of-4 and 16-turn figures are cited, not reproduced.",
     "bodyKn": "1) JSON 5 ಮಿತಿಯಲ್ಲಿ 4 ರಲ್ಲಿ 3 ಪರಿಹರಿಸಿತು. 2) Code-as-action 4 ರಲ್ಲಿ 4 ಅನ್ನು 4 ಟರ್ನ್‌ಗಳಲ್ಲಿ ಪರಿಹರಿಸಿತು. 3) code scaffold 17 ಕಾರ್ಯಾಚರಣೆ ಬಳಸಿತು, JSON ಅಪೂರ್ಣ ಓಟದಲ್ಲಿ 20. 4) ಮಿತಿ 6 ಅಂತರ ಮುಚ್ಚಿತು. 5) lesson ನ 4 ರಲ್ಲಿ 2 ಮತ್ತು 16-ಟರ್ನ್ ಅಂಕಿಗಳು ಉಲ್ಲೇಖಿತ, ಪುನರುತ್ಪಾದಿಸಲಾಗಿಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ca_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ca_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ca_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ca_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. The JSON tool-call scaffold with a limit of 5 turns per task\n2. The code-as-action scaffold, one program per task\n3. How the turn limit changes the JSON result",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. The JSON tool-call scaffold with a limit of 5 turns per task\n2. The code-as-action scaffold, one program per task\n3. How the turn limit changes the JSON result"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Change one thing",
+    "headingKn": "ಒಂದನ್ನು ಬದಲಿಸಿ",
+    "bodyEn": "Pick one constant, threshold or input in the code shown above, change it, and predict which experiment will change before you rerun. If an experiment you did not expect changes, you have found a coupling worth understanding.",
+    "bodyKn": "ಮೇಲೆ ತೋರಿಸಿದ ಕೋಡ್‌ನಲ್ಲಿ ಒಂದು ಸ್ಥಿರಾಂಕ, ಮಿತಿ ಅಥವಾ ಇನ್‌ಪುಟ್ ಆಯ್ದು ಬದಲಿಸಿ, ಮರುಓಡಿಸುವ ಮುನ್ನ ಯಾವ ಪ್ರಯೋಗ ಬದಲಾಗುತ್ತದೆ ಎಂದು ಊಹಿಸಿ. ನೀವು ನಿರೀಕ್ಷಿಸದ ಪ್ರಯೋಗ ಬದಲಾದರೆ, ಅರ್ಥಮಾಡಿಕೊಳ್ಳಬೇಕಾದ ಸಂಬಂಧವನ್ನು ನೀವು ಕಂಡುಕೊಂಡಿದ್ದೀರಿ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Where your numbers may differ",
+    "headingKn": "ನಿಮ್ಮ ಸಂಖ್ಯೆಗಳು ಎಲ್ಲಿ ಭಿನ್ನವಾಗಬಹುದು",
+    "bodyEn": "Timings, temporary paths, hashes and commit ids differ between runs and machines. Counts, verdicts and error messages should match unless your Python version or operating system differs from the one named in Lesson Info.",
+    "bodyKn": "ಸಮಯಗಳು, ತಾತ್ಕಾಲಿಕ paths, hashes ಮತ್ತು commit ids ಓಟಗಳ ಮತ್ತು ಯಂತ್ರಗಳ ನಡುವೆ ಭಿನ್ನವಾಗುತ್ತವೆ. ಎಣಿಕೆಗಳು, ತೀರ್ಪುಗಳು ಮತ್ತು ದೋಷ ಸಂದೇಶಗಳು ನಿಮ್ಮ Python ಆವೃತ್ತಿ ಅಥವಾ ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್ Lesson Info ನಲ್ಲಿ ಹೆಸರಿಸಿದ್ದಕ್ಕಿಂತ ಭಿನ್ನವಾಗಿಲ್ಲದಿದ್ದರೆ ಹೊಂದಬೇಕು."
    }
   },
   {
