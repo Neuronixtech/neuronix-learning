@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The three classifiers on 400 commands (125 risky)",
+    "headingKn": "ಪ್ರಯೋಗ 1: The three classifiers on 400 commands (125 risky)",
+    "bodyEn": "What it ran: The three classifiers on 400 commands (125 risky). What the lab concluded: stage 2 runs on 0.285 of commands when it follows stage 1; all three rows are identical here because every command either stage flags is flagged by both, so the second stage adds no accuracy on this set and only means the expensive check runs on 28.5 percent of commands, and chaining cannot recover a command stage 1 let through",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The three classifiers on 400 commands (125 risky). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): stage 2 runs on 0.285 of commands when it follows stage 1; all three rows are identical here because every command either stage flags is flagged by both, so the second stage adds no accuracy on this set and only means the expensive check runs on 28.5 percent of commands, and chaining cannot recover a command stage 1 let through"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: the three classifiers on 400 commands (125 risky) ---\nstage 1 only   : caught 114 | false alarms   0 | missed  11 | precision 1.000 | recall 0.912\nstage 2 only   : caught 114 | false alarms   0 | missed  11 | precision 1.000 | recall 0.912\nstage 1 then 2 : caught 114 | false alarms   0 | missed  11 | precision 1.000 | recall 0.912"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Recall on plain against obfuscated risky commands",
+    "headingKn": "ಪ್ರಯೋಗ 2: Recall on plain against obfuscated risky commands",
+    "bodyEn": "What it ran: Recall on plain against obfuscated risky commands. What the lab concluded: the string rules catch every plain command and about 69 percent of the disguised ones, so roughly 31 percent of disguised commands get through; the weak spot is word splitting, as the next section shows, and a determined sender can always look for a form the rules do not cover",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Recall on plain against obfuscated risky commands. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the string rules catch every plain command and about 69 percent of the disguised ones, so roughly 31 percent of disguised commands get through; the weak spot is word splitting, as the next section shows, and a determined sender can always look for a form the rules do not cover"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: recall on plain against obfuscated risky commands ---\nplain risky      :  89 commands | caught by the two stages 1.000\nobfuscated risky :  36 commands | caught by the two stages 0.694"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: What each obfuscation kind does to recall",
+    "headingKn": "ಪ್ರಯೋಗ 3: What each obfuscation kind does to recall",
+    "bodyEn": "What it ran: What each obfuscation kind does to recall. What the lab concluded: splitting a word defeats the rules about half the time, wrapping in base64 is caught only because the rules happen to look for base64 itself, and upper-casing is caught because the rules lower-case their input; each result depends on the particular rules and none of this generalises",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: What each obfuscation kind does to recall. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): splitting a word defeats the rules about half the time, wrapping in base64 is caught only because the rules happen to look for base64 itself, and upper-casing is caught because the rules lower-case their input; each result depends on the particular rules and none of this generalises"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: what each obfuscation kind does to recall ---\nsplit : caught 0.500 of 160\nb64   : caught 1.000 of 160\ncase  : caught 1.000 of 160"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: False alarms from the broad first stage",
+    "headingKn": "ಪ್ರಯೋಗ 4: False alarms from the broad first stage",
+    "bodyEn": "What it ran: False alarms from the broad first stage. What the lab concluded: the benign list is short and contains no command the rules mistake for a risky one after stage 2, so this lab cannot say what the false-alarm rate would be on real traffic, which has far more variety",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: False alarms from the broad first stage. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the benign list is short and contains no command the rules mistake for a risky one after stage 2, so this lab cannot say what the false-alarm rate would be on real traffic, which has far more variety"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: false alarms from the broad first stage ---\nbenign commands flagged by stage 1: 0.000 | still flagged after stage 2: 0.000"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) Recall was 0.912 with 11 missed. 2) Plain commands were caught at 1.000 and disguised at 0.694. 3) Word splitting was the weak spot at 0.500. 4) The second stage added no accuracy here. 5) The benign list was too small to measure false alarms.",
     "bodyKn": "1) recall 0.912, 11 ತಪ್ಪಿದವು. 2) ಸಾದಾ ಕಮಾಂಡ್‌ಗಳು 1.000 ಮತ್ತು ಮರೆಮಾಚಿದವು 0.694 ನಲ್ಲಿ ಹಿಡಿಯಲ್ಪಟ್ಟವು. 3) ಪದ ಒಡೆಯುವುದು 0.500 ರ ದುರ್ಬಲ ಬಿಂದು. 4) ಎರಡನೇ ಹಂತ ಇಲ್ಲಿ ನಿಖರತೆ ಸೇರಿಸಲಿಲ್ಲ. 5) ತಪ್ಪು ಎಚ್ಚರಿಕೆ ಅಳೆಯಲು ಸಾಮಾನ್ಯ ಪಟ್ಟಿ ತುಂಬಾ ಚಿಕ್ಕದು."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B pm_2.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B pm_2.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B pm_2.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B pm_2.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. The three classifiers on 400 commands (125 risky)\n2. Recall on plain against obfuscated risky commands\n3. What each obfuscation kind does to recall\n4. False alarms from the broad first stage",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. The three classifiers on 400 commands (125 risky)\n2. Recall on plain against obfuscated risky commands\n3. What each obfuscation kind does to recall\n4. False alarms from the broad first stage"
    }
   },
   {

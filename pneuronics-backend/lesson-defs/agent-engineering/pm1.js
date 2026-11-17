@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The mode table",
+    "headingKn": "ಪ್ರಯೋಗ 1: The mode table",
+    "bodyEn": "What it ran: The mode table. What the lab concluded: each mode answers the same six questions differently, from asking about everything to allowing everything, and plan mode allows reads and denies the rest; the table is a simplified model with invented cells",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The mode table. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): each mode answers the same six questions differently, from asking about everything to allowing everything, and plan mode allows reads and denies the rest; the table is a simplified model with invented cells"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: the mode table ---\nmode              read      edit  safe_cmd risky_cmd   network    delete\nask_always         ask       ask       ask       ask       ask       ask\ndefault          allow       ask       ask       ask       ask       ask\naccept_edits     allow     allow       ask       ask       ask       ask\nplan             allow      deny      deny      deny      deny      deny\nauto             allow     allow     allow       ask       ask       ask\nbypass           allow     allow     allow     allow     allow     allow"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: The same forty-action session under each mode",
+    "headingKn": "ಪ್ರಯೋಗ 2: The same forty-action session under each mode",
+    "bodyEn": "What it ran: The same forty-action session under each mode. What the lab concluded: the number of human prompts falls from 40 to 0 as the mode gets more permissive, but the actions allowed without asking grow in step, so every prompt saved is a decision moved from a person to a rule; plan mode produces no prompts only because it denies nearly everything",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The same forty-action session under each mode. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the number of human prompts falls from 40 to 0 as the mode gets more permissive, but the actions allowed without asking grow in step, so every prompt saved is a decision moved from a person to a rule; plan mode produces no prompts only because it denies nearly everything"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: the same forty-action session under each mode ---\nsession: {'read': 14, 'edit': 10, 'safe_cmd': 8, 'risky_cmd': 3, 'network': 3, 'delete': 2}\nask_always   allow  0 | ask 40 | deny  0\ndefault      allow 14 | ask 26 | deny  0\naccept_edits allow 24 | ask 16 | deny  0\nplan         allow 14 | ask  0 | deny 26\nauto         allow 32 | ask  8 | deny  0\nbypass       allow 40 | ask  0 | deny  0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Which risky actions run without a human decision",
+    "headingKn": "ಪ್ರಯೋಗ 3: Which risky actions run without a human decision",
+    "bodyEn": "What it ran: Which risky actions run without a human decision. What the lab concluded: only the bypass mode runs all eight risky actions unattended, and the auto mode keeps all eight in front of a human; the lab counts actions by category and does not judge whether a given command is actually risky",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Which risky actions run without a human decision. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): only the bypass mode runs all eight risky actions unattended, and the auto mode keeps all eight in front of a human; the lab counts actions by category and does not judge whether a given command is actually risky"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: which risky actions run without a human decision ---\nask_always  : of 8 risky actions, run with no human decision 0 | put to a human 8\ndefault     : of 8 risky actions, run with no human decision 0 | put to a human 8\naccept_edits: of 8 risky actions, run with no human decision 0 | put to a human 8\nplan        : of 8 risky actions, run with no human decision 0 | put to a human 0\nauto        : of 8 risky actions, run with no human decision 0 | put to a human 8\nbypass      : of 8 risky actions, run with no human decision 8 | put to a human 0"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A deny rule overrides the mode",
+    "headingKn": "ಪ್ರಯೋಗ 4: A deny rule overrides the mode",
+    "bodyEn": "What it ran: A deny rule overrides the mode. What the lab concluded: a deny rule is checked before the mode, so even bypass cannot delete or use the network once those are denied, which is why hard rules sit outside the mode setting; the rule list here is a tuple in the same program and a real system keeps it where the agent cannot edit it",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A deny rule overrides the mode. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a deny rule is checked before the mode, so even bypass cannot delete or use the network once those are denied, which is why hard rules sit outside the mode setting; the rule list here is a tuple in the same program and a real system keeps it where the agent cannot edit it"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a deny rule overrides the mode ---\nauto    with deny rules for delete and network: read=allow edit=allow safe_cmd=allow risky_cmd=ask network=deny delete=deny\nbypass  with deny rules for delete and network: read=allow edit=allow safe_cmd=allow risky_cmd=allow network=deny delete=deny"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) ask_always asked 40 times, bypass 0. 2) Auto asked 8 times and allowed 32. 3) Only bypass ran all 8 risky actions unattended. 4) Deny rules held even in bypass. 5) The table is invented.",
     "bodyKn": "1) ask_always 40 ಬಾರಿ ಕೇಳಿತು, bypass 0. 2) auto 8 ಬಾರಿ ಕೇಳಿ 32 ಅನುಮತಿಸಿತು. 3) bypass ಮಾತ್ರ ಎಲ್ಲಾ 8 ಅಪಾಯಕಾರಿ ಕ್ರಿಯೆಗಳನ್ನು ಮೇಲ್ವಿಚಾರಣೆ ಇಲ್ಲದೆ ಓಡಿಸಿತು. 4) bypass ನಲ್ಲೂ deny ನಿಯಮಗಳು ಉಳಿದವು. 5) ಕೋಷ್ಟಕ ಕಲ್ಪಿತ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B pm_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B pm_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B pm_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B pm_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. The mode table\n2. The same forty-action session under each mode\n3. Which risky actions run without a human decision\n4. A deny rule overrides the mode",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. The mode table\n2. The same forty-action session under each mode\n3. Which risky actions run without a human decision\n4. A deny rule overrides the mode"
    }
   },
   {

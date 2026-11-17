@@ -141,6 +141,74 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: A hard policy against three modes",
+    "headingKn": "ಪ್ರಯೋಗ 1: A hard policy against three modes",
+    "bodyEn": "What it ran: A hard policy against three modes. What the lab concluded: the three hard-denied actions are refused in every mode including bypass, because the hard policy is checked before the mode table; the action names and the policy set are invented for the lab",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A hard policy against three modes. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the three hard-denied actions are refused in every mode including bypass, because the hard policy is checked before the mode table; the action names and the policy set are invented for the lab"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: a hard policy against three modes ---\nbypass : read_file=allow(mode allows) http_post=allow(mode allows) disable_monitor=deny(hard policy) send_secret_external=deny(hard policy)\nauto   : read_file=allow(mode allows) http_post=allow(mode allows) disable_monitor=deny(hard policy) send_secret_external=deny(hard policy)\ndefault: read_file=allow(mode allows) http_post=deny(mode denies) disable_monitor=deny(hard policy) send_secret_external=deny(hard policy)"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Every action allowed, one trajectory flagged",
+    "headingKn": "ಪ್ರಯೋಗ 2: Every action allowed, one trajectory flagged",
+    "bodyEn": "What it ran: Every action allowed, one trajectory flagged. What the lab concluded: no single action here breaks a rule, and the monitor flags the pairing of a secret read with a later external post, while the same two actions far apart or in the other order pass; the monitor looks only at order and distance, not at what was read or sent",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Every action allowed, one trajectory flagged. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): no single action here breaks a rule, and the monitor flags the pairing of a secret read with a later external post, while the same two actions far apart or in the other order pass; the monitor looks only at order and distance, not at what was read or sent"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: every action allowed, one trajectory flagged ---\neach action allowed under auto: True\nmonitor on the sequence: secret read at 2 then external post within 4 actions\nthe same actions in a harmless order: None"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: False alarms on random benign sessions (2000 sessions of 12 actions)",
+    "headingKn": "ಪ್ರಯೋಗ 3: False alarms on random benign sessions (2000 sessions of 12 actions)",
+    "bodyEn": "What it ran: False alarms on random benign sessions (2000 sessions of 12 actions). What the lab concluded: a wider window flags more random sessions because a secret read and an unrelated post are more likely to fall inside it, so the window trades missed exfiltration against false alarms; the sessions are uniform random draws and real traffic is not uniform",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: False alarms on random benign sessions (2000 sessions of 12 actions). ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): a wider window flags more random sessions because a secret read and an unrelated post are more likely to fall inside it, so the window trades missed exfiltration against false alarms; the sessions are uniform random draws and real traffic is not uniform"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: false alarms on random benign sessions (2000 sessions of 12 actions) ---\nwindow 1: 0.262 of random sessions flagged\nwindow 2: 0.398 of random sessions flagged\nwindow 4: 0.526 of random sessions flagged\nwindow 8: 0.590 of random sessions flagged"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: How much spacing hides the pattern",
+    "headingKn": "ಪ್ರಯೋಗ 4: How much spacing hides the pattern",
+    "bodyEn": "What it ran: How much spacing hides the pattern. What the lab concluded: padding the sequence with harmless actions pushes the post outside a fixed window, which is the weakness of any detector with a fixed look-back; a larger window helps and raises the false alarms measured in section 3",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How much spacing hides the pattern. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): padding the sequence with harmless actions pushes the post outside a fixed window, which is the weakness of any detector with a fixed look-back; a larger window helps and raises the false alarms measured in section 3"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely measuring: how much spacing hides the pattern ---\n0 filler actions between: flagged with window 4: True | window 8: True\n1 filler actions between: flagged with window 4: True | window 8: True\n3 filler actions between: flagged with window 4: True | window 8: True\n5 filler actions between: flagged with window 4: False | window 8: True\n8 filler actions between: flagged with window 4: False | window 8: False"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +266,32 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) The hard policy held in all three modes. 2) The monitor flagged a sequence of individually allowed actions. 3) Window 4 flagged 52.6 percent of random sessions. 4) Five fillers hid the pattern from window 4. 5) The sessions are uniform random, not real traffic.",
     "bodyKn": "1) ಮೂರೂ ಮೋಡ್‌ಗಳಲ್ಲಿ ಕಠಿಣ ನೀತಿ ಉಳಿಯಿತು. 2) ಮಾನಿಟರ್ ಪ್ರತ್ಯೇಕವಾಗಿ ಅನುಮತಿಸಿದ ಕ್ರಿಯೆಗಳ ಅನುಕ್ರಮ ಗುರುತಿಸಿತು. 3) ವಿಂಡೋ 4 ಯಾದೃಚ್ಛಿಕ ಸೆಷನ್‌ಗಳಲ್ಲಿ 52.6 ಶೇಕಡಾ ಗುರುತಿಸಿತು. 4) ಐದು ತುಂಬುವಿಕೆಗಳು ವಿಂಡೋ 4 ರಿಂದ ಮಾದರಿ ಮರೆಮಾಡಿದವು. 5) ಸೆಷನ್‌ಗಳು ಏಕರೂಪ ಯಾದೃಚ್ಛಿಕ, ನಿಜ ಟ್ರಾಫಿಕ್ ಅಲ್ಲ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B pm_3.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B pm_3.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B pm_3.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B pm_3.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Predict before you run",
+    "headingKn": "ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ",
+    "bodyEn": "Before rerunning, write down what you expect each experiment to print, then compare:\n1. A hard policy against three modes\n2. Every action allowed, one trajectory flagged\n3. False alarms on random benign sessions (2000 sessions of 12 actions)\n4. How much spacing hides the pattern",
+    "bodyKn": "ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n1. A hard policy against three modes\n2. Every action allowed, one trajectory flagged\n3. False alarms on random benign sessions (2000 sessions of 12 actions)\n4. How much spacing hides the pattern"
    }
   },
   {
