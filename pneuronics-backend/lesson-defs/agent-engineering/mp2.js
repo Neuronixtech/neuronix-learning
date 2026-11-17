@@ -145,6 +145,134 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Routing by capability and sensitivity",
+    "headingKn": "ಪ್ರಯೋಗ 1: Routing by capability and sensitivity",
+    "bodyEn": "What it ran: Routing by capability and sensitivity. What the lab concluded: the plain summary and the extraction went to the primary, the image request skipped it for lacking image input and went to the secondary without any failure, and the restricted request was refused because neither simulated provider is approved for it; routing here is by a label and a capability set, which is a simplification of a real data-governance decision",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Routing by capability and sensitivity. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the plain summary and the extraction went to the primary, the image request skipped it for lacking image input and went to the secondary without any failure, and the restricted request was refused because neither simulated provider is approved for it; routing here is by a label and a capability set, which is a simplification of a real data-governance decision"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely running: routing by capability and sensitivity ---\nsummarise       -> bedrock (fallback used: False)\nextract         -> bedrock (fallback used: False)\nimage analysis  -> azure (fallback used: True)\nregulated       -> refused: no provider could serve the request\n   skipped: bedrock - missing capability image for r3\n   skipped: bedrock - not approved for restricted data for r4\n   skipped: azure - not approved for restricted data for r4"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Retries with exponential backoff and jitter",
+    "headingKn": "ಪ್ರಯೋಗ 2: Retries with exponential backoff and jitter",
+    "bodyEn": "What it ran: Retries with exponential backoff and jitter. What the lab concluded: the first two attempts were rate limited, the gateway waited about 200 ms and then about 400 ms and the third attempt succeeded on the same provider without any fallback, and the total time of roughly 3 seconds is three provider latencies of 800 ms plus the two waits; the clock is virtual and nothing slept",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Retries with exponential backoff and jitter. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the first two attempts were rate limited, the gateway waited about 200 ms and then about 400 ms and the third attempt succeeded on the same provider without any fallback, and the total time of roughly 3 seconds is three provider latencies of 800 ms plus the two waits; the clock is virtual and nothing slept"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely running: retries with exponential backoff and jitter ---\nlog: [('bedrock', 'error', 'rate_limit'), ('bedrock', 'error', 'rate_limit'), ('bedrock', 'ok', 'attempt 3')]\nserved by bedrock after 3 primary calls | virtual time used 3026 ms | base delays 200, 400 ms with plus or minus 20 percent jitter"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Errors that should not be retried",
+    "headingKn": "ಪ್ರಯೋಗ 3: Errors that should not be retried",
+    "bodyEn": "What it ran: Errors that should not be retried. What the lab concluded: an invalid request was sent once and surfaced as an error, because repeating it or sending it to another provider would only repeat the mistake, while an authentication failure on the primary was not retried and moved to the secondary, since the fault is that provider's configuration; this is the lab's policy choice and a real policy should follow each provider's documented error semantics",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Errors that should not be retried. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): an invalid request was sent once and surfaced as an error, because repeating it or sending it to another provider would only repeat the mistake, while an authentication failure on the primary was not retried and moved to the secondary, since the fault is that provider's configuration; this is the lab's policy choice and a real policy should follow each provider's documented error semantics"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely running: errors that should not be retried ---\ninvalid_request  primary calls 1 | secondary calls 0 | raised invalid_request\nauthentication   primary calls 1 | secondary calls 1 | served by azure"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: A circuit breaker over time",
+    "headingKn": "ಪ್ರಯೋಗ 4: A circuit breaker over time",
+    "bodyEn": "What it ran: A circuit breaker over time. What the lab concluded: the three attempts of the very first request were enough to open the breaker, the next five requests went straight to the secondary and the primary call count stayed at 3, the first probe after the cooldown failed and reopened it, and the next probe succeeded, closed the breaker and was served by the primary again; this breaker lives in one process and a fleet of gateways would each have its own",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A circuit breaker over time. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the three attempts of the very first request were enough to open the breaker, the next five requests went straight to the secondary and the primary call count stayed at 3, the first probe after the cooldown failed and reopened it, and the next probe succeeded, closed the breaker and was served by the primary again; this breaker lives in one process and a fleet of gateways would each have its own"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: a circuit breaker over time ---\n  t (ms)    breaker  primary calls  served by\n       0     closed              0          -   before any request\n    3726       open              3      azure\n    4426       open              3      azure\n    5126       open              3      azure\n    5826       open              3      azure\n    6526       open              3      azure\n    7226       open              3      azure\n   14726       open              4      azure   after 6000 ms: a half-open probe failed\n   21526     closed              5    bedrock   after another 6000 ms: the probe succeeded"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: Retry amplification over 1000 requests",
+    "headingKn": "ಪ್ರಯೋಗ 5: Retry amplification over 1000 requests",
+    "bodyEn": "What it ran: Retry amplification over 1000 requests. What the lab concluded: with half the attempts failing and up to three attempts per request the primary received 1717 attempts for 1000 requests, close to the expected 1 plus 0.5 plus 0.25 per request, and 888 succeeded against an expected 875; with the breaker the primary received only 26 attempts and 11 requests succeeded, because the breaker kept it closed off for most of the 10 virtual seconds and the other requests failed immediately, since this run has no fallback; retries multiply load, a breaker removes that load, and without a second provider the cost of removing it is failed requests",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Retry amplification over 1000 requests. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with half the attempts failing and up to three attempts per request the primary received 1717 attempts for 1000 requests, close to the expected 1 plus 0.5 plus 0.25 per request, and 888 succeeded against an expected 875; with the breaker the primary received only 26 attempts and 11 requests succeeded, because the breaker kept it closed off for most of the 10 virtual seconds and the other requests failed immediately, since this run has no fallback; retries multiply load, a breaker removes that load, and without a second provider the cost of removing it is failed requests"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely measuring: retry amplification over 1000 requests ---\nno breaker    logical requests 1000 | provider attempts 1717 | per request 1.72 | succeeded 888\nwith breaker  logical requests 1000 | provider attempts 26 | per request 0.03 | succeeded 11"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A total deadline",
+    "headingKn": "ಪ್ರಯೋಗ 6: A total deadline",
+    "bodyEn": "What it ran: A total deadline. What the lab concluded: with a 1500 ms budget and 800 ms per attempt the gateway made one attempt, saw that waiting and trying again could not finish inside the budget, and stopped instead of spending time on a doomed retry; a budget has to cover every attempt together and not each one separately",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A total deadline. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with a 1500 ms budget and 800 ms per attempt the gateway made one attempt, saw that waiting and trying again could not finish inside the budget, and stopped instead of spending time on a doomed retry; a budget has to cover every attempt together and not each one separately"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: a total deadline ---\nraised: deadline exceeded | primary calls 1 | virtual time 800 ms | budget 1500 ms"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 7: A tool call that may already have happened",
+    "headingKn": "ಪ್ರಯೋಗ 7: A tool call that may already have happened",
+    "bodyEn": "What it ran: A tool call that may already have happened. What the lab concluded: the primary carried out the refund and then the connection timed out, so the gateway could not tell and tried the secondary; without a key the refund ran twice and with one key shared across providers it ran once, which is why model calls and external side effects have to be separated and the effect made idempotent",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A tool call that may already have happened. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the primary carried out the refund and then the connection timed out, so the gateway could not tell and tried the secondary; without a key the refund ran twice and with one key shared across providers it ran once, which is why model calls and external side effects have to be separated and the effect made idempotent"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 7. Genuinely running: a tool call that may already have happened ---\nno idempotency key           side effects executed: 2\nsame key on both providers   side effects executed: 1"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 8: The cost of one request",
+    "headingKn": "ಪ್ರಯೋಗ 8: The cost of one request",
+    "bodyEn": "What it ran: The cost of one request. What the lab concluded: the cost is input tokens over a million times the input price plus output tokens over a million times the output price, and it comes to 0.0081 for the first provider and 0.006 for the second with these invented prices; real bills add charges for caching, batch, images and reserved capacity",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The cost of one request. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the cost is input tokens over a million times the input price plus output tokens over a million times the output price, and it comes to 0.0081 for the first provider and 0.006 for the second with these invented prices; real bills add charges for caching, batch, images and reserved capacity"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 8. Genuinely computing: the cost of one request ---\nbedrock  1200 input and 300 output tokens at 3.0 and 15.0 per million: 0.008100\nazure    1200 input and 300 output tokens at 2.5 and 10.0 per million: 0.006000"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"

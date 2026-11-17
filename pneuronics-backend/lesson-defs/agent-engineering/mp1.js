@@ -141,6 +141,89 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: The arithmetic of one request",
+    "headingKn": "ಪ್ರಯೋಗ 1: The arithmetic of one request",
+    "bodyEn": "What it ran: The arithmetic of one request. What the lab concluded: the five stages add up to 2130 ms and the first token arrives long before that, and a 100 ms TTFT with 500 tokens at 30 ms each finishes after 15070 ms, so a fast first token and a fast finish are different measurements; the formula assumes a constant gap between tokens, which a real serving system does not have",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: The arithmetic of one request. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the five stages add up to 2130 ms and the first token arrives long before that, and a 100 ms TTFT with 500 tokens at 30 ms each finishes after 15070 ms, so a fast first token and a fast finish are different measurements; the formula assumes a constant gap between tokens, which a real serving system does not have"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely computing: the arithmetic of one request ---\n{'network and application': 20, 'scheduling': 15, 'prefill and first token': 65, 'remaining token generation': 2000, 'final delivery': 30} | total: 2130 ms\ncompletion time with TTFT 100 ms, 500 tokens, 30 ms between tokens: 15070 ms | decode speed 33.33 tokens per second"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Median, P95 and P99 on a skewed distribution",
+    "headingKn": "ಪ್ರಯೋಗ 2: Median, P95 and P99 on a skewed distribution",
+    "bodyEn": "What it ran: Median, P95 and P99 on a skewed distribution. What the lab concluded: the median of the seven values is 50, and the skewed simulated sample has a median near 50 ms, a mean of 59.8, a P95 of 134.0 that is about 2.7 times the median and a P99 of 202.9 that is about 4 times it, so a median alone hides the slow tail; one percent of a million requests is 10000 users, and the lognormal shape is the lab's assumption and not a measurement of any provider",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Median, P95 and P99 on a skewed distribution. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the median of the seven values is 50, and the skewed simulated sample has a median near 50 ms, a mean of 59.8, a P95 of 134.0 that is about 2.7 times the median and a P99 of 202.9 that is about 4 times it, so a median alone hides the slow tail; one percent of a million requests is 10000 users, and the lognormal shape is the lab's assumption and not a measurement of any provider"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely measuring: median, P95 and P99 on a skewed distribution ---\nmedian of 40, 45, 48, 50, 55, 60, 70: 50.0 ms\n100000 simulated TTFTs: mean 59.8 | P50 49.9 | P95 134.0 | P99 202.9 ms\nrequests above the P99 value out of a million: 10000"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: An M/M/1 queue against its formula",
+    "headingKn": "ಪ್ರಯೋಗ 3: An M/M/1 queue against its formula",
+    "bodyEn": "What it ran: An M/M/1 queue against its formula. What the lab concluded: at 80 requests per second against a capacity of 100 the expected time in the system is 0.05 s and at 95 it is 0.2 s, a fourfold rise for a fifteen-point rise in utilisation, and the simulation agrees with the formula to within about 3 percent at the highest load; a real inference service is not a single M/M/1 queue, so this shows only why delay grows faster than load",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: An M/M/1 queue against its formula. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): at 80 requests per second against a capacity of 100 the expected time in the system is 0.05 s and at 95 it is 0.2 s, a fourfold rise for a fifteen-point rise in utilisation, and the simulation agrees with the formula to within about 3 percent at the highest load; a real inference service is not a single M/M/1 queue, so this shows only why delay grows faster than load"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely measuring: an M/M/1 queue against its formula ---\narrival rate  utilisation  formula W  simulated W\n          50         0.50     0.0200       0.0200\n          80         0.80     0.0500       0.0499\n          90         0.90     0.1000       0.1015\n          95         0.95     0.2000       0.2056"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Break-even utilisation u = R / V",
+    "headingKn": "ಪ್ರಯೋಗ 4: Break-even utilisation u = R / V",
+    "bodyEn": "What it ran: Break-even utilisation u = R / V. What the lab concluded: with a reservation of half the full-use on-demand cost the break-even is 50 percent, a cheaper reservation moves it down to 40 percent and a dearer one up to 60 percent, which is the arithmetic behind a 40 to 60 percent band, and at 20 percent utilisation each unit of work costs five times what it would at full use; the lesson's price examples are illustrative and the linear model ignores minimum commitments and token charges",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Break-even utilisation u = R / V. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with a reservation of half the full-use on-demand cost the break-even is 50 percent, a cheaper reservation moves it down to 40 percent and a dearer one up to 60 percent, which is the arithmetic behind a 40 to 60 percent band, and at 20 percent utilisation each unit of work costs five times what it would at full use; the lesson's price examples are illustrative and the linear model ignores minimum commitments and token charges"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely computing: break-even utilisation u = R / V ---\nreserved   600,000 against on-demand 1,200,000 at full use: break-even 50%\nreserved   480,000 against on-demand 1,200,000 at full use: break-even 40%\nreserved   720,000 against on-demand 1,200,000 at full use: break-even 60%\nutilisation  on-demand equivalent   reserved cheaper\n        20%               240,000    600,000 on-demand\n        30%               360,000    600,000 on-demand\n        40%               480,000    600,000 on-demand\n        50%               600,000    600,000 break-even\n        60%               720,000    600,000 reserved\n        80%               960,000    600,000 reserved\n       100%             1,200,000    600,000 reserved\n1000 per hour for 720 hours is 720000 | 30 dollars per hour for 720 hours is 21600\neffective cost per unit of use at 20 percent utilisation is 5 times the full-use price"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: How much to reserve for a changing day",
+    "headingKn": "ಪ್ರಯೋಗ 5: How much to reserve for a changing day",
+    "bodyEn": "What it ran: How much to reserve for a changing day. What the lab concluded: reserving the peak keeps the average utilisation near 70 percent but pays for idle capacity most hours, reserving the average leaves 6 of 10 hours above it, and with an on-demand price twice the reserved price the cheapest plan on the grid reserves 1000, a level that demand exceeds in 4 of the 10 hours, just under the half that the price ratio sets; the profile is the lesson's and the prices are invented, and a real quote has minimum terms",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: How much to reserve for a changing day. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): reserving the peak keeps the average utilisation near 70 percent but pays for idle capacity most hours, reserving the average leaves 6 of 10 hours above it, and with an on-demand price twice the reserved price the cheapest plan on the grid reserves 1000, a level that demand exceeds in 4 of the 10 hours, just under the half that the price ratio sets; the profile is the lesson's and the prices are invented, and a real quote has minimum terms"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely computing: how much to reserve for a changing day ---\nhourly requests per minute from the lesson: [200, 500, 1000, 1200, 1300, 1250, 1100, 1000, 900, 600] | average 905.0 | peak 1300\nreserve the peak     capacity  1300.0 | average utilisation 70% | hours above capacity 0 of 10\nreserve the average  capacity   905.0 | average utilisation 100% | hours above capacity 6 of 10\nreservation costs 1.0 per unit-hour and on-demand 2.0, so the break-even is 50%\n  reserve     0: cost     18100\n  reserve   400: cost     14500\n  reserve   900: cost     11900\n  reserve  1000: cost     11700  <- lowest on this grid\n  reserve  1300: cost     13000"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
@@ -198,6 +281,23 @@ module.exports = {
     "headingKn": "ಪ್ರಮುಖ ಅಂಶಗಳು",
     "bodyEn": "1) A 2130 ms request and a 15070 ms answer differ from their first-token time. 2) The simulated P99 was about 4 times the median. 3) Delay at 95 percent load was 4 times the delay at 80 percent. 4) Break-even was 50 percent for half-price reservation. 5) Reserving 1000 of a 1300 peak was cheapest on the grid.",
     "bodyKn": "1) 2130 ms ವಿನಂತಿ ಮತ್ತು 15070 ms ಉತ್ತರ ತಮ್ಮ ಮೊದಲ-token ಸಮಯದಿಂದ ಭಿನ್ನ. 2) ಸಿಮ್ಯುಲೇಟೆಡ್ P99 ಮಧ್ಯಾಂಕದ ಸುಮಾರು 4 ಪಟ್ಟು. 3) 95 ಶೇಕಡಾ ಭಾರದಲ್ಲಿ ವಿಳಂಬ 80 ಶೇಕಡಾ ಭಾರದ ವಿಳಂಬದ 4 ಪಟ್ಟು. 4) ಅರ್ಧ-ಬೆಲೆ ಮೀಸಲಿಗೆ ಸಮಭಾರ 50 ಶೇಕಡಾ. 5) 1300 ಗರಿಷ್ಠದಲ್ಲಿ 1000 ಮೀಸಲು ಗ್ರಿಡ್‌ನಲ್ಲಿ ಅಗ್ಗ."
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
+    "textEn": "Try It Yourself",
+    "textKn": "ನೀವೇ ಪ್ರಯತ್ನಿಸಿ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Run the lab",
+    "headingKn": "ಲ್ಯಾಬ್ ಓಡಿಸಿ",
+    "bodyEn": "1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B mp_1.py (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B mp_1.py). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.",
+    "bodyKn": "1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B mp_1.py (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B mp_1.py). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ."
    }
   },
   {

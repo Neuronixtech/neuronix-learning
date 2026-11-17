@@ -145,6 +145,104 @@ module.exports = {
   {
    "type": "heading",
    "data": {
+    "textEn": "Experiment Walkthrough",
+    "textKn": "Experiment ನಡೆದಾಟ",
+    "level": "H2"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 1: Percentiles by provider and workload, and the pitfall of a mixed workload",
+    "headingKn": "ಪ್ರಯೋಗ 1: Percentiles by provider and workload, and the pitfall of a mixed workload",
+    "bodyEn": "What it ran: Percentiles by provider and workload, and the pitfall of a mixed workload. What the lab concluded: provider A was built to be 10 percent slower than B on both workloads, yet on the combined numbers A looks much faster, because 80 percent of A's requests are short classifications and only 20 percent of B's are; a ranking has to compare the same workload, and the lognormal latencies are simulated and not measured",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Percentiles by provider and workload, and the pitfall of a mixed workload. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): provider A was built to be 10 percent slower than B on both workloads, yet on the combined numbers A looks much faster, because 80 percent of A's requests are short classifications and only 20 percent of B's are; a ranking has to compare the same workload, and the lognormal latencies are simulated and not measured"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 1. Genuinely measuring: percentiles by provider and workload, and the pitfall of a mixed workload ---\nprovider workload            P50     P95     P99\nA        classification      382     681     854\nA        summarization       950    1716    2155\nB        classification      358     635     838\nB        summarization       897    1579    1988\nA        all requests        424    1204    1702\nB        all requests        803    1522    1923"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 2: Attribution by request against an equal split",
+    "headingKn": "ಪ್ರಯೋಗ 2: Attribution by request against an equal split",
+    "bodyEn": "What it ran: Attribution by request against an equal split. What the lab concluded: the same shared bill allocated by the tokens each request used puts 42.5 percent on engineering, 32.0 on finance and 25.5 on support, an equal split would charge each team 33.3 percent, and a split by request count would charge support 75 percent for 25.5 percent of the use and finance 6.2 percent for 32.0; the query is a GROUP BY like the lesson's illustration run on a toy table, and a real billing export has its own schema",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Attribution by request against an equal split. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the same shared bill allocated by the tokens each request used puts 42.5 percent on engineering, 32.0 on finance and 25.5 on support, an equal split would charge each team 33.3 percent, and a split by request count would charge support 75 percent for 25.5 percent of the use and finance 6.2 percent for 32.0; the query is a GROUP BY like the lesson's illustration run on a toy table, and a real billing export has its own schema"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 2. Genuinely computing: attribution by request against an equal split ---\nteam          requests  cost by request   share  equal split share\nengineering       1500            26.85   42.5%              33.3%\nfinance            500            20.21   32.0%              33.3%\nsupport           6000            16.15   25.5%              33.3%\nsplit by request count instead: {'engineering': '18.8%', 'finance': '6.2%', 'support': '75.0%'}"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 3: Reconciling an estimate with a bill",
+    "headingKn": "ಪ್ರಯೋಗ 3: Reconciling an estimate with a bill",
+    "bodyEn": "What it ran: Reconciling an estimate with a bill. What the lab concluded: the estimate was 93.5 percent of a bill that carried a 3 percent price difference and a further 4 percent line that no request could be tied to, so an estimate is a way to attribute cost and the provider's bill stays the authority; the percentages are invented",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Reconciling an estimate with a bill. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the estimate was 93.5 percent of a bill that carried a 3 percent price difference and a further 4 percent line that no request could be tied to, so an estimate is a way to attribute cost and the provider's bill stays the authority; the percentages are invented"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 3. Genuinely computing: reconciling an estimate with a bill ---\nestimated from tokens 63.21 | billed 67.64 | difference 4.42 = 6.5% of the bill"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 4: Redacting prompts before they reach logs",
+    "headingKn": "ಪ್ರಯೋಗ 4: Redacting prompts before they reach logs",
+    "bodyEn": "What it ran: Redacting prompts before they reach logs. What the lab concluded: the email address, the phone number and the card number were replaced, while the name and the street address in the fourth line went through untouched and the order number was left alone, so pattern redaction catches structured identifiers and misses free-text personal data; it reduces what reaches a log and does not make a log safe",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: Redacting prompts before they reach logs. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): the email address, the phone number and the card number were replaced, while the name and the street address in the fourth line went through untouched and the order number was left alone, so pattern redaction catches structured identifiers and misses free-text personal data; it reduces what reaches a log and does not make a log safe"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 4. Genuinely running: redacting prompts before they reach logs ---\n'Contact me at jane.doe@example.com about the refund'      -> 'Contact me at [email] about the refund'\n'Call +91 98765 43210 tomorrow'                            -> 'Call [phone] tomorrow'\n'Card 4111 1111 1111 1111 was charged twice'               -> 'Card [card] was charged twice'\n'My name is Jane Doe and I live at 12 Park Street'         -> 'My name is Jane Doe and I live at 12 Park Street'\n'Order 77 shipped on Monday'                               -> 'Order 77 shipped on Monday'"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 5: When is a fallback good enough",
+    "headingKn": "ಪ್ರಯೋಗ 5: When is a fallback good enough",
+    "bodyEn": "What it ran: When is a fallback good enough. What the lab concluded: with 100 items the interval of the 90 percent fallback overlaps the primary's and the 82 percent one does not, and telling 95 from 90 reliably would take roughly 434 items per model while telling 95 from 93 would take about 2210 and 95 from 82 only 94, so a small evaluation set can show a clearly worse fallback and cannot certify a close one; the outcomes are invented counts",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: When is a fallback good enough. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): with 100 items the interval of the 90 percent fallback overlaps the primary's and the 82 percent one does not, and telling 95 from 90 reliably would take roughly 434 items per model while telling 95 from 93 would take about 2210 and 95 from 82 only 94, so a small evaluation set can show a clearly worse fallback and cannot certify a close one; the outcomes are invented counts"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 5. Genuinely computing: when is a fallback good enough ---\nprimary     95/100 correct | 95% interval [0.888, 0.978]\nfallback    82/100 correct | 95% interval [0.733, 0.883]\nfallback B  90/100 correct | 95% interval [0.826, 0.945]\nfallback C  93/100 correct | 95% interval [0.863, 0.966]\ntasks needed per model to tell 95 from 90 percent with about 80 percent power: 434 | 95 from 93: 2210 | 95 from 82: 94"
+   }
+  },
+  {
+   "type": "concept",
+   "data": {
+    "headingEn": "Experiment 6: A production-readiness check on a sample configuration",
+    "headingKn": "ಪ್ರಯೋಗ 6: A production-readiness check on a sample configuration",
+    "bodyEn": "What it ran: A production-readiness check on a sample configuration. What the lab concluded: nine of the twelve checks pass, and the three failures are a secondary provider that was not exercised in the last 30 days, a fallback that has not passed a quality evaluation and cost that is attributed per resource and not per request; the checklist is a teaching list and a passing configuration is not a finding of compliance",
+    "bodyKn": "ಇದು ಓಡಿಸಿದ್ದು: A production-readiness check on a sample configuration. ಲ್ಯಾಬ್ ತೀರ್ಮಾನ (ಮೂಲ ಇಂಗ್ಲಿಷ್ ಪಠ್ಯ ಯಥಾವತ್ತಾಗಿ): nine of the twelve checks pass, and the three failures are a secondary provider that was not exercised in the last 30 days, a fallback that has not passed a quality evaluation and cost that is attributed per resource and not per request; the checklist is a teaching list and a passing configuration is not a finding of compliance"
+   }
+  },
+  {
+   "type": "output",
+   "data": {
+    "output": "--- 6. Genuinely running: a production-readiness check on a sample configuration ---\nFAIL  two usable provider paths\nPASS  credentials come from managed identity\nPASS  least-privilege roles\nPASS  data classes mapped to approved routes\nFAIL  fallback evaluated against a quality threshold\nPASS  retries capped with a total deadline\nPASS  circuit breaker configured\nPASS  tool calls idempotent\nPASS  prompts redacted before general logs\nPASS  percentile latency by provider and workload\nFAIL  cost attributed per request\nPASS  quota and capacity alarms\n9 of 12 checks pass"
+   }
+  },
+  {
+   "type": "heading",
+   "data": {
     "textEn": "Reading the Verified Output",
     "textKn": "ಪರಿಶೀಲಿತ Output ಓದುವುದು",
     "level": "H2"
