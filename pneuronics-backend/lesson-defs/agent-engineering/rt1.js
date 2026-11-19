@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The three shells",
-    "headingKn": "ಮೂರು ಕವಚಗಳು",
-    "headers": [
-     "Shell",
-     "Caller sees",
-     "Fails when"
-    ],
-    "rows": [
-     [
-      "Request-response",
-      "nothing until the end",
-      "the caller times out or disconnects"
-     ],
-     [
-      "Streaming",
-      "chunks as they finish",
-      "the client leaves and nothing was saved"
-     ],
-     [
-      "Durable",
-      "a resumable run",
-      "a side effect happened before the checkpoint"
-     ]
-    ]
+    "captionEn": "The three shells",
+    "captionKn": "ಮೂರು ಕವಚಗಳು",
+    "rows": "Shell|Caller sees|Fails when\nRequest-response|nothing until the end|the caller times out or disconnects\nStreaming|chunks as they finish|the client leaves and nothing was saved\nDurable|a resumable run|a side effect happened before the checkpoint"
    }
   },
   {

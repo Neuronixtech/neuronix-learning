@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Schedule versus state",
-    "headingKn": "ವೇಳಾಪಟ್ಟಿ ಮತ್ತು ಸ್ಥಿತಿ",
-    "headers": [
-     "Question",
-     "Schedule answers",
-     "State answers"
-    ],
-    "rows": [
-     [
-      "can W-002 start",
-      "after W-001 is in an earlier wave",
-      "after W-001 is verified"
-     ],
-     [
-      "W-001 failed",
-      "still released W-002",
-      "releases nothing"
-     ],
-     [
-      "session died mid-item",
-      "cannot tell",
-      "item left running, reset to pending"
-     ],
-     [
-      "proof was for old code",
-      "cannot tell",
-      "needs the content hash in the receipt"
-     ]
-    ]
+    "captionEn": "Schedule versus state",
+    "captionKn": "ವೇಳಾಪಟ್ಟಿ ಮತ್ತು ಸ್ಥಿತಿ",
+    "rows": "Question|Schedule answers|State answers\ncan W-002 start|after W-001 is in an earlier wave|after W-001 is verified\nW-001 failed|still released W-002|releases nothing\nsession died mid-item|cannot tell|item left running, reset to pending\nproof was for old code|cannot tell|needs the content hash in the receipt"
    }
   },
   {

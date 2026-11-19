@@ -72,45 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The six fields of a work unit",
-    "headingKn": "ಕೆಲಸ ಘಟಕದ ಆರು ಕ್ಷೇತ್ರಗಳು",
-    "headers": [
-     "Field",
-     "Purpose",
-     "Checked by the planner"
-    ],
-    "rows": [
-     [
-      "goal",
-      "observable outcome",
-      "present"
-     ],
-     [
-      "owner",
-      "accountable worker",
-      "present"
-     ],
-     [
-      "paths",
-      "exclusive write ownership",
-      "no overlap by components"
-     ],
-     [
-      "dependencies",
-      "predecessors",
-      "known, not self, no cycle"
-     ],
-     [
-      "proof",
-      "required evidence",
-      "present"
-     ],
-     [
-      "handoff",
-      "integration information",
-      "present"
-     ]
-    ]
+    "captionEn": "The six fields of a work unit",
+    "captionKn": "ಕೆಲಸ ಘಟಕದ ಆರು ಕ್ಷೇತ್ರಗಳು",
+    "rows": "Field|Purpose|Checked by the planner\ngoal|observable outcome|present\nowner|accountable worker|present\npaths|exclusive write ownership|no overlap by components\ndependencies|predecessors|known, not self, no cycle\nproof|required evidence|present\nhandoff|integration information|present"
    }
   },
   {

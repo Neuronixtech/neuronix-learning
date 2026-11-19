@@ -81,46 +81,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Operating system versus agent memory",
-    "headingKn": "ಕಾರ್ಯಾಚರಣಾ ವ್ಯವಸ್ಥೆ ಮತ್ತು agent ಮೆಮೊರಿ",
-    "headers": [
-     "Operating system",
-     "Agent memory"
-    ],
-    "rows": [
-     [
-      "RAM",
-      "Main context"
-     ],
-     [
-      "Disk or backing store",
-      "External (archival) context"
-     ],
-     [
-      "Page",
-      "Memory record"
-     ],
-     [
-      "Page-out",
-      "Write or archive information"
-     ],
-     [
-      "Page-in",
-      "Retrieve a memory into the prompt"
-     ],
-     [
-      "Page fault",
-      "The needed fact is not in the prompt"
-     ],
-     [
-      "System call",
-      "A memory tool invocation"
-     ],
-     [
-      "Kernel",
-      "The agent runtime"
-     ]
-    ]
+    "captionEn": "Operating system versus agent memory",
+    "captionKn": "ಕಾರ್ಯಾಚರಣಾ ವ್ಯವಸ್ಥೆ ಮತ್ತು agent ಮೆಮೊರಿ",
+    "rows": "Operating system|Agent memory\nRAM|Main context\nDisk or backing store|External (archival) context\nPage|Memory record\nPage-out|Write or archive information\nPage-in|Retrieve a memory into the prompt\nPage fault|The needed fact is not in the prompt\nSystem call|A memory tool invocation\nKernel|The agent runtime"
    }
   },
   {

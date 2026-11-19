@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "What each level answers",
-    "headingKn": "ಪ್ರತಿ ಹಂತ ಏನು ಉತ್ತರಿಸುತ್ತದೆ",
-    "headers": [
-     "Level",
-     "Question",
-     "Id"
-    ],
-    "rows": [
-     [
-      "span",
-      "what did this step do and how long",
-      "span_id"
-     ],
-     [
-      "trace",
-      "what happened in this run",
-      "trace_id"
-     ],
-     [
-      "session",
-      "what happened across this user's runs",
-      "session_id (application-defined)"
-     ]
-    ]
+    "captionEn": "What each level answers",
+    "captionKn": "ಪ್ರತಿ ಹಂತ ಏನು ಉತ್ತರಿಸುತ್ತದೆ",
+    "rows": "Level|Question|Id\nspan|what did this step do and how long|span_id\ntrace|what happened in this run|trace_id\nsession|what happened across this user's runs|session_id (application-defined)"
    }
   },
   {

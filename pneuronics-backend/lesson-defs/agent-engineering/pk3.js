@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Upgrade plan categories",
-    "headingKn": "ಅಪ್‌ಗ್ರೇಡ್ ಯೋಜನೆ ವರ್ಗಗಳು",
-    "headers": [
-     "Category",
-     "Condition",
-     "Action"
-    ],
-    "rows": [
-     [
-      "add",
-      "file is new in the pack",
-      "copy it"
-     ],
-     [
-      "update",
-      "installed file still matches the recorded digest",
-      "replace it"
-     ],
-     [
-      "keep_customised",
-      "installed file differs from the recorded digest",
-      "leave it for manual merge"
-     ],
-     [
-      "remove",
-      "pack no longer ships it and it is unmodified",
-      "propose removal"
-     ]
-    ]
+    "captionEn": "Upgrade plan categories",
+    "captionKn": "ಅಪ್‌ಗ್ರೇಡ್ ಯೋಜನೆ ವರ್ಗಗಳು",
+    "rows": "Category|Condition|Action\nadd|file is new in the pack|copy it\nupdate|installed file still matches the recorded digest|replace it\nkeep_customised|installed file differs from the recorded digest|leave it for manual merge\nremove|pack no longer ships it and it is unmodified|propose removal"
    }
   },
   {

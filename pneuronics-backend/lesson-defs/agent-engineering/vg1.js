@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Findings",
-    "headingKn": "Findings",
-    "headers": [
-     "Code",
-     "Severity",
-     "Raised when"
-    ],
-    "rows": [
-     [
-      "ACCEPTANCE_NOT_RUN",
-      "block",
-      "no record for the required command"
-     ],
-     [
-      "ACCEPTANCE_FAILED",
-      "block",
-      "the last record has a non-zero exit code"
-     ],
-     [
-      "SCOPE_VIOLATION",
-      "block",
-      "a touched file is not allowed"
-     ],
-     [
-      "RULE_<id>",
-      "warn or block",
-      "a rule check failed"
-     ]
-    ]
+    "captionEn": "Findings",
+    "captionKn": "Findings",
+    "rows": "Code|Severity|Raised when\nACCEPTANCE_NOT_RUN|block|no record for the required command\nACCEPTANCE_FAILED|block|the last record has a non-zero exit code\nSCOPE_VIOLATION|block|a touched file is not allowed\nRULE_<id>|warn or block|a rule check failed"
    }
   },
   {

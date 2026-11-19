@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Primitive to surface",
-    "headingKn": "ಮೂಲಭೂತ ಭಾಗದಿಂದ ಮೇಲ್ಮೈಗೆ",
-    "headers": [
-     "Surface",
-     "Mechanism",
-     "Weak point"
-    ],
-    "rows": [
-     [
-      "State",
-      "state machine with revisions",
-      "a caller that sets the field directly"
-     ],
-     [
-      "Scope",
-      "resolved-path authorization",
-      "a check followed by a later write"
-     ],
-     [
-      "Verification",
-      "evidence with a trusted source",
-      "booleans the agent can write"
-     ],
-     [
-      "Handoff",
-      "idempotent notifications",
-      "a store that does not survive restarts"
-     ]
-    ]
+    "captionEn": "Primitive to surface",
+    "captionKn": "ಮೂಲಭೂತ ಭಾಗದಿಂದ ಮೇಲ್ಮೈಗೆ",
+    "rows": "Surface|Mechanism|Weak point\nState|state machine with revisions|a caller that sets the field directly\nScope|resolved-path authorization|a check followed by a later write\nVerification|evidence with a trusted source|booleans the agent can write\nHandoff|idempotent notifications|a store that does not survive restarts"
    }
   },
   {

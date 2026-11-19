@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The four patterns",
-    "headingKn": "ನಾಲ್ಕು ಮಾದರಿಗಳು",
-    "headers": [
-     "Pattern",
-     "Who decides next",
-     "Main strength",
-     "Main cost"
-    ],
-    "rows": [
-     [
-      "Supervisor-worker",
-      "one supervisor",
-      "control and a clear trace",
-      "single point of failure, growing prompt"
-     ],
-     [
-      "Swarm",
-      "each peer",
-      "no central router",
-      "loops, harder to reason about"
-     ],
-     [
-      "Hierarchical",
-      "a supervisor per department",
-      "smaller prompts per supervisor",
-      "extra call per layer"
-     ],
-     [
-      "Debate",
-      "a judge over proposers",
-      "checking by independent answers",
-      "several times the calls"
-     ]
-    ]
+    "captionEn": "The four patterns",
+    "captionKn": "ನಾಲ್ಕು ಮಾದರಿಗಳು",
+    "rows": "Pattern|Who decides next|Main strength|Main cost\nSupervisor-worker|one supervisor|control and a clear trace|single point of failure, growing prompt\nSwarm|each peer|no central router|loops, harder to reason about\nHierarchical|a supervisor per department|smaller prompts per supervisor|extra call per layer\nDebate|a judge over proposers|checking by independent answers|several times the calls"
    }
   },
   {

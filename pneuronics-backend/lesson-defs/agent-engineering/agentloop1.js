@@ -123,40 +123,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Five things every agent loop needs",
-    "headingKn": "ಪ್ರತಿ agent loop ಗೆ ಬೇಕಾದ ಐದು ಅಂಶಗಳು",
-    "headers": [
-     "Ingredient",
-     "Job",
-     "In our code"
-    ],
-    "rows": [
-     [
-      "Message buffer",
-      "Remembers the run so far; each model call sees the growing history",
-      "messages list (section 8 of the run)"
-     ],
-     [
-      "Tool registry",
-      "Maps exposed names to Python callables; only registered capabilities can run",
-      "ToolRegistry"
-     ],
-     [
-      "Stop condition",
-      "Explicit rule that ends the loop: finish action, no tool call, budget, guardrail",
-      "finish action (built in Part 2)"
-     ],
-     [
-      "Turn budget",
-      "Hard ceiling on iterations; an operational and safety control",
-      "max_turns (built in Part 2)"
-     ],
-     [
-      "Observation formatter",
-      "Turns any Python result or error into a consistent string for the model",
-      "format_observation, str(result)"
-     ]
-    ]
+    "captionEn": "Five things every agent loop needs",
+    "captionKn": "ಪ್ರತಿ agent loop ಗೆ ಬೇಕಾದ ಐದು ಅಂಶಗಳು",
+    "rows": "Ingredient|Job|In our code\nMessage buffer|Remembers the run so far; each model call sees the growing history|messages list (section 8 of the run)\nTool registry|Maps exposed names to Python callables; only registered capabilities can run|ToolRegistry\nStop condition|Explicit rule that ends the loop: finish action, no tool call, budget, guardrail|finish action (built in Part 2)\nTurn budget|Hard ceiling on iterations; an operational and safety control|max_turns (built in Part 2)\nObservation formatter|Turns any Python result or error into a consistent string for the model|format_observation, str(result)"
    }
   },
   {

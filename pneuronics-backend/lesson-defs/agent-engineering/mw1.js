@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The three files",
-    "headingKn": "ಮೂರು ಫೈಲ್‌ಗಳು",
-    "headers": [
-     "File",
-     "Holds",
-     "Not for"
-    ],
-    "rows": [
-     [
-      "AGENTS.md",
-      "startup rules and pointers",
-      "the whole manual"
-     ],
-     [
-      "agent_state.json",
-      "active task, touched files, assumptions, blockers, next action",
-      "the backlog"
-     ],
-     [
-      "task_board.json",
-      "tasks, owners, status, allowed files, acceptance criteria",
-      "execution details"
-     ]
-    ]
+    "captionEn": "The three files",
+    "captionKn": "ಮೂರು ಫೈಲ್‌ಗಳು",
+    "rows": "File|Holds|Not for\nAGENTS.md|startup rules and pointers|the whole manual\nagent_state.json|active task, touched files, assumptions, blockers, next action|the backlog\ntask_board.json|tasks, owners, status, allowed files, acceptance criteria|execution details"
    }
   },
   {

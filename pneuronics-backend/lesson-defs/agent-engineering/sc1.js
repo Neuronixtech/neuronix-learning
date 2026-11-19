@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Contract fields",
-    "headingKn": "ಒಪ್ಪಂದ ಕ್ಷೇತ್ರಗಳು",
-    "headers": [
-     "Field",
-     "Answers",
-     "If missing"
-    ],
-    "rows": [
-     [
-      "allowed_files",
-      "what may change",
-      "nothing could be in scope, so the loader rejects it"
-     ],
-     [
-      "forbidden_files",
-      "what must never change",
-      "only the allowlist protects you"
-     ],
-     [
-      "acceptance_criteria",
-      "how done is shown",
-      "files changed is mistaken for done"
-     ],
-     [
-      "rollback_plan",
-      "how to undo",
-      "recovery is improvised"
-     ],
-     [
-      "approvals_required",
-      "what needs a human",
-      "the agent decides alone"
-     ]
-    ]
+    "captionEn": "Contract fields",
+    "captionKn": "ಒಪ್ಪಂದ ಕ್ಷೇತ್ರಗಳು",
+    "rows": "Field|Answers|If missing\nallowed_files|what may change|nothing could be in scope, so the loader rejects it\nforbidden_files|what must never change|only the allowlist protects you\nacceptance_criteria|how done is shown|files changed is mistaken for done\nrollback_plan|how to undo|recovery is improvised\napprovals_required|what needs a human|the agent decides alone"
    }
   },
   {

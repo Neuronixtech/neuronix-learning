@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Settings in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
-    "headers": [
-     "Item",
-     "Setting"
-    ],
-    "rows": [
-     [
-      "results per paper",
-      "6 numbers between 0.5 and 0.95"
-     ],
-     [
-      "fabrication",
-      "inflate by 0.05 to 0.2 at rates 0, 0.05, 0.2"
-     ],
-     [
-      "gate tolerance",
-      "0.002"
-     ],
-     [
-      "reviewer noise",
-      "0.25, cutoff quality 0.6"
-     ],
-     [
-      "rewrite budget",
-      "3 attempts"
-     ]
-    ]
+    "captionEn": "Settings in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
+    "rows": "Item|Setting\nresults per paper|6 numbers between 0.5 and 0.95\nfabrication|inflate by 0.05 to 0.2 at rates 0, 0.05, 0.2\ngate tolerance|0.002\nreviewer noise|0.25, cutoff quality 0.6\nrewrite budget|3 attempts"
    }
   },
   {

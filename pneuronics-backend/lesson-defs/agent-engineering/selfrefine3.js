@@ -302,35 +302,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Self-Refine, CRITIC, evaluator-optimizer and guardrails",
-    "headingKn": "Self-Refine, CRITIC, evaluator-optimizer ಮತ್ತು guardrails",
-    "headers": [
-     "Pattern",
-     "Core idea",
-     "Weakness"
-    ],
-    "rows": [
-     [
-      "Self-Refine",
-      "Generate, feedback, refine",
-      "Self-feedback can share the generator's mistake"
-     ],
-     [
-      "CRITIC",
-      "Tool-grounded verification, then refine",
-      "Depends on a useful verifier; a pass covers only what was checked"
-     ],
-     [
-      "Evaluator-optimizer",
-      "Separate roles, structured feedback, a controller",
-      "A weak evaluator still makes a weak loop"
-     ],
-     [
-      "Output guardrail",
-      "A final pass or trip at the boundary",
-      "Checks only what was explicitly encoded"
-     ]
-    ]
+    "captionEn": "Self-Refine, CRITIC, evaluator-optimizer and guardrails",
+    "captionKn": "Self-Refine, CRITIC, evaluator-optimizer ಮತ್ತು guardrails",
+    "rows": "Pattern|Core idea|Weakness\nSelf-Refine|Generate, feedback, refine|Self-feedback can share the generator's mistake\nCRITIC|Tool-grounded verification, then refine|Depends on a useful verifier; a pass covers only what was checked\nEvaluator-optimizer|Separate roles, structured feedback, a controller|A weak evaluator still makes a weak loop\nOutput guardrail|A final pass or trip at the boundary|Checks only what was explicitly encoded"
    }
   },
   {

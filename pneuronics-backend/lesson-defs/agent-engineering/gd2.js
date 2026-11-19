@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The five variants and the three steps",
-    "headingKn": "ಐದು ರೂಪಾಂತರ ಮತ್ತು ಮೂರು ಹಂತಗಳು",
-    "headers": [
-     "Item",
-     "Result"
-    ],
-    "rows": [
-     [
-      "naive detector",
-      "misses 3 of 5: symbol insertion, homoglyph, paraphrase"
-     ],
-     [
-      "NFKC and case folding",
-      "still misses 3 of 5"
-     ],
-     [
-      "plus dropping non-letters",
-      "misses 2 of 5"
-     ],
-     [
-      "plus a confusable map",
-      "misses 1 of 5, the paraphrase"
-     ],
-     [
-      "script-mixing check",
-      "flags the look-alike variant only"
-     ]
-    ]
+    "captionEn": "The five variants and the three steps",
+    "captionKn": "ಐದು ರೂಪಾಂತರ ಮತ್ತು ಮೂರು ಹಂತಗಳು",
+    "rows": "Item|Result\nnaive detector|misses 3 of 5: symbol insertion, homoglyph, paraphrase\nNFKC and case folding|still misses 3 of 5\nplus dropping non-letters|misses 2 of 5\nplus a confusable map|misses 1 of 5, the paraphrase\nscript-mixing check|flags the look-alike variant only"
    }
   },
   {

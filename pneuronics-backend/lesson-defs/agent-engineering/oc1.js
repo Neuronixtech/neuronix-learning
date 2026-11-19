@@ -72,45 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The six fields",
-    "headingKn": "ಆರು ಕ್ಷೇತ್ರಗಳು",
-    "headers": [
-     "Field",
-     "Question",
-     "Lab example"
-    ],
-    "rows": [
-     [
-      "user",
-      "who feels it",
-      "on-call production engineer"
-     ],
-     [
-      "situation",
-      "when",
-      "a production alert has just arrived"
-     ],
-     [
-      "current behavior",
-      "today",
-      "manual correlation, about 12 minutes (illustrative)"
-     ],
-     [
-      "desired outcome",
-      "what changes",
-      "failing service and next safe action within two minutes"
-     ],
-     [
-      "constraints",
-      "limits",
-      "read-only, auditable"
-     ],
-     [
-      "non-goals",
-      "excluded",
-      "automatic remediation"
-     ]
-    ]
+    "captionEn": "The six fields",
+    "captionKn": "ಆರು ಕ್ಷೇತ್ರಗಳು",
+    "rows": "Field|Question|Lab example\nuser|who feels it|on-call production engineer\nsituation|when|a production alert has just arrived\ncurrent behavior|today|manual correlation, about 12 minutes (illustrative)\ndesired outcome|what changes|failing service and next safe action within two minutes\nconstraints|limits|read-only, auditable\nnon-goals|excluded|automatic remediation"
    }
   },
   {

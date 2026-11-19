@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "What belongs in the pack",
-    "headingKn": "ಪ್ಯಾಕ್‌ನಲ್ಲಿ ಏನಿರಬೇಕು",
-    "headers": [
-     "Infrastructure (in the pack)",
-     "Work (outside the pack)",
-     "Why"
-    ],
-    "rows": [
-     [
-      "AGENTS.md rules",
-      "agent_state.json",
-      "rules are reusable, state is one task"
-     ],
-     [
-      "schemas/",
-      "feedback_record.jsonl",
-      "schemas constrain, records are history"
-     ],
-     [
-      "scripts/verify_agent.py",
-      "task_board.json",
-      "scripts are tools, boards are plans"
-     ],
-     [
-      "VERSION and MANIFEST.json",
-      "handoff.json",
-      "identity of the pack versus one session"
-     ]
-    ]
+    "captionEn": "What belongs in the pack",
+    "captionKn": "ಪ್ಯಾಕ್‌ನಲ್ಲಿ ಏನಿರಬೇಕು",
+    "rows": "Infrastructure (in the pack)|Work (outside the pack)|Why\nAGENTS.md rules|agent_state.json|rules are reusable, state is one task\nschemas/|feedback_record.jsonl|schemas constrain, records are history\nscripts/verify_agent.py|task_board.json|scripts are tools, boards are plans\nVERSION and MANIFEST.json|handoff.json|identity of the pack versus one session"
    }
   },
   {

@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The four checks and their weak points",
-    "headingKn": "ನಾಲ್ಕು ಪರಿಶೀಲನೆಗಳು ಮತ್ತು ಅವುಗಳ ದುರ್ಬಲ ಬಿಂದುಗಳು",
-    "headers": [
-     "Check",
-     "Reads",
-     "Weak point"
-    ],
-    "rows": [
-     [
-      "scope",
-      "touched files and globs",
-      "the touched list may come from the agent"
-     ],
-     [
-      "acceptance",
-      "commands recorded as passed",
-      "a claim is not an execution"
-     ],
-     [
-      "approvals",
-      "requested versus approved text",
-      "no approver identity"
-     ],
-     [
-      "time budget",
-      "elapsed minutes",
-      "reported after the time is spent"
-     ]
-    ]
+    "captionEn": "The four checks and their weak points",
+    "captionKn": "ನಾಲ್ಕು ಪರಿಶೀಲನೆಗಳು ಮತ್ತು ಅವುಗಳ ದುರ್ಬಲ ಬಿಂದುಗಳು",
+    "rows": "Check|Reads|Weak point\nscope|touched files and globs|the touched list may come from the agent\nacceptance|commands recorded as passed|a claim is not an execution\napprovals|requested versus approved text|no approver identity\ntime budget|elapsed minutes|reported after the time is spent"
    }
   },
   {

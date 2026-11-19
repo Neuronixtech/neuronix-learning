@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Mutation operators compared (seeds 1 to 10, 200 generations)",
-    "headingKn": "ಮ್ಯುಟೇಶನ್ ಆಪರೇಟರ್ ಹೋಲಿಕೆ (seeds 1 ರಿಂದ 10, 200 ಜನರೇಶನ್)",
-    "headers": [
-     "Operator",
-     "Exact target",
-     "Median final MSE"
-    ],
-    "rows": [
-     [
-      "small (+-1)",
-      "10 of 10",
-      "0.0"
-     ],
-     [
-      "large (+-3 or 5)",
-      "0 of 10",
-      "89.0"
-     ],
-     [
-      "reset (-6 to 6)",
-      "10 of 10",
-      "0.0"
-     ]
-    ]
+    "captionEn": "Mutation operators compared (seeds 1 to 10, 200 generations)",
+    "captionKn": "ಮ್ಯುಟೇಶನ್ ಆಪರೇಟರ್ ಹೋಲಿಕೆ (seeds 1 ರಿಂದ 10, 200 ಜನರೇಶನ್)",
+    "rows": "Operator|Exact target|Median final MSE\nsmall (+-1)|10 of 10|0.0\nlarge (+-3 or 5)|0 of 10|89.0\nreset (-6 to 6)|10 of 10|0.0"
    }
   },
   {

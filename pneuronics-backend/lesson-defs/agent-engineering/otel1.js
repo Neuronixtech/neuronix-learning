@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The three span categories",
-    "headingKn": "ಮೂರು span ವರ್ಗಗಳು",
-    "headers": [
-     "Span",
-     "Typical kind",
-     "Name pattern"
-    ],
-    "rows": [
-     [
-      "agent run",
-      "INTERNAL (local) or CLIENT (remote service)",
-      "invoke_agent <agent name>"
-     ],
-     [
-      "model call",
-      "CLIENT",
-      "chat <model>"
-     ],
-     [
-      "tool call",
-      "INTERNAL",
-      "execute_tool <tool name>"
-     ]
-    ]
+    "captionEn": "The three span categories",
+    "captionKn": "ಮೂರು span ವರ್ಗಗಳು",
+    "rows": "Span|Typical kind|Name pattern\nagent run|INTERNAL (local) or CLIENT (remote service)|invoke_agent <agent name>\nmodel call|CLIENT|chat <model>\ntool call|INTERNAL|execute_tool <tool name>"
    }
   },
   {

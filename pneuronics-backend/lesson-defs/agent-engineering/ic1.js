@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The five categories",
-    "headingKn": "ಐದು ವರ್ಗಗಳು",
-    "headers": [
-     "Category",
-     "Question",
-     "Example checker"
-    ],
-    "rows": [
-     [
-      "startup",
-      "what must be true before work starts",
-      "state read before the first edit"
-     ],
-     [
-      "forbidden",
-      "what must never happen",
-      "no protected-file writes"
-     ],
-     [
-      "definition of done",
-      "what proves completion",
-      "tests ran with exit code 0"
-     ],
-     [
-      "uncertainty",
-      "what to do when information is missing",
-      "no assumption of an open question"
-     ],
-     [
-      "approval",
-      "what needs a human",
-      "recorded approval for the exact target"
-     ]
-    ]
+    "captionEn": "The five categories",
+    "captionKn": "ಐದು ವರ್ಗಗಳು",
+    "rows": "Category|Question|Example checker\nstartup|what must be true before work starts|state read before the first edit\nforbidden|what must never happen|no protected-file writes\ndefinition of done|what proves completion|tests ran with exit code 0\nuncertainty|what to do when information is missing|no assumption of an open question\napproval|what needs a human|recorded approval for the exact target"
    }
   },
   {

@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Verdict to decision",
-    "headingKn": "ತೀರ್ಪಿನಿಂದ ನಿರ್ಧಾರಕ್ಕೆ",
-    "headers": [
-     "Verdict",
-     "Effect on the map",
-     "Decision"
-    ],
-    "rows": [
-     [
-      "supports",
-      "uncertainty set to 1, status supported",
-      "proceed to the next assumption"
-     ],
-     [
-      "ambiguous",
-      "uncertainty down by 1, still open",
-      "gather more evidence or narrow the question"
-     ],
-     [
-      "rejects",
-      "status rejected",
-      "stop and revise the plan"
-     ]
-    ]
+    "captionEn": "Verdict to decision",
+    "captionKn": "ತೀರ್ಪಿನಿಂದ ನಿರ್ಧಾರಕ್ಕೆ",
+    "rows": "Verdict|Effect on the map|Decision\nsupports|uncertainty set to 1, status supported|proceed to the next assumption\nambiguous|uncertainty down by 1, still open|gather more evidence or narrow the question\nrejects|status rejected|stop and revise the plan"
    }
   },
   {

@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Recovery strategies in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಚೇತರಿಕೆ ತಂತ್ರಗಳು",
-    "headers": [
-     "Strategy",
-     "How it recovers"
-    ],
-    "rows": [
-     [
-      "restart",
-      "a failure sends the task back to step 0, 5 attempts"
-     ],
-     [
-      "checkpoint",
-      "a failure rewinds to the last saved step, 5 retries per segment"
-     ],
-     [
-      "best-of-N",
-      "run N independent tries and keep any success"
-     ],
-     [
-      "tree",
-      "branch b ways to depth d"
-     ],
-     [
-      "task",
-      "60 steps at 97 percent per step (invented)"
-     ]
-    ]
+    "captionEn": "Recovery strategies in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಚೇತರಿಕೆ ತಂತ್ರಗಳು",
+    "rows": "Strategy|How it recovers\nrestart|a failure sends the task back to step 0, 5 attempts\ncheckpoint|a failure rewinds to the last saved step, 5 retries per segment\nbest-of-N|run N independent tries and keep any success\ntree|branch b ways to depth d\ntask|60 steps at 97 percent per step (invented)"
    }
   },
   {

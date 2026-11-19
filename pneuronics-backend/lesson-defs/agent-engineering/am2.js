@@ -72,26 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Verdict rule used in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಬಳಸಿದ ತೀರ್ಪು ನಿಯಮ",
-    "headers": [
-     "Interval versus threshold 0.90",
-     "Verdict"
-    ],
-    "rows": [
-     [
-      "lower end at or above 0.90",
-      "supports"
-     ],
-     [
-      "upper end below 0.90",
-      "rejects"
-     ],
-     [
-      "interval contains 0.90",
-      "ambiguous"
-     ]
-    ]
+    "captionEn": "Verdict rule used in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಬಳಸಿದ ತೀರ್ಪು ನಿಯಮ",
+    "rows": "Interval versus threshold 0.90|Verdict\nlower end at or above 0.90|supports\nupper end below 0.90|rejects\ninterval contains 0.90|ambiguous"
    }
   },
   {

@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The four channels",
-    "headingKn": "ನಾಲ್ಕು ಮಾರ್ಗಗಳು",
-    "headers": [
-     "Channel",
-     "Where the instruction sits"
-    ],
-    "rows": [
-     [
-      "visible text",
-      "in the page body the user can see"
-     ],
-     [
-      "hidden text",
-      "in a field the user cannot see"
-     ],
-     [
-      "url fragment",
-      "after the # in the address"
-     ],
-     [
-      "poisoned memory",
-      "saved from an earlier visit and replayed"
-     ],
-     [
-      "user allowed domain",
-      "bob.example only"
-     ]
-    ]
+    "captionEn": "The four channels",
+    "captionKn": "ನಾಲ್ಕು ಮಾರ್ಗಗಳು",
+    "rows": "Channel|Where the instruction sits\nvisible text|in the page body the user can see\nhidden text|in a field the user cannot see\nurl fragment|after the # in the address\npoisoned memory|saved from an earlier visit and replayed\nuser allowed domain|bob.example only"
    }
   },
   {

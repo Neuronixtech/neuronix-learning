@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Crew versus Flow",
-    "headingKn": "Crew ಮತ್ತು Flow ಹೋಲಿಕೆ",
-    "headers": [
-     "",
-     "Crew",
-     "Flow"
-    ],
-    "rows": [
-     [
-      "Path decided by",
-      "Roles and a manager",
-      "Named events in code"
-     ],
-     [
-      "Strength",
-      "Exploratory collaboration",
-      "Replay, audit, testing"
-     ],
-     [
-      "Risk",
-      "Skipped or reordered steps",
-      "Silent dead ends from bad event names"
-     ]
-    ]
+    "captionEn": "Crew versus Flow",
+    "captionKn": "Crew ಮತ್ತು Flow ಹೋಲಿಕೆ",
+    "rows": "|Crew|Flow\nPath decided by|Roles and a manager|Named events in code\nStrength|Exploratory collaboration|Replay, audit, testing\nRisk|Skipped or reordered steps|Silent dead ends from bad event names"
    }
   },
   {

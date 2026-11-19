@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Queue and event safeguards",
-    "headingKn": "Queue ಮತ್ತು event ರಕ್ಷಣೆಗಳು",
-    "headers": [
-     "Problem",
-     "Safeguard",
-     "Limit"
-    ],
-    "rows": [
-     [
-      "Transient failure",
-      "bounded retries with backoff",
-      "the limit must match how long failures last"
-     ],
-     [
-      "Poison job",
-      "dead-letter queue",
-      "someone must inspect the DLQ"
-     ],
-     [
-      "Redelivery",
-      "idempotent job ids",
-      "the id store must survive restarts"
-     ],
-     [
-      "Duplicate event",
-      "event id deduplication",
-      "only as good as the id"
-     ],
-     [
-      "Slow handler",
-      "enqueue and acknowledge",
-      "adds a queue to operate"
-     ]
-    ]
+    "captionEn": "Queue and event safeguards",
+    "captionKn": "Queue ಮತ್ತು event ರಕ್ಷಣೆಗಳು",
+    "rows": "Problem|Safeguard|Limit\nTransient failure|bounded retries with backoff|the limit must match how long failures last\nPoison job|dead-letter queue|someone must inspect the DLQ\nRedelivery|idempotent job ids|the id store must survive restarts\nDuplicate event|event id deduplication|only as good as the id\nSlow handler|enqueue and acknowledge|adds a queue to operate"
    }
   },
   {

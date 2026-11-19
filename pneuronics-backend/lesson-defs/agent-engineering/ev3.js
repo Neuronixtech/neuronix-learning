@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Gate outcomes",
-    "headingKn": "Gate ಫಲಿತಾಂಶಗಳು",
-    "headers": [
-     "Status",
-     "Meaning",
-     "Exit code"
-    ],
-    "rows": [
-     [
-      "PASS",
-      "policy satisfied",
-      "0"
-     ],
-     [
-      "FAIL",
-      "policy violated by the candidate",
-      "1"
-     ],
-     [
-      "ERROR",
-      "evidence missing or unusable",
-      "2"
-     ]
-    ]
+    "captionEn": "Gate outcomes",
+    "captionKn": "Gate ಫಲಿತಾಂಶಗಳು",
+    "rows": "Status|Meaning|Exit code\nPASS|policy satisfied|0\nFAIL|policy violated by the candidate|1\nERROR|evidence missing or unusable|2"
    }
   },
   {

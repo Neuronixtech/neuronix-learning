@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The four tasks",
-    "headingKn": "ನಾಲ್ಕು ಕಾರ್ಯಗಳು",
-    "headers": [
-     "Task",
-     "What it needs"
-    ],
-    "rows": [
-     [
-      "count_lines",
-      "read five files and add the line counts"
-     ],
-     [
-      "find_todo",
-      "find which of five files contains TODO"
-     ],
-     [
-      "rename_six",
-      "rename six .txt files to .md"
-     ],
-     [
-      "concat_four",
-      "read four files then write one joined file"
-     ],
-     [
-      "JSON limit",
-      "5 turns, one call per turn"
-     ]
-    ]
+    "captionEn": "The four tasks",
+    "captionKn": "ನಾಲ್ಕು ಕಾರ್ಯಗಳು",
+    "rows": "Task|What it needs\ncount_lines|read five files and add the line counts\nfind_todo|find which of five files contains TODO\nrename_six|rename six .txt files to .md\nconcat_four|read four files then write one joined file\nJSON limit|5 turns, one call per turn"
    }
   },
   {

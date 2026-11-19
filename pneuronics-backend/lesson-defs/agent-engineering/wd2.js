@@ -72,45 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Confidence rule used in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಬಳಸಿದ ವಿಶ್ವಾಸ ನಿಯಮ",
-    "headers": [
-     "Ratio",
-     "Assumed step present",
-     "Label"
-    ],
-    "rows": [
-     [
-      "no evidence",
-      "-",
-      "unknown"
-     ],
-     [
-      "0.8 or more",
-      "no",
-      "high"
-     ],
-     [
-      "0.5 to 0.79",
-      "no",
-      "medium"
-     ],
-     [
-      "below 0.5",
-      "no",
-      "low"
-     ],
-     [
-      "0.8 or more",
-      "yes",
-      "medium"
-     ],
-     [
-      "below 0.8",
-      "yes",
-      "low"
-     ]
-    ]
+    "captionEn": "Confidence rule used in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಬಳಸಿದ ವಿಶ್ವಾಸ ನಿಯಮ",
+    "rows": "Ratio|Assumed step present|Label\nno evidence|-|unknown\n0.8 or more|no|high\n0.5 to 0.79|no|medium\nbelow 0.5|no|low\n0.8 or more|yes|medium\nbelow 0.8|yes|low"
    }
   },
   {

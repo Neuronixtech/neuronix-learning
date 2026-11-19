@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Tool call versus handoff",
-    "headingKn": "Tool ಕರೆ ಮತ್ತು handoff ಹೋಲಿಕೆ",
-    "headers": [
-     "",
-     "Function tool",
-     "Handoff"
-    ],
-    "rows": [
-     [
-      "After the call",
-      "Same agent continues",
-      "Another agent is active"
-     ],
-     [
-      "What it does",
-      "Performs an operation",
-      "Transfers responsibility"
-     ],
-     [
-      "Example",
-      "lookup_invoice",
-      "transfer_to_billing_agent"
-     ]
-    ]
+    "captionEn": "Tool call versus handoff",
+    "captionKn": "Tool ಕರೆ ಮತ್ತು handoff ಹೋಲಿಕೆ",
+    "rows": "|Function tool|Handoff\nAfter the call|Same agent continues|Another agent is active\nWhat it does|Performs an operation|Transfers responsibility\nExample|lookup_invoice|transfer_to_billing_agent"
    }
   },
   {

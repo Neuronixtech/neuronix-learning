@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Acceptance rules compared",
-    "headingKn": "ಸ್ವೀಕಾರ ನಿಯಮಗಳ ಹೋಲಿಕೆ",
-    "headers": [
-     "Rule",
-     "Accepts a modification when"
-    ],
-    "rows": [
-     [
-      "capability only",
-      "capability rises"
-     ],
-     [
-      "weighted sum",
-      "w x capability + (1 - w) x safety rises"
-     ],
-     [
-      "safety floor",
-      "capability rises and safety does not fall"
-     ],
-     [
-      "floor with tolerance",
-      "capability rises and safety drops by at most d"
-     ],
-     [
-      "absolute floor",
-      "as above and safety stays at or above 4.0"
-     ]
-    ]
+    "captionEn": "Acceptance rules compared",
+    "captionKn": "ಸ್ವೀಕಾರ ನಿಯಮಗಳ ಹೋಲಿಕೆ",
+    "rows": "Rule|Accepts a modification when\ncapability only|capability rises\nweighted sum|w x capability + (1 - w) x safety rises\nsafety floor|capability rises and safety does not fall\nfloor with tolerance|capability rises and safety drops by at most d\nabsolute floor|as above and safety stays at or above 4.0"
    }
   },
   {

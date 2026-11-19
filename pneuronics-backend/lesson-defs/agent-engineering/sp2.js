@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Claim to evidence (lab table)",
-    "headingKn": "ಹೇಳಿಕೆಯಿಂದ ಸಾಕ್ಷ್ಯಕ್ಕೆ (ಲ್ಯಾಬ್ ಕೋಷ್ಟಕ)",
-    "headers": [
-     "Claim",
-     "Evidence it needs"
-    ],
-    "rows": [
-     [
-      "relevant results",
-      "example tests"
-     ],
-     [
-      "no private data",
-      "forbidden example"
-     ],
-     [
-      "response format kept",
-      "contract test"
-     ],
-     [
-      "within two seconds",
-      "latency measurement"
-     ]
-    ]
+    "captionEn": "Claim to evidence (lab table)",
+    "captionKn": "ಹೇಳಿಕೆಯಿಂದ ಸಾಕ್ಷ್ಯಕ್ಕೆ (ಲ್ಯಾಬ್ ಕೋಷ್ಟಕ)",
+    "rows": "Claim|Evidence it needs\nrelevant results|example tests\nno private data|forbidden example\nresponse format kept|contract test\nwithin two seconds|latency measurement"
    }
   },
   {

@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Naive rule and its repair",
-    "headingKn": "ಸರಳ ನಿಯಮ ಮತ್ತು ಅದರ ದುರಸ್ತಿ",
-    "headers": [
-     "Rule",
-     "Naive version",
-     "Repair"
-    ],
-    "rows": [
-     [
-      "protected paths",
-      "set intersection of strings",
-      "normalise separators, dots and case"
-     ],
-     [
-      "tests before completion",
-      "ran and exit 0",
-      "bind to the code revision"
-     ],
-     [
-      "approval",
-      "an approval exists",
-      "right target, recorded before the action"
-     ],
-     [
-      "severity",
-      "read from the run report",
-      "read from reviewed policy"
-     ]
-    ]
+    "captionEn": "Naive rule and its repair",
+    "captionKn": "ಸರಳ ನಿಯಮ ಮತ್ತು ಅದರ ದುರಸ್ತಿ",
+    "rows": "Rule|Naive version|Repair\nprotected paths|set intersection of strings|normalise separators, dots and case\ntests before completion|ran and exit 0|bind to the code revision\napproval|an approval exists|right target, recorded before the action\nseverity|read from the run report|read from reviewed policy"
    }
   },
   {

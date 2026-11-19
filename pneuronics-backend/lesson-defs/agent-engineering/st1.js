@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Setup of the toy loop",
-    "headingKn": "ಆಟಿಕೆ ಲೂಪ್‌ನ ಸೆಟಪ್",
-    "headers": [
-     "Item",
-     "Lab setting"
-    ],
-    "rows": [
-     [
-      "tiers",
-      "easy 1-9, medium 10-99, hard 100-999"
-     ],
-     [
-      "starting competence",
-      "0.90, 0.50, 0.15 (invented)"
-     ],
-     [
-      "wrong path",
-      "lands on the right answer about 1 time in 3 offsets"
-     ],
-     [
-      "rationalization hint success",
-      "0.6 (assumed)"
-     ],
-     [
-      "rounds",
-      "5 rounds of 200 problems per tier"
-     ]
-    ]
+    "captionEn": "Setup of the toy loop",
+    "captionKn": "ಆಟಿಕೆ ಲೂಪ್‌ನ ಸೆಟಪ್",
+    "rows": "Item|Lab setting\ntiers|easy 1-9, medium 10-99, hard 100-999\nstarting competence|0.90, 0.50, 0.15 (invented)\nwrong path|lands on the right answer about 1 time in 3 offsets\nrationalization hint success|0.6 (assumed)\nrounds|5 rounds of 200 problems per tier"
    }
   },
   {

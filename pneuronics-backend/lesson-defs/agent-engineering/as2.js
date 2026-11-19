@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Settings in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
-    "headers": [
-     "Item",
-     "Setting"
-    ],
-    "rows": [
-     [
-      "corpus",
-      "60 keyword sets of 6 words from a 40-word vocabulary"
-     ],
-     [
-      "ideas",
-      "400, half near-copies, half fresh"
-     ],
-     [
-      "coding success",
-      "0.58 per try (assumed)"
-     ],
-     [
-      "polish weights",
-      "0.0, 0.3, 0.6"
-     ],
-     [
-      "acceptance cutoff",
-      "0.5 (invented)"
-     ]
-    ]
+    "captionEn": "Settings in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
+    "rows": "Item|Setting\ncorpus|60 keyword sets of 6 words from a 40-word vocabulary\nideas|400, half near-copies, half fresh\ncoding success|0.58 per try (assumed)\npolish weights|0.0, 0.3, 0.6\nacceptance cutoff|0.5 (invented)"
    }
   },
   {

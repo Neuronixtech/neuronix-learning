@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The five memory tools",
-    "headingKn": "ಐದು ಮೆಮೊರಿ tools",
-    "headers": [
-     "Tool",
-     "Direction",
-     "Purpose"
-    ],
-    "rows": [
-     [
-      "core_memory_append",
-      "into the prompt",
-      "Add stable, frequently needed information to a pinned section"
-     ],
-     [
-      "core_memory_replace",
-      "inside the prompt",
-      "Update a pinned fact instead of piling up contradictions"
-     ],
-     [
-      "archival_memory_insert",
-      "page out",
-      "Persist information outside the window"
-     ],
-     [
-      "archival_memory_search",
-      "page in (the lookup half)",
-      "Retrieve relevant records back toward the window"
-     ],
-     [
-      "conversation_search",
-      "inside the window",
-      "Search the messages still retained"
-     ]
-    ]
+    "captionEn": "The five memory tools",
+    "captionKn": "ಐದು ಮೆಮೊರಿ tools",
+    "rows": "Tool|Direction|Purpose\ncore_memory_append|into the prompt|Add stable, frequently needed information to a pinned section\ncore_memory_replace|inside the prompt|Update a pinned fact instead of piling up contradictions\narchival_memory_insert|page out|Persist information outside the window\narchival_memory_search|page in (the lookup half)|Retrieve relevant records back toward the window\nconversation_search|inside the window|Search the messages still retained"
    }
   },
   {

@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Parts of the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನ ಭಾಗಗಳು",
-    "headers": [
-     "Part",
-     "Behavior"
-    ],
-    "rows": [
-     [
-      "hard policy",
-      "denies disable_monitor, write_policy_file and send_secret_external in every mode"
-     ],
-     [
-      "modes",
-      "bypass, auto and default allow different action sets"
-     ],
-     [
-      "monitor",
-      "flags read_secret followed by http_post within a window"
-     ],
-     [
-      "window",
-      "1, 2, 4 or 8 following actions"
-     ],
-     [
-      "random sessions",
-      "2000 sessions of 12 uniform random actions"
-     ]
-    ]
+    "captionEn": "Parts of the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನ ಭಾಗಗಳು",
+    "rows": "Part|Behavior\nhard policy|denies disable_monitor, write_policy_file and send_secret_external in every mode\nmodes|bypass, auto and default allow different action sets\nmonitor|flags read_secret followed by http_post within a window\nwindow|1, 2, 4 or 8 following actions\nrandom sessions|2000 sessions of 12 uniform random actions"
    }
   },
   {

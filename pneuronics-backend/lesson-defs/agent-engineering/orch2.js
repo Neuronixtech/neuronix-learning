@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Supervisor versus swarm",
-    "headingKn": "Supervisor ವಿರುದ್ಧ swarm",
-    "headers": [
-     "Property",
-     "Supervisor",
-     "Swarm"
-    ],
-    "rows": [
-     [
-      "Who routes",
-      "one central agent",
-      "each agent, locally"
-     ],
-     [
-      "Routing steps",
-      "one per request",
-      "zero, but one per handoff"
-     ],
-     [
-      "Failure of the router",
-      "everything stops",
-      "no single router to fail"
-     ],
-     [
-      "Worst case",
-      "misrouting",
-      "loops between peers"
-     ],
-     [
-      "Safeguard",
-      "escalation",
-      "hop limit and peer registry"
-     ]
-    ]
+    "captionEn": "Supervisor versus swarm",
+    "captionKn": "Supervisor ವಿರುದ್ಧ swarm",
+    "rows": "Property|Supervisor|Swarm\nWho routes|one central agent|each agent, locally\nRouting steps|one per request|zero, but one per handoff\nFailure of the router|everything stops|no single router to fail\nWorst case|misrouting|loops between peers\nSafeguard|escalation|hop limit and peer registry"
    }
   },
   {

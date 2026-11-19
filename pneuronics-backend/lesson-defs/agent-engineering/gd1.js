@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The pieces",
-    "headingKn": "ತುಣುಕುಗಳು",
-    "headers": [
-     "Piece",
-     "What it does"
-    ],
-    "rows": [
-     [
-      "classifier",
-      "12 phrases in 6 codes S1, S2, S6, S7, S8, S14"
-     ],
-     [
-      "policy",
-      "blocks S7 and S14, reviews the rest, allows a safe result"
-     ],
-     [
-      "matcher",
-      "substring or word boundary after NFKC and case folding"
-     ],
-     [
-      "confusion matrix",
-      "TP, FP, FN, TN on 12 labelled texts"
-     ],
-     [
-      "application policy",
-      "the same code can be block in one app and allow in another"
-     ]
-    ]
+    "captionEn": "The pieces",
+    "captionKn": "ತುಣುಕುಗಳು",
+    "rows": "Piece|What it does\nclassifier|12 phrases in 6 codes S1, S2, S6, S7, S8, S14\npolicy|blocks S7 and S14, reviews the rest, allows a safe result\nmatcher|substring or word boundary after NFKC and case folding\nconfusion matrix|TP, FP, FN, TN on 12 labelled texts\napplication policy|the same code can be block in one app and allow in another"
    }
   },
   {

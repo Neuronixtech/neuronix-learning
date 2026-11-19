@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Rules of the toy loop",
-    "headingKn": "ಆಟಿಕೆ ಲೂಪ್‌ನ ನಿಯಮಗಳು",
-    "headers": [
-     "Rule",
-     "Value"
-    ],
-    "rows": [
-     [
-      "capability update",
-      "C x (1 + 0.20 x (1 - f))"
-     ],
-     [
-      "alignment update",
-      "A x (1 + ga x f), ga 0.20, 0.10 or 0.05"
-     ],
-     [
-      "gate",
-      "halt when A / C falls under 0.5"
-     ],
-     [
-      "start",
-      "both at 100"
-     ],
-     [
-      "splits tried",
-      "f from 0.00 to 1.00 in steps of 0.05"
-     ]
-    ]
+    "captionEn": "Rules of the toy loop",
+    "captionKn": "ಆಟಿಕೆ ಲೂಪ್‌ನ ನಿಯಮಗಳು",
+    "rows": "Rule|Value\ncapability update|C x (1 + 0.20 x (1 - f))\nalignment update|A x (1 + ga x f), ga 0.20, 0.10 or 0.05\ngate|halt when A / C falls under 0.5\nstart|both at 100\nsplits tried|f from 0.00 to 1.00 in steps of 0.05"
    }
   },
   {

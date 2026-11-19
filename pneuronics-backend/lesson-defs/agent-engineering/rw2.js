@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The three scripts",
-    "headingKn": "ಮೂರು ಸ್ಕ್ರಿಪ್ಟ್‌ಗಳು",
-    "headers": [
-     "Pipeline",
-     "Does",
-     "Expected gate"
-    ],
-    "rows": [
-     [
-      "prompt_only",
-      "fixes code, edits README, no tests, no handoff",
-      "BLOCK"
-     ],
-     [
-      "workbench",
-      "fixes code, writes three tests, runs them, hands off",
-      "ALLOW"
-     ],
-     [
-      "workbench_weak_tests",
-      "limit of 7, two tests that miss the boundary",
-      "BLOCK, caught by the probe"
-     ]
-    ]
+    "captionEn": "The three scripts",
+    "captionKn": "ಮೂರು ಸ್ಕ್ರಿಪ್ಟ್‌ಗಳು",
+    "rows": "Pipeline|Does|Expected gate\nprompt_only|fixes code, edits README, no tests, no handoff|BLOCK\nworkbench|fixes code, writes three tests, runs them, hands off|ALLOW\nworkbench_weak_tests|limit of 7, two tests that miss the boundary|BLOCK, caught by the probe"
    }
   },
   {

@@ -72,38 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Outcome to action",
-    "headingKn": "ಫಲಿತಾಂಶದಿಂದ ಕ್ರಿಯೆಗೆ",
-    "headers": [
-     "Outcome",
-     "Next action"
-    ],
-    "rows": [
-     [
-      "supports",
-      "build the next slice"
-     ],
-     [
-      "rejects",
-      "revise the approach or stop"
-     ],
-     [
-      "ambiguous",
-      "narrow the question and rerun"
-     ],
-     [
-      "inconclusive_too_small",
-      "collect more records"
-     ],
-     [
-      "blocked_by_safety",
-      "redesign as read-only"
-     ],
-     [
-      "stopped_over_budget",
-      "review the estimate with the owner"
-     ]
-    ]
+    "captionEn": "Outcome to action",
+    "captionKn": "ಫಲಿತಾಂಶದಿಂದ ಕ್ರಿಯೆಗೆ",
+    "rows": "Outcome|Next action\nsupports|build the next slice\nrejects|revise the approach or stop\nambiguous|narrow the question and rerun\ninconclusive_too_small|collect more records\nblocked_by_safety|redesign as read-only\nstopped_over_budget|review the estimate with the owner"
    }
   },
   {

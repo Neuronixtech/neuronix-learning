@@ -72,38 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Lab results for six invented contexts",
-    "headingKn": "ಆರು ಕಲ್ಪಿತ ಸಂದರ್ಭಗಳ ಲ್ಯಾಬ್ ಫಲಿತಾಂಶ",
-    "headers": [
-     "Context",
-     "Stage"
-    ],
-    "rows": [
-     [
-      "new algorithm on synthetic data",
-      "prototype"
-     ],
-     [
-      "real tickets, owner and rollback",
-      "pilot"
-     ],
-     [
-      "same without rollback",
-      "prototype"
-     ],
-     [
-      "works well, operations team ready",
-      "production"
-     ],
-     [
-      "works well, no operations team",
-      "pilot"
-     ],
-     [
-      "write access to the production database",
-      "blocked"
-     ]
-    ]
+    "captionEn": "Lab results for six invented contexts",
+    "captionKn": "ಆರು ಕಲ್ಪಿತ ಸಂದರ್ಭಗಳ ಲ್ಯಾಬ್ ಫಲಿತಾಂಶ",
+    "rows": "Context|Stage\nnew algorithm on synthetic data|prototype\nreal tickets, owner and rollback|pilot\nsame without rollback|prototype\nworks well, operations team ready|production\nworks well, no operations team|pilot\nwrite access to the production database|blocked"
    }
   },
   {

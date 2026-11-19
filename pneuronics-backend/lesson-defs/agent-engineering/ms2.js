@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "What the consumer checks",
-    "headingKn": "ಗ್ರಾಹಕ ಏನು ಪರಿಶೀಲಿಸುತ್ತಾನೆ",
-    "headers": [
-     "Check",
-     "Catches",
-     "Example in the lab"
-    ],
-    "rows": [
-     [
-      "parse",
-      "truncated or wrong-shaped files",
-      "JSONDecodeError, a list at the top"
-     ],
-     [
-      "field types",
-      "a string where a list belongs",
-      "commands_run as a string"
-     ],
-     [
-      "pointers",
-      "deleted reports or files",
-      "gone/verdict.json"
-     ],
-     [
-      "regeneration",
-      "hand-edited Markdown",
-      "next_action changed"
-     ],
-     [
-      "verdict file",
-      "summary contradicting evidence",
-      "passed is false"
-     ]
-    ]
+    "captionEn": "What the consumer checks",
+    "captionKn": "ಗ್ರಾಹಕ ಏನು ಪರಿಶೀಲಿಸುತ್ತಾನೆ",
+    "rows": "Check|Catches|Example in the lab\nparse|truncated or wrong-shaped files|JSONDecodeError, a list at the top\nfield types|a string where a list belongs|commands_run as a string\npointers|deleted reports or files|gone/verdict.json\nregeneration|hand-edited Markdown|next_action changed\nverdict file|summary contradicting evidence|passed is false"
    }
   },
   {

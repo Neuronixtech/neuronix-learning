@@ -324,71 +324,17 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Five invariants of a sound agent loop",
-    "headingKn": "ಉತ್ತಮ agent loop ನ ಐದು ಅವಿಚಲ ನಿಯಮಗಳು",
-    "headers": [
-     "Invariant",
-     "What our run showed"
-    ],
-    "rows": [
-     [
-      "Every meaningful action produces an observation",
-      "Sections 3 to 5: each tool call appends a tool message or an ERROR string"
-     ],
-     [
-      "Observations must influence later context",
-      "Section 3: observation 1 became argument 2; section 9: when ignored, the answer was wrong"
-     ],
-     [
-      "A model request is not proof of execution",
-      "Section 5: the weather.lookup request produced only an ERROR observation"
-     ],
-     [
-      "Every loop needs bounded termination",
-      "Sections 6 and 8: 8 calls under the turn budget, 3 turns under the time budget"
-     ],
-     [
-      "External observations are data, not trusted instructions",
-      "Tool text is placed in a tool message; a policy step must sit between proposal and action"
-     ]
-    ]
+    "captionEn": "Five invariants of a sound agent loop",
+    "captionKn": "ಉತ್ತಮ agent loop ನ ಐದು ಅವಿಚಲ ನಿಯಮಗಳು",
+    "rows": "Invariant|What our run showed\nEvery meaningful action produces an observation|Sections 3 to 5: each tool call appends a tool message or an ERROR string\nObservations must influence later context|Section 3: observation 1 became argument 2; section 9: when ignored, the answer was wrong\nA model request is not proof of execution|Section 5: the weather.lookup request produced only an ERROR observation\nEvery loop needs bounded termination|Sections 6 and 8: 8 calls under the turn budget, 3 turns under the time budget\nExternal observations are data, not trusted instructions|Tool text is placed in a tool message; a policy step must sit between proposal and action"
    }
   },
   {
    "type": "table",
    "data": {
-    "headingEn": "Failure classes and where to look",
-    "headingKn": "ವೈಫಲ್ಯ ವರ್ಗಗಳು ಮತ್ತು ಎಲ್ಲಿ ನೋಡಬೇಕು",
-    "headers": [
-     "Class",
-     "Example from this module"
-    ],
-    "rows": [
-     [
-      "Reasoning failure",
-      "Correct evidence, wrong decision"
-     ],
-     [
-      "Tool-selection failure",
-      "kv_store.set chosen where the calculator was needed"
-     ],
-     [
-      "Argument failure",
-      "wrong_argument passed to kv_store.get (section 2)"
-     ],
-     [
-      "Observation failure",
-      "Result computed but never appended to messages"
-     ],
-     [
-      "Stop failure",
-      "Model has the answer but keeps looping (section 6)"
-     ],
-     [
-      "Grounding failure",
-      "Error observed, success claimed (section 9)"
-     ]
-    ]
+    "captionEn": "Failure classes and where to look",
+    "captionKn": "ವೈಫಲ್ಯ ವರ್ಗಗಳು ಮತ್ತು ಎಲ್ಲಿ ನೋಡಬೇಕು",
+    "rows": "Class|Example from this module\nReasoning failure|Correct evidence, wrong decision\nTool-selection failure|kv_store.set chosen where the calculator was needed\nArgument failure|wrong_argument passed to kv_store.get (section 2)\nObservation failure|Result computed but never appended to messages\nStop failure|Model has the answer but keeps looping (section 6)\nGrounding failure|Error observed, success claimed (section 9)"
    }
   },
   {

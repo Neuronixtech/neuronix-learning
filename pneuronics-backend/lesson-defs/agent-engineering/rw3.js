@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Controls",
-    "headingKn": "ನಿಯಂತ್ರಣಗಳು",
-    "headers": [
-     "Control",
-     "Protects against",
-     "Limit"
-    ],
-    "rows": [
-     [
-      "baseline commit",
-      "a clean tree hiding committed changes",
-      "must be recorded before the task"
-     ],
-     [
-      "git worktree",
-      "edits reaching the main checkout",
-      "the branch is left behind"
-     ],
-     [
-      "path validation",
-      ".., absolute and drive paths",
-      "text only, symlinks need a resolved check"
-     ],
-     [
-      "argv plus allowlist",
-      "shell interpretation",
-      "the allowlist is a policy choice"
-     ],
-     [
-      "verify_task",
-      "claims without evidence",
-      "trusts the evidence producer"
-     ]
-    ]
+    "captionEn": "Controls",
+    "captionKn": "ನಿಯಂತ್ರಣಗಳು",
+    "rows": "Control|Protects against|Limit\nbaseline commit|a clean tree hiding committed changes|must be recorded before the task\ngit worktree|edits reaching the main checkout|the branch is left behind\npath validation|.., absolute and drive paths|text only, symlinks need a resolved check\nargv plus allowlist|shell interpretation|the allowlist is a policy choice\nverify_task|claims without evidence|trusts the evidence producer"
    }
   },
   {

@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Session versus trace",
-    "headingKn": "Session ಮತ್ತು trace ಹೋಲಿಕೆ",
-    "headers": [
-     "",
-     "Session",
-     "Trace"
-    ],
-    "rows": [
-     [
-      "Holds",
-      "User and assistant messages",
-      "Spans: timing, status, parents"
-     ],
-     [
-      "Audience",
-      "The conversation",
-      "Developers and operators"
-     ],
-     [
-      "Risk",
-      "Storing sensitive input",
-      "Capturing sensitive attributes"
-     ]
-    ]
+    "captionEn": "Session versus trace",
+    "captionKn": "Session ಮತ್ತು trace ಹೋಲಿಕೆ",
+    "rows": "|Session|Trace\nHolds|User and assistant messages|Spans: timing, status, parents\nAudience|The conversation|Developers and operators\nRisk|Storing sensitive input|Capturing sensitive attributes"
    }
   },
   {

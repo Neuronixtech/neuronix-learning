@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Stage controls used in the lab (limits invented)",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಬಳಸಿದ ಹಂತ ನಿಯಂತ್ರಣಗಳು (ಮಿತಿಗಳು ಕಲ್ಪಿತ)",
-    "headers": [
-     "Stage",
-     "Data",
-     "Audience",
-     "Forbidden"
-    ],
-    "rows": [
-     [
-      "prototype",
-      "synthetic",
-      "0",
-      "prod_read, prod_write, send_email"
-     ],
-     [
-      "pilot",
-      "synthetic, real_sample",
-      "25",
-      "prod_write"
-     ],
-     [
-      "production",
-      "any",
-      "unbounded",
-      "none"
-     ]
-    ]
+    "captionEn": "Stage controls used in the lab (limits invented)",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಬಳಸಿದ ಹಂತ ನಿಯಂತ್ರಣಗಳು (ಮಿತಿಗಳು ಕಲ್ಪಿತ)",
+    "rows": "Stage|Data|Audience|Forbidden\nprototype|synthetic|0|prod_read, prod_write, send_email\npilot|synthetic, real_sample|25|prod_write\nproduction|any|unbounded|none"
    }
   },
   {

@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Audit levels and statuses",
-    "headingKn": "Audit ಹಂತಗಳು ಮತ್ತು ಸ್ಥಿತಿಗಳು",
-    "headers": [
-     "Level",
-     "Question",
-     "Example"
-    ],
-    "rows": [
-     [
-      "Presence",
-      "does the artifact exist",
-      "is there a scope file"
-     ],
-     [
-      "Validity",
-      "is it usable",
-      "does the JSON parse"
-     ],
-     [
-      "Enforcement",
-      "does the runtime honour it",
-      "is a forbidden write actually blocked"
-     ],
-     [
-      "Status",
-      "PASS, WARN or BLOCK",
-      "BLOCK stops the task from starting"
-     ]
-    ]
+    "captionEn": "Audit levels and statuses",
+    "captionKn": "Audit ಹಂತಗಳು ಮತ್ತು ಸ್ಥಿತಿಗಳು",
+    "rows": "Level|Question|Example\nPresence|does the artifact exist|is there a scope file\nValidity|is it usable|does the JSON parse\nEnforcement|does the runtime honour it|is a forbidden write actually blocked\nStatus|PASS, WARN or BLOCK|BLOCK stops the task from starting"
    }
   },
   {

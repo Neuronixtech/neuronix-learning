@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Safeguards in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ರಕ್ಷಣೆಗಳು",
-    "headers": [
-     "Safeguard",
-     "Lab behavior"
-    ],
-    "rows": [
-     [
-      "checkpoint",
-      "JSON file written after every step"
-     ],
-     [
-      "step budget",
-      "hard stop at max_steps"
-     ],
-     [
-      "compaction",
-      "older entries folded into one summary"
-     ],
-     [
-      "monitor",
-      "flag 3 identical steps or more than 12 steps"
-     ],
-     [
-      "crash",
-      "injected at step 5 of 8"
-     ]
-    ]
+    "captionEn": "Safeguards in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ರಕ್ಷಣೆಗಳು",
+    "rows": "Safeguard|Lab behavior\ncheckpoint|JSON file written after every step\nstep budget|hard stop at max_steps\ncompaction|older entries folded into one summary\nmonitor|flag 3 identical steps or more than 12 steps\ncrash|injected at step 5 of 8"
    }
   },
   {

@@ -72,42 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The nine experiments",
-    "headingKn": "ಒಂಬತ್ತು ಪ್ರಯೋಗಗಳು",
-    "headers": [
-     "Experiment",
-     "What the lab shows"
-    ],
-    "rows": [
-     [
-      "configuration digest",
-      "key order does not matter, a 0.01 change does"
-     ],
-     [
-      "intervals",
-      "SATISFIED, NOT_SATISFIED or UNCERTAIN"
-     ],
-     [
-      "bootstrap",
-      "79 of 100 gives about 0.71 to 0.86"
-     ],
-     [
-      "evidence hash",
-      "an edit no longer matches the trusted digest"
-     ],
-     [
-      "bound review",
-      "version, activity, evidence and author checks"
-     ],
-     [
-      "activity table",
-      "internal evaluation needs no approval, deployment does"
-     ],
-     [
-      "audit and roadmap",
-      "chain, unverified milestone, doubling projection"
-     ]
-    ]
+    "captionEn": "The nine experiments",
+    "captionKn": "ಒಂಬತ್ತು ಪ್ರಯೋಗಗಳು",
+    "rows": "Experiment|What the lab shows\nconfiguration digest|key order does not matter, a 0.01 change does\nintervals|SATISFIED, NOT_SATISFIED or UNCERTAIN\nbootstrap|79 of 100 gives about 0.71 to 0.86\nevidence hash|an edit no longer matches the trusted digest\nbound review|version, activity, evidence and author checks\nactivity table|internal evaluation needs no approval, deployment does\naudit and roadmap|chain, unverified milestone, doubling projection"
    }
   },
   {

@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Protocols compared in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಹೋಲಿಸಿದ ಪ್ರೋಟೋಕಾಲ್‌ಗಳು",
-    "headers": [
-     "Protocol",
-     "Accuracy",
-     "Calls per question"
-    ],
-    "rows": [
-     [
-      "single agent",
-      "71.5%",
-      "1.0"
-     ],
-     [
-      "majority vote of 5",
-      "76.8%",
-      "5.0"
-     ],
-     [
-      "full mesh debate",
-      "76.8%",
-      "26.8"
-     ],
-     [
-      "hub debate",
-      "71.5%",
-      "15.4"
-     ],
-     [
-      "vote, debate only if split",
-      "76.8%",
-      "18.2"
-     ]
-    ]
+    "captionEn": "Protocols compared in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಹೋಲಿಸಿದ ಪ್ರೋಟೋಕಾಲ್‌ಗಳು",
+    "rows": "Protocol|Accuracy|Calls per question\nsingle agent|71.5%|1.0\nmajority vote of 5|76.8%|5.0\nfull mesh debate|76.8%|26.8\nhub debate|71.5%|15.4\nvote, debate only if split|76.8%|18.2"
    }
   },
   {

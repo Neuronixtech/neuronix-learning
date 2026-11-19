@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Settings in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
-    "headers": [
-     "Item",
-     "Setting"
-    ],
-    "rows": [
-     [
-      "true ratio",
-      "(1.12 / 1.20)^n, falls under 0.5 at generation 11"
-     ],
-     [
-      "gate threshold",
-      "0.5"
-     ],
-     [
-      "evaluator noise",
-      "Gaussian, sd 0.02, 0.05, 0.10, 0.20"
-     ],
-     [
-      "gaming term",
-      "0.00, 0.01, 0.03 added per generation"
-     ],
-     [
-      "check interval",
-      "every 1, 3, 5 or 10 generations"
-     ]
-    ]
+    "captionEn": "Settings in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
+    "rows": "Item|Setting\ntrue ratio|(1.12 / 1.20)^n, falls under 0.5 at generation 11\ngate threshold|0.5\nevaluator noise|Gaussian, sd 0.02, 0.05, 0.10, 0.20\ngaming term|0.00, 0.01, 0.03 added per generation\ncheck interval|every 1, 3, 5 or 10 generations"
    }
   },
   {

@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Production risks",
-    "headingKn": "Production ಅಪಾಯಗಳು",
-    "headers": [
-     "Risk",
-     "Control",
-     "Limit shown in the lab"
-    ],
-    "rows": [
-     [
-      "another commit or branch switch",
-      "record branch and commit, compare on read",
-      "a dirty tree is not caught by branch and commit alone"
-     ],
-     [
-      "torn write",
-      "write a temp file, then os.replace",
-      "a leftover temp file needs cleanup"
-     ],
-     [
-      "two publishers",
-      "compare-and-swap on the active pointer",
-      "check and write are separate steps"
-     ],
-     [
-      "risky next action",
-      "keyword flag and human approval",
-      "keywords miss other wording"
-     ]
-    ]
+    "captionEn": "Production risks",
+    "captionKn": "Production ಅಪಾಯಗಳು",
+    "rows": "Risk|Control|Limit shown in the lab\nanother commit or branch switch|record branch and commit, compare on read|a dirty tree is not caught by branch and commit alone\ntorn write|write a temp file, then os.replace|a leftover temp file needs cleanup\ntwo publishers|compare-and-swap on the active pointer|check and write are separate steps\nrisky next action|keyword flag and human approval|keywords miss other wording"
    }
   },
   {

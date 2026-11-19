@@ -72,38 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The six gate cases",
-    "headingKn": "ಆರು gate ಪ್ರಕರಣಗಳು",
-    "headers": [
-     "Case",
-     "Status"
-    ],
-    "rows": [
-     [
-      "case-001 analyse metrics",
-      "VERIFIED_SIMULATION"
-     ],
-     [
-      "case-002 misleading report",
-      "REFUSED"
-     ],
-     [
-      "case-003 hard prohibition",
-      "REFUSED"
-     ],
-     [
-      "case-004 disable audit logging",
-      "MODIFICATION_REQUIRED"
-     ],
-     [
-      "case-005 update configuration",
-      "AWAITING_APPROVAL"
-     ],
-     [
-      "case-006 delete_database tool",
-      "UNAUTHORIZED_TOOL"
-     ]
-    ]
+    "captionEn": "The six gate cases",
+    "captionKn": "ಆರು gate ಪ್ರಕರಣಗಳು",
+    "rows": "Case|Status\ncase-001 analyse metrics|VERIFIED_SIMULATION\ncase-002 misleading report|REFUSED\ncase-003 hard prohibition|REFUSED\ncase-004 disable audit logging|MODIFICATION_REQUIRED\ncase-005 update configuration|AWAITING_APPROVAL\ncase-006 delete_database tool|UNAUTHORIZED_TOOL"
    }
   },
   {

@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Evidence that can verify a claim (lab policy)",
-    "headingKn": "ಹೇಳಿಕೆ ಪರಿಶೀಲಿಸಬಲ್ಲ ಸಾಕ್ಷ್ಯ (ಲ್ಯಾಬ್ ನೀತಿ)",
-    "headers": [
-     "Evidence",
-     "Real-world failure fixed",
-     "Code-path claim"
-    ],
-    "rows": [
-     [
-      "observation",
-      "yes",
-      "yes"
-     ],
-     [
-      "reported",
-      "no",
-      "no"
-     ],
-     [
-      "inference",
-      "no",
-      "no"
-     ],
-     [
-      "simulation",
-      "no",
-      "yes"
-     ]
-    ]
+    "captionEn": "Evidence that can verify a claim (lab policy)",
+    "captionKn": "ಹೇಳಿಕೆ ಪರಿಶೀಲಿಸಬಲ್ಲ ಸಾಕ್ಷ್ಯ (ಲ್ಯಾಬ್ ನೀತಿ)",
+    "rows": "Evidence|Real-world failure fixed|Code-path claim\nobservation|yes|yes\nreported|no|no\ninference|no|no\nsimulation|no|yes"
    }
   },
   {

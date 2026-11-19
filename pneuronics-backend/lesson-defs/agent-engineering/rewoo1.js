@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "ReAct versus ReWOO",
-    "headingKn": "ReAct ಮತ್ತು ReWOO",
-    "headers": [
-     "Property",
-     "ReAct",
-     "ReWOO"
-    ],
-    "rows": [
-     [
-      "Control flow",
-      "Reason, act, observe, repeat",
-      "Plan, execute, solve"
-     ],
-     [
-      "Model calls",
-      "Between actions",
-      "Planner before workers, Solver after"
-     ],
-     [
-      "Observations affect",
-      "The next reasoning step",
-      "Only the Solver (and a Replanner if present)"
-     ],
-     [
-      "Parallelism",
-      "Harder",
-      "Natural from the DAG"
-     ],
-     [
-      "Best for",
-      "Dynamic, unknown environments",
-      "Predictable tool workflows"
-     ]
-    ]
+    "captionEn": "ReAct versus ReWOO",
+    "captionKn": "ReAct ಮತ್ತು ReWOO",
+    "rows": "Property|ReAct|ReWOO\nControl flow|Reason, act, observe, repeat|Plan, execute, solve\nModel calls|Between actions|Planner before workers, Solver after\nObservations affect|The next reasoning step|Only the Solver (and a Replanner if present)\nParallelism|Harder|Natural from the DAG\nBest for|Dynamic, unknown environments|Predictable tool workflows"
    }
   },
   {

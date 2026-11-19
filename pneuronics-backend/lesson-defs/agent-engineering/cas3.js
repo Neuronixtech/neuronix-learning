@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Hook failure policy",
-    "headingKn": "Hook ವೈಫಲ್ಯ ನೀತಿ",
-    "headers": [
-     "",
-     "fail closed",
-     "fail open"
-    ],
-    "rows": [
-     [
-      "Buggy logging hook",
-      "every tool call fails",
-      "error recorded, call proceeds"
-     ],
-     [
-      "Policy denial (PermissionError)",
-      "blocks the call",
-      "must still re-raise"
-     ],
-     [
-      "Use for",
-      "security gates",
-      "logging and metrics"
-     ]
-    ]
+    "captionEn": "Hook failure policy",
+    "captionKn": "Hook ವೈಫಲ್ಯ ನೀತಿ",
+    "rows": "|fail closed|fail open\nBuggy logging hook|every tool call fails|error recorded, call proceeds\nPolicy denial (PermissionError)|blocks the call|must still re-raise\nUse for|security gates|logging and metrics"
    }
   },
   {

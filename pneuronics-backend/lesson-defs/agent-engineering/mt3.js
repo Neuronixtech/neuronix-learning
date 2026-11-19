@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The experiments",
-    "headingKn": "ಪ್ರಯೋಗಗಳು",
-    "headers": [
-     "Experiment",
-     "Result in the lab"
-    ],
-    "rows": [
-     [
-      "flip 15 percent of failures",
-      "H50 from 52.7 to 77.6 minutes, a factor of 1.47"
-     ],
-     [
-      "flip 30 percent",
-      "H50 up by a factor of 2.98"
-     ],
-     [
-      "pool software and cyber tasks",
-      "H50 47.0 against 140.4 and 18.1 for the two domains"
-     ],
-     [
-      "gate",
-      "ALLOW, REVIEW or BLOCK, never assumes a missing duration is short"
-     ],
-     [
-      "monitor on the constructed log",
-      "detection 0.625, false positives 0.1875, precision 0.455"
-     ]
-    ]
+    "captionEn": "The experiments",
+    "captionKn": "ಪ್ರಯೋಗಗಳು",
+    "rows": "Experiment|Result in the lab\nflip 15 percent of failures|H50 from 52.7 to 77.6 minutes, a factor of 1.47\nflip 30 percent|H50 up by a factor of 2.98\npool software and cyber tasks|H50 47.0 against 140.4 and 18.1 for the two domains\ngate|ALLOW, REVIEW or BLOCK, never assumes a missing duration is short\nmonitor on the constructed log|detection 0.625, false positives 0.1875, precision 0.455"
    }
   },
   {

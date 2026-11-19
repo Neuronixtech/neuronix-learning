@@ -303,35 +303,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Four memory types",
-    "headingKn": "ನಾಲ್ಕು ಮೆಮೊರಿ ವಿಧಗಳು",
-    "headers": [
-     "Type",
-     "Question it answers",
-     "Example"
-    ],
-    "rows": [
-     [
-      "Working",
-      "What matters right now?",
-      "The current goal, recent messages, the latest tool result"
-     ],
-     [
-      "Episodic",
-      "What happened?",
-      "Session 10: Alice owned evaluation; session 40: ownership changed"
-     ],
-     [
-      "Semantic",
-      "What is true?",
-      "Alice owns evaluation; the deadline is October 28"
-     ],
-     [
-      "Procedural",
-      "How should I do it?",
-      "Run the tests before deploying; use the project checklist"
-     ]
-    ]
+    "captionEn": "Four memory types",
+    "captionKn": "ನಾಲ್ಕು ಮೆಮೊರಿ ವಿಧಗಳು",
+    "rows": "Type|Question it answers|Example\nWorking|What matters right now?|The current goal, recent messages, the latest tool result\nEpisodic|What happened?|Session 10: Alice owned evaluation; session 40: ownership changed\nSemantic|What is true?|Alice owns evaluation; the deadline is October 28\nProcedural|How should I do it?|Run the tests before deploying; use the project checklist"
    }
   },
   {

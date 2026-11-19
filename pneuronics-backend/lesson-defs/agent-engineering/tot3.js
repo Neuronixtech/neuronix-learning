@@ -62,46 +62,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The pattern ladder",
-    "headingKn": "ಮಾದರಿ ಏಣಿ",
-    "headers": [
-     "Pattern",
-     "Core idea",
-     "Branches?",
-     "Environment feedback?"
-    ],
-    "rows": [
-     [
-      "Direct / chain of thought",
-      "One reasoning path",
-      "No",
-      "No"
-     ],
-     [
-      "ReAct",
-      "Reason, act, observe",
-      "Usually no",
-      "Yes"
-     ],
-     [
-      "Reflexion",
-      "Verbal lesson after failure",
-      "Sequential retries",
-      "Often"
-     ],
-     [
-      "Tree of Thoughts",
-      "Search over reasoning alternatives",
-      "Yes",
-      "Optional"
-     ],
-     [
-      "LATS",
-      "MCTS over agent trajectories plus reflection",
-      "Yes",
-      "Yes"
-     ]
-    ]
+    "captionEn": "The pattern ladder",
+    "captionKn": "ಮಾದರಿ ಏಣಿ",
+    "rows": "Pattern|Core idea|Branches?|Environment feedback?\nDirect / chain of thought|One reasoning path|No|No\nReAct|Reason, act, observe|Usually no|Yes\nReflexion|Verbal lesson after failure|Sequential retries|Often\nTree of Thoughts|Search over reasoning alternatives|Yes|Optional\nLATS|MCTS over agent trajectories plus reflection|Yes|Yes"
    }
   },
   {
@@ -293,34 +256,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Questions for choosing a search architecture",
-    "headingKn": "ಹುಡುಕಾಟ ವಿನ್ಯಾಸ ಆರಿಸಲು ಪ್ರಶ್ನೆಗಳು",
-    "headers": [
-     "Question",
-     "If the answer is yes"
-    ],
-    "rows": [
-     [
-      "Is the task hard and does a single trajectory often fail?",
-      "Consider search at all"
-     ],
-     [
-      "Can candidates be checked cheaply and reliably (tests, parser, calculator)?",
-      "Search becomes much more attractive; prefer the verifier to model judgment"
-     ],
-     [
-      "Is the environment predictable enough to plan up front?",
-      "Consider ReWOO-style planning instead"
-     ],
-     [
-      "Is latency or cost tight?",
-      "Gate the search: cheap attempt first, escalate on failure"
-     ],
-     [
-      "Is correctness valuable enough to pay for many candidates?",
-      "ToT or LATS may be justified"
-     ]
-    ]
+    "captionEn": "Questions for choosing a search architecture",
+    "captionKn": "ಹುಡುಕಾಟ ವಿನ್ಯಾಸ ಆರಿಸಲು ಪ್ರಶ್ನೆಗಳು",
+    "rows": "Question|If the answer is yes\nIs the task hard and does a single trajectory often fail?|Consider search at all\nCan candidates be checked cheaply and reliably (tests, parser, calculator)?|Search becomes much more attractive; prefer the verifier to model judgment\nIs the environment predictable enough to plan up front?|Consider ReWOO-style planning instead\nIs latency or cost tight?|Gate the search: cheap attempt first, escalate on failure\nIs correctness valuable enough to pay for many candidates?|ToT or LATS may be justified"
    }
   },
   {

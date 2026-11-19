@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The criteria and states",
-    "headingKn": "ಮಾನದಂಡಗಳು ಮತ್ತು ಸ್ಥಿತಿಗಳು",
-    "headers": [
-     "Item",
-     "Value in the lab"
-    ],
-    "rows": [
-     [
-      "task fraction",
-      "at least 0.50"
-     ],
-     [
-      "success rate",
-      "at least 0.80"
-     ],
-     [
-      "cost ratio",
-      "at most 1.00"
-     ],
-     [
-      "autonomy score",
-      "at least 0.75"
-     ],
-     [
-      "invalid or missing value",
-      "INSUFFICIENT_EVIDENCE"
-     ]
-    ]
+    "captionEn": "The criteria and states",
+    "captionKn": "ಮಾನದಂಡಗಳು ಮತ್ತು ಸ್ಥಿತಿಗಳು",
+    "rows": "Item|Value in the lab\ntask fraction|at least 0.50\nsuccess rate|at least 0.80\ncost ratio|at most 1.00\nautonomy score|at least 0.75\ninvalid or missing value|INSUFFICIENT_EVIDENCE"
    }
   },
   {

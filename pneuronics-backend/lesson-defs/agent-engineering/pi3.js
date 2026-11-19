@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Reason codes in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನ ಕಾರಣ ಕೋಡ್‌ಗಳು",
-    "headers": [
-     "Code",
-     "Meaning"
-    ],
-    "rows": [
-     [
-      "UNKNOWN_TOOL, MISSING_ARG, UNEXPECTED_ARG, BAD_TYPE",
-      "schema and type problems, with exact type checks (a bool is not an int)"
-     ],
-     [
-      "INJECTION_SHAPED",
-      "injection-shaped text in an argument"
-     ],
-     [
-      "TAINTED_CONTEXT",
-      "a sensitive call while tainted data is in context"
-     ],
-     [
-      "RECIPIENT_NOT_ALLOWED, APPROVAL_REQUIRED",
-      "allowlist and argument-bound approval"
-     ],
-     [
-      "VALIDATOR_ERROR",
-      "the validator itself failed"
-     ]
-    ]
+    "captionEn": "Reason codes in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನ ಕಾರಣ ಕೋಡ್‌ಗಳು",
+    "rows": "Code|Meaning\nUNKNOWN_TOOL, MISSING_ARG, UNEXPECTED_ARG, BAD_TYPE|schema and type problems, with exact type checks (a bool is not an int)\nINJECTION_SHAPED|injection-shaped text in an argument\nTAINTED_CONTEXT|a sensitive call while tainted data is in context\nRECIPIENT_NOT_ALLOWED, APPROVAL_REQUIRED|allowlist and argument-bound approval\nVALIDATOR_ERROR|the validator itself failed"
    }
   },
   {

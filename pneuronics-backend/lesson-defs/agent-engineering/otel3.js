@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Three capture designs",
-    "headingKn": "ಮೂರು ಸೆರೆಹಿಡಿಯುವ ವಿನ್ಯಾಸಗಳು",
-    "headers": [
-     "Design",
-     "Secret in the trace",
-     "Secret in the store"
-    ],
-    "rows": [
-     [
-      "capture off (default)",
-      "no",
-      "no"
-     ],
-     [
-      "inline capture on spans",
-      "yes",
-      "no"
-     ],
-     [
-      "external store + reference ids",
-      "no",
-      "yes"
-     ]
-    ]
+    "captionEn": "Three capture designs",
+    "captionKn": "ಮೂರು ಸೆರೆಹಿಡಿಯುವ ವಿನ್ಯಾಸಗಳು",
+    "rows": "Design|Secret in the trace|Secret in the store\ncapture off (default)|no|no\ninline capture on spans|yes|no\nexternal store + reference ids|no|yes"
    }
   },
   {

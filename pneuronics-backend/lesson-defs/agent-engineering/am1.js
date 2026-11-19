@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Lab assumption map (ratings invented)",
-    "headingKn": "ಲ್ಯಾಬ್ ಊಹೆ ನಕ್ಷೆ (ರೇಟಿಂಗ್ ಕಲ್ಪಿತ)",
-    "headers": [
-     "Id",
-     "Impact, uncertainty, irreversibility",
-     "Product"
-    ],
-    "rows": [
-     [
-      "A1",
-      "5, 4, 3",
-      "60"
-     ],
-     [
-      "A3",
-      "5, 2, 5",
-      "50"
-     ],
-     [
-      "A4",
-      "5, 5, 2",
-      "50"
-     ],
-     [
-      "A2",
-      "4, 4, 2",
-      "32"
-     ],
-     [
-      "A5",
-      "2, 2, 1",
-      "4"
-     ]
-    ]
+    "captionEn": "Lab assumption map (ratings invented)",
+    "captionKn": "ಲ್ಯಾಬ್ ಊಹೆ ನಕ್ಷೆ (ರೇಟಿಂಗ್ ಕಲ್ಪಿತ)",
+    "rows": "Id|Impact, uncertainty, irreversibility|Product\nA1|5, 4, 3|60\nA3|5, 2, 5|50\nA4|5, 5, 2|50\nA2|4, 4, 2|32\nA5|2, 2, 1|4"
    }
   },
   {

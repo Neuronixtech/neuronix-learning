@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The three methods",
-    "headingKn": "ಮೂರು ವಿಧಾನಗಳು",
-    "headers": [
-     "Method",
-     "Changes memory",
-     "Changes disk"
-    ],
-    "rows": [
-     [
-      "load()",
-      "yes, after validation",
-      "no"
-     ],
-     [
-      "update()",
-      "yes, after validating a candidate",
-      "no"
-     ],
-     [
-      "commit()",
-      "no",
-      "yes, atomically and only if valid"
-     ]
-    ]
+    "captionEn": "The three methods",
+    "captionKn": "ಮೂರು ವಿಧಾನಗಳು",
+    "rows": "Method|Changes memory|Changes disk\nload()|yes, after validation|no\nupdate()|yes, after validating a candidate|no\ncommit()|no|yes, atomically and only if valid"
    }
   },
   {

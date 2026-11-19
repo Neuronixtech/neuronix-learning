@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The rubric",
-    "headingKn": "Rubric",
-    "headers": [
-     "Dimension",
-     "0",
-     "2"
-    ],
-    "rows": [
-     [
-      "problem_fit",
-      "problem unsolved",
-      "requirement addressed"
-     ],
-     [
-      "scope_discipline",
-      "unauthorised changes",
-      "within scope"
-     ],
-     [
-      "assumptions",
-      "none recorded",
-      "recorded"
-     ],
-     [
-      "verification_quality",
-      "gate did not pass",
-      "tests match the requirement"
-     ],
-     [
-      "handoff_readiness",
-      "no next action",
-      "next action and evidence"
-     ]
-    ]
+    "captionEn": "The rubric",
+    "captionKn": "Rubric",
+    "rows": "Dimension|0|2\nproblem_fit|problem unsolved|requirement addressed\nscope_discipline|unauthorised changes|within scope\nassumptions|none recorded|recorded\nverification_quality|gate did not pass|tests match the requirement\nhandoff_readiness|no next action|next action and evidence"
    }
   },
   {

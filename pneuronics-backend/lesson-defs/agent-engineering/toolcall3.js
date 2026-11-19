@@ -315,46 +315,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Failure taxonomy for tool-using agents",
-    "headingKn": "Tool ಬಳಸುವ agents ಗೆ ವೈಫಲ್ಯ ವರ್ಗೀಕರಣ",
-    "headers": [
-     "Failure",
-     "Example in this module"
-    ],
-    "rows": [
-     [
-      "Routing failure",
-      "\"calculate a numeric result\" routed to search_web"
-     ],
-     [
-      "Abstention failure",
-      "\"Write a poem about rain\" did not abstain"
-     ],
-     [
-      "Hallucinated tool",
-      "send_email: unknown_tool (Part 2)"
-     ],
-     [
-      "Validation failure",
-      "\"banana\" for an integer (Part 2)"
-     ],
-     [
-      "Authorization failure",
-      "A valid delete request with only a read-only tool exposed"
-     ],
-     [
-      "Execution failure",
-      "10 / 0"
-     ],
-     [
-      "Timeout",
-      "The slow tool, and the create_task whose work still happened"
-     ],
-     [
-      "Trajectory or state failure",
-      "The wrong task title: the call ok, the goal not met"
-     ]
-    ]
+    "captionEn": "Failure taxonomy for tool-using agents",
+    "captionKn": "Tool ಬಳಸುವ agents ಗೆ ವೈಫಲ್ಯ ವರ್ಗೀಕರಣ",
+    "rows": "Failure|Example in this module\nRouting failure|\"calculate a numeric result\" routed to search_web\nAbstention failure|\"Write a poem about rain\" did not abstain\nHallucinated tool|send_email: unknown_tool (Part 2)\nValidation failure|\"banana\" for an integer (Part 2)\nAuthorization failure|A valid delete request with only a read-only tool exposed\nExecution failure|10 / 0\nTimeout|The slow tool, and the create_task whose work still happened\nTrajectory or state failure|The wrong task title: the call ok, the goal not met"
    }
   },
   {

@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Installer goals and the lab result",
-    "headingKn": "Installer ಗುರಿಗಳು ಮತ್ತು ಲ್ಯಾಬ್ ಫಲಿತಾಂಶ",
-    "headers": [
-     "Goal",
-     "Mechanism",
-     "Result in the lab"
-    ],
-    "rows": [
-     [
-      "safe",
-      "stop when a lock exists",
-      "customisation kept without --force"
-     ],
-     [
-      "idempotent",
-      "skip when installed",
-      "repeats left files identical"
-     ],
-     [
-      "predictable",
-      "same files and a lock",
-      "same layout each time"
-     ],
-     [
-      "crash-safe",
-      "stage then copy",
-      "nothing written before the crash"
-     ],
-     [
-      "conflict-aware",
-      "not provided by a lock",
-      "a foreign AGENTS.md was overwritten"
-     ]
-    ]
+    "captionEn": "Installer goals and the lab result",
+    "captionKn": "Installer ಗುರಿಗಳು ಮತ್ತು ಲ್ಯಾಬ್ ಫಲಿತಾಂಶ",
+    "rows": "Goal|Mechanism|Result in the lab\nsafe|stop when a lock exists|customisation kept without --force\nidempotent|skip when installed|repeats left files identical\npredictable|same files and a lock|same layout each time\ncrash-safe|stage then copy|nothing written before the crash\nconflict-aware|not provided by a lock|a foreign AGENTS.md was overwritten"
    }
   },
   {

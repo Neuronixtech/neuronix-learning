@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The contract in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಒಪ್ಪಂದ",
-    "headers": [
-     "Field",
-     "Value"
-    ],
-    "rows": [
-     [
-      "readable prefixes",
-      "src/ and docs/"
-     ],
-     [
-      "writable prefixes",
-      "out/"
-     ],
-     [
-      "operation budget",
-      "10"
-     ],
-     [
-      "files",
-      "src/app.py, src/util.py, docs/readme.md, secrets/key.txt (made-up), out/report.txt"
-     ],
-     [
-      "snippets",
-      "four fixed strings written for the lab"
-     ]
-    ]
+    "captionEn": "The contract in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಒಪ್ಪಂದ",
+    "rows": "Field|Value\nreadable prefixes|src/ and docs/\nwritable prefixes|out/\noperation budget|10\nfiles|src/app.py, src/util.py, docs/readme.md, secrets/key.txt (made-up), out/report.txt\nsnippets|four fixed strings written for the lab"
    }
   },
   {

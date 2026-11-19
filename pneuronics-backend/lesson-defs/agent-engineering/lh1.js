@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Quantities in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿನ ಪ್ರಮಾಣಗಳು",
-    "headers": [
-     "Quantity",
-     "Lab value"
-    ],
-    "rows": [
-     [
-      "horizon H",
-      "4 hours (invented)"
-     ],
-     [
-      "success model",
-      "P = 1 / (1 + (t/H)^k)"
-     ],
-     [
-      "per-step success",
-      "0.99 and 0.95 (invented)"
-     ],
-     [
-      "Monte Carlo",
-      "20000 trials, seed 7"
-     ],
-     [
-      "assumed doubling time",
-      "7 months (invented)"
-     ]
-    ]
+    "captionEn": "Quantities in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿನ ಪ್ರಮಾಣಗಳು",
+    "rows": "Quantity|Lab value\nhorizon H|4 hours (invented)\nsuccess model|P = 1 / (1 + (t/H)^k)\nper-step success|0.99 and 0.95 (invented)\nMonte Carlo|20000 trials, seed 7\nassumed doubling time|7 months (invented)"
    }
   },
   {

@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "What the fit recovered",
-    "headingKn": "ಹೊಂದಾಣಿಕೆ ಮರುಪಡೆದದ್ದು",
-    "headers": [
-     "Item",
-     "Value"
-    ],
-    "rows": [
-     [
-      "dataset",
-      "500 tasks, 277 successes, true a=4 and b=-1"
-     ],
-     [
-      "both fits",
-      "a=4.0688, b=-1.0264, H50 52.67 minutes (truth 54.60)"
-     ],
-     [
-      "iterations",
-      "gradient descent 215, Newton 7"
-     ],
-     [
-      "bootstrap 95 percent interval for H50",
-      "42.31 to 66.82 minutes"
-     ],
-     [
-      "fit only up to 20 minutes",
-      "H50 275.1 minutes, outside the observed range"
-     ]
-    ]
+    "captionEn": "What the fit recovered",
+    "captionKn": "ಹೊಂದಾಣಿಕೆ ಮರುಪಡೆದದ್ದು",
+    "rows": "Item|Value\ndataset|500 tasks, 277 successes, true a=4 and b=-1\nboth fits|a=4.0688, b=-1.0264, H50 52.67 minutes (truth 54.60)\niterations|gradient descent 215, Newton 7\nbootstrap 95 percent interval for H50|42.31 to 66.82 minutes\nfit only up to 20 minutes|H50 275.1 minutes, outside the observed range"
    }
   },
   {

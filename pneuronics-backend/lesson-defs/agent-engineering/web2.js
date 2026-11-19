@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Failure types",
-    "headingKn": "ವೈಫಲ್ಯ ಪ್ರಕಾರಗಳು",
-    "headers": [
-     "Type",
-     "Meaning",
-     "Typical fix"
-    ],
-    "rows": [
-     [
-      "Grounding miss",
-      "right element, coordinates land on nothing",
-      "better pointing, larger targets"
-     ],
-     [
-      "Grounding slip",
-      "right element, coordinates hit a neighbour",
-      "tighter localisation"
-     ],
-     [
-      "Knowledge error",
-      "wanted element is not on this screen",
-      "better procedure knowledge"
-     ]
-    ]
+    "captionEn": "Failure types",
+    "captionKn": "ವೈಫಲ್ಯ ಪ್ರಕಾರಗಳು",
+    "rows": "Type|Meaning|Typical fix\nGrounding miss|right element, coordinates land on nothing|better pointing, larger targets\nGrounding slip|right element, coordinates hit a neighbour|tighter localisation\nKnowledge error|wanted element is not on this screen|better procedure knowledge"
    }
   },
   {

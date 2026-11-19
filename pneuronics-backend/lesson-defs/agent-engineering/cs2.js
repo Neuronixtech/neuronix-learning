@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The four statuses",
-    "headingKn": "ನಾಲ್ಕು ಸ್ಥಿತಿಗಳು",
-    "headers": [
-     "Status",
-     "When"
-    ],
-    "rows": [
-     [
-      "MANUAL_REVIEW_REQUIRED",
-      "no indicator matched, so nothing is concluded"
-     ],
-     [
-      "BLOCKED_MISSING_CONTROLS",
-      "a required control record is missing or invalid"
-     ],
-     [
-      "AWAITING_HUMAN_APPROVAL",
-      "controls present, approval missing or invalid"
-     ],
-     [
-      "GOVERNANCE_CHECKS_SATISFIED",
-      "the configured checks passed, which is not a safety finding"
-     ]
-    ]
+    "captionEn": "The four statuses",
+    "captionKn": "ನಾಲ್ಕು ಸ್ಥಿತಿಗಳು",
+    "rows": "Status|When\nMANUAL_REVIEW_REQUIRED|no indicator matched, so nothing is concluded\nBLOCKED_MISSING_CONTROLS|a required control record is missing or invalid\nAWAITING_HUMAN_APPROVAL|controls present, approval missing or invalid\nGOVERNANCE_CHECKS_SATISFIED|the configured checks passed, which is not a safety finding"
    }
   },
   {

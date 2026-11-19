@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Sequential versus hierarchical",
-    "headingKn": "Sequential ಮತ್ತು hierarchical ಹೋಲಿಕೆ",
-    "headers": [
-     "",
-     "Sequential",
-     "Hierarchical"
-    ],
-    "rows": [
-     [
-      "Who picks the next step",
-      "The task list",
-      "A manager, each time"
-     ],
-     [
-      "Best when",
-      "The order is known",
-      "The order depends on results"
-     ],
-     [
-      "Extra cost",
-      "None",
-      "One manager decision per step"
-     ]
-    ]
+    "captionEn": "Sequential versus hierarchical",
+    "captionKn": "Sequential ಮತ್ತು hierarchical ಹೋಲಿಕೆ",
+    "rows": "|Sequential|Hierarchical\nWho picks the next step|The task list|A manager, each time\nBest when|The order is known|The order depends on results\nExtra cost|None|One manager decision per step"
    }
   },
   {

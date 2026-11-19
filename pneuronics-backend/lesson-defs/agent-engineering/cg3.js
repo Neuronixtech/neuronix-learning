@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Tables and rules",
-    "headingKn": "ಕೋಷ್ಟಕಗಳು ಮತ್ತು ನಿಯಮಗಳು",
-    "headers": [
-     "Item",
-     "Detail"
-    ],
-    "rows": [
-     [
-      "budgets table",
-      "scope, limit in micro-dollars, stopped flag"
-     ],
-     [
-      "actions table",
-      "action id, scope, reserved, actual, status"
-     ],
-     [
-      "used capacity",
-      "settled actual cost plus unsettled reservations"
-     ],
-     [
-      "rounding",
-      "reservations round up to the next micro-dollar"
-     ],
-     [
-      "concurrency test",
-      "12 threads, 3.00 each, 10.00 budget"
-     ]
-    ]
+    "captionEn": "Tables and rules",
+    "captionKn": "ಕೋಷ್ಟಕಗಳು ಮತ್ತು ನಿಯಮಗಳು",
+    "rows": "Item|Detail\nbudgets table|scope, limit in micro-dollars, stopped flag\nactions table|action id, scope, reserved, actual, status\nused capacity|settled actual cost plus unsettled reservations\nrounding|reservations round up to the next micro-dollar\nconcurrency test|12 threads, 3.00 each, 10.00 budget"
    }
   },
   {

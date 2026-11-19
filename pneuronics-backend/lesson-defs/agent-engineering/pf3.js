@@ -72,38 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The eight path spellings",
-    "headingKn": "ಎಂಟು path ಕಾಗುಣಿತಗಳು",
-    "headers": [
-     "Path",
-     "Lesson check, resolved check"
-    ],
-    "rows": [
-     [
-      "src/application.py",
-      "ALLOW, ALLOW"
-     ],
-     [
-      "config/monitoring.yaml",
-      "DENY, DENY"
-     ],
-     [
-      "src//application.py and ./src/application.py",
-      "ALLOW, ALLOW"
-     ],
-     [
-      "src/../config/monitoring.yaml",
-      "DENY, DENY"
-     ],
-     [
-      "src/../src/application.py",
-      "DENY, ALLOW"
-     ],
-     [
-      "/etc/passwd and SRC/application.py",
-      "DENY, DENY"
-     ]
-    ]
+    "captionEn": "The eight path spellings",
+    "captionKn": "ಎಂಟು path ಕಾಗುಣಿತಗಳು",
+    "rows": "Path|Lesson check, resolved check\nsrc/application.py|ALLOW, ALLOW\nconfig/monitoring.yaml|DENY, DENY\nsrc//application.py and ./src/application.py|ALLOW, ALLOW\nsrc/../config/monitoring.yaml|DENY, DENY\nsrc/../src/application.py|DENY, ALLOW\n/etc/passwd and SRC/application.py|DENY, DENY"
    }
   },
   {

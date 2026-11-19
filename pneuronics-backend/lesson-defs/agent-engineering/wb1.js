@@ -72,50 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The seven surfaces",
-    "headingKn": "ಏಳು ಮೇಲ್ಮೈಗಳು",
-    "headers": [
-     "Surface",
-     "Answers",
-     "Without it"
-    ],
-    "rows": [
-     [
-      "Instructions",
-      "what are the rules and the definition of done",
-      "the agent guesses"
-     ],
-     [
-      "State",
-      "where is the task now",
-      "work is repeated or forgotten"
-     ],
-     [
-      "Scope",
-      "what may change",
-      "unrelated edits"
-     ],
-     [
-      "Feedback",
-      "what actually happened",
-      "errors are ignored"
-     ],
-     [
-      "Verification",
-      "does the evidence meet the criteria",
-      "unproven claims"
-     ],
-     [
-      "Review",
-      "did someone else check",
-      "self-approval"
-     ],
-     [
-      "Handoff",
-      "what happens next",
-      "the next session starts blind"
-     ]
-    ]
+    "captionEn": "The seven surfaces",
+    "captionKn": "ಏಳು ಮೇಲ್ಮೈಗಳು",
+    "rows": "Surface|Answers|Without it\nInstructions|what are the rules and the definition of done|the agent guesses\nState|where is the task now|work is repeated or forgotten\nScope|what may change|unrelated edits\nFeedback|what actually happened|errors are ignored\nVerification|does the evidence meet the criteria|unproven claims\nReview|did someone else check|self-approval\nHandoff|what happens next|the next session starts blind"
    }
   },
   {

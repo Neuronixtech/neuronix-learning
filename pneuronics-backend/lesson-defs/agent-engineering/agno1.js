@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Long-lived versus short-lived",
-    "headingKn": "ದೀರ್ಘಕಾಲಿಕ ಮತ್ತು ಅಲ್ಪಕಾಲಿಕ",
-    "headers": [
-     "Component",
-     "Lifetime",
-     "Holds"
-    ],
-    "rows": [
-     [
-      "ProductionRuntime, SessionStore, ModelRouter",
-      "process",
-      "infrastructure and data"
-     ],
-     [
-      "Agent",
-      "one request",
-      "a model reference and tools"
-     ],
-     [
-      "History list",
-      "loaded per request",
-      "a copy of stored messages"
-     ]
-    ]
+    "captionEn": "Long-lived versus short-lived",
+    "captionKn": "ದೀರ್ಘಕಾಲಿಕ ಮತ್ತು ಅಲ್ಪಕಾಲಿಕ",
+    "rows": "Component|Lifetime|Holds\nProductionRuntime, SessionStore, ModelRouter|process|infrastructure and data\nAgent|one request|a model reference and tools\nHistory list|loaded per request|a copy of stored messages"
    }
   },
   {

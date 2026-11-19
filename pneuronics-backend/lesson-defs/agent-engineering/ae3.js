@@ -72,26 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Evaluator statuses",
-    "headingKn": "ಮೌಲ್ಯಮಾಪಕ ಸ್ಥಿತಿಗಳು",
-    "headers": [
-     "Status",
-     "Meaning in the lab"
-    ],
-    "rows": [
-     [
-      "INVALID",
-      "a coefficient is outside the allowed range"
-     ],
-     [
-      "INCORRECT",
-      "valid but MSE above 0"
-     ],
-     [
-      "PASS",
-      "MSE exactly 0"
-     ]
-    ]
+    "captionEn": "Evaluator statuses",
+    "captionKn": "ಮೌಲ್ಯಮಾಪಕ ಸ್ಥಿತಿಗಳು",
+    "rows": "Status|Meaning in the lab\nINVALID|a coefficient is outside the allowed range\nINCORRECT|valid but MSE above 0\nPASS|MSE exactly 0"
    }
   },
   {

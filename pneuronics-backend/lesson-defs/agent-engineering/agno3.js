@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Store policy under concurrency",
-    "headingKn": "ಏಕಕಾಲಿಕತೆಯಲ್ಲಿ store ನೀತಿ",
-    "headers": [
-     "Policy",
-     "Both requests report success",
-     "Turn lost silently"
-    ],
-    "rows": [
-     [
-      "Last write wins",
-      "yes",
-      "yes"
-     ],
-     [
-      "Version check, no retry",
-      "no, the loser is told",
-      "no"
-     ],
-     [
-      "Version check with retries",
-      "yes",
-      "no"
-     ]
-    ]
+    "captionEn": "Store policy under concurrency",
+    "captionKn": "ಏಕಕಾಲಿಕತೆಯಲ್ಲಿ store ನೀತಿ",
+    "rows": "Policy|Both requests report success|Turn lost silently\nLast write wins|yes|yes\nVersion check, no retry|no, the loser is told|no\nVersion check with retries|yes|no"
    }
   },
   {

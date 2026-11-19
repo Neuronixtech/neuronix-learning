@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Limits and where they fail",
-    "headingKn": "ಮಿತಿಗಳು ಮತ್ತು ಅವು ವಿಫಲವಾಗುವಲ್ಲಿ",
-    "headers": [
-     "Control",
-     "Bounds",
-     "Fails when"
-    ],
-    "rows": [
-     [
-      "line truncation",
-      "number of lines kept",
-      "one enormous line"
-     ],
-     [
-      "capture then truncate",
-      "what is stored",
-      "memory during capture is unbounded"
-     ],
-     [
-      "bounded streaming",
-      "memory and storage",
-      "the key line is in the dropped middle"
-     ],
-     [
-      "pattern redaction",
-      "known secret shapes",
-      "the secret has another shape"
-     ]
-    ]
+    "captionEn": "Limits and where they fail",
+    "captionKn": "ಮಿತಿಗಳು ಮತ್ತು ಅವು ವಿಫಲವಾಗುವಲ್ಲಿ",
+    "rows": "Control|Bounds|Fails when\nline truncation|number of lines kept|one enormous line\ncapture then truncate|what is stored|memory during capture is unbounded\nbounded streaming|memory and storage|the key line is in the dropped middle\npattern redaction|known secret shapes|the secret has another shape"
    }
   },
   {

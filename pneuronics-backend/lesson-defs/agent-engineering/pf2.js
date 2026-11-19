@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The measurements",
-    "headingKn": "ಮಾಪನಗಳು",
-    "headers": [
-     "Item",
-     "Result in the lab"
-    ],
-    "rows": [
-     [
-      "record 78 of 100",
-      "78 percent success, 25 percent intervention, $120 per task"
-     ],
-     [
-      "record 96 of 120",
-      "80 percent success, 15 percent intervention, $150 per task"
-     ],
-     [
-      "gap 0.37 and 0.40",
-      "investigation recommended, sandbagging never proven"
-     ],
-     [
-      "chance at 10 tasks",
-      "gap of 0.20 or more in 0.115 of trials"
-     ],
-     [
-      "real drop to 0.45",
-      "seen in 0.856 of trials at 10 tasks and 0.986 at 50"
-     ]
-    ]
+    "captionEn": "The measurements",
+    "captionKn": "ಮಾಪನಗಳು",
+    "rows": "Item|Result in the lab\nrecord 78 of 100|78 percent success, 25 percent intervention, $120 per task\nrecord 96 of 120|80 percent success, 15 percent intervention, $150 per task\ngap 0.37 and 0.40|investigation recommended, sandbagging never proven\nchance at 10 tasks|gap of 0.20 or more in 0.115 of trials\nreal drop to 0.45|seen in 0.856 of trials at 10 tasks and 0.986 at 50"
    }
   },
   {

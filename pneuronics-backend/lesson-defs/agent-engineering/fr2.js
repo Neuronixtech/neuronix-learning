@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Verification outcomes",
-    "headingKn": "ಪರಿಶೀಲನೆ ಫಲಿತಾಂಶಗಳು",
-    "headers": [
-     "Control",
-     "On known-bad code",
-     "Status"
-    ],
-    "rows": [
-     [
-      "real assertion test",
-      "exit 1 (failed)",
-      "verified"
-     ],
-     [
-      "test with no assertion",
-      "exit 0",
-      "unverified"
-     ],
-     [
-      "test not collected",
-      "exit 5 (no tests ran)",
-      "unverified"
-     ]
-    ]
+    "captionEn": "Verification outcomes",
+    "captionKn": "ಪರಿಶೀಲನೆ ಫಲಿತಾಂಶಗಳು",
+    "rows": "Control|On known-bad code|Status\nreal assertion test|exit 1 (failed)|verified\ntest with no assertion|exit 0|unverified\ntest not collected|exit 5 (no tests ran)|unverified"
    }
   },
   {

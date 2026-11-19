@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The four layers",
-    "headingKn": "ನಾಲ್ಕು ಪದರಗಳು",
-    "headers": [
-     "Layer",
-     "What it blocks"
-    ],
-    "rows": [
-     [
-      "sanitizer",
-      "undisguised instructions in visible, hidden or fragment text"
-     ],
-     [
-      "allowlist",
-      "actions whose destination is outside bob.example and docs.example"
-     ],
-     [
-      "source tracking",
-      "sensitive actions requested by page content"
-     ],
-     [
-      "confirmation",
-      "every sensitive action until a person approves"
-     ],
-     [
-      "workload",
-      "400 attacks and 200 user-requested legitimate tasks"
-     ]
-    ]
+    "captionEn": "The four layers",
+    "captionKn": "ನಾಲ್ಕು ಪದರಗಳು",
+    "rows": "Layer|What it blocks\nsanitizer|undisguised instructions in visible, hidden or fragment text\nallowlist|actions whose destination is outside bob.example and docs.example\nsource tracking|sensitive actions requested by page content\nconfirmation|every sensitive action until a person approves\nworkload|400 attacks and 200 user-requested legitimate tasks"
    }
   },
   {

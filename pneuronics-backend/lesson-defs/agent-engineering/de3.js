@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "What is stored",
-    "headingKn": "ಏನು ಸಂಗ್ರಹಿಸಲಾಗುತ್ತದೆ",
-    "headers": [
-     "Store",
-     "Contents"
-    ],
-    "rows": [
-     [
-      "ApprovalStore",
-      "request id, thread, action, resource id and status"
-     ],
-     [
-      "TimerStore",
-      "timer id, wake_at and status"
-     ],
-     [
-      "DurableBudget",
-      "LLM calls used, limit and kill switch flag"
-     ],
-     [
-      "MemoryManager",
-      "recent events and summaries, never the source of truth"
-     ],
-     [
-      "workflow history",
-      "activity results replayed after a restart"
-     ]
-    ]
+    "captionEn": "What is stored",
+    "captionKn": "ಏನು ಸಂಗ್ರಹಿಸಲಾಗುತ್ತದೆ",
+    "rows": "Store|Contents\nApprovalStore|request id, thread, action, resource id and status\nTimerStore|timer id, wake_at and status\nDurableBudget|LLM calls used, limit and kill switch flag\nMemoryManager|recent events and summaries, never the source of truth\nworkflow history|activity results replayed after a restart"
    }
   },
   {

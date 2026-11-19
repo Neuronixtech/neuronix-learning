@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Processors in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನ processors",
-    "headers": [
-     "Processor",
-     "Consumes",
-     "Produces"
-    ],
-    "rows": [
-     [
-      "VAD",
-      "audio",
-      "speech or silence"
-     ],
-     [
-      "STT",
-      "speech",
-      "transcript"
-     ],
-     [
-      "LLM",
-      "transcript",
-      "text"
-     ],
-     [
-      "TTS",
-      "text",
-      "one tts_audio frame per word"
-     ]
-    ]
+    "captionEn": "Processors in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನ processors",
+    "rows": "Processor|Consumes|Produces\nVAD|audio|speech or silence\nSTT|speech|transcript\nLLM|transcript|text\nTTS|text|one tts_audio frame per word"
    }
   },
   {

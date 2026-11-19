@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The illustrative prices",
-    "headingKn": "ವಿವರಣಾತ್ಮಕ ಬೆಲೆಗಳು",
-    "headers": [
-     "Item",
-     "Value"
-    ],
-    "rows": [
-     [
-      "first example",
-      "input 2, output 8 dollars per million tokens"
-     ],
-     [
-      "simulator small model",
-      "input 1.00, output 4.00, cached input 0.25 per million"
-     ],
-     [
-      "simulator action",
-      "10000 input (5000 cached), 2000 output, plus a 6.00 tool charge"
-     ],
-     [
-      "velocity limit",
-      "50 dollars in 600 seconds"
-     ],
-     [
-      "routing example",
-      "0.002 small, 0.08 premium per request"
-     ]
-    ]
+    "captionEn": "The illustrative prices",
+    "captionKn": "ವಿವರಣಾತ್ಮಕ ಬೆಲೆಗಳು",
+    "rows": "Item|Value\nfirst example|input 2, output 8 dollars per million tokens\nsimulator small model|input 1.00, output 4.00, cached input 0.25 per million\nsimulator action|10000 input (5000 cached), 2000 output, plus a 6.00 tool charge\nvelocity limit|50 dollars in 600 seconds\nrouting example|0.002 small, 0.08 premium per request"
    }
   },
   {

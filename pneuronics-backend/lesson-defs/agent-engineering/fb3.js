@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Control decisions in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ನಿಯಂತ್ರಣ ನಿರ್ಧಾರಗಳು",
-    "headers": [
-     "Situation",
-     "Decision"
-    ],
-    "rows": [
-     [
-      "replaced by a stronger control, no recurrence",
-      "retire"
-     ],
-     [
-      "quiet 90 days, nothing replaces it",
-      "keep (silence is not proof)"
-     ],
-     [
-      "still blocking real failures",
-      "keep"
-     ],
-     [
-      "recurring despite the control",
-      "revise"
-     ]
-    ]
+    "captionEn": "Control decisions in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ನಿಯಂತ್ರಣ ನಿರ್ಧಾರಗಳು",
+    "rows": "Situation|Decision\nreplaced by a stronger control, no recurrence|retire\nquiet 90 days, nothing replaces it|keep (silence is not proof)\nstill blocking real failures|keep\nrecurring despite the control|revise"
    }
   },
   {

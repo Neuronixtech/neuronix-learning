@@ -72,45 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The vocabulary of search",
-    "headingKn": "ಹುಡುಕಾಟದ ಶಬ್ದಕೋಶ",
-    "headers": [
-     "Term",
-     "Meaning",
-     "In our code"
-    ],
-    "rows": [
-     [
-      "Node",
-      "A thought: a partial reasoning state",
-      "Thought(expression, value, score, depth)"
-     ],
-     [
-      "Edge",
-      "An expansion: an action that produces a child",
-      "expand(): +4, *2, -1"
-     ],
-     [
-      "Value",
-      "An estimate of how promising a state is",
-      "evaluate(): 1 / (1 + distance to 24)"
-     ],
-     [
-      "Breadth",
-      "Children generated per node (K)",
-      "BREADTH = 3"
-     ],
-     [
-      "Depth",
-      "Steps from the root",
-      "MAX_DEPTH = 4"
-     ],
-     [
-      "Beam width",
-      "How many nodes survive each level",
-      "BEAM_WIDTH = 2"
-     ]
-    ]
+    "captionEn": "The vocabulary of search",
+    "captionKn": "ಹುಡುಕಾಟದ ಶಬ್ದಕೋಶ",
+    "rows": "Term|Meaning|In our code\nNode|A thought: a partial reasoning state|Thought(expression, value, score, depth)\nEdge|An expansion: an action that produces a child|expand(): +4, *2, -1\nValue|An estimate of how promising a state is|evaluate(): 1 / (1 + distance to 24)\nBreadth|Children generated per node (K)|BREADTH = 3\nDepth|Steps from the root|MAX_DEPTH = 4\nBeam width|How many nodes survive each level|BEAM_WIDTH = 2"
    }
   },
   {

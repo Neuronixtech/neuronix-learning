@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The five questions",
-    "headingKn": "ಐದು ಪ್ರಶ್ನೆಗಳು",
-    "headers": [
-     "Question",
-     "What the lab does"
-    ],
-    "rows": [
-     [
-      "outage",
-      "store unreachable on requests 4 to 6 of 10, fail open against fail closed"
-     ],
-     [
-      "drift",
-      "a 16-minute slow climb and a jump to 40 calls per minute"
-     ],
-     [
-      "race",
-      "8 threads of 2000 increments, with and without a lock"
-     ],
-     [
-      "policy",
-      "a frozenset of forbidden tools"
-     ],
-     [
-      "recovery",
-      "incident states and an operator token"
-     ]
-    ]
+    "captionEn": "The five questions",
+    "captionKn": "ಐದು ಪ್ರಶ್ನೆಗಳು",
+    "rows": "Question|What the lab does\noutage|store unreachable on requests 4 to 6 of 10, fail open against fail closed\ndrift|a 16-minute slow climb and a jump to 40 calls per minute\nrace|8 threads of 2000 increments, with and without a lock\npolicy|a frozenset of forbidden tools\nrecovery|incident states and an operator token"
    }
   },
   {

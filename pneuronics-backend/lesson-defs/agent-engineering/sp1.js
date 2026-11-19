@@ -72,26 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Decision modes in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ನಿರ್ಧಾರ ವಿಧಾನಗಳು",
-    "headers": [
-     "Case",
-     "Mode"
-    ],
-    "rows": [
-     [
-      "reversible, low consequence",
-      "delegated"
-     ],
-     [
-      "reversible, medium consequence",
-      "bounded"
-     ],
-     [
-      "high consequence or irreversible",
-      "locked"
-     ]
-    ]
+    "captionEn": "Decision modes in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ನಿರ್ಧಾರ ವಿಧಾನಗಳು",
+    "rows": "Case|Mode\nreversible, low consequence|delegated\nreversible, medium consequence|bounded\nhigh consequence or irreversible|locked"
    }
   },
   {

@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Levels in the lab classifier",
-    "headingKn": "ಲ್ಯಾಬ್ ವರ್ಗೀಕಾರಕದ ಹಂತಗಳು",
-    "headers": [
-     "Level",
-     "Operations",
-     "Modalities"
-    ],
-    "rows": [
-     [
-      "Level 1",
-      "2 or fewer",
-      "1"
-     ],
-     [
-      "Level 2",
-      "3 to 5",
-      "2 or fewer"
-     ],
-     [
-      "Level 3",
-      "more than 5, or 3+ modalities",
-      "any"
-     ]
-    ]
+    "captionEn": "Levels in the lab classifier",
+    "captionKn": "ಲ್ಯಾಬ್ ವರ್ಗೀಕಾರಕದ ಹಂತಗಳು",
+    "rows": "Level|Operations|Modalities\nLevel 1|2 or fewer|1\nLevel 2|3 to 5|2 or fewer\nLevel 3|more than 5, or 3+ modalities|any"
    }
   },
   {

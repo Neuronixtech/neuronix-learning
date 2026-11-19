@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "New rules and their evidence",
-    "headingKn": "ಹೊಸ ನಿಯಮಗಳು ಮತ್ತು ಅವುಗಳ ಸಾಕ್ಷ್ಯ",
-    "headers": [
-     "Mode",
-     "Needs",
-     "Breaks when"
-    ],
-    "rows": [
-     [
-      "tool_misuse",
-      "a grounded-values set per argument",
-      "a derived value (half of 100) is not in the set"
-     ],
-     [
-      "context_loss",
-      "constraints recorded in the trace",
-      "constraint text is missing or paraphrased"
-     ],
-     [
-      "redundancy",
-      "a call signature and a retry flag",
-      "the flag is written by the agent and excuses a duplicate send"
-     ],
-     [
-      "omission and disorder",
-      "a list of required steps",
-      "a flat list cannot express either-order steps and trusts labels"
-     ],
-     [
-      "cascading_error",
-      "consumes edges between events",
-      "a missing edge hides a real cascade"
-     ]
-    ]
+    "captionEn": "New rules and their evidence",
+    "captionKn": "ಹೊಸ ನಿಯಮಗಳು ಮತ್ತು ಅವುಗಳ ಸಾಕ್ಷ್ಯ",
+    "rows": "Mode|Needs|Breaks when\ntool_misuse|a grounded-values set per argument|a derived value (half of 100) is not in the set\ncontext_loss|constraints recorded in the trace|constraint text is missing or paraphrased\nredundancy|a call signature and a retry flag|the flag is written by the agent and excuses a duplicate send\nomission and disorder|a list of required steps|a flat list cannot express either-order steps and trusts labels\ncascading_error|consumes edges between events|a missing edge hides a real cascade"
    }
   },
   {

@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Exit codes of the gate",
-    "headingKn": "Gate ನ exit codes",
-    "headers": [
-     "Code",
-     "Meaning",
-     "CI should"
-    ],
-    "rows": [
-     [
-      "0",
-      "verified and passed",
-      "continue"
-     ],
-     [
-      "1",
-      "verified and blocked",
-      "stop, work is not done"
-     ],
-     [
-      "2",
-      "evidence unreadable",
-      "stop, gate could not decide"
-     ]
-    ]
+    "captionEn": "Exit codes of the gate",
+    "captionKn": "Gate ನ exit codes",
+    "rows": "Code|Meaning|CI should\n0|verified and passed|continue\n1|verified and blocked|stop, work is not done\n2|evidence unreadable|stop, gate could not decide"
    }
   },
   {

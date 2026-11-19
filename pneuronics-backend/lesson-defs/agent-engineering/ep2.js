@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Outcomes of a proof run",
-    "headingKn": "ಪುರಾವೆ ಓಟದ ಫಲಿತಾಂಶಗಳು",
-    "headers": [
-     "Situation",
-     "Record",
-     "Passed?"
-    ],
-    "rows": [
-     [
-      "unittest passes",
-      "exit 0, tests run 1",
-      "yes"
-     ],
-     [
-      "command fails",
-      "exit 1, stderr text",
-      "no"
-     ],
-     [
-      "command hangs",
-      "timed_out, no exit code",
-      "no"
-     ],
-     [
-      "program cannot start",
-      "exception before any record",
-      "no record"
-     ]
-    ]
+    "captionEn": "Outcomes of a proof run",
+    "captionKn": "ಪುರಾವೆ ಓಟದ ಫಲಿತಾಂಶಗಳು",
+    "rows": "Situation|Record|Passed?\nunittest passes|exit 0, tests run 1|yes\ncommand fails|exit 1, stderr text|no\ncommand hangs|timed_out, no exit code|no\nprogram cannot start|exception before any record|no record"
    }
   },
   {

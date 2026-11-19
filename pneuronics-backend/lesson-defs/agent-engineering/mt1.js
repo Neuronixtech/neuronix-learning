@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The numbers for a=4, b=-1",
-    "headingKn": "a=4, b=-1 ಗೆ ಸಂಖ್ಯೆಗಳು",
-    "headers": [
-     "Quantity",
-     "Value"
-    ],
-    "rows": [
-     [
-      "P(success) at 10, 60, 480 minutes",
-      "0.8452, 0.4764, 0.1021"
-     ],
-     [
-      "H90",
-      "6.07 minutes, exactly 6.0665"
-     ],
-     [
-      "H50 = e to the 4",
-      "54.60 minutes"
-     ],
-     [
-      "H10",
-      "491.38 minutes"
-     ],
-     [
-      "ordering for a negative slope",
-      "H90 < H50 < H10"
-     ]
-    ]
+    "captionEn": "The numbers for a=4, b=-1",
+    "captionKn": "a=4, b=-1 ಗೆ ಸಂಖ್ಯೆಗಳು",
+    "rows": "Quantity|Value\nP(success) at 10, 60, 480 minutes|0.8452, 0.4764, 0.1021\nH90|6.07 minutes, exactly 6.0665\nH50 = e to the 4|54.60 minutes\nH10|491.38 minutes\nordering for a negative slope|H90 < H50 < H10"
    }
   },
   {

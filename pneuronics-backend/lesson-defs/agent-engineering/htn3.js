@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "HTN versus evolutionary search",
-    "headingKn": "HTN ಮತ್ತು evolutionary search",
-    "headers": [
-     "Property",
-     "HTN",
-     "Evolutionary search"
-    ],
-    "rows": [
-     [
-      "Question",
-      "Can I construct a valid plan?",
-      "Can I discover a better candidate?"
-     ],
-     [
-      "Feedback",
-      "Valid or invalid",
-      "Numeric fitness"
-     ],
-     [
-      "LLM role",
-      "Suggest missing decompositions",
-      "Suggest mutations"
-     ],
-     [
-      "Core requirement",
-      "Accurate operator schema",
-      "Good evaluator"
-     ],
-     [
-      "Output",
-      "Primitive action sequence",
-      "High-fitness candidate"
-     ]
-    ]
+    "captionEn": "HTN versus evolutionary search",
+    "captionKn": "HTN ಮತ್ತು evolutionary search",
+    "rows": "Property|HTN|Evolutionary search\nQuestion|Can I construct a valid plan?|Can I discover a better candidate?\nFeedback|Valid or invalid|Numeric fitness\nLLM role|Suggest missing decompositions|Suggest mutations\nCore requirement|Accurate operator schema|Good evaluator\nOutput|Primitive action sequence|High-fitness candidate"
    }
   },
   {

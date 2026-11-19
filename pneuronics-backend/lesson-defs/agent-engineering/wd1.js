@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Evidence categories",
-    "headingKn": "ಸಾಕ್ಷ್ಯ ವರ್ಗಗಳು",
-    "headers": [
-     "Category",
-     "Meaning",
-     "Lab example"
-    ],
-    "rows": [
-     [
-      "direct",
-      "someone watched it happen",
-      "screen recording"
-     ],
-     [
-      "document",
-      "a record exists",
-      "deploy log export"
-     ],
-     [
-      "reported",
-      "someone said so",
-      "interview with an engineer"
-     ],
-     [
-      "assumed",
-      "inferred",
-      "copied from the official procedure"
-     ]
-    ]
+    "captionEn": "Evidence categories",
+    "captionKn": "ಸಾಕ್ಷ್ಯ ವರ್ಗಗಳು",
+    "rows": "Category|Meaning|Lab example\ndirect|someone watched it happen|screen recording\ndocument|a record exists|deploy log export\nreported|someone said so|interview with an engineer\nassumed|inferred|copied from the official procedure"
    }
   },
   {

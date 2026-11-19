@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Durability concerns",
-    "headingKn": "ಬಾಳಿಕೆ ಕಾಳಜಿಗಳು",
-    "headers": [
-     "Concern",
-     "Mechanism",
-     "Remaining gap"
-    ],
-    "rows": [
-     [
-      "format change",
-      "version-aware migration plus a backup",
-      "must validate before and after"
-     ],
-     [
-      "two writers",
-      "revision check before writing",
-      "the loser must reload and reconcile"
-     ],
-     [
-      "crash mid-write",
-      "snapshot plus append-only log",
-      "a policy for torn records"
-     ]
-    ]
+    "captionEn": "Durability concerns",
+    "captionKn": "ಬಾಳಿಕೆ ಕಾಳಜಿಗಳು",
+    "rows": "Concern|Mechanism|Remaining gap\nformat change|version-aware migration plus a backup|must validate before and after\ntwo writers|revision check before writing|the loser must reload and reconcile\ncrash mid-write|snapshot plus append-only log|a policy for torn records"
    }
   },
   {

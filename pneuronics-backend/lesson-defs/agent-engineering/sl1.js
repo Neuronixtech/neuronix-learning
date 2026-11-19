@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Lab candidates (effort and risk invented)",
-    "headingKn": "ಲ್ಯಾಬ್ ಅಭ್ಯರ್ಥಿಗಳು (ಪ್ರಯತ್ನ ಮತ್ತು ಅಪಾಯ ಕಲ್ಪಿತ)",
-    "headers": [
-     "Candidate",
-     "Score",
-     "Missing proof"
-    ],
-    "rows": [
-     [
-      "hard-coded dashboard",
-      "4.0",
-      "read_only, real_records"
-     ],
-     [
-      "replay script on real records",
-      "5.0",
-      "operator_review"
-     ],
-     [
-      "replay with operator review",
-      "10.0",
-      "none"
-     ],
-     [
-      "live agent in production",
-      "15.0",
-      "read_only"
-     ],
-     [
-      "full vertical slice with approval",
-      "16.0",
-      "none"
-     ]
-    ]
+    "captionEn": "Lab candidates (effort and risk invented)",
+    "captionKn": "ಲ್ಯಾಬ್ ಅಭ್ಯರ್ಥಿಗಳು (ಪ್ರಯತ್ನ ಮತ್ತು ಅಪಾಯ ಕಲ್ಪಿತ)",
+    "rows": "Candidate|Score|Missing proof\nhard-coded dashboard|4.0|read_only, real_records\nreplay script on real records|5.0|operator_review\nreplay with operator review|10.0|none\nlive agent in production|15.0|read_only\nfull vertical slice with approval|16.0|none"
    }
   },
   {

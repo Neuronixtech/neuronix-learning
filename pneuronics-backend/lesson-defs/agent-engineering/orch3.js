@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Hierarchy and debate",
-    "headingKn": "Hierarchy ಮತ್ತು debate",
-    "headers": [
-     "Pattern",
-     "What it solves",
-     "What it costs"
-    ],
-    "rows": [
-     [
-      "Hierarchical",
-      "one supervisor prompt too large",
-      "an extra call per layer"
-     ],
-     [
-      "Fake hierarchy",
-      "nothing: a layer that decides nothing",
-      "an extra call and misroutes"
-     ],
-     [
-      "Debate",
-      "a single answer may be wrong",
-      "proposers, critiques and a judge"
-     ],
-     [
-      "Composition",
-      "cheap routing then targeted checking",
-      "the sum of both"
-     ]
-    ]
+    "captionEn": "Hierarchy and debate",
+    "captionKn": "Hierarchy ಮತ್ತು debate",
+    "rows": "Pattern|What it solves|What it costs\nHierarchical|one supervisor prompt too large|an extra call per layer\nFake hierarchy|nothing: a layer that decides nothing|an extra call and misroutes\nDebate|a single answer may be wrong|proposers, critiques and a judge\nComposition|cheap routing then targeted checking|the sum of both"
    }
   },
   {

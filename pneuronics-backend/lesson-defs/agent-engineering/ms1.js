@@ -72,50 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The seven fields",
-    "headingKn": "ಏಳು ಕ್ಷೇತ್ರಗಳು",
-    "headers": [
-     "Field",
-     "Holds",
-     "Next session uses it to"
-    ],
-    "rows": [
-     [
-      "summary",
-      "where things stand",
-      "orient"
-     ],
-     [
-      "changed_files",
-      "files touched",
-      "know what moved"
-     ],
-     [
-      "commands_run",
-      "recorded commands",
-      "avoid repeating them"
-     ],
-     [
-      "failed_attempts",
-      "what did not work",
-      "avoid dead ends"
-     ],
-     [
-      "open_risks",
-      "known unknowns",
-      "plan checks"
-     ],
-     [
-      "next_action",
-      "first concrete step",
-      "start work"
-     ],
-     [
-      "verdict_pointer",
-      "path to the verdict report",
-      "find the evidence"
-     ]
-    ]
+    "captionEn": "The seven fields",
+    "captionKn": "ಏಳು ಕ್ಷೇತ್ರಗಳು",
+    "rows": "Field|Holds|Next session uses it to\nsummary|where things stand|orient\nchanged_files|files touched|know what moved\ncommands_run|recorded commands|avoid repeating them\nfailed_attempts|what did not work|avoid dead ends\nopen_risks|known unknowns|plan checks\nnext_action|first concrete step|start work\nverdict_pointer|path to the verdict report|find the evidence"
    }
   },
   {

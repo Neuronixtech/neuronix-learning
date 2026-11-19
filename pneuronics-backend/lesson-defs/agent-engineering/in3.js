@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Gates and what they compare",
-    "headingKn": "Gates ಮತ್ತು ಅವು ಹೋಲಿಸುವುದು",
-    "headers": [
-     "Gate",
-     "Compares",
-     "On failure"
-    ],
-    "rows": [
-     [
-      "change budget",
-      "files changed since the baseline commit",
-      "stop and ask a human"
-     ],
-     [
-      "dependency cache",
-      "age, manifest hash and runtime",
-      "rerun the probes"
-     ],
-     [
-      "launcher",
-      "initializer exit code",
-      "do not start the agent"
-     ]
-    ]
+    "captionEn": "Gates and what they compare",
+    "captionKn": "Gates ಮತ್ತು ಅವು ಹೋಲಿಸುವುದು",
+    "rows": "Gate|Compares|On failure\nchange budget|files changed since the baseline commit|stop and ask a human\ndependency cache|age, manifest hash and runtime|rerun the probes\nlauncher|initializer exit code|do not start the agent"
    }
   },
   {

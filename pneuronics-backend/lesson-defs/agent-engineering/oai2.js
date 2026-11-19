@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Blocking versus parallel guardrails",
-    "headingKn": "Blocking ವರ್ಸಸ್ parallel guardrails",
-    "headers": [
-     "",
-     "Blocking",
-     "Parallel"
-    ],
-    "rows": [
-     [
-      "Order",
-      "Guardrail, then main work",
-      "Both start together"
-     ],
-     [
-      "Allowed request",
-      "Pays guardrail latency",
-      "Hides guardrail latency"
-     ],
-     [
-      "Rejected request",
-      "Main work never starts",
-      "Main work already started"
-     ]
-    ]
+    "captionEn": "Blocking versus parallel guardrails",
+    "captionKn": "Blocking ವರ್ಸಸ್ parallel guardrails",
+    "rows": "|Blocking|Parallel\nOrder|Guardrail, then main work|Both start together\nAllowed request|Pays guardrail latency|Hides guardrail latency\nRejected request|Main work never starts|Main work already started"
    }
   },
   {

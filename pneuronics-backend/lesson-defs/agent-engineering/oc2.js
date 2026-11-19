@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Errors and warnings",
-    "headingKn": "ದೋಷಗಳು ಮತ್ತು ಎಚ್ಚರಿಕೆಗಳು",
-    "headers": [
-     "Finding",
-     "Kind",
-     "Effect"
-    ],
-    "rows": [
-     [
-      "empty desired outcome",
-      "error",
-      "rejected"
-     ],
-     [
-      "no non-goals",
-      "error",
-      "rejected"
-     ],
-     [
-      "no number and unit",
-      "warning",
-      "accepted with warnings"
-     ],
-     [
-      "vague word",
-      "warning",
-      "accepted with warnings"
-     ]
-    ]
+    "captionEn": "Errors and warnings",
+    "captionKn": "ದೋಷಗಳು ಮತ್ತು ಎಚ್ಚರಿಕೆಗಳು",
+    "rows": "Finding|Kind|Effect\nempty desired outcome|error|rejected\nno non-goals|error|rejected\nno number and unit|warning|accepted with warnings\nvague word|warning|accepted with warnings"
    }
   },
   {

@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Setup of the toy",
-    "headingKn": "ಆಟಿಕೆಯ ಸೆಟಪ್",
-    "headers": [
-     "Item",
-     "Lab setting"
-    ],
-    "rows": [
-     [
-      "true label",
-      "x greater than 0.5"
-     ],
-     [
-      "random weak labeler",
-      "flips the label 20 percent of the time"
-     ],
-     [
-      "systematic weak labeler",
-      "always says negative for x between 0.5 and 0.7"
-     ],
-     [
-      "student",
-      "threshold with least disagreement on the weak labels"
-     ],
-     [
-      "data",
-      "200 points per seed, seeds 1 to 30"
-     ]
-    ]
+    "captionEn": "Setup of the toy",
+    "captionKn": "ಆಟಿಕೆಯ ಸೆಟಪ್",
+    "rows": "Item|Lab setting\ntrue label|x greater than 0.5\nrandom weak labeler|flips the label 20 percent of the time\nsystematic weak labeler|always says negative for x between 0.5 and 0.7\nstudent|threshold with least disagreement on the weak labels\ndata|200 points per seed, seeds 1 to 30"
    }
   },
   {

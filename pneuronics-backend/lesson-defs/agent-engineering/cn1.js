@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The resolver rules",
-    "headingKn": "resolver ನಿಯಮಗಳು",
-    "headers": [
-     "Step",
-     "What it does"
-    ],
-    "rows": [
-     [
-      "hard prohibition",
-      "checked first, refuses whatever the tiers say"
-     ],
-     [
-      "evaluation count",
-      "exactly one per tier, otherwise an error"
-     ],
-     [
-      "block",
-      "the highest-priority block names the refusal"
-     ],
-     [
-      "modify",
-      "returns an alternative that still needs checking"
-     ],
-     [
-      "allow",
-      "only when every tier passes"
-     ]
-    ]
+    "captionEn": "The resolver rules",
+    "captionKn": "resolver ನಿಯಮಗಳು",
+    "rows": "Step|What it does\nhard prohibition|checked first, refuses whatever the tiers say\nevaluation count|exactly one per tier, otherwise an error\nblock|the highest-priority block names the refusal\nmodify|returns an alternative that still needs checking\nallow|only when every tier passes"
    }
   },
   {

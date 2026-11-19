@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Four components",
-    "headingKn": "ನಾಲ್ಕು ಘಟಕಗಳು",
-    "headers": [
-     "Component",
-     "Role",
-     "Example"
-    ],
-    "rows": [
-     [
-      "State",
-      "Everything the run currently knows",
-      "messages, step, route, output, human_approval"
-     ],
-     [
-      "Node",
-      "One unit of work: state in, update out",
-      "classify_node returns {route, step}"
-     ],
-     [
-      "Edge",
-      "Chooses the next node",
-      "classify to refund, bug or sales by state"
-     ],
-     [
-      "Checkpoint",
-      "Persisted state plus control position",
-      "Part 2"
-     ]
-    ]
+    "captionEn": "Four components",
+    "captionKn": "ನಾಲ್ಕು ಘಟಕಗಳು",
+    "rows": "Component|Role|Example\nState|Everything the run currently knows|messages, step, route, output, human_approval\nNode|One unit of work: state in, update out|classify_node returns {route, step}\nEdge|Chooses the next node|classify to refund, bug or sales by state\nCheckpoint|Persisted state plus control position|Part 2"
    }
   },
   {

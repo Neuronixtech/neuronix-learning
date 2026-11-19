@@ -72,38 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Invented stage success rates",
-    "headingKn": "ಕಲ್ಪಿತ ಹಂತ ಯಶಸ್ಸು ದರಗಳು",
-    "headers": [
-     "Stage",
-     "Success rate"
-    ],
-    "rows": [
-     [
-      "idea",
-      "0.95"
-     ],
-     [
-      "novelty",
-      "0.70"
-     ],
-     [
-      "code",
-      "0.58 (assumed; lesson cites a 42 percent failure rate)"
-     ],
-     [
-      "experiment",
-      "0.80"
-     ],
-     [
-      "write",
-      "0.90"
-     ],
-     [
-      "review",
-      "0.75"
-     ]
-    ]
+    "captionEn": "Invented stage success rates",
+    "captionKn": "ಕಲ್ಪಿತ ಹಂತ ಯಶಸ್ಸು ದರಗಳು",
+    "rows": "Stage|Success rate\nidea|0.95\nnovelty|0.70\ncode|0.58 (assumed; lesson cites a 42 percent failure rate)\nexperiment|0.80\nwrite|0.90\nreview|0.75"
    }
   },
   {

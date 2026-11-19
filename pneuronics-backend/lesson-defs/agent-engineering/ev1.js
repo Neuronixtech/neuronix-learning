@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The three evaluation layers",
-    "headingKn": "ಮೂರು ಮೌಲ್ಯಮಾಪನ ಪದರಗಳು",
-    "headers": [
-     "Layer",
-     "Question",
-     "Weakness"
-    ],
-    "rows": [
-     [
-      "Static benchmark",
-      "how capable is it in general",
-      "does not know your private definition of success"
-     ],
-     [
-      "Custom offline eval",
-      "does it satisfy our requirements",
-      "only as good as the cases and the judge"
-     ],
-     [
-      "Online production eval",
-      "is it working in reality",
-      "arrives after users are affected"
-     ]
-    ]
+    "captionEn": "The three evaluation layers",
+    "captionKn": "ಮೂರು ಮೌಲ್ಯಮಾಪನ ಪದರಗಳು",
+    "rows": "Layer|Question|Weakness\nStatic benchmark|how capable is it in general|does not know your private definition of success\nCustom offline eval|does it satisfy our requirements|only as good as the cases and the judge\nOnline production eval|is it working in reality|arrives after users are affected"
    }
   },
   {

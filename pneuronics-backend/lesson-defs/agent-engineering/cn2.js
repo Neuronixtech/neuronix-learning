@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The extensions",
-    "headingKn": "ವಿಸ್ತರಣೆಗಳು",
-    "headers": [
-     "Item",
-     "What the lab shows"
-    ],
-    "rows": [
-     [
-      "unknown",
-      "a safety UNKNOWN gives REVIEW, an ethics BLOCK still gives REFUSE"
-     ],
-     [
-      "two alternatives",
-      "different alternatives give REVIEW, one gives MODIFY"
-     ],
-     [
-      "critique table",
-      "honesty and privacy entries, an unknown principle gives None"
-     ],
-     [
-      "preference",
-      "a reassuring-word scorer picked the misleading text"
-     ],
-     [
-      "authority",
-      "document and tool text never accepted"
-     ]
-    ]
+    "captionEn": "The extensions",
+    "captionKn": "ವಿಸ್ತರಣೆಗಳು",
+    "rows": "Item|What the lab shows\nunknown|a safety UNKNOWN gives REVIEW, an ethics BLOCK still gives REFUSE\ntwo alternatives|different alternatives give REVIEW, one gives MODIFY\ncritique table|honesty and privacy entries, an unknown principle gives None\npreference|a reassuring-word scorer picked the misleading text\nauthority|document and tool text never accepted"
    }
   },
   {

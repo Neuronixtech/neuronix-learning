@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Agent versus workflow",
-    "headingKn": "Agent ಮತ್ತು workflow ಹೋಲಿಕೆ",
-    "headers": [
-     "",
-     "Agent",
-     "Workflow"
-    ],
-    "rows": [
-     [
-      "Who picks the next step",
-      "the model",
-      "the code"
-     ],
-     [
-      "Paths for one input",
-      "many, varies run to run",
-      "one"
-     ],
-     [
-      "Best for",
-      "open-ended tasks",
-      "known procedures that must be repeatable"
-     ]
-    ]
+    "captionEn": "Agent versus workflow",
+    "captionKn": "Agent ಮತ್ತು workflow ಹೋಲಿಕೆ",
+    "rows": "|Agent|Workflow\nWho picks the next step|the model|the code\nPaths for one input|many, varies run to run|one\nBest for|open-ended tasks|known procedures that must be repeatable"
    }
   },
   {

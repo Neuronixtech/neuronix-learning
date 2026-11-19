@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The four unknowns",
-    "headingKn": "ನಾಲ್ಕು ಅಜ್ಞಾತಗಳು",
-    "headers": [
-     "Category",
-     "Example",
-     "What to do"
-    ],
-    "rows": [
-     [
-      "discoverable",
-      "does the database enforce uniqueness",
-      "investigate"
-     ],
-     [
-      "decidable",
-      "what to call a private helper",
-      "decide and record it"
-     ],
-     [
-      "human",
-      "may the duplicate response change",
-      "stop and ask"
-     ],
-     [
-      "deferred",
-      "refactor the whole subsystem",
-      "record as a non-goal"
-     ]
-    ]
+    "captionEn": "The four unknowns",
+    "captionKn": "ನಾಲ್ಕು ಅಜ್ಞಾತಗಳು",
+    "rows": "Category|Example|What to do\ndiscoverable|does the database enforce uniqueness|investigate\ndecidable|what to call a private helper|decide and record it\nhuman|may the duplicate response change|stop and ask\ndeferred|refactor the whole subsystem|record as a non-goal"
    }
   },
   {

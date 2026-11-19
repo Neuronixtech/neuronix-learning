@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Setup of the experiments",
-    "headingKn": "ಪ್ರಯೋಗಗಳ ಸೆಟಪ್",
-    "headers": [
-     "Item",
-     "Lab setting"
-    ],
-    "rows": [
-     [
-      "graph",
-      "200 findings, 1 to 3 earlier parents each, 40 seeds"
-     ],
-     [
-      "bad roots",
-      "1, 3 or 5 among the first 20"
-     ],
-     [
-      "re-check catch probability",
-      "0.0, 0.3, 0.6, 0.9"
-     ],
-     [
-      "reviewer catch rate",
-      "0.7 each"
-     ],
-     [
-      "shared blind spot",
-      "0.0 or 0.2"
-     ]
-    ]
+    "captionEn": "Setup of the experiments",
+    "captionKn": "ಪ್ರಯೋಗಗಳ ಸೆಟಪ್",
+    "rows": "Item|Lab setting\ngraph|200 findings, 1 to 3 earlier parents each, 40 seeds\nbad roots|1, 3 or 5 among the first 20\nre-check catch probability|0.0, 0.3, 0.6, 0.9\nreviewer catch rate|0.7 each\nshared blind spot|0.0 or 0.2"
    }
   },
   {

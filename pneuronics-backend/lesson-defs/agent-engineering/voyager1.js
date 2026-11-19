@@ -81,30 +81,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Voyager's three components",
-    "headingKn": "Voyager ನ ಮೂರು ಘಟಕಗಳು",
-    "headers": [
-     "Component",
-     "Question it answers",
-     "In this lab"
-    ],
-    "rows": [
-     [
-      "Automatic curriculum",
-      "What should the agent learn next?",
-      "propose_next_task() in Part 3"
-     ],
-     [
-      "Skill library",
-      "What do we already know how to do?",
-      "SkillLibrary: register, search, compose, refine"
-     ],
-     [
-      "Iterative prompting",
-      "What do we do when it fails?",
-      "Execute, read feedback, diagnose, refine, retry"
-     ]
-    ]
+    "captionEn": "Voyager's three components",
+    "captionKn": "Voyager ನ ಮೂರು ಘಟಕಗಳು",
+    "rows": "Component|Question it answers|In this lab\nAutomatic curriculum|What should the agent learn next?|propose_next_task() in Part 3\nSkill library|What do we already know how to do?|SkillLibrary: register, search, compose, refine\nIterative prompting|What do we do when it fails?|Execute, read feedback, diagnose, refine, retry"
    }
   },
   {

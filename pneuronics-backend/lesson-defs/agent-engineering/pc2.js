@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The five situations",
-    "headingKn": "ಐದು ಸಂದರ್ಭಗಳು",
-    "headers": [
-     "Situation",
-     "Result"
-    ],
-    "rows": [
-     [
-      "clean approval",
-      "VERIFIED through COMMITTING and VERIFYING"
-     ],
-     [
-      "response lost after the refund",
-      "RECONCILIATION_REQUIRED, then VERIFIED with no second refund"
-     ],
-     [
-      "incomplete checklist",
-      "approval blocked, still PENDING_REVIEW"
-     ],
-     [
-      "request lost before the provider",
-      "ledger empty, a deliberate retry gives exactly one refund"
-     ],
-     [
-      "provider records 501 for 500",
-      "FAILED"
-     ]
-    ]
+    "captionEn": "The five situations",
+    "captionKn": "ಐದು ಸಂದರ್ಭಗಳು",
+    "rows": "Situation|Result\nclean approval|VERIFIED through COMMITTING and VERIFYING\nresponse lost after the refund|RECONCILIATION_REQUIRED, then VERIFIED with no second refund\nincomplete checklist|approval blocked, still PENDING_REVIEW\nrequest lost before the provider|ledger empty, a deliberate retry gives exactly one refund\nprovider records 501 for 500|FAILED"
    }
   },
   {

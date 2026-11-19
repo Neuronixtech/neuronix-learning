@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The two test sets",
-    "headingKn": "ಎರಡು ಟೆಸ್ಟ್ ಗುಂಪುಗಳು",
-    "headers": [
-     "",
-     "FAIL_TO_PASS",
-     "PASS_TO_PASS"
-    ],
-    "rows": [
-     [
-      "Before the patch",
-      "fails",
-      "passes"
-     ],
-     [
-      "After a correct patch",
-      "passes",
-      "still passes"
-     ],
-     [
-      "What it guards",
-      "the bug is fixed",
-      "nothing else broke"
-     ]
-    ]
+    "captionEn": "The two test sets",
+    "captionKn": "ಎರಡು ಟೆಸ್ಟ್ ಗುಂಪುಗಳು",
+    "rows": "|FAIL_TO_PASS|PASS_TO_PASS\nBefore the patch|fails|passes\nAfter a correct patch|passes|still passes\nWhat it guards|the bug is fixed|nothing else broke"
    }
   },
   {

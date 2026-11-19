@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Quantities in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿನ ಪ್ರಮಾಣಗಳು",
-    "headers": [
-     "Quantity",
-     "Value"
-    ],
-    "rows": [
-     [
-      "capability",
-      "C = 100 x 1.2^n (lesson illustration)"
-     ],
-     [
-      "alignment",
-      "A = 100 x 1.05^n (lesson illustration)"
-     ],
-     [
-      "thresholds",
-      "ratio 2, 5, 10, 100 (chosen for illustration)"
-     ],
-     [
-      "noise",
-      "Gaussian, sd 0, 0.05, 0.10 on each growth rate"
-     ],
-     [
-      "runs",
-      "200 per noise level, seed 1"
-     ]
-    ]
+    "captionEn": "Quantities in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿನ ಪ್ರಮಾಣಗಳು",
+    "rows": "Quantity|Value\ncapability|C = 100 x 1.2^n (lesson illustration)\nalignment|A = 100 x 1.05^n (lesson illustration)\nthresholds|ratio 2, 5, 10, 100 (chosen for illustration)\nnoise|Gaussian, sd 0, 0.05, 0.10 on each growth rate\nruns|200 per noise level, seed 1"
    }
   },
   {

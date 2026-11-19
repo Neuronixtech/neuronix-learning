@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The four lesson runs",
-    "headingKn": "ಲೆಸನ್‌ನ ನಾಲ್ಕು ಓಟಗಳು",
-    "headers": [
-     "Run",
-     "Situation",
-     "Category"
-    ],
-    "rows": [
-     [
-      "run-1",
-      "relevant passage, faithful answer",
-      "pass"
-     ],
-     [
-      "run-2",
-      "relevant passage, answer says delivered",
-      "generation_grounding_failure"
-     ],
-     [
-      "run-3",
-      "refund passage for an order question",
-      "retrieval_failure"
-     ],
-     [
-      "run-4",
-      "answer asks for a password",
-      "guardrail_trip"
-     ]
-    ]
+    "captionEn": "The four lesson runs",
+    "captionKn": "ಲೆಸನ್‌ನ ನಾಲ್ಕು ಓಟಗಳು",
+    "rows": "Run|Situation|Category\nrun-1|relevant passage, faithful answer|pass\nrun-2|relevant passage, answer says delivered|generation_grounding_failure\nrun-3|refund passage for an order question|retrieval_failure\nrun-4|answer asks for a password|guardrail_trip"
    }
   },
   {

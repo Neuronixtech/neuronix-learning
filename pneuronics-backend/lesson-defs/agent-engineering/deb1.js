@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Parameters of the protocol",
-    "headingKn": "ಪ್ರೋಟೋಕಾಲ್‌ನ ಮಾನದಂಡಗಳು",
-    "headers": [
-     "Symbol",
-     "Meaning",
-     "In the lab"
-    ],
-    "rows": [
-     [
-      "N",
-      "number of agents",
-      "1 to 9"
-     ],
-     [
-      "R",
-      "critique rounds",
-      "up to 3 or 4, stopping on agreement"
-     ],
-     [
-      "update rule",
-      "when an agent switches",
-      "adopt the peer plurality if it has strict majority support"
-     ]
-    ]
+    "captionEn": "Parameters of the protocol",
+    "captionKn": "ಪ್ರೋಟೋಕಾಲ್‌ನ ಮಾನದಂಡಗಳು",
+    "rows": "Symbol|Meaning|In the lab\nN|number of agents|1 to 9\nR|critique rounds|up to 3 or 4, stopping on agreement\nupdate rule|when an agent switches|adopt the peer plurality if it has strict majority support"
    }
   },
   {

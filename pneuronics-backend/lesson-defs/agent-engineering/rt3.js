@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Schedule policies",
-    "headingKn": "Schedule ನೀತಿಗಳು",
-    "headers": [
-     "Question",
-     "Options",
-     "Risk"
-    ],
-    "rows": [
-     [
-      "Previous run still active",
-      "allow, skip, queue",
-      "allow can double-write shared state"
-     ],
-     [
-      "Scheduler was down",
-      "skip, run once, run all",
-      "run all can spike load"
-     ],
-     [
-      "Fired twice",
-      "execution key",
-      "the key store must persist"
-     ],
-     [
-      "Work is large",
-      "enqueue instead of run inline",
-      "adds a queue to operate"
-     ]
-    ]
+    "captionEn": "Schedule policies",
+    "captionKn": "Schedule ನೀತಿಗಳು",
+    "rows": "Question|Options|Risk\nPrevious run still active|allow, skip, queue|allow can double-write shared state\nScheduler was down|skip, run once, run all|run all can spike load\nFired twice|execution key|the key store must persist\nWork is large|enqueue instead of run inline|adds a queue to operate"
    }
   },
   {

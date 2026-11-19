@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Invented candidates",
-    "headingKn": "ಕಲ್ಪಿತ ಅಭ್ಯರ್ಥಿಗಳು",
-    "headers": [
-     "Candidate",
-     "Minutes, accuracy, unsafe rate",
-     "Decision"
-    ],
-    "rows": [
-     [
-      "A careful assistant",
-      "1.8, 0.93, 0.0",
-      "pass"
-     ],
-     [
-      "B fast but unsafe",
-      "0.6, 0.95, 0.04",
-      "fail (guardrail)"
-     ],
-     [
-      "C slow and accurate",
-      "3.5, 0.97, 0.0",
-      "fail (outcome)"
-     ]
-    ]
+    "captionEn": "Invented candidates",
+    "captionKn": "ಕಲ್ಪಿತ ಅಭ್ಯರ್ಥಿಗಳು",
+    "rows": "Candidate|Minutes, accuracy, unsafe rate|Decision\nA careful assistant|1.8, 0.93, 0.0|pass\nB fast but unsafe|0.6, 0.95, 0.04|fail (guardrail)\nC slow and accurate|3.5, 0.97, 0.0|fail (outcome)"
    }
   },
   {

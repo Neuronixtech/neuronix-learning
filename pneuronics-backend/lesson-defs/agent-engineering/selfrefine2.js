@@ -72,38 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Match the verifier to the property",
-    "headingKn": "ಗುಣಕ್ಕೆ verifier ಹೊಂದಿಸಿ",
-    "headers": [
-     "Task type",
-     "Appropriate verifier"
-    ],
-    "rows": [
-     [
-      "Factual claim",
-      "Search, retrieval or a trusted database"
-     ],
-     [
-      "Arithmetic",
-      "Calculator or a restricted evaluator"
-     ],
-     [
-      "Code behaviour",
-      "Parser, unit tests, type checker, linter"
-     ],
-     [
-      "Structured output",
-      "JSON parser, schema validator"
-     ],
-     [
-      "Business rule",
-      "A deterministic rule checker"
-     ],
-     [
-      "Subjective quality",
-      "A model evaluator with a rubric, and no pretence of ground truth"
-     ]
-    ]
+    "captionEn": "Match the verifier to the property",
+    "captionKn": "ಗುಣಕ್ಕೆ verifier ಹೊಂದಿಸಿ",
+    "rows": "Task type|Appropriate verifier\nFactual claim|Search, retrieval or a trusted database\nArithmetic|Calculator or a restricted evaluator\nCode behaviour|Parser, unit tests, type checker, linter\nStructured output|JSON parser, schema validator\nBusiness rule|A deterministic rule checker\nSubjective quality|A model evaluator with a rubric, and no pretence of ground truth"
    }
   },
   {

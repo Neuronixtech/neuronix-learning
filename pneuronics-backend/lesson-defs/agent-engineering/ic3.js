@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Maintenance checks",
-    "headingKn": "ನಿರ್ವಹಣೆ ಪರಿಶೀಲನೆಗಳು",
-    "headers": [
-     "Check",
-     "Detects",
-     "Fails the build when"
-    ],
-    "rows": [
-     [
-      "lock freshness",
-      "source and cache disagree",
-      "the Markdown hash differs from the lock"
-     ],
-     [
-      "router reachability",
-      "broken or deep links",
-      "a rule is more than two hops away"
-     ],
-     [
-      "router size",
-      "a router that grew into a manual",
-      "it exceeds the line budget"
-     ],
-     [
-      "expiry review",
-      "forgotten or unused rules",
-      "a rule is past its date"
-     ],
-     [
-      "override scope",
-      "blanket exceptions",
-      "rule, task or revision do not match"
-     ]
-    ]
+    "captionEn": "Maintenance checks",
+    "captionKn": "ನಿರ್ವಹಣೆ ಪರಿಶೀಲನೆಗಳು",
+    "rows": "Check|Detects|Fails the build when\nlock freshness|source and cache disagree|the Markdown hash differs from the lock\nrouter reachability|broken or deep links|a rule is more than two hops away\nrouter size|a router that grew into a manual|it exceeds the line budget\nexpiry review|forgotten or unused rules|a rule is past its date\noverride scope|blanket exceptions|rule, task or revision do not match"
    }
   },
   {

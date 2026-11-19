@@ -344,42 +344,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Mapping code to the loop",
-    "headingKn": "ಕೋಡ್ ಅನ್ನು loop ಗೆ ಜೋಡಿಸುವುದು",
-    "headers": [
-     "Code",
-     "Concept"
-    ],
-    "rows": [
-     [
-      "decision = self.llm.next(self.messages)",
-      "THINK"
-     ],
-     [
-      "if decision[\"type\"] == \"finish\": return ...",
-      "STOP (model-driven)"
-     ],
-     [
-      "result = self.registry.call(name, **arguments)",
-      "ACT"
-     ],
-     [
-      "observation = str(result)",
-      "OBSERVE"
-     ],
-     [
-      "self.messages.append({...})",
-      "CONTEXT UPDATE"
-     ],
-     [
-      "for turn in range(1, max_turns + 1)",
-      "REPEAT, bounded"
-     ],
-     [
-      "return \"STOPPED: ...\"",
-      "STOP (runtime-driven)"
-     ]
-    ]
+    "captionEn": "Mapping code to the loop",
+    "captionKn": "ಕೋಡ್ ಅನ್ನು loop ಗೆ ಜೋಡಿಸುವುದು",
+    "rows": "Code|Concept\ndecision = self.llm.next(self.messages)|THINK\nif decision[\"type\"] == \"finish\": return ...|STOP (model-driven)\nresult = self.registry.call(name, **arguments)|ACT\nobservation = str(result)|OBSERVE\nself.messages.append({...})|CONTEXT UPDATE\nfor turn in range(1, max_turns + 1)|REPEAT, bounded\nreturn \"STOPPED: ...\"|STOP (runtime-driven)"
    }
   },
   {

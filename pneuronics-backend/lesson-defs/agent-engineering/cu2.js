@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Verdicts",
-    "headingKn": "ತೀರ್ಪುಗಳು",
-    "headers": [
-     "Verdict",
-     "Meaning",
-     "Example"
-    ],
-    "rows": [
-     [
-      "ALLOW",
-      "execute",
-      "click on an allowlisted ordinary element"
-     ],
-     [
-      "BLOCK",
-      "never execute",
-      "click on empty space, off-screen click, injected text"
-     ],
-     [
-      "HOLD",
-      "execute only after a human approves",
-      "click on purchase_button"
-     ]
-    ]
+    "captionEn": "Verdicts",
+    "captionKn": "ತೀರ್ಪುಗಳು",
+    "rows": "Verdict|Meaning|Example\nALLOW|execute|click on an allowlisted ordinary element\nBLOCK|never execute|click on empty space, off-screen click, injected text\nHOLD|execute only after a human approves|click on purchase_button"
    }
   },
   {

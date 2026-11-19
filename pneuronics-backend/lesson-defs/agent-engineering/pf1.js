@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The tool",
-    "headingKn": "ಸಾಧನ",
-    "headers": [
-     "Part",
-     "What it does"
-    ],
-    "rows": [
-     [
-      "capabilities",
-      "7 identifiers, 21 framework cells"
-     ],
-     [
-      "trigger vocabulary",
-      "four values, never a boolean"
-     ],
-     [
-      "normaliser",
-      "case, hyphens and spaces, no aliases"
-     ],
-     [
-      "validator",
-      "every capability needs all three frameworks"
-     ],
-     [
-      "report",
-      "threshold_crossed None, deployment_authorized False, sources_verified False"
-     ]
-    ]
+    "captionEn": "The tool",
+    "captionKn": "ಸಾಧನ",
+    "rows": "Part|What it does\ncapabilities|7 identifiers, 21 framework cells\ntrigger vocabulary|four values, never a boolean\nnormaliser|case, hyphens and spaces, no aliases\nvalidator|every capability needs all three frameworks\nreport|threshold_crossed None, deployment_authorized False, sources_verified False"
    }
   },
   {

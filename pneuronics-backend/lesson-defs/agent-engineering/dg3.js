@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Conflict kinds",
-    "headingKn": "ಸಂಘರ್ಷ ವಿಧಗಳು",
-    "headers": [
-     "Kind",
-     "Detected by",
-     "Example in the lab"
-    ],
-    "rows": [
-     [
-      "mechanical",
-      "git itself",
-      "two branches set MAX_RETRIES to 5 and 7"
-     ],
-     [
-      "semantic",
-      "a cross-unit check",
-      "code needs username, docs say email only"
-     ],
-     [
-      "scope",
-      "diff audit",
-      "a worker edited a file it does not own"
-     ],
-     [
-      "authority",
-      "a verified approval record",
-      "production write without approval"
-     ]
-    ]
+    "captionEn": "Conflict kinds",
+    "captionKn": "ಸಂಘರ್ಷ ವಿಧಗಳು",
+    "rows": "Kind|Detected by|Example in the lab\nmechanical|git itself|two branches set MAX_RETRIES to 5 and 7\nsemantic|a cross-unit check|code needs username, docs say email only\nscope|diff audit|a worker edited a file it does not own\nauthority|a verified approval record|production write without approval"
    }
   },
   {

@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The five probes",
-    "headingKn": "ಐದು probes",
-    "headers": [
-     "Probe",
-     "Checks",
-     "Does not prove"
-    ],
-    "rows": [
-     [
-      "python_version",
-      "interpreter meets the minimum",
-      "the right virtual environment is active"
-     ],
-     [
-      "dependencies",
-      "modules are discoverable",
-      "they import and work"
-     ],
-     [
-      "test_command",
-      "the command resolves on PATH",
-      "the tests pass"
-     ],
-     [
-      "environment",
-      "required variables are non-empty",
-      "they hold valid values"
-     ],
-     [
-      "state_freshness",
-      "the state file is recent",
-      "its content is valid"
-     ]
-    ]
+    "captionEn": "The five probes",
+    "captionKn": "ಐದು probes",
+    "rows": "Probe|Checks|Does not prove\npython_version|interpreter meets the minimum|the right virtual environment is active\ndependencies|modules are discoverable|they import and work\ntest_command|the command resolves on PATH|the tests pass\nenvironment|required variables are non-empty|they hold valid values\nstate_freshness|the state file is recent|its content is valid"
    }
   },
   {

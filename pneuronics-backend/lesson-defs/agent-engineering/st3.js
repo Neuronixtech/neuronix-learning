@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Checks compared",
-    "headingKn": "ಪರಿಶೀಲನೆಗಳ ಹೋಲಿಕೆ",
-    "headers": [
-     "Check",
-     "What it looks at"
-    ],
-    "rows": [
-     [
-      "outcome",
-      "only the final answer"
-     ],
-     [
-      "process",
-      "every step in the chain"
-     ],
-     [
-      "imperfect process",
-      "a step checker that misses some wrong steps"
-     ],
-     [
-      "in-distribution test",
-      "inputs like the training set"
-     ],
-     [
-      "out-of-distribution test",
-      "unseen two-digit and four-digit sums"
-     ]
-    ]
+    "captionEn": "Checks compared",
+    "captionKn": "ಪರಿಶೀಲನೆಗಳ ಹೋಲಿಕೆ",
+    "rows": "Check|What it looks at\noutcome|only the final answer\nprocess|every step in the chain\nimperfect process|a step checker that misses some wrong steps\nin-distribution test|inputs like the training set\nout-of-distribution test|unseen two-digit and four-digit sums"
    }
   },
   {

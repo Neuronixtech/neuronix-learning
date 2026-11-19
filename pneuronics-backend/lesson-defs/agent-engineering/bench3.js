@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Three ways a score misleads",
-    "headingKn": "ಅಂಕ ತಪ್ಪುದಾರಿಗೆಳೆಯುವ ಮೂರು ವಿಧಾನಗಳು",
-    "headers": [
-     "Cause",
-     "Symptom",
-     "Check"
-    ],
-    "rows": [
-     [
-      "Compounding errors",
-      "high step accuracy, low task success",
-      "report both, by horizon length"
-     ],
-     [
-      "Contamination",
-      "reported score above unseen-task score",
-      "held-out tasks"
-     ],
-     [
-      "Weak tests",
-      "wrong patches accepted",
-      "mutation score, stronger suite"
-     ]
-    ]
+    "captionEn": "Three ways a score misleads",
+    "captionKn": "ಅಂಕ ತಪ್ಪುದಾರಿಗೆಳೆಯುವ ಮೂರು ವಿಧಾನಗಳು",
+    "rows": "Cause|Symptom|Check\nCompounding errors|high step accuracy, low task success|report both, by horizon length\nContamination|reported score above unseen-task score|held-out tasks\nWeak tests|wrong patches accepted|mutation score, stronger suite"
    }
   },
   {

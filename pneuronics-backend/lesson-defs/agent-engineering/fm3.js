@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Trust states and gate decisions",
-    "headingKn": "ನಂಬಿಕೆ ಸ್ಥಿತಿಗಳು ಮತ್ತು gate ತೀರ್ಮಾನಗಳು",
-    "headers": [
-     "Item",
-     "Values",
-     "Meaning"
-    ],
-    "rows": [
-     [
-      "Trust",
-      "unverified, trusted, failed, tainted",
-      "whether a step result may be built on"
-     ],
-     [
-      "Decision",
-      "allow, block, require_approval",
-      "what the gate does with a proposal"
-     ],
-     [
-      "Risk",
-      "low, medium, high, critical",
-      "critical tools need an approval before running"
-     ]
-    ]
+    "captionEn": "Trust states and gate decisions",
+    "captionKn": "ನಂಬಿಕೆ ಸ್ಥಿತಿಗಳು ಮತ್ತು gate ತೀರ್ಮಾನಗಳು",
+    "rows": "Item|Values|Meaning\nTrust|unverified, trusted, failed, tainted|whether a step result may be built on\nDecision|allow, block, require_approval|what the gate does with a proposal\nRisk|low, medium, high, critical|critical tools need an approval before running"
    }
   },
   {

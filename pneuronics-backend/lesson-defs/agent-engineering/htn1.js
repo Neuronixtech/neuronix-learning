@@ -62,40 +62,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "HTN vocabulary",
-    "headingKn": "HTN ಶಬ್ದಕೋಶ",
-    "headers": [
-     "Term",
-     "Meaning",
-     "Example"
-    ],
-    "rows": [
-     [
-      "State",
-      "A set of facts currently true",
-      "package:P1:warehouse, truck:warehouse"
-     ],
-     [
-      "Compound task",
-      "Cannot run directly; needs a method",
-      "deliver_package, prepare_package"
-     ],
-     [
-      "Primitive task",
-      "Maps to an operator",
-      "pickup_package, drive_to_customer"
-     ],
-     [
-      "Operator",
-      "Precondition check plus effects",
-      "load needs picked and truck at warehouse"
-     ],
-     [
-      "Method",
-      "Compound task to subtasks",
-      "deliver = prepare + transport + handover"
-     ]
-    ]
+    "captionEn": "HTN vocabulary",
+    "captionKn": "HTN ಶಬ್ದಕೋಶ",
+    "rows": "Term|Meaning|Example\nState|A set of facts currently true|package:P1:warehouse, truck:warehouse\nCompound task|Cannot run directly; needs a method|deliver_package, prepare_package\nPrimitive task|Maps to an operator|pickup_package, drive_to_customer\nOperator|Precondition check plus effects|load needs picked and truck at warehouse\nMethod|Compound task to subtasks|deliver = prepare + transport + handover"
    }
   },
   {

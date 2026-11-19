@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Client SDK versus agent SDK",
-    "headingKn": "Client SDK ಮತ್ತು agent SDK ಹೋಲಿಕೆ",
-    "headers": [
-     "",
-     "Client SDK",
-     "Agent SDK"
-    ],
-    "rows": [
-     [
-      "You write",
-      "the loop, dispatch, persistence",
-      "the tools, policies and tasks"
-     ],
-     [
-      "Tool results",
-      "you append them",
-      "the harness appends them"
-     ],
-     [
-      "Cross-cutting rules",
-      "scattered through your code",
-      "hooks at named events"
-     ]
-    ]
+    "captionEn": "Client SDK versus agent SDK",
+    "captionKn": "Client SDK ಮತ್ತು agent SDK ಹೋಲಿಕೆ",
+    "rows": "|Client SDK|Agent SDK\nYou write|the loop, dispatch, persistence|the tools, policies and tasks\nTool results|you append them|the harness appends them\nCross-cutting rules|scattered through your code|hooks at named events"
    }
   },
   {

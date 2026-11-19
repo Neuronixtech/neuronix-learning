@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Finding kinds",
-    "headingKn": "ಶೋಧನೆ ವಿಧಗಳು",
-    "headers": [
-     "Kind",
-     "Lab value",
-     "Meaning"
-    ],
-    "rows": [
-     [
-      "missing",
-      "None",
-      "not recorded, unknown"
-     ],
-     [
-      "negative",
-      "False",
-      "checked and nothing found"
-     ],
-     [
-      "found",
-      "a value",
-      "the record exists"
-     ]
-    ]
+    "captionEn": "Finding kinds",
+    "captionKn": "ಶೋಧನೆ ವಿಧಗಳು",
+    "rows": "Kind|Lab value|Meaning\nmissing|None|not recorded, unknown\nnegative|False|checked and nothing found\nfound|a value|the record exists"
    }
   },
   {

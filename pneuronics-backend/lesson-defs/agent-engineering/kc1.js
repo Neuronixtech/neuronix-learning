@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The three detectors",
-    "headingKn": "ಮೂರು ಪತ್ತೆಕಾರಕಗಳು",
-    "headers": [
-     "Detector",
-     "Question it answers"
-    ],
-    "rows": [
-     [
-      "kill switch",
-      "is the agent allowed to act at all?"
-     ],
-     [
-      "circuit breaker",
-      "is this action pattern abnormal? opens at 5 identical consecutive calls"
-     ],
-     [
-      "canary monitor",
-      "did the agent touch something it should never need?"
-     ],
-     [
-      "state",
-      "the control state and the canary list live in this process"
-     ],
-     [
-      "executor",
-      "not present in this part, decisions are only returned"
-     ]
-    ]
+    "captionEn": "The three detectors",
+    "captionKn": "ಮೂರು ಪತ್ತೆಕಾರಕಗಳು",
+    "rows": "Detector|Question it answers\nkill switch|is the agent allowed to act at all?\ncircuit breaker|is this action pattern abnormal? opens at 5 identical consecutive calls\ncanary monitor|did the agent touch something it should never need?\nstate|the control state and the canary list live in this process\nexecutor|not present in this part, decisions are only returned"
    }
   },
   {

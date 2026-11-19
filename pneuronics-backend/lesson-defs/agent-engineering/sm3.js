@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Results on twelve invented records",
-    "headingKn": "ಹನ್ನೆರಡು ಕಲ್ಪಿತ ದಾಖಲೆಗಳ ಫಲಿತಾಂಶ",
-    "headers": [
-     "Quantity",
-     "Value"
-    ],
-    "rows": [
-     [
-      "accuracy",
-      "10/12 = 0.833, Wilson 0.552 to 0.953"
-     ],
-     [
-      "median minutes",
-      "1.55, bootstrap 1.15 to 2.2"
-     ],
-     [
-      "mean minutes",
-      "1.79"
-     ],
-     [
-      "median review minutes",
-      "3.25 (2.9 right, 6.5 wrong)"
-     ]
-    ]
+    "captionEn": "Results on twelve invented records",
+    "captionKn": "ಹನ್ನೆರಡು ಕಲ್ಪಿತ ದಾಖಲೆಗಳ ಫಲಿತಾಂಶ",
+    "rows": "Quantity|Value\naccuracy|10/12 = 0.833, Wilson 0.552 to 0.953\nmedian minutes|1.55, bootstrap 1.15 to 2.2\nmean minutes|1.79\nmedian review minutes|3.25 (2.9 right, 6.5 wrong)"
    }
   },
   {

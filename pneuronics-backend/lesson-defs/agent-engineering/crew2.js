@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Memory layers in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ memory ಪದರಗಳು",
-    "headers": [
-     "Layer",
-     "Holds",
-     "Lifetime"
-    ],
-    "rows": [
-     [
-      "short_term",
-      "What happened this run",
-      "One kickoff"
-     ],
-     [
-      "long_term",
-      "Facts to retrieve later",
-      "Across kickoffs"
-     ],
-     [
-      "entities",
-      "Facts keyed by a named thing",
-      "Across kickoffs"
-     ]
-    ]
+    "captionEn": "Memory layers in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ memory ಪದರಗಳು",
+    "rows": "Layer|Holds|Lifetime\nshort_term|What happened this run|One kickoff\nlong_term|Facts to retrieve later|Across kickoffs\nentities|Facts keyed by a named thing|Across kickoffs"
    }
   },
   {

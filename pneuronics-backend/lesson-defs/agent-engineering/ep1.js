@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The five commitments",
-    "headingKn": "ಐದು ಬದ್ಧತೆಗಳು",
-    "headers": [
-     "Commitment",
-     "Question",
-     "Checked for"
-    ],
-    "rows": [
-     [
-      "id",
-      "how is it referenced",
-      "unique and non-blank"
-     ],
-     [
-      "change",
-      "what changes",
-      "non-blank"
-     ],
-     [
-      "evidence",
-      "why is it justified",
-      "at least one non-blank entry"
-     ],
-     [
-      "dependencies",
-      "what finishes first",
-      "known ids, no self, no duplicates"
-     ],
-     [
-      "proof",
-      "how completion is shown",
-      "non-blank"
-     ]
-    ]
+    "captionEn": "The five commitments",
+    "captionKn": "ಐದು ಬದ್ಧತೆಗಳು",
+    "rows": "Commitment|Question|Checked for\nid|how is it referenced|unique and non-blank\nchange|what changes|non-blank\nevidence|why is it justified|at least one non-blank entry\ndependencies|what finishes first|known ids, no self, no duplicates\nproof|how completion is shown|non-blank"
    }
   },
   {

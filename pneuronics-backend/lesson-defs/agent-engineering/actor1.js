@@ -81,30 +81,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The AutoGen layers, as a mental map",
-    "headingKn": "AutoGen ಪದರಗಳು, ಮಾನಸಿಕ ನಕ್ಷೆಯಾಗಿ",
-    "headers": [
-     "Layer",
-     "Concern",
-     "This lab"
-    ],
-    "rows": [
-     [
-      "Core",
-      "Runtime, messages, actors, topics, routing",
-      "Message, Actor, Runtime"
-     ],
-     [
-      "AgentChat",
-      "Higher-level teams and conversation patterns",
-      "not built here"
-     ],
-     [
-      "Extensions",
-      "Models, tools, memory, external services",
-      "not built here"
-     ]
-    ]
+    "captionEn": "The AutoGen layers, as a mental map",
+    "captionKn": "AutoGen ಪದರಗಳು, ಮಾನಸಿಕ ನಕ್ಷೆಯಾಗಿ",
+    "rows": "Layer|Concern|This lab\nCore|Runtime, messages, actors, topics, routing|Message, Actor, Runtime\nAgentChat|Higher-level teams and conversation patterns|not built here\nExtensions|Models, tools, memory, external services|not built here"
    }
   },
   {

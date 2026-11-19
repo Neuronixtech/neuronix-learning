@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Rules in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ನಿಯಮಗಳು",
-    "headers": [
-     "Rule",
-     "Setting"
-    ],
-    "rows": [
-     [
-      "policy",
-      "4 numbers, start at 0"
-     ],
-     [
-      "proposal",
-      "noise with a push of +0.02 per parameter"
-     ],
-     [
-      "invariants",
-      "max at most 1.0, sum at most 2.5, step at most 0.3"
-     ],
-     [
-      "anchor",
-      "the all-zero starting policy, radius 3.0, 1.5 or 0.5"
-     ],
-     [
-      "runs",
-      "seeds 1 to 30"
-     ]
-    ]
+    "captionEn": "Rules in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ನಿಯಮಗಳು",
+    "rows": "Rule|Setting\npolicy|4 numbers, start at 0\nproposal|noise with a push of +0.02 per parameter\ninvariants|max at most 1.0, sum at most 2.5, step at most 0.3\nanchor|the all-zero starting policy, radius 3.0, 1.5 or 0.5\nruns|seeds 1 to 30"
    }
   },
   {

@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Lifecycle states",
-    "headingKn": "ಜೀವನಚಕ್ರ ಸ್ಥಿತಿಗಳು",
-    "headers": [
-     "State",
-     "May move to",
-     "Needs"
-    ],
-    "rows": [
-     [
-      "proposed",
-      "verified, rejected",
-      "a record"
-     ],
-     [
-      "verified",
-      "active, rejected",
-      "known-bad case result"
-     ],
-     [
-      "active",
-      "under_review, retired",
-      "owner, review date"
-     ],
-     [
-      "under_review",
-      "active, retired",
-      "a decision"
-     ],
-     [
-      "retired",
-      "nothing",
-      "replacement and no live recurrence"
-     ]
-    ]
+    "captionEn": "Lifecycle states",
+    "captionKn": "ಜೀವನಚಕ್ರ ಸ್ಥಿತಿಗಳು",
+    "rows": "State|May move to|Needs\nproposed|verified, rejected|a record\nverified|active, rejected|known-bad case result\nactive|under_review, retired|owner, review date\nunder_review|active, retired|a decision\nretired|nothing|replacement and no live recurrence"
    }
   },
   {

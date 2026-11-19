@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Selection rules compared",
-    "headingKn": "ಆಯ್ಕೆ ನಿಯಮಗಳ ಹೋಲಿಕೆ",
-    "headers": [
-     "Rule",
-     "What it uses"
-    ],
-    "rows": [
-     [
-      "random",
-      "any candidate"
-     ],
-     [
-      "majority vote",
-      "the most repeated answer"
-     ],
-     [
-      "verifier",
-      "accept probability tpr for right and fpr for wrong"
-     ],
-     [
-      "trials",
-      "20000 per setting, seeded"
-     ],
-     [
-      "wrong answers",
-      "spread over 7 values (invented)"
-     ]
-    ]
+    "captionEn": "Selection rules compared",
+    "captionKn": "ಆಯ್ಕೆ ನಿಯಮಗಳ ಹೋಲಿಕೆ",
+    "rows": "Rule|What it uses\nrandom|any candidate\nmajority vote|the most repeated answer\nverifier|accept probability tpr for right and fpr for wrong\ntrials|20000 per setting, seeded\nwrong answers|spread over 7 values (invented)"
    }
   },
   {

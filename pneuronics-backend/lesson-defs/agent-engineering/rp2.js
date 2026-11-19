@@ -72,38 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The decision chain",
-    "headingKn": "ನಿರ್ಧಾರ ಸರಪಳಿ",
-    "headers": [
-     "Check, in order",
-     "Result if it fails"
-    ],
-    "rows": [
-     [
-      "other safety gates",
-      "BLOCKED"
-     ],
-     [
-      "threshold evidence insufficient",
-      "PENDING_EVIDENCE"
-     ],
-     [
-      "mandatory mitigation unverified",
-      "BLOCKED"
-     ],
-     [
-      "crossed and case incomplete",
-      "PENDING_EVIDENCE"
-     ],
-     [
-      "crossed and review not approved",
-      "PENDING_REVIEW"
-     ],
-     [
-      "everything passes",
-      "APPROVED"
-     ]
-    ]
+    "captionEn": "The decision chain",
+    "captionKn": "ನಿರ್ಧಾರ ಸರಪಳಿ",
+    "rows": "Check, in order|Result if it fails\nother safety gates|BLOCKED\nthreshold evidence insufficient|PENDING_EVIDENCE\nmandatory mitigation unverified|BLOCKED\ncrossed and case incomplete|PENDING_EVIDENCE\ncrossed and review not approved|PENDING_REVIEW\neverything passes|APPROVED"
    }
   },
   {

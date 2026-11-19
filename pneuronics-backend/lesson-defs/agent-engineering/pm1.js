@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The session replayed",
-    "headingKn": "ಮರುಪ್ರದರ್ಶಿಸಿದ ಸೆಷನ್",
-    "headers": [
-     "Action category",
-     "Count in the 40-action session"
-    ],
-    "rows": [
-     [
-      "read",
-      "14"
-     ],
-     [
-      "edit",
-      "10"
-     ],
-     [
-      "safe_cmd",
-      "8"
-     ],
-     [
-      "risky_cmd, network, delete",
-      "3, 3 and 2"
-     ],
-     [
-      "modes",
-      "ask_always, default, accept_edits, plan, auto, bypass"
-     ]
-    ]
+    "captionEn": "The session replayed",
+    "captionKn": "ಮರುಪ್ರದರ್ಶಿಸಿದ ಸೆಷನ್",
+    "rows": "Action category|Count in the 40-action session\nread|14\nedit|10\nsafe_cmd|8\nrisky_cmd, network, delete|3, 3 and 2\nmodes|ask_always, default, accept_edits, plan, auto, bypass"
    }
   },
   {

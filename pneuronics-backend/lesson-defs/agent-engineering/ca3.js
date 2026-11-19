@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Invented per-category success rates",
-    "headingKn": "ಕಲ್ಪಿತ ವರ್ಗ-ವಾರು ಯಶಸ್ಸು ದರಗಳು",
-    "headers": [
-     "Category",
-     "Agent A / Agent B"
-    ],
-    "rows": [
-     [
-      "bugfix",
-      "0.80 / 0.60"
-     ],
-     [
-      "feature",
-      "0.40 / 0.65"
-     ],
-     [
-      "refactor",
-      "0.70 / 0.55"
-     ],
-     [
-      "test",
-      "0.90 / 0.60"
-     ],
-     [
-      "benchmark",
-      "100 tasks, memorized share 0, 10 or 30"
-     ]
-    ]
+    "captionEn": "Invented per-category success rates",
+    "captionKn": "ಕಲ್ಪಿತ ವರ್ಗ-ವಾರು ಯಶಸ್ಸು ದರಗಳು",
+    "rows": "Category|Agent A / Agent B\nbugfix|0.80 / 0.60\nfeature|0.40 / 0.65\nrefactor|0.70 / 0.55\ntest|0.90 / 0.60\nbenchmark|100 tasks, memorized share 0, 10 or 30"
    }
   },
   {

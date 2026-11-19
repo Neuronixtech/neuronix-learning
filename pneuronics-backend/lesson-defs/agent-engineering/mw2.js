@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Failure and response",
-    "headingKn": "ವೈಫಲ್ಯ ಮತ್ತು ಪ್ರತಿಕ್ರಿಯೆ",
-    "headers": [
-     "Condition",
-     "Response",
-     "Limit"
-    ],
-    "rows": [
-     [
-      "Malformed task",
-      "reject before touching files",
-      "does not check id uniqueness"
-     ],
-     [
-      "Truncated JSON",
-      "report corrupt, never default",
-      "needs a backup to restore"
-     ],
-     [
-      "Two files disagree",
-      "detect and reconcile",
-      "per-file atomicity is not a transaction"
-     ],
-     [
-      "Interrupted task",
-      "inspect the artifact, then decide",
-      "only as good as the checks"
-     ]
-    ]
+    "captionEn": "Failure and response",
+    "captionKn": "ವೈಫಲ್ಯ ಮತ್ತು ಪ್ರತಿಕ್ರಿಯೆ",
+    "rows": "Condition|Response|Limit\nMalformed task|reject before touching files|does not check id uniqueness\nTruncated JSON|report corrupt, never default|needs a backup to restore\nTwo files disagree|detect and reconcile|per-file atomicity is not a transaction\nInterrupted task|inspect the artifact, then decide|only as good as the checks"
    }
   },
   {

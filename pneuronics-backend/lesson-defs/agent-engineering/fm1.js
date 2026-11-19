@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The five rules of this part",
-    "headingKn": "ಈ ಭಾಗದ ಐದು ನಿಯಮಗಳು",
-    "headers": [
-     "Rule",
-     "Fires when",
-     "Known weakness"
-    ],
-    "rows": [
-     [
-      "hallucinated_action",
-      "called tool is not in the known set",
-      "exact string match: case or a trailing space counts"
-     ],
-     [
-      "scope_creep",
-      "tool is known but not allowed for the task",
-      "depends on the allowed set being right"
-     ],
-     [
-      "failed result",
-      "success is False or status is 400 or above",
-      "a result with neither signal is never a failure"
-     ],
-     [
-      "success_hallucination",
-      "a keyword like \"done\" after a failure",
-      "phrasing and negation"
-     ],
-     [
-      "possible_cascade",
-      "any tool call after the first failure",
-      "cannot tell recovery from a cascade"
-     ]
-    ]
+    "captionEn": "The five rules of this part",
+    "captionKn": "ಈ ಭಾಗದ ಐದು ನಿಯಮಗಳು",
+    "rows": "Rule|Fires when|Known weakness\nhallucinated_action|called tool is not in the known set|exact string match: case or a trailing space counts\nscope_creep|tool is known but not allowed for the task|depends on the allowed set being right\nfailed result|success is False or status is 400 or above|a result with neither signal is never a failure\nsuccess_hallucination|a keyword like \"done\" after a failure|phrasing and negation\npossible_cascade|any tool call after the first failure|cannot tell recovery from a cascade"
    }
   },
   {

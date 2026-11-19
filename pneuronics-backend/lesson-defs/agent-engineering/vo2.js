@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "What a cancel has to stop",
-    "headingKn": "Cancel ಏನನ್ನು ನಿಲ್ಲಿಸಬೇಕು",
-    "headers": [
-     "Stage",
-     "If not cancelled",
-     "Measured here"
-    ],
-    "rows": [
-     [
-      "TTS synthesis",
-      "keeps producing words",
-      "lag up to one chunk"
-     ],
-     [
-      "Transport buffer",
-      "plays queued words",
-      "12 extra words at buffer 10"
-     ],
-     [
-      "LLM generation",
-      "wastes tokens nobody hears",
-      "49 wasted tokens"
-     ]
-    ]
+    "captionEn": "What a cancel has to stop",
+    "captionKn": "Cancel ಏನನ್ನು ನಿಲ್ಲಿಸಬೇಕು",
+    "rows": "Stage|If not cancelled|Measured here\nTTS synthesis|keeps producing words|lag up to one chunk\nTransport buffer|plays queued words|12 extra words at buffer 10\nLLM generation|wastes tokens nobody hears|49 wasted tokens"
    }
   },
   {

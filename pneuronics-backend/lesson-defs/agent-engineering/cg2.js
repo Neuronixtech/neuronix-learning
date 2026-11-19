@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Layers in evaluation order",
-    "headingKn": "ಮೌಲ್ಯಮಾಪನ ಕ್ರಮದಲ್ಲಿ ಪದರಗಳು",
-    "headers": [
-     "Order",
-     "Check and denial reason"
-    ],
-    "rows": [
-     [
-      "1 to 3",
-      "kill switch, output tokens, context size"
-     ],
-     [
-      "4 to 6",
-      "task tokens, task dollars, turns"
-     ],
-     [
-      "7 and 8",
-      "tool allowlist and tool call cap"
-     ],
-     [
-      "9 to 11",
-      "velocity window, daily limit, monthly limit"
-     ],
-     [
-      "12",
-      "approval threshold of 25 dollars"
-     ]
-    ]
+    "captionEn": "Layers in evaluation order",
+    "captionKn": "ಮೌಲ್ಯಮಾಪನ ಕ್ರಮದಲ್ಲಿ ಪದರಗಳು",
+    "rows": "Order|Check and denial reason\n1 to 3|kill switch, output tokens, context size\n4 to 6|task tokens, task dollars, turns\n7 and 8|tool allowlist and tool call cap\n9 to 11|velocity window, daily limit, monthly limit\n12|approval threshold of 25 dollars"
    }
   },
   {

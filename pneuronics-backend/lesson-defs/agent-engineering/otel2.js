@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The six attributes",
-    "headingKn": "ಆರು attributes",
-    "headers": [
-     "Attribute",
-     "On which span",
-     "Why it matters"
-    ],
-    "rows": [
-     [
-      "gen_ai.provider.name",
-      "chat",
-      "group by who served the call"
-     ],
-     [
-      "gen_ai.request.model / response.model",
-      "chat",
-      "alias versus resolved version"
-     ],
-     [
-      "gen_ai.agent.name",
-      "invoke_agent",
-      "which agent"
-     ],
-     [
-      "gen_ai.operation.name",
-      "all",
-      "invoke_agent, chat or execute_tool"
-     ],
-     [
-      "gen_ai.data_source.id",
-      "retrieval tools",
-      "which corpus"
-     ]
-    ]
+    "captionEn": "The six attributes",
+    "captionKn": "ಆರು attributes",
+    "rows": "Attribute|On which span|Why it matters\ngen_ai.provider.name|chat|group by who served the call\ngen_ai.request.model / response.model|chat|alias versus resolved version\ngen_ai.agent.name|invoke_agent|which agent\ngen_ai.operation.name|all|invoke_agent, chat or execute_tool\ngen_ai.data_source.id|retrieval tools|which corpus"
    }
   },
   {

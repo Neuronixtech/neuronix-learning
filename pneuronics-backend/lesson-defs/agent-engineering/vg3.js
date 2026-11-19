@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Override rules",
-    "headingKn": "Override ನಿಯಮಗಳು",
-    "headers": [
-     "Check",
-     "Reason",
-     "Result in the lab"
-    ],
-    "rows": [
-     [
-      "task and finding match",
-      "an override applies to one thing",
-      "other task refused"
-     ],
-     [
-      "not expired",
-      "exceptions are temporary",
-      "expired refused"
-     ],
-     [
-      "signature valid",
-      "edits must be detected",
-      "edited expiry refused"
-     ],
-     [
-      "finding not protected",
-      "some blocks are never waived",
-      "scope violation refused"
-     ]
-    ]
+    "captionEn": "Override rules",
+    "captionKn": "Override ನಿಯಮಗಳು",
+    "rows": "Check|Reason|Result in the lab\ntask and finding match|an override applies to one thing|other task refused\nnot expired|exceptions are temporary|expired refused\nsignature valid|edits must be detected|edited expiry refused\nfinding not protected|some blocks are never waived|scope violation refused"
    }
   },
   {

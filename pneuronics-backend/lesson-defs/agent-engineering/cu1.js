@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Coordinate target versus semantic target",
-    "headingKn": "ನಿರ್ದೇಶಾಂಕ ಗುರಿ ಮತ್ತು ಅರ್ಥಪೂರ್ಣ ಗುರಿ",
-    "headers": [
-     "",
-     "Coordinates",
-     "Named element"
-    ],
-    "rows": [
-     [
-      "Stays valid when layout moves",
-      "no",
-      "yes, if re-resolved on the current screen"
-     ],
-     [
-      "Needs a fresh observation",
-      "yes, to be correct",
-      "yes, to find the name"
-     ],
-     [
-      "Easy to log and replay",
-      "yes",
-      "needs a screen model"
-     ]
-    ]
+    "captionEn": "Coordinate target versus semantic target",
+    "captionKn": "ನಿರ್ದೇಶಾಂಕ ಗುರಿ ಮತ್ತು ಅರ್ಥಪೂರ್ಣ ಗುರಿ",
+    "rows": "|Coordinates|Named element\nStays valid when layout moves|no|yes, if re-resolved on the current screen\nNeeds a fresh observation|yes, to be correct|yes, to find the name\nEasy to log and replay|yes|needs a screen model"
    }
   },
   {

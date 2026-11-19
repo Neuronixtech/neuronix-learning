@@ -72,38 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The gateway decisions",
-    "headingKn": "Gateway ನಿರ್ಧಾರಗಳು",
-    "headers": [
-     "Situation",
-     "Decision in the lab"
-    ],
-    "rows": [
-     [
-      "request needs image input",
-      "skip the primary, use the secondary"
-     ],
-     [
-      "restricted data, no approved provider",
-      "refuse"
-     ],
-     [
-      "rate limit or temporary error",
-      "retry with 200 ms, 400 ms backoff and jitter"
-     ],
-     [
-      "invalid request",
-      "raise at once, no retry, no fallback"
-     ],
-     [
-      "authentication failure",
-      "no retry, move to the secondary"
-     ],
-     [
-      "3 consecutive failures",
-      "open the breaker, probe after 5000 ms"
-     ]
-    ]
+    "captionEn": "The gateway decisions",
+    "captionKn": "Gateway ನಿರ್ಧಾರಗಳು",
+    "rows": "Situation|Decision in the lab\nrequest needs image input|skip the primary, use the secondary\nrestricted data, no approved provider|refuse\nrate limit or temporary error|retry with 200 ms, 400 ms backoff and jitter\ninvalid request|raise at once, no retry, no fallback\nauthentication failure|no retry, move to the secondary\n3 consecutive failures|open the breaker, probe after 5000 ms"
    }
   },
   {

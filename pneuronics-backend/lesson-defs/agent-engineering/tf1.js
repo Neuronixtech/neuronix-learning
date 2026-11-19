@@ -72,45 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The six fields",
-    "headingKn": "ಆರು ಕ್ಷೇತ್ರಗಳು",
-    "headers": [
-     "Field",
-     "Answers",
-     "Checked for"
-    ],
-    "rows": [
-     [
-      "goal",
-      "what behaviour changes",
-      "non-empty"
-     ],
-     [
-      "repository_facts",
-      "what is verified",
-      "claim and evidence receipt"
-     ],
-     [
-      "allowed_paths",
-      "where work may land",
-      "at least one, normalised"
-     ],
-     [
-      "forbidden_paths",
-      "what stays untouched",
-      "no overlap with allowed"
-     ],
-     [
-      "acceptance_commands",
-      "how success is shown",
-      "at least one non-blank"
-     ],
-     [
-      "unknowns",
-      "what is unresolved",
-      "question, category, action"
-     ]
-    ]
+    "captionEn": "The six fields",
+    "captionKn": "ಆರು ಕ್ಷೇತ್ರಗಳು",
+    "rows": "Field|Answers|Checked for\ngoal|what behaviour changes|non-empty\nrepository_facts|what is verified|claim and evidence receipt\nallowed_paths|where work may land|at least one, normalised\nforbidden_paths|what stays untouched|no overlap with allowed\nacceptance_commands|how success is shown|at least one non-blank\nunknowns|what is unresolved|question, category, action"
    }
   },
   {

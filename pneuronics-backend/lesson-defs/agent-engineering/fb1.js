@@ -72,45 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Routing table in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ರೂಟಿಂಗ್ ಕೋಷ್ಟಕ",
-    "headers": [
-     "Signal kind",
-     "Layer",
-     "Owner"
-    ],
-    "rows": [
-     [
-      "scope",
-      "scope_policy",
-      "platform"
-     ],
-     [
-      "format",
-      "schema_validator",
-      "api-team"
-     ],
-     [
-      "wrong_answer",
-      "test_suite",
-      "quality"
-     ],
-     [
-      "timeout",
-      "runtime_limits",
-      "sre"
-     ],
-     [
-      "preference",
-      "human_decision",
-      "product"
-     ],
-     [
-      "anything else",
-      "triage",
-      "triage-rota"
-     ]
-    ]
+    "captionEn": "Routing table in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ರೂಟಿಂಗ್ ಕೋಷ್ಟಕ",
+    "rows": "Signal kind|Layer|Owner\nscope|scope_policy|platform\nformat|schema_validator|api-team\nwrong_answer|test_suite|quality\ntimeout|runtime_limits|sre\npreference|human_decision|product\nanything else|triage|triage-rota"
    }
   },
   {

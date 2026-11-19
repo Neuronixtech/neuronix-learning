@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Probe levels",
-    "headingKn": "Probe ಹಂತಗಳು",
-    "headers": [
-     "Probe",
-     "Weak level",
-     "Stronger level"
-    ],
-    "rows": [
-     [
-      "dependencies",
-      "find_spec finds a file",
-      "import smoke test"
-     ],
-     [
-      "test command",
-      "which finds a name on PATH",
-      "run it with --version"
-     ],
-     [
-      "environment",
-      "value is truthy",
-      "format or live check, without printing"
-     ],
-     [
-      "probe wrapper",
-      "a crash aborts the run",
-      "catch and record the exception type"
-     ]
-    ]
+    "captionEn": "Probe levels",
+    "captionKn": "Probe ಹಂತಗಳು",
+    "rows": "Probe|Weak level|Stronger level\ndependencies|find_spec finds a file|import smoke test\ntest command|which finds a name on PATH|run it with --version\nenvironment|value is truthy|format or live check, without printing\nprobe wrapper|a crash aborts the run|catch and record the exception type"
    }
   },
   {

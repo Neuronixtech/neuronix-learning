@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The classifier and the data",
-    "headingKn": "ವರ್ಗೀಕಾರಕ ಮತ್ತು ದತ್ತಾಂಶ",
-    "headers": [
-     "Item",
-     "Setting"
-    ],
-    "rows": [
-     [
-      "stage 1",
-      "flags any of nine keywords, case-insensitive"
-     ],
-     [
-      "stage 2",
-      "flags eight specific dangerous patterns"
-     ],
-     [
-      "risky commands",
-      "8 templates, 40 percent of them disguised"
-     ],
-     [
-      "benign commands",
-      "10 templates"
-     ],
-     [
-      "set",
-      "400 commands, seed 1"
-     ]
-    ]
+    "captionEn": "The classifier and the data",
+    "captionKn": "ವರ್ಗೀಕಾರಕ ಮತ್ತು ದತ್ತಾಂಶ",
+    "rows": "Item|Setting\nstage 1|flags any of nine keywords, case-insensitive\nstage 2|flags eight specific dangerous patterns\nrisky commands|8 templates, 40 percent of them disguised\nbenign commands|10 templates\nset|400 commands, seed 1"
    }
   },
   {

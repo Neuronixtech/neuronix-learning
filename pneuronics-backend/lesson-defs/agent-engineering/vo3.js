@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Cascaded versus direct (assumed numbers)",
-    "headingKn": "Cascaded ಮತ್ತು direct (ಊಹಿಸಿದ ಸಂಖ್ಯೆಗಳು)",
-    "headers": [
-     "Design",
-     "Median time to first audio",
-     "p95"
-    ],
-    "rows": [
-     [
-      "cascaded, batch per stage",
-      "1,725 ms",
-      "2,315 ms"
-     ],
-     [
-      "cascaded, streaming",
-      "967 ms",
-      "1,385 ms"
-     ],
-     [
-      "direct audio model",
-      "599 ms",
-      "896 ms"
-     ]
-    ]
+    "captionEn": "Cascaded versus direct (assumed numbers)",
+    "captionKn": "Cascaded ಮತ್ತು direct (ಊಹಿಸಿದ ಸಂಖ್ಯೆಗಳು)",
+    "rows": "Design|Median time to first audio|p95\ncascaded, batch per stage|1,725 ms|2,315 ms\ncascaded, streaming|967 ms|1,385 ms\ndirect audio model|599 ms|896 ms"
    }
   },
   {

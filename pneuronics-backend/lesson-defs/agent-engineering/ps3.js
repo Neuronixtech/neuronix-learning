@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Required promotion evidence (lab list)",
-    "headingKn": "ಅಗತ್ಯ ಬಡ್ತಿ ಸಾಕ್ಷ್ಯ (ಲ್ಯಾಬ್ ಪಟ್ಟಿ)",
-    "headers": [
-     "Item",
-     "Counts only if"
-    ],
-    "rows": [
-     [
-      "slo_defined",
-      "present, passing, within 30 days"
-     ],
-     [
-      "monitoring_alert_tested",
-      "present, passing, within 30 days"
-     ],
-     [
-      "rollback_tested",
-      "present, passing, within 30 days"
-     ],
-     [
-      "privacy_review",
-      "present, passing, within 30 days"
-     ],
-     [
-      "on_call_owner",
-      "present, passing, within 30 days"
-     ]
-    ]
+    "captionEn": "Required promotion evidence (lab list)",
+    "captionKn": "ಅಗತ್ಯ ಬಡ್ತಿ ಸಾಕ್ಷ್ಯ (ಲ್ಯಾಬ್ ಪಟ್ಟಿ)",
+    "rows": "Item|Counts only if\nslo_defined|present, passing, within 30 days\nmonitoring_alert_tested|present, passing, within 30 days\nrollback_tested|present, passing, within 30 days\nprivacy_review|present, passing, within 30 days\non_call_owner|present, passing, within 30 days"
    }
   },
   {

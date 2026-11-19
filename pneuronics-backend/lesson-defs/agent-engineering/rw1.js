@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Requirements and tests",
-    "headingKn": "ಅವಶ್ಯಕತೆಗಳು ಮತ್ತು ಪರೀಕ್ಷೆಗಳು",
-    "headers": [
-     "Requirement",
-     "Test",
-     "Kind"
-    ],
-    "rows": [
-     [
-      "8 characters accepted",
-      "test_valid, test_boundary_eight_accepted",
-      "positive and boundary"
-     ],
-     [
-      "short rejected with a typed error",
-      "test_short_rejected",
-      "negative"
-     ],
-     [
-      "7 characters rejected",
-      "test_boundary_seven_rejected",
-      "boundary"
-     ],
-     [
-      "non-string rejected",
-      "test_non_string_rejected",
-      "negative"
-     ]
-    ]
+    "captionEn": "Requirements and tests",
+    "captionKn": "ಅವಶ್ಯಕತೆಗಳು ಮತ್ತು ಪರೀಕ್ಷೆಗಳು",
+    "rows": "Requirement|Test|Kind\n8 characters accepted|test_valid, test_boundary_eight_accepted|positive and boundary\nshort rejected with a typed error|test_short_rejected|negative\n7 characters rejected|test_boundary_seven_rejected|boundary\nnon-string rejected|test_non_string_rejected|negative"
    }
   },
   {

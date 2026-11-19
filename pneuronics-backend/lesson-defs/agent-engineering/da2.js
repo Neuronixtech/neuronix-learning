@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Candidates in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಅಭ್ಯರ್ಥಿಗಳು",
-    "headers": [
-     "Candidate",
-     "Behavior"
-    ],
-    "rows": [
-     [
-      "honest",
-      "computes 3x+5"
-     ],
-     [
-      "weak",
-      "computes 3x"
-     ],
-     [
-      "equal_cheat",
-      "returns an object whose == is always True"
-     ],
-     [
-      "tamper_cheat",
-      "empties the shared TESTS list when called"
-     ],
-     [
-      "evaluator",
-      "naive, or firewall with held-out cases"
-     ]
-    ]
+    "captionEn": "Candidates in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಅಭ್ಯರ್ಥಿಗಳು",
+    "rows": "Candidate|Behavior\nhonest|computes 3x+5\nweak|computes 3x\nequal_cheat|returns an object whose == is always True\ntamper_cheat|empties the shared TESTS list when called\nevaluator|naive, or firewall with held-out cases"
    }
   },
   {

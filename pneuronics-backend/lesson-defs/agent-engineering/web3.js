@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Four profiles in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನ ನಾಲ್ಕು ಪ್ರೊಫೈಲ್‌ಗಳು",
-    "headers": [
-     "Profile",
-     "Behaviour (assumed)",
-     "Expected cost"
-    ],
-    "rows": [
-     [
-      "expert",
-      "follows the 2-click path",
-      "none"
-     ],
-     [
-      "detour",
-      "follows a 5-click path",
-      "extra steps, always succeeds"
-     ],
-     [
-      "grounding-weak",
-      "noisy clicks, repeats misses",
-      "extra steps and some failures"
-     ],
-     [
-      "knowledge-weak",
-      "takes a wrong branch half the time",
-      "extra steps, recovers"
-     ]
-    ]
+    "captionEn": "Four profiles in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನ ನಾಲ್ಕು ಪ್ರೊಫೈಲ್‌ಗಳು",
+    "rows": "Profile|Behaviour (assumed)|Expected cost\nexpert|follows the 2-click path|none\ndetour|follows a 5-click path|extra steps, always succeeds\ngrounding-weak|noisy clicks, repeats misses|extra steps and some failures\nknowledge-weak|takes a wrong branch half the time|extra steps, recovers"
    }
   },
   {

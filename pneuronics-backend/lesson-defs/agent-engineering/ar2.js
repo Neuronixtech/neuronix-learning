@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Components of the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನ ಘಟಕಗಳು",
-    "headers": [
-     "Component",
-     "Behavior"
-    ],
-    "rows": [
-     [
-      "journal",
-      "each entry stores the hash of the previous entry"
-     ],
-     [
-      "verify",
-      "recomputes every hash and checks the links"
-     ],
-     [
-      "roles",
-      "proposer, reviewer, admin; unknown roles denied"
-     ],
-     [
-      "provenance",
-      "findings must cite earlier evidence entries"
-     ],
-     [
-      "head hash",
-      "the newest hash, kept outside the journal"
-     ]
-    ]
+    "captionEn": "Components of the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನ ಘಟಕಗಳು",
+    "rows": "Component|Behavior\njournal|each entry stores the hash of the previous entry\nverify|recomputes every hash and checks the links\nroles|proposer, reviewer, admin; unknown roles denied\nprovenance|findings must cite earlier evidence entries\nhead hash|the newest hash, kept outside the journal"
    }
   },
   {

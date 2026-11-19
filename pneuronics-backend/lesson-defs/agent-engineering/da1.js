@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Settings of the toy loop",
-    "headingKn": "ಆಟಿಕೆ ಲೂಪ್‌ನ ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
-    "headers": [
-     "Item",
-     "Lab setting"
-    ],
-    "rows": [
-     [
-      "operators",
-      "a1, a5, d2, t3, s1 (add 1, add 5, double, triple, subtract 1)"
-     ],
-     [
-      "target",
-      "3x + 5 (invented)"
-     ],
-     [
-      "training inputs",
-      "x from -5 to 5"
-     ],
-     [
-      "held-out inputs",
-      "x from 20 to 29"
-     ],
-     [
-      "mutation",
-      "insert, delete or replace one operator, length at most 6"
-     ]
-    ]
+    "captionEn": "Settings of the toy loop",
+    "captionKn": "ಆಟಿಕೆ ಲೂಪ್‌ನ ಸೆಟ್ಟಿಂಗ್‌ಗಳು",
+    "rows": "Item|Lab setting\noperators|a1, a5, d2, t3, s1 (add 1, add 5, double, triple, subtract 1)\ntarget|3x + 5 (invented)\ntraining inputs|x from -5 to 5\nheld-out inputs|x from 20 to 29\nmutation|insert, delete or replace one operator, length at most 6"
    }
   },
   {

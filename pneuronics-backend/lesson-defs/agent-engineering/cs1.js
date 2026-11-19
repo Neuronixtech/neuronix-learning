@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The screening tool",
-    "headingKn": "ಸ್ಕ್ರೀನಿಂಗ್ ಸಾಧನ",
-    "headers": [
-     "Part",
-     "What it does"
-    ],
-    "rows": [
-     [
-      "taxonomy",
-      "four categories, four phrases each"
-     ],
-     [
-      "matcher",
-      "word-boundary phrase match after normalisation"
-     ],
-     [
-      "report",
-      "findings with matched phrases, always human_review_required and pending"
-     ],
-     [
-      "mitigations",
-      "a recommended list per flagged category, copied so callers cannot edit the source"
-     ],
-     [
-      "limits",
-      "four sentences carried in every report"
-     ]
-    ]
+    "captionEn": "The screening tool",
+    "captionKn": "ಸ್ಕ್ರೀನಿಂಗ್ ಸಾಧನ",
+    "rows": "Part|What it does\ntaxonomy|four categories, four phrases each\nmatcher|word-boundary phrase match after normalisation\nreport|findings with matched phrases, always human_review_required and pending\nmitigations|a recommended list per flagged category, copied so callers cannot edit the source\nlimits|four sentences carried in every report"
    }
   },
   {

@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Pasted aggregation versus run_robust",
-    "headingKn": "ಅಂಟಿಸಿದ aggregation ಮತ್ತು run_robust ಹೋಲಿಕೆ",
-    "headers": [
-     "",
-     "run_pasted (as_completed)",
-     "run_robust"
-    ],
-    "rows": [
-     [
-      "Result order",
-      "completion order",
-      "input order"
-     ],
-     [
-      "One worker fails",
-      "exception, other results lost",
-      "status per worker"
-     ],
-     [
-      "Timeout",
-      "none",
-      "per-result timeout (does not stop the thread)"
-     ]
-    ]
+    "captionEn": "Pasted aggregation versus run_robust",
+    "captionKn": "ಅಂಟಿಸಿದ aggregation ಮತ್ತು run_robust ಹೋಲಿಕೆ",
+    "rows": "|run_pasted (as_completed)|run_robust\nResult order|completion order|input order\nOne worker fails|exception, other results lost|status per worker\nTimeout|none|per-result timeout (does not stop the thread)"
    }
   },
   {

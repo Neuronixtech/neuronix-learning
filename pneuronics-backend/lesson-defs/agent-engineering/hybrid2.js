@@ -62,34 +62,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "How each store treats an update",
-    "headingKn": "ಪ್ರತಿ ಸಂಗ್ರಹ ನವೀಕರಣವನ್ನು ಹೇಗೆ ನಿರ್ವಹಿಸುತ್ತದೆ",
-    "headers": [
-     "Store",
-     "Old fact",
-     "New fact",
-     "Answers"
-    ],
-    "rows": [
-     [
-      "Vector",
-      "Kept",
-      "Appended",
-      "What was ever said"
-     ],
-     [
-      "KV",
-      "Overwritten under the same key",
-      "Becomes the current value",
-      "What is true now"
-     ],
-     [
-      "Graph",
-      "Marked invalid, not deleted",
-      "New valid edge",
-      "What was true when"
-     ]
-    ]
+    "captionEn": "How each store treats an update",
+    "captionKn": "ಪ್ರತಿ ಸಂಗ್ರಹ ನವೀಕರಣವನ್ನು ಹೇಗೆ ನಿರ್ವಹಿಸುತ್ತದೆ",
+    "rows": "Store|Old fact|New fact|Answers\nVector|Kept|Appended|What was ever said\nKV|Overwritten under the same key|Becomes the current value|What is true now\nGraph|Marked invalid, not deleted|New valid edge|What was true when"
    }
   },
   {

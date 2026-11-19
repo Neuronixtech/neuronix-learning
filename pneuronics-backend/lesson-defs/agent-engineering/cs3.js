@@ -72,38 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The five controls and the tests",
-    "headingKn": "ಐದು ನಿಯಂತ್ರಣಗಳು ಮತ್ತು ಪರೀಕ್ಷೆಗಳು",
-    "headers": [
-     "Control",
-     "Test result against the broken version"
-    ],
-    "rows": [
-     [
-      "approval gate",
-      "caught, an approval for another target is refused"
-     ],
-     [
-      "file scope",
-      "caught, a look-alike folder and the monitoring file are refused"
-     ],
-     [
-      "kill switch",
-      "caught, stops at step 4 of 10"
-     ],
-     [
-      "rollback, strong hash test",
-      "caught"
-     ],
-     [
-      "rollback, weak key-count test",
-      "MISSED, passes on both"
-     ],
-     [
-      "credential scope",
-      "caught"
-     ]
-    ]
+    "captionEn": "The five controls and the tests",
+    "captionKn": "ಐದು ನಿಯಂತ್ರಣಗಳು ಮತ್ತು ಪರೀಕ್ಷೆಗಳು",
+    "rows": "Control|Test result against the broken version\napproval gate|caught, an approval for another target is refused\nfile scope|caught, a look-alike folder and the monitoring file are refused\nkill switch|caught, stops at step 4 of 10\nrollback, strong hash test|caught\nrollback, weak key-count test|MISSED, passes on both\ncredential scope|caught"
    }
   },
   {

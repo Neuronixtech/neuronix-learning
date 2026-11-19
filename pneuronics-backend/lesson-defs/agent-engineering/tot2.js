@@ -277,40 +277,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Beam search versus MCTS",
-    "headingKn": "Beam search ಮತ್ತು MCTS",
-    "headers": [
-     "Property",
-     "Beam search",
-     "MCTS / LATS"
-    ],
-    "rows": [
-     [
-      "Decision style",
-      "Rank each level, keep top B, discard the rest",
-      "Allocate one rollout at a time using UCT"
-     ],
-     [
-      "Evidence per node",
-      "One score",
-      "Visits, total reward and Q"
-     ],
-     [
-      "Revisiting",
-      "Pruned branches are gone",
-      "Any branch can be revisited"
-     ],
-     [
-      "State kept",
-      "The frontier",
-      "A persistent tree with parent pointers"
-     ],
-     [
-      "Cost shape",
-      "beam x breadth x depth",
-      "iterations x (select + expand + rollout + value)"
-     ]
-    ]
+    "captionEn": "Beam search versus MCTS",
+    "captionKn": "Beam search ಮತ್ತು MCTS",
+    "rows": "Property|Beam search|MCTS / LATS\nDecision style|Rank each level, keep top B, discard the rest|Allocate one rollout at a time using UCT\nEvidence per node|One score|Visits, total reward and Q\nRevisiting|Pruned branches are gone|Any branch can be revisited\nState kept|The frontier|A persistent tree with parent pointers\nCost shape|beam x breadth x depth|iterations x (select + expand + rollout + value)"
    }
   },
   {

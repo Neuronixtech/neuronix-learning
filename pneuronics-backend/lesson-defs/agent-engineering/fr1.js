@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Control layers",
-    "headingKn": "ನಿಯಂತ್ರಣ ಪದರಗಳು",
-    "headers": [
-     "Cause",
-     "Layer",
-     "Example control"
-    ],
-    "rows": [
-     [
-      "off_scope_edit",
-      "scope_policy",
-      "allowed paths"
-     ],
-     [
-      "missing_field",
-      "type_or_schema",
-      "response validator"
-     ],
-     [
-      "wrong_result",
-      "test",
-      "regression test"
-     ],
-     [
-      "wrong_command",
-      "automation",
-      "one scripted command"
-     ],
-     [
-      "policy_disagreement",
-      "human_decision",
-      "decision record"
-     ]
-    ]
+    "captionEn": "Control layers",
+    "captionKn": "ನಿಯಂತ್ರಣ ಪದರಗಳು",
+    "rows": "Cause|Layer|Example control\noff_scope_edit|scope_policy|allowed paths\nmissing_field|type_or_schema|response validator\nwrong_result|test|regression test\nwrong_command|automation|one scripted command\npolicy_disagreement|human_decision|decision record"
    }
   },
   {

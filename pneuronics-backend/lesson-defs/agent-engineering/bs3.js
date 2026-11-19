@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Checks in the improver, in order",
-    "headingKn": "improver ನ ಪರಿಶೀಲನೆಗಳು, ಕ್ರಮದಲ್ಲಿ",
-    "headers": [
-     "Order",
-     "Check"
-    ],
-    "rows": [
-     [
-      "1",
-      "the test suite has not changed from its baseline"
-     ],
-     [
-      "2",
-      "no parameter moves more than max_step"
-     ],
-     [
-      "3",
-      "distance from the anchor is within the radius"
-     ],
-     [
-      "4",
-      "safety is at or above the floor"
-     ],
-     [
-      "5",
-      "capability rises, then every regression test passes"
-     ]
-    ]
+    "captionEn": "Checks in the improver, in order",
+    "captionKn": "improver ನ ಪರಿಶೀಲನೆಗಳು, ಕ್ರಮದಲ್ಲಿ",
+    "rows": "Order|Check\n1|the test suite has not changed from its baseline\n2|no parameter moves more than max_step\n3|distance from the anchor is within the radius\n4|safety is at or above the floor\n5|capability rises, then every regression test passes"
    }
   },
   {

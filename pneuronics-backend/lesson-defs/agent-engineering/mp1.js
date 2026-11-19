@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The numbers",
-    "headingKn": "ಸಂಖ್ಯೆಗಳು",
-    "headers": [
-     "Item",
-     "Value in the lab"
-    ],
-    "rows": [
-     [
-      "five stages of one request",
-      "20 + 15 + 65 + 2000 + 30 = 2130 ms"
-     ],
-     [
-      "500 tokens at 30 ms after a 100 ms TTFT",
-      "15070 ms"
-     ],
-     [
-      "M/M/1 at 80 and 95 per second against 100",
-      "W = 0.05 s and 0.2 s"
-     ],
-     [
-      "reserved 6,00,000 against 12,00,000 on demand",
-      "break-even 50 percent"
-     ],
-     [
-      "reservation used at 20 percent",
-      "each unit of work costs 5 times the full-use price"
-     ]
-    ]
+    "captionEn": "The numbers",
+    "captionKn": "ಸಂಖ್ಯೆಗಳು",
+    "rows": "Item|Value in the lab\nfive stages of one request|20 + 15 + 65 + 2000 + 30 = 2130 ms\n500 tokens at 30 ms after a 100 ms TTFT|15070 ms\nM/M/1 at 80 and 95 per second against 100|W = 0.05 s and 0.2 s\nreserved 6,00,000 against 12,00,000 on demand|break-even 50 percent\nreservation used at 20 percent|each unit of work costs 5 times the full-use price"
    }
   },
   {

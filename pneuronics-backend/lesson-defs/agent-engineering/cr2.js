@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The four scenarios",
-    "headingKn": "ನಾಲ್ಕು ಸನ್ನಿವೇಶಗಳು",
-    "headers": [
-     "Scenario",
-     "Result"
-    ],
-    "rows": [
-     [
-      "clean",
-      "COMMITTED, inventory 90, 1 operation"
-     ],
-     [
-      "crash after the side effect",
-      "COMMITTED, inventory 90, still 1 operation"
-     ],
-     [
-      "wrong expected quantity",
-      "ABORTED, inventory 100, 0 operations"
-     ],
-     [
-      "forced verification failure",
-      "ROLLED_BACK, inventory 100"
-     ]
-    ]
+    "captionEn": "The four scenarios",
+    "captionKn": "ನಾಲ್ಕು ಸನ್ನಿವೇಶಗಳು",
+    "rows": "Scenario|Result\nclean|COMMITTED, inventory 90, 1 operation\ncrash after the side effect|COMMITTED, inventory 90, still 1 operation\nwrong expected quantity|ABORTED, inventory 100, 0 operations\nforced verification failure|ROLLED_BACK, inventory 100"
    }
   },
   {

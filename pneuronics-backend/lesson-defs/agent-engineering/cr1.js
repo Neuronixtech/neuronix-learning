@@ -72,38 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The building blocks",
-    "headingKn": "ಘಟಕಗಳು",
-    "headers": [
-     "Piece",
-     "What it answers"
-    ],
-    "rows": [
-     [
-      "state machine",
-      "which moves are legal: 8 of 56 ordered pairs"
-     ],
-     [
-      "checkpoint",
-      "where did the workflow stop, written with its history in one transaction"
-     ],
-     [
-      "version",
-      "is this writer looking at the latest state"
-     ],
-     [
-      "lease and token",
-      "which worker may continue, with a token that only grows"
-     ],
-     [
-      "fenced resource",
-      "reject a write whose token is older than one already seen"
-     ],
-     [
-      "reconcile",
-      "does the effect already exist"
-     ]
-    ]
+    "captionEn": "The building blocks",
+    "captionKn": "ಘಟಕಗಳು",
+    "rows": "Piece|What it answers\nstate machine|which moves are legal: 8 of 56 ordered pairs\ncheckpoint|where did the workflow stop, written with its history in one transaction\nversion|is this writer looking at the latest state\nlease and token|which worker may continue, with a token that only grows\nfenced resource|reject a write whose token is older than one already seen\nreconcile|does the effect already exist"
    }
   },
   {

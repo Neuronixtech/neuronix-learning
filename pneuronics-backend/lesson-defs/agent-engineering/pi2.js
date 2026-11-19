@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Checks in the Part 2 validator",
-    "headingKn": "ಭಾಗ 2 validator ನ ಪರಿಶೀಲನೆಗಳು",
-    "headers": [
-     "Check",
-     "Question",
-     "Weak point"
-    ],
-    "rows": [
-     [
-      "intent binding",
-      "is this tool bound to the current task",
-      "depends on who builds the Intent"
-     ],
-     [
-      "origin",
-      "did the user or some content request a sensitive tool",
-      "the origin label must be set by trusted code"
-     ],
-     [
-      "schema",
-      "required, optional and unexpected arguments",
-      "says nothing about values"
-     ],
-     [
-      "recursive scan",
-      "injection-shaped text at any depth and in keys",
-      "text split across fields"
-     ],
-     [
-      "domain",
-      "is the host allowed",
-      "depends on how the host is parsed"
-     ]
-    ]
+    "captionEn": "Checks in the Part 2 validator",
+    "captionKn": "ಭಾಗ 2 validator ನ ಪರಿಶೀಲನೆಗಳು",
+    "rows": "Check|Question|Weak point\nintent binding|is this tool bound to the current task|depends on who builds the Intent\norigin|did the user or some content request a sensitive tool|the origin label must be set by trusted code\nschema|required, optional and unexpected arguments|says nothing about values\nrecursive scan|injection-shaped text at any depth and in keys|text split across fields\ndomain|is the host allowed|depends on how the host is parsed"
    }
   },
   {

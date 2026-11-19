@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Gate verdicts over records",
-    "headingKn": "ದಾಖಲೆಗಳ ಮೇಲಿನ Gate ತೀರ್ಪುಗಳು",
-    "headers": [
-     "Situation",
-     "Verdict",
-     "Reason"
-    ],
-    "rows": [
-     [
-      "no record for the command",
-      "BLOCK",
-      "nothing to check"
-     ],
-     [
-      "fresh record, exit 0",
-      "ALLOW",
-      "evidence supports the claim"
-     ],
-     [
-      "record older than the latest edit",
-      "BLOCK",
-      "it describes older code"
-     ],
-     [
-      "record with non-zero exit",
-      "BLOCK",
-      "the command failed"
-     ]
-    ]
+    "captionEn": "Gate verdicts over records",
+    "captionKn": "ದಾಖಲೆಗಳ ಮೇಲಿನ Gate ತೀರ್ಪುಗಳು",
+    "rows": "Situation|Verdict|Reason\nno record for the command|BLOCK|nothing to check\nfresh record, exit 0|ALLOW|evidence supports the claim\nrecord older than the latest edit|BLOCK|it describes older code\nrecord with non-zero exit|BLOCK|the command failed"
    }
   },
   {

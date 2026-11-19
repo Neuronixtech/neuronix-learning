@@ -72,38 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The measurements",
-    "headingKn": "ಮಾಪನಗಳು",
-    "headers": [
-     "Experiment",
-     "Result in the lab"
-    ],
-    "rows": [
-     [
-      "mixed workloads",
-      "provider A built 10 percent slower looked faster overall"
-     ],
-     [
-      "attribution of a shared bill",
-      "by tokens 42.5, 32.0 and 25.5 percent against 33.3 equal and 18.8, 6.2 and 75.0 by count"
-     ],
-     [
-      "reconciliation",
-      "estimate 63.21 against a bill of 67.64, 6.5 percent unattributed"
-     ],
-     [
-      "redaction",
-      "email, card and phone replaced, name and address missed"
-     ],
-     [
-      "fallback evaluation",
-      "95 from 90 needs 434 items, 95 from 93 needs 2210"
-     ],
-     [
-      "readiness check",
-      "9 of 12 pass"
-     ]
-    ]
+    "captionEn": "The measurements",
+    "captionKn": "ಮಾಪನಗಳು",
+    "rows": "Experiment|Result in the lab\nmixed workloads|provider A built 10 percent slower looked faster overall\nattribution of a shared bill|by tokens 42.5, 32.0 and 25.5 percent against 33.3 equal and 18.8, 6.2 and 75.0 by count\nreconciliation|estimate 63.21 against a bill of 67.64, 6.5 percent unattributed\nredaction|email, card and phone replaced, name and address missed\nfallback evaluation|95 from 90 needs 434 items, 95 from 93 needs 2210\nreadiness check|9 of 12 pass"
    }
   },
   {

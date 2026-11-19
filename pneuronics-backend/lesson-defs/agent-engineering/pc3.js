@@ -72,42 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The nine experiments",
-    "headingKn": "ಒಂಬತ್ತು ಪ್ರಯೋಗಗಳು",
-    "headers": [
-     "Experiment",
-     "What the lab shows"
-    ],
-    "rows": [
-     [
-      "unique constraint",
-      "a repeat returns the stored proposal, a changed payload raises a conflict"
-     ],
-     [
-      "expiry",
-      "claim at 999 works, claim at 1000 is refused"
-     ],
-     [
-      "race",
-      "8 threads, atomic claim against read-then-write claim"
-     ],
-     [
-      "resource version",
-      "version 7 claims, version 8 is refused"
-     ],
-     [
-      "kill switch",
-      "refused while on, claimed after it is off"
-     ],
-     [
-      "outbox",
-      "5 rows, 5 or 10 effects by provider type"
-     ],
-     [
-      "audit and dual approval",
-      "hash chain with an anchor and a two-reviewer rule"
-     ]
-    ]
+    "captionEn": "The nine experiments",
+    "captionKn": "ಒಂಬತ್ತು ಪ್ರಯೋಗಗಳು",
+    "rows": "Experiment|What the lab shows\nunique constraint|a repeat returns the stored proposal, a changed payload raises a conflict\nexpiry|claim at 999 works, claim at 1000 is refused\nrace|8 threads, atomic claim against read-then-write claim\nresource version|version 7 claims, version 8 is refused\nkill switch|refused while on, claimed after it is off\noutbox|5 rows, 5 or 10 effects by provider type\naudit and dual approval|hash chain with an anchor and a two-reviewer rule"
    }
   },
   {

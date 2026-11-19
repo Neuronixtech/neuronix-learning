@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Setup of the experiment",
-    "headingKn": "ಪ್ರಯೋಗದ ಸೆಟಪ್",
-    "headers": [
-     "Item",
-     "Lab setting"
-    ],
-    "rows": [
-     [
-      "seeds",
-      "1 to 20"
-     ],
-     [
-      "generations",
-      "150"
-     ],
-     [
-      "cheat mutation rate",
-      "0.05 (also 0, 0.01, 0.2)"
-     ],
-     [
-      "naive scorer",
-      "cheater scores 1.0"
-     ],
-     [
-      "firewall scorer",
-      "cheater scores 0.0"
-     ]
-    ]
+    "captionEn": "Setup of the experiment",
+    "captionKn": "ಪ್ರಯೋಗದ ಸೆಟಪ್",
+    "rows": "Item|Lab setting\nseeds|1 to 20\ngenerations|150\ncheat mutation rate|0.05 (also 0, 0.01, 0.2)\nnaive scorer|cheater scores 1.0\nfirewall scorer|cheater scores 0.0"
    }
   },
   {

@@ -284,73 +284,17 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "ReAct, ReWOO, Plan-and-Execute and Plan-and-Act",
-    "headingKn": "ReAct, ReWOO, Plan-and-Execute ಮತ್ತು Plan-and-Act",
-    "headers": [
-     "Pattern",
-     "Core idea",
-     "Best fit"
-    ],
-    "rows": [
-     [
-      "ReAct",
-      "Reason after every observation",
-      "Short, reactive or unknown environments"
-     ],
-     [
-      "ReWOO",
-      "Plan once, execute, solve",
-      "Structured, predictable tool workflows with independent steps"
-     ],
-     [
-      "Plan-and-Execute",
-      "Plan, execute, replan on events",
-      "Predictable workflow whose results sometimes force a new strategy"
-     ],
-     [
-      "Plan-and-Act",
-      "High-level plan plus low-level actions",
-      "Long-horizon web, mobile and computer-use tasks"
-     ],
-     [
-      "Tree of Thoughts",
-      "Search over alternative reasoning paths",
-      "Next lesson: problems where branching and backtracking help"
-     ]
-    ]
+    "captionEn": "ReAct, ReWOO, Plan-and-Execute and Plan-and-Act",
+    "captionKn": "ReAct, ReWOO, Plan-and-Execute ಮತ್ತು Plan-and-Act",
+    "rows": "Pattern|Core idea|Best fit\nReAct|Reason after every observation|Short, reactive or unknown environments\nReWOO|Plan once, execute, solve|Structured, predictable tool workflows with independent steps\nPlan-and-Execute|Plan, execute, replan on events|Predictable workflow whose results sometimes force a new strategy\nPlan-and-Act|High-level plan plus low-level actions|Long-horizon web, mobile and computer-use tasks\nTree of Thoughts|Search over alternative reasoning paths|Next lesson: problems where branching and backtracking help"
    }
   },
   {
    "type": "table",
    "data": {
-    "headingEn": "Five questions for choosing",
-    "headingKn": "ಆರಿಸಲು ಐದು ಪ್ರಶ್ನೆಗಳು",
-    "headers": [
-     "Question",
-     "If yes"
-    ],
-    "rows": [
-     [
-      "Can most steps be predicted before the first tool runs?",
-      "Plan first (ReWOO or Plan-and-Execute)"
-     ],
-     [
-      "Are several operations independent?",
-      "A DAG exposes parallelism"
-     ],
-     [
-      "Is the environment unpredictable?",
-      "Prefer ReAct or frequent replanning"
-     ],
-     [
-      "Is the task long (30 or more actions)?",
-      "Keep an explicit high-level plan"
-     ],
-     [
-      "Is repeated model reasoning expensive?",
-      "Concentrate model calls in planning and solving"
-     ]
-    ]
+    "captionEn": "Five questions for choosing",
+    "captionKn": "ಆರಿಸಲು ಐದು ಪ್ರಶ್ನೆಗಳು",
+    "rows": "Question|If yes\nCan most steps be predicted before the first tool runs?|Plan first (ReWOO or Plan-and-Execute)\nAre several operations independent?|A DAG exposes parallelism\nIs the environment unpredictable?|Prefer ReAct or frequent replanning\nIs the task long (30 or more actions)?|Keep an explicit high-level plan\nIs repeated model reasoning expensive?|Concentrate model calls in planning and solving"
    }
   },
   {

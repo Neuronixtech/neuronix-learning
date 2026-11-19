@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Evaluation kinds",
-    "headingKn": "Evaluation ಪ್ರಕಾರಗಳು",
-    "headers": [
-     "Kind",
-     "Strength",
-     "Weakness"
-    ],
-    "rows": [
-     [
-      "deterministic check",
-      "cheap, repeatable",
-      "rigid; misses paraphrase"
-     ],
-     [
-      "model judge",
-      "handles meaning",
-      "varies; needs a rubric and evidence"
-     ],
-     [
-      "guardrail",
-      "can block before delivery",
-      "a miss is a safety gap"
-     ]
-    ]
+    "captionEn": "Evaluation kinds",
+    "captionKn": "Evaluation ಪ್ರಕಾರಗಳು",
+    "rows": "Kind|Strength|Weakness\ndeterministic check|cheap, repeatable|rigid; misses paraphrase\nmodel judge|handles meaning|varies; needs a rubric and evidence\nguardrail|can block before delivery|a miss is a safety gap"
    }
   },
   {

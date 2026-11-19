@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Evaluator choices",
-    "headingKn": "ಮೌಲ್ಯಮಾಪಕ ಆಯ್ಕೆಗಳು",
-    "headers": [
-     "Evaluator",
-     "Strength",
-     "Weakness"
-    ],
-    "rows": [
-     [
-      "Execution judge",
-      "objective, no model",
-      "only for tasks with executable semantics"
-     ],
-     [
-      "Keyword judge",
-      "cheap and deterministic",
-      "false positives and negatives"
-     ],
-     [
-      "Hard gate",
-      "one critical failure blocks",
-      "needs a clear definition of critical"
-     ],
-     [
-      "Average score",
-      "summarises many cases",
-      "lets a critical failure hide"
-     ]
-    ]
+    "captionEn": "Evaluator choices",
+    "captionKn": "ಮೌಲ್ಯಮಾಪಕ ಆಯ್ಕೆಗಳು",
+    "rows": "Evaluator|Strength|Weakness\nExecution judge|objective, no model|only for tasks with executable semantics\nKeyword judge|cheap and deterministic|false positives and negatives\nHard gate|one critical failure blocks|needs a clear definition of critical\nAverage score|summarises many cases|lets a critical failure hide"
    }
   },
   {

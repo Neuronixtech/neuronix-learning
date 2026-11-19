@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Gate inputs",
-    "headingKn": "Gate ಒಳಹರಿವುಗಳು",
-    "headers": [
-     "Input",
-     "Blocks when",
-     "Lab reason text"
-    ],
-    "rows": [
-     [
-      "tests",
-      "failing",
-      "tests failing"
-     ],
-     [
-      "constraints",
-      "violated",
-      "constraint violated"
-     ],
-     [
-      "outcome",
-      "too few samples",
-      "outcome not measured"
-     ],
-     [
-      "outcome",
-      "median above target",
-      "outcome target not met"
-     ]
-    ]
+    "captionEn": "Gate inputs",
+    "captionKn": "Gate ಒಳಹರಿವುಗಳು",
+    "rows": "Input|Blocks when|Lab reason text\ntests|failing|tests failing\nconstraints|violated|constraint violated\noutcome|too few samples|outcome not measured\noutcome|median above target|outcome target not met"
    }
   },
   {

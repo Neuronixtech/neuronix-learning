@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Record outcomes",
-    "headingKn": "ದಾಖಲೆ ಫಲಿತಾಂಶಗಳು",
-    "headers": [
-     "Outcome",
-     "exit_code",
-     "Other fields"
-    ],
-    "rows": [
-     [
-      "succeeded",
-      "0",
-      "stdout, duration"
-     ],
-     [
-      "failed",
-      "non-zero",
-      "stderr has the reason"
-     ],
-     [
-      "timed out",
-      "none",
-      "timed_out is true"
-     ],
-     [
-      "could not launch",
-      "none",
-      "infrastructure_error names the exception"
-     ]
-    ]
+    "captionEn": "Record outcomes",
+    "captionKn": "ದಾಖಲೆ ಫಲಿತಾಂಶಗಳು",
+    "rows": "Outcome|exit_code|Other fields\nsucceeded|0|stdout, duration\nfailed|non-zero|stderr has the reason\ntimed out|none|timed_out is true\ncould not launch|none|infrastructure_error names the exception"
    }
   },
   {

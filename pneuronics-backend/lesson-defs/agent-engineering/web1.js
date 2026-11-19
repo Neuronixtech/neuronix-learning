@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Goal checks compared",
-    "headingKn": "ಗುರಿ ಪರಿಶೀಲನೆಗಳ ಹೋಲಿಕೆ",
-    "headers": [
-     "Check",
-     "Accepts",
-     "Misses"
-    ],
-    "rows": [
-     [
-      "target in cart",
-      "extra items, duplicates",
-      "a keyboard bought on the way"
-     ],
-     [
-      "cart equals target",
-      "only the exact cart",
-      "purchases already made"
-     ],
-     [
-      "orders equal target",
-      "exactly one order of the target",
-      "little; needs a clean reset"
-     ]
-    ]
+    "captionEn": "Goal checks compared",
+    "captionKn": "ಗುರಿ ಪರಿಶೀಲನೆಗಳ ಹೋಲಿಕೆ",
+    "rows": "Check|Accepts|Misses\ntarget in cart|extra items, duplicates|a keyboard bought on the way\ncart equals target|only the exact cart|purchases already made\norders equal target|exactly one order of the target|little; needs a clean reset"
    }
   },
   {

@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Reads per round (counted in the lab)",
-    "headingKn": "ಪ್ರತಿ ಸುತ್ತಿಗೆ ಓದುವಿಕೆ (ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಎಣಿಸಿದ್ದು)",
-    "headers": [
-     "Agents",
-     "Full mesh",
-     "Hub-and-spoke",
-     "Ring"
-    ],
-    "rows": [
-     [
-      "5",
-      "20",
-      "8",
-      "10"
-     ],
-     [
-      "12",
-      "132",
-      "22",
-      "24"
-     ],
-     [
-      "20",
-      "380",
-      "38",
-      "40"
-     ]
-    ]
+    "captionEn": "Reads per round (counted in the lab)",
+    "captionKn": "ಪ್ರತಿ ಸುತ್ತಿಗೆ ಓದುವಿಕೆ (ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಎಣಿಸಿದ್ದು)",
+    "rows": "Agents|Full mesh|Hub-and-spoke|Ring\n5|20|8|10\n12|132|22|24\n20|380|38|40"
    }
   },
   {

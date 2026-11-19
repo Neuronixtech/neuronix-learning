@@ -326,38 +326,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Node states in a production executor",
-    "headingKn": "Production executor ನಲ್ಲಿ ನೋಡ್ ಸ್ಥಿತಿಗಳು",
-    "headers": [
-     "State",
-     "Meaning"
-    ],
-    "rows": [
-     [
-      "PENDING",
-      "Waiting for dependencies"
-     ],
-     [
-      "READY",
-      "All dependencies have evidence"
-     ],
-     [
-      "RUNNING",
-      "Dispatched to a worker"
-     ],
-     [
-      "SUCCEEDED",
-      "Evidence stored with ok=True"
-     ],
-     [
-      "FAILED",
-      "Evidence stored with ok=False"
-     ],
-     [
-      "BLOCKED / SKIPPED",
-      "A dependency failed, so this node did not run (our run shows it as a failed result)"
-     ]
-    ]
+    "captionEn": "Node states in a production executor",
+    "captionKn": "Production executor ನಲ್ಲಿ ನೋಡ್ ಸ್ಥಿತಿಗಳು",
+    "rows": "State|Meaning\nPENDING|Waiting for dependencies\nREADY|All dependencies have evidence\nRUNNING|Dispatched to a worker\nSUCCEEDED|Evidence stored with ok=True\nFAILED|Evidence stored with ok=False\nBLOCKED / SKIPPED|A dependency failed, so this node did not run (our run shows it as a failed result)"
    }
   },
   {

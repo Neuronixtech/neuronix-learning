@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The layers",
-    "headingKn": "ಪದರಗಳು",
-    "headers": [
-     "Layer",
-     "What the lab checks"
-    ],
-    "rows": [
-     [
-      "input guard",
-      "keyword classification then allow, review or block"
-     ],
-     [
-      "permission",
-      "orders:read, refunds:prepare, refunds:commit"
-     ],
-     [
-      "ownership",
-      "a user may read only an order they own"
-     ],
-     [
-      "approval and commit",
-      "commit refused until approved, repeat returns the stored result"
-     ],
-     [
-      "escalation",
-      "the third denied attempt escalates the session"
-     ]
-    ]
+    "captionEn": "The layers",
+    "captionKn": "ಪದರಗಳು",
+    "rows": "Layer|What the lab checks\ninput guard|keyword classification then allow, review or block\npermission|orders:read, refunds:prepare, refunds:commit\nownership|a user may read only an order they own\napproval and commit|commit refused until approved, repeat returns the stored result\nescalation|the third denied attempt escalates the session"
    }
   },
   {

@@ -81,40 +81,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Five patterns, five questions",
-    "headingKn": "ಐದು ಮಾದರಿಗಳು, ಐದು ಪ್ರಶ್ನೆಗಳು",
-    "headers": [
-     "Pattern",
-     "Question it answers",
-     "Shape"
-    ],
-    "rows": [
-     [
-      "Prompt chaining",
-      "What fixed step comes next?",
-      "Sequence"
-     ],
-     [
-      "Routing",
-      "Which predefined path applies?",
-      "Branch"
-     ],
-     [
-      "Parallelization",
-      "What independent work can run together?",
-      "Fan-out, fan-in"
-     ],
-     [
-      "Orchestrator-workers",
-      "Which workers does this task need?",
-      "Dynamic decomposition"
-     ],
-     [
-      "Evaluator-optimizer",
-      "Is the output good enough yet?",
-      "Bounded feedback loop"
-     ]
-    ]
+    "captionEn": "Five patterns, five questions",
+    "captionKn": "ಐದು ಮಾದರಿಗಳು, ಐದು ಪ್ರಶ್ನೆಗಳು",
+    "rows": "Pattern|Question it answers|Shape\nPrompt chaining|What fixed step comes next?|Sequence\nRouting|Which predefined path applies?|Branch\nParallelization|What independent work can run together?|Fan-out, fan-in\nOrchestrator-workers|Which workers does this task need?|Dynamic decomposition\nEvaluator-optimizer|Is the output good enough yet?|Bounded feedback loop"
    }
   },
   {

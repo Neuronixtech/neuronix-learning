@@ -406,7 +406,7 @@ h3.bl-heading{font-size:1rem;color:var(--gold);}
   <div class="breadcrumb">
     <a href="dashboard.html" class="back-btn" title="Back to Dashboard"><svg class="icon" style="width:16px;height:16px"><use href="#i-arrow-left"/></svg> Dashboard</a>
     <span class="sep">/</span>
-    <span id="bcPhase">—</span>
+    <a id="bcPhase" href="dashboard.html?tab=curriculum" title="Back to curriculum">—</a>
     <span class="sep">/</span>
     <span class="current" id="bcTitle">Loading…</span>
   </div>
@@ -782,8 +782,11 @@ h3.bl-heading{font-size:1rem;color:var(--gold);}
           break;
         }
         case 'table': {
-          const cap = pick(d.captionEn, d.captionKn);
-          const raw = (d.rows||'').trim();
+          const cap = pick(d.captionEn || d.headingEn, d.captionKn || d.headingKn);
+          // rows is normally "a|b\nc|d" with the header first; also accept {headers:[...], rows:[[...]]}
+          const raw = Array.isArray(d.rows)
+            ? [].concat(Array.isArray(d.headers) ? [d.headers] : [], d.rows).map(r => (Array.isArray(r) ? r : [r]).map(x => String(x == null ? '' : x).replace(/\|/g, '/')).join('|')).join('\n').trim()
+            : String(d.rows || '').trim();
           if (raw) {
             const rows = raw.split('\n'
 ).map(r=>r.split('|').map(x=>x.trim()));

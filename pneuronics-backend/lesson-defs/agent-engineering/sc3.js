@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Evidence sources",
-    "headingKn": "ಸಾಕ್ಷ್ಯ ಮೂಲಗಳು",
-    "headers": [
-     "Question",
-     "Weak source",
-     "Stronger source"
-    ],
-    "rows": [
-     [
-      "what changed",
-      "the agent list",
-      "git diff against the baseline plus untracked files"
-     ],
-     [
-      "moved files",
-      "diff with rename detection",
-      "diff with --no-renames"
-     ],
-     [
-      "what is allowed",
-      "contract in the working tree",
-      "contract from the baseline commit"
-     ],
-     [
-      "how to undo",
-      "git reset --hard",
-      "restore only the task files"
-     ]
-    ]
+    "captionEn": "Evidence sources",
+    "captionKn": "ಸಾಕ್ಷ್ಯ ಮೂಲಗಳು",
+    "rows": "Question|Weak source|Stronger source\nwhat changed|the agent list|git diff against the baseline plus untracked files\nmoved files|diff with rename detection|diff with --no-renames\nwhat is allowed|contract in the working tree|contract from the baseline commit\nhow to undo|git reset --hard|restore only the task files"
    }
   },
   {

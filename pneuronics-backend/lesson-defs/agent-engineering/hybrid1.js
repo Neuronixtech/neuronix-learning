@@ -62,34 +62,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Which store answers which question",
-    "headingKn": "ಯಾವ ಸಂಗ್ರಹ ಯಾವ ಪ್ರಶ್ನೆಗೆ ಉತ್ತರಿಸುತ್ತದೆ",
-    "headers": [
-     "Store",
-     "Mental model",
-     "Strength",
-     "Weakness"
-    ],
-    "rows": [
-     [
-      "Vector",
-      "\"sounds like\"",
-      "Fuzzy meaning, episodic text",
-      "Wasteful for exact keys, weak on relationships, can return stale matches"
-     ],
-     [
-      "KV",
-      "\"exactly this key\"",
-      "Direct current-state lookup, near constant time",
-      "The query must map to a key; no fuzzy matching; schema creep"
-     ],
-     [
-      "Graph",
-      "\"connected to\"",
-      "Relationships, paths, temporal edges",
-      "Poor fuzzy text search; extraction can explode the edge count"
-     ]
-    ]
+    "captionEn": "Which store answers which question",
+    "captionKn": "ಯಾವ ಸಂಗ್ರಹ ಯಾವ ಪ್ರಶ್ನೆಗೆ ಉತ್ತರಿಸುತ್ತದೆ",
+    "rows": "Store|Mental model|Strength|Weakness\nVector|\"sounds like\"|Fuzzy meaning, episodic text|Wasteful for exact keys, weak on relationships, can return stale matches\nKV|\"exactly this key\"|Direct current-state lookup, near constant time|The query must map to a key; no fuzzy matching; schema creep\nGraph|\"connected to\"|Relationships, paths, temporal edges|Poor fuzzy text search; extraction can explode the edge count"
    }
   },
   {

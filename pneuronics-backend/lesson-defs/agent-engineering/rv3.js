@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Protections and their limits",
-    "headingKn": "ರಕ್ಷಣೆಗಳು ಮತ್ತು ಅವುಗಳ ಮಿತಿಗಳು",
-    "headers": [
-     "Protection",
-     "Stops",
-     "Does not stop"
-    ],
-    "rows": [
-     [
-      "frozen dataclass",
-      "attribute assignment",
-      "changes inside a dict it holds"
-     ],
-     [
-      "deep copy",
-      "edits reaching the original",
-      "a reviewer misreading the copy"
-     ],
-     [
-      "hash at start and end",
-      "unnoticed changes",
-      "the change itself or who made it"
-     ],
-     [
-      "rubric version field",
-      "comparing unlike reviews",
-      "a wrong rubric"
-     ]
-    ]
+    "captionEn": "Protections and their limits",
+    "captionKn": "ರಕ್ಷಣೆಗಳು ಮತ್ತು ಅವುಗಳ ಮಿತಿಗಳು",
+    "rows": "Protection|Stops|Does not stop\nfrozen dataclass|attribute assignment|changes inside a dict it holds\ndeep copy|edits reaching the original|a reviewer misreading the copy\nhash at start and end|unnoticed changes|the change itself or who made it\nrubric version field|comparing unlike reviews|a wrong rubric"
    }
   },
   {

@@ -72,30 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Isolation layers",
-    "headingKn": "Isolation ಪದರಗಳು",
-    "headers": [
-     "Layer",
-     "Mechanism",
-     "Does not stop"
-    ],
-    "rows": [
-     [
-      "filesystem",
-      "one worktree per worker",
-      "a worker editing files it does not own"
-     ],
-     [
-      "ownership",
-      "audit the full change list",
-      "a shared output path or database"
-     ],
-     [
-      "state",
-      "per-worker evidence and state",
-      "a worker lying about its own evidence"
-     ]
-    ]
+    "captionEn": "Isolation layers",
+    "captionKn": "Isolation ಪದರಗಳು",
+    "rows": "Layer|Mechanism|Does not stop\nfilesystem|one worktree per worker|a worker editing files it does not own\nownership|audit the full change list|a shared output path or database\nstate|per-worker evidence and state|a worker lying about its own evidence"
    }
   },
   {

@@ -273,45 +273,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Failure modes of a Reflexion system",
-    "headingKn": "Reflexion ವ್ಯವಸ್ಥೆಯ ವೈಫಲ್ಯ ವಿಧಗಳು",
-    "headers": [
-     "Failure mode",
-     "What it looks like",
-     "Seen in this module"
-    ],
-    "rows": [
-     [
-      "Bad evaluator",
-      "A correct trajectory is rejected, or a wrong one approved",
-      "Part 3 section 5: true answer rejected twice"
-     ],
-     [
-      "Vague reflection",
-      "\"Try harder\": no failure, evidence or action",
-      "Part 2: direction only, no magnitude"
-     ],
-     [
-      "Actor ignores memory",
-      "Reflections stored, behaviour unchanged",
-      "Part 2 section 5: 23 six times"
-     ],
-     [
-      "Capacity too small for the policy",
-      "The history the Actor needs is evicted",
-      "Part 2 section 6: capacity 1 never solves"
-     ],
-     [
-      "External failure",
-      "A timeout is \"learned\" as a rule",
-      "Part 1 section 4: retry, do not reflect"
-     ],
-     [
-      "Memory rot",
-      "Stale, duplicate or contradictory lessons",
-      "Part 1 section 5; Part 3 section 6 expiry"
-     ]
-    ]
+    "captionEn": "Failure modes of a Reflexion system",
+    "captionKn": "Reflexion ವ್ಯವಸ್ಥೆಯ ವೈಫಲ್ಯ ವಿಧಗಳು",
+    "rows": "Failure mode|What it looks like|Seen in this module\nBad evaluator|A correct trajectory is rejected, or a wrong one approved|Part 3 section 5: true answer rejected twice\nVague reflection|\"Try harder\": no failure, evidence or action|Part 2: direction only, no magnitude\nActor ignores memory|Reflections stored, behaviour unchanged|Part 2 section 5: 23 six times\nCapacity too small for the policy|The history the Actor needs is evicted|Part 2 section 6: capacity 1 never solves\nExternal failure|A timeout is \"learned\" as a rule|Part 1 section 4: retry, do not reflect\nMemory rot|Stale, duplicate or contradictory lessons|Part 1 section 5; Part 3 section 6 expiry"
    }
   },
   {
@@ -326,35 +290,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Reflexion in the agent patterns",
-    "headingKn": "Agent ಮಾದರಿಗಳಲ್ಲಿ Reflexion",
-    "headers": [
-     "Pattern",
-     "What it adapts",
-     "Relation"
-    ],
-    "rows": [
-     [
-      "ReAct",
-      "Actions inside one run",
-      "Reflexion adds learning between runs; the Actor can itself be a ReAct agent"
-     ],
-     [
-      "ReWOO / Plan-and-Execute",
-      "The plan",
-      "A failed run can feed a lesson to the next plan"
-     ],
-     [
-      "Self-Refine",
-      "The current output",
-      "Reflexion keeps a persistent lesson across fresh attempts"
-     ],
-     [
-      "Gradient training",
-      "Model weights",
-      "Reflexion changes context, readable and deletable"
-     ]
-    ]
+    "captionEn": "Reflexion in the agent patterns",
+    "captionKn": "Agent ಮಾದರಿಗಳಲ್ಲಿ Reflexion",
+    "rows": "Pattern|What it adapts|Relation\nReAct|Actions inside one run|Reflexion adds learning between runs; the Actor can itself be a ReAct agent\nReWOO / Plan-and-Execute|The plan|A failed run can feed a lesson to the next plan\nSelf-Refine|The current output|Reflexion keeps a persistent lesson across fresh attempts\nGradient training|Model weights|Reflexion changes context, readable and deletable"
    }
   },
   {

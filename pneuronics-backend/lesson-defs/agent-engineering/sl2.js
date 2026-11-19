@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Lab results (invented records)",
-    "headingKn": "ಲ್ಯಾಬ್ ಫಲಿತಾಂಶಗಳು (ಕಲ್ಪಿತ ದಾಖಲೆಗಳು)",
-    "headers": [
-     "Records",
-     "Correct",
-     "Accuracy"
-    ],
-    "rows": [
-     [
-      "labelled only",
-      "4/4",
-      "1.00"
-     ],
-     [
-      "unlabelled only",
-      "2/4",
-      "0.50"
-     ],
-     [
-      "all eight",
-      "6/8",
-      "0.75"
-     ],
-     [
-      "hard-coded demo",
-      "8/8",
-      "by construction"
-     ]
-    ]
+    "captionEn": "Lab results (invented records)",
+    "captionKn": "ಲ್ಯಾಬ್ ಫಲಿತಾಂಶಗಳು (ಕಲ್ಪಿತ ದಾಖಲೆಗಳು)",
+    "rows": "Records|Correct|Accuracy\nlabelled only|4/4|1.00\nunlabelled only|2/4|0.50\nall eight|6/8|0.75\nhard-coded demo|8/8|by construction"
    }
   },
   {

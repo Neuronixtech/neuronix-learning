@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "What each layer does",
-    "headingKn": "ಪ್ರತಿ ಪದರ ಏನು ಮಾಡುತ್ತದೆ",
-    "headers": [
-     "Layer",
-     "Stops",
-     "Does not stop"
-    ],
-    "rows": [
-     [
-      "warning",
-      "nothing by itself; informs",
-      "the proposed action"
-     ],
-     [
-      "per-step safety",
-      "sensitive, off-allowlist or malformed actions",
-      "a human approving a bad request"
-     ],
-     [
-      "human confirmation",
-      "unapproved sensitive actions",
-      "a rubber-stamp approval"
-     ],
-     [
-      "retry cap",
-      "endless repeated holds",
-      "the first attempt"
-     ]
-    ]
+    "captionEn": "What each layer does",
+    "captionKn": "ಪ್ರತಿ ಪದರ ಏನು ಮಾಡುತ್ತದೆ",
+    "rows": "Layer|Stops|Does not stop\nwarning|nothing by itself; informs|the proposed action\nper-step safety|sensitive, off-allowlist or malformed actions|a human approving a bad request\nhuman confirmation|unapproved sensitive actions|a rubber-stamp approval\nretry cap|endless repeated holds|the first attempt"
    }
   },
   {

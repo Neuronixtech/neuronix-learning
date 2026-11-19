@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Reviewer evidence sources",
-    "headingKn": "Reviewer ಸಾಕ್ಷ್ಯ ಮೂಲಗಳು",
-    "headers": [
-     "Source",
-     "Who produced it",
-     "Independent?"
-    ],
-    "rows": [
-     [
-      "solves_requested_problem flag",
-      "the builder",
-      "no"
-     ],
-     [
-      "builder's own tests",
-      "the builder",
-      "no, they may ask the wrong question"
-     ],
-     [
-      "a probe the reviewer runs",
-      "the reviewer",
-      "yes"
-     ],
-     [
-      "the original task text",
-      "the requester",
-      "yes"
-     ]
-    ]
+    "captionEn": "Reviewer evidence sources",
+    "captionKn": "Reviewer ಸಾಕ್ಷ್ಯ ಮೂಲಗಳು",
+    "rows": "Source|Who produced it|Independent?\nsolves_requested_problem flag|the builder|no\nbuilder's own tests|the builder|no, they may ask the wrong question\na probe the reviewer runs|the reviewer|yes\nthe original task text|the requester|yes"
    }
   },
   {

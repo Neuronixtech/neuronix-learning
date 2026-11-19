@@ -72,38 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The building blocks",
-    "headingKn": "ಘಟಕಗಳು",
-    "headers": [
-     "Piece",
-     "What it does"
-    ],
-    "rows": [
-     [
-      "canonical JSON",
-      "sorted keys and fixed separators so one action has one text"
-     ],
-     [
-      "digest",
-      "SHA-256 of that text, 64 hexadecimal characters"
-     ],
-     [
-      "idempotency key",
-      "hash of thread, operation id and action"
-     ],
-     [
-      "registry",
-      "refuses a reused identity with a changed action"
-     ],
-     [
-      "state machine",
-      "8 states, 10 legal moves, 3 terminal states"
-     ],
-     [
-      "checklist",
-      "only an explicit True counts"
-     ]
-    ]
+    "captionEn": "The building blocks",
+    "captionKn": "ಘಟಕಗಳು",
+    "rows": "Piece|What it does\ncanonical JSON|sorted keys and fixed separators so one action has one text\ndigest|SHA-256 of that text, 64 hexadecimal characters\nidempotency key|hash of thread, operation id and action\nregistry|refuses a reused identity with a changed action\nstate machine|8 states, 10 legal moves, 3 terminal states\nchecklist|only an explicit True counts"
    }
   },
   {

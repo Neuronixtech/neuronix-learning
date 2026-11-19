@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Loop components in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಲೂಪ್ ಘಟಕಗಳು",
-    "headers": [
-     "Component",
-     "Lab implementation"
-    ],
-    "rows": [
-     [
-      "seed program",
-      "x (coefficients 0, 1, 0)"
-     ],
-     [
-      "mutation",
-      "add -2, -1, 1 or 2 to one coefficient"
-     ],
-     [
-      "evaluator",
-      "mean squared error on x from -5 to 5"
-     ],
-     [
-      "archive cell",
-      "(degree, number of nonzero terms)"
-     ],
-     [
-      "held-out check",
-      "x = -9, -7, 7, 8, 12"
-     ]
-    ]
+    "captionEn": "Loop components in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಲೂಪ್ ಘಟಕಗಳು",
+    "rows": "Component|Lab implementation\nseed program|x (coefficients 0, 1, 0)\nmutation|add -2, -1, 1 or 2 to one coefficient\nevaluator|mean squared error on x from -5 to 5\narchive cell|(degree, number of nonzero terms)\nheld-out check|x = -9, -7, 7, 8, 12"
    }
   },
   {

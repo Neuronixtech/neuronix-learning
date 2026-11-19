@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Parts of the engine",
-    "headingKn": "ಎಂಜಿನ್ ಭಾಗಗಳು",
-    "headers": [
-     "Part",
-     "Job"
-    ],
-    "rows": [
-     [
-      "EventLog",
-      "load and save a JSON list, writing through a temporary file and os.replace"
-     ],
-     [
-      "input_fingerprint",
-      "SHA-256 of the canonical JSON of the arguments"
-     ],
-     [
-      "DurableRunner.activity",
-      "replay a completed result or record started and then completed or failed"
-     ],
-     [
-      "run_or_replay",
-      "build a runner and call the workflow"
-     ],
-     [
-      "thread_id",
-      "separates the history of different workflow sessions"
-     ]
-    ]
+    "captionEn": "Parts of the engine",
+    "captionKn": "ಎಂಜಿನ್ ಭಾಗಗಳು",
+    "rows": "Part|Job\nEventLog|load and save a JSON list, writing through a temporary file and os.replace\ninput_fingerprint|SHA-256 of the canonical JSON of the arguments\nDurableRunner.activity|replay a completed result or record started and then completed or failed\nrun_or_replay|build a runner and call the workflow\nthread_id|separates the history of different workflow sessions"
    }
   },
   {

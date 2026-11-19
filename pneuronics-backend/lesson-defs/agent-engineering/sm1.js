@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The lab plan (numbers invented)",
-    "headingKn": "ಲ್ಯಾಬ್ ಯೋಜನೆ (ಸಂಖ್ಯೆಗಳು ಕಲ್ಪಿತ)",
-    "headers": [
-     "Metric",
-     "Kind",
-     "Rule"
-    ],
-    "rows": [
-     [
-      "median_minutes_to_identify",
-      "outcome",
-      "at most 2.0"
-     ],
-     [
-      "service_accuracy",
-      "outcome",
-      "at least 0.90"
-     ],
-     [
-      "unsafe_action_rate",
-      "guardrail",
-      "at most 0.0"
-     ],
-     [
-      "human_review_minutes",
-      "counter",
-      "at most 3.0"
-     ]
-    ]
+    "captionEn": "The lab plan (numbers invented)",
+    "captionKn": "ಲ್ಯಾಬ್ ಯೋಜನೆ (ಸಂಖ್ಯೆಗಳು ಕಲ್ಪಿತ)",
+    "rows": "Metric|Kind|Rule\nmedian_minutes_to_identify|outcome|at most 2.0\nservice_accuracy|outcome|at least 0.90\nunsafe_action_rate|guardrail|at most 0.0\nhuman_review_minutes|counter|at most 3.0"
    }
   },
   {

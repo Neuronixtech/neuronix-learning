@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "What each step guarantees",
-    "headingKn": "ಪ್ರತಿ ಹಂತ ಏನು ಖಾತ್ರಿ ನೀಡುತ್ತದೆ",
-    "headers": [
-     "Step",
-     "Guarantees",
-     "Does not guarantee"
-    ],
-    "rows": [
-     [
-      "validate",
-      "required fields exist",
-      "the content is good"
-     ],
-     [
-      "render",
-      "a Markdown file is produced",
-      "the six sections are intact"
-     ],
-     [
-      "audit the file",
-      "the six headings are present",
-      "the receipts are true"
-     ],
-     [
-      "exit code 0",
-      "structure passed and file written",
-      "the plan is right"
-     ]
-    ]
+    "captionEn": "What each step guarantees",
+    "captionKn": "ಪ್ರತಿ ಹಂತ ಏನು ಖಾತ್ರಿ ನೀಡುತ್ತದೆ",
+    "rows": "Step|Guarantees|Does not guarantee\nvalidate|required fields exist|the content is good\nrender|a Markdown file is produced|the six sections are intact\naudit the file|the six headings are present|the receipts are true\nexit code 0|structure passed and file written|the plan is right"
    }
   },
   {

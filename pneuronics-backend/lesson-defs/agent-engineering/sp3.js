@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Policy used in the lab",
-    "headingKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಬಳಸಿದ ನೀತಿ",
-    "headers": [
-     "Decision",
-     "Mode",
-     "Detail"
-    ],
-    "rows": [
-     [
-      "index_choice",
-      "delegated",
-      "agent decides"
-     ],
-     [
-      "cache_ttl_s",
-      "bounded",
-      "30 to 600 seconds"
-     ],
-     [
-      "response_format",
-      "locked",
-      "owner only"
-     ],
-     [
-      "production_write",
-      "locked",
-      "needs signed approval"
-     ]
-    ]
+    "captionEn": "Policy used in the lab",
+    "captionKn": "ಲ್ಯಾಬ್‌ನಲ್ಲಿ ಬಳಸಿದ ನೀತಿ",
+    "rows": "Decision|Mode|Detail\nindex_choice|delegated|agent decides\ncache_ttl_s|bounded|30 to 600 seconds\nresponse_format|locked|owner only\nproduction_write|locked|needs signed approval"
    }
   },
   {

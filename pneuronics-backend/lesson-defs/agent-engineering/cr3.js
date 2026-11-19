@@ -72,42 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The seven experiments",
-    "headingKn": "ಏಳು ಪ್ರಯೋಗಗಳು",
-    "headers": [
-     "Experiment",
-     "What the lab shows"
-    ],
-    "rows": [
-     [
-      "split brain",
-      "a late write from token 1 after token 2, with and without a fence"
-     ],
-     [
-      "lease race",
-      "8 threads, one token"
-     ],
-     [
-      "SAGA",
-      "shipping fails, payment then inventory are compensated"
-     ],
-     [
-      "compensation crash",
-      "stable key against a random key"
-     ],
-     [
-      "failure injection",
-      "6 crash points, 2 provider types"
-     ],
-     [
-      "history validation",
-      "first illegal jump named"
-     ],
-     [
-      "audit",
-      "a hash chain with fencing tokens and an anchor"
-     ]
-    ]
+    "captionEn": "The seven experiments",
+    "captionKn": "ಏಳು ಪ್ರಯೋಗಗಳು",
+    "rows": "Experiment|What the lab shows\nsplit brain|a late write from token 1 after token 2, with and without a fence\nlease race|8 threads, one token\nSAGA|shipping fails, payment then inventory are compensated\ncompensation crash|stable key against a random key\nfailure injection|6 crash points, 2 provider types\nhistory validation|first illegal jump named\naudit|a hash chain with fencing tokens and an anchor"
    }
   },
   {

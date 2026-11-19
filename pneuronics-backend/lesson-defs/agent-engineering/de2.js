@@ -72,34 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "The crash points",
-    "headingKn": "Crash ಬಿಂದುಗಳು",
-    "headers": [
-     "Crash point",
-     "What the log says afterwards"
-    ],
-    "rows": [
-     [
-      "before the call",
-      "started only, nothing was charged"
-     ],
-     [
-      "after the call, before completed",
-      "started only, but the customer was charged"
-     ],
-     [
-      "after completed",
-      "completed, replay returns the result"
-     ],
-     [
-      "retry policy",
-      "d0 = 2 s, dmax = 60 s, doubling"
-     ],
-     [
-      "idempotency key",
-      "order_123_payment"
-     ]
-    ]
+    "captionEn": "The crash points",
+    "captionKn": "Crash ಬಿಂದುಗಳು",
+    "rows": "Crash point|What the log says afterwards\nbefore the call|started only, nothing was charged\nafter the call, before completed|started only, but the customer was charged\nafter completed|completed, replay returns the result\nretry policy|d0 = 2 s, dmax = 60 s, doubling\nidempotency key|order_123_payment"
    }
   },
   {

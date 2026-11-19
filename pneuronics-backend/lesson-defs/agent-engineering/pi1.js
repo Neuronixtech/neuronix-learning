@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Pieces of the Part 1 pipeline",
-    "headingKn": "ಭಾಗ 1 pipeline ನ ತುಣುಕುಗಳು",
-    "headers": [
-     "Piece",
-     "Job",
-     "Known weakness"
-    ],
-    "rows": [
-     [
-      "Content(text, source)",
-      "label trusted (system, user) versus untrusted (web, email)",
-      "the label is only as good as the code that sets it"
-     ],
-     [
-      "looks_injected",
-      "regex patterns on casefolded text",
-      "paraphrase, spacing, leetspeak, homoglyphs"
-     ],
-     [
-      "scan_args",
-      "check argument strings",
-      "top-level only in this version"
-     ],
-     [
-      "validate",
-      "tool allowlist plus argument scan",
-      "does not know who asked"
-     ],
-     [
-      "Executor",
-      "validate then run",
-      "does not protect a handle to the tools"
-     ]
-    ]
+    "captionEn": "Pieces of the Part 1 pipeline",
+    "captionKn": "ಭಾಗ 1 pipeline ನ ತುಣುಕುಗಳು",
+    "rows": "Piece|Job|Known weakness\nContent(text, source)|label trusted (system, user) versus untrusted (web, email)|the label is only as good as the code that sets it\nlooks_injected|regex patterns on casefolded text|paraphrase, spacing, leetspeak, homoglyphs\nscan_args|check argument strings|top-level only in this version\nvalidate|tool allowlist plus argument scan|does not know who asked\nExecutor|validate then run|does not protect a handle to the tools"
    }
   },
   {

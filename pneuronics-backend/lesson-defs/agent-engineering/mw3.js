@@ -72,35 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "What the dispatcher refuses",
-    "headingKn": "Dispatcher ಯಾವುದನ್ನು ತಿರಸ್ಕರಿಸುತ್ತದೆ",
-    "headers": [
-     "Request",
-     "Result",
-     "Reason"
-    ],
-    "rows": [
-     [
-      "unknown tool (shell)",
-      "refused",
-      "only write_file is supported"
-     ],
-     [
-      "path ../outside.txt",
-      "refused",
-      "escapes the workbench"
-     ],
-     [
-      "non-string path or content",
-      "refused",
-      "argument types are checked"
-     ],
-     [
-      "not a dictionary",
-      "refused",
-      "malformed request"
-     ]
-    ]
+    "captionEn": "What the dispatcher refuses",
+    "captionKn": "Dispatcher ಯಾವುದನ್ನು ತಿರಸ್ಕರಿಸುತ್ತದೆ",
+    "rows": "Request|Result|Reason\nunknown tool (shell)|refused|only write_file is supported\npath ../outside.txt|refused|escapes the workbench\nnon-string path or content|refused|argument types are checked\nnot a dictionary|refused|malformed request"
    }
   },
   {

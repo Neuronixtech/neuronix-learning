@@ -72,40 +72,9 @@ module.exports = {
   {
    "type": "table",
    "data": {
-    "headingEn": "Fields of the agent state",
-    "headingKn": "agent state ನ ಕ್ಷೇತ್ರಗಳು",
-    "headers": [
-     "Field",
-     "Type",
-     "Why it exists"
-    ],
-    "rows": [
-     [
-      "schema_version",
-      "integer",
-      "which contract the file follows"
-     ],
-     [
-      "active_task_id",
-      "string matching ^T-\\d{3,}$",
-      "the task to resume"
-     ],
-     [
-      "touched_files",
-      "array of strings",
-      "where to look first"
-     ],
-     [
-      "assumptions, blockers",
-      "arrays of strings",
-      "what is unverified or stopping work"
-     ],
-     [
-      "next_action",
-      "string",
-      "the first step on resume"
-     ]
-    ]
+    "captionEn": "Fields of the agent state",
+    "captionKn": "agent state ನ ಕ್ಷೇತ್ರಗಳು",
+    "rows": "Field|Type|Why it exists\nschema_version|integer|which contract the file follows\nactive_task_id|string matching ^T-\\d{3,}$|the task to resume\ntouched_files|array of strings|where to look first\nassumptions, blockers|arrays of strings|what is unverified or stopping work\nnext_action|string|the first step on resume"
    }
   },
   {
