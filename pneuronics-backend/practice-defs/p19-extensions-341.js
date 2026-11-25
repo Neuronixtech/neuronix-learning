@@ -1,0 +1,6 @@
+// Hand-written third practice problem for each rebuilt Phase 19 lesson in module 341, keyed "module.lessonIndex": [English, Kannada].
+module.exports = {
+  '341.0': [`add a Tester role to ALLOWED and to project_state, then show that a Reviewer to Tester handoff is accepted and a Writer to Tester handoff is refused.`, `ALLOWED ಮತ್ತು project_state ಗೆ Tester ಪಾತ್ರ ಸೇರಿಸಿ, ನಂತರ Reviewer ನಿಂದ Tester ಗೆ handoff ಒಪ್ಪಲ್ಪಡುತ್ತದೆ ಮತ್ತು Writer ನಿಂದ Tester ಗೆ handoff ನಿರಾಕರಿಸಲ್ಪಡುತ್ತದೆ ಎಂದು ತೋರಿಸಿ.`],
+  '341.1': [`add a status field with the values ok and failed to AgentResult, make the writer return failed when the research artifact is missing, and make HandoffOrchestrator stop with a clear error instead of a normal ending.`, `AgentResult ಗೆ ok ಮತ್ತು failed ಮೌಲ್ಯಗಳ status ಕ್ಷೇತ್ರ ಸೇರಿಸಿ, research artifact ಕಾಣೆಯಾದಾಗ writer failed ನೀಡುವಂತೆ ಮಾಡಿ, ಮತ್ತು HandoffOrchestrator ಸಾಮಾನ್ಯ ಅಂತ್ಯದ ಬದಲು ಸ್ಪಷ್ಟ ದೋಷದೊಂದಿಗೆ ನಿಲ್ಲುವಂತೆ ಮಾಡಿ.`],
+  '341.2': [`make verify_completion also require that the draft text contains the research text, then show that a draft of completely wrong nonsense now fails the gate with a named reason.`, `verify_completion ಕರಡು ಪಠ್ಯ research ಪಠ್ಯವನ್ನು ಹೊಂದಿರಬೇಕು ಎಂದೂ ಬೇಡುವಂತೆ ಮಾಡಿ, ನಂತರ ಸಂಪೂರ್ಣ ಅರ್ಥಹೀನ ಕರಡು ಈಗ ಹೆಸರಿಸಿದ ಕಾರಣದೊಂದಿಗೆ ದ್ವಾರದಲ್ಲಿ ವಿಫಲವಾಗುತ್ತದೆ ಎಂದು ತೋರಿಸಿ.`],
+};
