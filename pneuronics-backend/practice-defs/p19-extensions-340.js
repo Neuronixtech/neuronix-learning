@@ -1,0 +1,6 @@
+// Hand-written third practice problem for each rebuilt Phase 19 lesson in module 340, keyed "module.lessonIndex": [English, Kannada].
+module.exports = {
+  '340.0': [`add a discoverByOutputMode method to AgentRegistry, then show which agents match application/json and which match text/plain as output.`, `AgentRegistry ಗೆ discoverByOutputMode ವಿಧಾನ ಸೇರಿಸಿ, ನಂತರ ಔಟ್‌ಪುಟ್ ಆಗಿ application/json ಮತ್ತು text/plain ಗೆ ಯಾವ ಏಜೆಂಟ್‌ಗಳು ಹೊಂದುತ್ತವೆ ಎಂದು ತೋರಿಸಿ.`],
+  '340.1': [`make AuditableRunner set completedAt in the no-handler branch as well, then show that every failed run now has a completion time and that the completed run is unchanged.`, `AuditableRunner handler ಇಲ್ಲದ ಶಾಖೆಯಲ್ಲೂ completedAt ಹೊಂದಿಸುವಂತೆ ಮಾಡಿ, ನಂತರ ಈಗ ಪ್ರತಿ ವಿಫಲ ಓಟಕ್ಕೂ ಪೂರ್ಣಗೊಂಡ ಸಮಯ ಇದೆ ಮತ್ತು ಪೂರ್ಣಗೊಂಡ ಓಟ ಬದಲಾಗಿಲ್ಲ ಎಂದು ತೋರಿಸಿ.`],
+  '340.2': [`change the gateway so that the audit entry is taken after waitFor and its status is copied from the task state, then show that the failing task of experiment 6 now produces an audit entry with status failed.`, `gateway ಬದಲಿಸಿ, audit ನಮೂದು waitFor ನಂತರ ತೆಗೆಯಲ್ಪಡಲಿ ಮತ್ತು ಅದರ ಸ್ಥಿತಿ ಕೆಲಸ ಸ್ಥಿತಿಯಿಂದ ನಕಲಾಗಲಿ, ನಂತರ ಪ್ರಯೋಗ 6 ರ ವಿಫಲ ಕೆಲಸ ಈಗ failed ಸ್ಥಿತಿಯ audit ನಮೂದು ನೀಡುತ್ತದೆ ಎಂದು ತೋರಿಸಿ.`],
+};
