@@ -1,0 +1,6 @@
+// Hand-written third practice problem for each rebuilt Phase 19 lesson in module 339, keyed "module.lessonIndex": [English, Kannada].
+module.exports = {
+  '339.0': [`build PART1_VALIDATOR_SET from FIPA_CATALOGUE instead of listing names by hand, then show that inform-if is now accepted and report the new validator size.`, `PART1_VALIDATOR_SET ಅನ್ನು ಕೈಯಿಂದ ಹೆಸರು ಪಟ್ಟಿ ಮಾಡುವ ಬದಲು FIPA_CATALOGUE ನಿಂದ ನಿರ್ಮಿಸಿ, ನಂತರ inform-if ಈಗ ಒಪ್ಪಲ್ಪಡುತ್ತದೆ ಎಂದು ತೋರಿಸಿ ಮತ್ತು ಹೊಸ validator ಗಾತ್ರ ವರದಿ ಮಾಡಿ.`],
+  '339.1': [`add a sixth simplified kind, a2a-task-status-query, that maps to query-if, keep the round trip passing, and then delete original_kind from the metadata to show which message can no longer be rebuilt.`, `ಆರನೇ ಸರಳೀಕೃತ ಪ್ರಕಾರ a2a-task-status-query ಸೇರಿಸಿ, ಅದು query-if ಗೆ ಮ್ಯಾಪ್ ಆಗಲಿ, ಸುತ್ತು ಪಾಸಾಗುವಂತೆ ಇರಿಸಿ, ನಂತರ metadata ದಿಂದ original_kind ಅಳಿಸಿ ಯಾವ ಸಂದೇಶ ಇನ್ನು ಮರುನಿರ್ಮಿಸಲಾಗದು ಎಂದು ತೋರಿಸಿ.`],
+  '339.2': [`make audit_contract keep at most two proposals after the deadline filter, log each dropped one as proposal_dropped, and show a run in which the cheapest on-time bid is dropped and the effect on the winner.`, `audit_contract ಗಡುವು ಫಿಲ್ಟರ್ ನಂತರ ಗರಿಷ್ಠ ಎರಡು ಪ್ರಸ್ತಾವನೆಗಳನ್ನು ಮಾತ್ರ ಉಳಿಸುವಂತೆ ಮಾಡಿ, ಬಿಟ್ಟ ಪ್ರತಿಯೊಂದನ್ನು proposal_dropped ಎಂದು ದಾಖಲಿಸಿ, ಮತ್ತು ಸಮಯಕ್ಕೆ ಸರಿಯಾದ ಅತ್ಯಂತ ಅಗ್ಗದ ಬಿಡ್ ಬಿಟ್ಟುಹೋಗುವ ಒಂದು ಓಟ ಮತ್ತು ವಿಜೇತನ ಮೇಲಿನ ಪರಿಣಾಮ ತೋರಿಸಿ.`],
+};
