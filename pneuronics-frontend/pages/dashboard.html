@@ -419,10 +419,48 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
       <div class="panel-title">Projects</div>
     </div>
     <div id="projectsBody">
-      <div class="panel" style="text-align:center;padding:2.5rem 1rem;">
-        <div style="font-size:2rem;margin-bottom:.5rem;">🚀</div>
-        <div class="panel-title">Projects coming soon</div>
-        <div style="color:var(--muted,#888);margin-top:.4rem;">Hands-on projects will appear here.</div>
+      <div class="panel">
+        <div class="panel-title">AI Practical Project Learning Kit</div>
+        <div class="panel-sub" style="font-family:inherit;font-size:.85rem;line-height:1.6;">Five hands-on Google Colab notebooks. Download a notebook, open <a href="https://colab.research.google.com/" target="_blank" rel="noopener" style="color:var(--cyan);">Google Colab</a>, choose <b>File → Upload notebook</b>, then run the cells from top to bottom. Suggested order: 1 → 3 → 4 → 2 → 5. Projects 2 and 4 run best with a free GPU (Runtime → Change runtime type).</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:1.4rem;">
+        <div class="panel" style="margin:0;display:flex;flex-direction:column;">
+          <div class="cont-tag">Project 1 · Machine Learning · Beginner</div>
+          <div class="panel-title">House Price Prediction</div>
+          <p style="color:var(--text-dim);font-size:.85rem;line-height:1.55;flex:1;margin:.6rem 0 1rem;">Linear Regression vs Random Forest on the California Housing data: EDA, feature selection, MAE/RMSE/R², saving with Joblib.</p>
+          <a class="btn btn-primary btn-sm" href="../projects/Project_1_House_Price_Prediction.ipynb" download>Download notebook</a>
+        </div>
+        <div class="panel" style="margin:0;display:flex;flex-direction:column;">
+          <div class="cont-tag">Project 2 · Computer Vision · Beginner–Intermediate</div>
+          <div class="panel-title">Plant Disease Detection</div>
+          <p style="color:var(--text-dim);font-size:.85rem;line-height:1.55;flex:1;margin:.6rem 0 1rem;">CNN from scratch and MobileNetV2 transfer learning on PlantVillage leaf images, with upload-and-predict. Educational only, not expert diagnosis.</p>
+          <a class="btn btn-primary btn-sm" href="../projects/Project_2_Plant_Disease_Detection.ipynb" download>Download notebook</a>
+        </div>
+        <div class="panel" style="margin:0;display:flex;flex-direction:column;">
+          <div class="cont-tag">Project 3 · NLP · Beginner</div>
+          <div class="panel-title">Movie Review Sentiment Analysis</div>
+          <p style="color:var(--text-dim);font-size:.85rem;line-height:1.55;flex:1;margin:.6rem 0 1rem;">IMDb reviews: text cleaning, Bag of Words and TF-IDF, Logistic Regression, precision/recall/F1 and confusion matrix.</p>
+          <a class="btn btn-primary btn-sm" href="../projects/Project_3_Sentiment_Analysis.ipynb" download>Download notebook</a>
+        </div>
+        <div class="panel" style="margin:0;display:flex;flex-direction:column;">
+          <div class="cont-tag">Project 4 · Deep Learning · Intermediate</div>
+          <div class="panel-title">Handwritten Digit Recognition</div>
+          <p style="color:var(--text-dim);font-size:.85rem;line-height:1.55;flex:1;margin:.6rem 0 1rem;">MNIST with a from-scratch NumPy neuron, then an ANN vs a CNN in Keras, plus predictions on your own handwriting.</p>
+          <a class="btn btn-primary btn-sm" href="../projects/Project_4_Handwritten_Digit_Recognition.ipynb" download>Download notebook</a>
+        </div>
+        <div class="panel" style="margin:0;display:flex;flex-direction:column;">
+          <div class="cont-tag">Project 5 · Generative AI · Intermediate</div>
+          <div class="panel-title">AI PDF Question-Answering Chatbot</div>
+          <p style="color:var(--text-dim);font-size:.85rem;line-height:1.55;flex:1;margin:.6rem 0 1rem;">RAG pipeline: PDF text, chunks, embeddings, FAISS search and an LLM answer. Free local model, or a Gemini key from Colab Secrets.</p>
+          <a class="btn btn-primary btn-sm" href="../projects/Project_5_AI_PDF_Chatbot.ipynb" download>Download notebook</a>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Guides</div>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem;">
+          <a class="btn btn-outline btn-sm" href="../projects/README.md" target="_blank" rel="noopener">Kit README (setup &amp; troubleshooting)</a>
+          <a class="btn btn-outline btn-sm" href="../projects/Student_Project_Guide.md" target="_blank" rel="noopener">Student guide &amp; viva questions</a>
+        </div>
       </div>
     </div>
   </div>
