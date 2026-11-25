@@ -1,0 +1,6 @@
+// Hand-written third practice problem for each rebuilt Phase 19 lesson in module 342, keyed "module.lessonIndex": [English, Kannada].
+module.exports = {
+  '342.0': [`change Lead.run so that a failing worker does not discard the others: return the good summaries together with a list of failures, then show the two good summaries coming back when worker 2 fails.`, `Lead.run ಬದಲಿಸಿ, ವಿಫಲ ಕೆಲಸಗಾರ ಇತರರನ್ನು ಬಿಸಾಡದಿರಲಿ: ಒಳ್ಳೆಯ ಸಾರಾಂಶಗಳನ್ನು ವೈಫಲ್ಯಗಳ ಪಟ್ಟಿಯೊಂದಿಗೆ ಹಿಂದಿರುಗಿಸಿ, ನಂತರ ಕೆಲಸಗಾರ 2 ವಿಫಲವಾದಾಗ ಎರಡು ಒಳ್ಳೆಯ ಸಾರಾಂಶಗಳು ಹಿಂದಿರುಗುತ್ತವೆ ಎಂದು ತೋರಿಸಿ.`],
+  '342.1': [`give each worker a cancel Event and a 0.2 s deadline, make a 0.5 s worker stop itself and be reported as timed_out, and show that a 0.1 s worker in the same run still completes.`, `ಪ್ರತಿ ಕೆಲಸಗಾರನಿಗೆ cancel Event ಮತ್ತು 0.2 s ಗಡುವು ನೀಡಿ, 0.5 s ಕೆಲಸಗಾರ ತನ್ನನ್ನು ತಾನೇ ನಿಲ್ಲಿಸಿ timed_out ಎಂದು ವರದಿಯಾಗುವಂತೆ ಮಾಡಿ, ಮತ್ತು ಅದೇ ಓಟದಲ್ಲಿ 0.1 s ಕೆಲಸಗಾರ ಇನ್ನೂ ಪೂರ್ಣಗೊಳ್ಳುತ್ತದೆ ಎಂದು ತೋರಿಸಿ.`],
+  '342.2': [`make run_supervisor also end as needs_review when any result has empty evidence, then show a run in which one worker returns an empty evidence list and the stored status changes.`, `ಯಾವುದೇ ಫಲಿತಾಂಶದ ಸಾಕ್ಷಿ ಖಾಲಿಯಾಗಿದ್ದರೂ run_supervisor needs_review ಎಂದು ಮುಗಿಯುವಂತೆ ಮಾಡಿ, ನಂತರ ಒಬ್ಬ ಕೆಲಸಗಾರ ಖಾಲಿ ಸಾಕ್ಷಿ ಪಟ್ಟಿ ಹಿಂದಿರುಗಿಸುವ ಓಟ ಮತ್ತು ಸಂಗ್ರಹಿತ ಸ್ಥಿತಿ ಬದಲಾಗುವುದನ್ನು ತೋರಿಸಿ.`],
+};
