@@ -45,11 +45,21 @@ a{color:var(--cyan);text-decoration:none;}a:hover{text-decoration:underline;}
 .doc table{border-collapse:collapse;margin:1rem 0;display:block;overflow-x:auto;}
 .doc th,.doc td{border:1px solid var(--line-strong);padding:.45rem .7rem;text-align:left;font-size:.9rem;}
 .doc th{background:var(--surface);color:var(--text);}
-.codewrap{position:relative;margin:1rem 0;}
-.codewrap .lbl{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:.3rem;}
-.codewrap pre{margin:0;}
-.copy{position:absolute;top:1.4rem;right:.5rem;background:var(--surface-2);color:var(--text-dim);border:1px solid var(--line-strong);border-radius:6px;padding:.2rem .55rem;font-size:.7rem;font-family:var(--font-mono);cursor:pointer;}
-.copy:hover{color:var(--cyan);}
+.bl-code-wrap{border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.08);margin:1.1rem 0;}
+.bl-code-bar{display:flex;align-items:center;gap:.6rem;padding:.5rem .8rem;background:rgba(0,0,0,.3);}
+.bl-dots{display:flex;gap:5px;}.bl-dots span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.15);}
+.bl-dots span:first-child{background:#ff5f56;}.bl-dots span:nth-child(2){background:#ffbd2e;}.bl-dots span:last-child{background:#27c93f;}
+.bl-fname{font-family:var(--font-mono);font-size:.75rem;color:var(--muted);flex:1;}
+.bl-copy{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);font-family:var(--font-mono);font-size:.7rem;padding:.2rem .6rem;border-radius:5px;cursor:pointer;transition:all .15s;}
+.bl-copy:hover{background:rgba(95,212,214,.15);color:var(--cyan);}
+.bl-code{margin:0;padding:1rem;overflow-x:auto;font-family:var(--font-mono);font-size:.82rem;line-height:1.65;color:#e2dfd6;background:rgba(0,0,0,.25);white-space:pre;}
+.bl-code .kw{color:#ff79c6;font-weight:600;}
+.bl-code .fn{color:#50fa7b;}
+.bl-code .nm{color:#bd93f9;}
+.bl-code .st{color:#f1fa8c;}
+.bl-code .cm{color:#6272a4;font-style:italic;}
+html[data-theme="light"] .bl-copy{background:#fff;border-color:#D5DCE6;color:#4A5568;}
+html[data-theme="light"] .bl-dots span:not(:first-child):not(:nth-child(2)):not(:last-child){background:#CBD5E1;}
 .note{margin-top:2.5rem;padding:1rem 1.2rem;background:var(--surface);border:1px solid var(--line);border-radius:12px;font-size:.88rem;}
 .err{padding:2rem;text-align:center;color:var(--text);}
 @media(max-width:860px){.toc{display:none;}.wrap{padding:1rem 1rem 3rem;}}
@@ -80,7 +90,30 @@ const FILES = {
 const n = new URLSearchParams(location.search).get('p');
 const doc = document.getElementById('doc');
 function esc(s){return s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
-function stripMagic(src){ return src; }
+function highlightPython(raw){
+  var KW=new Set(['def','class','return','import','from','for','while','if','elif','else','in','not','and','or','is','None','True','False','lambda','with','as','try','except','finally','raise','yield','assert','break','continue','pass','global','nonlocal','del','async','await']);
+  var BI=new Set(['print','len','range','sum','zip','enumerate','list','dict','set','tuple','int','float','str','bool','abs','min','max','sorted','map','filter','open','super','isinstance','type','self']);
+  function he(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function hlLine(line){
+    var comment='',code=line,inQ=false,q='';
+    for(var ci=0;ci<line.length;ci++){
+      var ch=line[ci];
+      if(inQ){if(ch===q)inQ=false;continue;}
+      if(ch==='"'||ch==="'"){inQ=true;q=ch;continue;}
+      if(ch==='#'){comment=line.slice(ci);code=line.slice(0,ci);break;}
+    }
+    var out='',tok=/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')|([0-9]+\.?[0-9]*)|([A-Za-z_][A-Za-z_0-9]*)|([^A-Za-z_0-9"'\n]+)/g,m;
+    while((m=tok.exec(code))!==null){
+      if(m[1]){out+='<span class="st">'+he(m[1])+'</span>';}
+      else if(m[2]){out+='<span class="nm">'+he(m[2])+'</span>';}
+      else if(m[3]){var w=m[3];out+=KW.has(w)?'<span class="kw">'+w+'</span>':BI.has(w)?'<span class="fn">'+w+'</span>':he(w);}
+      else{out+=he(m[4]||m[0]);}
+    }
+    if(comment)out+='<span class="cm">'+he(comment)+'</span>';
+    return out;
+  }
+  return raw.split('\n').map(hlLine).join('\n');
+}
 
 if (!FILES[n]) {
   doc.innerHTML = '<div class="err">Project not found. <a href="dashboard.html?tab=projects">Back to Projects</a></div>';
@@ -94,7 +127,7 @@ if (!FILES[n]) {
       if (c.cell_type === 'markdown') {
         html += (window.marked ? marked.parse(src) : '<p>' + esc(src) + '</p>');
       } else if (c.cell_type === 'code') {
-        html += '<div class="codewrap"><div class="lbl">Python code</div><button class="copy" type="button">Copy</button><pre><code>' + esc(src) + '</code></pre></div>';
+        html += '<div class="bl-code-wrap"><div class="bl-code-bar"><div class="bl-dots"><span></span><span></span><span></span></div><span class="bl-fname">code.py</span><button class="bl-copy" type="button">📋 Copy</button></div><pre class="bl-code">' + highlightPython(src) + '</pre></div>';
       }
     });
     if (!isMd) html += '<div class="note">This project is a reading copy with code only; outputs appear when you run the code yourself. You can copy each code block into Google Colab, Jupyter or your own Python setup. Educational use only.</div>';
@@ -111,11 +144,11 @@ if (!FILES[n]) {
       const a = document.createElement('a'); a.href = '#sec' + i; a.textContent = h.textContent;
       toc.appendChild(a);
     });
-    doc.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {
-      const t = b.parentElement.querySelector('code').textContent;
-      (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(
-        () => { b.textContent = 'Copied'; setTimeout(() => b.textContent = 'Copy', 1500); },
-        () => { b.textContent = 'Press Ctrl+C'; const r = document.createRange(); r.selectNodeContents(b.parentElement.querySelector('code')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); });
+    doc.querySelectorAll('.bl-copy').forEach(b => b.addEventListener('click', () => {
+      const pre = b.closest('.bl-code-wrap').querySelector('pre');
+      const done = () => { b.textContent = 'Copied!'; setTimeout(() => b.textContent = '📋 Copy', 1500); };
+      const fallback = () => { const r = document.createRange(); r.selectNodeContents(pre); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); try { document.execCommand('copy'); done(); } catch (e) { b.textContent = 'Press Ctrl+C'; } };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(pre.innerText).then(done, fallback); else fallback();
     }));
   }).catch(e => { doc.innerHTML = '<div class="err">Could not load this project (' + esc(String(e.message || e)) + '). <a href="dashboard.html?tab=projects">Back to Projects</a></div>'; });
 }
