@@ -59,8 +59,12 @@ function build(def) {
   const groups = [
     [H2('Try It Yourself', 'ನೀವೇ ಪ್ರಯತ್ನಿಸಿ'),
       C('Run the lab', 'ಲ್ಯಾಬ್ ಓಡಿಸಿ',
-        `1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ${file} (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ${file}). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.`,
-        `1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ${file} (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ${file}). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ.`)],
+        /\.ts$/.test(file)
+          ? `1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: node ${file} (Node.js 24 or newer runs TypeScript files directly, because the lab uses only erasable type syntax). 3) Compare each section with the walkthrough above.`
+          : `1) Open a terminal in pneuronics-backend/lesson-defs/labs. 2) Run: python -B ${file} (in Git Bash on Windows: PYTHONIOENCODING=utf-8 python -B ${file}). 3) Compare each section with the walkthrough above. The -B flag stops Python from writing __pycache__ folders.`,
+        /\.ts$/.test(file)
+          ? `1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: node ${file} (Node.js 24 ಅಥವಾ ಹೊಸದು TypeScript ಫೈಲ್‌ಗಳನ್ನು ನೇರವಾಗಿ ಓಡಿಸುತ್ತದೆ, ಏಕೆಂದರೆ ಲ್ಯಾಬ್ ಅಳಿಸಬಹುದಾದ ಪ್ರಕಾರ ಸಿಂಟ್ಯಾಕ್ಸ್ ಮಾತ್ರ ಬಳಸುತ್ತದೆ). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ.`
+          : `1) pneuronics-backend/lesson-defs/labs ನಲ್ಲಿ ಟರ್ಮಿನಲ್ ತೆರೆಯಿರಿ. 2) ಓಡಿಸಿ: python -B ${file} (Windows Git Bash ನಲ್ಲಿ: PYTHONIOENCODING=utf-8 python -B ${file}). 3) ಪ್ರತಿ ವಿಭಾಗವನ್ನು ಮೇಲಿನ ನಡೆದಾಟಕ್ಕೆ ಹೋಲಿಸಿ. -B ಧ್ವಜ Python __pycache__ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಬರೆಯುವುದನ್ನು ತಡೆಯುತ್ತದೆ.`)],
     [C('Predict before you run', 'ಓಡಿಸುವ ಮುನ್ನ ಊಹಿಸಿ',
       `Before rerunning, write down what you expect each experiment to print, then compare:\n${list}`,
       `ಮರುಓಡಿಸುವ ಮುನ್ನ ಪ್ರತಿ ಪ್ರಯೋಗ ಏನು ಮುದ್ರಿಸುತ್ತದೆ ಎಂದು ನಿರೀಕ್ಷಿಸುವುದನ್ನು ಬರೆಯಿರಿ, ನಂತರ ಹೋಲಿಸಿ:\n${list}`)],
@@ -68,7 +72,7 @@ function build(def) {
       'Pick one constant, threshold or input in the code shown above, change it, and predict which experiment will change before you rerun. If an experiment you did not expect changes, you have found a coupling worth understanding.',
       'ಮೇಲೆ ತೋರಿಸಿದ ಕೋಡ್‌ನಲ್ಲಿ ಒಂದು ಸ್ಥಿರಾಂಕ, ಮಿತಿ ಅಥವಾ ಇನ್‌ಪುಟ್ ಆಯ್ದು ಬದಲಿಸಿ, ಮರುಓಡಿಸುವ ಮುನ್ನ ಯಾವ ಪ್ರಯೋಗ ಬದಲಾಗುತ್ತದೆ ಎಂದು ಊಹಿಸಿ. ನೀವು ನಿರೀಕ್ಷಿಸದ ಪ್ರಯೋಗ ಬದಲಾದರೆ, ಅರ್ಥಮಾಡಿಕೊಳ್ಳಬೇಕಾದ ಸಂಬಂಧವನ್ನು ನೀವು ಕಂಡುಕೊಂಡಿದ್ದೀರಿ.')],
     [C('Where your numbers may differ', 'ನಿಮ್ಮ ಸಂಖ್ಯೆಗಳು ಎಲ್ಲಿ ಭಿನ್ನವಾಗಬಹುದು',
-      'Timings, temporary paths, hashes and commit ids differ between runs and machines. Counts, verdicts and error messages should match unless your Python version or operating system differs from the one named in Lesson Info.',
+      'Timings, temporary paths, hashes and commit ids differ between runs and machines. Counts, verdicts and error messages should match unless your runtime version or operating system differs from the one named in Lesson Info.',
       'ಸಮಯಗಳು, ತಾತ್ಕಾಲಿಕ paths, hashes ಮತ್ತು commit ids ಓಟಗಳ ಮತ್ತು ಯಂತ್ರಗಳ ನಡುವೆ ಭಿನ್ನವಾಗುತ್ತವೆ. ಎಣಿಕೆಗಳು, ತೀರ್ಪುಗಳು ಮತ್ತು ದೋಷ ಸಂದೇಶಗಳು ನಿಮ್ಮ Python ಆವೃತ್ತಿ ಅಥವಾ ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್ Lesson Info ನಲ್ಲಿ ಹೆಸರಿಸಿದ್ದಕ್ಕಿಂತ ಭಿನ್ನವಾಗಿಲ್ಲದಿದ್ದರೆ ಹೊಂದಬೇಕು.')],
     [C('What this lab does not show', 'ಈ ಲ್ಯಾಬ್ ಏನನ್ನು ತೋರಿಸುವುದಿಲ್ಲ',
       'A lab that runs proves the behaviour it exercised, on one machine. It does not prove behaviour on other inputs, at scale, with a real model or in production, and any agent in it is a scripted stand-in unless Lesson Info says otherwise.',
